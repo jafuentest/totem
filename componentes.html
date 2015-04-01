@@ -1,0 +1,1328 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>TOTEM © 2015</title>
+
+		<!-- Bootstrap core CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link href="css/totem.css" rel="stylesheet">
+
+		<link rel="shortcut icon" href="img/favicon1.ico">
+
+	</head>
+
+		<body>
+
+
+			    <ul class="demo-sidebar hide-on-tablets">
+			      <li><a href="#botones">Botones</a></li>
+			      <li><a href="#checkbox">Checkboxes</a></li>
+			      <li><a href="#radio">Radio</a></li>
+			      <li><a href="#dropdown">Dropdown</a></li>
+			      <li><a href="#input">Input</a></li>
+			      <li><a href="#navbar">Barra Navegacion</a></li>
+			      <li><a href="#select">Seleccion</a></li>
+			      <li><a href="#switch">Switch</a></li>
+			      <li><a href="#tagsinput">Tags</a></li>
+			      <li><a href="#tooltip">Tooltip</a></li>
+			      <li><a href="#typeahead">Typeahead</a></li>
+			      <li><a href="#iconos">Iconos</a></li>
+			      <li><a href="#tip">Tipografia</a></li>
+			      <li><a href="layout.html">Layout</a></li>
+			      <li><a href="#">Ejemplo Formulario</a></li>
+			   </ul> <!-- /nav -->
+		<!-- container -->
+		<div class="container">
+			<div class="demo-headline">
+				<h1>Componentes</h1>
+			</div>
+			
+			<div class="demo-row" >
+				<p>Como conocimiento previo, recomiendo leer sobre el grid layout de bootstrap <a href="http://getbootstrap.com/examples/grid/">aqu&iacute;</a> y ver como se dividen las col y eso
+					. Asi podran posicionar de manera correcta los componentes en la p&aacute;gina</p>
+					<br>
+				<div id="link">
+					<a id="botones"></a>
+				</div>
+				<div class="demo-title">
+					<h3>Botones</h3>
+				</div>
+				<div class="demo-content">
+					<p> Para el proyecto tenemos los siguientes botones que se pueden usar de diferentes tama&ntilde;o seg&uacute;n sea necesario.</p>
+					  <p class="ptl">
+				            Aqui se tienen diferentes colores, se usa cada uno dependiedo de la situacion, creo que la mayoria solo usaremos el primario:
+				        </p>
+				          <p>
+					          <button class="btn btn-default mrs">Default</button>
+				            <button class="btn btn-primary mrs">Primario</button>
+				            <button class="btn btn-info mrs">Info</button>
+				            <button class="btn btn-danger mrs">Error</button>
+				          </p>
+				          <p class="mbl">
+				            <button class="btn btn-success mrs">Exito</button>
+				            <button class="btn btn-warning mrs">Advertencia</button>
+				            <button class="btn btn-inverse mrs">Inverso</button>
+				          </p>
+				          <p> En codigo:</p>
+				          <pre class="prettyprint">
+&lt;button class="btn btn-default"&gt;Default&lt;/button&gt;
+&lt;button class="btn btn-primary"&gt;Primario&lt;/button&gt;
+&lt;button class="btn btn-info"&gt;Info&lt;/button&gt;
+&lt;button class="btn btn-danger"&gt;Error&lt;/button&gt;
+&lt;button class="btn btn-success"&gt;Exito&lt;/button&gt;
+&lt;button class="btn btn-warning"&gt;Advertencia&lt;/button&gt;
+&lt;button class="btn btn-inverse"&gt;Inverso&lt;/button&gt;
+</pre>
+					<p>Se pueden colocar de diferentes tama&ntilde;os:</p>
+					<p>
+						<button class="btn btn-hg btn-primary mrs">Gigante</button>
+						<button class="btn btn-lg btn-primary mrs">Grande</button>
+						<button class="btn btn-md btn-primary mrs">Mediano</button>
+						<button class="btn btn-sm btn-primary mrs">Peque&ntilde;o</button>
+						<button class="btn btn-wide btn-primary mrs">Largo</button>
+					</p>
+					<p>En codigo:</p>
+					<pre class="prettyprint">
+&lt;button class="btn btn-hg btn-primary"&gt;Gigante&lt;/button&gt;
+&lt;button class="btn btn-lg btn-primary"&gt;Grande&lt;/button&gt;
+&lt;button class="btn btn-md btn-primary"&gt;Mediano&lt;/button&gt;
+&lt;button class="btn btn-sm btn-primary"&gt;Pequeño&lt;/button&gt;
+&lt;button class="btn btn-wide btn-primary"&gt;Largo&lt;/button&gt;
+</pre>
+				<p>Noten la clase como cambia de acorde, se puede hacer lo mismo para cada boton, solo se debe cambiar el btn-primary por el que se desee</p>
+				<p>Se pueden agrupar los botones:</p>
+				<div class="btn-group">
+						<button class="btn btn-primary">1</button>
+						<button class="btn btn-primary">2</button>
+						<button class="btn btn-primary">3</button>
+						<button class="btn btn-primary">4</button>
+						<button class="btn btn-primary">5</button>
+				</div>
+				<p>Para ello se coloca un div que los englobe y que sea de clase <span class="text-info">btn-group</span>. Ejemplo:
+          		</p>
+          							<pre class="prettyprint">
+&lt;div class="btn-group"&gt;
+&lt;button class="btn btn-primary"&gt;1&lt;/button&gt;
+&lt;button class="btn btn-primary"&gt;2&lt;/button&gt;
+&lt;button class="btn btn-primary"&gt;3&lt;/button&gt;
+&lt;button class="btn btn-primary"&gt;4&lt;/button&gt;
+&lt;/div&gt;
+</pre>
+			</div><!--/demo content -->
+
+
+			</div><!-- /demo-row -->
+			<div class="demo-row">
+				<a id="checkbox"></a>
+				<div class="demo-title">
+					<h3>Checkbox</h3>
+				</div> 
+            <div class="demo-content">
+            					<p>
+            Para los checkbox se usa un plugin en JS para que sea mas facil el manejo de sus eventos
+        </p>
+	          <form action="#">
+	            <div class="row">
+	              <div class="col-lg-6">
+	                <label class="checkbox" for="checkbox1">
+	                  <input type="checkbox" value="" id="checkbox1" data-toggle="checkbox">
+	                  Checkbox
+	                </label>
+	                <label class="checkbox" for="checkbox2">
+	                  <input type="checkbox" value="" id="checkbox2" checked="checked" data-toggle="checkbox">
+	                  Checkbox
+	                </label>
+	                <label class="checkbox" for="checkbox3">
+	                  <input type="checkbox" value="" id="checkbox3" data-toggle="checkbox" disabled="">
+	                  Checkbox
+	                </label>
+	                <label class="checkbox" for="checkbox4">
+	                  <input type="checkbox" value="" id="checkbox4" checked="checked" data-toggle="checkbox" disabled="">
+	                  Checkbox
+	                </label>
+	              </div>
+	            </div>
+	          </form>
+	          	 <pre class="prettyprint">
+&lt;label class="checkbox" for="checkbox1"&gt;&lt;input type="checkbox" value="" id="checkbox1" data-toggle="checkbox"&gt; Checkbox &lt;/label&gt;
+&lt;label class="checkbox" for="checkbox2"&gt;&lt;input type="checkbox" value="" id="checkbox2" checked="checked" data-toggle="checkbox"&gt; Checkbox &lt;/label&gt;
+&lt;label class="checkbox" for="checkbox3"&gt;&lt;input type="checkbox" value="" id="checkbox3" data-toggle="checkbox"&gt; Checkbox &lt;/label&gt;
+&lt;label class="checkbox" for="checkbox4"&gt;&lt;input type="checkbox" value="" id="checkbox4" checked="checked" data-toggle="checkbox"&gt; Checkbox &lt;/label&gt;
+</pre>
+			<p>Para el control de eventos y revisar los estados:</p>
+			<pre class="prettyprint">
+$(':checkbox').radiocheck();
+</pre>
+
+          <div class="pvm">
+            <h6>Metodos:</h6>
+          </div>
+          <p class="mbl">
+            <strong>.radiocheck('toggle')</strong>
+            <br/>
+            cambia de <span class="text-info">checked</span> a <span class="text-info">unchecked</span> y viceversa <span class="text-info">checked</span>
+            to <span class="text-info">unchecked</span> and back
+          </p>
+          <p class="mbl">
+            <strong>.radiocheck('check')</strong>
+            <br/>
+            cambia el estado a <span class="text-info">checked</span>
+          </p>
+          <p class="mbl">
+            <strong>.radiocheck('uncheck')</strong>
+            <br/>
+            cambia el estado a <span class="text-info">unchecked</span>
+          </p>
+          <p class="mbl">
+            <strong>.radiocheck('disable')</strong>
+            <br/>
+            deshabilita el campo y pone estado de <span class="text-info">disabled</span>
+          </p>
+          <p class="mbl">
+            <strong>.radiocheck('enable')</strong>
+            <br/>
+            quita el <span class="text-info">disabled</span> del campo
+          </p>
+          <p class="mbl">
+            <strong>.radiocheck('destroy')</strong>
+            <br/>
+            destruye el cover del check
+          </p>
+          <p>El codigo para revisar el estado:</p>
+<pre class="prettyprint">
+$(':checkbox').radiocheck('check');
+</pre>
+
+          <div class="pbm ptl">
+            <h6>Eventos:</h6>
+          </div>
+          <p class="mbl">
+            <strong>.on('change.radiocheck')</strong>
+            <br/>
+            Se dispara cuando se cambia el estado del checkbox
+            <span class="text-info">checked</span> y
+            <span class="text-info">unchecked</span>.
+          </p>
+          <p class="mbl">
+            <strong>.on('destroyed.radiocheck')</strong>
+            <br/>
+            cuando el checkbox se destruye
+          </p>
+          <p>El codigo para revisar el evento:</p>
+<pre class="prettyprint">
+$(':checkbox').on('change.radiocheck', function() {
+  // Inserta codigo
+});
+</pre>
+			</div>
+		</div><!-- /demo-row -->
+
+		<div class="demo-row">
+			<a id="radio"></a> 
+			<div class="demo-title">
+				<h3>Radio</h3>
+			</div>
+		<div class="demo-content">
+          <p>
+            lo mismo pasa con los de radio:
+          </p>
+          <form action="#">
+            <div class="row">
+              <div class="col-md-6">
+                <label class="radio" for="radio1">
+                  <input type="radio" name="optionsRadios1" value="" id="radio1" data-toggle="radio">
+                  Ejemplo
+                </label>
+                <label class="radio" for="radio2">
+                  <input type="radio" name="optionsRadios1" value="" id="radio2" data-toggle="radio" checked="checked" >
+                  Ejemplo
+                </label>
+                <label class="radio" for="radio3">
+                  <input type="radio" name="optionsRadios1" value="" id="radio3" data-toggle="radio" disabled="">
+                  asd
+                </label>
+                <label class="radio" for="radio4">
+                  <input type="radio" name="optionsRadios1" value="" id="radio4" data-toggle="radio" disabled="" >
+                  asdfd
+                </label>
+              </div>
+            </div>
+          </form>
+	          	 <pre class="prettyprint">
+&lt;label class="radio" for="radio1"&gt;&lt;input type="radio" name="optionsRadios1" value="" id="radio1" data-toggle="radio"&gt; Ejemplo &lt;/label&gt;
+&lt;label class="radio" for="radio2"&gt;&lt;input type="radio" name="optionsRadios2" value="" id="radio2" data-toggle="radio" checked="checked"&gt; Ejemplo &lt;/label&gt;
+&lt;label class="radio" for="radio3"&gt;&lt;input type="radio" name="optionsRadios3" value="" id="radio3" data-toggle="radio"&gt; asd &lt;/label&gt;
+&lt;label class="radio" for="radio4"&gt;&lt;input type="radio" name="optionsRadios4" value="" id="radio4" data-toggle="radio"&gt; asdfd &lt;/label&gt;
+</pre>
+          <h6 class="ptl">El JS:</h6>
+<pre class="prettyprint">
+$(':radio').radiocheck();
+</pre>
+
+          <div class="pvm">
+            <h6>Metodos:</h6>
+          </div>
+          <p class="mbl">
+            <strong>.radiocheck('toggle')</strong>
+            <br/>
+            cambia el estado de <span class="text-info">checked</span>
+            a <span class="text-info">unchecked</span> y viceversa
+          </p>
+          <p class="mbl">
+            <strong>.radiocheck('check')</strong>
+            <br/>
+            cambia el estado del boton a <span class="text-info">checked</span>
+          </p>
+          <p class="mbl">
+            <strong>.radiocheck('uncheck')</strong>
+            <br/>
+            cambia el estado del boton a <span class="text-info">unchecked</span>
+          </p>
+          <p class="mbl">
+            <strong>.radiocheck('disable')</strong>
+            <br/>
+            pone el boton en <span class="text-info">disabled</span>
+          </p>
+          <p class="mbl">
+            <strong>.radiocheck('enable')</strong>
+            <br/>
+            quita el <span class="text-info">disabled</span>
+          </p>
+          <p class="mbl">
+            <strong>.radiocheck('destroy')</strong>
+            <br/>
+            destruye el boton
+          </p>
+<pre class="prettyprint">
+$(':radio').radiocheck('check');
+</pre>
+
+          <div class="pbm ptl">
+            <h6>Eventos:</h6>
+          </div>
+          <p class="mbl">
+            <strong>.on('change.radiocheck')</strong>
+            <br/>
+            Se dispara cuando cambia el estado
+          </p>
+          <p class="mbl">
+            <strong>.on('destroyed.radiocheck')</strong>
+            <br/>
+            Se dispara cuando el boton se destruye
+          </p>
+<pre class="prettyprint">
+$(':radio').on('change.radiocheck', function() {
+// Hace algo
+});
+</pre>
+		</div><!--/demo-content-->
+		</div><!--/demo-row-->
+
+		<div class="demo-row">
+			<a id="dropdown"></a>
+			<div class="demo-title">
+          <h3>Dropdown</h3>
+        </div>
+
+        <div class="demo-content">
+          <p class="mbl">
+            El mismo <a href="http://getbootstrap.com/components/#dropdowns">dropdown de Bootstrap</a> es usado para esto
+          </p>
+
+          <div class="btn-group">
+            <button class="btn btn-inverse dropdown-toggle" type="button" data-toggle="dropdown">
+              Dropdown <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-inverse" role="menu">
+              <li><a href="#">Accion</a></li>
+              <li><a href="#">Otra accion</a></li>
+              <li><a href="#">Lo que sea</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Algo separado</a></li>
+            </ul>
+          </div>
+
+          <div class="pvl">
+<pre class="prettyprint">
+&lt;div class="btn-group"&gt;
+  &lt;button class="btn btn-inverse dropdown-toggle" type="button" data-toggle="dropdown"&gt;
+    Dropdown &lt;span class="caret"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;ul class="dropdown-menu dropdown-menu-inverse" role="menu"&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Accion&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Otra accion&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Lo que sea&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="divider"&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Algo separado&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+          </div>
+          <p> Tambien se puede poner titulos a los separadores as&iacute; como deshabilitar opciones</p>
+          <div class="btn-group">
+            <button class="btn btn-inverse dropdown-toggle" type="button" data-toggle="dropdown">
+              Dropdown <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-inverse" role="menu">
+            	<li class="dropdown-header" role="presentation">Titulo</li>
+              <li class="disabled"><a href="#">Deshabilitado</a></li>
+              <li><a href="#">Otra accion</a></li>
+              <li><a href="#">Lo que sea</a></li>
+              <li class="divider" role="presentation"></li>
+              <li class="dropdown-header" role="presentation">Titulo</li>
+              <li><a href="#">Algo separado</a></li>
+            </ul>
+          </div>
+          <br>
+          <p> El codigo: </p>
+<pre class="prettyprint">
+&lt;div class="btn-group"&gt;
+  &lt;button class="btn btn-inverse dropdown-toggle" type="button" data-toggle="dropdown"&gt;
+    Dropdown &lt;span class="caret"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;ul class="dropdown-menu dropdown-menu-inverse" role="menu"&gt;
+  &lt;li class="dropdown-header" role="presentation"&gt;Titulo&lt;/li&gt;
+    &lt;li class="disabled"&gt;&lt;a href="#"&gt;Deshabilitado&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Otra accion&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Lo que sea&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="divider" role="presentacion"&gt;&lt;/li&gt;
+    &lt;li class="dropdown-header" role="presentation"&gt;Titulo&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Algo separado&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+
+        </div> <!-- /.demo-content -->
+		</div><!-- /demo-row-->
+		<div class="demo-row">
+			<a id="input"></a>
+        <div class="demo-title">
+          <h3>Input</h3>
+        </div>
+
+        <div class="demo-content">
+          <p class="mbl">
+            Redise&ntilde; del <a href="http://getbootstrap.com/css/#forms">input de Bootstrap</a>.
+          </p>
+
+          <div class="row">
+            <div class="col-lg-5">
+              <input type="text" value="" placeholder="Ingrese algo" class="form-control" />
+            </div>
+          </div>
+
+<pre class="prettyprint mtl">
+&lt;input type="text" placeholder="Ingrese algo" class="form-control" /&gt;
+</pre>
+
+          <p class="mbl">Agregar <code>.flat</code> para quitar los bordes del input:</p>
+
+          <div class="row">
+            <div class="col-lg-5">
+              <input type="text" value="" placeholder="Enter something" class="form-control flat" />
+            </div>
+          </div>
+
+<pre class="prettyprint mtl">
+&lt;input type="text" placeholder="..." class="form-control flat" /&gt;
+</pre>
+
+          <p class="ptl">Se pueden poner de diferentes tama&ntilde;o, no deberian usar otro que no sea el default</p>
+          <div class="row">
+            <div class="col-lg-5">
+              <input type="text" value="" placeholder="Gigante" class="form-control input-hg" />
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-lg-5">
+              <input type="text" value="" placeholder="Grande" class="form-control input-lg" />
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-lg-5">
+              <input type="text" value="" placeholder="Default" class="form-control" />
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-lg-5">
+              <input type="text" value="" placeholder="Pequeña" class="form-control input-sm" />
+            </div>
+          </div>
+<pre class="prettyprint mtl">
+&lt;input type="text" class="form-control input-hg" placeholder="Gigante" /&gt;
+&lt;input type="text" class="form-control input-lg" placeholder="Grande" /&gt;
+&lt;input type="text" class="form-control" placeholder="Default" /&gt;
+&lt;input type="text" class="form-control input-sm" placeholder="Pequeño" /&gt;
+</pre>
+
+          <p class="ptl">Se le puede colocar un icono (guia de como usarlos y cuales hay <a href="#iconos">aqu&iacute;</a>):</p>
+          <div class="row">
+            <div class="col-lg-5">
+              <div class="form-group has-feedback">
+                <input type="text" value="" placeholder="Con icono" class="form-control" />
+                <span class="form-control-feedback totem-check"></span>
+              </div>
+            </div>
+          </div>
+<pre class="prettyprint mtm">
+&lt;div class="form-group has-feedback"&gt;
+  &lt;input type="text" value="" placeholder="Con icono" class="form-control" /&gt;
+  &lt;span class="form-control-feedback totem-check"&gt;&lt;/span&gt;
+&lt;/div&gt;
+</pre>
+
+          <p class="ptl">Input con opcion de append o prepend</p>
+          <div class="row mbl">
+            <div class="col-lg-6">
+              <div class="input-group">
+                <span class="input-group-addon">@</span>
+                <input class="form-control" type="text" placeholder="Prepend" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row mbl">
+            <div class="col-lg-6">
+              <div class="input-group">
+                <input class="form-control" type="text" placeholder="Append" />
+                <span class="input-group-addon">@</span>
+              </div>
+            </div>
+          </div>
+<pre class="prettyprint mtm">
+&lt;!-- Prepend --&gt;
+&lt;div class="input-group"&gt;
+  &lt;span class="input-group-addon"&gt;@&lt;/span&gt;
+  &lt;input type="text" class="form-control" placeholder="Prepend" /&gt;
+&lt;/div&gt;
+
+&lt;!-- Append --&gt;
+&lt;div class="input-group"&gt;
+  &lt;input type="text" class="form-control" placeholder="Append" /&gt;
+  &lt;span class="input-group-addon"&gt;@&lt;/span&gt;
+&lt;/div&gt;
+</pre>
+
+          <div class="ptl">
+            <p>
+              Los diferentes campos posibles:
+            </p>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group has-error">
+                  <input class="form-control" type="text" placeholder="Error" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group has-warning">
+                  <input class="form-control" type="text" placeholder="Advertencia" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group has-success">
+                  <input class="form-control" type="text" placeholder="Exito" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <input class="form-control" type="text" placeholder="Deshabilitado" disabled />
+                </div>
+              </div>
+            </div>
+          </div>
+
+<pre class="prettyprint">
+&lt;!-- Error --&gt;
+&lt;div class="form-group has-error"&gt;
+  &lt;input class="form-control" type="text" placeholder="Error" /&gt;
+&lt;/div&gt;
+
+&lt;!-- Advertencia --&gt;
+&lt;div class="form-group has-warning"&gt;
+  &lt;input class="form-control" type="text" placeholder="Advertencia" /&gt;
+&lt;/div&gt;
+
+&lt;!-- Exito --&gt;
+&lt;div class="form-group has-success"&gt;
+  &lt;input class="form-control" type="text" placeholder="Exito" /&gt;
+&lt;/div&gt;
+
+&lt;!-- Deshabilitado --&gt;
+&lt;div class="form-group"&gt;
+  &lt;input class="form-control" type="text" placeholder="Deshabilitado" disabled /&gt;
+&lt;/div&gt;
+</pre>
+
+        </div> <!-- /.demo-content -->
+      </div> <!-- /.demo-row -->
+      <div class="demo-row">
+      	<a id="navbar"></a>
+        <div class="demo-title">
+          <h3>Barra de Navegacion</h3>
+        </div>
+        <div class="demo-content">
+          <p class="mbl">
+            Rediseño de la <a href="http://getbootstrap.com/components/#navbar">Barra de navegacion de Bootstrap</a>.
+          </p>
+
+        <p class="ptl">La barra a utilizar, en la <a href="#">plantilla</a> esta la version completa:</p>
+        <nav class="navbar navbar-inverse" role="navigation">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">TOTEM</a>
+          </div>
+          <div class="collapse navbar-collapse" id="navbar-collapse-02">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#fakelink">Ejemplo</a></li>
+              <li><a href="#fakelink">Ejemplo</a></li>
+             </ul>
+            <form class="navbar-form navbar-right" action="#" role="search">
+              <div class="form-group">
+                <div class="input-group">
+                  <input class="form-control" id="navbarInput-02" type="search" placeholder="Search">
+                  <span class="input-group-btn">
+                    <button type="submit" class="btn"><span class="fui-search"></span></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+          </div><!-- /.navbar-collapse -->
+        </nav><!-- /navbar -->
+
+<pre class="prettyprint mvl">
+&lt;nav class="navbar navbar-inverse" role="navigation"&gt;
+	&lt;div class="navbar-header"&gt;
+		&lt;a class="navbar-brand" href="#"&gt;TOTEM&lt;/a&gt;
+	&lt;/div&gt;
+	&lt;class="collapse navbar-collapse" id="navbar-collapse-02"&gt;
+		&lt;ul class="nav navbar-nav"&gt;
+			&lt;li class="active"&gt;&lt;a href="#fakelink"&gt;Ejemplo&lt;/a&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+	    &lt;form class="navbar-form navbar-right" action="#" role="search"&gt;
+	      &lt;div class="form-group"&gt;
+	        &lt;div class="input-group"&gt;
+	          &lt;input class="form-control" id="navbarInput-02" type="search" placeholder="Search"&gt;
+	          &lt;span class="input-group-btn"&gt;
+	            &lt;button type="submit" class="btn"&gt;&lt;span class="fui-search"&gt;&lt;/span&gt;&lt;/button&gt;
+	          &lt;/span&gt;
+	        &lt;/div&gt;
+	      &lt;/div&gt;
+	    &lt;/form&gt;
+	  &lt;/div>&lt;!-- /.navbar-collapse --&gt;
+&lt;/nav&gt;
+</pre>
+
+
+        <p class="ptl">Formularios en la barra:</p>
+        <nav role="navigation" class="navbar navbar-inverse navbar-embossed">
+          <div class="navbar-header">
+            <button data-target="#navbar-collapse-05" data-toggle="collapse" class="navbar-toggle" type="button">
+              <span class="sr-only">Toggle navigation</span>
+            </button>
+            <a href="#" class="navbar-brand">TOTEM</a>
+          </div>
+          <div id="navbar-collapse-05" class="collapse navbar-collapse">
+            <form role="search" class="navbar-form navbar-left">
+              <div class="form-group">
+                <input type="text" placeholder="Search" class="form-control">
+              </div>
+              <button class="btn btn-default" type="submit">Submit</button>
+            </form>
+          </div>
+        </nav>
+
+<pre class="prettyprint mvl">
+&lt;form role="search" class="navbar-form navbar-left"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;input type="text" placeholder="Search" class="form-control"&gt;
+  &lt;/div&gt;
+  &lt;button class="btn btn-default" type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+
+        <p class="ptl">Botones:</p>
+        <nav role="navigation" class="navbar navbar-inverse navbar-embossed">
+          <div class="navbar-header">
+            <button data-target="#navbar-collapse-06" data-toggle="collapse" class="navbar-toggle" type="button">
+            </button>
+            <a href="#" class="navbar-brand">TOTEM</a>
+          </div>
+          <div id="navbar-collapse-06" class="collapse navbar-collapse">
+            <button class="btn btn-default navbar-btn" type="button">Boton</button>
+            <button class="btn btn-default navbar-btn btn-sm" type="button">Boton</button>
+            <button class="btn btn-default navbar-btn btn-xs" type="button">Boton</button>
+          </div>
+        </nav>
+
+<pre class="prettyprint mvl">
+&lt;!-- Default Navbar Button --&gt;
+&lt;button class="btn btn-default navbar-btn" type="button"&gt;Boton&lt;/button&gt;
+&lt;!-- Small Navbar Button --&gt;
+&lt;button class="btn btn-default navbar-btn btn-sm" type="button"&gt;Boton&lt;/button&gt;
+&lt;!-- Extra Small Navbar Button --&gt;
+&lt;button class="btn btn-default navbar-btn btn-xs" type="button"&gt;Boton&lt;/button&gt;
+</pre>
+
+        <p class="ptl">Texto:</p>
+        <nav role="navigation" class="navbar navbar-inverse navbar-embossed">
+          <div class="navbar-header">
+            <button data-target="#navbar-collapse-07" data-toggle="collapse" class="navbar-toggle" type="button">
+            </button>
+            <a href="#" class="navbar-brand">TOTEM</a>
+          </div>
+          <div id="navbar-collapse-07" class="collapse navbar-collapse">
+            <p class="navbar-text">Ejemplo de un texto</p>
+          </div>
+        </nav>
+
+<pre class="prettyprint mvl">
+&lt;p class="navbar-text"&gt;Ejemplo de un texto&lt;/p&gt;
+</pre>
+
+        <p class="ptl">Links:</p>
+        <nav role="navigation" class="navbar navbar-inverse navbar-embossed">
+          <div class="navbar-header">
+            <button data-target="#navbar-collapse-08" data-toggle="collapse" class="navbar-toggle" type="button">
+            </button>
+            <a href="#" class="navbar-brand">TOTEM</a>
+          </div>
+          <div id="navbar-collapse-08" class="collapse navbar-collapse">
+            <p class="navbar-text navbar-right">Conectado como: <a class="navbar-link" href="#">Pedro Perez</a></p>
+          </div>
+        </nav>
+
+<pre class="prettyprint mvl">
+&lt;p class="navbar-text navbar-right"&gt;Conectado como: &lt;a class="navbar-link" href="#"&gt;Pedro Perez&lt;/a&gt;&lt;/p&gt;
+</pre>
+
+          <p class="ptl">Indicadores de notificacion:</p>
+          <nav class="navbar navbar-inverse navbar-embossed" role="navigation">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-09">
+                <span class="sr-only">Toggle navigation</span>
+              </button>
+              <a class="navbar-brand" href="#">TOTEM</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="#navbar-collapse-09">
+              <ul class="nav navbar-nav">
+                <li><a href="#">Mensajes<span class="navbar-unread">1</span></a></li>
+                <li><a href="#">Sobre Nosotros<span class="navbar-new">1</span></a></li>
+               </ul>
+            </div><!-- /.navbar-collapse -->
+          </nav><!-- /navbar -->
+
+<pre class="prettyprint mvl">
+&lt;!-- ... --&gt;
+  &lt;ul class="nav navbar-nav"&gt;
+    &lt;li&gt;
+      &lt;a href="#"&gt;
+        Sobre nosotros
+        &lt;!-- Indicador con un numero --&gt;
+        &lt;span class="navbar-new"&gt;2&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;!-- ... --&gt;
+</pre>
+	
+<pre class="prettyprint mvl">
+&lt;!-- ... --&gt;
+  &lt;ul class="nav navbar-nav"&gt;
+    &lt;li&gt;
+      &lt;a href="#"&gt;
+        Mensajes
+        &lt;!-- Indicator sin un numero --&gt;
+        &lt;span class="navbar-unread"&gt;&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;!-- ... --&gt;
+</pre>
+
+        </div> <!-- /.demo-content -->
+      </div> <!-- /.demo-row -->
+      <div class="demo-row">
+      	<a id="select"></a>
+        <div class="demo-title">
+          <h3>Select</h3>
+        </div>
+        <div class="demo-content">
+          <p class="mbl">
+            Un custom select basado en: <a href="http://ivaynberg.github.io/select2/">Select2</a> plug-in.
+          </p>
+          <p class="mbl">
+            El componente hereda todos su estilo de los botone por lo cual se pueden usar con los mismos colores, tama&ntilde;o, etc. Tambien hay soporte para selecciones <span class="text-info">multiple</span> y de manera de  <span class="text-info">bloque</span> donde ocupa todo el espacio
+          </p>
+          <p class="mbl pbl">
+            Grids tambi&eacute;n est&aacute;n soportadas, de igual forma <a href="http://ivaynberg.github.io/select2/#documentation">aqu&iacute;</a> les dejo la documentaci&oacute;.
+          </p>
+
+          <select class="form-control select select-primary mbl" data-toggle="select">
+            <optgroup label="Perfil">
+              <option value="0">Mi Perfil</option>
+              <option value="1">Mis Documentos</option>
+            </optgroup>
+            <optgroup label="Sistema">
+              <option value="2">Mensajes</option>
+              <option value="3">Configuracion</option>
+              <option value="4">Logout</option>
+            </optgroup>
+          </select>
+
+          <br>
+
+          <select multiple="multiple" class="form-control multiselect multiselect-info mbl" data-toggle="select">
+            <option value="0">1</option>
+            <option value="1" selected>2</option>
+            <option value="2" selected>3</option>
+            <option value="3" selected>4</option>
+            <option value="4">5</option>
+          </select>
+
+          <p class="mvl">
+            En el codigo, note que se usa <span class="text-info">optgroup</span> para los separadores:
+          </p>
+
+<pre class="prettyprint mvl">
+&lt;select class="form-control select select-primary select-block mbl"&gt;
+  &lt;optgroup label="Perfil"&gt;
+    &lt;option value="0"&gt;Mi Perfil&lt;/option&gt;
+    &lt;option value="1"&gt;Mis Documentos&lt;/option&gt;
+  &lt;/optgroup&gt;
+  &lt;optgroup label="Sistema"&gt;
+    &lt;option value="2"&gt;Mensajes&lt;/option&gt;
+    &lt;option value="3"&gt;Configuracion&lt;/option&gt;
+    &lt;option value="4"&gt;Logout&lt;/option&gt;
+  &lt;/optgroup&gt;
+&lt;/select&gt;
+
+&lt;select multiple="multiple" class="form-control multiselect multiselect-info"&gt;
+  &lt;option value="0"&gt;1&lt;/option&gt;
+  &lt;option value="1" selected&gt;2&lt;/option&gt;
+  &lt;option value="2" selected&gt;3&lt;/option&gt;
+  &lt;option value="3" selected&gt;4&lt;/option&gt;
+  &lt;option value="4"&gt;5&lt;/option&gt;
+&lt;/select&gt;
+</pre>
+         
+        </div> <!-- /.demo-content -->
+      </div> <!-- /.demo-row -->
+
+      <div class="demo-row">
+      	<a id="switch"></a>
+        <div class="demo-title">
+          <h3>Switch</h3>
+        </div>
+        <div class="demo-content">
+          <p class="mbl">
+            Se pueden usar switches en vez de checkbox, para este trabajo solo usaremos el circular:
+          </p>
+          <span class="mrl">
+            <input type="checkbox" checked data-toggle="switch" id="custom-switch-01" />
+          </span>
+          <input type="checkbox" data-toggle="switch" name="switch-02"  id="custom-switch-02" />
+
+          <hr/>
+
+<pre class="prettyprint mvl">
+&lt;input type="checkbox" checked data-toggle="switch" name="default-switch" id="switch-01" /&gt;
+&lt;input type="checkbox" data-toggle="switch" name="default-switch" id="switch-02" /&gt;
+</pre>
+
+          <p class="mbl">Al igual que los botones, pueden tener diferentes colores:</p>
+
+          <span class="mrl">
+            <input type="checkbox" checked data-toggle="switch" name="switch-05" data-on-color="primary" id="custom-switch-05" />
+          </span>
+
+          <span class="mrl">
+            <input type="checkbox" checked data-toggle="switch" name="switch-06" data-on-color="info" id="custom-switch-06" />
+          </span>
+
+          <span class="mrl">
+            <input type="checkbox" checked data-toggle="switch" name="switch-07" data-on-color="success" id="custom-switch-07" />
+          </span>
+
+          <span class="mrl">
+            <input type="checkbox" checked data-toggle="switch" name="switch-08" data-on-color="warning" id="custom-switch-08" />
+          </span>
+
+          <input type="checkbox" checked data-toggle="switch" name="switch-09" data-on-color="danger" id="custom-switch-09" />
+
+<pre class="prettyprint mvl">
+&lt;!-- Primario / Default --&gt;
+&lt;input type="checkbox" checked data-toggle="switch" name="default-switch-colors" data-on-color="primary" data-off-color="default" id="switch-03" /&gt;
+
+&lt;!-- Info / Default --&gt;
+&lt;input type="checkbox" checked data-toggle="switch" name="info-square-switch" data-on-color="info" id="switch-04" /&gt;
+
+&lt;!-- Exito / Default --&gt;
+&lt;input type="checkbox" checked data-toggle="switch" name="info-square-switch" data-on-color="success" id="switch-05" /&gt;
+
+&lt;!-- Advertencia / Default --&gt;
+&lt;input type="checkbox" checked data-toggle="switch" name="info-square-switch" data-on-color="warning" id="switch-06" /&gt;
+
+&lt;!-- Error / Default --&gt;
+&lt;input type="checkbox" checked data-toggle="switch" name="info-square-switch" data-on-color="danger" id="switch-07" /&gt;
+</pre>
+
+          <p class="mbl">Igual se pueden cambiar programando:</p>
+
+<pre class="prettyprint mvl">
+$('#change-color-switch').bootstrapSwitch('onColor', 'success');
+$('#change-color-switch').bootstrapSwitch('offColor', 'danger');
+</pre>
+
+          <p class="mbl">Deshabilitado:</p>
+
+          <span class="mrl">
+            <input type="checkbox" checked data-toggle="switch" name="switch-10" disabled id="custom-switch-10" />
+            <input type="checkbox" data-toggle="switch" name="switch-11" readonly id="custom-switch-11" />
+          </span>
+
+<pre class="prettyprint mvl">
+&lt;input type="checkbox" checked disabled data-toggle="switch" name="custom-switch-disabled" id="switch-10" /&gt;
+&lt;input type="checkbox" checked readonly data-toggle="switch" name="custom-switch-readonly" id="switch-11" /&gt;
+</pre>
+
+          <p class="mbl">API para manejar el estado:</p>
+
+<pre class="prettyprint mvl">
+$('#disable-switch').bootstrapSwitch('disabled'); // getter
+$('#disable-switch').bootstrapSwitch('toggleDisabled'); // toggle deshabilitado
+$('#disable-switch').bootstrapSwitch('disabled', true);  // setter, true || false
+
+$('#readonly-switch').bootstrapSwitch('readonly'); // getter
+$('#readonly-switch').bootstrapSwitch('toggleReadonly'); // toggle readonly
+$('#readonly-switch').bootstrapSwitch('readonly', true);  // setter, true || false
+</pre>
+
+          <p class="mbl">Se le puede cambiar el texto (debe ser corto el texto, sino queda cortado):</p>
+
+          <input type="checkbox" checked data-toggle="switch" name="switch-12" data-on-text="Hola" data-off-text="Chao" id="custom-switch-12" />
+
+<pre class="prettyprint mvl">
+&lt;input type="checkbox" checked data-toggle="switch" name="custom-switch-text" data-on-text="Hola" data-off-text="Chao" id="switch-10" /&gt;
+</pre>
+
+          <p class="mbl">Programandolo:</p>
+
+<pre class="prettyprint mvl">
+$('#label-switch').bootstrapSwitch('onText', 'Hola');
+$('#label-switch').bootstrapSwitch('offText', 'Chao');
+</pre>
+
+          <p class="mbl">Tambien se puede hacer con iconos:</p>
+
+          <div class="bootstrap-switch-square">
+            <input type="checkbox" checked data-toggle="switch" name="switch-13" data-on-text="<i class='totem-check'></i>" data-off-text="<i class='totem-cross'></i>" id="custom-switch-13" />
+          </div>
+
+<pre class="prettyprint mvl">
+&lt;!-- Switch cuadrado con iconos --&gt;
+&lt;div class="bootstrap-switch-square"&gt;
+  &lt;input type="checkbox" data-on-text="&lt;i class=&#039;fui-check&#039;&gt;&lt;/i&gt;" data-off-text="&lt;i class=&#039;fui-cross&#039;&gt;&lt;/i&gt;" name="custom-square-switch-icons" id="switch-11" /&gt;
+&lt;/div&gt;
+</pre>
+
+        </div> <!-- /.demo-content -->
+      </div> <!-- /.demo-row -->
+      	<div class="demo-row">
+      		<a id="tagsinput"></a>
+        <div class="demo-title">
+          <h3>Etiquetas</h3>
+        </div>
+        <div class="demo-content">
+          <p class="mbl">
+            Para manejar varias etiquetas que se necesiten. Se pueden usar en dos colores: el default y el primario.
+          </p>
+          <p class="mbl pbl">
+            Este componente est&aacute; basado en <a href="http://timschlechter.github.io/bootstrap-tagsinput/examples/bootstrap3/">etiquetas Bootstrap</a>.
+          </p>
+
+          <input name="tagsinput-01" class="tagsinput" data-role="tagsinput" value="Elemento, Etiqueta, Otro, Ejemplo" />
+          <div class="tagsinput-primary">
+            <input name="tagsinput-02" class="tagsinput" data-role="tagsinput" value="Ejemplo, Otro, Tercero" />
+          </div>
+
+          <p class="ptl">El codigo:</p>
+
+<pre class="prettyprint mvl">
+&lt;!-- Default --&gt;
+&lt;input name="tagsinput" class="tagsinput" data-role="tagsinput" value="Elemento, Etiqueta, Otro, Ejemplo" /&gt;
+
+&lt;!-- Primario--&gt;
+&lt;div class="tagsinput-primary"&gt;
+&lt;input name="tagsinput" class="tagsinput" data-role="tagsinput" value="Ejemplo, Otro, Tercero" /&gt;
+&lt;/div&gt;
+</pre>
+
+          <p class="mbl">
+            Se usa el atributo <code>data-role="tagsinput"</code> para inicializar el plugin
+          </p>
+
+<pre class="prettyprint mvl">
+&lt;input name="tagsinput" class="tagsinput" data-role="tagsinput" value="Ejemplo, Otro, Tercero" /&gt;
+</pre>
+
+          <p class="mbl">Tambien se puede inicializar usando JS:</p>
+
+<pre class="prettyprint mvl">
+$(".tagsinput").tagsinput();
+</pre>
+
+          <p class="mbl pbl">Cualquier cosa  <a href="http://timschlechter.github.io/bootstrap-tagsinput/examples/bootstrap3/">aqu&iacute;</a> se encuentra la documentacion oficial del plugin.</p>
+
+        </div> <!-- /.demo-content -->
+      </div> <!-- /.demo-row -->
+      <div class="demo-row">
+      	<a id="tooltip"></a>
+        <div class="demo-title">
+          <h3>Tooltip</h3>
+        </div>
+        <div class="demo-content">
+          <p class="mbl">
+            Redise&ntilde;o del <a href="http://getbootstrap.com/javascript/#tooltips">tooltip de Bootstrap</a>.
+          </p>
+
+          <div style="width: 40%; padding-left: 10px; height: 60px;">
+            <div class="demo-tooltips">
+              <p data-toggle="tooltip" title="Ejemplo"></p>
+            </div>
+          </div> <!-- /tooltips -->
+
+<pre class="prettyprint mvl">
+&lt;p data-toggle="tooltip" title="Ejemplo"&gt;&lt;/p&gt;
+</pre>
+
+        </div> <!-- /.demo-content -->
+      </div> <!-- /.demo-row -->
+
+      <div class="demo-row">
+      	<a id="typeahead"></a>
+        <div class="demo-title">
+          <h3>Typeahead</h3>
+        </div>
+        <div class="demo-content">
+          <p class="mbl">
+            Redise&ntilde;o del <a href="http://twitter.github.io/typeahead.js">Twitter Typeahead</a>.
+          </p>
+
+          <p class="ptl">Ejemplo con estados de EEUU (firma contra Obama), si escribes A te saldr&aacute;n sugerencias:</p>
+
+          <div class="form-group">
+            <input class="form-control" type="text" id="typeahead-demo-01" />
+          </div>
+
+          <p class="ptl">Para disparar el typeahead necesitas los siguientes JS incluidos:</p><br>
+          <ul>
+            <li><code>typeahead.jquery.js</code> &mdash; vista</li>
+            <li><code>bloodhound.js</code> &mdash; motor de sugerencias</li>
+          </ul>
+          <p>Se puede usar <code>typeahead.bundle.js</code>(que contiene tanto <code>bloodhound.js</code> como <code>typeahead.jquery.js</code>)</p>
+
+          <p class="ptl">En codigo:</p>
+
+<pre class="prettyprint mvl">
+&lt;div class="form-group"&gt;
+  &lt;input class="form-control" type="text" id="typeahead-demo-01" /&gt;
+&lt;/div&gt;
+</pre>
+
+          <p class="ptl">El JS para el caso anterior:</p>
+<pre class="prettyprint mvl">
+var states = new Bloodhound({
+  datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.word); },
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  limit: 4,
+  local: [
+    { word: "Alabama" },
+    { word: "Alaska" },
+    { word: "Arizona" },
+    { word: "Arkansas" },
+    { word: "California" },
+    { word: "Colorado" }
+  ]
+});
+
+states.initialize();
+
+$('#typeahead-demo-01').typeahead(null, {
+  name: 'states',
+  displayKey: 'word',
+  source: states.ttAdapter()
+});
+</pre>
+
+          <p class="ptl">Recursos que le pueden servir: <a href="http://twitter.github.io/typeahead.js/examples/">Ejemplos</a>, <a href="https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md">documentacion de Typeahead</a>, <a href="https://github.com/twitter/typeahead.js/blob/master/doc/bloodhound.md">Documentacion de Bloodhound</a>.</p>
+
+        </div> <!-- /.demo-content -->
+      </div> <!-- /.demo-row -->
+       <div class="demo-row">
+      	<a id="iconos"></a>
+        <div class="demo-title">
+          <h3>Iconos</h3>
+        </div>
+        <div class="demo-content">
+        	      		<p>Los iconos se usan bastante sencillo solo se inserta <span class="text-info">totem-[nombre del icono]</span> como se muestra a continuacion:</p>
+        		 <p class="totem-star">
+      			</p>
+      			<p>En codigo:</p>
+<pre class="prettyprint mvl">
+&lt;p class="totem-star"&gt;&lt;/p&gt;
+</pre>
+		<p>Los iconos disponibles son: triangle-up,
+triangle-down,
+triangle-up-small,
+triangle-down-small,
+triangle-left-large,
+triangle-right-large,
+arrow-left,
+arrow-right,
+plus,
+cross,
+check,
+radio-unchecked,
+radio-checked,
+checkbox-unchecked,
+checkbox-checked,
+info-circle,
+alert-circle,
+question-circle,
+check-circle,
+cross-circle,
+plus-circle,
+pause,
+play,
+volume,
+mute,
+resize,
+list,
+list-thumbnailed,
+list-small-thumbnails,
+list-large-thumbnails,
+list-numbered,
+list-columned,
+list-bulleted,
+window,
+windows,
+loop,
+cmd,
+mic,
+heart,
+location,
+new,
+video,
+photo,
+time,
+eye,
+chat,
+home,
+upload,
+search,
+user,
+mail,
+lock,
+power,
+calendar,
+gear,
+bookmark,
+exit,
+trash,
+folder,
+bubble,
+export,
+calendar-solid,
+star,
+star-2,
+credit-card,
+clip,
+link,
+tag,
+document,
+image,
+facebook,
+youtube,
+vimeo,
+twitter,
+spotify,
+skype,
+pinterest,
+path,
+linkedin,
+google-plus,
+dribbble,
+behance,
+stumbleupon,
+yelp,
+wordpress,
+windows-8,
+vine,
+tumblr,
+paypal,
+lastfm,
+instagram,
+html5,
+github,
+foursquare,
+dropbox,
+android,
+apple
+</p>
+<p>Ejemplo:</p>
+<p class="totem-heart"></p>
+
+        </div> <!-- /.demo-content -->
+      </div> <!-- /.demo-row -->
+      <div class="demo-row">
+      	<a id="tip"></a>
+        <div class="demo-title">
+          <h3>Ejemplos Tipograf&iacute;a</h3>
+        </div>
+        <div class="demo-content">
+        	<p>A continuaci&oacute;n los diferentes textos, si quieres ver como es uno vea el codigo de la p&aacute;gina
+          <h1>h1. Bootstrap heading</h1>
+      <h2>h2. Bootstrap heading</h2>
+      <h3>h3. Bootstrap heading</h3>
+      <h4>h4. Bootstrap heading</h4>
+      <h5>h5. Bootstrap heading</h5>
+      <h6>h6. Bootstrap heading</h6>
+
+      <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+
+      <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p>
+
+      <p>
+        <small>Texto peque&ntilde;o.</small>
+      </p>
+
+      <p>
+        <strong>En negrita</strong>
+      </p>
+
+      <p>
+        <em>En cursiva</em>
+      </p>
+
+      <p class="text-left">Alineado a la izquierda.</p>
+      <p class="text-center">Centrado</p>
+      <p class="text-right">Alinieado a la derecha</p>
+
+      <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+      <p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+      <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+      <p class="text-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+      <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
+      <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
+
+      <p>abreviaciones <abbr title="attribute">attr</abbr></p>
+
+      <address>
+        <strong>TOTEM</strong><br>
+        Ejemplo de una direccion<br>
+        Caracas Venezuela 1032453<br>
+        <abbr title="Phone">P:</abbr> (123) 456-7890
+      </address>
+
+      <address>
+        <strong>Correo</strong><br>
+        <a href="mailto:#">first.last@example.com</a>
+      </address>
+
+      <div class="clearfix"></div>
+
+      <ul>
+        <li>Lorem ipsum dolor sit amet</li>
+        <li>Consectetur adipiscing elit</li>
+        <li>Integer molestie lorem at massa</li>
+        <li>Facilisis in pretium nisl aliquet</li>
+        <li>Nulla volutpat aliquam velit
+          <ul>
+            <li>Phasellus iaculis neque</li>
+            <li>Purus sodales ultricies</li>
+            <li>Vestibulum laoreet porttitor sem</li>
+            <li>Ac tristique libero volutpat at</li>
+          </ul>
+        </li>
+        <li>Faucibus porta lacus fringilla vel</li>
+        <li>Aenean sit amet erat nunc</li>
+        <li>Eget porttitor lorem</li>
+      </ul>
+
+      <ol>
+        <li>Lorem ipsum dolor sit amet</li>
+        <li>Consectetur adipiscing elit</li>
+        <li>Integer molestie lorem at massa</li>
+        <li>Facilisis in pretium nisl aliquet</li>
+        <li>Nulla volutpat aliquam velit</li>
+        <li>Faucibus porta lacus fringilla vel</li>
+        <li>Aenean sit amet erat nunc</li>
+        <li>Eget porttitor lorem</li>
+      </ol>
+
+      <ul class="list-unstyled">
+        <li>Lorem ipsum dolor sit amet</li>
+        <li>Consectetur adipiscing elit</li>
+        <li>Integer molestie lorem at massa</li>
+        <li>Facilisis in pretium nisl aliquet</li>
+        <li>Nulla volutpat aliquam velit
+          <ul>
+            <li>Phasellus iaculis neque</li>
+            <li>Purus sodales ultricies</li>
+            <li>Vestibulum laoreet porttitor sem</li>
+            <li>Ac tristique libero volutpat at</li>
+          </ul>
+        </li>
+        <li>Faucibus porta lacus fringilla vel</li>
+        <li>Aenean sit amet erat nunc</li>
+        <li>Eget porttitor lorem</li>
+      </ul>
+
+      <ul class="list-inline">
+        <li>Lorem ipsum</li>
+        <li>Phasellus iaculis</li>
+        <li>Nulla volutpat</li>
+      </ul>
+
+      <dl class="dl-horizontal">
+        <dt>Lista de descrpiciones</dt>
+        <dd>Aqui se pueden definir terminos y cosas </dd>
+        <dt>Euismod</dt>
+        <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+        <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+        <dt>Malesuada porta</dt>
+        <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+        <dt>Felis euismod semper eget lacinia</dt>
+        <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+      </dl>
+
+        </div> <!-- /.demo-content -->
+      </div> <!-- /.demo-row -->
+		</div><!-- /container -->
+
+		<script src="js/jquery-1.11.2.min.js"></script>
+		<script src="js/totem.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/radiocheck.js"></script>
+		<script src="js/application.js"></script>
+	</body>
+</html>
