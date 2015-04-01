@@ -1,0 +1,84 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8"/>
+    <title>TOTEM © 2015</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+	<!-- Loading Bootstrap -->
+	<link href="~/flat-ui/css/vendor/bootstrap.min.css" rel="stylesheet"/>
+
+	<!-- Loading Flat UI -->
+	<link href="~/flat-ui/css/flat-ui.css" rel="stylesheet"/>
+
+	<!-- Loading custom CSS -->
+	<link href="~/flat-ui/css/dashboard.css" rel="stylesheet"/>
+    <link rel="shortcut icon" href="~/flat-ui/img/icons/favicon.ico"/>
+
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+	<!--[if lt IE 9]>
+		<script src="~/flat-ui/js/vendor/html5shiv.js"></script>
+		<script src="~/flat-ui/js/vendor/respond.min.js"></script>
+	<![endif]-->
+    <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="~/Default.aspx">TOTEM</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Usuarios</a></li>
+					<li><a href="#">Clientes</a></li>
+					<li><a href="#">Gestión de proyectos</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de documentos <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#">Gestión de requisitos</a></li>
+							<li><a href="#">Gestión de casos de uso</a></li>
+							<li><a href="#">Gestión de minutas</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Opciones</a></li>
+					<li><a href="#">Salir</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+    <div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				<asp:ContentPlaceHolder runat="server" ID="menuLateral"></asp:ContentPlaceHolder>
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h1 class="page-header"><asp:ContentPlaceHolder runat="server" ID="titulo"></asp:ContentPlaceHolder><small><asp:ContentPlaceHolder runat="server" ID="subtitulo"></asp:ContentPlaceHolder></small></h1>
+                <asp:ContentPlaceHolder runat="server" ID="contenidoCentral"></asp:ContentPlaceHolder>
+				
+			</div>
+		</div>
+	</div>
+
+    <!-- jQuery (necessary for Flat UI's JavaScript plugins) -->
+	<script src="/flat-ui/js/vendor/jquery.min.js"></script>
+
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="/flat-ui/js/vendor/video.js"></script>
+	<script src="/flat-ui/js/flat-ui.min.js"></script>
+    <script src="/flat-ui/assets/js/prettify.js"></script>
+	<script src="/flat-ui/assets/js/application.js"></script>
+
+	<script>
+	    videojs.options.flash.swf = "/flat-ui/js/vendor/video-js.swf"
+	</script>
+</body>
+</html>
