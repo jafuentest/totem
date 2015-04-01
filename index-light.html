@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>TOTEM © 2015</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Loading Bootstrap -->
+		<link href="flat-ui/css/vendor/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Loading Flat UI -->
+		<link href="flat-ui/css/flat-ui.css" rel="stylesheet">
+
+		<!-- Loading custom CSS -->
+		<link href="flat-ui/css/dashboard.css" rel="stylesheet">
+
+		<link rel="shortcut icon" href="flat-ui/img/icons/favicon.ico">
+
+		<!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+		<!--[if lt IE 9]>
+			<script src="flat-ui/js/vendor/html5shiv.js"></script>
+			<script src="flat-ui/js/vendor/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<!-- container -->
+		<div class="container">
+
+			<!-- navbar-default -->
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+							<span class="sr-only">Navegación toggle</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">TOTEM</a>
+					</div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li><a href="#">Usuarios</a></li>
+							<li><a href="#">Clientes</a></li>
+							<li><a href="#">Gestión de proyectos</a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de documentos <span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#">Gestión de requisitos</a></li>
+									<li><a href="#">Gestión de casos de uso</a></li>
+									<li><a href="#">Gestión de minutas</a></li>
+								</ul>
+							</li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#">Opciones</a></li>
+							<li><a href="#">Salir</a></li>
+						</ul>
+					</div>
+					<!-- /.nav-collapse -->
+				</div>
+				<!-- /.container-fluid -->
+			</nav>
+			<!-- /.navbar-default -->
+
+			<h1>Título principal <small>título secundario</small></h1>
+
+			<ol class="breadcrumb">
+				<li><a href="#">Inicio</a></li>
+				<li><a href="#">Opción 1</a></li>
+				<li class="active">Opción 1.1</li>
+			</ol>
+
+			<!-- .container-fluid -->
+			<div class="container-fluid">
+
+				<!-- ptl -->
+				<div class="ptl">
+					<div class="row">
+						<div class="col-sm-10 ">
+							<div class="form-group has-error">
+								<label class="control-label col-sm-2" for="input-error">Error</label>
+								<input class="form-control" type="text" placeholder="Error" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-10 ">
+							<div class="form-group has-warning">
+								<label class="control-label col-sm-2" for="input-warning">Advertencia</label>
+								<input class="form-control" type="text" placeholder="Warning" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-10 ">
+							<div class="form-group has-success">
+								<label class="control-label col-sm-2" for="input-success">Exito</label>
+								<input class="form-control" type="text" placeholder="Success" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-10 ">
+							<div class="form-group">
+								<label class="control-label col-sm-2" for="input-default">Deshabilitado</label>
+								<input class="form-control" type="text" placeholder="Disabled" disabled />
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /ptl -->
+
+				<!-- checkbox -->
+				<form action="#">
+					<div class="row">
+						<div class="col-sm-offset-2 col-sm-10">
+							<label class="checkbox" for="checkbox1">
+								<input type="checkbox" value="" id="checkbox1" data-toggle="checkbox">
+								Checkbox
+							</label>
+							<label class="checkbox" for="checkbox2">
+								<input type="checkbox" value="" id="checkbox2" checked="checked" data-toggle="checkbox">
+								Checkbox
+							</label>
+							<label class="checkbox" for="checkbox3">
+								<input type="checkbox" value="" id="checkbox3" data-toggle="checkbox" disabled="">
+								Checkbox
+							</label>
+							<label class="checkbox" for="checkbox4">
+								<input type="checkbox" value="" id="checkbox4" checked="checked" data-toggle="checkbox" disabled="">
+								Checkbox
+							</label>
+						</div>
+					</div>
+				</form>
+				<!-- /checkbox -->
+
+				<!-- radiobutton -->
+				<form action="#">
+					<div class="row">
+						<div class="col-sm-offset-2 col-sm-10">
+							<label class="radio" for="radio1">
+								<input type="radio" name="optionsRadios1" value="" id="radio1" data-toggle="radio">
+								Radio button
+							</label>
+							<label class="radio" for="radio2">
+								<input type="radio" name="optionsRadios1" value="" id="radio2" data-toggle="radio" checked="checked" >
+								Radio button
+							</label>
+							<label class="radio" for="radio3">
+								<input type="radio" name="optionsRadios1" value="" id="radio3" data-toggle="radio" disabled="">
+								Radio button
+							</label>
+							<label class="radio" for="radio4">
+								<input type="radio" name="optionsRadios1" value="" id="radio4" data-toggle="radio" disabled="">
+								Radio button
+							</label>
+						</div>
+					</div>
+				</form>
+				<!-- /radiobutton -->
+
+				<!-- buttons -->
+				<form action="#">
+					<div class="row">
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-default">Defecto</button>
+								<button type="button" class="btn btn-primary">Primario</button>
+								<button type="button" class="btn btn-success">Éxito</button>
+								<button type="button" class="btn btn-info">Información</button>
+								<button type="button" class="btn btn-warning">Advertencia</button>
+								<button type="button" class="btn btn-danger">Peligro</button>
+								<button type="button" class="btn btn-default btn-wide">Boton Largo</button>
+								<button class="btn btn-primary">Normal<span class="btn-tip">Resaltado</span></button>
+							</div>
+						</div>
+					</div>					
+				</form>
+				<!-- /buttons -->
+
+				<!-- modal-window -->
+				<div class="row">
+					<!-- Button trigger modal -->
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+						Ventana modal
+					</button>
+
+					<!-- modal -->
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<h4 class="modal-title" id="myModalLabel">Título de ventana modal</h4>
+								</div>
+								<div class="modal-body">
+									<p>Contenido de la ventana modal</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-primary">Aceptar</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /modal -->
+				</div>
+				<!-- /modal-window -->
+				<br>
+			</div>
+			<!-- /.container-fluid -->
+		</div>
+		<!-- /.container -->
+
+		<!-- jQuery (necessary for Flat UI's JavaScript plugins) -->
+		<script src="flat-ui/js/vendor/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="flat-ui/js/vendor/video.js"></script>
+		<script src="flat-ui/js/flat-ui.min.js"></script>
+
+		<script src="flat-ui/assets/js/prettify.js"></script>
+		<script src="flat-ui/assets/js/application.js"></script>
+
+		<script>
+			videojs.options.flash.swf = "flat-ui/js/vendor/video-js.swf"
+		</script>
+
+	</body>
+</html>
