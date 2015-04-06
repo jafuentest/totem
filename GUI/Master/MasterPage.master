@@ -12,32 +12,32 @@
 
 		<title>TOTEM © 2015</title>
 
-		<!-- Bootstrap core CSS -->
-        <link href="~/bs/css/bootstrap.min.css" rel="stylesheet" />
+		<!-- Bootstrap core CSS -->        
+        <link href="<%= Page.ResolveUrl("~/bs/css/bootstrap.min.css") %>" rel="stylesheet" />
 
 		<!-- Data tables core CSS -->
-		<link href="~/dt/css/datatables.bootstrap.css" rel="stylesheet" />
+		<link href="<%= Page.ResolveUrl("~/dt/css/datatables.bootstrap.css") %>" rel="stylesheet" />
 
 		<!-- Custom styles for this template -->
-		<link href="~/bs/css/dashboard.css" rel="stylesheet" />
+		<link href="<%= Page.ResolveUrl("~/bs/css/dashboard.css") %>" rel="stylesheet" />
 
         <!-- Bootstrap core JS -->
-		<script type="text/javascript" src="../../bs/js/jquery.min.js"></script>
-		<script type="text/javascript" src="../../bs/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="<%= Page.ResolveUrl("~/bs/js/jquery.min.js") %>"></script>
+		<script type="text/javascript" src="<%= Page.ResolveUrl("~/bs/js/bootstrap.min.js") %>"></script>
 
 		<!-- Data tables core JS -->
-		<script type="text/javascript" src="../../dt/js/jquery.datatables.min.js"></script>
-		<script type="text/javascript" src="../../dt/js/datatables.bootstrap.js"></script>
+		<script type="text/javascript" src="<%= Page.ResolveUrl("~/dt/js/jquery.datatables.min.js") %>"></script>
+		<script type="text/javascript" src="<%= Page.ResolveUrl("~/dt/js/datatables.bootstrap.js") %>"></script>
 
 		<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-		<script type="text/javascript" src="../../bs/assets/js/vendor/holder.js"></script>
+		<script type="text/javascript" src="<%= Page.ResolveUrl("~/bs/assets/js/vendor/holder.js") %>"></script>
 
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-		<script type="text/javascript" src="../../bs/assets/js/ie10-viewport-bug-workaround.js"></script>
+		<script type="text/javascript" src="<%= Page.ResolveUrl("~/bs/assets/js/ie10-viewport-bug-workaround.js") %>"></script>
 
 		<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-		<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-		<script src="/bs/assets/js/ie-emulation-modes-warning.js"></script>
+		<!--[if lt IE 9]><script src="./assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+		<script src="<%= Page.ResolveUrl("~/bs/assets/js/ie-emulation-modes-warning.js") %>"></script>
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
