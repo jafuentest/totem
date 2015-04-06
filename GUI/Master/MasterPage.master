@@ -90,5 +90,8 @@
 		    </div>
 	    </div>
 
+        <script type="text/javascript">
+            $("a[href*='" + location.pathname + "']").closest("li").addClass("active");
+        </script>
     </body>
 </html>
