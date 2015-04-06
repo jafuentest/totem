@@ -1,84 +1,94 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <meta charset="utf-8"/>
-    <title>TOTEM © 2015</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <head runat="server">
+        <meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="totem" />
+		<meta name="author" content="totem" />
+		<link rel="icon" href="~/bs/img/favicon.ico" />
 
-	<!-- Loading Bootstrap -->
-	<link href="~/flat-ui/css/vendor/bootstrap.min.css" rel="stylesheet"/>
+		<title>TOTEM © 2015</title>
 
-	<!-- Loading Flat UI -->
-	<link href="~/flat-ui/css/flat-ui.css" rel="stylesheet"/>
+		<!-- Bootstrap core CSS -->
+        <link href="~/bs/css/bootstrap.min.css" rel="stylesheet" />
 
-	<!-- Loading custom CSS -->
-	<link href="~/flat-ui/css/dashboard.css" rel="stylesheet"/>
-    <link rel="shortcut icon" href="~/flat-ui/img/icons/favicon.ico"/>
+		<!-- Data tables core CSS -->
+		<link href="~/dt/css/datatables.bootstrap.css" rel="stylesheet" />
 
-	<!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
-	<!--[if lt IE 9]>
-		<script src="~/flat-ui/js/vendor/html5shiv.js"></script>
-		<script src="~/flat-ui/js/vendor/respond.min.js"></script>
-	<![endif]-->
-    <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
-</head>
-<body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="~/Default.aspx">TOTEM</a>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Usuarios</a></li>
-					<li><a href="#">Clientes</a></li>
-					<li><a href="#">Gestión de proyectos</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de documentos <span class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Gestión de requisitos</a></li>
-							<li><a href="#">Gestión de casos de uso</a></li>
-							<li><a href="#">Gestión de minutas</a></li>
-						</ul>
-					</li>
-					<li><a href="#">Opciones</a></li>
-					<li><a href="#">Salir</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+		<!-- Custom styles for this template -->
+		<link href="~/bs/css/dashboard.css" rel="stylesheet" />
 
-    <div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-3 col-md-2 sidebar">
-				<asp:ContentPlaceHolder runat="server" ID="menuLateral"></asp:ContentPlaceHolder>
-			</div>
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<h1 class="page-header"><asp:ContentPlaceHolder runat="server" ID="titulo"></asp:ContentPlaceHolder><small><asp:ContentPlaceHolder runat="server" ID="subtitulo"></asp:ContentPlaceHolder></small></h1>
-                <asp:ContentPlaceHolder runat="server" ID="contenidoCentral"></asp:ContentPlaceHolder>
-				
-			</div>
-		</div>
-	</div>
+        <!-- Bootstrap core JS -->
+		<script src="bs/js/jquery.min.js"></script>
+		<script src="bs/js/bootstrap.min.js"></script>
 
-    <!-- jQuery (necessary for Flat UI's JavaScript plugins) -->
-	<script src="/flat-ui/js/vendor/jquery.min.js"></script>
+		<!-- Data tables core JS -->
+		<script src="dt/js/jquery.datatables.min.js"></script>
+		<script src="dt/js/datatables.bootstrap.js"></script>
 
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="/flat-ui/js/vendor/video.js"></script>
-	<script src="/flat-ui/js/flat-ui.min.js"></script>
-    <script src="/flat-ui/assets/js/prettify.js"></script>
-	<script src="/flat-ui/assets/js/application.js"></script>
+		<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+		<script src="bs/assets/js/vendor/holder.js"></script>
 
-	<script>
-	    videojs.options.flash.swf = "/flat-ui/js/vendor/video-js.swf"
-	</script>
-</body>
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<script src="bs/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+		<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+		<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+		<script src="~/bs/assets/js/ie-emulation-modes-warning.js"></script>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+        <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+		    <div class="container-fluid">
+			    <div class="navbar-header">
+				    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					    <span class="sr-only">Toggle navigation</span>
+					    <span class="icon-bar"></span>
+					    <span class="icon-bar"></span>
+					    <span class="icon-bar"></span>
+				    </button>
+				    <a class="navbar-brand" href="~/Default.aspx">TOTEM</a>
+			    </div>
+			    <div id="navbar" class="navbar-collapse collapse">
+				    <ul class="nav navbar-nav navbar-right">
+					    <li><a href="#">Usuarios</a></li>
+					    <li><a href="#">Clientes</a></li>
+					    <li><a href="#">Gestión de proyectos</a></li>
+					    <li class="dropdown">
+						    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de documentos <span class="caret"></span></a>
+						    <ul class="dropdown-menu" role="menu">
+							    <li><a href="#">Gestión de requisitos</a></li>
+							    <li><a href="#">Gestión de casos de uso</a></li>
+							    <li><a href="#">Gestión de minutas</a></li>
+						    </ul>
+					    </li>
+					    <li><a href="#">Opciones</a></li>
+					    <li><a href="#">Salir</a></li>
+				    </ul>
+			    </div>
+		    </div>
+	    </nav>
+
+        <div class="container-fluid">
+		    <div class="row">
+			    <div class="col-sm-3 col-md-2 sidebar">
+				    <asp:ContentPlaceHolder runat="server" ID="menuLateral"></asp:ContentPlaceHolder>
+			    </div>
+			    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				    <h1 class="page-header"><asp:ContentPlaceHolder runat="server" ID="titulo"></asp:ContentPlaceHolder><small><asp:ContentPlaceHolder runat="server" ID="subtitulo"></asp:ContentPlaceHolder></small></h1>
+                    <asp:ContentPlaceHolder runat="server" ID="contenidoCentral"></asp:ContentPlaceHolder>				
+			    </div>
+		    </div>
+	    </div>
+
+    </body>
 </html>

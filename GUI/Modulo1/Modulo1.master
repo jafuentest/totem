@@ -1,7 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Modulo1.master.cs" Inherits="SubPage" MasterPageFile="../Master/MasterPage.master" %>
 
 <%--Aquí va el título que tendrán TODAS las páginas del módulo--%>
-<asp:Content runat="server" ContentPlaceHolderID="titulo">Login</asp:Content>
+<asp:Content runat="server" ContentPlaceHolderID="titulo">Título</asp:Content>
 
 <asp:Content runat="server" ContentPlaceHolderID="subtitulo">
     <asp:ContentPlaceHolder runat="server" ID="subtitulo"></asp:ContentPlaceHolder>
