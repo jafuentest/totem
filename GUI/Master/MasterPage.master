@@ -63,9 +63,20 @@
 			    </div>
 			    <div id="navbar" class="navbar-collapse collapse">
 				    <ul class="nav navbar-nav navbar-right">
-					    <li><a href="#">Usuarios</a></li>
-					    <li><a href="#">Clientes</a></li>
-					    <li><a href="#">Gestión de proyectos</a></li>
+					    <li class="dropdown">
+                            <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestion de Usuarios<span class="caret"></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Usuarios</a></li>
+                            </ul>
+					    </li>
+					    <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de proyectos<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Proyectos</a></li>
+							    <li><a href="#">Gestión de involucrados</a></li>
+                                <li><a href="#">Clientes</a></li>
+                            </ul>
+					    </li>
 					    <li class="dropdown">
 						    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de documentos <span class="caret"></span></a>
 						    <ul class="dropdown-menu" role="menu">
@@ -74,8 +85,12 @@
 							    <li><a href="#">Gestión de minutas</a></li>
 						    </ul>
 					    </li>
-					    <li><a href="#">Opciones</a></li>
-					    <li><a href="#">Salir</a></li>
+					    <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Opciones<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Salir</a></li>
+                            </ul>
+					    </li>
 				    </ul>
 			    </div>
 		    </div>
