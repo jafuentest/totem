@@ -56,7 +56,6 @@
 	    </div>
     </form>
         </div>
-    <script type="text/javascript" src="js/bootstrapValidator.js"></script>
     <script src="js/Validacion.js"></script>
     
 </asp:Content>
