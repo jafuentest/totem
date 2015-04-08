@@ -1,8 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CrearProyecto.aspx.cs" Inherits="GUI_Modulo4_CrearProyecto" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master"  AutoEventWireup="true" CodeFile="CrearProyecto.aspx.cs" Inherits="GUI_Modulo4_CrearProyecto" %>
 
-<asp:Content ID="Content0" ContentPlaceHolderID="titutlo" Runat="Server">
-    Gestion de Proyectos
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <style>
+        textarea {
+            resize: none;
+        }
+    </style>
 </asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestion de Proyectos</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server"> Crear</asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     <!--AQUI SE DEFINE EL TAMANO DEL FORM Y SU UBICACION-->
@@ -23,11 +29,6 @@
 		    </div>
 	    </div>
         <div class="form-group">
-	        <div id="div_precio" class="col-sm-3 col-md-3 col-lg-3">
-		        <input placeholder="Precio" class="form-control" name="descripcion"/>
-		    </div>
-	    </div>
-        <div class="form-group">
 		    <div class="col-sm-5 col-md-5 col-lg-5">
 				<button class="btn btn-primary" onclick="return checkform()">Crear</button>
 			</div>
@@ -38,6 +39,5 @@
     </form>
         </div>
     <script src="js/Validacion.js"></script>
-
 </asp:Content>
 
