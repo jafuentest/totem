@@ -15,8 +15,8 @@ Agregar Personal Involucrado</asp:Content>
                                     Selecionar...<span class="caret"></span>
                                   </button>
                                   <ol id="dp1" class="dropdown-menu" role="menu">
-                                    <li><a href="#">Cliente</a></li>
-                                    <li><a href="#">Compañia de Software</a></li>
+                                    <li value="1"><a href="#">Cliente</a></li>
+                                    <li value="2"><a href="#">Compañia de Software</a></li>
                                   </ol>
                                 </div>  
                                 <a id="error1"></a>          
@@ -28,10 +28,10 @@ Agregar Personal Involucrado</asp:Content>
                              </div>   
                             <div class="col-sm-5 col-md-5 col-lg-5" > 
                                 <div class="btn-group">
-                                  <button id="id_cargo" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" onclick="cargarpersonal();">
+                                  <button id="id_cargo" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" >
                                     Selecionar...<span class="caret"></span>
                                   </button>
-                                  <ol id="dp1" class="dropdown-menu" role="menu">
+                                  <ol id="dp3" class="dropdown-menu" role="menu">
                                     <li value="1"><a href="#">Lider de Proyecto</a></li>
                                     <li value="2"><a href="#">Analista</a></li>
                                     <li value="3"><a href="#">Tecnico</a></li>
@@ -49,7 +49,7 @@ Agregar Personal Involucrado</asp:Content>
                                   <button id="id_personal" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     Selecionar...<span class="caret"></span>
                                   </button>
-                                  <ol id="dp2" class="dropdown-menu" role="menu">
+                                  <ol id="dp2" class="dropdown-menu" role="menu" onclick="cargarpersonal();">
                                     <li value="1"><a href="#">Argenis Rodriguez</a></li>
                                     <li value="2"><a href="#">Scheryl Palencia</a></li>
                                     <li value="3"><a href="#">Rosa Rodriguez</a></li>
@@ -146,7 +146,9 @@ Agregar Personal Involucrado</asp:Content>
             }
 
             function cargarpersonal() {
-                alert("entra por aqui");
+                var personal_seleccionado = $("#id_personal").text().trim();
+                var empresa_seleccionado = $("#id_empresa").text().trim();
+                alert(empresa_seleccionado);
             }
             
        </script>
