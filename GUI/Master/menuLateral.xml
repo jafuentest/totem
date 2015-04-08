@@ -9,6 +9,9 @@
 	<opcion nombre="Consultar Involucrados" link="~/GUI/Modulo3/ConsultarInvolucrado.aspx">
 		<modulo id="3"></modulo>
 	</opcion>
+  <opcion nombre="hola" link="~/GUI/Modulo3/AgregarInvolucrado.aspx">
+    <modulo id="3"></modulo>
+  </opcion>
 	<opcion nombre="Agregar Caso de Uso" link="~/GUI/Modulo6/Crear.aspx">
 		<modulo id="6"></modulo>
 	</opcion>
