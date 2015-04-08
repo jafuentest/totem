@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Modulo3/Modulo3.master" AutoEventWireup="true" CodeFile="AgregarPersonalSoftware.aspx.cs" Inherits="GUI_Modulo3_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="AgregarPersonalSoftware.aspx.cs" Inherits="GUI_Modulo3_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="subtitulo" Runat="Server">
 </asp:Content>

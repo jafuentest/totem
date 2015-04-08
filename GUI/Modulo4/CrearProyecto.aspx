@@ -29,6 +29,11 @@
 		    </div>
 	    </div>
         <div class="form-group">
+	        <div id="div_precio" class="col-sm-3 col-md-3 col-lg-3">
+		        <input placeholder="Precio" class="form-control" name="descripcion"/>
+		    </div>
+	    </div>
+        <div class="form-group">
 		    <div class="col-sm-5 col-md-5 col-lg-5">
 				<button class="btn btn-primary" onclick="return checkform()">Crear</button>
 			</div>
