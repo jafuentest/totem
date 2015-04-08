@@ -7,32 +7,32 @@ Agregar Empleado de la Empresa Cliente a Proyecto</asp:Content>
               	 <form class="form-horizontal" action="" method="POST" role="form" runat="server">
                         <div class="form-group">
                             <div class="col-sm-3 col-md-3 col-lg-3">
-                                    <label>Seleccione Proyecto:</label>  
+                                    <label>Seleccione el tipo de empresa:</label>  
                              </div>   
                             <div class="col-sm-5 col-md-5 col-lg-5" > 
                                 <div class="btn-group">
                                   <button id="id_proyecto" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     Selecionar...<span class="caret"></span>
                                   </button>
-                                  <ul id="dp1" class="dropdown-menu" role="menu">
-                                    <li><a href="#">Acuario</a></li>
-                                    <li><a href="#">Biblioteca</a></li>
-                                    <li><a href="#">Anime y Manga</a></li>
-                                  </ul>
+                                  <ol id="dp1" class="dropdown-menu" role="menu">
+                                    <li><a href="#">Seleccionar...</a></li>
+                                    <li><a href="#">Compañia de Software</a></li>
+                                    <li><a href="#">Empresa Cliente</a></li>
+                                  </ol>
                                 </div>  
                                 <a id="error1"></a>          
                               </div>
                         </div>
                        <div class="form-group">
                             <div class="col-sm-3 col-md-3 col-lg-3">
-                                    <label>Seleccione Personal:</label>  
+                                    <label>Seleccione Rol:</label>  
                              </div>   
                             <div class="col-sm-5 col-md-5 col-lg-5" > 
                                 <div class="btn-group">
-                                  <button id="id_personal" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                  <button id="button_rol" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     Selecionar...<span class="caret"></span>
                                   </button>
-                                  <ul id="dp2" class="dropdown-menu" role="menu">
+                                  <ul id="id_cargo" class="dropdown-menu" role="menu">
                                     <li><a href="#">Argenis Rodriguez</a></li>
                                     <li><a href="#">Scheryl Palencia</a></li>
                                     <li><a href="#">Rosa Rodriguez</a></li>
@@ -44,20 +44,21 @@ Agregar Empleado de la Empresa Cliente a Proyecto</asp:Content>
                         </div>
                        <div class="form-group">
                             <div class="col-sm-3 col-md-3 col-lg-3">
-                                    <label>Seleccione Cargo del personal:</label>  
+                                    <label>Seleccione Rol:</label>  
                              </div>   
                             <div class="col-sm-5 col-md-5 col-lg-5" > 
                                 <div class="btn-group">
-                                  <button id="id_cargo" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                  <button id="id_rol" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     Selecionar...<span class="caret"></span>
                                   </button>
-                                  <ul id="dp3" class="dropdown-menu" role="menu">
-                                    <li><a href="#">Lider del Proyecto</a></li>
-                                    <li><a href="#">Analista</a></li>
-                                     <li><a href="#">Programador</a></li>
+                                  <ul id="dp2" class="dropdown-menu" role="menu">
+                                    <li><a href="#">Argenis Rodriguez</a></li>
+                                    <li><a href="#">Scheryl Palencia</a></li>
+                                    <li><a href="#">Rosa Rodriguez</a></li>
+                                     <li><a href="#">Akira Toriyama</a></li>
                                   </ul>
-                                </div>
-                                <a id="error3"></a>            
+                                </div> 
+                                <a id="error3"></a>           
                               </div>
                         </div>
                        <br />
