@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <menuLateral>
-							<!--Opciones Modulo 4-->
-	<opcion nombre="Lista de Proyectos" link="~/GUI/Modulo4/ListaProyectos.aspx">
-		<modulo id="4"></modulo>
+  <opcion nombre="Agregar Involucrados" link="~/GUI/Modulo3/AgregarInvolcrado.aspx">
+		<modulo id="3"></modulo>
 	</opcion>
-	<opcion nombre="Crear Proyecto" link="~/GUI/Modulo4/CrearProyecto.aspx">
-		<modulo id="4"></modulo>
+	<opcion nombre="Eliminar Involucrados" link="~/GUI/Modulo3/EliminarInvolucrado.aspx">
+		<modulo id="3"></modulo>
 	</opcion>
- 							<!--Opciones Modulo 6-->
+	<opcion nombre="Consultar Involucrados" link="~/GUI/Modulo3/ConsultarInvolucrado.aspx">
+		<modulo id="3"></modulo>
+	</opcion>
 	<opcion nombre="Agregar Caso de Uso" link="~/GUI/Modulo6/Crear.aspx">
 		<modulo id="6"></modulo>
 	</opcion>

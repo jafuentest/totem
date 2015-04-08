@@ -1,14 +1,8 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master"  AutoEventWireup="true" CodeFile="CrearProyecto.aspx.cs" Inherits="GUI_Modulo4_CrearProyecto" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CrearProyecto.aspx.cs" Inherits="GUI_Modulo4_CrearProyecto" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <style>
-        textarea {
-            resize: none;
-        }
-    </style>
+<asp:Content ID="Content0" ContentPlaceHolderID="titutlo" Runat="Server">
+    Gestion de Proyectos
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestion de Proyectos</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server"> Crear</asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     <!--AQUI SE DEFINE EL TAMANO DEL FORM Y SU UBICACION-->
@@ -44,5 +38,6 @@
     </form>
         </div>
     <script src="js/Validacion.js"></script>
+
 </asp:Content>
 
