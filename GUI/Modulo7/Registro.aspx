@@ -1,5 +1,7 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/GUI/Modulo7/Modulo7.master" AutoEventWireup="false" CodeFile="Registro.aspx.vb" Inherits="GUI_Modulo7_Registro" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="Registro.aspx.cs" Inherits="GUI_Modulo7_Registro" %>
 
+<asp:Content ID="Content3" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="titulo" Runat="Server"></asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="subtitulo" Runat="Server">Registro
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contenidoCentral" Runat="Server">
@@ -60,4 +62,5 @@
     <script src="js/Validacion.js"></script>
     
 </asp:Content>
+
 
