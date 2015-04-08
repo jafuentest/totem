@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menuLateral>
+	<opcion nombre="Agregar Caso de Uso" link="~/GUI/Modulo6/Crear.aspx">
+		<modulo id="6"></modulo>
+	</opcion>
+	<opcion nombre="Listar Casos de Uso" link="~/GUI/Modulo6/Listar.aspx">
+		<modulo id="6"></modulo>
+	</opcion>
+	<opcion nombre="Casos de Uso por Actor" link="~/GUI/Modulo6/ReporteActores.aspx">
+		<modulo id="6"></modulo>
+	</opcion>
+	<opcion nombre="Agregar Actor" link="~/GUI/Modulo6/CrearActor.aspx">
+		<modulo id="6"></modulo>
+	</opcion>
+	<opcion nombre="Listar Actores" link="~/GUI/Modulo6/ListarActores.aspx">
+		<modulo id="6"></modulo>
+	</opcion>
+</menuLateral>
