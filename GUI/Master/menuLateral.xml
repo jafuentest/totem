@@ -21,7 +21,25 @@
 	<opcion nombre="Agregar Actor" link="~/GUI/Modulo6/CrearActor.aspx">
 		<modulo id="6"></modulo>
 	</opcion>
-	<opcion nombre="Listar Actores" link="~/GUI/Modulo6/ListarActores.aspx">
-		<modulo id="6"></modulo>
-	</opcion>
+  <opcion nombre="Listar Actores" link="~/GUI/Modulo6/ListarActores.aspx">
+    <modulo id="6"></modulo>
+  </opcion>
+  <opcion nombre="Agregar Requerimientos" link="~/GUI/Modulo5/AgregarRequerimiento.aspx">
+    <modulo id="5"></modulo>
+  </opcion>
+  <opcion nombre="Listar Requerimientos" link="~/GUI/Modulo5/PrincipalProyecto.aspx">
+    <modulo id="5"></modulo>
+  </opcion>
+  <opcion nombre="Reporte de Requerimientos Funcionales Organizada por ID" link="~/GUI/Modulo5/RFuncionalesID.aspx">
+    <modulo id="5"></modulo>
+  </opcion>
+  <opcion nombre="Reporte de Requerimientos Funcionales Organizada por Prioridad" link="~/GUI/Modulo5/RFuncionalesPrioridad.aspx">
+    <modulo id="5"></modulo>
+  </opcion>
+  <opcion nombre="Reporte de Requerimientos No Funcionales Organizada por ID" link="~/GUI/Modulo5/RNFuncionalesID.aspx">
+    <modulo id="5"></modulo>
+  </opcion>
+  <opcion nombre="Reporte de Requerimientos No Funcionales Organizada por Prioridad" link="~/GUI/Modulo5/RNFuncionalesPrioridad.aspx">
+    <modulo id="5"></modulo>
+  </opcion>
 </menuLateral>
