@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Modulo3/Modulo3.master" AutoEventWireup="true" CodeFile="AgregarPersonalCliente.aspx.cs" Inherits="GUI_Modulo3_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../Master/MasterPage.master" AutoEventWireup="true" CodeFile="AgregarInvolucrado.aspx.cs" Inherits="GUI_Modulo3_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="subtitulo" Runat="Server">
 Agregar Empleado de la Empresa Cliente a Proyecto</asp:Content>
