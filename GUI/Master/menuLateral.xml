@@ -24,10 +24,10 @@
 	<opcion nombre="Listar Actores" link="~/GUI/Modulo6/ListarActores.aspx">
 		<modulo id="6"></modulo>
 	</opcion>
-  <opcion nombre="Agregar Usuario" link="~/GUI/Modulo6/CrearActor.aspx">
+  <opcion nombre="Agregar Usuario" link="~/GUI/Modulo7/Registro.aspx">
     <modulo id="7"></modulo>
   </opcion>
-  <opcion nombre="Listar Usuarios" link="~/GUI/Modulo6/ListarActores.aspx">
+  <opcion nombre="Listar Usuarios" link="~/GUI/Modulo7/ListarUsuarios.aspx">
     <modulo id="7"></modulo>
   </opcion>
 </menuLateral>
