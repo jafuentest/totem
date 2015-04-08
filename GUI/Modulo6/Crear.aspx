@@ -1,8 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Modulo6/Modulo6.master" AutoEventWireup="true" CodeFile="Crear.aspx.cs" Inherits="GUI_Modulo6_Crear" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="Crear.aspx.cs" Inherits="GUI_Modulo6_Crear" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="subtitulo" Runat="Server">Crear</asp:Content>
-
-<asp:Content ID="Content2" ContentPlaceHolderID="contenidoCentral" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Casos de Uso</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Agregar</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 	<form action="Crear.aspx" method="post">
 		<div class="form-group">
 			<div class="row">
