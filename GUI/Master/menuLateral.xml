@@ -21,24 +21,9 @@
 		<opcion nombre="Crear Proyecto" link="~/GUI/Modulo4/CrearProyecto.aspx">
 		<modulo id="4"></modulo>
 	</opcion>
-	
-	<!--OPCIONES DEL MENU LATERAL DEL MODULO 6-->
-	
-	<opcion nombre="Agregar Caso de Uso" link="~/GUI/Modulo6/Crear.aspx">
-		<modulo id="6"></modulo>
-	</opcion>
-	<opcion nombre="Listar Casos de Uso" link="~/GUI/Modulo6/Listar.aspx">
-		<modulo id="6"></modulo>
-	</opcion>
-	<opcion nombre="Casos de Uso por Actor" link="~/GUI/Modulo6/ReporteActores.aspx">
-		<modulo id="6"></modulo>
-	</opcion>
-	<opcion nombre="Agregar Actor" link="~/GUI/Modulo6/CrearActor.aspx">
-		<modulo id="6"></modulo>
-	</opcion>
-  <opcion nombre="Listar Actores" link="~/GUI/Modulo6/ListarActores.aspx">
-    <modulo id="6"></modulo>
-  </opcion>
+
+  <!--OPCIONES DEL MENU LATERAL DEL MODULO 6-->
+  
   <opcion nombre="Agregar Requerimientos" link="~/GUI/Modulo5/AgregarRequerimiento.aspx">
     <modulo id="5"></modulo>
   </opcion>
@@ -57,4 +42,33 @@
   <opcion nombre="Reporte de Requerimientos No Funcionales Organizada por Prioridad" link="~/GUI/Modulo5/RNFuncionalesPrioridad.aspx">
     <modulo id="5"></modulo>
   </opcion>
+	
+	<!--OPCIONES DEL MENU LATERAL DEL MODULO 6-->
+	
+	<opcion nombre="Agregar Caso de Uso" link="~/GUI/Modulo6/Crear.aspx">
+		<modulo id="6"></modulo>
+	</opcion>
+	<opcion nombre="Listar Casos de Uso" link="~/GUI/Modulo6/Listar.aspx">
+		<modulo id="6"></modulo>
+	</opcion>
+	<opcion nombre="Casos de Uso por Actor" link="~/GUI/Modulo6/ReporteActores.aspx">
+		<modulo id="6"></modulo>
+	</opcion>
+	<opcion nombre="Agregar Actor" link="~/GUI/Modulo6/CrearActor.aspx">
+		<modulo id="6"></modulo>
+	</opcion>
+  <opcion nombre="Listar Actores" link="~/GUI/Modulo6/ListarActores.aspx">
+    <modulo id="6"></modulo>
+  </opcion>
+
+  <!--OPCIONES DEL MENU LATERAL DEL MODULO 7-->
+
+  <opcion nombre="Listar Usuarios" link="~/GUI/Modulo7/ListarUsuarios.aspx">
+    <modulo id="7"></modulo>
+  </opcion>
+  <opcion nombre="Agregar Usuario" link="~/GUI/Modulo7/Registro.aspx">
+    <modulo id="7"></modulo>
+  </opcion>
+
+  
 </menuLateral>

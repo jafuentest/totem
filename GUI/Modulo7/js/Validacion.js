@@ -89,4 +89,77 @@
                },
            }
        });
+    $('#detalle_form')
+       .bootstrapValidator({
+           message: 'This value is not valid',
+           feedbackIcons: {
+               valid: 'glyphicon glyphicon-ok',
+               invalid: 'glyphicon glyphicon-remove',
+               validating: 'glyphicon glyphicon-refresh'
+           },
+           fields: {
+               nombre: {
+                   validators: {
+                       notEmpty: {
+                           message: 'El nombre es requerido'
+                       }
+                   }
+               },
+               apellido: {
+                   validators: {
+                       notEmpty: {
+                           message: 'El apellido es requerido'
+                       }
+                   }
+               },
+               usuario: {
+                   message: 'El nombre de usuario no es valido',
+                   validators: {
+                       notEmpty: {
+                           message: 'El nombre de usuario es requerido'
+                       },
+                       /*remote: {
+                           url: 'remote.php',
+                           message: 'The username is not available'
+                       },*/
+                       regexp: {
+                           regexp: /^[a-zA-Z0-9_\.]+$/,
+                           message: 'El nombre de usuario solo puede tener letras del abecedario, numeros, piso o punto'
+                       }
+                   }
+               },
+               correo: {
+                   validators: {
+                       notEmpty: {
+                           message: 'El correo electr&oacute;nico es requerido'
+                       },
+                       emailAddress: {
+                           message: 'No es un correo electr&oacute;nico v&aacute;lido'
+                       }
+                   }
+               },
+          
+               cargo: {
+                   validators: {
+                       notEmpty: {
+                           message: 'El cargo es requerido'
+                       }
+                   }
+               },
+               pregunta: {
+                   validators: {
+                       notEmpty: {
+                           message: 'La pregunta de recuperaci&oacute;n es requerida'
+                       }
+                   }
+               },
+               respuesta: {
+                   validators: {
+                       notEmpty: {
+                           message: 'La respuesta a la pregunta de recuperaci&oacute;n es requerida'
+                       }
+                   }
+               },
+           }
+       });
 });

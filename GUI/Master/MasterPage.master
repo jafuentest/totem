@@ -66,7 +66,8 @@
 					    <li class="dropdown">
                             <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestion de Usuarios<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Usuarios</a></li>
+                                <li><a href="<%= Page.ResolveUrl("~/GUI/Modulo7/ListarUsuarios.aspx") %>">Lista de Usuarios</a></li>
+                                <li><a href="<%= Page.ResolveUrl("~/GUI/Modulo7/Registro.aspx") %>">Agregar Usuario</a></li>
                             </ul>
 					    </li>
 					    <li class="dropdown">
@@ -88,6 +89,7 @@
 					    <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Opciones<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href="<%= Page.ResolveUrl("~/GUI/Modulo7/EditarPerfil.aspx") %>">Editar Perfil</a></li>
                                 <li><a href="#">Salir</a></li>
                             </ul>
 					    </li>
