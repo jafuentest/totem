@@ -34,6 +34,18 @@
 		        </div>
             </div>
             <div class="form-group">
+	            <div  class="col-sm-10 col-md-10 col-lg-10">
+		            <label>Contrase&ntilde;a: </label>
+                    <input type="password" value="1234567" class="form-control" name="pswd"/>
+		        </div>
+            </div>
+            <div class="form-group">
+	            <div  class="col-sm-10 col-md-10 col-lg-10">
+		            <label>Confirmar Contrase&ntilde;a: </label>
+                    <input type="password" value="1234567" class="form-control" name="confirm-pswd"/>
+		        </div>
+            </div>
+            <div class="form-group">
 			    <div  class="col-sm-10 col-md-5 col-lg-5">
 				    <label>Cargo:</label>
                     <input type="text" value="Cargo en la Empresa" class="form-control" name="cargo" />

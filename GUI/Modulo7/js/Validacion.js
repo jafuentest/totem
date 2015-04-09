@@ -89,7 +89,7 @@
                },
            }
        });
-    $('#detalle_form')
+    $('#detalle-form')
        .bootstrapValidator({
            message: 'This value is not valid',
            feedbackIcons: {
@@ -138,7 +138,24 @@
                        }
                    }
                },
-          
+               password: {
+                   validators: {
+                       notEmpty: {
+                           message: 'La contrase&ntilde;a es requerida'
+                       }
+                   }
+               },
+               confirm_password: {
+                   validators: {
+                       notEmpty: {
+                           message: 'Se requiere confirmar la contrse&ntilde;a'
+                       },
+                       identical: {
+                           field: 'password',
+                           message: 'Las contrase&ntilde;as no coinciden'
+                       }
+                   }
+               },
                cargo: {
                    validators: {
                        notEmpty: {
