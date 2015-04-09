@@ -31,7 +31,7 @@ Agregar Personal Involucrado</asp:Content>
                                   <button id="id_cargo" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" >
                                     Selecionar...<span class="caret"></span>
                                   </button>
-                                  <ol id="dp3" class="dropdown-menu" role="menu">
+                                  <ol id="dp3" class="dropdown-menu" role="menu" onclick="cargarpersonal();">
                                     <li value="1"><a href="#">Lider de Proyecto</a></li>
                                     <li value="2"><a href="#">Analista</a></li>
                                     <li value="3"><a href="#">Tecnico</a></li>
@@ -49,7 +49,7 @@ Agregar Personal Involucrado</asp:Content>
                                   <button id="id_personal" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     Selecionar...<span class="caret"></span>
                                   </button>
-                                  <ol id="dp2" class="dropdown-menu" role="menu" onclick="cargarpersonal();">
+                                  <ol id="dp2" class="dropdown-menu" role="menu">
                                     <li value="1"><a href="#">Argenis Rodriguez</a></li>
                                     <li value="2"><a href="#">Scheryl Palencia</a></li>
                                     <li value="3"><a href="#">Rosa Rodriguez</a></li>
@@ -69,6 +69,7 @@ Agregar Personal Involucrado</asp:Content>
                                  <th>Apellido</th>
                                  <th>Rol</th>
                                  <th>Compañia</th>
+                                 <th>Eliminar</th>
                                </tr>
                              </thead>
                             <tbody>
@@ -77,18 +78,21 @@ Agregar Personal Involucrado</asp:Content>
                               <td>Rodriguez</td>
                               <td>Lider del proyecto</td>
                               <td>Cliente</td>
+                              <td><a class="btn btn-danger " onclick="quitar();">Eliminar</a></td>  
                             </tr>
                             <tr>
                               <td>Argenis2</td>
                               <td>Rodriguez2</td>
                               <td>Lider del proyecto</td>
                               <td>Compañia de Software</td>
+                              <td><a class="btn btn-danger ">Eliminar</a></td>     
                             </tr>
                             <tr>
                               <td>Argenis3</td>
                               <td>Rodriguez3</td>
                               <td>Lider del proyecto</td>
                               <td>Cliente</td>
+                              <td><a class="btn btn-danger ">Eliminar</a></td>  
                             </tr>
                            </tbody>
                          </table>
@@ -111,7 +115,7 @@ Agregar Personal Involucrado</asp:Content>
             })
             $("#dp1 li a").click(function () {
 
-                $("#id_proyecto").html($(this).text() + ' <span class="caret"></span>');
+                $("#id_empresa").html($(this).text() + ' <span class="caret"></span>');
 
             });
             $("#dp2 li a").click(function () {
@@ -145,10 +149,30 @@ Agregar Personal Involucrado</asp:Content>
                 }
             }
 
+
             function cargarpersonal() {
-                var personal_seleccionado = $("#id_personal").text().trim();
+                var cargo_seleccionado = $("#id_cargo").text().trim();
                 var empresa_seleccionado = $("#id_empresa").text().trim();
-                alert(empresa_seleccionado);
+                if (empresa_seleccionado == "Cliente") {
+                    if (cargo_seleccionado == "Lider de Proyecto") {
+
+                    }
+                    if (cargo_seleccionado == "Analista") {
+
+                    }
+                    if (cargo_seleccionado == "Tecnico") { }
+                }
+                if (empresa_seleccionado == "Compañia de Software") {
+                    if (cargo_seleccionado == "Lider de Proyecto") {
+
+                    }
+                    if (cargo_seleccionado == "Analista") {
+
+                    }
+                    if (cargo_seleccionado == "Tecnico") {
+
+                    }
+                }
             }
             
        </script>
@@ -156,18 +180,18 @@ Agregar Personal Involucrado</asp:Content>
             $(document).ready(function () {
                 var table = $('#table-example').DataTable();
 
-                $('#table-example tbody').on('click', 'tr', function () {
-                    if ($(this).hasClass('selected')) {
-                        $(this).removeClass('selected');
+                $('#table-example tbody').on('click', 'a', function () {
+                    if ($(this).parent().hasClass('selected')) {
+                        $(this).parent().removeClass('selected');
                     }
                     else {
                         table.$('tr.selected').removeClass('selected');
-                        $(this).addClass('selected');
+                        $(this).parent().addClass('selected');
                     }
                     if (confirm('Seguro de que deseas deseleccionar a esta persona') == true) {
-                        table.row('.selected').remove().draw(false);
+                        table.row($(this).parents('tr')).remove().draw();
                     } else {
-                        $(this).removeClass('selected');
+                        $(this).parent().removeClass('selected');
                     }
                 });
 
