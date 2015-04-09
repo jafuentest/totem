@@ -4,7 +4,7 @@
 Consultar Personal Involucrado</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contenidoCentral" Runat="Server">
            
-                       <div class="col-sm-11 col-md-11 col-lg-11 col-sm-offset-1">
+                       <div class="col-sm-12 col-md-12 col-lg-12">
                        <div  id="table-responsive">
                            <table id="table-example" class=" table table-striped table-hover display">
                              <thead>
