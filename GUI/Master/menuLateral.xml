@@ -3,7 +3,7 @@
 	
 	<!--OPCIONES DEL MENU LATERAL DEL MODULO 3-->
 	
-    <opcion nombre="Agregar Involucrados" link="~/GUI/Modulo3/AgregarInvolcrado.aspx">
+    <opcion nombre="Agregar Involucrados" link="~/GUI/Modulo3/AgregarInvolucrado.aspx">
 		<modulo id="3"></modulo>
 	</opcion>
 	<opcion nombre="Eliminar Involucrados" link="~/GUI/Modulo3/EliminarInvolucrado.aspx">

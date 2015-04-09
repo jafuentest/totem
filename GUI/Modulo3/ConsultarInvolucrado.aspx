@@ -49,8 +49,12 @@ Consultar Personal Involucrado</asp:Content>
                                 &nbsp;
                             
                     </div>
-                 </form>
-              </div>
+     <script type="text/javascript">
+         $(document).ready(function () {
+             var table = $('#table-example').DataTable();
+         });
+
+       </script>
 
 </asp:Content>
 

@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="../Master/MasterPage.master" AutoEventWireup="true" CodeFile="AgregarInvolucrado.aspx.cs" Inherits="GUI_Modulo3_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../Master/MasterPage.master" AutoEventWireup="true" CodeFile="EliminarInvolucrado.aspx.cs" Inherits="GUI_Modulo3_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="subtitulo" Runat="Server">
-Agregar Personal Involucrado</asp:Content>
+Eliminar Personal Involucrado</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contenidoCentral" Runat="Server">
               <div class="col-sm-10 col-md-10 col-lg-10 col">
               	 <form class="form-horizontal" action="" method="POST" role="form" runat="server">
@@ -79,7 +79,7 @@ Agregar Personal Involucrado</asp:Content>
                    </div> 
                     <div class="form-group" >     
                            <div class="col-sm-3 col-md-2 col-lg-2 col-sm-offset-4">
-                              <button type="submit" class="btn btn-primary" onclick="return validar();">Agregar</button>
+                              <button type="submit" class="btn btn-primary" onclick="return validar();">Eliminar</button>
                             </div>
                                 &nbsp;
                             <div class="col-sm-3 col-md-2 col-lg-2">
@@ -157,7 +157,7 @@ Agregar Personal Involucrado</asp:Content>
                     }
                 }
             }
-            
+
        </script>
         <script type="text/javascript">
             $(document).ready(function () {
@@ -196,7 +196,7 @@ Agregar Personal Involucrado</asp:Content>
                         cargo_seleccionado,
                         empresa_seleccionado,
                         '<a class="btn btn-danger glyphicon glyphicon-remove-sign"></a>'
-                    
+
                     ]).draw();
                 });
 
