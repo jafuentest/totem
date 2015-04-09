@@ -49,7 +49,7 @@ Agregar Personal Involucrado</asp:Content>
                                   <button id="id_personal" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     Selecionar...<span class="caret"></span>
                                   </button>
-                                  <ol id="dp2" class="dropdown-menu" role="menu">
+                                  <ol id="dp2" class="dropdown-menu" role="menu" onclick="insertarfila();">
                                     <li value="1"><a href="#">Argenis Rodriguez</a></li>
                                     <li value="2"><a href="#">Scheryl Palencia</a></li>
                                     <li value="3"><a href="#">Rosa Rodriguez</a></li>
@@ -100,7 +100,7 @@ Agregar Personal Involucrado</asp:Content>
                    </div> 
                     <div class="form-group" >     
                            <div class="col-sm-3 col-md-2 col-lg-2 col-sm-offset-4">
-                              <button type="submit" class="btn btn-primary" OnClick="return validar();">Agregar</button>
+                              <button type="submit" class="btn btn-primary" onclick="return validar();">Agregar</button>
                             </div>
                                 &nbsp;
                             <div class="col-sm-3 col-md-2 col-lg-2">
@@ -128,6 +128,25 @@ Agregar Personal Involucrado</asp:Content>
                 $("#id_cargo").html($(this).text() + ' <span class="caret"></span>');
 
             });
+
+            function insertarfila() {
+                var empresa_seleccionado = $("#id_empresa").text().trim();
+                var personal_seleccionado = $("#id_personal").text().trim();
+                var cargo_seleccionado = $("#id_cargo").text().trim();
+
+                var split_personal = personal_seleccionado.split(' ');
+                var nombre_personal = split_personal[0];
+                var apellido_personal = split_personal[1];
+
+                table.row.add({
+                    "Nombre": ombre_personal,
+                    "Apellido": apellido_personal,
+                    "Rol": cargo_seleccionado,
+                    "Compañia": empresa_seleccionado,
+                    "Eliminar": "Edinburgh",
+                }).draw();
+            }
+
             function validar() {
                 var empresa_seleccionado = $("#id_empresa").text().trim();
                 var personal_seleccionado = $("#id_personal").text().trim();
@@ -153,24 +172,36 @@ Agregar Personal Involucrado</asp:Content>
             function cargarpersonal() {
                 var cargo_seleccionado = $("#id_cargo").text().trim();
                 var empresa_seleccionado = $("#id_empresa").text().trim();
+                $("#dp2").remove();
+
                 if (empresa_seleccionado == "Cliente") {
                     if (cargo_seleccionado == "Lider de Proyecto") {
-
+                        $("#dp2 ol").append('<li value="1"><a href="#">Argenis Rodriguez</a></li>');
+                        $("#dp2 ol").append('<li value="2"><a href="#">Carlos Rodriguez</a></li>');
+                        $("#dp2 ol").append('<li value="3"><a href="#">Nelson Rodriguez</a></li>');
                     }
                     if (cargo_seleccionado == "Analista") {
-
+                        $("#dp2 ol").append('<li value="1"><a href="#">Hero Rodriguez</a></li>');
+                        $("#dp2 ol").append('<li value="2"><a href="#">Jesus Rodriguez</a></li>');
+                        $("#dp2 ol").append('<li value="3"><a href="#">Sofia Rodriguez</a></li>');
                     }
-                    if (cargo_seleccionado == "Tecnico") { }
+                    if (cargo_seleccionado == "Tecnico") {
+                        $("#dp2 ol").append('<li value="1"><a href="#">Leonardo Rodriguez</a></li>');
+                        $("#dp2 ol").append('<li value="2"><a href="#">Fabian Rodriguez</a></li>');
+                    }
                 }
                 if (empresa_seleccionado == "Compañia de Software") {
                     if (cargo_seleccionado == "Lider de Proyecto") {
-
+                        $("#dp2 ol").append('<li value="1"><a href="#">Khaterine Rodriguez</a></li>');
+                        $("#dp2 ol").append('<li value="2"><a href="#">James Rodriguez</a></li>');
                     }
                     if (cargo_seleccionado == "Analista") {
-
+                        $("#dp2 ol").append('<li value="1"><a href="#">Rosa Rodriguez</a></li>');
+                        $("#dp2 ol").append('<li value="2"><a href="#">Susan Rodriguez</a></li>');
                     }
                     if (cargo_seleccionado == "Tecnico") {
-
+                        $("#dp2 ol").append('<li value="1"><a href="#">Estefania Rodriguez</a></li>');
+                        $("#dp2 ol").append('<li value="2"><a href="#">Laura Rodriguez</a></li>');
                     }
                 }
             }
