@@ -25,8 +25,8 @@
 					<td>Perez</td>
 					<td>Gerente de Proyecto</td>
                     <td>
-                        <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
-                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ModificarUsuario.aspx?id=1") %>"></a>
+                         
+                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ DetalleUsuario.aspx?id=1") %>"></a>
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
                     </td>
                 </tr>
@@ -36,8 +36,8 @@
                     <td>Rodriguez</td>
                     <td>Dise&ntilde;ador</td>
                     <td>
-                        <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
-                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ModificarUsuario.aspx?id=1") %>"></a>
+                         
+                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ DetalleUsuario.aspx?id=1") %>"></a>
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
 
                     </td>
@@ -47,8 +47,8 @@
                     <td>Osorio</td>
                     <td>Administrador Base de Datos</td>
                     <td>
-                        <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
-                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ModificarUsuario.aspx?id=1") %>"></a>
+                         
+                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ DetalleUsuario.aspx?id=1") %>"></a>
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
                     </td>
                 </tr>
@@ -58,8 +58,8 @@
                     <td>Cursus</td>
                     <td>Desarrollador</td>
                     <td>
-                        <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
-                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ModificarUsuario.aspx?id=1") %>"></a>
+                         
+                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ DetalleUsuario.aspx?id=1") %>"></a>
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
                     </td>
                 </tr>
@@ -69,8 +69,8 @@
                     <td>Nisi</td>
                     <td>Desarrollador</td>
                     <td>
-                        <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
-                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ModificarUsuario.aspx?id=1") %>"></a>
+                         
+                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ DetalleUsuario.aspx?id=1") %>"></a>
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
                     </td>
                 </tr>
@@ -80,8 +80,8 @@
                     <td>Aguila</td>
                     <td>Gerente de Proyectos</td>
                     <td>
-                        <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
-                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ModificarUsuario.aspx?id=1") %>"></a>
+                         
+                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ DetalleUsuario.aspx?id=1") %>"></a>
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
 
                     </td>
@@ -103,8 +103,8 @@
                     <td>Santini</td>
                     <td>Desarrollador</td>
                     <td>
-                        <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
-                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ModificarUsuario.aspx?id=1") %>"></a>
+                         
+                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ DetalleUsuario.aspx?id=1") %>"></a>
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#">Eliminar</a>
                    </td>
                 </tr>
@@ -114,8 +114,8 @@
                     <td>Reveron</td>
                     <td>Dise&ntilde;ador</td>
                     <td>
-                         <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
-                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ModificarUsuario.aspx?id=1") %>"></a>
+                          
+                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ DetalleUsuario.aspx?id=1") %>"></a>
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
                    </td>
                 </tr>
@@ -125,8 +125,8 @@
                     <td>Porta</td>
                     <td>Gerente de Proyecto</td>
                     <td>
-                        <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
-                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ModificarUsuario.aspx?id=1") %>"></a>
+                         
+                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ DetalleUsuario.aspx?id=1") %>"></a>
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
                     </td>
                 </tr>
@@ -136,8 +136,8 @@
                     <td>Macia</td>
                     <td>Administrador Base de Datos</td>
                     <td>
-                        <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
-                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ModificarUsuario.aspx?id=1") %>"></a>
+                         
+                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ DetalleUsuario.aspx?id=1") %>"></a>
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
                  </td>
                 </tr>
@@ -147,8 +147,8 @@
                     <td>Clase</td>
                     <td>Desarrollador</td>
                     <td>
-                        <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
-                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ModificarUsuario.aspx?id=1") %>"></a>
+                         
+                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ DetalleUsuario.aspx?id=1") %>"></a>
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
                     </td>
                 </tr>
@@ -158,8 +158,8 @@
                     <td>Perez</td>
                     <td>Desarrollador</td>
                     <td>
-                        <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
-                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ModificarUsuario.aspx?id=1") %>"></a>
+                         
+                        <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ DetalleUsuario.aspx?id=1") %>"></a>
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
                    </td>
                 </tr>
@@ -198,9 +198,9 @@
 
 	        $('#table-users tbody').on('click', 'a', function () {
 	            if ($(this).parent().hasClass('selected')) {
-	                user = $(this).prev().prev().prev().prev().text();
+	                user = $(this).parent().prev().prev().prev().prev().text();
 	                $(this).parent().removeClass('selected');
-	               
+
 	            }
 	            else {
 	                user = $(this).parent().prev().prev().prev().prev().text();
@@ -209,7 +209,7 @@
 	            }
 	        });
 	        $('#modal-delete').on('show.bs.modal', function (event) {
-                 var modal = $(this)
+	            var modal = $(this)
 	            modal.find('.modal-title').text('Eliminar usuario:  ' + user)
 	            modal.find('#user-name').text(user)
 	        })
