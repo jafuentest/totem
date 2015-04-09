@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="RNFuncionalesID.aspx.cs" Inherits="GUI_Modulo5_RNFuncionalesID" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="RFuncionales.aspx.cs" Inherits="GUI_Modulo5_RFuncionalesID" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Requerimientos<br /></asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Reporte de Requerimientos No Funcionales Organizada por ID</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Reporte de Requerimientos Funcionales Organizada por ID</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     <div class="col-lg-offset-11">
         <button class="btn btn-default">Imprimir</button>
@@ -61,10 +61,7 @@
         <!-- Data tables init -->
 	    <script type="text/javascript">
 	        jQuery(function ($) {
-	            $('#table-example').DataTable(
-                    {
-                        "bSort": false,
-                    });
+	            $('#table-example').DataTable();
 	        });
 	    </script>
         </div>

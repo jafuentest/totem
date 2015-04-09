@@ -30,16 +30,10 @@
   <opcion nombre="Listar Requerimientos" link="~/GUI/Modulo5/PrincipalProyecto.aspx">
     <modulo id="5"></modulo>
   </opcion>
-  <opcion nombre="Reporte de Requerimientos Funcionales Organizada por ID" link="~/GUI/Modulo5/RFuncionalesID.aspx">
+  <opcion nombre="Reporte de Requerimientos Funcionales" link="~/GUI/Modulo5/RFuncionales.aspx">
     <modulo id="5"></modulo>
   </opcion>
-  <opcion nombre="Reporte de Requerimientos Funcionales Organizada por Prioridad" link="~/GUI/Modulo5/RFuncionalesPrioridad.aspx">
-    <modulo id="5"></modulo>
-  </opcion>
-  <opcion nombre="Reporte de Requerimientos No Funcionales Organizada por ID" link="~/GUI/Modulo5/RNFuncionalesID.aspx">
-    <modulo id="5"></modulo>
-  </opcion>
-  <opcion nombre="Reporte de Requerimientos No Funcionales Organizada por Prioridad" link="~/GUI/Modulo5/RNFuncionalesPrioridad.aspx">
+  <opcion nombre="Reporte de Requerimientos No Funcionales" link="~/GUI/Modulo5/RNFuncionales.aspx">
     <modulo id="5"></modulo>
   </opcion>
 	
