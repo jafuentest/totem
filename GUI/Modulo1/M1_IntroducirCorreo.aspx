@@ -8,21 +8,29 @@
    Ingrese Correo
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contenidoCentral" Runat="Server">
-    <body>
-    <form id="login" >
+    
+    <div  class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
+    <form id="ingresoCorreo" class="form-horizontal" >
 
                 <div  class="login-form"> 
                     
                   <div id="login-form-name" class="form-group">
                     <input type="text" class="form-control login-field" value="" placeholder="Introduzca su Correo" id="login-name" name="correo" />
                   </div>
-                  <a class="btn btn-primary " href="M1_PreguntaSeguridad.aspx">Continuar</a>
-
-                  <a class="btn btn-primary " href="M1_login.aspx">Cancelar</a>
+                  <div class="form-group">
+		               <div class="form-group">
+                         &nbsp; &nbsp;
+				            <button class="btn btn-primary" type="submit" onclick="return checkform()">Continuar</button>
+                        &nbsp;
+				            <button class="btn btn-default">Cancelar</button>
+                       </div>  
+                  </div>
                   
                 </div>
               </form>
+        </div>
 
-    </body>
+    <script src="js/Login.js"></script>
+   
 </asp:Content>
 

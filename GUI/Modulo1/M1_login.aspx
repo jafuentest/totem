@@ -10,7 +10,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     
                 <div  class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-                    <form id="login_form" class="form-horizontal">
+                   <form id="login" class="form-horizontal">
 
                     <div id="login-form-name" class="form-group">
                             <input type="text" class="form-control login-field" value="" placeholder="Ingrese nombre de usuario" id="login-name" name="usuario" />
@@ -26,8 +26,8 @@
                                             
                     <a class="login-link" href="M1_IntroducirCorreo.aspx">¿Olvid&oacute; su contrase&ntilde;a?</a>
                     
-                  </div>
-              </form>                    
+                    </div>
+                   </form>                    
              </div>
     
         <script src="js/Login.js"></script>
