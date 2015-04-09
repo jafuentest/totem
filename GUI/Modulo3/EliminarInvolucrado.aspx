@@ -87,6 +87,27 @@ Eliminar Personal Involucrado</asp:Content>
                            </div>
                     </div>
                  </form>
+                   <div id="modal-delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+                   <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                           <h4 class="modal-title" >Confirmaci&oacute;n</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                  <p>Seguro de que deseas quitar a esta persona de la selección?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                           <button id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarUsuario()">Eliminar</button>
+                       </div>
+                      </div><!-- /.modal-content -->
+                   </div><!-- /.modal-dialog -->
+                   </div><!-- /.modal -->
               </div>
         <script type="text/javascript">
 
@@ -162,7 +183,7 @@ Eliminar Personal Involucrado</asp:Content>
         <script type="text/javascript">
             $(document).ready(function () {
                 var table = $('#table-example').DataTable();
-
+                var tr;
                 $('#table-example tbody').on('click', 'a', function () {
                     if ($(this).parent().hasClass('selected')) {
                         $(this).parent().removeClass('selected');
@@ -170,12 +191,7 @@ Eliminar Personal Involucrado</asp:Content>
                     else {
                         table.$('tr.selected').removeClass('selected');
                         $(this).parent().addClass('selected');
-                    }
-                    if (confirm('Seguro de que deseas quitar a esta persona de la selección?') == true) {
-                        table.row($(this).parents('tr')).remove().draw();
-                        tabla_cont = tabla_cont - 1;
-                    } else {
-                        $(this).parent().removeClass('selected');
+                        tr = $(this).parents('tr');
                     }
                 });
 
@@ -195,9 +211,14 @@ Eliminar Personal Involucrado</asp:Content>
                         apellido_personal,
                         cargo_seleccionado,
                         empresa_seleccionado,
-                        '<a class="btn btn-danger glyphicon glyphicon-remove-sign"></a>'
+                        '<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete"></a>'
 
                     ]).draw();
+                });
+                //para eliminar la fila
+                $('#btn-eliminar').on('click', function () {
+                    table.row(tr).remove().draw();//se elimina la fila de la tabla
+                    $('#modal-delete').modal('hide');//se esconde el modal
                 });
 
             });
