@@ -1,22 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="AgregarRequerimiento.aspx.cs" Inherits="GUI_Modulo5_AgregarRequerimiento" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Requerimientos<br /></asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Agregar Requerimiento</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
-
-    <div id="formularioAgregar" class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">    
-        <div id="alertlocal">
-        </div>
-        <form id="agregar_requerimientos" class="form-horizontal" action="#" method="post">
+    <div id="formularioAgregar" class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">      
+        <form id="agregar_requerimientos" class="form-horizontal" method="post" action="ListarRequerimientos.aspx?success=1">
             <div class="form-group">
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;Tipo de Requerimiento:</p>
                 &nbsp;&nbsp;&nbsp;&nbsp;<label class="radio-inline"><input type="radio" name="optradio1" checked="checked"/>Funcional</label>
                 <label class="radio-inline">
                 <input type="radio" name="optradio1"/>No Funcional</label>
             </div>
-            <br />
+            <br/>
             <div class="row">
                 <div class="col-lg-9">
                     <div class="form-group">
@@ -45,11 +41,5 @@
         </form>
     </div>
     <script src="js/Validacion.js"></script>
-    <script type="text/javascript">
-        $('#btn-agregarReq').on('click', function () {
-            $('#alertlocal').addClass("alert alert-success alert-dismissible");
-            $('#alertlocal').text("Usuario agregado exitosamente");
-        });
-    </script>
 </asp:Content>
 

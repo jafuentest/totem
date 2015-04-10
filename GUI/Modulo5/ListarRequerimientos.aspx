@@ -5,11 +5,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Requerimientos<br /></asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Lista de Requerimiento</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">    
+    <div id="alert" runat="server">
+    </div>
     <div class="panel panel-primary" style="width:auto">
       <div class="panel-heading">
         <h3 class="panel-title" style="align-content:center">Proyecto</h3>
       </div>
-      <div class="panel-body" style="width:">
+      <div class="panel-body" style="width:auto">
           Nombre del Proyecto: TOTEM<br />
           Empresa Cliente: UCAB<br />
           Status del Proyecto: Activo<br />
