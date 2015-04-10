@@ -16,5 +16,10 @@
                    }
                }
            }
+       })
+       .on('success.field.fv', function(e, data){
+           if (data.fv.getInvalidFields().length > 0){
+               data.data.fv.disableSubmitButtons(true);
+           }
        });
 });

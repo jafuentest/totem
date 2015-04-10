@@ -5,8 +5,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Requerimientos<br /></asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Agregar Requerimiento</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
-    <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-        <form id="agregar_requerimientos" class="form-horizontal" action="PrincipalProyecto.aspx" method="post">
+
+    <div id="formularioAgregar" class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">    
+        <div id="alertlocal">
+        </div>
+        <form id="agregar_requerimientos" class="form-horizontal" action="#" method="post">
             <div class="form-group">
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;Tipo de Requerimiento:</p>
                 &nbsp;&nbsp;&nbsp;&nbsp;<label class="radio-inline"><input type="radio" name="optradio1" checked="checked"/>Funcional</label>
@@ -36,11 +39,17 @@
             <br />
             <div class="form-group">
                 <div class="col-sm-5 col-md-5 col-lg-5">
-                    <button class="btn btn-primary" type="submit" onclick="return checkform()">Agregar</button>
+                    <button id="btn-agregarReq" disabled="disabled" class="btn btn-primary" type="submit" onclick="return checkform();">Agregar</button>
                 </div>
             </div>
         </form>
     </div>
-    <script src="js/Validacion.js"></script>"
+    <script src="js/Validacion.js"></script>
+    <script type="text/javascript">
+        $('#btn-agregarReq').on('click', function () {
+            $('#alertlocal').addClass("alert alert-success alert-dismissible");
+            $('#alertlocal').text("Usuario agregado exitosamente");
+        });
+    </script>
 </asp:Content>
 
