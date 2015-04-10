@@ -65,11 +65,11 @@
             </div>
                 <div class="form-group">
                          &nbsp; &nbsp;
-				            <button class="btn btn-primary">Editar</button>
+				            <a class="btn btn-primary" href="ListarUsuarios.aspx?success=2">Editar</a>
                         &nbsp;
 				            <a class="btn btn-default" href="ListarUsuarios.aspx">Cancelar</a>
                          &nbsp;
-                            <a class="btn btn-danger" href="ListarUsuarios.aspx?success=1">Eliminar</a>
+                            <a class="btn btn-danger col-md-offset-6"  href="ListarUsuarios.aspx?success=1">Eliminar</a>
 		        </div>
             </form>
         </div>

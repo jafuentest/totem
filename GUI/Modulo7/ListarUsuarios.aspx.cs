@@ -26,6 +26,13 @@ public partial class GUI_Modulo7_ListarUsuarios : System.Web.UI.Page
                
                 alert.InnerText = "Se ha eliminado con éxito";
             }
+            if (success.Equals("2"))
+            {
+                alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                alert.Attributes["role"] = "alert";
+
+                alert.InnerText = "Se ha editado con éxito";
+            }
         }
 
     }

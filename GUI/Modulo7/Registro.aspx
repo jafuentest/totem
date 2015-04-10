@@ -43,6 +43,45 @@
 			</div>
 		</div>
         <div class="form-group">
+            <div class="col-sm-10 col-md-10 col-lg-10">
+            <div class="dropdown">
+              <button id="id-rol" class="btn btn-default dropdown-toggle" type="button" id="dropdownRol" data-toggle="dropdown" aria-expanded="true">
+                Seleccione un Rol
+                <span class="caret"></span>
+              </button>
+              <ul id="dprol" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation"><a role="menuitem" tabindex="-1" >Usuario</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" >Admin</a></li>
+              </ul>
+            </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-10 col-md-10 col-lg-10">
+            <div class="dropdown">
+              <button id="id-cargo" class="btn btn-default dropdown-toggle" type="button" name="dropdwonCargo" data-toggle="dropdown" aria-expanded="true">
+                Seleccione un Cargo
+                <span class="caret"></span>
+              </button>
+              <ul id="dpcargo" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation"><a role="menuitem" tabindex="-1" >Gerente</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" >Desarrollador</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1">Diseñador</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" >L&iacute;der de Proyecto</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" >Arquitecto de Soluci&oacute;n</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" >Arquitecto de Base de Datos</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1">Documentador</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1">Otro</a></li>
+              </ul>
+            </div>
+            </div>
+        </div>
+         <div class="form-group">
+			<div id="div_otrocargo" class="col-sm-10 col-md-10 col-lg-10">
+				<input id="input-otrocargo" type="text" placeholder="Otro Cargo" class="form-control" name="otrocargo" disabled/>
+			</div>
+		</div>
+        <div class="form-group">
 			<div id="div_pregunta" class="col-sm-10 col-md-10 col-lg-10">
 				<input type="text" placeholder="Pregunta de Seguridad" class="form-control" name="pregunta"/>
 			</div>
@@ -60,6 +99,25 @@
     </form>
         </div>
     <script src="js/Validacion.js"></script>
+    <script>
+        $("#dprol li a").click(function () {
+
+            $("#id-rol").html($(this).text() + ' <span class="caret"></span>');
+
+        });
+        $("#dpcargo li a").click(function () {
+
+            if ($(this).text() == 'Otro') {
+                $('#input-otrocargo').prop('disabled', false);
+            }
+            else {
+                $('#input-otrocargo').prop('disabled', true);
+            }
+            $("#id-cargo").html($(this).text() + ' <span class="caret"></span>');
+            
+        });
+        
+    </script>
     
 </asp:Content>
 

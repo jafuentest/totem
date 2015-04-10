@@ -18,7 +18,7 @@
 			    </div>
             </div>
             <div class="form-group">
-			    <div  class="col-sm-5 col-md-5 col-lg-10">
+			    <div  class="col-sm-10 col-md-10 col-lg-10">
 				    <label>Nombre:</label>
                     <input type="text" value="Javier" class="form-control" name="nombre"/>
 			    </div>
