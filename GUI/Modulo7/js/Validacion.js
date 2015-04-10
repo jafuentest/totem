@@ -179,4 +179,41 @@
                },
            }
        });
+    $('#pswd-form')
+      .bootstrapValidator({
+          message: 'This value is not valid',
+          excluded: [':disabled'],
+          feedbackIcons: {
+              valid: 'glyphicon glyphicon-ok',
+              invalid: 'glyphicon glyphicon-remove',
+              validating: 'glyphicon glyphicon-refresh'
+          },
+          fields: {            
+              pswdviejo: {
+                  validators: {
+                      notEmpty: {
+                          message: 'La contrase&ntilde;a vieja es requerida'
+                      }
+                  }
+              },
+              pswdnuevo: {
+                  validators: {
+                      notEmpty: {
+                          message: 'La contrase&ntilde;a nueva es requerida'
+                      }
+                  }
+              },
+              pswdnuevoconf: {
+                  validators: {
+                      notEmpty: {
+                          message: 'Se requiere confirmar la contrse&ntilde;a'
+                      },
+                      identical: {
+                          field: 'pswdnuevo',
+                          message: 'Las contrase&ntilde;as no coinciden'
+                      }
+                  }
+              }
+          }
+      });
 });

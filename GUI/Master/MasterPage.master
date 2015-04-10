@@ -49,7 +49,7 @@
 		<![endif]-->
         <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
     </head>
-    <body>
+    <body onload="checkCookie()">
         <nav class="navbar navbar-inverse navbar-fixed-top">
 		    <div class="container-fluid">
 			    <div class="navbar-header">
@@ -63,6 +63,13 @@
 			    </div>
 			    <div id="navbar" class="navbar-collapse collapse">
 				    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >Proyecto Seleccionado: <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="<%= Page.ResolveUrl("~/GUI/Modulo4/PerfilProyecto.aspx") %>">Detalle de Proyecto</a></li>
+                                <li><a href="<%= Page.ResolveUrl("~/GUI/Modulo1/Default.aspx") %>">Cambiar de Proyecto</a></li>
+                            </ul>
+					    </li>
 					    <li class="dropdown">
                             <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestion de Usuarios<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
@@ -117,6 +124,21 @@
 
         <script type="text/javascript">
             $("a[href*='" + location.pathname + "']").closest("li").addClass("active");
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') c = c.substring(1);
+                    if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+                }
+                return "";
+            }
+
+            function checkCookie() {
+                var projectName = getCookie("selectedProject");
+                //alert("Proyecto Seleccionado " + projectName);
+            }
         </script>
     </body>
 </html>
