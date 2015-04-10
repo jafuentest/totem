@@ -12,25 +12,25 @@
             <div class="form-group">
 		        <div  class="col-sm-10 col-md-10 col-lg-10">
                     <label>Nombre de Usuario: </label>
-                    <input type="text" value="Nombre de Usuario" class="form-control" name="usuario" />
+                    <input type="text" value="aaciti" class="form-control" name="usuario" />
 			    </div>
             </div>
             <div class="form-group">
 			    <div  class="col-sm-5 col-md-5 col-lg-10">
 				    <label>Nombre:</label>
-                    <input type="text" value="Nombre" class="form-control" name="nombre"/>
+                    <input type="text" value="Luis" class="form-control" name="nombre"/>
 			    </div>
             </div>
             <div class="form-group">
 	            <div  class="col-sm-10 col-md-10 col-lg-10">
 		            <label>Apellido: </label>
-                    <input type="text" value="Apellido" class="form-control" name="apellido"/>
+                    <input type="text" value="Perez" class="form-control" name="apellido"/>
 		        </div>
             </div>
             <div class="form-group">
 	            <div  class="col-sm-10 col-md-10 col-lg-10">
 		            <label>Correo: </label>
-                    <input type="text" value="Correo Electr&oacute;nico" class="form-control" name="correo"/>
+                    <input type="text" value="aaciti@totem.com" class="form-control" name="correo"/>
 		        </div>
             </div>
             <div class="form-group">
@@ -48,28 +48,28 @@
             <div class="form-group">
 			    <div  class="col-sm-10 col-md-5 col-lg-5">
 				    <label>Cargo:</label>
-                    <input type="text" value="Cargo en la Empresa" class="form-control" name="cargo" />
+                    <input type="text" value="Desarrollador" class="form-control" name="cargo" />
 			    </div>
             </div>
             <div class="form-group">
 			    <div  class="col-sm-10 col-md-10 col-lg-10">
 				    <label>Pregunta de Seguridad:</label>
-                    <input type="text" value="Pregunta de Seguridad" class="form-control" name="pregunta"/>
+                    <input type="text" value="Cual es el apellido de soltera de tu mama?" class="form-control" name="pregunta"/>
 			    </div>
             </div>
             <div class="form-group">
 			    <div class="col-sm-10 col-md-10 col-lg-10">
 				    <label>Respuesta: </label>
-                    <input type="text" value="Respuesta" class="form-control" name="respuesta" />
+                    <input type="text" value="Jimenez" class="form-control" name="respuesta" />
 			    </div>
             </div>
                 <div class="form-group">
                          &nbsp; &nbsp;
 				            <button class="btn btn-primary">Editar</button>
                         &nbsp;
-				            <button class="btn btn-default">Cancelar</button>
+				            <a class="btn btn-default" href="ListarUsuarios.aspx">Cancelar</a>
                          &nbsp;
-                            <button class="btn btn-danger">Eliminar</button>
+                            <a class="btn btn-danger" href="ListarUsuarios.aspx?success=1">Eliminar</a>
 		        </div>
             </form>
         </div>

@@ -7,6 +7,11 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
+    <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
+        <div id="alert" runat="server">
+        </div>
+        <div id="alertlocal" >
+        </div>
     <div class="table-responsive">
 		<table id="table-users" class="table table-striped table-hover">
 			<thead>
@@ -187,7 +192,7 @@
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 	</div>
-
+</div>
 	<!-- Data tables init -->
 	<script type="text/javascript">
 	    $(document).ready(function () {
@@ -219,6 +224,8 @@
 	        $('#btn-eliminar').on('click', function () {
 	            table.row(tr).remove().draw();//se elimina la fila de la tabla
 	            $('#modal-delete').modal('hide');//se esconde el modal
+	            $('#alertlocal').addClass("alert alert-success alert-dismissible");
+	            $('#alertlocal').text("Se ha eliminado con éxito");
 	        });
 	    });
 	</script>
