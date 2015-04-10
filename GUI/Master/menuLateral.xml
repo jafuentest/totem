@@ -15,10 +15,13 @@
 	
 	<!--OPCIONES DEL MENU LATERAL DEL MODULO 4-->
 	
-	<opcion nombre="Lista de Proyectos" link="~/GUI/Modulo4/ListaProyectos.aspx">
+	<opcion nombre="Lista de Proyectos" link="~/GUI/Modulo1/Default.aspx">
 		<modulo id="4"></modulo>
 	</opcion>
-		<opcion nombre="Crear Proyecto" link="~/GUI/Modulo4/CrearProyecto.aspx">
+	<opcion nombre="Crear Proyecto" link="~/GUI/Modulo4/CrearProyecto.aspx">
+		<modulo id="4"></modulo>
+	</opcion>
+	<opcion nombre="Buscar..." link="~/GUI/Modulo4/ListaProyectos.aspx">
 		<modulo id="4"></modulo>
 	</opcion>
 

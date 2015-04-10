@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="PerfilProyecto.aspx.cs" Inherits="GUI_Modulo4_PerfilProyecto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <meta http-equiv="set-cookie" content="selectedProject=Twitter;">
     <style>
         .sameLine {
             display: inline;
@@ -11,6 +12,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server"> Perfil</asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
+
     <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
         <form id="register_form" class="form-horizontal" action="#">
             <div class="form-group">
@@ -450,6 +452,22 @@
     jQuery(function ($) {
         $('#table-example').DataTable();
     });
+
+    /*function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1);
+            if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+        }
+        return "";
+    }
+
+    function checkCookie() {
+        var projectName = getCookie("selectedProject");
+        //alert("Proyecto Seleccionado " + projectName);
+    }*/
 	</script>
 
 </asp:Content>
