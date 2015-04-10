@@ -12,15 +12,19 @@
 
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     <!--AQUI SE DEFINE EL TAMANO DEL FORM Y SU UBICACION-->
+    
+   
     <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
         <form id="register_form" class="form-horizontal" action="#">
             <div class="form-group">
-		        <div id="div_codigo" class="col-sm-2 col-md-2 col-lg-2">
-				    <input type="text" placeholder="Codigo" class="form-control" name="codigo"/>
+                <div id="div_nombre" class="col-sm-8 col-md-8 col-lg-8">
+				    <input type="text" id="Nombre" placeholder="Nombre" onblur="fillCodigoTextField()" class="form-control" name="nombre"/>
+                   
 			    </div>
+		        
                 &nbsp;
-			    <div id="div_nombre" class="col-sm-8 col-md-8 col-lg-8">
-				    <input type="text" placeholder="Nombre" class="form-control" name="nombre"/>
+			    <div id="div_codigo" class="col-sm-2 col-md-2 col-lg-2">
+				    <input type="text" id="Codigo" placeholder="Codigo" class="form-control" name="codigo" disabled="disabled"/>
 			    </div>
 		    </div>
             <div class="form-group">
@@ -50,5 +54,22 @@
         </form>
     </div>
     <script src="bootstrap-switch-master/js/Validacion.js"></script>
+     <script language="javascript">
+         function fillCodigoTextField() {
+             var codigoTextField = document.getElementById("Codigo");
+             var nombreTextField = document.getElementById("Nombre");
+             if (nombreTextField.value.length>=2) { //antes de llenar el codigo revisa si almenos tiene dos caracteres
+                 codigoTextField.value = "";
+                 var words = nombreTextField.value.split(" ");//crea una array de palabras del nombre del proyecto 
+                 for (i in words) {
+                     temp = words[i];
+                     codigoTextField.value = codigoTextField.value + temp.charAt(0).toUpperCase(); // va concatenando cada una de las primeras letras de las palabras en mayuscula.
+                 }
+                 codigoTextField.disabled = false; //al terminar se habilita el textfield para su posible edicion.
+             }
+         }
+    </script>
+
+
 </asp:Content>
 
