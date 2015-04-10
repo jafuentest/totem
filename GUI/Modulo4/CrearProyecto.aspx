@@ -53,8 +53,8 @@
 	        </div>
         </form>
     </div>
-    <script src="bootstrap-switch-master/js/Validacion.js"></script>
-     <script language="javascript">
+    <script src="js/Validacion.js"></script>
+    <script language="javascript">
          function fillCodigoTextField() {
              var codigoTextField = document.getElementById("Codigo");
              var nombreTextField = document.getElementById("Nombre");
