@@ -146,7 +146,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" onclick="EliminarRequerimiento()">Eliminar</button>
+          <button id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarRequerimiento()">Eliminar</button>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -157,16 +157,19 @@
 	    $(document).ready(function () {
 	        $('#table-example').DataTable();
 	        var table = $('#table-example').DataTable();
-	        var req = 'hola'
+	        var req;
+	        var tr;
 
 	        $('#table-example tbody').on('click', 'a', function () {
 	            if ($(this).parent().hasClass('selected')) {
 	                req = $(this).parent().prev().prev().prev().prev().text();
+	                tr = $(this).parents('tr');//se guarda la fila seleccionada
 	                $(this).parent().removeClass('selected');
 
 	            }
 	            else {
 	                req = $(this).parent().prev().prev().prev().prev().text();
+	                tr = $(this).parents('tr');//se guarda la fila seleccionada
 	                table.$('tr.selected').removeClass('selected');
 	                $(this).parent().addClass('selected');
 	            }
@@ -176,6 +179,10 @@
 	            modal.find('.modal-title').text('Eliminar requerimiento:  ' + req)
 	            modal.find('#req').text(req)
 	        })
+	        $('#btn-eliminar').on('click', function () {
+	            table.row(tr).remove().draw();//se elimina la fila de la tabla
+	            $('#modal-delete').modal('hide');//se esconde el modal
+	        });
 	    });
 	</script>
  
