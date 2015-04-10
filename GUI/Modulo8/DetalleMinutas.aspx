@@ -8,6 +8,10 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
+       <div id="alert" runat="server">
+           </div>    
+             <div id="alertlocal">
+        </div>
      <form id="crearMinuta_form" class="form-horizontal" action="#">
         <div class="form-group">
            <div class="col-sm-3 col-md-3 col-lg-3">
