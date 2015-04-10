@@ -92,7 +92,7 @@ Agregar Personal Involucrado</asp:Content>
                         </div>
                         <div class="modal-footer">
                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                           <button id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarUsuario()">Eliminar</button>
+                           <button id="btn-eliminar" type="button" class="btn btn-primary">Eliminar</button>
                        </div>
                       </div><!-- /.modal-content -->
                    </div><!-- /.modal-dialog -->
@@ -107,7 +107,7 @@ Agregar Personal Involucrado</asp:Content>
                         <div class="modal-body">
                             <div class="container-fluid">
                                 <div class="row">
-                                  <p>Seguro de que deseas eliminar al personal seleccionado?</p>
+                                  <p>Seguro de que deseas agregar el personal seleccionado al proyecto?</p>
                                     <p id="advertencia"></p>
                                 </div>
                             </div>
