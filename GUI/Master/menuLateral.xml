@@ -82,4 +82,16 @@
     <modulo id="7"></modulo>
   </opcion>
   
+  <!--OPCIONES DEL MENU LATERAL DEL MODULO 8-->
+
+  <opcion nombre="Listar Minutas" link="~/GUI/Modulo8/ConsultarMinuta.aspx">
+    <modulo id="8"></modulo>
+  </opcion>
+  <opcion nombre="Crear Minuta" link="~/GUI/Modulo8/CrearMinuta.aspx">
+    <modulo id="8"></modulo>
+  </opcion>
+  <opcion nombre="Imprimir Minuta" link="~/GUI/Modulo7/ImprimirMinuta.aspx">
+    <modulo id="8"></modulo>
+  </opcion>
+  
 </menuLateral>
