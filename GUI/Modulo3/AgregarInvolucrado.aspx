@@ -122,7 +122,7 @@ Agregar Personal Involucrado</asp:Content>
                    </div> 
                     <div class="form-group" >     
                            <div class="col-sm-3 col-md-2 col-lg-2 col-sm-offset-4">
-                              <button type="submit" class="btn btn-primary" onclick="return false;" data-toggle="modal" data-target="#modal-confirmacion">Eliminar</button>
+                              <button type="submit" class="btn btn-primary" onclick="return false;" data-toggle="modal" data-target="#modal-confirmacion">Agregar</button>
                             </div>
                                 &nbsp;
                             <div class="col-sm-3 col-md-2 col-lg-2">
