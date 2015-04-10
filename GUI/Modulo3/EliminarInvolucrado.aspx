@@ -4,6 +4,8 @@
 Eliminar Personal Involucrado</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contenidoCentral" Runat="Server">
               <div class="col-sm-10 col-md-10 col-lg-10 col">
+                 <div class="col-sm-offset-1" id="alertlocal" >
+                 </div>
               	 <form id="eliminarpersonal" class="form-horizontal" action="" method="POST" role="form" runat="server">
                         <div class="form-group">
                             <div class="col-sm-3 col-md-3 col-lg-3 col-sm-offset-4">
@@ -79,7 +81,7 @@ Eliminar Personal Involucrado</asp:Content>
                    </div> 
                     <div class="form-group" >     
                            <div class="col-sm-3 col-md-2 col-lg-2 col-sm-offset-4">
-                              <button type="submit" class="btn btn-primary" onclick="return false;" data-toggle="modal" data-target="#modal-confirmacion">Eliminar</button>
+                              <button id="btn-enviar" type="submit" class="btn btn-primary" onclick="return false;">Eliminar</button>
                             </div>
                                 &nbsp;
                             <div class="col-sm-3 col-md-2 col-lg-2">
@@ -119,7 +121,6 @@ Eliminar Personal Involucrado</asp:Content>
                             <div class="container-fluid">
                                 <div class="row">
                                   <p>Seguro de que deseas quitar al personal seleccionado?</p>
-                                  <p id="advertencia"></p>
                                 </div>
                             </div>
                         </div>
@@ -234,6 +235,8 @@ Eliminar Personal Involucrado</asp:Content>
 
                     var table = $('#table-example').DataTable();
                     tabla_cont = tabla_cont + 1;
+                    $('#alertlocal').removeClass("alert alert-success alert-dismissible");
+                    $('#alertlocal').text("");
                     table.row.add([
                         nombre_personal,
                         apellido_personal,
@@ -249,18 +252,19 @@ Eliminar Personal Involucrado</asp:Content>
                     $('#modal-delete').modal('hide');//se esconde el modal
                     tabla_cont = tabla_cont - 1;
                 });
-                $('#modal-confirmacion').on('show.bs.modal', function (event) {
-                    var modal = $(this);
-                    modal.find('#advertencia').text("");
-                })
-                //para confirmar
                 $('#btn-confirmar').on('click', function () {
-                    var modal = $('#modal-confirmacion');
+                    document.getElementById("eliminarpersonal").submit();
+                });
+                //para confirmar
+                $('#btn-enviar').on('click', function () {
+
                     if (tabla_cont == 0) {
-                        modal.find('#advertencia').text("No has seleccionado personal");
+                        $('#alertlocal').addClass("alert alert-danger alert-dismissible");
+                        $('#alertlocal').text("No has seleccionado ningun personal");
                     } else {
-                        document.getElementById("eliminarpersonal").submit();
+                        $('#modal-confirmacion').modal("show");
                     }
+
                 });
 
             });
