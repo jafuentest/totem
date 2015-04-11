@@ -26,7 +26,7 @@ Agregar Personal Involucrado</asp:Content>
                         </div>
                        <div class="form-group">
                             <div class="col-sm-3 col-md-3 col-lg-3 col-sm-offset-4">
-                                    <label>Seleccione Cargo:</label>  
+                                    <label>Listar Personal según el cargo:</label>  
                              </div>   
                             <div class="col-sm-5 col-md-5 col-lg-5" > 
                                 <div class="btn-group">
@@ -34,9 +34,13 @@ Agregar Personal Involucrado</asp:Content>
                                     Selecionar...<span class="caret"></span>
                                   </button>
                                   <ol id="dp3" class="dropdown-menu" role="menu" onclick="cargarpersonal();">
-                                    <li value="1"><a href="#">Lider de Proyecto</a></li>
-                                    <li value="2"><a href="#">Analista</a></li>
-                                    <li value="3"><a href="#">Tecnico</a></li>
+                                    <li value="1"><a href="#">Gerente</a></li>
+                                    <li value="2"><a href="#">Desarrollador</a></li>
+                                    <li value="3"><a href="#">Diseñador</a></li>
+                                    <li value="4"><a href="#">Lider de Proyecto</a></li>
+                                    <li value="5"><a href="#">Arquitecto de Solución</a></li>
+                                    <li value="6"><a href="#">Arquitecto de Base de Datos</a></li>
+                                    <li value="7"><a href="#">Documentador</a></li>                                                                          
                                   </ol>
                                 </div> 
                                         
@@ -52,10 +56,6 @@ Agregar Personal Involucrado</asp:Content>
                                     Selecionar...<span class="caret"></span>
                                   </button>
                                   <ol id="dp2" class="dropdown-menu" role="menu">
-                                    <li value="1"><a href="#">Argenis Rodriguez</a></li>
-                                    <li value="2"><a href="#">Scheryl Palencia</a></li>
-                                    <li value="3"><a href="#">Rosa Rodriguez</a></li>
-                                    <li value="4"><a href="#">Akira Toriyama</a></li>
                                   </ol>
                                 </div> 
                                   
@@ -69,7 +69,7 @@ Agregar Personal Involucrado</asp:Content>
                                <tr>
                                  <th>Nombre</th>
                                  <th>Apellido</th>
-                                 <th>Rol</th>
+                                 <th>Cargo</th>
                                  <th>Compañia</th>
                                  <th>Eliminar</th>
                                </tr>
@@ -161,33 +161,60 @@ Agregar Personal Involucrado</asp:Content>
                 $("#dp2").empty();
 
                 if (empresa_seleccionado == "Cliente") {
-                    if (cargo_seleccionado == "Lider de Proyecto") {
+                    if (cargo_seleccionado == "Gerente") {
                         $("#dp2").append('<li value="1"><a href="#">Argenis Rodriguez</a></li>');
                         $("#dp2").append('<li value="2"><a href="#">Carlos Rodriguez</a></li>');
                         $("#dp2").append('<li value="3"><a href="#">Nelson Rodriguez</a></li>');
                     }
-                    if (cargo_seleccionado == "Analista") {
-                        $("#dp2").append('<li value="1"><a href="#">Hero Rodriguez</a></li>');
-                        $("#dp2").append('<li value="2"><a href="#">Jesus Rodriguez</a></li>');
-                        $("#dp2").append('<li value="3"><a href="#">Sofia Rodriguez</a></li>');
+                    if (cargo_seleccionado == "Desarrollador") {
+                        $("#dp2").append('<li value="4"><a href="#">Hero Rodriguez</a></li>');
+                        $("#dp2").append('<li value="5"><a href="#">Jesus Rodriguez</a></li>');
+                        $("#dp2").append('<li value="6"><a href="#">Sofia Rodriguez</a></li>');
                     }
-                    if (cargo_seleccionado == "Tecnico") {
-                        $("#dp2").append('<li value="1"><a href="#">Leonardo Rodriguez</a></li>');
-                        $("#dp2").append('<li value="2"><a href="#">Fabian Rodriguez</a></li>');
+                    if (cargo_seleccionado == "Diseñador") {
+                        $("#dp2").append('<li value="7"><a href="#">Leonardo Rodriguez</a></li>');
+                        $("#dp2").append('<li value="8"><a href="#">Fabian Rodriguez</a></li>');
+                    }
+                    if (cargo_seleccionado == "Lider de Proyecto") {
+                        $("#dp2").append('<li value="9"><a href="#">Keilyn Arriaga</a></li>');
+                        $("#dp2").append('<li value="10"><a href="#">Oswaldo Salas</a></li>');
+                    }
+                    if (cargo_seleccionado == "Arquitecto de Solución") {
+                        $("#dp2").append('<li value="11"><a href="#">Rafael Silva</a></li>');
+                        $("#dp2").append('<li value="12"><a href="#">José García</a></li>');
+                    }
+                    if (cargo_seleccionado == "Arquitecto de Base de Datos") {
+                        $("#dp2").append('<li value="12"><a href="#">Moises Benitez</a></li>');
+                        $("#dp2").append('<li value="13"><a href="#">Carlos Torrealba</a></li>');
+                    }
+                    if (cargo_seleccionado == "Documentador") {
+                        $("#dp2").append('<li value="14"><a href="#">Caina Benitez</a></li>');
+                        $("#dp2").append('<li value="15"><a href="#">Angelica Bolivar</a></li>');
                     }
                 }
                 if (empresa_seleccionado == "Compañia de Software") {
+                    if (cargo_seleccionado == "Gerente") {
+                        $("#dp2").append('<li value="16"><a href="#">Khaterine Rodriguez</a></li>');
+                        $("#dp2").append('<li value="17"><a href="#">James Rodriguez</a></li>');
+                    }
+                    if (cargo_seleccionado == "Desarrollador") {
+                        $("#dp2").append('<li value="18"><a href="#">Rosa Rodriguez</a></li>');
+                        $("#dp2").append('<li value="19"><a href="#">Susan Rodriguez</a></li>');
+                    }
+                    if (cargo_seleccionado == "Diseñador") {
+                        $("#dp2").append('<li value="20"><a href="#">Estefania Rodriguez</a></li>');
+                        $("#dp2").append('<li value="21"><a href="#">Laura Rodriguez</a></li>');
+                    }
                     if (cargo_seleccionado == "Lider de Proyecto") {
-                        $("#dp2").append('<li value="1"><a href="#">Khaterine Rodriguez</a></li>');
-                        $("#dp2").append('<li value="2"><a href="#">James Rodriguez</a></li>');
+                        $("#dp2").append('<li value="22"><a href="#">José Boggio</a></li>');
+                        $("#dp2").append('<li value="23"><a href="#">Julio Pino</a></li>');
                     }
-                    if (cargo_seleccionado == "Analista") {
-                        $("#dp2").append('<li value="1"><a href="#">Rosa Rodriguez</a></li>');
-                        $("#dp2").append('<li value="2"><a href="#">Susan Rodriguez</a></li>');
+                    if (cargo_seleccionado == "Arquitecto de Solución") {
+                        $("#dp2").append('<li value="24"><a href="#">Maria Padrón</a></li>');
+                        $("#dp2").append('<li value="25"><a href="#">Adalberto Gerdel</a></li>');
                     }
-                    if (cargo_seleccionado == "Tecnico") {
-                        $("#dp2").append('<li value="1"><a href="#">Estefania Rodriguez</a></li>');
-                        $("#dp2").append('<li value="2"><a href="#">Laura Rodriguez</a></li>');
+                    if (cargo_seleccionado == "Documentador") {
+                        $("#dp2").append('<li value="26"><a href="#">Susan Calvin</a></li>');
                     }
                 }
             }
