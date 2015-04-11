@@ -9,6 +9,6 @@ public partial class M1_IntroducirCorreo : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Master.ShowDiv = false; 
     }
 }

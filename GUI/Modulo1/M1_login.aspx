@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="M1_login.aspx.cs" Inherits="login" %>
-
+<%@ MasterType TypeName="MasterPage" %>
 <%-- Agregue aquí los controles de contenido --%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     

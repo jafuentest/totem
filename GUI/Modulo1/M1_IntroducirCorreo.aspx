@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="M1_IntroducirCorreo.aspx.cs" Inherits="M1_IntroducirCorreo" %>
-
+<%@ MasterType TypeName="MasterPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="titulo" Runat="Server">
     Recuperación de Clave
 </asp:Content>

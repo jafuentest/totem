@@ -61,8 +61,8 @@
 				    </button>
 				    <a class="navbar-brand" href="/">TOTEM</a>
 			    </div>
-			    <div id="navbar" class="navbar-collapse collapse">
-				    <ul class="nav navbar-nav navbar-right">
+			    <div id="navbar" class="navbar-collapse collapse" runat="server">
+				    <ul class="nav navbar-nav navbar-right" id="ulNav" runat="server">
                         <li class="dropdown">
                             <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >Proyecto Seleccionado: <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
