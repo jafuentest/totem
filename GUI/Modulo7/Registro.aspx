@@ -38,11 +38,6 @@
             </div>
 		</div>
         <div class="form-group">
-			<div id="div_cargo" class="col-sm-10 col-md-5 col-lg-5">
-				<input type="text" placeholder="Cargo en la Empresa" class="form-control" name="cargo" />
-			</div>
-		</div>
-        <div class="form-group">
             <div class="col-sm-10 col-md-10 col-lg-10">
             <div class="dropdown">
               <button id="id-rol" class="btn btn-default dropdown-toggle" type="button" id="dropdownRol" data-toggle="dropdown" aria-expanded="true">
@@ -113,8 +108,7 @@
             else {
                 $('#input-otrocargo').prop('disabled', true);
             }
-            $("#id-cargo").html($(this).text() + ' <span class="caret"></span>');
-            
+            $("#id-cargo").html($(this).text() + ' <span class="caret"></span>');           
         });
         
     </script>
