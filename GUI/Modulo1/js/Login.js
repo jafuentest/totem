@@ -28,13 +28,7 @@
                        }
                    }
                },
-               correo: {
-                   validators: {
-                       notEmpty: {
-                           message: 'El correo es requerido'
-                       }
-                   }
-               },
+              
               
            }
        });
@@ -99,6 +93,9 @@
                   validators: {
                       notEmpty: {
                           message: 'El correo es requerido'
+                      },
+                      emailAddress: {
+                          message: 'No es un correo electr&oacute;nico v&aacute;lido'
                       }
                   }
               },
