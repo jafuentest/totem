@@ -2,9 +2,15 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <meta http-equiv="set-cookie" content="selectedProject=Twitter;">
+    <link href="bootstrap-switch-master/docs/css/highlight.css" rel="stylesheet">
+    <link href="bootstrap-switch-master/dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
+    <link href="bootstrap-switch-master/docs/css/main.css" rel="stylesheet">
     <style>
         .sameLine {
             display: inline;
+        }
+        .desc {
+            font-style: italic;
         }
     </style>
 </asp:Content>
@@ -14,12 +20,14 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 
     <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-        <form id="register_form" class="form-horizontal" action="#">
+        <!--<form id="register_form" class="form-horizontal" action-->
             <div class="form-group">
                 <div id="div_precio" class="col-sm-12 col-md-12 col-lg-12">
                     <div class="jumbotron">
                         <h2 class="sameLine"><a href="#">Twitter</a></h2> <h5 class="sameLine">COD: TWI</h5>
-                        <p>Twitter (NYSE: TWTR) es un servicio de microblogging, con sede en San Francisco, California, con filiales en San Antonio (Texas) y Boston (Massachusetts) en Estados Unidos. Twitter, Inc. fue creado originalmente en California, pero está bajo la jurisdicción de Delaware desde 2007.8 Desde que Jack Dorsey lo creó en marzo de 2006, y lo lanzó en julio del mismo año, la red ha ganado popularidad mundialmente y se estima que tiene más de 500 millones de usuarios, generando 65 millones de tuits al día y maneja más de 800 000 peticiones de búsqueda diarias.1 Ha sido apodado como el "SMS de Internet".9</p>
+                        <p class="desc">Twitter (NYSE: TWTR) es un servicio de microblogging, con sede en San Francisco, California, con filiales en San Antonio (Texas) y Boston (Massachusetts) en Estados Unidos. Twitter, Inc. fue creado originalmente en California, pero está bajo la jurisdicción de Delaware desde 2007.8 Desde que Jack Dorsey lo creó en marzo de 2006, y lo lanzó en julio del mismo año, la red ha ganado popularidad mundialmente y se estima que tiene más de 500 millones de usuarios, generando 65 millones de tuits al día y maneja más de 800 000 peticiones de búsqueda diarias.1 Ha sido apodado como el "SMS de Internet".9</p>
+                        <input id="switch-disabled2" type="checkbox" data-size="mini" data-on-text="Activo" data-on-color="success" data-off-text="Inactivo" checked disabled>
+                        <p></p>
                         <p>Cliente: <a href="#">Dick Costolo</a></p>
                         <p>Desarroladora: <a href="#">Los Andes Coding</a></p>
                     </div>
@@ -38,7 +46,7 @@
                     <div id="collapseRequerimientos" class="panel-collpase collapse">
                         <div class="panel-body">
                             <div class="table-responsive">
-	    		                <table id="table-example" class="table table-striped table-hover">
+	    		                <table id="table-requerimientos" class="table table-striped table-hover">
 			                    <thead>
 				                    <tr>
 					                    <th>ID</th>
@@ -55,8 +63,8 @@
 					                    <td>Funcional</td>
 					                    <td>Alta</td>
                                         <td>
-                                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo5/ModificarRequerimiento.aspx?id=1") %>"></a>
-                                            <a class="btn btn-danger glyphicon glyphicon-remove-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo5/PrincipalProyecto.aspx?id=1") %>"></a>
+                                            <a class="btn btn-default glyphicon glyphicon-pencil" rel="tooltip" title="Editar" href="<%= Page.ResolveUrl("~/GUI/Modulo5/ModificarRequerimiento.aspx?id=1") %>"></a>
+                                            <a class="btn btn-danger glyphicon glyphicon-remove-sign" rel="tooltip" title="Eliminar" href="<%= Page.ResolveUrl("~/GUI/Modulo5/PrincipalProyecto.aspx?id=1") %>"></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -129,7 +137,7 @@
                         <div class="panel-body">
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <div class="table-responsive">
-		                            <table id="table-example" class="table table-striped table-hover">
+		                            <table id="table-casosDeUso" class="table table-striped table-hover">
 			                            <thead>
 				                            <tr>
 					                            <th>ID</th>
@@ -337,24 +345,22 @@
                     <div id="collapseMinutas" class="panel-collpase collapse">
                         <div class="panel-body">
                             <div class="table-responsive">
-		                        <table id="table-example" class="table table-striped table-hover">
+		                        <table id="table-minutas" class="table table-striped table-hover">
 			                        <thead>
 				                        <tr>
 					                        <th>ID</th>
-					                        <th>Proyecto</th>
 					                        <th>Fecha</th>
+                                            <th>Hora</th>
 					                        <th>Motivo</th>
-                                            <th>Estado Proyecto</th>
 					                        <th>Acciones</th>
 				                        </tr>
 			                        </thead>
 			                        <tbody>
 				                        <tr>
 					                        <td>Min_01</td>
-					                        <td>Facebook</td>
 					                        <td>10-05-15</td>
+                                            <td>06:00AM</td>
 					                        <td>Primer Encuentro</td>
-                                            <td>Activo</td>
                                             <td>
                                                 <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinuta.aspx?id=1") %>"></a>
                                                 <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx?id=1") %>"></a>
@@ -365,7 +371,6 @@
                                             <td>sjkdnfsnd</td>
                                             <td>sdnsnd</td>
                                             <td>akfsjdf</td>
-                                            <td>Activo</td>
                                             <td>
                                                 <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinuta.aspx?id=1") %>"></a>
                                                 <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx?id=1") %>"></a>
@@ -376,7 +381,6 @@
                                             <td>sjkdn</td>
                                             <td>sdnjjdfsnd</td>
                                             <td>akfznx</td>
-                                            <td>Activo</td>
                                             <td>
                                                 <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinuta.aspx?id=1") %>"></a>
                                                 <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx?id=1") %>"></a>
@@ -387,7 +391,6 @@
                                             <td>sadddn</td>
                                             <td>aaaa</td>
                                             <td>mmmd</td>
-                                            <td>Activo</td>
                                             <td>
                                                 <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinuta.aspx?id=1") %>"></a>
                                                 <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx?id=1") %>"></a>
@@ -398,7 +401,6 @@
                                             <td>shhhhn</td>
                                             <td>124233gdf</td>
                                             <td>jsdhhhdd</td>
-                                            <td>Activo</td>
                                             <td>
                                                 <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinuta.aspx?id=1") %>"></a>
                                                 <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx?id=1") %>"></a>
@@ -409,7 +411,6 @@
                                             <td>sjkdn</td>
                                             <td>ssnd</td>
                                             <td>aznx</td>
-                                            <td>Activo</td>
                                             <td>
                                                 <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinuta.aspx?id=1") %>"></a>
                                                 <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx?id=1") %>"></a>
@@ -418,6 +419,179 @@
 			                        </tbody>
 		                        </table>
 	                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-group col-sm-12 col-md-12 col-lg-12" id="accordion4" role="tablist">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="involucrados">
+                        <h3 class="panel-title">
+                            <a href="#collapseInvolucrados" data-toggle="collapse" data-parent="#accordion">
+                                Involucrados
+                            </a>
+                        </h3>
+                    </div>
+                    <div id="collapseInvolucrados" class="panel-collpase collapse">
+                        <div class="panel-body">
+                            <div class="table-responsive">
+		                        <table id="table-involucrados" class="table table-striped table-hover">
+			                        <thead>
+				                        <tr>
+					                        <th>Usuario</th>
+					                        <th>Nombre</th>
+					                        <th>Apellido</th>
+					                        <th>Cargo</th>
+					                        <th>Acciones</th>
+				                        </tr>
+			                        </thead>
+			                        <tbody>
+				                        <tr>
+					                        <td class="username">totkin</td>
+					                        <td>Pedro</td>
+					                        <td>Perez</td>
+					                        <td>Gerente de Proyecto</td>
+                                            <td>
+                         
+                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
+                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="username">amet</td>
+                                            <td>Fulana</td>
+                                            <td>Rodriguez</td>
+                                            <td>Dise&ntilde;ador</td>
+                                            <td>
+                         
+                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
+                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+
+                                            </td>
+				                        </tr><tr>
+                                            <td class="username">Integer</td>
+                                            <td>Nestor</td>
+                                            <td>Osorio</td>
+                                            <td>Administrador Base de Datos</td>
+                                            <td>
+                         
+                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
+                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="username">libero</td>
+                                            <td>Seth</td>
+                                            <td>Cursus</td>
+                                            <td>Desarrollador</td>
+                                            <td>
+                         
+                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
+                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="username">dapibus</td>
+                                            <td>Liam</td>
+                                            <td>Nisi</td>
+                                            <td>Desarrollador</td>
+                                            <td>
+                         
+                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
+                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="username">Nulla</td>
+                                            <td>Maria</td>
+                                            <td>Aguila</td>
+                                            <td>Gerente de Proyectos</td>
+                                            <td>
+                         
+                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
+                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="username">nibh</td>
+                                            <td>Elena</td>
+                                            <td>Stone</td>
+                                            <td>Desarrollador</td>
+                                            <td>
+                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
+                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="username">sagittis</td>
+                                            <td>Pietro</td>
+                                            <td>Santini</td>
+                                            <td>Desarrollador</td>
+                                            <td>
+                         
+                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/ DetalleUsuario.aspx?id=1") %>"></a>
+                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                                           </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="username">Fusce</td>
+                                            <td>Armando</td>
+                                            <td>Reveron</td>
+                                            <td>Dise&ntilde;ador</td>
+                                            <td>
+                          
+                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
+                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                                           </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="username">augue</td>
+                                            <td>Juan</td>
+                                            <td>Porta</td>
+                                            <td>Gerente de Proyecto</td>
+                                            <td>
+                         
+                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
+                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="username">lacinia</td>
+                                            <td>Marcos</td>
+                                            <td>Macia</td>
+                                            <td>Administrador Base de Datos</td>
+                                            <td>
+                        
+                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
+                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                                         </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="username">eget</td>
+                                            <td>Ana</td>
+                                            <td>Clase</td>
+                                            <td>Desarrollador</td>
+                                            <td>
+                         
+                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
+                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="username">aaciti</td>
+                                            <td>Luis</td>
+                                            <td>Perez</td>
+                                            <td>Desarrollador</td>
+                                            <td>
+                         
+                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
+                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                                           </td>
+                                        </tr>
+			                        </tbody>
+		                        </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -445,29 +619,33 @@
             <div class="form-group">
 		        
 	        </div>
-        </form>
+        <!--</form>-->
     </div>
 
+    <script src="bootstrap-switch-master/docs/js/bootstrap.min.js"></script>
+    <script src="bootstrap-switch-master/docs/js/highlight.js"></script>
+    <script src="bootstrap-switch-master/dist/js/bootstrap-switch.js"></script>
+    <script src="bootstrap-switch-master/docs/js/main.js"></script>
     <script type="text/javascript">
     jQuery(function ($) {
-        $('#table-example').DataTable();
+        $('#table-requerimientos').DataTable();
+    });
+    
+    jQuery(function ($) {
+        $('#table-casosDeUso').DataTable();
     });
 
-    /*function getCookie(cname) {
-        var name = cname + "=";
-        var ca = document.cookie.split(';');
-        for (var i = 0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == ' ') c = c.substring(1);
-            if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
-        }
-        return "";
-    }
+    jQuery(function ($) {
+        $('#table-minutas').DataTable();
+    });
 
-    function checkCookie() {
-        var projectName = getCookie("selectedProject");
-        //alert("Proyecto Seleccionado " + projectName);
-    }*/
+    jQuery(function ($) {
+        $('#table-involucrados').DataTable();
+    });
+
+    $(document).ready(function () {
+        $("[rel=tooltip]").tooltip({ placement: 'top' });
+    });
 	</script>
 
 </asp:Content>

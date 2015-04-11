@@ -1,6 +1,9 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master"  AutoEventWireup="true" CodeFile="CrearProyecto.aspx.cs" Inherits="GUI_Modulo4_CrearProyecto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <link href="bootstrap-switch-master/docs/css/highlight.css" rel="stylesheet">
+    <link href="bootstrap-switch-master/dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
+    <link href="bootstrap-switch-master/docs/css/main.css" rel="stylesheet">
     <style>
         textarea {
             resize: none;
@@ -24,7 +27,7 @@
 		        
                 &nbsp;
 			    <div id="div_codigo" class="col-sm-2 col-md-2 col-lg-2">
-				    <input type="text" id="Codigo" placeholder="Codigo" class="form-control" name="codigo" disabled="disabled"/>
+				    <input type="text" id="Codigo" placeholder="Codigo" class="form-control" name="codigo"/>
 			    </div>
 		    </div>
             <div class="form-group">
@@ -33,27 +36,47 @@
 		        </div>
 	        </div>
 
-            <div class="form-group">
-                <div id="div_precio" class="col-sm-3 col-md-3 col-lg-3">
-                    <div class="input-group">
-                      <input placeholder="Precio" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                      <span class="input-group-addon">Bs</span>
+            <!--<div class="form-group">
+                <div class="col-sm-10 col-md-10 col-lg-10">
+                    <div class="dropdown">
+                      <button id="id-moneda" class="btn btn-default dropdown-toggle" type="button" id="dropdownMoneda" data-toggle="dropdown" aria-expanded="true">
+                        Moneda
+                        <span class="caret"></span>
+                      </button>
+                      <ul id="dpmoneda" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" >Bs</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" >$</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" >€</a></li>
+                      </ul>
                     </div>
                 </div>
-                <div id="div_activo" class="col-sm-3 col-md-3 col-lg-3">
-                    <button type="button" class="btn btn-primary closer" data-toggle="button" aria-pressed="true" autocomplete="off">Activo</button>
-                    <button type="button" class="btn btn-primary closer" data-toggle="button" aria-pressed="false" autocomplete="off">Inactivo</button>
+            </div>-->
+
+            <div class="form-group">
+                <div id="div_precio" class="col-sm-3 col-md-3 col-lg-3">
+                       <input type="text" id="Precio" placeholder="Precio" class="form-control" name="precio"/>
+                </div>
+                <div id="div_activo" class="col-sm-3 col-md-3 col-lg-3 col-md-offset-4">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input id="switch-disabled" type="checkbox" checked data-on-text="Activo" data-on-color="success" data-off-text="Inactivo" disabled>
                 </div>
 	        </div>
 
             <div class="form-group">
-		        <div class="col-sm-5 col-md-5 col-lg-5">
+		        <div class="col-sm-1 col-md-1 col-lg-1">
 				    <button class="btn btn-primary" onclick="return checkform()">Crear</button>
+			    </div>
+                <div class="col-sm-1 col-md-1 col-lg-1">
+				    <button class="btn btn-default" onclick="return checkform()">Cancelar</button>
 			    </div>
 	        </div>
         </form>
     </div>
     <script src="js/Validacion.js"></script>
+    <script src="bootstrap-switch-master/docs/js/bootstrap.min.js"></script>
+    <script src="bootstrap-switch-master/docs/js/highlight.js"></script>
+    <script src="bootstrap-switch-master/dist/js/bootstrap-switch.js"></script>
+    <script src="bootstrap-switch-master/docs/js/main.js"></script>
     <script language="javascript">
          function fillCodigoTextField() {
              var codigoTextField = document.getElementById("Codigo");
@@ -69,7 +92,13 @@
              }
          }
     </script>
+    <script>
+        $("#dpmoneda li a").click(function () {
 
+            $("#id-moneda").html($(this).text() + ' <span class="caret"></span>');
+
+        });
+    </script>
 
 </asp:Content>
 

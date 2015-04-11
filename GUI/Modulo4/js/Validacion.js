@@ -14,7 +14,7 @@
                            message: 'El codigo es requerido'
                        },
                        regexp: {
-                           regexp: /^[ña-zA-Z0-9Ñ]{3}$/,
+                           regexp: /^[ña-zA-Z0-9Ñ]+$/,
                            message: 'El codigo del proyecto solo puede ser alfanumerico'
                        }
                    }
@@ -23,6 +23,10 @@
                    validators: {
                        notEmpty: {
                            message: 'El nombre es requerido'
+                       },
+                       regexp: {
+                           regexp: /^[ña-zA-Z0-9Ñ]+$/,
+                           message: 'El nombre del proyecto solo puede ser alfanumerico'
                        }
                    }
                },
@@ -31,6 +35,17 @@
                    validators: {
                        notEmpty: {
                            message: 'Por favor introduzca una breve descripcion del Proyecto'
+                       }
+                   }
+               },
+               precio: {
+                   validators: {
+                       notEmpty: {
+                           message: 'El precio es requerido'
+                       },
+                       regexp: {
+                           regexp: /[^0-9]+$/,
+                           message: 'El precio debe ser en numeros'
                        }
                    }
                }
