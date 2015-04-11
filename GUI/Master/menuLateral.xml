@@ -21,10 +21,7 @@
   <opcion nombre="Agregar Involucrados" link="~/GUI/Modulo3/AgregarInvolucrado.aspx">
 		<modulo id="3"></modulo>
 	</opcion>
-	<opcion nombre="Eliminar Involucrados" link="~/GUI/Modulo3/EliminarInvolucrado.aspx">
-		<modulo id="3"></modulo>
-	</opcion>
-	<opcion nombre="Consultar Involucrados" link="~/GUI/Modulo3/ConsultarInvolucrado.aspx">
+	<opcion nombre="Listar Involucrados" link="~/GUI/Modulo3/ListarPersonalInvolucrado.aspx">
 		<modulo id="3"></modulo>
 	</opcion>
 	
