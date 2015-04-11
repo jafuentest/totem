@@ -6,7 +6,14 @@ public partial class MasterPage : System.Web.UI.MasterPage
 {
 	private string idModulo;
 	private Dictionary<string, string> opcionesDelMenu = new Dictionary<string, string>();
-    private bool showDiv = true;
+    private bool showDiv, mostrarMenuLateral = true;
+
+    public bool MostrarMenuLateral
+    {
+        get { return mostrarMenuLateral; }
+        set { mostrarMenuLateral = value; }
+    }
+    
 
     public bool ShowDiv
     {
@@ -27,7 +34,8 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
 	protected void Page_Load(object sender, EventArgs e)
 	{
-        ulNav.Visible = showDiv; 
+        ulNav.Visible = showDiv;
+        menuLateral.Visible = mostrarMenuLateral; 
 		XmlDocument doc = new XmlDocument();
 		doc.Load(Server.MapPath("~/GUI/Master/menuLateral.xml"));
 

@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" MasterPageFile="~/GUI/Master/MasterPage.master"%>
-
+<%@ MasterType TypeName="MasterPage" %>
 <asp:Content ContentPlaceHolderID="subtitulo" runat="server">Mis Proyectos</asp:Content>
 
 <asp:Content ContentPlaceHolderID="contenidoCentral" runat="server">

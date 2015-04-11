@@ -9,6 +9,7 @@ public partial class login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Master.ShowDiv = false; 
+        Master.ShowDiv = false;
+        Master.MostrarMenuLateral = false; 
     }
 }

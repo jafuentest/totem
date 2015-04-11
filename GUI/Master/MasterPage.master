@@ -107,7 +107,7 @@
 
         <div class="container-fluid">
 		    <div class="row">
-			    <div class="col-sm-3 col-md-2 sidebar">
+			    <div class="col-sm-3 col-md-2 sidebar" id="menuLateral" runat="server">
 				    <ul class="nav nav-sidebar">
 						<% foreach (KeyValuePair<string, string> opcion in OpcionesDelMenu) %>
 						<% { %>
