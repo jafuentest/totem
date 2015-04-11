@@ -82,7 +82,7 @@
          function fillCodigoTextField() {
              var codigoTextField = document.getElementById("Codigo");
              var nombreTextField = document.getElementById("Nombre");
-             if (nombreTextField.value.length>=1) { //antes de llenar el codigo revisa si almenos tiene un caracter
+             if (nombreTextField.value.length>=1) { //antes de llenar el codigo revisa si al menos tiene un caracter
                  codigoTextField.value = "";
                  var words = nombreTextField.value.split(" ");//crea una array de palabras del nombre del proyecto 
                  for (i in words) {
