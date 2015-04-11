@@ -16,11 +16,13 @@
                    
 
                   <div id="login-form-name1" class="form-group">
-                     <input type="password" class="form-control login-field" value="" placeholder="Introduzca nueva clave" id="login-name1" name="claveNueva" />
+                      <label>Nueva Contraseña:</label>
+                     <input type="password" class="form-control login-field" style="width:70%;" value="" placeholder="Introduzca nueva clave" id="login-name1" name="claveNueva" />
                   </div>
 
                     <div id="login-form-name" class="form-group">
-                        <input type="password" class="form-control login-field" value="" placeholder="Confirme la nueva clave" id="login-name2" name="confirmaClaveNueva" />
+                        <label>Confirme Nueva Contraseña:</label>
+                        <input type="password" class="form-control login-field" style="width:70%;" value="" placeholder="Confirme la nueva clave" id="login-name2" name="confirmaClaveNueva" />
                     </div>
 
 

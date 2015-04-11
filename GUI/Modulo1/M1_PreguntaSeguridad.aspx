@@ -15,14 +15,17 @@
                 <div  class="login-form"> 
                     
                   <div id="login-form-name" class="form-group">
-                    <input type="text" class="form-control >login-field" value="" placeholder="Apellido materno del padre" id="login-name" name="respuestaSeguridad" />
+                      
+                        <label>¿Cu&aacute;l es al apellido materno del padre?</label>
+                        <input type="text" class="form-control >login-field" style="width:70%;" value=""  placeholder="Apellido materno del padre" id="login-name" name="respuestaSeguridad" />
+                      
                   </div>
 
                   <div class="form-group">
 		               <div class="form-group">
                          &nbsp; &nbsp;
 				            <button class="btn btn-primary" type="submit" onclick="return checkform()">Continuar</button>
-                        &nbsp;
+                        &nbsp; 
 				            <button class="btn btn-default">Cancelar</button>
                        </div>  
                   </div>

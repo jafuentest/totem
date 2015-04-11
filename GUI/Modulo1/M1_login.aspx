@@ -10,22 +10,29 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     
                 <div  class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-                   <form id="login" class="form-horizontal">
+                   <form id="login" class="form-horizontal" >
 
                     <div id="login-form-name" class="form-group">
-                            <input type="text" class="form-control login-field" value="" placeholder="Ingrese nombre de usuario" id="login-name" name="usuario" />
+                        <div class ="col-sm-7 col-md-7 col-lg-7">
+                            <label>Nombre de Usuario:</label>
+                            <input type="text" class="form-control login-field" style="width:100%;" value="" placeholder="Ingrese nombre de usuario" id="login-name" name="usuario" />
+                        </div>
                     </div>
 
                     <div id="login-form-pass" class="form-group">
-                             <input type="password" class="form-control login-field" value="" placeholder="Contrase&ntilde;a" id="login-pass" name="password"/>
-                    </div>
-
-                    <div id="botones" class ="form-group">
-                            <button class="btn btn-primary "  type="submit" onclick="return checkform()">Iniciar de Sesi&oacute;n</button>
-                    <br />
-                                            
-                    <a class="login-link" href="M1_IntroducirCorreo.aspx">¿Olvid&oacute; su contrase&ntilde;a?</a>
+                         <div class ="col-sm-7 col-md-7 col-lg-7">
+                            <label>Contraseña:</label>
+                             <input type="password" class="form-control login-field" style="width:100%;" value="" placeholder="Contrase&ntilde;a" id="login-pass" name="password"/>
                     
+                         </div>
+                    </div>
+                    <div id="botones" class ="form-group">
+                        <div class ="col-sm-10 col-md-10 col-lg-10">
+                            <button class="btn btn-primary "  style="width:68%;" type="submit" onclick="return checkform()">Iniciar Sesi&oacute;n</button>
+                    <br />
+                                                              
+                    <a class="login-link" href="M1_IntroducirCorreo.aspx" style="margin-left:19%; margin-top:20px;">¿Olvid&oacute; su contrase&ntilde;a?</a>
+                        </div>
                     </div>
                    </form>                    
              </div>
