@@ -27,7 +27,7 @@
 		        
                 &nbsp;
 			    <div id="div_codigo" class="col-sm-2 col-md-2 col-lg-2">
-				    <input type="text" id="Codigo" placeholder="Codigo" class="form-control" name="codigo" disabled="disabled"  maxlength="3"
+				    <input type="text" id="Codigo" placeholder="Codigo" class="form-control" name="codigo" maxlength="3"
                 minlength="1"/>
 			    </div>
 		    </div>
@@ -82,7 +82,7 @@
          function fillCodigoTextField() {
              var codigoTextField = document.getElementById("Codigo");
              var nombreTextField = document.getElementById("Nombre");
-             if (nombreTextField.value.length>=2) { //antes de llenar el codigo revisa si almenos tiene dos caracteres
+             if (nombreTextField.value.length>=1) { //antes de llenar el codigo revisa si almenos tiene un caracter
                  codigoTextField.value = "";
                  var words = nombreTextField.value.split(" ");//crea una array de palabras del nombre del proyecto 
                  for (i in words) {
@@ -92,7 +92,6 @@
                      }
                  }
 
-                 codigoTextField.disabled = false; //al terminar se habilita el textfield para su posible edicion.
              }
          }
     </script>
