@@ -27,7 +27,8 @@
 		        
                 &nbsp;
 			    <div id="div_codigo" class="col-sm-2 col-md-2 col-lg-2">
-				    <input type="text" id="Codigo" placeholder="Codigo" class="form-control" name="codigo"/>
+				    <input type="text" id="Codigo" placeholder="Codigo" class="form-control" name="codigo" disabled="disabled"  maxlength="3"
+                minlength="1"/>
 			    </div>
 		    </div>
             <div class="form-group">
@@ -85,9 +86,12 @@
                  codigoTextField.value = "";
                  var words = nombreTextField.value.split(" ");//crea una array de palabras del nombre del proyecto 
                  for (i in words) {
-                     temp = words[i];
-                     codigoTextField.value = codigoTextField.value + temp.charAt(0).toUpperCase(); // va concatenando cada una de las primeras letras de las palabras en mayuscula.
+                     if (i < 3) {
+                         temp = words[i];
+                         codigoTextField.value = codigoTextField.value + temp.charAt(0).toUpperCase(); // va concatenando cada una de las primeras letras de las palabras en mayuscula.
+                     }
                  }
+
                  codigoTextField.disabled = false; //al terminar se habilita el textfield para su posible edicion.
              }
          }

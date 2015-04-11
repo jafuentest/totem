@@ -25,7 +25,7 @@
                            message: 'El nombre es requerido'
                        },
                        regexp: {
-                           regexp: /^[ña-zA-Z0-9Ñ]+$/,
+                           regexp: /^[-_ a-zA-Z0-9]+$/,
                            message: 'El nombre del proyecto solo puede ser alfanumerico'
                        }
                    }
