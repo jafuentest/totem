@@ -41,7 +41,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
 		foreach (XmlNode node in doc.DocumentElement.ChildNodes)
 			foreach (XmlNode subNode in node.ChildNodes)
-				if (subNode.Attributes["id"].InnerText.Equals(IdModulo))
+				if (!(subNode.Attributes["id"] == null) && subNode.Attributes["id"].InnerText.Equals(IdModulo))
 				{
 					OpcionesDelMenu[node.Attributes["nombre"].InnerText] = node.Attributes["link"].InnerText;
 					break;
