@@ -14,43 +14,43 @@
             <div class="form-group">
 		        <div  class="col-sm-10 col-md-10 col-lg-10">
                     <label>Nombre de Usuario: </label>
-                    <input type="text" value="jaklupo" class="form-control" name="usuario" />
+                    <input id="input_usuario" type="text" value="jaklupo" class="form-control" name="usuario" />
 			    </div>
             </div>
             <div class="form-group">
 			    <div  class="col-sm-10 col-md-10 col-lg-10">
 				    <label>Nombre:</label>
-                    <input type="text" value="Javier" class="form-control" name="nombre"/>
+                    <input id="input_nombre" type="text" value="Javier" class="form-control" name="nombre"/>
 			    </div>
             </div>
             <div class="form-group">
 	            <div  class="col-sm-10 col-md-10 col-lg-10">
 		            <label>Apellido: </label>
-                    <input type="text" value="Hernandez" class="form-control" name="apellido"/>
+                    <input id="input_apellido" type="text" value="Hernandez" class="form-control" name="apellido"/>
 		        </div>
             </div>
             <div class="form-group">
 	            <div  class="col-sm-10 col-md-10 col-lg-10">
 		            <label>Correo: </label>
-                    <input type="text" value="jaklupo@totem.com" class="form-control" name="correo"/>
+                    <input id="input_correo" type="text" value="jaklupo@totem.com" class="form-control" name="correo"/>
 		        </div>
             </div>
             <div class="form-group">
 			    <div  class="col-sm-10 col-md-5 col-lg-5">
 				    <label>Cargo:</label>
-                    <input type="text" value="Lider de Proyecto" class="form-control" name="cargo" />
+                    <input id="input_cargo" type="text" value="Lider de Proyecto" class="form-control" name="cargo" />
 			    </div>
             </div>
             <div class="form-group">
 			    <div  class="col-sm-10 col-md-10 col-lg-10">
 				    <label>Pregunta de Seguridad:</label>
-                    <input type="text" value="Como se llama tu primera casa?" class="form-control" name="pregunta"/>
+                    <input id="input_pregunta" type="text" value="Como se llama tu primera casa?" class="form-control" name="pregunta"/>
 			    </div>
             </div>
             <div class="form-group">
 			    <div class="col-sm-10 col-md-10 col-lg-10">
 				    <label>Respuesta: </label>
-                    <input type="text" value="Cantares" class="form-control" name="respuesta" />
+                    <input id="input_respuesta" type="text" value="Cantares" class="form-control" name="respuesta" />
 			    </div>
             </div>
             <div class="form-group">
@@ -59,9 +59,9 @@
             </div>
                 <div class="form-group">
                          &nbsp; &nbsp;
-				            <button class="btn btn-primary">Editar</button>
+				            <a class="btn btn-primary" href="../Modulo4/PerfilProyecto.aspx">Editar</a>
                         &nbsp;
-				            <button class="btn btn-default">Cancelar</button>
+				            <a id="btn_cancel" href="../Modulo4/PerfilProyecto.aspx" class="btn btn-default">Cancelar</a>
 		        </div>
             </form>
         </div>

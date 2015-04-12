@@ -34,6 +34,23 @@ public partial class GUI_Modulo7_ListarUsuarios : System.Web.UI.Page
                 alert.InnerText = "Se ha editado con éxito";
             }
         }
+        if (Request.Cookies["userInfo"] != null)
+        {
+            if (Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != "" &&
+                Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
+            {
+                ((MasterPage)Page.Master).ShowDiv = true;
+            }
+            else
+            {
+                ((MasterPage)Page.Master).MostrarMenuLateral = false;
+                ((MasterPage)Page.Master).ShowDiv = false;
+            }
 
+        }
+        else
+        {
+            Response.Redirect("../Modulo1/M1_login.aspx");
+        }
     }
 }

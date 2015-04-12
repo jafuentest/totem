@@ -9,6 +9,24 @@ public partial class GUI_Modulo7_EditarPerfil : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        ((MasterPage)Page.Master).IdModulo = "7";
+        ((MasterPage)Page.Master).IdModulo = "";
+        if (Request.Cookies["userInfo"] != null)
+        {
+            if (Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != "" &&
+                Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
+            {
+                ((MasterPage)Page.Master).ShowDiv = true;
+            }
+            else
+            {
+                ((MasterPage)Page.Master).MostrarMenuLateral = false;
+                ((MasterPage)Page.Master).ShowDiv = false;
+            }
+
+        }
+        else
+        {
+            Response.Redirect("../Modulo1/M1_login.aspx");
+        }
     }
 }

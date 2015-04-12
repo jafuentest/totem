@@ -1,12 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="Registro.aspx.cs" Inherits="GUI_Modulo7_Registro" %>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="titulo" Runat="Server"></asp:Content>
-<asp:Content ID="Content1" ContentPlaceHolderID="subtitulo" Runat="Server">Registro
+<asp:Content ID="Content4" ContentPlaceHolderID="titulo" Runat="Server">Registro</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="subtitulo" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     <!--AQUI SE DEFINE EL TAMANO DEL FORM Y SU UBICACION-->
     <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
+        <div id="alertlocal" >
+        </div>
     <form id="register_form" class="form-horizontal" action="#">
         <div class="form-group">
 		    <div id="div_nombre" class="col-sm-5 col-md-5 col-lg-5">
@@ -88,7 +90,7 @@
 		</div>
         <div class="form-group">
 		    <div class="col-sm-5 col-md-5 col-lg-5">
-				<button class="btn btn-primary" onclick="return checkform()">Registrar</button>
+				<button id="btn_registrar" class="btn btn-primary">Registrar</button>
 			</div>
 	    </div>
     </form>
@@ -110,7 +112,11 @@
             }
             $("#id-cargo").html($(this).text() + ' <span class="caret"></span>');           
         });
-        
+        $("#btn_registrar").click(function () {
+            $('#alertlocal').addClass("alert alert-success alert-dismissible");
+            $('#alertlocal').text("Se ha agregado con éxito");
+            $('#alertlocal').innerHtml("<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Usuario modificado exitosamente</div>");
+        });
     </script>
     
 </asp:Content>
