@@ -9,7 +9,7 @@ $(document).ready(function () {
     $('.btn-file :file').on('fileselect', function (event, numFiles, label) {
 
         var input = $(this).parents('.input-group').find(':text'),
-            log = numFiles > 1 ? numFiles + ' files selected' : label;
+            log = numFiles > 1 ? numFiles + ' Archivos seleccionados' : label;
 
         if (input.length) {
             input.val(log);

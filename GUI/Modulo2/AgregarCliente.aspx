@@ -7,6 +7,9 @@
 
     <!-- Custom JS for dropdown items -->
     <script type="text/javascript" src="<%= Page.ResolveUrl("~/GUI/Modulo2/js/dropdown-ac.js") %>"></script>
+
+    <!-- Custom JS for dropdown items -->
+    <script type="text/javascript" src="<%= Page.ResolveUrl("~/GUI/Modulo2/js/validation.js") %>"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">
     Agregar cliente
@@ -22,11 +25,11 @@
                 <h3>Datos básicos</h3>
                 <div class="row">
                     <div id="div_nombre" class="col-sm-5 col-md-5 col-lg-5">
-                        <asp:TextBox ID="TB_Nombre" runat="server" CssClass="form-control nombre"></asp:TextBox>
+                        <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Nombre" />
                     </div>
                     &nbsp;
                     <div id="div_apellido" class="col-sm-5 col-md-5 col-lg-5">
-                        <asp:TextBox ID="TB_Apellido" runat="server" CssClass="form-control apellido"></asp:TextBox>
+                        <input id="apellido" name="apellido" type="text" class="form-control" placeholder="Apellido" />
                     </div>
                 </div>
             </div>
@@ -46,7 +49,7 @@
                         </div>
                     </div>
                     <div id="div_rif" class="col-sm-4 col-md-4 col-lg-4">
-                        <asp:TextBox ID="TB_RIF" runat="server" CssClass="form-control rif"></asp:TextBox>
+                        <input id="rif" name="rif" type="text" class="form-control" placeholder="RIF" />
                     </div>
                     &nbsp;
                     <div id="div_cargo" class="col-sm-5 col-md-5 col-lg-5">
@@ -69,11 +72,11 @@
                 <h3>Datos de contacto</h3>
                 <div class="row">
                     <div id="div_correo" class="col-sm-5 col-md-5 col-lg-5">
-                        <asp:TextBox ID="TB_Correo" runat="server" CssClass="form-control correo"></asp:TextBox>
+                        <input id="correo" name="correo" type="text" class="form-control" placeholder="Correo electrónico" />
                     </div>
                     &nbsp;
                     <div id="div_telefono" class="col-sm-5 col-md-5 col-lg-5">
-                        <asp:TextBox ID="TB_Telefono" runat="server" CssClass="form-control telefono"></asp:TextBox>
+                        <input id="telefono" name="telefono" type="text" class="form-control" placeholder="Teléfono" />
                     </div>
                 </div>
             </div>

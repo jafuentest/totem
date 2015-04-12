@@ -38,12 +38,12 @@
                             </div>
                         </div>
                         <div id="div_rif" class="col-sm-9 col-md-9 col-lg-9">
-                            <asp:TextBox ID="TB_RIF" runat="server" CssClass="form-control"></asp:TextBox>
+                            <input id="rif" name="rif" type="text" class="form-control" placeholder="RIF" />
                         </div>
                     </div>
                     <div class="form-group">
                         <div id="div_nombre" class="col-sm-12 col-md-12 col-lg-12">
-                            <asp:TextBox ID="TB_Nombre" runat="server" CssClass="form-control"></asp:TextBox>
+                            <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Nombre" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -54,7 +54,7 @@
                                         Explorar <asp:FileUpload ID="FU_Imagen" CssClass="imagen-url" runat="server" />
                                     </span>
                                 </span>
-                                <asp:TextBox ID="TB_Imagen" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                <input id="imagen-url" name="imagen-url" type="text" class="form-control" readonly="true" />
                             </div>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
             <div class="form-group">
                 <div class="row">
                     <div id="div_direccion" class="col-sm-10 col-md-10 col-lg-10">
-                        <asp:TextBox ID="TB_Direccion" runat="server" CssClass="form-control direccion"></asp:TextBox>
+                        <input id="direccion" name="direccion" type="text" class="form-control" placeholder="Dirección detallada" />
                     </div>
                 </div>
             </div>
@@ -110,11 +110,11 @@
             <div class="form-group">
                 <div class="row">
                     <div id="div_cpostal" class="col-sm-5 col-md-5 col-lg-5">
-                        <asp:TextBox ID="TB_CPostal" runat="server" CssClass="form-control direccion"></asp:TextBox>
+                        <input id="codigo-postal" name="codigo-postal" type="text" class="form-control" placeholder="Código postal" />
                     </div>
                     &nbsp;
                     <div id="div_telefono" class="col-sm-5 col-md-5 col-lg-5">
-                        <asp:TextBox ID="TB_Telefono" runat="server" CssClass="form-control direccion"></asp:TextBox>
+                        <input id="telefono" name="telefono" type="text" class="form-control" placeholder="Teléfono" />
                     </div>
                 </div>
             </div>
