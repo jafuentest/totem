@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="DetalleMinutas.aspx.cs" Inherits="GUI_Modulo8_DetalleMinutas" %>
-
+<%@ MasterType TypeName="MasterPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server"><link rel="stylesheet" type="text/css" href="css/Minutas.css"/></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Minutas</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">  Detalle</asp:Content>
@@ -254,7 +254,7 @@
                     </div> 
                 </div>
              </div>
-            <div class="col-xs-12">                
+            <div class="col-xs-12">             
                 
              </div>
        </div>                                    
