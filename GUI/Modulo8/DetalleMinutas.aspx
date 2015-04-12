@@ -176,40 +176,46 @@
                             <div class="panel-body">
 
                                 <label class="col-xs-3 control-label">Fecha:</label>
-                                <label class="col-xs-9 control-label">10-05-2013 15:03</label> 
+                                <label class="col-xs-9 control-label">10-05-2015</label> 
                                              
                                 <label for="observacionesReunion" class="control-label col-xs-12">Involucrados:</label> 
                                 
-                                <div id="2_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
+                                <div id="1_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
                                     <div class="panel-boddy participante">                                                
                                         <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                                        <div class="col-xs-8 nombre-participante">Eric Contreras</div>                        
+                                        <div class="col-xs-10 col-sm-8 nombre-participante">
+                                            <p class="participante-nombre">Daniel Sam</p>
+                                            <p class="participante-rol"><small>Líder de Proyecto</small></p>
+                                        </div>                        
                                     </div>
-                                </div>                
-                                <div id="2_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
+                                </div>               
+                                <div id="3_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
                                     <div class="panel-boddy participante">                                                
                                         <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                                        <div class="col-xs-8 nombre-participante">Eric Contreras</div>                        
+                                        <div class="col-xs-10 col-sm-8 nombre-participante">
+                                            <p class="participante-nombre">César Contreras</p>
+                                            <p class="participante-rol"><small>Desarrollador</small></p>
+                                        </div>                        
                                     </div>
-                                </div>  
-                                <div id="2_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
+                                </div>
+                                <div id="4_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
                                     <div class="panel-boddy participante">                                                
                                         <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                                        <div class="col-xs-8 nombre-participante">Eric Contreras</div>                        
+                                        <div class="col-xs-10 col-sm-8 nombre-participante">
+                                            <p class="participante-nombre">Jonathan González</p>
+                                            <p class="participante-rol"><small>Desarrollador</small></p>
+                                        </div>                        
                                     </div>
-                                </div>  
-                                <div id="2_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
+                                </div>
+                                <div id="5_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
                                     <div class="panel-boddy participante">                                                
                                         <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                                        <div class="col-xs-8 nombre-participante">Eric Contreras</div>                        
+                                        <div class="col-xs-10 col-sm-8 nombre-participante">
+                                            <p class="participante-nombre">Gabriel Sarmiento</p>
+                                            <p class="participante-rol"><small>Desarrollador</small></p>
+                                        </div>                        
                                     </div>
-                                </div>  
-                                <div id="2_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
-                                    <div class="panel-boddy participante">                                                
-                                        <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                                        <div class="col-xs-8 nombre-participante">Eric Contreras</div>                        
-                                    </div>
-                                </div>  
+                                </div> 
                             </div>
                         </div>                    
                     </div> 
@@ -226,27 +232,27 @@
                             <div class="panel-body">
 
                                 <label class="col-xs-3 control-label">Fecha:</label>
-                                <label class="col-xs-9 control-label">10-05-2013 15:03</label> 
+                                <label class="col-xs-9 control-label">10-05-2015</label> 
                                              
                                 <label for="observacionesReunion" class="control-label col-xs-12">Involucrados:</label> 
                                 <div id="1_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
                                     <div class="panel-boddy participante">                                                
                                         <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                                        <div class="col-xs-8 nombre-participante">César Contreras</div>                        
+                                        <div class="col-xs-10 col-sm-8 nombre-participante">
+                                            <p class="participante-nombre">Daniel Sam</p>
+                                            <p class="participante-rol"><small>Líder de Proyecto</small></p>
+                                        </div>                        
                                     </div>
                                 </div>
                                 <div id="2_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
                                     <div class="panel-boddy participante">                                                
                                         <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                                        <div class="col-xs-8 nombre-participante">Eric Contreras</div>                        
+                                        <div class="col-xs-10 col-sm-8 nombre-participante">
+                                            <p class="participante-nombre">Eloise Chávez</p>
+                                            <p class="participante-rol"><small>Product Owner</small></p>
+                                        </div>                        
                                     </div>
-                                </div>                
-                                <div id="2_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
-                                    <div class="panel-boddy participante">                                                
-                                        <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                                        <div class="col-xs-8 nombre-participante">Eric Contreras</div>                        
-                                    </div>
-                                </div>  
+                                </div>
                             </div>
                         </div>                    
                     </div> 
