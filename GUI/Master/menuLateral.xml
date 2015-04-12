@@ -40,13 +40,9 @@
 	<opcion nombre="Listar Requerimientos" link="~/GUI/Modulo5/ListarRequerimientos.aspx">
 		<modulo id="5"></modulo>
 	</opcion>
-	<opcion nombre="Reporte de Requerimientos Funcionales" link="~/GUI/Modulo5/RFuncionales.aspx">
+	<opcion nombre="Reportes" link="~/GUI/Modulo5/Reportes.aspx">
 		<modulo id="5"></modulo>
 	</opcion>
-	<opcion nombre="Reporte de Requerimientos No Funcionales" link="~/GUI/Modulo5/RNFuncionales.aspx">
-		<modulo id="5"></modulo>
-	</opcion>
-
 	<!-- Opciones del menú lateral del Módulo 6-->
 	<opcion nombre="Agregar Caso de Uso" link="~/GUI/Modulo6/Crear.aspx">
 		<modulo id="6"/>

@@ -7,7 +7,7 @@
     <div id="formularioAgregar" class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">      
         <form id="agregar_requerimientos" class="form-horizontal" method="post" action="ListarRequerimientos.aspx?success=1">
             <div class="form-group">
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;Tipo de Requerimiento:</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;<b>Tipo de Requerimiento:</b></p>
                 &nbsp;&nbsp;&nbsp;&nbsp;<label class="radio-inline"><input type="radio" name="optradio1" checked="checked"/>Funcional</label>
                 <label class="radio-inline">
                 <input type="radio" name="optradio1"/>No Funcional</label>
@@ -25,7 +25,7 @@
             </div>
             <br />
                 <div class="form-group">
-                    <p>&nbsp;&nbsp;&nbsp;&nbsp;Prioridad:</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;<b>Prioridad:</b></p>
                     &nbsp;&nbsp;&nbsp;&nbsp;<label class="radio-inline"><input type="radio" name="optradio"/>Baja</label>
                     <label class="radio-inline">
                     <input type="radio" name="optradio" checked="checked"/>Media</label>
@@ -36,6 +36,7 @@
             <div class="form-group">
                 <div class="col-sm-5 col-md-5 col-lg-5">
                     <button id="btn-agregarReq" disabled="disabled" class="btn btn-primary" type="submit" onclick="return checkform();">Agregar</button>
+                    <a class="btn btn-default" href="ListarRequerimientos.aspx">Cancelar</a>
                 </div>
             </div>
         </form>
