@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 	<link href="<%= Page.ResolveUrl("~/GUI/Modulo6/css/modulo6.min.css") %>" rel="stylesheet"/>
 	<script type="text/javascript" src="<%= Page.ResolveUrl("~/GUI/Modulo6/js/modulo6.js") %>"></script>
+	<script type="text/javascript" src="<%= Page.ResolveUrl("~/GUI/Modulo6/js/validaciones.js") %>"></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Casos de Uso</asp:Content>
@@ -12,7 +13,7 @@
 		<form name="form_casodeuso" id="form_casodeuso" class="form-horizontal" action="#" method="post">
 			<div class="form-group">
 				<div id="div-id" class="col-sm-10 col-md-10 col-lg-10">
-					<input type="text" name="id" id="id" placeholder="ID" class="form-control" disabled="disabled" value="TOT_1_1_1"/>
+					<input type="text" name="id" id="id" placeholder="ID" class="form-control" disabled="disabled" value="TOT_CU_6_1_2"/>
 				</div>
 			</div>
 			<div class="form-group">
@@ -81,7 +82,7 @@
 			</div>
 			<div class="form-group">
 				<div id="div-escenarios" class="col-sm-10 col-md-10 col-lg-10">
-					<h3>Escenario Principal</h3>
+					<h3>Escenario Principal de Éxito</h3>
 					<div class="form-group">
 						<div class="col-sm-11 col-md-11 col-lg-11">
 							<input type="text" placeholder="Paso" class="form-control" id="escenario_0" name="escenario_0"/>
