@@ -18,7 +18,8 @@ function CargaAcuerdo()
         useCurrent: true,
         minDate: StartDate
     }).on('show', function (e) {
-        $('.day').click(function (event) {
+        $('.day').click(function (event)
+        {
             event.preventDefault();
             event.stopPropagation();
         });
@@ -28,17 +29,22 @@ function CargaAcuerdo()
     {
         buttonWidth: '100%',
         dropRight: true,
-        buttonText: function (options, select) {
-            if (options.length === 0) {
+        buttonText: function (options, select)
+        {
+            if (options.length === 0)
+            {
                 return 'Seleccionar Responsables...';
             }
-            else if (options.length > 3) {
+            else if (options.length > 3)
+            {
                 return 'Más de 3 Responsables';
             }
             else {
                 var labels = [];
-                options.each(function () {
-                    if ($(this).attr('label') !== undefined) {
+                options.each(function ()
+                {
+                    if ($(this).attr('label') !== undefined)
+                    {
                         labels.push($(this).attr('label'));
                     }
                     else {

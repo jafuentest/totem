@@ -28,8 +28,8 @@
 					    <td>Primer Encuentro</td>
                         <td>Activo</td>
                         <td>
-                            <a class="btn btn-primary" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>">Detalle</a>
-                            <a class="btn btn-default" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx?id=1") %>">Modificar</a>
+                            <a class="btn btn-default glyphicon glyphicon-eye-open" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
+                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
                         </td>
                     </tr>
                     <tr>
@@ -39,9 +39,8 @@
                         <td>akfsjdf</td>
                         <td>Activo</td>
                         <td>
-                            <a class="btn btn-primary" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>">Detalle</a>
-                            <a class="btn btn-default" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx?id=2") %>">Modificar</a>
-
+                            <a class="btn btn-default glyphicon glyphicon-eye-open" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
+                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
                         </td>
                     </tr>
                     <tr>
@@ -51,9 +50,8 @@
                         <td>akfznx</td>
                         <td>Activo</td>
                         <td>
-                            <a class="btn btn-primary" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>">Detalle</a>
-                            <a class="btn btn-default" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx?id=3") %>">Modificar</a>
-
+                            <a class="btn btn-default glyphicon glyphicon-eye-open" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
+                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
                         </td>
                     </tr>
                            <tr>
@@ -63,9 +61,8 @@
                         <td>mmmd</td>
                         <td>Activo</td>
                         <td>
-                            <a class="btn btn-primary" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>">Detalle</a>
-                            <a class="btn btn-default" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx?id=4") %>">Modificar</a>
-
+                            <a class="btn btn-default glyphicon glyphicon-eye-open" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
+                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
                         </td>
                     </tr>
                     <tr>
@@ -75,9 +72,8 @@
                         <td>jsdhhhdd</td>
                         <td>Activo</td>
                         <td>
-                            <a class="btn btn-primary" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>">Detalle</a>
-                            <a class="btn btn-default" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx?id=5") %>">Modificar</a>
-
+                            <a class="btn btn-default glyphicon glyphicon-eye-open" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
+                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
                         </td>
                     </tr>
                     <tr>
@@ -87,9 +83,8 @@
                         <td>aznx</td>
                         <td>Activo</td>
                         <td>
-                            <a class="btn btn-primary" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>">Detalle</a>
-                            <a class="btn btn-default" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx?id=6") %>">Modificar</a>
-
+                            <a class="btn btn-default glyphicon glyphicon-eye-open" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
+                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
                         </td>
                     </tr>
 			    </tbody>

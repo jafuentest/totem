@@ -1,19 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="DetalleMinutas.aspx.cs" Inherits="GUI_Modulo8_DetalleMinutas" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <link rel="stylesheet" type="text/css" href="css/Minutas.css"/>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Minutas
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">  Detalle
-</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server"><link rel="stylesheet" type="text/css" href="css/Minutas.css"/></asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Minutas</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">  Detalle</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     
-    <div class="col-xs-12 col-md-12 col-lg-12">   
+    <div class="col-xs-12">   
         
         <ol class="breadcrumb">
-          <li><a href="ConsultarMinuta.aspx">Consultar</a></li>
-          <li>Detalle Totem</li>
+            <li><a href="ConsultarMinuta.aspx">Consultar</a></li>
+            <li>Detalle Totem</li>
         </ol>
         
         <div class="form-group">
