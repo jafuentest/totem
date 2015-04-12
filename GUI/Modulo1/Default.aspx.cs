@@ -9,7 +9,24 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Master.MostrarMenuLateral = false;
-        Master.ShowDiv = true; 
+        ((MasterPage)Page.Master).IdModulo = "1";
+
+        if (Request.Cookies["userInfo"] != null)
+        { 
+            if(Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"])!="" &&
+                Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
+            {
+                Master.MostrarMenuLateral = false;
+                Master.ShowDiv = true;
+            }
+            else 
+            {
+                Master.MostrarMenuLateral = false;
+                Master.ShowDiv = false;
+            }
+        
+        }
+
+         
     }
 }

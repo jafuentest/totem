@@ -10,7 +10,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 
     <div  class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-        <form id="preguntaSeguridad"  class="form-horizontal" action="#">
+        <form id="preguntaSeguridad"  class="form-horizontal" method="post" action="M1_RecuperacionClave.aspx">
 
                 <div  class="login-form"> 
                     
@@ -26,7 +26,7 @@
                          &nbsp; &nbsp;
 				            <button class="btn btn-primary" type="submit" onclick="return checkform()">Continuar</button>
                         &nbsp; 
-				            <button class="btn btn-default">Cancelar</button>
+				            <a class="btn btn-default" href="M1_login.aspx">Cancelar</a>
                        </div>  
                   </div>
                  </div>

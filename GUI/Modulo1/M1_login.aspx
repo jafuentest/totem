@@ -10,7 +10,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     
                 <div  class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-                   <form id="login" class="form-horizontal" >
+                   <form id="login" class="form-horizontal" method="post" action="Default.aspx">
 
                     <div id="login-form-name" class="form-group">
                         <div class ="col-sm-7 col-md-7 col-lg-7">

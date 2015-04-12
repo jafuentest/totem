@@ -10,7 +10,9 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     
     <div  class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-    <form id="ingresoCorreo" class="form-horizontal" >
+        <div id="alerta" >
+                </div>
+    <form id="ingresoCorreo" class="form-horizontal" method="post" action="M1_PreguntaSeguridad.aspx">
 
                 <div  class="login-form"> 
                     
@@ -21,9 +23,9 @@
                   <div class="form-group">
 		               <div class="form-group">
                          &nbsp; &nbsp;
-				            <button class="btn btn-primary" type="submit" onclick="return checkform()">Continuar</button>
+				            <button class="btn btn-primary" id="btn-Enviar" type="submit" onclick="return checkform()">Continuar</button>
                         &nbsp;
-				            <button class="btn btn-default">Cancelar</button>
+				            <a class="btn btn-default" href="M1_login.aspx">Cancelar</a>
                        </div>  
                   </div>
                   
@@ -32,6 +34,15 @@
         </div>
 
     <script src="js/Login.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btn-Enviar').on('click', function () {
+                $('#alerta').addClass("alert alert-success alert-dismissible");
+                $('#alerta').text("Se ha enviado el correo éxitosamente");
+            });
+        });
+
+    </script>
    
 </asp:Content>
 

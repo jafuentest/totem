@@ -9,6 +9,7 @@ public partial class M1_RecuperacionClave : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        ((MasterPage)Page.Master).IdModulo = "1";
         Master.ShowDiv = false;
         Master.MostrarMenuLateral = false; 
     }
