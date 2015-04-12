@@ -1,0 +1,54 @@
+﻿.dropdown ul li
+{
+    cursor: pointer;
+}
+.btn-file
+{
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file]
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+input[readonly]
+{
+    background-color: white !important;
+    cursor: text !important;
+}
+.dropdown-menu
+{
+    width: 100%; 
+}
+.dropdown .btn
+{
+    width: 100%;
+}
+#rsocial-id
+{
+    margin-bottom: 1.1em;
+}
+
+@media (min-width: 768px)
+{
+    .row.col-sm-5.col-md-5.col-lg-5
+    {
+        width: 43%;
+    }
+    #rsocial-id
+    {
+        margin-bottom: inherit;
+    }
+}

@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="AgregarCliente.aspx.cs" Inherits="GUI_Modulo2_AgregarCliente" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+
+    <!-- Custom CSS for input[type="file"] -->
+    <link href="<%= Page.ResolveUrl("~/GUI/Modulo2/css/agregar-cliente.css") %>" rel="stylesheet" />
+
+    <!-- Custom JS for dropdown items -->
+    <script type="text/javascript" src="<%= Page.ResolveUrl("~/GUI/Modulo2/js/dropdown-ac.js") %>"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">
     Agregar cliente
@@ -27,15 +33,34 @@
 
             <div class="form-group">
                 <div class="row">
-                    <div id="div_rsocial" class="col-sm-1 col-md-1 col-lg-1" style="width: 10%;">
-                        <asp:DropDownList ID="DD_RSocial" runat="server" CssClass="form-control rsocial"></asp:DropDownList>
+                    <div id="div_rsocial" class="col-sm-1 col-md-1 col-lg-1">
+                        <div class="dropdown">
+                            <button id="rsocial-id" class="btn btn-default dropdown-toggle" name="rsocial-dd" type="button" data-toggle="dropdown" aria-expanded="true">
+                                V
+                                <span class="caret"></span>
+                            </button>
+                            <ul id="rsocial-dd" class="dropdown-menu" role="menu" aria-labelledby="rsocial-id">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >V</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >E</a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div id="div_rif" class="col-sm-4 col-md-4 col-lg-4" style="width: 31.7%">
+                    <div id="div_rif" class="col-sm-4 col-md-4 col-lg-4">
                         <asp:TextBox ID="TB_RIF" runat="server" CssClass="form-control rif"></asp:TextBox>
                     </div>
                     &nbsp;
                     <div id="div_cargo" class="col-sm-5 col-md-5 col-lg-5">
-                        <asp:DropDownList ID="DD_Cargo" runat="server" CssClass="form-control cargo"></asp:DropDownList>
+                        <div class="dropdown">
+                            <button id="cargo-id" class="btn btn-default dropdown-toggle" name="cargo-dd" type="button" data-toggle="dropdown" aria-expanded="true">
+                                Cargo empresarial
+                                <span class="caret"></span>
+                            </button>
+                            <ul id="cargo-dd" class="dropdown-menu" role="menu" aria-labelledby="cargo-id">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Director general</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Director ejecutivo</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Gerente departamental</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
