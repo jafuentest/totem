@@ -29,7 +29,7 @@
 .nombre-participante
 {
     padding-left: 15px;
-    line-height: 50px;
+    line-height: 5px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -96,4 +96,66 @@ button.close
 .btn-right
 {
     float: right;
+}
+
+.participante-nombre
+{
+    padding-top: 15px;
+}
+
+.participante-rol
+{
+    font-style: italic;
+}
+
+.control-label 
+{
+    padding-top: 8px;
+}
+.form-control[readonly] 
+{
+    background-color: #ffffff;
+    border-color: #ffffff;
+    color: #000000;
+}
+
+.panel-participante:hover
+{
+    cursor: pointer;
+}
+
+.icon-eye 
+{
+    padding-top: 10px;
+    font-size: 2em;
+}
+
+.modalPersona .modal-body 
+{
+    display: inline-block;
+}
+.label-control 
+{
+    font-weight: normal;
+}
+.panel-group .panel 
+{
+    margin-top: 5px;
+}
+@media(max-width:767px) 
+{
+    
+    .temp-form 
+    {
+        margin-top: -15px;
+    }
+}
+
+@media (max-width:992px)
+{
+    .img-person 
+    {
+        height: 160px;
+        margin: 0 auto;
+    }  
 }

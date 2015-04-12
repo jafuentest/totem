@@ -5,15 +5,16 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">  Agregar</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 
-<div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1" runat="server">
+<div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
    
     <link rel="stylesheet" type="text/css" href="css/bootstrap-multiselect.css"/>
     <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/Minutas.css"/>
 
     <div class="col-xs-12">
-        <form id="crearMinuta_form" class="form-horizontal" action="#">
         
+        <form id="crearMinuta_form" class="form-horizontal">
+            <div class="row" id="alertas"></div>
             <div class="form-group">
                 <label for="fechaReunion" class="col-xs-3 col-sm-12 col-md-3 control-label">Fecha:</label> 
                 <div id="div_fechaReunion" class="col-xs-9 col-sm-12 col-md-8 col-lg-3 date">
@@ -24,7 +25,7 @@
             <div class="form-group">
                 <label for="motivo" class="col-xs-12 col-md-3 control-label">Motivo:</label> 
 			    <div id="div_motivo" class="col-xs-12 col-md-8 col-lg-6">
-                    <textarea name="motivo" placeholder="Exponga brevemente el motivo de la reunión" class="form-control" rows=4></textarea>			
+                    <textarea name="motivo" id="motivo" placeholder="Exponga brevemente el motivo de la reunión" class="form-control" rows=4></textarea>			
 			    </div>
             </div>
 
@@ -33,30 +34,42 @@
                 <div class="list-group col-xs-12 col-md-8 col-lg-6">
                     <div id="1_par" class="panel panel-default panel-participante col-xs-12 col-sm-6" onClick="seleccionado(this)">
                         <div class="panel-boddy participante">
-                            <div class="col-xs-1 check-contenedor"><input type="checkbox" id="1_par_check"/></div>
+                            <div class="col-xs-1 check-contenedor"><input type="checkbox" class="participante-check" id="1_par_check"/></div>
                             <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                            <div class="col-xs-8 nombre-participante">César Contreras</div>
+                            <div class="col-xs-8 nombre-participante">
+                                <p class="participante-nombre">César Contreras</p>
+                                <p class="participante-rol"><small>Líder de Proyecto</small></p>
+                            </div>
                         </div>
                     </div>
                     <div id="2_par" class="panel panel-default panel-participante col-xs-12 col-sm-6" onClick="seleccionado(this)">
                         <div class="panel-boddy participante">
-                            <div class="col-xs-1 check-contenedor"><input type="checkbox" id="2_par_check"/></div>
+                            <div class="col-xs-1 check-contenedor"><input type="checkbox" class="participante-check" id="2_par_check"/></div>
                             <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                            <div class="col-xs-8 nombre-participante">Ana Pérez</div>
+                            <div class="col-xs-8 nombre-participante">
+                                <p class="participante-nombre">Daniel Sam</p>
+                                <p class="participante-rol"><small>Product Owner</small></p>
+                            </div>
                         </div>
                     </div>
                     <div id="3_par" class="panel panel-default panel-participante col-xs-12 col-sm-6" onClick="seleccionado(this)">
                         <div class="panel-boddy participante">
-                            <div class="col-xs-1 check-contenedor"><input type="checkbox" id="3_par_check"/></div>
+                            <div class="col-xs-1 check-contenedor"><input type="checkbox" class="participante-check" id="3_par_check"/></div>
                             <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                            <div class="col-xs-8 nombre-participante">Daniel Sam</div>
+                            <div class="col-xs-8 nombre-participante">
+                                <p class="participante-nombre">Ramón Quintero</p>
+                                <p class="participante-rol"><small>Desarrollador</small></p>
+                            </div>
                         </div>
                     </div>
                     <div id="4_par" class="panel panel-default panel-participante col-xs-12 col-sm-6" onClick="seleccionado(this)">
                         <div class="panel-boddy participante">
-                            <div class="col-xs-1 check-contenedor"><input type="checkbox" id="4_par_check"/></div>
+                            <div class="col-xs-1 check-contenedor"><input type="checkbox" class="participante-check" id="4_par_check"/></div>
                             <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                            <div class="col-xs-8 nombre-participante">Ramón Quintero</div>
+                            <div class="col-xs-8 nombre-participante">
+                                <p class="participante-nombre">Ana Pérez</p>
+                                <p class="participante-rol"><small>Stakeholder</small></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -127,21 +140,38 @@
             <div class="form-group">
                 <label for="observaciones" class="col-xs-12 col-md-3 control-label">Observaciones:</label> 
 			    <div id="div_observaciones" class="col-xs-12 col-md-8 col-lg-6">
-                    <textarea name="observaciones" placeholder="Observaciones" class="form-control" rows=4></textarea>			
+                    <textarea name="observaciones" id="observaciones" placeholder="Observaciones" class="form-control" rows=4></textarea>			
 			    </div>
             </div>
         
            <div class="form-group">
                <div class="col-xs-12 col-md-9 botones">
-				    <button class="btn btn-primary btn-right" onclick="return CrearMinuta()">Crear Minuta</button>
+				    <button type="button" class="btn btn-primary btn-right" onClick="validar();">Crear Minuta</button>
                </div>    
 	       </div>
         </form> 
     </div>
+
+    <div id="confirmacion" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" >¿Desea agregar la minuta?</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button id="btn-confirmar" type="button" class="btn btn-primary" onClick="aceptarConfirmacion();">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 <script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
 <script type="text/javascript" src="js/moment-with-locales.min.js"></script>
 <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/d004434a5ff76e7b97c8b07c01f34ca69e635d97/src/js/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript" src="js/crearMinuta.js"></script>
+<script type="text/javascript" src="js/validacionesCrearMinuta.js"></script>
 </asp:Content>
 
