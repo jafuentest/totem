@@ -1,41 +1,45 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="ListarRequerimientos.aspx.cs" Inherits="GUI_Modulo5_PrincipalProyecto" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="Reportes.aspx.cs" Inherits="GUI_Modulo5_RFuncionalesID" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Requerimientos<br /></asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Lista de Requerimiento</asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">    
-    <div id="alert" runat="server">
+<asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Reporte de Requerimientos</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
+    <div class="col-lg-offset-11"\>
+        <button class="btn btn-default">Imprimir</button>
     </div>
-    <div class="panel panel-primary" style="width:auto">
-      <div class="panel-heading">
-        <h3 class="panel-title" style="align-content:center">Proyecto</h3>
-      </div>
-      <div class="panel-body" style="width:auto">
-          Nombre del Proyecto: TOTEM<br />
-          Empresa Cliente: UCAB<br />
-          Status del Proyecto: Activo<br />
-      </div>
+    <br />
+    <div class="col-lg-12">
+    <h4>Seleccione el tipo de requerimiento con el cual desea filtrar el reporte</h4>
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="tipoid" data-toggle="dropdown" aria-expanded="true">
+        Tipo de Requerimiento:
+        <span class="caret"></span>
+        </button>
+        <ul id="tipo-dd" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li id="funcionales" role="presentation"><a role="menuitem" tabindex="-1" href="#" >Requerimientos Funcionales</a></li>
+            <li id="nofuncionales" role="presentation"><a role="menuitem" tabindex="-1" href="#" >Requerimientos No Funcionales</a></li>
+        </ul>
     </div>
-    <br/>
-    <h2 style="align-content:center">Requerimientos Asociados</h2>
+    <br />
+    <br />
     <div class="table-responsive">
 	    		<table id="table-example" class="table table-striped table-hover">
 			<thead>
 				<tr>
 					<th>ID</th>
-					<th style="width: 530px">Requerimiento</th>
+					<th>Requerimiento</th>
 					<th>Tipo</th>
-					<th style="width: 50px">Prioridad</th>
+					<th>Prioridad</th>
 					<th>Acciones</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td class="id">TOT_RF_1</td>
-					<td>El sistema deberá permitir agregar, modificar y eliminar requerimientos, solo cuando valide que el proyecto se encuentra activo.</td>
-					<td>Funcional</td>
-					<td>Alta</td>
+					<td style="width: 530px">El sistema deberá permitir agregar, modificar y eliminar requerimientos, solo cuando valide que el proyecto se encuentra activo.</td>
+					<td class="Type">Funcional</td>
+					<td  style="width: 50px">Alta</td>
                     <td>
                         <a class="btn btn-default glyphicon glyphicon-pencil" data-toggle="modal" data-target="#modal-update" href="#"></a>
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
@@ -43,18 +47,18 @@
                 </tr>
                 <tr>
                     <td>TOT_RF_2</td>
-					<td>El sistema deberá permitir la modificación de los campos de descripción y prioridad de los requerimientos funcionales y no funcionales previamente asociados a un proyecto dado.</td>
-					<td>Funcional</td>
-					<td>Alta</td>
+					<td style="width: 530px">El sistema deberá permitir la modificación de los campos de descripción y prioridad de los requerimientos funcionales y no funcionales previamente asociados a un proyecto dado.</td>
+					<td class="Type">Funcional</td>
+					<td  style="width: 50px">Alta</td>
                     <td>
                         <a class="btn btn-default glyphicon glyphicon-pencil" data-toggle="modal" data-target="#modal-update" href="#"></a>
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
                      </td>
 				</tr><tr>
                     <td>TOT_RF_3</td>
-					<td>El sistema deberá permitir eliminar los requerimientos funcionales y no funcionales de un proyecto.</td>
-					<td>Funcional</td>
-					<td>Alta</td>
+					<td style="width: 530px">El sistema deberá permitir eliminar los requerimientos funcionales y no funcionales de un proyecto.</td>
+					<td class="Type">Funcional</td>
+					<td  style="width: 50px">Alta</td>
                     <td>
                         <a class="btn btn-default glyphicon glyphicon-pencil" data-toggle="modal" data-target="#modal-update" href="#"></a>
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
@@ -62,9 +66,9 @@
                 </tr>
                 <tr>
                     <td>TOT_RF_4</td>
-					<td>El sistema deberá permitir buscar requerimientos funcionales y no funcionales, por ID y por descripción, que se encuentran asociados a un proyecto en específico.</td>
-					<td>Funcional</td>
-					<td>Alta</td>
+					<td style="width: 530px">El sistema deberá permitir buscar requerimientos funcionales y no funcionales, por ID y por descripción, que se encuentran asociados a un proyecto en específico.</td>
+					<td class="Type">Funcional</td>
+					<td  style="width: 50px">Alta</td>
                     <td>
                         <a class="btn btn-default glyphicon glyphicon-pencil" data-toggle="modal" data-target="#modal-update" href="#"></a>
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
@@ -72,9 +76,9 @@
                 </tr>
                 <tr>
                 <td>TOT_RF_5</td>
-					<td>El sistema deberá permitir consultar la lista de requerimientos funcionales, asociados a un proyecto en específico, organizada por ID.</td>
-					<td>Funcional</td>
-					<td>Alta</td>
+					<td style="width: 530px">El sistema deberá permitir consultar la lista de requerimientos funcionales, asociados a un proyecto en específico, organizada por ID.</td>
+					<td class="Type">Funcional</td>
+					<td  style="width: 50px">Alta</td>
                     <td>
                         <a class="btn btn-default glyphicon glyphicon-pencil" data-toggle="modal" data-target="#modal-update" href="#"></a>
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
@@ -82,18 +86,18 @@
                 </tr>
                 <tr>
                 <td>TOT_RF_6</td>
-					<td>El sistema deberá permitir consultar la lista de requerimientos funcionales, asociados a un proyecto en específico, organizada por su prioridad.</td>
-					<td>Funcional</td>
-					<td>Alta</td>
+					<td style="width: 530px">El sistema deberá permitir consultar la lista de requerimientos funcionales, asociados a un proyecto en específico, organizada por su prioridad.</td>
+					<td class="Type">Funcional</td>
+					<td  style="width: 50px">Alta</td>
                     <td>
                         <a class="btn btn-default glyphicon glyphicon-pencil" data-toggle="modal" data-target="#modal-update" href="#"></a>
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
                     </td>
                 </tr><tr>
                     <td>TOT_RNF_1</td>
-					<td>El sistema deberá permitir eliminar los requerimientos funcionales y no funcionales de un proyecto.</td>
-					<td>No Funcional</td>
-					<td>Alta</td>
+					<td style="width: 530px">El sistema deberá permitir eliminar los requerimientos funcionales y no funcionales de un proyecto.</td>
+					<td class="Type">No Funcional</td>
+					<td  style="width: 50px">Alta</td>
                     <td>
                         <a class="btn btn-default glyphicon glyphicon-pencil" data-toggle="modal" data-target="#modal-update" href="#"></a>
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
@@ -101,9 +105,9 @@
                 </tr>
                 <tr>
                     <td>TOT_RNF_2</td>
-					<td>El sistema deberá permitir buscar requerimientos funcionales y no funcionales, por ID y por descripción, que se encuentran asociados a un proyecto en específico.</td>
-					<td>No Funcional</td>
-					<td>Alta</td>
+					<td style="width: 530px">El sistema deberá permitir buscar requerimientos funcionales y no funcionales, por ID y por descripción, que se encuentran asociados a un proyecto en específico.</td>
+					<td class="Type">No Funcional</td>
+					<td  style="width: 50px">Alta</td>
                     <td>
                         <a class="btn btn-default glyphicon glyphicon-pencil" data-toggle="modal" data-target="#modal-update" href="#"></a>
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
@@ -111,9 +115,9 @@
                 </tr>
                 <tr>
                 <td>TOT_RNF_3</td>
-					<td>El sistema deberá permitir consultar la lista de requerimientos funcionales, asociados a un proyecto en específico, organizada por ID.</td>
-					<td>No Funcional</td>
-					<td>Alta</td>
+					<td style="width: 530px">El sistema deberá permitir consultar la lista de requerimientos funcionales, asociados a un proyecto en específico, organizada por ID.</td>
+					<td class="Type">No Funcional</td>
+					<td  style="width: 50px">Alta</td>
                     <td>
                         <a class="btn btn-default glyphicon glyphicon-pencil" data-toggle="modal" data-target="#modal-update" href="#"></a>
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
@@ -121,9 +125,9 @@
                 </tr>
                 <tr>
                 <td>TOT_RNF_4</td>
-					<td>El sistema deberá permitir consultar la lista de requerimientos funcionales, asociados a un proyecto en específico, organizada por su prioridad.</td>
-					<td>No Funcional</td>
-					<td>Alta</td>
+					<td style="width: 530px">El sistema deberá permitir consultar la lista de requerimientos funcionales, asociados a un proyecto en específico, organizada por su prioridad.</td>
+					<td class="Type">No Funcional</td>
+					<td  style="width: 50px">Alta</td>
                     <td>
                         <a class="btn btn-default glyphicon glyphicon-pencil" data-toggle="modal" data-target="#modal-update" href="#"></a>
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
@@ -203,41 +207,58 @@
     </div>
     <!-- Data tables init -->
 	<script type="text/javascript">
-	    $(document).ready(function () {
+	    jQuery(function ($) {
 	        $('#table-example').DataTable();
-	        var table = $('#table-example').DataTable();
-	        var req;
-	        var tr;
-
-	        $('#table-example tbody').on('click', 'a', function () {
-	            if ($(this).parent().hasClass('selected')) {
-	                req = $(this).parent().prev().prev().prev().prev().text();
-	                tr = $(this).parents('tr');//se guarda la fila seleccionada
-	                $(this).parent().removeClass('selected');
-
-	            }
-	            else {
-	                req = $(this).parent().prev().prev().prev().prev().text();
-	                tr = $(this).parents('tr');//se guarda la fila seleccionada
-	                table.$('tr.selected').removeClass('selected');
-	                $(this).parent().addClass('selected');
-	            }
-	        });
-	        $('#modal-delete').on('show.bs.modal', function (event) {
-	            var modal = $(this)
-	            modal.find('.modal-title').text('Eliminar requerimiento:  ' + req)
-	            modal.find('#req').text(req)
-	        })
-	        $('#btn-eliminar').on('click', function () {
-	            table.row(tr).remove().draw();//se elimina la fila de la tabla
-	            $('#modal-delete').modal('hide');//se esconde el modal
-	        });
-	        $('#modal-update').on('show.bs.modal', function (event) {
-	            var modal = $(this)
-	            modal.find('.modal-title').text('Modificar requerimiento')
-	        });
+	    });
+	    $('#modal-delete').on('show.bs.modal', function (event) {
+	        var modal = $(this)
+	        modal.find('.modal-title').text('Eliminar requerimiento:  ' + req)
+	        modal.find('#req').text(req)
+	    })
+	    $('#btn-eliminar').on('click', function () {
+	        table.row(tr).remove().draw();//se elimina la fila de la tabla
+	        $('#modal-delete').modal('hide');//se esconde el modal
+	    });
+	    $('#modal-update').on('show.bs.modal', function (event) {
+	        var modal = $(this)
+	        modal.find('.modal-title').text('Modificar requerimiento')
 	    });
 	</script>
- 
+    <script type="text/javascript">
+        $('#funcionales').click(function () {
+            var busqueda = 'Funcional';
+
+            $('tr').hide();
+
+            $('tr td.Type').each(function () {
+
+                if ($(this).text() == busqueda) {
+
+                    $(this).parent().show();
+                }
+            });
+
+        });
+        $("#tipo-dd li a").click(function () {
+
+            $("#tipoid").html($(this).text() + ' <span class="caret"></span>');
+
+        });
+        $('#nofuncionales').click(function () {
+            var busqueda = 'No Funcional';
+
+            $('tr').hide();
+
+            $('tr td.Type').each(function () {
+
+                if ($(this).text() == busqueda) {
+
+                    $(this).parent().show();
+                }
+            });
+
+        });
+	</script>
+    </div>
 </asp:Content>
 
