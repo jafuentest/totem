@@ -44,7 +44,7 @@
                            message: 'El precio es requerido'
                        },
                        regexp: {
-                           regexp: /[^0-9]+$/,
+                           regexp: /^[0-9.]*$/,
                            message: 'El precio debe ser en numeros'
                        }
                    }

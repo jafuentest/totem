@@ -20,17 +20,17 @@
 
     <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
 
-        <div class="form-group">
-           <div class="col-sm-12 col-md-12 col-lg-12">
-            <div class="input-group">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Buscar</button>
-              </span>
-              <input type="text" class="form-control" placeholder="Buscar proyecto...">
-            </div><!-- /input-group -->
-          </div><!-- /.col-lg-6 -->
-        </div>
-
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Buscar proyecto...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Buscar</button>
+                    </span>
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+        <br><br>
         <div class="jumbotron col-sm-12 col-md-12 col-lg-12">
             <h2 class="sameLine"><a href="PerfilProyecto.aspx">Twitter</a></h2> <h5 class="sameLine">COD: TWI</h5>
             <p class="desc">Twitter (NYSE: TWTR) es un servicio de microblogging, con sede en San Francisco, California, con filiales en San Antonio (Texas) y Boston (Massachusetts) en Estados Unidos. Twitter, Inc. fue creado originalmente en California, pero está bajo la jurisdicción de Delaware desde 2007...</p>

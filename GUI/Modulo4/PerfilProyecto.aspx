@@ -12,6 +12,13 @@
         .desc {
             font-style: italic;
         }
+        .link{
+            font-size: 20px;
+            font-style: normal;
+        }
+        .link:hover{
+            text-decoration: none;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestion de Proyectos</asp:Content>
@@ -38,7 +45,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="requerimientos">
                         <h3 class="panel-title">
-                            <a href="#collapseRequerimientos" data-toggle="collapse" data-parent="#accordion">
+                            <a class="link" href="#collapseRequerimientos" data-toggle="collapse" data-parent="#accordion">
                                 Requerimientos
                             </a>
                         </h3>
@@ -128,7 +135,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="casosDeUso">
                         <h3 class="panel-title">
-                            <a href="#collapseCasosDeUso" data-toggle="collapse" data-parent="#accordion">
+                            <a class="link" href="#collapseCasosDeUso" data-toggle="collapse" data-parent="#accordion">
                                 Casos de Uso
                             </a>
                         </h3>
@@ -337,7 +344,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="minutas">
                         <h3 class="panel-title">
-                            <a href="#collapseMinutas" data-toggle="collapse" data-parent="#accordion">
+                            <a class="link" href="#collapseMinutas" data-toggle="collapse" data-parent="#accordion">
                                 Minutas
                             </a>
                         </h3>
@@ -428,7 +435,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="involucrados">
                         <h3 class="panel-title">
-                            <a href="#collapseInvolucrados" data-toggle="collapse" data-parent="#accordion">
+                            <a class="link" href="#collapseInvolucrados" data-toggle="collapse" data-parent="#accordion">
                                 Involucrados
                             </a>
                         </h3>
@@ -599,10 +606,11 @@
 
             <div class="form-group">
                 <div class="btn-group"> 
-		            <div class="col-sm-2 col-md-2 col-lg-2">
+		            <div class="col-sm-1 col-md-1 col-lg-1">
 			            <a class="btn btn-primary" href="<%= Page.ResolveUrl("~/GUI/Modulo4/ModificarProyecto.aspx?id=1") %>">Modificar</a>
 		            </div>
-                    <div class="col-sm-2 col-md-2 col-lg-2">
+                    <div class="col-sm-3 col-md-3 col-lg-3">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
 			            <button class="btn btn-danger" onclick="return checkform()">Eliminar</button>
 		            </div>
                 <div class="col-md-offset-8">
