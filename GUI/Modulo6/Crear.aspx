@@ -1,55 +1,70 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="Crear.aspx.cs" Inherits="GUI_Modulo6_Crear" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+	<link href="<%= Page.ResolveUrl("~/GUI/Modulo6/css/modulo6.min.css") %>" rel="stylesheet"/>
+	<script type="text/javascript" src="<%= Page.ResolveUrl("~/GUI/Modulo6/js/modulo6.js") %>"></script>
+</asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Casos de Uso</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Agregar</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
-	<form action="Crear.aspx" method="post">
-		<div class="form-group">
-			<div class="row">
-				<div class="col-lg-3">
-					<input type="text" name="id" id="id" placeholder="ID" class="form-control" />
+	<div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
+		<form name="form_casodeuso" id="form_casodeuso" class="form-horizontal" action="#" method="post">
+			<div class="form-group">
+				<div id="div-id" class="col-sm-10 col-md-10 col-lg-10">
+					<input type="text" name="id" id="id" placeholder="ID" class="form-control" disabled="disabled" value="TOT_1_1_1"/>
 				</div>
 			</div>
-			<br />
-			<div class="row">
-				<div class="col-lg-3">
-					<input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control" />
+			<div class="form-group">
+				<div id="div-nombre" class="col-sm-10 col-md-10 col-lg-10">
+					<input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control"/>
 				</div>
 			</div>
-			<br />
-			<div class="row">
-				<div class="col-lg-3">
-					<input type="text" name="precondicion" id="precondicion" placeholder="Precondición" class="form-control" />
+			<div class="form-group">
+				<div id="div-precondiciones" class="col-sm-10 col-md-10 col-lg-10">
+					<h3>Precondiciones</h3>
+					<div class="form-group">
+						<div class="col-sm-11 col-md-11 col-lg-11">
+							<input type="text" placeholder="Precondición" class="form-control" id="precondicion_0" name="precondicion_0"/>
+						</div>
+						<div class="col-sm-1 col-md-1 col-lg-1">
+							<button type="button" class="btn btn-default btn-circle glyphicon glyphicon-plus" onclick="agregarPrecondicion()"></button>
+						</div>
+					</div>
 				</div>
 			</div>
-			<br />
-			<div class="row">
-				<div class="col-lg-3">
-					<input type="text" name="condicionExito" id="condicionExito" placeholder="Condición Final de Éxito" class="form-control" />
+			<div class="form-group">
+				<div id="div-condicionExito" class="col-sm-10 col-md-10 col-lg-10">
+					<input type="text" name="condicionExito" id="condicionExito" placeholder="Condición Final de Éxito" class="form-control"/>
 				</div>
 			</div>
-			<br />
-			<div class="row">
-				<div class="col-lg-3">
-					<input type="text" name="condicionFallo" id="condicionFallo" placeholder="Condición Final de Fallo" class="form-control" />
+			<div class="form-group">
+				<div id="div-condicionFallo" class="col-sm-10 col-md-10 col-lg-10">
+					<input type="text" name="condicionFallo" id="condicionFallo" placeholder="Condición Final de Fallo" class="form-control"/>
 				</div>
 			</div>
-			<br />
-			<div class="row">
-				<div class="col-lg-3">
-					<select class="form-control select select-primary select-block mbl">
-						<option value="">Actor Primario</option>
+			<div class="form-group">
+				<div id="div-actores" class="col-sm-10 col-md-10 col-lg-10">
+					<h3>Actores</h3>
+					<select multiple="multiple" name="actores1" size="4" class="form-control select select-primary select-block mbl">
 						<option value="Actor 1">Actor 1</option>
 						<option value="Actor 2">Actor 2</option>
 						<option value="Actor 3">Actor 3</option>
+						<option value="Actor 1">Actor 4</option>
+						<option value="Actor 2">Actor 5</option>
+						<option value="Actor 3">Actor 6</option>
 					</select>
+					<div class="text-center padding-small">
+						<button type="button" class="btn btn-default btn-circle glyphicon glyphicon-chevron-down" onclick="agregarActor()"></button>
+						<button type="button" class="btn btn-default btn-circle glyphicon glyphicon-chevron-up" onclick="eliminarActor()"></button>
+					</div>
+					<select multiple="multiple" name="actores2" size="4" class="form-control select select-primary select-block mbl"></select>
 				</div>
 			</div>
-			<br />
-			<div class="row">
-				<div class="col-lg-3">
-					<select multiple="multiple" name="requerimiento" class="form-control select select-primary select-block mbl">
+			<div class="form-group">
+				<div id="div-requerimientos" class="col-sm-10 col-md-10 col-lg-10">
+					<h3>Requerimientos</h3>
+					<select multiple="multiple" name="requerimientos1" size="4" class="form-control select select-primary select-block mbl">
 						<option value="TOT_1_1">Requerimiento 1</option>
 						<option value="TOT_1_2">Requerimiento 2</option>
 						<option value="TOT_1_3">Requerimiento 3</option>
@@ -57,77 +72,44 @@
 						<option value="TOT_1_5">Requerimiento 5</option>
 						<option value="TOT_1_6">Requerimiento 6</option>
 					</select>
+					<div class="text-center padding-small">
+						<button type="button" class="btn btn-default btn-circle glyphicon glyphicon-chevron-down" onclick="agregarRequerimiento()"></button>
+						<button type="button" class="btn btn-default btn-circle glyphicon glyphicon-chevron-up" onclick="eliminarRequerimiento()"></button>
+					</div>
+					<select multiple="multiple" name="requerimientos2" size="4" class="form-control select select-primary select-block mbl"></select>
 				</div>
 			</div>
-			<br />
-			<div id="escenarios">
-				<h3>Escenario Principal</h3>
-				<div class="row">
-					<div class="col-lg-3">
-						<input type="text" placeholder="Condición Final de Fallo" class="form-control" />
-					</div>
-					<div class="col-lg-3">
-						<button class="btn btn-default" onclick="agregarEscenario()">Agregar</button>
-					</div>
-				</div>
-			</div>
-			<br />
-			<div id="extensiones">
-				<h3>Extensiones</h3>
-				<div class="row">
-					<div class="col-lg-3">
-						<input type="text" placeholder="Extensión" class="form-control" />
-					</div>
-					<div class="col-lg-3">
-						<button class="btn btn-default" onclick="agregarExtension()">Agregar</button>
+			<div class="form-group">
+				<div id="div-escenarios" class="col-sm-10 col-md-10 col-lg-10">
+					<h3>Escenario Principal</h3>
+					<div class="form-group">
+						<div class="col-sm-11 col-md-11 col-lg-11">
+							<input type="text" placeholder="Paso" class="form-control" id="escenario_0" name="escenario_0"/>
+						</div>
+						<div class="col-sm-1 col-md-1 col-lg-1">
+							<button type="button" class="btn btn-default btn-circle glyphicon glyphicon-plus" onclick="agregarEscenario()"></button>
+						</div>
 					</div>
 				</div>
 			</div>
-			<br />
-			<div class="row">
+			<div class="form-group">
+				<div id="div-extensiones" class="col-sm-10 col-md-10 col-lg-10">
+					<h3>Extensiones</h3>
+					<div class="form-group">
+						<div class="col-sm-11 col-md-11 col-lg-11">
+							<textarea placeholder="Extensión" class="form-control" id="extension_0" name="extension_0"></textarea>
+						</div>
+						<div class="col-sm-1 col-md-1 col-lg-1">
+							<button type="button" class="btn btn-default btn-circle glyphicon glyphicon-plus" onclick="agregarExtension()"></button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
 				<div class="col-md-6">
 					<button class="btn btn-primary" type="submit">Guardar Caso de Uso</button>
 				</div>
 			</div>
-		</div>
-	</form>
-
-	<script type="text/javascript">
-		function agregarEscenario() {
-			escenarios = document.getElementById("escenarios");
-			child = escenarios.lastElementChild.lastElementChild;
-			child.innerHTML = '<button class="btn btn-danger" onclick="eliminarCampo(this)">Eliminar</button>';
-			codigo = '<div class="row">'
-			codigo += '<br/>'
-			codigo += '<div class="col-lg-3">';
-			codigo += '<input type="text" placeholder="Condición Final de Fallo" class="form-control" />';
-			codigo += '</div>'
-			codigo += '<div class="col-lg-3">'
-			codigo += '<button class="btn btn-default" onclick="agregarEscenario()">Agregar</button>'
-			codigo += '</div>'
-			codigo += '</div>'
-			escenarios.innerHTML += codigo;
-		}
-
-		function agregarExtension() {
-			escenarios = document.getElementById("extensiones");
-			child = escenarios.lastElementChild.lastElementChild;
-			child.innerHTML = '<button class="btn btn-danger" onclick="eliminarCampo(this)">Eliminar</button>';
-			codigo = '<div class="row">'
-			codigo += '<br/>'
-			codigo += '<div class="col-lg-3">';
-			codigo += '<input type="text" placeholder="Extensión" class="form-control" />';
-			codigo += '</div>'
-			codigo += '<div class="col-lg-3">'
-			codigo += '<button class="btn btn-default" onclick="agregarExtension()">Agregar</button>'
-			codigo += '</div>'
-			codigo += '</div>'
-			escenarios.innerHTML += codigo;
-		}
-
-		function eliminarCampo(caller) {
-			parent = caller.parentElement.parentElement;
-			parent.parentElement.removeChild(parent);
-		}
-	</script>
+		</form>
+	</div>
 </asp:Content>

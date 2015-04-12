@@ -1,0 +1,18 @@
+﻿.btn-circle
+{
+	$radio: 16px; 
+    width: $radio * 2;
+    height: $radio * 2;
+    padding: 0 0;
+    border-radius: 100px;
+}
+
+.padding-small
+{
+	padding: 10px 0;
+}
+
+textarea
+{
+	resize: vertical;
+}
