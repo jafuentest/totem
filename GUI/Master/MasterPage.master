@@ -90,7 +90,7 @@
 						    <ul class="dropdown-menu" role="menu">
 							    <li><a href="#">Gestión de requerimientos</a></li>
 							    <li><a href="#">Gestión de casos de uso</a></li>
-							    <li><a href="#">Gestión de minutas</a></li>
+							    <li><a href="<%= Page.ResolveUrl("~/GUI/Modulo8/ConsultarMinuta.aspx") %>"">Gestión de minutas</a></li>
 						    </ul>
 					    </li>
 					    <li class="dropdown">
