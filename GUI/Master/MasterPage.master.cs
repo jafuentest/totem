@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Text;
 using System.Web;
+using System.Web.UI;
+using System.Linq;
+using System.Web.UI.WebControls;
+
+
 
 public partial class MasterPage : System.Web.UI.MasterPage
 {
@@ -54,6 +59,26 @@ public partial class MasterPage : System.Web.UI.MasterPage
         if (pcookie != null)
         {
             selectedProject.InnerText = "Proyecto Seleccionado: " + pcookie.Values["projectName"].ToString();
+        }
+
+        if (Request.Cookies["userInfo"] != null)
+        {
+            if (Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != "" &&
+                Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
+            {
+                ShowDiv = true;
+            }
+            else
+            {
+                MostrarMenuLateral = false;
+                ShowDiv = false;
+            }
+
+        }
+
+        else
+        {
+            Response.Redirect("../Modulo1/M1_login.aspx");
         }
 	}
 
