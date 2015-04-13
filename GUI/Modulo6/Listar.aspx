@@ -235,7 +235,7 @@
 	<script type="text/javascript">
 		$(document).ready(function () {
 			$('#table-example').DataTable();
-			var table = $('#table-users').DataTable();
+			var table = $('#table-example').DataTable();
 			var user;
 			var tr;
 
