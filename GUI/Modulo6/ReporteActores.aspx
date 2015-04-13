@@ -237,4 +237,40 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		<!-- Data tables init -->
+		$(document).ready(function () {
+			$('.table').DataTable({
+				searching: false,
+				paging: false
+			});
+			var table = $('.table').DataTable();
+			var user, tr;
+			$('.table tbody').on('click', 'a', function () {
+				if ($(this).parent().hasClass('selected')) {
+					user = $(this).parent().prev().prev().prev().prev().text();
+					tr = $(this).parents('tr');//se guarda la fila seleccionada
+					$(this).parent().removeClass('selected');
+				}
+				else {
+					user = $(this).parent().prev().prev().prev().prev().text();
+					tr = $(this).parents('tr');//se guarda la fila seleccionada
+					table.$('tr.selected').removeClass('selected');
+					$(this).parent().addClass('selected');
+				}
+			});
+			$('#modal-delete').on('show.bs.modal', function (event) {
+				var modal = $(this)
+				modal.find('.modal-title').text('Eliminar caso de uso: ' + user)
+				modal.find('#user-name').text(user)
+			})
+			//para eliminar la fila
+			$('#btn-eliminar').on('click', function () {
+				table.row(tr).remove().draw();
+				$('#modal-delete').modal('hide');
+				$('#alertlocal').addClass("alert alert-success alert-dismissible");
+				$('#alertlocal').text("El caso de uso se ha eliminado con éxito");
+			});
+		});
+	</script>
 </asp:Content>
