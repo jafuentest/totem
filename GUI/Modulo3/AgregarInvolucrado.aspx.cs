@@ -10,9 +10,10 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ((MasterPage)Page.Master).IdModulo = "3";
-      
-          if (Request.Cookies["userInfo"] != null)
-         {
+        ((MasterPage)Page.Master).ShowDiv = true;
+        
+        if (Request.Cookies["userInfo"] != null)
+        {
             if (Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != "" &&
                 Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
             {

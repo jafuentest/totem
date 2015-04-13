@@ -3,12 +3,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="subtitulo" Runat="Server">
 Agregar Personal Involucrado</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contenidoCentral" Runat="Server">
-              <div class="col-sm-10 col-md-10 col-lg-10 col">
-                 <div class="col-sm-offset-1" id="alertlocal" >
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                 <div id="alertlocal" >
                  </div>
-              	 <form id="agregarpersonal" class="form-horizontal" action="" method="POST" role="form" runat="server">
+              	 <form id="agregarpersonal" class="form-horizontal" action="ListarPersonalInvolucrado.aspx" method="POST" role="form" runat="server">
                         <div class="form-group">
-                            <div class="col-sm-3 col-md-3 col-lg-3 col-sm-offset-4">
+                            <div class="col-sm-3 col-md-3 col-lg-3">
                                     <label>Seleccione el tipo de empresa:</label>  
                              </div>   
                             <div class="col-sm-5 col-md-5 col-lg-5" > 
@@ -16,7 +16,7 @@ Agregar Personal Involucrado</asp:Content>
                                   <button id="id_empresa" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     Selecionar...<span class="caret"></span>
                                   </button>
-                                  <ol id="dp1" class="dropdown-menu" role="menu">
+                                  <ol id="dp1" class="dropdown-menu" role="menu"  onclick="cargarcargo();">
                                     <li value="1"><a href="#">Cliente</a></li>
                                     <li value="2"><a href="#">Compañia de Software</a></li>
                                   </ol>
@@ -25,7 +25,7 @@ Agregar Personal Involucrado</asp:Content>
                               </div>
                         </div>
                        <div class="form-group">
-                            <div class="col-sm-3 col-md-3 col-lg-3 col-sm-offset-4">
+                            <div class="col-sm-3 col-md-3 col-lg-3">
                                     <label>Listar Personal según el cargo:</label>  
                              </div>   
                             <div class="col-sm-5 col-md-5 col-lg-5" > 
@@ -34,20 +34,14 @@ Agregar Personal Involucrado</asp:Content>
                                     Selecionar...<span class="caret"></span>
                                   </button>
                                   <ol id="dp3" class="dropdown-menu" role="menu" onclick="cargarpersonal();">
-                                    <li value="1"><a href="#">Gerente</a></li>
-                                    <li value="2"><a href="#">Desarrollador</a></li>
-                                    <li value="3"><a href="#">Diseñador</a></li>
-                                    <li value="4"><a href="#">Lider de Proyecto</a></li>
-                                    <li value="5"><a href="#">Arquitecto de Solución</a></li>
-                                    <li value="6"><a href="#">Arquitecto de Base de Datos</a></li>
-                                    <li value="7"><a href="#">Documentador</a></li>                                                                          
+                                                                                                         
                                   </ol>
                                 </div> 
                                         
                               </div>
                         </div>
                        <div class="form-group">
-                            <div class="col-sm-3 col-md-3 col-lg-3 col-sm-offset-4">
+                            <div class="col-sm-3 col-md-3 col-lg-3">
                                     <label>Seleccione Personal:</label>  
                              </div>   
                             <div class="col-sm-5 col-md-5 col-lg-5" > 
@@ -62,7 +56,7 @@ Agregar Personal Involucrado</asp:Content>
                               </div>
                         </div>
                        <br />
-                       <div class="col-sm-11 col-md-11 col-lg-11 col-sm-offset-1">
+                       <div class="col-sm-12 col-md-12 col-lg-12">
                        <div  id="table-responsive">
                            <table id="table-example" class=" table table-striped table-hover display">
                              <thead>
@@ -121,15 +115,12 @@ Agregar Personal Involucrado</asp:Content>
                    </div><!-- /.modal-dialog -->
                    </div><!-- /.modal -->                                                    
                    </div> 
-                    <div class="form-group" >     
-                           <div class="col-sm-3 col-md-2 col-lg-2 col-sm-offset-4">
-                              <button id="btn-enviar" type="submit" class="btn btn-primary" onclick="return false;">Agregar</button>
-                            </div>
-                                &nbsp;
-                            <div class="col-sm-3 col-md-2 col-lg-2">
-                              <button type="submit" class="btn btn-primary">Cancelar</button>
-                           </div>
-                    </div>
+                      <div class="form-group">
+                <div class="col-sm-5 col-md-5 col-lg-5">
+                    <button id="btn-enviar" class="btn btn-primary"  type="submit" onclick="return false;">Agregar</button>
+                    <a class="btn btn-default" href="AgregarInvolucrado.aspx">Cancelar</a>
+                </div>
+            </div>
                  </form>
               </div>
         <script type="text/javascript">
@@ -155,70 +146,56 @@ Agregar Personal Involucrado</asp:Content>
 
             });
 
+            function cargarcargo() {
+               
+                var empresa_seleccionado = $("#id_empresa").text().trim();
+                $("#dp3").empty();
+
+                if (empresa_seleccionado == "Cliente") {
+                    $("#dp3").append('<li value="1"><a href="#">Director General</a></li>');
+                    $("#dp3").append('<li value="1"><a href="#">Director Ejecutivo</a></li>');
+                    $("#dp3").append('<li value="1"><a href="#">Gerente Departamental</a></li>');
+                }
+                    
+                   
+
+
+                if (empresa_seleccionado == "Compañia de Software") {
+                    $("#dp3").append('<li value="1"><a href="#">Gerente</a></li>');
+                    $("#dp3").append('<li value="2"><a href="#">Desarrollador</a></li>');
+                    $("#dp3").append('<li value="3"><a href="#">Diseñador</a></li>');
+                    $("#dp3").append('<li value="4"><a href="#">Lider de Proyecto</a></li>');
+                    $("#dp3").append('<li value="5"><a href="#">Arquitecto de Solución</a></li>');
+                    $("#dp3").append('<li value="6"><a href="#">Arquitecto de Base de Datos</a></li>');
+                    
+                }
+            }
+
             function cargarpersonal() {
                 var cargo_seleccionado = $("#id_cargo").text().trim();
                 var empresa_seleccionado = $("#id_empresa").text().trim();
                 $("#dp2").empty();
 
                 if (empresa_seleccionado == "Cliente") {
-                    if (cargo_seleccionado == "Gerente") {
+                    if (cargo_seleccionado == "Director General") {
                         $("#dp2").append('<li value="1"><a href="#">Argenis Rodriguez</a></li>');
                         $("#dp2").append('<li value="2"><a href="#">Carlos Rodriguez</a></li>');
                         $("#dp2").append('<li value="3"><a href="#">Nelson Rodriguez</a></li>');
                     }
-                    if (cargo_seleccionado == "Desarrollador") {
+                    if (cargo_seleccionado == "Director Ejecutivo") {
                         $("#dp2").append('<li value="4"><a href="#">Hero Rodriguez</a></li>');
                         $("#dp2").append('<li value="5"><a href="#">Jesus Rodriguez</a></li>');
                         $("#dp2").append('<li value="6"><a href="#">Sofia Rodriguez</a></li>');
                     }
-                    if (cargo_seleccionado == "Diseñador") {
+                    if (cargo_seleccionado == "Gerente Departamental") {
                         $("#dp2").append('<li value="7"><a href="#">Leonardo Rodriguez</a></li>');
                         $("#dp2").append('<li value="8"><a href="#">Fabian Rodriguez</a></li>');
                     }
-                    if (cargo_seleccionado == "Lider de Proyecto") {
-                        $("#dp2").append('<li value="9"><a href="#">Keilyn Arriaga</a></li>');
-                        $("#dp2").append('<li value="10"><a href="#">Oswaldo Salas</a></li>');
-                    }
-                    if (cargo_seleccionado == "Arquitecto de Solución") {
-                        $("#dp2").append('<li value="11"><a href="#">Rafael Silva</a></li>');
-                        $("#dp2").append('<li value="12"><a href="#">José García</a></li>');
-                    }
-                    if (cargo_seleccionado == "Arquitecto de Base de Datos") {
-                        $("#dp2").append('<li value="12"><a href="#">Moises Benitez</a></li>');
-                        $("#dp2").append('<li value="13"><a href="#">Carlos Torrealba</a></li>');
-                    }
-                    if (cargo_seleccionado == "Documentador") {
-                        $("#dp2").append('<li value="14"><a href="#">Caina Benitez</a></li>');
-                        $("#dp2").append('<li value="15"><a href="#">Angelica Bolivar</a></li>');
-                    }
-                }
-                if (empresa_seleccionado == "Compañia de Software") {
-                    if (cargo_seleccionado == "Gerente") {
-                        $("#dp2").append('<li value="16"><a href="#">Khaterine Rodriguez</a></li>');
-                        $("#dp2").append('<li value="17"><a href="#">James Rodriguez</a></li>');
-                    }
-                    if (cargo_seleccionado == "Desarrollador") {
-                        $("#dp2").append('<li value="18"><a href="#">Rosa Rodriguez</a></li>');
-                        $("#dp2").append('<li value="19"><a href="#">Susan Rodriguez</a></li>');
-                    }
-                    if (cargo_seleccionado == "Diseñador") {
-                        $("#dp2").append('<li value="20"><a href="#">Estefania Rodriguez</a></li>');
-                        $("#dp2").append('<li value="21"><a href="#">Laura Rodriguez</a></li>');
-                    }
-                    if (cargo_seleccionado == "Lider de Proyecto") {
-                        $("#dp2").append('<li value="22"><a href="#">José Boggio</a></li>');
-                        $("#dp2").append('<li value="23"><a href="#">Julio Pino</a></li>');
-                    }
-                    if (cargo_seleccionado == "Arquitecto de Solución") {
-                        $("#dp2").append('<li value="24"><a href="#">Maria Padrón</a></li>');
-                        $("#dp2").append('<li value="25"><a href="#">Adalberto Gerdel</a></li>');
-                    }
-                    if (cargo_seleccionado == "Documentador") {
-                        $("#dp2").append('<li value="26"><a href="#">Susan Calvin</a></li>');
-                    }
+                   
                 }
             }
             
+
        </script>
         <script type="text/javascript">
             $(document).ready(function () {
@@ -271,6 +248,8 @@ Agregar Personal Involucrado</asp:Content>
                  
                     if (tabla_cont == 0) {
                         $('#alertlocal').addClass("alert alert-danger alert-dismissible");
+                       
+                        $('#alertlocal').append('<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
                         $('#alertlocal').text("No has seleccionado ningun personal");
                     } else {
                         $('#modal-confirmacion').modal("show");

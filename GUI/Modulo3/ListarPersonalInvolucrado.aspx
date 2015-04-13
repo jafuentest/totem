@@ -77,13 +77,18 @@ Listar Personal Involucrado</asp:Content>
                      </div><!-- /.modal-dialog -->
                    </div><!-- /.modal -->
                     <div class="form-group" >     
-                           <div class="col-sm-3 col-md-2 col-lg-2 col-sm-offset-5">
-                              <button type="submit" class="btn btn-primary" onclick="return validar();">Aceptar</button>
-                            </div>
+                            <div class="col-sm-5 col-md-5 col-lg-5">
+                          <button id="btn-aceptar" class="btn btn-primary" type="submit" onclick="redireccion();">Aceptar</button>
+                     
+                        </div>  
                                 &nbsp;
                             
                     </div>
      <script type="text/javascript">
+         function redireccion() {
+             window.location = "/GUI/Modulo4/ListaProyectos.aspx";
+             
+         }
          $(document).ready(function () {
              var table = $('#table-example').DataTable();
 
