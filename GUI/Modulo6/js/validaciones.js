@@ -46,5 +46,31 @@
        			}
        		},
 		}
-    });
+	});
+	$('#form_actor').bootstrapValidator(
+	{
+		feedbackIcons:
+		{
+			valid: 'glyphicon glyphicon-ok',
+			invalid: 'glyphicon glyphicon-remove',
+			validating: 'glyphicon glyphicon-refresh'
+		},
+		fields:
+		{
+			nombre: {
+				validators: {
+					notEmpty: {
+						message: 'Debe especificar el nombre del actor'
+					}
+				}
+			},
+			descripcion: {
+				validators: {
+					notEmpty: {
+						message: 'Debe especificar la descripción del actor'
+					}
+				}
+			},
+		}
+	});
 });
