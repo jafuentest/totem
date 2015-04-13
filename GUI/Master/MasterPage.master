@@ -86,15 +86,15 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de proyectos<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="#">Proyectos</a></li>
-							    <li><a href="#">Gestión de involucrados</a></li>
-                                <li><a href="#">Clientes</a></li>
+							    <li><a href="<%= Page.ResolveUrl("~/GUI/Modulo3/ListarPersonalInvolucrado.aspx") %>"">Gestión de involucrados</a></li>
+                                <li><a href="<%= Page.ResolveUrl("~/GUI/Modulo2/ListarClientes.aspx") %>"">Clientes</a></li>
                             </ul>
 					    </li>
 					    <li class="dropdown">
 						    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de documentos <span class="caret"></span></a>
 						    <ul class="dropdown-menu" role="menu">
 							    <li><a href="<%= Page.ResolveUrl("~/GUI/Modulo5/ListarRequerimientos.aspx") %>">Gestión de requerimientos</a></li>
-							    <li><a href="#">Gestión de casos de uso</a></li>
+							    <li><a href="<%= Page.ResolveUrl("~/GUI/Modulo6/Listar.aspx") %>">Gestión de casos de uso</a></li>
 							    <li><a href="<%= Page.ResolveUrl("~/GUI/Modulo8/ConsultarMinuta.aspx") %>"">Gestión de minutas</a></li>
 						    </ul>
 					    </li>
@@ -121,7 +121,7 @@
 					</ul>
 			    </div>
 			    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				    <h1 class="page-header"><asp:ContentPlaceHolder runat="server" ID="titulo"></asp:ContentPlaceHolder><small> <asp:ContentPlaceHolder runat="server" ID="subtitulo"></asp:ContentPlaceHolder></small></h1>
+				    <h1 class="page-header"><asp:ContentPlaceHolder runat="server" ID="titulo"></asp:ContentPlaceHolder><small> <br /><asp:ContentPlaceHolder runat="server" ID="subtitulo"></asp:ContentPlaceHolder></small></h1>
                     <asp:ContentPlaceHolder runat="server" ID="contenidoCentral"></asp:ContentPlaceHolder>				
 			    </div>
 		    </div>

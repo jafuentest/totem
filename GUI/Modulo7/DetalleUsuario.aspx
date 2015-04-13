@@ -242,11 +242,11 @@
                     <br />
                 <div class="form-group col-sm-10 col-md-10 col-lg-10">
                          &nbsp; &nbsp;
-				            <a class="btn btn-primary" href="ListarUsuarios.aspx?success=2">Editar</a>
+				            <a class="btn btn-primary" href="ListarUsuarios.aspx?success=edit">Editar</a>
                         &nbsp;
 				            <a class="btn btn-default" href="ListarUsuarios.aspx">Cancelar</a>
                          &nbsp;
-                            <a class="btn btn-danger col-md-offset-6"  href="ListarUsuarios.aspx?success=1">Eliminar</a>
+                            <a class="btn btn-danger col-md-offset-6"  href="ListarUsuarios.aspx?success=elim">Eliminar</a>
 		        </div>
             </form>
         </div>

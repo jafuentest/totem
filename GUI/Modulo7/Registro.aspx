@@ -90,7 +90,8 @@
 		</div>
         <div class="form-group">
 		    <div class="col-sm-5 col-md-5 col-lg-5">
-				<button id="btn_registrar" class="btn btn-primary">Registrar</button>
+				<a id="btn_registrar" class="btn btn-primary" href="ListarUsuarios.aspx?success=regis">Registrar</a>
+                <button class="btn btn-default">Cancelar</button>
 			</div>
 	    </div>
     </form>
@@ -111,11 +112,6 @@
                 $('#input-otrocargo').prop('disabled', true);
             }
             $("#id-cargo").html($(this).text() + ' <span class="caret"></span>');           
-        });
-        $("#btn_registrar").click(function () {
-            $('#alertlocal').addClass("alert alert-success alert-dismissible");
-            $('#alertlocal').text("Se ha agregado con éxito");
-            $('#alertlocal').innerHtml("<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Usuario modificado exitosamente</div>");
         });
     </script>
     

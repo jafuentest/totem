@@ -19,19 +19,25 @@ public partial class GUI_Modulo7_ListarUsuarios : System.Web.UI.Page
         String success = Request.QueryString["success"];
         if (success != null)
         {
-            if (success.Equals("1"))
-            {
-                alert.Attributes["class"] = "alert alert-success alert-dismissible";
-                alert.Attributes["role"] = "alert";
-               
-                alert.InnerText = "Se ha eliminado con éxito";
-            }
-            if (success.Equals("2"))
+            if (success.Equals("elim"))
             {
                 alert.Attributes["class"] = "alert alert-success alert-dismissible";
                 alert.Attributes["role"] = "alert";
 
-                alert.InnerText = "Se ha editado con éxito";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Se ha eliminado exitosamente</div>";
+          
+            }
+            if (success.Equals("edit"))
+            {
+                alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                alert.Attributes["role"] = "alert";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Se ha editado exitosamente</div>";
+            }
+            if (success.Equals("regis"))
+            {
+                alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                alert.Attributes["role"] = "alert";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Se ha registrado exitosamente</div>";
             }
         }
         if (Request.Cookies["userInfo"] != null)
