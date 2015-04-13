@@ -35,7 +35,7 @@
 		            <textarea placeholder="Descripcion" class="form-control" name="descripcion" rows="3"></textarea>
 		        </div>
 	        </div>
-
+            <label>Moneda</label>
             <div class="form-group">
                 <div class="col-sm-1 col-md-1 col-lg-1">
                       <div class="dropdown">
@@ -78,15 +78,48 @@
          function fillCodigoTextField() {
              var codigoTextField = document.getElementById("Codigo");
              var nombreTextField = document.getElementById("Nombre");
+
+             var text = nombreTextField.value.trim(); // se eliminan los espacios innecesarios del comienzo y final del string
+             nombreTextField.value = text;
+
              if (nombreTextField.value.length>=1) { //antes de llenar el codigo revisa si al menos tiene un caracter
                  codigoTextField.value = "";
-                 var words = nombreTextField.value.split(" ");//crea una array de palabras del nombre del proyecto 
-                 for (i in words) {
-                     if (i < 3) {
-                         temp = words[i];
-                         codigoTextField.value = codigoTextField.value + temp.charAt(0).toUpperCase(); // va concatenando cada una de las primeras letras de las palabras en mayuscula.
-                     }
+                 var words = text.split(" ");//crea una array de palabras del nombre del proyecto 
+
+                 switch (words.length) { //dependiendo de la cantidad de palabras...
+                     case 1: // Agarra las 3 primeras letras de la palabra 
+                         for (i=0;i<3;i++) {
+                             temp = words[0];
+                             codigoTextField.value = codigoTextField.value + temp.charAt(i).toUpperCase(); // va concatenando cada una de las primeras letras mayuscula.    
+                         }
+                         break 
+                     case 2: // Toma las dos primeras letras de la primera palabra y la primera de la segunda palabra
+                         for (i = 0; i < 2; i++) {
+                             temp = words[0];
+                             codigoTextField.value = codigoTextField.value + temp.charAt(i).toUpperCase(); // va concatenando cada una de las primeras letras en mayuscula.    
+                         }
+                         temp = words[1];
+                         codigoTextField.value = codigoTextField.value + temp.charAt(0).toUpperCase();
+
+                         break 
+                     case 3: //toma la primera letra de cada palabra 
+                         for (i in words) {
+                             if (i < 3) {
+                                 temp = words[i];
+                                 codigoTextField.value = codigoTextField.value + temp.charAt(0).toUpperCase(); // va concatenando cada una de las primeras letras de cada palabra en mayuscula.
+                             }
+                         }
+                         break 
+                     default: //por defecto usa el algoritmo del caso 3: toma la primera letra de cada palabra 
+                         for (i in words) {
+                             if (i < 3) {
+                                 temp = words[i];
+                                 codigoTextField.value = codigoTextField.value + temp.charAt(0).toUpperCase(); // va concatenando cada una de las primeras letras de cada palabra en mayuscula.
+                             }
+                         }
                  }
+
+                 
 
              }
          }
