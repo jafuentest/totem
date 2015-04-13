@@ -5,7 +5,6 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Lista</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 	<div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-		<div id="alert" runat="server"></div>
 		<div id="alertlocal"></div>
 		<div class="table-responsive">
 			<table id="table-example" class="table table-striped table-hover">
@@ -40,7 +39,8 @@
 							<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=2") %>"></a>
 							<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
 						</td>
-					</tr><tr>
+					</tr>
+					<tr>
 						<td>Integer</td>
 						<td>nec</td>
 						<td>odio</td>
@@ -82,7 +82,6 @@
 							<a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=6") %>"></a>
 							<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=6") %>"></a>
 							<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
-
 						</td>
 					</tr>
 					<tr>
@@ -214,7 +213,7 @@
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-							<button id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarCU()">Eliminar</button>
+							<button id="btn-eliminar" type="button" class="btn btn-primary">Eliminar</button>
 						</div>
 					</div>
 				</div>
