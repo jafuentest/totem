@@ -6,6 +6,16 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 	<div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
 		<div id="alertlocal"></div>
+		<div class="panel panel-primary" style="width:auto">
+			<div class="panel-heading">
+				<h3 class="panel-title">Proyecto</h3>
+			</div>
+			<div class="panel-body" style="width:auto">
+				Nombre del Proyecto: TOTEM<br />
+				Empresa Cliente: UCAB<br />
+				Status del Proyecto: Activo<br />
+			</div>
+		</div>
 		<h3 id="Actor1">Actor 1</h3>
 		<table class="table table-striped table-hover">
 			<thead>
