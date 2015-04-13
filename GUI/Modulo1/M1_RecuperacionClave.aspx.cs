@@ -10,7 +10,20 @@ public partial class M1_RecuperacionClave : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ((MasterPage)Page.Master).IdModulo = "1";
-        Master.ShowDiv = false;
-        Master.MostrarMenuLateral = false; 
+        if (Request.Cookies["userInfo"] != null)
+        {
+            if (Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != "" &&
+                Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
+            {
+                Master.MostrarMenuLateral = false;
+                Master.ShowDiv = false;
+            }
+            else
+            {
+                Master.MostrarMenuLateral = false;
+                Master.ShowDiv = false;
+            }
+
+        } 
     }
 }

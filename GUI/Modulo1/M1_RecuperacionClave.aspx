@@ -11,7 +11,7 @@
 
    <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
        <div id="alerta"></div>
-            <form id="recuperarClave" class="form-horizontal">
+            <form id="recuperarClave" class="form-horizontal" action="M1_login.aspx" method="post">
 
                 <div  class="login-form"> 
                    
