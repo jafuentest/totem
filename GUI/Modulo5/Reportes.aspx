@@ -5,8 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Requerimientos<br /></asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Reporte de Requerimientos</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
-    <div class="col-lg-offset-11"\>
-        <button id="btn-imprimir" class="btn btn-default" disabled="disabled" onclick="window.location.href='#'">Imprimir</button>
+    <div id="alert" runat="server">
     </div>
     <br />
     <div class="col-lg-12">
@@ -24,7 +23,7 @@
     <br />
     <br />
     <div class="table-responsive">
-	    		<table id="table-example" class="table table-striped table-hover">
+	    		<table id="table-requerimientos" class="table table-striped table-hover">
 			<thead>
 				<tr>
 					<th>ID</th>
@@ -135,6 +134,10 @@
                 </tr>
 			</tbody>
 		</table>
+        <br />
+        <div class="col-lg-offset-10"\>
+            &nbsp;&nbsp;&nbsp;<button id="btn-imprimir" class="btn btn-success" disabled="disabled" onclick="window.location.href='#'">Generar Documento</button>
+        </div>
         <div id="modal-delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -152,12 +155,13 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-              <button id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarRequerimiento()">Eliminar</button>
+              <a id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarRequerimiento()" href="Reportes.aspx?success=3">Eliminar</a>
             </div>
           </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
       </div><!-- /.modal -->
-      <div id="modal-update" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+       <div id="modal-update" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+        <form id="modificar_requerimientos" class="form-horizontal" method="post" action="Reportes.aspx?success=2">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -165,44 +169,51 @@
               <h4 class="modal-title" >Modificaci&oacute;n de Requerimiento</h4>
             </div>
             <div class="modal-body">
-              <div class="container-fluid">
-                <form id="modificar_requerimientos" class="form-horizontal" method="post" action="ListarRequerimientos.aspx?success=2">
-                    <div class="form-group">
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<b>Tipo de Requerimiento:</b></p>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<label class="radio-inline"><input type="radio" name="optradio1" checked="checked"/>Funcional</label>
+                <div class="container-fluid">
+                <div class="form-group">
+				    <div id="div-id" class="col-sm-5 col-md-5 col-lg-5">
+					    <input type="text" name="id" id="id" placeholder="ID" class="form-control" disabled="disabled" value="TOT_RF_5_2"/>
+				    </div>
+			    </div>
+                <div class="form-group">
+                    <div class="col-sm-10 col-md-10 col-lg-10">
+                        <p><b>Tipo de Requerimiento:</b></p>
+                        <label class="radio-inline"><input type="radio" name="radioTipo" checked="checked"/>Funcional</label>
                         <label class="radio-inline">
-                        <input type="radio" name="optradio1"/>No Funcional</label>
+                        <input type="radio" name="radioTipo"/>No Funcional</label>
                     </div>
-                    <br/>
-                    <div class="row">
-                        <div class="col-lg-9">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-addon">El sistema deberá </span>
-                                    <textarea class="form-control" rows="3" placeholder="Funcionalidad del requerimiento" style="text-align: justify;resize:vertical;" name="requerimiento">agregar usuarios</textarea>
-                                </div>
-                            </div>
+                </div>
+                <br/>                
+                <div class="form-group">
+                    <div class="col-sm-10 col-md-10 col-lg-10">
+                        <div class="input-group">
+                            <span class="input-group-addon">El sistema deberá </span>
+                            <textarea class="form-control" rows="3" placeholder="Funcionalidad del requerimiento" style="text-align: justify;resize:vertical;" name="requerimiento" ></textarea>
+                        </div>
+                    </div>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <div class="col-sm-10 col-md-10 col-lg-10">
+                            <p><b>Prioridad:</b></p>
+                            <label class="radio-inline"><input type="radio" name="radioPrioridad"/>Baja</label>
+                            <label class="radio-inline">
+                            <input type="radio" name="radioPrioridad" checked="checked"/>Media</label>
+                            <label class="radio-inline">
+                            <input type="radio" name="radioPrioridad"/>Alta</label>
                         </div>
                     </div>
                     <br />
-                        <div class="form-group">
-                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<b>Prioridad:</b></p>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<label class="radio-inline"><input type="radio" name="optradio"/>Baja</label>
-                            <label class="radio-inline">
-                            <input type="radio" name="optradio" checked="checked"/>Media</label>
-                            <label class="radio-inline">
-                            <input type="radio" name="optradio"/>Alta</label>
-                        </div>
-                    <br />
                     <div class="form-group">
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<b>Status</b></p>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<label class="radio-inline">
-                            <input type="radio" name="optradio2" checked="checked"/>Finalizado</label>
-                        <label class="radio-inline">
-                        <input type="radio" name="optradio2"/>No Finalizado</label>
+                        <div class="col-sm-10 col-md-10 col-lg-10">
+                            <p><b>Status:</b></p>
+                            <label class="radio-inline">
+                            <input type="radio" name="radioStatus" checked="checked"/>No Finalizado</label>
+                            <label class="radio-inline">
+                            <input type="radio" name="radioStatus"/>Finalizado</label>
+                        </div>
                     </div>
-                </form>
-              </div>
+                </div>
             </div>
             <div class="modal-footer">
               <button id="btn-modificarReq" disabled="disabled" class="btn btn-primary" type="submit" onclick="return checkform();">Modificar</button>
@@ -210,32 +221,52 @@
             </div>
           </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
+        </form>
       </div><!-- /.modal -->
     </div>
+    </div>
     <!-- Data tables init -->
-	<script type="text/javascript">
-	    jQuery(function ($) {
-	        $('#table-example').DataTable();
-	    });
-	    $('#modal-delete').on('show.bs.modal', function (event) {
-	        var modal = $(this)
-	        modal.find('.modal-title').text('Eliminar requerimiento:  ' + req)
-	        modal.find('#req').text(req)
-	    })
-	    $('#btn-eliminar').on('click', function () {
-	        table.row(tr).remove().draw();//se elimina la fila de la tabla
-	        $('#modal-delete').modal('hide');//se esconde el modal
-	    });
-	    $('#modal-update').on('show.bs.modal', function (event) {
-	        var modal = $(this)
-	        modal.find('.modal-title').text('Modificar requerimiento')
-	    });
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#table-requerimientos').DataTable();
+        var table = $('#table-requerimientos').DataTable();
+        var req;
+        var tr;
+
+        $('#table-requerimientos tbody').on('click', 'a', function () {
+            if ($(this).parent().hasClass('selected')) {
+                req = $(this).parent().prev().prev().prev().prev().text();
+                tr = $(this).parents('tr');//se guarda la fila seleccionada
+                $(this).parent().removeClass('selected');
+
+            }
+            else {
+                req = $(this).parent().prev().prev().prev().prev().text();
+                tr = $(this).parents('tr');//se guarda la fila seleccionada
+                table.$('tr.selected').removeClass('selected');
+                $(this).parent().addClass('selected');
+            }
+        });
+        $('#modal-delete').on('show.bs.modal', function (event) {
+            var modal = $(this)
+            modal.find('.modal-title').text('Eliminar requerimiento:  ' + req)
+            modal.find('#req').text(req)
+        })
+        $('#btn-eliminar').on('click', function () {
+            table.row(tr).remove().draw();//se elimina la fila de la tabla
+            $('#modal-delete').modal('hide');//se esconde el modal
+        });
+        $('#modal-update').on('show.bs.modal', function (event) {
+            var modal = $(this)
+            modal.find('.modal-title').text('Modificar requerimiento')
+        });
+    });
 	</script>
     <script type="text/javascript">
         $('#funcionales').click(function () {
             var busqueda = 'Funcional';
             $('#btn-imprimir').attr("disabled", false);
-            $('#btn-imprimir').attr("onclick", "window.location.href='RequerimientosFuncionales.pdf'");
+            $('#btn-imprimir').attr("onclick", "window.location.href='docs/RequerimientosFuncionales.pdf'");
             $('tr').hide();
 
             $('tr td.Type').each(function () {
@@ -255,7 +286,7 @@
         $('#nofuncionales').click(function () {
             var busqueda = 'No Funcional';
             $('#btn-imprimir').attr("disabled", false);
-            $('#btn-imprimir').attr("onclick", "window.location.href='RequerimientosNoFuncionales.pdf'");
+            $('#btn-imprimir').attr("onclick", "window.location.href='docs/RequerimientosNoFuncionales.pdf'");
             $('tr').hide();
 
             $('tr td.Type').each(function () {
@@ -264,11 +295,9 @@
 
                     $(this).parent().show();
                 }
-            });
-            
+        });
     });
 	</script>
     <script src="js/Validacion.js"></script>
-    </div>
 </asp:Content>
 
