@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="ReporteActores.aspx.cs" Inherits="GUI_Modulo6_ReporteActores" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Casos de Uso</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Clasificados por actor</asp:Content>

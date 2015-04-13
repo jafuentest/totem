@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="ListarActores.aspx.cs" Inherits="GUI_Modulo6_ListarActores" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Actores</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Lista</asp:Content>
@@ -76,15 +75,12 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- Data tables init -->
 	<script type="text/javascript">
+		<!-- Data tables init -->
 		$(document).ready(function () {
 			$('#table-example').DataTable();
 			var table = $('#table-example').DataTable();
-			var user;
-			var tr;
-
+			var user, tr;
 			$('#table-example tbody').on('click', 'a', function () {
 				if ($(this).parent().hasClass('selected')) {
 					user = $(this).parent().prev().prev().prev().prev().text();

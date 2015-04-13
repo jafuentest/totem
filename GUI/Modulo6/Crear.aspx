@@ -1,11 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="Crear.aspx.cs" Inherits="GUI_Modulo6_Crear" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 	<link href="<%= Page.ResolveUrl("~/GUI/Modulo6/css/modulo6.min.css") %>" rel="stylesheet"/>
 	<script type="text/javascript" src="<%= Page.ResolveUrl("~/GUI/Modulo6/js/modulo6.js") %>"></script>
 	<script type="text/javascript" src="<%= Page.ResolveUrl("~/GUI/Modulo6/js/validaciones.js") %>"></script>
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Casos de Uso</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Agregar</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">

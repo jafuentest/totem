@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="Listar.aspx.cs" Inherits="GUI_Modulo6_Listar" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Casos de Uso</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Lista</asp:Content>
@@ -230,9 +229,8 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- Data tables init -->
 	<script type="text/javascript">
+		<!-- Data tables init -->
 		$(document).ready(function () {
 			$('#table-example').DataTable();
 			var table = $('#table-example').DataTable();
