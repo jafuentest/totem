@@ -28,5 +28,23 @@ public partial class GUI_Modulo5_PrincipalProyecto : System.Web.UI.Page
 
             }
         }
+        if (Request.Cookies["userInfo"] != null)
+        {
+            if (Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != "" &&
+                Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
+            {
+                ((MasterPage)Page.Master).ShowDiv = true;
+            }
+            else
+            {
+                ((MasterPage)Page.Master).MostrarMenuLateral = false;
+                ((MasterPage)Page.Master).ShowDiv = false;
+            }
+
+        }
+        else
+        {
+            Response.Redirect("../Modulo1/M1_login.aspx");
+        }
     }
 }

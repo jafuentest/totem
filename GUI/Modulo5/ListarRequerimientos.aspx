@@ -153,7 +153,7 @@
           </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
       </div><!-- /.modal -->
-      <div id="modal-update" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+           <div id="modal-update" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -162,7 +162,7 @@
             </div>
             <div class="modal-body">
               <div class="container-fluid">
-                <form id="modificar_requerimientos" class="form-horizontal" method="post">
+                <form id="modificar_requerimientos" class="form-horizontal" method="post" action="ListarRequerimientos.aspx?success=2">
                     <div class="form-group">
                         <p>&nbsp;&nbsp;&nbsp;&nbsp;<b>Tipo de Requerimiento:</b></p>
                         &nbsp;&nbsp;&nbsp;&nbsp;<label class="radio-inline"><input type="radio" name="optradio1" checked="checked"/>Funcional</label>
@@ -190,18 +190,27 @@
                             <input type="radio" name="optradio"/>Alta</label>
                         </div>
                     <br />
+                    <div class="form-group">
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<b>Status</b></p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<label class="radio-inline">
+                            <input type="radio" name="optradio2" checked="checked"/>Finalizado</label>
+                        <label class="radio-inline">
+                        <input type="radio" name="optradio2"/>No Finalizado</label>
+                    </div>
                 </form>
               </div>
             </div>
             <div class="modal-footer">
-              <a class="btn btn-primary" href="ListarRequerimientos.aspx?success=2">Modificar</a>
+              <button id="btn-modificarReq" disabled="disabled" class="btn btn-primary" type="submit" onclick="return checkform();">Modificar</button>
               <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
             </div>
           </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
       </div><!-- /.modal -->
     </div>
+    </div>
     <!-- Data tables init -->
+    <script src="js/Validacion.js"></script>
 	<script type="text/javascript">
 	    $(document).ready(function () {
 	        $('#table-example').DataTable();

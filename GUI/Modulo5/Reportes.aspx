@@ -6,7 +6,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Reporte de Requerimientos</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     <div class="col-lg-offset-11"\>
-        <button class="btn btn-default">Imprimir</button>
+        <button id="btn-imprimir" class="btn btn-default" disabled="disabled" onclick="window.location.href='#'">Imprimir</button>
     </div>
     <br />
     <div class="col-lg-12">
@@ -166,7 +166,7 @@
             </div>
             <div class="modal-body">
               <div class="container-fluid">
-                <form id="modificar_requerimientos" class="form-horizontal" method="post">
+                <form id="modificar_requerimientos" class="form-horizontal" method="post" action="ListarRequerimientos.aspx?success=2">
                     <div class="form-group">
                         <p>&nbsp;&nbsp;&nbsp;&nbsp;<b>Tipo de Requerimiento:</b></p>
                         &nbsp;&nbsp;&nbsp;&nbsp;<label class="radio-inline"><input type="radio" name="optradio1" checked="checked"/>Funcional</label>
@@ -194,11 +194,18 @@
                             <input type="radio" name="optradio"/>Alta</label>
                         </div>
                     <br />
+                    <div class="form-group">
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<b>Status</b></p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<label class="radio-inline">
+                            <input type="radio" name="optradio2" checked="checked"/>Finalizado</label>
+                        <label class="radio-inline">
+                        <input type="radio" name="optradio2"/>No Finalizado</label>
+                    </div>
                 </form>
               </div>
             </div>
             <div class="modal-footer">
-              <a class="btn btn-primary" href="ListarRequerimientos.aspx?success=2">Modificar</a>
+              <button id="btn-modificarReq" disabled="disabled" class="btn btn-primary" type="submit" onclick="return checkform();">Modificar</button>
               <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
             </div>
           </div><!-- /.modal-content -->
@@ -227,7 +234,8 @@
     <script type="text/javascript">
         $('#funcionales').click(function () {
             var busqueda = 'Funcional';
-
+            $('#btn-imprimir').attr("disabled", false);
+            $('#btn-imprimir').attr("onclick", "window.location.href='RequerimientosFuncionales.pdf'");
             $('tr').hide();
 
             $('tr td.Type').each(function () {
@@ -246,7 +254,8 @@
         });
         $('#nofuncionales').click(function () {
             var busqueda = 'No Funcional';
-
+            $('#btn-imprimir').attr("disabled", false);
+            $('#btn-imprimir').attr("onclick", "window.location.href='RequerimientosNoFuncionales.pdf'");
             $('tr').hide();
 
             $('tr td.Type').each(function () {
@@ -256,9 +265,10 @@
                     $(this).parent().show();
                 }
             });
-
-        });
+            
+    });
 	</script>
+    <script src="js/Validacion.js"></script>
     </div>
 </asp:Content>
 
