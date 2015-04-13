@@ -12,7 +12,7 @@
     <div  class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
         <div id="alerta" >
                 </div>
-    <form id="ingresoCorreo" class="form-horizontal" method="post" action="M1_PreguntaSeguridad.aspx">
+    <form id="ingresoCorreo" class="form-horizontal" method="post" action="https://mail.google.com/mail/u/0/#inbox">
 
                 <div  class="login-form"> 
                     
@@ -38,7 +38,7 @@
         $(document).ready(function () {
             $('#btn-Enviar').on('click', function () {
                 $('#alerta').addClass("alert alert-success alert-dismissible");
-                $('#alerta').text("Se ha enviado el correo éxitosamente");
+                $('#alerta').text("Se ha enviado un link al correo, verifique para poder recuperar su clave");
             });
         });
 
