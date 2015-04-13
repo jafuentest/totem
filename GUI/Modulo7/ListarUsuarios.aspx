@@ -225,7 +225,7 @@
 	            table.row(tr).remove().draw();//se elimina la fila de la tabla
 	            $('#modal-delete').modal('hide');//se esconde el modal
 	            $('#alertlocal').addClass("alert alert-success alert-dismissible");
-	            $('#alertlocal').text("Se ha eliminado con éxito");
+	            $('#alertlocal').html("<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Se ha eliminado exitosamente</div>");
 	        });
 	    });
 	</script>
