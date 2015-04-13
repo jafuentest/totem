@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml;
+using System.Text;
+using System.Web;
 
 public partial class MasterPage : System.Web.UI.MasterPage
 {
@@ -46,5 +48,13 @@ public partial class MasterPage : System.Web.UI.MasterPage
 					OpcionesDelMenu[node.Attributes["nombre"].InnerText] = node.Attributes["link"].InnerText;
 					break;
 				}
+
+        HttpCookie pcookie = Request.Cookies.Get("selectedProjectCookie");
+
+        if (pcookie != null)
+        {
+            selectedProject.InnerText = "Proyecto Seleccionado: " + pcookie.Values["projectName"].ToString();
+        }
 	}
+
 }

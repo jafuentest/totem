@@ -55,7 +55,7 @@
                 </div>
                 
                 <div id="div_activo" class="col-sm-3 col-md-3 col-lg-3 col-md-offset-3">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input id="switch-disabled" type="checkbox" checked data-on-text="Activo" data-on-color="success" data-off-text="Inactivo" disabled>
                 </div>
 	        </div>

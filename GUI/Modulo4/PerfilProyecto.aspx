@@ -19,6 +19,9 @@
         .link:hover{
             text-decoration: none;
         }
+        h2 {
+            color: #337ab7;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestion de Proyectos</asp:Content>
@@ -31,7 +34,7 @@
             <div class="form-group">
                 <div id="div_precio" class="col-sm-12 col-md-12 col-lg-12">
                     <div class="jumbotron">
-                        <h2 class="sameLine"><a href="#">Twitter</a></h2> <h5 class="sameLine">COD: TWI</h5>
+                        <h2 class="sameLine" id="nombreProyecto" runat="server">Twitter</h2> <h5 id="codigoProyecto" class="sameLine" runat="server">COD: TWI</h5>
                         <p class="desc">Twitter (NYSE: TWTR) es un servicio de microblogging, con sede en San Francisco, California, con filiales en San Antonio (Texas) y Boston (Massachusetts) en Estados Unidos. Twitter, Inc. fue creado originalmente en California, pero está bajo la jurisdicción de Delaware desde 2007.8 Desde que Jack Dorsey lo creó en marzo de 2006, y lo lanzó en julio del mismo año, la red ha ganado popularidad mundialmente y se estima que tiene más de 500 millones de usuarios, generando 65 millones de tuits al día y maneja más de 800 000 peticiones de búsqueda diarias.1 Ha sido apodado como el "SMS de Internet".9</p>
                         <input id="switch-disabled2" type="checkbox" data-size="mini" data-on-text="Activo" data-on-color="success" data-off-text="Inactivo" checked disabled>
                         <p></p>
@@ -443,7 +446,7 @@
                     <div id="collapseInvolucrados" class="panel-collpase collapse">
                         <div class="panel-body">
                             <div class="table-responsive">
-		                        <table id="table-involucrados" class="table table-striped table-hover">
+		                        <table id="table-users" class="table table-striped table-hover">
 			                        <thead>
 				                        <tr>
 					                        <th>Usuario</th>
@@ -603,57 +606,171 @@
                     </div>
                 </div>
             </div>
-
+            <br>
             <div class="form-group">
-                <div class="btn-group"> 
 		            <div class="col-sm-1 col-md-1 col-lg-1">
 			            <a class="btn btn-primary" href="<%= Page.ResolveUrl("~/GUI/Modulo4/ModificarProyecto.aspx?id=1") %>">Modificar</a>
 		            </div>
                     <div class="col-sm-3 col-md-3 col-lg-3">
                         &nbsp;&nbsp;&nbsp;&nbsp;
-			            <button class="btn btn-danger" onclick="return checkform()">Eliminar</button>
+			            <a class="btn btn-danger" data-toggle="modal" data-target="#modal-delete-project" href="#">Eliminar</a>
 		            </div>
                 <div class="col-md-offset-8">
                         <div class="col-sm-2 col-md-2 col-lg-2">
-			                <button class="btn btn-default" onclick="return checkform()">Generar ERS</button>
+                            <form method="get" action="docs/ERS.pdf">
+			                    <button class="btn btn-default" onclick="return checkform()">Generar ERS</button>
+                            </form>
 		                </div>
                         <div class="col-sm-2 col-md-2 col-lg-2 col-md-offset-3">
-			                <button class="btn btn-default" onclick="return checkform()">Generar Factura</button>
+                            <form method="get" action="docs/Factura.pdf">
+			                    <button class="btn btn-default" onclick="return checkform()">Generar Factura</button>
+                            </form>
 		                </div>
                     </div>
-                </div>
 	        </div>
 
-            <div class="form-group">
-		        
-	        </div>
+        <div id="modal-delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" >Eliminaci&oacute;n de Usuario</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="container-fluid">
+                    <div class="row">
+                        <p>Seguro que desea eliminar el usuario:</p>
+                        <p id="user-name"></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                  <button id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarUsuario()">Eliminar</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+
+         <div id="modal-delete-project" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" >Eliminaci&oacute;n de Proyecto</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="container-fluid">
+                    <div class="row">
+                        <p>Seguro que desea eliminar el proyecto: </p>
+                        <p id="project-name"></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                  <button id="btn-eliminar2" type="button" class="btn btn-primary" onclick="eliminarProyecto()">Eliminar</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+
+          <div id="modal-selected-project" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" >Cambiar de Proyecto</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="container-fluid">
+                    <div class="row">
+                        <p id="new-project-name"></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                  <button id="btn-cambiar" type="button" class="btn btn-primary">Cambiar</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
         <!--</form>-->
     </div>
 
-    <script src="bootstrap-switch-master/docs/js/bootstrap.min.js"></script>
     <script src="bootstrap-switch-master/docs/js/highlight.js"></script>
     <script src="bootstrap-switch-master/dist/js/bootstrap-switch.js"></script>
     <script src="bootstrap-switch-master/docs/js/main.js"></script>
     <script type="text/javascript">
-    jQuery(function ($) {
-        $('#table-requerimientos').DataTable();
-    });
+        jQuery(function ($) {
+            $('#table-requerimientos').DataTable();
+        });
     
-    jQuery(function ($) {
-        $('#table-casosDeUso').DataTable();
-    });
+        jQuery(function ($) {
+            $('#table-casosDeUso').DataTable();
+        });
 
-    jQuery(function ($) {
-        $('#table-minutas').DataTable();
-    });
+        jQuery(function ($) {
+            $('#table-minutas').DataTable();
+        });
 
-    jQuery(function ($) {
-        $('#table-involucrados').DataTable();
-    });
+        jQuery(function ($) {
+            $('#table-involucrados').DataTable();
+        });
 
-    $(document).ready(function () {
-        $("[rel=tooltip]").tooltip({ placement: 'top' });
-    });
+        $(document).ready(function () {
+            $("[rel=tooltip]").tooltip({ placement: 'top' });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#table-users').DataTable();
+            var table = $('#table-users').DataTable();
+            var user;
+            var tr;
+
+            $('#table-users tbody').on('click', 'a', function () {
+                if ($(this).parent().hasClass('selected')) {
+                    user = $(this).parent().prev().prev().prev().prev().text();
+                    tr = $(this).parents('tr');//se guarda la fila seleccionada
+                    $(this).parent().removeClass('selected');
+
+                }
+                else {
+                    user = $(this).parent().prev().prev().prev().prev().text();
+                    tr = $(this).parents('tr');//se guarda la fila seleccionada
+                    table.$('tr.selected').removeClass('selected');
+                    $(this).parent().addClass('selected');
+                }
+            });
+            $('#modal-delete').on('show.bs.modal', function (event) {
+                var modal = $(this)
+                modal.find('.modal-title').text('Eliminar usuario:  ' + user)
+                modal.find('#user-name').text(user)
+            })
+            //para eliminar la fila
+            $('#btn-eliminar').on('click', function () {
+                table.row(tr).remove().draw();//se elimina la fila de la tabla
+                $('#modal-delete').modal('hide');//se esconde el modal
+                $('#alertlocal').addClass("alert alert-success alert-dismissible");
+                $('#alertlocal').text("Se ha eliminado con éxito");
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /*$('#modal-delete-project').on('show.bs.modal', function () {
+                var projectName = $("nombreProyecto").text();
+                modal.find('#project-name').text(projectName);
+            })*/
+            $('#btn-eliminar2').on('click', function () {
+                $('#modal-delete-project').modal('hide');
+
+            });
+        });
 	</script>
 
 </asp:Content>
