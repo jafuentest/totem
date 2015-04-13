@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="Crear.aspx.cs" Inherits="GUI_Modulo6_Crear" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="Modificar.aspx.cs" Inherits="GUI_Modulo6_Modificar" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 	<link href="<%= Page.ResolveUrl("~/GUI/Modulo6/css/modulo6.min.css") %>" rel="stylesheet"/>
 	<script type="text/javascript" src="<%= Page.ResolveUrl("~/GUI/Modulo6/js/modulo6.js") %>"></script>

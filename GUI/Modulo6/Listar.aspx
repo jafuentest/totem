@@ -234,9 +234,7 @@
 		$(document).ready(function () {
 			$('#table-example').DataTable();
 			var table = $('#table-example').DataTable();
-			var user;
-			var tr;
-
+			var user, tr;
 			$('#table-example tbody').on('click', 'a', function () {
 				if ($(this).parent().hasClass('selected')) {
 					user = $(this).parent().prev().prev().prev().prev().text();
