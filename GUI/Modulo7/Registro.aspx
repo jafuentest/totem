@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="Registro.aspx.cs" Inherits="GUI_Modulo7_Registro" %>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="titulo" Runat="Server">Registro</asp:Content>
-<asp:Content ID="Content1" ContentPlaceHolderID="subtitulo" Runat="Server">
+<asp:Content ID="Content4" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Usuarios</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="subtitulo" Runat="Server">Registro
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     <!--AQUI SE DEFINE EL TAMANO DEL FORM Y SU UBICACION-->
@@ -91,7 +91,7 @@
         <div class="form-group">
 		    <div class="col-sm-5 col-md-5 col-lg-5">
 				<a id="btn_registrar" class="btn btn-primary" href="ListarUsuarios.aspx?success=regis">Registrar</a>
-                <button class="btn btn-default">Cancelar</button>
+                <a class="btn btn-default" href="ListarUsuarios.aspx">Cancelar</a>
 			</div>
 	    </div>
     </form>

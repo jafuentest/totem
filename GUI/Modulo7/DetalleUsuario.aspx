@@ -2,9 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Detalle de Usuario
+<asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Usuarios
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">
+<asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Detalle de Usuario
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
         <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
@@ -45,6 +45,21 @@
                     <input type="password" value="1234567" class="form-control" name="confirm-pswd"/>
 		        </div>
             </div>
+                <div class="form-group">
+            <div class="col-sm-10 col-md-10 col-lg-10">
+                <label>Rol: </label>
+            <div class="dropdown">
+              <button id="id-rol" class="btn btn-default dropdown-toggle" type="button" id="dropdownRol" data-toggle="dropdown" aria-expanded="true">
+                Seleccione un Rol
+                <span class="caret"></span>
+              </button>
+              <ul id="dprol" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation"><a role="menuitem" tabindex="-1" >Usuario</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" >Admin</a></li>
+              </ul>
+            </div>
+            </div>
+        </div>
             <div class="form-group">
 			    <div  class="col-sm-10 col-md-5 col-lg-5">
 				    <label>Cargo:</label>
@@ -242,7 +257,7 @@
                     <br />
                 <div class="form-group col-sm-10 col-md-10 col-lg-10">
                          &nbsp; &nbsp;
-				            <a class="btn btn-primary" href="ListarUsuarios.aspx?success=edit">Editar</a>
+				            <a class="btn btn-primary" href="ListarUsuarios.aspx?success=edit">Modificar</a>
                         &nbsp;
 				            <a class="btn btn-default" href="ListarUsuarios.aspx">Cancelar</a>
                          &nbsp;

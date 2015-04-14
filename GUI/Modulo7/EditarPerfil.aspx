@@ -7,8 +7,8 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
-            <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-                <div id="alertlocal" >
+           <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
+                <div class="col-sm-10 col-md-10 col-lg-10" id="alertlocal" >
                 </div>
             <form id="detalle-form" class="form-horizontal" action="#">
             <div class="form-group">
@@ -77,7 +77,7 @@
             <div class="row">
                 <form id ="pswd-form">
               <div class="form-group">
-                <label for="pswd-viejo" class="control-label">Contrase&ntilde;a Vieja:</label>
+                <label for="pswd-viejo" class="control-label">Contrase&ntilde;a Actual:</label>
                 <input type="password" class="form-control" id="pswd-viejo"  name="pswdviejo"/>
               </div>
               <div class="form-group">
@@ -93,8 +93,8 @@
           </div>
         </div>
         <div class="modal-footer">
+            <a id="btn-confirm" href="#" class="btn btn-primary" >Confirmar</a>
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-          <a id="btn-confirm" href="#" class="btn btn-primary" >Confirmar</a>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -108,7 +108,7 @@
             $('#btn-confirm').on('click', function () {
                 $('#modal-change-pswd').modal('hide');//se esconde el modal
                 $('#alertlocal').addClass("alert alert-success alert-dismissible");
-                $('#alertlocal').text("Se ha cambiado la contraseña con éxito");
+                $('#alertlocal').html("<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Se ha cambiado exitosamente</div>");
             });
         });
     </script>

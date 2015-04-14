@@ -2,9 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Usuarios del sistema
+<asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Usuarios 
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">
+<asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Usuarios del sistema
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
@@ -185,8 +185,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-          <button id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarUsuario()">Eliminar</button>
+            <button id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarUsuario()">Eliminar</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>         
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
