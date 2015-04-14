@@ -5,6 +5,9 @@
     <link href="bootstrap-switch-master/dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
     <link href="bootstrap-switch-master/docs/css/main.css" rel="stylesheet">
     <style>
+        .bootstrapBlue {
+            color: #337ab7;
+        }
         .sameLine {
             display: inline;
         }
@@ -20,42 +23,53 @@
 
     <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
 
-        <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Buscar proyecto...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Buscar</button>
-                    </span>
-                </div><!-- /input-group -->
-            </div><!-- /.col-lg-6 -->
-        </div><!-- /.row -->
+        <div class="form-group">
+            <div id="div_buscar" class="col-sm-12 col-md-12 col-lg-12">
+                <div class="row">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Buscar proyecto...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Buscar</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <br><br>
-        <div class="jumbotron col-sm-12 col-md-12 col-lg-12">
-            <h2 class="sameLine"><a href="PerfilProyecto.aspx">Twitter</a></h2> <h5 class="sameLine">COD: TWI</h5>
-            <p class="desc">Twitter (NYSE: TWTR) es un servicio de microblogging, con sede en San Francisco, California, con filiales en San Antonio (Texas) y Boston (Massachusetts) en Estados Unidos. Twitter, Inc. fue creado originalmente en California, pero está bajo la jurisdicción de Delaware desde 2007...</p>
-            <input id="switch-disabled" type="checkbox" data-size="mini" data-on-text="Activo" data-on-color="success" data-off-text="Inactivo" data-off-color="warning" checked disabled>
-            <p></p>
-            <p>Cliente: <a href="#">Dick Costolo</a></p>
-            <p>Desarroladora: <a href="#">Los Andes Coding</a></p>
-        </div>
 
-        <div class="jumbotron col-sm-12 col-md-12 col-lg-12">
-            <h2 class="sameLine"><a href="#">Facebook</a></h2> <h5 class="sameLine">COD: FAC</h5>
-            <p class="desc">Facebook (NASDAQ: FB) es un sitio web de redes sociales creado por Mark Zuckerberg y fundado junto a Eduardo Saverin, Chris Hughes y Dustin Moskovitz. Originalmente era un sitio para estudiantes de la Universidad de Harvard, pero se abrió a cualquier persona con una cuenta de correo electrónico.</p>
-            <input id="switch-disabled1" type="checkbox" data-size="mini" data-on-text="Activo" data-on-color="success" data-off-text="Inactivo" data-off-color="warning" unchecked disabled>
-            <p></p>
-            <p>Empresa Cliente: <a href="#">Mark Zuckerberg</a></p>
-            <p>Desarroladora: <a href="#">Venezuela Web Design</a></p>
-        </div>
+        <div class="form-group">
+            <div id="div_perfiles" class="col-sm-12 col-md-12 col-lg-12">
+                <div class="jumbotron">
+                    <h2 class="sameLine"><a href="PerfilProyecto.aspx">Totem1</a></h2> <h5 class="sameLine">COD: </h5> <h5 id="codigoProyecto" class="sameLine" runat="server">T01</h5>
+                    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis pulvinar nisi, in dapibus leo. Aliquam ac gravida sem. Curabitur a aliquet tellus. Curabitur dui felis, luctus quis venenatis non, congue non nunc. Nam quis ipsum in dui egestas rutrum vel quis elit. Proin cursus lectus eget sem interdum tristique. Aliquam convallis elementum metus, eu hendrerit est aliquam vitae. Morbi suscipit sagittis venenatis. Etiam vehicula cursus convallis. Integer ultrices consequat dolor, hendrerit consectetur magna blandit eget. Curabitur nec vestibulum justo, lobortis mattis ipsum. Nullam enim est, placerat efficitur risus a, congue porttitor diam. Proin eget tortor dolor.</p>
+                    <input id="switch-disabled" type="checkbox" data-size="mini" data-on-text="Activo" data-on-color="success" data-off-text="Inactivo" data-off-color="warning" checked disabled>
+                    <br><br>
+                    <p class="sameLine">Cliente: </p><p id="nombreCliente" class="sameLine bootstrapBlue">Carlo Magurno</p>
+                    <br>
+                    <p class="sameLine">Desarroladora: </p><p id="nombreDesarrolladora" class="sameLine bootstrapBlue">Grupo Desarrollo 2015</p>
+                </div>
 
-        <div class="jumbotron col-sm-12 col-md-12 col-lg-12">
-            <h2 class="sameLine"><a href="#">Automatizacion de Facturacion Panaderia La Esquina</a></h2> <h5 class="sameLine">COD: AFP</h5>
-            <p class="desc">No hay descripcion disponible...</p>
-            <input id="switch-disabled2" type="checkbox" data-size="mini" data-on-text="Activo" data-on-color="success" data-off-text="Inactivo" data-off-color="warning" unchecked disabled>
-            <p></p>
-            <p>Cliente: <a href="#">Panaderia de La Esquina</a></p>
-            <p>Desarrolladora: <a href="#">1Guy Company</a></p>
+                <div class="jumbotron">
+                    <h2 class="sameLine"><a href="#">Totem02</a></h2> <h5 class="sameLine">COD: </h5> <h5 id="H1" class="sameLine" runat="server">T02</h5>
+                    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis pulvinar nisi, in dapibus leo. Aliquam ac gravida sem. Curabitur a aliquet tellus. Curabitur dui felis, luctus quis venenatis non, congue non nunc. Nam quis ipsum in dui egestas rutrum vel quis elit. Proin cursus lectus eget sem interdum tristique. Aliquam convallis elementum metus, eu hendrerit est aliquam vitae. Morbi suscipit sagittis venenatis. Etiam vehicula cursus convallis. Integer ultrices consequat dolor, hendrerit consectetur magna blandit eget. Curabitur nec vestibulum justo, lobortis mattis ipsum. Nullam enim est, placerat efficitur risus a, congue porttitor diam. Proin eget tortor dolor.</p>
+                    <input id="switch-disabled1" type="checkbox" data-size="mini" data-on-text="Activo" data-on-color="success" data-off-text="Inactivo" data-off-color="warning" unchecked disabled>
+                    <br><br>
+                    <p class="sameLine">Cliente: </p><p id="nombreCliente" class="sameLine bootstrapBlue">Carlo Magurno</p>
+                    <br>
+                    <p class="sameLine">Desarroladora: </p><p id="nombreDesarrolladora" class="sameLine bootstrapBlue">Grupo Desarrollo 2015</p>
+                </div>
+
+                <div class="jumbotron">
+                    <h2 class="sameLine"><a href="#">Totem03</a></h2> <h5 class="sameLine">COD: </h5> <h5 id="H2" class="sameLine" runat="server">T03</h5>
+                    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis pulvinar nisi, in dapibus leo. Aliquam ac gravida sem. Curabitur a aliquet tellus. Curabitur dui felis, luctus quis venenatis non, congue non nunc. Nam quis ipsum in dui egestas rutrum vel quis elit. Proin cursus lectus eget sem interdum tristique. Aliquam convallis elementum metus, eu hendrerit est aliquam vitae. Morbi suscipit sagittis venenatis. Etiam vehicula cursus convallis. Integer ultrices consequat dolor, hendrerit consectetur magna blandit eget. Curabitur nec vestibulum justo, lobortis mattis ipsum. Nullam enim est, placerat efficitur risus a, congue porttitor diam. Proin eget tortor dolor.</p>
+                    <input id="switch-disabled2" type="checkbox" data-size="mini" data-on-text="Activo" data-on-color="success" data-off-text="Inactivo" data-off-color="warning" unchecked disabled>
+                    <br><br>
+                    <p class="sameLine">Cliente: </p><p id="nombreCliente" class="sameLine bootstrapBlue">Carlo Magurno</p>
+                    <br>
+                    <p class="sameLine">Desarroladora: </p><p id="nombreDesarrolladora" class="sameLine bootstrapBlue">Grupo Desarrollo 2015</p>
+                </div>
+            </div>
         </div>
 
     </div>

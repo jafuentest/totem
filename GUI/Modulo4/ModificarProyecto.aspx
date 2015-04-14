@@ -38,7 +38,7 @@
 		            <textarea placeholder="Descripcion" class="form-control" name="descripcion" rows="5">Twitter (NYSE: TWTR) es un servicio de microblogging, con sede en San Francisco, California, con filiales en San Antonio (Texas) y Boston (Massachusetts) en Estados Unidos. Twitter, Inc. fue creado originalmente en California, pero está bajo la jurisdicción de Delaware desde 2007.8 Desde que Jack Dorsey lo creó en marzo de 2006, y lo lanzó en julio del mismo año, la red ha ganado popularidad mundialmente y se estima que tiene más de 500 millones de usuarios, generando 65 millones de tuits al día y maneja más de 800 000 peticiones de búsqueda diarias.1 Ha sido apodado como el "SMS de Internet".9</textarea>
 		        </div>
 	        </div>
-
+            <label>Moneda</label>
             <div class="form-group">
                 <div class="col-sm-1 col-md-1 col-lg-1">
                       <div class="dropdown">
@@ -65,11 +65,11 @@
             <br>
             <div class="form-group">
 		        <div class="col-sm-1 col-md-1 col-lg-1">
-				    <button class="btn btn-primary" onclick="return checkform()">Modificar</button>
+				    <a id="btn-modificar" type="button" class="btn btn-primary" href="PerfilProyecto.aspx?success=4">Modificar</a>
 			    </div>
                 <div class="col-sm-3 col-md-3 col-lg-3">
                     &nbsp;&nbsp;&nbsp;&nbsp;
-				    <button class="btn btn-default" onclick="goBack()">Cancelar</button>
+				    <a id="btn-eliminar" type="button" class="btn btn-default" href="PerfilProyecto.aspx">Cancelar</a>
 			    </div>
 	        </div>
     </form>

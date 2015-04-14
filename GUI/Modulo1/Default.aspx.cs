@@ -27,6 +27,18 @@ public partial class _Default : System.Web.UI.Page
         
         }
 
+         String success = Request.QueryString["success"];
+         if (success != null)
+         {
+             if (success.Equals("1"))
+             {
+                 alert_requerimiento.Attributes["class"] = "alert alert-success alert-dismissible";
+                 alert_requerimiento.Attributes["role"] = "alert";
+                 alert_requerimiento.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Proyecto eliminado exitosamente</div>";
+
+             }
+         }
+
          
     }
 }
