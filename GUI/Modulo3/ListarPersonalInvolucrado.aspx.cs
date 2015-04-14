@@ -29,5 +29,17 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
         {
             Response.Redirect("../Modulo1/M1_login.aspx");
         }
+
+         String success = Request.QueryString["success"];
+         if (success != null)
+         {
+             if (success.Equals("1"))
+             {
+                 alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                 alert.Attributes["role"] = "alert";
+                 alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Personal agregado exitosamente</div>";
+
+             }
+         }
     }
 }

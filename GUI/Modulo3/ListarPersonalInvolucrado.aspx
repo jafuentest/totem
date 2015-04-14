@@ -15,7 +15,7 @@ Listar Personal Involucrado</asp:Content>
                                <tr>
                                  <th>Nombre</th>
                                  <th>Apellido</th>
-                                 <th>Rol</th>
+                                 <th>Cargo</th>
                                  <th>Compañia</th>
                                  <th>Acciones</th>
                                </tr>

@@ -6,7 +6,7 @@ Agregar Personal Involucrado</asp:Content>
               <div class="col-sm-12 col-md-12 col-lg-12">
                  <div id="alertlocal" >
                  </div>
-              	 <form id="agregarpersonal" class="form-horizontal" action="ListarPersonalInvolucrado.aspx" method="POST" role="form" runat="server">
+              	 <form id="agregarpersonal" class="form-horizontal" action="ListarPersonalInvolucrado.aspx?success=1" method="POST" role="form" runat="server">
                         <div class="form-group">
                             <div class="col-sm-3 col-md-3 col-lg-3">
                                     <label>Seleccione el tipo de empresa:</label>  
