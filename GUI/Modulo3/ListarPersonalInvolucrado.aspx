@@ -24,17 +24,17 @@ Listar Personal Involucrado</asp:Content>
                             <tr>
                               <td>Argenis</td>
                               <td>Rodriguez</td>
-                              <td>Lider del proyecto</td>
+                              <td>Director General</td>
                               <td>Cliente</td>
                               <td>
-                                  <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
+                                  <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo2/ListarClientes.aspx") %>"></a>
                                   <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
                               </td>
                             </tr>
                             <tr>
                               <td>Scheryl</td>
                               <td>Palencia</td>
-                              <td>Analista</td>
+                              <td>Diseñador</td>
                               <td>Compañia de Software</td>
                               <td>
                                   <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
