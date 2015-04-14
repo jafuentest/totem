@@ -45,7 +45,7 @@
                         <td>Pérez</td>
                         <td>Alimentos Ronald, C.A.</td>
                         <td>                         
-                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo2/AgregarCliente.aspx") %>"></a>
+                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo2/DetallarCliente.aspx") %>"></a>
                             <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
                         </td>
                     </tr>
@@ -55,7 +55,7 @@
                         <td>Rodríguez</td>
                         <td>Alimentos Ronald, C.A.</td>
                         <td>                         
-                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo2/AgregarCliente.aspx") %>"></a>
+                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo2/DetallarCliente.aspx") %>"></a>
                             <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
                         </td>
                     </tr><tr>
@@ -64,7 +64,7 @@
                         <td>Osorio</td>
                         <td>Alimentos Ronald, C.A.</td>
                         <td>                         
-                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo2/AgregarCliente.aspx") %>"></a>
+                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo2/DetallarCliente.aspx") %>"></a>
                             <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
                         </td>
                     </tr>
@@ -74,7 +74,7 @@
                         <td>Cursus</td>
                         <td>P&G Venezuela, C.A.</td>
                         <td>                         
-                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo2/AgregarCliente.aspx") %>"></a>
+                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo2/DetallarCliente.aspx") %>"></a>
                             <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
                         </td>
                     </tr>
@@ -84,7 +84,7 @@
                         <td>Nisi</td>
                         <td>N/A</td>
                         <td>                         
-                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo2/AgregarCliente.aspx") %>"></a>
+                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo2/DetallarCliente.aspx") %>"></a>
                             <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
                         </td>
                     </tr>

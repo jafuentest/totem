@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="AgregarEmpresa.aspx.cs" Inherits="GUI_Modulo2_AgregarEmpresa" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="DetallarEmpresa.aspx.cs" Inherits="GUI_Modulo2_AgregarEmpresa" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 
@@ -15,7 +15,7 @@
     <script type="text/javascript" src="<%= Page.ResolveUrl("~/GUI/Modulo2/js/validation.js") %>"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">
-    Agregar empresa
+    Detallar empresa
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">
 </asp:Content>
@@ -41,12 +41,12 @@
                             </div>
                         </div>
                         <div id="div_rif" class="col-sm-9 col-md-9 col-lg-9">
-                            <input id="rif" name="rif" type="text" class="form-control" placeholder="RIF" />
+                            <input id="rif" name="rif" type="text" class="form-control" placeholder="RIF" value="000012595" />
                         </div>
                     </div>
                     <div class="form-group">
                         <div id="div_nombre" class="col-sm-12 col-md-12 col-lg-12">
-                            <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Nombre" />
+                            <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Nombre" value="Alimentos Ronald, C.A." />
                         </div>
                     </div>
                     <div class="form-group">
@@ -65,7 +65,7 @@
                 <div class="row col-sm-5 col-md-5 col-lg-5">
                     <div id="div_imagen" class="col-sm-11 col-md-11 col-lg-11">
                         &nbsp;&nbsp;&nbsp;
-                        <img data-src="holder.js/133x133" src="#" alt="Logo" class="img-thumbnail" />
+                        <img data-src="holder.js/133x133" style="width: 133px; height: 133px;" src="css/Penguins.jpg" alt="Logo" class="img-thumbnail" />
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
                     <div id="div_pais" class="col-sm-5 col-md-5 col-lg-5">
                         <div class="dropdown">
                             <button id="pais-id" class="btn btn-default dropdown-toggle" name="pais-dd" type="button" data-toggle="dropdown" aria-expanded="true">
-                                País
+                                Venezuela
                                 <span class="caret"></span>
                             </button>
                             <ul id="pais-dd" class="dropdown-menu" role="menu" aria-labelledby="pais-id">
@@ -88,7 +88,7 @@
                     <div id="div_estado" class="col-sm-5 col-md-5 col-lg-5">
                         <div class="dropdown">
                             <button id="estado-id" class="btn btn-default dropdown-toggle" name="estado-dd" type="button" data-toggle="dropdown" aria-expanded="true">
-                                Estado
+                                Aragua
                                 <span class="caret"></span>
                             </button>
                             <ul id="estado-dd" class="dropdown-menu" role="menu" aria-labelledby="estado-id">
@@ -105,7 +105,7 @@
             <div class="form-group">
                 <div class="row">
                     <div id="div_direccion" class="col-sm-10 col-md-10 col-lg-10">
-                        <input id="direccion" name="direccion" type="text" class="form-control" placeholder="Dirección detallada" />
+                        <input id="direccion" name="direccion" type="text" class="form-control" placeholder="Dirección detallada" value="Las Delicias" />
                     </div>
                 </div>
             </div>
@@ -113,17 +113,17 @@
             <div class="form-group">
                 <div class="row">
                     <div id="div_cpostal" class="col-sm-5 col-md-5 col-lg-5">
-                        <input id="codigopostal" name="codigopostal" type="text" class="form-control" placeholder="Código postal" />
+                        <input id="codigopostal" name="codigopostal" type="text" class="form-control" placeholder="Código postal" value="1040" />
                     </div>
                     &nbsp;
                     <div id="div_telefono" class="col-sm-5 col-md-5 col-lg-5">
-                        <input id="telefono" name="telefono" type="text" class="form-control" placeholder="Teléfono" />
+                        <input id="telefono" name="telefono" type="text" class="form-control" placeholder="Teléfono" value="2125896412" />
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <a class="btn btn-primary">Agregar</a>
+                <a class="btn btn-primary" href="ListarEmpresas.aspx?success=edit">Editar</a>
                 <a class="btn btn-default" href="ListarEmpresas.aspx">Cancelar</a>
             </div>
 

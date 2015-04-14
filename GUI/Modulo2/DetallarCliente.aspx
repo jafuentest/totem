@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="AgregarCliente.aspx.cs" Inherits="GUI_Modulo2_AgregarCliente" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="DetallarCliente.aspx.cs" Inherits="GUI_Modulo2_AgregarCliente" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 
@@ -12,7 +12,7 @@
     <script type="text/javascript" src="<%= Page.ResolveUrl("~/GUI/Modulo2/js/validation.js") %>"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">
-    Agregar cliente
+    Detallar cliente
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">
 </asp:Content>
@@ -25,11 +25,11 @@
                 <h3>Datos básicos</h3>
                 <div class="row">
                     <div id="div_nombre" class="col-sm-5 col-md-5 col-lg-5">
-                        <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Nombre" />
+                        <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Nombre" value="Pedro" />
                     </div>
                     &nbsp;
                     <div id="div_apellido" class="col-sm-5 col-md-5 col-lg-5">
-                        <input id="apellido" name="apellido" type="text" class="form-control" placeholder="Apellido" />
+                        <input id="apellido" name="apellido" type="text" class="form-control" placeholder="Apellido" value="Pérez" />
                     </div>
                 </div>
             </div>
@@ -49,13 +49,13 @@
                         </div>
                     </div>
                     <div id="div_rif" class="col-sm-4 col-md-4 col-lg-4">
-                        <input id="rif" name="rif" type="text" class="form-control" placeholder="RIF" />
+                        <input id="rif" name="rif" type="text" class="form-control" placeholder="RIF" value="12452843" />
                     </div>
                     &nbsp;
                     <div id="div_cargo" class="col-sm-5 col-md-5 col-lg-5">
                         <div class="dropdown">
                             <button id="cargo-id" class="btn btn-default dropdown-toggle" name="cargo-dd" type="button" data-toggle="dropdown" aria-expanded="true">
-                                Cargo empresarial
+                                Director general
                                 <span class="caret"></span>
                             </button>
                             <ul id="cargo-dd" class="dropdown-menu" role="menu" aria-labelledby="cargo-id">
@@ -72,17 +72,17 @@
                 <h3>Datos de contacto</h3>
                 <div class="row">
                     <div id="div_correo" class="col-sm-5 col-md-5 col-lg-5">
-                        <input id="correo" name="correo" type="text" class="form-control" placeholder="Correo electrónico" />
+                        <input id="correo" name="correo" type="text" class="form-control" placeholder="Correo electrónico" value="pedro.perez@alimentosronald.com" />
                     </div>
                     &nbsp;
                     <div id="div_telefono" class="col-sm-5 col-md-5 col-lg-5">
-                        <input id="telefono" name="telefono" type="text" class="form-control" placeholder="Teléfono" />
+                        <input id="telefono" name="telefono" type="text" class="form-control" placeholder="Teléfono" value="2124578123" />
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <a class="btn btn-primary">Agregar</a>
+                <a class="btn btn-primary" href="ListarClientes.aspx?success=edit">Editar</a>
                 <a class="btn btn-default" href="ListarClientes.aspx">Cancelar</a>
             </div>
 
