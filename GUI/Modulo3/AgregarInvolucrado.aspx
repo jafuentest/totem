@@ -1,8 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="../Master/MasterPage.master" AutoEventWireup="true" CodeFile="AgregarInvolucrado.aspx.cs" Inherits="GUI_Modulo3_Default" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="subtitulo" Runat="Server">
-Agregar Personal Involucrado</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="contenidoCentral" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Personal Involucrado</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Agregar Involucrados</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
               <div class="col-sm-12 col-md-12 col-lg-12">
                  <div id="alertlocal" >
                  </div>
@@ -87,8 +89,8 @@ Agregar Personal Involucrado</asp:Content>
                             </div>
                         </div>
                         <div class="modal-footer">
-                           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                            <button id="btn-eliminar" type="button" class="btn btn-primary">Eliminar</button>
+                           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                        </div>
                       </div><!-- /.modal-content -->
                    </div><!-- /.modal-dialog -->
@@ -108,9 +110,10 @@ Agregar Personal Involucrado</asp:Content>
                             </div>
                         </div>
                         <div class="modal-footer">
-                           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                            <button id="btn-confirmar" type="button" class="btn btn-primary">Aceptar</button>
-                       </div>
+                           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar
+                           </button>
+                        </div>
                       </div><!-- /.modal-content -->
                    </div><!-- /.modal-dialog -->
                    </div><!-- /.modal -->                                                    
@@ -118,7 +121,7 @@ Agregar Personal Involucrado</asp:Content>
                       <div class="form-group">
                 <div class="col-sm-5 col-md-5 col-lg-5">
                     <button id="btn-enviar" class="btn btn-primary"  type="submit" onclick="return false;">Agregar</button>
-                    <a class="btn btn-default" href="AgregarInvolucrado.aspx">Cancelar</a>
+                    <a class="btn btn-default" href="ListarPersonalInvolucrado.aspx">Cancelar</a>
                 </div>
             </div>
                  </form>

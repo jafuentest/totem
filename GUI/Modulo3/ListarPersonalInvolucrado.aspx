@@ -1,8 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="../Master/MasterPage.master" AutoEventWireup="true" CodeFile="ListarPersonalInvolucrado.aspx.cs" Inherits="GUI_Modulo3_Default" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="subtitulo" Runat="Server">
-Listar Personal Involucrado</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="contenidoCentral" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Personal Involucrado</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Listar Involucrados</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
            
                        <div class="col-sm-12 col-md-12 col-lg-12">
                        <div id="alert" runat="server">
@@ -121,8 +123,8 @@ Listar Personal Involucrado</asp:Content>
                        </div>
                       </div>
                        <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                         <button id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarUsuario()">Eliminar</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                        </div>
                       </div><!-- /.modal-content -->
                      </div><!-- /.modal-dialog -->
