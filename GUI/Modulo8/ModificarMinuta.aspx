@@ -10,10 +10,6 @@
     <link rel="stylesheet" type="text/css" href="css/Minutas.css"/>
 
     <div class="col-xs-12">
-        <ol class="breadcrumb">
-            <li><a href="ConsultarMinuta.aspx">Consultar</a></li>
-            <li>Modificar Minuta</li>
-        </ol>
         
         <form id="crearMinuta_form" class="form-horizontal">
             <div class="row" id="alertas"></div>
@@ -117,7 +113,7 @@
         
            <div class="form-group">
                <div class="col-xs-12 col-md-9 botones">
-				    <button type="button" class="btn btn-primary btn-right" onClick="validar();">Guardar Minuta</button>
+				    <button type="button" style="position:absolute; left:150px" class="btn btn-primary navbar-center" onClick="validar();">Modificar</button>
                </div>    
 	       </div>
         </form> 
@@ -131,8 +127,8 @@
                     <h4 class="modal-title" >¿Desea guardar los cambios?</h4>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                     <button id="btn-confirmar" type="button" class="btn btn-primary" onClick="aceptarConfirmacion();">Aceptar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>

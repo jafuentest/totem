@@ -84,13 +84,11 @@ function seleccionado(obj)
     var id = obj.id;                                            //ID del Div Seleccionado
     var id_check = id + "_check";                               //ID del Check para el div Seleccionado
 
-    if ($('#' + id_check).is(':checked'))
-    {
+    if ($('#' + id_check).is(':checked')) {
         $('#' + id_check).removeAttr('checked');
         $('#' + id).removeClass("panel-participante-seleccionado");
     }
-    else
-    {
+    else {
         $('#' + id_check).prop('checked', true);
         $('#' + id).addClass("panel-participante-seleccionado");
     }

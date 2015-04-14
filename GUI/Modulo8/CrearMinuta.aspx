@@ -32,7 +32,7 @@
             <div class="form-group">
                 <label for="participantes" class="col-xs-12 col-md-3 control-label">Participantes:</label>
                 <div class="list-group col-xs-12 col-md-8 col-lg-6">
-                    <div id="1_par" class="panel panel-default panel-participante col-xs-12 col-sm-6" onClick="seleccionado(this)">
+                    <div id="1_par" class="panel panel-default panel-participante col-xs-12 col-sm-6" onclick="seleccionado(this)">
                         <div class="panel-boddy participante">
                             <div class="col-xs-1 check-contenedor"><input type="checkbox" class="participante-check" id="1_par_check"/></div>
                             <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
@@ -42,7 +42,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="2_par" class="panel panel-default panel-participante col-xs-12 col-sm-6" onClick="seleccionado(this)">
+                    <div id="2_par" class="panel panel-default panel-participante col-xs-12 col-sm-6" onclick="seleccionado(this)">
                         <div class="panel-boddy participante">
                             <div class="col-xs-1 check-contenedor"><input type="checkbox" class="participante-check" id="2_par_check"/></div>
                             <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
@@ -52,7 +52,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="3_par" class="panel panel-default panel-participante col-xs-12 col-sm-6" onClick="seleccionado(this)">
+                    <div id="3_par" class="panel panel-default panel-participante col-xs-12 col-sm-6" onclick="seleccionado(this)">
                         <div class="panel-boddy participante">
                             <div class="col-xs-1 check-contenedor"><input type="checkbox" class="participante-check" id="3_par_check"/></div>
                             <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
@@ -62,7 +62,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="4_par" class="panel panel-default panel-participante col-xs-12 col-sm-6" onClick="seleccionado(this)">
+                    <div id="4_par" class="panel panel-default panel-participante col-xs-12 col-sm-6" onclick="seleccionado(this)">
                         <div class="panel-boddy participante">
                             <div class="col-xs-1 check-contenedor"><input type="checkbox" class="participante-check" id="4_par_check"/></div>
                             <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
@@ -146,7 +146,7 @@
         
            <div class="form-group">
                <div class="col-xs-12 col-md-9 botones">
-				    <button type="button" class="btn btn-primary btn-right" onClick="validar();">Crear Minuta</button>
+				    <button type="button" style="position:absolute; left:150px" class="btn btn-primary" onClick="validar();">Agregar</button>
                </div>    
 	       </div>
         </form> 
@@ -160,8 +160,8 @@
                     <h4 class="modal-title" >¿Desea agregar la minuta?</h4>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                     <button id="btn-confirmar" type="button" class="btn btn-primary" onClick="aceptarConfirmacion();">Aceptar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>

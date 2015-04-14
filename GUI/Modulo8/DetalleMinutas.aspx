@@ -7,10 +7,6 @@
     
     <div class="col-xs-12">   
         
-        <ol class="breadcrumb">
-            <li><a href="ConsultarMinuta.aspx">Consultar</a></li>
-            <li>Detalle Totem</li>
-        </ol>
         
         <div class="form-group">
             <label for="nombreProyecto" class="col-xs-3 col-md-1 control-label">Proyecto:</label>             
@@ -57,7 +53,7 @@
                 </div>
                 <div id="3_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
                     <div class="panel-boddy participante">                                                
-                        <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
+                    <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
                         <div class="col-xs-10 col-sm-8 nombre-participante">
                             <p class="participante-nombre">César Contreras</p>
                             <p class="participante-rol"><small>Desarrollador</small></p>

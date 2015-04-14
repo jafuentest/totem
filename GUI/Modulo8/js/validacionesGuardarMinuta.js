@@ -1,7 +1,7 @@
 ﻿//Función que se activa una vez que el usuario halla confirmado Guardar la Minuta.
 function aceptarConfirmacion()
 {
-    alerta = "<div class='row'><div class='alert alert-info col-xs-12 col-md-push-3 col-md-8 col-lg-6 alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>¡Correcto!</strong> - Se ha Modificado la Minuta Correctamente</div></div>";
+    alerta = "<div class='row'><div class='alert alert-success col-xs-12 col-md-push-3 col-md-8 col-lg-6 alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>¡Correcto!</strong> - Se ha Modificado la Minuta Correctamente</div></div>";
     $(".alert").remove();                           //Elimina todas las Alertas
     $(alerta).appendTo("#alertas");                 //Añade la Alerta de Éxito
     $('#confirmacion').modal('toggle');             //Cierra el Modal
