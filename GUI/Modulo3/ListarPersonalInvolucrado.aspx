@@ -41,6 +41,57 @@ Listar Personal Involucrado</asp:Content>
                                   <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
                               </td>   
                             </tr>
+                                 <tr>
+                              <td>Rodolfo</td>
+                              <td>Graziano</td>
+                              <td>Analista</td>
+                              <td>Compañia de Software</td>
+                              <td>
+                                  <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
+                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                              </td>   
+                            </tr>
+                                   <tr>
+                              <td>Pedro</td>
+                              <td>Garcia</td>
+                              <td>Lider De Proyecto</td>
+                              <td>Compañia de Software</td>
+                              <td>
+                                  <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
+                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                              </td>   
+                            </tr>
+                                <tr>
+                              <td>Manuel</td>
+                              <td>Da silva</td>
+                              <td>Director General</td>
+                              <td>Cliente</td>
+                              <td>
+                                  <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
+                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                              </td>   
+                            </tr>
+                                <tr>
+                              <td>Ydalia</td>
+                              <td>Restrepo</td>
+                              <td>Director Ejecutivo</td>
+                              <td>Cliente</td>
+                              <td>
+                                  <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
+                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                              </td>   
+                            </tr>
+                                    <tr>
+                              <td>juan</td>
+                              <td>santos</td>
+                              <td>Arquitecto de Solucion</td>
+                              <td>Compañia de Software</td>
+                              <td>
+                                  <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
+                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                              </td>
+                            </tr>
+                            
                             <tr>
                               <td>Alberto</td>
                               <td>Da Silva</td>
@@ -108,7 +159,7 @@ Listar Personal Involucrado</asp:Content>
                  table.row(tr).remove().draw();//se elimina la fila de la tabla
                  $('#modal-delete').modal('hide');//se esconde el modal
                  $('#alertlocal').addClass("alert alert-success alert-dismissible");
-                 $('#alertlocal').html("<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>No has seleccionado ningun personal</div>");
+                 $('#alertlocal').html("<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Se ha eliminado Exitosamente.</div>");
 
              });
          });
