@@ -153,9 +153,9 @@
                 </div>
               </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            <div class="modal-footer">  
               <a id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarRequerimiento()" href="Reportes.aspx?success=3">Eliminar</a>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
             </div>
           </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
