@@ -107,6 +107,7 @@
 			<div class="form-group">
 				<div class="col-md-6">
 					<button class="btn btn-primary" type="submit">Agregar</button>
+					<a class="btn btn-default" href="Listar.aspx">Cancelar</a>
 				</div>
 			</div>
 		</form>

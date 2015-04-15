@@ -167,6 +167,7 @@ A2. Volver al paso 2.</textarea>
 			<div class="form-group">
 				<div class="col-md-6">
 					<button class="btn btn-primary" type="submit">Guardar Cambios</button>
+					<a class="btn btn-default" href="Listar.aspx">Cancelar</a>
 				</div>
 			</div>
 		</form>
