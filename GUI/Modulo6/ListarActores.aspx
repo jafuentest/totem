@@ -26,26 +26,18 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>Lorem ipsum</td>
-						<td>dolor sit</td>
+						<td>Usuario</td>
+						<td>Usuario común del sitio</td>
 						<td>
 							<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/ModificarActor.aspx?id=1") %>"></a>
 							<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
 						</td>
 					</tr>
 					<tr>
-						<td>amet consectetur</td>
-						<td>Lorem ipsum</td>
+						<td>Administrador</td>
+						<td>Hereda todos los permisos del Usuario común, además tener permisos totales en el sistema</td>
 						<td>
 							<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/ModificarActor.aspx?id=2") %>"></a>
-							<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
-						</td>
-					</tr>
-					<tr>
-						<td>dolor sit</td>
-						<td>amet consectetur</td>
-						<td>
-							<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/ModificarActor.aspx?id=3") %>"></a>
 							<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
 						</td>
 					</tr>
