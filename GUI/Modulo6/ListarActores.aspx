@@ -4,6 +4,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Lista</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 	<div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
+		<div id="alert" runat="server"></div>
 		<div id="alertlocal"></div>
 		<div class="panel panel-primary" style="width:auto">
 			<div class="panel-heading">
@@ -29,7 +30,7 @@
 						<td>Usuario</td>
 						<td>Usuario común del sitio</td>
 						<td>
-							<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/ModificarActor.aspx?id=1") %>"></a>
+							<a class="btn btn-default glyphicon glyphicon-pencil" data-toggle="modal" data-target="#modal-update" href="#"></a>
 							<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
 						</td>
 					</tr>
@@ -37,7 +38,7 @@
 						<td>Administrador</td>
 						<td>Hereda todos los permisos del Usuario común, además tener permisos totales en el sistema</td>
 						<td>
-							<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/ModificarActor.aspx?id=2") %>"></a>
+							<a class="btn btn-default glyphicon glyphicon-pencil" data-toggle="modal" data-target="#modal-update" href="#"></a>
 							<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
 						</td>
 					</tr>
@@ -60,11 +61,41 @@
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-							<button id="btn-eliminar" type="button" class="btn btn-primary">Eliminar</button>
+							<a id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarCasoDeUso()" href="ListarActores.aspx?success=3">Eliminar</a>
 						</div>
 					</div>
 				</div>
 			</div>
+			<div id="modal-update" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">Modificación de Caso de Uso</h4>
+						</div>
+						<form name="form_actor" id="form_actor" class="form-horizontal" action="ListarActores.aspx?success=2" method="post">
+							<div class="modal-body">
+								<div class="container-fluid">
+									<div class="form-group">
+										<div id="div-nombre" class="col-sm-10 col-md-10 col-lg-10">
+											<input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control"/>
+										</div>
+									</div>
+									<div class="form-group">
+										<div id="div-descripcion" class="col-sm-10 col-md-10 col-lg-10">
+											<input type="text" name="descripcion" id="descripcion" placeholder="Descripcion" class="form-control"/>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button id="btn-modificarCU" class="btn btn-primary" type="submit" onclick="return checkform();">Modificar</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+							</div>
+						</form>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
 		</div>
 	</div>
 	<script type="text/javascript">
@@ -91,12 +122,13 @@
 				modal.find('.modal-title').text('Eliminar actor: ' + user);
 				modal.find('#user-name').text(user);
 			})
-			//para eliminar la fila
 			$('#btn-eliminar').on('click', function () {
-				table.row(tr).remove().draw();
-				$('#modal-delete').modal('hide');
-				$('#alertlocal').addClass("alert alert-success alert-dismissible");
-				$('#alertlocal').text("El actor se ha eliminado con éxito");
+				table.row(tr).remove().draw();//se elimina la fila de la tabla
+				$('#modal-delete').modal('hide');//se esconde el modal
+			});
+			$('#modal-update').on('show.bs.modal', function (event) {
+				var modal = $(this)
+				modal.find('.modal-title').text('Modificar actor')
 			});
 		});
 	</script>
