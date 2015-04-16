@@ -20,7 +20,7 @@
     <br/>
     <h2 style="align-content:center">Requerimientos Asociados</h2>
     <div class="table-responsive">
-	    		<table id="table-example" class="table table-striped table-hover">
+	    <table id="table-requerimientos" class="table table-striped table-hover">
 			<thead>
 				<tr>
 					<th>ID</th>
@@ -42,7 +42,7 @@
                      </td>
                 </tr>
                 <tr>
-                    <td>TOT_RF_2</td>
+                    <td class="id">TOT_RF_2</td>
 					<td>El sistema deberá permitir la modificación de los campos de descripción y prioridad de los requerimientos funcionales y no funcionales previamente asociados a un proyecto dado.</td>
 					<td>Funcional</td>
 					<td>Alta</td>
@@ -51,7 +51,7 @@
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
                      </td>
 				</tr><tr>
-                    <td>TOT_RF_3</td>
+                    <td class="id">TOT_RF_3</td>
 					<td>El sistema deberá permitir eliminar los requerimientos funcionales y no funcionales de un proyecto.</td>
 					<td>Funcional</td>
 					<td>Alta</td>
@@ -61,7 +61,7 @@
                      </td>
                 </tr>
                 <tr>
-                    <td>TOT_RF_4</td>
+                    <td class="id">TOT_RF_4</td>
 					<td>El sistema deberá permitir buscar requerimientos funcionales y no funcionales, por ID y por descripción, que se encuentran asociados a un proyecto en específico.</td>
 					<td>Funcional</td>
 					<td>Alta</td>
@@ -71,7 +71,7 @@
                      </td>
                 </tr>
                 <tr>
-                <td>TOT_RF_5</td>
+                <td class="id">TOT_RF_5</td>
 					<td>El sistema deberá permitir consultar la lista de requerimientos funcionales, asociados a un proyecto en específico, organizada por ID.</td>
 					<td>Funcional</td>
 					<td>Alta</td>
@@ -81,7 +81,7 @@
                     </td>
                 </tr>
                 <tr>
-                <td>TOT_RF_6</td>
+                <td class="id">TOT_RF_6</td>
 					<td>El sistema deberá permitir consultar la lista de requerimientos funcionales, asociados a un proyecto en específico, organizada por su prioridad.</td>
 					<td>Funcional</td>
 					<td>Alta</td>
@@ -90,7 +90,7 @@
                         <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
                     </td>
                 </tr><tr>
-                    <td>TOT_RNF_1</td>
+                    <td class="id">TOT_RNF_1</td>
 					<td>El sistema deberá permitir eliminar los requerimientos funcionales y no funcionales de un proyecto.</td>
 					<td>No Funcional</td>
 					<td>Alta</td>
@@ -100,7 +100,7 @@
                      </td>
                 </tr>
                 <tr>
-                    <td>TOT_RNF_2</td>
+                    <td class="id">TOT_RNF_2</td>
 					<td>El sistema deberá permitir buscar requerimientos funcionales y no funcionales, por ID y por descripción, que se encuentran asociados a un proyecto en específico.</td>
 					<td>No Funcional</td>
 					<td>Alta</td>
@@ -110,7 +110,7 @@
                      </td>
                 </tr>
                 <tr>
-                <td>TOT_RNF_3</td>
+                <td class="id">TOT_RNF_3</td>
 					<td>El sistema deberá permitir consultar la lista de requerimientos funcionales, asociados a un proyecto en específico, organizada por ID.</td>
 					<td>No Funcional</td>
 					<td>Alta</td>
@@ -120,7 +120,7 @@
                     </td>
                 </tr>
                 <tr>
-                <td>TOT_RNF_4</td>
+                <td class="id">TOT_RNF_4</td>
 					<td>El sistema deberá permitir consultar la lista de requerimientos funcionales, asociados a un proyecto en específico, organizada por su prioridad.</td>
 					<td>No Funcional</td>
 					<td>Alta</td>
@@ -150,11 +150,11 @@
                 <a id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarRequerimiento()" href="ListarRequerimientos.aspx?success=3">Eliminar</a>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
            </div>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div><!-- /.modal -->
+          </div><!-- /.modal-delete-content -->
+        </div><!-- /.modal-delete-dialog -->
+      </div><!-- /.modal-delete -->
       <div id="modal-update" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
-        <form id="modificar_requerimientos" class="form-horizontal" method="post" action="ListarRequerimientos.aspx?success=2">
+        <form id="modificar_requerimientos" class="form-horizontal" method="post" action="Reportes.aspx?success=2">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -162,72 +162,73 @@
               <h4 class="modal-title" >Modificaci&oacute;n de Requerimiento</h4>
             </div>
             <div class="modal-body">
-              <div class="container-fluid">
+                <div class="container-fluid">
                 <div class="form-group">
-				<div id="div-id" class="col-sm-5 col-md-5 col-lg-5">
-					<input type="text" name="id" id="id" placeholder="ID" class="form-control" disabled="disabled" value="TOT_RF_5_2"/>
-				</div>
-			</div>
-            <div class="form-group">
-                <div class="col-sm-10 col-md-10 col-lg-10">
-                    <p><b>Tipo de Requerimiento:</b></p>
-                    <label class="radio-inline"><input type="radio" name="radioTipo" checked="checked"/>Funcional</label>
-                    <label class="radio-inline">
-                    <input type="radio" name="radioTipo"/>No Funcional</label>
+				    <div id="div-id" class="col-sm-5 col-md-5 col-lg-5">
+					    <input type="text" name="idreq" id="idreq_input" placeholder="ID" class="form-control" disabled="disabled" value="TOT_RF_5_2"/>
+				    </div>
+			    </div>
+                <div class="form-group">
+                    <div class="col-sm-10 col-md-10 col-lg-10">
+                        <p><b>Tipo de Requerimiento:</b></p>
+                        <label class="radio-inline">
+                        <input type="radio" name="radioTipo" checked="checked" id="input_tipo_funcional"/>Funcional</label>
+                        <label class="radio-inline">
+                        <input type="radio" name="radioTipo" id="input_tipo_nofuncional"/>No Funcional</label>
+                    </div>
                 </div>
-            </div>
-            <br/>                
-            <div class="form-group">
-                <div class="col-sm-10 col-md-10 col-lg-10">
-                    <div class="input-group">
-                        <span class="input-group-addon">El sistema deberá </span>
-                        <textarea class="form-control" rows="3" placeholder="Funcionalidad del requerimiento" style="text-align: justify;resize:vertical;" name="requerimiento" ></textarea>
+                <br/>                
+                <div class="form-group">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="input-group">
+                            <span class="input-group-addon">El sistema deberá </span>
+                            <textarea class="form-control" rows="3" placeholder="Funcionalidad del requerimiento" style="text-align: justify;resize:vertical;" name="requerimiento" id="input_requerimiento">El sistema deberá permitir la modificación de los campos de descripción y prioridad de los requerimientos funcionales y no funcionales previamente asociados a un proyecto dado.</textarea>
+                        </div>
+                    </div>
+                </div>
+                    <br />
+                    <div class="form-group">
+                        <div class="col-sm-10 col-md-10 col-lg-10">
+                            <p><b>Prioridad:</b></p>
+                            <label class="radio-inline">
+                            <input type="radio" name="radioPrioridad" id="input_prioridad_baja"/>Baja</label>
+                            <label class="radio-inline">
+                            <input type="radio" name="radioPrioridad" checked="checked" id="input_prioridad_media"/>Media</label>
+                            <label class="radio-inline">
+                            <input type="radio" name="radioPrioridad" id="input_prioridad_alta"/>Alta</label>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <div class="col-sm-10 col-md-10 col-lg-10">
+                            <p><b>Status:</b></p>
+                            <label class="radio-inline">
+                            <input type="radio" name="radioStatus" checked="checked" id="input_status_nofinalizado"/>No Finalizado</label>
+                            <label class="radio-inline">
+                            <input type="radio" name="radioStatus" id="input_status_finalizado"/>Finalizado</label>
+                        </div>
                     </div>
                 </div>
             </div>
-            <br />
-            <div class="form-group">
-                <div class="col-sm-10 col-md-10 col-lg-10">
-                    <p><b>Prioridad:</b></p>
-                    <label class="radio-inline"><input type="radio" name="radioPrioridad"/>Baja</label>
-                    <label class="radio-inline">
-                    <input type="radio" name="radioPrioridad" checked="checked"/>Media</label>
-                    <label class="radio-inline">
-                    <input type="radio" name="radioPrioridad"/>Alta</label>
-                </div>
-            </div>
-            <br />
-            <div class="form-group">
-                <div class="col-sm-10 col-md-10 col-lg-10">
-                    <p><b>Status:</b></p>
-                    <label class="radio-inline">
-                    <input type="radio" name="radioStatus" checked="checked"/>No Finalizado</label>
-                    <label class="radio-inline">
-                    <input type="radio" name="radioStatus"/>Finalizado</label>
-                </div>
-            </div>
-            </div>
-            </div>
             <div class="modal-footer">
-              <button id="btn-modificarReq" disabled="disabled" class="btn btn-primary" type="submit" onclick="return checkform();">
-                  Modificar</button>
+              <button id="btn-modificarReq" disabled="disabled" class="btn btn-primary" type="submit" onclick="return checkform();">Modificar</button>
               <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
             </div>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
+          </div><!-- /.modal-update-content -->
+        </div><!-- /.modal-update-dialog -->
         </form>
-      </div><!-- /.modal -->
-    </div>
+      </div><!-- /.modal-update -->
+    </div><!-- table-responsive -->
     <!-- Data tables init -->
     <script src="js/Validacion.js"></script>
 	<script type="text/javascript">
 	    $(document).ready(function () {
-	        $('#table-example').DataTable();
-	        var table = $('#table-example').DataTable();
+	        $('#table-requerimientos').DataTable();
+	        var table = $('#table-requerimientos').DataTable();
 	        var req;
 	        var tr;
 
-	        $('#table-example tbody').on('click', 'a', function () {
+	        $('#table-requerimientos tbody').on('click', 'a', function () {
 	            if ($(this).parent().hasClass('selected')) {
 	                req = $(this).parent().prev().prev().prev().prev().text();
 	                tr = $(this).parents('tr');//se guarda la fila seleccionada

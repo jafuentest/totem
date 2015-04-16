@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+    //metodos para aplicar bootstrap validator al formulario de agregar requerimientos.
     $('#agregar_requerimientos')
        .bootstrapValidator({
            message: 'This value is not valid',
@@ -17,11 +18,12 @@
                }
            }
        })
-       .on('success.field.fv', function(e, data){
+       .on('success.field.fv', function(e, data){//en caso de que haya problema con los campos del formulario, deshabilita el boton
            if (data.fv.getInvalidFields().length < 0){
                 data.data.fv.disableSubmitButtons(true);
            }
-           });
+       });
+    //metodos para aplicar bootstrap validator al formulario de modificar requerimientos.
     $('#modificar_requerimientos')
         .bootstrapValidator({
             message: 'This value is not valid',
@@ -40,7 +42,7 @@
                 }
             }
         })
-        .on('success.field.fv', function (e, data) {
+        .on('success.field.fv', function (e, data) {//en caso de que haya problema con los campos del formulario, deshabilita el boton
             if (data.fv.getInvalidFields().length > 0) {
                 data.data.fv.disableSubmitButtons(true);
             }
