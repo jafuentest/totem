@@ -36,18 +36,18 @@ input[readonly]
 {
     width: 100%;
 }
-#rsocial-id
+#rsocial, #pais
 {
     margin-bottom: 1.1em;
+}
+#div_imagen
+{
+    text-align: center; 
 }
 
 @media (min-width: 768px)
 {
-    .row.col-sm-5.col-md-5.col-lg-5
-    {
-        width: 43%;
-    }
-    #rsocial-id
+    #rsocial, #pais
     {
         margin-bottom: inherit;
     }

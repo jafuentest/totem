@@ -10,22 +10,14 @@
 {
     width: 100%;
 }
-#rsocial-id
+#rsocial
 {
     margin-bottom: 1.1em;
 }
 
 @media (min-width: 768px)
 {
-    #div_rsocial
-    {
-        width: 10%;
-    }
-    #div_rif
-    {
-        width: 31.7%;
-    }
-    #rsocial-id
+    #rsocial
     {
         margin-bottom: inherit;
     }

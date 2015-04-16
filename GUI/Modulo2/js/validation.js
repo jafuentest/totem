@@ -28,8 +28,8 @@
                         message: 'El RIF es requerido'
                     },
                     regexp: {
-                        regexp: /^\d{9}$/,
-                        message: 'El RIF debe de tener 9 dígitos numéricos'
+                        regexp: /^\d{1,8}$/,
+                        message: 'El RIF debe de contener un valor numérico comprendido entre 1 y 8 dígitos'
                     }
                 }
             },
