@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" MasterPageFile="~/GUI/Master/MasterPage.master"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ListaProyectos.aspx.cs" Inherits="_Default" MasterPageFile="~/GUI/Master/MasterPage.master"%>
 <%@ MasterType TypeName="MasterPage" %>
-<asp:Content ContentPlaceHolderID="subtitulo" runat="server">Mis Proyectos</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="titulo" runat="server">TOTEM</asp:Content>
+<asp:Content ContentPlaceHolderID="subtitulo" runat="server">Bienvenido al Sistema de Documentación</asp:Content>
 
 <asp:Content ContentPlaceHolderID="contenidoCentral" runat="server">
 
-    <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
 
         <!--ALERTAS-->
         <!--Alertas de modificacion y eliminacion de requerimientos en la lista de requerimientos en el 1er acordeon-->
@@ -14,7 +14,9 @@
                 </div>
             </div>
         </div>
+        <div id="div_adminIcons" runat="server">
 
+        </div>
         <div class="form-group">
             <div id="div_proyectos" class="col-sm-12 col-md-12 col-lg-12">
                 <div class="table-responsive">
@@ -201,7 +203,6 @@
             </div>
         </div>
     
-    </div>
 
 	<!-- Data tables init -->
 	<script type="text/javascript">

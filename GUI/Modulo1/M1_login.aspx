@@ -10,25 +10,25 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     
                 <div  class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-                   <form id="login" class="form-horizontal" method="post" action="Default.aspx">
+                   <form runat="server" class="form-horizontal" method="POST" >
 
                     <div id="login-form-name" class="form-group">
                         <div class ="col-sm-7 col-md-7 col-lg-7">
                             <label>Nombre de Usuario:</label>
-                            <input type="text" class="form-control login-field" style="width:100%;" value="" placeholder="Ingrese nombre de usuario" id="login-name" name="usuario" />
+                            <input runat="server" type="text" class="form-control login-field" style="width:100%;" value="" placeholder="Ingrese nombre de usuario" name="usuario" id="input_usuario"/>
                         </div>
                     </div>
 
                     <div id="login-form-pass" class="form-group">
                          <div class ="col-sm-7 col-md-7 col-lg-7">
                             <label>Contraseña:</label>
-                             <input type="password" class="form-control login-field" style="width:100%;" value="" placeholder="Contrase&ntilde;a" id="login-pass" name="password"/>
+                             <input runat="server" type="password" class="form-control login-field" style="width:100%;" value="" placeholder="Contrase&ntilde;a" name="password" id="input_pswd"/>
                     
                          </div>
                     </div>
                     <div id="botones" class ="form-group">
                         <div class ="col-sm-10 col-md-10 col-lg-10">
-                            <button class="btn btn-primary "  style="width:68%;" type="submit" onclick="return checkform()">Iniciar Sesi&oacute;n</button>
+                            <button runat="server" class="btn btn-primary "  style="width:68%;" type="submit" onserverclick="btnLogin_Click">Iniciar Sesi&oacute;n</button>
                     <br />
                                                               
                     <a class="login-link" href="M1_IntroducirCorreo.aspx" style="margin-left:19%; margin-top:20px;">¿Olvid&oacute; su contrase&ntilde;a?</a>

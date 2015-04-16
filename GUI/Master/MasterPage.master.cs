@@ -70,15 +70,14 @@ public partial class MasterPage : System.Web.UI.MasterPage
             }
             else
             {
-                MostrarMenuLateral = false;
-                ShowDiv = false;
+                Response.Redirect("~/GUI/Modulo1/M1_login.aspx");
             }
 
         }
 
         else
         {
-            Response.Redirect("../Modulo1/M1_login.aspx");
+            Response.Redirect("~/GUI/Modulo1/M1_login.aspx");
         }
 	}
 

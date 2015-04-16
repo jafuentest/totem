@@ -16,8 +16,85 @@ public partial class _Default : System.Web.UI.Page
             if(Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"])!="" &&
                 Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
             {
-                Master.MostrarMenuLateral = false;
                 Master.ShowDiv = true;
+                if (Server.HtmlEncode(Request.Cookies["userInfo"]["rol"]) == "administrador")
+                {
+                    div_adminIcons.InnerHtml = "<div class='row jumbotron'>";
+                    div_adminIcons.InnerHtml += "<div class='col-sm-4'>";
+                    div_adminIcons.InnerHtml += "<div>";
+                    div_adminIcons.InnerHtml += "<a href='../Modulo2/ListarEmpresas.aspx'>";
+                    div_adminIcons.InnerHtml += "<div class='col-sm-offset-5'>";
+                    div_adminIcons.InnerHtml += "<img src='../../Icons/modulo2.png' />";
+                    div_adminIcons.InnerHtml += "</div>";
+                    div_adminIcons.InnerHtml += "<p class='text-center'>Gestión de empresas</p>";
+                    div_adminIcons.InnerHtml += "</a>";
+                    div_adminIcons.InnerHtml += "</div>";
+                    div_adminIcons.InnerHtml += "<br />";
+                    div_adminIcons.InnerHtml += "<br />";
+                    div_adminIcons.InnerHtml += "<br />";
+                    div_adminIcons.InnerHtml += "<div>";
+                    div_adminIcons.InnerHtml += " <a href='../Modulo5/ListarRequerimientos.aspx'>";
+                    div_adminIcons.InnerHtml += "<div class='col-sm-offset-5'>";
+                    div_adminIcons.InnerHtml += "<img src='../../Icons/modulo5.png' />";
+                    div_adminIcons.InnerHtml += "</div>";
+                    div_adminIcons.InnerHtml += "<p class='text-center'>Gestión de requerimientos y reportes</p>";
+                    div_adminIcons.InnerHtml += "</a>";
+                    div_adminIcons.InnerHtml += "</div>";
+                    div_adminIcons.InnerHtml += "</div>";
+                    div_adminIcons.InnerHtml += "<div class='col-sm-4'> ";
+                    div_adminIcons.InnerHtml += "<div>";
+                    div_adminIcons.InnerHtml += "<a href='../Modulo3/ListarPersonalInvolucrado.aspx'>";
+                    div_adminIcons.InnerHtml += "<div class='col-sm-offset-5'>";
+                    div_adminIcons.InnerHtml += "<img  src='../../Icons/modulo3.png'>";
+                    div_adminIcons.InnerHtml += "</div>";
+                    div_adminIcons.InnerHtml += "<p class='text-center'>Gestión de involucrados</p>";
+                    div_adminIcons.InnerHtml += " </a>";
+                    div_adminIcons.InnerHtml += "</div>";
+                    div_adminIcons.InnerHtml += "<div>";
+                    div_adminIcons.InnerHtml += "<a href='../Modulo6/Listar.aspx'>";
+                    div_adminIcons.InnerHtml += "<br />";
+                    div_adminIcons.InnerHtml += "<br />";
+                    div_adminIcons.InnerHtml += "<br />";
+                    div_adminIcons.InnerHtml += "<div class='col-sm-offset-5'>";
+                    div_adminIcons.InnerHtml += "<img  src='../../Icons/modulo6.png' />";
+                    div_adminIcons.InnerHtml += "</div>";
+                    div_adminIcons.InnerHtml += "<p class='text-center'>Gestión de casos de uso</p>";
+                    div_adminIcons.InnerHtml += " </a>";
+                    div_adminIcons.InnerHtml += "</div>";
+                    div_adminIcons.InnerHtml += "<br />";
+                    div_adminIcons.InnerHtml += "<br />";
+                    div_adminIcons.InnerHtml += "<div>";
+                    div_adminIcons.InnerHtml += " <a  href='../Modulo8/ConsultarMinuta.aspx'>";
+                    div_adminIcons.InnerHtml += "<div class='col-sm-offset-5'>";
+                    div_adminIcons.InnerHtml += "<img  src='../../Icons/modulo8.png' />";
+                    div_adminIcons.InnerHtml += "</div>";
+                    div_adminIcons.InnerHtml += "<p class='text-center'>Gestión de minutas</p>";
+                    div_adminIcons.InnerHtml += "</a>";
+                    div_adminIcons.InnerHtml += "</div>";
+                    div_adminIcons.InnerHtml += "</div>";
+                    div_adminIcons.InnerHtml += " <div class='col-sm-4'>";
+                    div_adminIcons.InnerHtml += "<div>";
+                    div_adminIcons.InnerHtml += "<a href='../Modulo4/ListaProyectos.aspx'>";
+                    div_adminIcons.InnerHtml += "<div class='col-sm-offset-5'>";
+                    div_adminIcons.InnerHtml += "<img  src='../../Icons/modulo4.png' />";
+                    div_adminIcons.InnerHtml += "</div>";
+                    div_adminIcons.InnerHtml += "<p class='text-center'>Gestión de proyectos</p>";
+                    div_adminIcons.InnerHtml += "</a>";
+                    div_adminIcons.InnerHtml += "</div>";
+                    div_adminIcons.InnerHtml += "<br />";
+                    div_adminIcons.InnerHtml += "<br />";
+                    div_adminIcons.InnerHtml += "<br />";
+                    div_adminIcons.InnerHtml += "<div>";
+                    div_adminIcons.InnerHtml += "<a href='../Modulo7/ListarUsuarios.aspx'>";
+                    div_adminIcons.InnerHtml += "<div class='col-sm-offset-5'>";
+                    div_adminIcons.InnerHtml += "<img  src='../../Icons/modulo7.png' />";
+                    div_adminIcons.InnerHtml += "</div>";
+                    div_adminIcons.InnerHtml += "<p class='text-center'>Gestión de roles y usuarios</p>";
+                    div_adminIcons.InnerHtml += "</a>";
+                    div_adminIcons.InnerHtml += "</div>";
+                    div_adminIcons.InnerHtml += "</div>";
+                    div_adminIcons.InnerHtml += "</div>";
+                }
             }
             else 
             {
