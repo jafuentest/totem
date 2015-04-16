@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ListaProyectos.aspx.cs" Inherits="_Default" MasterPageFile="~/GUI/Master/MasterPage.master"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" MasterPageFile="~/GUI/Master/MasterPage.master"%>
 <%@ MasterType TypeName="MasterPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="titulo" runat="server">TOTEM</asp:Content>
 <asp:Content ContentPlaceHolderID="subtitulo" runat="server">Bienvenido al Sistema de Documentación</asp:Content>
