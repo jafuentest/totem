@@ -12,7 +12,7 @@
                        <div id="alertlocal" >
                        </div>
                        <div  id="table-responsive">
-                           <table id="table-example" class=" table table-striped table-hover display">
+                           <table id="tableusers" class=" table table-striped table-hover display" runat="server">
                              <thead>
                                <tr>
                                  <th>Nombre</th>
@@ -30,7 +30,7 @@
                               <td>Cliente</td>
                               <td>
                                   <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo2/DetallarCliente.aspx") %>"></a>
-                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                                  <a  class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"  runat="server"></a>
                               </td>
                             </tr>
                             <tr>
@@ -40,7 +40,7 @@
                               <td>Compañia de Software</td>
                               <td>
                                   <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
-                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"  runat="server"></a>
                               </td>   
                             </tr>
                                  <tr>
@@ -50,7 +50,7 @@
                               <td>Compañia de Software</td>
                               <td>
                                   <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
-                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"  runat="server"></a>
                               </td>   
                             </tr>
                                    <tr>
@@ -60,7 +60,7 @@
                               <td>Compañia de Software</td>
                               <td>
                                   <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
-                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"  runat="server"></a>
                               </td>   
                             </tr>
                                 <tr>
@@ -70,7 +70,7 @@
                               <td>Cliente</td>
                               <td>
                                   <a class="btn btn-default glyphicon glyphicon-pencil"  href="<%= Page.ResolveUrl("~/GUI/Modulo2/DetallarCliente.aspx") %>"></a>
-                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"  runat="server"></a>
                               </td>   
                             </tr>
                                 <tr>
@@ -80,7 +80,7 @@
                               <td>Cliente</td>
                               <td>
                                   <a class="btn btn-default glyphicon glyphicon-pencil"  href="<%= Page.ResolveUrl("~/GUI/Modulo2/DetallarClientes.aspx") %>"></a>
-                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"  runat="server"></a>
                               </td>   
                             </tr>
                                     <tr>
@@ -90,7 +90,7 @@
                               <td>Compañia de Software</td>
                               <td>
                                   <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
-                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"  runat="server"></a>
                               </td>
                             </tr>
                             
@@ -101,7 +101,7 @@
                               <td>Compañia de Software</td>
                               <td>
                                   <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
-                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#" runat="server"></a>
                               </td>
                             </tr>
                            </tbody>
@@ -138,15 +138,15 @@
                             
                     </div>
      <script type="text/javascript">
+         //redirecciona al modulo 4
          function redireccion() {
-             window.location = "/GUI/Modulo4/ListaProyectos.aspx";
-             
+             window.location = "/GUI/Modulo4/ListaProyectos.aspx";         
          }
          $(document).ready(function () {
-             var table = $('#table-example').DataTable();
+             var table = $('#tableusers').DataTable();
 
              var tr;
-             $('#table-example tbody').on('click', 'a', function () {
+             $('#tableusers tbody').on('click', 'a', function () {
                  if ($(this).parent().hasClass('selected')) {
                      $(this).parent().removeClass('selected');
                  }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Web.UI.HtmlControls;
 public partial class GUI_Modulo3_Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -38,8 +38,12 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
                  alert.Attributes["class"] = "alert alert-success alert-dismissible";
                  alert.Attributes["role"] = "alert";
                  alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Personal agregado exitosamente</div>";
-
+                 
              }
-         }
+         } 
+
+             
+        
+  
     }
 }

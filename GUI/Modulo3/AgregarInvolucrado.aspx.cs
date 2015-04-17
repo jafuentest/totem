@@ -17,7 +17,11 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
             if (Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != "" &&
                 Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
             {
-                ((MasterPage)Page.Master).ShowDiv = true;
+               
+                    ((MasterPage)Page.Master).ShowDiv = true;
+                    if (Server.HtmlEncode(Request.Cookies["userInfo"]["rol"]) == "usuario")
+                       Response.Redirect("../Modulo3/ListarPersonalInvolucrado.aspx");
+                
             }
             else
             {
@@ -32,18 +36,5 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
         }   
     }
 
-    protected void proyecto1_SelectedIndexChanged(object sender, EventArgs e)
-    {
-    }
-    protected void personal_SelectedIndexChanged(object sender, EventArgs e)
-    {
-    }
-    protected void rol_SelectedIndexChanged(object sender, EventArgs e)
-    {
-    }
-    protected void Unnamed1_Click(object sender, EventArgs e)
-    {
-
-    }
 
 }

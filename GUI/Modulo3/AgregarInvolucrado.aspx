@@ -129,26 +129,13 @@
         <script type="text/javascript">
 
             var tabla_cont = 0;
-
-            $(function () {
-                $('[data-toggle="tooltip"]').tooltip()
-            })
+            //selecciona el tipo de empresa al hacer click
             $("#dp1 li a").click(function () {
 
                 $("#id_empresa").html($(this).text() + ' <span class="caret"></span>');
 
             });
-            $("#dp2 li a").click(function () {
-
-                $("#id_personal").html($(this).text() + ' <span class="caret"></span>');
-
-            });
-            $("#dp3 li a").click(function () {
-
-                $("#id_cargo").html($(this).text() + ' <span class="caret"></span>');
-
-            });
-
+            //carga los cargos de forma dinamica en el combobox, esta funcion debe ser modificada a la hora de traerse los cargos de la base de datos
             function cargarcargo() {
                
                 var empresa_seleccionado = $("#id_empresa").text().trim();
@@ -159,10 +146,7 @@
                     $("#dp3").append('<li value="2"><a href="#">Director Ejecutivo</a></li>');
                     $("#dp3").append('<li value="3"><a href="#">Gerente Departamental</a></li>');
                 }
-                    
-                   
-
-
+                                   
                 if (empresa_seleccionado == "Compañia de Software") {
                     $("#dp3").append('<li value="4"><a href="#">Gerente</a></li>');
                     $("#dp3").append('<li value="5"><a href="#">Desarrollador</a></li>');
@@ -172,13 +156,12 @@
                     $("#dp3").append('<li value="9"><a href="#">Arquitecto de Base de Datos</a></li>');
                     
                 }
-            }
-   
-            
-
+            }           
        </script>
         <script type="text/javascript">
+            //captura los eventos al hacer click con el raton
             $(document).ready(function () {
+                //se selecciona la fila al hacer click sobre el boton.
                 var table = $('#table-example').DataTable();
                 var tr;
                 $('#table-example tbody').on('click', 'a', function () {
@@ -200,12 +183,15 @@
                     var split_personal = personal_seleccionado.split(' ');
                     var nombre_personal = split_personal[0];
                     var apellido_personal = split_personal[1];
-                    $("#id_personal").html(personal_seleccionado + ' <span class="caret"></span>');
 
                     var table = $('#table-example').DataTable();
+                    //este contador sirve para saber cuando a tabla esta vacia o llena, se le suma 1 cada vez que se selecciona un personal
+                    //y se resta 1 cada vez que se elimina a un personal de la selección
                     tabla_cont = tabla_cont + 1;
+                    //quita la alerta
                     $('#alertlocal').removeClass("alert alert-success alert-dismissible");
                     $('#alertlocal').text("");
+                    //inserta al personal seleccionado en la tabla
                     table.row.add([
                         nombre_personal,
                         apellido_personal,
@@ -215,12 +201,14 @@
                     
                     ]).draw();
                 });
+                //evento que se produce al seleccionar el cargo.
                 $('#dp3').on('click', 'a', function () {
                     var cargo_seleccionado = $(this).text().trim();
                     $("#id_cargo").html(cargo_seleccionado + ' <span class="caret"></span>');
                     var empresa_seleccionado = $("#id_empresa").text().trim();
                     $("#dp2").empty();
-
+                    //carga al personal al seleccionar un cargo, esta parte debe ser cambiada a la hora de extraer al personal de la base de datos
+                    //son datos estaticos
                     if (empresa_seleccionado == "Cliente") {
                         if (cargo_seleccionado == "Director General") {
 
@@ -270,17 +258,21 @@
                 $('#btn-eliminar').on('click', function () {
                     table.row(tr).remove().draw();//se elimina la fila de la tabla
                     $('#modal-delete').modal('hide');//se esconde el modal
+                    //como se elimina una fila a tabla_cont se le resta 1, tabla_cnt nunca es negativo
                     tabla_cont = tabla_cont - 1;
                 });
+                //evento para confirmar y enviar el formulario, al precionar el boton del modal
                 $('#btn-confirmar').on('click', function () {
                     document.getElementById("agregarpersonal").submit();
                 });
+                //Muestra una alerta en caso de que el usuario haga click en cargo sin antes haber seleccionado el tipo de empresa
                 $('#id_cargo').on('click', function () {
                     if ($('#id_empresa').text().trim() == "Selecionar...") {
                         $('#alertlocal').addClass("alert alert-danger alert-dismissible");
                         $('#alertlocal').html("<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>No has seleccionado el tipo de empresa</div>");
                     }
                 });
+                //
                 $('#id_personal').on('click', function () {
                     if ($('#id_empresa').text().trim() == "Selecionar...") {
                         $('#alertlocal').addClass("alert alert-danger alert-dismissible");
@@ -292,9 +284,9 @@
                     }
 
                 });
-                //para confirmar
+                //evento producido al presionar el boton del formulario para enviar
                 $('#btn-enviar').on('click', function () {
-                 
+                 //tabla_cont es para saber si la tabla esta llena o vacia
                     if (tabla_cont == 0) {
                         $('#alertlocal').addClass("alert alert-danger alert-dismissible");
                         $('#alertlocal').html("<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>No has seleccionado ningun personal</div>");
