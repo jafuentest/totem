@@ -135,7 +135,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" >Eliminación de Caso de Uso</h4>
+						<h4 class="modal-title">Eliminación de Caso de Uso</h4>
 					</div>
 					<div class="modal-body">
 						<div class="container-fluid">
@@ -154,7 +154,7 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		<!-- Data tables init -->
+		//Data tables init
 		$(document).ready(function () {
 			$('#table-example').DataTable();
 			var table = $('#table-example').DataTable();
@@ -162,12 +162,12 @@
 			$('#table-example tbody').on('click', 'a', function () {
 				if ($(this).parent().hasClass('selected')) {
 					caso_de_uso = $(this).parent().prev().prev().prev().prev().text();
-					tr = $(this).parents('tr');//se guarda la fila seleccionada
+					tr = $(this).parents('tr'); //Se guarda la fila seleccionada
 					$(this).parent().removeClass('selected');
 				}
 				else {
 					caso_de_uso = $(this).parent().prev().prev().prev().prev().text();
-					tr = $(this).parents('tr');//se guarda la fila seleccionada
+					tr = $(this).parents('tr'); //Se guarda la fila seleccionada
 					table.$('tr.selected').removeClass('selected');
 					$(this).parent().addClass('selected');
 				}
@@ -177,10 +177,10 @@
 				modal.find('.modal-title').text('Eliminar caso de uso: ' + caso_de_uso)
 				modal.find('#caso_de_uso').text(caso_de_uso)
 			})
-			//para eliminar la fila
+			//Para eliminar la fila
 			$('#btn-eliminar').on('click', function () {
-				table.row(tr).remove().draw();//se elimina la fila de la tabla
-				$('#modal-delete').modal('hide');//se esconde el modal
+				table.row(tr).remove().draw(); //Se elimina la fila de la tabla
+				$('#modal-delete').modal('hide'); //Se esconde el modal
 			});
 			$('#modal-update').on('show.bs.modal', function (event) {
 				var modal = $(this)

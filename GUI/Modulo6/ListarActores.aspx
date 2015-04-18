@@ -49,12 +49,12 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" >Eliminación de Actor</h4>
+							<h4 class="modal-title">Eliminación de Actor</h4>
 						</div>
 						<div class="modal-body">
 							<div class="container-fluid">
 								<div class="row">
-									<p>Seguro que desea eliminar el actor: </p>
+									<p>Seguro que desea eliminar el actor:</p>
 									<p id="caso_de_uso"></p>
 								</div>
 							</div>
