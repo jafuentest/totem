@@ -259,6 +259,9 @@
 					</div>
 				</div>
 			</div>
+			<div style="text-align:right;">
+				<br /><button id="btn-imprimir" class="btn btn-success">Generar Documento</button>
+			</div>
 		</div>
 		<div id="modal-delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -315,6 +318,7 @@
 				table.row(tr).remove().draw();
 				$('#modal-delete').modal('hide');
 			});
+			$('#btn-imprimir').attr("onclick", "window.location.href='docs/Casos_de_Uso.pdf'");
 		});
 	</script>
 </asp:Content>
