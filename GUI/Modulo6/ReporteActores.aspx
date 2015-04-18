@@ -5,6 +5,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 	<div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
 		<div id="alertlocal"></div>
+		<div id="alert" runat="server"></div>
 		<div class="panel panel-primary" style="width:auto">
 			<div class="panel-heading">
 				<h3 class="panel-title">Proyecto</h3>
@@ -17,17 +18,15 @@
 		</div>
 		<h3 id="Actor1">Actor 1</h3>
 		<div class="panel-group col-sm-12 col-md-12 col-lg-12" id="accordionActor1" role="tablist">
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="panelActor1">
-                    <h3 class="panel-title">
-                        <a class="link" href="#collapseActor1" data-toggle="collapse" data-parent="#accordionActor1">
-                            Casos de Uso
-                        </a>
-                    </h3>
-                </div>
-                <div id="collapseActor1" class="panel-collpase collapse">
-                    <div class="panel-body">
-                        <div class="table-responsive">
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="panelActor1">
+					<h3 class="panel-title">
+						<a class="link" href="#collapseActor1" data-toggle="collapse" data-parent="#accordionActor1">Casos de Uso</a>
+					</h3>
+				</div>
+				<div id="collapseActor1" class="panel-collpase collapse">
+					<div class="panel-body">
+						<div class="table-responsive">
 							<table class="table table-striped table-hover">
 								<thead>
 									<tr>
@@ -110,9 +109,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading" role="tab" id="panelActor2">
 					<h3 class="panel-title">
-						<a class="link" href="#collapseActor2" data-toggle="collapse" data-parent="#accordionActor2">
-							Casos de Uso
-						</a>
+						<a class="link" href="#collapseActor2" data-toggle="collapse" data-parent="#accordionActor2">Casos de Uso</a>
 					</h3>
 				</div>
 				<div id="collapseActor2" class="panel-collpase collapse">
@@ -194,14 +191,13 @@
 					</div>
 				</div>
 			</div>
-			<h3 id="Actor3">Actor 3</h3>
-			<div class="panel-group col-sm-12 col-md-12 col-lg-12" id="accordionActor3" role="tablist">
+		</div>
+		<h3 id="Actor3">Actor 3</h3>
+		<div class="panel-group col-sm-12 col-md-12 col-lg-12" id="accordionActor3" role="tablist">
 			<div class="panel panel-default">
 				<div class="panel-heading" role="tab" id="panelActor3">
 					<h3 class="panel-title">
-						<a class="link" href="#collapseActor3" data-toggle="collapse" data-parent="#accordionActor3">
-							Casos de Uso
-						</a>
+						<a class="link" href="#collapseActor3" data-toggle="collapse" data-parent="#accordionActor3">Casos de Uso</a>
 					</h3>
 				</div>
 				<div id="collapseActor3" class="panel-collpase collapse">
@@ -263,25 +259,25 @@
 					</div>
 				</div>
 			</div>
-			<div id="modal-delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" >Eliminación de Caso de Uso</h4>
-						</div>
-						<div class="modal-body">
-							<div class="container-fluid">
-								<div class="row">
-									<p>Seguro que desea eliminar el caso de uso: </p>
-									<p id="user-name"></p>
-								</div>
+		</div>
+		<div id="modal-delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Eliminación de Caso de Uso</h4>
+					</div>
+					<div class="modal-body">
+						<div class="container-fluid">
+							<div class="row">
+								<p>Seguro que desea eliminar el caso de uso:</p>
+								<p id="user-name"></p>
 							</div>
 						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-							<button id="btn-eliminar" type="button" class="btn btn-primary">Eliminar</button>
-						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						<a id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarCasoDeUso()" href="ReporteActores.aspx?success=3">Eliminar</a>
 					</div>
 				</div>
 			</div>
