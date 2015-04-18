@@ -55,7 +55,7 @@
 							<div class="container-fluid">
 								<div class="row">
 									<p>Seguro que desea eliminar el actor: </p>
-									<p id="user-name"></p>
+									<p id="caso_de_uso"></p>
 								</div>
 							</div>
 						</div>
@@ -103,15 +103,15 @@
 		$(document).ready(function () {
 			$('#table-example').DataTable();
 			var table = $('#table-example').DataTable();
-			var user, tr;
+			var caso_de_uso, tr;
 			$('#table-example tbody').on('click', 'a', function () {
 				if ($(this).parent().hasClass('selected')) {
-					user = $(this).parent().prev().prev().prev().prev().text();
+					caso_de_uso = $(this).parent().prev().prev().prev().prev().text();
 					tr = $(this).parents('tr');//se guarda la fila seleccionada
 					$(this).parent().removeClass('selected');
 				}
 				else {
-					user = $(this).parent().prev().prev().prev().prev().text();
+					caso_de_uso = $(this).parent().prev().prev().prev().prev().text();
 					tr = $(this).parents('tr');//se guarda la fila seleccionada
 					table.$('tr.selected').removeClass('selected');
 					$(this).parent().addClass('selected');
@@ -119,8 +119,8 @@
 			});
 			$('#modal-delete').on('show.bs.modal', function (event) {
 				var modal = $(this);
-				modal.find('.modal-title').text('Eliminar actor: ' + user);
-				modal.find('#user-name').text(user);
+				modal.find('.modal-title').text('Eliminar actor: ' + caso_de_uso);
+				modal.find('#caso_de_uso').text(caso_de_uso);
 			})
 			$('#btn-eliminar').on('click', function () {
 				table.row(tr).remove().draw();//se elimina la fila de la tabla
