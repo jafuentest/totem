@@ -33,7 +33,7 @@
 						<td>Crear caso de uso</td>
 						<td>Usuario, Administrador</td>
 						<td>TOT_RF_6_1</td>
-						<td style="text-align:right;">
+						<td>
 							<a class="btn btn-primary glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#modal-info" href="#"></a>
 							<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=1") %>"></a>
 							<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
@@ -44,7 +44,7 @@
 						<td>Consultar caso de uso clasificado por actor</td>
 						<td>Usuario, Administrador</td>
 						<td>TOT_RF_6_5</td>
-						<td style="text-align:right;">
+						<td>
 							<a class="btn btn-primary glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#modal-info" href="#"></a>
 							<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=2") %>"></a>
 							<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
@@ -55,7 +55,7 @@
 						<td>Consultar caso de uso Clasificado por ID</td>
 						<td>Usuario, Administrador</td>
 						<td>TOT_RF_6_6</td>
-						<td style="text-align:right;">
+						<td>
 							<a class="btn btn-primary glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#modal-info" href="#"></a>
 							<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=3") %>"></a>
 							<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
@@ -66,7 +66,7 @@
 						<td>Consultar Listado de actores</td>
 						<td>Usuario, Administrador</td>
 						<td>TOT_RF_6_7</td>
-						<td style="text-align:right;">
+						<td>
 							<a class="btn btn-primary glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#modal-info" href="#"></a>
 							<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=4") %>"></a>
 							<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
@@ -77,7 +77,7 @@
 						<td>Actualizar datos Caso de Uso</td>
 						<td>Usuario, Administrador</td>
 						<td>TOT_RF_6_2</td>
-						<td style="text-align:right;">
+						<td>
 							<a class="btn btn-primary glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#modal-info" href="#"></a>
 							<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=5") %>"></a>
 							<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
@@ -88,7 +88,7 @@
 						<td>Eliminar Caso de uso</td>
 						<td>Usuario, Administrador</td>
 						<td>TOT_RF_6_3</td>
-						<td style="text-align:right;">
+						<td>
 							<a class="btn btn-primary glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#modal-info" href="#"></a>
 							<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=6") %>"></a>
 							<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
@@ -99,7 +99,7 @@
 						<td>Crear actor</td>
 						<td>Usuario, Administrador</td>
 						<td>TOT_RF_6_8</td>
-						<td style="text-align:right;">
+						<td>
 							<a class="btn btn-primary glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#modal-info" href="#"></a>
 							<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=7") %>"></a>
 							<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
@@ -110,7 +110,7 @@
 						<td>Actualizar datos del actor</td>
 						<td>Usuario, Administrador</td>
 						<td>TOT_RF_6_9</td>
-						<td style="text-align:right;">
+						<td>
 							<a class="btn btn-primary glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#modal-info" href="#"></a>
 							<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=8") %>"></a>
 							<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
@@ -121,7 +121,7 @@
 						<td>Eliminar Actor </td>
 						<td>Usuario, Administrador</td>
 						<td>TOT_RF_6_1</td>
-						<td style="text-align:right;">
+						<td>
 							<a class="btn btn-primary glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#modal-info" href="#"></a>
 							<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=9") %>"></a>
 							<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
