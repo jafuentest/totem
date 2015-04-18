@@ -13,18 +13,21 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
         ((MasterPage)Page.Master).ShowDiv = true;
         
         if (Request.Cookies["userInfo"] != null)
-        {
+        {    
+            //Valida que un solo usuario este entrando a la pagina
             if (Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != "" &&
                 Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
             {
                
                     ((MasterPage)Page.Master).ShowDiv = true;
+                //Valida que el rol sea usuario 
                     if (Server.HtmlEncode(Request.Cookies["userInfo"]["rol"]) == "usuario")
                        Response.Redirect("../Modulo3/ListarPersonalInvolucrado.aspx");
                 
             }
             else
             {
+                //Mostrar menu lateral
                 ((MasterPage)Page.Master).MostrarMenuLateral = false;
                 ((MasterPage)Page.Master).ShowDiv = false;
             }
