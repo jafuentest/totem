@@ -8,7 +8,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Agregar</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 	<div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-		<form name="form_actor" id="form_actor" class="form-horizontal" action="#" method="post">
+		<form name="form_actor" id="form_actor" class="form-horizontal" action="<%= Page.ResolveUrl("~/GUI/Modulo6/ListarActores.aspx?success=1") %>" method="post">
 			<div class="form-group">
 				<div id="div-nombre" class="col-sm-10 col-md-10 col-lg-10">
 					<input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control"/>
