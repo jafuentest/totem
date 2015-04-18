@@ -16,6 +16,7 @@
 			</div>
 			<div class="form-group">
 				<div id="div-nombre" class="col-sm-10 col-md-10 col-lg-10">
+					<label>Nombre:</label>
 					<input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control" value="Crear caso de uso"/>
 				</div>
 			</div>
@@ -50,11 +51,13 @@
 			</div>
 			<div class="form-group">
 				<div id="div-condicionExito" class="col-sm-10 col-md-10 col-lg-10">
+					<label>Condición Final de Éxito:</label>
 					<input type="text" name="condicionExito" id="condicionExito" placeholder="Condición Final de Éxito" class="form-control" value="Caso de uso creado"/>
 				</div>
 			</div>
 			<div class="form-group">
 				<div id="div-condicionFallo" class="col-sm-10 col-md-10 col-lg-10">
+					<label>Condición Final de Fallo:</label>
 					<input type="text" name="condicionFallo" id="condicionFallo" placeholder="Condición Final de Fallo" class="form-control" value="El caso de uso no pudo ser creado"/>
 				</div>
 			</div>
