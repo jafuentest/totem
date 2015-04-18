@@ -5,6 +5,7 @@ public partial class GUI_Modulo6_Crear : System.Web.UI.Page
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		((MasterPage)Page.Master).IdModulo = "6";
+		((MasterPage)Page.Master).ShowDiv = true;
 
 		if (Request.Cookies["userInfo"] == null)
 		{

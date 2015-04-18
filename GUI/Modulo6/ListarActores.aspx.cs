@@ -5,6 +5,7 @@ public partial class GUI_Modulo6_ListarActores : System.Web.UI.Page
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		((MasterPage)Page.Master).IdModulo = "6";
+		((MasterPage)Page.Master).ShowDiv = true;
 		String success = Request.QueryString["success"];
 
 		if (Request.Cookies["userInfo"] == null)
