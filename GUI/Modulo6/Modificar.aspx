@@ -104,7 +104,7 @@
 							<input type="text" placeholder="Paso" class="form-control" id="escenario_0" name="escenario_0" value="El usuario o admin selecciona la opción 'Gestión de Casos de uso' → 'Crear caso de uso' del menú"/>
 						</div>
 						<div class="col-sm-1 col-md-1 col-lg-1">
-							<button type="button" class="btn btn-default btn-circle glyphicon glyphicon-plus" onclick="agregarEscenario()"></button>
+							<button type="button" class="btn btn-danger btn-circle glyphicon glyphicon-remove" onclick="eliminarCampo(this)"></button>
 						</div>
 					</div>
 					<div class="form-group">
@@ -112,7 +112,7 @@
 							<input type="text" placeholder="Paso" class="form-control" id="escenario_1" name="escenario_1" value="El sistema despliega la pantalla de obtener los datos del caso de uso"/>
 						</div>
 						<div class="col-sm-1 col-md-1 col-lg-1">
-							<button type="button" class="btn btn-default btn-circle glyphicon glyphicon-plus" onclick="agregarEscenario()"></button>
+							<button type="button" class="btn btn-danger btn-circle glyphicon glyphicon-remove" onclick="eliminarCampo(this)"></button>
 						</div>
 					</div>
 					<div class="form-group">
@@ -120,7 +120,7 @@
 							<input type="text" placeholder="Paso" class="form-control" id="escenario_2" name="escenario_2" value="El usuario o admin ingresa los números de los requerimientos asociados"/>
 						</div>
 						<div class="col-sm-1 col-md-1 col-lg-1">
-							<button type="button" class="btn btn-default btn-circle glyphicon glyphicon-plus" onclick="agregarEscenario()"></button>
+							<button type="button" class="btn btn-danger btn-circle glyphicon glyphicon-remove" onclick="eliminarCampo(this)"></button>
 						</div>
 					</div>
 					<div class="form-group">
@@ -128,7 +128,7 @@
 							<input type="text" placeholder="Paso" class="form-control" id="escenario_3" name="escenario_3" value="El sistema verifica la existencia de esos requerimientos"/>
 						</div>
 						<div class="col-sm-1 col-md-1 col-lg-1">
-							<button type="button" class="btn btn-default btn-circle glyphicon glyphicon-plus" onclick="agregarEscenario()"></button>
+							<button type="button" class="btn btn-danger btn-circle glyphicon glyphicon-remove" onclick="eliminarCampo(this)"></button>
 						</div>
 					</div>
 					<div class="form-group">
@@ -136,7 +136,7 @@
 							<input type="text" placeholder="Paso" class="form-control" id="escenario_4" name="escenario_4" value="El usuario o admin introduce los datos del caso de uso"/>
 						</div>
 						<div class="col-sm-1 col-md-1 col-lg-1">
-							<button type="button" class="btn btn-default btn-circle glyphicon glyphicon-plus" onclick="agregarEscenario()"></button>
+							<button type="button" class="btn btn-danger btn-circle glyphicon glyphicon-remove" onclick="eliminarCampo(this)"></button>
 						</div>
 					</div>
 					<div class="form-group">

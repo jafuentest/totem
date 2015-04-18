@@ -60,7 +60,7 @@ function agregarEscenario() {
 			"        <button type=\"button\" class=\"btn btn-default btn-circle glyphicon glyphicon-plus\" onclick=\"agregarEscenario()\"></button>" +
 			"    </div>" +
 			"</div>";
-	$("#div-precondiciones").append(codigo);
+	$("#div-escenarios").append(codigo);
 	actualizarIdEscenarios();
 }
 
@@ -75,7 +75,7 @@ function agregarExtension() {
 			"        <button type=\"button\" class=\"btn btn-default btn-circle glyphicon glyphicon-plus\" onclick=\"agregarExtension()\"></button>" +
 			"    </div>" +
 			"</div>";
-	$("#div-precondiciones").append(codigo);
+	$("#div-extensiones").append(codigo);
 	actualizarIdExtensiones();
 }
 
