@@ -5,6 +5,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 	<div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
 		<div id="alertlocal"></div>
+		<div id="alert" runat="server"></div>
 		<div class="panel panel-primary" style="width:auto">
 			<div class="panel-heading">
 				<h3 class="panel-title">Proyecto</h3>
@@ -205,25 +206,25 @@
 					</tr>
 				</tbody>
 			</table>
-			<div id="modal-delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" >Eliminación de Caso de Uso</h4>
-						</div>
-						<div class="modal-body">
-							<div class="container-fluid">
-								<div class="row">
-									<p>Seguro que desea eliminar el caso de uso: </p>
-									<p id="user-name"></p>
-								</div>
+		</div>
+		<div id="modal-delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" >Eliminación de Caso de Uso</h4>
+					</div>
+					<div class="modal-body">
+						<div class="container-fluid">
+							<div class="row">
+								<p>Seguro que desea eliminar el caso de uso: </p>
+								<p id="caso_de_uso"></p>
 							</div>
 						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-							<button id="btn-eliminar" type="button" class="btn btn-primary">Eliminar</button>
-						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						<a id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarCasoDeUso()" href="Listar.aspx?success=3">Eliminar</a>
 					</div>
 				</div>
 			</div>
@@ -234,15 +235,15 @@
 		$(document).ready(function () {
 			$('#table-example').DataTable();
 			var table = $('#table-example').DataTable();
-			var user, tr;
+			var caso_de_uso, tr;
 			$('#table-example tbody').on('click', 'a', function () {
 				if ($(this).parent().hasClass('selected')) {
-					user = $(this).parent().prev().prev().prev().prev().text();
+					caso_de_uso = $(this).parent().prev().prev().prev().prev().text();
 					tr = $(this).parents('tr');//se guarda la fila seleccionada
 					$(this).parent().removeClass('selected');
 				}
 				else {
-					user = $(this).parent().prev().prev().prev().prev().text();
+					caso_de_uso = $(this).parent().prev().prev().prev().prev().text();
 					tr = $(this).parents('tr');//se guarda la fila seleccionada
 					table.$('tr.selected').removeClass('selected');
 					$(this).parent().addClass('selected');
@@ -250,15 +251,17 @@
 			});
 			$('#modal-delete').on('show.bs.modal', function (event) {
 				var modal = $(this)
-				modal.find('.modal-title').text('Eliminar caso de uso: ' + user)
-				modal.find('#user-name').text(user)
+				modal.find('.modal-title').text('Eliminar caso de uso: ' + caso_de_uso)
+				modal.find('#caso_de_uso').text(caso_de_uso)
 			})
 			//para eliminar la fila
 			$('#btn-eliminar').on('click', function () {
-				table.row(tr).remove().draw();
-				$('#modal-delete').modal('hide');
-				$('#alertlocal').addClass("alert alert-success alert-dismissible");
-				$('#alertlocal').text("El caso de uso se ha eliminado con éxito");
+				table.row(tr).remove().draw();//se elimina la fila de la tabla
+				$('#modal-delete').modal('hide');//se esconde el modal
+			});
+			$('#modal-update').on('show.bs.modal', function (event) {
+				var modal = $(this)
+				modal.find('.modal-title').text('Modificar caso de uso')
 			});
 		});
 	</script>

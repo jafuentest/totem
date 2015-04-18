@@ -8,7 +8,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Modificar caso de uso</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 	<div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-		<form name="form_casodeuso" id="form_casodeuso" class="form-horizontal" action="#" method="post">
+		<form name="form_casodeuso" id="form_casodeuso" class="form-horizontal" action="<%= Page.ResolveUrl("~/GUI/Modulo6/Listar.aspx?success=2") %>" method="post">
 			<div class="form-group">
 				<div id="div-id" class="col-sm-10 col-md-10 col-lg-10">
 					<input type="text" name="id" id="id" placeholder="ID" class="form-control" disabled="disabled" value="TOT_CU_6_1_1"/>
