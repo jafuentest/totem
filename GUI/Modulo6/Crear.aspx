@@ -79,6 +79,11 @@
 				</div>
 			</div>
 			<div class="form-group">
+				<div id="div-disparador" class="col-sm-10 col-md-10 col-lg-10">
+					<input type="text" name="condicionFallo" id="disparador" placeholder="Disparador" class="form-control"/>
+				</div>
+			</div>
+			<div class="form-group">
 				<div id="div-escenarios" class="col-sm-10 col-md-10 col-lg-10">
 					<h3>Escenario Principal de Éxito</h3>
 					<div class="form-group">

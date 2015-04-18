@@ -100,6 +100,12 @@
 				</div>
 			</div>
 			<div class="form-group">
+				<div id="div-disparador" class="col-sm-10 col-md-10 col-lg-10">
+					<label>Disparador:</label>
+					<input type="text" name="condicionFallo" id="disparador" placeholder="Disparador" class="form-control" value="Seleccionar opción &quot;Gestión de Casos de uso&quot; → &quot;Agregar caso de uso&quot; del menú"/>
+				</div>
+			</div>
+			<div class="form-group">
 				<div id="div-escenarios" class="col-sm-10 col-md-10 col-lg-10">
 					<h3>Escenario Principal de Éxito</h3>
 					<div class="form-group">
