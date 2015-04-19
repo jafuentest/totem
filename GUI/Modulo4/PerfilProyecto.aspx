@@ -198,196 +198,119 @@
                     <div class="panel-body">
                         <div class="col-sm-12 col-md-12 col-lg-12">
                             <div class="table-responsive">
-		                        <table id="table-casosDeUso" class="table table-striped table-hover">
-			                        <thead>
-				                        <tr>
-					                        <th>ID</th>
-					                        <th>Nombre</th>
-					                        <th>Actor Primario</th>
-					                        <th>Requerimiento Asociado</th>
-					                        <th>Acciones</th>
-				                        </tr>
-			                        </thead>
-			                        <tbody>
-				                        <tr>
-					                        <td>Lorem</td>
-					                        <td>ipsum</td>
-					                        <td>dolor</td>
-					                        <td>sit</td>
-                                            <td>
-                                                <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=1") %>"></a>
-                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=1") %>"></a>
-                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Eliminar.aspx?id=1") %>"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>amet</td>
-                                            <td>consectetur</td>
-                                            <td>adipiscing</td>
-                                            <td>elit</td>
-                                            <td>
-                                                <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=2") %>"></a>
-                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=2") %>"></a>
-                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Eliminar.aspx?id=2") %>"></a>
-                                            </td>
-				                        </tr><tr>
-                                            <td>Integer</td>
-                                            <td>nec</td>
-                                            <td>odio</td>
-                                            <td>Praesent</td>
-                                            <td>
-                                                <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=3") %>"></a>
-                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=3") %>"></a>
-                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Eliminar.aspx?id=3") %>"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>libero</td>
-                                            <td>Sed</td>
-                                            <td>cursus</td>
-                                            <td>ante</td>
-                                            <td>
-                                                <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=4") %>"></a>
-                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=4") %>"></a>
-                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Eliminar.aspx?id=4") %>"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>dapibus</td>
-                                            <td>diam</td>
-                                            <td>Sed</td>
-                                            <td>nisi</td>
-                                            <td>
-                                                <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=5") %>"></a>
-                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=5") %>"></a>
-                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Eliminar.aspx?id=5") %>"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nulla</td>
-                                            <td>quis</td>
-                                            <td>sem</td>
-                                            <td>at</td>
-                                            <td>
-                                                <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=6") %>"></a>
-                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=6") %>"></a>
-                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Eliminar.aspx?id=6") %>"></a>
-
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>nibh</td>
-                                            <td>elementum</td>
-                                            <td>imperdiet</td>
-                                            <td>Duis</td>
-                                            <td>
-                                                <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=7") %>"></a>
-                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=7") %>"></a>
-                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Eliminar.aspx?id=7") %>"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>sagittis</td>
-                                            <td>ipsum</td>
-                                            <td>Praesent</td>
-                                            <td>mauris</td>
-                                            <td>
-                                                <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=8") %>"></a>
-                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=8") %>"></a>
-                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Eliminar.aspx?id=8") %>"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Fusce</td>
-                                            <td>nec</td>
-                                            <td>tellus</td>
-                                            <td>sed</td>
-                                            <td>
-                                                <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=9") %>"></a>
-                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=9") %>"></a>
-                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Eliminar.aspx?id=9") %>"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>augue</td>
-                                            <td>semper</td>
-                                            <td>porta</td>
-                                            <td>Mauris</td>
-                                            <td>
-                                                <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=10") %>"></a>
-                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=10") %>"></a>
-                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Eliminar.aspx?id=10") %>"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>massa</td>
-                                            <td>Vestibulum</td>
-                                            <td>lacinia</td>
-                                            <td>arcu</td>
-                                            <td>
-                                                <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=11") %>"></a>
-                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=11") %>"></a>
-                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Eliminar.aspx?id=11") %>"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>eget</td>
-                                            <td>nulla</td>
-                                            <td>Class</td>
-                                            <td>aptent</td>
-                                            <td>
-                                                <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=12") %>"></a>
-                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=12") %>"></a>
-                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Eliminar.aspx?id=12") %>"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>taciti</td>
-                                            <td>sociosqu</td>
-                                            <td>ad</td>
-                                            <td>litora</td>
-                                            <td>
-                                                <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=13") %>"></a>
-                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=13") %>"></a>
-                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Eliminar.aspx?id=13") %>"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>torquent</td>
-                                            <td>per</td>
-                                            <td>conubia</td>
-                                            <td>nostra</td>
-                                            <td>
-                                                <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=14") %>"></a>
-                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=14") %>"></a>
-                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Eliminar.aspx?id=14") %>"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>per</td>
-                                            <td>inceptos</td>
-                                            <td>himenaeos</td>
-                                            <td>Curabitur</td>
-                                            <td>
-                                                <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=15") %>"></a>
-                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=15") %>"></a>
-                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Eliminar.aspx?id=15") %>"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>sodales</td>
-                                            <td>ligula</td>
-                                            <td>in</td>
-                                            <td>libero</td>
-                                            <td>
-                                                <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=16") %>"></a>
-                                                <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=16") %>"></a>
-                                                <a class="btn btn-danger glyphicon glyphicon-remove-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Eliminar.aspx?id=16") %>"></a>
-                                            </td>
-                                        </tr>
-			                        </tbody>
-		                        </table>
-	                        </div>
+			                    <table id="table-cu" class="table table-striped table-hover">
+				                    <thead>
+					                    <tr>
+						                    <th>ID</th>
+						                    <th>Nombre</th>
+						                    <th>Actor Primario</th>
+						                    <th>Requerimiento Asociado</th>
+						                    <th>Acciones</th>
+					                    </tr>
+				                    </thead>
+				                    <tbody>
+					                    <tr>
+						                    <td>TOT_CU_6_1_1</td>
+						                    <td>Crear caso de uso</td>
+						                    <td>Usuario, Administrador</td>
+						                    <td>TOT_RF_6_1</td>
+						                    <td>
+							                    <a class="btn btn-primary glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#modal-info-cu" href="#"></a>
+							                    <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=1") %>"></a>
+							                    <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete-cu" href="#"></a>
+						                    </td>
+					                    </tr>
+					                    <tr>
+						                    <td>TOT_CU_6_5_2</td>
+						                    <td>Consultar caso de uso clasificado por actor</td>
+						                    <td>Usuario, Administrador</td>
+						                    <td>TOT_RF_6_5</td>
+						                    <td>
+							                    <a class="btn btn-primary glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#modal-info-cu" href="#"></a>
+							                    <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=2") %>"></a>
+							                    <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete-cu" href="#"></a>
+						                    </td>
+					                    </tr>
+					                    <tr>
+						                    <td>TOT_CU_6_6_3</td>
+						                    <td>Consultar caso de uso Clasificado por ID</td>
+						                    <td>Usuario, Administrador</td>
+						                    <td>TOT_RF_6_6</td>
+						                    <td>
+							                    <a class="btn btn-primary glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#modal-info-cu" href="#"></a>
+							                    <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=3") %>"></a>
+							                    <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete-cu" href="#"></a>
+						                    </td>
+					                    </tr>
+					                    <tr>
+						                    <td>TOT_CU_6_7_4</td>
+						                    <td>Consultar Listado de actores</td>
+						                    <td>Usuario, Administrador</td>
+						                    <td>TOT_RF_6_7</td>
+						                    <td>
+							                    <a class="btn btn-primary glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#modal-info-cu" href="#"></a>
+							                    <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=4") %>"></a>
+							                    <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete-cu" href="#"></a>
+						                    </td>
+					                    </tr>
+					                    <tr>
+						                    <td>TOT_CU_6_2_5</td>
+						                    <td>Actualizar datos Caso de Uso</td>
+						                    <td>Usuario, Administrador</td>
+						                    <td>TOT_RF_6_2</td>
+						                    <td>
+							                    <a class="btn btn-primary glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#modal-info-cu" href="#"></a>
+							                    <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=5") %>"></a>
+							                    <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete-cu" href="#"></a>
+						                    </td>
+					                    </tr>
+					                    <tr>
+						                    <td>TOT_CU_6_3_6</td>
+						                    <td>Eliminar Caso de uso</td>
+						                    <td>Usuario, Administrador</td>
+						                    <td>TOT_RF_6_3</td>
+						                    <td>
+							                    <a class="btn btn-primary glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#modal-info-cu" href="#"></a>
+							                    <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=6") %>"></a>
+							                    <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete-cu" href="#"></a>
+						                    </td>
+					                    </tr>
+					                    <tr>
+						                    <td>TOT_CU_6_8_7</td>
+						                    <td>Crear actor</td>
+						                    <td>Usuario, Administrador</td>
+						                    <td>TOT_RF_6_8</td>
+						                    <td>
+							                    <a class="btn btn-primary glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#modal-info-cu" href="#"></a>
+							                    <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=7") %>"></a>
+							                    <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete-cu" href="#"></a>
+						                    </td>
+					                    </tr>
+					                    <tr>
+						                    <td>TOT_CU_6_9_8</td>
+						                    <td>Actualizar datos del actor</td>
+						                    <td>Usuario, Administrador</td>
+						                    <td>TOT_RF_6_9</td>
+						                    <td>
+							                    <a class="btn btn-primary glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#modal-info-cu" href="#"></a>
+							                    <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=8") %>"></a>
+							                    <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete-cu" href="#"></a>
+						                    </td>
+					                    </tr>
+					                    <tr>
+						                    <td>TOT_CU_6_10_9</td>
+						                    <td>Eliminar Actor </td>
+						                    <td>Usuario, Administrador</td>
+						                    <td>TOT_RF_6_1</td>
+						                    <td>
+							                    <a class="btn btn-primary glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#modal-info-cu" href="#"></a>
+							                    <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=9") %>"></a>
+							                    <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete-cu" href="#"></a>
+						                    </td>
+					                    </tr>
+				                    </tbody>
+			                    </table>
+		                    </div>
 		                </div>
                     </div>
                 </div>
@@ -398,88 +321,100 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="minutas">
                     <h3 class="panel-title">
-                        <a class="link" href="#collapseMinutas" data-toggle="collapse" data-parent="#accordionMinutas">
-                            Minutas
+                        <a class="link" href="#collapseMinutas" data-toggle="collapse" data-parent="#accordionMinutas">Minutas
                         </a>
                     </h3>
                 </div>
                 <div id="collapseMinutas" class="panel-collpase collapse">
                     <div class="panel-body">
                         <div class="table-responsive">
-		                    <table id="table-minutas" class="table table-striped table-hover">
-			                    <thead>
-				                    <tr>
-					                    <th>ID</th>
-					                    <th>Fecha</th>
-                                        <th>Hora</th>
-					                    <th>Motivo</th>
-					                    <th>Acciones</th>
-				                    </tr>
-			                    </thead>
-			                    <tbody>
-				                    <tr>
-					                    <td>Min_01</td>
-					                    <td>10-05-15</td>
-                                        <td>06:00AM</td>
-					                    <td>Primer Encuentro</td>
+                            <table id="table-minutas" class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Proyecto</th>
+                                        <th>Fecha</th>
+                                        <th>Motivo</th>
+                                        <th>Estado Proyecto</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Min_01</td>
+                                        <td>Facebook</td>
+                                        <td>10-05-15</td>
+                                        <td>Primer Encuentro</td>
+                                        <td>Activo</td>
                                         <td>
-                                            <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinuta.aspx?id=1") %>"></a>
-                                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx?id=1") %>"></a>
+                                            <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
+                                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
+                                            <a class="btn btn-success glyphicon glyphicon-print" href="<%= Page.ResolveUrl("~/GUI/Modulo8/MINUTA3.pdf") %>"></a>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Min_02</td>
-                                        <td>sjkdnfsnd</td>
-                                        <td>sdnsnd</td>
-                                        <td>akfsjdf</td>
+                                        <td>Totem</td>
+                                        <td>10-06-15</td>
+                                        <td>Segundo Encuentro</td>
+                                        <td>Activo</td>
                                         <td>
-                                            <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinuta.aspx?id=1") %>"></a>
-                                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx?id=1") %>"></a>
+                                            <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
+                                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
+                                            <a class="btn btn-success glyphicon glyphicon-print" href="<%= Page.ResolveUrl("~/GUI/Modulo8/MINUTA3.pdf") %>"></a>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Min_03</td>
-                                        <td>sjkdn</td>
-                                        <td>sdnjjdfsnd</td>
-                                        <td>akfznx</td>
+                                        <td>Word OnLine</td>
+                                        <td>10-07-15</td>
+                                        <td>Segundo Encuentro</td>
+                                        <td>Activo</td>
                                         <td>
-                                            <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinuta.aspx?id=1") %>"></a>
-                                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx?id=1") %>"></a>
+                                            <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
+                                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
+                                            <a class="btn btn-success glyphicon glyphicon-print" href="<%= Page.ResolveUrl("~/GUI/Modulo8/MINUTA3.pdf") %>"></a>
                                         </td>
                                     </tr>
-                                            <tr>
+                                    <tr>
                                         <td>Min_04</td>
-                                        <td>sadddn</td>
-                                        <td>aaaa</td>
-                                        <td>mmmd</td>
+                                        <td>Totem</td>
+                                        <td>15-08-15</td>
+                                        <td>Tercer Encuentro</td>
+                                        <td>Activo</td>
                                         <td>
-                                            <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinuta.aspx?id=1") %>"></a>
-                                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx?id=1") %>"></a>
+                                            <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
+                                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
+                                            <a class="btn btn-success glyphicon glyphicon-print" href="<%= Page.ResolveUrl("~/GUI/Modulo8/MINUTA3.pdf") %>"></a>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Min_05</td>
-                                        <td>shhhhn</td>
-                                        <td>124233gdf</td>
-                                        <td>jsdhhhdd</td>
+                                        <td>Google</td>
+                                        <td>10-09-15</td>
+                                        <td>Último Encuentro</td>
+                                        <td>Activo</td>
                                         <td>
-                                            <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinuta.aspx?id=1") %>"></a>
-                                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx?id=1") %>"></a>
+                                            <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
+                                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
+                                            <a class="btn btn-success glyphicon glyphicon-print" href="<%= Page.ResolveUrl("~/GUI/Modulo8/MINUTA3.pdf") %>"></a>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Min_06</td>
-                                        <td>sjkdn</td>
-                                        <td>ssnd</td>
-                                        <td>aznx</td>
+                                        <td>Comapañia CEL</td>
+                                        <td>19-07-15</td>
+                                        <td>Primer Encuentro</td>
+                                        <td>Activo</td>
                                         <td>
-                                            <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinuta.aspx?id=1") %>"></a>
-                                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx?id=1") %>"></a>
+                                            <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
+                                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
+                                            <a class="btn btn-success glyphicon glyphicon-print" href="<%= Page.ResolveUrl("~/GUI/Modulo8/MINUTA3.pdf") %>"></a>
                                         </td>
                                     </tr>
-			                    </tbody>
-		                    </table>
-	                    </div>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -726,10 +661,10 @@
                                 <div class="form-group">
                                     <div class="col-sm-10 col-md-10 col-lg-10">
                                         <p><b>Tipo de Requerimiento:</b></p>
-                                        <label class="radio-inline noSwitch" data-size="mini" data-on-text="⚪" data-off-text="⚪">
-                                            <input type="radio" name="radioTipo" checked="checked" data-size="mini" data-on-text="⚪" data-off-text="⚪"/> Funcional</label>
-                                        <label class="radio-inline noSwitch" data-size="mini" data-on-text="⚪" data-off-text="⚪">
-                                            <input type="radio" name="radioTipo" data-size="mini" data-on-text="⚪" data-off-text="⚪"/> No Funcional</label>
+                                        <label class="radio-inline noSwitch" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪">
+                                            <input type="radio" name="radioTipo" checked="checked" data-size="mini" data-on-text="⚪"data-on-color="success" data-off-text="⚪"/> Funcional</label>
+                                        <label class="radio-inline noSwitch" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪">
+                                            <input type="radio" name="radioTipo" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪"/> No Funcional</label>
                                     </div>
                                 </div>
                                 <br />
@@ -745,22 +680,22 @@
                                 <div class="form-group">
                                     <div class="col-sm-10 col-md-10 col-lg-10">
                                         <p><b>Prioridad:</b></p>
-                                        <label class="radio-inline" data-size="mini" data-on-text="⚪" data-off-text="⚪">
-                                            <input type="radio" name="radioPrioridad" data-size="mini" data-on-text="⚪" data-off-text="⚪"/> Baja</label>
-                                        <label class="radio-inline" data-size="mini" data-on-text="⚪" data-off-text="⚪">
-                                            <input type="radio" name="radioPrioridad" checked="checked" data-size="mini" data-on-text="⚪" data-off-text="⚪"/> Media</label>
-                                        <label class="radio-inline" data-size="mini" data-on-text="⚪" data-off-text="⚪">
-                                            <input type="radio" name="radioPrioridad" data-size="mini" data-on-text="⚪" data-off-text="⚪"/> Alta</label>
+                                        <label class="radio-inline" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪">
+                                            <input type="radio" name="radioPrioridad" data-size="mini" data-on-text="⚪"data-on-color="success" data-off-text="⚪"/> Baja</label>
+                                        <label class="radio-inline" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪">
+                                            <input type="radio" name="radioPrioridad" checked="checked" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪"/> Media</label>
+                                        <label class="radio-inline" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪">
+                                            <input type="radio" name="radioPrioridad" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪"/> Alta</label>
                                     </div>
                                 </div>
                                 <br />
                                 <div class="form-group">
                                     <div class="col-sm-10 col-md-10 col-lg-10">
                                         <p><b>Status:</b></p>
-                                        <label class="radio-inline" data-size="mini" data-on-text="⚪" data-off-text="⚪">
-                                            <input type="radio" name="radioStatus" checked="checked" data-size="mini" data-on-text="⚪" data-off-text="⚪"/> No Finalizado</label>
-                                        <label class="radio-inline" data-size="mini" data-on-text="⚪" data-off-text="⚪">
-                                            <input type="radio" name="radioStatus" data-size="mini" data-on-text="⚪" data-off-text="⚪"/> Finalizado</label>
+                                        <label class="radio-inline" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪">
+                                            <input type="radio" name="radioStatus" checked="checked" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪"/> No Finalizado</label>
+                                        <label class="radio-inline" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪">
+                                            <input type="radio" name="radioStatus" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪"/> Finalizado</label>
                                     </div>
                                 </div>
                             </div>
@@ -821,6 +756,84 @@
                 </div
             </div>
         </div>
+
+        <!--Modal de eliminacion de Casos de Uso en 2do acordeon-->
+        <div id="modal-delete-cu" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Eliminación de Caso de Uso</h4>
+					</div>
+					<div class="modal-body">
+						<div class="container-fluid">
+							<div class="row">
+								<p>Seguro que desea eliminar el caso de uso: </p>
+								<p id="caso_de_uso"></p>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						<a id="btn-eliminar-cu" type="button" class="btn btn-primary" onclick="EliminarCasoDeUso()" href="Listar.aspx?success=3">Eliminar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+        <!--Modal de informacion de Caso de Uso en 2do acordeon-->
+		<div id="modal-info-cu" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Información detallada del Caso de Uso</h4>
+					</div>
+					<div class="modal-body">
+						<div class="container-fluid" id="info">
+							<div class="row">
+								<h3>Precondiciones</h3>
+									<ul>
+										<li>Usuario registrado</li>
+										<li>Usuario logeado</li>
+										<li>Proyecto creado</li>
+									</ul>
+								<h3>Condición Final de Éxito</h3>
+								<p>
+									Caso de uso creado
+								</p>
+								<h3>Condición Final de Fallo</h3>
+								<p>
+									El caso de uso no pudo ser creado
+								</p>
+								<h3>Disparador</h3>
+								<p>
+									Seleccionar opción "Gestión de Casos de uso" → "Agregar caso de uso" del menú
+								</p>
+								<h3>Escenario Principal de Éxito</h3>
+									<ol>
+										<li>El usuario o admin selecciona la opción "Gestión de Casos de uso" → "Agregar caso de uso" del menú.</li>
+										<li>El sistema despliega la pantalla de obtener los datos del caso de uso.</li>
+										<li>El usuario o admin ingresa los números de los requerimientos asociados.</li>
+										<li>El sistema verifica la existencia de esos requerimientos.</li>
+										<li>El usuario o admin introduce los datos del caso de uso.</li>
+										<li>El sistema registra el caso de uso. Volver paso 2. El CU termina.</li>
+    								</ol>
+								<h3>Extensiones</h3>
+								<p>
+									4-A. El o los requerimientos no existen.
+								</p>
+								<p style="text-indent: 5em;">
+									A1. Desplegar mensaje de error.
+								</p>
+								<p style="text-indent: 5em;">
+									A2. Volver al paso 2. 
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 
         <!--MODALES SIN ORDENAR AUN-->
@@ -887,6 +900,42 @@
             });
         });
 	</script>
+    <!--Script que maneja la eliminacion e informacion de los casos de uso en la lista de casos de uso en el 2do acordeon-->
+    <script type="text/javascript">
+        //Data tables init
+        $(document).ready(function () {
+            $('#table-cu').DataTable();
+            var table = $('#table-cu').DataTable();
+            var caso_de_uso, tr;
+            $('#table-cu tbody').on('click', 'a', function () {
+                if ($(this).parent().hasClass('selected')) {
+                    caso_de_uso = $(this).parent().prev().prev().prev().prev().text();
+                    tr = $(this).parents('tr'); //Se guarda la fila seleccionada
+                    $(this).parent().removeClass('selected');
+                }
+                else {
+                    caso_de_uso = $(this).parent().prev().prev().prev().prev().text();
+                    tr = $(this).parents('tr'); //Se guarda la fila seleccionada
+                    table.$('tr.selected').removeClass('selected');
+                    $(this).parent().addClass('selected');
+                }
+            });
+            $('#modal-delete-cu').on('show.bs.modal', function (event) {
+                var modal = $(this)
+                modal.find('.modal-title').text('Eliminar caso de uso: ' + caso_de_uso)
+                modal.find('#caso_de_uso').text(caso_de_uso)
+            })
+            //Para eliminar la fila
+            $('#btn-eliminar-cu').on('click', function () {
+                table.row(tr).remove().draw(); //Se elimina la fila de la tabla
+                $('#modal-delete-cu').modal('hide'); //Se esconde el modal
+            });
+            $('#modal-update').on('show.bs.modal', function (event) {
+                var modal = $(this)
+                modal.find('.modal-title').text('Modificar caso de uso')
+            });
+        });
+	</script>
     <!--Script que maneja la eliminacion de involucrados en la lista de involucrados en el 4to acordeon-->
     <script type="text/javascript">
             $(document).ready(function () {
@@ -923,6 +972,7 @@
                 });
             });
     </script>
+    
 
     <!--VALIDACIONES-->
     <!--Validaciones de campos en modal de modificar requerimiento en lista de requerimientos, 1er acorderon-->
@@ -935,6 +985,12 @@
 
 
     <!--COSAS SIN ORDENAR AUN-->
+    <script type="text/javascript">
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+
     <script type="text/javascript">
         jQuery(function ($) {
             $('#table-requerimientos').DataTable();
