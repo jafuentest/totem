@@ -1,10 +1,10 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="PerfilProyecto.aspx.cs" Inherits="GUI_Modulo4_PerfilProyecto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <meta http-equiv="set-cookie" content="selectedProject=Twitter;">
-    <link href="bootstrap-switch-master/docs/css/highlight.css" rel="stylesheet">
-    <link href="bootstrap-switch-master/dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
-    <link href="bootstrap-switch-master/docs/css/main.css" rel="stylesheet">
+    <meta http-equiv="set-cookie" content="selectedProject=Twitter;"/>
+    <link href="bootstrap-switch-master/docs/css/highlight.css" rel="stylesheet"/>
+    <link href="bootstrap-switch-master/dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet"/>
+    <link href="bootstrap-switch-master/docs/css/main.css" rel="stylesheet"/>
     <style>
         .bootstrapBlue {
             color: #337ab7;
@@ -753,7 +753,7 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                     <a id="btn-eliminar-proyecto" type="button" class="btn btn-primary" onclick="EliminarRequerimiento()" href="../Modulo1/Default.aspx?success=1">Eliminar</a>
                 </div>
-                </div
+                </div>
             </div>
         </div>
 
@@ -768,7 +768,7 @@
 					<div class="modal-body">
 						<div class="container-fluid">
 							<div class="row">
-								<p>Seguro que desea eliminar el caso de uso: </p>
+								<p>Seguro que desea eliminar el caso de uso:</p>
 								<p id="caso_de_uso"></p>
 							</div>
 						</div>
@@ -887,7 +887,7 @@
             });
             $('#modal-delete-requerimiento').on('show.bs.modal', function (event) {
                 var modal = $(this)
-                modal.find('.modal-title').text('Eliminar requerimiento:  ' + req)
+                modal.find('.modal-title').text('Eliminar requerimiento: ' + req)
                 modal.find('#req').text(req)
             })
             $('#btn-eliminar-requerimiento').on('click', function () {
@@ -930,7 +930,7 @@
                 table.row(tr).remove().draw(); //Se elimina la fila de la tabla
                 $('#modal-delete-cu').modal('hide'); //Se esconde el modal
             });
-            $('#modal-update').on('show.bs.modal', function (event) {
+            $('#modal-info-cu').on('show.bs.modal', function (event) {
                 var modal = $(this)
                 modal.find('.modal-title').text('Modificar caso de uso')
             });
@@ -976,7 +976,7 @@
 
     <!--VALIDACIONES-->
     <!--Validaciones de campos en modal de modificar requerimiento en lista de requerimientos, 1er acorderon-->
-    <script src="~/GUI/Modulo5/js/Validacion.js"></script>
+    <script src="<%= Page.ResolveUrl("~/GUI/Modulo5/js/Validacion.js")%>"></script>
 
     <!--REFERENCIAS A LOS SCRIPTS DEL BOOTSTRAP TOGGLE (SWITCH-MASTER)-->
     <script src="bootstrap-switch-master/docs/js/highlight.js"></script>
@@ -1031,5 +1031,4 @@
             });
         });
 	</script>
-
 </asp:Content>

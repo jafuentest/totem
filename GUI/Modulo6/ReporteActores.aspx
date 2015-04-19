@@ -42,7 +42,7 @@
 										<td>ipsum</td>
 										<td>dolor</td>
 										<td>
-											<a class="btn btn-primary glyphicon glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=1") %>"></a>
+											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="#" data-toggle="modal" data-target="#modal-info"></a>
 											<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=1") %>"></a>
 											<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
 										</td>
@@ -52,7 +52,7 @@
 										<td>amet</td>
 										<td>consectetur</td>
 										<td>
-											<a class="btn btn-primary glyphicon glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=2") %>"></a>
+											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="#" data-toggle="modal" data-target="#modal-info"></a>
 											<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=2") %>"></a>
 											<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
 										</td>
@@ -62,7 +62,7 @@
 										<td>elit</td>
 										<td>Integer</td>
 										<td>
-											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=3") %>"></a>
+											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="#" data-toggle="modal" data-target="#modal-info"></a>
 											<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=3") %>"></a>
 											<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
 										</td>
@@ -72,7 +72,7 @@
 										<td>odio</td>
 										<td>Praesent</td>
 										<td>
-											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=4") %>"></a>
+											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="#" data-toggle="modal" data-target="#modal-info"></a>
 											<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=4") %>"></a>
 											<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
 										</td>
@@ -82,7 +82,7 @@
 										<td>Sed</td>
 										<td>cursus</td>
 										<td>
-											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=5") %>"></a>
+											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="#" data-toggle="modal" data-target="#modal-info"></a>
 											<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=5") %>"></a>
 											<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
 										</td>
@@ -92,7 +92,7 @@
 										<td>dapibus</td>
 										<td>diam</td>
 										<td>
-											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=6") %>"></a>
+											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="#" data-toggle="modal" data-target="#modal-info"></a>
 											<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=6") %>"></a>
 											<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
 										</td>
@@ -130,7 +130,7 @@
 										<td>nisi</td>
 										<td>Nulla</td>
 										<td>
-											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=7") %>"></a>
+											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="#" data-toggle="modal" data-target="#modal-info"></a>
 											<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=7") %>"></a>
 											<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
 										</td>
@@ -140,7 +140,7 @@
 										<td>ipsum</td>
 										<td>Praesent</td>
 										<td>
-											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=8") %>"></a>
+											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="#" data-toggle="modal" data-target="#modal-info"></a>
 											<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=8") %>"></a>
 											<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
 										</td>
@@ -150,7 +150,7 @@
 										<td>nec</td>
 										<td>tellus</td>
 										<td>
-											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=9") %>"></a>
+											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="#" data-toggle="modal" data-target="#modal-info"></a>
 											<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=9") %>"></a>
 											<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
 										</td>
@@ -160,7 +160,7 @@
 										<td>semper</td>
 										<td>porta</td>
 										<td>
-											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=10") %>"></a>
+											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="#" data-toggle="modal" data-target="#modal-info"></a>
 											<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=10") %>"></a>
 											<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
 										</td>
@@ -170,7 +170,7 @@
 										<td>Vestibulum</td>
 										<td>lacinia</td>
 										<td>
-											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=11") %>"></a>
+											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="#" data-toggle="modal" data-target="#modal-info"></a>
 											<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=11") %>"></a>
 											<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
 										</td>
@@ -180,7 +180,7 @@
 										<td>nulla</td>
 										<td>Class</td>
 										<td>
-											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=12") %>"></a>
+											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="#" data-toggle="modal" data-target="#modal-info"></a>
 											<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=12") %>"></a>
 											<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
 										</td>
@@ -218,7 +218,7 @@
 										<td>sociosqu</td>
 										<td>ad</td>
 										<td>
-											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=13") %>"></a>
+											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="#" data-toggle="modal" data-target="#modal-info"></a>
 											<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=13") %>"></a>
 											<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
 										</td>
@@ -228,7 +228,7 @@
 										<td>per</td>
 										<td>conubia</td>
 										<td>
-											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=14") %>"></a>
+											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="#" data-toggle="modal" data-target="#modal-info"></a>
 											<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=14") %>"></a>
 											<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
 										</td>
@@ -238,7 +238,7 @@
 										<td>inceptos</td>
 										<td>himenaeos</td>
 										<td>
-											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=15") %>"></a>
+											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="#" data-toggle="modal" data-target="#modal-info"></a>
 											<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=15") %>"></a>
 											<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
 										</td>
@@ -248,7 +248,7 @@
 										<td>ligula</td>
 										<td>in</td>
 										<td>
-											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Detalle.aspx?id=16") %>"></a>
+											<a class="btn btn-primary glyphicon glyphicon-info-sign" href="#" data-toggle="modal" data-target="#modal-info"></a>
 											<a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo6/Modificar.aspx?id=16") %>"></a>
 											<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
 										</td>
@@ -287,38 +287,38 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		<!-- Data tables init -->
-		$(document).ready(function () {
-			$('.table').DataTable({
-				searching: false,
-				paging: false
-			});
-			var table = $('.table').DataTable();
-			var caso_de_uso, tr;
-			$('.table tbody').on('click', 'a', function () {
-				if ($(this).parent().hasClass('selected')) {
-					caso_de_uso = $(this).parent().prev().prev().prev().prev().text();
-					tr = $(this).parents('tr'); //se guarda la fila seleccionada
-					$(this).parent().removeClass('selected');
-				}
-				else {
-					caso_de_uso = $(this).parent().prev().prev().prev().prev().text();
-					tr = $(this).parents('tr'); //se guarda la fila seleccionada
-					table.$('tr.selected').removeClass('selected');
-					$(this).parent().addClass('selected');
-				}
-			});
-			$('#modal-delete').on('show.bs.modal', function (event) {
-				var modal = $(this)
-				modal.find('.modal-title').text('Eliminar caso de uso: ' + caso_de_uso)
-				modal.find('#caso_de_uso').text(caso_de_uso)
-			})
-			//para eliminar la fila
-			$('#btn-eliminar').on('click', function () {
-				table.row(tr).remove().draw();
-				$('#modal-delete').modal('hide');
-			});
-			$('#btn-imprimir').attr("onclick", "window.location.href='docs/Casos_de_Uso.pdf'");
+	<!-- Data tables init -->
+	$(document).ready(function () {
+		$('.table').DataTable({
+			searching: false,
+			paging: false
 		});
+		var table = $('.table').DataTable();
+		var caso_de_uso, tr;
+		$('.table tbody').on('click', 'a', function () {
+			if ($(this).parent().hasClass('selected')) {
+				caso_de_uso = $(this).parent().prev().prev().prev().prev().text();
+				tr = $(this).parents('tr'); //se guarda la fila seleccionada
+				$(this).parent().removeClass('selected');
+			}
+			else {
+				caso_de_uso = $(this).parent().prev().prev().prev().prev().text();
+				tr = $(this).parents('tr'); //se guarda la fila seleccionada
+				table.$('tr.selected').removeClass('selected');
+				$(this).parent().addClass('selected');
+			}
+		});
+		$('#modal-delete').on('show.bs.modal', function (event) {
+			var modal = $(this)
+			modal.find('.modal-title').text('Eliminar caso de uso: ' + caso_de_uso)
+			modal.find('#caso_de_uso').text(caso_de_uso)
+		})
+		//para eliminar la fila
+		$('#btn-eliminar').on('click', function () {
+			table.row(tr).remove().draw();
+			$('#modal-delete').modal('hide');
+		});
+		$('#btn-imprimir').attr("onclick", "window.location.href='docs/Casos_de_Uso.pdf'");
+	});
 	</script>
 </asp:Content>
