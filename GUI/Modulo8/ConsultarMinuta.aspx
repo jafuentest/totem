@@ -39,7 +39,7 @@
                         <td>
                             <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
                             <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
-                            <a class="btn btn-success glyphicon glyphicon-print"  href="<%= Page.ResolveUrl("~/GUI/Modulo8/MINUTA3.pdf") %>"></a>
+                            <a class="btn btn-success glyphicon glyphicon-print"  href="<%= Page.ResolveUrl("~/GUI/Modulo8/docs/MINUTA3.pdf") %>"></a>
                         </td>
                     </tr>
                     <tr>
@@ -51,7 +51,7 @@
                         <td>
                             <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
                             <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
-                            <a class="btn btn-success glyphicon glyphicon-print"  href="<%= Page.ResolveUrl("~/GUI/Modulo8/MINUTA3.pdf") %>"></a>
+                            <a class="btn btn-success glyphicon glyphicon-print"  href="<%= Page.ResolveUrl("~/GUI/Modulo8/docs/MINUTA3.pdf") %>"></a>
                         </td>
                     </tr>
                     <tr>
@@ -63,7 +63,7 @@
                         <td>
                             <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
                             <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
-                            <a class="btn btn-success glyphicon glyphicon-print"  href="<%= Page.ResolveUrl("~/GUI/Modulo8/MINUTA3.pdf") %>"></a>
+                            <a class="btn btn-success glyphicon glyphicon-print"  href="<%= Page.ResolveUrl("~/GUI/Modulo8/docs/MINUTA3.pdf") %>"></a>
                         </td>
                     </tr>
                     <tr>
@@ -75,7 +75,7 @@
                         <td>
                             <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
                             <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
-                            <a class="btn btn-success glyphicon glyphicon-print"  href="<%= Page.ResolveUrl("~/GUI/Modulo8/MINUTA3.pdf") %>"></a>
+                            <a class="btn btn-success glyphicon glyphicon-print"  href="<%= Page.ResolveUrl("~/GUI/Modulo8/docs/MINUTA3.pdf") %>"></a>
                         </td>
                     </tr>
                     <tr>
@@ -87,7 +87,7 @@
                         <td>
                             <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
                             <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
-                            <a class="btn btn-success glyphicon glyphicon-print"  href="<%= Page.ResolveUrl("~/GUI/Modulo8/MINUTA3.pdf") %>"></a>
+                            <a class="btn btn-success glyphicon glyphicon-print"  href="<%= Page.ResolveUrl("~/GUI/Modulo8/docs/MINUTA3.pdf") %>"></a>
                         </td>
                     </tr>
                     <tr>
@@ -99,7 +99,7 @@
                         <td>
                             <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
                             <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
-                            <a class="btn btn-success glyphicon glyphicon-print"  href="<%= Page.ResolveUrl("~/GUI/Modulo8/MINUTA3.pdf") %>"></a>
+                            <a class="btn btn-success glyphicon glyphicon-print"  href="<%= Page.ResolveUrl("~/GUI/Modulo8/docs/MINUTA3.pdf") %>"></a>
                         </td>
                     </tr>
 			    </tbody>
