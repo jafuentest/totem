@@ -130,10 +130,7 @@
                      </div><!-- /.modal-dialog -->
                    </div><!-- /.modal -->
                     <div class="form-group" >     
-                            <div class="col-sm-5 col-md-5 col-lg-5">
-                          <button id="btn-aceptar" class="btn btn-primary" type="submit" onclick="redireccion();">Aceptar</button>
-                     
-                        </div>  
+                           
                                 &nbsp;
                             
                     </div>
