@@ -25,7 +25,7 @@
             <div class="form-group">
                 <label for="motivo" class="col-xs-12 col-md-3 control-label">Motivo:</label> 
 			    <div id="div_motivo" class="col-xs-12 col-md-8 col-lg-6">
-                    <textarea name="motivo" id="motivo" placeholder="Exponga brevemente el motivo de la reunión" class="form-control" rows=4></textarea>			
+                    <textarea name="motivo" id="motivo" placeholder="Exponga brevemente el motivo de la reunión" class="form-control" style="text-align: justify;resize:none;" rows=4></textarea>			
 			    </div>
             </div>
 
@@ -86,7 +86,7 @@
                                 <input class="form-control" placeholder="Título del Punto" type="text"/>
                             </div>
                             <div class="col-xs-12 form-group"></div>
-                            <div class="col-xs-12"><textarea name="desarrollo" placeholder="Desarrollo del Punto" class="form-control" rows=3></textarea></div>
+                            <div class="col-xs-12"><textarea name="desarrollo" placeholder="Desarrollo del Punto" class="form-control"  style="text-align: justify;resize:none;" rows=3></textarea></div>
                         </div>
                     </div>
                 </div>
@@ -140,16 +140,18 @@
             <div class="form-group">
                 <label for="observaciones" class="col-xs-12 col-md-3 control-label">Observaciones:</label> 
 			    <div id="div_observaciones" class="col-xs-12 col-md-8 col-lg-6">
-                    <textarea name="observaciones" id="observaciones" placeholder="Observaciones" class="form-control" rows=4></textarea>			
+                    <textarea name="observaciones" id="observaciones" placeholder="Observaciones" class="form-control" style="text-align: justify;resize:none;" rows=4></textarea>			
 			    </div>
             </div>
         
            <div class="form-group">
-               <div class="col-xs-12 col-md-9 botones">
-				    <button type="button" style="position:absolute; left:150px" class="btn btn-primary" onClick="validar();">Agregar</button>
+               <div class="col-xs-12 col-md-9 botones" style="position:absolute; left:120px">
+				    <button type="button"  class="btn btn-primary" onclick="validar();">Agregar</button>
+                    <a type="button"  class="btn btn-default" href="ConsultarMinuta.aspx" >Cancelar</a>
                </div>    
 	       </div>
         </form> 
+        <br/> <br/>
     </div>
 
     <div id="confirmacion" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
@@ -160,7 +162,7 @@
                     <h4 class="modal-title" >¿Desea agregar la minuta?</h4>
                 </div>
                 <div class="modal-footer">
-                    <button id="btn-confirmar" type="button" class="btn btn-primary" onClick="aceptarConfirmacion();">Aceptar</button>
+                    <a id="btn-confirmar" type="button" class="btn btn-primary" href="ConsultarMinuta.aspx?success=1">Aceptar</a>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
@@ -170,7 +172,7 @@
 
 <script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
 <script type="text/javascript" src="js/moment-with-locales.min.js"></script>
-<script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/d004434a5ff76e7b97c8b07c01f34ca69e635d97/src/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="js/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript" src="js/crearMinuta.js"></script>
 <script type="text/javascript" src="js/validacionesCrearMinuta.js"></script>
 </asp:Content>

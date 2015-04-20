@@ -4,8 +4,19 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Minutas</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">  Consultar</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
-    <div class="col-xs-12">    
-        
+    <div class="col-xs-12">
+       <div id="alert" runat="server">
+       </div>
+        <div class="panel panel-primary" style="width:auto">
+			<div class="panel-heading">
+				<h3 class="panel-title">Proyecto</h3>
+			</div>
+			<div class="panel-body" style="width:auto">
+				Nombre del Proyecto: TOTEM<br/>
+				Empresa Cliente: UCAB<br/>
+				Status del Proyecto: Activo<br/>
+			</div>
+		</div>
         <div class="table-responsive">
 		    <table id="table-example" class="table table-striped table-hover">
 			    <thead>
@@ -21,7 +32,7 @@
 			    <tbody>
 				    <tr>
 					    <td>Min_01</td>
-					    <td>Facebook</td>
+					    <td>Totem</td>
 					    <td>10-05-15</td>
 					    <td>Primer Encuentro</td>
                         <td>Activo</td>
@@ -45,7 +56,7 @@
                     </tr>
                     <tr>
                         <td>Min_03</td>
-                         <td>Word OnLine</td>
+                         <td>Totem</td>
                         <td>10-07-15</td>
                         <td>Segundo Encuentro</td>
                         <td>Activo</td>
@@ -69,7 +80,7 @@
                     </tr>
                     <tr>
                         <td>Min_05</td>
-                       <td>Google</td>
+                       <td>Totem</td>
                         <td>10-09-15</td>
                         <td>Último Encuentro</td>
                         <td>Activo</td>
@@ -81,7 +92,7 @@
                     </tr>
                     <tr>
                         <td>Min_06</td>
-                         <td>Comapañia CEL</td>
+                         <td>Totem</td>
                         <td>19-07-15</td>
                         <td>Primer Encuentro</td>
                         <td>Activo</td>

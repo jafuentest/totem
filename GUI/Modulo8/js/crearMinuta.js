@@ -107,7 +107,7 @@ function agregarPunto()
         + "         <input class='form-control' placeholder='Título del Punto' type='text'/>"
         + "     </div>"
         + "     <div class='col-xs-12 form-group'></div>"
-        + "     <div class='col-xs-12'><textarea name='desarrollo' placeholder='Desarrollo del Punto' class='form-control' rows=3></textarea></div>"
+        + "     <div class='col-xs-12'><textarea name='desarrollo' placeholder='Desarrollo del Punto' class='form-control' style='text-align:justify; resize:none;' rows=3></textarea></div>"
         + " </div>"
         + "</div>"
     );
