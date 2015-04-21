@@ -64,7 +64,7 @@
 					    <span class="icon-bar"></span>
 					    <span class="icon-bar"></span>
 				    </button>
-				    <a class="navbar-brand" href="/">TOTEM</a>
+				    <a class="navbar-brand" href="#">TOTEM</a>
 			    </div>
 			    <div id="navbar" class="navbar-collapse collapse" runat="server">
 				    <ul class="nav navbar-nav navbar-right" id="ulNav" runat="server">
