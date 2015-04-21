@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="ListarActores.aspx.cs" Inherits="GUI_Modulo6_ListarActores" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+	<script type="text/javascript" src="<%= Page.ResolveUrl("~/GUI/Modulo6/js/validaciones.js") %>"></script>
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Actores</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Lista</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
@@ -60,8 +62,8 @@
 							</div>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 							<a id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarCasoDeUso()" href="ListarActores.aspx?success=3">Eliminar</a>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 						</div>
 					</div>
 				</div>

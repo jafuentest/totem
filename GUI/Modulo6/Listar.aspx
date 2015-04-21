@@ -149,8 +149,8 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 						<a id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarCasoDeUso()" href="Listar.aspx?success=3">Eliminar</a>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 					</div>
 				</div>
 			</div>
