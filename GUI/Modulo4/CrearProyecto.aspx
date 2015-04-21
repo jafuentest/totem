@@ -1,9 +1,8 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master"  AutoEventWireup="true" CodeFile="CrearProyecto.aspx.cs" Inherits="GUI_Modulo4_CrearProyecto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <link href="bootstrap-switch-master/docs/css/highlight.css" rel="stylesheet">
-    <link href="bootstrap-switch-master/dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
-    <link href="bootstrap-switch-master/docs/css/main.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="bootstrap-toggle-master/css/bootstrap-toggle.css" rel="stylesheet">
     <style>
         textarea {
             resize: none;
@@ -54,15 +53,14 @@
                        <input type="text" id="Precio" placeholder="Precio" class="form-control" name="precio"/>
                 </div>
                 
-                <div id="div_activo" class="col-sm-3 col-md-3 col-lg-3 col-md-offset-3">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input id="switch-disabled" type="checkbox" checked data-on-text="Activo" data-on-color="success" data-off-text="Inactivo" disabled>
+                <div id="div_activo" class="col-sm-3 col-md-3 col-lg-3">
+                    <input disabled checked data-toggle="toggle" data-size="normal" type="checkbox" data-on="Activo" data-off="Inactivo" data-onstyle="success" data-offstyle="warning" data-width="100">
                 </div>
 	        </div>
             <br>
             <div class="form-group">
 		        <div class="col-sm-1 col-md-1 col-lg-1">
-				    <button class="btn btn-primary" onclick="return checkform()">Crear</button>
+				    <a id="btn-crear" type="button" class="btn btn-primary" onclick="return checkform()" href="../Modulo1/Default.aspx?success=2">Crear</a>
 			    </div>
                 <div class="col-sm-1 col-md-1 col-lg-1">
 				    <button class="btn btn-default" onclick="goBack()">Cancelar</button>
@@ -71,9 +69,20 @@
         </form>
     </div>
     <script src="js/Validacion.js"></script>
-    <script src="bootstrap-switch-master/docs/js/highlight.js"></script>
-    <script src="bootstrap-switch-master/dist/js/bootstrap-switch.js"></script>
-    <script src="bootstrap-switch-master/docs/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+	<script src="bootstrap-toggle-master/doc/script.js"></script>
+	<script src="bootstrap-toggle-master/js/bootstrap-toggle.js"></script>
+	<script>
+	    (function (i, s, o, g, r, a, m) {
+	        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+	            (i[r].q = i[r].q || []).push(arguments)
+	        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+	    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+	    ga('create', 'UA-55669452-1', 'auto');
+	    ga('send', 'pageview');
+	</script>
+
     <script language="javascript">
          function fillCodigoTextField() {
              var codigoTextField = document.getElementById("Codigo");

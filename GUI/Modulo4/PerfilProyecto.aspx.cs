@@ -54,29 +54,41 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
         String success = Request.QueryString["success"];
         if (success != null)
         {
-            if (success.Equals("2"))
-            {
-                alert_requerimiento.Attributes["class"] = "alert alert-success alert-dismissible";
-                alert_requerimiento.Attributes["role"] = "alert";
-                alert_requerimiento.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Requerimiento modificado exitosamente</div>";
+            
+        }
 
-            }
-            else
-                if (success.Equals("3"))
-                {
-                    alert_requerimiento.Attributes["class"] = "alert alert-success alert-dismissible";
-                    alert_requerimiento.Attributes["role"] = "alert";
-                    alert_requerimiento.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Requerimiento eliminado exitosamente</div>";
-
-                }
-                else
-                    if (success.Equals("4"))
-                    {
-                        alert_requerimiento.Attributes["class"] = "alert alert-success alert-dismissible";
-                        alert_requerimiento.Attributes["role"] = "alert";
-                        alert_requerimiento.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Proyecto modificado exitosamente</div>";
-
-                    }
+        switch (success)
+        {
+            case "0":
+                alerts.Attributes["class"] = "alert alert-success alert-dismissible";
+                alerts.Attributes["role"] = "alert";
+                alerts.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Proyecto modificado exitosamente</div>";
+                break;
+            case "1":
+                alerts.Attributes["class"] = "alert alert-success alert-dismissible";
+                alerts.Attributes["role"] = "alert";
+                alerts.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Requerimiento modificado exitosamente</div>";
+                break;
+            case "2":
+                alerts.Attributes["class"] = "alert alert-success alert-dismissible";
+                alerts.Attributes["role"] = "alert";
+                alerts.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Requerimiento eliminado exitosamente</div>";
+                break;
+            case "3":
+                alerts.Attributes["class"] = "alert alert-success alert-dismissible";
+                alerts.Attributes["role"] = "alert";
+                alerts.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Caso de uso modificado exitosamente</div>";
+                break;
+            case "4":
+                alerts.Attributes["class"] = "alert alert-success alert-dismissible";
+                alerts.Attributes["role"] = "alert";
+                alerts.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Caso de uso eliminado exitosamente</div>";
+                break;
+            case "5":
+                alerts.Attributes["class"] = "alert alert-success alert-dismissible";
+                alerts.Attributes["role"] = "alert";
+                alerts.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Involucrado eliminado exitosamente</div>";
+                break;
         }
     }
 }

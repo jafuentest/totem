@@ -23,10 +23,10 @@
 	</opcion>
 
 	<!-- Opciones del menú lateral del Módulo 4-->
-  <opcion nombre="Perfil Proyecto" link="~/GUI/Modulo4/PerfilProyecto.aspx">
-    <modulo id="4"></modulo>
-  </opcion>
 	<opcion nombre="Lista de Proyectos" link="~/GUI/Modulo1/Default.aspx">
+		<modulo id="4"></modulo>
+	</opcion>
+	<opcion nombre="Perfil Proyecto" link="~/GUI/Modulo4/PerfilProyecto.aspx">
 		<modulo id="4"></modulo>
 	</opcion>
 	<opcion nombre="Crear Proyecto" link="~/GUI/Modulo4/CrearProyecto.aspx">

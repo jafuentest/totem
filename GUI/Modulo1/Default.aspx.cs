@@ -114,6 +114,13 @@ public partial class _Default : System.Web.UI.Page
                  alert_requerimiento.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Proyecto eliminado exitosamente</div>";
 
              }
+             if (success.Equals("2"))
+             {
+                 alert_requerimiento.Attributes["class"] = "alert alert-success alert-dismissible";
+                 alert_requerimiento.Attributes["role"] = "alert";
+                 alert_requerimiento.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Proyecto creado exitosamente</div>";
+
+             }
          }
 
          

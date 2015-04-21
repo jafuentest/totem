@@ -1,9 +1,8 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="ModificarProyecto.aspx.cs" Inherits="GUI_Modulo4_ModificarProyecto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <link href="bootstrap-switch-master/docs/css/highlight.css" rel="stylesheet">
-    <link href="bootstrap-switch-master/dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
-    <link href="bootstrap-switch-master/docs/css/main.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="bootstrap-toggle-master/css/bootstrap-toggle.css" rel="stylesheet">
     <style>
         textarea {
             resize: none;
@@ -18,13 +17,6 @@
     <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
     <form id="register_form" class="form-horizontal" action="#">
         <div class="form-group">
-
-            <!--<div id="div_alerta" class="col-sm-12 col-md-12 col-lg-12">
-                <div class="alert alert-success alert-dismissible" role="alert">
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  Se ha modificado el proyecto con exito.
-                </div>
-            </div>-->
 
             <div id="div_nombre" class="col-sm-8 col-md-8 col-lg-8">
 				<input type="text" placeholder="Nombre" class="form-control" value="Twitter" name="nombre"/>
@@ -57,27 +49,38 @@
                        <input type="text" id="Precio" placeholder="Precio" value="200000000" class="form-control" name="precio"/>
                 </div>
                 
-                <div id="div_activo" class="col-sm-3 col-md-3 col-lg-3 col-md-offset-3">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input id="switch-disabled" type="checkbox" checked data-on-text="Activo" data-on-color="success" data-off-text="Inactivo" data-off-color="warning">
+                <div id="div_activo" class="col-sm-3 col-md-3 col-lg-3">
+                    <input checked data-toggle="toggle" data-size="normal" type="checkbox" data-on="Activo" data-off="Inactivo" data-onstyle="success" data-offstyle="warning" data-width="100">
                 </div>
 	        </div>
             <br>
             <div class="form-group">
 		        <div class="col-sm-1 col-md-1 col-lg-1">
-				    <a id="btn-modificar" type="button" class="btn btn-primary" href="PerfilProyecto.aspx?success=4">Modificar</a>
+				    <a id="btn-modificar" type="button" class="btn btn-primary" href="PerfilProyecto.aspx?success=0">Modificar</a>
 			    </div>
                 <div class="col-sm-3 col-md-3 col-lg-3">
                     &nbsp;&nbsp;&nbsp;&nbsp;
 				    <a id="btn-eliminar" type="button" class="btn btn-default" href="PerfilProyecto.aspx">Cancelar</a>
 			    </div>
 	        </div>
-    </form>
-        </div>
+        </form>
+    </div>
+
     <script src="js/Validacion.js"></script>
-    <script src="bootstrap-switch-master/docs/js/highlight.js"></script>
-    <script src="bootstrap-switch-master/dist/js/bootstrap-switch.js"></script>
-    <script src="bootstrap-switch-master/docs/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+	<script src="bootstrap-toggle-master/doc/script.js"></script>
+	<script src="bootstrap-toggle-master/js/bootstrap-toggle.js"></script>
+	<script>
+	    (function (i, s, o, g, r, a, m) {
+	        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+	            (i[r].q = i[r].q || []).push(arguments)
+	        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+	    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+	    ga('create', 'UA-55669452-1', 'auto');
+	    ga('send', 'pageview');
+	</script>
+
     <script type="text/javascript">
         $("#dpmoneda li a").click(function () {
 

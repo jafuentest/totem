@@ -1,10 +1,8 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="PerfilProyecto.aspx.cs" Inherits="GUI_Modulo4_PerfilProyecto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <meta http-equiv="set-cookie" content="selectedProject=Twitter;"/>
-    <link href="bootstrap-switch-master/docs/css/highlight.css" rel="stylesheet"/>
-    <link href="bootstrap-switch-master/dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet"/>
-    <link href="bootstrap-switch-master/docs/css/main.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="bootstrap-toggle-master/css/bootstrap-toggle.css" rel="stylesheet">
     <style>
         .bootstrapBlue {
             color: #337ab7;
@@ -35,8 +33,7 @@
         <!--Alertas de modificacion y eliminacion de requerimientos en la lista de requerimientos en el 1er acordeon-->
         <div class="form-group">
             <div id="div_alertas" class="col-sm-12 col-md-12 col-lg-12">
-                <div id="alert_requerimiento" runat="server">
-                </div>
+                <div id="alerts" runat="server"></div>
             </div>
         </div>
 
@@ -46,7 +43,7 @@
                 <div class="jumbotron">
                     <h2 class="sameLine bootstrapBlue" id="nombreProyecto" runat="server">Totem01</h2> <h5 class="sameLine">COD: </h5> <h5 id="codigoProyecto" class="sameLine" runat="server">T01</h5>
                     <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis pulvinar nisi, in dapibus leo. Aliquam ac gravida sem. Curabitur a aliquet tellus. Curabitur dui felis, luctus quis venenatis non, congue non nunc. Nam quis ipsum in dui egestas rutrum vel quis elit. Proin cursus lectus eget sem interdum tristique. Aliquam convallis elementum metus, eu hendrerit est aliquam vitae. Morbi suscipit sagittis venenatis. Etiam vehicula cursus convallis. Integer ultrices consequat dolor, hendrerit consectetur magna blandit eget. Curabitur nec vestibulum justo, lobortis mattis ipsum. Nullam enim est, placerat efficitur risus a, congue porttitor diam. Proin eget tortor dolor.</p>
-                    <input id="switch-disabled2" type="checkbox" data-size="mini" data-on-text="Activo" data-on-color="success" data-off-text="Inactivo" checked disabled>
+                    <input disabled checked data-toggle="toggle" data-size="normal" type="checkbox" data-on="Activo" data-off="Inactivo" data-onstyle="success" data-offstyle="warning" data-width="100">
                     <br><br>
                     <p class="sameLine">Cliente: </p><p id="nombreCliente" class="sameLine bootstrapBlue">Carlo Magurno</p>
                     <br>
@@ -349,7 +346,7 @@
                                         <td>
                                             <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
                                             <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
-                                            <a class="btn btn-success glyphicon glyphicon-print" href="<%= Page.ResolveUrl("~/GUI/Modulo8/MINUTA3.pdf") %>"></a>
+                                            <a class="btn btn-success glyphicon glyphicon-print" href="<%= Page.ResolveUrl("~/GUI/Modulo8/docs/MINUTA3.pdf") %>"></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -361,7 +358,7 @@
                                         <td>
                                             <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
                                             <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
-                                            <a class="btn btn-success glyphicon glyphicon-print" href="<%= Page.ResolveUrl("~/GUI/Modulo8/MINUTA3.pdf") %>"></a>
+                                            <a class="btn btn-success glyphicon glyphicon-print" href="<%= Page.ResolveUrl("~/GUI/Modulo8/docs/MINUTA3.pdf") %>"></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -373,7 +370,7 @@
                                         <td>
                                             <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
                                             <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
-                                            <a class="btn btn-success glyphicon glyphicon-print" href="<%= Page.ResolveUrl("~/GUI/Modulo8/MINUTA3.pdf") %>"></a>
+                                            <a class="btn btn-success glyphicon glyphicon-print" href="<%= Page.ResolveUrl("~/GUI/Modulo8/docs/MINUTA3.pdf") %>"></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -385,7 +382,7 @@
                                         <td>
                                             <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
                                             <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
-                                            <a class="btn btn-success glyphicon glyphicon-print" href="<%= Page.ResolveUrl("~/GUI/Modulo8/MINUTA3.pdf") %>"></a>
+                                            <a class="btn btn-success glyphicon glyphicon-print" href="<%= Page.ResolveUrl("~/GUI/Modulo8/docs/MINUTA3.pdf") %>"></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -397,7 +394,7 @@
                                         <td>
                                             <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
                                             <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
-                                            <a class="btn btn-success glyphicon glyphicon-print" href="<%= Page.ResolveUrl("~/GUI/Modulo8/MINUTA3.pdf") %>"></a>
+                                            <a class="btn btn-success glyphicon glyphicon-print" href="<%= Page.ResolveUrl("~/GUI/Modulo8/docs/MINUTA3.pdf") %>"></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -409,7 +406,7 @@
                                         <td>
                                             <a class="btn btn-primary glyphicon glyphicon-info-sign" href="<%= Page.ResolveUrl("~/GUI/Modulo8/DetalleMinutas.aspx") %>"></a>
                                             <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo8/ModificarMinuta.aspx") %>"></a>
-                                            <a class="btn btn-success glyphicon glyphicon-print" href="<%= Page.ResolveUrl("~/GUI/Modulo8/MINUTA3.pdf") %>"></a>
+                                            <a class="btn btn-success glyphicon glyphicon-print" href="<%= Page.ResolveUrl("~/GUI/Modulo8/docs/MINUTA3.pdf") %>"></a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -607,12 +604,12 @@
             <div class="col-md-offset-8">
                     <div class="col-sm-2 col-md-2 col-lg-2">
                         <form method="get" action="docs/ERS.pdf">
-			                <button class="btn btn-default" onclick="return checkform()">Generar ERS</button>
+			                <button class="btn btn-default">Generar ERS</button>
                         </form>
 		            </div>
                     <div class="col-sm-2 col-md-2 col-lg-2 col-md-offset-3">
                         <form method="get" action="docs/Factura.pdf">
-			                <button class="btn btn-default" onclick="return checkform()">Generar Factura</button>
+			                <button class="btn btn-default">Generar Factura</button>
                         </form>
 		            </div>
                 </div>
@@ -637,14 +634,14 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        <a id="btn-eliminar-requerimiento" type="button" class="btn btn-primary" onclick="EliminarRequerimiento()" href="PerfilProyecto.aspx?success=3">Eliminar</a>
+                        <a id="btn-eliminar-requerimiento" type="button" class="btn btn-primary" onclick="EliminarRequerimiento()" href="PerfilProyecto.aspx?success=2">Eliminar</a>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div>
         <!--Modal de modificacion de requerimiento en 1er acordeon-->
         <div id="modal-update-requerimiento" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
-            <form id="modificar_requerimientos" class="form-horizontal" method="post" action="PerfilProyecto.aspx?success=2">
+            <form id="modificar_requerimientos" class="form-horizontal" method="post" action="PerfilProyecto.aspx?success=1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -661,10 +658,10 @@
                                 <div class="form-group">
                                     <div class="col-sm-10 col-md-10 col-lg-10">
                                         <p><b>Tipo de Requerimiento:</b></p>
-                                        <label class="radio-inline noSwitch" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪">
-                                            <input type="radio" name="radioTipo" checked="checked" data-size="mini" data-on-text="⚪"data-on-color="success" data-off-text="⚪"/> Funcional</label>
-                                        <label class="radio-inline noSwitch" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪">
-                                            <input type="radio" name="radioTipo" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪"/> No Funcional</label>
+                                        <label class="radio-inline noSwitch">
+                                            <input type="radio" name="radioTipo" checked="checked"/> Funcional</label>
+                                        <label class="radio-inline noSwitch">
+                                            <input type="radio" name="radioTipo"/> No Funcional</label>
                                     </div>
                                 </div>
                                 <br />
@@ -680,22 +677,22 @@
                                 <div class="form-group">
                                     <div class="col-sm-10 col-md-10 col-lg-10">
                                         <p><b>Prioridad:</b></p>
-                                        <label class="radio-inline" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪">
-                                            <input type="radio" name="radioPrioridad" data-size="mini" data-on-text="⚪"data-on-color="success" data-off-text="⚪"/> Baja</label>
-                                        <label class="radio-inline" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪">
-                                            <input type="radio" name="radioPrioridad" checked="checked" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪"/> Media</label>
-                                        <label class="radio-inline" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪">
-                                            <input type="radio" name="radioPrioridad" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪"/> Alta</label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="radioPrioridad"/> Baja</label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="radioPrioridad" checked="checked"/> Media</label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="radioPrioridad"/> Alta</label>
                                     </div>
                                 </div>
                                 <br />
                                 <div class="form-group">
                                     <div class="col-sm-10 col-md-10 col-lg-10">
                                         <p><b>Status:</b></p>
-                                        <label class="radio-inline" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪">
-                                            <input type="radio" name="radioStatus" checked="checked" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪"/> No Finalizado</label>
-                                        <label class="radio-inline" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪">
-                                            <input type="radio" name="radioStatus" data-size="mini" data-on-text="⚪" data-on-color="success" data-off-text="⚪"/> Finalizado</label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="radioStatus" checked="checked"/> No Finalizado</label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="radioStatus"/> Finalizado</label>
                                     </div>
                                 </div>
                             </div>
@@ -712,26 +709,26 @@
         </div>
         <!--Modal de eliminacion de un involucrado en 4to acordeon-->
         <div id="modal-delete-involucrado" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" >Eliminaci&oacute;n de Usuario</h4>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                <div class="row">
-                    <p>Seguro que desea eliminar el usuario:</p>
-                    <p id="user-name"></p>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" >Eliminaci&oacute;n de Usuario</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <p>Seguro que desea eliminar el usuario:</p>
+                                <p id="user-name"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarUsuario()">Eliminar</button>
+                    </div>
                 </div>
-                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarUsuario()">Eliminar</button>
-            </div>
-            </div>
-        </div>
         </div>
         <!--Modal de eliminacion del proyecto-->
         <div id="modal-delete-project" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
@@ -775,7 +772,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-						<a id="btn-eliminar-cu" type="button" class="btn btn-primary" onclick="EliminarCasoDeUso()" href="Listar.aspx?success=3">Eliminar</a>
+						<a id="btn-eliminar-cu" type="button" class="btn btn-primary" onclick="EliminarCasoDeUso()" href="PerfilProyecto.aspx?success=4">Eliminar</a>
 					</div>
 				</div>
 			</div>
@@ -967,8 +964,8 @@
                 $('#btn-eliminar').on('click', function () {
                     table.row(tr).remove().draw();//se elimina la fila de la tabla
                     $('#modal-delete-involucrado').modal('hide');//se esconde el modal
-                    $('#alertlocal').addClass("alert alert-success alert-dismissible");
-                    $('#alertlocal').text("Se ha eliminado con éxito");
+                    $('#alerts').addClass("alert alert-success alert-dismissible");
+                    $('#alerts').text("Se ha eliminado con éxito");
                 });
             });
     </script>
@@ -978,10 +975,20 @@
     <!--Validaciones de campos en modal de modificar requerimiento en lista de requerimientos, 1er acorderon-->
     <script src="<%= Page.ResolveUrl("~/GUI/Modulo5/js/Validacion.js")%>"></script>
 
-    <!--REFERENCIAS A LOS SCRIPTS DEL BOOTSTRAP TOGGLE (SWITCH-MASTER)-->
-    <script src="bootstrap-switch-master/docs/js/highlight.js"></script>
-    <script src="bootstrap-switch-master/dist/js/bootstrap-switch.js"></script>
-    <script src="bootstrap-switch-master/docs/js/main.js"></script>
+    <!--REFERENCIAS A LOS SCRIPTS DEL BOOTSTRAP TOGGLE-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+	<script src="bootstrap-toggle-master/doc/script.js"></script>
+	<script src="bootstrap-toggle-master/js/bootstrap-toggle.js"></script>
+	<script>
+	    (function (i, s, o, g, r, a, m) {
+	        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+	            (i[r].q = i[r].q || []).push(arguments)
+	        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+	    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+	    ga('create', 'UA-55669452-1', 'auto');
+	    ga('send', 'pageview');
+	</script>
 
 
     <!--COSAS SIN ORDENAR AUN-->
