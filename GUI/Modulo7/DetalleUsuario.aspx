@@ -269,6 +269,11 @@
     <script>
         $(document).ready(function () {
             $('#table-projects').DataTable();
+            $("#dprol li a").click(function () {
+
+                $("#id-rol").html($(this).text() + ' <span class="caret"></span>');
+
+            });
         });
     </script>
 </asp:Content>

@@ -7,7 +7,6 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Usuarios del sistema
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
-    <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
         <div id="alert" runat="server">
         </div>
         <div id="alertlocal" >
@@ -192,7 +191,6 @@
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 	</div>
-</div>
 	<!-- Data tables init -->
 	<script type="text/javascript">
 	    $(document).ready(function () {

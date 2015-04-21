@@ -36,12 +36,6 @@
 		        </div>
             </div>
             <div class="form-group">
-			    <div  class="col-sm-10 col-md-5 col-lg-5">
-				    <label>Cargo:</label>
-                    <input id="input_cargo" type="text" value="Lider de Proyecto" class="form-control" name="cargo" />
-			    </div>
-            </div>
-            <div class="form-group">
 			    <div  class="col-sm-10 col-md-10 col-lg-10">
 				    <label>Pregunta de Seguridad:</label>
                     <input id="input_pregunta" type="text" value="Como se llama tu primera casa?" class="form-control" name="pregunta"/>
