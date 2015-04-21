@@ -12,7 +12,7 @@
     <div  class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
         <div id="alerta" >
                 </div>
-    <form id="ingresoCorreo" class="form-horizontal" method="post" action="https://mail.google.com/mail/u/0/#inbox">
+    <form id="ingresoCorreo" class="form-horizontal" method="post" action="M1_login.aspx">
 
                 <div  class="login-form"> 
                     
