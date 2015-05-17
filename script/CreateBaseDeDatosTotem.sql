@@ -272,7 +272,7 @@ CREATE
   TABLE PASO
   (
     pas_id         INTEGER NOT NULL ,
-    pas_paso       VARCHAR (10) NOT NULL ,
+    pas_paso       VARCHAR (300) NOT NULL ,
     CASO_USO_cu_id INTEGER NOT NULL ,
     CONSTRAINT PASO_PK PRIMARY KEY CLUSTERED (pas_id, CASO_USO_cu_id)
 WITH
@@ -289,7 +289,7 @@ CREATE
   TABLE PASO_EXTENSION
   (
     pas_id                        INTEGER NOT NULL ,
-    pas_paso                      VARCHAR (10) NOT NULL ,
+    pas_paso                      VARCHAR (300) NOT NULL ,
     EXTENSION_ext_id              INTEGER NOT NULL ,
     EXTENSION_PASO_pas_id         INTEGER NOT NULL ,
     EXTENSION_PASO_CASO_USO_cu_id INTEGER NOT NULL ,
