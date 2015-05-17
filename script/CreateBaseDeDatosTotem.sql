@@ -74,6 +74,7 @@ CREATE
   TABLE CLIENTE_JURIDICO
   (
     cj_id        INTEGER NOT NULL ,
+    cj_rif       VARCHAR (20) NOT NULL ,
     cj_nombre    VARCHAR (60) NOT NULL ,
     cj_logo      VARCHAR (60) NOT NULL ,
     LUGAR_lug_id INTEGER NOT NULL ,
@@ -219,7 +220,7 @@ CREATE
     lug_id           INTEGER NOT NULL ,
     lug_nombre       VARCHAR (60) NOT NULL ,
     lug_tipo         VARCHAR (40) NOT NULL ,
-    lug_codigopostal INTEGER NOT NULL ,
+    lug_codigopostal INTEGER ,
     LUGAR_lug_id     INTEGER ,
     CONSTRAINT LUGAR_PK PRIMARY KEY CLUSTERED (lug_id)
 WITH
@@ -383,12 +384,11 @@ GO
 CREATE
   TABLE TELEFONO
   (
-    cli_nat_id            INTEGER NOT NULL ,
     tel_codigo            INTEGER NOT NULL ,
     tel_numero            INTEGER NOT NULL ,
     CLIENTE_NATURAL_cn_id INTEGER ,
     CONTACTO_con_id       INTEGER ,
-    CONSTRAINT TELEFONO_PK PRIMARY KEY CLUSTERED (cli_nat_id, tel_codigo)
+    CONSTRAINT TELEFONO_PK PRIMARY KEY CLUSTERED (tel_codigo)
 WITH
   (
     ALLOW_PAGE_LOCKS = ON ,

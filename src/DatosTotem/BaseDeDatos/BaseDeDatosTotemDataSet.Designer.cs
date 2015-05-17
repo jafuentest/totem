@@ -70,6 +70,10 @@ namespace DatosTotem.BaseDeDatos {
         
         private USUARIODataTable tableUSUARIO;
         
+        private global::System.Data.DataRelation relationACTOR_PROYECTO_FK;
+        
+        private global::System.Data.DataRelation relationACUERDO_MINUTA_FK;
+        
         private global::System.Data.DataRelation relationCLIENTE_JURIDICO_LUGAR_FK;
         
         private global::System.Data.DataRelation relationCLIENTE_NATURAL_LUGAR_FK;
@@ -77,6 +81,8 @@ namespace DatosTotem.BaseDeDatos {
         private global::System.Data.DataRelation relationCONTACTO_CARGO_FK;
         
         private global::System.Data.DataRelation relationCONTACTO_CLIENTE_JURIDICO_FK;
+        
+        private global::System.Data.DataRelation relationCU_ACTOR_ACTOR_FK;
         
         private global::System.Data.DataRelation relationCU_ACTOR_CASO_USO_FK;
         
@@ -89,6 +95,8 @@ namespace DatosTotem.BaseDeDatos {
         private global::System.Data.DataRelation relationINVOLUCRADOS_CLIENTES_CONTACTO_FK;
         
         private global::System.Data.DataRelation relationINVOLUCRADOS_CLIENTES_PROYECTO_FK;
+        
+        private global::System.Data.DataRelation relationINVOLUCRADOS_USUARIOS_ACUERDO_FK;
         
         private global::System.Data.DataRelation relationINVOLUCRADOS_USUARIOS_PROYECTO_FK;
         
@@ -115,14 +123,6 @@ namespace DatosTotem.BaseDeDatos {
         private global::System.Data.DataRelation relationTELEFONO_CONTACTO_FK;
         
         private global::System.Data.DataRelation relationUSUARIO_CARGO_FK;
-        
-        private global::System.Data.DataRelation relationACTOR_PROYECTO_FK;
-        
-        private global::System.Data.DataRelation relationACUERDO_MINUTA_FK;
-        
-        private global::System.Data.DataRelation relationCU_ACTOR_ACTOR_FK;
-        
-        private global::System.Data.DataRelation relationINVOLUCRADOS_USUARIOS_ACUERDO_FK;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -776,16 +776,20 @@ namespace DatosTotem.BaseDeDatos {
                     this.tableUSUARIO.InitVars();
                 }
             }
+            this.relationACTOR_PROYECTO_FK = this.Relations["ACTOR_PROYECTO_FK"];
+            this.relationACUERDO_MINUTA_FK = this.Relations["ACUERDO_MINUTA_FK"];
             this.relationCLIENTE_JURIDICO_LUGAR_FK = this.Relations["CLIENTE_JURIDICO_LUGAR_FK"];
             this.relationCLIENTE_NATURAL_LUGAR_FK = this.Relations["CLIENTE_NATURAL_LUGAR_FK"];
             this.relationCONTACTO_CARGO_FK = this.Relations["CONTACTO_CARGO_FK"];
             this.relationCONTACTO_CLIENTE_JURIDICO_FK = this.Relations["CONTACTO_CLIENTE_JURIDICO_FK"];
+            this.relationCU_ACTOR_ACTOR_FK = this.Relations["CU_ACTOR_ACTOR_FK"];
             this.relationCU_ACTOR_CASO_USO_FK = this.Relations["CU_ACTOR_CASO_USO_FK"];
             this.relationCU_REQUERIMIENTO_CASO_USO_FK = this.Relations["CU_REQUERIMIENTO_CASO_USO_FK"];
             this.relationCU_REQUERIMIENTO_REQUERIMIENTO_FK = this.Relations["CU_REQUERIMIENTO_REQUERIMIENTO_FK"];
             this.relationEXTENSION_PASO_FK = this.Relations["EXTENSION_PASO_FK"];
             this.relationINVOLUCRADOS_CLIENTES_CONTACTO_FK = this.Relations["INVOLUCRADOS_CLIENTES_CONTACTO_FK"];
             this.relationINVOLUCRADOS_CLIENTES_PROYECTO_FK = this.Relations["INVOLUCRADOS_CLIENTES_PROYECTO_FK"];
+            this.relationINVOLUCRADOS_USUARIOS_ACUERDO_FK = this.Relations["INVOLUCRADOS_USUARIOS_ACUERDO_FK"];
             this.relationINVOLUCRADOS_USUARIOS_PROYECTO_FK = this.Relations["INVOLUCRADOS_USUARIOS_PROYECTO_FK"];
             this.relationINVOLUCRADOS_USUARIOS_USUARIO_FK = this.Relations["INVOLUCRADOS_USUARIOS_USUARIO_FK"];
             this.relationLUGAR_LUGAR_FK = this.Relations["LUGAR_LUGAR_FK"];
@@ -799,10 +803,6 @@ namespace DatosTotem.BaseDeDatos {
             this.relationTELEFONO_CLIENTE_NATURAL_FK = this.Relations["TELEFONO_CLIENTE_NATURAL_FK"];
             this.relationTELEFONO_CONTACTO_FK = this.Relations["TELEFONO_CONTACTO_FK"];
             this.relationUSUARIO_CARGO_FK = this.Relations["USUARIO_CARGO_FK"];
-            this.relationACTOR_PROYECTO_FK = this.Relations["ACTOR_PROYECTO_FK"];
-            this.relationACUERDO_MINUTA_FK = this.Relations["ACUERDO_MINUTA_FK"];
-            this.relationCU_ACTOR_ACTOR_FK = this.Relations["CU_ACTOR_ACTOR_FK"];
-            this.relationINVOLUCRADOS_USUARIOS_ACUERDO_FK = this.Relations["INVOLUCRADOS_USUARIOS_ACUERDO_FK"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -859,6 +859,14 @@ namespace DatosTotem.BaseDeDatos {
             base.Tables.Add(this.tableTELEFONO);
             this.tableUSUARIO = new USUARIODataTable();
             base.Tables.Add(this.tableUSUARIO);
+            this.relationACTOR_PROYECTO_FK = new global::System.Data.DataRelation("ACTOR_PROYECTO_FK", new global::System.Data.DataColumn[] {
+                        this.tablePROYECTO.pro_idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableACTOR.PROYECTO_pro_idColumn}, false);
+            this.Relations.Add(this.relationACTOR_PROYECTO_FK);
+            this.relationACUERDO_MINUTA_FK = new global::System.Data.DataRelation("ACUERDO_MINUTA_FK", new global::System.Data.DataColumn[] {
+                        this.tableMINUTA.min_idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableACUERDO.MINUTA_min_idColumn}, false);
+            this.Relations.Add(this.relationACUERDO_MINUTA_FK);
             this.relationCLIENTE_JURIDICO_LUGAR_FK = new global::System.Data.DataRelation("CLIENTE_JURIDICO_LUGAR_FK", new global::System.Data.DataColumn[] {
                         this.tableLUGAR.lug_idColumn}, new global::System.Data.DataColumn[] {
                         this.tableCLIENTE_JURIDICO.LUGAR_lug_idColumn}, false);
@@ -875,6 +883,10 @@ namespace DatosTotem.BaseDeDatos {
                         this.tableCLIENTE_JURIDICO.cj_idColumn}, new global::System.Data.DataColumn[] {
                         this.tableCONTACTO.CLIENTE_JURIDICO_cj_idColumn}, false);
             this.Relations.Add(this.relationCONTACTO_CLIENTE_JURIDICO_FK);
+            this.relationCU_ACTOR_ACTOR_FK = new global::System.Data.DataRelation("CU_ACTOR_ACTOR_FK", new global::System.Data.DataColumn[] {
+                        this.tableACTOR.act_idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCU_ACTOR.ACTOR_act_idColumn}, false);
+            this.Relations.Add(this.relationCU_ACTOR_ACTOR_FK);
             this.relationCU_ACTOR_CASO_USO_FK = new global::System.Data.DataRelation("CU_ACTOR_CASO_USO_FK", new global::System.Data.DataColumn[] {
                         this.tableCASO_USO.cu_idColumn}, new global::System.Data.DataColumn[] {
                         this.tableCU_ACTOR.CASO_USO_cu_idColumn}, false);
@@ -901,6 +913,10 @@ namespace DatosTotem.BaseDeDatos {
                         this.tablePROYECTO.pro_idColumn}, new global::System.Data.DataColumn[] {
                         this.tableINVOLUCRADOS_CLIENTES.PROYECTO_pro_idColumn}, false);
             this.Relations.Add(this.relationINVOLUCRADOS_CLIENTES_PROYECTO_FK);
+            this.relationINVOLUCRADOS_USUARIOS_ACUERDO_FK = new global::System.Data.DataRelation("INVOLUCRADOS_USUARIOS_ACUERDO_FK", new global::System.Data.DataColumn[] {
+                        this.tableACUERDO.acu_idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableINVOLUCRADOS_USUARIOS.ACUERDO_acu_idColumn}, false);
+            this.Relations.Add(this.relationINVOLUCRADOS_USUARIOS_ACUERDO_FK);
             this.relationINVOLUCRADOS_USUARIOS_PROYECTO_FK = new global::System.Data.DataRelation("INVOLUCRADOS_USUARIOS_PROYECTO_FK", new global::System.Data.DataColumn[] {
                         this.tablePROYECTO.pro_idColumn}, new global::System.Data.DataColumn[] {
                         this.tableINVOLUCRADOS_USUARIOS.PROYECTO_pro_idColumn}, false);
@@ -959,22 +975,6 @@ namespace DatosTotem.BaseDeDatos {
                         this.tableCARGO.car_idColumn}, new global::System.Data.DataColumn[] {
                         this.tableUSUARIO.CARGO_car_idColumn}, false);
             this.Relations.Add(this.relationUSUARIO_CARGO_FK);
-            this.relationACTOR_PROYECTO_FK = new global::System.Data.DataRelation("ACTOR_PROYECTO_FK", new global::System.Data.DataColumn[] {
-                        this.tablePROYECTO.pro_idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableACTOR.PROYECTO_pro_idColumn}, false);
-            this.Relations.Add(this.relationACTOR_PROYECTO_FK);
-            this.relationACUERDO_MINUTA_FK = new global::System.Data.DataRelation("ACUERDO_MINUTA_FK", new global::System.Data.DataColumn[] {
-                        this.tableMINUTA.min_idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableACUERDO.MINUTA_min_idColumn}, false);
-            this.Relations.Add(this.relationACUERDO_MINUTA_FK);
-            this.relationCU_ACTOR_ACTOR_FK = new global::System.Data.DataRelation("CU_ACTOR_ACTOR_FK", new global::System.Data.DataColumn[] {
-                        this.tableACTOR.act_idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableCU_ACTOR.ACTOR_act_idColumn}, false);
-            this.Relations.Add(this.relationCU_ACTOR_ACTOR_FK);
-            this.relationINVOLUCRADOS_USUARIOS_ACUERDO_FK = new global::System.Data.DataRelation("INVOLUCRADOS_USUARIOS_ACUERDO_FK", new global::System.Data.DataColumn[] {
-                        this.tableACUERDO.acu_idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableINVOLUCRADOS_USUARIOS.ACUERDO_acu_idColumn}, false);
-            this.Relations.Add(this.relationINVOLUCRADOS_USUARIOS_ACUERDO_FK);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2475,6 +2475,8 @@ namespace DatosTotem.BaseDeDatos {
             
             private global::System.Data.DataColumn columncj_id;
             
+            private global::System.Data.DataColumn columncj_rif;
+            
             private global::System.Data.DataColumn columncj_nombre;
             
             private global::System.Data.DataColumn columncj_logo;
@@ -2519,6 +2521,14 @@ namespace DatosTotem.BaseDeDatos {
             public global::System.Data.DataColumn cj_idColumn {
                 get {
                     return this.columncj_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn cj_rifColumn {
+                get {
+                    return this.columncj_rif;
                 }
             }
             
@@ -2583,15 +2593,16 @@ namespace DatosTotem.BaseDeDatos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CLIENTE_JURIDICORow AddCLIENTE_JURIDICORow(int cj_id, string cj_nombre, string cj_logo, LUGARRow parentLUGARRowByCLIENTE_JURIDICO_LUGAR_FK) {
+            public CLIENTE_JURIDICORow AddCLIENTE_JURIDICORow(int cj_id, string cj_rif, string cj_nombre, string cj_logo, LUGARRow parentLUGARRowByCLIENTE_JURIDICO_LUGAR_FK) {
                 CLIENTE_JURIDICORow rowCLIENTE_JURIDICORow = ((CLIENTE_JURIDICORow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         cj_id,
+                        cj_rif,
                         cj_nombre,
                         cj_logo,
                         null};
                 if ((parentLUGARRowByCLIENTE_JURIDICO_LUGAR_FK != null)) {
-                    columnValuesArray[3] = parentLUGARRowByCLIENTE_JURIDICO_LUGAR_FK[0];
+                    columnValuesArray[4] = parentLUGARRowByCLIENTE_JURIDICO_LUGAR_FK[0];
                 }
                 rowCLIENTE_JURIDICORow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCLIENTE_JURIDICORow);
@@ -2623,6 +2634,7 @@ namespace DatosTotem.BaseDeDatos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columncj_id = base.Columns["cj_id"];
+                this.columncj_rif = base.Columns["cj_rif"];
                 this.columncj_nombre = base.Columns["cj_nombre"];
                 this.columncj_logo = base.Columns["cj_logo"];
                 this.columnLUGAR_lug_id = base.Columns["LUGAR_lug_id"];
@@ -2633,6 +2645,8 @@ namespace DatosTotem.BaseDeDatos {
             private void InitClass() {
                 this.columncj_id = new global::System.Data.DataColumn("cj_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncj_id);
+                this.columncj_rif = new global::System.Data.DataColumn("cj_rif", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncj_rif);
                 this.columncj_nombre = new global::System.Data.DataColumn("cj_nombre", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncj_nombre);
                 this.columncj_logo = new global::System.Data.DataColumn("cj_logo", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2643,6 +2657,8 @@ namespace DatosTotem.BaseDeDatos {
                                 this.columncj_id}, true));
                 this.columncj_id.AllowDBNull = false;
                 this.columncj_id.Unique = true;
+                this.columncj_rif.AllowDBNull = false;
+                this.columncj_rif.MaxLength = 20;
                 this.columncj_nombre.AllowDBNull = false;
                 this.columncj_nombre.MaxLength = 60;
                 this.columncj_logo.AllowDBNull = false;
@@ -5063,7 +5079,6 @@ namespace DatosTotem.BaseDeDatos {
                 this.columnlug_nombre.MaxLength = 60;
                 this.columnlug_tipo.AllowDBNull = false;
                 this.columnlug_tipo.MaxLength = 40;
-                this.columnlug_codigopostal.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7703,8 +7718,6 @@ namespace DatosTotem.BaseDeDatos {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class TELEFONODataTable : global::System.Data.TypedTableBase<TELEFONORow> {
             
-            private global::System.Data.DataColumn columncli_nat_id;
-            
             private global::System.Data.DataColumn columntel_codigo;
             
             private global::System.Data.DataColumn columntel_numero;
@@ -7744,14 +7757,6 @@ namespace DatosTotem.BaseDeDatos {
             protected TELEFONODataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn cli_nat_idColumn {
-                get {
-                    return this.columncli_nat_id;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7823,19 +7828,18 @@ namespace DatosTotem.BaseDeDatos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TELEFONORow AddTELEFONORow(int cli_nat_id, int tel_codigo, int tel_numero, CLIENTE_NATURALRow parentCLIENTE_NATURALRowByTELEFONO_CLIENTE_NATURAL_FK, CONTACTORow parentCONTACTORowByTELEFONO_CONTACTO_FK) {
+            public TELEFONORow AddTELEFONORow(int tel_codigo, int tel_numero, CLIENTE_NATURALRow parentCLIENTE_NATURALRowByTELEFONO_CLIENTE_NATURAL_FK, CONTACTORow parentCONTACTORowByTELEFONO_CONTACTO_FK) {
                 TELEFONORow rowTELEFONORow = ((TELEFONORow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        cli_nat_id,
                         tel_codigo,
                         tel_numero,
                         null,
                         null};
                 if ((parentCLIENTE_NATURALRowByTELEFONO_CLIENTE_NATURAL_FK != null)) {
-                    columnValuesArray[3] = parentCLIENTE_NATURALRowByTELEFONO_CLIENTE_NATURAL_FK[0];
+                    columnValuesArray[2] = parentCLIENTE_NATURALRowByTELEFONO_CLIENTE_NATURAL_FK[0];
                 }
                 if ((parentCONTACTORowByTELEFONO_CONTACTO_FK != null)) {
-                    columnValuesArray[4] = parentCONTACTORowByTELEFONO_CONTACTO_FK[0];
+                    columnValuesArray[3] = parentCONTACTORowByTELEFONO_CONTACTO_FK[0];
                 }
                 rowTELEFONORow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTELEFONORow);
@@ -7844,9 +7848,8 @@ namespace DatosTotem.BaseDeDatos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TELEFONORow FindBycli_nat_idtel_codigo(int cli_nat_id, int tel_codigo) {
+            public TELEFONORow FindBytel_codigo(int tel_codigo) {
                 return ((TELEFONORow)(this.Rows.Find(new object[] {
-                            cli_nat_id,
                             tel_codigo})));
             }
             
@@ -7867,7 +7870,6 @@ namespace DatosTotem.BaseDeDatos {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columncli_nat_id = base.Columns["cli_nat_id"];
                 this.columntel_codigo = base.Columns["tel_codigo"];
                 this.columntel_numero = base.Columns["tel_numero"];
                 this.columnCLIENTE_NATURAL_cn_id = base.Columns["CLIENTE_NATURAL_cn_id"];
@@ -7877,8 +7879,6 @@ namespace DatosTotem.BaseDeDatos {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columncli_nat_id = new global::System.Data.DataColumn("cli_nat_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncli_nat_id);
                 this.columntel_codigo = new global::System.Data.DataColumn("tel_codigo", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntel_codigo);
                 this.columntel_numero = new global::System.Data.DataColumn("tel_numero", typeof(int), null, global::System.Data.MappingType.Element);
@@ -7888,10 +7888,9 @@ namespace DatosTotem.BaseDeDatos {
                 this.columnCONTACTO_con_id = new global::System.Data.DataColumn("CONTACTO_con_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCONTACTO_con_id);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columncli_nat_id,
                                 this.columntel_codigo}, true));
-                this.columncli_nat_id.AllowDBNull = false;
                 this.columntel_codigo.AllowDBNull = false;
+                this.columntel_codigo.Unique = true;
                 this.columntel_numero.AllowDBNull = false;
             }
             
@@ -8796,6 +8795,17 @@ namespace DatosTotem.BaseDeDatos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string cj_rif {
+                get {
+                    return ((string)(this[this.tableCLIENTE_JURIDICO.cj_rifColumn]));
+                }
+                set {
+                    this[this.tableCLIENTE_JURIDICO.cj_rifColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string cj_nombre {
                 get {
                     return ((string)(this[this.tableCLIENTE_JURIDICO.cj_nombreColumn]));
@@ -9094,23 +9104,23 @@ namespace DatosTotem.BaseDeDatos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CASO_USORow CASO_USORow {
-                get {
-                    return ((CASO_USORow)(this.GetParentRow(this.Table.ParentRelations["CU_ACTOR_CASO_USO_FK"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["CU_ACTOR_CASO_USO_FK"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ACTORRow ACTORRow {
                 get {
                     return ((ACTORRow)(this.GetParentRow(this.Table.ParentRelations["CU_ACTOR_ACTOR_FK"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["CU_ACTOR_ACTOR_FK"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CASO_USORow CASO_USORow {
+                get {
+                    return ((CASO_USORow)(this.GetParentRow(this.Table.ParentRelations["CU_ACTOR_CASO_USO_FK"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["CU_ACTOR_CASO_USO_FK"]);
                 }
             }
         }
@@ -9369,6 +9379,17 @@ namespace DatosTotem.BaseDeDatos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ACUERDORow ACUERDORow {
+                get {
+                    return ((ACUERDORow)(this.GetParentRow(this.Table.ParentRelations["INVOLUCRADOS_USUARIOS_ACUERDO_FK"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["INVOLUCRADOS_USUARIOS_ACUERDO_FK"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PROYECTORow PROYECTORow {
                 get {
                     return ((PROYECTORow)(this.GetParentRow(this.Table.ParentRelations["INVOLUCRADOS_USUARIOS_PROYECTO_FK"])));
@@ -9386,17 +9407,6 @@ namespace DatosTotem.BaseDeDatos {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["INVOLUCRADOS_USUARIOS_USUARIO_FK"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ACUERDORow ACUERDORow {
-                get {
-                    return ((ACUERDORow)(this.GetParentRow(this.Table.ParentRelations["INVOLUCRADOS_USUARIOS_ACUERDO_FK"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["INVOLUCRADOS_USUARIOS_ACUERDO_FK"]);
                 }
             }
             
@@ -9475,7 +9485,12 @@ namespace DatosTotem.BaseDeDatos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int lug_codigopostal {
                 get {
-                    return ((int)(this[this.tableLUGAR.lug_codigopostalColumn]));
+                    try {
+                        return ((int)(this[this.tableLUGAR.lug_codigopostalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'lug_codigopostal\' in table \'LUGAR\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableLUGAR.lug_codigopostalColumn] = value;
@@ -9507,6 +9522,18 @@ namespace DatosTotem.BaseDeDatos {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["LUGAR_LUGAR_FK"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Islug_codigopostalNull() {
+                return this.IsNull(this.tableLUGAR.lug_codigopostalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setlug_codigopostalNull() {
+                this[this.tableLUGAR.lug_codigopostalColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9685,6 +9712,17 @@ namespace DatosTotem.BaseDeDatos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ACUERDORow[] GetACUERDORows() {
+                if ((this.Table.ChildRelations["ACUERDO_MINUTA_FK"] == null)) {
+                    return new ACUERDORow[0];
+                }
+                else {
+                    return ((ACUERDORow[])(base.GetChildRows(this.Table.ChildRelations["ACUERDO_MINUTA_FK"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public MIN_INVRow[] GetMIN_INVRows() {
                 if ((this.Table.ChildRelations["MIN_INV_MINUTA_FK"] == null)) {
                     return new MIN_INVRow[0];
@@ -9702,17 +9740,6 @@ namespace DatosTotem.BaseDeDatos {
                 }
                 else {
                     return ((PUNTORow[])(base.GetChildRows(this.Table.ChildRelations["PUNTO_MINUTA_FK"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ACUERDORow[] GetACUERDORows() {
-                if ((this.Table.ChildRelations["ACUERDO_MINUTA_FK"] == null)) {
-                    return new ACUERDORow[0];
-                }
-                else {
-                    return ((ACUERDORow[])(base.GetChildRows(this.Table.ChildRelations["ACUERDO_MINUTA_FK"])));
                 }
             }
         }
@@ -10020,6 +10047,17 @@ namespace DatosTotem.BaseDeDatos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ACTORRow[] GetACTORRows() {
+                if ((this.Table.ChildRelations["ACTOR_PROYECTO_FK"] == null)) {
+                    return new ACTORRow[0];
+                }
+                else {
+                    return ((ACTORRow[])(base.GetChildRows(this.Table.ChildRelations["ACTOR_PROYECTO_FK"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public INVOLUCRADOS_CLIENTESRow[] GetINVOLUCRADOS_CLIENTESRows() {
                 if ((this.Table.ChildRelations["INVOLUCRADOS_CLIENTES_PROYECTO_FK"] == null)) {
                     return new INVOLUCRADOS_CLIENTESRow[0];
@@ -10048,17 +10086,6 @@ namespace DatosTotem.BaseDeDatos {
                 }
                 else {
                     return ((REQUERIMIENTORow[])(base.GetChildRows(this.Table.ChildRelations["REQUERIMIENTO_PROYECTO_FK"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ACTORRow[] GetACTORRows() {
-                if ((this.Table.ChildRelations["ACTOR_PROYECTO_FK"] == null)) {
-                    return new ACTORRow[0];
-                }
-                else {
-                    return ((ACTORRow[])(base.GetChildRows(this.Table.ChildRelations["ACTOR_PROYECTO_FK"])));
                 }
             }
         }
@@ -10248,17 +10275,6 @@ namespace DatosTotem.BaseDeDatos {
             internal TELEFONORow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tableTELEFONO = ((TELEFONODataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int cli_nat_id {
-                get {
-                    return ((int)(this[this.tableTELEFONO.cli_nat_idColumn]));
-                }
-                set {
-                    this[this.tableTELEFONO.cli_nat_idColumn] = value;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12872,6 +12888,7 @@ SELECT cu_id, cu_identificador, cu_titulo, cu_condexito, cu_condfallo, cu_dispar
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "CLIENTE_JURIDICO";
             tableMapping.ColumnMappings.Add("cj_id", "cj_id");
+            tableMapping.ColumnMappings.Add("cj_rif", "cj_rif");
             tableMapping.ColumnMappings.Add("cj_nombre", "cj_nombre");
             tableMapping.ColumnMappings.Add("cj_logo", "cj_logo");
             tableMapping.ColumnMappings.Add("LUGAR_lug_id", "LUGAR_lug_id");
@@ -12879,33 +12896,36 @@ SELECT cu_id, cu_identificador, cu_titulo, cu_condexito, cu_condfallo, cu_dispar
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[CLIENTE_JURIDICO] WHERE (([cj_id] = @Original_cj_id) AND ([cj_" +
-                "nombre] = @Original_cj_nombre) AND ([cj_logo] = @Original_cj_logo) AND ([LUGAR_l" +
-                "ug_id] = @Original_LUGAR_lug_id))";
+                "rif] = @Original_cj_rif) AND ([cj_nombre] = @Original_cj_nombre) AND ([cj_logo] " +
+                "= @Original_cj_logo) AND ([LUGAR_lug_id] = @Original_LUGAR_lug_id))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_cj_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cj_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_cj_rif", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cj_rif", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_cj_nombre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cj_nombre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_cj_logo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cj_logo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LUGAR_lug_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LUGAR_lug_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[CLIENTE_JURIDICO] ([cj_id], [cj_nombre], [cj_logo], [LUGAR_lug" +
-                "_id]) VALUES (@cj_id, @cj_nombre, @cj_logo, @LUGAR_lug_id);\r\nSELECT cj_id, cj_no" +
-                "mbre, cj_logo, LUGAR_lug_id FROM CLIENTE_JURIDICO WHERE (cj_id = @cj_id)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[CLIENTE_JURIDICO] ([cj_id], [cj_rif], [cj_nombre], [cj_logo], [LUGAR_lug_id]) VALUES (@cj_id, @cj_rif, @cj_nombre, @cj_logo, @LUGAR_lug_id);
+SELECT cj_id, cj_rif, cj_nombre, cj_logo, LUGAR_lug_id FROM CLIENTE_JURIDICO WHERE (cj_id = @cj_id)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cj_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cj_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cj_rif", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cj_rif", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cj_nombre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cj_nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cj_logo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cj_logo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LUGAR_lug_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LUGAR_lug_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[CLIENTE_JURIDICO] SET [cj_id] = @cj_id, [cj_nombre] = @cj_nombre, [cj_logo] = @cj_logo, [LUGAR_lug_id] = @LUGAR_lug_id WHERE (([cj_id] = @Original_cj_id) AND ([cj_nombre] = @Original_cj_nombre) AND ([cj_logo] = @Original_cj_logo) AND ([LUGAR_lug_id] = @Original_LUGAR_lug_id));
-SELECT cj_id, cj_nombre, cj_logo, LUGAR_lug_id FROM CLIENTE_JURIDICO WHERE (cj_id = @cj_id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[CLIENTE_JURIDICO] SET [cj_id] = @cj_id, [cj_rif] = @cj_rif, [cj_nombre] = @cj_nombre, [cj_logo] = @cj_logo, [LUGAR_lug_id] = @LUGAR_lug_id WHERE (([cj_id] = @Original_cj_id) AND ([cj_rif] = @Original_cj_rif) AND ([cj_nombre] = @Original_cj_nombre) AND ([cj_logo] = @Original_cj_logo) AND ([LUGAR_lug_id] = @Original_LUGAR_lug_id));
+SELECT cj_id, cj_rif, cj_nombre, cj_logo, LUGAR_lug_id FROM CLIENTE_JURIDICO WHERE (cj_id = @cj_id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cj_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cj_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cj_rif", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cj_rif", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cj_nombre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cj_nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cj_logo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cj_logo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LUGAR_lug_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LUGAR_lug_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_cj_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cj_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_cj_rif", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cj_rif", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_cj_nombre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cj_nombre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_cj_logo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cj_logo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LUGAR_lug_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LUGAR_lug_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -12924,7 +12944,7 @@ SELECT cj_id, cj_nombre, cj_logo, LUGAR_lug_id FROM CLIENTE_JURIDICO WHERE (cj_i
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT cj_id, cj_nombre, cj_logo, LUGAR_lug_id FROM dbo.CLIENTE_JURIDICO";
+            this._commandCollection[0].CommandText = "SELECT cj_id, cj_rif, cj_nombre, cj_logo, LUGAR_lug_id FROM dbo.CLIENTE_JURIDICO";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -12985,21 +13005,27 @@ SELECT cj_id, cj_nombre, cj_logo, LUGAR_lug_id FROM CLIENTE_JURIDICO WHERE (cj_i
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_cj_id, string Original_cj_nombre, string Original_cj_logo, int Original_LUGAR_lug_id) {
+        public virtual int Delete(int Original_cj_id, string Original_cj_rif, string Original_cj_nombre, string Original_cj_logo, int Original_LUGAR_lug_id) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_cj_id));
+            if ((Original_cj_rif == null)) {
+                throw new global::System.ArgumentNullException("Original_cj_rif");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_cj_rif));
+            }
             if ((Original_cj_nombre == null)) {
                 throw new global::System.ArgumentNullException("Original_cj_nombre");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_cj_nombre));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_cj_nombre));
             }
             if ((Original_cj_logo == null)) {
                 throw new global::System.ArgumentNullException("Original_cj_logo");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_cj_logo));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_cj_logo));
             }
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_LUGAR_lug_id));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_LUGAR_lug_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -13020,21 +13046,27 @@ SELECT cj_id, cj_nombre, cj_logo, LUGAR_lug_id FROM CLIENTE_JURIDICO WHERE (cj_i
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int cj_id, string cj_nombre, string cj_logo, int LUGAR_lug_id) {
+        public virtual int Insert(int cj_id, string cj_rif, string cj_nombre, string cj_logo, int LUGAR_lug_id) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(cj_id));
+            if ((cj_rif == null)) {
+                throw new global::System.ArgumentNullException("cj_rif");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(cj_rif));
+            }
             if ((cj_nombre == null)) {
                 throw new global::System.ArgumentNullException("cj_nombre");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(cj_nombre));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(cj_nombre));
             }
             if ((cj_logo == null)) {
                 throw new global::System.ArgumentNullException("cj_logo");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(cj_logo));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(cj_logo));
             }
-            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(LUGAR_lug_id));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(LUGAR_lug_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -13055,35 +13087,47 @@ SELECT cj_id, cj_nombre, cj_logo, LUGAR_lug_id FROM CLIENTE_JURIDICO WHERE (cj_i
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int cj_id, string cj_nombre, string cj_logo, int LUGAR_lug_id, int Original_cj_id, string Original_cj_nombre, string Original_cj_logo, int Original_LUGAR_lug_id) {
+        public virtual int Update(int cj_id, string cj_rif, string cj_nombre, string cj_logo, int LUGAR_lug_id, int Original_cj_id, string Original_cj_rif, string Original_cj_nombre, string Original_cj_logo, int Original_LUGAR_lug_id) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(cj_id));
+            if ((cj_rif == null)) {
+                throw new global::System.ArgumentNullException("cj_rif");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(cj_rif));
+            }
             if ((cj_nombre == null)) {
                 throw new global::System.ArgumentNullException("cj_nombre");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(cj_nombre));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(cj_nombre));
             }
             if ((cj_logo == null)) {
                 throw new global::System.ArgumentNullException("cj_logo");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(cj_logo));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(cj_logo));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(LUGAR_lug_id));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_cj_id));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(LUGAR_lug_id));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_cj_id));
+            if ((Original_cj_rif == null)) {
+                throw new global::System.ArgumentNullException("Original_cj_rif");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_cj_rif));
+            }
             if ((Original_cj_nombre == null)) {
                 throw new global::System.ArgumentNullException("Original_cj_nombre");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_cj_nombre));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_cj_nombre));
             }
             if ((Original_cj_logo == null)) {
                 throw new global::System.ArgumentNullException("Original_cj_logo");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_cj_logo));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_cj_logo));
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_LUGAR_lug_id));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_LUGAR_lug_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -13104,8 +13148,8 @@ SELECT cj_id, cj_nombre, cj_logo, LUGAR_lug_id FROM CLIENTE_JURIDICO WHERE (cj_i
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string cj_nombre, string cj_logo, int LUGAR_lug_id, int Original_cj_id, string Original_cj_nombre, string Original_cj_logo, int Original_LUGAR_lug_id) {
-            return this.Update(Original_cj_id, cj_nombre, cj_logo, LUGAR_lug_id, Original_cj_id, Original_cj_nombre, Original_cj_logo, Original_LUGAR_lug_id);
+        public virtual int Update(string cj_rif, string cj_nombre, string cj_logo, int LUGAR_lug_id, int Original_cj_id, string Original_cj_rif, string Original_cj_nombre, string Original_cj_logo, int Original_LUGAR_lug_id) {
+            return this.Update(Original_cj_id, cj_rif, cj_nombre, cj_logo, LUGAR_lug_id, Original_cj_id, Original_cj_rif, Original_cj_nombre, Original_cj_logo, Original_LUGAR_lug_id);
         }
     }
     
@@ -15564,11 +15608,12 @@ SELECT ACUERDO_acu_id, USUARIO_usu_id, PROYECTO_pro_id FROM INVOLUCRADOS_USUARIO
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[LUGAR] WHERE (([lug_id] = @Original_lug_id) AND ([lug_nombre] = @Original_lug_nombre) AND ([lug_tipo] = @Original_lug_tipo) AND ([lug_codigopostal] = @Original_lug_codigopostal) AND ((@IsNull_LUGAR_lug_id = 1 AND [LUGAR_lug_id] IS NULL) OR ([LUGAR_lug_id] = @Original_LUGAR_lug_id)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[LUGAR] WHERE (([lug_id] = @Original_lug_id) AND ([lug_nombre] = @Original_lug_nombre) AND ([lug_tipo] = @Original_lug_tipo) AND ((@IsNull_lug_codigopostal = 1 AND [lug_codigopostal] IS NULL) OR ([lug_codigopostal] = @Original_lug_codigopostal)) AND ((@IsNull_LUGAR_lug_id = 1 AND [LUGAR_lug_id] IS NULL) OR ([LUGAR_lug_id] = @Original_LUGAR_lug_id)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_lug_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lug_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_lug_nombre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lug_nombre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_lug_tipo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lug_tipo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_lug_codigopostal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lug_codigopostal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_lug_codigopostal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lug_codigopostal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LUGAR_lug_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LUGAR_lug_id", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LUGAR_lug_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LUGAR_lug_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -15584,7 +15629,7 @@ SELECT lug_id, lug_nombre, lug_tipo, lug_codigopostal, LUGAR_lug_id FROM LUGAR W
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LUGAR_lug_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LUGAR_lug_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[LUGAR] SET [lug_id] = @lug_id, [lug_nombre] = @lug_nombre, [lug_tipo] = @lug_tipo, [lug_codigopostal] = @lug_codigopostal, [LUGAR_lug_id] = @LUGAR_lug_id WHERE (([lug_id] = @Original_lug_id) AND ([lug_nombre] = @Original_lug_nombre) AND ([lug_tipo] = @Original_lug_tipo) AND ([lug_codigopostal] = @Original_lug_codigopostal) AND ((@IsNull_LUGAR_lug_id = 1 AND [LUGAR_lug_id] IS NULL) OR ([LUGAR_lug_id] = @Original_LUGAR_lug_id)));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[LUGAR] SET [lug_id] = @lug_id, [lug_nombre] = @lug_nombre, [lug_tipo] = @lug_tipo, [lug_codigopostal] = @lug_codigopostal, [LUGAR_lug_id] = @LUGAR_lug_id WHERE (([lug_id] = @Original_lug_id) AND ([lug_nombre] = @Original_lug_nombre) AND ([lug_tipo] = @Original_lug_tipo) AND ((@IsNull_lug_codigopostal = 1 AND [lug_codigopostal] IS NULL) OR ([lug_codigopostal] = @Original_lug_codigopostal)) AND ((@IsNull_LUGAR_lug_id = 1 AND [LUGAR_lug_id] IS NULL) OR ([LUGAR_lug_id] = @Original_LUGAR_lug_id)));
 SELECT lug_id, lug_nombre, lug_tipo, lug_codigopostal, LUGAR_lug_id FROM LUGAR WHERE (lug_id = @lug_id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lug_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lug_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -15595,6 +15640,7 @@ SELECT lug_id, lug_nombre, lug_tipo, lug_codigopostal, LUGAR_lug_id FROM LUGAR W
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_lug_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lug_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_lug_nombre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lug_nombre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_lug_tipo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lug_tipo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_lug_codigopostal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lug_codigopostal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_lug_codigopostal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lug_codigopostal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LUGAR_lug_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LUGAR_lug_id", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LUGAR_lug_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LUGAR_lug_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -15675,7 +15721,7 @@ SELECT lug_id, lug_nombre, lug_tipo, lug_codigopostal, LUGAR_lug_id FROM LUGAR W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_lug_id, string Original_lug_nombre, string Original_lug_tipo, int Original_lug_codigopostal, global::System.Nullable<int> Original_LUGAR_lug_id) {
+        public virtual int Delete(int Original_lug_id, string Original_lug_nombre, string Original_lug_tipo, global::System.Nullable<int> Original_lug_codigopostal, global::System.Nullable<int> Original_LUGAR_lug_id) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_lug_id));
             if ((Original_lug_nombre == null)) {
                 throw new global::System.ArgumentNullException("Original_lug_nombre");
@@ -15689,14 +15735,21 @@ SELECT lug_id, lug_nombre, lug_tipo, lug_codigopostal, LUGAR_lug_id FROM LUGAR W
             else {
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_lug_tipo));
             }
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_lug_codigopostal));
-            if ((Original_LUGAR_lug_id.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_LUGAR_lug_id.Value));
+            if ((Original_lug_codigopostal.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_lug_codigopostal.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((Original_LUGAR_lug_id.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_LUGAR_lug_id.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -15718,7 +15771,7 @@ SELECT lug_id, lug_nombre, lug_tipo, lug_codigopostal, LUGAR_lug_id FROM LUGAR W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int lug_id, string lug_nombre, string lug_tipo, int lug_codigopostal, global::System.Nullable<int> LUGAR_lug_id) {
+        public virtual int Insert(int lug_id, string lug_nombre, string lug_tipo, global::System.Nullable<int> lug_codigopostal, global::System.Nullable<int> LUGAR_lug_id) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(lug_id));
             if ((lug_nombre == null)) {
                 throw new global::System.ArgumentNullException("lug_nombre");
@@ -15732,7 +15785,12 @@ SELECT lug_id, lug_nombre, lug_tipo, lug_codigopostal, LUGAR_lug_id FROM LUGAR W
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(lug_tipo));
             }
-            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(lug_codigopostal));
+            if ((lug_codigopostal.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(lug_codigopostal.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
             if ((LUGAR_lug_id.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = ((int)(LUGAR_lug_id.Value));
             }
@@ -15759,7 +15817,7 @@ SELECT lug_id, lug_nombre, lug_tipo, lug_codigopostal, LUGAR_lug_id FROM LUGAR W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int lug_id, string lug_nombre, string lug_tipo, int lug_codigopostal, global::System.Nullable<int> LUGAR_lug_id, int Original_lug_id, string Original_lug_nombre, string Original_lug_tipo, int Original_lug_codigopostal, global::System.Nullable<int> Original_LUGAR_lug_id) {
+        public virtual int Update(int lug_id, string lug_nombre, string lug_tipo, global::System.Nullable<int> lug_codigopostal, global::System.Nullable<int> LUGAR_lug_id, int Original_lug_id, string Original_lug_nombre, string Original_lug_tipo, global::System.Nullable<int> Original_lug_codigopostal, global::System.Nullable<int> Original_LUGAR_lug_id) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(lug_id));
             if ((lug_nombre == null)) {
                 throw new global::System.ArgumentNullException("lug_nombre");
@@ -15773,7 +15831,12 @@ SELECT lug_id, lug_nombre, lug_tipo, lug_codigopostal, LUGAR_lug_id FROM LUGAR W
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(lug_tipo));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(lug_codigopostal));
+            if ((lug_codigopostal.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(lug_codigopostal.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
             if ((LUGAR_lug_id.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(LUGAR_lug_id.Value));
             }
@@ -15793,14 +15856,21 @@ SELECT lug_id, lug_nombre, lug_tipo, lug_codigopostal, LUGAR_lug_id FROM LUGAR W
             else {
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_lug_tipo));
             }
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_lug_codigopostal));
-            if ((Original_LUGAR_lug_id.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_LUGAR_lug_id.Value));
+            if ((Original_lug_codigopostal.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_lug_codigopostal.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((Original_LUGAR_lug_id.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_LUGAR_lug_id.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -15822,7 +15892,7 @@ SELECT lug_id, lug_nombre, lug_tipo, lug_codigopostal, LUGAR_lug_id FROM LUGAR W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string lug_nombre, string lug_tipo, int lug_codigopostal, global::System.Nullable<int> LUGAR_lug_id, int Original_lug_id, string Original_lug_nombre, string Original_lug_tipo, int Original_lug_codigopostal, global::System.Nullable<int> Original_LUGAR_lug_id) {
+        public virtual int Update(string lug_nombre, string lug_tipo, global::System.Nullable<int> lug_codigopostal, global::System.Nullable<int> LUGAR_lug_id, int Original_lug_id, string Original_lug_nombre, string Original_lug_tipo, global::System.Nullable<int> Original_lug_codigopostal, global::System.Nullable<int> Original_LUGAR_lug_id) {
             return this.Update(Original_lug_id, lug_nombre, lug_tipo, lug_codigopostal, LUGAR_lug_id, Original_lug_id, Original_lug_nombre, Original_lug_tipo, Original_lug_codigopostal, Original_LUGAR_lug_id);
         }
     }
@@ -18819,7 +18889,6 @@ SELECT req_id, req_descripcion, req_tipo, req_prioridad, req_estatus, PROYECTO_p
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "TELEFONO";
-            tableMapping.ColumnMappings.Add("cli_nat_id", "cli_nat_id");
             tableMapping.ColumnMappings.Add("tel_codigo", "tel_codigo");
             tableMapping.ColumnMappings.Add("tel_numero", "tel_numero");
             tableMapping.ColumnMappings.Add("CLIENTE_NATURAL_cn_id", "CLIENTE_NATURAL_cn_id");
@@ -18827,9 +18896,8 @@ SELECT req_id, req_descripcion, req_tipo, req_prioridad, req_estatus, PROYECTO_p
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[TELEFONO] WHERE (([cli_nat_id] = @Original_cli_nat_id) AND ([tel_codigo] = @Original_tel_codigo) AND ([tel_numero] = @Original_tel_numero) AND ((@IsNull_CLIENTE_NATURAL_cn_id = 1 AND [CLIENTE_NATURAL_cn_id] IS NULL) OR ([CLIENTE_NATURAL_cn_id] = @Original_CLIENTE_NATURAL_cn_id)) AND ((@IsNull_CONTACTO_con_id = 1 AND [CONTACTO_con_id] IS NULL) OR ([CONTACTO_con_id] = @Original_CONTACTO_con_id)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[TELEFONO] WHERE (([tel_codigo] = @Original_tel_codigo) AND ([tel_numero] = @Original_tel_numero) AND ((@IsNull_CLIENTE_NATURAL_cn_id = 1 AND [CLIENTE_NATURAL_cn_id] IS NULL) OR ([CLIENTE_NATURAL_cn_id] = @Original_CLIENTE_NATURAL_cn_id)) AND ((@IsNull_CONTACTO_con_id = 1 AND [CONTACTO_con_id] IS NULL) OR ([CONTACTO_con_id] = @Original_CONTACTO_con_id)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_cli_nat_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cli_nat_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tel_codigo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tel_codigo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tel_numero", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tel_numero", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_CLIENTE_NATURAL_cn_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CLIENTE_NATURAL_cn_id", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -18838,25 +18906,22 @@ SELECT req_id, req_descripcion, req_tipo, req_prioridad, req_estatus, PROYECTO_p
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CONTACTO_con_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CONTACTO_con_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[TELEFONO] ([cli_nat_id], [tel_codigo], [tel_numero], [CLIENTE_NATURAL_cn_id], [CONTACTO_con_id]) VALUES (@cli_nat_id, @tel_codigo, @tel_numero, @CLIENTE_NATURAL_cn_id, @CONTACTO_con_id);
-SELECT cli_nat_id, tel_codigo, tel_numero, CLIENTE_NATURAL_cn_id, CONTACTO_con_id FROM TELEFONO WHERE (cli_nat_id = @cli_nat_id) AND (tel_codigo = @tel_codigo)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[TELEFONO] ([tel_codigo], [tel_numero], [CLIENTE_NATURAL_cn_id], [CONTACTO_con_id]) VALUES (@tel_codigo, @tel_numero, @CLIENTE_NATURAL_cn_id, @CONTACTO_con_id);
+SELECT tel_codigo, tel_numero, CLIENTE_NATURAL_cn_id, CONTACTO_con_id FROM TELEFONO WHERE (tel_codigo = @tel_codigo)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cli_nat_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cli_nat_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tel_codigo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tel_codigo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tel_numero", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tel_numero", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CLIENTE_NATURAL_cn_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CLIENTE_NATURAL_cn_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CONTACTO_con_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CONTACTO_con_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[TELEFONO] SET [cli_nat_id] = @cli_nat_id, [tel_codigo] = @tel_codigo, [tel_numero] = @tel_numero, [CLIENTE_NATURAL_cn_id] = @CLIENTE_NATURAL_cn_id, [CONTACTO_con_id] = @CONTACTO_con_id WHERE (([cli_nat_id] = @Original_cli_nat_id) AND ([tel_codigo] = @Original_tel_codigo) AND ([tel_numero] = @Original_tel_numero) AND ((@IsNull_CLIENTE_NATURAL_cn_id = 1 AND [CLIENTE_NATURAL_cn_id] IS NULL) OR ([CLIENTE_NATURAL_cn_id] = @Original_CLIENTE_NATURAL_cn_id)) AND ((@IsNull_CONTACTO_con_id = 1 AND [CONTACTO_con_id] IS NULL) OR ([CONTACTO_con_id] = @Original_CONTACTO_con_id)));
-SELECT cli_nat_id, tel_codigo, tel_numero, CLIENTE_NATURAL_cn_id, CONTACTO_con_id FROM TELEFONO WHERE (cli_nat_id = @cli_nat_id) AND (tel_codigo = @tel_codigo)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[TELEFONO] SET [tel_codigo] = @tel_codigo, [tel_numero] = @tel_numero, [CLIENTE_NATURAL_cn_id] = @CLIENTE_NATURAL_cn_id, [CONTACTO_con_id] = @CONTACTO_con_id WHERE (([tel_codigo] = @Original_tel_codigo) AND ([tel_numero] = @Original_tel_numero) AND ((@IsNull_CLIENTE_NATURAL_cn_id = 1 AND [CLIENTE_NATURAL_cn_id] IS NULL) OR ([CLIENTE_NATURAL_cn_id] = @Original_CLIENTE_NATURAL_cn_id)) AND ((@IsNull_CONTACTO_con_id = 1 AND [CONTACTO_con_id] IS NULL) OR ([CONTACTO_con_id] = @Original_CONTACTO_con_id)));
+SELECT tel_codigo, tel_numero, CLIENTE_NATURAL_cn_id, CONTACTO_con_id FROM TELEFONO WHERE (tel_codigo = @tel_codigo)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cli_nat_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cli_nat_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tel_codigo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tel_codigo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tel_numero", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tel_numero", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CLIENTE_NATURAL_cn_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CLIENTE_NATURAL_cn_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CONTACTO_con_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CONTACTO_con_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_cli_nat_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cli_nat_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tel_codigo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tel_codigo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tel_numero", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tel_numero", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_CLIENTE_NATURAL_cn_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CLIENTE_NATURAL_cn_id", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -18878,8 +18943,8 @@ SELECT cli_nat_id, tel_codigo, tel_numero, CLIENTE_NATURAL_cn_id, CONTACTO_con_i
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT cli_nat_id, tel_codigo, tel_numero, CLIENTE_NATURAL_cn_id, CONTACTO_con_id" +
-                " FROM dbo.TELEFONO";
+            this._commandCollection[0].CommandText = "SELECT tel_codigo, tel_numero, CLIENTE_NATURAL_cn_id, CONTACTO_con_id FROM dbo.TE" +
+                "LEFONO";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -18940,25 +19005,24 @@ SELECT cli_nat_id, tel_codigo, tel_numero, CLIENTE_NATURAL_cn_id, CONTACTO_con_i
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_cli_nat_id, int Original_tel_codigo, int Original_tel_numero, global::System.Nullable<int> Original_CLIENTE_NATURAL_cn_id, global::System.Nullable<int> Original_CONTACTO_con_id) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_cli_nat_id));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_tel_codigo));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_tel_numero));
+        public virtual int Delete(int Original_tel_codigo, int Original_tel_numero, global::System.Nullable<int> Original_CLIENTE_NATURAL_cn_id, global::System.Nullable<int> Original_CONTACTO_con_id) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_tel_codigo));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_tel_numero));
             if ((Original_CLIENTE_NATURAL_cn_id.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_CLIENTE_NATURAL_cn_id.Value));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_CLIENTE_NATURAL_cn_id.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             if ((Original_CONTACTO_con_id.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_CONTACTO_con_id.Value));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_CONTACTO_con_id.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -18980,21 +19044,20 @@ SELECT cli_nat_id, tel_codigo, tel_numero, CLIENTE_NATURAL_cn_id, CONTACTO_con_i
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int cli_nat_id, int tel_codigo, int tel_numero, global::System.Nullable<int> CLIENTE_NATURAL_cn_id, global::System.Nullable<int> CONTACTO_con_id) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(cli_nat_id));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(tel_codigo));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(tel_numero));
+        public virtual int Insert(int tel_codigo, int tel_numero, global::System.Nullable<int> CLIENTE_NATURAL_cn_id, global::System.Nullable<int> CONTACTO_con_id) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(tel_codigo));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(tel_numero));
             if ((CLIENTE_NATURAL_cn_id.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(CLIENTE_NATURAL_cn_id.Value));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(CLIENTE_NATURAL_cn_id.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((CONTACTO_con_id.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(CONTACTO_con_id.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            if ((CONTACTO_con_id.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(CONTACTO_con_id.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -19016,40 +19079,38 @@ SELECT cli_nat_id, tel_codigo, tel_numero, CLIENTE_NATURAL_cn_id, CONTACTO_con_i
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int cli_nat_id, int tel_codigo, int tel_numero, global::System.Nullable<int> CLIENTE_NATURAL_cn_id, global::System.Nullable<int> CONTACTO_con_id, int Original_cli_nat_id, int Original_tel_codigo, int Original_tel_numero, global::System.Nullable<int> Original_CLIENTE_NATURAL_cn_id, global::System.Nullable<int> Original_CONTACTO_con_id) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(cli_nat_id));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(tel_codigo));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(tel_numero));
+        public virtual int Update(int tel_codigo, int tel_numero, global::System.Nullable<int> CLIENTE_NATURAL_cn_id, global::System.Nullable<int> CONTACTO_con_id, int Original_tel_codigo, int Original_tel_numero, global::System.Nullable<int> Original_CLIENTE_NATURAL_cn_id, global::System.Nullable<int> Original_CONTACTO_con_id) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(tel_codigo));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(tel_numero));
             if ((CLIENTE_NATURAL_cn_id.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(CLIENTE_NATURAL_cn_id.Value));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(CLIENTE_NATURAL_cn_id.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((CONTACTO_con_id.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(CONTACTO_con_id.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((CONTACTO_con_id.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(CONTACTO_con_id.Value));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_tel_codigo));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_tel_numero));
+            if ((Original_CLIENTE_NATURAL_cn_id.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_CLIENTE_NATURAL_cn_id.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_cli_nat_id));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_tel_codigo));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_tel_numero));
-            if ((Original_CLIENTE_NATURAL_cn_id.HasValue == true)) {
+            if ((Original_CONTACTO_con_id.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_CLIENTE_NATURAL_cn_id.Value));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_CONTACTO_con_id.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            if ((Original_CONTACTO_con_id.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_CONTACTO_con_id.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -19071,8 +19132,8 @@ SELECT cli_nat_id, tel_codigo, tel_numero, CLIENTE_NATURAL_cn_id, CONTACTO_con_i
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int tel_numero, global::System.Nullable<int> CLIENTE_NATURAL_cn_id, global::System.Nullable<int> CONTACTO_con_id, int Original_cli_nat_id, int Original_tel_codigo, int Original_tel_numero, global::System.Nullable<int> Original_CLIENTE_NATURAL_cn_id, global::System.Nullable<int> Original_CONTACTO_con_id) {
-            return this.Update(Original_cli_nat_id, Original_tel_codigo, tel_numero, CLIENTE_NATURAL_cn_id, CONTACTO_con_id, Original_cli_nat_id, Original_tel_codigo, Original_tel_numero, Original_CLIENTE_NATURAL_cn_id, Original_CONTACTO_con_id);
+        public virtual int Update(int tel_numero, global::System.Nullable<int> CLIENTE_NATURAL_cn_id, global::System.Nullable<int> CONTACTO_con_id, int Original_tel_codigo, int Original_tel_numero, global::System.Nullable<int> Original_CLIENTE_NATURAL_cn_id, global::System.Nullable<int> Original_CONTACTO_con_id) {
+            return this.Update(Original_tel_codigo, tel_numero, CLIENTE_NATURAL_cn_id, CONTACTO_con_id, Original_tel_codigo, Original_tel_numero, Original_CLIENTE_NATURAL_cn_id, Original_CONTACTO_con_id);
         }
     }
     
