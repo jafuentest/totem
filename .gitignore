@@ -6,8 +6,6 @@
 *.user
 *.sln.docstates
 
-*.sln
-*.csproj
 
 # Build results
 [Dd]ebug/
@@ -174,8 +172,8 @@ UpgradeLog*.XML
 UpgradeLog*.htm
 
 # SQL Server files
-*.mdf
 *.ldf
+*.mdf
 
 # Business Intelligence projects
 *.rdl.data
