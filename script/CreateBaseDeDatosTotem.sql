@@ -384,11 +384,12 @@ GO
 CREATE
   TABLE TELEFONO
   (
+    tel_id                INTEGER NOT NULL ,
     tel_codigo            INTEGER NOT NULL ,
     tel_numero            INTEGER NOT NULL ,
     CLIENTE_NATURAL_cn_id INTEGER ,
     CONTACTO_con_id       INTEGER ,
-    CONSTRAINT TELEFONO_PK PRIMARY KEY CLUSTERED (tel_codigo)
+    CONSTRAINT TELEFONO_PK PRIMARY KEY CLUSTERED (tel_id)
 WITH
   (
     ALLOW_PAGE_LOCKS = ON ,
