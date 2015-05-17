@@ -76,7 +76,7 @@ CREATE
     cj_id        INTEGER NOT NULL ,
     cj_rif       VARCHAR (20) NOT NULL ,
     cj_nombre    VARCHAR (60) NOT NULL ,
-    cj_logo      VARCHAR (60) NOT NULL ,
+    cj_logo      VARCHAR (60) ,
     LUGAR_lug_id INTEGER NOT NULL ,
     CONSTRAINT CLIENTE_JURIDICO_PK PRIMARY KEY CLUSTERED (cj_id)
 WITH
@@ -218,7 +218,7 @@ CREATE
   TABLE LUGAR
   (
     lug_id           INTEGER NOT NULL ,
-    lug_nombre       VARCHAR (60) NOT NULL ,
+    lug_nombre       VARCHAR (100) NOT NULL ,
     lug_tipo         VARCHAR (40) NOT NULL ,
     lug_codigopostal INTEGER ,
     LUGAR_lug_id     INTEGER ,
