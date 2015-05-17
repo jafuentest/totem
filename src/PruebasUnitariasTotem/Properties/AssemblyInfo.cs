@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TotemClassLibrary")]
+[assembly: AssemblyTitle("PruebasUnitariasTotem")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TotemClassLibrary")]
+[assembly: AssemblyProduct("PruebasUnitariasTotem")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("6254426b-177d-4958-9bcf-24f56085b4b2")]
+[assembly: Guid("ec05e7aa-0e13-4d14-b2b0-890a30cdbc7c")]
 
 // Version information for an assembly consists of the following four values:
 //

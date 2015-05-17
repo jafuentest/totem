@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TotemClassLibrary.Properties {
+namespace DatosTotem.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -26,11 +26,11 @@ namespace TotemClassLibrary.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=\"|DataDirectory|\\bd\\Base de Datos\\To" +
-            "temDB.mdf\";Integrated Security=True")]
-        public string TotemDBConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=|DataDirectory|\\BaseDeDatos\\BaseDeDa" +
+            "tosTotem.mdf;Integrated Security=True")]
+        public string BaseDeDatosTotemConnectionString {
             get {
-                return ((string)(this["TotemDBConnectionString"]));
+                return ((string)(this["BaseDeDatosTotemConnectionString"]));
             }
         }
     }
