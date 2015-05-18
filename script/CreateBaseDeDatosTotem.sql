@@ -93,6 +93,7 @@ CREATE
   TABLE CLIENTE_NATURAL
   (
     cn_id        INTEGER NOT NULL ,
+	cn_cedula    VARCHAR (20) NOT NULL ,
     cn_nombre    VARCHAR (60) NOT NULL ,
     cn_apellido  VARCHAR (60) NOT NULL ,
     cn_correo    VARCHAR (60) NOT NULL ,
