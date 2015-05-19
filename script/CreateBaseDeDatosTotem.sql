@@ -113,7 +113,7 @@ CREATE
   TABLE CONTACTO
   (
     con_id                 INTEGER NOT NULL ,
-	cn_cedula    		   VARCHAR (20) NOT NULL ,
+	con_cedula    		   VARCHAR (20) NOT NULL ,
     con_nombre             VARCHAR (100) NOT NULL ,
     con_apellido           VARCHAR (50) NOT NULL ,
     CLIENTE_JURIDICO_cj_id INTEGER,
