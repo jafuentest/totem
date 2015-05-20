@@ -92,16 +92,69 @@ namespace DominioTotem
 
                     
          public ClienteJuridico(string codigopostal, List<TELEFONO> lista_telefono)
-        {
-       
-            Cli_jur_codigopostal= codigopostal;
-            List<TELEFONO> D= lista_telefono;
-                   
+        { 
         }
 
+            public List<Contacto> ObtenerContactos(Cliente_Juridico c)
+        {
+        
+        }
 
+              public List<CLIENTE_JURIDICO> ObtenerClienteJuridico(ClienteJuridico c)
+        {
+        
+        }
+              public boolean VerificarClienteJuridico(string cli_jur_id c)
+        {
+        
+        }
+         
+           public boolean VerificarClienteJuridico (string cli_jur_id )
+        {
+        
+        }
 
-
+         * 
+         *     public boolean AgregarClienteJuridico (string cli_jur_id c)
+        {
+        
+        }
+         * 
+         * 
+          public boolean ModificarClienteJuridico (string cli_jur_id c)
+        {
+        
+        }
+         * 
+          public boolean ConsultarClienteJuridico (string cli_jur_id c)
+        {
+        
+        }
+         * 
+         * 
+         * 
+          public List<CLIENTE_JURIDICO> DatosDelCliente ( string cli_jur_id c)
+        {
+        
+        }
+         * 
+         * 
+         * 
+         *    public List<CLIENTE_JURIDICO> ClienteConId ( string cli_jur_id c)
+        {
+        
+        }
+         * 
+         *     * 
+         *    public List<string> FiltrarCargosPorEmpresa ( CLIENTE_JURIDICO cj)
+        {
+        
+        }
+         * 
+         *  *    public List<CONTACTO> FiltrarEmpleadosDeEmpresaXCargo ( CLIENTE_JURIDICO cj, string cargo)
+        {
+        
+        }
    */
 
 

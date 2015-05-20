@@ -57,8 +57,24 @@ namespace DominioTotem
             Con_apellido= "";
             Con_telefonos= null;
          }
+ * 
+ * 
+ * 
+ * 
+ *     *    public List<datos> ConsultarDatosDeContacto ( CONTACTO c)
+        {
+        
+        }
+ * 
+ * 
    */     
+
+
+
           #endregion
+
+
+
 
 
     }

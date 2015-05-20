@@ -101,13 +101,56 @@ namespace DominioTotem
             public ClienteNatural(string direccion)
         {
              Cli_nat_direccion=direccion;
-         }
+        
+          }
 
-           */  
-      #endregion
+          public bool VerificarClienteNatural(string cli_nat_id)
+        {
+             
+        
+          }
+      
+         public bool AgregarClienteNatural(ClienteNatural cn)
+        {
+             
+        
+          }
+        
+        public bool ModificarClienteNatural(ClienteNatural cn)
+        {
+             
+        
+          }
+          
+         public bool EliminarClienteNatural(ClienteNatural cn)
+        {
+             
+        
+          }
+       
+         public bool ConsultarClienteNatural(ClienteNatural cn)
+        {
+             
+        
+          }
+         
+         public List<CLIENTE_NATURAL> DatosDelCliente(string cli_nat_id)
+        {
+             
+        
+          }
+          
+         public List<CLIENTE_NATURAL> ClienteConId(string cli_nat_id)
+        {
+             
+        
+          }
+          
+           */
+         #endregion
 
 
 
-       }
+    }
 }
 
