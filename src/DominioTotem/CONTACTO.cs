@@ -11,6 +11,7 @@ namespace DominioTotem
         private int Con_id;
         private string Con_nombre;
         private string Con_apellido;
+        private string Con_cargo;
         private List<TELEFONO> Con_telefonos;
 
         #endregion
