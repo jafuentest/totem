@@ -19,29 +19,31 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DominioTotem", "src\Dominio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcepcionesTotem", "src\ExcepcionesTotem\ExcepcionesTotem.csproj", "{AAA3900A-9CED-4F07-9CEE-D86208C39437}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "InterfazTotem", "src\InterfazTotem\", "{08089699-16FB-40DD-8D97-9A93F26C33FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaNegociosTotem", "src\LogicaNegociosTotem\LogicaNegociosTotem.csproj", "{70C79B2E-094D-49BA-BC84-D7CD7443ABFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebasUnitariasTotem", "src\PruebasUnitariasTotem\PruebasUnitariasTotem.csproj", "{64C7FA06-721F-4338-A867-30DE53B121EE}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Interfaz(1)", "http://localhost:22288", "{913F6A1A-2F3B-48E7-94CA-145237E7AB3D}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
-		Debug.AspNetCompiler.VirtualPath = "/InterfazTotem"
-		Debug.AspNetCompiler.PhysicalPath = "src\InterfazTotem\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\InterfazTotem\"
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_22288"
+		Debug.AspNetCompiler.PhysicalPath = "src\Interfaz\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_22288\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/InterfazTotem"
-		Release.AspNetCompiler.PhysicalPath = "src\InterfazTotem\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\InterfazTotem\"
+		Release.AspNetCompiler.VirtualPath = "/localhost_22288"
+		Release.AspNetCompiler.PhysicalPath = "src\Interfaz\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_22288\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "5986"
+		SlnRelativePath = "src\Interfaz\"
+		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaNegociosTotem", "src\LogicaNegociosTotem\LogicaNegociosTotem.csproj", "{70C79B2E-094D-49BA-BC84-D7CD7443ABFF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebasUnitariasTotem", "src\PruebasUnitariasTotem\PruebasUnitariasTotem.csproj", "{64C7FA06-721F-4338-A867-30DE53B121EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,10 +63,6 @@ Global
 		{AAA3900A-9CED-4F07-9CEE-D86208C39437}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAA3900A-9CED-4F07-9CEE-D86208C39437}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAA3900A-9CED-4F07-9CEE-D86208C39437}.Release|Any CPU.Build.0 = Release|Any CPU
-		{08089699-16FB-40DD-8D97-9A93F26C33FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{08089699-16FB-40DD-8D97-9A93F26C33FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{08089699-16FB-40DD-8D97-9A93F26C33FE}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{08089699-16FB-40DD-8D97-9A93F26C33FE}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{70C79B2E-094D-49BA-BC84-D7CD7443ABFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{70C79B2E-094D-49BA-BC84-D7CD7443ABFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70C79B2E-094D-49BA-BC84-D7CD7443ABFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -73,6 +71,10 @@ Global
 		{64C7FA06-721F-4338-A867-30DE53B121EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64C7FA06-721F-4338-A867-30DE53B121EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64C7FA06-721F-4338-A867-30DE53B121EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{913F6A1A-2F3B-48E7-94CA-145237E7AB3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{913F6A1A-2F3B-48E7-94CA-145237E7AB3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{913F6A1A-2F3B-48E7-94CA-145237E7AB3D}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{913F6A1A-2F3B-48E7-94CA-145237E7AB3D}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,7 +84,7 @@ Global
 		{AAA3900A-9CED-4F07-9CEE-D86208C39437} = {9F3D3069-A59A-4FC5-9E6E-3914ECB65799}
 		{70C79B2E-094D-49BA-BC84-D7CD7443ABFF} = {1924E660-31E5-4FD7-89D6-A560C3ABADE9}
 		{71398660-3B9B-4BED-91B3-B968A4EBF02E} = {C553EAB8-A262-4815-BA3F-C7C58BD9CD13}
-		{08089699-16FB-40DD-8D97-9A93F26C33FE} = {A4B46370-2BC8-4FDF-AB93-79A6A61D0683}
+		{913F6A1A-2F3B-48E7-94CA-145237E7AB3D} = {A4B46370-2BC8-4FDF-AB93-79A6A61D0683}
 		{64C7FA06-721F-4338-A867-30DE53B121EE} = {DC2EF444-199D-4B93-B23D-C638F0DC5BAC}
 	EndGlobalSection
 EndGlobal
