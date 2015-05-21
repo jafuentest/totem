@@ -49,23 +49,7 @@
                         <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Nombre" value="Alimentos Ronald, C.A." />
                     </div>
                 </div>
-                <div class="form-group">
-                    <div id="div_imagen_control" class="col-sm-12 col-md-12 col-lg-12">
-                        <div class="input-group">
-                            <span class="input-group-btn">
-                                <span class="btn btn-default btn-file">
-                                    Seleccionar imagen <input type="file" class="imagen-url" name="imagentype" />
-                                </span>
-                            </span>
-                            <input id="imagen-url" name="imagenurl" type="text" class="form-control" readonly="true" value="Penguins.jpg" />
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div id="div_imagen" class="col-sm-12 col-md-12 col-lg-12">
-                        <img data-src="holder.js/150x150" style="width: 133px; height: 133px;" src="css/Penguins.jpg" alt="Logo" class="img-thumbnail" />
-                    </div>
-                </div>
+               
 
                 <h2>Datos de localización</h2>
                 <div class="form-group">
@@ -110,6 +94,101 @@
                         <input id="telefono" name="telefono" type="text" class="form-control" placeholder="Teléfono" value="2125896412" />
                     </div>
                 </div>
+
+                <h2>Contactos</h2>
+
+                <!--Contactos-->
+
+                     <div class="table-responsive">
+            <table id="table-users" class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Identificador</th>
+                        <th>Nombres y Apellidos</th>
+                        <th>Cargo</th>
+                        
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="rif">V-12452843</td>
+                        <td>Pedro Perez</td>
+                        <td>Gerente de Proyectos</td>
+                       
+                        <td>                         
+                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo2/DetallarCliente.aspx") %>"></a>
+                            <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="rif">V-18695231</td>
+                        <td>Erika Rodríguez</td>
+                        
+                        <td>Director de Relaciones Exteriores</td>
+                        <td>                         
+                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo2/DetallarCliente.aspx") %>"></a>
+                            <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                        </td>
+                    </tr><tr>
+                        <td class="rif">V-14587412</td>
+                        <td>Nestor Osorio</td>
+                       
+                        <td>Gerente de Talento Humano</td>
+                        <td>                         
+                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo2/DetallarCliente.aspx") %>"></a>
+                            <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="rif">V-20145884</td>
+                        <td>Seth Cursus</td>
+                        
+                        <td>Arquitecto del Software</td>
+                        <td>                         
+                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo2/DetallarCliente.aspx") %>"></a>
+                            <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="rif">V-13584777</td>
+                        <td>Liam Nisi</td>
+                        
+                        <td>Analista de Desarrollo</td>
+                        <td>                         
+                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo2/DetallarCliente.aspx") %>"></a>
+                            <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="modal-delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" >Eliminación de cliente</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <p>¿Está seguro que desea eliminar al contacto? </p><p id="modal-rif"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarUsuario()">Eliminar</button>
+                        </div>
+                    </div> <!-- /.modal-content -->
+                </div> <!-- /.modal-dialog -->
+            </div> <!-- /.modal -->
+        </div> <!-- /.table-responsive -->
+    </div>
+
+
+
+                <!--Botones-->
                 <div class="form-group">
                     <div id="div_botones" class="col-sm-12 col-md-12 col-lg-12">
                         <a class="btn btn-primary" href="ListarEmpresas.aspx?success=edit">Editar</a>
