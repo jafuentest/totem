@@ -32,7 +32,7 @@
             <table id="table-users" class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>RIF</th>
+                        <th>Identificador</th>
                         <th>Nombre</th>
                         <th>Teléfono</th>
                         <th>Acciones</th>

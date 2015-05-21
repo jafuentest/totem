@@ -32,7 +32,7 @@
             <table id="table-users" class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>RIF</th>
+                        <th>Identificador</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Empresa</th>
@@ -101,7 +101,7 @@
                         <div class="modal-body">
                             <div class="container-fluid">
                                 <div class="row">
-                                    <p>Seguro que desea eliminar al cliente con RIF # </p><p id="modal-rif"></p>
+                                    <p>Seguro que desea eliminar al cliente natutal con Identificador # </p><p id="modal-rif"></p>
                                 </div>
                             </div>
                         </div>
