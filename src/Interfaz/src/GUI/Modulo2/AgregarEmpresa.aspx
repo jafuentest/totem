@@ -15,10 +15,10 @@
     <script type="text/javascript" src="<%= Page.ResolveUrl("~/src/GUI/Modulo2/js/validation.js") %>"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">
-    Gestión de empresas
+    Gestión de Clientes 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">
-    Agregar empresa
+    Agregar Cliente Juridico
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 

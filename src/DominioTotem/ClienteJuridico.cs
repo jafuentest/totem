@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DominioTotem
 {
-    class CLIENTE_JURIDICO
+    class ClienteJuridico
     {
 
 
@@ -50,6 +50,7 @@ namespace DominioTotem
 
 
         #region Constructores
+
         /*
         public ClienteJuridico()
         {
@@ -155,9 +156,9 @@ namespace DominioTotem
         {
         
         }
+
    */
-
-
+     #endregion
 
 
 

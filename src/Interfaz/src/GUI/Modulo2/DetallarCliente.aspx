@@ -12,10 +12,10 @@
     <script type="text/javascript" src="<%= Page.ResolveUrl("~/src/GUI/Modulo2/js/validation.js") %>"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">
-    Gestión de clientes
+    Gestión de Clientes 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">
-    Detallar cliente
+    Detallar Cliente Natural 
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 
@@ -51,9 +51,25 @@
                         <input id="rif" name="rif" type="text" class="form-control" placeholder="RIF" value="12452843" />
                     </div>
                 </div>
+
+                 <h2>Datos de localización</h2>
+               
+                    <div class="form-group">
+                        <div id="div_correo" class="col-sm-12 col-md-12 col-lg-12">
+                            <input id="correo" name="correo" type="text" class="form-control" placeholder="Correo electrónico" value="pedro.perez@alimentosronald.com" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div id="div_telefono" class="col-sm-12 col-md-12 col-lg-12">
+                            <input id="telefono" name="telefono" type="text" class="form-control" placeholder="Teléfono" value="2124578123" />
+                    </div>
+                    </div>
+                
+               
+
                 <h2>Datos empresariales</h2>
                 <div class="form-group">
-                    <div id="div_cargo" class="col-sm-6 col-md-6 col-lg-6">
+                    <div id="div_cargo" class="col-sm-12 col-md-12 col-lg-12">
                         <div class="dropdown">
                             <button id="cargo" class="btn btn-default dropdown-toggle" name="cargo-dd" type="button" data-toggle="dropdown" aria-expanded="true">
                                 Director general
@@ -67,9 +83,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div id="div_otro_cargo" class="col-sm-6 col-md-6 col-lg-6">
-                        <input id="otro-cargo" name="otrocargo" type="text" class="form-control" placeholder="Otro cargo" disabled="disabled" />
-                    </div>
+                   
                 </div>
                 <div class="form-group">
                     <div id="div_empresa" class="col-sm-12 col-md-12 col-lg-12">
@@ -83,17 +97,6 @@
                                 <li role="presentation"><a role="menuitem" tabindex="-1" >P&G Venezuela, C.A.</a></li>
                             </ul>
                         </div>
-                    </div>
-                </div>
-                <h2>Datos de localización</h2>
-                <div class="form-group">
-                    <div id="div_correo" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="correo" name="correo" type="text" class="form-control" placeholder="Correo electrónico" value="pedro.perez@alimentosronald.com" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div id="div_telefono" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="telefono" name="telefono" type="text" class="form-control" placeholder="Teléfono" value="2124578123" />
                     </div>
                 </div>
                 <div class="form-group">
