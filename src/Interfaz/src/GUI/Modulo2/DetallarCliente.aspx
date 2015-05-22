@@ -53,52 +53,57 @@
                 </div>
 
                  <h2>Datos de localización</h2>
+
+                <div class="form-group">
+                    <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6">
+                        <div class="dropdown">
+                            <button id="pais" class="btn btn-default dropdown-toggle" name="pais-dd" type="button" data-toggle="dropdown" aria-expanded="true">
+                                País
+                                <span class="caret"></span>
+                            </button>
+                            <ul id="pais-dd" class="dropdown-menu" role="menu" aria-labelledby="pais">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Venezuela</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
+                        <div class="dropdown">
+                            <button id="estado" class="btn btn-default dropdown-toggle" name="estado-dd" type="button" data-toggle="dropdown" aria-expanded="true">
+                                Estado
+                                <span class="caret"></span>
+                            </button>
+                            <ul id="estado-dd" class="dropdown-menu" role="menu" aria-labelledby="estado">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Aragua</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Carabobo</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Distrito Capital</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Maracaibo</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div id="div_direccion" class="col-sm-12 col-md-12 col-lg-12">
+                        <input id="direccion" name="direccion" type="text" class="form-control" placeholder="Dirección detallada" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div id="div_cpostal" class="col-sm-12 col-md-12 col-lg-12">
+                        <input id="codigopostal" name="codigopostal" type="text" class="form-control" placeholder="Código postal" />
+                    </div>
+                </div>
                
                     <div class="form-group">
                         <div id="div_correo" class="col-sm-12 col-md-12 col-lg-12">
-                            <input id="correo" name="correo" type="text" class="form-control" placeholder="Correo electrónico" value="pedro.perez@alimentosronald.com" />
+                            <input id="correo" name="correo" type="text" class="form-control" placeholder="Correo electrónico"  />
                         </div>
                     </div>
                     <div class="form-group">
                         <div id="div_telefono" class="col-sm-12 col-md-12 col-lg-12">
-                            <input id="telefono" name="telefono" type="text" class="form-control" placeholder="Teléfono" value="2124578123" />
+                            <input id="telefono" name="telefono" type="text" class="form-control" placeholder="Teléfono"  />
                     </div>
                     </div>
-                
-               
-
-                <h2>Datos empresariales</h2>
-                <div class="form-group">
-                    <div id="div_cargo" class="col-sm-12 col-md-12 col-lg-12">
-                        <div class="dropdown">
-                            <button id="cargo" class="btn btn-default dropdown-toggle" name="cargo-dd" type="button" data-toggle="dropdown" aria-expanded="true">
-                                Director general
-                                <span class="caret"></span>
-                            </button>
-                            <ul id="cargo-dd" class="dropdown-menu" role="menu" aria-labelledby="cargo">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Director general</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Director ejecutivo</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Gerente departamental</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Otro</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                   
-                </div>
-                <div class="form-group">
-                    <div id="div_empresa" class="col-sm-12 col-md-12 col-lg-12">
-                        <div class="dropdown">
-                            <button id="empresa" class="btn btn-default dropdown-toggle" name="empresa-dd" type="button" data-toggle="dropdown" aria-expanded="true">
-                                Alimentos Ronald, C.A.
-                                <span class="caret"></span>
-                            </button>
-                            <ul id="empresa-dd" class="dropdown-menu" role="menu" aria-labelledby="cargo">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Alimentos Ronald, C.A.</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >P&G Venezuela, C.A.</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+     
                 <div class="form-group">
                     <div id="div_botones" class="col-sm-12 col-md-12 col-lg-12">
                         <a class="btn btn-primary" href="ListarClientes.aspx?success=edit">Editar</a>
