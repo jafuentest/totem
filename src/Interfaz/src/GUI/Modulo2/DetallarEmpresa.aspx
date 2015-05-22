@@ -195,10 +195,10 @@
                         <a class="btn btn-default" href="ListarEmpresas.aspx">Cancelar</a>
                     </div>
                 </div>
+            </form>
             </div>
 
-        </form>
-    </div>
-
+        
+    
 </asp:Content>
 
