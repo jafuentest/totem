@@ -41,7 +41,6 @@
   <ItemGroup>
     <Compile Include="Actor.cs" />
     <Compile Include="Acuerdo.cs" />
-    <Compile Include="CLIENTE_JURIDICO.cs" />
     <Compile Include="Minuta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Punto.cs" />
