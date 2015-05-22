@@ -98,7 +98,7 @@
 
                 <div class="form-group">
                
-                <div id="contactoEmpresa" class="list-group col-sm-10 col-md-10 col-lg-10">
+                <div id="contactoEmpresa" class="class="col-sm-12 col-md-12 col-lg-12"">
                     <div id="1-contacto-div" class="panel panel-default panel-punto">
                         <div class="panel-body panel-minuta">
                             <div class="form-group">
