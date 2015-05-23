@@ -47,11 +47,7 @@ namespace DominioTotem
             return true;
         }
 
-        public Boolean RegistrarUsuario()
-        {
-
-            return true;
-        }
+     
 
         public List<String> obtenerCargoDeUsuarios()
         {
