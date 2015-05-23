@@ -65,6 +65,8 @@
     </Compile>
     <Compile Include="BDConexion.cs" />
     <Compile Include="Modulo1\BDLogin.cs" />
+    <Compile Include="Modulo2\BDCliente.cs" />
+    <Compile Include="Modulo2\RecursosBaseDeDatosModulo2.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -100,7 +102,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Modulo2\" />
     <Folder Include="Modulo3\" />
     <Folder Include="Modulo4\" />
     <Folder Include="Modulo5\" />
@@ -139,6 +140,9 @@
       <Project>{aaa3900a-9ced-4f07-9cee-d86208c39437}</Project>
       <Name>ExcepcionesTotem</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modulo2\RecursosBaseDeDatosModulo2.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
