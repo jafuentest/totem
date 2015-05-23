@@ -54,9 +54,17 @@
     <Compile Include="Modulo1\LogicaLogin.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DatosTotem\DatosTotem.csproj">
+      <Project>{b4b3079e-15ec-4575-89cd-5ff052c22bda}</Project>
+      <Name>DatosTotem</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DominioTotem\DominioTotem.csproj">
       <Project>{71398660-3b9b-4bed-91b3-b968a4ebf02e}</Project>
       <Name>DominioTotem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExcepcionesTotem\ExcepcionesTotem.csproj">
+      <Project>{aaa3900a-9ced-4f07-9cee-d86208c39437}</Project>
+      <Name>ExcepcionesTotem</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Modulo1\PruebaLoginErradoException.cs" />
+    <Compile Include="Modulo1\PruebaExcepciones.cs" />
     <Compile Include="Modulo1\PruebaBDLogin.cs" />
     <Compile Include="Modulo1\PruebaLogicaLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -54,6 +54,20 @@
     <Folder Include="Modulo6\" />
     <Folder Include="Modulo7\" />
     <Folder Include="Modulo8\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DominioTotem\DominioTotem.csproj">
+      <Project>{71398660-3b9b-4bed-91b3-b968a4ebf02e}</Project>
+      <Name>DominioTotem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExcepcionesTotem\ExcepcionesTotem.csproj">
+      <Project>{aaa3900a-9ced-4f07-9cee-d86208c39437}</Project>
+      <Name>ExcepcionesTotem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogicaNegociosTotem\LogicaNegociosTotem.csproj">
+      <Project>{70c79b2e-094d-49ba-bc84-d7cd7443abff}</Project>
+      <Name>LogicaNegociosTotem</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
