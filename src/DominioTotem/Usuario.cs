@@ -35,12 +35,6 @@ namespace DominioTotem
             return true;
         }
 
-        public Boolean ModificarUsuario()
-        {
-
-            return true;
-        }
-
         public Boolean ValidarCorreo()
         {
 
@@ -80,10 +74,6 @@ namespace DominioTotem
 
             return usuario;
         }
-
-        
-
-        
     
     }
 }
