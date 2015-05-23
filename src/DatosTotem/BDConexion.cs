@@ -76,7 +76,6 @@ namespace DatosTotem
             /// <returns>Retorna el data reader con el resultado</returns>
             public SqlDataReader EjecutarQuery(string query)
             {
-                SqlDataReader resultado = new SqlDataReader();
                 try
                 {
                     Conectar();
@@ -84,7 +83,8 @@ namespace DatosTotem
                     using (conexion)
                     {
                         comando = new SqlCommand(query, conexion);
-                        resultado = comando.ExecuteReader();
+                        SqlDataReader resultado = comando.ExecuteReader();
+                        return resultado;
                     }
                     
 
@@ -101,7 +101,7 @@ namespace DatosTotem
                 {
                     Desconectar();                    
                 }
-                return resultado;
+                return null;
             }
         #endregion
 

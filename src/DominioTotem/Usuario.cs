@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DominioTotem
 {
-    class Usuario
+    public class Usuario
     {
         public string username { get; set; }
         public string clave { get; set; }

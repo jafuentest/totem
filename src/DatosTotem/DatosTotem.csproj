@@ -63,6 +63,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BaseDeDatosTotemDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="BDConexion.cs" />
     <Compile Include="Modulo1\BDLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
