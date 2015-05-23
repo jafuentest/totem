@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExceptionTotem.cs" />
+    <Compile Include="Modulo1\RespuestaErradoException.cs" />
+    <Compile Include="Modulo1\EmailErradoException.cs" />
     <Compile Include="Modulo1\LoginErradoException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
