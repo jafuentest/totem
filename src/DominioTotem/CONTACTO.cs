@@ -11,14 +11,12 @@ namespace DominioTotem
         private int conId;
         private string conNombre;
         private string conApellido;
-        private string conCargo;
-
-       
+        private string conCargo;       
         private List<String> conTelefonos;
 
         #endregion
 
-        #region Gets y Sets
+        #region Propiedades
 
 
         public int Con_Id
@@ -49,8 +47,107 @@ namespace DominioTotem
             get { return conCargo; }
             set { conCargo = value; }
         }
-
-
+       
      #endregion
+
+        #region Constructores
+
+       /// <summary>
+       /// Constructor de la Clase Contacto
+       /// </summary>
+        public Contacto() 
+        {
+            Con_Id = 0;
+            Con_Nombre = string.Empty;
+            Con_Apellido = string.Empty;
+            ConCargo = string.Empty;
+            Con_Telefonos = null; 
+        }
+
+
+       /// <summary>
+       /// Constructor de la Clase Contacto
+       /// </summary>
+       /// <param name="id">Número de Cédula o Identificador de Contacto</param>
+        public Contacto(int id) 
+        {
+            Con_Id = id;
+            Con_Nombre = string.Empty;
+            Con_Apellido = string.Empty;
+            ConCargo = string.Empty;
+            Con_Telefonos = null; 
+        }
+
+
+       /// <summary>
+       /// Constructor de la Clase Contacto
+       /// </summary>
+       /// <param name="nombre">Nombres de la Persona Contacto de la Empresa</param>
+       /// <param name="apellido">Apellidos de la Persona Contacto de la Empresa</param>
+        public Contacto(string nombre, string apellido) 
+        {
+            Con_Id = 0;
+            Con_Nombre = nombre; 
+            Con_Apellido = apellido;
+            ConCargo = string.Empty;
+            Con_Telefonos = null; 
+        }
+
+
+       /// <summary>
+       /// Constructor de la Clase Contacto
+       /// </summary>
+       /// <param name="id">Número de Cédula o Identificador de la Clase Contacto</param>
+       /// <param name="nombre">Nombres de la Persona Contacto de la Empresa</param>
+       /// <param name="apellido">Apellidos de la Persona Contacto de la Empresa</param>
+        public Contacto(int id, string nombre, string apellido) 
+        {
+            Con_Id = id;
+            Con_Nombre = nombre;
+            Con_Apellido = apellido;
+            ConCargo = string.Empty;
+            Con_Telefonos = null; 
+        }
+
+       /// <summary>
+       /// Constructor de la Clase Contacto
+       /// </summary>
+        /// <param name="id">Número de Cédula o Identificador de la Clase Contacto</param>
+        /// <param name="nombre">Nombres de la Persona Contacto de la Empresa</param>
+        /// <param name="apellido">Apellidos de la Persona Contacto de la Empresa</param>
+       /// <param name="cargo">Cargo que ocupa la Persona Contacto dentro de la Empresa</param>
+        public Contacto(int id, string nombre, string apellido, string cargo) 
+        {
+            Con_Id = id;
+            Con_Nombre = nombre;
+            Con_Apellido = apellido;
+            ConCargo = cargo;
+            Con_Telefonos = null;
+        }
+
+
+
+       /// <summary>
+       /// Constructor de la Clase Contacto
+       /// </summary>
+        /// <param name="id">Número de Cédula o Identificador de la Clase Contacto</param>
+        /// <param name="nombre">Nombres de la Persona Contacto de la Empresa</param>
+        /// <param name="apellido">Apellidos de la Persona Contacto de la Empresa</param>
+        /// <param name="cargo">Cargo que ocupa la Persona Contacto dentro de la Empresa</param>
+       /// <param name="telefonos">Télefonos de la Persona Contacto</param>
+        public Contacto(int id, string nombre, string apellido, string cargo, List<string> telefonos) 
+        {
+            Con_Id = id;
+            Con_Nombre = nombre;
+            Con_Apellido = apellido;
+            ConCargo = cargo;
+            Con_Telefonos = telefonos;
+        
+        }
+
+
+
+        #endregion
+
     }
 }

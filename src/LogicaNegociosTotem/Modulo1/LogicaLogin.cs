@@ -54,10 +54,24 @@ namespace LogicaNegociosTotem.Modulo1
             if (this.intentos <= 3)
             {
                 this.intentos++;
+<<<<<<< HEAD
                 return DatosTotem.Modulo1.BDLogin.ValidarLoginBD(usuario);
+=======
+                DominioTotem.Usuario auxUsuario = new DominioTotem.Usuario();
+                auxUsuario.username = username;
+                auxUsuario.clave = clave;
+                DominioTotem.Usuario respuestaUsuario =DatosTotem.Modulo1.BDLogin.ValidarLoginBD(auxUsuario);
+                if (respuestaUsuario != null)
+                {
+                    return respuestaUsuario;
+                }
+                else {
+                    throw new ExcepcionesTotem.Modulo1.LoginErradoException();
+                }
+>>>>>>> origin/master
             }
             else {
-                throw new Exception();
+                throw new ExcepcionesTotem.Modulo1.IntentosFallidosException();
             }
 
 

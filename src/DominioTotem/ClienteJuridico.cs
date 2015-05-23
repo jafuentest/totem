@@ -15,6 +15,7 @@ namespace DominioTotem
      private string cliJur_Nombre;
      private string cliJur_Direccion;
      private string cliJur_Codigopostal;
+     private List<string> cliJur_Telefono;
 
      #endregion
 
@@ -44,6 +45,12 @@ namespace DominioTotem
      {
          get { return cliJur_Codigopostal; }
          set { cliJur_Codigopostal = value; }
+     }
+
+     public List<string> Jur_Telefonos 
+     {
+         get { return cliJur_Telefono; }
+         set { cliJur_Telefono = value; }
      }
 
      #endregion
@@ -160,12 +167,98 @@ namespace DominioTotem
    */
      #endregion
 
+      
+       
+       /// <summary>
+       /// Constructor de la clase Cliente Jurídico
+       /// </summary>
+     public ClienteJuridico() 
+     {
+         Jur_Id = string.Empty;
+         Jur_Nombre = string.Empty;
+         Jur_Direccion = string.Empty;
+         Jur_CodigoPostal = string.Empty;
+         Jur_Telefonos = null;
+
+     }
+
+       /// <summary>
+       /// Constructor de la clase Cliente Jurídico
+       /// </summary>
+       /// <param name="nombre">Nombre de la empresa</param>
+     public ClienteJuridico(string nombre) 
+     {
+         Jur_Id = string.Empty;
+         Jur_Nombre = nombre;
+         Jur_Direccion = string.Empty;
+         Jur_CodigoPostal = string.Empty;
+         Jur_Telefonos = null;
+     }
 
 
+       /// <summary>
+       /// Constructor de la clase Cliente Jurídico
+       /// </summary>
+       /// <param name="id">RIF o Identificador de la Empresa</param>
+       /// <param name="nombre">Nombre de la Empresa</param>
+     public ClienteJuridico(string id, string nombre) 
+     {
+         Jur_Id = id;
+         Jur_Nombre = nombre;
+         Jur_Direccion = string.Empty;
+         Jur_CodigoPostal = string.Empty;
+         Jur_Telefonos = null;
+     }
 
 
+    /// <summary>
+    /// Constructor de la clase Cliente Jurídico
+    /// </summary>
+     /// <param name="id">RIF o Identificador de la Empresa</param>
+     /// <param name="nombre">Nombre de la Empresa</param>
+    /// <param name="direccion">Dirección de la Empresa</param>
+     public ClienteJuridico(string id, string nombre, string direccion) 
+     {
+         Jur_Id = id;
+         Jur_Nombre = nombre;
+         Jur_Direccion = direccion;
+         Jur_CodigoPostal = string.Empty;
+         Jur_Telefonos = null;
+     }
 
 
+    /// <summary>
+    /// Constructor de la clase Cliente Jurídico
+    /// </summary>
+     /// <param name="id">RIF o Identificador de la Empresa</param>
+    /// <param name="nombre">Npmbre de la Empresa</param>
+    /// <param name="direccion">Dirección de la Empresa</param>
+    /// <param name="codigoPostal">Código Postal de la Empresa</param>
+     public ClienteJuridico(string id, string nombre, string direccion,string codigoPostal)
+     {
+         Jur_Id = id;
+         Jur_Nombre = nombre;
+         Jur_Direccion = direccion;
+         Jur_CodigoPostal = codigoPostal;
+         Jur_Telefonos = null;
+     }
 
-    }
+
+       /// <summary>
+       /// Constructor de la Clase Cliente Jurídico
+       /// </summary>
+       /// <param name="id">RIF o Identificador de la Empresa </param>
+       /// <param name="nombre">Nombre de la Empresa</param>
+       /// <param name="direccion">Dirección de la Empresa</param>
+       /// <param name="codigoPostal">Código Postal de la Empresa</param>
+       /// <param name="telefonos">Teléfonos de la Empresa</param>
+     public ClienteJuridico(string id, string nombre, string direccion, string codigoPostal, List<string> telefonos) 
+     {
+         Jur_Id = id;
+         Jur_Nombre = nombre;
+         Jur_Direccion = direccion;
+         Jur_CodigoPostal = codigoPostal;
+         Jur_Telefonos = telefonos;
+     }
+   }
 }
