@@ -42,7 +42,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Modulo1\" />
     <Folder Include="Modulo2\" />
     <Folder Include="Modulo3\" />
     <Folder Include="Modulo4\" />
@@ -53,6 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Modulo1\LogicaLogin.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DominioTotem\DominioTotem.csproj">
+      <Project>{71398660-3b9b-4bed-91b3-b968a4ebf02e}</Project>
+      <Name>DominioTotem</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
