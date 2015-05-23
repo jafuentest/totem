@@ -135,6 +135,10 @@
       <Project>{71398660-3b9b-4bed-91b3-b968a4ebf02e}</Project>
       <Name>DominioTotem</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ExcepcionesTotem\ExcepcionesTotem.csproj">
+      <Project>{aaa3900a-9ced-4f07-9cee-d86208c39437}</Project>
+      <Name>ExcepcionesTotem</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
