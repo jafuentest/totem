@@ -59,10 +59,17 @@ namespace LogicaNegociosTotem.Modulo1
                 DominioTotem.Usuario auxUsuario = new DominioTotem.Usuario();
                 auxUsuario.username = username;
                 auxUsuario.clave = clave;
-                return DatosTotem.Modulo1.BDLogin.ValidarLoginBD(auxUsuario);
+                DominioTotem.Usuario respuestaUsuario =DatosTotem.Modulo1.BDLogin.ValidarLoginBD(auxUsuario);
+                if (respuestaUsuario != null)
+                {
+                    return respuestaUsuario;
+                }
+                else {
+                    throw new ExcepcionesTotem.Modulo1.LoginErradoException();
+                }
             }
             else {
-                throw new Exception();
+                throw new ExcepcionesTotem.Modulo1.IntentosFallidosException();
             }
 
 
