@@ -14,11 +14,12 @@ namespace DatosTotem.Modulo1
     {
         /// <summary>
         /// Metodo para validar el inicio de sesion en la base de datos
+        /// Excepciones posibles: 
+        /// LoginErradoException: Excepcion de login invalido
         /// </summary>
         /// <param name="user">Usuario al que se le va a validar el inicio de sesion
         /// debe tener como minimo el nombre de usuario o email y contrasena</param>
-        /// <returns>Retorna el objeto usuario si se pudo validar, de lo contrario
-        /// retorna null</returns>
+        /// <returns>Retorna el objeto usuario si se pudo validar</returns>
         public static Usuario ValidarLoginBD(Usuario user)
         {
             throw new NotImplementedException();

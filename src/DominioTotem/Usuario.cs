@@ -70,6 +70,15 @@ namespace DominioTotem
 
             return usuario;
         }
+
+        /// <summary>
+        /// Metodo que le calcula el hash a la clave actual del usuario y se la cambia al objeto con 
+        /// la nueva clave creada
+        /// </summary>
+       public void CalcularHash()
+       {
+           throw new NotImplementedException();
+       }
     
     }
 }
