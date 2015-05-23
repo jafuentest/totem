@@ -1,5 +1,4 @@
-﻿using DatosTotem.Modulo1;
-using DominioTotem;
+﻿using DominioTotem;
 using ExcepcionesTotem.Modulo1;
 using LogicaNegociosTotem.Modulo1;
 using NUnit.Framework;
@@ -13,14 +12,10 @@ namespace PruebasUnitariasTotem.Modulo1
     [TestFixture]
     public class PruebaExcepciones
     {
-
-        private Usuario usuario;
-        private LogicaLogin logica;
         [SetUp]
         public void init()
         {
-            var logica = new LogicaLogin();
-            var usuario = new Usuario();
+
         }
 
         [Test]
@@ -29,6 +24,8 @@ namespace PruebasUnitariasTotem.Modulo1
         {
             try
             {
+                var logica = new LogicaLogin();
+                var usuario = new Usuario();
                 usuario.clave = "";
                 usuario.username = "";
                 logica.Login(usuario);
@@ -49,62 +46,5 @@ namespace PruebasUnitariasTotem.Modulo1
             }
 
         }
-
-        [Test]
-
-        public void PruebaEmailErradoException()
-        {
-            try
-            {
-                
-                usuario.correo = "";
-                BDLogin.ObtenerPreguntaSeguridad(usuario);
-                Assert.Fail("Una excepcion se ha debido de lanzar");
-            }
-            catch (EmailErradoException emailErradoException)
-            {
-                Assert.AreEqual("El Correo No Existe o es Incorrecto", emailErradoException.Message);
-            }
-            catch (Exception e)
-            {
-                Assert.Fail(
-                string.Format("Unexpected exception of type {0} caught: {1}",
-                           e.GetType(), e.Message)
-                );
-
-
-            }
-
-        }
-
-
-        [Test]
-
-        public void PruebaRespuestaErradoException()
-        {
-            try
-            {
-
-                usuario.respuestaSeguridad = "";
-                BDLogin.ValidarPreguntaSeguridadBD(usuario);
-                Assert.Fail("Una excepcion se ha debido de lanzar");
-            }
-            catch (RespuestaErradoException respuestaErradoException)
-            {
-                Assert.AreEqual("La respuesta no es correcta", respuestaErradoException.Message);
-            }
-            catch (Exception e)
-            {
-                Assert.Fail(
-                string.Format("Unexpected exception of type {0} caught: {1}",
-                           e.GetType(), e.Message)
-                );
-
-
-            }
-
-        }
-
-
     }
 }
