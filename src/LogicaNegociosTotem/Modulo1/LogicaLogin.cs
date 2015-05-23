@@ -67,7 +67,7 @@ namespace LogicaNegociosTotem.Modulo1
                 }
             }
             else {
-                throw new ExcepcionesTotem.Modulo1.IntentosFallidosException();
+                throw new Exception();
             }
 
 

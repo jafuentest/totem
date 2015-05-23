@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatosTotem", "src\DatosTotem\DatosTotem.csproj", "{B4B3079E-15EC-4575-89CD-5FF052C22BDA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Datos", "Datos", "{0656A7B9-A719-45AA-986D-9F94652C596C}"
@@ -23,10 +25,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaNegociosTotem", "src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebasUnitariasTotem", "src\PruebasUnitariasTotem\PruebasUnitariasTotem.csproj", "{64C7FA06-721F-4338-A867-30DE53B121EE}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Interfaz(1)", "http://localhost:22288", "{913F6A1A-2F3B-48E7-94CA-145237E7AB3D}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Interfaz", "http://localhost:22288", "{913F6A1A-2F3B-48E7-94CA-145237E7AB3D}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{70c79b2e-094d-49ba-bc84-d7cd7443abff}|LogicaNegociosTotem.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_22288"
 		Debug.AspNetCompiler.PhysicalPath = "src\Interfaz\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_22288\"
