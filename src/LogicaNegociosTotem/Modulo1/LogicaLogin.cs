@@ -15,7 +15,7 @@ namespace LogicaNegociosTotem.Modulo1
         /// <summary>
         /// Atributo para el control de los intentos que tendra el usuario para hacer login
         /// </summary>
-        private int intentos {
+       private int intentos {
 
             /// <summary>
             /// Metodo para obtener el numero de intentos que ha realizado el usuario/administrador
@@ -53,22 +53,18 @@ namespace LogicaNegociosTotem.Modulo1
         {
             if (this.intentos <= 3)
             {
-                this.intentos++;
-<<<<<<< HEAD
-                return DatosTotem.Modulo1.BDLogin.ValidarLoginBD(usuario);
-=======
-                DominioTotem.Usuario auxUsuario = new DominioTotem.Usuario();
-                auxUsuario.username = username;
-                auxUsuario.clave = clave;
-                DominioTotem.Usuario respuestaUsuario =DatosTotem.Modulo1.BDLogin.ValidarLoginBD(auxUsuario);
-                if (respuestaUsuario != null)
+                try
                 {
-                    return respuestaUsuario;
+                    return DatosTotem.Modulo1.BDLogin.ValidarLoginBD(usuario);
                 }
-                else {
+                catch (ExcepcionesTotem.Modulo1.LoginErradoException error)
+                {
                     throw new ExcepcionesTotem.Modulo1.LoginErradoException();
                 }
->>>>>>> origin/master
+                catch (Exception error)
+                {
+                    throw new Exception();
+                }
             }
             else {
                 throw new ExcepcionesTotem.Modulo1.IntentosFallidosException();
