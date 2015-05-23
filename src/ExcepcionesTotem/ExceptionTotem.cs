@@ -13,5 +13,16 @@ namespace ExcepcionesTotem
         public  ExceptionTotem() : base()
         {}
 
+         public ExceptionTotem(string message)
+        : base(message)
+    {
+    }
+
+    public ExceptionTotem(string message, Exception inner)
+        : base(message, inner)
+    {
     }
 }
+
+
+    }
