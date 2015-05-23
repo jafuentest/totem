@@ -44,9 +44,12 @@
     <Compile Include="ClienteJuridico.cs" />
     <Compile Include="ClienteNatural.cs" />
     <Compile Include="Contacto.cs" />
+    <Compile Include="ListaInvolucradoContacto.cs" />
+    <Compile Include="ListaInvolucradoUsuario.cs" />
     <Compile Include="Lugar.cs" />
     <Compile Include="Minuta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proyecto.cs" />
     <Compile Include="Punto.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
