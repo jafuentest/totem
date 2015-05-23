@@ -41,6 +41,16 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Modulo1\" />
+    <Folder Include="Modulo2\" />
+    <Folder Include="Modulo3\" />
+    <Folder Include="Modulo4\" />
+    <Folder Include="Modulo5\" />
+    <Folder Include="Modulo6\" />
+    <Folder Include="Modulo7\" />
+    <Folder Include="Modulo8\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
