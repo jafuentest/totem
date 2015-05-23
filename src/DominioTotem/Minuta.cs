@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DominioTotem
 {
-    class Minuta
+    public class Minuta
     {
         public string codigo { get; set; }
         public DateTime fecha { get; set; }
