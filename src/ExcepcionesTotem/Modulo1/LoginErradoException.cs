@@ -7,7 +7,21 @@ namespace ExcepcionesTotem.Modulo1
 {
     public class LoginErradoException : ExceptionTotem
     {
+     
+        public  LoginErradoException() : base()
+        {}
+
+         public LoginErradoException(string message)
+        : base(message)
+    {
+    }
+
+    public LoginErradoException(string message, Exception inner)
+        : base(message, inner)
+    {
+    }
+}
 
 
     }
-}
+

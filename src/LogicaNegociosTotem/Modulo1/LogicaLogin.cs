@@ -21,14 +21,14 @@ namespace LogicaNegociosTotem.Modulo1
             /// Metodo para obtener el numero de intentos que ha realizado el usuario/administrador
             /// </summary>
             /// <returns>Retorna el numero de intentos realizado el usuario</returns>
-            private get {
+             get {
                 return this.intentos;}
 
             /// <summary>
             /// Metodo para la asignacion de los intentos realizados por el usuario/administrador
             /// </summary>
             /// <param name="value">numero de intentos realizados por el usuario</param>
-            private set {
+             set {
                 if (this.intentos <=3){
                     this.intentos = value;}
             }
@@ -46,20 +46,15 @@ namespace LogicaNegociosTotem.Modulo1
         /// <summary>
         /// Metodo para validar el inicio de sesion
         /// </summary>
-        /// <param name="username">Alias asociado a la cuenta del usuario que se va a validar en el
-        /// Login</param>
-        /// <param name="clave">Clave utilizado por el usuario que se va a validar en el login</param>
+        /// <param name="usuario">Usuario con atributos username y clave para realizar el Log in
         /// <returns>Retorna el objeto usuario si se pudo validar, de lo contrario
         /// retorna null</returns>
-        public DominioTotem.Usuario Login(string username, string clave)
+        public DominioTotem.Usuario Login(DominioTotem.Usuario usuario)
         {
             if (this.intentos <= 3)
             {
                 this.intentos++;
-                DominioTotem.Usuario auxUsuario = new DominioTotem.Usuario();
-                auxUsuario.username = username;
-                auxUsuario.clave = clave;
-                return DatosTotem.Modulo1.BDLogin.ValidarLoginBD(auxUsuario);
+                return DatosTotem.Modulo1.BDLogin.ValidarLoginBD(usuario);
             }
             else {
                 throw new Exception();
