@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatosTotem", "src\DatosTotem\DatosTotem.csproj", "{B4B3079E-15EC-4575-89CD-5FF052C22BDA}"
 EndProject
@@ -29,7 +29,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Interfaz", "http://localhos
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		ProjectReferences = "{70c79b2e-094d-49ba-bc84-d7cd7443abff}|LogicaNegociosTotem.dll;{B4B3079E-15EC-4575-89CD-5FF052C22BDA}|DatosTotem.dll;{71398660-3B9B-4BED-91B3-B968A4EBF02E}|DominioTotem.dll;{AAA3900A-9CED-4F07-9CEE-D86208C39437}|ExcepcionesTotem.dll;"
+		ProjectReferences = "{70c79b2e-094d-49ba-bc84-d7cd7443abff}|LogicaNegociosTotem.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_22288"
 		Debug.AspNetCompiler.PhysicalPath = "src\Interfaz\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_22288\"
@@ -84,10 +84,10 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B4B3079E-15EC-4575-89CD-5FF052C22BDA} = {0656A7B9-A719-45AA-986D-9F94652C596C}
-		{71398660-3B9B-4BED-91B3-B968A4EBF02E} = {C553EAB8-A262-4815-BA3F-C7C58BD9CD13}
 		{AAA3900A-9CED-4F07-9CEE-D86208C39437} = {9F3D3069-A59A-4FC5-9E6E-3914ECB65799}
 		{70C79B2E-094D-49BA-BC84-D7CD7443ABFF} = {1924E660-31E5-4FD7-89D6-A560C3ABADE9}
-		{64C7FA06-721F-4338-A867-30DE53B121EE} = {DC2EF444-199D-4B93-B23D-C638F0DC5BAC}
+		{71398660-3B9B-4BED-91B3-B968A4EBF02E} = {C553EAB8-A262-4815-BA3F-C7C58BD9CD13}
 		{913F6A1A-2F3B-48E7-94CA-145237E7AB3D} = {A4B46370-2BC8-4FDF-AB93-79A6A61D0683}
+		{64C7FA06-721F-4338-A867-30DE53B121EE} = {DC2EF444-199D-4B93-B23D-C638F0DC5BAC}
 	EndGlobalSection
 EndGlobal
