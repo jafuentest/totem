@@ -5,78 +5,52 @@ using System.Text;
 
 namespace DominioTotem
 {
-    class CONTACTO
+   public class Contacto
     {
         #region Atributos
-        private int Con_id;
-        private string Con_nombre;
-        private string Con_apellido;
-        private string Con_cargo;
-        private List<TELEFONO> Con_telefonos;
+        private int conId;
+        private string conNombre;
+        private string conApellido;
+        private string conCargo;
+
+       
+        private List<String> conTelefonos;
 
         #endregion
 
         #region Gets y Sets
 
 
-        public int Con_ID
+        public int Con_Id
         {
-            get { return Con_id; }
-            set { Con_id = value; }
+            get { return conId; }
+            set { conId = value; }
         }
 
-        public string Con_NOMBRE
+        public string Con_Nombre
         {
-            get { return Con_nombre; }
-            set { Con_nombre = value; }
+            get { return conNombre; }
+            set { conNombre = value; }
         }
-        public string Con_APELLIDO
+        public string Con_Apellido
         {
-            get { return Con_apellido; }
-            set { Con_apellido = value; }
-        }
-
-
-        public List< > Con_TELEFONOS
-        {
-            get { return Con_telefonos; }
-            set { Con_telefonos = value; }
+            get { return conApellido; }
+            set { conApellido = value; }
         }
 
-         #endregion
 
-
-        
-        #region Constructores
-
-/*
-
-             public Contacto()
+        public List<String> Con_Telefonos
         {
-            Con_id= 0;
-            Con_nombre="" ;
-            Con_apellido= "";
-            Con_telefonos= null;
-         }
- * 
- * 
- * 
- * 
- *     *    public List<datos> ConsultarDatosDeContacto ( CONTACTO c)
-        {
-        
+            get { return conTelefonos; }
+            set { conTelefonos = value; }
         }
- * 
- * 
-   */     
+        public string ConCargo
+        {
+            get { return conCargo; }
+            set { conCargo = value; }
+        }
 
 
-
-          #endregion
-
-
-
-
-
+     #endregion
     }
 }

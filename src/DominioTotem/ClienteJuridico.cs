@@ -5,45 +5,45 @@ using System.Text;
 
 namespace DominioTotem
 {
-    class ClienteJuridico
+   public class ClienteJuridico
     {
 
 
      #region Atributos
 
-     private string Cli_jur_id ;
-     private string Cli_jur_nombre;
-     private string Cli_jur_direccion;
-     private string Cli_jur_codigopostal;
+     private string cliJur_Id ;
+     private string cliJur_Nombre;
+     private string cliJur_Direccion;
+     private string cliJur_Codigopostal;
 
      #endregion
 
 
 
-     #region Gets y Sets
-     public string Jur_ID
+     #region Propiedades
+     public string Jur_Id
      {
-         get { return Cli_jur_id; }
-         set { Cli_jur_id = value; }
+         get { return cliJur_Id; }
+         set { cliJur_Id = value; }
      }
 
 
-     public string Jur_NOMBRE
+     public string Jur_Nombre
      {
-         get { return Cli_jur_nombre; }
-         set { Cli_jur_nombre = value; }
+         get { return cliJur_Nombre; }
+         set { cliJur_Nombre = value; }
      }
 
-     public string Jur_DIRECCION
+     public string Jur_Direccion
      {
-         get { return Cli_jur_direccion; }
-         set { Cli_jur_direccion = value; }
+         get { return cliJur_Direccion; }
+         set { cliJur_Direccion = value; }
      }
 
-     public string Jur_CODIGOPOSTAL
+     public string Jur_CodigoPostal
      {
-         get { return Cli_jur_codigopostal; }
-         set { Cli_jur_codigopostal = value; }
+         get { return cliJur_Codigopostal; }
+         set { cliJur_Codigopostal = value; }
      }
 
      #endregion
