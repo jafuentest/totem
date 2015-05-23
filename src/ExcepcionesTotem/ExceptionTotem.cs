@@ -10,10 +10,8 @@ namespace ExcepcionesTotem
         private String _Codigo;
         private String _Mensaje;
       
-        public ExceptionTotem()
-        {
-
-        }
+        public  ExceptionTotem() : base()
+        {}
 
     }
 }

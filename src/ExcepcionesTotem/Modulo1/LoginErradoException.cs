@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ExcepcionesTotem.Modulo1
 {
-    public class LoginErradoException : Exception
+    public class LoginErradoException : ExceptionTotem
     {
 
 
