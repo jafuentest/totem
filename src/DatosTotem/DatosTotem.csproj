@@ -69,7 +69,7 @@
     <Compile Include="Modulo2\BDCliente.cs" />
     <Compile Include="Modulo2\RecursosBaseDeDatosModulo2.Designer.cs" />
     <Compile Include="Modulo3\BDInvolucrados.cs" />
-<<<<<<< HEAD
+    <Compile Include="Modulo6\BDActor.cs" />
     <Compile Include="Modulo8\BDAcuerdo.cs" />
     <Compile Include="Modulo8\BDInvolucrados.cs" />
     <Compile Include="Modulo8\BDMinuta.cs" />
@@ -79,9 +79,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RecursosBDModulo8.resx</DependentUpon>
     </Compile>
-=======
-    <Compile Include="Modulo6\BDActor.cs" />
->>>>>>> origin/master
+
+    
+
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
