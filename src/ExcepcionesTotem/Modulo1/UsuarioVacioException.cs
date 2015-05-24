@@ -5,23 +5,23 @@ using System.Text;
 
 namespace ExcepcionesTotem.Modulo1
 {
-    public class LoginErradoException : ExceptionTotem
+    public class UsuarioVacioException : ExceptionTotem
     {
-      public LoginErradoException()
+      public UsuarioVacioException()
             : base()
         { }
 
-        public LoginErradoException(string message)
+        public UsuarioVacioException(string message)
             : base(message)
         {
         }
 
-        public LoginErradoException(string message, Exception inner)
+        public UsuarioVacioException(string message, Exception inner)
             : base(message, inner)
         {
         }
 
-        public LoginErradoException(string codigo, string message, Exception inner)
+        public UsuarioVacioException(string codigo, string message, Exception inner)
             : base(codigo, message, inner)
         {
         }

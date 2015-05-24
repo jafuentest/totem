@@ -39,7 +39,7 @@ namespace DatosTotem
                 catch (Exception ex)
                 {
 
-                    ExceptionTottemConexionBD CnBD = new ExceptionTottemConexionBD(
+                    ExceptionTotemConexionBD CnBD = new ExceptionTotemConexionBD(
                       RecursoGeneralBD.Codigo,
                       RecursoGeneralBD.Mensaje,
                       ex);
@@ -68,7 +68,7 @@ namespace DatosTotem
                 catch (Exception ex)
                 {
 
-                    ExceptionTottemConexionBD CnBD = new ExceptionTottemConexionBD(
+                    ExceptionTotemConexionBD CnBD = new ExceptionTotemConexionBD(
                       RecursoGeneralBD.Codigo,
                       RecursoGeneralBD.Mensaje,
                       ex);

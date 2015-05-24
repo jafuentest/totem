@@ -5,23 +5,23 @@ using System.Text;
 
 namespace ExcepcionesTotem.Modulo1
 {
-    public class LoginErradoException : ExceptionTotem
+    public class IntentosFallidosException : ExceptionTotem
     {
-      public LoginErradoException()
+      public IntentosFallidosException()
             : base()
         { }
 
-        public LoginErradoException(string message)
+        public IntentosFallidosException(string message)
             : base(message)
         {
         }
 
-        public LoginErradoException(string message, Exception inner)
+        public IntentosFallidosException(string message, Exception inner)
             : base(message, inner)
         {
         }
 
-        public LoginErradoException(string codigo, string message, Exception inner)
+        public IntentosFallidosException(string codigo, string message, Exception inner)
             : base(codigo, message, inner)
         {
         }

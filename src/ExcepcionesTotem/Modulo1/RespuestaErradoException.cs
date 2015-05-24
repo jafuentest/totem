@@ -8,7 +8,7 @@ namespace ExcepcionesTotem.Modulo1
     public class RespuestaErradoException : ExceptionTotem
     {
 
-        public RespuestaErradoException()
+         public RespuestaErradoException()
             : base()
         { }
 
@@ -19,6 +19,11 @@ namespace ExcepcionesTotem.Modulo1
 
         public RespuestaErradoException(string message, Exception inner)
             : base(message, inner)
+        {
+        }
+
+        public RespuestaErradoException(string codigo, string message, Exception inner)
+            : base(codigo, message, inner)
         {
         }
     }

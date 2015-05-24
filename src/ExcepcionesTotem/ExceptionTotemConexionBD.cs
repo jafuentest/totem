@@ -5,24 +5,24 @@ using System.Text;
 
 namespace ExcepcionesTotem
 {
-    public class ExceptionTottemConexionBD: ExceptionTotem
+    public class ExceptionTotemConexionBD: ExceptionTotem
     {
 
-        public ExceptionTottemConexionBD()
+        public ExceptionTotemConexionBD()
             : base()
         { }
 
-        public ExceptionTottemConexionBD(string message)
+        public ExceptionTotemConexionBD(string message)
             : base(message)
         {
         }
 
-        public ExceptionTottemConexionBD(string message, Exception inner)
+        public ExceptionTotemConexionBD(string message, Exception inner)
             : base(message, inner)
         {
         }
 
-        public ExceptionTottemConexionBD(string codigo, string message, Exception inner)
+        public ExceptionTotemConexionBD(string codigo, string message, Exception inner)
             : base(codigo, message, inner)
         {
         }
