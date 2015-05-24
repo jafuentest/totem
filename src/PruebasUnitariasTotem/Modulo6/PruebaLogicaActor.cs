@@ -69,6 +69,23 @@ namespace PruebasUnitariasTotem.Modulo6
         }
 
         /// <summary>
+        /// Se prueba que la clase pueda agregar un actor siempre y cuando ya no exista en ese proyecto
+        /// </summary>
+        [Test]
+        public void PruebaAgregarListar()
+        {
+            ///Creo unos valores aleatorios para simular un actor
+            Random aleatorio = new Random();
+            String valorPrueba = aleatorio.Next().ToString();
+
+            //Si ese usuario ya existe en la Base de Datos me debe retornar falso
+            Assert.IsTrue(!logica.AgregarListarActor("prueba", "prueba", 0));
+
+            //Si no existe debe retornarme verdadero indicando que la insercion fue exitosa
+            Assert.IsTrue(logica.AgregarListarActor(valorPrueba, valorPrueba, 0));
+        }
+
+        /// <summary>
         /// Se deja en vacio el atributo creado para ser limpiada por el Garbage Collector
         /// </summary>
         [TearDown]

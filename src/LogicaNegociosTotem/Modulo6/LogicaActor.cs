@@ -75,5 +75,36 @@ namespace LogicaNegociosTotem.Modulo6
             Actor actor = new Actor(nombre, descripcion);
             return baseDatosActor.EliminarActor(actor, proyectoActor);
         }
+
+        /// <summary>
+        /// Agrega un actor nuevo si este no existe ya en el proyecto
+        /// </summary>
+        /// <param name="nombre">El nombre del actor</param>
+        /// <param name="descripcion">La descripcion del actor</param>
+        /// <param name="proyectoActor">El proyecto al que estara asociado el actor</param>
+        /// <returns>El exito o fallo del proceso</returns>
+        public bool AgregarListarActor(String nombre, String descripcion, int proyectoActor)
+        {
+            //Variable que nos indicara si el usuario ya existe o no en la Base de Datos
+            bool noExiste = true;
+
+            //Variable que nos indicara si el proceso completo de incersion tuvo exito
+            bool exito = false;
+
+            //Buscamos todos los actores pertenecientes al proyecto
+            List<Actor> listaActores = ListarActor(proyectoActor);
+
+            //Se recorre la lista para verificar si en efecto existe o no
+            foreach (Actor actorLista in listaActores)
+            {
+                //Si ya existe no se agrega al proyecto
+                if (actorLista.NombreActor == nombre)
+                    noExiste = false;
+            }
+            //Sino existe ya en el proyecto se agrega
+            if (noExiste == true)
+                exito = AgregarActor(nombre, descripcion, proyectoActor);
+            return exito;
+        }
     }
 }
