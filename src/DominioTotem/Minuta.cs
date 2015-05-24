@@ -5,10 +5,48 @@ namespace DominioTotem
 {
     public class Minuta
     {
-        public string codigo { get; set; }
-        public DateTime fecha { get; set; }
-        public string motivo { get; set; }
-        public IEnumerable<Punto> listaPunto { get; set; }
-        public IEnumerable<Acuerdo> listaAcuerdo { get; set; }
+        private string codigo;
+        private DateTime fecha;
+        private string motivo;
+        private string observaciones;
+        private IEnumerable<Punto> listaPunto;
+        private IEnumerable<Acuerdo> listaAcuerdo;
+
+        public Minuta()
+        {
+        }
+
+        public Minuta(string codigo, DateTime fecha, string motivo, string observaciones) 
+        {
+            this.codigo = codigo;
+            this.fecha = fecha;
+            this.motivo = motivo;
+            this.observaciones = observaciones;
+        }
+
+        public string Codigo
+        {
+            get { return this.codigo; }
+            set { this.codigo = value; }
+        }
+
+        public DateTime Fecha
+        {
+            get { return this.fecha; }
+            set { this.fecha = value; }
+        }
+
+        public string Motivo
+        {
+            get { return this.motivo; }
+            set { this.motivo = value; }
+        }
+
+        public string Observaciones
+        {
+            get { return this.observaciones; }
+            set { this.observaciones = value; }
+        }
+        
     }
 }

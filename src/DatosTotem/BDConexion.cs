@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
+using System.Data.Sql;
+using System.Configuration;
+using ExcepcionesTotem;
+
 
 namespace DatosTotem
 {
@@ -24,24 +26,29 @@ namespace DatosTotem
             /// Excepciones posibles: 
             /// SqlException: Atrapa los errores que pueden existir en el sql server internamente
             /// </summary>
-            private void Conectar()
+            public SqlConnection Conectar()
             {
 
                 try
                 {
-                    conexion.ConnectionString = this.strConexion;
-                    conexion.Open();
+                    if (conexion == null)
+                        conexion = new SqlConnection(ConfigurationManager.ConnectionStrings[RecursoGeneralBD.NombreBD].ConnectionString);
+
                 }
-                catch (SqlException ex)
-                {
-                    //Lanza excepcion logica propia
-                }
+
                 catch (Exception ex)
                 {
 
-                    //Lanza excepcion logica propia
+                    ExceptionTottemConexionBD CnBD = new ExceptionTottemConexionBD(
+                      RecursoGeneralBD.Codigo,
+                      RecursoGeneralBD.Mensaje,
+                      ex);
+
+                    throw CnBD;
                 }
 
+                    return conexion;
+                
             }
         #endregion
 
@@ -51,20 +58,24 @@ namespace DatosTotem
             /// Excepciones posibles: 
             /// SqlException: Atrapa los errores que pueden existir en el sql server internamente
             /// </summary>
-            private void Desconectar()
+            public void Desconectar()
             {
                 try
                 {
                     this.conexion.Close();
                 }
-                catch (SqlException ex)
-                {
-                    //Lanza excepcion logica propia
-                }
+
                 catch (Exception ex)
                 {
-                    //Lanza excepcion logica propia
+
+                    ExceptionTottemConexionBD CnBD = new ExceptionTottemConexionBD(
+                      RecursoGeneralBD.Codigo,
+                      RecursoGeneralBD.Mensaje,
+                      ex);
+
+                    throw CnBD;
                 }
+
             }
         #endregion
 
@@ -86,7 +97,7 @@ namespace DatosTotem
                         SqlDataReader resultado = comando.ExecuteReader();
                         return resultado;
                     }
-                    
+
 
                 }
                 catch (SqlException ex)
@@ -99,11 +110,12 @@ namespace DatosTotem
                 }
                 finally
                 {
-                    Desconectar();                    
+                    Desconectar();
                 }
                 return null;
             }
         #endregion
 
     }
+
 }

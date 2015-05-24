@@ -40,19 +40,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExceptionTotem.cs" />
+    <Compile Include="ExceptionTottemConexionBD.cs" />
     <Compile Include="Modulo1\RespuestaErradoException.cs" />
     <Compile Include="Modulo1\EmailErradoException.cs" />
     <Compile Include="Modulo1\LoginErradoException.cs" />
-    <Compile Include="Modulo2\IdentificadorExistenteException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Modulo2\" />
     <Folder Include="Modulo3\" />
     <Folder Include="Modulo4\" />
     <Folder Include="Modulo5\" />
     <Folder Include="Modulo6\" />
     <Folder Include="Modulo7\" />
-    <Folder Include="Modulo8\" />
+    <Folder Include="Modulo8\ExcepcionesDedatos\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
