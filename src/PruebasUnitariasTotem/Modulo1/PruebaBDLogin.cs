@@ -33,7 +33,7 @@ namespace PruebasUnitariasTotem.Modulo1
             {
                 DatosTotem.Modulo1.BDLogin.ValidarLoginBD(user);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Assert.Fail("En login no deberia lanzar excepcion");
             }
