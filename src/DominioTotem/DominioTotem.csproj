@@ -52,6 +52,7 @@
     <Compile Include="Proyecto.cs" />
     <Compile Include="Punto.cs" />
     <Compile Include="Usuario.cs" />
+    <Compile Include="IDocumento.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

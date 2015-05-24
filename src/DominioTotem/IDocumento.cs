@@ -5,9 +5,9 @@ using System.Text;
 
 namespace DominioTotem
 {
-    interface IDocumento
+    public interface IDocumento
     {
-        public void GenerarFactura(String codigo);
-        public void GenerarERS(String codigo);
+        void GenerarFactura(String codigo);
+        void GenerarERS(String codigo);
     }
 }

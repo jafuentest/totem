@@ -155,7 +155,7 @@ namespace DominioTotem
         /// InvolucradosInexistentesException()
         /// </summary>
         /// <param name="codigo">Codigo del proyecto al que se le generara el ERS</param>
-        public void GenerarErs(String codigo)
+        public void GenerarERS(String codigo)
         {
             throw new NotImplementedException();
         }
@@ -172,6 +172,5 @@ namespace DominioTotem
             throw new NotImplementedException();
         }
         #endregion
-
     }
 }

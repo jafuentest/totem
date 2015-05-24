@@ -57,11 +57,11 @@ namespace LogicaNegociosTotem.Modulo1
                 {
                     return DatosTotem.Modulo1.BDLogin.ValidarLoginBD(usuario);
                 }
-                catch (ExcepcionesTotem.Modulo1.LoginErradoException error)
+                catch (ExcepcionesTotem.Modulo1.LoginErradoException)
                 {
                     throw new ExcepcionesTotem.Modulo1.LoginErradoException();
                 }
-                catch (Exception error)
+                catch (Exception)
                 {
                     throw new Exception();
                 }
