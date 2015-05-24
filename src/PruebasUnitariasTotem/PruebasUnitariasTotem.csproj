@@ -44,6 +44,7 @@
     <Compile Include="Modulo1\PruebaExcepciones.cs" />
     <Compile Include="Modulo1\PruebaBDLogin.cs" />
     <Compile Include="Modulo1\PruebaLogicaLogin.cs" />
+    <Compile Include="Modulo2\PruebaBDCliente.cs" />
     <Compile Include="Modulo2\PruebaCliente.cs" />
     <Compile Include="Modulo2\PruebaLogicaCliente.cs" />
     <Compile Include="Modulo3\PruebaBDInvolucrados.cs" />

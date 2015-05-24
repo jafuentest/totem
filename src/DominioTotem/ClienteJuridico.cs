@@ -16,6 +16,7 @@ namespace DominioTotem
      private string cliJur_Direccion;
      private string cliJur_Codigopostal;
      private List<string> cliJur_Telefono;
+     private List<Contacto> cliJur_Contactos; 
 
      #endregion
 
@@ -51,6 +52,12 @@ namespace DominioTotem
      {
          get { return cliJur_Telefono; }
          set { cliJur_Telefono = value; }
+     }
+
+     public List<Contacto> Jur_Contactos
+     {
+         get { return cliJur_Contactos; }
+         set { cliJur_Contactos = value; }
      }
 
      #endregion
@@ -260,5 +267,18 @@ namespace DominioTotem
          Jur_CodigoPostal = codigoPostal;
          Jur_Telefonos = telefonos;
      }
+
+     public ClienteJuridico(string id, string nombre, string direccion, string codigoPostal,
+         List<string> telefonos, List<Contacto> contactos) 
+     {
+         Jur_Id = id;
+         Jur_Nombre = nombre;
+         Jur_Direccion = direccion;
+         Jur_CodigoPostal = codigoPostal;
+         Jur_Telefonos = telefonos;
+         Jur_Contactos = contactos; 
+
+     }
+
    }
 }

@@ -18,7 +18,8 @@ namespace PruebasUnitariasTotem.Modulo2
     {
         private ClienteJuridico clienteJuridico;
         private ClienteNatural clienteNatural;
-        private List<string> telefonos; 
+        private List<string> telefonos;
+        private List<Contacto> contactos; 
 
         /// <summary>
         /// Método que inicializa los valores 
@@ -31,7 +32,8 @@ namespace PruebasUnitariasTotem.Modulo2
         {
             clienteNatural = new ClienteNatural(); 
             clienteJuridico = new ClienteJuridico();
-            telefonos = new List<string>(); 
+            telefonos = new List<string>();
+            contactos = new List<Contacto>(); 
 
         }
 
@@ -86,17 +88,7 @@ namespace PruebasUnitariasTotem.Modulo2
             clienteNatural = new ClienteNatural(cedula, nombre, apellido, correo, direccion,
                                                 telefonos);
             Assert.IsNotNull(clienteNatural);
-            /*
-            telefonos.Add("04125985004");
-            telefonos.Add("02124568790");
-            telefonos.Add("02345678945");
-            clienteJuridico = new ClienteJuridico("J-5467901-5",
-               "Veneden", "Calle Los Pinos entre Transversal Primera,Esquina La Flor" +
-           ",Sabana Grande.Caracas.Venezuela", "1050", telefonos);
-            clienteNatural = new ClienteNatural("20456789", "Juan Alfonso",
-                "Carrasquel Rodríguez", "jalfonsocarrasco@gmail.com",
-                "Avenida La Salle con cruce calle villaflor, frente al McDonald's" +
-                ",La Florida.Caracas.Venezuela", telefonos);*/
+          
         }
 
 
@@ -134,6 +126,20 @@ namespace PruebasUnitariasTotem.Modulo2
             telefonos.Add("04127658907");
             clienteJuridico = new ClienteJuridico(rif, nombre, direccion, codigoPostal,telefonos);
             Assert.IsNotNull(clienteJuridico);
+
+
+            //RIF,Nombre, Dirección de la Empresa, Código Postal, teléfonos y contactos
+            Contacto primerContacto = new Contacto(1,"Hector","Rondon","Gerente General",
+                                      telefonos);
+            Contacto segundoContacto = new Contacto(2, "Roberto", "Dominguez", "Administrador",
+                                       telefonos);
+            contactos.Add(primerContacto);
+            contactos.Add(segundoContacto); 
+
+            clienteJuridico = new ClienteJuridico(rif, nombre, direccion, codigoPostal, telefonos,
+                              contactos);
+            Assert.IsNotNull(clienteJuridico);
+            
 
         }
         
