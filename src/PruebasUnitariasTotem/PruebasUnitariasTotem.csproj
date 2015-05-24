@@ -44,6 +44,7 @@
     <Compile Include="Modulo1\PruebaExcepciones.cs" />
     <Compile Include="Modulo1\PruebaBDLogin.cs" />
     <Compile Include="Modulo1\PruebaLogicaLogin.cs" />
+    <Compile Include="Modulo6\PruebaLogicaActor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -51,7 +52,6 @@
     <Folder Include="Modulo3\" />
     <Folder Include="Modulo4\" />
     <Folder Include="Modulo5\" />
-    <Folder Include="Modulo6\" />
     <Folder Include="Modulo7\" />
     <Folder Include="Modulo8\" />
   </ItemGroup>
