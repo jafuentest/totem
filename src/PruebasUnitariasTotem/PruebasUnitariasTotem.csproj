@@ -44,12 +44,15 @@
     <Compile Include="Modulo1\PruebaExcepciones.cs" />
     <Compile Include="Modulo1\PruebaBDLogin.cs" />
     <Compile Include="Modulo1\PruebaLogicaLogin.cs" />
+    <Compile Include="Modulo3\PruebaBDInvolucrados.cs" />
+    <Compile Include="Modulo3\PruebaListaInvContacto.cs" />
+    <Compile Include="Modulo3\PruebaListaInvUsuario.cs" />
+    <Compile Include="Modulo3\PruebaLogicaInvolucrados.cs" />
     <Compile Include="Modulo6\PruebaLogicaActor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modulo2\" />
-    <Folder Include="Modulo3\" />
     <Folder Include="Modulo4\" />
     <Folder Include="Modulo5\" />
     <Folder Include="Modulo7\" />
