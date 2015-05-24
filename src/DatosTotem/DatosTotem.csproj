@@ -67,6 +67,8 @@
     <Compile Include="BDConexion.cs" />
     <Compile Include="Modulo1\BDLogin.cs" />
     <Compile Include="Modulo2\BDCliente.cs" />
+    <Compile Include="Modulo2\BDContacto.cs" />
+    <Compile Include="Modulo2\BDLugar.cs" />
     <Compile Include="Modulo2\RecursosBaseDeDatosModulo2.Designer.cs" />
     <Compile Include="Modulo3\BDInvolucrados.cs" />
     <Compile Include="Modulo6\BDActor.cs" />
@@ -79,9 +81,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RecursosBDModulo8.resx</DependentUpon>
     </Compile>
-
-    
-
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
