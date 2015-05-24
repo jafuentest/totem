@@ -11,6 +11,7 @@ namespace DominioTotem
     public class Actor
     {
         //Nombre y descripcion del actor
+        private int idenficacionActor;
         private String nombreActor;
         private String descripcionActor;
 
@@ -23,12 +24,25 @@ namespace DominioTotem
         }
 
         /// <summary>
-        /// Constructor que recibe parametros
+        /// Constructor que recibe nombre y descripcion del actor
         /// </summary>
         /// <param name="nombre">El nombre con el que se nombrara el actor</param>
         /// <param name="descripcion">Descripion de que hace o quien es</param>
         public Actor(String nombre, String descripcion)
         {
+            this.nombreActor = nombre;
+            this.descripcionActor = descripcion;
+        }
+
+        /// <summary>
+        /// Constructor que recibe el id del actor, nombre y descripcion e 
+        /// </summary>
+        /// <param name="id">Su id en la Base de Datos</param>
+        /// <param name="nombre">El nombre con el que se nombrara el actor</param>
+        /// <param name="descripcion">Descripion de que hace o quien es</param>
+        public Actor(int id, String nombre, String descripcion)
+        {
+            this.idenficacionActor = id;
             this.nombreActor = nombre;
             this.descripcionActor = descripcion;
         }
@@ -65,51 +79,21 @@ namespace DominioTotem
             }
         }
 
-        /*
         /// <summary>
-        /// Agrega un actor nuevo al proyecto
+        /// Retorna el id del actor en la Base de Datos y tambien permite asignarselo 
         /// </summary>
-        /// <param name="actor">El actor que se creara</param>
-        /// <param name="proyectoActor">El proyecto asociado al actor</param>
-        /// <returns>El exito o fallo del proceso</returns>
-        public bool AgregarActor(Actor actor, Proyecto proyectoActor)
+        public int IdentificacionActor
         {
-            return BDActor.AgregarActor(actor, proyectoActor);
+            get
+            {
+                return this.idenficacionActor;
+            }
 
+            set
+            {
+                this.idenficacionActor = value;
+            }
         }
-
-        /// <summary>
-        /// Lee todos los actores asociados al proyecto
-        /// </summary>
-        /// <param name="proyectoActor">El proyecto al que se desea obtener los actor(es)</param>
-        /// <returns>Los actores asociados al proyecto</returns>
-        public List<Actor> ListarActor(Proyecto proyectoActor)
-        {
-            return BDActor.ListarActor(proyectoActor);
-        }
-
-        /// <summary>
-        /// Modifica un actor existente del proyecto
-        /// </summary>
-        /// <param name="actor">El actor que se modificara</param>
-        /// <param name="proyectoActor">El proyecto asociado al actor</param>
-        /// <returns>El exito o fallo del proceso</returns>
-        public bool ModificarActor(Actor actor, Proyecto proyectoActor)
-        {
-            return BDActor.ModificarActor(actor, proyectoActor);
-        }
-
-        /// <summary>
-        /// Elimina un actor existente del proyecto
-        /// </summary>
-        /// <param name="actor">El actor que se eliminara</param>
-        /// <param name="proyectoActor">El proyecto asociado al actor</param>
-        /// <returns>El exito o fallo del proceso</returns>
-        public bool EliminarActor(Actor actor, Proyecto proyectoActor)
-        {
-            return BDActor.EliminarActor(actor, proyectoActor);
-        }*/
-
     }
 
 }
