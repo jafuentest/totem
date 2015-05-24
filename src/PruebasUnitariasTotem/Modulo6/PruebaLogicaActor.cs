@@ -27,6 +27,15 @@ namespace PruebasUnitariasTotem.Modulo6
         }
 
         /// <summary>
+        /// Se prueba que la clase creada apunte a vacio
+        /// </summary>
+        [Test]
+        public void PruebaVacio()
+        {
+            Assert.IsNotNull(logica);
+        }
+
+        /// <summary>
         /// Se prueba que la clase pueda agregar actores
         /// </summary>
         [Test]
