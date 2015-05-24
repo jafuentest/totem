@@ -12,7 +12,7 @@ namespace DominioTotem
         private string conNombre;
         private string conApellido;
         private string conCargo;       
-        private List<String> conTelefonos;
+        private List<string> conTelefonos;
 
         #endregion
 
@@ -37,7 +37,7 @@ namespace DominioTotem
         }
 
 
-        public List<String> Con_Telefonos
+        public List<string> Con_Telefonos
         {
             get { return conTelefonos; }
             set { conTelefonos = value; }
