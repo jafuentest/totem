@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DominioTotem;
+using DatosTotem.Modulo2;
 
 namespace LogicaNegociosTotem.Modulo2
 {
@@ -14,6 +15,7 @@ namespace LogicaNegociosTotem.Modulo2
    public class LogicaCliente
     {
 
+       private BDCliente baseDeDatosCliente; 
        /// <summary>
        /// Constructor de la Clase LogicaCliente
        /// </summary>
@@ -22,6 +24,8 @@ namespace LogicaNegociosTotem.Modulo2
        
        }
 
+       
+
        /// <summary>
        /// Método que solicita a acceso a datos que inserte el cliente jurídico nuevo
        /// </summary>
@@ -29,7 +33,7 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
        public bool AgregarClienteJuridico(ClienteJuridico clienteJuridico)
        {
-           throw new NotImplementedException();
+           return baseDeDatosCliente.AgregarClienteJuridico(clienteJuridico);
        }
 
 
@@ -40,7 +44,7 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
        public bool AgregarClienteNatural(ClienteNatural clienteNatural)
        {
-           throw new NotImplementedException();
+           return baseDeDatosCliente.AgregarClienteNatural(clienteNatural);
        }
 
 
@@ -52,7 +56,7 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
        public bool EliminarClienteNatural(ClienteNatural clienteNatural)
        {
-           throw new NotImplementedException();
+           return baseDeDatosCliente.EliminarClienteNatural(clienteNatural);
        }
 
 
@@ -64,7 +68,7 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
        public bool ModificarClienteNatural(ClienteNatural clienteNatural)
        {
-           throw new NotImplementedException();
+           return baseDeDatosCliente.ModificarClienteNatural(clienteNatural);
        }
 
 
@@ -74,9 +78,9 @@ namespace LogicaNegociosTotem.Modulo2
        /// </summary>
        /// <param name="clienteNatural">Información del Cliente Natural</param>
        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-       public bool ModificarClienteJuridico(ClienteJuridico clienteNatural)
+       public bool ModificarClienteJuridico(ClienteNatural clienteNatural)
        {
-           throw new NotImplementedException();
+           return baseDeDatosCliente.ModificarClienteNatural(clienteNatural);
        }
 
 
@@ -86,7 +90,7 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns>Retorna el objeto de tipo Cliente Juridico, null si el objeto no existe</returns>
        public ClienteJuridico ConsultarClienteJuridico(ClienteJuridico clienteJuridico)
        {
-           throw new NotImplementedException();
+           return baseDeDatosCliente.ConsultarClienteJuridico(); 
        }
 
 
@@ -96,7 +100,7 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns>Retorna el objeto de tipo Cliente Juridico, null si el objeto no existe</returns>
        public ClienteJuridico ConsultarClienteNatural(ClienteNatural clienteNatural)
        {
-           throw new NotImplementedException();
+           return baseDeDatosCliente.ConsultarClienteNatural(); 
        }
 
        /// <summary>
@@ -105,7 +109,7 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns>Retorna una lista de Clientes Juridicos, null si el objeto no existe</returns>
        public List<ClienteJuridico> ConsultarClientesJuridicos()
        {
-           throw new NotImplementedException();
+           return baseDeDatosCliente.ConsultarClientesJuridicos();
        }
 
 
@@ -115,7 +119,7 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns>Retorna una lista de Clientes Naturales, null si el objeto no existe</returns>
        public List<ClienteNatural> ConsultarClientesNaturales()
        {
-           throw new NotImplementedException();
+           return baseDeDatosCliente.ConsultarClientesNaturales();
        }
 
 
@@ -128,7 +132,7 @@ namespace LogicaNegociosTotem.Modulo2
        /// parámetro de búsqueda, null si ninguno cumple con el parámetro</returns>
        public List<ClienteJuridico> ConsultarClientesJuridicosParametrizados(string parametroBusqueda)
        {
-           throw new NotImplementedException();
+           return baseDeDatosCliente.ConsultarClientesJuridicosParametrizados(parametroBusqueda);
        }
 
        /// <summary>
@@ -140,7 +144,7 @@ namespace LogicaNegociosTotem.Modulo2
        /// parámetro de búsqueda, null si ninguno cumple con el parámetro</returns>
        public List<ClienteNatural> ConsultarClientesNaturalesParametrizados(string parametroBusqueda)
        {
-           throw new NotImplementedException();
+           return baseDeDatosCliente.ConsultarClientesNaturalesParametrizados(parametroBusqueda);
        }
 
 
