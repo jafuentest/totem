@@ -48,6 +48,13 @@
                     <p class="sameLine">Cliente: </p><p id="nombreCliente" class="sameLine bootstrapBlue">Carlo Magurno</p>
                     <br>
                     <p class="sameLine">Desarroladora: </p><p id="nombreDesarrolladora" class="sameLine bootstrapBlue">Grupo Desarrollo 2015</p>
+                    <br><br>
+                    <p>Progreso:</p>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 3%;" data-toggle="tooltip" data-placement="top" title="N Requerimientos completados de M">
+                        0%
+                      </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -594,28 +601,23 @@
 
         <!--BOTONES AL FINAL DE LA PAGINA DEL PERFIL DEL PROYECTO: MODIFICAR, ELIMINAR, GENERAR ERS, GENERAR FACTURA-->
         <div class="form-group">
-		        <div class="col-sm-1 col-md-1 col-lg-1">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                <form method="get" action="docs/ERS.pdf">
+			        <button class="btn btn-default">Generar ERS</button>
+                </form>
+		    </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                <form method="get" action="docs/Factura.pdf">
+			        <button class="btn btn-default">Generar Factura</button>
+                </form>
+		    </div>
+            <div class="col-md-offset-10">
+                <div class="col-sm-1 col-md-1 col-lg-1">
 			        <a class="btn btn-primary" href="<%= Page.ResolveUrl("~/GUI/Modulo4/ModificarProyecto.aspx?id=1") %>">Modificar</a>
 		        </div>
-                <div class="col-sm-3 col-md-3 col-lg-3">
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-			        <a class="btn btn-danger" data-toggle="modal" data-target="#modal-delete-project" href="#">Eliminar</a>
-		        </div>
-            <div class="col-md-offset-8">
-                    <div class="col-sm-2 col-md-2 col-lg-2">
-                        <form method="get" action="docs/ERS.pdf">
-			                <button class="btn btn-default">Generar ERS</button>
-                        </form>
-		            </div>
-                    <div class="col-sm-2 col-md-2 col-lg-2 col-md-offset-3">
-                        <form method="get" action="docs/Factura.pdf">
-			                <button class="btn btn-default">Generar Factura</button>
-                        </form>
-		            </div>
-                </div>
+            </div>
 	    </div>
 
-        <!--MODALES-->
         <!--Modal de eliminacion de requerimiento en 1er acordeon-->
         <div id="modal-delete-requerimiento" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
             <div class="modal-dialog">
