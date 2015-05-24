@@ -7,7 +7,6 @@ namespace ExcepcionesTotem.Modulo1
 {
     public class EmailErradoException : ExceptionTotem
     {
-
         public EmailErradoException()
             : base()
         { }
@@ -21,6 +20,12 @@ namespace ExcepcionesTotem.Modulo1
             : base(message, inner)
         {
         }
+
+        public EmailErradoException(string codigo, string message, Exception inner)
+            : base(codigo, message, inner)
+        {
+        }
+
     }
 
 
