@@ -79,8 +79,23 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
+                        <button id="ciudad" class="btn btn-default dropdown-toogle col-sm-12 col-md-12 col-lg-12" name="ciudad-dd" type="button"data-toggle="dropdown" aria-expanded="true">
+                            Ciudad
+                            <span class="caret"></span>
+                        </button>
+                        <ul id="ciudad-dd" class="dropdown-menu" role="menu" aria-labelledby="ciudad">
+                            <li role="presentation"><a role="menuitem" tabindex="-1">Maracay</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1">Caracas</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1">Guarenas</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1">Los Teques</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <div id="div_direccion" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="direccion" name="direccion" type="text" class="form-control" placeholder="Dirección detallada" />
+                        <input id="direccion" name="direccion" type="text"  class="form-control" placeholder="Dirección detallada" />
                     </div>
                 </div>
                 <div class="form-group">
