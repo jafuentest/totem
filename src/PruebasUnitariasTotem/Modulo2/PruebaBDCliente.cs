@@ -62,7 +62,22 @@ namespace PruebasUnitariasTotem.Modulo2
 
        }
 
+        /// <summary>
+        /// Prueba el agregar un Cliente Juridico a Base de datos
+        /// </summary>
+        /// 
+        [Test]
+        public void PruebaAgregarClienteJuridico() 
+        {
+            ClienteJuridico cliente = new ClienteJuridico();
+            cliente.Jur_Id = "J-231425-5";
+            cliente.Jur_Nombre = "Venetur";
+            
+            int fkLugar = 26;
 
+            Assert.IsTrue(baseDeDatosCliente.AgregarClienteJuridico(cliente,fkLugar));
+                   
+        }
         /// <summary>
         /// Método que limpia el objeto que se probó 
         /// para que el Recolector de Basura lo recolecte
@@ -70,7 +85,8 @@ namespace PruebasUnitariasTotem.Modulo2
         [TearDown]
        public void Limpiar() 
        {
-           baseDeDatosCliente = null;  
+           baseDeDatosCliente = null;
+           baseDeDatosLugar = null; 
        }
 
     }

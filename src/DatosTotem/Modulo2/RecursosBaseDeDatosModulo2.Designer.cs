@@ -61,7 +61,7 @@ namespace DatosTotem.Modulo2 {
         }
 
         /// <summary>
-        ///   Busca una cadena traducida similar a BaseDeDatosTottem.
+        ///   Busca una cadena traducida similar a LlenarComboPais.
         /// </summary>
         internal static string LlenarComboPais
         {
@@ -70,5 +70,64 @@ namespace DatosTotem.Modulo2 {
                 return ResourceManager.GetString("LlenarComboPais", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Busca una cadena traducida similar a AgregarClienteJuridico.
+        /// </summary>
+        internal static string AgregarClienteJuridico
+        {
+            get
+            {
+                return ResourceManager.GetString("AgregarClienteJuridico", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Busca una cadena traducida similar a ClienteJuridicoID.
+        /// </summary>
+        internal static string ClienteJuridicoID
+        {
+            get
+            {
+                return ResourceManager.GetString("ClienteJuridicoID", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Busca una cadena traducida similar a ClienteJuridicoNombre.
+        /// </summary>
+        internal static string ClienteJuridicoNombre
+        {
+            get
+            {
+                return ResourceManager.GetString("ClienteJuridicoNombre", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Busca una cadena traducida similar a ClienteJuridicoLogo.
+        /// </summary>
+        internal static string ClienteJuridicoLogo
+        {
+            get
+            {
+                return ResourceManager.GetString("ClienteJuridicoLogo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Busca una cadena traducida similar a ClienteJuridicoFkLugar.
+        /// </summary>
+        internal static string ClienteJuridicoFkLugar
+        {
+            get
+            {
+                return ResourceManager.GetString("ClienteJuridicoFkLugar", resourceCulture);
+            }
+        }
+
+
+
+
     }
 }

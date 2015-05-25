@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using DominioTotem; 
+using DominioTotem;
+using System.Data.SqlClient;
+using ExcepcionesTotem;
+using System.Data;
 
 namespace DatosTotem.Modulo2
 {
@@ -13,12 +16,18 @@ namespace DatosTotem.Modulo2
     /// </summary>
     public class BDCliente
     {
+        private List<ClienteNatural> clientesNaturales;
+        private List<ClienteJuridico> clientesJuridicos; 
+        private SqlConnection conexion;
+        private SqlCommand comando;
+        private ClienteJuridico clienteJuridico;
+        private ClienteNatural clienteNatural; 
         /// <summary>
         /// Constructor de la Clase BDCliente
         /// </summary>
         public BDCliente() 
         {
-        
+            this.conexion = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\totem\totem\src\DatosTotem\BaseDeDatos\BaseDeDatosTotem.mdf;Integrated Security=True");    
         }
 
 
@@ -27,9 +36,44 @@ namespace DatosTotem.Modulo2
         /// </summary>
         /// <param name="clienteJuridico">Información del Cliente Jurídico</param>
         /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-        public bool AgregarClienteJuridico(ClienteJuridico clienteJuridico) 
+        public bool AgregarClienteJuridico(ClienteJuridico clienteJuridico,int fkLugar) 
         {
-            throw new NotImplementedException(); 
+            bool agrego = false;
+
+            int filasAfectadas = 0;
+
+            try
+            {
+                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.AgregarClienteJuridico,
+                                                   this.conexion);
+                this.comando.CommandType = CommandType.StoredProcedure;
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ClienteJuridicoID,
+                                                      clienteJuridico.Jur_Id);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ClienteJuridicoNombre,
+                                                      clienteJuridico.Jur_Nombre);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ClienteJuridicoLogo,
+                                             string.Empty);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ClienteJuridicoFkLugar,
+                                                     fkLugar);
+
+                this.conexion.Open();
+                filasAfectadas = this.comando.ExecuteNonQuery();
+
+                if (filasAfectadas > 0)
+                    agrego = true;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally 
+            {
+                this.conexion.Close(); 
+            }
+
+            return agrego; 
+
+
         }
 
 
