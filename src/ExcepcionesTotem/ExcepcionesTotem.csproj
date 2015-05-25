@@ -47,10 +47,11 @@
     <Compile Include="Modulo1\RespuestaErradoException.cs" />
     <Compile Include="Modulo1\EmailErradoException.cs" />
     <Compile Include="Modulo1\LoginErradoException.cs" />
+    <Compile Include="Modulo2\ExcepcionClientesDatos.cs" />
+    <Compile Include="Modulo2\ExcepcionLogicaClientes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Modulo2\" />
     <Folder Include="Modulo3\" />
     <Folder Include="Modulo4\" />
     <Folder Include="Modulo5\" />
