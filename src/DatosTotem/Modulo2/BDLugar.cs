@@ -39,7 +39,7 @@ namespace DatosTotem.Modulo2
        {
            _listaLugar = new List<Lugar>();
 
-           //this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.LlenarComboPais, conexion);
+           this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureLlenarComboPais, conexion);
            this.comando.CommandType = CommandType.StoredProcedure;
            SqlDataReader _lectura;
 
@@ -56,20 +56,130 @@ namespace DatosTotem.Modulo2
                    }
                }
            }
-           
-           
-           catch (Exception ex)
+
+           catch (SqlException ex) 
            {
                throw ex; 
+           }
+           catch(NullReferenceException ex)
+           {
+               throw ex; 
+           }
+           catch (Exception ex)
+           {
+               throw ex;
 
            }
            finally
            {
                this.conexion.Close(); 
            }
+
            return _listaLugar;
            
        }
+
+
+       /// <summary>
+       /// ¨Método que accede a la Base de Datos para llenar una lista
+       /// de estados asociados a un país según su id
+       /// </summary>
+       /// <param name="idPais">Id del País al que pertenecen los estados</param>
+       /// <returns>Lista de Estados</returns>
+       public List<Lugar> LlenarCBEstadosBD(int idPais) 
+       {
+           _listaLugar = new List<Lugar>();
+
+           this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureLlenarComboEstado, conexion);
+           this.comando.CommandType = CommandType.StoredProcedure;
+           this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroIdPais, idPais);
+           SqlDataReader _lectura;
+
+           try
+           {
+               this.conexion.Open();
+               _lectura = comando.ExecuteReader();
+               while (_lectura.Read())
+               {
+                   _lugar = ConsultarLugarBD(_lectura);
+                   if (_lugar != null)
+                   {
+                       _listaLugar.Add(_lugar);
+                   }
+               }
+           }
+
+           catch (SqlException ex)
+           {
+               throw ex;
+           }
+           catch (NullReferenceException ex)
+           {
+               throw ex;
+           }
+           catch (Exception ex)
+           {
+               throw ex;
+
+           }
+           finally
+           {
+               this.conexion.Close();
+           }
+
+           return _listaLugar;
+       }
+
+       /// <summary>
+       /// Método que retorna un listado de ciudades accediendo a la Base de Datos 
+       /// según el id del estado al que pertenecen
+       /// </summary>
+       /// <param name="idEstado">Id del estado al que pertenece la ciudad</param>
+       /// <returns>Listado de Ciudades</returns>
+       public List<Lugar> LlenarCBCiudadesBD(int idEstado)
+       {
+           _listaLugar = new List<Lugar>();
+
+           this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureLlenarComboCiudad, conexion);
+           this.comando.CommandType = CommandType.StoredProcedure;
+           this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroIdEstado, idEstado);
+           SqlDataReader _lectura;
+
+           try
+           {
+               this.conexion.Open();
+               _lectura = comando.ExecuteReader();
+               while (_lectura.Read())
+               {
+                   _lugar = ConsultarLugarBD(_lectura);
+                   if (_lugar != null)
+                   {
+                       _listaLugar.Add(_lugar);
+                   }
+               }
+           }
+
+           catch (SqlException ex)
+           {
+               throw ex;
+           }
+           catch (NullReferenceException ex)
+           {
+               throw ex;
+           }
+           catch (Exception ex)
+           {
+               throw ex;
+
+           }
+           finally
+           {
+               this.conexion.Close();
+           }
+
+           return _listaLugar;
+       }
+
 
        /// <summary>
        /// Método que accede directamente a Base de Datos

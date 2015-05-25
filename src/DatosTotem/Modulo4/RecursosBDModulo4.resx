@@ -117,66 +117,84 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ParametroApellido" xml:space="preserve">
-    <value>@apellido</value>
-    <comment>Apellido</comment>
+  <data name="AtributoCodigoProyecto" xml:space="preserve">
+    <value>pro_codigo</value>
+    <comment>Codigo del proyecto en la tabla PROYECTO</comment>
   </data>
-  <data name="ParametroBusqueda" xml:space="preserve">
-    <value>@busqueda</value>
-    <comment>La Cedula</comment>
+  <data name="AtributoCostoProyecto" xml:space="preserve">
+    <value>pro_costo</value>
+    <comment>Costo del proyecto en la tabla PROYECTO</comment>
   </data>
-  <data name="ParametroCorreo" xml:space="preserve">
-    <value>@correo</value>
-    <comment>Correo</comment>
+  <data name="AtributoDescripcionProyecto" xml:space="preserve">
+    <value>pro_descripcion</value>
+    <comment>Descripcion del proyecto en la tabla PROYECTO</comment>
   </data>
-  <data name="ParametroIdDireccion" xml:space="preserve">
-    <value>@idDireccion</value>
+  <data name="AtributoEstadoProyecto" xml:space="preserve">
+    <value>pro_estado</value>
+    <comment>Estado del proyecto en la tabla PROYECTO</comment>
   </data>
-  <data name="ParametroIdEstado" xml:space="preserve">
-    <value>@idEstado</value>
+  <data name="AtributoIDProyecto" xml:space="preserve">
+    <value>pro_id</value>
+    <comment>ID del proyecto en la tabla PROYECTO</comment>
   </data>
-  <data name="ParametroIdPais" xml:space="preserve">
-    <value>@idPais</value>
+  <data name="AtributoMonedaProyecto" xml:space="preserve">
+    <value>pro_moneda</value>
+    <comment>Moneda del proyecto en la tabla PROYECTO</comment>
   </data>
-  <data name="ParametroLogo" xml:space="preserve">
-    <value>@cj_logo</value>
+  <data name="AtributoNombreProyecto" xml:space="preserve">
+    <value>pro_nombre</value>
+    <comment>Nombre del proyecto en la tabla PROYECTO</comment>
   </data>
-  <data name="ParametroLugar" xml:space="preserve">
-    <value>@Fklugar</value>
-    <comment>Fk del Lugar</comment>
+  <data name="ParametroClienteJuridico" xml:space="preserve">
+    <value>@CLIENTE_NATURAL_cn_id</value>
+    <comment>Cliente natural del proyecto para usar en procedures</comment>
   </data>
-  <data name="ParametroNombre" xml:space="preserve">
-    <value>@nombre</value>
-    <comment>Nombre</comment>
+  <data name="ParametroClienteNatural" xml:space="preserve">
+    <value>@CLIENTE_JURIDICO_cj_id</value>
+    <comment>Cliente juridico del proyecto para usar en procedures</comment>
   </data>
-  <data name="ParametroRif" xml:space="preserve">
-    <value>@cj_rif</value>
+  <data name="ParametroCodigoProyecto" xml:space="preserve">
+    <value>@pro_codigo</value>
+    <comment>Codigo del proyecto para usar en procedures </comment>
   </data>
-  <data name="ProcedureAgregarClienteJuridico" xml:space="preserve">
-    <value>Procedure_AgregarClienteJuridico</value>
+  <data name="ParametroCodigoViejoProyecto" xml:space="preserve">
+    <value>@pro_codigoViejo</value>
+    <comment>Codigo viejo del proyecto para usar en procedures</comment>
   </data>
-  <data name="ProcedureAgregarClienteNatural" xml:space="preserve">
-    <value>Procedure_AgregarClienteNatural</value>
-    <comment>Procedimiento para agregar Cliente Natural</comment>
+  <data name="ParametroCostoProyecto" xml:space="preserve">
+    <value>@pro_costo</value>
+    <comment>Costo del proyecto para usar en procedures</comment>
   </data>
-  <data name="ProcedureDetallarContacto" xml:space="preserve">
-    <value>ConsultarDatosDeContacto</value>
-    <comment>Procedimiento para detallar un contacto en especifico</comment>
+  <data name="ParametroDescripcionProyecto" xml:space="preserve">
+    <value>@pro_descripcion</value>
+    <comment>Descripcion  del proyecto para usar en procedures</comment>
   </data>
-  <data name="ProcedureLlenarComboCiudad" xml:space="preserve">
-    <value>Procedure_llenarCBCiudad</value>
-    <comment>Llena el combo box de un listado de ciudades según el estado</comment>
+  <data name="ParametroEstadoProyecto" xml:space="preserve">
+    <value>@pro_estado</value>
+    <comment>Estado del proyecto para usar en procedures</comment>
   </data>
-  <data name="ProcedureLlenarComboEstado" xml:space="preserve">
-    <value>Procedure_llenarCBEstado</value>
-    <comment>Llena el combo box de un listado de estados según el país</comment>
+  <data name="ParametroMonedaProyecto" xml:space="preserve">
+    <value>@pro_moneda</value>
+    <comment>Moneda del proyecto para usar en procedures</comment>
   </data>
-  <data name="ProcedureLlenarComboPais" xml:space="preserve">
-    <value>Procedure_llenarCBPais</value>
-    <comment>Llena el combo box de un listado de paises</comment>
+  <data name="ParametroNombreProyecto" xml:space="preserve">
+    <value>@pro_nombre</value>
+    <comment> Nombre del proyecto para usar en procedures</comment>
   </data>
-  <data name="ProcedureObtenerDireccion" xml:space="preserve">
-    <value>Procedure_obtenerDireccion</value>
-    <comment>Obtiene la dirección dado el id de una dirección</comment>
+  <data name="ProcedimientoAgregarProyecto" xml:space="preserve">
+    <value>Procedure_AgregarProyecto</value>
+    <comment>Agrega un proyecto en la BD</comment>
+  </data>
+  <data name="ProcedimientoAgregarProyectoClienteJuridico" xml:space="preserve">
+    <value>Procedure_AgregarProyectoClienteJuridico</value>
+    <comment>Agrega un proyecto con cliente juridico en la BD</comment>
+  </data>
+  <data name="ProcedimientoAgregarProyectoClienteNatural" xml:space="preserve">
+    <value>Procedure_AgregarProyectoClienteNatural</value>
+    <comment>Agrega un proyecto con cliente natural en la BD</comment>
+  </data>
+  <data name="ProcedimientoConsultarProyecto" xml:space="preserve">
+    <value>Procedure_ConsultarProyecto</value>
+    <comment>Consulta un proyecto en la BD</comment>
   </data>
 </root>

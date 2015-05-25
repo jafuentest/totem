@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using LogicaNegociosTotem.Modulo1;
 
 public partial class login : System.Web.UI.Page
 {
@@ -24,23 +25,45 @@ public partial class login : System.Web.UI.Page
         
         try
         {
+            
             string usuario = this.input_usuario.Value;
             string clave = this.input_pswd.Value;
-            DominioTotem.Usuario loginUsuario = new DominioTotem.Usuario();
-            loginUsuario.username = usuario;
-            loginUsuario.clave = clave;
-            LogicaNegociosTotem.Modulo1.LogicaLogin miLogica = new LogicaNegociosTotem.Modulo1.LogicaLogin();
-            HttpContext.Current.Session["Credenciales"] = miLogica.Login(loginUsuario);
-            HttpContext.Current.Response.Redirect("Default.aspx");
+            if (usuario.Equals("")) {
+                alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+                alert.Attributes["role"] = "alert";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Ingrese un username</div>";
+            }
+            else if (clave.Equals("")) {
+                alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+                alert.Attributes["role"] = "alert";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Ingrese una clave</div>";
+            }
+            else
+            {
+                DominioTotem.Usuario loginUsuario = new DominioTotem.Usuario();
+                loginUsuario.username = usuario;
+                loginUsuario.clave = clave;
+                LogicaNegociosTotem.Modulo1.LogicaLogin miLogica = new LogicaNegociosTotem.Modulo1.LogicaLogin();
+                HttpContext.Current.Session["Credenciales"] = miLogica.Login(loginUsuario);
+                HttpContext.Current.Response.Redirect("Default.aspx");
+            }
 
         }
         catch (ExcepcionesTotem.Modulo1.IntentosFallidosException error)
         {
-
+            alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+            alert.Attributes["role"] = "alert";
+            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Ya ha tratado de ingresar al sistema 3 veces,Por favor ingrese el captcha correspondiente</div>";
+            captchaContainer.InnerHtml = "";
+                          
+                            
         }
         catch (ExcepcionesTotem.Modulo1.LoginErradoException error)
         {
-
+            alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+            alert.Attributes["role"] = "alert";
+            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Credenciales no validas</div>";
+           
         }    
     }
 }

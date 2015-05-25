@@ -31,9 +31,10 @@ namespace PruebasUnitariasTotem.Modulo2
            baseDeDatosLugar = new BDLugar(); 
        }
 
-        /*
+        
         /// <summary>
-        /// Prueba el llenado de combo de paises
+        /// Prueba la lista de paises almacenados en BD
+        /// para el llenado del Combo Box País
         /// </summary>
         [Test]
        public void PruebaLlenarCBPais() 
@@ -60,7 +61,73 @@ namespace PruebasUnitariasTotem.Modulo2
 
            Assert.IsTrue(sonIguales);
 
-       }*/
+       }
+
+        /// <summary>
+        /// Prueba el llenado de los estados almacenados 
+        /// dado el id de un país, para el llenado del combo de los estados
+        /// </summary>
+        /// 
+        [Test]
+        public void PruebaLlenarCBEstado() 
+        {
+            List<Lugar> lugares = new List<Lugar>();
+            int idPais=18; 
+            Lugar pais1 = new Lugar(19, "Florida","Estado",18);
+            Lugar pais2 = new Lugar(20, "Georgia","Estado",18);
+            bool sonIguales = false;
+            lugares.Add(pais1);
+            lugares.Add(pais2);
+
+            Lugar l1;
+
+
+            listaLugares = baseDeDatosLugar.LlenarCBEstadosBD(idPais);
+
+
+            for (int i = 0; i < listaLugares.Count; i++)
+            {
+                l1 = listaLugares[i];
+                sonIguales = lugares[i].Equals(l1);
+
+            }
+
+            Assert.IsTrue(sonIguales);
+            
+        }
+
+        /// <summary>
+        /// Prueba el llenado de las ciudades almacenadas 
+        /// dado el id de un estado, para el llenado de los combo box de ciudades
+        /// </summary>
+        /// 
+        [Test]
+        public void PruebaLlenarCBCiudad()
+        {
+            List<Lugar> lugares = new List<Lugar>();
+            int idEstado = 19;
+            Lugar pais1 = new Lugar(21, "Jacksonville", "Ciudad",19);
+            Lugar pais2 = new Lugar(22, "Miami", "Ciudad",19);
+            bool sonIguales = false;
+            lugares.Add(pais1);
+            lugares.Add(pais2);
+
+            Lugar l1;
+
+
+            listaLugares = baseDeDatosLugar.LlenarCBCiudadesBD(idEstado);
+
+
+            for (int i = 0; i < listaLugares.Count; i++)
+            {
+                l1 = listaLugares[i];
+                sonIguales = lugares[i].Equals(l1);
+
+            }
+
+            Assert.IsTrue(sonIguales);
+
+        }
         
         /// <summary>
         /// Prueba el agregar un Cliente Juridico a Base de datos
@@ -75,7 +142,7 @@ namespace PruebasUnitariasTotem.Modulo2
             
             int fkLugar = 26;
 
-            //Assert.IsTrue(baseDeDatosCliente.AgregarClienteJuridico(cliente,fkLugar));
+            Assert.IsTrue(baseDeDatosCliente.AgregarClienteJuridico(cliente,fkLugar));
                    
         }
 
