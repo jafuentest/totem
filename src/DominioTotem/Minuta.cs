@@ -3,8 +3,12 @@ using System.Collections.Generic;
 
 namespace DominioTotem
 {
+    /// <summary>
+    /// Clase del Dominio
+    /// </summary>
     public class Minuta
     {
+        #region Atributos
         private string codigo;
         private DateTime fecha;
         private string motivo;
@@ -12,6 +16,9 @@ namespace DominioTotem
         private IEnumerable<Punto> listaPunto;
         private IEnumerable<Acuerdo> listaAcuerdo;
 
+        #endregion
+
+        #region Constructores
         public Minuta()
         {
         }
@@ -31,6 +38,9 @@ namespace DominioTotem
             this.observaciones = observaciones;
         }
 
+        #endregion
+
+        #region sets y gets
         public string Codigo
         {
             get { return this.codigo; }
@@ -54,6 +64,7 @@ namespace DominioTotem
             get { return this.observaciones; }
             set { this.observaciones = value; }
         }
-        
+
+        #endregion
     }
 }

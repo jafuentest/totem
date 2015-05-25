@@ -117,29 +117,73 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AtributoApellidoContacto" xml:space="preserve">
+    <value>con_apellido</value>
+  </data>
+  <data name="AtributoApellidoUsuario" xml:space="preserve">
+    <value>usu_apellido</value>
+  </data>
+  <data name="AtributoDesarrolloPunto" xml:space="preserve">
+    <value>pun_desarrollo</value>
+  </data>
   <data name="AtributoFechaMinuta" xml:space="preserve">
     <value>min_fecha</value>
     <comment>Atributo fecha en la tabla Minuta</comment>
+  </data>
+  <data name="AtributoIDContacto" xml:space="preserve">
+    <value>con_id</value>
   </data>
   <data name="AtributoIDMinuta" xml:space="preserve">
     <value>min_id</value>
     <comment>Atributo ID en la tabla Minuta</comment>
   </data>
+  <data name="AtributoIDPunto" xml:space="preserve">
+    <value>pun_id</value>
+  </data>
+  <data name="AtributoIDUsuario" xml:space="preserve">
+    <value>usu_id</value>
+  </data>
   <data name="AtributoMotivoMinuta" xml:space="preserve">
     <value>min_motivo</value>
     <comment>Atributo Motivo en la tabla Minuta</comment>
+  </data>
+  <data name="AtributoNombreContacto" xml:space="preserve">
+    <value>con_nombre</value>
+  </data>
+  <data name="AtributoNombreUsuario" xml:space="preserve">
+    <value>usu_nombre</value>
   </data>
   <data name="AtributoObservacionesMinuta" xml:space="preserve">
     <value>min_observaciones</value>
     <comment>Atributo Observaciones en la tabla Minuta</comment>
   </data>
+  <data name="AtributoTituloPunto" xml:space="preserve">
+    <value>pun_titulo</value>
+  </data>
+  <data name="ParametroDesarrolloPunto" xml:space="preserve">
+    <value>@pun_desarrollo</value>
+  </data>
   <data name="ParametroFechaMinuta" xml:space="preserve">
     <value>@min_fecha</value>
     <comment>Parametro en BD que contiene la Fecha de la Minuta a consultar</comment>
   </data>
+  <data name="ParametroIDAcuerdo" xml:space="preserve">
+    <value>@acu_id</value>
+    <comment>Parametro ID Acuerdo en los procedimientos en la BD </comment>
+  </data>
   <data name="ParametroIDMinuta" xml:space="preserve">
     <value>@min_id</value>
     <comment>Parametro en BD que contiene el ID de la Minuta a consultar</comment>
+  </data>
+  <data name="ParametroIDProyecto" xml:space="preserve">
+    <value>@pro_id</value>
+    <comment>Parametro ID Proyecto en los procedimientos en la BD</comment>
+  </data>
+  <data name="ParametroIDPunto" xml:space="preserve">
+    <value>@pun_id</value>
+  </data>
+  <data name="ParametroMinuta" xml:space="preserve">
+    <value>@MINUTA_min_id</value>
   </data>
   <data name="ParametroMotivoMinuta" xml:space="preserve">
     <value>@min_motivo</value>
@@ -153,9 +197,23 @@
     <value>@min_inv_proy</value>
     <comment>Parametro que contiene el id de proyecto de las minutas asociadas al mismo</comment>
   </data>
+  <data name="ParametroTituloPunto" xml:space="preserve">
+    <value>@pun_titulo</value>
+  </data>
   <data name="ProcedimientoAgregarMinuta" xml:space="preserve">
     <value>Procedure_AgregarMinuta</value>
     <comment>Procedimiento en la BD que guarda los datos principales de la Minuta</comment>
+  </data>
+  <data name="ProcedimientoAgregarPunto" xml:space="preserve">
+    <value>Procedure_AgregarPunto</value>
+  </data>
+  <data name="ProcedimientoConsultarAcuerdo" xml:space="preserve">
+    <value>Procedure_ConsultarAcuerdos</value>
+    <comment>Procedimiento en la BD donde se consultan los acuerdos establecidos en la Minuta</comment>
+  </data>
+  <data name="ProcedimientoConsultarContacto" xml:space="preserve">
+    <value>Procedure_ConsultarContactoMinuta</value>
+    <comment>Procedimiento en la BD que regresa todos los responsables de los acuerdos tratados que sean clientes</comment>
   </data>
   <data name="ProcedimientoConsultarListaMinutas" xml:space="preserve">
     <value>Procedure_ConsultarMinutasProyecto</value>
@@ -165,8 +223,19 @@
     <value>Procedure_ConsultarMinuta</value>
     <comment>Procedimiento en la BD que retorna los datos primordiales de la Minuta</comment>
   </data>
+  <data name="ProcedimientoConsultarPuntos" xml:space="preserve">
+    <value>Procedure_ConsultarPuntos</value>
+    <comment>Procedimiento que obtiene todos los puntos tratados en una Minuta </comment>
+  </data>
+  <data name="ProcedimientoConsultarUsuario" xml:space="preserve">
+    <value>Procedure_ConsultarUsuarioMinuta</value>
+    <comment>Procedimiento en la BD que regresa todos los responsables de los acuerdos tratados que sean usuarios</comment>
+  </data>
   <data name="ProcedimientoModificarMinuta" xml:space="preserve">
     <value>Procedure_ModificarMinuta</value>
     <comment>Procedimiento en la BD que modifica los datos de la Minuta</comment>
+  </data>
+  <data name="ProcedimientoModificarPunto" xml:space="preserve">
+    <value>Procedure_ModificarPunto</value>
   </data>
 </root>
