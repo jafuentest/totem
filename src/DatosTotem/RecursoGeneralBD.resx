@@ -122,10 +122,10 @@
     <comment>Codigo de error en la conexion con la BD</comment>
   </data>
   <data name="Mensaje" xml:space="preserve">
-    <value>Error con la Conexion en la BaseDeDatosTotten, no se pudo abrir la conexion</value>
+    <value>Error con la Conexion en la BaseDeDatosTotem, no se pudo abrir la conexion</value>
     <comment>Mensaje al dar error en la conexion con la BD</comment>
   </data>
   <data name="NombreBD" xml:space="preserve">
-    <value>BaseDeDatosTottem</value>
+    <value>BaseDeDatosTotem</value>
   </data>
 </root>
