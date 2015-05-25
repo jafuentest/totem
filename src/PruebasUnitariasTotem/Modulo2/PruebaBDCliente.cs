@@ -16,8 +16,9 @@ namespace PruebasUnitariasTotem.Modulo2
     [TestFixture]
    public class PruebaBDCliente
     {
-       private BDCliente baseDeDatosCliente; 
-        
+       private BDCliente baseDeDatosCliente;
+       private BDLugar baseDeDatosLugar; 
+       private List<Lugar> listaLugares; 
 
        /// <summary>
        /// Método que inicializa el objeto en que 
@@ -26,7 +27,39 @@ namespace PruebasUnitariasTotem.Modulo2
        [SetUp]
        public void Init() 
        {
-           baseDeDatosCliente = new BDCliente(); 
+           baseDeDatosCliente = new BDCliente();
+           baseDeDatosLugar = new BDLugar(); 
+       }
+
+
+        /// <summary>
+        /// Prueba el llenado de combo de paises
+        /// </summary>
+        [Test]
+       public void PruebaLlenarCBPais() 
+       {
+           List<Lugar> lugares = new List<Lugar>();
+           Lugar pais1 = new Lugar(1,"Venezuela");
+           Lugar pais2 = new Lugar(18, "Estados Unidos");
+           bool sonIguales = false; 
+           lugares.Add(pais1);
+           lugares.Add(pais2);
+
+           Lugar l1;
+            
+
+           listaLugares = baseDeDatosLugar.LlenarCBPaisesBD();
+           
+
+           for (int i = 0; i < listaLugares.Count;i++ )
+           {
+               l1 = listaLugares[i];
+               sonIguales=lugares[i].Equals(l1);
+
+           }
+
+           Assert.IsTrue(sonIguales);
+
        }
 
 

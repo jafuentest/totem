@@ -83,6 +83,23 @@ namespace PruebasUnitariasTotem.Modulo2
         public void PruebaConsultarClienteJuridico() { }
 
         /// <summary>
+        /// Prueba del llenado del Combo de Pais
+        /// </summary>
+        /// 
+        [Test]
+        public void PruebaLlenarComboPais() 
+        {
+            List<Lugar> paises = new List<Lugar>();
+            paises.Add(new Lugar(1,"Venezuela"));
+            paises.Add(new Lugar(18, "Estados Unidos"));
+
+            List<Lugar> paisesObtenidos = logicaCliente.LlenarCBPaises();
+
+            Assert.AreEqual(paises,paisesObtenidos); 
+
+        }
+
+        /// <summary>
         /// Método que vacía el objeto utilizado durante 
         /// todas las pruebas para ser limpiado por el 
         /// Recolector de Basura

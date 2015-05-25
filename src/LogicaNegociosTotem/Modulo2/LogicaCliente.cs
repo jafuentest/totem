@@ -15,13 +15,16 @@ namespace LogicaNegociosTotem.Modulo2
    public class LogicaCliente
     {
 
-       private BDCliente baseDeDatosCliente; 
+       private BDCliente baseDeDatosCliente;
+       private BDLugar baseDeDatosLugar;
+       private List<Lugar> _listaLugar; 
        /// <summary>
        /// Constructor de la Clase LogicaCliente
        /// </summary>
        public LogicaCliente() 
        {
-       
+           baseDeDatosCliente = new BDCliente();
+           baseDeDatosLugar = new BDLugar(); 
        }
 
        
@@ -147,6 +150,24 @@ namespace LogicaNegociosTotem.Modulo2
            return baseDeDatosCliente.ConsultarClientesNaturalesParametrizados(parametroBusqueda);
        }
 
+
+       /// <summary>
+       /// Le pide a la capa de datos la lista de los paises
+       /// </summary>
+       /// <returns>lista de paises</returns>
+       public List<Lugar> LlenarCBPaises()
+       {
+           try
+           {
+               _listaLugar = new List<Lugar>();
+               return baseDeDatosLugar.LlenarCBPaisesBD();
+           }
+           catch (Exception ex)
+           {
+               throw ex; 
+
+           }
+       } 
 
 
     }

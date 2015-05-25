@@ -98,5 +98,17 @@ namespace DominioTotem
 
        #endregion
 
+       public override bool Equals(object obj)
+       {
+           bool esIgual = false;
+           Lugar lug = (obj as Lugar);
+
+           if (this.IdLugar == (lug).IdLugar 
+               && this.NombreLugar == (lug).NombreLugar)
+               esIgual = true;
+
+           return esIgual;
+       }
+
    }
 }

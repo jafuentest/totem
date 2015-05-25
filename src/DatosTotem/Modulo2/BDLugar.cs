@@ -93,11 +93,11 @@ namespace DatosTotem.Modulo2
            }
            catch (NullReferenceException ex)
            {
-               throw new NullReferenceException();
+               throw  ex;
            }
            catch (Exception ex) 
            {
-               throw new Exception(); 
+               throw ex; 
            }
 
            return lugar; 
