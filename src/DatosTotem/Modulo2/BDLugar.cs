@@ -14,18 +14,20 @@ namespace DatosTotem.Modulo2
     /// Clase para acceso a datos referente a las direcciones de un 
     /// Cliente en Base de Datos
     /// </summary>
-   public class BDLugar:BDConexion
+   public class BDLugar
     {
 
        private List<Lugar> _listaLugar;
-       private BDConexion _operacionBD;
+       private SqlConnection conexion;
+       private SqlCommand comando;
        private Lugar _lugar; 
        /// <summary>
        /// Constructor de la Clase BDLugar
        /// </summary>
        public BDLugar() 
        {
-            
+           this.conexion = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\totem\totem\src\DatosTotem\BaseDeDatos\BaseDeDatosTotem.mdf;Integrated Security=True");    
+       
        }
 
        /// <summary>
@@ -36,14 +38,14 @@ namespace DatosTotem.Modulo2
        public List<Lugar> LlenarCBPaisesBD()
        {
            _listaLugar = new List<Lugar>();
-           _operacionBD = new BDConexion();
-           SqlCommand comando = new SqlCommand("Procedure_llenarCBPais", Conectar());
-           comando.CommandType = CommandType.StoredProcedure;
+
+           this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.LlenarComboPais, conexion);
+           this.comando.CommandType = CommandType.StoredProcedure;
            SqlDataReader _lectura;
 
            try
            {
-               _operacionBD.Conectar().Open(); 
+               this.conexion.Open();
                _lectura = comando.ExecuteReader();
                while (_lectura.Read())
                {
@@ -63,7 +65,7 @@ namespace DatosTotem.Modulo2
            }
            finally
            {
-               _operacionBD.Desconectar();
+               this.conexion.Close(); 
            }
            return _listaLugar;
            
