@@ -61,23 +61,18 @@ public partial class MasterPage : System.Web.UI.MasterPage
             selectedProject.InnerText = "Proyecto Seleccionado: " + pcookie.Values["projectName"].ToString();
         }
 
-        if (Request.Cookies["userInfo"] != null)
+        if (HttpContext.Current.Session["Credenciales"] != null)
         {
-            if (Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != "" &&
-                Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
-            {
                 ShowDiv = true;
-            }
-            else
-            {
-                Response.Redirect("~/src/GUI/Modulo1/M1_login.aspx");
-            }
 
         }
 
         else
         {
-            Response.Redirect("~/src/GUI/Modulo1/M1_login.aspx");
+            if (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/src/GUI/Modulo1/M1_login.aspx"))
+            {
+                Response.Redirect("~/src/GUI/Modulo1/M1_login.aspx");
+            }
         }
 	}
 
