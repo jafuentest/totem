@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DominioTotem;
+using ExcepcionesTotem.Modulo1;
+using System.Data;
+using System.Data.Sql;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace DatosTotem.Modulo3
 {
@@ -17,14 +22,45 @@ namespace DatosTotem.Modulo3
         {
             throw new NotImplementedException();
         }
+
+
         /// <summary>
         /// Metodo que agrega la lista de contactos involucrados a un proyecto
         /// </summary>
         /// <param name="lista">lista de contactos a insertar</param>
         /// <returns>Valor booleano que refleja el exito de la operacion</returns>
-        public static bool agregarContactosInvolucrados(ListaInvolucradoContacto lista)
+        public static bool agregarContactosInvolucrados(ListaInvolucradoContacto listaContactos)
         {
-            throw new NotImplementedException();
+            Proyecto elProyecto = listaContactos.Proyecto;
+            List<Parametro> parametros;
+
+            Parametro paramProyectoCod, paramContactoID; 
+
+            string query = RecursosBDModulo3.StoredInsertarCliente;
+            BDConexion laConexion;
+
+            foreach (Contacto elContacto in listaContactos.Lista)
+            {
+                try
+                {
+                    laConexion = new BDConexion();
+                    parametros = new List<Parametro>();
+
+                    paramProyectoCod = new Parametro("@proyecto_codigo", SqlDbType.VarChar, elProyecto.Codigo, false);
+                    paramContactoID = new Parametro("@contacto_id", SqlDbType.Int, elContacto.Con_Id.ToString(), false);
+
+                    parametros.Add(paramContactoID);
+                    parametros.Add(paramProyectoCod);
+
+                    laConexion.EjecutarStoredProcedure(query, parametros);
+                }
+                catch (SqlException ex)
+                {
+
+                }
+
+            }
+            return true;
         }
         /// <summary>
         /// Metodo que consulta los usuarios involucrados a un proyecto dado
