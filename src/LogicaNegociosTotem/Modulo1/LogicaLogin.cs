@@ -23,7 +23,7 @@ namespace LogicaNegociosTotem.Modulo1
         /// <returns>Retorna el objeto con el numero de intentos inicializado en 0 </returns>
         public LogicaLogin()
         {
-            intentos = 0;
+            intentos = 3;
         }
 
         /// <summary>
@@ -39,7 +39,6 @@ namespace LogicaNegociosTotem.Modulo1
 
                 try
                 {
-                    this.intentos++;
                     return DatosTotem.Modulo1.BDLogin.ValidarLoginBD(usuario);
                 }
                 catch (ExcepcionesTotem.Modulo1.LoginErradoException)
