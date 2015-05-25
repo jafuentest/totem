@@ -60,72 +60,98 @@ namespace DatosTotem.Modulo2 {
             }
         }
 
+
+
         /// <summary>
-        ///   Busca una cadena traducida similar a LlenarComboPais.
+        ///   Looks up a localized string similar to @idCiudad.
         /// </summary>
-        internal static string LlenarComboPais
+
+        internal static string ParametroBusqueda
         {
             get
             {
-                return ResourceManager.GetString("LlenarComboPais", resourceCulture);
+                return ResourceManager.GetString("ParametroBusqueda", resourceCulture);
+            }
+        }
+
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to @idCiudad.
+        /// </summary>
+
+        internal static string ParametroNombre
+        {
+            get
+            {
+                return ResourceManager.GetString("ParametroNombre", resourceCulture);
+            }
+        }
+
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to @idCiudad.
+        /// </summary>
+
+        internal static string ParametroApellido
+        {
+            get
+            {
+                return ResourceManager.GetString("ParametroApellido", resourceCulture);
+            }
+        }
+
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to @idCiudad.
+        /// </summary>
+
+        internal static string ParametroCorreo
+        {
+            get
+            {
+                return ResourceManager.GetString("ParametroApellido", resourceCulture);
             }
         }
 
         /// <summary>
-        ///   Busca una cadena traducida similar a AgregarClienteJuridico.
+        ///   Looks up a localized string similar to @idCiudad.
         /// </summary>
-        internal static string AgregarClienteJuridico
+
+        internal static string ParametroLugar
         {
             get
             {
-                return ResourceManager.GetString("AgregarClienteJuridico", resourceCulture);
+                return ResourceManager.GetString("ParametroLugar", resourceCulture);
             }
         }
+
+
 
         /// <summary>
-        ///   Busca una cadena traducida similar a ClienteJuridicoID.
+        ///   Looks up a localized string similar to Procedure_insertarLugar.
         /// </summary>
-        internal static string ClienteJuridicoID
+        internal static string ProcedureAgregarClienteNatural
         {
             get
             {
-                return ResourceManager.GetString("ClienteJuridicoID", resourceCulture);
+                return ResourceManager.GetString("ProcedureAgregarClienteNatural", resourceCulture);
             }
         }
+
 
         /// <summary>
-        ///   Busca una cadena traducida similar a ClienteJuridicoNombre.
+        ///   Looks up a localized string similar to Procedure_insertarLugar.
         /// </summary>
-        internal static string ClienteJuridicoNombre
+        internal static string ProcedureDetallarContacto
         {
             get
             {
-                return ResourceManager.GetString("ClienteJuridicoNombre", resourceCulture);
+                return ResourceManager.GetString("ProcedureDetallarContacto", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Busca una cadena traducida similar a ClienteJuridicoLogo.
-        /// </summary>
-        internal static string ClienteJuridicoLogo
-        {
-            get
-            {
-                return ResourceManager.GetString("ClienteJuridicoLogo", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Busca una cadena traducida similar a ClienteJuridicoFkLugar.
-        /// </summary>
-        internal static string ClienteJuridicoFkLugar
-        {
-            get
-            {
-                return ResourceManager.GetString("ClienteJuridicoFkLugar", resourceCulture);
-            }
-        }
-
 
 
 

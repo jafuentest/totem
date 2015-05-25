@@ -117,22 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AgregarClienteJuridico" xml:space="preserve">
-    <value>Procedure_AgregarClienteJuridico</value>
+  <data name="ParametroApellido" xml:space="preserve">
+    <value>@apellido</value>
+    <comment>Apellido</comment>
   </data>
-  <data name="ClienteJuridicoFkLugar" xml:space="preserve">
-    <value>@fk_lug_lug</value>
+  <data name="ParametroBusqueda" xml:space="preserve">
+    <value>@busqueda</value>
+    <comment>La Cedula</comment>
   </data>
-  <data name="ClienteJuridicoID" xml:space="preserve">
-    <value>@cj_rif</value>
+  <data name="ParametroCorreo" xml:space="preserve">
+    <value>@correo</value>
+    <comment>Correo</comment>
   </data>
-  <data name="ClienteJuridicoLogo" xml:space="preserve">
-    <value>@cj_logo</value>
+  <data name="ParametroLugar" xml:space="preserve">
+    <value>@Fklugar</value>
+    <comment>Fk del Lugar</comment>
   </data>
-  <data name="ClienteJuridicoNombre" xml:space="preserve">
-    <value>@cj_nombre</value>
+  <data name="ParametroNombre" xml:space="preserve">
+    <value>@nombre</value>
+    <comment>Nombre</comment>
   </data>
-  <data name="LlenarComboPais" xml:space="preserve">
-    <value>Procedure_llenarCBPais</value>
+  <data name="ProcedureAgregarClienteNatural" xml:space="preserve">
+    <value>Procedure_AgregarClienteNatural</value>
+    <comment>Procedimiento para agregar Cliente Natural</comment>
+  </data>
+  <data name="ProcedureDetallarContacto" xml:space="preserve">
+    <value>ConsultarDatosDeContacto</value>
+    <comment>Procedimiento para detallar un contacto en especifico</comment>
   </data>
 </root>
