@@ -75,7 +75,7 @@ namespace PruebasUnitariasTotem.Modulo2
             
             int fkLugar = 26;
 
-            Assert.IsTrue(baseDeDatosCliente.AgregarClienteJuridico(cliente,fkLugar));
+            //Assert.IsTrue(baseDeDatosCliente.AgregarClienteJuridico(cliente,fkLugar));
                    
         }
         /// <summary>
