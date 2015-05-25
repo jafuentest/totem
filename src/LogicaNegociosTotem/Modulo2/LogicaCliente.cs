@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using DominioTotem;
 using DatosTotem.Modulo2;
+using ExcepcionesTotem.Modulo2;
 
 namespace LogicaNegociosTotem.Modulo2
 {
@@ -15,16 +16,13 @@ namespace LogicaNegociosTotem.Modulo2
    public class LogicaCliente
     {
 
-       private BDCliente baseDeDatosCliente;
-       private BDLugar baseDeDatosLugar;
-       private List<Lugar> _listaLugar; 
+       private BDCliente baseDeDatosCliente; 
        /// <summary>
        /// Constructor de la Clase LogicaCliente
        /// </summary>
        public LogicaCliente() 
        {
-           baseDeDatosCliente = new BDCliente();
-           baseDeDatosLugar = new BDLugar(); 
+       
        }
 
        
@@ -34,9 +32,9 @@ namespace LogicaNegociosTotem.Modulo2
        /// </summary>
        /// <param name="clienteJuridico">Información del Cliente Jurídico</param>
        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-       public bool AgregarClienteJuridico(ClienteJuridico clienteJuridico, int fkLug)
+       public bool AgregarClienteJuridico(ClienteJuridico clienteJuridico)
        {
-           return baseDeDatosCliente.AgregarClienteJuridico(clienteJuridico, fkLug);
+           return baseDeDatosCliente.AgregarClienteJuridico(clienteJuridico);
        }
 
 
@@ -47,8 +45,20 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
        public bool AgregarClienteNatural(ClienteNatural clienteNatural)
        {
-           return baseDeDatosCliente.AgregarClienteNatural(clienteNatural);
-       }
+           //try
+          // {
+               return baseDeDatosCliente.AgregarClienteNatural(clienteNatural);
+           //}
+          // catch (ExcepcionesTotem.Modulo2.ExcepcionLogicaClientes)
+        //   {
+             
+             //  throw new ExcepcionesTotem.Modulo2.ExcepcionLogicaClientes();
+           //}
+                
+            //}
+            
+
+        }
 
 
        /// <summary>
@@ -150,24 +160,6 @@ namespace LogicaNegociosTotem.Modulo2
            return baseDeDatosCliente.ConsultarClientesNaturalesParametrizados(parametroBusqueda);
        }
 
-
-       /// <summary>
-       /// Le pide a la capa de datos la lista de los paises
-       /// </summary>
-       /// <returns>lista de paises</returns>
-       public List<Lugar> LlenarCBPaises()
-       {
-           try
-           {
-               _listaLugar = new List<Lugar>();
-               return baseDeDatosLugar.LlenarCBPaisesBD();
-           }
-           catch (Exception ex)
-           {
-               throw ex; 
-
-           }
-       } 
 
 
     }
