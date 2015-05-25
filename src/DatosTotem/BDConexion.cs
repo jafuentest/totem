@@ -31,8 +31,11 @@ namespace DatosTotem
 
                 try
                 {
+                    strConexion = ConfigurationManager.ConnectionStrings[RecursoGeneralBD.NombreBD].ConnectionString;
                     if (conexion == null)
-                        conexion = new SqlConnection(ConfigurationManager.ConnectionStrings[RecursoGeneralBD.NombreBD].ConnectionString);
+                    {
+                        conexion = new SqlConnection(strConexion);
+                    }
 
                 }
 
@@ -137,10 +140,29 @@ namespace DatosTotem
                         foreach (Parametro parametro in parametros)
                         {
                             if (parametro != null && parametro.etiqueta != null && parametro.tipoDato != null &&
-                                parametro.valor!=null)
+                                parametro.esOutput != null)
                             {
-                                comando.Parameters.Add(parametro.etiqueta, parametro.tipoDato).Value = parametro.valor;
+                                if (parametro.esOutput)
+                                {
+                                    comando.Parameters.Add(parametro.etiqueta, parametro.tipoDato).Direction = ParameterDirection.Output;
+                                }
+                                else
+                                {
+                                    if (parametro.valor != null)
+                                    {
+                                        comando.Parameters.Add(parametro.etiqueta, parametro.tipoDato).Value = parametro.valor;
+                                    }
+                                    else
+                                    {
+                                        //Lanza excepcion
+                                    }
+                                }
                             }
+                            else
+                            {
+                                //Lanza excepcion
+                            }
+                            
                         }
 
                         SqlDataReader resultado = comando.ExecuteReader();
@@ -151,11 +173,11 @@ namespace DatosTotem
                 }
                 catch (SqlException)
                 {
-                    //
+                    throw new Exception();
                 }
                 catch (Exception)
                 {
-                    //
+                    throw new Exception();
                 }
                 finally
                 {
