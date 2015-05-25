@@ -105,17 +105,18 @@ namespace DatosTotem
                 }
                 catch (SqlException ex)
                 {
-                    //
+                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                        RecursoGeneralBD.Mensaje, ex);
                 }
                 catch (Exception ex)
                 {
-                    //
+                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                        RecursoGeneralBD.Mensaje, ex);
                 }
                 finally
                 {
                     Desconectar();
                 }
-                return null;
             }
         #endregion
 
@@ -125,76 +126,99 @@ namespace DatosTotem
         /// </summary>
         /// <param name="query">El stored procedure a ejecutar</param>
         /// <param name="parametros">lista de los parametros a usar</param>
-        /// <returns>SqlDataReader con la informacion obtenida</returns>
-            public DataTable EjecutarStoredProcedure(string query, List<Parametro> parametros)
+        /// <returns>List<Resultado>con la informacion obtenida</returns>
+            public List<Resultado> EjecutarStoredProcedure(string query, List<Parametro> parametros)
             {
                 try
                 {
                     Conectar();
-                    DataTable data = new DataTable();
+                    List<Resultado> resultados = new List<Resultado>();
                     using (conexion)
                     {
                         
                         comando = new SqlCommand(query, conexion);
                         comando.CommandType = CommandType.StoredProcedure;
 
-                        foreach (Parametro parametro in parametros)
+
+                        AsignarParametros(parametros);
+                       
+
+                        conexion.Open();
+                        comando.ExecuteNonQuery();
+                        if (comando.Parameters != null)
                         {
-                            if (parametro != null && parametro.etiqueta != null && parametro.tipoDato != null &&
-                                parametro.esOutput != null)
+                            foreach (SqlParameter parameter in comando.Parameters)
                             {
-                                if (parametro.esOutput)
+                                if (parameter.Direction.Equals(ParameterDirection.Output))
                                 {
-                                    comando.Parameters.Add(parametro.etiqueta, parametro.tipoDato, 500).Direction = ParameterDirection.Output;
+                                    Resultado resultado = new Resultado(parameter.ParameterName, 
+                                        parameter.Value.ToString());
+                                    resultados.Add(resultado);
                                 }
-                                else
-                                {
-                                    if (parametro.valor != null)
-                                    {
-                                        if (parametro.tipoDato.Equals(SqlDbType.VarChar))
-                                        {
-                                            comando.Parameters.Add(new SqlParameter(parametro.etiqueta, parametro.tipoDato, 500)).Value = parametro.valor;
-                                        }
-                                        else
-                                        {
-                                            comando.Parameters.Add(new SqlParameter(parametro.etiqueta, parametro.tipoDato, 500)).Value = parametro.valor;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        //Lanza excepcion
-                                    }
-                                }
+                            }
+                            if (resultados != null)
+                            {
+                                return resultados;
                             }
                             else
                             {
-                                //Lanza excepcion
+                                //Lanza excepcion de parametro
                             }
-                            
                         }
-
-                        //conexion.Open();
-                        
-                        using (SqlDataAdapter dataAdapter = new SqlDataAdapter(comando))
-                          {
-                              dataAdapter.Fill(data);                           
-                          }
-                        return data;
+                        return null;
                     }
 
 
                 }
-                catch (SqlException)
+                catch (SqlException ex)
                 {
-                    throw new Exception();
+                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                        RecursoGeneralBD.Mensaje, ex);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw new Exception();
+                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                        RecursoGeneralBD.Mensaje, ex);
                 }
                 finally
                 {
-                   Desconectar();
+                  Desconectar();
+                }
+            }
+            /// <summary>
+            /// Metodo para asignar los parametros a un comando
+            /// </summary>
+            /// <param name="parametros">Lista de parametros que se le va a asociar</param>
+            public void AsignarParametros(List<Parametro> parametros)
+            {
+                foreach (Parametro parametro in parametros)
+                {
+                    if (parametro != null && parametro.etiqueta != null && parametro.tipoDato != null &&
+                        parametro.esOutput != null)
+                    {
+                        if (parametro.esOutput)
+                        {
+                            comando.Parameters.Add(parametro.etiqueta, parametro.tipoDato, 500);
+                            comando.Parameters[parametro.etiqueta].Direction = ParameterDirection.Output;
+                        }
+                        else
+                        {
+                            if (parametro.valor != null)
+                            {
+                                comando.Parameters.Add(new SqlParameter(parametro.etiqueta, parametro.tipoDato, 500));
+                                comando.Parameters[parametro.etiqueta].Value = parametro.valor;
+                            }
+                            else
+                            {
+                                //Lanza excepcion de parametro
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //Lanza excepcion de parametro
+                    }
+
                 }
             }
         #endregion

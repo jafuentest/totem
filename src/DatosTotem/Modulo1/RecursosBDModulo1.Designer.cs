@@ -113,5 +113,77 @@ namespace DatosTotem.Modulo1 {
                 return ResourceManager.GetString("Mensaje_Usuario_Vacio", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @Clave.
+        /// </summary>
+        internal static string Parametro_Input_Clave {
+            get {
+                return ResourceManager.GetString("Parametro_Input_Clave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @Username.
+        /// </summary>
+        internal static string Parametro_Input_Username {
+            get {
+                return ResourceManager.GetString("Parametro_Input_Username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @Usu_apellido.
+        /// </summary>
+        internal static string Parametro_Output_Usu_apellido {
+            get {
+                return ResourceManager.GetString("Parametro_Output_Usu_apellido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @Usu_cargo.
+        /// </summary>
+        internal static string Parametro_Output_Usu_cargo {
+            get {
+                return ResourceManager.GetString("Parametro_Output_Usu_cargo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @Usu_correo.
+        /// </summary>
+        internal static string Parametro_Output_Usu_correo {
+            get {
+                return ResourceManager.GetString("Parametro_Output_Usu_correo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @Usu_nombre.
+        /// </summary>
+        internal static string Parametro_Output_Usu_nombre {
+            get {
+                return ResourceManager.GetString("Parametro_Output_Usu_nombre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @Usu_rol.
+        /// </summary>
+        internal static string Parametro_Output_Usu_rol {
+            get {
+                return ResourceManager.GetString("Parametro_Output_Usu_rol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to validarlogin.
+        /// </summary>
+        internal static string Query_ValidarLogin {
+            get {
+                return ResourceManager.GetString("Query_ValidarLogin", resourceCulture);
+            }
+        }
     }
 }

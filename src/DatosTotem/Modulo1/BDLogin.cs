@@ -28,42 +28,79 @@ namespace DatosTotem.Modulo1
             if (user.username != null && user.clave != null)
             {
                 List<Parametro> parametros = new List<Parametro>();
-                Parametro parametro = new Parametro("@Username",  SqlDbType.VarChar, user.username, false);
+                Parametro parametro = new Parametro(RecursosBDModulo1.Parametro_Input_Username,  
+                    SqlDbType.VarChar, user.username, false);
                 parametros.Add(parametro);
-                parametro = new Parametro("@Clave", SqlDbType.VarChar, user.clave, false);
+                parametro = new Parametro(RecursosBDModulo1.Parametro_Input_Clave, 
+                    SqlDbType.VarChar, user.clave, false);
                 parametros.Add(parametro);
-                parametro = new Parametro("@Usu_nombre", SqlDbType.VarChar, true);
+                parametro = new Parametro(RecursosBDModulo1.Parametro_Output_Usu_nombre, 
+                    SqlDbType.VarChar, true);
                 parametros.Add(parametro);
-                parametro = new Parametro("@Usu_apellido", SqlDbType.VarChar, true);
+                parametro = new Parametro(RecursosBDModulo1.Parametro_Output_Usu_apellido, 
+                    SqlDbType.VarChar, true);
                 parametros.Add(parametro);
-                parametro = new Parametro("@Usu_rol", SqlDbType.VarChar, true);
+                parametro = new Parametro(RecursosBDModulo1.Parametro_Output_Usu_rol, 
+                    SqlDbType.VarChar, true);
                 parametros.Add(parametro);
-                parametro = new Parametro("@Usu_correo", SqlDbType.VarChar, true);
+                parametro = new Parametro(RecursosBDModulo1.Parametro_Output_Usu_correo, 
+                    SqlDbType.VarChar, true);
                 parametros.Add(parametro);
-                parametro = new Parametro("@Usu_cargo", SqlDbType.VarChar, true);
+                parametro = new Parametro(RecursosBDModulo1.Parametro_Output_Usu_cargo, 
+                    SqlDbType.VarChar, true);
                 parametros.Add(parametro);
-                string query = "validarlogin";
+                string query = RecursosBDModulo1.Query_ValidarLogin;
                 try
                 {
                     BDConexion con = new BDConexion();
-                    DataTable dataTable = con.EjecutarStoredProcedure(query, parametros);
-                    foreach (DataRow dataRow in dataTable.Rows)
+                    List<Resultado> resultados = con.EjecutarStoredProcedure(query, parametros);
+                    if (resultados != null)
                     {
-                        foreach (var item in dataRow.ItemArray)
+                        foreach (Resultado resultado in resultados)
                         {
-                            System.Diagnostics.Debug.Write(item);
+                            if (resultado.etiqueta.Equals(RecursosBDModulo1.Parametro_Output_Usu_nombre))
+                            {
+                                user.nombre = resultado.valor;
+                            }
+                            if (resultado.etiqueta.Equals(RecursosBDModulo1.Parametro_Output_Usu_apellido))
+                            {
+                                user.apellido = resultado.valor;
+                            }
+                            if (resultado.etiqueta.Equals(RecursosBDModulo1.Parametro_Output_Usu_rol))
+                            {
+                                user.rol = resultado.valor;
+                            }
+                            if (resultado.etiqueta.Equals(RecursosBDModulo1.Parametro_Output_Usu_correo))
+                            {
+                                user.correo = resultado.valor;
+                            }
+                            if (resultado.etiqueta.Equals(RecursosBDModulo1.Parametro_Output_Usu_cargo))
+                            {
+                                user.cargo = resultado.valor;
+                            } 
                         }
                     }
+                    else
+                    {
+                        throw new ExcepcionesTotem.Modulo1.LoginErradoException(RecursosBDModulo1.Codigo_Login_Errado,
+                            RecursosBDModulo1.Mensaje_Login_Errado, new Exception());                            
+                    }
+                    return user;
                 }
-                catch (Exception ex)
+                catch (ExcepcionesTotem.Modulo1.LoginErradoException ex)
                 {
-                    throw new ExcepcionesTotem.ExceptionTotemConexionBD();
+                    throw new ExcepcionesTotem.Modulo1.LoginErradoException(ex.Codigo, ex.Mensaje, ex);
                 }
-                return user;
+                catch (SqlException ex)
+                {
+                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo, 
+                        RecursoGeneralBD.Mensaje, ex);
+                }
             }
             else
             {
-                throw new UsuarioVacioException(RecursosBDModulo1.Codigo_Usuario_Vacio, RecursosBDModulo1.Mensaje_Usuario_Vacio, new Exception());
+                throw new UsuarioVacioException(RecursosBDModulo1.Codigo_Usuario_Vacio, 
+                    RecursosBDModulo1.Mensaje_Usuario_Vacio, new Exception());
             }
         }
         /// <summary>

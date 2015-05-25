@@ -141,4 +141,36 @@
     <value>Datos de usuario incompletos</value>
     <comment>Mensaje cuando se presente el error de usuario incompleto</comment>
   </data>
+  <data name="Parametro_Input_Clave" xml:space="preserve">
+    <value>@Clave</value>
+    <comment>Parametro de input para los stored procedure con la clave del usuario</comment>
+  </data>
+  <data name="Parametro_Input_Username" xml:space="preserve">
+    <value>@Username</value>
+    <comment>Parametro de input para los stored procedure con el nombre de usuario</comment>
+  </data>
+  <data name="Parametro_Output_Usu_apellido" xml:space="preserve">
+    <value>@Usu_apellido</value>
+    <comment>Parametro de output para los stored procedure con el apellido del usuario</comment>
+  </data>
+  <data name="Parametro_Output_Usu_cargo" xml:space="preserve">
+    <value>@Usu_cargo</value>
+    <comment>Parametro de output para los stored procedure con el cargo del usuario</comment>
+  </data>
+  <data name="Parametro_Output_Usu_correo" xml:space="preserve">
+    <value>@Usu_correo</value>
+    <comment>Parametro de output para los stored procedure con el correo del usuario</comment>
+  </data>
+  <data name="Parametro_Output_Usu_nombre" xml:space="preserve">
+    <value>@Usu_nombre</value>
+    <comment>Parametro de output para los stored procedure con el nombre del usuario</comment>
+  </data>
+  <data name="Parametro_Output_Usu_rol" xml:space="preserve">
+    <value>@Usu_rol</value>
+    <comment>Parametro de output para los stored procedure con el rol del usuario</comment>
+  </data>
+  <data name="Query_ValidarLogin" xml:space="preserve">
+    <value>validarlogin</value>
+    <comment>Query para el stored procedure que valida el login del usuario</comment>
+  </data>
 </root>

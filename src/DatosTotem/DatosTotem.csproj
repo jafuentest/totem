@@ -65,6 +65,7 @@
       <DependentUpon>BaseDeDatosTotemDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="BDConexion.cs" />
+    <Compile Include="Resultado.cs" />
     <Compile Include="Modulo1\BDLogin.cs" />
     <Compile Include="Modulo1\RecursosBDModulo1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -103,15 +104,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RecursoGeneralBD.resx</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="BaseDeDatos\BaseDeDatosTotem.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="BaseDeDatos\BaseDeDatosTotem_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>BaseDeDatosTotem.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
