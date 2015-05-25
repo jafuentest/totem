@@ -24,14 +24,15 @@ namespace DatosTotem.Modulo2
 
         private BDConexion _operacionBD;
         private ClienteNatural Clientenatural = new ClienteNatural();
-
+        private SqlConnection conexion;
+        private SqlCommand comando; 
 
         /// <summary>
         /// Constructor de la Clase BDCliente
         /// </summary>
         public BDCliente() 
         {
-        
+            this.conexion = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\totem\totem\src\DatosTotem\BaseDeDatos\BaseDeDatosTotem.mdf;Integrated Security=True"); 
         }
 
 
@@ -40,9 +41,50 @@ namespace DatosTotem.Modulo2
         /// </summary>
         /// <param name="clienteJuridico">Información del Cliente Jurídico</param>
         /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-        public bool AgregarClienteJuridico(ClienteJuridico clienteJuridico) 
+        public bool AgregarClienteJuridico(ClienteJuridico clienteJuridico, int fkLugar) 
         {
-            throw new NotImplementedException(); 
+            bool respuesta = false;
+
+            try
+            {
+                int nroDeFilasAfectadas = 0;
+
+                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureAgregarClienteJuridico, this.conexion);
+                this.comando.CommandType = CommandType.StoredProcedure;
+
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroRif, clienteJuridico.Jur_Id);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroNombre, clienteJuridico.Jur_Nombre);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroLogo, string.Empty);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroLugar, fkLugar);
+
+                this.conexion.Open();
+
+                nroDeFilasAfectadas = this.comando.ExecuteNonQuery();
+
+                if (nroDeFilasAfectadas > 0)
+                    respuesta = true; 
+
+            }
+
+            catch (SqlException e)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje,e); 
+            }
+            catch (NullReferenceException e)
+            {
+                throw e; 
+            }
+            catch (Exception e)
+            {
+                throw e;  
+            }
+            finally 
+            {
+                this.conexion.Close(); 
+            }
+
+            return respuesta;  
         }
 
 

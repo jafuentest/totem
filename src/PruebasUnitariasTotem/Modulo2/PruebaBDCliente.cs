@@ -31,7 +31,7 @@ namespace PruebasUnitariasTotem.Modulo2
            baseDeDatosLugar = new BDLugar(); 
        }
 
-
+        /*
         /// <summary>
         /// Prueba el llenado de combo de paises
         /// </summary>
@@ -60,8 +60,8 @@ namespace PruebasUnitariasTotem.Modulo2
 
            Assert.IsTrue(sonIguales);
 
-       }
-
+       }*/
+        
         /// <summary>
         /// Prueba el agregar un Cliente Juridico a Base de datos
         /// </summary>
@@ -78,6 +78,7 @@ namespace PruebasUnitariasTotem.Modulo2
             //Assert.IsTrue(baseDeDatosCliente.AgregarClienteJuridico(cliente,fkLugar));
                    
         }
+
         /// <summary>
         /// Método que limpia el objeto que se probó 
         /// para que el Recolector de Basura lo recolecte

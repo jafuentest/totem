@@ -153,6 +153,41 @@ namespace DatosTotem.Modulo2 {
             }
         }
 
+        /// <summary>
+        ///   Looks up a localized string similar to ProcedureAgregarClienteJuridico.
+        /// </summary>
+        internal static string ProcedureAgregarClienteJuridico
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedureAgregarClienteJuridico", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ParametroRif.
+        /// </summary>
+        internal static string ParametroRif
+        {
+            get
+            {
+                return ResourceManager.GetString("ParametroRif", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ParametroLogo.
+        /// </summary>
+        internal static string ParametroLogo
+        {
+            get
+            {
+                return ResourceManager.GetString("ParametroLogo", resourceCulture);
+            }
+        }
+
+
+
 
 
     }

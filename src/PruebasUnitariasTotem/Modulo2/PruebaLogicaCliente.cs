@@ -16,7 +16,7 @@ namespace PruebasUnitariasTotem.Modulo2
     public class PruebaLogicaCliente
     {
         LogicaCliente logicaCliente;
-
+        ClienteJuridico clienteJ; 
 
         /// <summary>
         /// Método que inicializa 
@@ -26,18 +26,28 @@ namespace PruebasUnitariasTotem.Modulo2
         public void Init() 
         {
             logicaCliente = new LogicaCliente();
+            
+            ClienteJuridico clienteJ = new ClienteJuridico(); 
         }
 
-
+        
         /// <summary>
         /// Se prueba que la clase pueda agregar 
-        /// tanto clientes naturales como jurídicos
+        /// a los clientes jurídicos
         /// </summary>
-        public void PruebaAgregar() 
+        /// 
+        [Test]
+        public void PruebaAgregarClienteJuridicoLogica() 
         {
-        
-        }
+            
+            string nombreCliente = "Venetur"; 
+            string rif = "J-2389183-5"; 
 
+            int fkLugar = 26;
+
+            Assert.IsTrue(logicaCliente.AgregarClienteJuridico(rif,nombreCliente,fkLugar));
+        }
+        
 
         /// <summary>
         /// Se prueba que la clase pueda modificar 
@@ -81,7 +91,7 @@ namespace PruebasUnitariasTotem.Modulo2
         /// consultar a un cliente jurídico dado su id
         /// </summary>
         public void PruebaConsultarClienteJuridico() { }
-
+/*
         /// <summary>
         /// Prueba del llenado del Combo de Pais
         /// </summary>
@@ -97,7 +107,7 @@ namespace PruebasUnitariasTotem.Modulo2
 
             //Assert.AreEqual(paises,paisesObtenidos); 
 
-        }
+        }*/
 
         /// <summary>
         /// Método que vacía el objeto utilizado durante 

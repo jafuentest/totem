@@ -129,6 +129,9 @@
     <value>@correo</value>
     <comment>Correo</comment>
   </data>
+  <data name="ParametroLogo" xml:space="preserve">
+    <value>@cj_logo</value>
+  </data>
   <data name="ParametroLugar" xml:space="preserve">
     <value>@Fklugar</value>
     <comment>Fk del Lugar</comment>
@@ -136,6 +139,12 @@
   <data name="ParametroNombre" xml:space="preserve">
     <value>@nombre</value>
     <comment>Nombre</comment>
+  </data>
+  <data name="ParametroRif" xml:space="preserve">
+    <value>@cj_rif</value>
+  </data>
+  <data name="ProcedureAgregarClienteJuridico" xml:space="preserve">
+    <value>Procedure_AgregarClienteJuridico</value>
   </data>
   <data name="ProcedureAgregarClienteNatural" xml:space="preserve">
     <value>Procedure_AgregarClienteNatural</value>

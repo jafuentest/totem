@@ -22,7 +22,7 @@ namespace LogicaNegociosTotem.Modulo2
        /// </summary>
        public LogicaCliente() 
        {
-       
+           baseDeDatosCliente = new BDCliente(); 
        }
 
        
@@ -32,9 +32,11 @@ namespace LogicaNegociosTotem.Modulo2
        /// </summary>
        /// <param name="clienteJuridico">Información del Cliente Jurídico</param>
        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-       public bool AgregarClienteJuridico(ClienteJuridico clienteJuridico)
+       public bool AgregarClienteJuridico(string rif, string nombre, int fkLugar)
        {
-           return baseDeDatosCliente.AgregarClienteJuridico(clienteJuridico);
+           ClienteJuridico clienteJuridico = new ClienteJuridico(rif,nombre); 
+
+           return baseDeDatosCliente.AgregarClienteJuridico(clienteJuridico, fkLugar);
        }
 
 
