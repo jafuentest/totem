@@ -13,54 +13,34 @@ public partial class login : System.Web.UI.Page
         ((MasterPage)Page.Master).IdModulo = "1";
         Master.ShowDiv = false;
         Master.MostrarMenuLateral = false;
-
-       
-
-        HttpCookie aCookie = new HttpCookie("userInfo");
-        aCookie.Expires = DateTime.Now.AddDays(1);
-        Response.Cookies.Add(aCookie);
-
-        String log = Request.QueryString["logout"];
-        if (log != null)
-        {
-            if (log.Equals("true"))
-            {
-                HttpCookie myCookie = new HttpCookie("userInfo");
-                myCookie.Expires = DateTime.Now.AddDays(-1d);
-                Response.Cookies.Add(myCookie);
-            }
+        #region Redireccionamiento a Default
+        if (HttpContext.Current.Session["Credenciales"] != null) {
+            HttpContext.Current.Response.Redirect("Default.aspx");
         }
-        if (Request.Cookies["userInfo"] != null)
-        {
-            if (Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != "" && Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != null)
-            {
-                Response.Redirect("Default.aspx");
-            }
-        }
+        #endregion
 
     }
+    protected void Login_Click(object sender, EventArgs e) {
+        
+        try
+        {
+            string usuario = this.input_usuario.Value;
+            string clave = this.input_pswd.Value;
+            DominioTotem.Usuario loginUsuario = new DominioTotem.Usuario();
+            loginUsuario.username = usuario;
+            loginUsuario.clave = clave;
+            LogicaNegociosTotem.Modulo1.LogicaLogin miLogica = new LogicaNegociosTotem.Modulo1.LogicaLogin();
+            HttpContext.Current.Session["Credenciales"] = miLogica.Login(loginUsuario);
+            HttpContext.Current.Response.Redirect("Default.aspx");
 
-    protected void btnLogin_Click(object sender, EventArgs e)
-    {
-        if (input_usuario.Value == "user")
-        {
-            HttpCookie aCookie = new HttpCookie("userInfo");
-            aCookie.Values["usuario"] = "user";
-            aCookie.Values["clave"] = input_pswd.Value;
-            aCookie.Values["rol"] = "usuario";
-            aCookie.Expires = DateTime.Now.AddDays(1);
-            Response.Cookies.Add(aCookie);
-                Response.Redirect("Default.aspx");
         }
-        if (input_usuario.Value == "admin")
+        catch (ExcepcionesTotem.Modulo1.IntentosFallidosException error)
         {
-            HttpCookie aCookie = new HttpCookie("userInfo");
-            aCookie.Values["usuario"] = "admin";
-            aCookie.Values["clave"] = input_pswd.Value;
-            aCookie.Values["rol"] = "administrador";
-            aCookie.Expires = DateTime.Now.AddDays(1);
-            Response.Cookies.Add(aCookie);
-                Response.Redirect("Default.aspx");
+
         }
+        catch (ExcepcionesTotem.Modulo1.LoginErradoException error)
+        {
+
+        }    
     }
 }

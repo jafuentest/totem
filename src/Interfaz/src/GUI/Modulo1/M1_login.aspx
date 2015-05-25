@@ -28,7 +28,7 @@
                     </div>
                     <div id="botones" class ="form-group">
                         <div class ="col-sm-10 col-md-10 col-lg-10">
-                            <button runat="server" class="btn btn-primary "  style="width:68%;" type="submit" onserverclick="btnLogin_Click">Iniciar Sesi&oacute;n</button>
+                            <button runat="server" class="btn btn-primary "  style="width:68%;" type="submit" onserverclick="Login_Click">Iniciar Sesi&oacute;n</button>
                     <br />
                                                               
                     <a class="login-link" href="M1_IntroducirCorreo.aspx" style="margin-left:19%; margin-top:20px;">¿Olvid&oacute; su contrase&ntilde;a?</a>

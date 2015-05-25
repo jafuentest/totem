@@ -15,24 +15,7 @@ namespace LogicaNegociosTotem.Modulo1
         /// <summary>
         /// Atributo para el control de los intentos que tendra el usuario para hacer login
         /// </summary>
-       private int intentos {
-
-            /// <summary>
-            /// Metodo para obtener el numero de intentos que ha realizado el usuario/administrador
-            /// </summary>
-            /// <returns>Retorna el numero de intentos realizado el usuario</returns>
-             get {
-                return this.intentos;}
-
-            /// <summary>
-            /// Metodo para la asignacion de los intentos realizados por el usuario/administrador
-            /// </summary>
-            /// <param name="value">numero de intentos realizados por el usuario</param>
-             set {
-                if (this.intentos <=3){
-                    this.intentos = value;}
-            }
-        }
+        private int intentos;
 
         /// <summary>
         /// Constructor de la clase BDLogin
@@ -40,7 +23,7 @@ namespace LogicaNegociosTotem.Modulo1
         /// <returns>Retorna el objeto con el numero de intentos inicializado en 0 </returns>
         public LogicaLogin()
         {
-            this.intentos = 0;
+            intentos = 0;
         }
 
         /// <summary>
@@ -51,23 +34,33 @@ namespace LogicaNegociosTotem.Modulo1
         /// retorna null</returns>
         public DominioTotem.Usuario Login(DominioTotem.Usuario usuario)
         {
-            if (this.intentos <= 3)
+            if (this.intentos < 3)
             {
+
                 try
                 {
+                    this.intentos++;
                     return DatosTotem.Modulo1.BDLogin.ValidarLoginBD(usuario);
                 }
                 catch (ExcepcionesTotem.Modulo1.LoginErradoException)
                 {
                     throw new ExcepcionesTotem.Modulo1.LoginErradoException();
                 }
-                catch (Exception)
+                catch (ExcepcionesTotem.Modulo1.UsuarioVacioException)
                 {
-                    throw new Exception();
+                    throw new ExcepcionesTotem.Modulo1.UsuarioVacioException();
+                }
+                catch (ExcepcionesTotem.ExceptionTotemConexionBD)
+                {
+                    throw new ExcepcionesTotem.ExceptionTotemConexionBD();
+                }
+                finally {
+                    this.intentos++;
                 }
             }
-            else {
-                throw new Exception();
+            else 
+            {
+                throw new ExcepcionesTotem.Modulo1.IntentosFallidosException();
             }
 
 
