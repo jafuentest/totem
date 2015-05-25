@@ -116,6 +116,54 @@ namespace DatosTotem
             }
         #endregion
 
+        #region Ejecutar Stored Procedure
+        /// <summary>
+        /// Metodo para ejecutar un stored procedure de la base de datos usando parametros
+        /// </summary>
+        /// <param name="query">El stored procedure a ejecutar</param>
+        /// <param name="parametros">lista de los parametros a usar</param>
+        /// <returns>SqlDataReader con la informacion obtenida</returns>
+            public SqlDataReader EjecutarStoredProcedure(string query, List<Parametro> parametros)
+            {
+                try
+                {
+                    Conectar();
+
+                    using (conexion)
+                    {
+                        comando = new SqlCommand(query, conexion);
+                        comando.CommandType = CommandType.StoredProcedure;
+
+                        foreach (Parametro parametro in parametros)
+                        {
+                            if (parametro != null && parametro.etiqueta != null && parametro.tipoDato != null &&
+                                parametro.valor!=null)
+                            {
+                                comando.Parameters.Add(parametro.etiqueta, parametro.tipoDato).Value = parametro.valor;
+                            }
+                        }
+
+                        SqlDataReader resultado = comando.ExecuteReader();
+                        return resultado;
+                    }
+
+
+                }
+                catch (SqlException)
+                {
+                    //
+                }
+                catch (Exception)
+                {
+                    //
+                }
+                finally
+                {
+                    Desconectar();
+                }
+                return null;
+            }
+        #endregion
     }
 
 }

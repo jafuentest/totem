@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Security.Cryptography;
 
 namespace DominioTotem
 {
@@ -77,7 +78,14 @@ namespace DominioTotem
         /// </summary>
        public void CalcularHash()
        {
-           throw new NotImplementedException();
+           if (this.clave != null)
+           {
+               byte[] claveEnBytes = new byte[this.clave.Length * sizeof(char)];
+               System.Buffer.BlockCopy(this.clave.ToCharArray(), 0, claveEnBytes, 0, claveEnBytes.Length);
+               SHA256 shaM = new SHA256Managed();
+               byte[] hashClave = shaM.ComputeHash(claveEnBytes);
+               this.clave = BitConverter.ToString(hashClave);
+           }
        }
     
     }

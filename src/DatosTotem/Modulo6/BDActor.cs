@@ -102,6 +102,7 @@ namespace DatosTotem.Modulo6
                 //Recorremos cada fila devuelta de la consulta
                 while (respuesta.Read())
                 {
+                    //Creamos el Actor y lo anexamos a la lista
                     Actor aux = new Actor(respuesta.GetInt32(2), respuesta.GetString(0), respuesta.GetString(1));
                     listaActores.Add(aux);
                 }
