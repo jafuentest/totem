@@ -135,13 +135,13 @@ namespace DatosTotem
                     List<Resultado> resultados = new List<Resultado>();
                     using (conexion)
                     {
-                        
+
                         comando = new SqlCommand(query, conexion);
                         comando.CommandType = CommandType.StoredProcedure;
 
 
                         AsignarParametros(parametros);
-                       
+
 
                         conexion.Open();
                         comando.ExecuteNonQuery();
@@ -151,7 +151,7 @@ namespace DatosTotem
                             {
                                 if (parameter.Direction.Equals(ParameterDirection.Output))
                                 {
-                                    Resultado resultado = new Resultado(parameter.ParameterName, 
+                                    Resultado resultado = new Resultado(parameter.ParameterName,
                                         parameter.Value.ToString());
                                     resultados.Add(resultado);
                                 }
@@ -162,7 +162,10 @@ namespace DatosTotem
                             }
                             else
                             {
-                                //Lanza excepcion de parametro
+                                throw new ExcepcionesTotem.Modulo1.ParametroInvalidoException(
+                                    RecursoGeneralBD.Codigo_Parametro_Errado,
+                                    RecursoGeneralBD.Mensaje_Parametro_Errado,
+                                    new ExcepcionesTotem.Modulo1.ParametroInvalidoException());
                             }
                         }
                         return null;
@@ -174,6 +177,13 @@ namespace DatosTotem
                 {
                     throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
                         RecursoGeneralBD.Mensaje, ex);
+                }
+                catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
+                {
+                    throw new ExcepcionesTotem.Modulo1.ParametroInvalidoException(
+                                    RecursoGeneralBD.Codigo_Parametro_Errado,
+                                    RecursoGeneralBD.Mensaje_Parametro_Errado,
+                                    ex);
                 }
                 catch (Exception ex)
                 {
@@ -210,13 +220,19 @@ namespace DatosTotem
                             }
                             else
                             {
-                                //Lanza excepcion de parametro
+                                throw new ExcepcionesTotem.Modulo1.ParametroInvalidoException(
+                                    RecursoGeneralBD.Codigo_Parametro_Errado,
+                                    RecursoGeneralBD.Mensaje_Parametro_Errado,
+                                    new ExcepcionesTotem.Modulo1.ParametroInvalidoException());
                             }
                         }
                     }
                     else
                     {
-                        //Lanza excepcion de parametro
+                        throw new ExcepcionesTotem.Modulo1.ParametroInvalidoException(
+                                     RecursoGeneralBD.Codigo_Parametro_Errado,
+                                     RecursoGeneralBD.Mensaje_Parametro_Errado,
+                                     new ExcepcionesTotem.Modulo1.ParametroInvalidoException());
                     }
 
                 }
