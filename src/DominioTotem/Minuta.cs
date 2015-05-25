@@ -24,6 +24,13 @@ namespace DominioTotem
             this.observaciones = observaciones;
         }
 
+        public Minuta(DateTime fecha, string motivo, string observaciones)
+        {
+            this.fecha = fecha;
+            this.motivo = motivo;
+            this.observaciones = observaciones;
+        }
+
         public string Codigo
         {
             get { return this.codigo; }

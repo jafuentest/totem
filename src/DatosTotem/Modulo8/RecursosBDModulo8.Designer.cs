@@ -97,6 +97,15 @@ namespace DatosTotem.Modulo8 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a @min_fecha.
+        /// </summary>
+        internal static string ParametroFechaMinuta {
+            get {
+                return ResourceManager.GetString("ParametroFechaMinuta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a @min_id.
         /// </summary>
         internal static string ParametroIDMinuta {
@@ -106,11 +115,65 @@ namespace DatosTotem.Modulo8 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a @min_motivo.
+        /// </summary>
+        internal static string ParametroMotivoMinuta {
+            get {
+                return ResourceManager.GetString("ParametroMotivoMinuta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a @min_observaciones.
+        /// </summary>
+        internal static string ParametroObservacionesMinuta {
+            get {
+                return ResourceManager.GetString("ParametroObservacionesMinuta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a @min_inv_proy.
+        /// </summary>
+        internal static string ParametroProyectoMinuta {
+            get {
+                return ResourceManager.GetString("ParametroProyectoMinuta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_AgregarMinuta.
+        /// </summary>
+        internal static string ProcedimientoAgregarMinuta {
+            get {
+                return ResourceManager.GetString("ProcedimientoAgregarMinuta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_ConsultarMinutasProyecto.
+        /// </summary>
+        internal static string ProcedimientoConsultarListaMinutas {
+            get {
+                return ResourceManager.GetString("ProcedimientoConsultarListaMinutas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Procedure_ConsultarMinuta.
         /// </summary>
         internal static string ProcedimientoConsultarMinuta {
             get {
                 return ResourceManager.GetString("ProcedimientoConsultarMinuta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_ModificarMinuta.
+        /// </summary>
+        internal static string ProcedimientoModificarMinuta {
+            get {
+                return ResourceManager.GetString("ProcedimientoModificarMinuta", resourceCulture);
             }
         }
     }

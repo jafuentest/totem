@@ -133,12 +133,40 @@
     <value>min_observaciones</value>
     <comment>Atributo Observaciones en la tabla Minuta</comment>
   </data>
+  <data name="ParametroFechaMinuta" xml:space="preserve">
+    <value>@min_fecha</value>
+    <comment>Parametro en BD que contiene la Fecha de la Minuta a consultar</comment>
+  </data>
   <data name="ParametroIDMinuta" xml:space="preserve">
     <value>@min_id</value>
     <comment>Parametro en BD que contiene el ID de la Minuta a consultar</comment>
   </data>
+  <data name="ParametroMotivoMinuta" xml:space="preserve">
+    <value>@min_motivo</value>
+    <comment>Parametro en BD que contiene el Motivo de la Minuta a consultar</comment>
+  </data>
+  <data name="ParametroObservacionesMinuta" xml:space="preserve">
+    <value>@min_observaciones</value>
+    <comment>Parametro en BD que contiene las Observaciones de la Minuta a consultar</comment>
+  </data>
+  <data name="ParametroProyectoMinuta" xml:space="preserve">
+    <value>@min_inv_proy</value>
+    <comment>Parametro que contiene el id de proyecto de las minutas asociadas al mismo</comment>
+  </data>
+  <data name="ProcedimientoAgregarMinuta" xml:space="preserve">
+    <value>Procedure_AgregarMinuta</value>
+    <comment>Procedimiento en la BD que guarda los datos principales de la Minuta</comment>
+  </data>
+  <data name="ProcedimientoConsultarListaMinutas" xml:space="preserve">
+    <value>Procedure_ConsultarMinutasProyecto</value>
+    <comment>Procedimiento que obtiene todas las minutas vinculadas a un proyecto</comment>
+  </data>
   <data name="ProcedimientoConsultarMinuta" xml:space="preserve">
     <value>Procedure_ConsultarMinuta</value>
     <comment>Procedimiento en la BD que retorna los datos primordiales de la Minuta</comment>
+  </data>
+  <data name="ProcedimientoModificarMinuta" xml:space="preserve">
+    <value>Procedure_ModificarMinuta</value>
+    <comment>Procedimiento en la BD que modifica los datos de la Minuta</comment>
   </data>
 </root>
