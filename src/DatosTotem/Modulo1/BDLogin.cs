@@ -46,10 +46,16 @@ namespace DatosTotem.Modulo1
                 try
                 {
                     BDConexion con = new BDConexion();
-                    SqlDataReader oReader = con.EjecutarStoredProcedure(query, parametros);
-                    //Console.WriteLine(oReader["@Usu_nombre"].ToString());
+                    DataTable dataTable = con.EjecutarStoredProcedure(query, parametros);
+                    foreach (DataRow dataRow in dataTable.Rows)
+                    {
+                        foreach (var item in dataRow.ItemArray)
+                        {
+                            System.Diagnostics.Debug.Write(item);
+                        }
+                    }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     throw new ExcepcionesTotem.ExceptionTotemConexionBD();
                 }

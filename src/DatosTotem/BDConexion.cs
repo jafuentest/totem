@@ -126,14 +126,15 @@ namespace DatosTotem
         /// <param name="query">El stored procedure a ejecutar</param>
         /// <param name="parametros">lista de los parametros a usar</param>
         /// <returns>SqlDataReader con la informacion obtenida</returns>
-            public SqlDataReader EjecutarStoredProcedure(string query, List<Parametro> parametros)
+            public DataTable EjecutarStoredProcedure(string query, List<Parametro> parametros)
             {
                 try
                 {
                     Conectar();
-
+                    DataTable data = new DataTable();
                     using (conexion)
                     {
+                        
                         comando = new SqlCommand(query, conexion);
                         comando.CommandType = CommandType.StoredProcedure;
 
@@ -144,13 +145,20 @@ namespace DatosTotem
                             {
                                 if (parametro.esOutput)
                                 {
-                                    comando.Parameters.Add(parametro.etiqueta, parametro.tipoDato).Direction = ParameterDirection.Output;
+                                    comando.Parameters.Add(parametro.etiqueta, parametro.tipoDato, 500).Direction = ParameterDirection.Output;
                                 }
                                 else
                                 {
                                     if (parametro.valor != null)
                                     {
-                                        comando.Parameters.Add(parametro.etiqueta, parametro.tipoDato).Value = parametro.valor;
+                                        if (parametro.tipoDato.Equals(SqlDbType.VarChar))
+                                        {
+                                            comando.Parameters.Add(new SqlParameter(parametro.etiqueta, parametro.tipoDato, 500)).Value = parametro.valor;
+                                        }
+                                        else
+                                        {
+                                            comando.Parameters.Add(new SqlParameter(parametro.etiqueta, parametro.tipoDato, 500)).Value = parametro.valor;
+                                        }
                                     }
                                     else
                                     {
@@ -165,8 +173,13 @@ namespace DatosTotem
                             
                         }
 
-                        SqlDataReader resultado = comando.ExecuteReader();
-                        return resultado;
+                        //conexion.Open();
+                        
+                        using (SqlDataAdapter dataAdapter = new SqlDataAdapter(comando))
+                          {
+                              dataAdapter.Fill(data);                           
+                          }
+                        return data;
                     }
 
 
@@ -181,11 +194,12 @@ namespace DatosTotem
                 }
                 finally
                 {
-                    Desconectar();
+                   Desconectar();
                 }
-                return null;
             }
         #endregion
+
+
     }
 
 }
