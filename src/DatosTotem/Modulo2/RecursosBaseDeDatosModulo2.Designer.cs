@@ -186,6 +186,86 @@ namespace DatosTotem.Modulo2 {
             }
         }
 
+        /// <summary>
+        ///   Looks up a localized string similar to ProcedureLlenarComboPais.
+        /// </summary>
+        internal static string ProcedureLlenarComboPais
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedureLlenarComboPais", resourceCulture);
+            }
+        }
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to ProcedureLlenarComboEstado.
+        /// </summary>
+        internal static string ProcedureLlenarComboEstado
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedureLlenarComboEstado", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ProcedureLlenarComboCiudad.
+        /// </summary>
+        internal static string ProcedureLlenarComboCiudad
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedureLlenarComboCiudad", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ProcedureObtenerDireccion.
+        /// </summary>
+        internal static string ProcedureObtenerDireccion
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedureObtenerDireccion", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ParametroIdPais.
+        /// </summary>
+        internal static string ParametroIdPais
+        {
+            get
+            {
+                return ResourceManager.GetString("ParametroIdPais", resourceCulture);
+            }
+        }
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to ParametroIdEstado.
+        /// </summary>
+        internal static string ParametroIdEstado
+        {
+            get
+            {
+                return ResourceManager.GetString("ParametroIdEstado", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ParametroIdDireccion.
+        /// </summary>
+        internal static string ParametroIdDireccion
+        {
+            get
+            {
+                return ResourceManager.GetString("ParametroIdDireccion", resourceCulture);
+            }
+        }
+
+
 
 
 

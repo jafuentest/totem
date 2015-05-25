@@ -129,6 +129,15 @@
     <value>@correo</value>
     <comment>Correo</comment>
   </data>
+  <data name="ParametroIdDireccion" xml:space="preserve">
+    <value>@idDireccion</value>
+  </data>
+  <data name="ParametroIdEstado" xml:space="preserve">
+    <value>@idEstado</value>
+  </data>
+  <data name="ParametroIdPais" xml:space="preserve">
+    <value>@idPais</value>
+  </data>
   <data name="ParametroLogo" xml:space="preserve">
     <value>@cj_logo</value>
   </data>
@@ -153,5 +162,21 @@
   <data name="ProcedureDetallarContacto" xml:space="preserve">
     <value>ConsultarDatosDeContacto</value>
     <comment>Procedimiento para detallar un contacto en especifico</comment>
+  </data>
+  <data name="ProcedureLlenarComboCiudad" xml:space="preserve">
+    <value>Procedure_llenarCBCiudad</value>
+    <comment>Llena el combo box de un listado de ciudades según el estado</comment>
+  </data>
+  <data name="ProcedureLlenarComboEstado" xml:space="preserve">
+    <value>Procedure_llenarCBEstado</value>
+    <comment>Llena el combo box de un listado de estados según el país</comment>
+  </data>
+  <data name="ProcedureLlenarComboPais" xml:space="preserve">
+    <value>Procedure_llenarCBPais</value>
+    <comment>Llena el combo box de un listado de paises</comment>
+  </data>
+  <data name="ProcedureObtenerDireccion" xml:space="preserve">
+    <value>Procedure_obtenerDireccion</value>
+    <comment>Obtiene la dirección dado el id de una dirección</comment>
   </data>
 </root>
