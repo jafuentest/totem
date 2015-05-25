@@ -18,7 +18,7 @@ namespace PruebasUnitariasTotem.Modulo6
         LogicaActor logica;
 
         /// <summary>
-        /// Inicialicializa la clase que probaremos
+        /// Inicializa la clase que probaremos
         /// </summary>
         [SetUp]
         public void Init()
@@ -50,6 +50,10 @@ namespace PruebasUnitariasTotem.Modulo6
         [Test]
         public void PruebaLeer()
         {
+            //Insertamos un valor de prueba
+            logica.AgregarActor("prueba", "prueba", 0);
+
+            //Leemos los actores
             List<Actor> listaActores = logica.ListarActor(0);
 
             /*Probamos que la lista devuelta no es nula y a su vez
@@ -65,7 +69,14 @@ namespace PruebasUnitariasTotem.Modulo6
         [Test]
         public void PruebaModificar()
         {
-            Assert.IsTrue(logica.ModificarActor(-1, "prueba", "prueba", 0));
+            //Insertamos un valor de prueba
+            logica.AgregarActor("prueba", "prueba", 0);
+
+            //Obtenemos ese valor de prueba
+            List<Actor> listaActores = logica.ListarActor(0);
+
+            //Lo modificamos
+            Assert.IsTrue(logica.ModificarActor(listaActores[listaActores.Count - 1].IdentificacionActor, "prueba", "prueba", 0));
         }
 
         /// <summary>
@@ -74,6 +85,10 @@ namespace PruebasUnitariasTotem.Modulo6
         [Test]
         public void PruebaEliminar()
         {
+            //Insertamos un valor de prueba
+            logica.AgregarActor("prueba", "prueba", 0);
+
+            //Eliminamos el valor
             Assert.IsTrue(logica.EliminarActor("prueba", "prueba", 0));
         }
 
@@ -87,15 +102,18 @@ namespace PruebasUnitariasTotem.Modulo6
             Random aleatorio = new Random();
             String valorPrueba = aleatorio.Next().ToString();
 
+            //Insertamos un valor de prueba
+            logica.AgregarActor("prueba", "prueba", 0);
+
             //Si ese usuario ya existe en la Base de Datos me debe retornar falso
             Assert.IsTrue(!logica.AgregarListarActor("prueba", "prueba", 0));
 
             //Si no existe debe retornarme verdadero indicando que la insercion fue exitosa
             Assert.IsTrue(logica.AgregarListarActor(valorPrueba, valorPrueba, 0));
         }
-
+       
         /// <summary>
-        /// Se deja en vacio el atributo creado para ser limpiada por el Garbage Collector
+        /// Se deja en vacio el atributo creado para ser limpiado por el Garbage Collector
         /// </summary>
         [TearDown]
         public void Limpiar()
@@ -104,4 +122,3 @@ namespace PruebasUnitariasTotem.Modulo6
         }
     }
 }
-
