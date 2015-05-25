@@ -59,5 +59,16 @@ namespace DatosTotem.Modulo2 {
                 resourceCulture = value;
             }
         }
+
+        /// <summary>
+        ///   Busca una cadena traducida similar a BaseDeDatosTottem.
+        /// </summary>
+        internal static string LlenarComboPais
+        {
+            get
+            {
+                return ResourceManager.GetString("LlenarComboPais", resourceCulture);
+            }
+        }
     }
 }
