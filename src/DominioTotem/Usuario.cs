@@ -8,6 +8,7 @@ namespace DominioTotem
 {
     public class Usuario
     {
+        public int idUsuario { get; set; }
         public string username { get; set; }
         public string clave { get; set; }
         public string nombre { get; set; }
@@ -23,17 +24,35 @@ namespace DominioTotem
         
         }
 
-
+        public Usuario(int idUsuario, string username, string clave, string nombre, string apellido, string rol, string correo, string preguntaSeguridad, string respuestaSeguridad, string cargo)
+        {
+            this.idUsuario = idUsuario;
+            this.username = username;
+            this.clave = clave;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.rol = rol;
+            this.correo = correo;
+            this.preguntaSeguridad = preguntaSeguridad;
+            this.preguntaSeguridad = respuestaSeguridad;
+            this.cargo = cargo;
+        }
         //Por implementar
         public Boolean RegistrarUsuario() {
              
             return true;
         }
 
-        public Boolean ModificarUsuario()
+        public void ModificarUsuario(Usuario usuario)
         {
-
-            return true;
+            this.username = usuario.username;
+            this.clave = usuario.clave;
+            this.nombre = usuario.nombre;
+            this.apellido = usuario.apellido;
+            this.rol = usuario.rol;
+            this.correo = usuario.correo;
+            this.preguntaSeguridad = usuario.preguntaSeguridad;
+            this.cargo = usuario.cargo;
         }
 
         public Boolean ValidarCorreo()

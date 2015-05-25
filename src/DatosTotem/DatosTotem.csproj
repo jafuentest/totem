@@ -65,6 +65,8 @@
       <DependentUpon>BaseDeDatosTotemDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="BDConexion.cs" />
+    <Compile Include="Modulo7\BDUsuario.cs" />
+    <Compile Include="Modulo7\RecursosBaseDeDatosModulo7.Designer.cs" />
     <Compile Include="Resultado.cs" />
     <Compile Include="Modulo1\BDLogin.cs" />
     <Compile Include="Modulo1\RecursosBDModulo1.Designer.cs">
@@ -126,7 +128,6 @@
   <ItemGroup>
     <Folder Include="Modulo4\" />
     <Folder Include="Modulo5\" />
-    <Folder Include="Modulo7\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
@@ -170,6 +171,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosBDModulo6.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulo7\RecursosBaseDeDatosModulo7.resx" />
     <EmbeddedResource Include="Modulo8\RecursosBDModulo8.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosBDModulo8.Designer.cs</LastGenOutput>
