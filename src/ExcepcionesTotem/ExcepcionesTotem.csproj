@@ -52,6 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Modulo2"/>
     <Folder Include="Modulo3\" />
     <Folder Include="Modulo4\" />
     <Folder Include="Modulo5\" />

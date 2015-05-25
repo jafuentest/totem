@@ -39,7 +39,7 @@ namespace DatosTotem.Modulo2
        {
            _listaLugar = new List<Lugar>();
 
-           this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.LlenarComboPais, conexion);
+           //this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.LlenarComboPais, conexion);
            this.comando.CommandType = CommandType.StoredProcedure;
            SqlDataReader _lectura;
 
