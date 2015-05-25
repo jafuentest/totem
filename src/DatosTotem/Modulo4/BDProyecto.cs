@@ -21,31 +21,47 @@ namespace DatosTotem.Modulo4
         private Proyecto proyecto;
 
 
-        #region Creates
+        #region Create
         /// <summary>
-        /// Método para Crear un proyecto con cliente juridico en la bd
+        /// Método para Crear un proyecto en la bd
         /// </summary>
         /// <param name="proyecto">Proyecto a insertar en la bd</param>
-        /// <param name="clienteJuridico">Cliente juridico del proyecto a insertar </param>
         /// <returns>Retrorna el proyecto</returns>
-        public Proyecto CrearProyectoClienteJuridico(Proyecto proyecto, ClienteJuridico clienteJuridico)
+        public Proyecto CrearProyecto(Proyecto proyecto)
         {
-            throw new NotImplementedException();
-        }
+            try
+            {
+                SqlCommand comando = new SqlCommand(RecursosBDModulo4.ProcedimientoConsultarProyecto, Conectar());
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add(new SqlParameter(RecursosBDModulo4.ProcedimientoAgregarProyecto, proyecto.));
 
-        /// <summary>
-        /// Método para Crear un proyecto con cliente natural en la bd
-        /// </summary>
-        /// <param name="proyecto">Proyecto a insertar en la bd</param>
-        /// <param name="clienteNatural">Cliente natural del proyecto a insertar </param>
-        /// <returns>Retrorna el proyecto</returns>
-        public Proyecto CrearProyectoClienteNatural(Proyecto proyecto, ClienteNatural clienteNatural )
-        {
-            throw new NotImplementedException();
+                SqlDataReader leer;
+                Conectar().Open();
+                leer = comando.ExecuteReader();
+
+                leer.Read();
+                proyecto = ObtenerObjetoProyecto(leer);
+
+
+            }
+
+            catch (Exception ex)
+            {
+                //Lanza excepcion logica propia
+                throw ex;
+
+            }
+
+            finally
+            {
+                Desconectar();
+
+            }
+            return proyecto;
         }
         #endregion
 
-        #region Consulta
+
         /// <summary>
         /// Método para consultar un proyecto en la bd
         /// </summary>
@@ -53,15 +69,52 @@ namespace DatosTotem.Modulo4
         /// <returns>Retrorna el proyecto</returns>
         public Proyecto ConsultarProyecto(String codigo)
         {
-            throw new NotImplementedException();
+            try
+            {
+                SqlCommand comando = new SqlCommand(RecursosBDModulo4.ProcedimientoConsultarProyecto, Conectar());
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add(new SqlParameter(RecursosBDModulo4.ParametroCodigoProyecto, codigo));
+
+                SqlDataReader leer;
+                Conectar().Open();
+                leer = comando.ExecuteReader();
+
+                leer.Read();
+                proyecto = ObtenerObjetoProyecto(leer);
+
+
+            }
+
+            catch (Exception ex)
+            {
+                //Lanza excepcion logica propia
+                throw ex;
+                
+            }
+
+            finally
+            {
+                Desconectar();
+                
+            }
+            return proyecto;
         }
 
-        #endregion
+       
 
 
         public Proyecto ObtenerObjetoProyecto(SqlDataReader BDProyecto)
         {
-            throw new NotImplementedException();
+            Proyecto proyecto = new Proyecto(BDProyecto[RecursosBDModulo4.AtributoCodigoProyecto].ToString(),
+                                             BDProyecto[RecursosBDModulo4.AtributoNombreProyecto].ToString(),
+                                             bool.Parse(BDProyecto[RecursosBDModulo4.AtributoEstadoProyecto].ToString()),
+                                             BDProyecto[RecursosBDModulo4.AtributoDescripcionProyecto].ToString(),
+                                             BDProyecto[RecursosBDModulo4.AtributoMonedaProyecto].ToString(),
+                                             float.Parse(BDProyecto[RecursosBDModulo4.AtributoCostoProyecto].ToString()));
+
+
+            BDProyecto.Close();
+            return proyecto;
 
         }
     }
