@@ -52,7 +52,7 @@ namespace PruebasUnitariasTotem.Modulo1
             {
                 DatosTotem.Modulo1.BDLogin.ValidarLoginBD(user);
             }
-            catch (Exception)
+            catch (ExcepcionesTotem.Modulo1.UsuarioVacioException)
             {
                 Assert.Fail("En login no deberia lanzar excepcion");
             }
@@ -60,6 +60,27 @@ namespace PruebasUnitariasTotem.Modulo1
             Assert.AreEqual(user.correo, "santiagobernal93@gmail.com");
 
         }
+
+        /// <summary>
+        /// Metodo para probar el metodo de PruebaValidarLoginUsuarioVacioException dispare la exception UsuarioVacio
+        /// </summary>
+        [Test]
+        public void PruebaValidarLoginUsuarioVacioException()
+        {
+            try
+            {
+                DatosTotem.Modulo1.BDLogin.ValidarLoginBD(new DominioTotem.Usuario());
+                Assert.Fail("En login deberia lanzar excepcion de UsuarioVacioException");
+            
+            }
+            catch (ExcepcionesTotem.Modulo1.UsuarioVacioException)
+            {
+            }
+            Assert.IsNotNull(user);
+            Assert.AreEqual(user.correo, "santiagobernal93@gmail.com");
+
+        }
+
 
         /// <summary>
         /// Metodo para probar el metodo de BDLogin: Obtener pregunta de seguridad
@@ -83,6 +104,25 @@ namespace PruebasUnitariasTotem.Modulo1
 
 
         /// <summary>
+        /// Metodo para probar el metodo de PruebaObtenerPreguntaSeguridadException dispare la exception UsuarioVacio
+        /// </summary>
+        [Test]
+        public void PruebaObtenerPreguntaSeguridadException()
+        {
+            try
+            {
+                DatosTotem.Modulo1.BDLogin.ObtenerPreguntaSeguridad(new DominioTotem.Usuario());
+                Assert.Fail("La obtencion de pregunta de seguridad deberia lanzar excepcion de UsuarioVacioException");
+            
+            }
+            catch (ExcepcionesTotem.Modulo1.UsuarioVacioException)
+            {
+                Assert.Fail("En obtener pregunta seguridad no deberia lanzar excepcion");
+            }
+            Assert.AreEqual(user.preguntaSeguridad, "cual es mi carro favorito");
+        }
+
+        /// <summary>
         /// Metodo para probar el metodo de ValidarPreguntaSeguridad de BDLogin
         /// Se le agrega la respuesta a la pregunta de seguridad al usuario y se 
         /// llama al metodo, deberia retorname true, de lo contrario falla
@@ -101,6 +141,26 @@ namespace PruebasUnitariasTotem.Modulo1
                 Assert.Fail("En validar respuesta seguridad no deberia lanzar excepcion");
             }
         }
+
+        /// <summary>
+        /// Metodo para probar el metodo de ValidarPreguntaSeguridad dispare la exception UsuarioVacio
+        /// </summary>
+        [Test]
+        public void PruebaValidarPreguntaSeguridadException()
+        {
+            try
+            {
+                Assert.True(DatosTotem.Modulo1.BDLogin.ValidarPreguntaSeguridadBD(new DominioTotem.Usuario()));
+                Assert.Fail("En validar respuesta seguridad deberia lanzar excepcion UsuarioVacioException");
+           
+            }
+            catch (ExcepcionesTotem.Modulo1.UsuarioVacioException)
+            {
+            }
+        }
+
+
+
 
     }
 }
