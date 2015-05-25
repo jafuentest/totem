@@ -85,7 +85,15 @@ namespace DatosTotem.Modulo1
                         throw new ExcepcionesTotem.Modulo1.LoginErradoException(RecursosBDModulo1.Codigo_Login_Errado,
                             RecursosBDModulo1.Mensaje_Login_Errado, new Exception());                            
                     }
-                    return user;
+                    if (user.nombre != null && user.nombre != "")
+                    {
+                        return user;
+                    }
+                    else
+                    {
+                        throw new ExcepcionesTotem.Modulo1.LoginErradoException(RecursosBDModulo1.Codigo_Login_Errado,
+                            RecursosBDModulo1.Mensaje_Login_Errado, new ExcepcionesTotem.ExceptionTotem());
+                    }
                 }
                 catch (ExcepcionesTotem.Modulo1.LoginErradoException ex)
                 {

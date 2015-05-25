@@ -10,8 +10,6 @@ namespace DatosTotem
     /// </summary>
     public class Resultado
     {
-        private string p1;
-        private object p2;
 
         public string etiqueta { get; set; }
         public string valor { get; set; }
