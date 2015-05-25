@@ -6,6 +6,8 @@ using DominioTotem;
 using System.Data.SqlClient;
 using System.Data;
 
+
+
 namespace DatosTotem.Modulo6
 {
     /// <summary>
@@ -41,13 +43,13 @@ namespace DatosTotem.Modulo6
                 Int32 filasAfectadas = 0;
 
                 //Indicamos que es un stored procedure, cual utilizar y ademas la conexion que necesita
-                this.instruccion = new SqlCommand("INSERTAR_ACTOR", this.conexion);
+                this.instruccion = new SqlCommand(RecursosBDModulo6.PROCEDURE_INSERTAR_ACTOR, this.conexion);
                 this.instruccion.CommandType = CommandType.StoredProcedure;
 
                 //Le agregamos los valores correspondientes a las variables de stored procedure
-                this.instruccion.Parameters.AddWithValue("@nombre", actor.NombreActor);
-                this.instruccion.Parameters.AddWithValue("@descripcion", actor.DescripcionActor);
-                this.instruccion.Parameters.AddWithValue("@idproyecto", proyectoActor);
+                this.instruccion.Parameters.AddWithValue(RecursosBDModulo6.NOMBRE_ACTOR, actor.NombreActor);
+                this.instruccion.Parameters.AddWithValue(RecursosBDModulo6.DESC_ACTOR, actor.DescripcionActor);
+                this.instruccion.Parameters.AddWithValue(RecursosBDModulo6.ID_PROY_ACTOR, proyectoActor);
 
                 //Se abre conexion contra la Base de Datos
                 this.conexion.Open();
@@ -66,6 +68,24 @@ namespace DatosTotem.Modulo6
             {
                 throw new NullReferenceException("Actor debe existir", e);
             }
+            catch (SqlException ex)
+            {
+                StringBuilder errorMessages = new StringBuilder();
+                for (int i = 0; i < ex.Errors.Count; i++)
+                {
+                    errorMessages.Append("Index #" + i + "\n" +
+                        "Message: " + ex.Errors[i].Message + "\n" +
+                        "LineNumber: " + ex.Errors[i].LineNumber + "\n" +
+                        "Source: " + ex.Errors[i].Source + "\n" +
+                        "Procedure: " + ex.Errors[i].Procedure + "\n");
+                }
+                Console.WriteLine(errorMessages.ToString());
+
+            }
+            catch (Exception error)
+            {
+                throw new Exception("Ha ocurrido un error inesperado al agregar", error);
+            }
 
             //Retornamos la respuesta
             return exito;
@@ -80,36 +100,55 @@ namespace DatosTotem.Modulo6
         {
             //Lista donde devolveremos los actores del proyecto
             List<Actor> listaActores = new List<Actor>();
+            try
+            {
+                //Respuesta de la consulta hecha a la Base de Datos
+                SqlDataReader respuesta;
 
-            //Respuesta de la consulta hecha a la Base de Datos
-            SqlDataReader respuesta;
+                //Indicamos que es un Stored Procedure, cual utilizar y ademas la conexion que necesita
+                this.instruccion = new SqlCommand(RecursosBDModulo6.PROCEDURE_LEER_ACTOR, this.conexion);
+                this.instruccion.CommandType = CommandType.StoredProcedure;
 
-            //Indicamos que es un Stored Procedure, cual utilizar y ademas la conexion que necesita
-            this.instruccion = new SqlCommand("LEER_ACTOR", this.conexion);
-            this.instruccion.CommandType = CommandType.StoredProcedure;
+                //Le agregamos los valores correspondientes a las variables de Stored Procedure
+                this.instruccion.Parameters.AddWithValue(RecursosBDModulo6.ID_PROY_ACTOR, proyectoActor);
 
-            //Le agregamos los valores correspondientes a las variables de Stored Procedure
-            this.instruccion.Parameters.AddWithValue("@idproyecto", proyectoActor);
+                //Se abre conexion contra la Base de Datos
+                this.conexion.Open();
 
-            //Se abre conexion contra la Base de Datos
-            this.conexion.Open();
+                //Ejecutamos la consulta y traemos las filas que fueron obtenidas
+                respuesta = instruccion.ExecuteReader();
 
-            //Ejecutamos la consulta y traemos las filas que fueron obtenidas
-            respuesta = instruccion.ExecuteReader();
+                //Si se encontraron actores se comienzan a agregar a la variable lista, sino, se devolvera vacia
+                if (respuesta.HasRows)
+                    //Recorremos cada fila devuelta de la consulta
+                    while (respuesta.Read())
+                    {
+                        //Creamos el Actor y lo anexamos a la lista
+                        Actor aux = new Actor(respuesta.GetInt32(2), respuesta.GetString(0), respuesta.GetString(1));
+                        listaActores.Add(aux);
+                    }
 
-            //Si se encontraron actores se comienzan a agregar a la variable lista, sino, se devolvera vacia
-            if (respuesta.HasRows)
-                //Recorremos cada fila devuelta de la consulta
-                while (respuesta.Read())
+                //Cerramos conexion
+                this.conexion.Close();
+            }
+            catch (SqlException ex)
+            {
+                StringBuilder errorMessages = new StringBuilder();
+                for (int i = 0; i < ex.Errors.Count; i++)
                 {
-                    //Creamos el Actor y lo anexamos a la lista
-                    Actor aux = new Actor(respuesta.GetInt32(2), respuesta.GetString(0), respuesta.GetString(1));
-                    listaActores.Add(aux);
+                    errorMessages.Append("Index #" + i + "\n" +
+                        "Message: " + ex.Errors[i].Message + "\n" +
+                        "LineNumber: " + ex.Errors[i].LineNumber + "\n" +
+                        "Source: " + ex.Errors[i].Source + "\n" +
+                        "Procedure: " + ex.Errors[i].Procedure + "\n");
                 }
+                Console.WriteLine(errorMessages.ToString());
 
-            //Cerramos conexion
-            this.conexion.Close();
-
+            }
+            catch (Exception error)
+            {
+                throw new Exception("Ha ocurrido un error inesperado al Listar", error);
+            }
             //Retornamos la respuesta
             return listaActores;
         }
@@ -130,14 +169,14 @@ namespace DatosTotem.Modulo6
                 Int32 filasAfectadas = 0;
 
                 //Indicamos que es un stored procedure, cual utilizar y ademas la conexion que necesita
-                this.instruccion = new SqlCommand("MODIFICAR_ACTOR", this.conexion);
+                this.instruccion = new SqlCommand(RecursosBDModulo6.PROCEDURE_MODIFICAR_ACTOR, this.conexion);
                 this.instruccion.CommandType = CommandType.StoredProcedure;
 
                 //Le agregamos los valores correspondientes a las variables de stored procedure
-                this.instruccion.Parameters.AddWithValue("@nombre", actor.NombreActor);
-                this.instruccion.Parameters.AddWithValue("@descripcion", actor.DescripcionActor);
-                this.instruccion.Parameters.AddWithValue("@idproyecto", proyectoActor);
-                this.instruccion.Parameters.AddWithValue("@idactor", actor.IdentificacionActor);
+                this.instruccion.Parameters.AddWithValue(RecursosBDModulo6.NOMBRE_ACTOR, actor.NombreActor);
+                this.instruccion.Parameters.AddWithValue(RecursosBDModulo6.DESC_ACTOR, actor.DescripcionActor);
+                this.instruccion.Parameters.AddWithValue(RecursosBDModulo6.ID_PROY_ACTOR, proyectoActor);
+                this.instruccion.Parameters.AddWithValue(RecursosBDModulo6.ID_ACTOR, actor.IdentificacionActor);
 
                 //Se abre conexion contra la Base de Datos
                 this.conexion.Open();
@@ -155,6 +194,24 @@ namespace DatosTotem.Modulo6
             catch (NullReferenceException e)
             {
                 throw new NullReferenceException("Actor debe existir", e);
+            }
+            catch (SqlException ex)
+            {
+                StringBuilder errorMessages = new StringBuilder();
+                for (int i = 0; i < ex.Errors.Count; i++)
+                {
+                    errorMessages.Append("Index #" + i + "\n" +
+                        "Message: " + ex.Errors[i].Message + "\n" +
+                        "LineNumber: " + ex.Errors[i].LineNumber + "\n" +
+                        "Source: " + ex.Errors[i].Source + "\n" +
+                        "Procedure: " + ex.Errors[i].Procedure + "\n");
+                }
+                Console.WriteLine(errorMessages.ToString());
+
+            }
+            catch (Exception error)
+            {
+                throw new Exception("Ha ocurrido un error inesperado al modificar", error);
             }
 
             //Retornamos la respuesta
@@ -177,12 +234,12 @@ namespace DatosTotem.Modulo6
                 Int32 filasAfectadas = 0;
 
                 //Indicamos que es un stored procedure, cual utilizar y ademas la conexion que necesita
-                this.instruccion = new SqlCommand("ELIMINAR_ACTOR", this.conexion);
+                this.instruccion = new SqlCommand(RecursosBDModulo6.PROCEDURE_ELIMINAR_ACTOR, this.conexion);
                 this.instruccion.CommandType = CommandType.StoredProcedure;
 
                 //Le agregamos los valores correspondientes a las variables de stored procedure
-                this.instruccion.Parameters.AddWithValue("@nombre", actor.NombreActor);
-                this.instruccion.Parameters.AddWithValue("@idproyecto", proyectoActor);
+                this.instruccion.Parameters.AddWithValue(RecursosBDModulo6.NOMBRE_ACTOR, actor.NombreActor);
+                this.instruccion.Parameters.AddWithValue(RecursosBDModulo6.ID_PROY_ACTOR, proyectoActor);
 
                 //Se abre conexion contra la Base de Datos
                 this.conexion.Open();
@@ -201,9 +258,28 @@ namespace DatosTotem.Modulo6
             {
                 throw new NullReferenceException("Actor debe existir", e);
             }
+            catch (SqlException ex)
+            {
+                StringBuilder errorMessages = new StringBuilder();
+                for (int i = 0; i < ex.Errors.Count; i++)
+                {
+                    errorMessages.Append("Index #" + i + "\n" +
+                        "Message: " + ex.Errors[i].Message + "\n" +
+                        "LineNumber: " + ex.Errors[i].LineNumber + "\n" +
+                        "Source: " + ex.Errors[i].Source + "\n" +
+                        "Procedure: " + ex.Errors[i].Procedure + "\n");
+                }
+                Console.WriteLine(errorMessages.ToString());
+
+            }
+            catch (Exception error)
+            {
+                throw new Exception("Ha ocurrido un error inesperado al eliminar", error);
+            }
 
             //Retornamos la respuesta
             return exito;
         }
+        
     }
 }
