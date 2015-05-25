@@ -77,6 +77,11 @@
     <Compile Include="Modulo2\RecursosBaseDeDatosModulo2.Designer.cs" />
     <Compile Include="Modulo3\BDInvolucrados.cs" />
     <Compile Include="Modulo6\BDActor.cs" />
+    <Compile Include="Modulo6\RecursosBDModulo6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosBDModulo6.resx</DependentUpon>
+    </Compile>
     <Compile Include="Modulo8\BDAcuerdo.cs" />
     <Compile Include="Modulo8\BDInvolucrados.cs" />
     <Compile Include="Modulo8\BDMinuta.cs" />
@@ -169,6 +174,10 @@
       <LastGenOutput>RecursosBDModulo1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo2\RecursosBaseDeDatosModulo2.resx" />
+    <EmbeddedResource Include="Modulo6\RecursosBDModulo6.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosBDModulo6.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulo8\RecursosBDModulo8.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosBDModulo8.Designer.cs</LastGenOutput>
