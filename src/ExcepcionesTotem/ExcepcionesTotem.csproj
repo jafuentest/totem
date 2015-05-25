@@ -42,6 +42,7 @@
     <Compile Include="ExceptionTotem.cs" />
     <Compile Include="ExceptionTotemConexionBD.cs" />
     <Compile Include="Modulo1\IntentosFallidosException.cs" />
+    <Compile Include="Modulo1\ParametroInvalidoException.cs" />
     <Compile Include="Modulo1\UsuarioVacioException.cs" />
     <Compile Include="Modulo1\RespuestaErradoException.cs" />
     <Compile Include="Modulo1\EmailErradoException.cs" />
