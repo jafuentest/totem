@@ -15,7 +15,7 @@ namespace LogicaNegociosTotem.Modulo1
         /// <summary>
         /// Atributo para el control de los intentos que tendra el usuario para hacer login
         /// </summary>
-        private static int intentos;
+        private static int intentos=0;
 
         /// <summary>
         /// Constructor de la clase BDLogin
@@ -29,16 +29,21 @@ namespace LogicaNegociosTotem.Modulo1
         /// <param name="usuario">Usuario con atributos username y clave para realizar el Log in
         /// <returns>Retorna el objeto usuario si se pudo validar, de lo contrario
         /// retorna null</returns>
-        public static DominioTotem.Usuario Login(DominioTotem.Usuario usuario)
+        public static DominioTotem.Usuario Login(string Username, string Clave)
         {
+            
             if (intentos < 3)
             {
 
                 try
                 {
                     intentos++;
-                
-                    return DatosTotem.Modulo1.BDLogin.ValidarLoginBD(usuario);
+                    DominioTotem.Usuario loginUser = new DominioTotem.Usuario();
+                    loginUser.username = Username;
+                    loginUser.clave = Clave;
+                    DominioTotem.Usuario retornoUser= DatosTotem.Modulo1.BDLogin.ValidarLoginBD(loginUser);
+                    intentos = 0;
+                    return retornoUser;
                 }
                 catch (ExcepcionesTotem.Modulo1.LoginErradoException)
                 {

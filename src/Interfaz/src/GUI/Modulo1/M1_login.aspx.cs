@@ -41,10 +41,7 @@ public partial class login : System.Web.UI.Page
             }
             else
             {
-                DominioTotem.Usuario loginUsuario = new DominioTotem.Usuario();
-                loginUsuario.username = usuario;
-                loginUsuario.clave = clave;
-                HttpContext.Current.Session["Credenciales"] = LogicaLogin.Login(loginUsuario);
+                HttpContext.Current.Session["Credenciales"] = LogicaLogin.Login(usuario,clave);
                 HttpContext.Current.Response.Redirect("Default.aspx");
             }
 
