@@ -374,5 +374,14 @@ namespace DatosTotem.Modulo8 {
                 return ResourceManager.GetString("ProcedimientoModificarPunto", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_ConsultarAcuerdoResponsablesMinuta.
+        /// </summary>
+        internal static string ProcedimientoResponsablesAcuerdo {
+            get {
+                return ResourceManager.GetString("ProcedimientoResponsablesAcuerdo", resourceCulture);
+            }
+        }
     }
 }

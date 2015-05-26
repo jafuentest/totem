@@ -241,4 +241,7 @@
   <data name="ProcedimientoModificarPunto" xml:space="preserve">
     <value>Procedure_ModificarPunto</value>
   </data>
+  <data name="ProcedimientoResponsablesAcuerdo" xml:space="preserve">
+    <value>Procedure_ConsultarAcuerdoResponsablesMinuta</value>
+  </data>
 </root>
