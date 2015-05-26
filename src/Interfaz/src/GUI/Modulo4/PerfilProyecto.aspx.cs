@@ -13,10 +13,11 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
     {
         ((MasterPage)Page.Master).IdModulo = "4";
 
-        if (Request.Cookies["userInfo"] != null)
+        DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+        if (user != null)
         {
-            if (Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != "" &&
-                Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
+            if (user.username != "" &&
+                user.clave != "")
             {
                 ((MasterPage)Page.Master).ShowDiv = true;
             }
