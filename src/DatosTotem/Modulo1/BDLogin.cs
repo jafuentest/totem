@@ -127,6 +127,8 @@ namespace DatosTotem.Modulo1
         #region Obtener Pregunta Seguridad
         /// <summary>
         /// Metodo para obtener a pregunta de seguridad de un usuario de la base de datos
+        /// Se requiere que el usuario tenga su correo cargado, de lo contrario
+        /// se lanza una excepcion
         /// </summary>
         /// <param name="user">Usuario al que se le va a obtener la pregunta de
         /// seguridad</param>
@@ -138,8 +140,10 @@ namespace DatosTotem.Modulo1
                 List<Parametro> parametros = new List<Parametro>();
                 Parametro parametro = new Parametro(RecursosBDModulo1.Parametro_Input_Correo,
                     SqlDbType.VarChar , user.correo, false);
+                parametros.Add(parametro);
                 parametro = new Parametro(RecursosBDModulo1.Parametro_Output_PreguntaSeguridad, 
                     SqlDbType.VarChar, true);
+                parametros.Add(parametro);
                 string query = RecursosBDModulo1.Query_Obtener_Pregunta_Seguridad;
                 try
                 {
@@ -169,7 +173,7 @@ namespace DatosTotem.Modulo1
                                         new EmailErradoException());
                             }
                         }
-                        if (user.preguntaSeguridad != "" )
+                        if (user.preguntaSeguridad != "")
                         {
                             return user;
                         }
@@ -187,14 +191,18 @@ namespace DatosTotem.Modulo1
                             new EmailErradoException());
                     }
                 }
-                catch (ExcepcionesTotem.Modulo1.EmailErradoException ex)
-                {
-                    throw new ExcepcionesTotem.Modulo1.EmailErradoException(ex.Codigo, ex.Mensaje, ex);
-                }
                 catch (SqlException ex)
                 {
                     throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
                         RecursoGeneralBD.Mensaje, ex);
+                }
+                catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+                {
+                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(ex.Codigo, ex.Mensaje, ex);
+                }
+                catch (ExcepcionesTotem.Modulo1.EmailErradoException ex)
+                {
+                    throw new ExcepcionesTotem.Modulo1.EmailErradoException(ex.Codigo, ex.Mensaje, ex);
                 }
                 catch (ParametroInvalidoException ex)
                 {
