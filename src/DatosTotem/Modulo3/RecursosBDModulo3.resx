@@ -133,9 +133,21 @@
     <value>@contacto_id</value>
     <comment>ID del contacto para el stored insertar cliente</comment>
   </data>
+  <data name="ParamFilas" xml:space="preserve">
+    <value>@filas</value>
+    <comment>Parametro de fila para los stored procedure contar</comment>
+  </data>
   <data name="ParamUsername" xml:space="preserve">
     <value>@usuario</value>
     <comment>Username para el stored insertar usuario</comment>
+  </data>
+  <data name="StoredContarCliente" xml:space="preserve">
+    <value>Contar_TuplasInvContacto</value>
+    <comment>Nombre del stored que cuenta las tuplas de la tabla involucrados contactos</comment>
+  </data>
+  <data name="StoredContarUsuario" xml:space="preserve">
+    <value>Contar_TuplasInvUsuario</value>
+    <comment>Nombre del stored que cuenta las tuplas de la tabla de involucrados usuarios</comment>
   </data>
   <data name="StoredInsertarCliente" xml:space="preserve">
     <value>Procedure_InsertarInvCliente</value>

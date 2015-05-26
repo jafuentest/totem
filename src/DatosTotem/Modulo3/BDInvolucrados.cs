@@ -19,12 +19,22 @@ namespace DatosTotem.Modulo3
         /// <param name="lista">lista de usuarios a insertar</param>
         /// <returns>Valor booleano que refleja el exito de la operacion</returns>
         public static bool agregarUsuariosInvolucrados(ListaInvolucradoUsuario listaUsuarios)
-        {    
+        {
+            int filasA, filasD;
             Proyecto elProyecto = listaUsuarios.Proyecto;
-            List<Parametro> parametros;
+            List<Parametro> parametros, parametrosContar;
 
-            Parametro paramProyectoCod, paramUsername; 
-            BDConexion laConexion;
+            Parametro paramProyectoCod, paramUsername, paramFilas;
+            BDConexion laConexion = new BDConexion();
+
+            parametrosContar = new List<Parametro>();
+            paramFilas = new Parametro(RecursosBDModulo3.ParamFilas, SqlDbType.Int, true);
+
+            parametrosContar.Add(paramFilas);
+
+            List<Resultado> resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarUsuario,
+                parametrosContar);
+            filasA = int.Parse(resultado[0].valor);
 
             foreach (Usuario elUsuario in listaUsuarios.Lista)
             {
@@ -55,7 +65,14 @@ namespace DatosTotem.Modulo3
                 }
 
             }
-            return true;
+
+            resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarUsuario, parametrosContar);
+            filasD = int.Parse(resultado[0].valor);
+
+            if (filasD > filasA)
+                return true;
+            else
+                return false;
         }
         /// <summary>
         /// Metodo que agrega la lista de contactos involucrados a un proyecto
@@ -64,11 +81,21 @@ namespace DatosTotem.Modulo3
         /// <returns>Valor booleano que refleja el exito de la operacion</returns>
         public static bool agregarContactosInvolucrados(ListaInvolucradoContacto listaContactos)
         {
+            int filasA, filasD;
             Proyecto elProyecto = listaContactos.Proyecto;
-            List<Parametro> parametros;
+            List<Parametro> parametros, parametrosContar;
+            
+            Parametro paramProyectoCod, paramContactoID, paramFilas; 
+            BDConexion laConexion = new BDConexion();
 
-            Parametro paramProyectoCod, paramContactoID; 
-            BDConexion laConexion;
+            parametrosContar = new List<Parametro>();
+            paramFilas = new Parametro(RecursosBDModulo3.ParamFilas, SqlDbType.Int, true);
+
+            parametrosContar.Add(paramFilas);
+
+            List<Resultado> resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarCliente,
+                parametrosContar);
+            filasA = int.Parse(resultado[0].valor);
 
             foreach (Contacto elContacto in listaContactos.Lista)
             {
@@ -98,7 +125,14 @@ namespace DatosTotem.Modulo3
                             RecursoGeneralBD.Mensaje, ex);
                 }
             }
-            return true;
+
+            resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarCliente, parametrosContar);
+            filasD = int.Parse(resultado[0].valor);
+
+            if (filasD > filasA)
+                return true;
+            else
+                return false;
         }
         /// <summary>
         /// Metodo que consulta los usuarios involucrados a un proyecto dado

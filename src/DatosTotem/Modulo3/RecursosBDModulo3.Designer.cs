@@ -97,11 +97,38 @@ namespace DatosTotem.Modulo3 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to @filas.
+        /// </summary>
+        internal static string ParamFilas {
+            get {
+                return ResourceManager.GetString("ParamFilas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @usuario.
         /// </summary>
         internal static string ParamUsername {
             get {
                 return ResourceManager.GetString("ParamUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contar_TuplasInvContacto.
+        /// </summary>
+        internal static string StoredContarCliente {
+            get {
+                return ResourceManager.GetString("StoredContarCliente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contar_TuplasInvUsuario.
+        /// </summary>
+        internal static string StoredContarUsuario {
+            get {
+                return ResourceManager.GetString("StoredContarUsuario", resourceCulture);
             }
         }
         
