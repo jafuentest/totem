@@ -14,6 +14,7 @@ public partial class login : System.Web.UI.Page
         ((MasterPage)Page.Master).IdModulo = "1";
         Master.ShowDiv = false;
         Master.MostrarMenuLateral = false;
+        captchaContainer.Visible = false;
         #region Redireccionamiento a Default
         if (HttpContext.Current.Session["Credenciales"] != null) {
             HttpContext.Current.Response.Redirect("Default.aspx");
@@ -43,8 +44,7 @@ public partial class login : System.Web.UI.Page
                 DominioTotem.Usuario loginUsuario = new DominioTotem.Usuario();
                 loginUsuario.username = usuario;
                 loginUsuario.clave = clave;
-                LogicaNegociosTotem.Modulo1.LogicaLogin miLogica = new LogicaNegociosTotem.Modulo1.LogicaLogin();
-                HttpContext.Current.Session["Credenciales"] = miLogica.Login(loginUsuario);
+                HttpContext.Current.Session["Credenciales"] = LogicaLogin.Login(loginUsuario);
                 HttpContext.Current.Response.Redirect("Default.aspx");
             }
 
@@ -54,7 +54,7 @@ public partial class login : System.Web.UI.Page
             alert.Attributes["class"] = "alert alert-danger alert-dismissible";
             alert.Attributes["role"] = "alert";
             alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Ya ha tratado de ingresar al sistema 3 veces,Por favor ingrese el captcha correspondiente</div>";
-            captchaContainer.InnerHtml = "";
+            captchaContainer.Visible = true;
                           
                             
         }
@@ -64,6 +64,13 @@ public partial class login : System.Web.UI.Page
             alert.Attributes["role"] = "alert";
             alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Credenciales no validas</div>";
            
+        }
+        catch (ExcepcionesTotem.ExceptionTotemConexionBD error)
+        {
+            alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+            alert.Attributes["role"] = "alert";
+            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Imposible de estamblecer conexion con la base de datos</div>";
+
         }    
     }
 }

@@ -9,22 +9,19 @@ namespace LogicaNegociosTotem.Modulo1
     /// Clase para el manejo logico del login/logout y 
     /// recuperacion de clave
     /// </summary>
-    public class LogicaLogin
+    public static class LogicaLogin
     {
 
         /// <summary>
         /// Atributo para el control de los intentos que tendra el usuario para hacer login
         /// </summary>
-        private int intentos;
+        private static int intentos;
 
         /// <summary>
         /// Constructor de la clase BDLogin
         /// </summary>
         /// <returns>Retorna el objeto con el numero de intentos inicializado en 0 </returns>
-        public LogicaLogin()
-        {
-            intentos = 3;
-        }
+      
 
         /// <summary>
         /// Metodo para validar el inicio de sesion
@@ -32,13 +29,15 @@ namespace LogicaNegociosTotem.Modulo1
         /// <param name="usuario">Usuario con atributos username y clave para realizar el Log in
         /// <returns>Retorna el objeto usuario si se pudo validar, de lo contrario
         /// retorna null</returns>
-        public DominioTotem.Usuario Login(DominioTotem.Usuario usuario)
+        public static DominioTotem.Usuario Login(DominioTotem.Usuario usuario)
         {
-            if (this.intentos < 3)
+            if (intentos < 3)
             {
 
                 try
                 {
+                    intentos++;
+                
                     return DatosTotem.Modulo1.BDLogin.ValidarLoginBD(usuario);
                 }
                 catch (ExcepcionesTotem.Modulo1.LoginErradoException)
@@ -52,9 +51,6 @@ namespace LogicaNegociosTotem.Modulo1
                 catch (ExcepcionesTotem.ExceptionTotemConexionBD)
                 {
                     throw new ExcepcionesTotem.ExceptionTotemConexionBD();
-                }
-                finally {
-                    this.intentos++;
                 }
             }
             else 
@@ -71,7 +67,7 @@ namespace LogicaNegociosTotem.Modulo1
         /// <param name="usuario">Usuario al cual se le cambiara la clave</param>
         /// <returns>Retorna True si el cambio de clave fue exitoso, de lo contrario
         /// retorna False</returns>
-        public bool RecuperacionDeClave(DominioTotem.Usuario usuario){
+        public static bool RecuperacionDeClave(DominioTotem.Usuario usuario){
             throw new System.NotImplementedException();
         }
 
@@ -81,7 +77,7 @@ namespace LogicaNegociosTotem.Modulo1
         /// </summary>
         /// <returns>Retorna el URL que debe seguir el usuario para cambiar su clave, de lo contrario
         /// disparara una exception</returns>
-        public string GenerarLink(DominioTotem.Usuario usuario)
+        public static string GenerarLink(DominioTotem.Usuario usuario)
         {
             throw new System.NotImplementedException();
 
@@ -93,7 +89,7 @@ namespace LogicaNegociosTotem.Modulo1
         /// <param name="usuario">Usuario al cual se le enviara el EMAIL</param>      
         /// <returns>Retorna True si el correo pudo ser enviado con exito, de lo contrario disparara
         /// una exception(EmailErradoException)</returns>
-        public bool EnviarEmail(DominioTotem.Usuario usuario)
+        public static bool EnviarEmail(DominioTotem.Usuario usuario)
         {
             throw new System.NotImplementedException();
 
@@ -105,7 +101,7 @@ namespace LogicaNegociosTotem.Modulo1
         /// <param name="usuario">Usuario al cual se le validara la respuesta</param>      
         /// <returns>Retorna True si el correo pudo ser enviado con exito, de lo contrario disparara
         /// una exception (RespuestaErradoException)</returns>
-        public bool ValidarRespuestaSecreta(string respuesta)
+        public static bool ValidarRespuestaSecreta(string respuesta)
         {
             throw new System.NotImplementedException();
         }
@@ -115,7 +111,7 @@ namespace LogicaNegociosTotem.Modulo1
         ///</summary>
         /// <param name="usuario">Usuario al cual se cambiara la clave de acceso al sistema</param>      
         /// <returns>Retorna True si el cambio de clave fue exitoso, de lo contrario retorna False</returns>
-        public bool CambioDeClave(DominioTotem.Usuario usuario)
+        public static bool CambioDeClave(DominioTotem.Usuario usuario)
         {
             throw new System.NotImplementedException();
         }
@@ -124,7 +120,7 @@ namespace LogicaNegociosTotem.Modulo1
         /// Metodo encargado del cierre de sesion
         ///</summary>
         /// <returns>Retorna True si el cambio de clave fue exitoso, de lo contrario retornara False</returns>
-        public bool CerrarSesion()
+        public static bool CerrarSesion()
         {
             throw new System.NotImplementedException();
 
