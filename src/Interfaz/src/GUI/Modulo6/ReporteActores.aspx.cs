@@ -27,6 +27,7 @@ public partial class GUI_Modulo6_ReporteActores : System.Web.UI.Page
             Response.Redirect("../Modulo1/M1_login.aspx");
         }
 
+        /*
 		switch (success)
 		{
 			case "1":
@@ -46,6 +47,6 @@ public partial class GUI_Modulo6_ReporteActores : System.Web.UI.Page
 				alert.Attributes["role"] = "alert";
 				alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Caso de uso eliminado exitosamente</div>";
 				break;
-		}
+		}*/
 	}
 }
