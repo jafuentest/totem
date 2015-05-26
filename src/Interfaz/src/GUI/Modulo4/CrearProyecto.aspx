@@ -7,6 +7,13 @@
         textarea {
             resize: none;
         }
+        .note{
+            font-style: italic;
+            color: #5b5b5b;
+        }
+        .noteLink{
+            color: #337ab7;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestion de Proyectos</asp:Content>
@@ -20,25 +27,25 @@
         <form id="register_form" class="form-horizontal" action="#">
             <div class="form-group">
                 <div id="div_nombre" class="col-sm-8 col-md-8 col-lg-8">
-				    <input type="text" id="Nombre" placeholder="Nombre" onblur="fillCodigoTextField()" class="form-control" name="nombre"/>
+				    <input runat="server" type="text" id="Input_Nombre" placeholder="Nombre" onblur="fillCodigoTextField()" class="form-control" name="nombre"/>
                    
 			    </div>
 		        
                 &nbsp;
 			    <div id="div_codigo" class="col-sm-2 col-md-2 col-lg-2">
-				    <input type="text" id="Codigo" placeholder="Codigo" class="form-control" name="codigo" maxlength="3" minlength="1"/>
+				    <input runat="server" type="text" id="Input_Codigo" placeholder="Codigo" class="form-control" name="codigo" maxlength="3" minlength="1"/>
 			    </div>
 		    </div>
             <div class="form-group">
 	            <div id="div_descripcion" class="col-sm-10 col-md-10 col-lg-10">
-		            <textarea placeholder="Descripcion" class="form-control" name="descripcion" rows="3"></textarea>
+		            <textarea runat="server" id="Input_Descripcion" placeholder="Descripcion" class="form-control" name="descripcion" rows="3"></textarea>
 		        </div>
 	        </div>
             <label>Moneda</label>
             <div class="form-group">
                 <div class="col-sm-1 col-md-1 col-lg-1">
-                      <div class="dropdown">
-                          <button id="id-moneda2" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+                    <div class="dropdown">
+                          <button runat="server" id="Input_Moneda" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
                             &#164;
                             <span class="caret"></span>
                           </button>
@@ -50,17 +57,48 @@
                     </div>
                 </div>
                 <div id="div_precio" class="col-sm-3 col-md-3 col-lg-3">
-                       <input type="text" id="Precio" placeholder="Precio" class="form-control" name="precio"/>
+                       <input runat="server" type="text" id="Input_Precio" placeholder="Precio" class="form-control" name="precio"/>
                 </div>
                 
                 <div id="div_activo" class="col-sm-3 col-md-3 col-lg-3">
                     <input disabled checked data-toggle="toggle" data-size="normal" type="checkbox" data-on="Activo" data-off="Inactivo" data-onstyle="success" data-offstyle="warning" data-width="100">
                 </div>
 	        </div>
+
+            <div class="form-group">
+	            <div id="div_cliente" class="col-sm-12 col-md-12 col-lg-12">
+                    <label>Cliente</label>
+                    <br>
+                    <label class="radio-inline">
+                        <input type="radio" name="radioStatus" checked="checked"/> Juridico</label>
+                    <label class="radio-inline">
+                        <input type="radio" name="radioStatus"/> Natural</label>
+                </div>
+            </div>
+            <div class="form-group">
+	            <div id="div_clientes" class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="dropdown">
+                          <button runat="server" id="btn_cliente" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+                            Seleccionar cliente...
+                            <span class="caret"></span>
+                          </button>
+                          <ul id="cliente" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" >List</a></li>
+                          </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+	            <div id="div_nota" class="col-sm-12 col-md-12 col-lg-12">
+                    <label class="note">¿No encuentra el cliente que busca? <a class="noteLink" href="#">Haz click aqui para agregarlo.</a></label>
+                </div>
+            </div>
+
             <br>
             <div class="form-group">
 		        <div class="col-sm-1 col-md-1 col-lg-1">
-				    <a id="btn-crear" type="button" class="btn btn-primary" onclick="return checkform()" href="../Modulo1/Default.aspx?success=2">Crear</a>
+				    <a runat="Server" type="button" class="btn btn-primary" onclick="return checkform()" href="../Modulo1/Default.aspx?success=2">Crear</a>
 			    </div>
                 <div class="col-sm-1 col-md-1 col-lg-1">
 				    <button class="btn btn-default" onclick="goBack()">Cancelar</button>
