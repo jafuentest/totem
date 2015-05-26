@@ -15,17 +15,23 @@ namespace DatosTotem.Modulo1
     /// </summary>
     public static class BDLogin
     {
+        #region Validar Login
         /// <summary>
         /// Metodo para validar el inicio de sesion en la base de datos
         /// Excepciones posibles: 
         /// LoginErradoException: Excepcion de login invalido
+        /// ExceptionTotemConexionBD: Excepcion de base de datos sql server
+        /// ParametroInvalidoException: Excepcion de parametros erroneos
+        /// UsuarioVacioException: Excepcion si alguna de la informacion del usuario
+        /// es vacia o incorrecta
         /// </summary>
         /// <param name="user">Usuario al que se le va a validar el inicio de sesion
         /// debe tener como minimo el nombre de usuario o email y contrasena</param>
         /// <returns>Retorna el objeto usuario si se pudo validar</returns>
         public static Usuario ValidarLoginBD(Usuario user)
         {
-            if (user.username != null && user.clave != null)
+            if (user.username != null && user.clave != null && user.username!="" &&
+                user.clave != "")
             {
                 List<Parametro> parametros = new List<Parametro>();
                 Parametro parametro = new Parametro(RecursosBDModulo1.Parametro_Input_Username,  
@@ -77,13 +83,13 @@ namespace DatosTotem.Modulo1
                             if (resultado.etiqueta.Equals(RecursosBDModulo1.Parametro_Output_Usu_cargo))
                             {
                                 user.cargo = resultado.valor;
-                            } 
+                            }
                         }
                     }
                     else
                     {
                         throw new ExcepcionesTotem.Modulo1.LoginErradoException(RecursosBDModulo1.Codigo_Login_Errado,
-                            RecursosBDModulo1.Mensaje_Login_Errado, new Exception());                            
+                            RecursosBDModulo1.Mensaje_Login_Errado, new Exception());
                     }
                     if (user.nombre != null && user.nombre != "")
                     {
@@ -101,8 +107,13 @@ namespace DatosTotem.Modulo1
                 }
                 catch (SqlException ex)
                 {
-                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo, 
+                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
                         RecursoGeneralBD.Mensaje, ex);
+                }
+                catch (ParametroInvalidoException ex)
+                {
+                    throw new ParametroInvalidoException(RecursoGeneralBD.Codigo_Parametro_Errado,
+                        RecursoGeneralBD.Mensaje_Parametro_Errado, ex);
                 }
             }
             else
@@ -111,6 +122,9 @@ namespace DatosTotem.Modulo1
                     RecursosBDModulo1.Mensaje_Usuario_Vacio, new Exception());
             }
         }
+        #endregion
+
+        #region Obtener Pregunta Seguridad
         /// <summary>
         /// Metodo para obtener a pregunta de seguridad de un usuario de la base de datos
         /// </summary>
@@ -119,9 +133,85 @@ namespace DatosTotem.Modulo1
         /// <returns>Retorna un objeto usuario con su pregunta de seguridad</returns>
         public static Usuario ObtenerPreguntaSeguridad(Usuario user)
         {
-            throw new NotImplementedException();
+            if (user != null && user.correo != null && user.correo != "")
+            {
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro parametro = new Parametro(RecursosBDModulo1.Parametro_Input_Correo,
+                    SqlDbType.VarChar , user.correo, false);
+                parametro = new Parametro(RecursosBDModulo1.Parametro_Output_PreguntaSeguridad, 
+                    SqlDbType.VarChar, true);
+                string query = RecursosBDModulo1.Query_Obtener_Pregunta_Seguridad;
+                try
+                {
+                    BDConexion con = new BDConexion();
+                    List<Resultado> resultados = con.EjecutarStoredProcedure(query, parametros);
+                    if (resultados != null)
+                    {
+                        foreach (Resultado resultado in resultados)
+                        {
+                            if (resultado != null && resultado.etiqueta != "")
+                            {
+                                if (resultado.etiqueta.Equals(RecursosBDModulo1.Parametro_Output_PreguntaSeguridad))
+                                {
+                                    user.preguntaSeguridad = resultado.valor;
+                                }
+                                else
+                                {
+                                    throw new EmailErradoException(RecursosBDModulo1.Codigo_Email_Errado,
+                                        RecursosBDModulo1.Mensaje_Email_errado,
+                                        new EmailErradoException());
+                                }
+                            }
+                            else
+                            {
+                                throw new EmailErradoException(RecursosBDModulo1.Codigo_Email_Errado,
+                                        RecursosBDModulo1.Mensaje_Email_errado,
+                                        new EmailErradoException());
+                            }
+                        }
+                        if (user.preguntaSeguridad != "" )
+                        {
+                            return user;
+                        }
+                        else
+                        {
+                            throw new EmailErradoException(RecursosBDModulo1.Codigo_Email_Errado,
+                                        RecursosBDModulo1.Mensaje_Email_errado,
+                                        new EmailErradoException());
+                        }
+                    }
+                    else
+                    {
+                        throw new EmailErradoException(RecursosBDModulo1.Codigo_Email_Errado,
+                            RecursosBDModulo1.Mensaje_Email_errado,
+                            new EmailErradoException());
+                    }
+                }
+                catch (ExcepcionesTotem.Modulo1.EmailErradoException ex)
+                {
+                    throw new ExcepcionesTotem.Modulo1.EmailErradoException(ex.Codigo, ex.Mensaje, ex);
+                }
+                catch (SqlException ex)
+                {
+                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                        RecursoGeneralBD.Mensaje, ex);
+                }
+                catch (ParametroInvalidoException ex)
+                {
+                    throw new ParametroInvalidoException(RecursoGeneralBD.Codigo_Parametro_Errado,
+                        RecursoGeneralBD.Mensaje_Parametro_Errado, ex);
+                }
+            }
+            else
+            {
+                throw new UsuarioVacioException(RecursosBDModulo1.Codigo_Usuario_Vacio,
+                    RecursosBDModulo1.Mensaje_Usuario_Vacio,
+                    new UsuarioVacioException());
+            }
         }
+        #endregion
 
+        #region Validar Pregunta de Seguridad
         /// <summary>
         /// Metodo para validar la respuesta a la pregunta de seguridad en la base de datos
         /// </summary>
@@ -132,5 +222,6 @@ namespace DatosTotem.Modulo1
         {
             throw new NotImplementedException();
         }
+        #endregion
     }
 }

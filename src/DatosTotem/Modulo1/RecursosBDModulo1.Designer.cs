@@ -61,6 +61,15 @@ namespace DatosTotem.Modulo1 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to T_01_004.
+        /// </summary>
+        internal static string Codigo_Email_Errado {
+            get {
+                return ResourceManager.GetString("Codigo_Email_Errado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to T_01_002.
         /// </summary>
         internal static string Codigo_Login_Errado {
@@ -84,6 +93,15 @@ namespace DatosTotem.Modulo1 {
         internal static string Codigo_Usuario_Vacio {
             get {
                 return ResourceManager.GetString("Codigo_Usuario_Vacio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se pudo obtener la pregunta de seguridad, el email es invalido.
+        /// </summary>
+        internal static string Mensaje_Email_errado {
+            get {
+                return ResourceManager.GetString("Mensaje_Email_errado", resourceCulture);
             }
         }
         
@@ -124,11 +142,29 @@ namespace DatosTotem.Modulo1 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to @Correo.
+        /// </summary>
+        internal static string Parametro_Input_Correo {
+            get {
+                return ResourceManager.GetString("Parametro_Input_Correo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @Username.
         /// </summary>
         internal static string Parametro_Input_Username {
             get {
                 return ResourceManager.GetString("Parametro_Input_Username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @Usu_pregseguridad.
+        /// </summary>
+        internal static string Parametro_Output_PreguntaSeguridad {
+            get {
+                return ResourceManager.GetString("Parametro_Output_PreguntaSeguridad", resourceCulture);
             }
         }
         
@@ -174,6 +210,15 @@ namespace DatosTotem.Modulo1 {
         internal static string Parametro_Output_Usu_rol {
             get {
                 return ResourceManager.GetString("Parametro_Output_Usu_rol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to obtener_pregunta_seguridad.
+        /// </summary>
+        internal static string Query_Obtener_Pregunta_Seguridad {
+            get {
+                return ResourceManager.GetString("Query_Obtener_Pregunta_Seguridad", resourceCulture);
             }
         }
         

@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Codigo_Email_Errado" xml:space="preserve">
+    <value>T_01_004</value>
+    <comment>Codigo de Error de correo errado</comment>
+  </data>
   <data name="Codigo_Login_Errado" xml:space="preserve">
     <value>T_01_002</value>
     <comment>Error en el login por datos erroneos</comment>
@@ -128,6 +132,10 @@
   <data name="Codigo_Usuario_Vacio" xml:space="preserve">
     <value>T_01_001</value>
     <comment>Error en login o recuperacion de clave por datos de usuario incompletos</comment>
+  </data>
+  <data name="Mensaje_Email_errado" xml:space="preserve">
+    <value>No se pudo obtener la pregunta de seguridad, el email es invalido</value>
+    <comment>Mensaje de error para cuando el email es errado</comment>
   </data>
   <data name="Mensaje_Login_Errado" xml:space="preserve">
     <value>No se pudo iniciar sesion, datos erroneos</value>
@@ -145,9 +153,17 @@
     <value>@Clave</value>
     <comment>Parametro de input para los stored procedure con la clave del usuario</comment>
   </data>
+  <data name="Parametro_Input_Correo" xml:space="preserve">
+    <value>@Correo</value>
+    <comment>Parametro de input para los stored procedure con el correo del usuario</comment>
+  </data>
   <data name="Parametro_Input_Username" xml:space="preserve">
     <value>@Username</value>
     <comment>Parametro de input para los stored procedure con el nombre de usuario</comment>
+  </data>
+  <data name="Parametro_Output_PreguntaSeguridad" xml:space="preserve">
+    <value>@Usu_pregseguridad</value>
+    <comment>Parametro de output para los stored procedure con la pregunta de seguridad del usuario</comment>
   </data>
   <data name="Parametro_Output_Usu_apellido" xml:space="preserve">
     <value>@Usu_apellido</value>
@@ -168,6 +184,10 @@
   <data name="Parametro_Output_Usu_rol" xml:space="preserve">
     <value>@Usu_rol</value>
     <comment>Parametro de output para los stored procedure con el rol del usuario</comment>
+  </data>
+  <data name="Query_Obtener_Pregunta_Seguridad" xml:space="preserve">
+    <value>obtener_pregunta_seguridad</value>
+    <comment>Query para el stored procedure que me retorna la pregunta de seguridad del usuario</comment>
   </data>
   <data name="Query_ValidarLogin" xml:space="preserve">
     <value>validarlogin</value>
