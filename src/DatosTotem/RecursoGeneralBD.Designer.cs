@@ -70,11 +70,29 @@ namespace DatosTotem {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to T_00_02.
+        /// </summary>
+        internal static string Codigo_Parametro_Errado {
+            get {
+                return ResourceManager.GetString("Codigo_Parametro_Errado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error con la Conexion en la BaseDeDatosTotem, no se pudo abrir la conexion.
         /// </summary>
         internal static string Mensaje {
             get {
                 return ResourceManager.GetString("Mensaje", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error en un parametro del stored procedure.
+        /// </summary>
+        internal static string Mensaje_Parametro_Errado {
+            get {
+                return ResourceManager.GetString("Mensaje_Parametro_Errado", resourceCulture);
             }
         }
         

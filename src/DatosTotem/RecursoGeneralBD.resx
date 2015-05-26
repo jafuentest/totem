@@ -121,9 +121,17 @@
     <value>T_00_001</value>
     <comment>Codigo de error en la conexion con la BD</comment>
   </data>
+  <data name="Codigo_Parametro_Errado" xml:space="preserve">
+    <value>T_00_02</value>
+    <comment>Codigo de error cuando se coloca un parametro errado</comment>
+  </data>
   <data name="Mensaje" xml:space="preserve">
     <value>Error con la Conexion en la BaseDeDatosTotem, no se pudo abrir la conexion</value>
     <comment>Mensaje al dar error en la conexion con la BD</comment>
+  </data>
+  <data name="Mensaje_Parametro_Errado" xml:space="preserve">
+    <value>Error en un parametro del stored procedure</value>
+    <comment>Mensajer de error cuando se coloca un parametro errado</comment>
   </data>
   <data name="NombreBD" xml:space="preserve">
     <value>BaseDeDatosTotem</value>
