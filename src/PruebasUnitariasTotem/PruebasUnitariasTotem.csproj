@@ -54,6 +54,7 @@
     <Compile Include="Modulo3\PruebaListaInvContacto.cs" />
     <Compile Include="Modulo3\PruebaListaInvUsuario.cs" />
     <Compile Include="Modulo3\PruebaLogicaInvolucrados.cs" />
+    <Compile Include="Modulo4\PruebaLogicaProyecto.cs" />
     <Compile Include="Modulo4\Prueba_Proyecto.cs" />
     <Compile Include="Modulo6\PruebaActor.cs" />
     <Compile Include="Modulo6\PruebaLogicaActor.cs" />

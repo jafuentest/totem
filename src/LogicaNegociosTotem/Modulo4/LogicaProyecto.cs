@@ -8,10 +8,8 @@ namespace LogicaNegociosTotem.Modulo4
     /// <summary>
     /// Clase que maneja la logica de los proyectos
     /// </summary>
-    public class LogicaProyecto
+    public static class LogicaProyecto
     {
-        //Clase que maneja proyecto en la Base de Datos
-        private DatosTotem.Modulo4.BDProyecto bdProyecto;
 
         #region metodos
 
@@ -22,7 +20,7 @@ namespace LogicaNegociosTotem.Modulo4
         /// <param name="proyecto">proyecto a crear
         /// <returns>Retorna True si se crea, de lo contrario genera
         /// una exception(CodigoRepetido)</returns>
-        public bool CrearProyecto(DominioTotem.Proyecto proyecto)
+        public static bool CrearProyecto(DominioTotem.Proyecto proyecto)
         {
             throw new NotImplementedException();
         }
@@ -34,7 +32,7 @@ namespace LogicaNegociosTotem.Modulo4
         /// <returns>Devuelve como resultado un proyecto en caso 
         /// contrario devuelve null</returns>
         /// 
-        public DominioTotem.Proyecto ConsultarProyecto(String codigo)
+        public static DominioTotem.Proyecto ConsultarProyecto(String codigo)
         {
             throw new NotImplementedException();
         }
@@ -44,7 +42,7 @@ namespace LogicaNegociosTotem.Modulo4
         /// </summary>
         /// <param name="proyecto">proyecto a crear
         /// <returns>Devuelve True si lo modifica, de lo contrario devuelve false</returns>
-        public bool ModificarProyecto(DominioTotem.Proyecto proyecto)
+        public static bool ModificarProyecto(DominioTotem.Proyecto proyecto)
         {
             throw new NotImplementedException();
         }
