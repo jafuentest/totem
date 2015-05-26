@@ -29,35 +29,7 @@ namespace DatosTotem.Modulo4
         /// <returns>Retrorna el proyecto</returns>
         public Proyecto CrearProyecto(Proyecto proyecto)
         {
-            try
-            {
-                SqlCommand comando = new SqlCommand(RecursosBDModulo4.ProcedimientoConsultarProyecto, Conectar());
-                comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.Add(new SqlParameter(RecursosBDModulo4.ProcedimientoAgregarProyecto, proyecto.));
-
-                SqlDataReader leer;
-                Conectar().Open();
-                leer = comando.ExecuteReader();
-
-                leer.Read();
-                proyecto = ObtenerObjetoProyecto(leer);
-
-
-            }
-
-            catch (Exception ex)
-            {
-                //Lanza excepcion logica propia
-                throw ex;
-
-            }
-
-            finally
-            {
-                Desconectar();
-
-            }
-            return proyecto;
+            throw new System.NotImplementedException();
         }
         #endregion
 
@@ -69,35 +41,7 @@ namespace DatosTotem.Modulo4
         /// <returns>Retrorna el proyecto</returns>
         public Proyecto ConsultarProyecto(String codigo)
         {
-            try
-            {
-                SqlCommand comando = new SqlCommand(RecursosBDModulo4.ProcedimientoConsultarProyecto, Conectar());
-                comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.Add(new SqlParameter(RecursosBDModulo4.ParametroCodigoProyecto, codigo));
-
-                SqlDataReader leer;
-                Conectar().Open();
-                leer = comando.ExecuteReader();
-
-                leer.Read();
-                proyecto = ObtenerObjetoProyecto(leer);
-
-
-            }
-
-            catch (Exception ex)
-            {
-                //Lanza excepcion logica propia
-                throw ex;
-                
-            }
-
-            finally
-            {
-                Desconectar();
-                
-            }
-            return proyecto;
+            throw new System.NotImplementedException();
         }
 
        
@@ -105,17 +49,7 @@ namespace DatosTotem.Modulo4
 
         public Proyecto ObtenerObjetoProyecto(SqlDataReader BDProyecto)
         {
-            Proyecto proyecto = new Proyecto(BDProyecto[RecursosBDModulo4.AtributoCodigoProyecto].ToString(),
-                                             BDProyecto[RecursosBDModulo4.AtributoNombreProyecto].ToString(),
-                                             bool.Parse(BDProyecto[RecursosBDModulo4.AtributoEstadoProyecto].ToString()),
-                                             BDProyecto[RecursosBDModulo4.AtributoDescripcionProyecto].ToString(),
-                                             BDProyecto[RecursosBDModulo4.AtributoMonedaProyecto].ToString(),
-                                             float.Parse(BDProyecto[RecursosBDModulo4.AtributoCostoProyecto].ToString()));
-
-
-            BDProyecto.Close();
-            return proyecto;
-
+            throw new System.NotImplementedException();
         }
     }
 }
