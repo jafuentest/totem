@@ -13,7 +13,7 @@ using System.IO;
 namespace DatosTotem.Modulo4
 {
     /// <summary>
-    /// Clase para el gestionamiento de as minutas, con respecto a las conexiones y llamadas
+    /// Clase para el manejo de proyectos en la bd
     /// a la BD
     /// </summary>
     public static class BDProyecto 
@@ -25,10 +25,51 @@ namespace DatosTotem.Modulo4
         /// Método para Crear un proyecto en la bd
         /// </summary>
         /// <param name="proyecto">Proyecto a insertar en la bd</param>
-        /// <returns>Retrorna el proyecto</returns>
-        public static Proyecto CrearProyecto(Proyecto proyecto)
+        /// <returns>Retrorna True si se crea, False si no </returns>
+        public static bool CrearProyecto(Proyecto proyecto)
         {
-            throw new System.NotImplementedException();
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto,
+                SqlDbType.VarChar, proyecto.Codigo, false);
+            parametros.Add(parametro);
+            parametro = new Parametro(RecursosBDModulo4.ParametroNombreProyecto,
+                SqlDbType.VarChar, proyecto.Nombre, false);
+            parametros.Add(parametro);
+            parametro = new Parametro(RecursosBDModulo4.ParametroEstadoProyecto,
+                SqlDbType.Bit, proyecto.Estado.ToString(), false);
+            parametros.Add(parametro);
+            parametro = new Parametro(RecursosBDModulo4.ParametroDescripcionProyecto,
+                SqlDbType.VarChar, proyecto.Descripcion, false);
+            parametros.Add(parametro);
+            parametro = new Parametro(RecursosBDModulo4.ParametroCostoProyecto,
+                SqlDbType.Float, proyecto.Costo.ToString(), false);
+            parametros.Add(parametro);
+            parametro = new Parametro(RecursosBDModulo4.ParametroMonedaProyecto,
+                SqlDbType.VarChar, proyecto.Moneda, false);
+
+              try
+                {
+                    BDConexion con = new BDConexion();
+                    List <Resultado> resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoAgregarProyecto, parametros);
+                    if (resultados != null)
+                    {
+                       return true;
+                    }
+                    else
+                    {
+                        throw new NotImplementedException();
+
+                    }
+                    
+                }
+                catch (NotImplementedException e)
+                {
+                    throw e;
+                }
+               
+            
+
+
         }
         #endregion
 
@@ -43,12 +84,6 @@ namespace DatosTotem.Modulo4
             throw new System.NotImplementedException();
         }
 
-       
 
-
-        public static Proyecto ObtenerObjetoProyecto(SqlDataReader BDProyecto)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

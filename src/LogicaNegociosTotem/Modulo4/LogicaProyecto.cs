@@ -22,7 +22,16 @@ namespace LogicaNegociosTotem.Modulo4
         /// una exception(CodigoRepetido)</returns>
         public static bool CrearProyecto(DominioTotem.Proyecto proyecto)
         {
-            throw new NotImplementedException();
+
+            try
+            {
+                return DatosTotem.Modulo4.BDProyecto.CrearProyecto(proyecto);
+
+            }
+            catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException)
+            {
+                return false;
+            }
         }
 
         /// <summary>
