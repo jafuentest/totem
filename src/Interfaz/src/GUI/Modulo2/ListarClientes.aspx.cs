@@ -11,7 +11,7 @@ public partial class GUI_Modulo2_ListarClientes : System.Web.UI.Page
     {
         ((MasterPage)Page.Master).IdModulo = "2";
 
-        String success = Request.QueryString["success"];
+        /*String success = Request.QueryString["success"];
         if (success != null)
         {
             if (success.Equals("elim"))
@@ -34,12 +34,13 @@ public partial class GUI_Modulo2_ListarClientes : System.Web.UI.Page
                 alert.Attributes["role"] = "alert";
                 alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Se ha registrado exitosamente</div>";
             }
-        }
+        }*/
 
-        if (Request.Cookies["userInfo"] != null)
+        DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+        if (user != null)
         {
-            if (Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != "" &&
-                Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
+            if (user.username != "" &&
+                user.clave != "")
             {
                 ((MasterPage)Page.Master).ShowDiv = true;
             }
