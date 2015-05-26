@@ -49,6 +49,7 @@
     <Compile Include="Modulo1\LoginErradoException.cs" />
     <Compile Include="Modulo2\ExcepcionClientesDatos.cs" />
     <Compile Include="Modulo2\ExcepcionLogicaClientes.cs" />
+    <Compile Include="Modulo3\InvolucradoRepetidoException.cs" />
     <Compile Include="Modulo4\CasosDeUsoInexistentesException.cs" />
     <Compile Include="Modulo4\CodigoRepetidoException.cs" />
     <Compile Include="Modulo4\InvolucradosInexistentesException.cs" />
@@ -56,7 +57,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Modulo3\" />
     <Folder Include="Modulo5\" />
     <Folder Include="Modulo6\" />
     <Folder Include="Modulo7\" />

@@ -61,6 +61,24 @@ namespace DatosTotem.Modulo3 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to T_01_001.
+        /// </summary>
+        internal static string Codigo_Involucrado_Repetido {
+            get {
+                return ResourceManager.GetString("Codigo_Involucrado_Repetido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No puede existir un involucrado en un proyecto dos veces.
+        /// </summary>
+        internal static string Mensaje_Involucrado_Repetido {
+            get {
+                return ResourceManager.GetString("Mensaje_Involucrado_Repetido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @proyecto_codigo.
         /// </summary>
         internal static string ParamCodProy {

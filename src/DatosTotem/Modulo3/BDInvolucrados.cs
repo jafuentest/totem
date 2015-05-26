@@ -45,8 +45,13 @@ namespace DatosTotem.Modulo3
                 }
                 catch (SqlException ex)
                 {
-                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
-                        RecursoGeneralBD.Mensaje, ex);
+                    if (ex.Number == 2627)
+                        throw new ExcepcionesTotem.Modulo3.InvolucradoRepetidoException(
+                            RecursosBDModulo3.Codigo_Involucrado_Repetido, 
+                            RecursosBDModulo3.Mensaje_Involucrado_Repetido, ex);
+                    else
+                        throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                            RecursoGeneralBD.Mensaje, ex);
                 }
 
             }
@@ -84,10 +89,14 @@ namespace DatosTotem.Modulo3
                 }
                 catch (SqlException ex)
                 {
-                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
-                        RecursoGeneralBD.Mensaje, ex);
+                    if (ex.Number == 2627)
+                        throw new ExcepcionesTotem.Modulo3.InvolucradoRepetidoException(
+                            RecursosBDModulo3.Codigo_Involucrado_Repetido,
+                            RecursosBDModulo3.Mensaje_Involucrado_Repetido, ex);
+                    else
+                        throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                            RecursoGeneralBD.Mensaje, ex);
                 }
-
             }
             return true;
         }

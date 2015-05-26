@@ -117,6 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Codigo_Involucrado_Repetido" xml:space="preserve">
+    <value>T_01_001</value>
+    <comment>Codigo de error en caso de que exista involucrado repetido en bd</comment>
+  </data>
+  <data name="Mensaje_Involucrado_Repetido" xml:space="preserve">
+    <value>No puede existir un involucrado en un proyecto dos veces</value>
+    <comment>Mensaje de error para la excepcion InvolucradoRepetidoException</comment>
+  </data>
   <data name="ParamCodProy" xml:space="preserve">
     <value>@proyecto_codigo</value>
     <comment>Codigo del proyecto para el stored insertar cliente</comment>

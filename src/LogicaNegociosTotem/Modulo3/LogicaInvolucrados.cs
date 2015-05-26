@@ -44,7 +44,21 @@ namespace LogicaNegociosTotem.Modulo3
         /// <returns>Valor booleano que refleja exito o fallo de la operacion</returns>
         public bool agregarContactoALista(DominioTotem.Contacto elContacto)
         {
-            return contactosInvolucrados.agregarContactoAProyecto(elContacto);
+            bool retorno = false;
+            try
+            {
+                retorno = contactosInvolucrados.agregarContactoAProyecto(elContacto);
+
+            }
+            catch (ExcepcionesTotem.Modulo3.InvolucradoRepetidoException ex)
+            {
+
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+
+            }
+            return retorno;
         }
         /// <summary>
         /// Metodo que agrega contacto a lista de contactos involucrados a un proyecto
@@ -53,7 +67,22 @@ namespace LogicaNegociosTotem.Modulo3
         /// <returns>Valor booleano que refleja exito o fallo de la operacion</returns>
         public bool agregarUsuarioALista(DominioTotem.Usuario elUsuario)
         {
-            return usuariosInvolucrados.agregarUsuarioAProyecto(elUsuario);
+            bool retorno = false;
+            try
+            {
+                retorno = usuariosInvolucrados.agregarUsuarioAProyecto(elUsuario);
+            }
+            catch (ExcepcionesTotem.Modulo3.InvolucradoRepetidoException ex)
+            {
+
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+
+            }
+
+            return retorno;
+
         }
         /// <summary>
         /// Metodo que elimina un contacto involucrado a un proyecto (lista y bd)
