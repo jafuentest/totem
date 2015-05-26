@@ -66,6 +66,8 @@ namespace DatosTotem.Modulo3
 
             }
 
+            laConexion = new BDConexion();
+
             resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarUsuario, parametrosContar);
             filasD = int.Parse(resultado[0].valor);
 
@@ -126,7 +128,11 @@ namespace DatosTotem.Modulo3
                 }
             }
 
+            laConexion = new BDConexion();
+            resultado = null;
+
             resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarCliente, parametrosContar);
+            System.Diagnostics.Debug.WriteLine(resultado[0]);
             filasD = int.Parse(resultado[0].valor);
 
             if (filasD > filasA)
@@ -158,9 +164,49 @@ namespace DatosTotem.Modulo3
         /// <param name="c">contacto a eliminar</param>
         /// <param name="p">proyecto al que esta asociado</param>
         /// <returns>Valor booleano que refleja el exito de la operacion</returns>
-        public static bool eliminarContactoDeIvolucradosEnProyecto(Contacto c, Proyecto p)
+        public static bool eliminarContactoDeIvolucradosEnProyecto(Contacto c, ListaInvolucradoContacto l)
         {
-            throw new NotImplementedException();
+            int filasA, filasD;
+
+            Parametro paramProyectoCod, paramContactoId, paramFilas;
+            BDConexion laConexion = new BDConexion();
+            List<Parametro> listaParametros, parametrosContar;
+
+            parametrosContar = new List<Parametro>();
+            paramFilas = new Parametro(RecursosBDModulo3.ParamFilas, SqlDbType.Int, true);
+
+            parametrosContar.Add(paramFilas);
+
+            List<Resultado> resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarCliente,
+                parametrosContar);
+            filasA = int.Parse(resultado[0].valor);
+            try
+            {
+                laConexion = new BDConexion();
+                listaParametros = new List<Parametro>();
+
+                paramProyectoCod = new Parametro(DatosTotem.Modulo3.RecursosBDModulo3.ParamCodProy,
+                                                 SqlDbType.VarChar, l.Proyecto.Codigo, false);
+                paramContactoId = new Parametro(DatosTotem.Modulo3.RecursosBDModulo3.ParamContID,
+                                                 SqlDbType.Int, c.Con_Id.ToString(), false);
+                listaParametros.Add(paramContactoId);
+                listaParametros.Add(paramProyectoCod);
+
+                laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredEliminarContacto, listaParametros);
+            }
+            catch (SqlException ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+            }
+
+            resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarUsuario, parametrosContar);
+            filasD = int.Parse(resultado[0].valor);
+
+            if ((filasA - 1) == filasD)
+                return true;
+            else
+                return false;
         }
         /// <summary>
         /// Metodo que elimina un usuario involucrado a un proyecto
@@ -168,10 +214,53 @@ namespace DatosTotem.Modulo3
         /// <param name="c">usuario a eliminar</param>
         /// <param name="p">proyecto al que esta asociado</param>
         /// <returns>Valor booleano que refleja el exito de la operacion</returns>
-        public static bool eliminarUsuariosDeIvolucradosEnProyecto(Usuario u, Proyecto p)
+        public static bool eliminarUsuariosDeIvolucradosEnProyecto(Usuario u, ListaInvolucradoUsuario l)
         {
-            throw new NotImplementedException();
+            int filasA, filasD;
+
+            Parametro paramProyectoCod, paramFilas, paramUsuario;
+            BDConexion laConexion = new BDConexion();
+            List<Parametro> listaParametros, parametrosContar;
+
+            parametrosContar = new List<Parametro>();
+            paramFilas = new Parametro(RecursosBDModulo3.ParamFilas, SqlDbType.Int, true);
+
+            parametrosContar.Add(paramFilas);
+
+            List<Resultado> resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarUsuario,
+                parametrosContar);
+            filasA = int.Parse(resultado[0].valor);
+
+            try
+            {
+                laConexion = new BDConexion();
+                listaParametros = new List<Parametro>();
+
+                paramProyectoCod = new Parametro(DatosTotem.Modulo3.RecursosBDModulo3.ParamCodProy,
+                                                 SqlDbType.VarChar, l.Proyecto.Codigo, false);
+                paramUsuario = new Parametro(DatosTotem.Modulo3.RecursosBDModulo3.ParamUsername,
+                                                 SqlDbType.VarChar, u.username, false);
+                listaParametros.Add(paramUsuario);
+                listaParametros.Add(paramProyectoCod);
+
+                laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredEliminarUsuario, listaParametros);
+            }
+            catch (SqlException ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+            }
+            laConexion = new BDConexion();
+
+            resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarUsuario, parametrosContar);
+            filasD = int.Parse(resultado[0].valor);
+
+            if ((filasA - 1) == filasD)
+                return true;
+            else
+                return false;
         }
+
 
     }
 }

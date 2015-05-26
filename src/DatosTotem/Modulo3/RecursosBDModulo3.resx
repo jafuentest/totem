@@ -149,6 +149,14 @@
     <value>Contar_TuplasInvUsuario</value>
     <comment>Nombre del stored que cuenta las tuplas de la tabla de involucrados usuarios</comment>
   </data>
+  <data name="StoredEliminarContacto" xml:space="preserve">
+    <value>Procedure_eliminarInvCliente</value>
+    <comment>Nombre del stored para eliminar cliente</comment>
+  </data>
+  <data name="StoredEliminarUsuario" xml:space="preserve">
+    <value>Procedure_eliminarInvUsuario</value>
+    <comment>Nombre del stored para eliminar usuario</comment>
+  </data>
   <data name="StoredInsertarCliente" xml:space="preserve">
     <value>Procedure_InsertarInvCliente</value>
     <comment>Nombre del StoredProcedure para insertar contactos involucrados</comment>

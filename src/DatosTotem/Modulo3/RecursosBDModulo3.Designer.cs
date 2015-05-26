@@ -133,6 +133,24 @@ namespace DatosTotem.Modulo3 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Procedure_eliminarInvCliente.
+        /// </summary>
+        internal static string StoredEliminarContacto {
+            get {
+                return ResourceManager.GetString("StoredEliminarContacto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procedure_eliminarInvUsuario.
+        /// </summary>
+        internal static string StoredEliminarUsuario {
+            get {
+                return ResourceManager.GetString("StoredEliminarUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Procedure_InsertarInvCliente.
         /// </summary>
         internal static string StoredInsertarCliente {

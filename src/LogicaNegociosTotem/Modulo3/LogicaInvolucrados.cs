@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DatosTotem;
+using DatosTotem.Modulo3;
 
 namespace LogicaNegociosTotem.Modulo3
 {
@@ -44,21 +45,7 @@ namespace LogicaNegociosTotem.Modulo3
         /// <returns>Valor booleano que refleja exito o fallo de la operacion</returns>
         public bool agregarContactoALista(DominioTotem.Contacto elContacto)
         {
-            bool retorno = false;
-            try
-            {
-                retorno = contactosInvolucrados.agregarContactoAProyecto(elContacto);
-
-            }
-            catch (ExcepcionesTotem.Modulo3.InvolucradoRepetidoException ex)
-            {
-
-            }
-            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
-            {
-
-            }
-            return retorno;
+            return contactosInvolucrados.agregarContactoAProyecto(elContacto);
         }
         /// <summary>
         /// Metodo que agrega contacto a lista de contactos involucrados a un proyecto
@@ -67,22 +54,7 @@ namespace LogicaNegociosTotem.Modulo3
         /// <returns>Valor booleano que refleja exito o fallo de la operacion</returns>
         public bool agregarUsuarioALista(DominioTotem.Usuario elUsuario)
         {
-            bool retorno = false;
-            try
-            {
-                retorno = usuariosInvolucrados.agregarUsuarioAProyecto(elUsuario);
-            }
-            catch (ExcepcionesTotem.Modulo3.InvolucradoRepetidoException ex)
-            {
-
-            }
-            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
-            {
-
-            }
-
-            return retorno;
-
+            return usuariosInvolucrados.agregarUsuarioAProyecto(elUsuario);
         }
         /// <summary>
         /// Metodo que elimina un contacto involucrado a un proyecto (lista y bd)
@@ -112,7 +84,21 @@ namespace LogicaNegociosTotem.Modulo3
         /// <returns>Valor booleano que refleja exito o fallo de la operacion</returns>
         public bool agregarContactosEnBD(DominioTotem.ListaInvolucradoContacto laListaCont)
         {
-            throw new NotImplementedException();
+            bool retorno = false;
+            try
+            {
+                retorno = BDInvolucrados.agregarContactosInvolucrados(laListaCont);
+
+            }
+            catch (ExcepcionesTotem.Modulo3.InvolucradoRepetidoException ex)
+            {
+
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+
+            }
+            return retorno;
         }
         /// <summary>
         /// Metodo que agrega una lista de contactos involucrados a la base de datos
@@ -121,7 +107,21 @@ namespace LogicaNegociosTotem.Modulo3
         /// <returns>Valor booleano que refleja exito o fallo de la operacion</returns>
         public bool agregarUsuariosEnBD(DominioTotem.ListaInvolucradoUsuario laListaUsu)
         {
-            throw new NotImplementedException();
+            bool retorno = false;
+            try
+            {
+                retorno = BDInvolucrados.agregarUsuariosInvolucrados(laListaUsu);
+
+            }
+            catch (ExcepcionesTotem.Modulo3.InvolucradoRepetidoException ex)
+            {
+
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+
+            }
+            return retorno;
         }
         /// <summary>
         /// Metodo que carga la lista de los contactos involucrados a un proyecto
