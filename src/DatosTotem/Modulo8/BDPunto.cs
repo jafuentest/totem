@@ -171,5 +171,36 @@ namespace DatosTotem.Modulo8
             }
         }
 
+        public Boolean EliminarPuntoBD(Punto punto, int idMinuta)
+        {
+            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoEliminarPunto, con.Conectar());
+            sqlcom.CommandType = CommandType.StoredProcedure;
+
+            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDMinuta, SqlDbType.Int));
+            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDPunto, SqlDbType.Int));
+
+            sqlcom.Parameters[RecursosBDModulo8.ParametroIDMinuta].Value = idMinuta;
+            sqlcom.Parameters[RecursosBDModulo8.ParametroIDPunto].Value = punto.Codigo;
+
+            try
+            {
+                con.Conectar().Open();
+                sqlcom.ExecuteNonQuery();
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+
+            }
+
+            finally
+            {
+                con.Desconectar();
+
+            }
+        }
     }
 }

@@ -231,6 +231,9 @@
     <value>Procedure_ConsultarUsuarioMinuta</value>
     <comment>Procedimiento en la BD que regresa todos los responsables de los acuerdos tratados que sean usuarios</comment>
   </data>
+  <data name="ProcedimientoEliminarPunto" xml:space="preserve">
+    <value>Procedure_EliminarPunto</value>
+  </data>
   <data name="ProcedimientoModificarMinuta" xml:space="preserve">
     <value>Procedure_ModificarMinuta</value>
     <comment>Procedimiento en la BD que modifica los datos de la Minuta</comment>

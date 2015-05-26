@@ -349,6 +349,15 @@ namespace DatosTotem.Modulo8 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_EliminarPunto.
+        /// </summary>
+        internal static string ProcedimientoEliminarPunto {
+            get {
+                return ResourceManager.GetString("ProcedimientoEliminarPunto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Procedure_ModificarMinuta.
         /// </summary>
         internal static string ProcedimientoModificarMinuta {
