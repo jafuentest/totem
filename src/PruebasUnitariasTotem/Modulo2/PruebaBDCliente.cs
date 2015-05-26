@@ -134,7 +134,7 @@ namespace PruebasUnitariasTotem.Modulo2
         /// </summary>
         /// 
         [Test]
-        public void PruebaAgregarClienteJuridico() 
+        public void PruebaAgregarClienteJuridicoBD() 
         {
             ClienteJuridico cliente = new ClienteJuridico();
             cliente.Jur_Id = "J-231425-5";

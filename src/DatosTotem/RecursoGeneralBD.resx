@@ -136,4 +136,7 @@
   <data name="NombreBD" xml:space="preserve">
     <value>BaseDeDatosTotem</value>
   </data>
+  <data name="StringDeConexion" xml:space="preserve">
+    <value>Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\BaseDeDatos\BaseDeDatosTotem.mdf;Integrated Security=True</value>
+  </data>
 </root>
