@@ -4,26 +4,25 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using DominioTotem;
 
 public partial class GUI_Modulo3_Default : System.Web.UI.Page
 {
+    private ListaInvolucradoContacto listaContactos;
+    private ListaInvolucradoUsuario listaUsuarios;
+   
+
     protected void Page_Load(object sender, EventArgs e)
     {
         ((MasterPage)Page.Master).IdModulo = "3";
-        ((MasterPage)Page.Master).ShowDiv = true;
+
+        DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
         
-        if (Request.Cookies["userInfo"] != null)
-        {    
-            //Valida que un solo usuario este entrando a la pagina
-            if (Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != "" &&
-                Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
+        if (user != null)
+        {
+            if (user.username != "" && user.clave != "")
             {
-               
-                    ((MasterPage)Page.Master).ShowDiv = true;
-                //Valida que el rol sea usuario 
-                    if (Server.HtmlEncode(Request.Cookies["userInfo"]["rol"]) == "usuario")
-                       Response.Redirect("../Modulo3/ListarPersonalInvolucrado.aspx");
-                
+                ((MasterPage)Page.Master).ShowDiv = true;
             }
             else
             {
@@ -37,6 +36,11 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
         {
             Response.Redirect("../Modulo1/M1_login.aspx");
         }   
+    }
+
+    protected void AgregarInvolucrados_Click(object sender, EventArgs e)
+    {
+        // Falta implementar jalando los comoboboxes
     }
 
 

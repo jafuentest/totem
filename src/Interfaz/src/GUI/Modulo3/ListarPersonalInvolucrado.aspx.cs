@@ -10,12 +10,12 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ((MasterPage)Page.Master).IdModulo = "3";
-        ((MasterPage)Page.Master).ShowDiv = true;
-        if (Request.Cookies["userInfo"] != null)
+
+        DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+
+        if (user != null)
         {
-            //Valida que se tenga usuario para entrar a la pagina
-            if (Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != "" &&
-                Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
+            if (user.username != "" && user.clave != "")
             {
                 ((MasterPage)Page.Master).ShowDiv = true;
             }
