@@ -26,11 +26,18 @@ namespace DominioTotem
         private bool estado = true;
         private String descripcion;
         private String moneda;
-        private float costo;
+        private double costo;
 
         #endregion
 
         #region Constructor
+
+        /// <summary>
+        /// Contructor publico sin parametros de la clase proyecto
+        /// </summary>
+        public Proyecto()
+        {
+        }
 
         /// <summary>
         /// Contructor publico de la clase proyecto
@@ -41,8 +48,7 @@ namespace DominioTotem
         /// <param name="moneda">Moneda base en la que se esta cobrando por la realizacion del proyecto</param>
         /// <param name="costo">Costo de realizacion del 100% del proyecto</param>
         /// </summary>
-
-        public Proyecto(String codigo, String nombre, bool estado, String descripcion, String moneda, float costo)
+        public Proyecto(String codigo, String nombre, bool estado, String descripcion, String moneda, double costo)
         {
             this.codigo = codigo;
             this.nombre = nombre;
