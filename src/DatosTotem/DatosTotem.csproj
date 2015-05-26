@@ -65,6 +65,11 @@
       <DependentUpon>BaseDeDatosTotemDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="BDConexion.cs" />
+    <Compile Include="Modulo3\RecursosBDModulo3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosBDModulo3.resx</DependentUpon>
+    </Compile>
     <Compile Include="Modulo7\BDUsuario.cs" />
     <Compile Include="Modulo7\RecursosBaseDeDatosModulo7.Designer.cs" />
     <Compile Include="Resultado.cs" />
@@ -167,6 +172,10 @@
       <LastGenOutput>RecursosBDModulo1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo2\RecursosBaseDeDatosModulo2.resx" />
+    <EmbeddedResource Include="Modulo3\RecursosBDModulo3.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosBDModulo3.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulo6\RecursosBDModulo6.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosBDModulo6.Designer.cs</LastGenOutput>
