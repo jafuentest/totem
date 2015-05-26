@@ -18,7 +18,7 @@ namespace PruebasUnitariasTotem.Modulo1
         [SetUp]
         public void init()
         {
-            var usuario = new Usuario();
+            usuario = new Usuario();
         }
 
         [Test]
@@ -27,14 +27,14 @@ namespace PruebasUnitariasTotem.Modulo1
         {
             try
             {
-                usuario.clave = "";
-                usuario.username = "";
+                usuario.clave = "asdasd";
+                usuario.username = "asdasd";
                 LogicaLogin.Login(usuario.username, usuario.clave);
                 Assert.Fail("Una excepcion se ha debido de lanzar");
             }
             catch (LoginErradoException loginErradoException)
             {
-                Assert.AreEqual("La clave o el usuario son incorrectos", loginErradoException.Message);
+                Assert.AreEqual("No se pudo iniciar sesion, datos erroneos", loginErradoException.Mensaje);
             }
             catch (Exception e)
             {
@@ -55,13 +55,13 @@ namespace PruebasUnitariasTotem.Modulo1
             try
             {
                 
-                usuario.correo = "";
+                usuario.correo = "asdasd";
                 BDLogin.ObtenerPreguntaSeguridad(usuario);
                 Assert.Fail("Una excepcion se ha debido de lanzar");
             }
             catch (EmailErradoException emailErradoException)
             {
-                Assert.AreEqual("El Correo No Existe o es Incorrecto", emailErradoException.Message);
+                Assert.AreEqual("No se pudo obtener la pregunta de seguridad, el email es invalido", emailErradoException.Mensaje);
             }
             catch (Exception e)
             {
@@ -82,14 +82,14 @@ namespace PruebasUnitariasTotem.Modulo1
         {
             try
             {
-
-                usuario.respuestaSeguridad = "";
+                usuario.correo = "alberto21ds@gmail.com";
+                usuario.respuestaSeguridad = "asdasd";
                 BDLogin.ValidarPreguntaSeguridadBD(usuario);
                 Assert.Fail("Una excepcion se ha debido de lanzar");
             }
             catch (RespuestaErradoException respuestaErradoException)
             {
-                Assert.AreEqual("La respuesta no es correcta", respuestaErradoException.Message);
+                Assert.AreEqual("No se pudo validar la pregunta, respuesta invalida", respuestaErradoException.Message);
             }
             catch (Exception e)
             {
