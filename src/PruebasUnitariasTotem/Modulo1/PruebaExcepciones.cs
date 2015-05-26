@@ -15,11 +15,9 @@ namespace PruebasUnitariasTotem.Modulo1
     {
 
         private Usuario usuario;
-        private LogicaLogin logica;
         [SetUp]
         public void init()
         {
-            var logica = new LogicaLogin();
             var usuario = new Usuario();
         }
 
@@ -31,7 +29,7 @@ namespace PruebasUnitariasTotem.Modulo1
             {
                 usuario.clave = "";
                 usuario.username = "";
-                logica.Login(usuario);
+                LogicaLogin.Login(usuario.username, usuario.clave);
                 Assert.Fail("Una excepcion se ha debido de lanzar");
             }
             catch (LoginErradoException loginErradoException)

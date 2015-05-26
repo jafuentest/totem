@@ -13,24 +13,22 @@ namespace PruebasUnitariasTotem.Modulo1
     [TestFixture]
     class PruebaLogicaLogin
     {
-        private LogicaNegociosTotem.Modulo1.LogicaLogin testLogica;
         [SetUp]
         public void Init() {
-            this.testLogica = new LogicaLogin();
         }
 
         [Test]
         public void PruebaIntentosFallidos() {
             Usuario user = new Usuario();
             user.username = "santiagop85";
-            user.clave = "minerva";
+            user.clave = "asdasd";
             user.CalcularHash();
         
             for (int x = 0; x < 3;x++ )
             {
                 try
                 {
-                    this.testLogica.Login(user);
+                    LogicaNegociosTotem.Modulo1.LogicaLogin.Login(user.username, user.clave);
                 }
                 catch (ExcepcionesTotem.Modulo1.IntentosFallidosException)
                 {
@@ -48,7 +46,7 @@ namespace PruebasUnitariasTotem.Modulo1
             Usuario user = new Usuario();
             try
             {
-                this.testLogica.Login(user);
+                LogicaNegociosTotem.Modulo1.LogicaLogin.Login(user.username, user.clave);
             }
             catch (ExcepcionesTotem.Modulo1.UsuarioVacioException) { 
             
@@ -63,7 +61,7 @@ namespace PruebasUnitariasTotem.Modulo1
             user.CalcularHash();
             try
             {
-                this.testLogica.Login(user);
+                LogicaNegociosTotem.Modulo1.LogicaLogin.Login(user.username, user.clave);
             }
             catch (ExcepcionesTotem.ExceptionTotemConexionBD)
             {
@@ -82,7 +80,7 @@ namespace PruebasUnitariasTotem.Modulo1
             user.CalcularHash();
             try
             {
-                this.testLogica.Login(user);
+                LogicaNegociosTotem.Modulo1.LogicaLogin.Login(user.username, user.clave);
             }
             catch (Exception e) {
                 Assert.Fail("No se tuvo que haber disparado ninguna exception");
@@ -93,11 +91,7 @@ namespace PruebasUnitariasTotem.Modulo1
 
 
 
-        
-        [TearDown]
-        public void Finish() {
-            this.testLogica = null;
-        }
+
 
 
 
