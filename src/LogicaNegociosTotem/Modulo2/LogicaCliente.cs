@@ -45,11 +45,12 @@ namespace LogicaNegociosTotem.Modulo2
        /// </summary>
        /// <param name="clienteNatural">Información del Cliente Natural</param>
        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-       public bool AgregarClienteNatural(ClienteNatural clienteNatural)
+       public bool AgregarClienteNatural(string identificador, string nombre, int fkLugar)
        {
            //try
           // {
-               return baseDeDatosCliente.AgregarClienteNatural(clienteNatural);
+           ClienteNatural clientenatural = new ClienteNatural(identificador, nombre);
+           return baseDeDatosCliente.AgregarClienteNatural(clientenatural, fkLugar);
            //}
           // catch (ExcepcionesTotem.Modulo2.ExcepcionLogicaClientes)
         //   {

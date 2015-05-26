@@ -93,46 +93,54 @@ namespace DatosTotem.Modulo2
         /// </summary>
         /// <param name="clienteNatural">Información del Cliente Natural</param>
         /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-        public bool AgregarClienteNatural(ClienteNatural clienteNatural) 
+        public bool AgregarClienteNatural(ClienteNatural clienteNatural , int fkLugar) 
         {
 
-            bool respuesta;
-            _operacionBD = new BDConexion();
-            SqlCommand comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureAgregarClienteNatural, _operacionBD.Conectar());
-            comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.Add(new SqlParameter(RecursosBaseDeDatosModulo2.ParametroBusqueda, Clientenatural.Nat_Id));
-            comando.Parameters.Add(new SqlParameter(RecursosBaseDeDatosModulo2.ParametroNombre, Clientenatural.Nat_Nombre));
-            comando.Parameters.Add(new SqlParameter(RecursosBaseDeDatosModulo2.ParametroApellido, Clientenatural.Nat_Apellido));
-            comando.Parameters.Add(new SqlParameter(RecursosBaseDeDatosModulo2.ParametroCorreo, Clientenatural.Nat_Correo));
-            comando.Parameters.Add(new SqlParameter(RecursosBaseDeDatosModulo2.ParametroLugar, Clientenatural.Nat_Direccion));
+             bool respuesta = false;
 
-           
             try
             {
-                _operacionBD.Conectar();
-                comando.ExecuteNonQuery();
-                respuesta = true;
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine(ex.Message);
-              //  throw new ExcepcionClientesDatos(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                respuesta = false;
-                Console.WriteLine(ex.Message);
-               // throw new ExcepcionClientesDatos(ex.Message);
+                int nroDeFilasAfectadas = 0;
 
+                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureAgregarClienteNatural, this.conexion);
+                this.comando.CommandType = CommandType.StoredProcedure;
+
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroBusqueda, Clientenatural.Nat_Id);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroNombre, Clientenatural.Nat_Nombre);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroApellido, Clientenatural.Nat_Apellido);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroCorreo, Clientenatural.Nat_Correo);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroCorreo, fkLugar);
+                this.conexion.Open();
+
+                nroDeFilasAfectadas = this.comando.ExecuteNonQuery();
+
+                if (nroDeFilasAfectadas > 0)
+                    respuesta = true;
+
+
+            }
+
+            catch (SqlException e)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, e);
+            }
+            catch (NullReferenceException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
             finally
             {
-                _operacionBD.Desconectar();
+                this.conexion.Close();
             }
-           // return respuesta;
 
-
-           throw new NotImplementedException();
+            return respuesta;       
+           
+        
         }
 
 
