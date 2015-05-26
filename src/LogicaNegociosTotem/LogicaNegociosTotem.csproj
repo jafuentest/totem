@@ -41,11 +41,11 @@
   <ItemGroup>
     <Compile Include="Modulo2\LogicaCliente.cs" />
     <Compile Include="Modulo3\LogicaInvolucrados.cs" />
+    <Compile Include="Modulo4\LogicaProyecto.cs" />
     <Compile Include="Modulo6\LogicaActor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Modulo4\" />
     <Folder Include="Modulo5\" />
     <Folder Include="Modulo7\" />
     <Folder Include="Modulo8\" />
