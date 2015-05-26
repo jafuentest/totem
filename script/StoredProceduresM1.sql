@@ -14,3 +14,27 @@ CREATE PROCEDURE VALIDARLOGIN
 
 	RETURN
 	GO
+
+CREATE PROCEDURE OBTENER_PREGUNTA_SEGURIDAD
+	@Correo varchar(60),
+	@Usu_pregseguridad varchar(60) OUTPUT
+	AS
+
+	Select @Usu_pregseguridad =  Usu_correo
+	from Usuario
+	where usu_correo = @Correo
+
+	RETURN
+	GO
+
+CREATE PROCEDURE VALIDAR_PREGUNTA_SEGURIDAD
+	@Correo varchar(60),
+	@Usu_respseguridad varchar(100) OUTPUT
+	AS
+
+	Select @Usu_respseguridad = Usu_respseguridad
+	from Usuario
+	where usu_correo = @Correo
+
+	RETURN
+	GO
