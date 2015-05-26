@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DominioTotem;
+using ExcepcionesTotem.Modulo1;
+using System.Data;
+using System.Data.Sql;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace DatosTotem.Modulo3
 {
@@ -13,18 +18,78 @@ namespace DatosTotem.Modulo3
         /// </summary>
         /// <param name="lista">lista de usuarios a insertar</param>
         /// <returns>Valor booleano que refleja el exito de la operacion</returns>
-        public static bool agregarUsuariosInvolucrados(ListaInvolucradoUsuario lista)
-        {
-            throw new NotImplementedException();
+        public static bool agregarUsuariosInvolucrados(ListaInvolucradoUsuario listaUsuarios)
+        {    
+            Proyecto elProyecto = listaUsuarios.Proyecto;
+            List<Parametro> parametros;
+
+            Parametro paramProyectoCod, paramUsername; 
+            BDConexion laConexion;
+
+            foreach (Usuario elUsuario in listaUsuarios.Lista)
+            {
+                try
+                {
+                    laConexion = new BDConexion();
+                    parametros = new List<Parametro>();
+
+                    paramProyectoCod = new Parametro(RecursosBDModulo3.ParamCodProy, SqlDbType.VarChar, 
+                        elProyecto.Codigo, false);
+                    paramUsername = new Parametro(RecursosBDModulo3.ParamUsername, SqlDbType.VarChar, 
+                        elUsuario.username, false);
+
+                    parametros.Add(paramUsername);
+                    parametros.Add(paramProyectoCod);
+
+                    laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredInsertarUsuario, parametros);
+                }
+                catch (SqlException ex)
+                {
+                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                        RecursoGeneralBD.Mensaje, ex);
+                }
+
+            }
+            return true;
         }
         /// <summary>
         /// Metodo que agrega la lista de contactos involucrados a un proyecto
         /// </summary>
         /// <param name="lista">lista de contactos a insertar</param>
         /// <returns>Valor booleano que refleja el exito de la operacion</returns>
-        public static bool agregarContactosInvolucrados(ListaInvolucradoContacto lista)
+        public static bool agregarContactosInvolucrados(ListaInvolucradoContacto listaContactos)
         {
-            throw new NotImplementedException();
+            Proyecto elProyecto = listaContactos.Proyecto;
+            List<Parametro> parametros;
+
+            Parametro paramProyectoCod, paramContactoID; 
+            BDConexion laConexion;
+
+            foreach (Contacto elContacto in listaContactos.Lista)
+            {
+                try
+                {
+                    laConexion = new BDConexion();
+                    parametros = new List<Parametro>();
+
+                    paramProyectoCod = new Parametro(RecursosBDModulo3.ParamCodProy, SqlDbType.VarChar, 
+                        elProyecto.Codigo, false);
+                    paramContactoID = new Parametro(RecursosBDModulo3.ParamContID, SqlDbType.Int, 
+                        elContacto.Con_Id.ToString(), false);
+
+                    parametros.Add(paramContactoID);
+                    parametros.Add(paramProyectoCod);
+
+                    laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredInsertarCliente, parametros);
+                }
+                catch (SqlException ex)
+                {
+                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                        RecursoGeneralBD.Mensaje, ex);
+                }
+
+            }
+            return true;
         }
         /// <summary>
         /// Metodo que consulta los usuarios involucrados a un proyecto dado

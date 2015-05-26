@@ -146,6 +146,23 @@ namespace PruebasUnitariasTotem.Modulo2
                    
         }
 
+
+        /// <summary>
+        /// Prueba el agregar un Cliente Natural a Base de datos
+        /// </summary>
+        /// 
+        [Test]
+        public void PruebaAgregarClienteNatural()
+        {
+            ClienteNatural cliente = new ClienteNatural();
+            cliente.Nat_Id = "11111111";
+            cliente.Nat_Nombre = "Valentina";
+
+            int fkLugar = 16;
+
+            Assert.IsTrue(baseDeDatosCliente.AgregarClienteNatural(cliente, fkLugar));
+
+        }
         /// <summary>
         /// Método que limpia el objeto que se probó 
         /// para que el Recolector de Basura lo recolecte

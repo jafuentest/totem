@@ -12,7 +12,7 @@ using System.IO;
 namespace DatosTotem.Modulo8
 {
     /// <summary>
-    /// Clase para el gestionamiento de as minutas, con respecto a las conexiones y llamadas
+    /// Clase para el gestionamiento de las minutas, con respecto a las conexiones y llamadas
     /// a la BD
     /// </summary>
     public class BDMinuta
@@ -25,7 +25,7 @@ namespace DatosTotem.Modulo8
         /// </summary>
         /// <param name="id">Se recibe el id de la minuta que se desea consultar</param>
         /// <returns>Retrorna el objeto Minuta</returns>
-        public Minuta ConsultarMinuta(int id)
+        public Minuta ConsultarMinutaBD(int id)
         {
             Minuta minuta = new Minuta();
             try
@@ -41,7 +41,7 @@ namespace DatosTotem.Modulo8
 
                 while (leer.Read())
                 {
-                    minuta = ObtenerObjetoMinuta(leer);
+                    minuta = ObtenerObjetoMinutaBD(leer);
                 }
                 return minuta;
 
@@ -67,7 +67,7 @@ namespace DatosTotem.Modulo8
         /// </summary>
         /// <param name="BDMinuta"> Objeto SqlDataReader, para leer la data en sql</param>
         /// <returns>Objeto Minuta</returns>
-        public Minuta ObtenerObjetoMinuta(SqlDataReader BDMinuta)
+        public Minuta ObtenerObjetoMinutaBD(SqlDataReader BDMinuta)
         {
             Minuta minuta = new Minuta();
             try
@@ -95,7 +95,7 @@ namespace DatosTotem.Modulo8
         /// </summary>
         /// <param name="min">Objeto de tipo Minuta</param>
         /// <returns>Retorna un boolean para saber si se realizo con éxito la operación</returns>
-        public Boolean ModificarMinuta(Minuta min)
+        public Boolean ModificarMinutaBD(Minuta min)
         {
             SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoModificarMinuta, con.Conectar());
             sqlcom.CommandType = CommandType.StoredProcedure;
@@ -193,7 +193,7 @@ namespace DatosTotem.Modulo8
 
                 while (leer.Read())
                 {
-                    listaMinuta.Add(ObtenerObjetoMinuta(leer));
+                    listaMinuta.Add(ObtenerObjetoMinutaBD(leer));
                 }
                 return listaMinuta;
 
