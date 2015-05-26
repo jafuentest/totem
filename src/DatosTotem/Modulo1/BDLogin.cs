@@ -55,11 +55,11 @@ namespace DatosTotem.Modulo1
                 parametro = new Parametro(RecursosBDModulo1.Parametro_Output_Usu_cargo, 
                     SqlDbType.VarChar, true);
                 parametros.Add(parametro);
-                string query = RecursosBDModulo1.Query_ValidarLogin;
                 try
                 {
                     BDConexion con = new BDConexion();
-                    List<Resultado> resultados = con.EjecutarStoredProcedure(query, parametros);
+                    List<Resultado> resultados = con.EjecutarStoredProcedure(
+                        RecursosBDModulo1.Query_ValidarLogin, parametros);
                     if (resultados != null)
                     {
                         foreach (Resultado resultado in resultados)
@@ -144,11 +144,11 @@ namespace DatosTotem.Modulo1
                 parametro = new Parametro(RecursosBDModulo1.Parametro_Output_PreguntaSeguridad, 
                     SqlDbType.VarChar, true);
                 parametros.Add(parametro);
-                string query = RecursosBDModulo1.Query_Obtener_Pregunta_Seguridad;
                 try
                 {
                     BDConexion con = new BDConexion();
-                    List<Resultado> resultados = con.EjecutarStoredProcedure(query, parametros);
+                    List<Resultado> resultados = con.EjecutarStoredProcedure(
+                        RecursosBDModulo1.Query_Obtener_Pregunta_Seguridad, parametros);
                     if (resultados != null)
                     {
                         foreach (Resultado resultado in resultados)
@@ -228,7 +228,81 @@ namespace DatosTotem.Modulo1
         /// <returns>Retorna true si es correcto, de lo contrario false</returns>
         public static bool ValidarPreguntaSeguridadBD(Usuario user)
         {
-            throw new NotImplementedException();
+            if (user != null && user.respuestaSeguridad != null &&
+                user.respuestaSeguridad != "")
+            {
+                string resultadoDeRespuesta = "";
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro parametro = new Parametro(RecursosBDModulo1.Parametro_Input_Correo,
+                    SqlDbType.VarChar, user.correo, false);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo1.Parametro_Output_RespuestaSeguridad,
+                    SqlDbType.VarChar, true);
+                parametros.Add(parametro);
+                try
+                {
+                    BDConexion con = new BDConexion();
+                    List<Resultado> resultados = con.EjecutarStoredProcedure(
+                        RecursosBDModulo1.Query_Validar_Pregunta_Seguridad,
+                        parametros);
+                    if (resultados != null)
+                    {
+                        foreach (Resultado resultado in resultados)
+                        {
+                            if (resultado.valor != null && 
+                                !resultado.valor.Equals(""))
+                            {
+                                resultadoDeRespuesta = resultado.valor;
+                            }
+                            else
+                            {
+                                throw new EmailErradoException(RecursosBDModulo1.Codigo_Email_Errado,
+                                    RecursosBDModulo1.Mensaje_Email_errado, 
+                                    new EmailErradoException()); 
+                            }
+                        }
+
+                        if (resultadoDeRespuesta.Equals(user.respuestaSeguridad))
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        throw new EmailErradoException(RecursosBDModulo1.Codigo_Email_Errado,
+                            RecursosBDModulo1.Mensaje_Email_errado, 
+                            new EmailErradoException());
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                        RecursoGeneralBD.Mensaje, ex);
+                }
+                catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+                {
+                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(ex.Codigo, ex.Mensaje, ex);
+                }
+                catch (EmailErradoException ex)
+                {
+                    throw new EmailErradoException(ex.Codigo, ex.Mensaje, ex);
+                }
+                catch (ParametroInvalidoException ex)
+                {
+                    throw new ParametroInvalidoException(RecursoGeneralBD.Codigo_Parametro_Errado,
+                        RecursoGeneralBD.Mensaje_Parametro_Errado, ex);
+                }
+            }
+            else
+            {
+                throw new RespuestaErradoException(RecursosBDModulo1.Codigo_Respuesta_Errada,
+                    RecursosBDModulo1.Mensaje_Respuesta_Errada, new RespuestaErradoException());
+                    
+            }
         }
         #endregion
     }

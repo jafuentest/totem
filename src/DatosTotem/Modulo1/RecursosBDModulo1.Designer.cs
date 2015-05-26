@@ -169,6 +169,15 @@ namespace DatosTotem.Modulo1 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to @Usu_respseguridad.
+        /// </summary>
+        internal static string Parametro_Output_RespuestaSeguridad {
+            get {
+                return ResourceManager.GetString("Parametro_Output_RespuestaSeguridad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @Usu_apellido.
         /// </summary>
         internal static string Parametro_Output_Usu_apellido {
@@ -219,6 +228,15 @@ namespace DatosTotem.Modulo1 {
         internal static string Query_Obtener_Pregunta_Seguridad {
             get {
                 return ResourceManager.GetString("Query_Obtener_Pregunta_Seguridad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Validar_Pregunta_Seguridad.
+        /// </summary>
+        internal static string Query_Validar_Pregunta_Seguridad {
+            get {
+                return ResourceManager.GetString("Query_Validar_Pregunta_Seguridad", resourceCulture);
             }
         }
         

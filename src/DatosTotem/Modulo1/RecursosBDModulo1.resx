@@ -165,6 +165,10 @@
     <value>@Usu_pregseguridad</value>
     <comment>Parametro de output para los stored procedure con la pregunta de seguridad del usuario</comment>
   </data>
+  <data name="Parametro_Output_RespuestaSeguridad" xml:space="preserve">
+    <value>@Usu_respseguridad</value>
+    <comment>Parametro de output para los stored procedure con la respuesta de la pregunta de seguridad de los usuarios</comment>
+  </data>
   <data name="Parametro_Output_Usu_apellido" xml:space="preserve">
     <value>@Usu_apellido</value>
     <comment>Parametro de output para los stored procedure con el apellido del usuario</comment>
@@ -192,5 +196,9 @@
   <data name="Query_ValidarLogin" xml:space="preserve">
     <value>validarlogin</value>
     <comment>Query para el stored procedure que valida el login del usuario</comment>
+  </data>
+  <data name="Query_Validar_Pregunta_Seguridad" xml:space="preserve">
+    <value>Validar_Pregunta_Seguridad</value>
+    <comment>Query para el stored procedure que me retorna la pregunta de seguridad para luego validar si la ingresada por el usuario es correcta</comment>
   </data>
 </root>
