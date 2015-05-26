@@ -120,19 +120,20 @@ namespace PruebasUnitariasTotem.Modulo2
             clienteJuridico = new ClienteJuridico(rif, nombre,direccion);
             Assert.IsNotNull(clienteJuridico);
 
-            //RIF,Nombre, Dirección de la Empresa y código postal
-            string codigoPostal = "1045";
-            clienteJuridico = new ClienteJuridico(rif, nombre, direccion,codigoPostal);
+            //RIF,Nombre, Dirección de la Empresa 
+            Lugar lugar = new Lugar(22,"Valencia","Ciudad","1012",1);
+            clienteJuridico = new ClienteJuridico(rif, nombre,"Venezuela","Carabobo",lugar,direccion);
             Assert.IsNotNull(clienteJuridico);
 
-            //RIF,Nombre, Dirección de la Empresa, Código Postal y teléfonos
+            //RIF,Nombre, Dirección de la Empresa y telefonos
             telefonos.Add("02127658976");
             telefonos.Add("04127658907");
-            clienteJuridico = new ClienteJuridico(rif, nombre, direccion, codigoPostal,telefonos);
+            clienteJuridico = new ClienteJuridico(rif, nombre,"Venezuela","Carabobo",lugar,
+                direccion,telefonos);
             Assert.IsNotNull(clienteJuridico);
 
 
-            //RIF,Nombre, Dirección de la Empresa, Código Postal, teléfonos y contactos
+            //RIF,Nombre, Dirección de la Empresa, teléfonos y contactos
             Contacto primerContacto = new Contacto(1,"Hector","Rondon","Gerente General",
                                       telefonos);
             Contacto segundoContacto = new Contacto(2, "Roberto", "Dominguez", "Administrador",
@@ -140,8 +141,8 @@ namespace PruebasUnitariasTotem.Modulo2
             contactos.Add(primerContacto);
             contactos.Add(segundoContacto); 
 
-            clienteJuridico = new ClienteJuridico(rif, nombre, direccion, codigoPostal, telefonos,
-                              contactos);
+            clienteJuridico = new ClienteJuridico(rif, nombre,"Venezuela","Carabobo",lugar,
+                direccion,telefonos,contactos);
             Assert.IsNotNull(clienteJuridico);
             
 
