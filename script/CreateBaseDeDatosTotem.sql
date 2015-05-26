@@ -1,4 +1,4 @@
-CREATE
+﻿CREATE
   TABLE ACTOR
   (
     act_id          INTEGER IDENTITY(0,1) NOT NULL ,
@@ -356,7 +356,7 @@ CREATE
     pro_nombre VARCHAR (60) NOT NULL ,
     pro_estado BIT NOT NULL ,
     pro_descripcion VARCHAR (600) NOT NULL ,
-    pro_costo       DOUBLE NOT NULL ,
+    pro_costo       INTEGER NOT NULL ,
     pro_moneda      VARCHAR (3) NOT NULL ,
     CLIENTE_JURIDICO_cj_id INTEGER ,
     CLIENTE_NATURAL_cn_id INTEGER,
