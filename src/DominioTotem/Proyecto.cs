@@ -102,7 +102,7 @@ namespace DominioTotem
             set { moneda = value; }
         }
 
-        public float Costo
+        public double Costo
         {
             get { return costo; }
             set { costo = value; }
