@@ -79,11 +79,29 @@ namespace DatosTotem.Modulo3 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to @usuario.
+        /// </summary>
+        internal static string ParamUsername {
+            get {
+                return ResourceManager.GetString("ParamUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Procedure_InsertarInvCliente.
         /// </summary>
         internal static string StoredInsertarCliente {
             get {
                 return ResourceManager.GetString("StoredInsertarCliente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procedure_InsertarInvUsuario.
+        /// </summary>
+        internal static string StoredInsertarUsuario {
+            get {
+                return ResourceManager.GetString("StoredInsertarUsuario", resourceCulture);
             }
         }
     }

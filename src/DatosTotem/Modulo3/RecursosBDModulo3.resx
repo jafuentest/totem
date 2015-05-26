@@ -121,8 +121,20 @@
     <value>@proyecto_codigo</value>
     <comment>Codigo del proyecto para el stored insertar cliente</comment>
   </data>
+  <data name="ParamContID" xml:space="preserve">
+    <value>@contacto_id</value>
+    <comment>ID del contacto para el stored insertar cliente</comment>
+  </data>
+  <data name="ParamUsername" xml:space="preserve">
+    <value>@usuario</value>
+    <comment>Username para el stored insertar usuario</comment>
+  </data>
   <data name="StoredInsertarCliente" xml:space="preserve">
     <value>Procedure_InsertarInvCliente</value>
-    <comment>Nombre del StoredProcedure</comment>
+    <comment>Nombre del StoredProcedure para insertar contactos involucrados</comment>
+  </data>
+  <data name="StoredInsertarUsuario" xml:space="preserve">
+    <value>Procedure_InsertarInvUsuario</value>
+    <comment>Nombre del StoredProcedure para insertar usuarios involucrados</comment>
   </data>
 </root>
