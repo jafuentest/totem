@@ -61,13 +61,13 @@ namespace DatosTotem.Modulo7
         /// </summary>
         /// <param name="cargoUsuario">La clave foranea del cargo del usuario</param>
         /// <returns>returna el cargo del usuario a consultar</returns>
-        public String ObtenerCargo(int cargoUsuario)
+        public String ObtenerCargo(String userName)
         {
             SqlDataReader resultadoConsulta;
             BDConexion conexionBd = new BDConexion();
             String nombreCargo;
             conexionBd.Conectar();
-            resultadoConsulta = conexionBd.EjecutarQuery(RecursosBaseDeDatosModulo7.QueryObtenerCargo + cargoUsuario);
+            resultadoConsulta = conexionBd.EjecutarQuery(RecursosBaseDeDatosModulo7.QueryObtenerCargo + userName);
             conexionBd.Desconectar();
             if (resultadoConsulta.Read())
                 nombreCargo = resultadoConsulta.GetValue(0).ToString();
@@ -101,7 +101,7 @@ namespace DatosTotem.Modulo7
         /// <param name="preguntaUsuario">la  pregunta del usuario</param>
         /// <param name="respuestaUsuario">la respuesta del usuario</param>
         /// <returns>returna true en caso de que la pregunta y a respuesta concuerde con lo que esta en la base de datos y false en caso de que no coincida</returns>
-        public Boolean ConsultaPregunta(int userName, String preguntaUsuario, String respuestaUsuario)
+        public Boolean ConsultaPregunta(String userName, String preguntaUsuario, String respuestaUsuario)
         {
             SqlDataReader resultadoConsulta;
             BDConexion conexionBd = new BDConexion();
@@ -114,6 +114,95 @@ namespace DatosTotem.Modulo7
             else
                 valorResultado = false;
             return valorResultado;
+        }
+        /// <summary>
+        /// Procedimiento para obtener todos los usuarios que estan ocupando un cargo
+        /// </summary>
+        /// <param name="cargo">El nombre del cargo a buscar</param>
+        /// <returns>Returna una lista con todos los usuarios que tiene el cargo</returns>
+        public List<Usuario> ConsultaUsuariosSegunCargo(String cargo)
+        {
+            SqlDataReader resultadoConsulta;
+            List<Usuario> listUsuario = new List<Usuario>();
+            BDConexion conexionBd = new BDConexion();
+            conexionBd.Conectar();
+            resultadoConsulta = conexionBd.EjecutarQuery("SELECT * FROM USUARIO WHERE CARGO_car_id=(SELECT car_id FROM CARGO WHERE car_nombre=" +cargo+")");
+            conexionBd.Desconectar();
+            while(resultadoConsulta.Read()){
+                listUsuario.Add(new Usuario(resultadoConsulta.GetInt32(0), resultadoConsulta.GetValue(1).ToString(), resultadoConsulta.GetValue(2).ToString(), resultadoConsulta.GetValue(3).ToString(), resultadoConsulta.GetValue(4).ToString(), resultadoConsulta.GetValue(5).ToString(), resultadoConsulta.GetValue(6).ToString(), resultadoConsulta.GetValue(7).ToString(), resultadoConsulta.GetValue(8).ToString(), resultadoConsulta.GetValue(9).ToString()));
+            }
+            return listUsuario;
+        }
+        /// <summary>
+        /// Procedimiento para obtener todos los usuarios registrados en el sistema
+        /// </summary>
+        /// <returns>Returna una lista con todos los usuarios que hay en el sistema</returns>
+        public List<Usuario> ObtenerListaUsuario()
+        {
+            SqlDataReader resultadoConsulta;
+            List<Usuario> listUsuario = new List<Usuario>();
+            BDConexion conexionBd = new BDConexion();
+            conexionBd.Conectar();
+            resultadoConsulta = conexionBd.EjecutarQuery("SELECT * FROM USUARIO");
+            conexionBd.Desconectar();
+            while (resultadoConsulta.Read())
+            {
+                listUsuario.Add(new Usuario(resultadoConsulta.GetInt32(0), resultadoConsulta.GetValue(1).ToString(), resultadoConsulta.GetValue(2).ToString(), resultadoConsulta.GetValue(3).ToString(), resultadoConsulta.GetValue(4).ToString(), resultadoConsulta.GetValue(5).ToString(), resultadoConsulta.GetValue(6).ToString(), resultadoConsulta.GetValue(7).ToString(), resultadoConsulta.GetValue(8).ToString(), resultadoConsulta.GetValue(9).ToString()));
+            }
+            return listUsuario;
+        }
+        /// <summary>
+        /// Permite consultar la informacion de un usuario, segun su nombre, apellido y cargo
+        /// </summary>
+        /// <param name="nombre">El nombre del usuario que se desea consultar</param>
+        /// <param name="apellido">El apellido del usuario que se desea consultar </param>
+        /// <param name="cargo">El cargo del usuario que se desea consultar</param>
+        /// <returns>Returna el usuario que a consultar</returns>
+        public Usuario ConsultarDatosUsuario(String nombre, String apellido, String cargo)
+        {
+            SqlDataReader resultadoConsulta;
+            Usuario usuario = new Usuario();
+            BDConexion conexionBd = new BDConexion();
+            conexionBd.Conectar();
+            resultadoConsulta = conexionBd.EjecutarQuery("SELECT * FROM USUARIO WHERE usu_nombre ="+nombre+"AND usu_apellido="+apellido+" CARGO_car_id=(SELECT car_id FROM CARGO WHERE car_nombre=" + cargo + ")");
+            conexionBd.Desconectar();
+            if(resultadoConsulta.Read())
+            {
+               usuario=new Usuario(resultadoConsulta.GetInt32(0), resultadoConsulta.GetValue(1).ToString(), resultadoConsulta.GetValue(2).ToString(), resultadoConsulta.GetValue(3).ToString(), resultadoConsulta.GetValue(4).ToString(), resultadoConsulta.GetValue(5).ToString(), resultadoConsulta.GetValue(6).ToString(), resultadoConsulta.GetValue(7).ToString(), resultadoConsulta.GetValue(8).ToString(), resultadoConsulta.GetValue(9).ToString());
+            }
+            return usuario;
+        }
+        /// <summary>Valida si el username existe o no en la BD</summary>
+        /// <param name="userName">Se busca por el username del usuario a registrar</param>
+        /// <returns>Regresa true si existe y false si no existe el username</returns>
+        public Boolean usernameUnico(String userName)
+        {
+            SqlDataReader resultadoConsulta;
+            Usuario usuario = new Usuario();
+            BDConexion conexionBd = new BDConexion();
+            conexionBd.Conectar();
+            resultadoConsulta = conexionBd.EjecutarQuery("SELECT * FROM USUARIO WHERE usu_username =" + userName);
+            conexionBd.Desconectar();
+            if (resultadoConsulta.HasRows)
+                return false;
+            else
+                return true; ;
+        }
+        /// <summary>Verifica si un correo existe o no en la BD</summary>
+        /// <param name="correo">Se busca por el correo del usuario</param>
+        /// <returns>Regresa true si existe y false si no existe el correo</returns>
+        public Boolean correoUnico(String correoUsuario)
+        {
+            SqlDataReader resultadoConsulta;
+            Usuario usuario = new Usuario();
+            BDConexion conexionBd = new BDConexion();
+            conexionBd.Conectar();
+            resultadoConsulta = conexionBd.EjecutarQuery("SELECT * FROM USUARIO WHERE usu_correo =" + correoUsuario);
+            conexionBd.Desconectar();
+            if (resultadoConsulta.HasRows)
+                return false;
+            else
+                return true; ;
         }
         /// <summary>
         /// Modifica los datos del usuario

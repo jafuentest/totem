@@ -20,8 +20,9 @@ namespace DominioTotem
         public string cargo { get; set; }
 
 
-        public Usuario() { 
-        
+        public Usuario()
+        {
+
         }
 
         public Usuario(int idUsuario, string username, string clave, string nombre, string apellido, string rol, string correo, string preguntaSeguridad, string respuestaSeguridad, string cargo)
@@ -37,10 +38,17 @@ namespace DominioTotem
             this.preguntaSeguridad = respuestaSeguridad;
             this.cargo = cargo;
         }
-        //Por implementar
-        public Boolean RegistrarUsuario() {
-             
-            return true;
+        public Usuario(string username, string clave, string nombre, string apellido, string rol, string correo, string preguntaSeguridad, string respuestaSeguridad, string cargo)
+        {
+            this.username = username;
+            this.clave = clave;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.rol = rol;
+            this.correo = correo;
+            this.preguntaSeguridad = preguntaSeguridad;
+            this.preguntaSeguridad = respuestaSeguridad;
+            this.cargo = cargo;
         }
 
         public void ModificarUsuario(Usuario usuario)
@@ -55,57 +63,30 @@ namespace DominioTotem
             this.cargo = usuario.cargo;
         }
 
-        public Boolean ValidarCorreo()
+        public Boolean ValidarCorreo(String correoValidar)
         {
-
-            return true;
+            if (this.correo == correoValidar)
+                return true;
+            else
+                return false;
         }
 
-        public Boolean ValidarUsuario()
-        {
-
-            return true;
-        }
-
-     
-
-        public List<String> obtenerCargoDeUsuarios()
-        {
-            List<String> listaCargo = new List<String>();
-
-            return listaCargo;
-        }
-
-           public List<Usuario> filtrarUsuariosPorCargo(String cargo)
-        {
-
-            List<Usuario> listaUsuario = new List<Usuario>();
-
-            return listaUsuario;
-        }
-
-           public Usuario consultarDatosDeUsuario(String nombre, String apellido, String cargo)
-        {
-            Usuario usuario = new Usuario();
-
-            return usuario;
-        }
 
         /// <summary>
         /// Metodo que le calcula el hash a la clave actual del usuario y se la cambia al objeto con 
         /// la nueva clave creada
         /// </summary>
-       public void CalcularHash()
-       {
-           if (this.clave != null)
-           {
-               byte[] claveEnBytes = new byte[this.clave.Length * sizeof(char)];
-               System.Buffer.BlockCopy(this.clave.ToCharArray(), 0, claveEnBytes, 0, claveEnBytes.Length);
-               SHA256 shaM = new SHA256Managed();
-               byte[] hashClave = shaM.ComputeHash(claveEnBytes);
-               this.clave = BitConverter.ToString(hashClave);
-           }
-       }
-    
+        public void CalcularHash()
+        {
+            if (this.clave != null)
+            {
+                byte[] claveEnBytes = new byte[this.clave.Length * sizeof(char)];
+                System.Buffer.BlockCopy(this.clave.ToCharArray(), 0, claveEnBytes, 0, claveEnBytes.Length);
+                SHA256 shaM = new SHA256Managed();
+                byte[] hashClave = shaM.ComputeHash(claveEnBytes);
+                this.clave = BitConverter.ToString(hashClave);
+            }
+        }
+
     }
 }

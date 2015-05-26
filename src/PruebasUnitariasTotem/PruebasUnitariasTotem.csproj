@@ -57,11 +57,11 @@
     <Compile Include="Modulo4\Prueba_Proyecto.cs" />
     <Compile Include="Modulo6\PruebaActor.cs" />
     <Compile Include="Modulo6\PruebaLogicaActor.cs" />
+    <Compile Include="Modulo7\PruebaBDUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modulo5\" />
-    <Folder Include="Modulo7\" />
     <Folder Include="Modulo8\" />
   </ItemGroup>
   <ItemGroup>
