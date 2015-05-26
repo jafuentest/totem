@@ -8,10 +8,8 @@ namespace LogicaNegociosTotem.Modulo4
     /// <summary>
     /// Clase que maneja la logica de los proyectos
     /// </summary>
-    public class LogicaProyecto
+    public static class LogicaProyecto
     {
-        //Clase que maneja proyecto en la Base de Datos
-        private DatosTotem.Modulo4.BDProyecto bdProyecto;
 
         #region metodos
 

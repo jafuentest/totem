@@ -16,9 +16,8 @@ namespace DatosTotem.Modulo4
     /// Clase para el gestionamiento de as minutas, con respecto a las conexiones y llamadas
     /// a la BD
     /// </summary>
-    public class BDProyecto : BDConexion
+    public static class BDProyecto 
     {
-        private Proyecto proyecto;
 
 
         #region Create
@@ -27,7 +26,7 @@ namespace DatosTotem.Modulo4
         /// </summary>
         /// <param name="proyecto">Proyecto a insertar en la bd</param>
         /// <returns>Retrorna el proyecto</returns>
-        public Proyecto CrearProyecto(Proyecto proyecto)
+        public static Proyecto CrearProyecto(Proyecto proyecto)
         {
             throw new System.NotImplementedException();
         }
@@ -39,7 +38,7 @@ namespace DatosTotem.Modulo4
         /// </summary>
         /// <param name="codigo">Codigo del proyecto a consultar</param>
         /// <returns>Retrorna el proyecto</returns>
-        public Proyecto ConsultarProyecto(String codigo)
+        public static Proyecto ConsultarProyecto(String codigo)
         {
             throw new System.NotImplementedException();
         }
@@ -47,7 +46,7 @@ namespace DatosTotem.Modulo4
        
 
 
-        public Proyecto ObtenerObjetoProyecto(SqlDataReader BDProyecto)
+        public static Proyecto ObtenerObjetoProyecto(SqlDataReader BDProyecto)
         {
             throw new System.NotImplementedException();
         }
