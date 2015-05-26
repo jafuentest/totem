@@ -270,7 +270,9 @@ namespace DatosTotem.Modulo1
                             }
                             else
                             {
-                                return false;
+                                throw new RespuestaErradoException(RecursosBDModulo1.Codigo_Respuesta_Errada,
+                                    RecursosBDModulo1.Mensaje_Respuesta_Errada,
+                                    new RespuestaErradoException());
                             }
                         }
                         else
