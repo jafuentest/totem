@@ -20,7 +20,7 @@ CREATE PROCEDURE OBTENER_PREGUNTA_SEGURIDAD
 	@Usu_pregseguridad varchar(60) OUTPUT
 	AS
 
-	Select @Usu_pregseguridad =  Usu_correo
+	Select @Usu_pregseguridad =  Usu_pregseguridad
 	from Usuario
 	where usu_correo = @Correo
 
