@@ -13,6 +13,7 @@ namespace DominioTotem
        private int idLugar;      
        private string nombreLugar;       
        private string tipoLugar;
+       private string codigoPostal; 
        private int fkLugar;
 
        #endregion
@@ -38,6 +39,12 @@ namespace DominioTotem
            get { return fkLugar; }
            set { fkLugar = value; }
        }
+
+       public string CodigoPostal
+       {
+           get { return codigoPostal; }
+           set { codigoPostal = value; }
+       }
        #endregion
 
        #region Constructores
@@ -51,7 +58,8 @@ namespace DominioTotem
            IdLugar = 0;
            NombreLugar = string.Empty;
            TipoLugar = string.Empty;
-           FkLugar = 0; 
+           FkLugar = 0;
+           CodigoPostal = string.Empty;
        }
 
        /// <summary>
@@ -63,7 +71,8 @@ namespace DominioTotem
            IdLugar = id;
            NombreLugar = nombre;
            TipoLugar = string.Empty;
-           FkLugar = 0; 
+           FkLugar = 0;
+           CodigoPostal = string.Empty;
        }
 
        /// <summary>
@@ -77,7 +86,8 @@ namespace DominioTotem
            IdLugar = id;
            NombreLugar = nombre;
            TipoLugar = tipoLugar;
-           FkLugar = 0; 
+           FkLugar = 0;
+           CodigoPostal = string.Empty;
        }
 
 
@@ -93,7 +103,25 @@ namespace DominioTotem
            IdLugar = id;
            NombreLugar = nombre;
            TipoLugar = tipoLugar;
-           FkLugar = fkLugar; 
+           FkLugar = fkLugar;
+           CodigoPostal = string.Empty;
+       }
+
+       /// <summary>
+       /// Constructor de la Clase Lugar
+       /// </summary>
+       /// <param name="id">Identificador de Lugar</param>
+       /// <param name="nombre">Nombre del Lugar</param>
+       /// <param name="tipoLugar">Tipo de Lugar</param>
+       /// <param name="codigoPostal">Código Postal del Lugar</param>
+       /// <param name="fkLugar">Id del Lugar al que pertenece</param>
+       public Lugar(int id, string nombre, string tipoLugar, string codigoPostal, int fkLugar) 
+       {
+           IdLugar = id;
+           NombreLugar = nombre;
+           TipoLugar = tipoLugar;
+           FkLugar = fkLugar;
+           CodigoPostal = codigoPostal;
        }
 
        #endregion

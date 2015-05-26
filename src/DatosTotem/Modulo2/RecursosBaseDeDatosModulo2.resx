@@ -129,6 +129,9 @@
     <value>@correo</value>
     <comment>Correo</comment>
   </data>
+  <data name="ParametroIdClienteNatural" xml:space="preserve">
+    <value>@idClienteNat</value>
+  </data>
   <data name="ParametroIdDireccion" xml:space="preserve">
     <value>@idDireccion</value>
   </data>
@@ -158,6 +161,10 @@
   <data name="ProcedureAgregarClienteNatural" xml:space="preserve">
     <value>Procedure_AgregarClienteNatural</value>
     <comment>Procedimiento para agregar Cliente Natural</comment>
+  </data>
+  <data name="ProcedureDetallarCliente" xml:space="preserve">
+    <value>Procedure_ConsultarDatosDetalladosClienteNat</value>
+    <comment>Procedimiento para detallar un cliente natural</comment>
   </data>
   <data name="ProcedureDetallarContacto" xml:space="preserve">
     <value>ConsultarDatosDeContacto</value>

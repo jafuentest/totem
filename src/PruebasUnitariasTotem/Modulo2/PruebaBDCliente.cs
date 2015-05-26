@@ -163,6 +163,40 @@ namespace PruebasUnitariasTotem.Modulo2
             Assert.IsTrue(baseDeDatosCliente.AgregarClienteNatural(cliente, fkLugar));
 
         }
+
+        /// <summary>
+        /// Prueba del método que consulta a un cliente natural por id
+        /// </summary>
+        /// 
+        [Test]
+        public void PruebaConsultarClienteNaturalXId() 
+        {
+            bool sonIguales = false; 
+            ClienteNatural cliente = new ClienteNatural();
+            Lugar lugar = new Lugar();
+            string telefono = "2121111111";
+            List<string> telefonos = new List<string>();
+            telefonos.Add(telefono);
+            lugar.NombreLugar ="Caracas";
+            lugar.CodigoPostal="1020";
+            int id = 1;
+            cliente.Nat_Id = "11111111";
+            cliente.Nat_Nombre = "Valentina";
+            cliente.Nat_Apellido = "Scioli";
+            cliente.Nat_Correo = "Gerente de Proyectos";
+            cliente.Nat_Pais = "Venezuela";
+            cliente.Nat_Estado = "Dtto Capital";
+            cliente.Nat_Ciudad = lugar;
+
+            cliente.Nat_Telefonos = telefonos;
+
+            ClienteNatural clienteActual = baseDeDatosCliente.ConsultarClienteNatural(id);
+            sonIguales = cliente.Equals(clienteActual);
+                        
+            Assert.IsTrue(sonIguales); 
+        }
+
+
         /// <summary>
         /// Método que limpia el objeto que se probó 
         /// para que el Recolector de Basura lo recolecte

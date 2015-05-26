@@ -191,9 +191,50 @@ namespace DatosTotem.Modulo2
         /// Método que accede a la Base de Datos para Consultar un Cliente Natural en específico
         /// </summary>
         /// <returns>Retorna el objeto de tipo Cliente Juridico, null si el objeto no existe</returns>
-        public ClienteJuridico ConsultarClienteNatural()
+        public ClienteNatural ConsultarClienteNatural(int idCliente)
         {
-            throw new NotImplementedException();
+            ClienteNatural clienteNatural = new ClienteNatural();
+            try
+            {
+
+                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureDetallarCliente, this.conexion);
+                this.comando.CommandType = CommandType.StoredProcedure;
+                this.comando.Parameters.Add(new SqlParameter(RecursosBaseDeDatosModulo2.ParametroIdClienteNatural,
+                                            idCliente));
+
+                SqlDataReader lectura;
+                this.conexion.Open();
+                lectura = this.comando.ExecuteReader();
+
+                while (lectura.Read())
+                {
+                    clienteNatural = ObtenerClienteNaturalBD(lectura);
+                }
+
+
+            }
+
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
+            catch (NullReferenceException ex) 
+            {
+                throw ex; 
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                this.conexion.Close();
+            }
+
+
+            return clienteNatural;
         }
 
         /// <summary>
@@ -238,6 +279,51 @@ namespace DatosTotem.Modulo2
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Método que obtiene directamente de la Base de Datos
+        /// un registro de tipo Cliente Natural
+        /// </summary>
+        /// <param name="lector">Cliente Natural seleccionado</param>
+        public ClienteNatural ObtenerClienteNaturalBD(SqlDataReader lector) 
+        {
+            ClienteNatural clienteNatural = new ClienteNatural();
+            Lugar lugar = new Lugar();
+            List<string> telefonos = new List<string>(); 
+           try
+           {
+               clienteNatural.Nat_Id = lector.GetString(0);
+               clienteNatural.Nat_Nombre = lector.GetString(1);
+               clienteNatural.Nat_Apellido = lector.GetString(2);
+               clienteNatural.Nat_Correo = lector.GetString(4);
+               int codigo = lector.GetInt32(5);
+               int numero = lector.GetInt32(6);
+               string numeroCompleto = codigo.ToString() + numero.ToString();
+               telefonos.Add(numeroCompleto); 
+               clienteNatural.Nat_Telefonos=telefonos;
+               clienteNatural.Nat_Pais = lector.GetString(7);
+               clienteNatural.Nat_Estado = lector.GetString(8);
+               lugar.NombreLugar = lector.GetString(9);
+               clienteNatural.Nat_Direccion = lector.GetString(10);
 
+               lugar.CodigoPostal = lector.GetInt32(11).ToString();
+               clienteNatural.Nat_Ciudad = lugar; 
+           }
+           catch (SqlException ex)
+           {
+               throw ex; 
+           }
+           catch (NullReferenceException ex)
+           {
+               throw  ex;
+           }
+           catch (Exception ex) 
+           {
+               throw ex; 
+           }
+
+           return clienteNatural; 
+         }
     }
+
+    
 }

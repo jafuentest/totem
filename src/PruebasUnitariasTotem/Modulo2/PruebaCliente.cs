@@ -76,17 +76,21 @@ namespace PruebasUnitariasTotem.Modulo2
             clienteNatural = new ClienteNatural(cedula,nombre,apellido,correo);
             Assert.IsNotNull(clienteNatural);
 
-            //Nombre, Apellido, Cédula, Correo y Dirección
+            //Nombre, Apellido, Cédula, Correo, País, Estado , Ciudad y Dirección
+            string pais = "Venezuela";
+            string estado = "Dtto Capital";
+            Lugar lugar = new Lugar(21,"Caracas","Ciudad","1020",1);
             string direccion = "Avenida La Salle con cruce calle villaflor, frente al McDonald's" 
                                +",La Florida.Caracas.Venezuela";
-            clienteNatural = new ClienteNatural(cedula, nombre, apellido, correo,direccion);
+            clienteNatural = new ClienteNatural(cedula, nombre, apellido, correo,
+                pais,estado,lugar,direccion);
             Assert.IsNotNull(clienteNatural);
 
-            ///Nombre, Apellido, Cédula, Correo, Dirección y Teléfonos
+            //Nombre, Apellido, Cédula, Correo, País, Estado , Ciudad, Dirección y Teléfonos
             telefonos.Add("04125985004");
             telefonos.Add("04126485404");
-            clienteNatural = new ClienteNatural(cedula, nombre, apellido, correo, direccion,
-                                                telefonos);
+            clienteNatural = new ClienteNatural(cedula, nombre, apellido, correo,
+                pais, estado, lugar, direccion,telefonos);
             Assert.IsNotNull(clienteNatural);
           
         }

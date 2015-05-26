@@ -114,9 +114,10 @@ namespace LogicaNegociosTotem.Modulo2
        /// Método que solicita a acceso a datos un cliente natural en particular
        /// </summary>
        /// <returns>Retorna el objeto de tipo Cliente Juridico, null si el objeto no existe</returns>
-       public ClienteJuridico ConsultarClienteNatural(ClienteNatural clienteNatural)
+       public ClienteNatural ConsultarClienteNatural(int id)
        {
-           return baseDeDatosCliente.ConsultarClienteNatural(); 
+           
+           return baseDeDatosCliente.ConsultarClienteNatural(id); 
        }
 
        /// <summary>

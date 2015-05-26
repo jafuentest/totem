@@ -59,7 +59,11 @@ namespace PruebasUnitariasTotem.Modulo2
             int fkLugar = 2;
             lugar = new Lugar(id,nombre,tipo,fkLugar);
             Assert.IsNotNull(lugar);
-            
+
+            //Id,Nombre del Lugar, Tipo de Lugar, Código Postal y el Id del Lugar al que pertenece
+            string codigoPrueba = "1020";
+            lugar = new Lugar(id, nombre, tipo, codigoPrueba,fkLugar);
+            Assert.IsNotNull(lugar);
         }
 
     }

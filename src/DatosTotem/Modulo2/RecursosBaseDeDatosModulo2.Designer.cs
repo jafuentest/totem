@@ -265,6 +265,29 @@ namespace DatosTotem.Modulo2 {
             }
         }
 
+        /// <summary>
+        ///   Looks up a localized string similar to ProcedureDetallarCliente.
+        /// </summary>
+        internal static string ProcedureDetallarCliente
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedureDetallarCliente", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ParametroIdClienteNatural.
+        /// </summary>
+        internal static string ParametroIdClienteNatural
+        {
+            get
+            {
+                return ResourceManager.GetString("ParametroIdClienteNatural", resourceCulture);
+            }
+        }
+
+
 
 
 
