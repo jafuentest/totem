@@ -27,9 +27,15 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             }
 
         }
-        else
+     /*   else
         {
             Response.Redirect("../Modulo1/M1_login.aspx");
-        }
+        }*/
+    }
+
+    protected void AgregarEmpresa_Click(object sender, EventArgs e) 
+    {
+        
+    
     }
 }

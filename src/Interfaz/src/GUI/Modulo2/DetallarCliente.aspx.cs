@@ -26,9 +26,9 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
             }
 
         }
-        else
+      /*  else
         {
             Response.Redirect("../Modulo1/M1_login.aspx");
-        }
+        }*/
     }
 }
