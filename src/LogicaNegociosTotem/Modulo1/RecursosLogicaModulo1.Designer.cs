@@ -88,6 +88,15 @@ namespace LogicaNegociosTotem.Modulo1 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to T_01_006.
+        /// </summary>
+        internal static string Codigo_Error_Envio_Correo {
+            get {
+                return ResourceManager.GetString("Codigo_Error_Envio_Correo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to T_01_005.
         /// </summary>
         internal static string Codigo_Intentos_Fallidos {
@@ -126,6 +135,42 @@ namespace LogicaNegociosTotem.Modulo1 {
         /// <summary>
         ///   Looks up a localized string similar to T_01_001.
         /// </summary>
+        internal static string Codigo_Usuario_Vacio {
+            get {
+                return ResourceManager.GetString("Codigo_Usuario_Vacio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TOTEM: Recuperacion de Clave.
+        /// </summary>
+        internal static string Correo_Asunto_Recuperacion_Clave {
+            get {
+                return ResourceManager.GetString("Correo_Asunto_Recuperacion_Clave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha enviado una solicitud de recuperacion de clave. Para seguir con el proceso, porfavor ingrese al siguiente link: .
+        /// </summary>
+        internal static string Correo_Mensaje_Recuperacion_Clave {
+            get {
+                return ResourceManager.GetString("Correo_Mensaje_Recuperacion_Clave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to totemdesarrollo@gmail.com.
+        /// </summary>
+        internal static string Correo_Totem {
+            get {
+                return ResourceManager.GetString("Correo_Totem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_01_001.
+        /// </summary>
         internal static string e {
             get {
                 return ResourceManager.GetString("e", resourceCulture);
@@ -147,6 +192,15 @@ namespace LogicaNegociosTotem.Modulo1 {
         internal static string Mensaje_Error_Conexion_BD {
             get {
                 return ResourceManager.GetString("Mensaje_Error_Conexion_BD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error en el envio del correo.
+        /// </summary>
+        internal static string Mensaje_Error_Envio_Correo {
+            get {
+                return ResourceManager.GetString("Mensaje_Error_Envio_Correo", resourceCulture);
             }
         }
         
@@ -196,6 +250,15 @@ namespace LogicaNegociosTotem.Modulo1 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Datos de usuario incompletos.
+        /// </summary>
+        internal static string Mensaje_Usuario_Vacio1 {
+            get {
+                return ResourceManager.GetString("Mensaje_Usuario_Vacio1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .1*;M;3z+M~8k*+~LZU6B!Q|.!k+;=*m.
         /// </summary>
         internal static string Passphrase {
@@ -205,11 +268,38 @@ namespace LogicaNegociosTotem.Modulo1 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to zAo1OVejS5aWbnXwVVTr+g==.
+        /// </summary>
+        internal static string Pswd_Correo_Totem {
+            get {
+                return ResourceManager.GetString("Pswd_Correo_Totem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 587.
+        /// </summary>
+        internal static string Puerto_Smtp {
+            get {
+                return ResourceManager.GetString("Puerto_Smtp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 7V-tXj%HEY0.G37U.
         /// </summary>
         internal static string Salt_Encriptado {
             get {
                 return ResourceManager.GetString("Salt_Encriptado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to smtp.gmail.com.
+        /// </summary>
+        internal static string Servidor_Smtp {
+            get {
+                return ResourceManager.GetString("Servidor_Smtp", resourceCulture);
             }
         }
         

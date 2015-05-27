@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -13,7 +14,7 @@ namespace LogicaNegociosTotem.Modulo1
     /// </summary>
     public static class LogicaLogin
     {
-
+        #region Inicio de Sesion
         /// <summary>
         /// Atributo para el control de los intentos que tendra el usuario para hacer login
         /// </summary>
@@ -29,7 +30,8 @@ namespace LogicaNegociosTotem.Modulo1
         /// <summary>
         /// Metodo para validar el inicio de sesion
         /// </summary>
-        /// <param name="usuario">Usuario con atributos username y clave para realizar el Log in
+        /// <param name="usuario">Usuario con atributos username y clave para realizar el 
+        /// Log in
         /// <returns>Retorna el objeto usuario si se pudo validar, de lo contrario
         /// retorna null</returns>
         public static DominioTotem.Usuario Login(string Username, string Clave)
@@ -101,7 +103,9 @@ namespace LogicaNegociosTotem.Modulo1
                 }
             
         }
+        #endregion
 
+        #region Recuperacion de Clave
         /// <summary>
         /// Metodo encargado del cambio de clave del usuario
         /// </summary>
@@ -126,7 +130,8 @@ namespace LogicaNegociosTotem.Modulo1
         }
 
         /// <summary>
-        /// Metodo encargado del envio del correo que contenga el link para el cambio de la clave
+        /// Metodo encargado del envio del correo que contenga el link para el cambio 
+        /// de la clave
         /// </summary>
         /// <param name="usuario">Usuario al cual se le enviara el EMAIL</param>      
         /// <returns>Retorna True si el correo pudo ser enviado con exito,
@@ -134,10 +139,63 @@ namespace LogicaNegociosTotem.Modulo1
         /// una exception(EmailErradoException)</returns>
         public static bool EnviarEmail(DominioTotem.Usuario usuario)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                //validar expresiones regulares de correo
+                if (usuario != null && usuario.correo != null &&
+                    usuario.correo != "")
+                {
+
+                    MailMessage mail = new MailMessage(RecursosLogicaModulo1.Correo_Totem
+                        , usuario.correo);
+                    SmtpClient servidorSmtp = new SmtpClient(RecursosLogicaModulo1.Servidor_Smtp);
+                    mail.Subject = RecursosLogicaModulo1.Correo_Asunto_Recuperacion_Clave;
+                    mail.Body = RecursosLogicaModulo1.Correo_Mensaje_Recuperacion_Clave;
+                    mail.Body += GenerarLink(usuario);
+
+                    servidorSmtp.Port = Convert.ToInt32(RecursosLogicaModulo1.Puerto_Smtp);
+                    servidorSmtp.UseDefaultCredentials = false;
+                    servidorSmtp.Credentials =
+                        new System.Net.NetworkCredential(
+                            RecursosLogicaModulo1.Correo_Totem,
+                            DesencriptarConRijndael(RecursosLogicaModulo1.Pswd_Correo_Totem,
+                            RecursosLogicaModulo1.Passphrase));
+
+                    servidorSmtp.EnableSsl = true;
+
+                    servidorSmtp.Send(mail);
+                    return true;
+                }
+                else
+                {
+                    throw new ExcepcionesTotem.Modulo1.UsuarioVacioException(
+                        RecursosLogicaModulo1.Codigo_Usuario_Vacio,
+                        RecursosLogicaModulo1.Mensaje_Usuario_Vacio,
+                        new ExcepcionesTotem.Modulo1.UsuarioVacioException());
+                }
+            }
+            catch (SmtpException ex)
+            {
+                throw new ExcepcionesTotem.Modulo1.ErrorEnvioDeCorreoException(
+                    RecursosLogicaModulo1.Codigo_Error_Envio_Correo,
+                    RecursosLogicaModulo1.Mensaje_Error_Envio_Correo,
+                    ex);
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    ex.Codigo, ex.Mensaje, ex);
+            }
+            catch (ExcepcionesTotem.Modulo1.UsuarioVacioException ex)
+            {
+                throw new ExcepcionesTotem.Modulo1.UsuarioVacioException(
+                    ex.Codigo, ex.Mensaje, ex);
+            }
 
         }
-        
+        #endregion
+
+        #region Cambio de Clave
         /// <summary>
         /// Metodo encargado de validar la respuesta de seguridad utilizada por el usuario
         /// </summary>
@@ -162,6 +220,9 @@ namespace LogicaNegociosTotem.Modulo1
             throw new System.NotImplementedException();
         }
 
+        #endregion
+
+        #region Cerrar Sesion
         /// <summary>
         /// Metodo encargado del cierre de sesion
         ///</summary>
@@ -173,9 +234,12 @@ namespace LogicaNegociosTotem.Modulo1
 
         }
 
+        #endregion
+
+        #region Encriptado/Desencriptado con Rijndael
         /// <summary>
-        /// Metodo para encriptar con Rijndael un texto, algoritmo establecido como uno de los estandares
-        /// para la criptografia moderna
+        /// Metodo para encriptar con Rijndael un texto, algoritmo establecido como uno de los 
+        /// estandares para la criptografia moderna
         /// </summary>
         /// <param name="textoAEncriptar">Texto que se quiere encriptar</param>
         /// <param name="passPhrase">Una clave que luego se podra usar para desencriptar</param>
@@ -246,7 +310,8 @@ namespace LogicaNegociosTotem.Modulo1
                             {
                                 byte[] textoDesencriptado = new byte[bytesDeTextoCifrado.Length];
                                 int cuentaBytesDesencriptado = 
-                                    cryptoStream.Read(textoDesencriptado, 0, textoDesencriptado.Length);
+                                    cryptoStream.Read(textoDesencriptado, 0, 
+                                    textoDesencriptado.Length);
                                 return Encoding.UTF8.GetString(textoDesencriptado, 
                                     0, cuentaBytesDesencriptado);
                             }
@@ -255,6 +320,6 @@ namespace LogicaNegociosTotem.Modulo1
                 }
             }
         }
-
+        #endregion
     }
 }

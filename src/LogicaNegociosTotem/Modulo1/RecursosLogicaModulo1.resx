@@ -129,6 +129,10 @@
     <value>T_00_001</value>
     <comment>Codigo de error en la conexion con la BD</comment>
   </data>
+  <data name="Codigo_Error_Envio_Correo" xml:space="preserve">
+    <value>T_01_006</value>
+    <comment>Codigo de error al intenar enviar correo</comment>
+  </data>
   <data name="Codigo_Intentos_Fallidos" xml:space="preserve">
     <value>T_01_005</value>
     <comment>Codigo de error de intentos maximos de inicio de sesion excedidos</comment>
@@ -156,6 +160,10 @@
   <data name="Mensaje_Error_Conexion_BD" xml:space="preserve">
     <value>Error con la Conexion en la BaseDeDatosTotem, no se pudo abrir la conexion</value>
     <comment>Mensaje al dar error en la conexion con la BD</comment>
+  </data>
+  <data name="Mensaje_Error_Envio_Correo" xml:space="preserve">
+    <value>Error en el envio del correo</value>
+    <comment>Mensaje de error al intentar enviar el correo</comment>
   </data>
   <data name="Mensaje_Intentos_Fallidos" xml:space="preserve">
     <value>Se fallo el inicio de sesion multiples veces, el usuario puede ser un bot</value>
@@ -188,5 +196,37 @@
   <data name="Tamano_Clave" xml:space="preserve">
     <value>256</value>
     <comment>Tamano de la clave para el encriptamiento</comment>
+  </data>
+  <data name="Codigo_Usuario_Vacio" xml:space="preserve">
+    <value>T_01_001</value>
+    <comment>Error en login o recuperacion de clave por datos de usuario incompletos</comment>
+  </data>
+  <data name="Correo_Asunto_Recuperacion_Clave" xml:space="preserve">
+    <value>TOTEM: Recuperacion de Clave</value>
+    <comment>Asunto del correo para la recuperacion de clave</comment>
+  </data>
+  <data name="Correo_Mensaje_Recuperacion_Clave" xml:space="preserve">
+    <value>Se ha enviado una solicitud de recuperacion de clave. Para seguir con el proceso, porfavor ingrese al siguiente link: </value>
+    <comment>Cuerpo del correo de recuperacion de clave</comment>
+  </data>
+  <data name="Correo_Totem" xml:space="preserve">
+    <value>totemdesarrollo@gmail.com</value>
+    <comment>Cuenta de correo usada para el en</comment>
+  </data>
+  <data name="Mensaje_Usuario_Vacio1" xml:space="preserve">
+    <value>Datos de usuario incompletos</value>
+    <comment>Mensaje cuando se presente el error de usuario incompleto</comment>
+  </data>
+  <data name="Pswd_Correo_Totem" xml:space="preserve">
+    <value>zAo1OVejS5aWbnXwVVTr+g==</value>
+    <comment>La contrasena encriptada para acceder a la cuenta de correo</comment>
+  </data>
+  <data name="Puerto_Smtp" xml:space="preserve">
+    <value>587</value>
+    <comment>Puerto para el envio de mensajes de correo smtp</comment>
+  </data>
+  <data name="Servidor_Smtp" xml:space="preserve">
+    <value>smtp.gmail.com</value>
+    <comment>Servidor smtp para el envio de correos</comment>
   </data>
 </root>
