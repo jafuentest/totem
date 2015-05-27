@@ -183,9 +183,50 @@ namespace DatosTotem.Modulo2
         /// Método que accede a la Base de Datos para Consultar un Cliente Jurídico en específico
         /// </summary>
         /// <returns>Retorna el objeto de tipo Cliente Juridico, null si el objeto no existe</returns>
-        public ClienteJuridico ConsultarClienteJuridico() 
+        public ClienteJuridico ConsultarClienteJuridico(int idCliente) 
         {
-            throw new NotImplementedException();            
+            ClienteJuridico clienteJuridico = new ClienteJuridico();
+            try
+            {
+
+                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureConsultarDatosClienteJuridico, this.conexion);
+                this.comando.CommandType = CommandType.StoredProcedure;
+                this.comando.Parameters.Add(new SqlParameter(RecursosBaseDeDatosModulo2.ParametroIdClienteJuridico,
+                                            idCliente));
+
+                SqlDataReader lectura;
+                this.conexion.Open();
+                lectura = this.comando.ExecuteReader();
+
+                while (lectura.Read())
+                {
+                    clienteJuridico = ObtenerClienteJuridicoBD(lectura);
+                }
+
+
+            }
+
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                this.conexion.Close();
+            }
+
+
+            return clienteJuridico;            
         }
 
 
@@ -325,7 +366,60 @@ namespace DatosTotem.Modulo2
 
            return clienteNatural; 
          }
-    }
+
+
+        /// <summary>
+        /// Método que obtiene directamente de Base de Datos
+        /// la información relacionada a un cliente Jurídico
+        /// </summary>
+        /// <param name="lector">Cliente Jurídico Seleccionado</param>
+        /// <returns></returns>
+        public ClienteJuridico ObtenerClienteJuridicoBD(SqlDataReader lector) 
+        {
+            ClienteJuridico clienteJuridico = new ClienteJuridico();
+            Lugar lugar = new Lugar();
+            List<string> telefonos = new List<string>();
+            List<Contacto> contactos = new List<Contacto>(); 
+           try
+           {
+               clienteJuridico.Jur_Id = lector.GetString(1);
+               clienteJuridico.Jur_Nombre = lector.GetString(2);
+               clienteJuridico.Jur_Pais = lector.GetString(3);
+               clienteJuridico.Jur_Estado = lector.GetString(4);
+               lugar.NombreLugar = lector.GetString(5);
+               lugar.CodigoPostal = lector.GetInt32(6).ToString();
+               clienteJuridico.Jur_Ciudad = lugar; 
+               clienteJuridico.Jur_Direccion = lector.GetString(7);
+               int codigo = lector.GetInt32(8);
+               int numero = lector.GetInt32(9);
+               string numeroCompleto = codigo.ToString() + numero.ToString();
+               telefonos.Add(numeroCompleto); 
+               clienteJuridico.Jur_Telefonos = telefonos;
+               string nombreContacto = lector.GetString(10); 
+               string apellidoContacto = lector.GetString(11); 
+               contactos.Add(new Contacto(nombreContacto,apellidoContacto));
+               clienteJuridico.Jur_Contactos = contactos;      
+
+              
+           }
+           catch (SqlException ex)
+           {
+               throw ex; 
+           }
+           catch (NullReferenceException ex)
+           {
+               throw  ex;
+           }
+           catch (Exception ex) 
+           {
+               throw ex; 
+           }
+
+           return clienteJuridico; 
+         }
+ }
+
+    
 
     
 }

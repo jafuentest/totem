@@ -26,7 +26,7 @@ namespace DatosTotem.Modulo2
        /// </summary>
        public BDLugar() 
        {
-           this.conexion = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\totem\totem\src\DatosTotem\BaseDeDatos\BaseDeDatosTotem.mdf;Integrated Security=True");    
+           this.conexion = new SqlConnection(@RecursoGeneralBD.StringDeConexion);    
        
        }
 

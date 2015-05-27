@@ -196,7 +196,42 @@ namespace PruebasUnitariasTotem.Modulo2
             Assert.IsTrue(sonIguales); 
         }
 
+        /// <summary>
+        /// Método que prueba el método de consultar los datos
+        /// detallados de un cliente jurídico dado su id
+        /// </summary>
+        /// 
+        [Test]
+        public void PruebaConsultarClienteJuridicoXId() 
+        {
+            int id = 1; 
+            bool sonIguales = false;
+            ClienteJuridico clienteJur = new ClienteJuridico();
+            Lugar lug = new Lugar();
+            lug.NombreLugar = "Caracas";
+            lug.CodigoPostal = "1020";
+            List<Contacto> contactos = new List<Contacto>();
+            List<string> telefonos = new List<string>();
+            string telefono = "4126666666";
+            telefonos.Add(telefono);
+            Contacto contacto = new Contacto("Reinaldo","Cortes");
+            contactos.Add(contacto);
 
+            clienteJur.Jur_Id = "J-11111111-1";
+            clienteJur.Jur_Nombre = "Locatel";
+            clienteJur.Jur_Pais = "Venezuela";
+            clienteJur.Jur_Estado = "Dtto Capital";
+            clienteJur.Jur_Ciudad = lug;
+            clienteJur.Jur_Direccion = "Parroquia Altagracia, Calle Guaicaipuro,"
+                                       +"Local 76, Bello Monte";
+            clienteJur.Jur_Contactos = contactos;
+            clienteJur.Jur_Telefonos = telefonos;
+
+            ClienteJuridico clienteActual = baseDeDatosCliente.ConsultarClienteJuridico(id);
+            sonIguales = clienteJur.Equals(clienteActual);
+            Assert.IsTrue(sonIguales); 
+        
+        }
         /// <summary>
         /// Método que limpia el objeto que se probó 
         /// para que el Recolector de Basura lo recolecte
