@@ -344,7 +344,12 @@ SELECT cn.cn_cedula,
 	   cn.cn_correo,
 	   t.tel_codigo,
 	   t.tel_numero,
-	   (d.lug_nombre+'.'+c.lug_nombre+'.'+e.lug_nombre+'.'+p.lug_nombre) as direccion 
+	   p.lug_nombre as pais,
+	   e.lug_nombre as estado, 
+	   c.lug_nombre as ciudad, 
+	   d.lug_nombre as direccion,
+	   c.lug_codigopostal as codigoPostal
+	    
 FROM 
 	   CLIENTE_NATURAL cn, 
 	   TELEFONO t,

@@ -387,8 +387,28 @@ namespace DatosTotem.Modulo2 {
             }
         }
 
+        /// <summary>
+        ///   Looks up a localized string similar to ParametroCedula.
+        /// </summary>
+        internal static string ParametroCedula
+        {
+            get
+            {
+                return ResourceManager.GetString("ParametroCedula", resourceCulture);
+            }
+        }
 
 
+        /// <summary>
+        ///   Looks up a localized string similar to ProcedureEliminarClienteNatural.
+        /// </summary>
+        internal static string ProcedureEliminarClienteNatural
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedureEliminarClienteNatural", resourceCulture);
+            }
+        }
 
 
 

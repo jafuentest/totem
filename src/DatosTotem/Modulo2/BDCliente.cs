@@ -151,9 +151,49 @@ namespace DatosTotem.Modulo2
         /// </summary>
         /// <param name="clienteNatural">Información del Cliente Natural</param>
         /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-        public bool EliminarClienteNatural(ClienteNatural clienteNatural)
+        public bool EliminarClienteNatural(string cedula)
         {
-            throw new NotImplementedException();
+            bool respuesta = false;
+
+            try
+            {
+                int nroDeFilasAfectadas = 0;
+
+                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureEliminarClienteNatural, this.conexion);
+                this.comando.CommandType = CommandType.StoredProcedure;
+
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroCedula, cedula);
+               
+                this.conexion.Open();
+
+                nroDeFilasAfectadas = this.comando.ExecuteNonQuery();
+
+                if (nroDeFilasAfectadas > 0)
+                    respuesta = true;
+                
+            }
+
+            catch (SqlException e)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, e);
+            }
+            catch (NullReferenceException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                this.conexion.Close();
+            }
+
+            return respuesta;  
+
+           
         }
 
 

@@ -213,4 +213,12 @@
     <value>Procedure_obtenerDireccion</value>
     <comment>Obtiene la dirección dado el id de una dirección</comment>
   </data>
+  <data name="ParametroCedula" xml:space="preserve">
+    <value>@cedula</value>
+    <comment>Cédula del cliente</comment>
+  </data>
+  <data name="ProcedureEliminarClienteNatural" xml:space="preserve">
+    <value>Procedure_EliminarClienteNatural</value>
+    <comment>Procedimiento para eliminar a un cliente natural </comment>
+  </data>
 </root>
