@@ -36,6 +36,11 @@ namespace PruebasUnitariasTotem.Modulo1
             {
                 Assert.AreEqual("No se pudo iniciar sesion, datos erroneos", loginErradoException.Mensaje);
             }
+            catch (IntentosFallidosException intentosErradoException)
+            {
+                Assert.AreEqual("Se fallo el inicio de sesion multiples veces, el usuario puede ser un bot", intentosErradoException.Mensaje);
+            }
+            
             catch (Exception e)
             {
                 Assert.Fail(
@@ -62,6 +67,32 @@ namespace PruebasUnitariasTotem.Modulo1
             catch (EmailErradoException emailErradoException)
             {
                 Assert.AreEqual("No se pudo obtener la pregunta de seguridad, el email es invalido", emailErradoException.Mensaje);
+            }
+            catch (Exception e)
+            {
+                Assert.Fail(
+                string.Format("Unexpected exception of type {0} caught: {1}",
+                           e.GetType(), e.Message)
+                );
+
+
+            }
+
+        }
+
+
+        [Test]
+        public void PruebaErrorEnvioDeCorreoException()
+        {
+            try
+            {
+                usuario.correo = "asdasdasd@sasas.com";
+                LogicaLogin.EnviarEmail(usuario);
+                Assert.Fail("Una excepcion se ha debido de lanzar");
+            }
+            catch (EmailErradoException emailErradoException)
+            {
+                Assert.AreEqual("Error en el envio del correo", emailErradoException.Mensaje);
             }
             catch (Exception e)
             {
