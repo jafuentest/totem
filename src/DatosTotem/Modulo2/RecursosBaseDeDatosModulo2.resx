@@ -121,6 +121,10 @@
     <value>@apellido</value>
     <comment>Apellido</comment>
   </data>
+  <data name="ParametroApellidon" xml:space="preserve">
+    <value>@cn_apellido</value>
+    <comment>apellido natural</comment>
+  </data>
   <data name="ParametroBusqueda" xml:space="preserve">
     <value>@busqueda</value>
     <comment>La Cedula</comment>
@@ -128,6 +132,10 @@
   <data name="ParametroCorreo" xml:space="preserve">
     <value>@correo</value>
     <comment>Correo</comment>
+  </data>
+  <data name="ParametroCorreon" xml:space="preserve">
+    <value>@cn_correo</value>
+    <comment>correo natural</comment>
   </data>
   <data name="ParametroIdClienteJuridico" xml:space="preserve">
     <value>@idClienteJur</value>
@@ -137,6 +145,10 @@
   </data>
   <data name="ParametroIdDireccion" xml:space="preserve">
     <value>@idDireccion</value>
+  </data>
+  <data name="Parametroidentificador" xml:space="preserve">
+    <value>@cn_cedula</value>
+    <comment>identificador natural</comment>
   </data>
   <data name="ParametroIdEstado" xml:space="preserve">
     <value>@idEstado</value>
@@ -151,9 +163,17 @@
     <value>@Fklugar</value>
     <comment>Fk del Lugar</comment>
   </data>
+  <data name="ParametroLugarn" xml:space="preserve">
+    <value>@LUGAR_lug_id</value>
+    <comment>fk lugar</comment>
+  </data>
   <data name="ParametroNombre" xml:space="preserve">
     <value>@nombre</value>
     <comment>Nombre</comment>
+  </data>
+  <data name="ParametroNombren" xml:space="preserve">
+    <value>@cn_nombre</value>
+    <comment>nombre natural</comment>
   </data>
   <data name="ParametroRif" xml:space="preserve">
     <value>@cj_rif</value>

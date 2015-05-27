@@ -107,11 +107,11 @@ namespace DatosTotem.Modulo2
                 this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureAgregarClienteNatural, this.conexion);
                 this.comando.CommandType = CommandType.StoredProcedure;
 
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroBusqueda, Clientenatural.Nat_Id);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroNombre, Clientenatural.Nat_Nombre);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroApellido, Clientenatural.Nat_Apellido);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroCorreo, Clientenatural.Nat_Correo);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroCorreo, fkLugar);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.Parametroidentificador, Clientenatural.Nat_Id);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroNombren, Clientenatural.Nat_Nombre);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroApellidon, Clientenatural.Nat_Apellido);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroCorreon, Clientenatural.Nat_Correo);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroLugarn, fkLugar);
                 this.conexion.Open();
 
                 nroDeFilasAfectadas = this.comando.ExecuteNonQuery();

@@ -312,5 +312,89 @@ namespace DatosTotem.Modulo2 {
 
 
 
+
+        /// <summary>
+        ///   Looks up a localized string similar to ParametroIdClienteJuridico.
+        /// </summary>
+        internal static string Parametroidentificador
+        {
+            get
+            {
+                return ResourceManager.GetString("Parametroidentificador", resourceCulture);
+            }
+        }
+
+
+
+
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to ParametroIdClienteJuridico.
+        /// </summary>
+        internal static string ParametroNombren
+        {
+            get
+            {
+                return ResourceManager.GetString("ParametroNombren", resourceCulture);
+            }
+        }
+
+
+
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to ParametroIdClienteJuridico.
+        /// </summary>
+        internal static string ParametroApellidon
+        {
+            get
+            {
+                return ResourceManager.GetString("ParametroApellidon", resourceCulture);
+            }
+        }
+
+
+
+
+
+
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to ParametroIdClienteJuridico.
+        /// </summary>
+        internal static string ParametroCorreon
+        {
+            get
+            {
+                return ResourceManager.GetString("ParametroCorreon", resourceCulture);
+            }
+        }
+
+
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to ParametroIdClienteJuridico.
+        /// </summary>
+        internal static string ParametroLugarn
+        {
+            get
+            {
+                return ResourceManager.GetString("ParametroLugarn", resourceCulture);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
     }
 }
