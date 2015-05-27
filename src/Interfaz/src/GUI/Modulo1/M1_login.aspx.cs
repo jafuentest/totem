@@ -19,6 +19,18 @@ public partial class login : System.Web.UI.Page
         {
             captchaContainer.Visible = false;
         }
+
+        String log = Request.QueryString["logout"];
+        if (log != null)
+        {
+            if (log.Equals("false"))
+            {
+               
+                 HttpContext.Current.Session.Abandon();
+            }
+        }
+
+      
         
         #region Redireccionamiento a Default
         if (HttpContext.Current.Session["Credenciales"] != null) {
