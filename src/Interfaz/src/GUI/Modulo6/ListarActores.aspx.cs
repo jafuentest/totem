@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Web;
+using LogicaNegociosTotem.Modulo6;
+using DominioTotem;
+using System.Collections.Generic;
 
 public partial class GUI_Modulo6_ListarActores : System.Web.UI.Page
 {
@@ -48,5 +51,12 @@ public partial class GUI_Modulo6_ListarActores : System.Web.UI.Page
 				alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Actor eliminado exitosamente</div>";
 				break;
 		}*/
+
+        LogicaActor logica = new LogicaActor();
+        List<Actor> listaActores = logica.ListarActor(0);
+        foreach (Actor actorLista in listaActores)
+        {
+            cuerpo.InnerHtml = cuerpo.InnerHtml + "<tr><td>" + actorLista.NombreActor + "</td><td>" + actorLista.DescripcionActor + "</td><td><a class=\"btn btn-default glyphicon glyphicon-pencil\" data-toggle=\"modal\" data-target=\"#modal-update\" href=\"#\"></a><a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"></a></td></tr>";
+        }
 	}
 }
