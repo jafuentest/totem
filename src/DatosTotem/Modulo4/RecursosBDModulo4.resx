@@ -197,4 +197,8 @@
     <value>Procedure_ConsultarProyecto</value>
     <comment>Consulta un proyecto en la BD</comment>
   </data>
+  <data name="ProcedimientoExisteProyecto" xml:space="preserve">
+    <value>Procedure_ExisteProyecto</value>
+    <comment>Verifica la existencia de un proyecto en la BD</comment>
+  </data>
 </root>

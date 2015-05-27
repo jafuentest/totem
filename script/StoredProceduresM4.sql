@@ -61,6 +61,18 @@ GO
 
 ------------------ Procedimientos para consultar------------------------------
 
+
+------------------ Procedimiento para verificar existencia de un proyecto ----------------------
+CREATE PROCEDURE Procedure_ExisteProyecto
+ 
+		@pro_codigo[varchar] (6)
+AS 
+BEGIN
+    IF EXISTS (SELECT * FROM PROYECTO P WHERE pro_codigo = @pro_codigo)
+        SELECT 1
+    ELSE
+        SELECT 0  
+END
 ------------------ Procedimiento para consultar un Proyecto----------------------
 
 CREATE PROCEDURE Procedure_ConsultarProyecto
