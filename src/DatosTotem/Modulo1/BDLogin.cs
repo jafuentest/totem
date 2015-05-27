@@ -88,7 +88,8 @@ namespace DatosTotem.Modulo1
                     }
                     else
                     {
-                        throw new ExcepcionesTotem.Modulo1.LoginErradoException(RecursosBDModulo1.Codigo_Login_Errado,
+                        throw new ExcepcionesTotem.Modulo1.LoginErradoException(
+                            RecursosBDModulo1.Codigo_Login_Errado,
                             RecursosBDModulo1.Mensaje_Login_Errado, new Exception());
                     }
                     if (user.nombre != null && user.nombre != "")
@@ -97,32 +98,43 @@ namespace DatosTotem.Modulo1
                     }
                     else
                     {
-                        throw new ExcepcionesTotem.Modulo1.LoginErradoException(RecursosBDModulo1.Codigo_Login_Errado,
-                            RecursosBDModulo1.Mensaje_Login_Errado, new ExcepcionesTotem.ExceptionTotem());
+                        throw new ExcepcionesTotem.Modulo1.LoginErradoException(
+                            RecursosBDModulo1.Codigo_Login_Errado,
+                            RecursosBDModulo1.Mensaje_Login_Errado, 
+                            new ExcepcionesTotem.ExceptionTotem());
                     }
                 }
                 catch (ExcepcionesTotem.Modulo1.LoginErradoException ex)
                 {
-                    throw new ExcepcionesTotem.Modulo1.LoginErradoException(ex.Codigo, ex.Mensaje, ex);
+                    throw new ExcepcionesTotem.Modulo1.LoginErradoException(ex.Codigo,
+                        ex.Mensaje, ex);
                 }
                 catch (SqlException ex)
                 {
-                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                        RecursoGeneralBD.Codigo,
                         RecursoGeneralBD.Mensaje, ex);
                 }
                 catch (ParametroInvalidoException ex)
                 {
-                    throw new ParametroInvalidoException(RecursoGeneralBD.Codigo_Parametro_Errado,
+                    throw new ParametroInvalidoException(
+                        RecursoGeneralBD.Codigo_Parametro_Errado,
                         RecursoGeneralBD.Mensaje_Parametro_Errado, ex);
                 }
             }
             else
             {
-                throw new UsuarioVacioException(RecursosBDModulo1.Codigo_Usuario_Vacio, 
+                throw new UsuarioVacioException(
+                    RecursosBDModulo1.Codigo_Usuario_Vacio, 
                     RecursosBDModulo1.Mensaje_Usuario_Vacio, new Exception());
             }
         }
         #endregion
+
+        public static bool ValidarCorreoBD(string correo)
+        {
+            throw new NotImplementedException();
+        }
 
         #region Obtener Pregunta Seguridad
         /// <summary>
