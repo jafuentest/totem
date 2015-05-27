@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div id="div_rif" class="col-sm-10 col-md-10 col-lg-10">
-                        <input id="rif" name="rif" type="text" class="form-control" placeholder="RIF" value="12452843" />
+                        <input id="rif" runat="server" name="rif" type="text" class="form-control" placeholder="Cédula" value="12452843" />
                     </div>
                 </div>
 
@@ -57,22 +57,22 @@
                 <div class="form-group">
                     <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6">
                         <div class="dropdown">
-                            <button id="pais" class="btn btn-default dropdown-toggle" name="pais-dd" type="button" data-toggle="dropdown" aria-expanded="true">
+                            <button id="paisCliente" runat="server" class="btn btn-default dropdown-toggle" name="pais-dd" type="button" data-toggle="dropdown" aria-expanded="true">
                                 País
                                 <span class="caret"></span>
                             </button>
-                            <ul id="pais-dd" class="dropdown-menu" role="menu" aria-labelledby="pais">
+                            <ul id="paisLista" class="dropdown-menu" role="menu" aria-labelledby="pais">
                                 <li role="presentation"><a role="menuitem" tabindex="-1" >Venezuela</a></li>
                             </ul>
                         </div>
                     </div>
                     <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
                         <div class="dropdown">
-                            <button id="estado" class="btn btn-default dropdown-toggle" name="estado-dd" type="button" data-toggle="dropdown" aria-expanded="true">
+                            <button id="estadoCliente" runat="server" class="btn btn-default dropdown-toggle" name="estado-dd" type="button" data-toggle="dropdown" aria-expanded="true">
                                 Estado
                                 <span class="caret"></span>
                             </button>
-                            <ul id="estado-dd" class="dropdown-menu" role="menu" aria-labelledby="estado">
+                            <ul id="estadoLista" runat="server" class="dropdown-menu" role="menu" aria-labelledby="estado">
                                 <li role="presentation"><a role="menuitem" tabindex="-1" >Aragua</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1" >Carabobo</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1" >Distrito Capital</a></li>
@@ -83,11 +83,11 @@
                     </div>
                     <div class="form-group">
                     <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
-                        <button id="ciudad" class="btn btn-default dropdown-toogle col-sm-12 col-md-12 col-lg-12" name="ciudad-dd" type="button"data-toggle="dropdown" aria-expanded="true">
+                        <button id="ciudadCliente" class="btn btn-default dropdown-toogle"  name="ciudad-dd" type="button"data-toggle="dropdown" aria-expanded="true">
                             Ciudad
                             <span class="caret"></span>
                         </button>
-                        <ul id="ciudad-dd" class="dropdown-menu" role="menu" aria-labelledby="ciudad">
+                        <ul id="ciudadLista" runat="server" class="dropdown-menu" role="menu" aria-labelledby="ciudad">
                             <li role="presentation"><a role="menuitem" tabindex="-1">Maracay</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1">Caracas</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1">Guarenas</a></li>
@@ -100,29 +100,29 @@
 
                 <div class="form-group">
                     <div id="div_direccion" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="direccion" name="direccion" type="text" class="form-control" placeholder="Dirección detallada" />
+                        <input id="direccionCliente" runat="server" name="direccion" type="text" class="form-control" placeholder="Dirección detallada" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div id="div_cpostal" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="codigopostal" name="codigopostal" type="text" class="form-control" placeholder="Código postal" />
+                        <input id="codigopostalCliente" runat="server" name="codigopostal" type="text" class="form-control" placeholder="Código postal" />
                     </div>
                 </div>
                
                     <div class="form-group">
                         <div id="div_correo" class="col-sm-12 col-md-12 col-lg-12">
-                            <input id="correo" name="correo" type="text" class="form-control" placeholder="Correo electrónico"  />
+                            <input id="correoCliente" runat="server" name="correo" type="text" class="form-control" placeholder="Correo electrónico"  />
                         </div>
                     </div>
                     <div class="form-group">
                         <div id="div_telefono" class="col-sm-12 col-md-12 col-lg-12">
-                            <input id="telefono" name="telefono" type="text" class="form-control" placeholder="Teléfono"  />
+                            <input id="telefonoCliente" runat="server"  name="telefono" type="text" class="form-control" placeholder="Teléfono"  />
                     </div>
                     </div>
      
                 <div class="form-group">
                     <div id="div_botones" class="col-sm-12 col-md-12 col-lg-12">
-                        <a class="btn btn-primary" href="ListarClientes.aspx?success=edit">Editar</a>
+                        <button id="botonEditar" runat="server" class="btn btn-primary" >Editar</button>
                         <a class="btn btn-default" href="ListarClientes.aspx">Cancelar</a>
                     </div>
                 </div>

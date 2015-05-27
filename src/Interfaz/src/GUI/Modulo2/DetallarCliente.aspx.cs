@@ -31,4 +31,14 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
             Response.Redirect("../Modulo1/M1_login.aspx");
         }*/
     }
+
+    /// <summary>
+    /// Evento que hace las llamadas a la lógica de negocio 
+    /// para editar los datos del cliente natural 
+    /// </summary>
+    protected void EditarCliente_Click(object sender, EventArgs e) 
+    {
+        
+    }
+
 }
