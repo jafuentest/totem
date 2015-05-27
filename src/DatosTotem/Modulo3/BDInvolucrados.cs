@@ -147,7 +147,40 @@ namespace DatosTotem.Modulo3
         /// <returns>lista de usuarios involucrados al proyecto que recibe como parametro</returns>
         public static ListaInvolucradoUsuario consultarUsuariosInvolucradosPorProyecto(Proyecto p)
         {
-            throw new NotImplementedException();
+            BDConexion laConexion;
+            ListaInvolucradoUsuario laListaDeUsuarios = new ListaInvolucradoUsuario();
+            List<Parametro> parametros;
+            Parametro codigoProyecto;
+
+            List<Usuario> lUsuarios = new List<Usuario>();
+            try
+            {
+                laConexion = new BDConexion();
+                parametros = new List<Parametro>();
+                codigoProyecto = new Parametro(RecursosBDModulo3.ParamCodProy, SqlDbType.VarChar, p.Codigo, false);
+
+                parametros.Add(codigoProyecto);
+
+                DataTable dt = laConexion.EjecutarStoredProcedureTuplas(RecursosBDModulo3.StoredConsultarUsuario, 
+                    parametros);
+                foreach (DataRow row in dt.Rows)
+                {
+                    Usuario u = new Usuario();
+                    u.idUsuario = int.Parse(row[RecursosBDModulo3.aliasUsuarioID].ToString());
+                    u.nombre = row[RecursosBDModulo3.aliasUsuarioNombre].ToString();
+                    u.apellido = row[RecursosBDModulo3.aliasUsuarioApellido].ToString();
+                    u.cargo = row[RecursosBDModulo3.aliasCargoNombre].ToString();
+                    lUsuarios.Add(u);
+                }
+                laListaDeUsuarios = new ListaInvolucradoUsuario(lUsuarios, p);
+            }
+            catch (SqlException ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+            }
+
+            return laListaDeUsuarios;
         }
         /// <summary>
         /// Metodo que consulta los contactos involucrados a un proyecto dado
@@ -156,7 +189,41 @@ namespace DatosTotem.Modulo3
         /// <returns>lista de contactos involucrados al proyecto que recibe como parametro</returns>
         public static ListaInvolucradoContacto consultarContactosInvolucradosPorProyecto(Proyecto p)
         {
-            throw new NotImplementedException();
+            BDConexion laConexion;
+            ListaInvolucradoContacto laListaDeContactos = new ListaInvolucradoContacto();
+            List<Parametro> parametros;
+            Parametro codigoProyecto;
+
+            List<Contacto> lContactos = new List<Contacto>();
+            try
+            {
+                laConexion = new BDConexion();
+                parametros = new List<Parametro>();
+                codigoProyecto = new Parametro(RecursosBDModulo3.ParamCodProy, SqlDbType.VarChar, p.Codigo, false);
+
+                parametros.Add(codigoProyecto);
+
+                DataTable dt = laConexion.EjecutarStoredProcedureTuplas(RecursosBDModulo3.StoredConsultarContacto,
+                    parametros);
+                foreach (DataRow row in dt.Rows)
+                {
+                    Contacto c     = new Contacto();
+                    c.Con_Id       = int.Parse(row[RecursosBDModulo3.aliasContactoID].ToString());
+                    c.Con_Nombre   = row[RecursosBDModulo3.aliasContactoNombre].ToString();
+                    c.Con_Apellido = row[RecursosBDModulo3.aliasContactoApellido].ToString();
+                    c.ConCargo     = row[RecursosBDModulo3.aliasCargoNombre].ToString();
+
+                    lContactos.Add(c);
+                }
+                laListaDeContactos = new ListaInvolucradoContacto(lContactos, p);
+            }
+            catch (SqlException ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+            }
+
+            return laListaDeContactos;
         }
         /// <summary>
         /// Metodo que elimina un contacto involucrado a un proyecto
