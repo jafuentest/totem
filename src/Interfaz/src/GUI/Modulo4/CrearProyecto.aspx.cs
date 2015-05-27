@@ -40,7 +40,7 @@ public partial class GUI_Modulo4_CrearProyecto : System.Web.UI.Page
         String codigo = this.Input_Codigo.Value;
         String descripcion = this.Input_Descripcion.Value;
         String moneda = this.Input_Moneda.ToString();
-        float costo = float.Parse(this.Input_Precio.Value);
+        int costo = int.Parse(this.Input_Precio.Value);
         bool estado = true;
         bool saved;
         try{
