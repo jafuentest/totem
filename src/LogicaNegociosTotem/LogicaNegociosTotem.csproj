@@ -39,6 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modulo1\RecursosLogicaModulo1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosLogicaModulo1.resx</DependentUpon>
+    </Compile>
     <Compile Include="Modulo2\LogicaCliente.cs" />
     <Compile Include="Modulo3\LogicaInvolucrados.cs" />
     <Compile Include="Modulo4\LogicaProyecto.cs" />
@@ -67,6 +72,12 @@
       <Project>{aaa3900a-9ced-4f07-9cee-d86208c39437}</Project>
       <Name>ExcepcionesTotem</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modulo1\RecursosLogicaModulo1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosLogicaModulo1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
