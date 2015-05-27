@@ -1,5 +1,6 @@
 ﻿using DatosTotem.Modulo7;
 using DominioTotem;
+using ExcepcionesTotem.Modulo7;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,36 +20,11 @@ namespace LogicaNegociosTotem.Modulo7
             ManejadorUsuario manejador = new ManejadorUsuario();
             try
             {
-                
-                if (manejador.ValidarUserNameUnico(elUsuario.username))
-                {
-                    if (manejador.ValidarCorreoUnico(elUsuario.correo))
-                    {
-                        if(manejador.ValidarClave(elUsuario.clave)){
-                            elUsuario.CalcularHash();
-                            if (manejador.RegistrarUsuario(elUsuario))
-                            {
-
-                            }
-                            else
-                            {
-
-                            }
-                        }
-                        else
-                        {
-
-                        }
-                    }
-                    else
-                    {
-
-                    }
-                }
-                else
-                {
-
-                }
+                   manejador.ValidarUserNameUnico(elUsuario.username); 
+                   manejador.ValidarCorreoUnico(elUsuario.correo);
+                   manejador.ValidarClave(elUsuario.clave);
+                   elUsuario.CalcularHash();
+                   manejador.RegistrarUsuario(elUsuario);
 
             }
             catch (ExcepcionesTotem.Modulo1.UsuarioVacioException)
@@ -58,6 +34,19 @@ namespace LogicaNegociosTotem.Modulo7
             catch (ExcepcionesTotem.ExceptionTotemConexionBD)
             {
                 throw new ExcepcionesTotem.ExceptionTotemConexionBD();
+            }
+            catch (UserNameRepetidoException)
+            {
+                
+            }
+            catch (CorreoRepetidoException)
+            {
+            }
+            catch (ClaveNoValidaException)
+            {
+            }
+            catch (RegistroUsuarioFallidoException)
+            {
             }
             return true;
         }
@@ -71,37 +60,11 @@ namespace LogicaNegociosTotem.Modulo7
             ManejadorUsuario manejador = new ManejadorUsuario();
             try
             {
-
-                if (manejador.ValidarUserNameUnico(elUsuario.username))
-                {
-                    if (manejador.ValidarCorreoUnico(elUsuario.correo))
-                    {
-                        if (manejador.ValidarClave(elUsuario.clave))
-                        {
-                            elUsuario.CalcularHash();
-                            if (manejador.RegistrarUsuario(elUsuario))
-                            {
-
-                            }
-                            else
-                            {
-
-                            }
-                        }
-                        else
-                        {
-
-                        }
-                    }
-                    else
-                    {
-
-                    }
-                }
-                else
-                {
-
-                }
+                manejador.ValidarUserNameUnico(elUsuario.username);
+                manejador.ValidarCorreoUnico(elUsuario.correo);
+                manejador.ValidarClave(elUsuario.clave);
+                elUsuario.CalcularHash();
+                manejador.RegistrarUsuario(elUsuario);
 
             }
             catch (ExcepcionesTotem.Modulo1.UsuarioVacioException)
@@ -111,6 +74,19 @@ namespace LogicaNegociosTotem.Modulo7
             catch (ExcepcionesTotem.ExceptionTotemConexionBD)
             {
                 throw new ExcepcionesTotem.ExceptionTotemConexionBD();
+            }
+            catch (UserNameRepetidoException)
+            {
+
+            }
+            catch (CorreoRepetidoException)
+            {
+            }
+            catch (ClaveNoValidaException)
+            {
+            }
+            catch (RegistroUsuarioFallidoException)
+            {
             }
             return true;
         }

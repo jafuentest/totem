@@ -1,5 +1,6 @@
 ﻿using DatosTotem.Modulo7;
 using DominioTotem;
+using ExcepcionesTotem.Modulo7;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,33 +15,37 @@ namespace LogicaNegociosTotem.Modulo7
         /// <summary> Valida si la clave cumple con los requerimientos </summary>
         /// <param name="claveUsuario">La clave que se va a agregar </param>
         /// <returns>Regresa true si la clave es válida y false si no es válida</returns>
-        public Boolean ValidarClave(String claveUsuario)
+        public void ValidarClave(String claveUsuario) 
         {
-            return true;
+            throw new ClaveNoValidaException();
         }
         /// <summary>Para verificar si el registro fue correcto</summary>
         /// <param name="elUsuario">El usuario que se va a registrar</param>
         /// <returns>Regresa true si el registro se realizó correctamente y false si no</returns>
-        public Boolean RegistrarUsuario(Usuario elUsuario)
+        public void RegistrarUsuario(Usuario elUsuario)
         {
 
-            return true;
+            throw new RegistroUsuarioFallidoException();
         }
         /// <summary>Valida que el userName no este repetido en la BD</summary>
         /// <param name="userName">El username del usuario</param>
         /// <returns>Retorna true si el username existe y false si no</returns>
-        public Boolean ValidarUserNameUnico(String userName)
+        public void ValidarUserNameUnico(String userName)
         {
             BDUsuario conexion = new BDUsuario();
-            return conexion.usernameUnico(userName);
+            Boolean valido = conexion.usernameUnico(userName);
+            if(valido == false)
+                throw new RegistroUsuarioFallidoException();
         }
         /// <summary> Valida que el correo no este repetido </summary>
         /// <param name="correoUsuario">Se busca por el correo del usuario</param>
         /// <returns>Regresa true si el correo ya existe y false si no/returns>
-        public Boolean ValidarCorreoUnico(String correoUsuario)
+        public void ValidarCorreoUnico(String correoUsuario)
         {
             BDUsuario conexion = new BDUsuario();
-            return conexion.correoUnico(correoUsuario);
+            Boolean valido = conexion.correoUnico(correoUsuario);
+            if (valido == false)
+                throw new CorreoInvalidoException();            
         }
         /// <summary> Obtiene el cargo de un usuario </summary>
         /// <param name="userName">Se busca por el username del usuario</param>
