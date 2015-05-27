@@ -1,4 +1,5 @@
-﻿using DatosTotem.Modulo1;
+﻿using DatosTotem;
+using DatosTotem.Modulo1;
 using DominioTotem;
 using ExcepcionesTotem.Modulo1;
 using LogicaNegociosTotem.Modulo1;
@@ -82,11 +83,40 @@ namespace PruebasUnitariasTotem.Modulo1
 
 
         [Test]
+        public void PruebaParametroInvalidoException()
+        {
+            try
+            {
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro parametro = null;
+                parametros.Add(parametro);
+
+                BDConexion con = new BDConexion();
+                con.AsignarParametros(parametros);
+                Assert.Fail("Una excepcion se ha debido de lanzar");
+            }
+            catch (ParametroInvalidoException parametroInvalidoException)
+            {
+                Assert.AreEqual("Error en un parametro del stored procedure", parametroInvalidoException.Mensaje);
+            }
+            catch (Exception e)
+            {
+                Assert.Fail(
+                string.Format("Unexpected exception of type {0} caught: {1}",
+                           e.GetType(), e.Message)
+                );
+
+
+            }
+
+        }
+
+        [Test]
         public void PruebaErrorEnvioDeCorreoException()
         {
             try
             {
-                usuario.correo = "asdasdasd@sasas.com";
+                usuario.correo = "santiagobernal93@gmail.com";
                 LogicaLogin.EnviarEmail(usuario);
                 Assert.Fail("Una excepcion se ha debido de lanzar");
             }
@@ -133,6 +163,33 @@ namespace PruebasUnitariasTotem.Modulo1
             }
 
         }
+
+
+        [Test]
+        public void PruebaUsuarioVacioException()
+        {
+            try
+            {
+
+                BDLogin.ValidarLoginBD(usuario);
+                Assert.Fail("Una excepcion se ha debido de lanzar");
+            }
+            catch (UsuarioVacioException usuarioVacioException)
+            {
+                Assert.AreEqual("Datos de usuario incompletos", usuarioVacioException.Mensaje);
+            }
+            catch (Exception e)
+            {
+                Assert.Fail(
+                string.Format("Unexpected exception of type {0} caught: {1}",
+                           e.GetType(), e.Message)
+                );
+
+
+            }
+
+        }
+
 
 
     }
