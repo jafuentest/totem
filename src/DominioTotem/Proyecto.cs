@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DominioTotem
 {
-    public class Proyecto : IDocumento
+    public class Proyecto
     {
         
         #region Atributos

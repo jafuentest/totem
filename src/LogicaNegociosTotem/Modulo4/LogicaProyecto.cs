@@ -54,6 +54,16 @@ namespace LogicaNegociosTotem.Modulo4
         {
             throw new NotImplementedException();
         }
+
+        public static void GenerarERS(DominioTotem.Proyecto proyecto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void GenerarFactura(DominioTotem.Proyecto proyecto)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 }
