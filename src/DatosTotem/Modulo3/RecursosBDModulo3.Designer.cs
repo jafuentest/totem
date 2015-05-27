@@ -70,11 +70,29 @@ namespace DatosTotem.Modulo3 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to clienteJurID.
+        /// </summary>
+        internal static string aliasClienteJurID {
+            get {
+                return ResourceManager.GetString("aliasClienteJurID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to clienteJurNombre.
         /// </summary>
         internal static string aliasClienteJurNombre {
             get {
                 return ResourceManager.GetString("aliasClienteJurNombre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to clienteNatID.
+        /// </summary>
+        internal static string aliasClienteNatID {
+            get {
+                return ResourceManager.GetString("aliasClienteNatID", resourceCulture);
             }
         }
         
@@ -142,11 +160,65 @@ namespace DatosTotem.Modulo3 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to T_01_001.
+        ///   Looks up a localized string similar to T_03_005.
+        /// </summary>
+        internal static string Codigo_ContactoSinID {
+            get {
+                return ResourceManager.GetString("Codigo_ContactoSinID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_03_001.
         /// </summary>
         internal static string Codigo_Involucrado_Repetido {
             get {
                 return ResourceManager.GetString("Codigo_Involucrado_Repetido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_03_003.
+        /// </summary>
+        internal static string Codigo_ListaSinInv {
+            get {
+                return ResourceManager.GetString("Codigo_ListaSinInv", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_03_002.
+        /// </summary>
+        internal static string Codigo_ListaSinProy {
+            get {
+                return ResourceManager.GetString("Codigo_ListaSinProy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_03_006.
+        /// </summary>
+        internal static string Codigo_ProyectoSinCod {
+            get {
+                return ResourceManager.GetString("Codigo_ProyectoSinCod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_03_004.
+        /// </summary>
+        internal static string Codigo_UsuarioSinUsername {
+            get {
+                return ResourceManager.GetString("Codigo_UsuarioSinUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No es posible agregar un contacto sin id.
+        /// </summary>
+        internal static string Mensaje_ContactoSinID {
+            get {
+                return ResourceManager.GetString("Mensaje_ContactoSinID", resourceCulture);
             }
         }
         
@@ -156,6 +228,42 @@ namespace DatosTotem.Modulo3 {
         internal static string Mensaje_Involucrado_Repetido {
             get {
                 return ResourceManager.GetString("Mensaje_Involucrado_Repetido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No es posible agregar una lista de involucrados vacia.
+        /// </summary>
+        internal static string Mensaje_ListaSinInv {
+            get {
+                return ResourceManager.GetString("Mensaje_ListaSinInv", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No es posible agregar un involucrado a una lista que no posea un proyecto asociado.
+        /// </summary>
+        internal static string Mensaje_ListaSinProy {
+            get {
+                return ResourceManager.GetString("Mensaje_ListaSinProy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No es posible utilizar un proyecto sin codigo para gestionar involucrados.
+        /// </summary>
+        internal static string Mensaje_ProyectoSinCod {
+            get {
+                return ResourceManager.GetString("Mensaje_ProyectoSinCod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No es posible agregar un usuario que no posea username.
+        /// </summary>
+        internal static string Mensaje_UsuarioSinUsername {
+            get {
+                return ResourceManager.GetString("Mensaje_UsuarioSinUsername", resourceCulture);
             }
         }
         

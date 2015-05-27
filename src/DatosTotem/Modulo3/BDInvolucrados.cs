@@ -21,60 +21,81 @@ namespace DatosTotem.Modulo3
         public static bool agregarUsuariosInvolucrados(ListaInvolucradoUsuario listaUsuarios)
         {
             int filasA, filasD;
-            Proyecto elProyecto = listaUsuarios.Proyecto;
-            List<Parametro> parametros, parametrosContar;
+            Proyecto elProyecto;
 
+            if (listaUsuarios.Proyecto != null)
+                elProyecto = listaUsuarios.Proyecto;
+            else
+                throw new ExcepcionesTotem.Modulo3.ListaSinProyectoException(RecursosBDModulo3.Codigo_ListaSinProy,
+                    RecursosBDModulo3.Mensaje_ListaSinProy, new Exception());
+            
+            List<Parametro> parametros, parametrosContar;
             Parametro paramProyectoCod, paramUsername, paramFilas;
             BDConexion laConexion = new BDConexion();
 
             parametrosContar = new List<Parametro>();
             paramFilas = new Parametro(RecursosBDModulo3.ParamFilas, SqlDbType.Int, true);
-
             parametrosContar.Add(paramFilas);
 
-            List<Resultado> resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarUsuario,
-                parametrosContar);
-            filasA = int.Parse(resultado[0].valor);
-
-            foreach (Usuario elUsuario in listaUsuarios.Lista)
+            if (listaUsuarios.Lista.ToArray().Length == 0 || listaUsuarios.Lista == null)
+                throw new ExcepcionesTotem.Modulo3.ListaSinInvolucradosException(RecursosBDModulo3.Codigo_ListaSinInv,
+                    RecursosBDModulo3.Mensaje_ListaSinInv, new Exception());
+            try
             {
-                try
+                List<Resultado> resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarUsuario,
+                    parametrosContar);
+                filasA = int.Parse(resultado[0].valor);
+
+                foreach (Usuario elUsuario in listaUsuarios.Lista)
                 {
                     laConexion = new BDConexion();
                     parametros = new List<Parametro>();
-
-                    paramProyectoCod = new Parametro(RecursosBDModulo3.ParamCodProy, SqlDbType.VarChar, 
-                        elProyecto.Codigo, false);
-                    paramUsername = new Parametro(RecursosBDModulo3.ParamUsername, SqlDbType.VarChar, 
-                        elUsuario.username, false);
-
-                    parametros.Add(paramUsername);
-                    parametros.Add(paramProyectoCod);
+                    if (elProyecto.Codigo != null)
+                    {
+                        paramProyectoCod = new Parametro(RecursosBDModulo3.ParamCodProy, SqlDbType.VarChar,
+                            elProyecto.Codigo, false);
+                        parametros.Add(paramProyectoCod);
+                    }
+                    else
+                        throw new ExcepcionesTotem.Modulo3.ProyectoSinCodigoException(
+                            RecursosBDModulo3.Codigo_ProyectoSinCod, RecursosBDModulo3.Mensaje_ProyectoSinCod,
+                            new Exception());
+                    if (elUsuario.username != null)
+                    {
+                        paramUsername = new Parametro(RecursosBDModulo3.ParamUsername, SqlDbType.VarChar,
+                            elUsuario.username, false);
+                        parametros.Add(paramUsername);
+                    }
+                    else
+                        throw new ExcepcionesTotem.Modulo3.UsuarioSinUsernameException(RecursosBDModulo3.Codigo_UsuarioSinUsername,
+                            RecursosBDModulo3.Mensaje_UsuarioSinUsername, new Exception());
 
                     laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredInsertarUsuario, parametros);
                 }
-                catch (SqlException ex)
-                {
-                    if (ex.Number == 2627)
-                        throw new ExcepcionesTotem.Modulo3.InvolucradoRepetidoException(
-                            RecursosBDModulo3.Codigo_Involucrado_Repetido, 
-                            RecursosBDModulo3.Mensaje_Involucrado_Repetido, ex);
-                    else
-                        throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
-                            RecursoGeneralBD.Mensaje, ex);
-                }
+                laConexion = new BDConexion();
+                resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarUsuario, parametrosContar);
+                filasD = int.Parse(resultado[0].valor);
 
+                if (filasD == filasA + listaUsuarios.Lista.ToArray().Length)
+                    return true;
+                else
+                    return false;
             }
-
-            laConexion = new BDConexion();
-
-            resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarUsuario, parametrosContar);
-            filasD = int.Parse(resultado[0].valor);
-
-            if (filasD > filasA)
-                return true;
-            else
+            catch (SqlException ex)
+            {
+                if (ex.Number == 2627)
+                    throw new ExcepcionesTotem.Modulo3.InvolucradoRepetidoException(
+                        RecursosBDModulo3.Codigo_Involucrado_Repetido,
+                        RecursosBDModulo3.Mensaje_Involucrado_Repetido, ex);
+                else
+                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                        RecursoGeneralBD.Mensaje, ex);
+            }
+            catch(Exception ex)
+            {
                 return false;
+                //lanzas otra
+            }
         }
         /// <summary>
         /// Metodo que agrega la lista de contactos involucrados a un proyecto
@@ -84,7 +105,12 @@ namespace DatosTotem.Modulo3
         public static bool agregarContactosInvolucrados(ListaInvolucradoContacto listaContactos)
         {
             int filasA, filasD;
-            Proyecto elProyecto = listaContactos.Proyecto;
+            Proyecto elProyecto;
+            if (listaContactos.Proyecto != null)
+                elProyecto= listaContactos.Proyecto;
+            else
+                throw new ExcepcionesTotem.Modulo3.ListaSinProyectoException(RecursosBDModulo3.Codigo_ListaSinProy,
+                    RecursosBDModulo3.Mensaje_ListaSinProy, new Exception());
             List<Parametro> parametros, parametrosContar;
             
             Parametro paramProyectoCod, paramContactoID, paramFilas; 
@@ -92,40 +118,36 @@ namespace DatosTotem.Modulo3
 
             parametrosContar = new List<Parametro>();
             paramFilas = new Parametro(RecursosBDModulo3.ParamFilas, SqlDbType.Int, true);
-
             parametrosContar.Add(paramFilas);
 
             List<Resultado> resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarCliente,
                 parametrosContar);
             filasA = int.Parse(resultado[0].valor);
 
+            if (listaContactos.Lista.ToArray().Length == 0 || listaContactos.Lista == null)
+                throw new ExcepcionesTotem.Modulo3.ListaSinInvolucradosException(RecursosBDModulo3.Codigo_ListaSinInv,
+                    RecursosBDModulo3.Mensaje_ListaSinInv, new Exception());
+            try
+            {
             foreach (Contacto elContacto in listaContactos.Lista)
             {
-                try
-                {
                     laConexion = new BDConexion();
                     parametros = new List<Parametro>();
 
                     paramProyectoCod = new Parametro(RecursosBDModulo3.ParamCodProy, SqlDbType.VarChar, 
                         elProyecto.Codigo, false);
-                    paramContactoID = new Parametro(RecursosBDModulo3.ParamContID, SqlDbType.Int, 
-                        elContacto.Con_Id.ToString(), false);
-
-                    parametros.Add(paramContactoID);
                     parametros.Add(paramProyectoCod);
-
-                    laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredInsertarCliente, parametros);
-                }
-                catch (SqlException ex)
-                {
-                    if (ex.Number == 2627)
-                        throw new ExcepcionesTotem.Modulo3.InvolucradoRepetidoException(
-                            RecursosBDModulo3.Codigo_Involucrado_Repetido,
-                            RecursosBDModulo3.Mensaje_Involucrado_Repetido, ex);
+                    if (elContacto.Con_Id != null)
+                    {
+                        paramContactoID = new Parametro(RecursosBDModulo3.ParamContID, SqlDbType.Int,
+                            elContacto.Con_Id.ToString(), false);
+                        parametros.Add(paramContactoID);
+                    }
                     else
-                        throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
-                            RecursoGeneralBD.Mensaje, ex);
-                }
+                        throw new ExcepcionesTotem.Modulo3.ContactoSinIDException(
+                            RecursosBDModulo3.Codigo_ContactoSinID, RecursosBDModulo3.Mensaje_ContactoSinID,
+                            new Exception());
+                    laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredInsertarCliente, parametros);
             }
 
             laConexion = new BDConexion();
@@ -140,6 +162,22 @@ namespace DatosTotem.Modulo3
             else
                 return false;
         }
+        catch (SqlException ex)
+        {
+            if (ex.Number == 2627)
+                throw new ExcepcionesTotem.Modulo3.InvolucradoRepetidoException(
+                    RecursosBDModulo3.Codigo_Involucrado_Repetido,
+                    RecursosBDModulo3.Mensaje_Involucrado_Repetido, ex);
+            else
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+        }
+        catch(Exception ex)
+        {
+            return false;
+            //lanza otra excepcion
+        }
+    }
         /// <summary>
         /// Metodo que consulta los usuarios involucrados a un proyecto dado
         /// </summary>
@@ -157,9 +195,15 @@ namespace DatosTotem.Modulo3
             {
                 laConexion = new BDConexion();
                 parametros = new List<Parametro>();
-                codigoProyecto = new Parametro(RecursosBDModulo3.ParamCodProy, SqlDbType.VarChar, p.Codigo, false);
-
-                parametros.Add(codigoProyecto);
+                if (p.Codigo != null)
+                {
+                    codigoProyecto = new Parametro(RecursosBDModulo3.ParamCodProy, SqlDbType.VarChar, p.Codigo, false);
+                    parametros.Add(codigoProyecto);
+                }
+                else
+                    throw new ExcepcionesTotem.Modulo3.ProyectoSinCodigoException(
+                        RecursosBDModulo3.Codigo_ProyectoSinCod, RecursosBDModulo3.Mensaje_ProyectoSinCod,
+                        new Exception());
 
                 DataTable dt = laConexion.EjecutarStoredProcedureTuplas(RecursosBDModulo3.StoredConsultarUsuario, 
                     parametros);
@@ -178,6 +222,10 @@ namespace DatosTotem.Modulo3
             {
                 throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
                     RecursoGeneralBD.Mensaje, ex);
+            }
+            catch (Exception ex)
+            {
+                //lanza otra
             }
 
             return laListaDeUsuarios;
@@ -199,9 +247,15 @@ namespace DatosTotem.Modulo3
             {
                 laConexion = new BDConexion();
                 parametros = new List<Parametro>();
-                codigoProyecto = new Parametro(RecursosBDModulo3.ParamCodProy, SqlDbType.VarChar, p.Codigo, false);
-
-                parametros.Add(codigoProyecto);
+                if (p.Codigo != null)
+                {
+                    codigoProyecto = new Parametro(RecursosBDModulo3.ParamCodProy, SqlDbType.VarChar, p.Codigo, false);
+                    parametros.Add(codigoProyecto);
+                }
+                else
+                    throw new ExcepcionesTotem.Modulo3.ProyectoSinCodigoException(
+                        RecursosBDModulo3.Codigo_ProyectoSinCod, RecursosBDModulo3.Mensaje_ProyectoSinCod,
+                        new Exception());
 
                 DataTable dt = laConexion.EjecutarStoredProcedureTuplas(RecursosBDModulo3.StoredConsultarContacto,
                     parametros);
@@ -212,6 +266,12 @@ namespace DatosTotem.Modulo3
                     c.Con_Nombre   = row[RecursosBDModulo3.aliasContactoNombre].ToString();
                     c.Con_Apellido = row[RecursosBDModulo3.aliasContactoApellido].ToString();
                     c.ConCargo     = row[RecursosBDModulo3.aliasCargoNombre].ToString();
+                    c.ConClienteJurid = new ClienteJuridico();
+                    c.ConClienteJurid.Jur_Id = row[RecursosBDModulo3.aliasClienteJurID].ToString();
+                    c.ConClienteJurid.Jur_Nombre = row[RecursosBDModulo3.aliasClienteJurNombre].ToString();
+                    c.ConClienteNat = new ClienteNatural();
+                    c.ConClienteNat.Nat_Id = row[RecursosBDModulo3.aliasClienteNatID].ToString();
+                    c.ConClienteJurid.Jur_Nombre = row[RecursosBDModulo3.aliasClienteNatNombre].ToString();
 
                     lContactos.Add(c);
                 }
@@ -221,6 +281,10 @@ namespace DatosTotem.Modulo3
             {
                 throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
                     RecursoGeneralBD.Mensaje, ex);
+            }
+            catch (Exception ex)
+            {
+                //lanzar otra
             }
 
             return laListaDeContactos;
@@ -241,39 +305,62 @@ namespace DatosTotem.Modulo3
 
             parametrosContar = new List<Parametro>();
             paramFilas = new Parametro(RecursosBDModulo3.ParamFilas, SqlDbType.Int, true);
-
             parametrosContar.Add(paramFilas);
-
-            List<Resultado> resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarCliente,
-                parametrosContar);
-            filasA = int.Parse(resultado[0].valor);
             try
             {
+                List<Resultado> resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarCliente,
+                    parametrosContar);
+                filasA = int.Parse(resultado[0].valor);
+
                 laConexion = new BDConexion();
                 listaParametros = new List<Parametro>();
-
-                paramProyectoCod = new Parametro(DatosTotem.Modulo3.RecursosBDModulo3.ParamCodProy,
-                                                 SqlDbType.VarChar, l.Proyecto.Codigo, false);
-                paramContactoId = new Parametro(DatosTotem.Modulo3.RecursosBDModulo3.ParamContID,
-                                                 SqlDbType.Int, c.Con_Id.ToString(), false);
-                listaParametros.Add(paramContactoId);
-                listaParametros.Add(paramProyectoCod);
+                if (l.Proyecto != null)
+                    if (l.Proyecto.Codigo != null)
+                    {
+                        paramProyectoCod = new Parametro(DatosTotem.Modulo3.RecursosBDModulo3.ParamCodProy,
+                                                        SqlDbType.VarChar, l.Proyecto.Codigo, false);
+                        listaParametros.Add(paramProyectoCod);
+                    }
+                    else
+                        throw new ExcepcionesTotem.Modulo3.ProyectoSinCodigoException(
+                            RecursosBDModulo3.Codigo_ProyectoSinCod, RecursosBDModulo3.Mensaje_ProyectoSinCod,
+                            new Exception());
+                else 
+                    throw new ExcepcionesTotem.Modulo3.ListaSinProyectoException(RecursosBDModulo3.Codigo_ListaSinProy,
+                        RecursosBDModulo3.Mensaje_ListaSinProy, new Exception());
+            
+                if (c.Con_Id != null)
+                {
+                    paramContactoId = new Parametro(DatosTotem.Modulo3.RecursosBDModulo3.ParamContID,
+                                                    SqlDbType.Int, c.Con_Id.ToString(), false);
+                    listaParametros.Add(paramContactoId);
+                }
+                else
+                    throw new ExcepcionesTotem.Modulo3.ContactoSinIDException(
+                        RecursosBDModulo3.Codigo_ContactoSinID, RecursosBDModulo3.Mensaje_ContactoSinID,
+                        new Exception());
 
                 laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredEliminarContacto, listaParametros);
+                laConexion = new BDConexion();
+                resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarUsuario, parametrosContar);
+                filasD = int.Parse(resultado[0].valor);
+
+                if ((filasA - 1) == filasD)
+                    return true;
+                else
+                    return false;
+
             }
             catch (SqlException ex)
             {
                 throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
                     RecursoGeneralBD.Mensaje, ex);
             }
-
-            resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarUsuario, parametrosContar);
-            filasD = int.Parse(resultado[0].valor);
-
-            if ((filasA - 1) == filasD)
-                return true;
-            else
+            catch (Exception ex)
+            {
                 return false;
+                //lanza otra
+            }
         }
         /// <summary>
         /// Metodo que elimina un usuario involucrado a un proyecto
@@ -291,43 +378,60 @@ namespace DatosTotem.Modulo3
 
             parametrosContar = new List<Parametro>();
             paramFilas = new Parametro(RecursosBDModulo3.ParamFilas, SqlDbType.Int, true);
-
             parametrosContar.Add(paramFilas);
-
-            List<Resultado> resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarUsuario,
-                parametrosContar);
-            filasA = int.Parse(resultado[0].valor);
-
             try
             {
+                List<Resultado> resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarUsuario,
+                parametrosContar);
+                filasA = int.Parse(resultado[0].valor);
+
                 laConexion = new BDConexion();
                 listaParametros = new List<Parametro>();
-
-                paramProyectoCod = new Parametro(DatosTotem.Modulo3.RecursosBDModulo3.ParamCodProy,
-                                                 SqlDbType.VarChar, l.Proyecto.Codigo, false);
-                paramUsuario = new Parametro(DatosTotem.Modulo3.RecursosBDModulo3.ParamUsername,
-                                                 SqlDbType.VarChar, u.username, false);
-                listaParametros.Add(paramUsuario);
-                listaParametros.Add(paramProyectoCod);
+                if (l.Proyecto != null)
+                    if (l.Proyecto.Codigo != null)
+                    {
+                        paramProyectoCod = new Parametro(DatosTotem.Modulo3.RecursosBDModulo3.ParamCodProy,
+                                                            SqlDbType.VarChar, l.Proyecto.Codigo, false);
+                        listaParametros.Add(paramProyectoCod);
+                    }
+                    else
+                        throw new ExcepcionesTotem.Modulo3.ProyectoSinCodigoException(
+                            RecursosBDModulo3.Codigo_ProyectoSinCod, RecursosBDModulo3.Mensaje_ProyectoSinCod,
+                            new Exception());
+                else
+                    throw new ExcepcionesTotem.Modulo3.ListaSinProyectoException(RecursosBDModulo3.Codigo_ListaSinProy,
+                                            RecursosBDModulo3.Mensaje_ListaSinProy, new Exception());
+                if (u.username != null)
+                {
+                    paramUsuario = new Parametro(DatosTotem.Modulo3.RecursosBDModulo3.ParamUsername,
+                                                    SqlDbType.VarChar, u.username, false);
+                    listaParametros.Add(paramUsuario);
+                }
+                else
+                    throw new ExcepcionesTotem.Modulo3.ContactoSinIDException(
+                        RecursosBDModulo3.Codigo_ContactoSinID, RecursosBDModulo3.Mensaje_ContactoSinID,
+                        new Exception());
 
                 laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredEliminarUsuario, listaParametros);
+                laConexion = new BDConexion();
+                resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarUsuario, parametrosContar);
+                filasD = int.Parse(resultado[0].valor);
+
+                if ((filasA - 1) == filasD)
+                    return true;
+                else
+                    return false;
             }
             catch (SqlException ex)
             {
                 throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
                     RecursoGeneralBD.Mensaje, ex);
             }
-            laConexion = new BDConexion();
-
-            resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarUsuario, parametrosContar);
-            filasD = int.Parse(resultado[0].valor);
-
-            if ((filasA - 1) == filasD)
-                return true;
-            else
+            catch (Exception ex)
+            {
                 return false;
+                //lanza otra
+            }
         }
-
-
     }
 }

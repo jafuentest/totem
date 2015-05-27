@@ -50,7 +50,12 @@
     <Compile Include="Modulo1\ErrorEnvioDeCorreoException.cs" />
     <Compile Include="Modulo2\ExcepcionClientesDatos.cs" />
     <Compile Include="Modulo2\ExcepcionLogicaClientes.cs" />
+    <Compile Include="Modulo3\ContactoSinIDException.cs" />
     <Compile Include="Modulo3\InvolucradoRepetidoException.cs" />
+    <Compile Include="Modulo3\ListaSinInvolucradosException.cs" />
+    <Compile Include="Modulo3\ListaSinProyectoException.cs" />
+    <Compile Include="Modulo3\ProyectoSinCodigoException.cs" />
+    <Compile Include="Modulo3\UsuarioSinUsernameException.cs" />
     <Compile Include="Modulo4\CasosDeUsoInexistentesException.cs" />
     <Compile Include="Modulo4\CodigoRepetidoException.cs" />
     <Compile Include="Modulo4\InvolucradosInexistentesException.cs" />
