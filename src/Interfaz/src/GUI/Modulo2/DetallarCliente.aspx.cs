@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
+using LogicaNegociosTotem.Modulo2;
+using DominioTotem; 
+
 
 public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
 {
@@ -38,7 +42,19 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
     /// </summary>
     protected void EditarCliente_Click(object sender, EventArgs e) 
     {
-        
+        LogicaCliente logica = new LogicaCliente();
+        string nombre = nombreCliente.Value;
+        string apellido = apellidoCliente.Value;
+        string cedula = cedulaCliente.Value;
+        string pais = paisCliente.InnerText;
+        string estado = estadoCliente.InnerText;
+        string ciudad = ciudadCliente.InnerText;
+        string direccion = direccionCliente.Value;
+        string codigoPostal = codigopostalCliente.Value;
+        string correo = correoCliente.Value;
+        string telefonoUno = telefonoCliente.Value; 
+
+        //logica.ModificarClienteNatural();
     }
 
 }

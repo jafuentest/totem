@@ -41,12 +41,12 @@
                         </div>
                     </div>
                     <div id="div_rif" class="col-sm-10 col-md-10 col-lg-10">
-                        <input id="rif" name="rif" runat="server" type="text" class="form-control" placeholder="Identificador de la Empresa" />
+                        <input id="rifEmpresa" name="rif" runat="server" type="text" class="form-control" placeholder="Identificador de la Empresa" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div id="div_nombre" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="nombre" runat="server" name="nombre" type="text" class="form-control" placeholder="Nombre de la Empresa" />
+                        <input id="nombreEmpresa" runat="server" name="nombre" type="text" class="form-control" placeholder="Nombre de la Empresa" />
                     </div>
                 </div>
 
@@ -54,7 +54,7 @@
                 <div class="form-group">
                     <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6">
                         <div class="dropdown">
-                            <button id="paisInput" runat="server" class="btn btn-default dropdown-toggle" name="pais-dd" type="button" data-toggle="dropdown" aria-expanded="true">
+                            <button id="paisEmpresa" runat="server" class="btn btn-default dropdown-toggle" name="pais-dd" type="button" data-toggle="dropdown" aria-expanded="true">
                                 País
                                 <span class="caret"></span>
                             </button>
@@ -65,7 +65,7 @@
                     </div>
                     <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
                         <div class="dropdown">
-                            <button id="estadoInput" class="btn btn-default dropdown-toggle" runat="server" name="estado-dd" type="button" data-toggle="dropdown" aria-expanded="true">
+                            <button id="estadoEmpresa" class="btn btn-default dropdown-toggle" runat="server" name="estado-dd" type="button" data-toggle="dropdown" aria-expanded="true">
                                 Estado
                                 <span class="caret"></span>
                             </button>
@@ -81,11 +81,11 @@
                 <div class="form-group">
                     <div class="dropdown">
                     <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
-                       <button id="ciudadInput" class="btn btn-default dropdown-toggle" runat="server" name="ciudad-dd" type="button" data-toggle="dropdown" aria-expanded="true">
+                       <button id="ciudadEmpresa" class="btn btn-default dropdown-toggle" runat="server" name="ciudad-dd" type="button" data-toggle="dropdown" aria-expanded="true">
                             Ciudad
                             <span class="caret"></span>
                         </button>
-                        <ul id="ciudadListado" runat="server" class="dropdown-menu" role="menu" aria-labelledby="ciudad">
+                        <ul id="ciudadLista" runat="server" class="dropdown-menu" role="menu" aria-labelledby="ciudad">
                             <li role="presentation"><a role="menuitem" tabindex="-1">Maracay</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1">Caracas</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1">Guarenas</a></li>
@@ -96,18 +96,18 @@
                 </div>
 
                 <div class="form-group">
-                    <div id="div_direccion" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="direccion" runat="server" name="direccion" type="text"  class="form-control" placeholder="Dirección detallada" />
+                    <div id="div_direccionEmpresa" class="col-sm-12 col-md-12 col-lg-12">
+                        <input id="direccionEmpresa" runat="server" name="direccion" type="text"  class="form-control" placeholder="Dirección detallada" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div id="div_cpostal" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="codigoPostal" runat="server" name="codigopostal" type="text" class="form-control" placeholder="Código postal" />
+                        <input id="codigoPostalEmpresa" runat="server" name="codigopostal" type="text" class="form-control" placeholder="Código postal" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div id="div_telefono" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="telefono" runat="server" name="telefono" type="text" class="form-control" placeholder="Teléfono" />
+                        <input id="telefonoEmpresa" runat="server" name="telefono" type="text" class="form-control" placeholder="Teléfono" />
                     </div>
                 </div>
 

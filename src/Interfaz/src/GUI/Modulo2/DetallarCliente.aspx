@@ -26,18 +26,18 @@
                 <h2>Datos básicos</h2>
                 <div class="form-group">
                     <div id="div_nombre" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Nombre" value="Pedro" />
+                        <input id="nombreCliente"  runat="server" name="nombre" type="text" class="form-control" placeholder="Nombre" value="Pedro" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div id="div_apellido" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="apellido" name="apellido" type="text" class="form-control" placeholder="Apellido" value="Pérez" />
+                        <input id="apellidoCliente" runat="server" name="apellido" type="text" class="form-control" placeholder="Apellido" value="Pérez" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div id="div_rsocial" class="col-sm-2 col-md-2 col-lg-2">
                         <div class="dropdown">
-                            <button id="rsocial" class="btn btn-default dropdown-toggle" name="rsocial-dd" type="button" data-toggle="dropdown" aria-expanded="true">
+                            <button id="rsocialCliente" class="btn btn-default dropdown-toggle" name="rsocial-dd" type="button" data-toggle="dropdown" aria-expanded="true">
                                 V
                                 <span class="caret"></span>
                             </button>
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div id="div_rif" class="col-sm-10 col-md-10 col-lg-10">
-                        <input id="rif" runat="server" name="rif" type="text" class="form-control" placeholder="Cédula" value="12452843" />
+                        <input id="cedulaCliente" runat="server" name="rif" type="text" class="form-control" placeholder="Cédula" value="12452843" />
                     </div>
                 </div>
 
@@ -82,8 +82,9 @@
                     </div>
                     </div>
                     <div class="form-group">
+                        <div class="dropdown">
                     <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
-                        <button id="ciudadCliente" class="btn btn-default dropdown-toogle"  name="ciudad-dd" type="button"data-toggle="dropdown" aria-expanded="true">
+                       <button id="ciudadCliente" class="btn btn-default dropdown-toggle" runat="server" name="ciudad-dd" type="button" data-toggle="dropdown" aria-expanded="true">
                             Ciudad
                             <span class="caret"></span>
                         </button>
@@ -94,6 +95,7 @@
                                 <li role="presentation"><a role="menuitem" tabindex="-1">Los Teques</a></li>
                         </ul>
                     </div>
+                   </div>
                 </div>
 
                
@@ -122,7 +124,7 @@
      
                 <div class="form-group">
                     <div id="div_botones" class="col-sm-12 col-md-12 col-lg-12">
-                        <button id="botonEditar" runat="server" class="btn btn-primary" >Editar</button>
+                        <button id="botonEditar" runat="server" class="btn btn-primary" onserverclick="EditarCliente_Click" >Editar</button>
                         <a class="btn btn-default" href="ListarClientes.aspx">Cancelar</a>
                     </div>
                 </div>
