@@ -47,7 +47,25 @@ namespace PruebasUnitariasTotem.Modulo2
 
             Assert.IsTrue(logicaCliente.AgregarClienteJuridico(rif,nombreCliente,fkLugar));
         }
-        
+
+
+        /// <summary>
+        /// Se prueba que la clase pueda agregar 
+        /// a los clientes naturales
+        /// </summary>
+        /// 
+        [Test]
+        public void PruebaAgregarClienteNaturalLogica()
+        {
+
+            string nombreCliente = "Minerva";
+            string identificador = "18039228";
+
+            int fkLugarn = 26;
+
+            Assert.IsTrue(logicaCliente.AgregarClienteNatural(identificador, nombreCliente, fkLugarn));
+        }
+
 
         /// <summary>
         /// Se prueba que la clase pueda modificar 
