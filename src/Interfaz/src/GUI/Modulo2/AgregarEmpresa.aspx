@@ -41,12 +41,12 @@
                         </div>
                     </div>
                     <div id="div_rif" class="col-sm-10 col-md-10 col-lg-10">
-                        <input id="rif" name="rif" type="text" class="form-control" placeholder="Identificador de la Empresa" />
+                        <input id="rif" name="rif" runat="server" type="text" class="form-control" placeholder="Identificador de la Empresa" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div id="div_nombre" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Nombre de la Empresa" />
+                        <input id="nombre" runat="server" name="nombre" type="text" class="form-control" placeholder="Nombre de la Empresa" />
                     </div>
                 </div>
 
@@ -54,7 +54,7 @@
                 <div class="form-group">
                     <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6">
                         <div class="dropdown">
-                            <button id="pais" class="btn btn-default dropdown-toggle" name="pais-dd" type="button" data-toggle="dropdown" aria-expanded="true">
+                            <button id="pais" runat="server" class="btn btn-default dropdown-toggle" name="pais-dd" type="button" data-toggle="dropdown" aria-expanded="true">
                                 País
                                 <span class="caret"></span>
                             </button>
@@ -80,7 +80,7 @@
                 </div>
                 <div class="form-group">
                     <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
-                        <button id="ciudad" class="btn btn-default dropdown-toogle col-sm-12 col-md-12 col-lg-12" name="ciudad-dd" type="button"data-toggle="dropdown" aria-expanded="true">
+                        <button id="ciudad"  class="btn btn-default dropdown-toogle col-sm-12 col-md-12 col-lg-12" name="ciudad-dd" type="button"data-toggle="dropdown" aria-expanded="true">
                             Ciudad
                             <span class="caret"></span>
                         </button>
@@ -95,17 +95,17 @@
 
                 <div class="form-group">
                     <div id="div_direccion" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="direccion" name="direccion" type="text"  class="form-control" placeholder="Dirección detallada" />
+                        <input id="direccion" runat="server" name="direccion" type="text"  class="form-control" placeholder="Dirección detallada" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div id="div_cpostal" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="codigopostal" name="codigopostal" type="text" class="form-control" placeholder="Código postal" />
+                        <input id="codigopostal" runat="server" name="codigopostal" type="text" class="form-control" placeholder="Código postal" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div id="div_telefono" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="telefono" name="telefono" type="text" class="form-control" placeholder="Teléfono" />
+                        <input id="telefono" runat="server" name="telefono" type="text" class="form-control" placeholder="Teléfono" />
                     </div>
                 </div>
 
@@ -186,8 +186,8 @@
 
                     <div class="form-group">
                         <div id="div_botones" class="col-sm-12 col-md-12 col-lg-12">
-                            <a class="btn btn-primary" href="ListarEmpresas.aspx?success=regis">Agregar</a>
-                            <a class="btn btn-default" href="ListarEmpresas.aspx">Cancelar</a>
+                            <a class="btn btn-primary" runat="server" href="ListarEmpresas.aspx?success=regis">Agregar</a>
+                            <a class="btn btn-default" runat="server" href="ListarEmpresas.aspx">Cancelar</a>
                         </div>
                     </div>
 
