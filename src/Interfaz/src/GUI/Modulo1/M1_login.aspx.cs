@@ -9,12 +9,17 @@ using LogicaNegociosTotem.Modulo1;
 
 public partial class login : System.Web.UI.Page
 {
+    
     protected void Page_Load(object sender, EventArgs e)
     {
         ((MasterPage)Page.Master).IdModulo = "1";
         Master.ShowDiv = false;
         Master.MostrarMenuLateral = false;
-        captchaContainer.Visible = false;
+        if (!LogicaLogin.captchaActivo)
+        {
+            captchaContainer.Visible = false;
+        }
+        
         #region Redireccionamiento a Default
         if (HttpContext.Current.Session["Credenciales"] != null) {
             HttpContext.Current.Response.Redirect("Default.aspx");
@@ -41,8 +46,28 @@ public partial class login : System.Web.UI.Page
             }
             else
             {
-                HttpContext.Current.Session["Credenciales"] = LogicaLogin.Login(usuario,clave);
-                HttpContext.Current.Response.Redirect("Default.aspx");
+                if (!LogicaLogin.captchaActivo)
+                {
+                    HttpContext.Current.Session["Credenciales"] = LogicaLogin.Login(usuario, clave);
+                    HttpContext.Current.Response.Redirect("Default.aspx");
+                
+                }
+                else {
+                    recaptcha.Validate();
+                    Page.Validate();
+                  
+                    if (Page.IsValid)
+                    {
+                        HttpContext.Current.Session["Credenciales"] = LogicaLogin.Login(usuario, clave);
+                        HttpContext.Current.Response.Redirect("Default.aspx");
+                    }
+                    else{
+                        alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+                        alert.Attributes["role"] = "alert";
+                        alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Ingrese el captcha de forma correcta</div>";
+                    }
+                
+                }
             }
 
         }
@@ -52,7 +77,7 @@ public partial class login : System.Web.UI.Page
             alert.Attributes["role"] = "alert";
             alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Ya ha tratado de ingresar al sistema 3 veces,Por favor ingrese el captcha correspondiente</div>";
             captchaContainer.Visible = true;
-                          
+            LogicaLogin.captchaActivo = true;              
                             
         }
         catch (ExcepcionesTotem.Modulo1.LoginErradoException error)
@@ -66,7 +91,7 @@ public partial class login : System.Web.UI.Page
         {
             alert.Attributes["class"] = "alert alert-danger alert-dismissible";
             alert.Attributes["role"] = "alert";
-            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Imposible de estamblecer conexion con la base de datos</div>";
+            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Imposible de establecer conexion con la base de datos</div>";
 
         }    
     }

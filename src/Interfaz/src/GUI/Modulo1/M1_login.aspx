@@ -31,14 +31,18 @@
                          </div>
                     </div>
                     <div id="captchaContainer" runat="server" class="col-lg-6 col-md-6 col-sm-6 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 text-center">
-                          <recaptcha:RecaptchaControl  ID="recaptcha" runat="server"  PublicKey="6Ld4WAcTAAAAAKRhx_AOO24ZKYQEHByFgNPmPaJs"   PrivateKey="6Ld4WAcTAAAAAAgYhmDJEUtoht8OIP4Rk8ecxoUs" /> 
+                        </br> 
+                         <recaptcha:RecaptchaControl  ID="recaptcha" runat="server"  PublicKey="6Ld4WAcTAAAAAKRhx_AOO24ZKYQEHByFgNPmPaJs"   PrivateKey="6Ld4WAcTAAAAAAgYhmDJEUtoht8OIP4Rk8ecxoUs" /> 
+                        </br>
                     </div>
                     <div id="botones" class ="form-group">
                         <div class ="col-sm-10 col-md-10 col-lg-10">
                             <button runat="server" class="btn btn-primary "  style="width:68%;" type="submit" onserverclick="Login_Click">Iniciar Sesi&oacute;n</button>
                     <br />
-                                                              
-                        <a class="login-link" href="M1_IntroducirCorreo.aspx" style="margin-left:19%; margin-top:20px;">¿Olvid&oacute; su contrase&ntilde;a?</a>
+                        <div id="ChangeContainer" runat="server" class="col-lg-6 col-md-6 col-sm-6 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 text-center">
+                         </br>
+                        <a class="login-link" href="M1_IntroducirCorreo.aspx">¿Olvid&oacute; su contrase&ntilde;a?</a>
+                        </div>
                         </div>
                     </div>
                    </form>                    

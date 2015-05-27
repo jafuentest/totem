@@ -16,6 +16,7 @@ namespace LogicaNegociosTotem.Modulo1
         /// Atributo para el control de los intentos que tendra el usuario para hacer login
         /// </summary>
         private static int intentos=0;
+        public static bool captchaActivo = false;
 
         /// <summary>
         /// Constructor de la clase BDLogin
@@ -31,39 +32,54 @@ namespace LogicaNegociosTotem.Modulo1
         /// retorna null</returns>
         public static DominioTotem.Usuario Login(string Username, string Clave)
         {
-            
-            if (intentos < 3)
-            {
-
                 try
                 {
-                    intentos++;
+                    if (!captchaActivo)
+                    {
+                        intentos++;
+                    }
                     DominioTotem.Usuario loginUser = new DominioTotem.Usuario();
                     loginUser.username = Username;
                     loginUser.clave = Clave;
                     DominioTotem.Usuario retornoUser= DatosTotem.Modulo1.BDLogin.ValidarLoginBD(loginUser);
                     intentos = 0;
+                    captchaActivo = false;
                     return retornoUser;
                 }
                 catch (ExcepcionesTotem.Modulo1.LoginErradoException)
                 {
-                    throw new ExcepcionesTotem.Modulo1.LoginErradoException();
+                    if (intentos > 2)
+                    {
+                        throw new ExcepcionesTotem.Modulo1.IntentosFallidosException();
+                    }
+                    else
+                    {
+                        throw new ExcepcionesTotem.Modulo1.LoginErradoException();
+                    }
                 }
                 catch (ExcepcionesTotem.Modulo1.UsuarioVacioException)
                 {
-                    throw new ExcepcionesTotem.Modulo1.UsuarioVacioException();
+                    if (intentos > 2)
+                    {
+                        throw new ExcepcionesTotem.Modulo1.IntentosFallidosException();
+                    }
+                    else
+                    {
+                        throw new ExcepcionesTotem.Modulo1.UsuarioVacioException();
+                    }
                 }
                 catch (ExcepcionesTotem.ExceptionTotemConexionBD)
                 {
-                    throw new ExcepcionesTotem.ExceptionTotemConexionBD();
+                    if (intentos > 2)
+                    {
+                        throw new ExcepcionesTotem.Modulo1.IntentosFallidosException();
+                    }
+                    else
+                    {
+                        throw new ExcepcionesTotem.ExceptionTotemConexionBD();
+                    }
                 }
-            }
-            else 
-            {
-                throw new ExcepcionesTotem.Modulo1.IntentosFallidosException();
-            }
-
-
+            
         }
 
         /// <summary>
