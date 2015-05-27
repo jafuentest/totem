@@ -17,7 +17,7 @@ namespace PruebasUnitariasTotem.Modulo4
         [SetUp]
         public void init()
         {
-            elProyecto = new Proyecto("TES", "Test", true, "Test descripcion", "mon", 1000000);
+            elProyecto = new Proyecto("TES", "Test", true, "Test descripcion", "Bs", 1000000);
         }
         [TearDown]
         public void clean()
@@ -28,7 +28,7 @@ namespace PruebasUnitariasTotem.Modulo4
         [Test]
         public void PruebaCrearProyecto()
         {
-            
+
             try
             {
                 Assert.IsTrue(LogicaNegociosTotem.Modulo4.LogicaProyecto.CrearProyecto(elProyecto));
@@ -38,7 +38,6 @@ namespace PruebasUnitariasTotem.Modulo4
 
             }
         }
-
      
     }
 }

@@ -11,6 +11,8 @@ public partial class GUI_Modulo4_CrearProyecto : System.Web.UI.Page
     {
         ((MasterPage)Page.Master).IdModulo = "4";
 
+        //LogicaNegociosTotem.Modulo2.LogicaCliente
+
         /*DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
         if (user != null)
         {
@@ -51,10 +53,10 @@ public partial class GUI_Modulo4_CrearProyecto : System.Web.UI.Page
             proyecto.Estado = estado;
             saved = LogicaNegociosTotem.Modulo4.LogicaProyecto.CrearProyecto(proyecto);
             if (saved == true){
-
+                System.Console.WriteLine("Saves es true");
             }
             else{
-
+                System.Console.WriteLine("Saves es false");
             }
         }
         catch (Exception ex){

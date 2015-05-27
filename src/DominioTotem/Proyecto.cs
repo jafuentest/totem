@@ -26,7 +26,7 @@ namespace DominioTotem
         private bool estado = true;
         private String descripcion;
         private String moneda;
-        private double costo;
+        private int costo;
 
         #endregion
 
@@ -48,7 +48,7 @@ namespace DominioTotem
         /// <param name="moneda">Moneda base en la que se esta cobrando por la realizacion del proyecto</param>
         /// <param name="costo">Costo de realizacion del 100% del proyecto</param>
         /// </summary>
-        public Proyecto(String codigo, String nombre, bool estado, String descripcion, String moneda, double costo)
+        public Proyecto(String codigo, String nombre, bool estado, String descripcion, String moneda, int costo)
         {
             this.codigo = codigo;
             this.nombre = nombre;
@@ -102,7 +102,7 @@ namespace DominioTotem
             set { moneda = value; }
         }
 
-        public double Costo
+        public int Costo
         {
             get { return costo; }
             set { costo = value; }

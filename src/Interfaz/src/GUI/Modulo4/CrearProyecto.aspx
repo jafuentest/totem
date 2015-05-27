@@ -98,7 +98,7 @@
             <br>
             <div class="form-group">
 		        <div class="col-sm-1 col-md-1 col-lg-1">
-				    <a runat="Server" type="button" class="btn btn-primary" onclick="return checkform()" href="../Modulo1/Default.aspx?success=2">Crear</a>
+				    <a runat="Server" type="button" class="btn btn-primary" onclick="" href="../Modulo1/Default.aspx?success=2">Crear</a>
 			    </div>
                 <div class="col-sm-1 col-md-1 col-lg-1">
 				    <button class="btn btn-default" onclick="goBack()">Cancelar</button>
@@ -106,7 +106,7 @@
 	        </div>
         </form>
     </div>
-    <script src="js/Validacion.js"></script>
+    <script src="~/src/GUI/Modulo4/js/Validacion.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
 	<script src="bootstrap-toggle-master/doc/script.js"></script>
 	<script src="bootstrap-toggle-master/js/bootstrap-toggle.js"></script>

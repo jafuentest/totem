@@ -20,13 +20,12 @@ namespace LogicaNegociosTotem.Modulo4
         /// <param name="proyecto">proyecto a crear
         /// <returns>Retorna True si se crea, de lo contrario genera
         /// una exception(CodigoRepetido)</returns>
-        public static bool CrearProyecto(DominioTotem.Proyecto proyecto)
+        public static bool CrearProyecto(DominioTotem.Proyecto proyecto) 
         {
 
             try
             {
                 return DatosTotem.Modulo4.BDProyecto.CrearProyecto(proyecto);
-
             }
             catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException)
             {

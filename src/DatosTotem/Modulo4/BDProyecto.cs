@@ -29,23 +29,18 @@ namespace DatosTotem.Modulo4
         public static bool CrearProyecto(Proyecto proyecto)
         {
             List<Parametro> parametros = new List<Parametro>();
-            Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto,
-                SqlDbType.VarChar, proyecto.Codigo, false);
+            Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, proyecto.Codigo, false);
             parametros.Add(parametro);
-            parametro = new Parametro(RecursosBDModulo4.ParametroNombreProyecto,
-                SqlDbType.VarChar, proyecto.Nombre, false);
+            parametro = new Parametro(RecursosBDModulo4.ParametroNombreProyecto, SqlDbType.VarChar, proyecto.Nombre, false);
             parametros.Add(parametro);
-            parametro = new Parametro(RecursosBDModulo4.ParametroEstadoProyecto,
-                SqlDbType.Bit, proyecto.Estado.ToString(), false);
+            parametro = new Parametro(RecursosBDModulo4.ParametroEstadoProyecto, SqlDbType.Bit, proyecto.Estado.ToString(), false);
             parametros.Add(parametro);
-            parametro = new Parametro(RecursosBDModulo4.ParametroDescripcionProyecto,
-                SqlDbType.VarChar, proyecto.Descripcion, false);
+            parametro = new Parametro(RecursosBDModulo4.ParametroDescripcionProyecto, SqlDbType.VarChar, proyecto.Descripcion, false);
             parametros.Add(parametro);
-            parametro = new Parametro(RecursosBDModulo4.ParametroCostoProyecto,
-                SqlDbType.Float, proyecto.Costo.ToString(), false);
+            parametro = new Parametro(RecursosBDModulo4.ParametroCostoProyecto, SqlDbType.Int, proyecto.Costo.ToString(), false);
             parametros.Add(parametro);
-            parametro = new Parametro(RecursosBDModulo4.ParametroMonedaProyecto,
-                SqlDbType.VarChar, proyecto.Moneda, false);
+            parametro = new Parametro(RecursosBDModulo4.ParametroMonedaProyecto, SqlDbType.VarChar, proyecto.Moneda, false);
+            parametros.Add(parametro);
 
               try
                 {
@@ -66,10 +61,6 @@ namespace DatosTotem.Modulo4
                 {
                     throw e;
                 }
-               
-            
-
-
         }
         #endregion
 

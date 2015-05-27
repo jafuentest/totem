@@ -356,7 +356,7 @@ CREATE
     pro_nombre VARCHAR (60) NOT NULL ,
     pro_estado BIT NOT NULL ,
     pro_descripcion VARCHAR (600) NOT NULL ,
-    pro_costo       NUMERIC(10,10) NOT NULL ,
+    pro_costo       INTEGER NOT NULL ,
     pro_moneda      VARCHAR (3) NOT NULL ,
     CLIENTE_JURIDICO_cj_id INTEGER ,
     CLIENTE_NATURAL_cn_id INTEGER,
