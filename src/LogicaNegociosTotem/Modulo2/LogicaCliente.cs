@@ -70,9 +70,9 @@ namespace LogicaNegociosTotem.Modulo2
        /// </summary>
        /// <param name="clienteNatural">Información del Cliente Natural</param>
        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-       public bool EliminarClienteNatural(ClienteNatural clienteNatural)
+       public bool EliminarClienteNatural(string cedula)
        {
-           return baseDeDatosCliente.EliminarClienteNatural(clienteNatural);
+           return baseDeDatosCliente.EliminarClienteNatural(cedula);
        }
 
 

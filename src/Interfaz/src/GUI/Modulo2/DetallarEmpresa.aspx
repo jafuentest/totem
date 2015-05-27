@@ -41,12 +41,12 @@
                         </div>
                     </div>
                     <div id="div_rif" class="col-sm-10 col-md-10 col-lg-10">
-                        <input id="rif" name="rif" type="text" class="form-control" placeholder="RIF" value="000012595" />
+                        <input id="rifEmpresa" runat="server" name="rif" type="text" class="form-control" placeholder="RIF" value="000012595" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div id="div_nombre" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Nombre" value="Alimentos Ronald, C.A." />
+                        <input id="nombreEmpresa" runat="server" name="nombre" type="text" class="form-control" placeholder="Nombre" value="Alimentos Ronald, C.A." />
                     </div>
                 </div>
                
@@ -55,22 +55,22 @@
                 <div class="form-group">
                     <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6">
                         <div class="dropdown">
-                            <button id="pais" class="btn btn-default dropdown-toggle" name="pais-dd" type="button" data-toggle="dropdown" aria-expanded="true">
+                            <button id="paisEmpresa" runat="server" class="btn btn-default dropdown-toggle" name="pais-dd" type="button" data-toggle="dropdown" aria-expanded="true">
                                 Venezuela
                                 <span class="caret"></span>
                             </button>
-                            <ul id="pais-dd" class="dropdown-menu" role="menu" aria-labelledby="pais">
+                            <ul id="paisLista" runat="server" class="dropdown-menu" role="menu" aria-labelledby="pais">
                                 <li role="presentation"><a role="menuitem" tabindex="-1" >Aragua</a></li>
                             </ul>
                         </div>
                     </div>
                     <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
                         <div class="dropdown">
-                            <button id="estado" class="btn btn-default dropdown-toggle" name="estado-dd" type="button" data-toggle="dropdown" aria-expanded="true">
+                            <button id="estadoEmpresa"  runat="server" class="btn btn-default dropdown-toggle" name="estado-dd" type="button" data-toggle="dropdown" aria-expanded="true">
                                 Aragua
                                 <span class="caret"></span>
                             </button>
-                            <ul id="estado-dd" class="dropdown-menu" role="menu" aria-labelledby="estado">
+                            <ul id="estadoLista" runat="server" class="dropdown-menu" role="menu" aria-labelledby="estado">
                                 <li role="presentation"><a role="menuitem" tabindex="-1" >Aragua</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1" >Carabobo</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1" >Distrito Capital</a></li>
@@ -80,34 +80,36 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <div class="dropdown">
                     <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
-                        <button id="ciudad" class="btn btn-default dropdown-toogle col-sm-12 col-md-12 col-lg-12" name="ciudad-dd" type="button"data-toggle="dropdown" aria-expanded="true">
+                         <button id="ciudadEmpresa" class="btn btn-default dropdown-toggle" runat="server" name="ciudad-dd" type="button" data-toggle="dropdown" aria-expanded="true">
                             Ciudad
                             <span class="caret"></span>
                         </button>
-                        <ul id="ciudad-dd" class="dropdown-menu" role="menu" aria-labelledby="ciudad">
+                        <ul id="ciudadLista" runat="server" class="dropdown-menu" role="menu" aria-labelledby="ciudad">
                             <li role="presentation"><a role="menuitem" tabindex="-1">Maracay</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1">Caracas</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1">Guarenas</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1">Los Teques</a></li>
                         </ul>
                     </div>
+                   </div>
                 </div>
 
 
                 <div class="form-group">
                     <div id="div_direccion" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="direccion" name="direccion" type="text" class="form-control" placeholder="Dirección detallada" value="Las Delicias, Maracay" />
+                        <input id="direccionEmpresa" runat="server" name="direccion" type="text" class="form-control" placeholder="Dirección detallada" value="Las Delicias, Maracay" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div id="div_cpostal" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="codigopostal" name="codigopostal" type="text" class="form-control" placeholder="Código postal" value="1040" />
+                        <input id="codigopostalEmpresa" runat="server" name="codigopostal" type="text" class="form-control" placeholder="Código postal" value="1040" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div id="div_telefono" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="telefono" name="telefono" type="text" class="form-control" placeholder="Teléfono" value="2125896412" />
+                        <input id="telefonoEmpresa" runat="server" name="telefono" type="text" class="form-control" placeholder="Teléfono" value="2125896412" />
                     </div>
                 </div>
 
@@ -207,7 +209,7 @@
                 <!--Botones-->
                 <div class="form-group">
                     <div id="div_botones" class="col-sm-12 col-md-12 col-lg-12">
-                        <a class="btn btn-primary" href="ListarEmpresas.aspx?success=edit">Editar</a>
+                        <button id="botonEditar" runat="server" class="btn btn-primary" onserverclick="EditarEmpresa_Click" >Editar</button>
                         <a class="btn btn-default" href="ListarEmpresas.aspx">Cancelar</a>
                     </div>
                 </div>

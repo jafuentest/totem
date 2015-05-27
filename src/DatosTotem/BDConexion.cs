@@ -239,6 +239,64 @@ namespace DatosTotem
             }
         #endregion
 
+        #region Ejecutar Stored Procedure Multiples Tuplas
+            public DataTable EjecutarStoredProcedureTuplas(string query, List<Parametro> parametros)
+            {
+                try
+                {
+                    Conectar();
+                    DataTable dataTable = new DataTable();
+                    using (conexion)
+                    {
+
+                        comando = new SqlCommand(query, conexion);
+                        comando.CommandType = CommandType.StoredProcedure;
+
+
+                        AsignarParametros(parametros);
+
+
+                        conexion.Open();
+                        using (SqlDataAdapter dataAdapter = new SqlDataAdapter(comando))
+                        {
+                            //SqlDataAdapter dataAdapter = new SqlDataAdapter();
+                            //dataAdapter.SelectCommand = comando;
+                            dataAdapter.Fill(dataTable);
+                            System.Diagnostics.Debug.WriteLine(dataAdapter);
+                            System.Diagnostics.Debug.WriteLine(dataTable);
+                        }
+
+                        return dataTable;
+                    }
+
+
+                }
+                catch (SqlException ex)
+                {
+                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                        RecursoGeneralBD.Mensaje, ex);
+                }
+                catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
+                {
+                    throw new ExcepcionesTotem.Modulo1.ParametroInvalidoException(
+                                    RecursoGeneralBD.Codigo_Parametro_Errado,
+                                    RecursoGeneralBD.Mensaje_Parametro_Errado,
+                                    ex);
+                }
+                catch (Exception ex)
+                {
+                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                        RecursoGeneralBD.Mensaje, ex);
+                }
+                finally
+                {
+                    Desconectar();
+                }
+            }
+            #endregion
+
+
+
 
     }
 

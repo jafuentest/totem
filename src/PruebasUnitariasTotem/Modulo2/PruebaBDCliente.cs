@@ -197,6 +197,27 @@ namespace PruebasUnitariasTotem.Modulo2
         }
 
         /// <summary>
+        /// Método que prueba, el método que elimina a un cliente natural de la Base de Datos 
+        /// </summary>
+        /// 
+        [Test]
+        public void PruebaEliminarClienteNatural() 
+        {
+            bool sonIguales = false; 
+            ClienteNatural cliente = new ClienteNatural();
+            int id = 4; 
+            cliente.Nat_Id = "44444444";
+            cliente.Nat_Nombre = "Pedro";
+            cliente.Nat_Apellido = "De Jesus";
+            cliente.Nat_Correo = "pedrdejesus@gmail.com";
+
+            ClienteNatural clienteActual = baseDeDatosCliente.ConsultarClienteNatural(id);
+            sonIguales = cliente.Equals(clienteActual);
+
+            Assert.IsTrue(sonIguales); 
+        }
+
+        /// <summary>
         /// Método que prueba el método de consultar los datos
         /// detallados de un cliente jurídico dado su id
         /// </summary>

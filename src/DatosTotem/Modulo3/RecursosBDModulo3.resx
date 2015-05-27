@@ -117,13 +117,88 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="aliasCargoNombre" xml:space="preserve">
+    <value>cargoNombre</value>
+    <comment>Nombre del cargo en la consulta de involucrados</comment>
+  </data>
+  <data name="aliasClienteJurID" xml:space="preserve">
+    <value>clienteJurID</value>
+    <comment>ID del cliente juridico para la consulta de involucrados</comment>
+  </data>
+  <data name="aliasClienteJurNombre" xml:space="preserve">
+    <value>clienteJurNombre</value>
+    <comment>Nombre del cliente juridico para la consulta de contactos involucrados</comment>
+  </data>
+  <data name="aliasClienteNatID" xml:space="preserve">
+    <value>clienteNatID</value>
+    <comment>ID del cliente natural para la consulta de involucrados</comment>
+  </data>
+  <data name="aliasClienteNatNombre" xml:space="preserve">
+    <value>clienteNatNombre</value>
+    <comment>Nombre del cliente natural para la consulta de contactos involucrados</comment>
+  </data>
+  <data name="aliasContactoApellido" xml:space="preserve">
+    <value>contactoApellido</value>
+    <comment>Apellido del contacto para la consulta de contactos involucrados</comment>
+  </data>
+  <data name="aliasContactoID" xml:space="preserve">
+    <value>contactoID</value>
+    <comment>ID para la consulta de contactos involucrados</comment>
+  </data>
+  <data name="aliasContactoNombre" xml:space="preserve">
+    <value>contactoNombre</value>
+    <comment>Nombre de contacto para la consulta de involucrados</comment>
+  </data>
+  <data name="aliasUsuarioApellido" xml:space="preserve">
+    <value>usuarioApellido</value>
+    <comment>Nombre del apellido en la consulta de involucrados</comment>
+  </data>
+  <data name="aliasUsuarioID" xml:space="preserve">
+    <value>usuarioID</value>
+    <comment>Nombre de la columna de la foranea del usuario involucrado en un proyecto dado</comment>
+  </data>
+  <data name="aliasUsuarioNombre" xml:space="preserve">
+    <value>usuarioNombre</value>
+    <comment>Nombre del usuario en la consulta de los involucrados</comment>
+  </data>
+  <data name="Codigo_ContactoSinID" xml:space="preserve">
+    <value>T_03_005</value>
+  </data>
   <data name="Codigo_Involucrado_Repetido" xml:space="preserve">
-    <value>T_01_001</value>
+    <value>T_03_001</value>
     <comment>Codigo de error en caso de que exista involucrado repetido en bd</comment>
+  </data>
+  <data name="Codigo_ListaSinInv" xml:space="preserve">
+    <value>T_03_003</value>
+  </data>
+  <data name="Codigo_ListaSinProy" xml:space="preserve">
+    <value>T_03_002</value>
+    <comment>Codigo de error en caso de que se intente agregar un involucrado sin proyecto asociado</comment>
+  </data>
+  <data name="Codigo_ProyectoSinCod" xml:space="preserve">
+    <value>T_03_006</value>
+  </data>
+  <data name="Codigo_UsuarioSinUsername" xml:space="preserve">
+    <value>T_03_004</value>
+  </data>
+  <data name="Mensaje_ContactoSinID" xml:space="preserve">
+    <value>No es posible agregar un contacto sin id</value>
   </data>
   <data name="Mensaje_Involucrado_Repetido" xml:space="preserve">
     <value>No puede existir un involucrado en un proyecto dos veces</value>
     <comment>Mensaje de error para la excepcion InvolucradoRepetidoException</comment>
+  </data>
+  <data name="Mensaje_ListaSinInv" xml:space="preserve">
+    <value>No es posible agregar una lista de involucrados vacia</value>
+  </data>
+  <data name="Mensaje_ListaSinProy" xml:space="preserve">
+    <value>No es posible agregar un involucrado a una lista que no posea un proyecto asociado</value>
+  </data>
+  <data name="Mensaje_ProyectoSinCod" xml:space="preserve">
+    <value>No es posible utilizar un proyecto sin codigo para gestionar involucrados</value>
+  </data>
+  <data name="Mensaje_UsuarioSinUsername" xml:space="preserve">
+    <value>No es posible agregar un usuario que no posea username</value>
   </data>
   <data name="ParamCodProy" xml:space="preserve">
     <value>@proyecto_codigo</value>
@@ -140,6 +215,14 @@
   <data name="ParamUsername" xml:space="preserve">
     <value>@usuario</value>
     <comment>Username para el stored insertar usuario</comment>
+  </data>
+  <data name="StoredConsultarContacto" xml:space="preserve">
+    <value>Procedure_consultarInvCliente</value>
+    <comment>Nombre del procedimiento que consulta clientes involucrados por proyecto</comment>
+  </data>
+  <data name="StoredConsultarUsuario" xml:space="preserve">
+    <value>Procedure_consultarInvUsuario</value>
+    <comment>Nombre del stored para consultar los usuarios involucrados</comment>
   </data>
   <data name="StoredContarCliente" xml:space="preserve">
     <value>Contar_TuplasInvContacto</value>

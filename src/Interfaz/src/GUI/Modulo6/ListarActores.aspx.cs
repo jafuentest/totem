@@ -9,6 +9,7 @@ public partial class GUI_Modulo6_ListarActores : System.Web.UI.Page
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		((MasterPage)Page.Master).IdModulo = "6";
+        String success = Request.QueryString["success"];
 
         DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
         if (user != null)
@@ -30,7 +31,7 @@ public partial class GUI_Modulo6_ListarActores : System.Web.UI.Page
             Response.Redirect("../Modulo1/M1_login.aspx");
         }
 
-        /*
+        
 		switch (success)
 		{
 			case "1":
@@ -50,7 +51,7 @@ public partial class GUI_Modulo6_ListarActores : System.Web.UI.Page
 				alert.Attributes["role"] = "alert";
 				alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Actor eliminado exitosamente</div>";
 				break;
-		}*/
+		}
 
         LogicaActor logica = new LogicaActor();
         List<Actor> listaActores = logica.ListarActor(0);

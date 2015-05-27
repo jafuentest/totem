@@ -7,21 +7,22 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Casos de Uso</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Agregar</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
+    <script src="js/validaciones.js"></script>
 	<div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-		<form name="form_actor" id="form_actor" class="form-horizontal" action="<%= Page.ResolveUrl("~/src/GUI/Modulo6/ListarActores.aspx?success=1") %>" method="post">
+		<form name="form_actor" id="form_actor" class="form-horizontal"  method="post" runat="server">
 			<div class="form-group">
 				<div id="div-nombre" class="col-sm-10 col-md-10 col-lg-10">
-					<input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control"/>
+					<input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control" runat="server"/>
 				</div>
 			</div>
 			<div class="form-group">
 				<div id="div-descripcion" class="col-sm-10 col-md-10 col-lg-10">
-					<input type="text" name="descripcion" id="descripcion" placeholder="Descripcion" class="form-control"/>
+					<input type="text" name="descripcion" id="descripcion" placeholder="Descripcion" class="form-control" runat="server"/>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-md-6">
-					<button class="btn btn-primary" type="submit">Agregar</button>
+					<button class="btn btn-primary" onserverclick="Agregar_Actor" runat="server" id="boton">Agregar</button>
 					<a class="btn btn-default" href="ListarActores.aspx">Cancelar</a>
 				</div>
 			</div>

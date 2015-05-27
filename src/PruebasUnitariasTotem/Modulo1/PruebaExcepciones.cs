@@ -1,4 +1,5 @@
-﻿using DatosTotem.Modulo1;
+﻿using DatosTotem;
+using DatosTotem.Modulo1;
 using DominioTotem;
 using ExcepcionesTotem.Modulo1;
 using LogicaNegociosTotem.Modulo1;
@@ -36,6 +37,11 @@ namespace PruebasUnitariasTotem.Modulo1
             {
                 Assert.AreEqual("No se pudo iniciar sesion, datos erroneos", loginErradoException.Mensaje);
             }
+            catch (IntentosFallidosException intentosErradoException)
+            {
+                Assert.AreEqual("Se fallo el inicio de sesion multiples veces, el usuario puede ser un bot", intentosErradoException.Mensaje);
+            }
+            
             catch (Exception e)
             {
                 Assert.Fail(
@@ -77,6 +83,61 @@ namespace PruebasUnitariasTotem.Modulo1
 
 
         [Test]
+        public void PruebaParametroInvalidoException()
+        {
+            try
+            {
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro parametro = null;
+                parametros.Add(parametro);
+
+                BDConexion con = new BDConexion();
+                con.AsignarParametros(parametros);
+                Assert.Fail("Una excepcion se ha debido de lanzar");
+            }
+            catch (ParametroInvalidoException parametroInvalidoException)
+            {
+                Assert.AreEqual("Error en un parametro del stored procedure", parametroInvalidoException.Mensaje);
+            }
+            catch (Exception e)
+            {
+                Assert.Fail(
+                string.Format("Unexpected exception of type {0} caught: {1}",
+                           e.GetType(), e.Message)
+                );
+
+
+            }
+
+        }
+
+        [Test]
+        public void PruebaErrorEnvioDeCorreoException()
+        {
+            try
+            {
+                usuario.correo = "santiagobernal93@gmail.com";
+                LogicaLogin.EnviarEmail(usuario);
+                Assert.Fail("Una excepcion se ha debido de lanzar");
+            }
+            catch (EmailErradoException emailErradoException)
+            {
+                Assert.AreEqual("Error en el envio del correo", emailErradoException.Mensaje);
+            }
+            catch (Exception e)
+            {
+                Assert.Fail(
+                string.Format("Unexpected exception of type {0} caught: {1}",
+                           e.GetType(), e.Message)
+                );
+
+
+            }
+
+        }
+
+
+        [Test]
 
         public void PruebaRespuestaErradoException()
         {
@@ -102,6 +163,33 @@ namespace PruebasUnitariasTotem.Modulo1
             }
 
         }
+
+
+        [Test]
+        public void PruebaUsuarioVacioException()
+        {
+            try
+            {
+
+                BDLogin.ValidarLoginBD(usuario);
+                Assert.Fail("Una excepcion se ha debido de lanzar");
+            }
+            catch (UsuarioVacioException usuarioVacioException)
+            {
+                Assert.AreEqual("Datos de usuario incompletos", usuarioVacioException.Mensaje);
+            }
+            catch (Exception e)
+            {
+                Assert.Fail(
+                string.Format("Unexpected exception of type {0} caught: {1}",
+                           e.GetType(), e.Message)
+                );
+
+
+            }
+
+        }
+
 
 
     }
