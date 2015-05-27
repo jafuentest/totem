@@ -220,6 +220,7 @@ GO
 
 /*-------------Modificar Cliente Natural-------------------------------*/
 
+
 CREATE PROCEDURE Procedure_ModificarClienteNatural
 
 @cedula         varchar(20),
@@ -227,14 +228,17 @@ CREATE PROCEDURE Procedure_ModificarClienteNatural
 @apellido       varchar(60) ,
 @correo         varchar (60),
 
-@nombreLugar    varchar(100),
+@nombrePais     varchar(100),
+@nombreEstado   varchar(100),
+@nombreCiudad   varchar(100),
+@nombreDireccion varchar(100),
 @nombreCargo    varchar(60), 
-@idCiudad       integer,
-@idCargo        integer, 
+
+ 
 @codigo         integer,
 @numero         integer
 as
-
+DECLARE @idCiudad  integer
 DECLARE @idNatural integer
 DECLARE @idLugarDireccion integer
 DECLARE @idMaxLugar  integer
@@ -243,8 +247,25 @@ DECLARE @idCargoInsertar integer
 
 begin
 
-	
-	select @idLugarDireccion = LUG_id from lugar where LUG_nombre = @nombreLugar and LUG_tipo = 'Direccion' and LUGAR_lug_id = @idCiudad;
+	select 
+		@idCiudad=c.lug_id
+
+	from lugar p,
+		 lugar e,
+		 lugar c, 
+		 lugar d
+
+	where p.lug_id = e.LUGAR_lug_id
+	 and  e.lug_id = c.LUGAR_lug_id
+	 and  c.lug_id = d.LUGAR_lug_id
+	 and  p.lug_nombre=@nombrePais and p.lug_tipo='País'
+	 and  e.lug_nombre=@nombreEstado and e.lug_tipo='Estado'
+	 and  c.lug_nombre=@nombreCiudad and c.lug_tipo='Ciudad';
+	 
+
+
+	select @idLugarDireccion = count(LUG_id) from lugar 
+	 where LUG_nombre = @nombreDireccion and LUG_tipo = 'Direccion' and LUGAR_lug_id = @idCiudad;
 	
 	
 	if (@idLugarDireccion = 0)
@@ -253,12 +274,12 @@ begin
 
 			set @idMaxLugar = @idMaxLugar + 1;
 
-			INSERT INTO lugar VALUES (@idMaxLugar,@nombreLugar,'Direccion',null,@idCiudad);
+			INSERT INTO lugar VALUES (@idMaxLugar,@nombreDireccion,'Direccion',null,@idCiudad);
 
 			set @idLugarDireccion = @idMaxLugar;
 		end
 		
-	 select @idCargoInsertar=car_id from cargo where car_nombre = @nombreCargo and car_id =  @idCargo; 
+	 select @idCargoInsertar=count(car_id) from cargo where car_nombre = @nombreCargo ; 
 	
 	if (@idCargoInsertar = 0)
 		begin 
@@ -293,7 +314,8 @@ begin
 	     set cn_cedula = @cedula,
 		     cn_nombre = @nombre,
 			 cn_apellido = @apellido,
-			 cn_correo = @correo
+			 cn_correo = @correo,
+			 LUGAR_lug_id = @idLugarDireccion
 	where cn_id = @idNatural
 end;
 GO

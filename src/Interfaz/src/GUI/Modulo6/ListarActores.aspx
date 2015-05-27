@@ -27,23 +27,8 @@
 						<th>Acciones</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-						<td>Usuario</td>
-						<td>Usuario común del sitio</td>
-						<td>
-							<a class="btn btn-default glyphicon glyphicon-pencil" data-toggle="modal" data-target="#modal-update" href="#"></a>
-							<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
-						</td>
-					</tr>
-					<tr>
-						<td>Administrador</td>
-						<td>Hereda todos los permisos del Usuario común, además tener permisos totales en el sistema</td>
-						<td>
-							<a class="btn btn-default glyphicon glyphicon-pencil" data-toggle="modal" data-target="#modal-update" href="#"></a>
-							<a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
-						</td>
-					</tr>
+				<tbody runat="server" id="cuerpo">
+					
 				</tbody>
 			</table>
 			<div id="modal-delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
