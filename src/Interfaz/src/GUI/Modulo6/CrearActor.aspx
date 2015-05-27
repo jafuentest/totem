@@ -11,12 +11,12 @@
 		<form name="form_actor" id="form_actor" class="form-horizontal" action="<%= Page.ResolveUrl("~/src/GUI/Modulo6/ListarActores.aspx?success=1") %>" method="post">
 			<div class="form-group">
 				<div id="div-nombre" class="col-sm-10 col-md-10 col-lg-10">
-					<input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control"/>
+					<input runat="server" type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control"/>
 				</div>
 			</div>
 			<div class="form-group">
 				<div id="div-descripcion" class="col-sm-10 col-md-10 col-lg-10">
-					<input type="text" name="descripcion" id="descripcion" placeholder="Descripcion" class="form-control"/>
+					<input runat="server" type="text" name="descripcion" id="descripcion" placeholder="Descripcion" class="form-control"/>
 				</div>
 			</div>
 			<div class="form-group">
