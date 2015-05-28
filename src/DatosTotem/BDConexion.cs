@@ -63,6 +63,7 @@ namespace DatosTotem
             /// </summary>
             public void Desconectar()
             {
+
                 try
                 {
                     this.conexion.Close();
@@ -72,8 +73,29 @@ namespace DatosTotem
                 {
 
                     ExceptionTotemConexionBD CnBD = new ExceptionTotemConexionBD(
-                      RecursoGeneralBD.Codigo,
-                      RecursoGeneralBD.Mensaje,
+                      RecursoGeneralBD.Codigo_Error_Desconexion,
+                      RecursoGeneralBD.Mensaje_Error_Desconexion,
+                      ex);
+
+                    throw CnBD;
+                }
+
+            }
+
+            public void Desconectar(SqlConnection conec)
+            {
+
+                try
+                {
+                    conec.Close();
+                }
+
+                catch (Exception ex)
+                {
+
+                    ExceptionTotemConexionBD CnBD = new ExceptionTotemConexionBD(
+                      RecursoGeneralBD.Codigo_Error_Desconexion,
+                      RecursoGeneralBD.Mensaje_Error_Desconexion,
                       ex);
 
                     throw CnBD;
