@@ -47,24 +47,20 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
        public bool AgregarClienteNatural(string identificador, string nombre, int fkLugar)
        {
-            try
-            {
+           //try
+          // {
            ClienteNatural clientenatural = new ClienteNatural(identificador, nombre);
-             return baseDeDatosCliente.AgregarClienteNatural(clientenatural, fkLugar);
-           }
-            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
-            {
-                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
-                ex.Codigo, ex.Mensaje, ex);
-            }
-            catch (ExcepcionesTotem.Modulo2.Modulo2ClienteVacioException ex)
-            {
-                throw new ExcepcionesTotem.Modulo2.Modulo2ClienteVacioException(
-                    ex.Codigo, ex.Mensaje, ex);
-            }
-
+           return baseDeDatosCliente.AgregarClienteNatural(clientenatural, fkLugar);
+           //}
+          // catch (ExcepcionesTotem.Modulo2.ExcepcionLogicaClientes)
+        //   {
+             
+             //  throw new ExcepcionesTotem.Modulo2.ExcepcionLogicaClientes();
+           //}
+                
+            //}
             
-      
+
         }
 
 
@@ -76,24 +72,7 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
        public bool EliminarClienteNatural(string cedula)
        {
-
-             try
-            {
            return baseDeDatosCliente.EliminarClienteNatural(cedula);
-            }
-
-             catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
-             {
-                 throw new ExcepcionesTotem.ExceptionTotemConexionBD(
-                 ex.Codigo, ex.Mensaje, ex);
-             }
-             catch (ExcepcionesTotem.Modulo2.Modulo2ClienteVacioException ex)
-             {
-                 throw new ExcepcionesTotem.Modulo2.Modulo2ClienteVacioException(
-                     ex.Codigo, ex.Mensaje, ex);
-             }
-
-
        }
 
 
@@ -117,22 +96,7 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
        public bool ModificarClienteJuridico(ClienteNatural clienteNatural)
        {
-
-           try
-           {
-               return baseDeDatosCliente.ModificarClienteNatural(clienteNatural);
-
-           }
-           catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
-           {
-               throw new ExcepcionesTotem.ExceptionTotemConexionBD(
-               ex.Codigo, ex.Mensaje, ex);
-           }
-           catch (ExcepcionesTotem.Modulo2.Modulo2ClienteVacioException ex)
-           {
-               throw new ExcepcionesTotem.Modulo2.Modulo2ClienteVacioException(
-                   ex.Codigo, ex.Mensaje, ex);
-           }
+           return baseDeDatosCliente.ModificarClienteNatural(clienteNatural);
        }
 
 
@@ -142,22 +106,7 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns>Retorna el objeto de tipo Cliente Juridico, null si el objeto no existe</returns>
        public ClienteJuridico ConsultarClienteJuridico(int id)
        {
-
-           try
-           {
-               return baseDeDatosCliente.ConsultarClienteJuridico(id);
-           }
-
-           catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
-           {
-               throw new ExcepcionesTotem.ExceptionTotemConexionBD(
-               ex.Codigo, ex.Mensaje, ex);
-           }
-           catch (ExcepcionesTotem.Modulo2.Modulo2ClienteVacioException ex)
-           {
-               throw new ExcepcionesTotem.Modulo2.Modulo2ClienteVacioException(
-                   ex.Codigo, ex.Mensaje, ex);
-           }
+           return baseDeDatosCliente.ConsultarClienteJuridico( id); 
        }
 
 
@@ -167,20 +116,8 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns>Retorna el objeto de tipo Cliente Juridico, null si el objeto no existe</returns>
        public ClienteNatural ConsultarClienteNatural(int id)
        {
-           try
-           {
-               return baseDeDatosCliente.ConsultarClienteNatural(id);
-           }
-           catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
-           {
-               throw new ExcepcionesTotem.ExceptionTotemConexionBD(
-               ex.Codigo, ex.Mensaje, ex);
-           }
-           catch (ExcepcionesTotem.Modulo2.Modulo2ClienteVacioException ex)
-           {
-               throw new ExcepcionesTotem.Modulo2.Modulo2ClienteVacioException(
-                   ex.Codigo, ex.Mensaje, ex);
-           }
+           
+           return baseDeDatosCliente.ConsultarClienteNatural(id); 
        }
 
        /// <summary>
@@ -189,22 +126,7 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns>Retorna una lista de Clientes Juridicos, null si el objeto no existe</returns>
        public List<ClienteJuridico> ConsultarClientesJuridicos()
        {
-
-           try
-           {
-               return baseDeDatosCliente.ConsultarClientesJuridicos();
-           }
-
-           catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
-           {
-               throw new ExcepcionesTotem.ExceptionTotemConexionBD(
-               ex.Codigo, ex.Mensaje, ex);
-           }
-           catch (ExcepcionesTotem.Modulo2.Modulo2ClienteVacioException ex)
-           {
-               throw new ExcepcionesTotem.Modulo2.Modulo2ClienteVacioException(
-                   ex.Codigo, ex.Mensaje, ex);
-           }
+           return baseDeDatosCliente.ConsultarClientesJuridicos();
        }
 
 
@@ -214,21 +136,7 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns>Retorna una lista de Clientes Naturales, null si el objeto no existe</returns>
        public List<ClienteNatural> ConsultarClientesNaturales()
        {
-           try
-           {
-               return baseDeDatosCliente.ConsultarClientesNaturales();
-           }
-
-           catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
-           {
-               throw new ExcepcionesTotem.ExceptionTotemConexionBD(
-               ex.Codigo, ex.Mensaje, ex);
-           }
-           catch (ExcepcionesTotem.Modulo2.Modulo2ClienteVacioException ex)
-           {
-               throw new ExcepcionesTotem.Modulo2.Modulo2ClienteVacioException(
-                   ex.Codigo, ex.Mensaje, ex);
-           }
+           return baseDeDatosCliente.ConsultarClientesNaturales();
        }
 
 
@@ -241,25 +149,8 @@ namespace LogicaNegociosTotem.Modulo2
        /// parámetro de búsqueda, null si ninguno cumple con el parámetro</returns>
        public List<ClienteJuridico> ConsultarClientesJuridicosParametrizados(string parametroBusqueda)
        {
-
-           try
-           {
-               return baseDeDatosCliente.ConsultarClientesJuridicosParametrizados(parametroBusqueda);
-           }
-
-           catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
-           {
-               throw new ExcepcionesTotem.ExceptionTotemConexionBD(
-               ex.Codigo, ex.Mensaje, ex);
-           }
-           catch (ExcepcionesTotem.Modulo2.Modulo2ClienteVacioException ex)
-           {
-               throw new ExcepcionesTotem.Modulo2.Modulo2ClienteVacioException(
-                   ex.Codigo, ex.Mensaje, ex);
-           }
-           
-           
-           }
+           return baseDeDatosCliente.ConsultarClientesJuridicosParametrizados(parametroBusqueda);
+       }
 
        /// <summary>
        /// Método que solicita a la capa de datos la información sobre los clientes naturales dado 
@@ -270,24 +161,8 @@ namespace LogicaNegociosTotem.Modulo2
        /// parámetro de búsqueda, null si ninguno cumple con el parámetro</returns>
        public List<ClienteNatural> ConsultarClientesNaturalesParametrizados(string parametroBusqueda)
        {
-           try
-           {
-               return baseDeDatosCliente.ConsultarClientesNaturalesParametrizados(parametroBusqueda);
-           }
-
-
-           catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
-           {
-               throw new ExcepcionesTotem.ExceptionTotemConexionBD(
-               ex.Codigo, ex.Mensaje, ex);
-           }
-           catch (ExcepcionesTotem.Modulo2.Modulo2ClienteVacioException ex)
-           {
-               throw new ExcepcionesTotem.Modulo2.Modulo2ClienteVacioException(
-                   ex.Codigo, ex.Mensaje, ex);
-           }
-           
-           }
+           return baseDeDatosCliente.ConsultarClientesNaturalesParametrizados(parametroBusqueda);
+       }
 
 
 

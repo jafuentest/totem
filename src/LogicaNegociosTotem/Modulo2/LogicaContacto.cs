@@ -41,9 +41,9 @@ namespace LogicaNegociosTotem.Modulo2
                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(
                    ex.Codigo, ex.Mensaje, ex);
            }
-           catch (ExcepcionesTotem.Modulo2.Modulo2ContactoVacioException ex)
+           catch (ExcepcionesTotem.Modulo2.ContactoVacioException ex)
            {
-               throw new ExcepcionesTotem.Modulo2.Modulo2ContactoVacioException(
+               throw new ExcepcionesTotem.Modulo2.ContactoVacioException(
                    ex.Codigo, ex.Mensaje, ex);
            }
 
