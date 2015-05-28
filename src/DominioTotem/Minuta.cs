@@ -13,12 +13,21 @@ namespace DominioTotem
         private DateTime fecha;
         private string motivo;
         private string observaciones;
+        private List<Usuario> usuario;
+        private List<Contacto> contacto;
 
         #endregion
 
         #region Constructores
         public Minuta()
         {
+        }
+
+        public Minuta(DateTime fecha, string motivo, string observaciones)
+        {
+            this.fecha = fecha;
+            this.motivo = motivo;
+            this.observaciones = observaciones;
         }
 
         public Minuta(string codigo, DateTime fecha, string motivo, string observaciones) 
@@ -29,11 +38,25 @@ namespace DominioTotem
             this.observaciones = observaciones;
         }
 
-        public Minuta(DateTime fecha, string motivo, string observaciones)
+        public Minuta(DateTime fecha, string motivo, string observaciones, List<Usuario> usuario,
+           List<Contacto> contacto)
         {
             this.fecha = fecha;
             this.motivo = motivo;
             this.observaciones = observaciones;
+            this.usuario = usuario;
+            this.contacto = contacto;
+        }
+
+        public Minuta(string codigo, DateTime fecha, string motivo, string observaciones, List<Usuario> usuario, 
+            List<Contacto> contacto)
+        {
+            this.codigo = codigo;
+            this.fecha = fecha;
+            this.motivo = motivo;
+            this.observaciones = observaciones;
+            this.usuario = usuario;
+            this.contacto = contacto;
         }
 
         #endregion

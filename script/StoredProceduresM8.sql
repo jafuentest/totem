@@ -305,7 +305,9 @@ BEGIN
        acu_id = @acu_id
 END
 GO
------------------ Procedimiento para Eliminar un Punto
+
+----------------- Procedimientos para Eliminar-----------------------
+----------------- Procedimiento para Eliminar un Punto---------------
 
 CREATE PROCEDURE Procedure_EliminarPunto
 
