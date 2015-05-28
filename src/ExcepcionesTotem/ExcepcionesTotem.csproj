@@ -49,8 +49,8 @@
     <Compile Include="Modulo1\LoginErradoException.cs" />
     <Compile Include="Modulo1\ErrorEnvioDeCorreoException.cs" />
     <Compile Include="Modulo2\ClienteInexistenteException.cs" />
-    <Compile Include="Modulo2\ExcepcionClientesDatos.cs" />
-    <Compile Include="Modulo2\ExcepcionLogicaClientes.cs" />
+    <Compile Include="Modulo2\ClienteDatosException.cs" />
+    <Compile Include="Modulo2\ClienteLogicaException.cs" />
     <Compile Include="Modulo3\ContactoSinIDException.cs" />
     <Compile Include="Modulo3\InvolucradoRepetidoException.cs" />
     <Compile Include="Modulo3\ListaSinInvolucradosException.cs" />

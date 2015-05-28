@@ -46,6 +46,7 @@
     </Compile>
     <Compile Include="Modulo2\LogicaCliente.cs" />
     <Compile Include="Modulo2\LogicaContacto.cs" />
+    <Compile Include="Modulo2\LogicaLugar.cs" />
     <Compile Include="Modulo3\LogicaInvolucrados.cs" />
     <Compile Include="Modulo4\LogicaProyecto.cs" />
     <Compile Include="Modulo6\LogicaActor.cs" />
