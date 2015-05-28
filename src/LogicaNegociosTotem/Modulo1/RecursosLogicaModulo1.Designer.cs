@@ -151,6 +151,15 @@ namespace LogicaNegociosTotem.Modulo1 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Si usted no solicito una recuperacion de clave, ignore este mensaje.
+        /// </summary>
+        internal static string Correo_Mensaje_Ignorar {
+            get {
+                return ResourceManager.GetString("Correo_Mensaje_Ignorar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se ha enviado una solicitud de recuperacion de clave. Para seguir con el proceso, porfavor ingrese al siguiente link: .
         /// </summary>
         internal static string Correo_Mensaje_Recuperacion_Clave {
@@ -169,11 +178,11 @@ namespace LogicaNegociosTotem.Modulo1 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to T_01_001.
+        ///   Looks up a localized string similar to http://localhost:22288/src/GUI/Modulo1/M1_PreguntaSeguridad.aspx?usuario=.
         /// </summary>
-        internal static string e {
+        internal static string Link_Recuperacion_Clave {
             get {
-                return ResourceManager.GetString("e", resourceCulture);
+                return ResourceManager.GetString("Link_Recuperacion_Clave", resourceCulture);
             }
         }
         

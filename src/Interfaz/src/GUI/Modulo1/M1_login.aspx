@@ -9,11 +9,12 @@
     Inicio de Sesión
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contenidoCentral" Runat="Server">
-                <div id="alert" runat="server">
+                
+                <div  class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
+                    <div id="alert" runat="server">
                 </div>
                 <div id="alertlocal" >
                 </div>
-                <div  class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
                    <form runat="server" class="form-horizontal" method="POST" >
 
                     <div id="login-form-name" class="form-group">

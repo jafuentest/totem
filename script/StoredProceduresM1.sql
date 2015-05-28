@@ -38,3 +38,15 @@ CREATE PROCEDURE VALIDAR_PREGUNTA_SEGURIDAD
 
 	RETURN
 	GO
+
+CREATE PROCEDURE VALIDAR_CORREO
+	@Correo varchar(60),
+	@usu_correo varchar(60) OUTPUT
+	AS
+
+	Select @Usu_correo = usu_correo
+	from Usuario
+	where usu_correo = @Correo
+
+	RETURN
+	GO

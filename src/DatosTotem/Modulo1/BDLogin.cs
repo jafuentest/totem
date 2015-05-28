@@ -133,7 +133,76 @@ namespace DatosTotem.Modulo1
 
         public static bool ValidarCorreoBD(string correo)
         {
-            throw new NotImplementedException();
+            if (correo != null && correo != "")
+            {
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro parametro = new Parametro(
+                    RecursosBDModulo1.Parametro_Input_Correo,
+                    SqlDbType.VarChar, correo, false);
+                parametros.Add(parametro);
+                parametro = new Parametro(
+                    RecursosBDModulo1.Parametro_Output_Usu_correo,
+                    SqlDbType.VarChar, true);
+                parametros.Add(parametro);
+                try
+                {
+                    BDConexion con = new BDConexion();
+                    List<Resultado> resultados = con.EjecutarStoredProcedure(
+                        RecursosBDModulo1.Query_ValidarCorreo,
+                        parametros);
+                    foreach (Resultado resultado in resultados)
+                    {
+                        if (resultado != null && resultado.etiqueta != "")
+                        {
+                           if (resultado.valor.Equals(correo))
+                           {
+                               return true;
+                           }
+                           else
+                           {
+                               throw new EmailErradoException(
+                                   RecursosBDModulo1.Codigo_Email_Errado,
+                                   RecursosBDModulo1.Mensaje_Email_errado,
+                                   new EmailErradoException());
+                           }
+                        }
+                        else
+                        {
+                            throw new EmailErradoException(
+                                RecursosBDModulo1.Codigo_Email_Errado,
+                                RecursosBDModulo1.Mensaje_Email_errado,
+                                new EmailErradoException());
+                        }
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                        RecursoGeneralBD.Mensaje, ex);
+                }
+                catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+                {
+                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(ex.Codigo, ex.Mensaje, ex);
+                }
+                catch (EmailErradoException ex)
+                {
+                    throw new EmailErradoException(ex.Codigo, ex.Mensaje, ex);
+                }
+                catch (ParametroInvalidoException ex)
+                {
+                    throw new ParametroInvalidoException(RecursoGeneralBD.Codigo_Parametro_Errado,
+                        RecursoGeneralBD.Mensaje_Parametro_Errado, ex);
+                }
+                return false;
+            }
+            else
+            {
+                return false;
+                throw new ExcepcionesTotem.Modulo1.EmailErradoException(
+                    RecursosBDModulo1.Codigo_Email_Errado,
+                    RecursosBDModulo1.Mensaje_Email_errado,
+                    new ExcepcionesTotem.Modulo1.EmailErradoException());
+            }
         }
 
         #region Obtener Pregunta Seguridad

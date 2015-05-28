@@ -193,6 +193,10 @@
     <value>obtener_pregunta_seguridad</value>
     <comment>Query para el stored procedure que me retorna la pregunta de seguridad del usuario</comment>
   </data>
+  <data name="Query_ValidarCorreo" xml:space="preserve">
+    <value>validar_correo</value>
+    <comment>Query para el stored procedure que valida el correo del usuario</comment>
+  </data>
   <data name="Query_ValidarLogin" xml:space="preserve">
     <value>validarlogin</value>
     <comment>Query para el stored procedure que valida el login del usuario</comment>

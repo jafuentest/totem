@@ -20,6 +20,13 @@ public partial class login : System.Web.UI.Page
             captchaContainer.Visible = false;
         }
 
+        #region Redireccionamiento a Default
+        if (HttpContext.Current.Session["Credenciales"] != null)
+        {
+            HttpContext.Current.Response.Redirect("Default.aspx");
+        }
+        #endregion
+
         String log = Request.QueryString["logout"];
         if (log != null)
         {
@@ -30,13 +37,21 @@ public partial class login : System.Web.UI.Page
             }
         }
 
-      
-        
-        #region Redireccionamiento a Default
-        if (HttpContext.Current.Session["Credenciales"] != null) {
-            HttpContext.Current.Response.Redirect("Default.aspx");
+        string success = Request.QueryString["success"];
+        if (success != null)
+        {
+            if (success.Equals("2"))
+            {
+                alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                alert.Attributes["role"] = "alert";
+
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" " + 
+                    "data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=" + 
+                    "\"true\">&times;</span></button>Se ha enviado un correo" +
+                    " con los pasos a seguir</div>";
+          
+            }
         }
-        #endregion
 
     }
     protected void Login_Click(object sender, EventArgs e) {

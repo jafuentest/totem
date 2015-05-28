@@ -9,21 +9,21 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     
-    <div  class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
+    <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
         <div id="alerta" >
                 </div>
-    <form id="ingresoCorreo" class="form-horizontal" method="post" action="M1_login.aspx">
+         <form id="ingresoCorreo" runat="server" class="form-horizontal" method="post">
 
                 <div  class="login-form"> 
                     
                   <div id="login-form-name" class="form-group">
                     <label>Introduzca su correo:</label>
-                    <input type="text" class="form-control login-field" style="width:70%;" value="" placeholder="ejemplo@dominio.com" id="login-name" name="correo" />
+                    <input runat="server" type="text" class="form-control login-field" style="width:70%;" value="" placeholder="ejemplo@dominio.com" id="input_correo" name="correo" />
                   </div>
                   <div class="form-group">
 		               <div class="form-group">
                          &nbsp; &nbsp;
-				            <button class="btn btn-primary" id="btn-Enviar" type="submit" onclick="return checkform()">Continuar</button>
+				            <button runat="server"  class="btn btn-primary" type="submit" onserverclick="btn_Enviar_ServerClick">Continuar</button>
                         &nbsp;
 				            <a class="btn btn-default" href="M1_login.aspx">Cancelar</a>
                        </div>  

@@ -69,13 +69,13 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
         else
         {
-           /* if ((!HttpContext.Current.Request.Url.AbsolutePath.Equals("/src/GUI/Modulo1/M1_login.aspx"))&&
+            if ((!HttpContext.Current.Request.Url.AbsolutePath.Equals("/src/GUI/Modulo1/M1_login.aspx"))&&
                (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/src/GUI/Modulo1/M1_IntroducirCorreo.aspx")) &&
                (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/src/GUI/Modulo1/M1_PreguntaSeguridad.aspx")) &&
                (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/src/GUI/Modulo1/M1_RecuperacionClave.aspx")))
             {
                 Response.Redirect("~/src/GUI/Modulo1/M1_login.aspx");
-            }*/
+            }
         }
 	}
 

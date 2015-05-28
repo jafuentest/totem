@@ -241,6 +241,15 @@ namespace DatosTotem.Modulo1 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to validar_correo.
+        /// </summary>
+        internal static string Query_ValidarCorreo {
+            get {
+                return ResourceManager.GetString("Query_ValidarCorreo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to validarlogin.
         /// </summary>
         internal static string Query_ValidarLogin {

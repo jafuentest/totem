@@ -190,7 +190,8 @@ namespace LogicaNegociosTotem.Modulo1
             if (usuario != null && usuario.correo != null
                 && usuario.correo != "")
             {
-                string link = EncriptarConRijndael(usuario.correo,
+                string link = RecursosLogicaModulo1.Link_Recuperacion_Clave;
+                    link += EncriptarConRijndael(usuario.correo,
                     RecursosLogicaModulo1.Passphrase);
                 return link;
             }
@@ -232,6 +233,7 @@ namespace LogicaNegociosTotem.Modulo1
                     mail.Subject = RecursosLogicaModulo1.Correo_Asunto_Recuperacion_Clave;
                     mail.Body = RecursosLogicaModulo1.Correo_Mensaje_Recuperacion_Clave;
                     mail.Body += GenerarLink(usuario);
+                    mail.Body += "\n\n\n" + RecursosLogicaModulo1.Correo_Mensaje_Ignorar;
 
                     servidorSmtp.Port = Convert.ToInt32(RecursosLogicaModulo1.Puerto_Smtp);
                     servidorSmtp.UseDefaultCredentials = false;

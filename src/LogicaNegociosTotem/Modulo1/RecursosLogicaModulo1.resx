@@ -149,10 +149,6 @@
     <value>T_01_003</value>
     <comment>Error de respuesta ingresada erronea</comment>
   </data>
-  <data name="e" xml:space="preserve">
-    <value>T_01_001</value>
-    <comment>Error en login o recuperacion de clave por datos de usuario incompletos</comment>
-  </data>
   <data name="Mensaje_Email_errado" xml:space="preserve">
     <value>No se pudo obtener la pregunta de seguridad, el email es invalido</value>
     <comment>Mensaje de error para cuando el email es errado</comment>
@@ -228,5 +224,13 @@
   <data name="Servidor_Smtp" xml:space="preserve">
     <value>smtp.gmail.com</value>
     <comment>Servidor smtp para el envio de correos</comment>
+  </data>
+  <data name="Link_Recuperacion_Clave" xml:space="preserve">
+    <value>http://localhost:22288/src/GUI/Modulo1/M1_PreguntaSeguridad.aspx?usuario=</value>
+    <comment>Link de recuperacion de clave</comment>
+  </data>
+  <data name="Correo_Mensaje_Ignorar" xml:space="preserve">
+    <value>Si usted no solicito una recuperacion de clave, ignore este mensaje</value>
+    <comment>Mensaje que se envia al final del correo</comment>
   </data>
 </root>
