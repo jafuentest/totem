@@ -433,6 +433,29 @@ namespace DatosTotem.Modulo2 {
         }
 
 
+        /// <summary>
+        ///   Looks up a localized string similar to ProcedureVerificarClienteJuridico.
+        /// </summary>
+        internal static string ProcedureVerificarClienteJuridico
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedureVerificarClienteJuridico", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ProcedureVerificarClienteNatural.
+        /// </summary>
+        internal static string ProcedureVerificarClienteNatural
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedureVerificarClienteNatural", resourceCulture);
+            }
+        }
+
+
 
 
 

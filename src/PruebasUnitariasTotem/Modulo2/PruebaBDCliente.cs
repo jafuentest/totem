@@ -254,6 +254,32 @@ namespace PruebasUnitariasTotem.Modulo2
         
         }
         /// <summary>
+        /// Método que prueba el método de probar 
+        /// la existencia o no de un Cliente(Natural o Jurídico)
+        /// en Base de Datos
+        /// </summary>
+        /// 
+        [Test]
+        public void PruebaVerificarExistenciaCliente() 
+        {
+            string cedulaExistente = "11111111";
+            string cedulaNoExistente = "77777777";
+            string rifExistente = "J-22222222-2";
+            string rifNoExistente = "J-77777777-7";
+
+            Assert.AreEqual(1, 
+                baseDeDatosCliente.VerificarExistenciaClienteNatural(cedulaExistente));
+            Assert.AreEqual(0, 
+                baseDeDatosCliente.VerificarExistenciaClienteNatural(cedulaNoExistente));
+            Assert.AreEqual(1,
+                baseDeDatosCliente.VerificarExistenciaClienteJuridico(rifExistente));
+            Assert.AreEqual(0,
+                baseDeDatosCliente.VerificarExistenciaClienteJuridico(rifNoExistente));
+        
+        }
+
+
+        /// <summary>
         /// Método que limpia el objeto que se probó 
         /// para que el Recolector de Basura lo recolecte
         /// </summary>
