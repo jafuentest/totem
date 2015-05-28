@@ -52,11 +52,11 @@
     <Compile Include="Modulo6\LogicaActor.cs" />
     <Compile Include="Modulo7\LogicaUsuario.cs" />
     <Compile Include="Modulo7\ManejadorUsuario.cs" />
+    <Compile Include="Modulo8\LogicaMinuta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modulo5\" />
-    <Folder Include="Modulo8\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Modulo1\LogicaLogin.cs" />
