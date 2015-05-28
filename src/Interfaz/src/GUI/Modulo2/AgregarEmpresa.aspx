@@ -21,7 +21,10 @@
     Agregar Cliente Juridico
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" runat="Server">
-
+    <div id="alert" runat="server">
+                </div>
+                <div id="alertlocal" >
+                </div>
     <div class="col-sm-8 col-md-8 col-lg-8 col-md-offset-2">
         <form id="agregar_empresa" class="form-horizontal" action="#" method="post" runat="Server">
 
@@ -54,43 +57,31 @@
                 <div class="form-group">
                     <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6">
                         <div class="dropdown">
-                            <button id="paisEmpresa" runat="server" class="btn btn-default dropdown-toggle" name="pais-dd" type="button" data-toggle="dropdown" aria-expanded="true">
-                                País
-                                <span class="caret"></span>
-                            </button>
-                            <ul id="paisLista" runat="server" class="dropdown-menu" role="menu" aria-labelledby="pais">
-                                <li role="presentation"><a role="menuitem" tabindex="-1">Venezuela</a></li>
-                            </ul>
+                            <select id="comboPais" runat="server">
+                                
+                                <option value="0" runat="server" selected="selected">Seleccione País..</option>
+                                <option value="1" runat="server">Venezuela</option>
+                            </select>
                         </div>
                     </div>
                     <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
                         <div class="dropdown">
-                            <button id="estadoEmpresa" class="btn btn-default dropdown-toggle" runat="server" name="estado-dd" type="button" data-toggle="dropdown" aria-expanded="true">
-                                Estado
-                                <span class="caret"></span>
-                            </button>
-                            <ul id="estadoLista" runat="server" class="dropdown-menu" role="menu" aria-labelledby="estado">
-                                <li role="presentation"><a role="menuitem" tabindex="-1">Aragua</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1">Carabobo</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1">Distrito Capital</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1">Maracaibo</a></li>
-                            </ul>
+                            <select id="comboEstado" runat="server">
+                                
+                                <option value="0" runat="server" selected="selected">Seleccione Estado..</option>
+                                <option value="1" runat="server">Dtto Capital</option>
+                            </select>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="dropdown">
                     <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
-                       <button id="ciudadEmpresa" class="btn btn-default dropdown-toggle" runat="server" name="ciudad-dd" type="button" data-toggle="dropdown" aria-expanded="true">
-                            Ciudad
-                            <span class="caret"></span>
-                        </button>
-                        <ul id="ciudadLista" runat="server" class="dropdown-menu" role="menu" aria-labelledby="ciudad">
-                            <li role="presentation"><a role="menuitem" tabindex="-1">Maracay</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1">Caracas</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1">Guarenas</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1">Los Teques</a></li>
-                        </ul>
+                       <select id="comboCiudad" runat="server" >
+                                
+                                <option value="0" runat="server" selected="selected">Seleccione Ciudad..</option>
+                                <option value="1" runat="server">Caracas</option>
+                            </select>
                     </div>
                   </div>
                 </div>
