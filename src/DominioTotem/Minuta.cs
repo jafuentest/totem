@@ -13,8 +13,6 @@ namespace DominioTotem
         private DateTime fecha;
         private string motivo;
         private string observaciones;
-        private IEnumerable<Punto> listaPunto;
-        private IEnumerable<Acuerdo> listaAcuerdo;
 
         #endregion
 

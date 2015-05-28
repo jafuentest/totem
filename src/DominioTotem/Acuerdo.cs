@@ -11,6 +11,7 @@ namespace DominioTotem
     public class Acuerdo
     {
         #region Atributos
+        private int codigo;
         private DateTime fecha;
         private string compromiso;
         private List<Contacto> listaContacto;
@@ -30,6 +31,13 @@ namespace DominioTotem
             this.compromiso = compromiso;
         }
 
+        public Acuerdo(int codigo, DateTime fecha, string compromiso)
+        {
+            this.codigo = codigo;
+            this.fecha = fecha;
+            this.compromiso = compromiso;
+        }
+
         public Acuerdo(DateTime fecha, string compromiso, List<Contacto> listaContacto, List<Usuario> listaUsuario)
         {
             this.fecha = fecha;
@@ -40,6 +48,12 @@ namespace DominioTotem
         #endregion
 
         #region sets y gets
+
+        public int Codigo
+        {
+            get { return this.codigo; }
+            set { this.codigo = value; }
+        }
 
         public DateTime Fecha
         {

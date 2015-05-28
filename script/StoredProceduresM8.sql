@@ -32,16 +32,47 @@ GO
 
 CREATE PROCEDURE Procedure_AgregarAcuerdo
 		 
+		 
 		@acu_fecha   [date],
 		@acu_desarrollo  [varchar] (300),
 		@MINUTA_min_id 	[int]
 AS 
 BEGIN
+
 		INSERT INTO ACUERDO(acu_fecha, acu_desarrollo, MINUTA_min_id)
-	    VALUES(@acu_fecha, @acu_desarrollo, @MINUTA_min_id)
+	    VALUES(@acu_fecha, @acu_desarrollo, @MINUTA_min_id);
+
+		SELECT MAX(A.acu_id) as acu_id
+		FROM ACUERDO A
+
 END;
 GO
 
+CREATE PROCEDURE Procedure_AgregarResponsablesUsuarioDeAcuerdos
+		 
+		@acu_id   [int],
+		@usu_id   [int],
+		@pro_id   [int]
+AS 
+BEGIN
+
+		INSERT INTO ACU_INV(ACUERDO_acu_id,INVOLUCRADOS_USUARIOS_USUARIO_usu_id,INVOLUCRADOS_USUARIOS_PROYECTO_pro_id)
+	    VALUES(@acu_id, @usu_id, @pro_id );
+END;
+GO
+
+CREATE PROCEDURE Procedure_AgregarResponsablesContactoDeAcuerdos
+		
+		@acu_id   [int],
+		@con_id   [int],
+		@pro_id   [int]
+AS 
+BEGIN
+
+		INSERT INTO ACU_INV(ACUERDO_acu_id,INVOLUCRADOS_CLIENTES_CONTACTO_con_id,INVOLUCRADOS_CLIENTES_PROYECTO_pro_id)
+	    VALUES(@acu_id, @con_id, @pro_id );
+END;
+GO
 -------------------Procedimiento para Agregar un Involucrado Cliente ----------------------
 
 CREATE PROCEDURE Procedure_AgregarInvolucradoCliente
@@ -128,27 +159,39 @@ CREATE PROCEDURE Procedure_ConsultarAcuerdos
 AS
  BEGIN
 	
-	SELECT A.acu_fecha, A.acu_desarrollo
+	SELECT A.acu_id, A.acu_fecha, A.acu_desarrollo
 	FROM  ACUERDO A
 	WHERE A.MINUTA_min_id = @min_id
  END
 GO
 
-------------------- Procedimiento para consultar los responsables de los Acuerdos de la una Minuta
-CREATE PROCEDURE Procedure_ConsultarAcuerdoResponsablesMinuta
+------------------- Procedimiento para consultar los responsables tipo contacto de los Acuerdos de la una Minuta
+CREATE PROCEDURE Procedure_ConsultarAcuerdoResponsablesContactoMinuta
 
-    @acu_id [int],
-	@min_id [int]
+	@acu_id [int]
 	
 AS
  BEGIN 
 
-     SELECT AC.acu_inv_id, AC.INVOLUCRADOS_CLIENTES_CONTACTO_con_id, AC.INVOLUCRADOS_USUARIOS_USUARIO_usu_id
-	 FROM ACU_INV AC, ACUERDO A
-	 WHERE A.MINUTA_min_id= @min_id and AC.ACUERDO_acu_id = A.acu_id and AC.ACUERDO_acu_id= @acu_id
+     SELECT AC.INVOLUCRADOS_CLIENTES_CONTACTO_con_id as idContacto
+	 FROM ACU_INV AC
+	 WHERE AC.ACUERDO_acu_id = @acu_id and AC.INVOLUCRADOS_CLIENTES_CONTACTO_con_id != null
 END
 GO
 
+------------------- Procedimiento para consultar los responsables tipo usuario de los Acuerdos de la una Minuta
+CREATE PROCEDURE Procedure_ConsultarAcuerdoResponsablesUsuarioMinuta
+
+	@acu_id [int]
+	
+AS
+ BEGIN 
+
+     SELECT AC.INVOLUCRADOS_USUARIOS_USUARIO_usu_id as idUsuario
+	 FROM ACU_INV AC
+	 WHERE AC.ACUERDO_acu_id = @acu_id and AC.INVOLUCRADOS_USUARIOS_USUARIO_usu_id != null
+END
+GO
 ----------------- Procedimiento para consultar algunos datos de Contacto --------------------------------------
 CREATE PROCEDURE Procedure_ConsultarContactoMinuta
 
@@ -178,6 +221,33 @@ AS
 	      and A.INVOLUCRADOS_USUARIOS_USUARIO_usu_id = U.usu_id
  END
 GO
+
+----------------- Procedimiento para consutar los datos de un Usuario --------------------------
+CREATE PROCEDURE Procedure_ConsultarUsuario
+
+       @usu_id
+AS
+ BEGIN
+
+    SELECT U.usu_id, U.usu_nombre, U.usu_apellido
+	FROM  USUARIO U
+	WHERE U.usu_id = @usu_id
+ END
+GO
+
+----------------- Procedimiento para consutar los datos de un Contacto --------------------------
+CREATE PROCEDURE Procedure_ConsultarContacto
+
+       @con_id
+AS
+ BEGIN
+
+    SELECT C.con_id, C.con_nombre, C.con_apellido
+	FROM  CONTACTO C
+	WHERE C.con_id = @con_id
+ END
+GO
+
 -----------------Procedimientos para Modificar---------------------------------------------------
 ----------------- Procedimiento para modificar datos principales de una Minuta-------------------
 
@@ -217,6 +287,24 @@ BEGIN
 END
 GO
 
+---------------- Procedimiento para modificar un Acuerdo
+CREATE PROCEDURE Procedure_ModificarAcuerdo
+
+     @acu_id [int],
+	 @acu_fecha [date],
+	 @acu_desarrollo [varchar] (300),
+	 @MINUTA_min_id [int]
+AS
+BEGIN
+   UPDATE ACUERDO
+   SET
+       acu_fecha = @acu_fecha, 
+	   acu_desarrollo = @acu_desarrollo ,
+	   MINUTA_min_id = @MINUTA_min_id
+   WHERE
+       acu_id = @acu_id
+END
+GO
 ----------------- Procedimiento para Eliminar un Punto
 
 CREATE PROCEDURE Procedure_EliminarPunto
@@ -227,7 +315,48 @@ CREATE PROCEDURE Procedure_EliminarPunto
 AS 
 BEGIN
    DELETE FROM PUNTO
-		WHERE MINUTA_min_id = @min_id and pun_id= @min_id
+	   	WHERE MINUTA_min_id = @min_id and pun_id= @min_id
  
+END
+GO
+
+-------------------- Procedimiento Eliminar Acuerdo
+CREATE PROCEDURE Procedure_EliminarAcuerdo
+
+       @acu_id [int]
+AS
+BEGIN
+   DELETE FROM ACUERDO
+          WHERE acu_id = @acu_id
+END
+GO
+
+---------------- Procedimiento para Eliminar un Responsable Usuario de una Minuta
+CREATE PROCEDURE Procedure_EliminarUsuarioAcuerdo
+
+     @acu_id [int],
+	 @usu_id [int],
+	 @pro_id [int]
+
+AS
+BEGIN
+   DELETE FROM ACU_INV 
+   WHERE ACUERDO_acu_id = @acu_id and INVOLUCRADOS_USUARIOS_USUARIO_usu_id = @usu_id
+   and INVOLUCRADOS_USUARIOS_PROYECTO_pro_id = @pro_id
+END
+GO
+
+---------------- Procedimiento para Eliminar un Responsable Contacto de una Minuta
+CREATE PROCEDURE Procedure_EliminarContactoAcuerdo
+
+     @acu_id [int],
+	 @con_id [int],
+	 @pro_id [int]
+
+AS
+BEGIN
+   DELETE FROM ACU_INV 
+   WHERE ACUERDO_acu_id = @acu_id and INVOLUCRADOS_CLIENTES_CONTACTO_con_id = @con_id
+   and INVOLUCRADOS_CLIENTES_PROYECTO_pro_id = @pro_id
 END
 GO

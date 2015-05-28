@@ -117,18 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AtributoAcuerdoContacto" xml:space="preserve">
+    <value>idContacto</value>
+  </data>
+  <data name="AtributoAcuerdoUsuario" xml:space="preserve">
+    <value>idUsuario</value>
+  </data>
   <data name="AtributoApellidoContacto" xml:space="preserve">
     <value>con_apellido</value>
   </data>
   <data name="AtributoApellidoUsuario" xml:space="preserve">
     <value>usu_apellido</value>
   </data>
+  <data name="AtributoDesarrolloAcuerdo" xml:space="preserve">
+    <value>acu_desarrollo</value>
+  </data>
   <data name="AtributoDesarrolloPunto" xml:space="preserve">
     <value>pun_desarrollo</value>
+  </data>
+  <data name="AtributoFechaAcuerdo" xml:space="preserve">
+    <value>acu_fecha</value>
   </data>
   <data name="AtributoFechaMinuta" xml:space="preserve">
     <value>min_fecha</value>
     <comment>Atributo fecha en la tabla Minuta</comment>
+  </data>
+  <data name="AtributoIDAcuerdo" xml:space="preserve">
+    <value>acu_id</value>
   </data>
   <data name="AtributoIDContacto" xml:space="preserve">
     <value>con_id</value>
@@ -160,8 +175,14 @@
   <data name="AtributoTituloPunto" xml:space="preserve">
     <value>pun_titulo</value>
   </data>
+  <data name="ParametroDesarrolloAcuerdo" xml:space="preserve">
+    <value>@acu_desarrollo</value>
+  </data>
   <data name="ParametroDesarrolloPunto" xml:space="preserve">
     <value>@pun_desarrollo</value>
+  </data>
+  <data name="ParametroFechaAcuerdo" xml:space="preserve">
+    <value>@acu_fecha</value>
   </data>
   <data name="ParametroFechaMinuta" xml:space="preserve">
     <value>@min_fecha</value>
@@ -170,6 +191,9 @@
   <data name="ParametroIDAcuerdo" xml:space="preserve">
     <value>@acu_id</value>
     <comment>Parametro ID Acuerdo en los procedimientos en la BD </comment>
+  </data>
+  <data name="ParametroIDContacto" xml:space="preserve">
+    <value>@con_id</value>
   </data>
   <data name="ParametroIDMinuta" xml:space="preserve">
     <value>@min_id</value>
@@ -181,6 +205,9 @@
   </data>
   <data name="ParametroIDPunto" xml:space="preserve">
     <value>@pun_id</value>
+  </data>
+  <data name="ParametroIDUsuario" xml:space="preserve">
+    <value>@usu_id</value>
   </data>
   <data name="ParametroMinuta" xml:space="preserve">
     <value>@MINUTA_min_id</value>
@@ -200,12 +227,21 @@
   <data name="ParametroTituloPunto" xml:space="preserve">
     <value>@pun_titulo</value>
   </data>
+  <data name="ProcedimientoAgregarAcuerdo" xml:space="preserve">
+    <value>Procedure_AgregarAcuerdo</value>
+  </data>
+  <data name="ProcedimientoAgregarContactoAcuerdo" xml:space="preserve">
+    <value>Procedure_AgregarResponsablesContactoDeAcuerdos</value>
+  </data>
   <data name="ProcedimientoAgregarMinuta" xml:space="preserve">
     <value>Procedure_AgregarMinuta</value>
     <comment>Procedimiento en la BD que guarda los datos principales de la Minuta</comment>
   </data>
   <data name="ProcedimientoAgregarPunto" xml:space="preserve">
     <value>Procedure_AgregarPunto</value>
+  </data>
+  <data name="ProcedimientoAgregarUsuarioAcuerdo" xml:space="preserve">
+    <value>Procedure_AgregarResponsablesUsuarioDeAcuerdos</value>
   </data>
   <data name="ProcedimientoConsultarAcuerdo" xml:space="preserve">
     <value>Procedure_ConsultarAcuerdos</value>
@@ -214,6 +250,9 @@
   <data name="ProcedimientoConsultarContacto" xml:space="preserve">
     <value>Procedure_ConsultarContactoMinuta</value>
     <comment>Procedimiento en la BD que regresa todos los responsables de los acuerdos tratados que sean clientes</comment>
+  </data>
+  <data name="ProcedimientoConsultarContactos" xml:space="preserve">
+    <value>Procedure_ConsultarContacto</value>
   </data>
   <data name="ProcedimientoConsultarListaMinutas" xml:space="preserve">
     <value>Procedure_ConsultarMinutasProyecto</value>
@@ -231,6 +270,18 @@
     <value>Procedure_ConsultarUsuarioMinuta</value>
     <comment>Procedimiento en la BD que regresa todos los responsables de los acuerdos tratados que sean usuarios</comment>
   </data>
+  <data name="ProcedimientoConsultarUsuarios" xml:space="preserve">
+    <value>Procedure_ConsultarUsuario</value>
+  </data>
+  <data name="ProcedimientoContactoAcuerdo" xml:space="preserve">
+    <value>Procedure_ConsultarAcuerdoResponsablesContactoMinuta</value>
+  </data>
+  <data name="ProcedimientoEliminarAcuerdo" xml:space="preserve">
+    <value>Procedure_EliminarAcuerdo</value>
+  </data>
+  <data name="ProcedimientoEliminarAcuerdoContacto" xml:space="preserve">
+    <value>Procedure_EliminarContactoAcuerdo</value>
+  </data>
   <data name="ProcedimientoEliminarPunto" xml:space="preserve">
     <value>Procedure_EliminarPunto</value>
   </data>
@@ -243,5 +294,11 @@
   </data>
   <data name="ProcedimientoResponsablesAcuerdo" xml:space="preserve">
     <value>Procedure_ConsultarAcuerdoResponsablesMinuta</value>
+  </data>
+  <data name="ProcedimientosEliminarAcuerdoUsuario" xml:space="preserve">
+    <value>Procedure_EliminarUsuarioAcuerdo</value>
+  </data>
+  <data name="ProcedimientoUsuarioAcuerdo" xml:space="preserve">
+    <value>Procedure_ConsultarAcuerdoResponsablesUsuarioMinuta</value>
   </data>
 </root>

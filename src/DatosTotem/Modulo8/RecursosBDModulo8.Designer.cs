@@ -61,6 +61,24 @@ namespace DatosTotem.Modulo8 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a idContacto.
+        /// </summary>
+        internal static string AtributoAcuerdoContacto {
+            get {
+                return ResourceManager.GetString("AtributoAcuerdoContacto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a idUsuario.
+        /// </summary>
+        internal static string AtributoAcuerdoUsuario {
+            get {
+                return ResourceManager.GetString("AtributoAcuerdoUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a con_apellido.
         /// </summary>
         internal static string AtributoApellidoContacto {
@@ -79,6 +97,15 @@ namespace DatosTotem.Modulo8 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a acu_desarrollo.
+        /// </summary>
+        internal static string AtributoDesarrolloAcuerdo {
+            get {
+                return ResourceManager.GetString("AtributoDesarrolloAcuerdo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a pun_desarrollo.
         /// </summary>
         internal static string AtributoDesarrolloPunto {
@@ -88,11 +115,29 @@ namespace DatosTotem.Modulo8 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a acu_fecha.
+        /// </summary>
+        internal static string AtributoFechaAcuerdo {
+            get {
+                return ResourceManager.GetString("AtributoFechaAcuerdo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a min_fecha.
         /// </summary>
         internal static string AtributoFechaMinuta {
             get {
                 return ResourceManager.GetString("AtributoFechaMinuta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a acu_id.
+        /// </summary>
+        internal static string AtributoIDAcuerdo {
+            get {
+                return ResourceManager.GetString("AtributoIDAcuerdo", resourceCulture);
             }
         }
         
@@ -178,11 +223,29 @@ namespace DatosTotem.Modulo8 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a @acu_desarrollo.
+        /// </summary>
+        internal static string ParametroDesarrolloAcuerdo {
+            get {
+                return ResourceManager.GetString("ParametroDesarrolloAcuerdo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a @pun_desarrollo.
         /// </summary>
         internal static string ParametroDesarrolloPunto {
             get {
                 return ResourceManager.GetString("ParametroDesarrolloPunto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a @acu_fecha.
+        /// </summary>
+        internal static string ParametroFechaAcuerdo {
+            get {
+                return ResourceManager.GetString("ParametroFechaAcuerdo", resourceCulture);
             }
         }
         
@@ -201,6 +264,15 @@ namespace DatosTotem.Modulo8 {
         internal static string ParametroIDAcuerdo {
             get {
                 return ResourceManager.GetString("ParametroIDAcuerdo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a @con_id.
+        /// </summary>
+        internal static string ParametroIDContacto {
+            get {
+                return ResourceManager.GetString("ParametroIDContacto", resourceCulture);
             }
         }
         
@@ -228,6 +300,15 @@ namespace DatosTotem.Modulo8 {
         internal static string ParametroIDPunto {
             get {
                 return ResourceManager.GetString("ParametroIDPunto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a @usu_id.
+        /// </summary>
+        internal static string ParametroIDUsuario {
+            get {
+                return ResourceManager.GetString("ParametroIDUsuario", resourceCulture);
             }
         }
         
@@ -277,6 +358,24 @@ namespace DatosTotem.Modulo8 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_AgregarAcuerdo.
+        /// </summary>
+        internal static string ProcedimientoAgregarAcuerdo {
+            get {
+                return ResourceManager.GetString("ProcedimientoAgregarAcuerdo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_AgregarResponsablesContactoDeAcuerdos.
+        /// </summary>
+        internal static string ProcedimientoAgregarContactoAcuerdo {
+            get {
+                return ResourceManager.GetString("ProcedimientoAgregarContactoAcuerdo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Procedure_AgregarMinuta.
         /// </summary>
         internal static string ProcedimientoAgregarMinuta {
@@ -295,6 +394,15 @@ namespace DatosTotem.Modulo8 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_AgregarResponsablesUsuarioDeAcuerdos.
+        /// </summary>
+        internal static string ProcedimientoAgregarUsuarioAcuerdo {
+            get {
+                return ResourceManager.GetString("ProcedimientoAgregarUsuarioAcuerdo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Procedure_ConsultarAcuerdos.
         /// </summary>
         internal static string ProcedimientoConsultarAcuerdo {
@@ -309,6 +417,15 @@ namespace DatosTotem.Modulo8 {
         internal static string ProcedimientoConsultarContacto {
             get {
                 return ResourceManager.GetString("ProcedimientoConsultarContacto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_ConsultarContacto.
+        /// </summary>
+        internal static string ProcedimientoConsultarContactos {
+            get {
+                return ResourceManager.GetString("ProcedimientoConsultarContactos", resourceCulture);
             }
         }
         
@@ -349,6 +466,42 @@ namespace DatosTotem.Modulo8 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_ConsultarUsuario.
+        /// </summary>
+        internal static string ProcedimientoConsultarUsuarios {
+            get {
+                return ResourceManager.GetString("ProcedimientoConsultarUsuarios", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_ConsultarAcuerdoResponsablesContactoMinuta.
+        /// </summary>
+        internal static string ProcedimientoContactoAcuerdo {
+            get {
+                return ResourceManager.GetString("ProcedimientoContactoAcuerdo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_EliminarAcuerdo.
+        /// </summary>
+        internal static string ProcedimientoEliminarAcuerdo {
+            get {
+                return ResourceManager.GetString("ProcedimientoEliminarAcuerdo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_EliminarContactoAcuerdo.
+        /// </summary>
+        internal static string ProcedimientoEliminarAcuerdoContacto {
+            get {
+                return ResourceManager.GetString("ProcedimientoEliminarAcuerdoContacto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Procedure_EliminarPunto.
         /// </summary>
         internal static string ProcedimientoEliminarPunto {
@@ -381,6 +534,24 @@ namespace DatosTotem.Modulo8 {
         internal static string ProcedimientoResponsablesAcuerdo {
             get {
                 return ResourceManager.GetString("ProcedimientoResponsablesAcuerdo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_EliminarUsuarioAcuerdo.
+        /// </summary>
+        internal static string ProcedimientosEliminarAcuerdoUsuario {
+            get {
+                return ResourceManager.GetString("ProcedimientosEliminarAcuerdoUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_ConsultarAcuerdoResponsablesUsuarioMinuta.
+        /// </summary>
+        internal static string ProcedimientoUsuarioAcuerdo {
+            get {
+                return ResourceManager.GetString("ProcedimientoUsuarioAcuerdo", resourceCulture);
             }
         }
     }

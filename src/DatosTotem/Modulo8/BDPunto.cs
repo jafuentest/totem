@@ -5,8 +5,6 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using DominioTotem;
-using System.Data;
-using System.Data.SqlClient;
 using System.IO;
 
 namespace DatosTotem.Modulo8
@@ -171,6 +169,12 @@ namespace DatosTotem.Modulo8
             }
         }
 
+        /// <summary>
+        /// Metodo para Eliminar un Punto de una Minuta
+        /// </summary>
+        /// <param name="punto">Objeto Punto</param>
+        /// <param name="idMinuta">Id de la Minuta del punto a eliminar</param>
+        /// <returns>Retorna un boolean para saber si se realizo con éxito la operación</returns>
         public Boolean EliminarPuntoBD(Punto punto, int idMinuta)
         {
             SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoEliminarPunto, con.Conectar());
