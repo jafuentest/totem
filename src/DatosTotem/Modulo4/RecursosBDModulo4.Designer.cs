@@ -124,6 +124,24 @@ namespace DatosTotem.Modulo4 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to T_04_001.
+        /// </summary>
+        internal static string CodigoProyectoExiste {
+            get {
+                return ResourceManager.GetString("CodigoProyectoExiste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El codigo de proyecto ya existe, por favor elija otro..
+        /// </summary>
+        internal static string MensajeCodigoProyectoExiste {
+            get {
+                return ResourceManager.GetString("MensajeCodigoProyectoExiste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @CLIENTE_NATURAL_cn_id.
         /// </summary>
         internal static string ParametroClienteJuridico {
@@ -237,6 +255,24 @@ namespace DatosTotem.Modulo4 {
         internal static string ProcedimientoConsultarProyecto {
             get {
                 return ResourceManager.GetString("ProcedimientoConsultarProyecto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procedure_ExisteProyecto.
+        /// </summary>
+        internal static string ProcedimientoExisteProyecto {
+            get {
+                return ResourceManager.GetString("ProcedimientoExisteProyecto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procedure_ModificarProyecto.
+        /// </summary>
+        internal static string ProcedimientoModificarProyecto {
+            get {
+                return ResourceManager.GetString("ProcedimientoModificarProyecto", resourceCulture);
             }
         }
     }

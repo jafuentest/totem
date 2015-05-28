@@ -18,5 +18,10 @@ namespace ExcepcionesTotem.Modulo4
         public CodigoRepetidoException(string message, Exception inner)
             : base(message, inner)
         { }
+
+        public CodigoRepetidoException(string codigo, string message, Exception inner)
+            : base(codigo, message, inner)
+        {
+        }
     }
 }

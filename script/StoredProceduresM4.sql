@@ -58,22 +58,41 @@ BEGIN
 END;
 GO
 
+------------------ Procedimientos para Modificar-------------------------------------------------------------------------------
+CREATE PROCEDURE Procedure_ModificarProyecto
+		 
+		
+		@pro_codigo[varchar] (6),
+		@pro_nombre [varchar] (60),
+		@pro_estado [bit],
+		@pro_descripcion [varchar] (600),
+		@pro_costo       [int],
+		@pro_moneda      [varchar] (3),
+		@codigo_anterior [varchar] (6)
+AS 
+BEGIN
+		UPDATE PROYECTO SET pro_codigo = @pro_codigo, pro_nombre = @pro_nombre, pro_estado = @pro_estado, pro_descripcion = @pro_descripcion, pro_costo = @pro_costo, pro_moneda = @pro_moneda
+		WHERE pro_codigo = @codigo_anterior
+END;
+GO
 
------------------- Procedimientos para consultar------------------------------
 
 
------------------- Procedimiento para verificar existencia de un proyecto ----------------------
+------------------ Procedimientos para consultar-------------------------------------------------------------------------------
+
+
+--Procedimiento para verificar existencia de un proyecto ----------------------
 CREATE PROCEDURE Procedure_ExisteProyecto
  
 		@pro_codigo[varchar] (6)
 AS 
 BEGIN
     IF EXISTS (SELECT * FROM PROYECTO P WHERE pro_codigo = @pro_codigo)
-        SELECT 1
+        SELECT true
     ELSE
-        SELECT 0  
+        SELECT false
 END
------------------- Procedimiento para consultar un Proyecto----------------------
+-- Procedimiento para consultar un Proyecto----------------------
 
 CREATE PROCEDURE Procedure_ConsultarProyecto
 	

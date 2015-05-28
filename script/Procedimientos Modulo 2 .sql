@@ -9,7 +9,7 @@ CREATE PROCEDURE Procedure_verificarClienteJuridico
 		@cj_rif [nvarchar](20)	
 AS 
 BEGIN
-		(SELECT cj_rif FROM CLIENTE_JURIDICO WHERE cj_rif = @cj_rif);
+		(SELECT count(cj_rif) FROM CLIENTE_JURIDICO WHERE cj_rif = @cj_rif);
 END;
 GO
 
@@ -141,7 +141,7 @@ CREATE PROCEDURE Procedure_verificarClienteNatural
 	@cn_cedula [nvarchar](20)		
 AS 
 BEGIN
-		(SELECT cn_cedula FROM CLIENTE_NATURAL WHERE cn_cedula= @cn_cedula); 	
+		(SELECT count(cn_cedula) FROM CLIENTE_NATURAL WHERE cn_cedula= @cn_cedula); 	
 END;
 GO
 

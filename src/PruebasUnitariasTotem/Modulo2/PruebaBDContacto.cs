@@ -38,7 +38,7 @@ namespace PruebasUnitariasTotem.Modulo2
         /// </summary>
         /// 
         [Test]
-        public void PruebaAgregarContactoBD()
+        public void PruebaConsultarContactoBD()
         {
              
             string nombre = "Valentina";

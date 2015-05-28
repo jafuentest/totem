@@ -33,6 +33,48 @@ namespace LogicaNegociosTotem.Modulo4
             }
         }
 
+
+        /// <summary>
+        /// Metodo para Agregar un proyecto en BD
+        /// </summary>
+        /// <param name="proyecto">proyecto a crear
+        /// <param name="clienteJuridico">Cliente juridico del proyecto</param>
+        /// <returns>Retorna True si se crea, de lo contrario genera
+        /// una exception(CodigoRepetido)</returns>
+        public static bool CrearProyecto(DominioTotem.Proyecto proyecto, DominioTotem.ClienteJuridico clienteJuridico)
+        {
+
+            try
+            {
+                return DatosTotem.Modulo4.BDProyecto.CrearProyecto(proyecto,clienteJuridico);
+            }
+            catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Metodo para Agregar un proyecto en BD
+        /// </summary>
+        /// <param name="proyecto">proyecto a crear
+        /// <param name="clienteNatural">Cliente natural del proyecto</param>
+        /// <returns>Retorna True si se crea, de lo contrario genera
+        /// una exception(CodigoRepetido)</returns>
+        public static bool CrearProyecto(DominioTotem.Proyecto proyecto, DominioTotem.ClienteNatural clienteNatural)
+        {
+
+            try
+            {
+                return DatosTotem.Modulo4.BDProyecto.CrearProyecto(proyecto, clienteNatural);
+            }
+            catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException)
+            {
+                return false;
+            }
+        }
+
+
         /// <summary>
         /// Metodo para consultar un proyecto en BD
         /// </summary>
@@ -50,9 +92,16 @@ namespace LogicaNegociosTotem.Modulo4
         /// </summary>
         /// <param name="proyecto">proyecto a crear
         /// <returns>Devuelve True si lo modifica, de lo contrario devuelve false</returns>
-        public static bool ModificarProyecto(DominioTotem.Proyecto proyecto)
+        public static bool ModificarProyecto(DominioTotem.Proyecto proyecto, String codigoAnterior)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return DatosTotem.Modulo4.BDProyecto.ModificarProyecto(proyecto, codigoAnterior);
+            }
+            catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException)
+            {
+                return false;
+            }
         }
 
         public static void GenerarERS(DominioTotem.Proyecto proyecto)

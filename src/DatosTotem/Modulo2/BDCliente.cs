@@ -378,6 +378,123 @@ namespace DatosTotem.Modulo2
         }
 
         /// <summary>
+        /// Método que accede a la Base de Datos para 
+        /// verificar la existencia de un cliente natural
+        /// </summary>
+        /// <param name="identificador">RIF a verificar</param>
+        /// <returns>0 si no existe, 1 o más si existe</returns>
+        public int VerificarExistenciaClienteJuridico(string identificador) 
+        {
+            int cantidad = 0; 
+            try
+            {
+
+                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureVerificarClienteJuridico, this.conexion);
+                this.comando.CommandType = CommandType.StoredProcedure;
+                this.comando.Parameters.Add(new SqlParameter(RecursosBaseDeDatosModulo2.ParametroRif,
+                                            identificador));
+
+                SqlDataReader lectura;
+                this.conexion.Open();
+                lectura = this.comando.ExecuteReader();
+
+                while (lectura.Read())
+                {
+                    cantidad = lectura.GetInt32(0);
+                }
+
+
+            }
+
+            catch (SqlException ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje,
+                    ex);
+            }
+            catch (NullReferenceException ex)
+            {
+                throw new ClienteInexistenteException(
+                    RecursosBaseDeDatosModulo2.CodigoClienteInexistente,
+                    RecursosBaseDeDatosModulo2.MensajeClienteInexistente,
+                    ex);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.conexion.Close();
+            }
+
+
+            return cantidad;
+
+
+            
+        }
+
+        /// <summary>
+        /// Método que accede a la Base de Datos para 
+        /// verificar la existencia de un cliente natural
+        /// </summary>
+        /// <param name="cedula">Cédula a verificar</param>
+        /// <returns>0 si no existe, 1 o más si existe</returns>
+        public int VerificarExistenciaClienteNatural(string cedula) 
+        {
+
+            int cantidad = 0;
+            try
+            {
+
+                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureVerificarClienteNatural, this.conexion);
+                this.comando.CommandType = CommandType.StoredProcedure;
+                this.comando.Parameters.Add(new SqlParameter(RecursosBaseDeDatosModulo2.Parametroidentificador,
+                                            cedula));
+
+                SqlDataReader lectura;
+                this.conexion.Open();
+                lectura = this.comando.ExecuteReader();
+
+                while (lectura.Read())
+                {
+                    cantidad = lectura.GetInt32(0);
+                }
+
+
+            }
+
+            catch (SqlException ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje,
+                    ex);
+            }
+            catch (NullReferenceException ex)
+            {
+                throw new ClienteInexistenteException(
+                    RecursosBaseDeDatosModulo2.CodigoClienteInexistente,
+                    RecursosBaseDeDatosModulo2.MensajeClienteInexistente,
+                    ex);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.conexion.Close();
+            }
+
+
+            return cantidad;
+        }
+
+
+        /// <summary>
         /// Método que obtiene directamente de la Base de Datos
         /// un registro de tipo Cliente Natural
         /// </summary>

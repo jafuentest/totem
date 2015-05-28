@@ -145,6 +145,14 @@
     <value>pro_nombre</value>
     <comment>Nombre del proyecto en la tabla PROYECTO</comment>
   </data>
+  <data name="CodigoProyectoExiste" xml:space="preserve">
+    <value>T_04_001</value>
+    <comment>Codigo de Proyecto existe</comment>
+  </data>
+  <data name="MensajeCodigoProyectoExiste" xml:space="preserve">
+    <value>El codigo de proyecto ya existe, por favor elija otro.</value>
+    <comment>Mensaje de error para cuando el codigo de proyecto existe</comment>
+  </data>
   <data name="ParametroClienteJuridico" xml:space="preserve">
     <value>@CLIENTE_NATURAL_cn_id</value>
     <comment>Cliente natural del proyecto para usar en procedures</comment>
@@ -200,5 +208,9 @@
   <data name="ProcedimientoExisteProyecto" xml:space="preserve">
     <value>Procedure_ExisteProyecto</value>
     <comment>Verifica la existencia de un proyecto en la BD</comment>
+  </data>
+  <data name="ProcedimientoModificarProyecto" xml:space="preserve">
+    <value>Procedure_ModificarProyecto</value>
+    <comment>Modifica losdatos de un proyecto en la BD</comment>
   </data>
 </root>

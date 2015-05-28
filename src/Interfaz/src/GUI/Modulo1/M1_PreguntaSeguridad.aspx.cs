@@ -10,10 +10,11 @@ public partial class M1_PreguntaSeguridad : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ((MasterPage)Page.Master).IdModulo = "1";
-        if (Request.Cookies["userInfo"] != null)
+        DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+        if (user != null)
         {
-            if (Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != "" &&
-                Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
+            if (user.username != "" &&
+                user.clave != "")
             {
                 Master.MostrarMenuLateral = false;
                 Master.ShowDiv = false;

@@ -227,4 +227,10 @@
   <data name="MensajeClienteInexistente" xml:space="preserve">
     <value>No se ha podido encontrar al Cliente</value>
   </data>
+  <data name="ProcedureVerificarClienteJuridico" xml:space="preserve">
+    <value>Procedure_verificarClienteJuridico</value>
+  </data>
+  <data name="ProcedureVerificarClienteNatural" xml:space="preserve">
+    <value>Procedure_verificarClienteNatural</value>
+  </data>
 </root>

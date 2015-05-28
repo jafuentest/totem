@@ -71,7 +71,11 @@
       <DependentUpon>RecursosBDModulo3.resx</DependentUpon>
     </Compile>
     <Compile Include="Modulo4\BDProyecto.cs" />
-    <Compile Include="Modulo4\RecursosBDModulo4.Designer.cs" />
+    <Compile Include="Modulo4\RecursosBDModulo4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosBDModulo4.resx</DependentUpon>
+    </Compile>
     <Compile Include="Modulo7\BDUsuario.cs" />
     <Compile Include="Modulo7\RecursosBaseDeDatosModulo7.Designer.cs" />
     <Compile Include="Resultado.cs" />
@@ -177,7 +181,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosBDModulo3.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo4\RecursosBDModulo4.resx" />
+    <EmbeddedResource Include="Modulo4\RecursosBDModulo4.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosBDModulo4.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulo6\RecursosBDModulo6.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosBDModulo6.Designer.cs</LastGenOutput>
