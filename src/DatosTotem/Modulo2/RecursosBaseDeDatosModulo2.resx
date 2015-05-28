@@ -239,4 +239,31 @@
   <data name="ProcedureLlenarComboCargo" xml:space="preserve">
     <value>Procedure_llenarCBCargo</value>
   </data>
+  <data name="ProcedureFkLugLug" xml:space="preserve">
+    <value>@fk_lug_lug</value>
+  </data>
+  <data name="ProcedureModificarClienteJuridico" xml:space="preserve">
+    <value>Procedure_modificarClienteJuridico</value>
+  </data>
+  <data name="ProcedureModificarClienteNatural" xml:space="preserve">
+    <value>Procedure_ModificarClienteNatural</value>
+  </data>
+  <data name="Codigo" xml:space="preserve">
+    <value>@codigo</value>
+  </data>
+  <data name="NombreCiudad" xml:space="preserve">
+    <value>@nombreCiudad</value>
+  </data>
+  <data name="NombreDireccion" xml:space="preserve">
+    <value>@nombreDireccion</value>
+  </data>
+  <data name="NombreEstado" xml:space="preserve">
+    <value>@nombreEstado</value>
+  </data>
+  <data name="NombrePais" xml:space="preserve">
+    <value>@nombrePais</value>
+  </data>
+  <data name="Numero" xml:space="preserve">
+    <value>@numero</value>
+  </data>
 </root>
