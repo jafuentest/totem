@@ -225,7 +225,7 @@ GO
 ----------------- Procedimiento para consutar los datos de un Usuario --------------------------
 CREATE PROCEDURE Procedure_ConsultarUsuario
 
-       @usu_id
+       @usu_id [int]
 AS
  BEGIN
 
@@ -238,7 +238,7 @@ GO
 ----------------- Procedimiento para consutar los datos de un Contacto --------------------------
 CREATE PROCEDURE Procedure_ConsultarContacto
 
-       @con_id
+       @con_id [int]
 AS
  BEGIN
 
