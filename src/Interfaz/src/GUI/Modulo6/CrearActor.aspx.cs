@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
 using LogicaNegociosTotem.Modulo6;
+using DominioTotem;
+using System.Collections.Generic;
 
-public partial class GUI_Modulo6_CrearActor : System.Web.UI.Page
+public partial class GUI_Modulo6_ListarActores : System.Web.UI.Page
 {
-	protected void Page_Load(object sender, EventArgs e)
-	{
-		((MasterPage)Page.Master).IdModulo = "6";
+    private List<Actor> listaActores;
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        ((MasterPage)Page.Master).IdModulo = "6";
+        String success = Request.QueryString["success"];
 
         DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
         if (user != null)
@@ -32,12 +31,36 @@ public partial class GUI_Modulo6_CrearActor : System.Web.UI.Page
         {
             Response.Redirect("../Modulo1/M1_login.aspx");
         }
-	}
 
-    protected void Agregar_Actor(object sender, EventArgs e)
-    {
+
+        switch (success)
+        {
+            case "1":
+                alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                alert.Attributes["role"] = "alert";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Actor agregado exitosamente</div>";
+                break;
+
+            case "2":
+                alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                alert.Attributes["role"] = "alert";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Actor modificado exitosamente</div>";
+                break;
+
+            case "3":
+                alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                alert.Attributes["role"] = "alert";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Actor eliminado exitosamente</div>";
+                break;
+        }
+
         LogicaActor logica = new LogicaActor();
-        bool exito = logica.AgregarListarActor(this.nombre.Value, this.descripcion.Value, 0);
-        HttpContext.Current.Response.Redirect("ListarActores.aspx?success=1");
+        this.listaActores = logica.ListarActor(0);
+        foreach (Actor actorLista in listaActores)
+        {
+            cuerpo.InnerHtml = cuerpo.InnerHtml + "<tr><td>" + actorLista.NombreActor + "</td><td>" + actorLista.DescripcionActor + "</td><td><a class=\"btn btn-default glyphicon glyphicon-pencil\" data-toggle=\"modal\" data-target=\"#modal-update\" href=\"#\"></a><a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"></a></td></tr>";
+        }
+
     }
+
 }
