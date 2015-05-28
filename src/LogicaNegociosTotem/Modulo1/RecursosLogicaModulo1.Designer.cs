@@ -259,15 +259,6 @@ namespace LogicaNegociosTotem.Modulo1 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Datos de usuario incompletos.
-        /// </summary>
-        internal static string Mensaje_Usuario_Vacio1 {
-            get {
-                return ResourceManager.GetString("Mensaje_Usuario_Vacio1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to .1*;M;3z+M~8k*+~LZU6B!Q|.!k+;=*m.
         /// </summary>
         internal static string Passphrase {

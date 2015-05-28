@@ -209,10 +209,6 @@
     <value>totemdesarrollo@gmail.com</value>
     <comment>Cuenta de correo usada para el en</comment>
   </data>
-  <data name="Mensaje_Usuario_Vacio1" xml:space="preserve">
-    <value>Datos de usuario incompletos</value>
-    <comment>Mensaje cuando se presente el error de usuario incompleto</comment>
-  </data>
   <data name="Pswd_Correo_Totem" xml:space="preserve">
     <value>zAo1OVejS5aWbnXwVVTr+g==</value>
     <comment>La contrasena encriptada para acceder a la cuenta de correo</comment>

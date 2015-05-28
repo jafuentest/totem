@@ -10,21 +10,24 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 
     <div  class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-        <form id="preguntaSeguridad"  class="form-horizontal" method="post" action="M1_RecuperacionClave.aspx">
+        <form id="preguntaSeguridad"  class="form-horizontal" method="post" runat="server">
 
                 <div  class="login-form"> 
                     
                   <div id="login-form-name" class="form-group">
                       
-                        <label>¿Cu&aacute;l es al apellido materno del padre?</label>
-                        <input type="text" class="form-control >login-field" style="width:70%;" value=""  placeholder="Apellido materno del padre" id="login-name" name="respuestaSeguridad" />
+                        <label runat="server" id="label_pregunta"></label>
+                        <input type="text" class="form-control" style="width:70%;" value=""  
+                            id="input_respuesta" name="respuestaSeguridad" runat="server"/>
                       
                   </div>
 
                   <div class="form-group">
 		               <div class="form-group">
                          &nbsp; &nbsp;
-				            <button class="btn btn-primary" type="submit" onclick="return checkform()">Continuar</button>
+				            <button runat="server" class="btn btn-primary" type="submit" 
+                                id="btn_validar_respuesta" 
+                                onserverclick="btn_validar_respuesta_ServerClick">Continuar</button>
                         &nbsp; 
 				            <a class="btn btn-default" href="M1_login.aspx">Cancelar</a>
                        </div>  

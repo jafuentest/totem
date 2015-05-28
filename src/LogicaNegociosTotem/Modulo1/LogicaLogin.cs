@@ -280,9 +280,45 @@ namespace LogicaNegociosTotem.Modulo1
         /// <returns>Retorna True si el correo pudo ser enviado con exito,
         /// de lo contrario disparara
         /// una exception (RespuestaErradoException)</returns>
-        public static bool ValidarRespuestaSecreta(string respuesta)
+        public static bool ValidarRespuestaSecreta(DominioTotem.Usuario usuario)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                usuario.correo = DesencriptarConRijndael(usuario.correo,
+                    RecursosLogicaModulo1.Passphrase);
+                if (DatosTotem.Modulo1.BDLogin.ValidarPreguntaSeguridadBD(
+                    usuario))
+                {
+                    return true;
+                }
+                else
+                {
+                    throw new ExcepcionesTotem.Modulo1.RespuestaErradoException(
+                        RecursosLogicaModulo1.Codigo_Respuesta_Errada,
+                        RecursosLogicaModulo1.Mensaje_Respuesta_Errada,
+                        new ExcepcionesTotem.Modulo1.RespuestaErradoException());
+                }
+            }
+            catch (ExcepcionesTotem.Modulo1.RespuestaErradoException ex)
+            {
+                throw new ExcepcionesTotem.Modulo1.RespuestaErradoException(
+                    ex.Codigo, ex.Mensaje, ex);
+            }
+            catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
+            {
+                throw new ExcepcionesTotem.Modulo1.ParametroInvalidoException(
+                    ex.Codigo, ex.Mensaje, ex);
+            }
+            catch (ExcepcionesTotem.Modulo1.UsuarioVacioException ex)
+            {
+                throw new ExcepcionesTotem.Modulo1.UsuarioVacioException(
+                    ex.Codigo, ex.Mensaje, ex);
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    ex.Codigo, ex.Mensaje, ex);
+            }
         }
 
         /// <summary>
@@ -295,6 +331,64 @@ namespace LogicaNegociosTotem.Modulo1
         public static bool CambioDeClave(DominioTotem.Usuario usuario)
         {
             throw new System.NotImplementedException();
+        }
+
+        /// <summary>
+        /// Metodo que extrae la pregunta de seguridad de un usuario dado su correo
+        /// </summary>
+        /// <param name="usuario">Usuario al que se le quiere obtener la pregunta de 
+        /// seguridad dado su correo</param>
+        /// <returns>Retorna a el usuario con su pregunta de seguridad cargada</returns>
+        public static DominioTotem.Usuario ObtenerPreguntaUsuario(DominioTotem.Usuario usuario)
+        {
+            try
+            {
+                if (usuario.correo != null && usuario.correo != "")
+                {
+                    usuario.correo = DesencriptarConRijndael(usuario.correo,
+                        RecursosLogicaModulo1.Passphrase);
+                    usuario = DatosTotem.Modulo1.BDLogin.ObtenerPreguntaSeguridad(usuario);
+                    if (usuario.preguntaSeguridad != null &&
+                        usuario.preguntaSeguridad != "")
+                    {
+                        return usuario;
+                    }
+                    else
+                    {
+                        throw new ExcepcionesTotem.Modulo1.UsuarioVacioException(
+                        RecursosLogicaModulo1.Codigo_Usuario_Vacio,
+                        RecursosLogicaModulo1.Mensaje_Usuario_Vacio,
+                        new ExcepcionesTotem.Modulo1.UsuarioVacioException());
+                    }
+                }
+                else
+                {
+                    throw new ExcepcionesTotem.Modulo1.UsuarioVacioException(
+                        RecursosLogicaModulo1.Codigo_Usuario_Vacio,
+                        RecursosLogicaModulo1.Mensaje_Usuario_Vacio,
+                        new ExcepcionesTotem.Modulo1.UsuarioVacioException());
+                }
+            }
+            catch (ExcepcionesTotem.Modulo1.UsuarioVacioException ex)
+            {
+                throw new ExcepcionesTotem.Modulo1.UsuarioVacioException(
+                    ex.Codigo, ex.Mensaje, ex);
+            }
+            catch (ExcepcionesTotem.Modulo1.EmailErradoException ex)
+            {
+                throw new ExcepcionesTotem.Modulo1.EmailErradoException(
+                    ex.Codigo, ex.Mensaje, ex);
+            }
+            catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
+            {
+                throw new ExcepcionesTotem.Modulo1.ParametroInvalidoException(
+                    ex.Codigo, ex.Mensaje, ex);
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    ex.Codigo, ex.Mensaje, ex);
+            }
         }
 
         #endregion
