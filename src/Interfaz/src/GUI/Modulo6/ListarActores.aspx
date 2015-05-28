@@ -19,7 +19,7 @@
 			</div>
 		</div>
 		<div class="table-responsive">
-			<table id="table-example" class="table table-striped table-hover">
+			<table id="actores" class="table table-striped table-hover">
 				<thead>
 					<tr>
 						<th>Nombre</th>
@@ -27,7 +27,7 @@
 						<th>Acciones</th>
 					</tr>
 				</thead>
-				<tbody runat="server" id="cuerpo">
+				<tbody runat ="server" id="cuerpo">
 					
 				</tbody>
 			</table>
@@ -47,7 +47,7 @@
 							</div>
 						</div>
 						<div class="modal-footer">
-							<a id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarCasoDeUso()" href="ListarActores.aspx?success=3">Eliminar</a>
+							<a id="btn-eliminar" type="button" class="btn btn-primary">Eliminar</a>
 							<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 						</div>
 					</div>
@@ -87,36 +87,41 @@
 	</div>
 	<script type="text/javascript">
 		<!-- Data tables init -->
-		$(document).ready(function () {
-			$('#table-example').DataTable();
-			var table = $('#table-example').DataTable();
-			var caso_de_uso, tr;
-			$('#table-example tbody').on('click', 'a', function () {
-				if ($(this).parent().hasClass('selected')) {
-					caso_de_uso = $(this).parent().prev().prev().prev().prev().text();
-					tr = $(this).parents('tr');//se guarda la fila seleccionada
-					$(this).parent().removeClass('selected');
-				}
-				else {
-					caso_de_uso = $(this).parent().prev().prev().prev().prev().text();
-					tr = $(this).parents('tr');//se guarda la fila seleccionada
-					table.$('tr.selected').removeClass('selected');
-					$(this).parent().addClass('selected');
-				}
-			});
-			$('#modal-delete').on('show.bs.modal', function (event) {
-				var modal = $(this);
-				modal.find('.modal-title').text('Eliminar actor: ' + caso_de_uso);
-				modal.find('#caso_de_uso').text(caso_de_uso);
-			})
-			$('#btn-eliminar').on('click', function () {
-				table.row(tr).remove().draw();//se elimina la fila de la tabla
-				$('#modal-delete').modal('hide');//se esconde el modal
-			});
-			$('#modal-update').on('show.bs.modal', function (event) {
-				var modal = $(this)
-				modal.find('.modal-title').text('Modificar actor')
-			});
-		});
+    $(document).ready(function () {
+        $('#actores').DataTable();
+        var table = $('#actores').DataTable();
+        var caso_de_uso, tr;
+        var row;
+        var modal;
+        var id;   
+        var name;
+        var desc;
+        $('#modal-delete').on('show.bs.modal', function (event) {
+            row = $(event.relatedTarget).closest('tr');
+            modal = $(event.currentTarget);
+            id = row.attr('id').replace(/^actor\-/, '');
+            name = row.find('td.name').text();
+            desc = row.find('td.desc').text();
+
+            modal.find('#caso_de_uso').text(name);
+        });
+
+
+        $('#btn-eliminar').on('click', function () {
+            window.location.href = 'ListarActores.aspx?success=3&id=' + id; 
+        });
+
+        $('#modal-update').on('show.bs.modal', function (event) {
+            var row = $(event.relatedTarget).closest('tr');
+            var modal = $(event.currentTarget);
+            var id = row.attr('id');
+            var name = row.find('td.name').text();
+            var desc = row.find('td.desc').text();
+            window.location.href = 'ListarActores.aspx?success=4&id=' + id;
+            modal.find('.modal-title').text('Modificar actor');
+        });
+
+
+    });
 	</script>
 </asp:Content>

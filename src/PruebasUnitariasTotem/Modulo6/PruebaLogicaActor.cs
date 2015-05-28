@@ -88,8 +88,11 @@ namespace PruebasUnitariasTotem.Modulo6
             //Insertamos un valor de prueba
             logica.AgregarActor("prueba", "prueba", 0);
 
-            //Eliminamos el valor
-            Assert.IsTrue(logica.EliminarActor("prueba", "prueba", 0));
+            //Leemos los actores
+            List<Actor> listaActores = logica.ListarActor(0);
+
+            //Eliminamos el valor de prueba insertado
+            Assert.IsTrue(logica.EliminarActor(listaActores[listaActores.Count - 1].IdentificacionActor, 0));
         }
 
         /// <summary>
@@ -111,7 +114,7 @@ namespace PruebasUnitariasTotem.Modulo6
             //Si no existe debe retornarme verdadero indicando que la insercion fue exitosa
             Assert.IsTrue(logica.AgregarListarActor(valorPrueba, valorPrueba, 0));
         }
-       
+
         /// <summary>
         /// Se deja en vacio el atributo creado para ser limpiado por el Garbage Collector
         /// </summary>

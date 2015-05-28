@@ -45,13 +45,12 @@ GO
 
 /*Eliminar Actor*/
 CREATE PROCEDURE ELIMINAR_ACTOR 
-	@nombre [varchar] (100),
+	@idactor int,
 	@idproyecto int
 AS
 	BEGIN
-		DELETE FROM ACTOR WHERE PROYECTO_pro_id= @idproyecto AND act_nombre=@nombre;
+		DELETE FROM ACTOR WHERE PROYECTO_pro_id= @idproyecto AND act_id=@idactor;
 	END
-GO
 
 /* Leer casos de uso por actor */
 CREATE PROCEDURE LEER_CU_POR_ACTOR 
