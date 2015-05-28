@@ -19,7 +19,6 @@ namespace DatosTotem.Modulo4
     public static class BDProyecto
     {
 
-
         #region Crear
         /// <summary>
         /// Método para Crear un proyecto en la bd
@@ -28,27 +27,15 @@ namespace DatosTotem.Modulo4
         /// <returns>Retrorna True si se crea, False si no </returns>
         public static bool CrearProyecto(Proyecto proyecto)
         {
-            List<Parametro> parametros = new List<Parametro>();
-            Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, proyecto.Codigo, false);
-            parametros.Add(parametro);
-
-            parametro = new Parametro(RecursosBDModulo4.ParametroResultado, SqlDbType.Int, true);
-            parametros.Add(parametro);
-
-
-
-            BDConexion con = new BDConexion();
-            List<Resultado> resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoExisteProyecto, parametros);
-
-
+           
             //Si no existe el proyecto se agrega 
-            if (int.Parse(resultados[0].valor) == 0)
+            if (!ExisteProyecto(proyecto.Codigo))
             {
                 try
                 {
                     //parametros para insertar un proyecto
-                    parametros = new List<Parametro>();
-                    parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, proyecto.Codigo, false);
+                    List<Parametro> parametros = new List<Parametro>();
+                    Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, proyecto.Codigo, false);
                     parametros.Add(parametro);
                     parametro = new Parametro(RecursosBDModulo4.ParametroNombreProyecto, SqlDbType.VarChar, proyecto.Nombre, false);
                     parametros.Add(parametro);
@@ -61,9 +48,8 @@ namespace DatosTotem.Modulo4
                     parametro = new Parametro(RecursosBDModulo4.ParametroMonedaProyecto, SqlDbType.VarChar, proyecto.Moneda, false);
                     parametros.Add(parametro);
 
-
-                    con = new BDConexion();
-                    resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoAgregarProyecto, parametros);
+                    BDConexion con = new BDConexion();
+                    List<Resultado> resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoAgregarProyecto, parametros);
 
                     //si la creacion es correcta retorna true
 
@@ -97,27 +83,14 @@ namespace DatosTotem.Modulo4
         /// <returns>Retrorna True si se crea, False si no </returns>
         public static bool CrearProyecto(Proyecto proyecto, ClienteJuridico clienteJuridico)
         {
-            List<Parametro> parametros = new List<Parametro>();
-            Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, proyecto.Codigo, false);
-            parametros.Add(parametro);
-
-            parametro = new Parametro(RecursosBDModulo4.ParametroResultado, SqlDbType.Int, true);
-            parametros.Add(parametro);
-
-
-
-            BDConexion con = new BDConexion();
-            List<Resultado> resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoExisteProyecto, parametros);
-
-
             //Si no existe el proyecto se agrega 
-            if (int.Parse(resultados[0].valor) == 0)
+            if (!ExisteProyecto(proyecto.Codigo))
             {
                 try
                 {
                     //parametros para insertar un proyecto
-                    parametros = new List<Parametro>();
-                    parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, proyecto.Codigo, false);
+                    List<Parametro> parametros = new List<Parametro>();
+                    Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, proyecto.Codigo, false);
                     parametros.Add(parametro);
                     parametro = new Parametro(RecursosBDModulo4.ParametroNombreProyecto, SqlDbType.VarChar, proyecto.Nombre, false);
                     parametros.Add(parametro);
@@ -133,8 +106,9 @@ namespace DatosTotem.Modulo4
                     parametros.Add(parametro);
 
 
-                    con = new BDConexion();
-                    resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoAgregarProyectoClienteJuridico, parametros);
+                    BDConexion con = new BDConexion();
+                    List<Resultado>  resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoAgregarProyectoClienteJuridico, parametros);
+                  
 
                     //si la creacion es correcta retorna true
 
@@ -169,27 +143,15 @@ namespace DatosTotem.Modulo4
         /// <returns>Retrorna True si se crea, False si no </returns>
         public static bool CrearProyecto(Proyecto proyecto, ClienteNatural clienteNatural)
         {
-            List<Parametro> parametros = new List<Parametro>();
-            Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, proyecto.Codigo, false);
-            parametros.Add(parametro);
-
-            parametro = new Parametro(RecursosBDModulo4.ParametroResultado, SqlDbType.Int, true);
-            parametros.Add(parametro);
-
-
-
-            BDConexion con = new BDConexion();
-            List<Resultado> resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoExisteProyecto, parametros);
-
-
+           
             //Si no existe el proyecto se agrega 
-            if (int.Parse(resultados[0].valor) == 0)
+            if (!ExisteProyecto(proyecto.Codigo))
             {
                 try
                 {
                     //parametros para insertar un proyecto
-                    parametros = new List<Parametro>();
-                    parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, proyecto.Codigo, false);
+                    List<Parametro> parametros = new List<Parametro>();
+                    Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, proyecto.Codigo, false);
                     parametros.Add(parametro);
                     parametro = new Parametro(RecursosBDModulo4.ParametroNombreProyecto, SqlDbType.VarChar, proyecto.Nombre, false);
                     parametros.Add(parametro);
@@ -205,8 +167,8 @@ namespace DatosTotem.Modulo4
                     parametros.Add(parametro);
 
 
-                    con = new BDConexion();
-                    resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoAgregarProyectoClienteNatural, parametros);
+                    BDConexion con = new BDConexion();
+                    List<Resultado> resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoAgregarProyectoClienteNatural, parametros);
 
                     //si la creacion es correcta retorna true
 
@@ -234,43 +196,112 @@ namespace DatosTotem.Modulo4
 
         #endregion
 
-
         #region Modificar
         /// <summary>
         /// Método para Crear un proyecto en la bd
         /// </summary>
         /// <param name="proyecto"> proyecto modificado</param>
-        /// <param name="codigoViejo">codigo del proyecto a modificar</param>
+        /// <param name="codigoAnterior">codigo del proyecto a modificar</param>
         /// <returns>Retrorna True si se modifica, False si no </returns>
-        public static bool ModificarProyecto(Proyecto proyecto, String codigoViejo)
+        public static bool ModificarProyecto(Proyecto proyecto, String codigoAnterior)
         {
-            List<Parametro> parametros = new List<Parametro>();
-            Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, proyecto.Codigo, false);
-            parametros.Add(parametro);
-            parametro = new Parametro(RecursosBDModulo4.ParametroNombreProyecto, SqlDbType.VarChar, proyecto.Nombre, false);
-            parametros.Add(parametro);
-            parametro = new Parametro(RecursosBDModulo4.ParametroEstadoProyecto, SqlDbType.Bit, proyecto.Estado.ToString(), false);
-            parametros.Add(parametro);
-            parametro = new Parametro(RecursosBDModulo4.ParametroDescripcionProyecto, SqlDbType.VarChar, proyecto.Descripcion, false);
-            parametros.Add(parametro);
-            parametro = new Parametro(RecursosBDModulo4.ParametroCostoProyecto, SqlDbType.Int, proyecto.Costo.ToString(), false);
-            parametros.Add(parametro);
-            parametro = new Parametro(RecursosBDModulo4.ParametroMonedaProyecto, SqlDbType.VarChar, proyecto.Moneda, false);
-            parametros.Add(parametro);
-            parametro = new Parametro(RecursosBDModulo4.ParametroCodigoViejoProyecto, SqlDbType.VarChar, codigoViejo, false);
-            parametros.Add(parametro);
+            //si cambio de codigo y no esta en uso ademas de que el proyecto a modificar existe
+            // o si no hay cambio de codigo verifica que existe el proyecto a modificar
+            if ((!(proyecto.Codigo.Equals(codigoAnterior)) && (!ExisteProyecto(proyecto.Codigo)) && (ExisteProyecto(codigoAnterior))) ||
+                (proyecto.Codigo.Equals(codigoAnterior) && (ExisteProyecto(proyecto.Codigo))))
+            {
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, proyecto.Codigo, false);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo4.ParametroNombreProyecto, SqlDbType.VarChar, proyecto.Nombre, false);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo4.ParametroEstadoProyecto, SqlDbType.Bit, proyecto.Estado.ToString(), false);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo4.ParametroDescripcionProyecto, SqlDbType.VarChar, proyecto.Descripcion, false);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo4.ParametroCostoProyecto, SqlDbType.Int, proyecto.Costo.ToString(), false);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo4.ParametroMonedaProyecto, SqlDbType.VarChar, proyecto.Moneda, false);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo4.ParametroCodigoAnteriorProyecto, SqlDbType.VarChar, codigoAnterior, false);
+                parametros.Add(parametro);
 
+                try
+                {
+                    BDConexion con = new BDConexion();
+                    List<Resultado> resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoModificarProyecto, parametros);
+                    if (resultados != null)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        throw new NotImplementedException();
+
+                    }
+
+                }
+                catch (NotImplementedException e)
+                {
+                    throw e;
+                }
+            }
+            else
+                return false;
+        }
+        #endregion
+
+        #region Consultar
+        /// <summary>
+        /// Método para consultar un proyecto en la bd
+        /// </summary>
+        /// <param name="codigo">Codigo del proyecto a consultar</param>
+        /// <returns>Retrorna el proyecto</returns>
+        public static Proyecto ConsultarProyecto(String codigo)
+        {
             try
             {
+
+                //parametros para insertar un proyecto
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, codigo, false);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo4.ParametroCodigoConsultaProyecto, SqlDbType.VarChar, true);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo4.ParametroNombreProyecto, SqlDbType.VarChar, true);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo4.ParametroEstadoProyecto, SqlDbType.Bit, true);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo4.ParametroDescripcionProyecto, SqlDbType.VarChar, true);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo4.ParametroCostoProyecto, SqlDbType.Int, true);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo4.ParametroMonedaProyecto, SqlDbType.VarChar, true);
+                parametros.Add(parametro);
+
                 BDConexion con = new BDConexion();
-                List<Resultado> resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoModificarProyecto, parametros);
+                List<Resultado> resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoConsultarProyecto, parametros);
+
+
                 if (resultados != null)
                 {
-                    return true;
+                    Console.Out.WriteLine("/HOLLLLLLAAAAAAAAAAAAA"+resultados[2].valor);
+                    Proyecto proyecto;
+                    if (bool.Parse(resultados[2].valor))
+                    {
+                        proyecto=new Proyecto(resultados[0].valor, resultados[1].valor, true, resultados[3].valor, resultados[5].valor, int.Parse(resultados[4].valor));
+                        return proyecto;
+                    }
+                    if (!bool.Parse(resultados[2].valor))
+                    {
+                        proyecto= new Proyecto(resultados[0].valor, resultados[1].valor, false, resultados[3].valor, resultados[5].valor, int.Parse(resultados[4].valor));
+                        return proyecto;
+                    }
+                    return null; 
                 }
                 else
                 {
-                    throw new NotImplementedException();
+                    return null; 
 
                 }
 
@@ -280,18 +311,56 @@ namespace DatosTotem.Modulo4
                 throw e;
             }
         }
-        #endregion
 
         /// <summary>
         /// Método para consultar un proyecto en la bd
         /// </summary>
-        /// <param name="codigo">Codigo del proyecto a consultar</param>
+        /// <param name="username">nombre del usuario a consultar </param>
         /// <returns>Retrorna el proyecto</returns>
-        public static Proyecto ConsultarProyecto(String codigo)
+        public static DataTable ConsultarProyectosUsuario(String username)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+
+                //parametros para insertar un proyecto
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, username, false);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo4.ParametroCodigoConsultaProyecto, SqlDbType.VarChar, true);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo4.ParametroNombreProyecto, SqlDbType.VarChar, true);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo4.ParametroEstadoProyecto, SqlDbType.Bit, true);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo4.ParametroDescripcionProyecto, SqlDbType.VarChar, true);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo4.ParametroCostoProyecto, SqlDbType.Int, true);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo4.ParametroMonedaProyecto, SqlDbType.VarChar, true);
+                parametros.Add(parametro);
+
+                BDConexion con = new BDConexion();
+                DataTable resultados = con.EjecutarStoredProcedureTuplas(RecursosBDModulo4.ProcedimientosProyectosDeUsuario, parametros);
+
+
+                if (resultados != null)
+                {
+                    return resultados;
+                }
+                else
+                {
+                    return null;
+
+                }
+
+            }
+            catch (NotImplementedException e)
+            {
+                throw e;
+            }
         }
 
+        #endregion
 
         #region Eliminar
         /// <summary>
@@ -326,6 +395,36 @@ namespace DatosTotem.Modulo4
         }
         #endregion
 
+        #region Existe
+
+        /// <summary>
+        /// Método para verificar si existe un proyecto en la bd
+        /// </summary>
+        /// <param name="codigo">Codigo del proyecto a verificar</param>
+        /// <returns>Retrorna true si existe o false si no existe</returns>
+        public static bool ExisteProyecto(String codigo)
+        {
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, codigo, false);
+            parametros.Add(parametro);
+
+            parametro = new Parametro(RecursosBDModulo4.ParametroResultado, SqlDbType.Int, true);
+            parametros.Add(parametro);
+
+
+
+            BDConexion con = new BDConexion();
+            List<Resultado> resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoExisteProyecto, parametros);
+
+
+            if (int.Parse(resultados[0].valor) == 1)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+        #endregion
 
     }
 }

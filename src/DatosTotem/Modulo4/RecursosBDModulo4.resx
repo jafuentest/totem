@@ -161,13 +161,17 @@
     <value>@CLIENTE_NATURAL_cn_id</value>
     <comment>Cliente juridico del proyecto para usar en procedures</comment>
   </data>
+  <data name="ParametroCodigoAnteriorProyecto" xml:space="preserve">
+    <value>@codigo_anterior</value>
+    <comment>Codigo anterior del proyecto a modificar</comment>
+  </data>
+  <data name="ParametroCodigoConsultaProyecto" xml:space="preserve">
+    <value>@pro_codigo2</value>
+    <comment>Codigo del proyecto de salida para usar en procedures </comment>
+  </data>
   <data name="ParametroCodigoProyecto" xml:space="preserve">
     <value>@pro_codigo</value>
     <comment>Codigo del proyecto para usar en procedures </comment>
-  </data>
-  <data name="ParametroCodigoViejoProyecto" xml:space="preserve">
-    <value>@pro_codigoViejo</value>
-    <comment>Codigo viejo del proyecto para usar en procedures</comment>
   </data>
   <data name="ParametroCostoProyecto" xml:space="preserve">
     <value>@pro_costo</value>
@@ -220,5 +224,9 @@
   <data name="ProcedimientoModificarProyecto" xml:space="preserve">
     <value>Procedure_ModificarProyecto</value>
     <comment>Modifica losdatos de un proyecto en la BD</comment>
+  </data>
+  <data name="ProcedimientosProyectosDeUsuario" xml:space="preserve">
+    <value>Procedure_ProyectosDeUsuario</value>
+    <comment>Procedimiento que muestra los proyectos de un usuario </comment>
   </data>
 </root>

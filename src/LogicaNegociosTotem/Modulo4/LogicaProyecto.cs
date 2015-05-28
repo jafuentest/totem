@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace LogicaNegociosTotem.Modulo4
 {
@@ -11,7 +12,7 @@ namespace LogicaNegociosTotem.Modulo4
     public static class LogicaProyecto
     {
 
-        #region metodos
+        #region Crear
 
 
         /// <summary>
@@ -74,7 +75,9 @@ namespace LogicaNegociosTotem.Modulo4
             }
         }
 
+        #endregion
 
+        #region Consultar
         /// <summary>
         /// Metodo para consultar un proyecto en BD
         /// </summary>
@@ -84,9 +87,24 @@ namespace LogicaNegociosTotem.Modulo4
         /// 
         public static DominioTotem.Proyecto ConsultarProyecto(String codigo)
         {
-            throw new NotImplementedException();
+            return DatosTotem.Modulo4.BDProyecto.ConsultarProyecto(codigo);
         }
 
+        /// <summary>
+        /// Metodo para consultar un proyecto en BD
+        /// </summary>
+        /// <param name="username">codigo del proyecto a consultar
+        /// <returns>Devuelve como resultado un proyecto en caso 
+        /// contrario devuelve null</returns>
+        /// 
+        public static DataTable ConsultarTodosLosProyectos(String username)
+        {
+            return DatosTotem.Modulo4.BDProyecto.ConsultarProyectosUsuario(username);
+        }
+
+        #endregion
+
+        #region Modificar
         /// <summary>
         /// Metodo para Modificar un proyecto en BD
         /// </summary>
@@ -103,7 +121,9 @@ namespace LogicaNegociosTotem.Modulo4
                 return false;
             }
         }
+        #endregion
 
+        #region Generar Documentos
         /// <summary>
         /// Metodo para generar el documento ERS del un proyecto (archivo .pdf descargable).
         /// Excepciones posibles: 
@@ -129,5 +149,6 @@ namespace LogicaNegociosTotem.Modulo4
             throw new NotImplementedException();
         }
         #endregion
+
     }
 }

@@ -160,20 +160,29 @@ namespace DatosTotem.Modulo4 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to @codigo_anterior.
+        /// </summary>
+        internal static string ParametroCodigoAnteriorProyecto {
+            get {
+                return ResourceManager.GetString("ParametroCodigoAnteriorProyecto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @pro_codigo2.
+        /// </summary>
+        internal static string ParametroCodigoConsultaProyecto {
+            get {
+                return ResourceManager.GetString("ParametroCodigoConsultaProyecto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @pro_codigo.
         /// </summary>
         internal static string ParametroCodigoProyecto {
             get {
                 return ResourceManager.GetString("ParametroCodigoProyecto", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to @pro_codigoViejo.
-        /// </summary>
-        internal static string ParametroCodigoViejoProyecto {
-            get {
-                return ResourceManager.GetString("ParametroCodigoViejoProyecto", resourceCulture);
             }
         }
         
@@ -291,6 +300,15 @@ namespace DatosTotem.Modulo4 {
         internal static string ProcedimientoModificarProyecto {
             get {
                 return ResourceManager.GetString("ProcedimientoModificarProyecto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procedure_ProyectosDeUsuario.
+        /// </summary>
+        internal static string ProcedimientosProyectosDeUsuario {
+            get {
+                return ResourceManager.GetString("ProcedimientosProyectosDeUsuario", resourceCulture);
             }
         }
     }

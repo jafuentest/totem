@@ -62,7 +62,7 @@ GO
 CREATE PROCEDURE Procedure_ModificarProyecto
 		 
 		
-		@pro_codigo[varchar] (6),
+		@pro_codigo[varchar] (6) ,
 		@pro_nombre [varchar] (60),
 		@pro_estado [bit],
 		@pro_descripcion [varchar] (600),
@@ -98,14 +98,24 @@ END
 
 CREATE PROCEDURE Procedure_ConsultarProyecto
 	
-	@pro_codigo [varchar] (6)
+	@pro_codigo [varchar] (6) ,
+	@pro_codigo2 [varchar] (6) OUTPUT,
+	@pro_nombre [varchar] (60) OUTPUT,
+	@pro_estado [bit] OUTPUT,
+	@pro_descripcion [varchar] (600)OUTPUT,
+	@pro_costo       [int] OUTPUT,
+	@pro_moneda      [varchar] (3)OUTPUT
+	@pro_moneda      [varchar] (3)OUTPUT
+	
+	
 	   
 AS
  BEGIN
 	
-	SELECT pro_codigo, pro_nombre, pro_estado,pro_descripcion,pro_costo,pro_moneda,CLIENTE_JURIDICO_cj_id,CLIENTE_NATURAL_cn_id
+	SELECT @pro_codigo2=pro_codigo, @pro_nombre= pro_nombre, @pro_estado=pro_estado,@pro_descripcion =pro_descripcion,@pro_costo=pro_costo,@pro_moneda  =pro_moneda
 	FROM PROYECTO P
 	WHERE (P.pro_codigo=@pro_codigo) 
+	RETURN
  END
 GO
 
@@ -113,11 +123,18 @@ GO
 
 CREATE PROCEDURE Procedure_ProyectosDeUsuario
  
-		@usu_username[varchar] (6)
+	@usu_username[varchar] (6),
+	@pro_codigo [varchar] (6)OUTPUT ,
+	@pro_nombre [varchar] (60) OUTPUT,
+	@pro_estado [bit] OUTPUT,
+	@pro_descripcion [varchar] (600)OUTPUT,
+	@pro_costo       [int] OUTPUT,
+	@pro_moneda      [varchar] (3)OUTPUT
 AS 
 BEGIN
-    SELECT pro_codigo, pro_nombre, pro_estado, pro_descripcion, pro_costo, pro_moneda FROM PROYECTO INNER JOIN INVOLUCRADOS_USUARIOS ON PROYECTO.pro_id = INVOLUCRADOS_USUARIOS.PROYECTO_pro_id
+    SELECT @pro_codigo=pro_codigo, @pro_nombre=pro_nombre, @pro_estado=pro_estado, @pro_descripcion=pro_descripcion, @pro_costo=pro_costo, @pro_moneda=pro_moneda FROM PROYECTO INNER JOIN INVOLUCRADOS_USUARIOS ON PROYECTO.pro_id = INVOLUCRADOS_USUARIOS.PROYECTO_pro_id
 	WHERE (SELECT usu_id FROM USUARIO WHERE USUARIO.usu_username = @usu_username) = INVOLUCRADOS_USUARIOS.USUARIO_usu_id
+	RETURN
 END
 GO
 

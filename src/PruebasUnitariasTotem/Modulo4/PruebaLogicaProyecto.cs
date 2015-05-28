@@ -21,25 +21,17 @@ namespace PruebasUnitariasTotem.Modulo4
         public void init()
         {
 
-            //elLugar = new Lugar(1, "Venezuela");
             elProyecto = new Proyecto("TES", "Test", true, "Test descripcion", "Bs", 1000000);
-
             elClienteJuridico = new ClienteJuridico();
             elClienteNatural = new ClienteNatural();
             elClienteJuridico.Jur_Id = "2";
             elClienteNatural.Nat_Id = "1";
-            //elClienteJuridico.Jur_Nombre = "Venetur";
-
-            //int fkLugar = 1;
-
-            //Assert.IsTrue(baseDeDatosCliente.AgregarClienteJuridico(cliente, fkLugar));
-
+      
         }
         [TearDown]
         public void clean()
         {
             elProyecto = null;
-            DatosTotem.Modulo4.BDProyecto.EliminarProyecto("TES");
         }
 
         #region Crear 
@@ -50,6 +42,7 @@ namespace PruebasUnitariasTotem.Modulo4
             try
             {
                 Assert.IsTrue(LogicaNegociosTotem.Modulo4.LogicaProyecto.CrearProyecto(elProyecto));
+                DatosTotem.Modulo4.BDProyecto.EliminarProyecto("TES");
             }
             catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException)
             {
@@ -60,10 +53,12 @@ namespace PruebasUnitariasTotem.Modulo4
         [Test]
         public void PruebaCrearProyectoClienteJuridico()
         {
+            elClienteJuridico.Jur_Id="2";
 
             try
             {
                 Assert.IsTrue(LogicaNegociosTotem.Modulo4.LogicaProyecto.CrearProyecto(elProyecto, elClienteJuridico));
+                DatosTotem.Modulo4.BDProyecto.EliminarProyecto("TES");
             }
             catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException)
             {
@@ -75,9 +70,11 @@ namespace PruebasUnitariasTotem.Modulo4
         public void PruebaCrearProyectoClienteNatural()
         {
 
+            elClienteNatural.Nat_Id="1";
             try
             {
                 Assert.IsTrue(LogicaNegociosTotem.Modulo4.LogicaProyecto.CrearProyecto(elProyecto, elClienteJuridico));
+                DatosTotem.Modulo4.BDProyecto.EliminarProyecto("TES");
             }
             catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException)
             {
@@ -86,10 +83,12 @@ namespace PruebasUnitariasTotem.Modulo4
         }
         #endregion
 
-
+        [Test]
         public void PruebaModificarProyecto()
         {
             String codigoAnterior = elProyecto.Codigo;
+            //se crea el proyecto
+            LogicaNegociosTotem.Modulo4.LogicaProyecto.CrearProyecto(elProyecto);
             elProyecto.Codigo = "TWI";
             elProyecto.Nombre = "Twitter";
             elProyecto.Descripcion = "Red social para compartir mensajes de hasta 140 caracteres";
@@ -98,7 +97,10 @@ namespace PruebasUnitariasTotem.Modulo4
             elProyecto.Moneda = "$";
             try
             {
+                //se modifica
                 Assert.IsTrue(LogicaNegociosTotem.Modulo4.LogicaProyecto.ModificarProyecto(elProyecto, codigoAnterior));
+
+                DatosTotem.Modulo4.BDProyecto.EliminarProyecto("TWI");
             }
             catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException)
             {
@@ -106,5 +108,24 @@ namespace PruebasUnitariasTotem.Modulo4
             }
         }
 
+
+        [Test]
+        public void PruebaConsultarProyecto()
+        {
+
+            LogicaNegociosTotem.Modulo4.LogicaProyecto.CrearProyecto(elProyecto);
+            Proyecto elProyectoConsultado = LogicaNegociosTotem.Modulo4.LogicaProyecto.ConsultarProyecto("TES");
+
+            Assert.AreEqual(elProyecto.Codigo, elProyectoConsultado.Codigo);
+            Assert.AreEqual(elProyecto.Nombre, elProyectoConsultado.Nombre);
+            Assert.AreEqual(elProyecto.Estado, elProyectoConsultado.Estado);
+            Assert.AreEqual(elProyecto.Descripcion, elProyectoConsultado.Descripcion);
+            Assert.AreEqual(elProyecto.Costo, elProyectoConsultado.Costo);
+            Assert.AreEqual(elProyecto.Moneda, elProyectoConsultado.Moneda);
+
+            
+            DatosTotem.Modulo4.BDProyecto.EliminarProyecto("TES");
+
+        }
     }
 }
