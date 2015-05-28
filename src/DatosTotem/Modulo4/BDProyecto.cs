@@ -16,7 +16,7 @@ namespace DatosTotem.Modulo4
     /// Clase para el manejo de proyectos en la bd
     /// a la BD
     /// </summary>
-    public static class BDProyecto 
+    public static class BDProyecto
     {
 
 
@@ -29,20 +29,24 @@ namespace DatosTotem.Modulo4
         public static bool CrearProyecto(Proyecto proyecto)
         {
             List<Parametro> parametros = new List<Parametro>();
-            Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, proyecto.Codigo, true);
+            Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, proyecto.Codigo, false);
             parametros.Add(parametro);
-           
+
+            parametro = new Parametro(RecursosBDModulo4.ParametroResultado, SqlDbType.Int, true);
+            parametros.Add(parametro);
             
+
             
             BDConexion con = new BDConexion();
             List<Resultado> resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoExisteProyecto, parametros);
 
 
-            if (bool.Parse(resultados[0].valor) == true)
+            //Si no existe el proyecto se agrega 
+            if (int.Parse( resultados[0].valor) == 0)
             {
                 try
                 {
-
+                    //parametros para insertar un proyecto
                     parametros = new List<Parametro>();
                     parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, proyecto.Codigo, false);
                     parametros.Add(parametro);
@@ -60,6 +64,9 @@ namespace DatosTotem.Modulo4
 
                     con = new BDConexion();
                     resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoAgregarProyecto, parametros);
+                   
+                    //si la creacion es correcta retorna true
+                  
                     if (resultados != null)
                     {
                         return true;
@@ -77,6 +84,7 @@ namespace DatosTotem.Modulo4
                 }
             }
             else
+                //el codigo existe por lo tanto no se crea el proyecto
                 throw new ExcepcionesTotem.Modulo4.CodigoRepetidoException(RecursosBDModulo4.CodigoProyectoExiste,
                            RecursosBDModulo4.MensajeCodigoProyectoExiste, new Exception());
         }
@@ -231,7 +239,7 @@ namespace DatosTotem.Modulo4
         {
             throw new System.NotImplementedException();
         }
-
+      
 
     }
 }

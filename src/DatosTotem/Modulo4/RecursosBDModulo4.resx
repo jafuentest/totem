@@ -189,6 +189,10 @@
     <value>@pro_nombre</value>
     <comment> Nombre del proyecto para usar en procedures</comment>
   </data>
+  <data name="ParametroResultado" xml:space="preserve">
+    <value>@resultado</value>
+    <comment>Resultado de los procedures</comment>
+  </data>
   <data name="ProcedimientoAgregarProyecto" xml:space="preserve">
     <value>Procedure_AgregarProyecto</value>
     <comment>Agrega un proyecto en la BD</comment>
@@ -206,7 +210,7 @@
     <comment>Consulta un proyecto en la BD</comment>
   </data>
   <data name="ProcedimientoExisteProyecto" xml:space="preserve">
-    <value>Procedure_ExisteProyecto</value>
+    <value>Procedure_ExisteProyecto </value>
     <comment>Verifica la existencia de un proyecto en la BD</comment>
   </data>
   <data name="ProcedimientoModificarProyecto" xml:space="preserve">

@@ -223,6 +223,15 @@ namespace DatosTotem.Modulo4 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to @resultado.
+        /// </summary>
+        internal static string ParametroResultado {
+            get {
+                return ResourceManager.GetString("ParametroResultado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Procedure_AgregarProyecto.
         /// </summary>
         internal static string ProcedimientoAgregarProyecto {
@@ -259,7 +268,7 @@ namespace DatosTotem.Modulo4 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Procedure_ExisteProyecto.
+        ///   Looks up a localized string similar to Procedure_ExisteProyecto .
         /// </summary>
         internal static string ProcedimientoExisteProyecto {
             get {

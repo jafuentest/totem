@@ -85,12 +85,14 @@ GO
 CREATE PROCEDURE Procedure_ExisteProyecto
  
 		@pro_codigo[varchar] (6)
+		@resultado int OUTPUT
 AS 
 BEGIN
     IF EXISTS (SELECT * FROM PROYECTO P WHERE pro_codigo = @pro_codigo)
-        SELECT true
+        @resultado = 1
     ELSE
-        SELECT false
+        @resultado = 0
+	RETURN
 END
 -- Procedimiento para consultar un Proyecto----------------------
 
