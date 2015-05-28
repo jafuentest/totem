@@ -152,31 +152,6 @@ namespace DominioTotem
         {
             throw new NotImplementedException();
         }
-
-        /// <summary>
-        /// Metodo para generar el documento ERS del un proyecto (archivo .pdf descargable).
-        /// Excepciones posibles: 
-        /// CasosDeUsoInexistentesException()
-        /// RequerimientosInexistentesException()
-        /// InvolucradosInexistentesException()
-        /// </summary>
-        /// <param name="codigo">Codigo del proyecto al que se le generara el ERS</param>
-        public void GenerarERS(String codigo)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Metodo para generar la factura del un proyecto (archivo .pdf descargable).
-        /// Excepciones posibles:
-        /// RequerimientosInexistentesException()
-        /// InvolucradosInexistentesException()
-        /// </summary>
-        /// <param name="codigo">Codigo del proyecto al que se le generara la factura</param>
-        public void GenerarFactura(String codigo)
-        {
-            throw new NotImplementedException();
-        }
         #endregion
     }
 }

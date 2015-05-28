@@ -108,3 +108,15 @@ AS
 	WHERE (P.pro_codigo=@pro_codigo) 
  END
 GO
+
+-- Procedimiento para consultar los Proyectos asociados a un usuario----------------------
+
+CREATE PROCEDURE Procedure_ProyectosDeUsuario
+ 
+		@usu_username[varchar] (6)
+AS 
+BEGIN
+    SELECT pro_codigo, pro_nombre, pro_estado, pro_descripcion, pro_costo, pro_moneda FROM PROYECTO INNER JOIN INVOLUCRADOS_USUARIOS ON PROYECTO.pro_id = INVOLUCRADOS_USUARIOS.PROYECTO_pro_id
+	WHERE (SELECT usu_id FROM USUARIO WHERE USUARIO.usu_username = @usu_username) = INVOLUCRADOS_USUARIOS.USUARIO_usu_id
+END
+GO

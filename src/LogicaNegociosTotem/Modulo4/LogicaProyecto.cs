@@ -41,7 +41,7 @@ namespace LogicaNegociosTotem.Modulo4
         /// <param name="clienteJuridico">Cliente juridico del proyecto</param>
         /// <returns>Retorna True si se crea, de lo contrario genera
         /// una exception(CodigoRepetido)</returns>
-        public static bool CrearProyecto(DominioTotem.Proyecto proyecto, DominioTotem.ClienteJuridico clienteJuridico)
+        /*public static bool CrearProyecto(DominioTotem.Proyecto proyecto, DominioTotem.ClienteJuridico clienteJuridico)
         {
 
             try
@@ -72,7 +72,7 @@ namespace LogicaNegociosTotem.Modulo4
             {
                 return false;
             }
-        }
+        }*/
 
 
         /// <summary>
@@ -104,12 +104,27 @@ namespace LogicaNegociosTotem.Modulo4
             }
         }
 
-        public static void GenerarERS(DominioTotem.Proyecto proyecto)
+        /// <summary>
+        /// Metodo para generar el documento ERS del un proyecto (archivo .pdf descargable).
+        /// Excepciones posibles: 
+        /// CasosDeUsoInexistentesException()
+        /// RequerimientosInexistentesException()
+        /// InvolucradosInexistentesException()
+        /// </summary>
+        /// <param name="codigo">Codigo del proyecto al que se le generara el ERS</param>
+        public static void GenerarERS(String codigo)
         {
             throw new NotImplementedException();
         }
 
-        public static void GenerarFactura(DominioTotem.Proyecto proyecto)
+        /// <summary>
+        /// Metodo para generar la factura del un proyecto (archivo .pdf descargable).
+        /// Excepciones posibles:
+        /// RequerimientosInexistentesException()
+        /// InvolucradosInexistentesException()
+        /// </summary>
+        /// <param name="codigo">Codigo del proyecto al que se le generara la factura</param>
+        public static void GenerarFactura(String codigo)
         {
             throw new NotImplementedException();
         }
