@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using DominioTotem;
 using DatosTotem.Modulo2;
+using ExcepcionesTotem;
 using ExcepcionesTotem.Modulo2;
 namespace LogicaNegociosTotem.Modulo2
 {
@@ -29,9 +31,27 @@ namespace LogicaNegociosTotem.Modulo2
        {
            Contacto contacto = new Contacto(identificador);
 
-           //return baseDeDatosContacto.(identificador); 
-           throw new NotImplementedException(); 
-       }
+           try
+           {
+             baseDeDatosContacto.ConsultarDatosDeContacto(identificador);
+           }
+
+             catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+           {
+                   throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                   ex.Codigo, ex.Mensaje, ex);
+           }
+           catch (ExcepcionesTotem.Modulo2.Modulo2ContactoVacioException ex)
+           {
+               throw new ExcepcionesTotem.Modulo2.Modulo2ContactoVacioException(
+                   ex.Codigo, ex.Mensaje, ex);
+           }
+
+
+           return contacto;
+           
+           
+           }
 
 
     }
