@@ -15,7 +15,7 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
     {
         ((MasterPage)Page.Master).IdModulo = "2";
 
-        DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+       /* DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
         if (user != null)
         {
             if (user.username != "" &&
@@ -29,7 +29,7 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
                 ((MasterPage)Page.Master).MostrarMenuLateral = false;
                 ((MasterPage)Page.Master).ShowDiv = false;
 
-            }
+            }*/
             if (!IsPostBack) // verificar si la pagina se muestra por primera vez
             {
                 this.LlenarPaises();
@@ -40,7 +40,7 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
         {
             Response.Redirect("../Modulo1/M1_login.aspx");
         }*/
-    }
+    
 
 
     /// <summary>
@@ -87,7 +87,7 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             this.comboPais.Items.Clear();
 
             itemPais = new ListItem();
-            this.comboPais.InnerHtml = "<option id=\"opcionPais\" value=\"0\" runat=\"server\" "+"text ="+"\"Seleccione Pais\"> "+"</option>";
+            this.comboPais.InnerHtml = "<option id='opcionPais' value='0' runat='server' "+"text ="+"'Seleccione Pais'>" + "</option>";
            
             
             /*itemPais.Text = "Seleccione un país";
