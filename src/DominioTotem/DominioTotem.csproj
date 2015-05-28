@@ -51,11 +51,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proyecto.cs" />
     <Compile Include="Punto.cs" />
-<<<<<<< HEAD
     <Compile Include="Requerimiento.cs" />
-=======
     <Compile Include="ResponseObject\ResponseDataMinuta.cs" />
->>>>>>> origin/master
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup />
