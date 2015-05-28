@@ -11,13 +11,14 @@ public partial class _Default : System.Web.UI.Page
     {
         ((MasterPage)Page.Master).IdModulo = "1";
 
-        if (Request.Cookies["userInfo"] != null)
+        DominioTotem.Usuario user= HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+        if (user != null)
         {
-            if (Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != "" &&
-                Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
+            if (user.username != "" &&
+                user.clave != "")
             {
                 Master.ShowDiv = true;
-                if (Server.HtmlEncode(Request.Cookies["userInfo"]["rol"]) == "administrador")
+                if (user.rol == "Administrador")
                 {
                     div_adminIcons.InnerHtml = "<div class='row jumbotron'>";
                     div_adminIcons.InnerHtml += "<div class='col-sm-4'>";
