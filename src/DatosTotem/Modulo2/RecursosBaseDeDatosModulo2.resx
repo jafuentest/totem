@@ -233,4 +233,10 @@
   <data name="ProcedureVerificarClienteNatural" xml:space="preserve">
     <value>Procedure_verificarClienteNatural</value>
   </data>
+  <data name="NombreCargo" xml:space="preserve">
+    <value>@nombreCargo</value>
+  </data>
+  <data name="ProcedureLlenarComboCargo" xml:space="preserve">
+    <value>Procedure_llenarCBCargo</value>
+  </data>
 </root>

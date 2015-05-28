@@ -5,6 +5,8 @@ using System.Text;
 using DominioTotem;
 using DatosTotem.Modulo2;
 using ExcepcionesTotem.Modulo2;
+using DatosTotem;
+ 
 
 namespace LogicaNegociosTotem.Modulo2
 {
@@ -49,8 +51,12 @@ namespace LogicaNegociosTotem.Modulo2
        {
            //try
           // {
-           ClienteNatural clientenatural = new ClienteNatural(identificador, nombre);
-           return baseDeDatosCliente.AgregarClienteNatural(clientenatural, fkLugar);
+
+           
+               ClienteNatural clientenatural = new ClienteNatural(identificador, nombre);
+               return baseDeDatosCliente.AgregarClienteNatural(clientenatural, fkLugar);
+           
+
            //}
           // catch (ExcepcionesTotem.Modulo2.ExcepcionLogicaClientes)
         //   {
@@ -164,6 +170,17 @@ namespace LogicaNegociosTotem.Modulo2
            return baseDeDatosCliente.ConsultarClientesNaturalesParametrizados(parametroBusqueda);
        }
 
+       /// <summary>
+       /// Método que llama acceso a datos para buscar el listado de cargos 
+       /// a llenar
+       /// </summary>
+       /// <returns></returns>
+       public List<string> LlenarComboCargo() 
+       {
+           List<string> cargos = new List<string>();
+           cargos = baseDeDatosCliente.LlenarCargoCombo();
+           return cargos; 
+       }
 
 
     }

@@ -59,8 +59,9 @@
                         <div class="dropdown">
                             <select id="comboPais" runat="server">
                                 
-                                <option value="0" runat="server" selected="selected">Seleccione País..</option>
-                                <option value="1" runat="server">Venezuela</option>
+                                
+
+                                
                             </select>
                         </div>
                     </div>
@@ -68,8 +69,9 @@
                         <div class="dropdown">
                             <select id="comboEstado" runat="server">
                                 
-                                <option value="0" runat="server" selected="selected">Seleccione Estado..</option>
-                                <option value="1" runat="server">Dtto Capital</option>
+                                <option id="opcionEstado" runat="server">
+
+                                </option>
                             </select>
                         </div>
                     </div>
@@ -133,20 +135,14 @@
 
                             <!-- Split button -->
                             <div class="form-group">
+                                <div class="dropdown">
                                 <div class="btn-group col-sm-10 col-md-10 col-lg-10">
-                                    <button type="button" runat="server" class="btn btn-default col-sm-10 col-md-10 col-lg-10">Seleccione un cargo..</button>
-                                    <button type="button" runat="server" class="btn btn-default dropdown-toggle col-md-2" data-toggle="dropdown" aria-expanded="false">
-                                        <span class="caret"></span>
-                                        <span class="sr-only">Toggle Dropdown</span>
-                                    </button>
-                                    <ul class="dropdown-menu" runat="server" role="menu">
-
-
-                                        <li><a href="#">Gerente General</a></li>
-                                        <li><a href="#">Gerente de Proyectos</a></li>
-                                        <li><a href="#">Líder de Proyectos</a></li>
-
-                                    </ul>
+                                    <select id="comboCargo" runat="server" >
+                                
+                                <option value="0" runat="server" selected="selected">Seleccionar Cargo..</option>
+                                <option value="1" runat="server">Gerente</option>
+                            </select>
+                                  </div>
                                 </div>
                                 <div class="col-sm-1 col-md-1 col-lg-1">
                                     <button type="button" class="btn btn-default btn-circle glyphicon glyphicon-plus" onclick="agregarContacto()"></button>

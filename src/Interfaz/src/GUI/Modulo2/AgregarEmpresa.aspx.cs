@@ -22,11 +22,17 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
                 user.clave != "")
             {
                 ((MasterPage)Page.Master).ShowDiv = true;
+                
             }
             else
             {
                 ((MasterPage)Page.Master).MostrarMenuLateral = false;
                 ((MasterPage)Page.Master).ShowDiv = false;
+
+            }
+            if (!IsPostBack) // verificar si la pagina se muestra por primera vez
+            {
+                this.LlenarPaises();
             }
 
         }
@@ -81,7 +87,10 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             this.comboPais.Items.Clear();
 
             itemPais = new ListItem();
-            itemPais.Text = "Seleccione un país";
+            this.comboPais.InnerHtml = "<option id=\"opcionPais\" value=\"0\" runat=\"server\" "+"text ="+"\"Seleccione Pais\"> "+"</option>";
+           
+            
+            /*itemPais.Text = "Seleccione un país";
             itemPais.Value = "0";
             this.comboPais.Items.Add(itemPais);
 
@@ -91,7 +100,7 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
                 itemPais.Text = objetoPais.NombreLugar;
                 itemPais.Value = objetoPais.IdLugar.ToString();
                 this.comboPais.Items.Add(itemPais);
-            }
+            }*/
         }
         catch (ClienteDatosException e)
         {
@@ -121,10 +130,10 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             ListItem itemEstado;
 
             this.comboEstado.Items.Clear();
-
-            itemEstado = new ListItem();
-            itemEstado.Text = "Seleccione Estado";
-            itemEstado.Value = "0";
+            this.opcionEstado.Attributes["value"] = "0";
+            this.opcionEstado.Text = "Seleccione Estado";
+           /* itemEstado = new ListItem();
+            
             this.comboEstado.Items.Add(itemEstado);
 
             foreach (Lugar objetoEstado in estados)
@@ -133,7 +142,7 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
                 itemEstado.Text = objetoEstado.NombreLugar;
                 itemEstado.Value = objetoEstado.IdLugar.ToString();
                 this.comboEstado.Items.Add(itemEstado);
-            }
+            }*/
 
         }
         catch (ClienteDatosException e)
@@ -191,6 +200,36 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             alert.Attributes["role"] = "alert";
             alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error en la capa lógica</div>";
         }
+    }
+
+    private void LlenarCargos() 
+    {
+        try
+        {
+            LogicaLugar logica = new LogicaLugar();
+            
+            ListItem itemCargo;
+
+            this.comboCargo.Items.Clear();
+
+            itemCargo = new ListItem();
+            itemCargo.Text = "Seleccione Cargo";
+            itemCargo.Value = "0";
+            this.comboCargo.Items.Add(itemCargo);
+        }
+        catch (ClienteDatosException e)
+        {
+            alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+            alert.Attributes["role"] = "alert";
+            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error en la capa de datos</div>";
+        }
+        catch (ClienteLogicaException e) 
+        {
+            alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+            alert.Attributes["role"] = "alert";
+            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error en la capa lógica</div>";
+        }
+
     }
 
 }

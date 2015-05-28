@@ -456,6 +456,29 @@ namespace DatosTotem.Modulo2 {
         }
 
 
+        /// <summary>
+        ///   Looks up a localized string similar to ProcedureLlenarComboCargo.
+        /// </summary>
+        internal static string ProcedureLlenarComboCargo
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedureLlenarComboCargo", resourceCulture);
+            }
+        }
+
+      
+
+        /// <summary>
+        ///   Looks up a localized string similar to NombreCargo.
+        /// </summary>
+        internal static string NombreCargo
+        {
+            get
+            {
+                return ResourceManager.GetString("NombreCargo", resourceCulture);
+            }
+        }
 
 
 

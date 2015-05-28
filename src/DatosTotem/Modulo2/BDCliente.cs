@@ -493,6 +493,56 @@ namespace DatosTotem.Modulo2
             return cantidad;
         }
 
+        /// <summary>
+        /// Método que accede a la Base de Datos para
+        /// obtener un listado de cargos 
+        /// </summary>
+        /// <returns>Nombre de los cargos existentes</returns>
+        public List<string> LlenarCargoCombo() 
+        {
+            List<string> cargos = new List<string>();
+            string cargo = ""; 
+            try 
+            {
+                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureLlenarComboCargo, this.conexion);
+                this.comando.CommandType = CommandType.StoredProcedure;
+                
+
+                SqlDataReader lectura;
+                this.conexion.Open();
+                lectura = this.comando.ExecuteReader();
+                while (lectura.Read())
+                {
+                    cargo = lectura.GetString(0);
+                    cargos.Add(cargo); 
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje,
+                    ex);
+            }
+            catch (NullReferenceException ex)
+            {
+                throw new ClienteInexistenteException(
+                    RecursosBaseDeDatosModulo2.CodigoClienteInexistente,
+                    RecursosBaseDeDatosModulo2.MensajeClienteInexistente,
+                    ex);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.conexion.Close();
+            }
+            return cargos; 
+        }
+
+        
 
         /// <summary>
         /// Método que obtiene directamente de la Base de Datos

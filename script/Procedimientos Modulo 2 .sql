@@ -445,8 +445,19 @@ BEGIN
 	   WHERE D.LUG_tipo = 'Direccion' and D.lug_id= @idDireccion;
 END;
 
+/***------------Llena el combo box de cargo----**/
 
 
+
+CREATE PROCEDURE Procedure_llenarCBCargo
+@nombreCargo varchar(60)
+AS
+BEGIN
+	   SELECT 
+	   car_nombre
+	   FROM CARGO
+	   WHERE car_nombre = @nombreCargo; 
+END;
 
 
 
