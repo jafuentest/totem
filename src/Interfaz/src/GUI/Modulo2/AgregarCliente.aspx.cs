@@ -24,27 +24,29 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        //((MasterPage)Page.Master).IdModulo = "2";
+        ((MasterPage)Page.Master).IdModulo = "2";
 
-        //DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
-        //if (user != null)
-       // {
-         //   if (user.username != "" &&
-          //      user.clave != "")
-           // {
-            //    ((MasterPage)Page.Master).ShowDiv = true;
-           // }
-            //else
-            //{
-            //    ((MasterPage)Page.Master).MostrarMenuLateral = false;
-            //    ((MasterPage)Page.Master).ShowDiv = false;
-           // }
+       DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+        if (user != null)
+      {
+           if (user.username != "" &&
+                user.clave != "")
+           {
+                ((MasterPage)Page.Master).ShowDiv = true;
+            }
+            else
+           {
+                ((MasterPage)Page.Master).MostrarMenuLateral = false;
+                ((MasterPage)Page.Master).ShowDiv = false;
+            }
 
-//        }
-  //      else
-    //    {
-      //      Response.Redirect("../Modulo1/M1_login.aspx");
+      }
+        else
+        {
+           Response.Redirect("../Modulo1/M1_login.aspx");
        }
+    }
+
 
 
          public ClienteNatural CreandoClienteNatural()
@@ -55,15 +57,18 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
             string nombre = nombreNatural.Value;
             string apellido = apellidoNatural.Value;
             string correo = correoNatural.Value;
-            string pais = paisNatural.InnerText;
-            string estado = estadoNatural.InnerText;
-            string ciudad = ciudadNatural.InnerText;
+            
+          //  string estado = estadoNatural.InnerText;
+          //  string ciudad = ciudadNatural.InnerText;
             string direccion = direccionNatural.Value;
             string codigoPostal = codigopostalNatural.Value;
             string telefono = telefonoNatural.Value;
-    
-        
 
+
+            LogicaCliente logica = new LogicaCliente();
+ 
+
+            string pais = comboPais.Items[comboPais.SelectedIndex].Text; 
 
 
 

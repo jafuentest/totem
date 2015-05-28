@@ -18,7 +18,7 @@
     Agregar Cliente Natural 
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
-
+    <div id="alert" runat ="server"> </div>
     <div class="col-sm-8 col-md-8 col-lg-8 col-md-offset-2" Runat="Server">
         <form id="agregar_cliente" class="form-horizontal" action="#" method="post" Runat="Server">
 
@@ -59,27 +59,20 @@
                 <div class="form-group" Runat="Server">
                     <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6" Runat="Server">
                         <div class="dropdown" Runat="Server">
-                            <button id="pais" class="btn btn-default dropdown-toggle" name="pais-dd" type="button" data-toggle="dropdown" aria-expanded="true" Runat="Server">
-                                País
-                                <span class="caret" Runat="Server"></span>
-                            </button>
-                            <ul id="paisNatural" class="dropdown-menu" role="menu" aria-labelledby="pais" Runat="Server">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Venezuela</a></li>
-                            </ul>
+                            <select id="comboPais" runat="server">
+                                
+                                <option value="0" runat="server" selected="selected">Seleccione País..</option>
+                                <option value="1" runat="server">Venezuela</option>
+                            </select>
                         </div>
                     </div>
                     <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6" Runat="Server">
                         <div class="dropdown">
-                            <button id="Estado" class="btn btn-default dropdown-toggle" name="estado-dd" type="button" data-toggle="dropdown" aria-expanded="true" Runat="Server">
-                                Estado
-                                <span class="caret" Runat="Server"></span>
-                            </button>
-                            <ul id="estadoNatural" class="dropdown-menu" role="menu" aria-labelledby="estado" Runat="Server">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Aragua</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Carabobo</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Distrito Capital</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Maracaibo</a></li>
-                            </ul>
+                            <select id="comboEstado" runat="server">
+                                
+                                <option value="0" runat="server" selected="selected">Seleccione Estado..</option>
+                                <option value="1" runat="server">Dtto Capital</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -89,15 +82,19 @@
                             Ciudad
                             <span class="caret" Runat="Server"></span>
                         </button>
-                        <ul id="ciudad-dd" class="dropdown-menu" role="menu" aria-labelledby="ciudad" >
-                            <li role="presentation"><a role="menuitem" tabindex="-1">Maracay</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1">Caracas</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1">Guarenas</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1">Los Teques</a></li>
-                        </ul>
+                       <div class="form-group">
+                    <div class="dropdown">
+                    <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
+                       <select id="comboCiudad" runat="server" >
+                                
+                                <option value="0" runat="server" selected="selected">Seleccione Ciudad..</option>
+                                <option value="1" runat="server">Caracas</option>
+                            </select>
                     </div>
+                  </div>
                 </div>
-
+                 </div>
+                      </div>
                 <div class="form-group">
                     <div id="direccion" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
                         <input id="direccionNatural" name="direccion" type="text" class="form-control" placeholder="Dirección detallada" Runat="Server"/>
