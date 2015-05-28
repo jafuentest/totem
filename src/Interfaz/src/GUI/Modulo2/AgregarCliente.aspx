@@ -26,12 +26,12 @@
                 <h2>Datos básicos</h2>
                 <div class="form-group" Runat="Server">
                     <div id="div_nombre" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
-                        <input id="TextNombre" name="nombre" type="text" class="form-control" placeholder="Nombre" Runat="Server" />
+                        <input id="nombreNatural" name="nombre" type="text" class="form-control" placeholder="Nombre" Runat="Server" />
                     </div>
                 </div>
                 <div class="form-group" Runat="Server">
                     <div id="div_apellido" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
-                        <input id="TextApellido" name="apellido" type="text" class="form-control" placeholder="Apellido" Runat="Server" />
+                        <input id="apellidoNatural" name="apellido" type="text" class="form-control" placeholder="Apellido" Runat="Server" />
                     </div>
                 </div>
                 <div class="form-group" Runat="Server">
@@ -63,7 +63,7 @@
                                 País
                                 <span class="caret" Runat="Server"></span>
                             </button>
-                            <ul id="TextPais" class="dropdown-menu" role="menu" aria-labelledby="pais" Runat="Server">
+                            <ul id="paisNatural" class="dropdown-menu" role="menu" aria-labelledby="pais" Runat="Server">
                                 <li role="presentation"><a role="menuitem" tabindex="-1" >Venezuela</a></li>
                             </ul>
                         </div>
@@ -74,7 +74,7 @@
                                 Estado
                                 <span class="caret" Runat="Server"></span>
                             </button>
-                            <ul id="TextEstado" class="dropdown-menu" role="menu" aria-labelledby="estado" Runat="Server">
+                            <ul id="estadoNatural" class="dropdown-menu" role="menu" aria-labelledby="estado" Runat="Server">
                                 <li role="presentation"><a role="menuitem" tabindex="-1" >Aragua</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1" >Carabobo</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1" >Distrito Capital</a></li>
@@ -84,7 +84,7 @@
                     </div>
                 </div>
                 <div class="form-group" Runat="Server">
-                    <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
+                    <div id="ciudadNatural" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
                         <button id="ciudad" class="btn btn-default dropdown-toogle col-sm-12 col-md-12 col-lg-12" name="ciudad-dd" type="button"data-toggle="dropdown" aria-expanded="true" >
                             Ciudad
                             <span class="caret" Runat="Server"></span>
@@ -99,23 +99,23 @@
                 </div>
 
                 <div class="form-group">
-                    <div id="div_direccion" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
-                        <input id="direccion" name="direccion" type="text" class="form-control" placeholder="Dirección detallada" Runat="Server"/>
+                    <div id="direccion" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
+                        <input id="direccionNatural" name="direccion" type="text" class="form-control" placeholder="Dirección detallada" Runat="Server"/>
                     </div>
                 </div>
                 <div class="form-group" Runat="Server">
                     <div id="div_cpostal" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
-                        <input id="codigopostal" name="codigopostal" type="text" class="form-control" placeholder="Código postal" Runat="Server"/>
+                        <input id="codigopostalNatural" name="codigopostal" type="text" class="form-control" placeholder="Código postal" Runat="Server"/>
                     </div>
                 </div>
                 <div class="form-group" Runat="Server">
                     <div id="div_correo" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
-                        <input id="TextCorreo" name="correo" type="text" class="form-control" placeholder="Correo electrónico" Runat="Server"/>
+                        <input id="correoNatural" name="correo" type="text" class="form-control" placeholder="Correo electrónico" Runat="Server"/>
                     </div>
                 </div>
                 <div class="form-group" Runat="Server">
                     <div id="div_telefono" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
-                        <input id="telefono" name="telefono" type="text" class="form-control" placeholder="Teléfono" Runat="Server"/>
+                        <input id="telefonoNatural" name="telefono" type="text" class="form-control" placeholder="Teléfono" Runat="Server"/>
                     </div>
                 </div>
 
