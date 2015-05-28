@@ -19,36 +19,36 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 
-    <div class="col-sm-8 col-md-8 col-lg-8 col-md-offset-2">
+    <div class="col-sm-8 col-md-8 col-lg-8 col-md-offset-2" Runat="Server">
         <form id="agregar_cliente" class="form-horizontal" action="#" method="post" Runat="Server">
 
-            <div class="row col-sm-12 col-md-12 col-lg-12">
+            <div class="row col-sm-12 col-md-12 col-lg-12" Runat="Server">
                 <h2>Datos básicos</h2>
-                <div class="form-group">
-                    <div id="div_nombre" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Nombre" />
+                <div class="form-group" Runat="Server">
+                    <div id="div_nombre" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
+                        <input id="TextNombre" name="nombre" type="text" class="form-control" placeholder="Nombre" Runat="Server" />
                     </div>
                 </div>
-                <div class="form-group">
-                    <div id="div_apellido" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="apellido" name="apellido" type="text" class="form-control" placeholder="Apellido" />
+                <div class="form-group" Runat="Server">
+                    <div id="div_apellido" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
+                        <input id="TextApellido" name="apellido" type="text" class="form-control" placeholder="Apellido" Runat="Server" />
                     </div>
                 </div>
-                <div class="form-group">
-                    <div id="div_rsocial" class="col-sm-2 col-md-2 col-lg-2">
-                        <div class="dropdown">
-                            <button id="rsocial" class="btn btn-default dropdown-toggle" name="rsocial-dd" type="button" data-toggle="dropdown" aria-expanded="true">
-                                V
-                                <span class="caret"></span>
+                <div class="form-group" Runat="Server">
+                    <div id="div_rsocial" class="col-sm-2 col-md-2 col-lg-2" Runat="Server">
+                        <div class="dropdown" Runat="Server">
+                            <button id="rsocial" class="btn btn-default dropdown-toggle" name="rsocial-dd" type="button" data-toggle="dropdown" aria-expanded="true" Runat="Server">
+                                
+                                <span class="caret" Runat="Server"></span>
                             </button>
-                            <ul id="rsocial-dd" class="dropdown-menu" role="menu" aria-labelledby="rsocial">
+                            <ul id="rsocial-dd" class="dropdown-menu" role="menu" aria-labelledby="rsocial" >
                                 <li role="presentation"><a role="menuitem" tabindex="-1" >V</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1" >E</a></li>
                             </ul>
                         </div>
                     </div>
                     <div id="div_rif" class="col-sm-10 col-md-10 col-lg-10">
-                        <input id="rif" name="identificador" type="text" class="form-control" placeholder="Identificador" />
+                        <input id="rif" name="identificador" type="text" class="form-control" placeholder="Identificador" Runat="Server"/>
                     </div>
                 </div>
                 
@@ -56,25 +56,25 @@
                 </div>
                 
                 <h2>Datos de localización</h2>
-                <div class="form-group">
-                    <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6">
-                        <div class="dropdown">
-                            <button id="pais" class="btn btn-default dropdown-toggle" name="pais-dd" type="button" data-toggle="dropdown" aria-expanded="true">
+                <div class="form-group" Runat="Server">
+                    <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6" Runat="Server">
+                        <div class="dropdown" Runat="Server">
+                            <button id="pais" class="btn btn-default dropdown-toggle" name="pais-dd" type="button" data-toggle="dropdown" aria-expanded="true" Runat="Server">
                                 País
-                                <span class="caret"></span>
+                                <span class="caret" Runat="Server"></span>
                             </button>
-                            <ul id="pais-dd" class="dropdown-menu" role="menu" aria-labelledby="pais">
+                            <ul id="TextPais" class="dropdown-menu" role="menu" aria-labelledby="pais" Runat="Server">
                                 <li role="presentation"><a role="menuitem" tabindex="-1" >Venezuela</a></li>
                             </ul>
                         </div>
                     </div>
-                    <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
+                    <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6" Runat="Server">
                         <div class="dropdown">
-                            <button id="estado" class="btn btn-default dropdown-toggle" name="estado-dd" type="button" data-toggle="dropdown" aria-expanded="true">
+                            <button id="Estado" class="btn btn-default dropdown-toggle" name="estado-dd" type="button" data-toggle="dropdown" aria-expanded="true" Runat="Server">
                                 Estado
-                                <span class="caret"></span>
+                                <span class="caret" Runat="Server"></span>
                             </button>
-                            <ul id="estado-dd" class="dropdown-menu" role="menu" aria-labelledby="estado">
+                            <ul id="TextEstado" class="dropdown-menu" role="menu" aria-labelledby="estado" Runat="Server">
                                 <li role="presentation"><a role="menuitem" tabindex="-1" >Aragua</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1" >Carabobo</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1" >Distrito Capital</a></li>
@@ -83,13 +83,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
-                        <button id="ciudad" class="btn btn-default dropdown-toogle col-sm-12 col-md-12 col-lg-12" name="ciudad-dd" type="button"data-toggle="dropdown" aria-expanded="true">
+                <div class="form-group" Runat="Server">
+                    <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
+                        <button id="ciudad" class="btn btn-default dropdown-toogle col-sm-12 col-md-12 col-lg-12" name="ciudad-dd" type="button"data-toggle="dropdown" aria-expanded="true" >
                             Ciudad
-                            <span class="caret"></span>
+                            <span class="caret" Runat="Server"></span>
                         </button>
-                        <ul id="ciudad-dd" class="dropdown-menu" role="menu" aria-labelledby="ciudad">
+                        <ul id="ciudad-dd" class="dropdown-menu" role="menu" aria-labelledby="ciudad" >
                             <li role="presentation"><a role="menuitem" tabindex="-1">Maracay</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1">Caracas</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1">Guarenas</a></li>
@@ -99,28 +99,28 @@
                 </div>
 
                 <div class="form-group">
-                    <div id="div_direccion" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="direccion" name="direccion" type="text" class="form-control" placeholder="Dirección detallada" />
+                    <div id="div_direccion" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
+                        <input id="direccion" name="direccion" type="text" class="form-control" placeholder="Dirección detallada" Runat="Server"/>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div id="div_cpostal" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="codigopostal" name="codigopostal" type="text" class="form-control" placeholder="Código postal" />
+                <div class="form-group" Runat="Server">
+                    <div id="div_cpostal" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
+                        <input id="codigopostal" name="codigopostal" type="text" class="form-control" placeholder="Código postal" Runat="Server"/>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div id="div_correo" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="correo" name="correo" type="text" class="form-control" placeholder="Correo electrónico" />
+                <div class="form-group" Runat="Server">
+                    <div id="div_correo" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
+                        <input id="TextCorreo" name="correo" type="text" class="form-control" placeholder="Correo electrónico" Runat="Server"/>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div id="div_telefono" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="telefono" name="telefono" type="text" class="form-control" placeholder="Teléfono" />
+                <div class="form-group" Runat="Server">
+                    <div id="div_telefono" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
+                        <input id="telefono" name="telefono" type="text" class="form-control" placeholder="Teléfono" Runat="Server"/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div id="div_botones" class="col-sm-12 col-md-12 col-lg-12">
+                    <div id="div_botones" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
                         <a class="btn btn-primary" href="ListarClientes.aspx?success=regis">Agregar</a>
                         <a class="btn btn-default" href="ListarClientes.aspx">Cancelar</a>
                     </div>
