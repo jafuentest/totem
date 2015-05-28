@@ -8,7 +8,7 @@ using LogicaNegociosTotem.Modulo4;
 
 namespace PruebasUnitariasTotem.Modulo4
 {
-     [TestFixture]
+    [TestFixture]
     class PruebaLogicaProyecto
     {
 
@@ -24,7 +24,10 @@ namespace PruebasUnitariasTotem.Modulo4
             //elLugar = new Lugar(1, "Venezuela");
             elProyecto = new Proyecto("TES", "Test", true, "Test descripcion", "Bs", 1000000);
 
-            //elClienteJuridico.Jur_Id = "J-231425-5";
+            elClienteJuridico = new ClienteJuridico();
+            elClienteNatural = new ClienteNatural();
+            elClienteJuridico.Jur_Id = "2";
+            elClienteNatural.Nat_Id = "1";
             //elClienteJuridico.Jur_Nombre = "Venetur";
 
             //int fkLugar = 1;
@@ -36,8 +39,10 @@ namespace PruebasUnitariasTotem.Modulo4
         public void clean()
         {
             elProyecto = null;
+            DatosTotem.Modulo4.BDProyecto.EliminarProyecto("TES");
         }
 
+        #region Crear 
         [Test]
         public void PruebaCrearProyecto()
         {
@@ -58,13 +63,29 @@ namespace PruebasUnitariasTotem.Modulo4
 
             try
             {
-                Assert.IsTrue(LogicaNegociosTotem.Modulo4.LogicaProyecto.CrearProyecto(elProyecto,elClienteJuridico));
+                Assert.IsTrue(LogicaNegociosTotem.Modulo4.LogicaProyecto.CrearProyecto(elProyecto, elClienteJuridico));
             }
             catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException)
             {
 
             }
         }
+
+        [Test]
+        public void PruebaCrearProyectoClienteNatural()
+        {
+
+            try
+            {
+                Assert.IsTrue(LogicaNegociosTotem.Modulo4.LogicaProyecto.CrearProyecto(elProyecto, elClienteJuridico));
+            }
+            catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException)
+            {
+
+            }
+        }
+        #endregion
+
 
         public void PruebaModificarProyecto()
         {
@@ -84,6 +105,6 @@ namespace PruebasUnitariasTotem.Modulo4
 
             }
         }
-     
+
     }
 }

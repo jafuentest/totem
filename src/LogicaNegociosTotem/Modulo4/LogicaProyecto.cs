@@ -20,7 +20,7 @@ namespace LogicaNegociosTotem.Modulo4
         /// <param name="proyecto">proyecto a crear
         /// <returns>Retorna True si se crea, de lo contrario genera
         /// una exception(CodigoRepetido)</returns>
-        public static bool CrearProyecto(DominioTotem.Proyecto proyecto) 
+        public static bool CrearProyecto(DominioTotem.Proyecto proyecto)
         {
 
             try
@@ -41,7 +41,7 @@ namespace LogicaNegociosTotem.Modulo4
         /// <param name="clienteJuridico">Cliente juridico del proyecto</param>
         /// <returns>Retorna True si se crea, de lo contrario genera
         /// una exception(CodigoRepetido)</returns>
-        /*public static bool CrearProyecto(DominioTotem.Proyecto proyecto, DominioTotem.ClienteJuridico clienteJuridico)
+        public static bool CrearProyecto(DominioTotem.Proyecto proyecto, DominioTotem.ClienteJuridico clienteJuridico)
         {
 
             try
@@ -72,7 +72,7 @@ namespace LogicaNegociosTotem.Modulo4
             {
                 return false;
             }
-        }*/
+        }
 
 
         /// <summary>

@@ -154,11 +154,11 @@
     <comment>Mensaje de error para cuando el codigo de proyecto existe</comment>
   </data>
   <data name="ParametroClienteJuridico" xml:space="preserve">
-    <value>@CLIENTE_NATURAL_cn_id</value>
+    <value>@CLIENTE_JURIDICO_cj_id</value>
     <comment>Cliente natural del proyecto para usar en procedures</comment>
   </data>
   <data name="ParametroClienteNatural" xml:space="preserve">
-    <value>@CLIENTE_JURIDICO_cj_id</value>
+    <value>@CLIENTE_NATURAL_cn_id</value>
     <comment>Cliente juridico del proyecto para usar en procedures</comment>
   </data>
   <data name="ParametroCodigoProyecto" xml:space="preserve">
@@ -208,6 +208,10 @@
   <data name="ProcedimientoConsultarProyecto" xml:space="preserve">
     <value>Procedure_ConsultarProyecto</value>
     <comment>Consulta un proyecto en la BD</comment>
+  </data>
+  <data name="ProcedimientoEliminarProyecto" xml:space="preserve">
+    <value>Procedure_EliminarProyecto</value>
+    <comment>Elimina un proyecto de la BD (exclusivo para pruebas unitarias )</comment>
   </data>
   <data name="ProcedimientoExisteProyecto" xml:space="preserve">
     <value>Procedure_ExisteProyecto </value>

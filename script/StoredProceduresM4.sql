@@ -120,3 +120,17 @@ BEGIN
 	WHERE (SELECT usu_id FROM USUARIO WHERE USUARIO.usu_username = @usu_username) = INVOLUCRADOS_USUARIOS.USUARIO_usu_id
 END
 GO
+
+
+-- Procedimiento para Eliminar un Proyecto (solo para pruebas)---------------------
+
+CREATE PROCEDURE Procedure_EliminarProyecto
+	
+	@pro_codigo [varchar] (6)
+	   
+AS
+ BEGIN
+	
+	DELETE FROM PROYECTO WHERE (pro_codigo=@pro_codigo)
+ END
+GO
