@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 public partial class GUI_Modulo6_ListarActores : System.Web.UI.Page
 {
+
+    private List<Actor> listaActores;
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		((MasterPage)Page.Master).IdModulo = "6";
@@ -53,11 +55,29 @@ public partial class GUI_Modulo6_ListarActores : System.Web.UI.Page
 				break;
 		}
 
-        LogicaActor logica = new LogicaActor();
-        List<Actor> listaActores = logica.ListarActor(0);
-        foreach (Actor actorLista in listaActores)
+        HttpCookie projectCookie = Request.Cookies.Get("selectedProjectCookie");
+
+        if (projectCookie != null)
         {
-            cuerpo.InnerHtml = cuerpo.InnerHtml + "<tr><td>" + actorLista.NombreActor + "</td><td>" + actorLista.DescripcionActor + "</td><td><a class=\"btn btn-default glyphicon glyphicon-pencil\" data-toggle=\"modal\" data-target=\"#modal-update\" href=\"#\"></a><a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"></a></td></tr>";
+            string proyecto = projectCookie.Values["projectCode"];
+            try
+            {
+                int proyectoID = Int32.Parse(proyecto);
+                LogicaActor logica = new LogicaActor();
+                this.listaActores = logica.ListarActor(0);
+                foreach (Actor actorLista in listaActores)
+                {
+                    cuerpo.InnerHtml = cuerpo.InnerHtml + "<tr><td>" + actorLista.NombreActor + "</td><td>" + actorLista.DescripcionActor + "</td><td><a class=\"btn btn-default glyphicon glyphicon-pencil\" data-toggle=\"modal\" data-target=\"#modal-update\" href=\"#\"></a><a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"></a></td></tr>";
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                throw new ArgumentException("La cookie no tiene valor", ex);
+            }
+            catch (FormatException exe)
+            {
+                throw new FormatException("La cookie tiene un valor de proyecto no valido", exe);
+            }
         }
 	}
 }
