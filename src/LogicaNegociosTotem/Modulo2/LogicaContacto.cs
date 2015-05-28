@@ -29,7 +29,8 @@ namespace LogicaNegociosTotem.Modulo2
        {
            Contacto contacto = new Contacto(identificador);
 
-           return baseDeDatosContacto.ConsultarDatosDeContacto(identificador); 
+           //return baseDeDatosContacto.(identificador); 
+           throw new NotImplementedException(); 
        }
 
 

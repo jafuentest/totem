@@ -221,4 +221,10 @@
     <value>Procedure_EliminarClienteNatural</value>
     <comment>Procedimiento para eliminar a un cliente natural </comment>
   </data>
+  <data name="CodigoClienteInexistente" xml:space="preserve">
+    <value>T_02_001</value>
+  </data>
+  <data name="MensajeClienteInexistente" xml:space="preserve">
+    <value>No se ha podido encontrar al Cliente</value>
+  </data>
 </root>

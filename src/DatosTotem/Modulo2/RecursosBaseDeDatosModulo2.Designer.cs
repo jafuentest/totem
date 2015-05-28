@@ -410,7 +410,27 @@ namespace DatosTotem.Modulo2 {
             }
         }
 
+        /// <summary>
+        ///   Looks up a localized string similar to CodigoClienteInexistente.
+        /// </summary>
+        internal static string CodigoClienteInexistente
+        {
+            get
+            {
+                return ResourceManager.GetString("CodigoClienteInexistente", resourceCulture);
+            }
+        }
 
+        /// <summary>
+        ///   Looks up a localized string similar to MensajeClienteInexistente.
+        /// </summary>
+        internal static string MensajeClienteInexistente
+        {
+            get
+            {
+                return ResourceManager.GetString("MensajeClienteInexistente", resourceCulture);
+            }
+        }
 
 
 

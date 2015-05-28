@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DominioTotem;
+using ExcepcionesTotem;
 using ExcepcionesTotem.Modulo2;
 using System.Data;
 using System.Data.SqlClient;
@@ -70,7 +71,8 @@ namespace DatosTotem.Modulo2
 
             catch (SqlException e)
             {
-                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralBD.Codigo,
                     RecursoGeneralBD.Mensaje,e); 
             }
             catch (NullReferenceException e)
@@ -173,18 +175,23 @@ namespace DatosTotem.Modulo2
                 
             }
 
-            catch (SqlException e)
+            catch (SqlException ex)
             {
-                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
-                    RecursoGeneralBD.Mensaje, e);
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje,
+                    ex);
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException ex)
             {
-                throw e;
+                throw new ClienteInexistenteException(
+                    RecursosBaseDeDatosModulo2.CodigoClienteInexistente,
+                    RecursosBaseDeDatosModulo2.MensajeClienteInexistente,
+                    ex);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw e;
+                throw ex;
             }
             finally
             {
@@ -248,18 +255,22 @@ namespace DatosTotem.Modulo2
 
             catch (SqlException ex)
             {
-                throw ex;
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje,
+                    ex);
             }
-
             catch (NullReferenceException ex)
             {
-                throw ex;
+                throw new ClienteInexistenteException(
+                    RecursosBaseDeDatosModulo2.CodigoClienteInexistente,
+                    RecursosBaseDeDatosModulo2.MensajeClienteInexistente,
+                    ex);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
             finally
             {
                 this.conexion.Close();
@@ -296,15 +307,19 @@ namespace DatosTotem.Modulo2
 
 
             }
-
             catch (SqlException ex)
             {
-                throw ex;
+                throw new ExceptionTotemConexionBD(
+                    RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje,
+                    ex);
             }
-
-            catch (NullReferenceException ex) 
+            catch (NullReferenceException ex)
             {
-                throw ex; 
+                throw new ClienteInexistenteException(
+                    RecursosBaseDeDatosModulo2.CodigoClienteInexistente,
+                    RecursosBaseDeDatosModulo2.MensajeClienteInexistente,
+                    ex);
             }
             catch (Exception ex)
             {
