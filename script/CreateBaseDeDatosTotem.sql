@@ -73,7 +73,7 @@ GO
 CREATE
   TABLE CASO_USO
   (
-    cu_id            INTEGER NOT NULL ,
+    cu_id            INTEGER IDENTITY(1,1) NOT NULL ,
     cu_identificador VARCHAR (20) NOT NULL ,
     cu_titulo        VARCHAR (50) NOT NULL ,
     cu_condexito     VARCHAR (200) NOT NULL ,
