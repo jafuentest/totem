@@ -13,42 +13,29 @@ public partial class GUI_Modulo7_ListarUsuarios : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+
 
         ((MasterPage)Page.Master).IdModulo = "7";
-        String success = Request.QueryString["success"];
-        if (success != null)
-        {
-            if (success.Equals("elim"))
-            {
-                alert.Attributes["class"] = "alert alert-success alert-dismissible";
-                alert.Attributes["role"] = "alert";
 
-                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Se ha eliminado exitosamente</div>";
-          
-            }
-            if (success.Equals("edit"))
-            {
-                alert.Attributes["class"] = "alert alert-success alert-dismissible";
-                alert.Attributes["role"] = "alert";
-                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Se ha editado exitosamente</div>";
-            }
-            if (success.Equals("regis"))
-            {
-                alert.Attributes["class"] = "alert alert-success alert-dismissible";
-                alert.Attributes["role"] = "alert";
-                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Se ha registrado exitosamente</div>";
-            }
-        }
-        if (Request.Cookies["userInfo"] != null)
+        DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+
+        if (user != null)
         {
-            if (Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != "" &&
-                Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
+            if (user.username != "" && user.clave != "")
             {
                 ((MasterPage)Page.Master).ShowDiv = true;
+                String alert = Request.QueryString["success"];
+                if (alert == "true")
+                {
+                    alert_registro.Attributes["class"] = "alert alert-danger alert-dismissible";
+                    alert_registro.Attributes["role"] = "alert";
+                    alert_registro.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>El registro fue completado exitosamente</div>";
+                    alert_registro.Visible = true;
+                }
             }
             else
             {
+                //Mostrar menu lateral
                 ((MasterPage)Page.Master).MostrarMenuLateral = false;
                 ((MasterPage)Page.Master).ShowDiv = false;
             }
@@ -57,6 +44,6 @@ public partial class GUI_Modulo7_ListarUsuarios : System.Web.UI.Page
         else
         {
             Response.Redirect("../Modulo1/M1_login.aspx");
-        }
+        } 
     }
 }

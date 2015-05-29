@@ -10,15 +10,18 @@ public partial class GUI_Modulo7_DetalleUsuario : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ((MasterPage)Page.Master).IdModulo = "7";
-        if (Request.Cookies["userInfo"] != null)
+
+        DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+
+        if (user != null)
         {
-            if (Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != "" &&
-                Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
+            if (user.username != "" && user.clave != "")
             {
                 ((MasterPage)Page.Master).ShowDiv = true;
             }
             else
             {
+                //Mostrar menu lateral
                 ((MasterPage)Page.Master).MostrarMenuLateral = false;
                 ((MasterPage)Page.Master).ShowDiv = false;
             }
@@ -27,6 +30,6 @@ public partial class GUI_Modulo7_DetalleUsuario : System.Web.UI.Page
         else
         {
             Response.Redirect("../Modulo1/M1_login.aspx");
-        }
+        } 
     }
 }

@@ -8,23 +8,22 @@ using System.Text;
 
 namespace LogicaNegociosTotem.Modulo7
 {
-    class LogicaUsuario
+    public static class LogicaUsuario
     {
         /// <summary>
         /// Este metodo se utiliza para crear un nuevo usuario
         /// </summary>
         /// <param name="elUsuario">usuario a crear</param>
         /// <returns>returno true si se realizo bien y false, si no se realizo</returns>
-        public Boolean agregarUsuario(Usuario elUsuario)
+        public static void agregarUsuario(Usuario elUsuario)
         {
             ManejadorUsuario manejador = new ManejadorUsuario();
             try
             {
-                   manejador.ValidarUserNameUnico(elUsuario.username); 
-                   manejador.ValidarCorreoUnico(elUsuario.correo);
-                   manejador.ValidarClave(elUsuario.clave);
-                   elUsuario.CalcularHash();
-                   manejador.RegistrarUsuario(elUsuario);
+                  manejador.ValidarUserNameUnico(elUsuario.username);
+                  manejador.ValidarCorreoUnico(elUsuario.correo);
+                  elUsuario.CalcularHash();      
+                  manejador.RegistrarUsuario(elUsuario);
 
             }
             catch (ExcepcionesTotem.Modulo1.UsuarioVacioException)
@@ -37,32 +36,29 @@ namespace LogicaNegociosTotem.Modulo7
             }
             catch (UserNameRepetidoException)
             {
-                
+                throw new UserNameRepetidoException();
             }
             catch (CorreoRepetidoException)
             {
-            }
-            catch (ClaveNoValidaException)
-            {
+                throw new CorreoRepetidoException();
             }
             catch (RegistroUsuarioFallidoException)
             {
+                throw new CorreoRepetidoException();
             }
-            return true;
         }
         /// <summary>
         /// Este metodo se utiliza para modificar los datos del usuario seleccionado
         /// </summary>
         /// <param name="elUsuario">usuario a modificar</param>
         /// <returns>returno true si se realizo bien y false, si no se realizo</returns>
-        public Boolean modificarUsuario(DominioTotem.Usuario elUsuario)
+        public static Boolean modificarUsuario(DominioTotem.Usuario elUsuario)
         {
             ManejadorUsuario manejador = new ManejadorUsuario();
             try
             {
                 manejador.ValidarUserNameUnico(elUsuario.username);
                 manejador.ValidarCorreoUnico(elUsuario.correo);
-                manejador.ValidarClave(elUsuario.clave);
                 elUsuario.CalcularHash();
                 manejador.RegistrarUsuario(elUsuario);
 
@@ -93,7 +89,7 @@ namespace LogicaNegociosTotem.Modulo7
         /// <summary>
         /// Metodo que lista todos los usuarios existentes
         /// </summary>
-        public void listarUsuario()
+        public static void listarUsuario()
         {
             ManejadorUsuario manejador = new ManejadorUsuario();
             List<Usuario> listaUsuario = manejador.listar();

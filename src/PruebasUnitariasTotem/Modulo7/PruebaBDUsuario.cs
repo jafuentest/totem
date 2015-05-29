@@ -1,5 +1,6 @@
 ﻿using DatosTotem.Modulo7;
 using DominioTotem;
+using LogicaNegociosTotem.Modulo7;
 using NUnit.Framework;
 using NUnit.Mocks;
 using System;
@@ -21,8 +22,25 @@ namespace PruebasUnitariasTotem.Modulo7
         [Test]
         public void PruebaRegistrarUsuario()
         {
-            Usuario usuario = new Usuario("Argenis03", "dfsfdf3232343", "Argenis", "Rodriguez", "Administrador", "rodarge32@gmail.com", "Como se llama mi perro", "slipy", "Desarrrollador");
+            Usuario usuario = new Usuario("Argenis03", "dfsfdf3232343", "Argenis", "Rodriguez", "Administrador", "rodarge32@gmail.com", "Como se llama mi perro", "slipy", "Desarrollador");
             Assert.IsTrue(baseDeDatosUsuario.RegitrarUsuario(usuario));
+        }
+        [Test]
+        public void PruebaUsernameUnico()
+        {
+            Assert.IsTrue(baseDeDatosUsuario.usernameUnico("albertodfds"));
+
+        }
+        [Test]
+        public void PruebaCorreoUnico()
+        {
+            Assert.IsTrue(baseDeDatosUsuario.correoUnico("rodarge32@gmail.com"));
+
+        }
+        [Test]
+        public void PruebaListaUsuario()
+        {
+            Assert.IsTrue(baseDeDatosUsuario.ObtenerListaUsuario().Count > 0);
         }
          [Test]
         public void PruebaObtenercargos()

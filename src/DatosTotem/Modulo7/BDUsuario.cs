@@ -24,8 +24,10 @@ namespace DatosTotem.Modulo7
             Boolean exito;
             BDConexion conexionBD = new BDConexion();
             List<Parametro> parametros = new List<Parametro>();
+            try{
             Parametro parametro = new Parametro(RecursosBaseDeDatosModulo7.UsernameUsuario,
                     SqlDbType.VarChar, elUsuario.username, false);
+            parametros.Add(parametro);
             parametro = new Parametro(RecursosBaseDeDatosModulo7.ClaveUsuario,
                     SqlDbType.VarChar, elUsuario.clave, false);
             parametros.Add(parametro);
@@ -34,6 +36,9 @@ namespace DatosTotem.Modulo7
             parametros.Add(parametro);
             parametro = new Parametro(RecursosBaseDeDatosModulo7.ApellidoUsuario,
                     SqlDbType.VarChar, elUsuario.apellido, false);
+            parametros.Add(parametro);
+            parametro = new Parametro(RecursosBaseDeDatosModulo7.RolUsuario,
+                    SqlDbType.VarChar, elUsuario.rol, false);
             parametros.Add(parametro);
             parametro = new Parametro(RecursosBaseDeDatosModulo7.CorreoUsuario,
                     SqlDbType.VarChar, elUsuario.correo, false);
@@ -45,16 +50,16 @@ namespace DatosTotem.Modulo7
                     SqlDbType.VarChar, elUsuario.respuestaSeguridad, false);
             parametros.Add(parametro);
             parametro = new Parametro(RecursosBaseDeDatosModulo7.CargoUsuario,
-                    SqlDbType.VarChar, elUsuario.cargo, false);
+                    SqlDbType.VarChar, elUsuario.cargo,false);
             parametros.Add(parametro);
             string query = RecursosBaseDeDatosModulo7.ProcedimientoInsertarUsuario;
-            conexionBD.Conectar();
+            //conexionBD.Conectar();
             List<Resultado> resultados = conexionBD.EjecutarStoredProcedure(query,parametros);
-            if (resultados != null)
-                exito = true;
-            else
-                exito = false;
-            return false;
+            }
+            catch(SqlException){
+                return false;
+            }
+            return true;
         }
         /// <summary>
         /// Obtiene el cargo perteneciente a un usuario
@@ -82,6 +87,7 @@ namespace DatosTotem.Modulo7
         /// <returns>Regresa un usuario</returns>
         public Usuario ConsultarUsuario(String userName)
         {
+
             SqlDataReader resultadoConsulta;
             BDConexion conexionBd = new BDConexion();
             Usuario usuario;
@@ -89,7 +95,16 @@ namespace DatosTotem.Modulo7
             resultadoConsulta = conexionBd.EjecutarQuery(RecursosBaseDeDatosModulo7.queryObtenerUsuario + userName);
             conexionBd.Desconectar();
             if (resultadoConsulta.Read())
-                usuario = new Usuario(resultadoConsulta.GetInt32(0), resultadoConsulta.GetString(1), resultadoConsulta.GetString(2), resultadoConsulta.GetString(3), resultadoConsulta.GetString(4), resultadoConsulta.GetString(5), resultadoConsulta.GetString(6), resultadoConsulta.GetString(7), resultadoConsulta.GetString(8), resultadoConsulta.GetString(9));
+                usuario = new Usuario(resultadoConsulta.GetInt32(0), 
+                                     resultadoConsulta.GetString(1), 
+                                     resultadoConsulta.GetString(2), 
+                                     resultadoConsulta.GetString(3), 
+                                     resultadoConsulta.GetString(4), 
+                                     resultadoConsulta.GetString(5), 
+                                     resultadoConsulta.GetString(6), 
+                                     resultadoConsulta.GetString(7), 
+                                     resultadoConsulta.GetString(8), 
+                                     resultadoConsulta.GetString(9));
             else
                 usuario = null;
             return usuario;
@@ -142,12 +157,19 @@ namespace DatosTotem.Modulo7
             SqlDataReader resultadoConsulta;
             List<Usuario> listUsuario = new List<Usuario>();
             BDConexion conexionBd = new BDConexion();
-            conexionBd.Conectar();
-            resultadoConsulta = conexionBd.EjecutarQuery("SELECT * FROM USUARIO");
-            conexionBd.Desconectar();
+            resultadoConsulta = conexionBd.EjecutarQuery(RecursosBaseDeDatosModulo7.QueryListarUsuario);
             while (resultadoConsulta.Read())
             {
-                listUsuario.Add(new Usuario(resultadoConsulta.GetInt32(0), resultadoConsulta.GetValue(1).ToString(), resultadoConsulta.GetValue(2).ToString(), resultadoConsulta.GetValue(3).ToString(), resultadoConsulta.GetValue(4).ToString(), resultadoConsulta.GetValue(5).ToString(), resultadoConsulta.GetValue(6).ToString(), resultadoConsulta.GetValue(7).ToString(), resultadoConsulta.GetValue(8).ToString(), resultadoConsulta.GetValue(9).ToString()));
+                listUsuario.Add(new Usuario(resultadoConsulta.GetInt32(0), 
+                                            resultadoConsulta.GetValue(1).ToString(), 
+                                            resultadoConsulta.GetValue(2).ToString(), 
+                                            resultadoConsulta.GetValue(3).ToString(), 
+                                            resultadoConsulta.GetValue(4).ToString(), 
+                                            resultadoConsulta.GetValue(5).ToString(), 
+                                            resultadoConsulta.GetValue(6).ToString(), 
+                                            resultadoConsulta.GetValue(7).ToString(), 
+                                            resultadoConsulta.GetValue(8).ToString(), 
+                                            resultadoConsulta.GetValue(9).ToString()));
             }
             return listUsuario;
         }
@@ -168,7 +190,16 @@ namespace DatosTotem.Modulo7
             conexionBd.Desconectar();
             if(resultadoConsulta.Read())
             {
-               usuario=new Usuario(resultadoConsulta.GetInt32(0), resultadoConsulta.GetValue(1).ToString(), resultadoConsulta.GetValue(2).ToString(), resultadoConsulta.GetValue(3).ToString(), resultadoConsulta.GetValue(4).ToString(), resultadoConsulta.GetValue(5).ToString(), resultadoConsulta.GetValue(6).ToString(), resultadoConsulta.GetValue(7).ToString(), resultadoConsulta.GetValue(8).ToString(), resultadoConsulta.GetValue(9).ToString());
+                usuario = new Usuario(resultadoConsulta.GetInt32(0),
+                                     resultadoConsulta.GetString(1),
+                                     resultadoConsulta.GetString(2),
+                                     resultadoConsulta.GetString(3),
+                                     resultadoConsulta.GetString(4),
+                                     resultadoConsulta.GetString(5),
+                                     resultadoConsulta.GetString(6),
+                                     resultadoConsulta.GetString(7),
+                                     resultadoConsulta.GetString(8),
+                                     resultadoConsulta.GetString(9));
             }
             return usuario;
         }
@@ -177,33 +208,64 @@ namespace DatosTotem.Modulo7
         /// <returns>Regresa true si existe y false si no existe el username</returns>
         public Boolean usernameUnico(String userName)
         {
-            SqlDataReader resultadoConsulta;
-            Usuario usuario = new Usuario();
-            BDConexion conexionBd = new BDConexion();
-            conexionBd.Conectar();
-            resultadoConsulta = conexionBd.EjecutarQuery("SELECT * FROM USUARIO WHERE usu_username =" + userName);
-            conexionBd.Desconectar();
-            if (resultadoConsulta.HasRows)
-                return false;
-            else
-                return true; ;
+             Boolean exito = false;
+         
+            List<Parametro> parametros = new List<Parametro>();
+            try
+            {
+                Parametro parametro = new Parametro(RecursosBaseDeDatosModulo7.UsernameUsuario,
+                        SqlDbType.VarChar, userName, false);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBaseDeDatosModulo7.Resultadorepetido,
+                        SqlDbType.VarChar, true);
+                parametros.Add(parametro);
+                string query = RecursosBaseDeDatosModulo7.ProcedimientoUsuarioUnico;
+                BDConexion conexionBD = new BDConexion();
+                List<Resultado> resultados = conexionBD.EjecutarStoredProcedure(query, parametros);
+                if (resultados[0].valor == "")
+                    exito = true;
+                else
+                    exito = false;
+            }
+            catch (SqlException)
+            {
+                exito = false;
+
+            }
+            return exito;
         }
         /// <summary>Verifica si un correo existe o no en la BD</summary>
         /// <param name="correo">Se busca por el correo del usuario</param>
         /// <returns>Regresa true si existe y false si no existe el correo</returns>
-        public Boolean correoUnico(String correoUsuario)
+        public Boolean correoUnico(string correoUsuario)
         {
-            SqlDataReader resultadoConsulta;
-            Usuario usuario = new Usuario();
-            BDConexion conexionBd = new BDConexion();
-            conexionBd.Conectar();
-            resultadoConsulta = conexionBd.EjecutarQuery("SELECT * FROM USUARIO WHERE usu_correo =" + correoUsuario);
-            conexionBd.Desconectar();
-            if (resultadoConsulta.HasRows)
-                return false;
-            else
-                return true; ;
-        }
+            Boolean exito = false;
+
+            List<Parametro> parametros = new List<Parametro>();
+            try
+            {
+                Parametro parametro = new Parametro(RecursosBaseDeDatosModulo7.CorreoUsuario,
+                        SqlDbType.VarChar, correoUsuario, false);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBaseDeDatosModulo7.Resultadorepetido,
+                        SqlDbType.VarChar, true);
+                parametros.Add(parametro);
+                string query = RecursosBaseDeDatosModulo7.ProcedimientoCorreoUnico;
+                BDConexion conexionBD = new BDConexion();
+                List<Resultado> resultados = conexionBD.EjecutarStoredProcedure(query, parametros);
+                if (resultados[0].valor == "")
+                    exito = true;
+                else
+                    exito = false;
+            }
+            catch (SqlException)
+            {
+                exito = false;
+
+            }
+            return exito;
+        }       
+      
         /// <summary>
         /// Modifica los datos del usuario
         /// </summary>

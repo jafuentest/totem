@@ -7,42 +7,57 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     <!--AQUI SE DEFINE EL TAMANO DEL FORM Y SU UBICACION-->
     <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-        <div id="alertlocal" >
+          <div id="alert_nombre" runat="server">
+         </div>
+         <div id="alert_apellido" runat="server">
+          </div>
+          <div id="alert_username" runat="server">
+          </div>
+          <div id="alert_correo" runat="server">
+          </div>
+          <div id="alert_pregunta" runat="server">
+          </div>
+          <div id="alert_respuesta" runat="server">
+           </div>
+           <div id="alert_password" runat="server">
+           </div>
+
+        <div id="alertlocal" runat="server">
         </div>
-    <form id="register_form" class="form-horizontal" action="#">
+    <form id="register_form" class="form-horizontal" action="#" runat="server">
         <div class="form-group">
 		    <div id="div_nombre" class="col-sm-5 col-md-5 col-lg-5">
-				<input type="text" placeholder="Nombre" class="form-control" name="nombre"/>
+				<input id="id_nombre" type="text" placeholder="Nombre" class="form-control" name="nombre" runat="server"/>
 			</div>
             &nbsp;
 			<div id="div_apellido" class="col-sm-5 col-md-5 col-lg-5">
-				<input type="text" placeholder="Apellido" class="form-control" name="apellido"/>
+				<input id="id_apellido" type="text" placeholder="Apellido" class="form-control" name="apellido" runat="server"/>
 			</div>
 		</div>
         <div class="form-group">
 	        <div id="div_usuario" class="col-sm-10 col-md-10 col-lg-10">
-		        <input type="text" placeholder="Nombre de Usuario" class="form-control" name="usuario" />
+		        <input id="id_username" type="text" placeholder="Nombre de Usuario" class="form-control" name="usuario" runat="server"/>
 		    </div>
 	    </div>
         <div class="form-group">
 	        <div id="div_email" class="col-sm-10 col-md-10 col-lg-10">
-		        <input type="text" placeholder="Correo Electr&oacute;nico" class="form-control" name="correo"/>
+		        <input id="id_correo" type="text" placeholder="Correo Electr&oacute;nico" class="form-control" name="correo" runat="server"/>
 		    </div>
 	    </div>
         <div class="form-group">
 		    <div id="div_pswd" class="col-sm-10 col-md-5 col-lg-5">
-                    <input id="password" type="password" placeholder="Contrase&ntilde;a" class="form-control" name="password"/>
+                    <input id="password" type="password" placeholder="Contrase&ntilde;a" class="form-control" name="password" runat="server"/>
 			</div>
         </div>
         <div class="form-group">
 			<div id="div_confirm_pswd" class="col-sm-10 col-md-5 col-lg-5">
-				    <input id="confirm_password" type="password" placeholder="Confirmar Contrase&ntilde;a" class="form-control" name="confirm_password" />
+				    <input id="confirm_password" type="password" placeholder="Confirmar Contrase&ntilde;a" class="form-control" name="confirm_password" runat="server"/>
             </div>
 		</div>
         <div class="form-group">
             <div class="col-sm-10 col-md-10 col-lg-10">
             <div class="dropdown">
-              <button id="id-rol" class="btn btn-default dropdown-toggle" type="button" id="dropdownRol" data-toggle="dropdown" aria-expanded="true">
+              <button  class="btn btn-default dropdown-toggle" type="button" id="dropdownRol" data-toggle="dropdown" aria-expanded="true" runat="server">
                 Seleccione un Rol
                 <span class="caret"></span>
               </button>
@@ -75,23 +90,23 @@
         </div>
          <div class="form-group">
 			<div id="div_otrocargo" class="col-sm-10 col-md-10 col-lg-10">
-				<input id="input-otrocargo" type="text" placeholder="Otro Cargo" class="form-control" name="otrocargo" disabled/>
+				<input id="id_otrocargo" type="text" placeholder="Otro Cargo" class="form-control" name="otrocargo" runat="server" disabled='true'/>
 			</div>
 		</div>
         <div class="form-group">
 			<div id="div_pregunta" class="col-sm-10 col-md-10 col-lg-10">
-				<input type="text" placeholder="Pregunta de Seguridad" class="form-control" name="pregunta"/>
+				<input type="text" placeholder="Pregunta de Seguridad" class="form-control" name="pregunta" id="id_pregunta" runat="server"/>
 			</div>
 		</div>
         <div class="form-group">
 			<div id="div_respuesta" class="col-sm-10 col-md-10 col-lg-10">
-				<input type="text" placeholder="Respuesta" class="form-control" name="respuesta" />
+				<input type="text" placeholder="Respuesta" class="form-control" name="respuesta" id="id_respuesta" runat="server"/>
 			</div>
 		</div>
         <div class="form-group">
 		    <div class="col-sm-5 col-md-5 col-lg-5">
-				<a id="btn_registrar" class="btn btn-primary" href="ListarUsuarios.aspx?success=regis">Registrar</a>
-                <a class="btn btn-default" href="ListarUsuarios.aspx">Cancelar</a>
+				<button  class="btn btn-primary" type="submit" onserverclick="btn_registrar_Click" runat="server">Registrar</button>
+                <button  class="btn btn-default"   runat="server" type="submit" onserverclick="Unnamed2_Click">Cancelar</button>
 			</div>
 	    </div>
     </form>

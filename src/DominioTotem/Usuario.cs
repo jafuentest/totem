@@ -35,7 +35,7 @@ namespace DominioTotem
             this.rol = rol;
             this.correo = correo;
             this.preguntaSeguridad = preguntaSeguridad;
-            this.preguntaSeguridad = respuestaSeguridad;
+            this.respuestaSeguridad = respuestaSeguridad;
             this.cargo = cargo;
         }
         public Usuario(string username, string clave, string nombre, string apellido, string rol, string correo, string preguntaSeguridad, string respuestaSeguridad, string cargo)
@@ -47,7 +47,7 @@ namespace DominioTotem
             this.rol = rol;
             this.correo = correo;
             this.preguntaSeguridad = preguntaSeguridad;
-            this.preguntaSeguridad = respuestaSeguridad;
+            this.respuestaSeguridad = respuestaSeguridad;
             this.cargo = cargo;
         }
 

@@ -8,6 +8,7 @@ begin
 	SET CARGO_car_id = @usu_idnuevorol 
 	WHERE usu_id = @usu_id;
 end
+go
 
 CREATE PROCEDURE ConsultarUsuario
      @usu_id [int]
@@ -19,6 +20,7 @@ begin
 	WHERE usu_id = @usu_id AND CARGO_car_id = car_id;
 	
 end
+go
 
 CREATE PROCEDURE CrearCargo
 	 @car_nombre [varchar](60)
@@ -30,6 +32,7 @@ begin
 	       @car_nombre
 	)
 end
+go
 
 CREATE PROCEDURE EliminarCargo
      @car_id [int]
@@ -39,6 +42,8 @@ begin
     DELETE FROM CARGO
 	WHERE car_id = @car_id;
 end
+go
+
 
 CREATE PROCEDURE EliminarUsuario
      @usu_id [int] 
@@ -48,6 +53,7 @@ begin
     DELETE FROM USUARIO
 	WHERE usu_id = @usu_id;
 end
+go
 
 CREATE PROCEDURE InsertarUsuario
      @usu_username [varchar](60),
@@ -59,10 +65,8 @@ CREATE PROCEDURE InsertarUsuario
      @usupreguntaseguridad [varchar](60),
      @usurespuestaseguridad [varchar](60),
      @usu_car_nombre [varchar](60)
-
 AS
 begin
-    SET NOCOUNT ON
     INSERT INTO USUARIO VALUES(
            NEXT VALUE FOR secuenciaIdUsuario,
            @usu_username,
@@ -76,6 +80,7 @@ begin
            (SELECT car_id FROM CARGO WHERE  car_nombre = @usu_car_nombre)
     )
 end
+GO
 
 CREATE PROCEDURE ModificarUsuario
 	 @usu_username [varchar](60),
@@ -103,3 +108,32 @@ begin
 	   CARGO_car_id = (SELECT car_id FROM CARGO WHERE  car_nombre = @usu_car_nombre)
     WHERE usu_username = @usu_username;
 end
+go
+
+CREATE PROCEDURE CorreoUnico
+	 @usu_correo varchar(60),
+	 @usu_resultado varchar(60) OUTPUT
+AS 
+    SELECT @usu_resultado = usu_correo FROM USUARIO WHERE usu_correo = @usu_correo
+RETURN
+GO
+
+
+CREATE PROCEDURE ConsultarUsuarioSegunCargo
+	 @usu_cargo [varchar](60)
+AS 
+begin
+    SET NOCOUNT ON 
+    SELECT usu_id,usu_username,usu_clave,usu_nombre,usu_apellido,usu_rol,usu_correo,usu_pregseguridad,usu_respseguridad 
+    FROM USUARIO 
+	WHERE CARGO_car_id=(SELECT car_id FROM CARGO WHERE car_nombre=@usu_cargo)
+end
+GO
+
+CREATE PROCEDURE UserNameUnico
+     @usu_username varchar(60),
+     @usu_resultado varchar(60) OUTPUT
+AS 
+    SELECT @usu_resultado = usu_username FROM USUARIO WHERE usu_username = @usu_username
+RETURN
+go

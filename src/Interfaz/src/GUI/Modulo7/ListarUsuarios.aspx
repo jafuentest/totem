@@ -11,6 +11,8 @@
         </div>
         <div id="alertlocal" >
         </div>
+         <div id="alert_registro" runat="server">
+         </div>
     <div class="table-responsive">
 		<table id="table-users" class="table table-striped table-hover">
 			<thead>

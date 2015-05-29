@@ -173,4 +173,25 @@
     <value>@usu_username</value>
     <comment>Atributo username usuario</comment>
   </data>
+  <data name="ProcedimientoConsultarUsuario" xml:space="preserve">
+    <value>ConsultarUsuario</value>
+    <comment>Permite consultar los datos de un usuario</comment>
+  </data>
+  <data name="ProcedimientoUsuarioUnico" xml:space="preserve">
+    <value>UserNameUnico</value>
+    <comment>Consulta si un nombre de usuario es unico</comment>
+  </data>
+  <data name="Resultadorepetido" xml:space="preserve">
+    <value>@usu_resultado</value>
+  </data>
+  <data name="ProcedimientoCorreoUnico" xml:space="preserve">
+    <value>CorreoUnico</value>
+    <comment>Permite saber si el correo ya existe</comment>
+  </data>
+  <data name="QueryListarUsuario" xml:space="preserve">
+    <value>SELECT usu_username,usu_nombre,usu_apellido,car_nombre
+   FROM USUARIO,CARGO
+   WHERE CARGO_car_id = car_id</value>
+    <comment>Permite obtener una lista con todos los usuario en el sistema</comment>
+  </data>
 </root>
