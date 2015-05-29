@@ -5,57 +5,45 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Personal Involucrado</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Agregar Involucrados</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
+
               <div class="col-sm-12 col-md-12 col-lg-12">
                  <div id="alertlocal" >
                  </div>
-              	 <form id="agregarpersonal" class="form-horizontal" action="ListarPersonalInvolucrado.aspx?success=1" method="POST" role="form" runat="server">
-                        <div class="form-group">
+              	  <form id="agregarpersonal" runat="server">
+                       <div class="form-group">
                             <div class="col-sm-3 col-md-3 col-lg-3">
                                     <label>Seleccione el tipo de empresa:</label>  
                              </div>   
                             <div class="col-sm-5 col-md-5 col-lg-5" > 
-                                <div class="btn-group">
-                                  <button id="id_empresa" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    Selecionar...<span class="caret"></span>
-                                  </button>
-                                  <ol id="dp1" class="dropdown-menu" role="menu"  onclick="cargarcargo();">
-                                    <li value="1"><a href="#">Cliente</a></li>
-                                    <li value="2"><a href="#">Compañia de Software</a></li>
-                                  </ol>
-                                </div>  
-                                      
-                              </div>
+                                <div class="dropdown" runat="server" id="divComboTipoEmpresa">
+                                    <asp:DropDownList ID="comboTipoEmpresa"  class="btn btn-default dropdown-toggle" runat="server" OnSelectedIndexChanged="actualizarComboCargos" AutoPostBack="true">
+                                    </asp:DropDownList>
+                                </div>    
+                            </div>
+                            </br>
                         </div>
                        <div class="form-group">
                             <div class="col-sm-3 col-md-3 col-lg-3">
                                     <label>Listar Personal según el cargo:</label>  
                              </div>   
                             <div class="col-sm-5 col-md-5 col-lg-5" > 
-                                <div class="btn-group">
-                                  <button id="id_cargo" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" >
-                                    Selecionar...<span class="caret"></span>
-                                  </button>
-                                  <ol id="dp3" class="dropdown-menu" role="menu">                                                                                                 
-                                  </ol>
-                                </div> 
-                                   
-                              </div>
-                           
+                                <div class="dropdown" runat="server" id="divComboCargo" >
+                                    <asp:DropDownList ID="comboCargo"  class="btn btn-default dropdown-toggle" runat="server" OnSelectedIndexChanged="actualizarComboPersonal" AutoPostBack="true">
+                                    </asp:DropDownList>
+                                </div>    
+                            </div>
+                            </br>
                         </div>
                        <div class="form-group">
                             <div class="col-sm-3 col-md-3 col-lg-3">
                                     <label>Seleccione Personal:</label>  
                              </div>   
                             <div class="col-sm-5 col-md-5 col-lg-5" > 
-                                <div class="btn-group">
-                                  <button id="id_personal" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    Selecionar...<span class="caret"></span>
-                                  </button>
-                                  <ol id="dp2" class="dropdown-menu" role="menu">
-                                  </ol>
-                                </div> 
-                                  
-                              </div>
+                               <div class="dropdown" runat="server" id="divComboPersonal">
+                                    <asp:DropDownList ID="comboPersonal"  class="btn btn-default dropdown-toggle" runat="server">
+                                    </asp:DropDownList>
+                                </div>        
+                            </div>    
                         </div>
                        <br />
                        <div class="col-sm-12 col-md-12 col-lg-12">
@@ -124,7 +112,7 @@
                     <a class="btn btn-default" href="ListarPersonalInvolucrado.aspx">Cancelar</a>
                 </div>
             </div>
-                 </form>
+                  </form>
               </div>
         <script src="js/datos_estaticos.js"></script>
         <script type="text/javascript">
@@ -184,7 +172,9 @@
                     var empresa_seleccionado = $("#id_empresa").text().trim();
                     $("#dp2").empty();
                     //cargar personal
-                    cargarpersonal(empresa_seleccionado, cargo_seleccionado);
+                    //cargarpersonal(empresa_seleccionado, cargo_seleccionado);
+                    //document.getElementById("boton1").click();
+                    $("#boton1").click();
                 });
                 //para eliminar la fila
                 $('#btn-eliminar').on('click', function () {

@@ -433,5 +433,39 @@ namespace DatosTotem.Modulo3
                 //lanza otra
             }
         }
+
+        public static List<String> consultarCargosContactos(ClienteJuridico laEmpresa)
+        {
+            BDConexion laConexion;
+            List<String> laListaDeCargos = new List<String>();
+            List<Parametro> parametros;
+
+            Parametro rifClienteJ;
+            try
+            {
+
+                laConexion = new BDConexion();
+                parametros = new List<Parametro>();
+
+                rifClienteJ = new Parametro("@cj_rif", SqlDbType.Int
+                                            , laEmpresa.Jur_Id, false);
+                parametros.Add(rifClienteJ);
+
+                DataTable dt = laConexion.EjecutarStoredProcedureTuplas("ListarCargosPorEmpresa", parametros);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    String cargo = null;
+
+                    cargo = row["car_nombre"].ToString();
+                    laListaDeCargos.Add(cargo);
+                }
+            }
+            catch (Exception e)
+            {
+            }
+
+            return laListaDeCargos;
+        }
     }
 }

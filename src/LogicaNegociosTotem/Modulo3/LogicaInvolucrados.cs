@@ -5,6 +5,7 @@ using System.Text;
 using DatosTotem;
 using DatosTotem.Modulo3;
 
+
 namespace LogicaNegociosTotem.Modulo3
 {
     public class LogicaInvolucrados
@@ -37,6 +38,11 @@ namespace LogicaNegociosTotem.Modulo3
             //contactosInvolucrados = obtenerContactosInvolucradosProyecto(elProyecto);
             usuariosInvolucrados = obtenerUsuariosInvolucradosProyecto(elProyecto);
         }
+        public LogicaInvolucrados()
+        {
+
+        }
+
         #endregion
         /// <summary>
         /// Metodo que agrega contacto a lista de contactos involucrados a un proyecto
@@ -142,7 +148,6 @@ namespace LogicaNegociosTotem.Modulo3
         public DominioTotem.ListaInvolucradoUsuario obtenerUsuariosInvolucradosProyecto(
             DominioTotem.Proyecto elProyecto)
         {
-
             try
             {
              return BDInvolucrados.consultarUsuariosInvolucradosPorProyecto(elProyecto);
@@ -152,8 +157,12 @@ namespace LogicaNegociosTotem.Modulo3
             {
                 return null;
             }
+        }
+        public List<String> ListarCargosEmpleados(DominioTotem.ClienteJuridico cli)
+        {
+            List<String> listaCargos = new List<String>();
 
-           
+            return DatosTotem.Modulo3.BDInvolucrados.consultarCargosContactos(cli);
         }
     }
 }
