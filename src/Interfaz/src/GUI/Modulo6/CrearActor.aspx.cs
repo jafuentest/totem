@@ -7,9 +7,16 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using LogicaNegociosTotem.Modulo6;
 
-
+/// <summary>
+/// Clase que contiene toda la logica de la pagina CrearActor
+/// </summary>
 public partial class GUI_Modulo6_CrearActor : System.Web.UI.Page
 {
+    /// <summary>
+    /// Metodo que carga las configuraciones por defecto y opciones especiales de su ventana correspondiente
+    /// </summary>
+    /// <param name="sender">Objeto que ejecuta esta accion</param>
+    /// <param name="e">Clase base para las clases que contienen la informacion del evento</param>
     protected void Page_Load(object sender, EventArgs e)
     {
         ((MasterPage)Page.Master).IdModulo = "6";

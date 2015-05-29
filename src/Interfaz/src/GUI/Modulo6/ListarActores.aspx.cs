@@ -4,10 +4,19 @@ using LogicaNegociosTotem.Modulo6;
 using DominioTotem;
 using System.Collections.Generic;
 
+/// <summary>
+/// Clase que contiene toda la logica de la pagina ListarActores
+/// </summary>
 public partial class GUI_Modulo6_ListarActores : System.Web.UI.Page
 {
-
+    //Variable que tendra los actores de un proyecto
     private List<Actor> listaActores;
+
+    /// <summary>
+    /// Metodo que carga las configuraciones por defecto y opciones especiales de su ventana correspondiente
+    /// </summary>
+    /// <param name="sender">Objeto que ejecuta esta accion</param>
+    /// <param name="e">Clase base para las clases que contienen la informacion del evento</param>
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		((MasterPage)Page.Master).IdModulo = "6";
@@ -121,6 +130,7 @@ public partial class GUI_Modulo6_ListarActores : System.Web.UI.Page
                 //Casteamos explicitamente la descripcion del actor proveniente de un GET en la URL
                 String descripcionActor = Request.QueryString["descripcion"];
 
+                //Obtenemos el exito o fallo del proceso
                 bool exito2 = logica.ModificarActor(idActor, nombreActor, descripcionActor, proyectoID);
 
                 //Evaluamos la condicion
