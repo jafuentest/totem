@@ -199,17 +199,45 @@ GO
 -- luego de Insertar cliente natural, inserta en contacto los mismos datos.
 
 
+
+------------------+AgregarClienteNatural(ClienteNatural cn): bool------------------------------
+-- Agrega un nuevo cliente natural
+-- luego de Insertar cliente natural, inserta en contacto los mismos datos.
+
+
 CREATE PROCEDURE Procedure_AgregarClienteNatural
 	@cn_cedula [nvarchar](20),
 	@cn_nombre [nvarchar](60),
 	@cn_apellido [nvarchar](60),
+	@nombreDireccion varchar(100),
 	@cn_correo [nvarchar](60),
-	@LUGAR_lug_id [int]
+	@LUGAR_lug_id [int],
+	@codigo int,
+	@numero int
+
 AS
 DECLARE @idMaxClienteNatural int = 0
+DECLARE @idLugarDireccion int = 0
 DECLARE @idMaxContacto int = 0
+DECLARE @idMaxTelefono int=0
+DECLARE @idTelefono int = 0
+DECLARE @idMaxLugar int = 0
 
 BEGIN
+	
+	select @idLugarDireccion = count(LUG_id) from lugar 
+	 where  LUG_tipo = 'Direccion' and LUGAR_lug_id = @LUGAR_lug_id;
+	
+	if (@idLugarDireccion = 0)
+		begin 
+			select @idMaxLugar = MAX(LUG_id) from lugar;
+
+			set @idMaxLugar = @idMaxLugar + 1;
+
+			INSERT INTO lugar VALUES (@idMaxLugar,@nombreDireccion,'Direccion',null,@LUGAR_lug_id);
+
+			set @idLugarDireccion = @idMaxLugar;
+		end
 
 	select @idMaxClienteNatural = Max(cn_id) from CLIENTE_NATURAL;
 	select @idMaxContacto = MAX(con_id) from CONTACTO;
@@ -222,6 +250,18 @@ BEGIN
 	INSERT INTO CONTACTO (con_id,con_cedula,con_nombre,con_apellido,CLIENTE_JURIDICO_cj_id,CARGO_car_id,CLIENTE_NATURAL_cn_id)
     VALUES(@idMaxContacto, @cn_cedula,@cn_nombre,@cn_apellido,null, null,@idMaxClienteNatural);
 	
+	select @idTelefono=count(*) from telefono where tel_numero=@numero  and tel_codigo=@codigo
+
+if (@idTelefono=0)
+begin 
+			select @idMaxTelefono = Max(tel_id) from TELEFONO;
+
+			set @idMaxTelefono = @idMaxTelefono+1; 
+			INSERT INTO TELEFONO VALUES (@idMaxTelefono,@codigo,@numero,@idMaxClienteNatural,@idMaxContacto);
+
+			
+		end
+
 END;
 GO
 
