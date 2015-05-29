@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Actor.cs" />
     <Compile Include="Acuerdo.cs" />
+    <Compile Include="CasoDeUso.cs" />
     <Compile Include="ClienteJuridico.cs" />
     <Compile Include="ClienteNatural.cs" />
     <Compile Include="Contacto.cs" />
