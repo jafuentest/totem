@@ -343,4 +343,7 @@
   <data name="Mensaje__ExcepcionParametro" xml:space="preserve">
     <value>Error uno de los parametros no existe en el procedimiento ejecutado</value>
   </data>
+  <data name="ProcedureEliminarInvolucradoMinuta" xml:space="preserve">
+    <value>Procedure_EliminarTodosInvolucrados</value>
+  </data>
 </root>
