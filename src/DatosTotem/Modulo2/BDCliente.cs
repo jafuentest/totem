@@ -39,7 +39,8 @@ namespace DatosTotem.Modulo2
         /// </summary>
         /// <param name="clienteJuridico">Información del Cliente Jurídico</param>
         /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-        public bool AgregarClienteJuridico(ClienteJuridico clienteJuridico, int fkLugar) 
+        public bool AgregarClienteJuridico(ClienteJuridico clienteJuridico, int fkLugar,string nombreDireccion,string contactoNombre,string apellidoNombre,int idCargo,int codigo,int numero,string 
+            cedulaContacto) 
         {
            bool respuesta = false;
             
@@ -210,7 +211,8 @@ namespace DatosTotem.Modulo2
         /// </summary>
         /// <param name="clienteNatural">Información del Cliente Natural</param>
         /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-        public bool ModificarClienteNatural(ClienteNatural clienteNatural)
+        public bool ModificarClienteNatural(ClienteNatural clienteNatural, string cargo,
+            string codigo, string numero)
         {
             throw new NotImplementedException();
         }

@@ -600,5 +600,27 @@ namespace DatosTotem.Modulo2 {
             }
         }
 
+        /// <summary>
+        ///   Looks up a localized string similar to ProcedureListarClientesJuridicos.
+        /// </summary>
+        internal static string ProcedureListarClientesJuridicos
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedureListarClientesJuridicos", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ProcedureListarClientesJuridicos.
+        /// </summary>
+        internal static string ProcedureListarClientesNaturales
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedureListarClientesNaturales", resourceCulture);
+            }
+        }
+
     }
 }
