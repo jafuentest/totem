@@ -117,7 +117,7 @@ AS
 	
 	SELECT Distinct(M.min_id) as min_id, M.min_fecha, M.min_motivo
 	FROM MINUTA M, MIN_INV MI
-	WHERE (MI.INVOLUCRADOS_USUARIOS_PROYECTO_pro_id=1 or Mi.INVOLUCRADOS_CLIENTES_PROYECTO_pro_id = 1)
+	WHERE (MI.INVOLUCRADOS_USUARIOS_PROYECTO_pro_id= @min_inv_proy or Mi.INVOLUCRADOS_CLIENTES_PROYECTO_pro_id =@min_inv_proy)
  END
 GO
 
