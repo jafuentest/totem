@@ -12,10 +12,8 @@
 			<div class="panel-heading">
 				<h3 class="panel-title">Proyecto</h3>
 			</div>
-			<div class="panel-body" style="width:auto">
-				Nombre del Proyecto: TOTEM<br/>
-				Empresa Cliente: UCAB<br/>
-				Status del Proyecto: Activo<br/>
+			<div id="proyectoPanel" runat="server"  class="panel-body" style="width:auto">
+				
 			</div>
 		</div>
 		<div class="table-responsive">

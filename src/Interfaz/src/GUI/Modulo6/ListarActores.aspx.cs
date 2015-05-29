@@ -57,6 +57,9 @@ public partial class GUI_Modulo6_ListarActores : System.Web.UI.Page
             //Obtenemos el ID del proyecto en string
             proyecto = projectCookie.Values["projectCode"];
 
+            //Nombre del proyecto y usuario
+            proyectoPanel.InnerHtml = "Nombre del Proyecto: "+projectCookie.Values["projectName"]+"<br/>Usario: "+ user.username;
+
             try
             {
                 //Casteamos explicitamente el ID del proyecto
