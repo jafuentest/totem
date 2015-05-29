@@ -51,7 +51,7 @@ AS
 	BEGIN
 		DELETE FROM ACTOR WHERE PROYECTO_pro_id= @idproyecto AND act_id=@idactor;
 	END
-
+GO
 /* Leer casos de uso por actor */
 CREATE PROCEDURE LEER_CU_POR_ACTOR 
 	@nombreActor [varchar] (100),

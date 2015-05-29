@@ -446,7 +446,7 @@ BEGIN
 END;
 
 /***------------Llena el combo box de cargo----**/
-
+go
 
 
 CREATE PROCEDURE Procedure_llenarCBCargo
@@ -459,6 +459,6 @@ BEGIN
 	   WHERE car_nombre = @nombreCargo; 
 END;
 
-
+go
 
 

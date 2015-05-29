@@ -16,7 +16,7 @@ CREATE PROCEDURE Procedure_AgregarProyectoClienteJuridico
 AS 
 BEGIN
 		INSERT INTO PROYECTO(pro_codigo, pro_nombre, pro_estado,pro_descripcion,pro_costo,pro_moneda,CLIENTE_JURIDICO_cj_id)
-	    VALUES(@pro_codigo,@pro_nombre,@pro_estado,@pro_descripcion,@pro_costo,@pro_moneda,@CLIENTE_JURIDICO_cj_id)
+	    VALUES(@pro_codigo,@pro_nombre,@pro_estado,@pro_descripcion,@pro_costo,@pro_moneda,(SELECT cj_id FROM CLIENTE_JURIDICO WHERE CLIENTE_JURIDICO.cj_rif = @CLIENTE_JURIDICO_cj_id))
 END;
 GO
 
@@ -33,12 +33,10 @@ CREATE PROCEDURE Procedure_AgregarProyectoClienteNatural
 		@CLIENTE_NATURAL_cn_id [int]
 AS 
 BEGIN
-		INSERT INTO PROYECTO(pro_codigo, pro_nombre, pro_estado,pro_descripcion,pro_costo,pro_moneda,CLIENTE_JURIDICO_cj_id)
-	    VALUES(@pro_codigo,@pro_nombre,@pro_estado,@pro_descripcion,@pro_costo,@pro_moneda,@CLIENTE_NATURAL_cn_id)
+		INSERT INTO PROYECTO(pro_codigo, pro_nombre, pro_estado,pro_descripcion,pro_costo,pro_moneda,CLIENTE_NATURAL_cn_id)
+	    VALUES(@pro_codigo,@pro_nombre,@pro_estado,@pro_descripcion,@pro_costo,@pro_moneda, (SELECT cn_id FROM CLIENTE_NATURAL WHERE CLIENTE_NATURAL.cn_cedula = @CLIENTE_NATURAL_cn_id))
 END;
 GO
-
-
 
 
 -------------------Procedimiento para Agregar un proyecto sin cliente (solo para pruebas del modulo 4)----------------------
@@ -95,7 +93,7 @@ BEGIN
 	RETURN
 END
 -- Procedimiento para consultar un Proyecto----------------------
-
+go 
 CREATE PROCEDURE Procedure_ConsultarProyecto
 	
 	@pro_codigo [varchar] (6) ,
@@ -104,7 +102,6 @@ CREATE PROCEDURE Procedure_ConsultarProyecto
 	@pro_estado [bit] OUTPUT,
 	@pro_descripcion [varchar] (600)OUTPUT,
 	@pro_costo       [int] OUTPUT,
-	@pro_moneda      [varchar] (3)OUTPUT
 	@pro_moneda      [varchar] (3)OUTPUT
 	
 	
