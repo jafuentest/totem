@@ -12,14 +12,12 @@
 			<div class="panel-heading">
 				<h3 class="panel-title">Proyecto</h3>
 			</div>
-			<div class="panel-body" style="width:auto">
-				Nombre del Proyecto: TOTEM<br/>
-				Empresa Cliente: UCAB<br/>
-				Status del Proyecto: Activo<br/>
+			<div id="proyectoPanel" runat="server"  class="panel-body" style="width:auto">
+				
 			</div>
 		</div>
 		<div class="table-responsive">
-			<table id="table-example" class="table table-striped table-hover">
+			<table id="actores" class="table table-striped table-hover">
 				<thead>
 					<tr>
 						<th>Nombre</th>
@@ -27,7 +25,7 @@
 						<th>Acciones</th>
 					</tr>
 				</thead>
-				<tbody runat="server" id="cuerpo">
+				<tbody runat ="server" id="cuerpo">
 					
 				</tbody>
 			</table>
@@ -47,7 +45,7 @@
 							</div>
 						</div>
 						<div class="modal-footer">
-							<a id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarCasoDeUso()" href="ListarActores.aspx?success=3">Eliminar</a>
+							<a id="btn-eliminar" type="button" class="btn btn-primary">Eliminar</a>
 							<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 						</div>
 					</div>
@@ -87,36 +85,72 @@
 	</div>
 	<script type="text/javascript">
 		<!-- Data tables init -->
-		$(document).ready(function () {
-			$('#table-example').DataTable();
-			var table = $('#table-example').DataTable();
-			var caso_de_uso, tr;
-			$('#table-example tbody').on('click', 'a', function () {
-				if ($(this).parent().hasClass('selected')) {
-					caso_de_uso = $(this).parent().prev().prev().prev().prev().text();
-					tr = $(this).parents('tr');//se guarda la fila seleccionada
-					$(this).parent().removeClass('selected');
-				}
-				else {
-					caso_de_uso = $(this).parent().prev().prev().prev().prev().text();
-					tr = $(this).parents('tr');//se guarda la fila seleccionada
-					table.$('tr.selected').removeClass('selected');
-					$(this).parent().addClass('selected');
-				}
-			});
-			$('#modal-delete').on('show.bs.modal', function (event) {
-				var modal = $(this);
-				modal.find('.modal-title').text('Eliminar actor: ' + caso_de_uso);
-				modal.find('#caso_de_uso').text(caso_de_uso);
-			})
-			$('#btn-eliminar').on('click', function () {
-				table.row(tr).remove().draw();//se elimina la fila de la tabla
-				$('#modal-delete').modal('hide');//se esconde el modal
-			});
-			$('#modal-update').on('show.bs.modal', function (event) {
-				var modal = $(this)
-				modal.find('.modal-title').text('Modificar actor')
-			});
-		});
+	    $(document).ready(function () {
+
+            //Data table a modificar
+	        $('#actores').DataTable();
+
+            //Variables a usar
+	        var table = $('#actores').DataTable();
+	        var caso_de_uso, tr;
+	        var row;
+	        var modal;
+	        var id;  
+	        var name;
+	        var desc;
+
+            //Evento de Bootstrap disparado por el modal-delete
+	        $('#modal-delete').on('show.bs.modal', function (event) {
+
+                //Obtenemos el ID, mobre y descipcion del actor seleccionado
+	            row = $(event.relatedTarget).closest('tr');
+	            modal = $(event.currentTarget);
+	            id = row.attr('id').replace(/^actor\-/, '');
+	            name = row.find('td.name').text();
+	            desc = row.find('td.desc').text();
+
+                //Renombramos en el modal para saber a quien se va a eliminar
+	            modal.find('#caso_de_uso').text(name);
+	        });
+
+            //Evento al ser seleccionado la opcion eliminar del modal
+	        $('#btn-eliminar').on('click', function () {
+
+                //Se manda la opcion de eliminar
+	            window.location.href = 'ListarActores.aspx?success=3&id=' + id;
+	        });
+
+	        //Evento de Bootstrap disparado por el modal-delete
+	        $('#modal-update').on('show.bs.modal', function (event) {
+
+	            //Obtenemos el ID, mobre y descipcion del actor seleccionado
+	            row = $(event.relatedTarget).closest('tr');
+	            modal = $(event.currentTarget);
+	            id = row.attr('id').replace(/^actor\-/, '');
+	            name = row.find('td.name').text();
+	            desc = row.find('td.desc').text();
+
+                //Cambiamos el texto del modal
+	            modal.find('.modal-title').text('Modificar actor');
+
+                //El input de descripcion se llena con la descripcion que ya existe del actor
+	            $('#descripcion').val(desc);
+
+	        });
+
+	        //Evento al ser seleccionado la opcion actualizar del modal
+	        $('#btn-modificar').on('click', function () {
+
+                //Se obtiene el nombre y descripcion del actor
+	            var nombreNuevo = $('#nombre').val();
+	            var descripcionNueva = $('#descripcion').val();
+
+                //Si el usuario puso un nombre no vacio se manda
+	            if (nombreNuevo != '') {
+	                window.location.href = 'ListarActores.aspx?success=2&id=' + id + '&nombre=' + nombreNuevo + '&descripcion=' + descripcionNueva;
+	            }
+
+	        });
+	    });
 	</script>
 </asp:Content>

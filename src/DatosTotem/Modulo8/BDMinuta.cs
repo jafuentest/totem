@@ -26,6 +26,7 @@ namespace DatosTotem.Modulo8
         public Minuta ConsultarMinutaBD(int id)
         {
             Minuta minuta = new Minuta();
+            con = new BDConexion();
             try
             {
 
@@ -68,6 +69,7 @@ namespace DatosTotem.Modulo8
         public Minuta ObtenerObjetoMinutaBD(SqlDataReader BDMinuta)
         {
             Minuta minuta = new Minuta();
+            con = new BDConexion();
             try
             {
                 minuta.Codigo = BDMinuta[RecursosBDModulo8.AtributoIDMinuta].ToString();
@@ -75,7 +77,7 @@ namespace DatosTotem.Modulo8
                 minuta.Motivo = BDMinuta[RecursosBDModulo8.AtributoMotivoMinuta].ToString();
                 minuta.Observaciones = BDMinuta[RecursosBDModulo8.AtributoObservacionesMinuta].ToString();
 
-                BDMinuta.Close();
+                //BDMinuta.Close();
                 return minuta;
             }
 
@@ -95,6 +97,8 @@ namespace DatosTotem.Modulo8
         /// <returns>Retorna un boolean para saber si se realizo con éxito la operación</returns>
         public Boolean ModificarMinutaBD(Minuta min)
         {
+            con = new BDConexion();
+            SqlConnection conect = con.Conectar();
             SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoModificarMinuta, con.Conectar());
             sqlcom.CommandType = CommandType.StoredProcedure;
 
@@ -124,7 +128,7 @@ namespace DatosTotem.Modulo8
 
             finally
             {
-                con.Desconectar();
+                con.Desconectar(conect);
 
             }
 
@@ -137,6 +141,8 @@ namespace DatosTotem.Modulo8
         /// <returns>Retorna un boolean para saber si se realizo con éxito la operación</returns>
         public Boolean AgregarMinuta(Minuta min)
         {
+            con = new BDConexion();
+            SqlConnection conect = con.Conectar();
             SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoAgregarMinuta, con.Conectar());
             sqlcom.CommandType = CommandType.StoredProcedure;
 
@@ -164,7 +170,7 @@ namespace DatosTotem.Modulo8
 
             finally
             {
-                con.Desconectar();
+                con.Desconectar(conect);
 
             }
         }
@@ -176,12 +182,14 @@ namespace DatosTotem.Modulo8
         /// <returns>Retorna lista de minutas</returns>
         public List<Minuta> ConsultarMinutasProyecto(int idProyecto)
         {
+            con = new BDConexion();
             List<Minuta> listaMinuta = new List<Minuta>();
 
-            try
-            {
+            SqlConnection conect = con.Conectar();
+            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoConsultarListaMinutas, conect);
 
-                SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoConsultarListaMinutas, con.Conectar());
+             try
+              {
                 sqlcom.CommandType = CommandType.StoredProcedure;
                 sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroProyectoMinuta, idProyecto));
 
@@ -192,22 +200,22 @@ namespace DatosTotem.Modulo8
                 while (leer.Read())
                 {
                     listaMinuta.Add(ObtenerObjetoMinutaBD(leer));
-                }
-                return listaMinuta;
 
+                }
+
+                return listaMinuta;
             }
 
             catch (Exception ex)
             {
-                //Lanza excepcion logica propia
+
                 throw ex;
 
             }
 
             finally
             {
-                con.Desconectar();
-
+                con.Desconectar(conect);
             }
 
         }

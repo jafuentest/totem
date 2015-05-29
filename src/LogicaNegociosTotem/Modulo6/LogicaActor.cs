@@ -69,10 +69,11 @@ namespace LogicaNegociosTotem.Modulo6
         /// <param name="descripcion">La descripcion del actorr</param>
         /// <param name="proyectoActor">El proyecto al que estara asociado el actor</param>
         /// <returns>El exito o fallo del proceso</returns>
-        public bool EliminarActor(String nombre, String descripcion, int proyectoActor)
+        public bool EliminarActor(int idActor, int proyectoActor)
         {
             //Creamos al Actor y lo mandamos a eliminar
-            Actor actor = new Actor(nombre, descripcion);
+            Actor actor = new Actor();
+            actor.IdentificacionActor = idActor;
             return baseDatosActor.EliminarActor(actor, proyectoActor);
         }
 
@@ -106,5 +107,26 @@ namespace LogicaNegociosTotem.Modulo6
                 exito = AgregarActor(nombre, descripcion, proyectoActor);
             return exito;
         }
+
+        /*
+        /// <summary>
+        /// Lee todos los actores asociados al proyecto con sus Casos de Uso
+        /// </summary>
+        /// <param name="proyectoActor">El proyecto que se desea buscar los actores y sus CU</param>
+        /// <returns>Todos los actores asociados al proyecto con sus Casos de Uso</returns>
+        public List<Actor> CasoUsoPorActor (int proyectoActor)
+        {
+            //Listamos todos los Actores del proyecto
+            List<Actor> listaActores = ListarActor(proyectoActor);
+
+            //Recorremos la lista anexandole a cada Actor sus Casos de Usos
+            foreach (Actor actorLista in listaActores)
+            {
+                //Obtenemos los Casos de Uso del Actor en particular los agregamos a este.
+                actorLista.CasosDeUsos = baseDatosActor.CasoUsoPorActor(actorLista,proyectoActor);
+                 
+            }
+            return listaActores;
+        }*/
     }
 }

@@ -11,31 +11,9 @@ namespace LogicaNegociosTotem.Modulo8
 
         public List<Minuta> ListaMinuta(Proyecto elProyecto)
         {
-            List<Minuta> listaMinuta = new List<Minuta>()
-            {
-                new Minuta()
-                {
-                    Codigo = "1",
-                    Motivo = "Reunión Skype",
-                    Fecha = DateTime.Now,
-                },
-                new Minuta()
-                {
-                    Codigo = "2",
-                    Motivo = "Levantamiento de Requerimientos",
-                    Fecha = DateTime.Now,
-                },
-                new Minuta()
-                {
-                    Codigo = "3",
-                    Motivo = "Alcance del Proyecto",
-                    Fecha = DateTime.Now,
-                }
-            };
-
-
-            //return minutaDatos.ConsultarMinutasProyecto(elProyecto);
-            return listaMinuta;
+            
+            return minutaDatos.ConsultarMinutasProyecto(int.Parse(elProyecto.Codigo));
+            //return listaMinuta;
         }
 
 

@@ -80,7 +80,7 @@ namespace DatosTotem.Modulo6
                         "Procedure: " + ex.Errors[i].Procedure + "\n");
                 }
                 Console.WriteLine(errorMessages.ToString());
-
+                throw ex;
             }
             catch (Exception error)
             {
@@ -143,7 +143,7 @@ namespace DatosTotem.Modulo6
                         "Procedure: " + ex.Errors[i].Procedure + "\n");
                 }
                 Console.WriteLine(errorMessages.ToString());
-
+                throw ex;
             }
             catch (Exception error)
             {
@@ -207,7 +207,7 @@ namespace DatosTotem.Modulo6
                         "Procedure: " + ex.Errors[i].Procedure + "\n");
                 }
                 Console.WriteLine(errorMessages.ToString());
-
+                throw ex;
             }
             catch (Exception error)
             {
@@ -238,7 +238,7 @@ namespace DatosTotem.Modulo6
                 this.instruccion.CommandType = CommandType.StoredProcedure;
 
                 //Le agregamos los valores correspondientes a las variables de stored procedure
-                this.instruccion.Parameters.AddWithValue(RecursosBDModulo6.NOMBRE_ACTOR, actor.NombreActor);
+                this.instruccion.Parameters.AddWithValue(RecursosBDModulo6.ID_ACTOR, actor.IdentificacionActor);
                 this.instruccion.Parameters.AddWithValue(RecursosBDModulo6.ID_PROY_ACTOR, proyectoActor);
 
                 //Se abre conexion contra la Base de Datos
@@ -270,7 +270,7 @@ namespace DatosTotem.Modulo6
                         "Procedure: " + ex.Errors[i].Procedure + "\n");
                 }
                 Console.WriteLine(errorMessages.ToString());
-
+                throw ex;
             }
             catch (Exception error)
             {
@@ -280,6 +280,61 @@ namespace DatosTotem.Modulo6
             //Retornamos la respuesta
             return exito;
         }
-        
+
+        /*
+       /// <summary>
+       /// Lista los Casos de Usos del actor
+       /// </summary>
+       /// <param name="actor">El actor que se desea consultar sus Casos de Uso</param>
+       /// <param name="proyectoActor">El proyecto que tiene el Actor</param>
+       /// <returns>Los Casos de Uso asociados al Actor</returns>
+       public List<CasoDeUso> CasoUsoPorActor(Actor actor, int proyectoActor)
+       {
+           try
+           { 
+               //Lista donde devolveremos los Casos de Uso del actor
+               List<CasoDeUso> listaCasos = new List<CasoDeUso>();
+
+               //Respuesta de la consulta hecha a la Base de Datos
+               SqlDataReader respuesta;
+
+               //Indicamos que es un Stored Procedure, cual utilizar y ademas la conexion que necesita
+               this.instruccion = new SqlCommand("LEER_CU_POR_ACTOR", this.conexion);
+               this.instruccion.CommandType = CommandType.StoredProcedure;
+
+               //Le agregamos los valores correspondientes a las variables de Stored Procedure
+               this.instruccion.Parameters.AddWithValue("@nombreActor", actor.NombreActor);
+               this.instruccion.Parameters.AddWithValue("@idproyecto", proyectoActor);
+
+               //Se abre conexion contra la Base de Datos
+               this.conexion.Open();
+
+               //Ejecutamos la consulta y traemos las filas que fueron obtenidas
+               respuesta = instruccion.ExecuteReader();
+
+               //Si se encontraron Casos de Uso se comienzan a agregar a la variable lista, sino, se devolvera vacia
+               if (respuesta.HasRows)
+                   //Recorremos cada fila devuelta de la consulta
+                   while (respuesta.Read())
+                   {
+                       //Creamos el Caso de Uso y lo anexamos a la lista
+                       CasoDeUso aux = new CasoDeUso(respuesta.GetInt32(0), respuesta.GetString(1),
+                           respuesta.GetString(2), respuesta.GetString(3), respuesta.GetString(4));
+                       listaCasos.Add(aux);
+                   }
+
+               //Cerramos conexion
+               this.conexion.Close();
+           }
+           catch (NullReferenceException e)
+           {
+               throw new NullReferenceException("Actor debe existir", e);
+           }
+
+           //Retornamos la respuesta
+           return listaCasos;
+       }*/
+
+
     }
 }
