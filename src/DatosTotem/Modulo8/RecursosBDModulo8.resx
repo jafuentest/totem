@@ -301,4 +301,16 @@
   <data name="ProcedimientoUsuarioAcuerdo" xml:space="preserve">
     <value>Procedure_ConsultarAcuerdoResponsablesUsuarioMinuta</value>
   </data>
+  <data name="AtributoCargoContacto" xml:space="preserve">
+    <value>car_nombre</value>
+  </data>
+  <data name="AtributoCargoUsuario" xml:space="preserve">
+    <value>usu_rol</value>
+  </data>
+  <data name="ProcedureConsultarContactoMinuta" xml:space="preserve">
+    <value>Procedure_ConsultarAsistenteContactoMinuta</value>
+  </data>
+  <data name="ProcedureConsultarUsuarioMinuta" xml:space="preserve">
+    <value>Procedure_ConsultarAsistenteUsuarioMinuta</value>
+  </data>
 </root>

@@ -27,15 +27,15 @@ namespace DatosTotem.Modulo8
         {
             Minuta minuta = new Minuta();
             con = new BDConexion();
+            SqlConnection conect = con.Conectar();
+
+            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoConsultarMinuta, conect);
+            sqlcom.CommandType = CommandType.StoredProcedure;
+            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDMinuta, id));
             try
-            {
-
-                SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoConsultarMinuta, con.Conectar());
-                sqlcom.CommandType = CommandType.StoredProcedure;
-                sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDMinuta, id));
-
+              {
                 SqlDataReader leer;
-                con.Conectar().Open();
+                conect.Open();
                 leer = sqlcom.ExecuteReader();
 
                 while (leer.Read())
@@ -55,7 +55,7 @@ namespace DatosTotem.Modulo8
 
             finally
             {
-                con.Desconectar();
+                con.Desconectar(conect);
                 
             }
             
@@ -77,7 +77,6 @@ namespace DatosTotem.Modulo8
                 minuta.Motivo = BDMinuta[RecursosBDModulo8.AtributoMotivoMinuta].ToString();
                 minuta.Observaciones = BDMinuta[RecursosBDModulo8.AtributoObservacionesMinuta].ToString();
 
-                //BDMinuta.Close();
                 return minuta;
             }
 

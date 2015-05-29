@@ -24,18 +24,21 @@ namespace DatosTotem.Modulo8
         /// <returns>Retorna una Lista de todos los punto de la Minuta</returns>
         public List<Punto> ConsultarPuntoBD(int idMinuta)
         {
+            con = new BDConexion();
             List<Punto> listaPunto = new List<Punto>();
+            SqlConnection conect = con.Conectar();
+
+            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoConsultarPuntos, conect);
             try
             {
-
-                SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoConsultarPuntos, con.Conectar());
                 sqlcom.CommandType = CommandType.StoredProcedure;
                 sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDMinuta, idMinuta));
 
                 SqlDataReader leer;
-                con.Conectar().Open();
+                conect.Open();
+            
                 leer = sqlcom.ExecuteReader();
-
+               
                 while (leer.Read())
                 {
                     listaPunto.Add(ObtenerObjetoPuntoBD(leer));
@@ -53,7 +56,7 @@ namespace DatosTotem.Modulo8
 
             finally
             {
-                con.Desconectar();
+                con.Desconectar(conect);
 
             }
 
@@ -74,7 +77,6 @@ namespace DatosTotem.Modulo8
                 punto.Titulo = BDPunto[RecursosBDModulo8.AtributoTituloPunto].ToString();
                 punto.Desarrollo= BDPunto[RecursosBDModulo8.AtributoDesarrolloPunto].ToString();
 
-                BDPunto.Close();
                 return punto;
             }
 

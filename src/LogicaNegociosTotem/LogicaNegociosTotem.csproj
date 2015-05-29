@@ -53,6 +53,11 @@
     <Compile Include="Modulo7\LogicaUsuario.cs" />
     <Compile Include="Modulo7\ManejadorUsuario.cs" />
     <Compile Include="Modulo8\LogicaMinuta.cs" />
+    <Compile Include="Modulo8\RecursosLogicaModulo8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosLogicaModulo8.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +84,10 @@
     <EmbeddedResource Include="Modulo1\RecursosLogicaModulo1.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosLogicaModulo1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo8\RecursosLogicaModulo8.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosLogicaModulo8.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

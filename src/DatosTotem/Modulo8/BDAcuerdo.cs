@@ -26,16 +26,18 @@ namespace DatosTotem.Modulo8
         public List<Acuerdo> ConsultarAcuerdoBD(int idMinuta)
         {
             List<Acuerdo> listaAcuerdo = new List<Acuerdo>();
+            con = new BDConexion();
+            SqlConnection conect = con.Conectar();
 
+            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoConsultarAcuerdo, conect);
             try
             {
-
-                SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoConsultarAcuerdo, con.Conectar());
                 sqlcom.CommandType = CommandType.StoredProcedure;
                 sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDMinuta, idMinuta));
-
+           
                 SqlDataReader leer;
-                con.Conectar().Open();
+                conect.Open();
+
                 leer = sqlcom.ExecuteReader();
 
                 while (leer.Read())
@@ -55,7 +57,7 @@ namespace DatosTotem.Modulo8
 
             finally
             {
-                con.Desconectar();
+                con.Desconectar(conect);
 
             }
                 
@@ -71,8 +73,8 @@ namespace DatosTotem.Modulo8
                 acuerdo.Codigo = int.Parse(BDAcuerdo[RecursosBDModulo8.AtributoIDAcuerdo].ToString());
                 acuerdo.Fecha = DateTime.Parse(BDAcuerdo[RecursosBDModulo8.AtributoFechaAcuerdo].ToString());
                 acuerdo.Compromiso = BDAcuerdo[RecursosBDModulo8.AtributoDesarrolloAcuerdo].ToString();
-                acuerdo.ListaUsuario = ObtenerUsuarioAcuerdoBD(acuerdo.Codigo);
-                acuerdo.ListaContacto = ObtenerContactoAcuerdoBD(acuerdo.Codigo);
+                //acuerdo.ListaUsuario = ObtenerUsuarioAcuerdoBD(acuerdo.Codigo);
+                //acuerdo.ListaContacto = ObtenerContactoAcuerdoBD(acuerdo.Codigo);
 
                 return acuerdo;
             }
@@ -87,16 +89,17 @@ namespace DatosTotem.Modulo8
 
         public List<Usuario> ObtenerUsuarioAcuerdoBD(int IdAcuerdo)
         {
+            con = new BDConexion();
             List<Usuario> listaUsuario = new List<Usuario>();
+            SqlConnection conect = con.Conectar();
 
+            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoUsuarioAcuerdo, conect);
+            sqlcom.CommandType = CommandType.StoredProcedure;
+            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDAcuerdo, IdAcuerdo));
             try
             {
-
-                SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoUsuarioAcuerdo);
-                sqlcom.CommandType = CommandType.StoredProcedure;
-                sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDAcuerdo, IdAcuerdo));
-
                 SqlDataReader leer;
+                conect.Open();
                 leer = sqlcom.ExecuteReader();
                 while(leer.Read())
                 {
@@ -120,15 +123,17 @@ namespace DatosTotem.Modulo8
         public List<Contacto> ObtenerContactoAcuerdoBD(int IdAcuerdo)
         {
             List<Contacto> listaContacto = new List<Contacto>();
+            con = new BDConexion();
+            SqlConnection conect = con.Conectar();
 
-            try
-            {
-
-                SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoContactoAcuerdo);
+                SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoContactoAcuerdo, conect);
                 sqlcom.CommandType = CommandType.StoredProcedure;
                 sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDAcuerdo, IdAcuerdo));
+                try
+                {
 
                 SqlDataReader leer;
+                conect.Open();
                 leer = sqlcom.ExecuteReader();
                 while (leer.Read())
                 {

@@ -9,6 +9,9 @@ using System.IO;
 
 namespace DatosTotem.Modulo8
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class BDInvolucrados
     {
         private BDConexion con;
@@ -16,16 +19,16 @@ namespace DatosTotem.Modulo8
         public Usuario ConsultarUsuarioMinutas(int idUsuario)
         {
             Usuario usuario = new Usuario();
-
+            con = new BDConexion();
+            SqlConnection conect = con.Conectar();
+            
+            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoConsultarUsuarios,conect );
+            sqlcom.CommandType = CommandType.StoredProcedure;
+            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDUsuario, idUsuario));
             try
-            {
-
-                SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoConsultarUsuarios, con.Conectar());
-                sqlcom.CommandType = CommandType.StoredProcedure;
-                sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDUsuario, idUsuario));
-
+              {
                 SqlDataReader leer;
-                con.Conectar().Open();
+                conect.Open();
                 leer = sqlcom.ExecuteReader();
 
                 while (leer.Read())
@@ -45,7 +48,7 @@ namespace DatosTotem.Modulo8
 
             finally
             {
-                con.Desconectar();
+                con.Desconectar(conect);
 
             }
 
@@ -54,16 +57,16 @@ namespace DatosTotem.Modulo8
         public Contacto ConsultarContactoMinutas(int idContacto)
         {
             Contacto contacto = new Contacto();
-
+            con = new BDConexion();
+            SqlConnection conect = con.Conectar();
+            
+            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoConsultarContactos, conect);
+            sqlcom.CommandType = CommandType.StoredProcedure;
+            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDContacto, idContacto));
             try
-            {
-
-                SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoConsultarContactos, con.Conectar());
-                sqlcom.CommandType = CommandType.StoredProcedure;
-                sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDContacto, idContacto));
-
+              {
                 SqlDataReader leer;
-                con.Conectar().Open();
+                conect.Open();
                 leer = sqlcom.ExecuteReader();
 
                 while (leer.Read())
@@ -83,10 +86,56 @@ namespace DatosTotem.Modulo8
 
             finally
             {
-                con.Desconectar();
+                con.Desconectar(conect);
 
             }
 
+        }
+
+        /// <summary>
+        /// Metodo que para la consulta de todos los involucrados en una Minuta o los responsables de un Acuerdo
+        /// </summary>
+        /// <param name="procedure">Es el nombre del procedimiento que se ejecutara</param>
+        /// <param name="atributoInvo">Es el id del Contacto o Usuario segun sea el caso que el procedimiento
+        /// retornara</param>
+        /// <param name="parametro">Es el nombre del parametro minuta que que ejecuta en la BD el 
+        /// procedimiento</param>
+        /// <param name="id">Es el id del Acuerdo o Minuta que se encuentra vinculado con los 
+        /// Involucrados</param>
+        /// <returns></returns>
+        public List<int> ConsultarInvolucrado(string procedure, string atributoInvo, string parametro, int id)
+        {
+            List<int> i = new List<int>();
+            con = new BDConexion();
+            SqlConnection conect = con.Conectar();
+            SqlCommand sqlcom = new SqlCommand(procedure, conect);
+            sqlcom.CommandType = CommandType.StoredProcedure;
+            sqlcom.Parameters.Add(new SqlParameter(parametro, id));
+
+            SqlDataReader leer;
+            conect.Open();
+            try
+            {
+                leer = sqlcom.ExecuteReader();
+
+                while (leer.Read())
+                {
+                    i.Add(int.Parse(leer[atributoInvo].ToString()));
+                }
+                return i;
+            }
+            catch (Exception ex)
+            {
+                //Lanza excepcion logica propia
+                throw ex;
+
+            }
+
+            finally
+            {
+                con.Desconectar(conect);
+
+            }
         }
 
         public Boolean AgregarUsuarioEnAcuerdo(List<Usuario> listaUsuario, int idAcuerdo, int idProyecto)
@@ -254,8 +303,7 @@ namespace DatosTotem.Modulo8
                 usuario.clave = BDUsuario[RecursosBDModulo8.AtributoIDUsuario].ToString();
                 usuario.nombre = BDUsuario[RecursosBDModulo8.AtributoNombreUsuario].ToString();
                 usuario.apellido = BDUsuario[RecursosBDModulo8.AtributoApellidoUsuario].ToString();
-
-                BDUsuario.Close();
+                usuario.cargo = BDUsuario[RecursosBDModulo8.AtributoCargoUsuario].ToString();
                 return usuario;
             }
 
@@ -276,8 +324,7 @@ namespace DatosTotem.Modulo8
                 contacto.Con_Id = int.Parse(BDContacto[RecursosBDModulo8.AtributoIDContacto].ToString());
                 contacto.Con_Nombre = BDContacto[RecursosBDModulo8.AtributoNombreContacto].ToString();
                 contacto.Con_Apellido = BDContacto[RecursosBDModulo8.AtributoApellidoContacto].ToString();
-
-                BDContacto.Close();
+                contacto.ConCargo = BDContacto[RecursosBDModulo8.AtributoCargoContacto].ToString();
                 return contacto;
             }
 

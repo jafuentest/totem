@@ -97,6 +97,24 @@ namespace DatosTotem.Modulo8 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a car_nombre.
+        /// </summary>
+        internal static string AtributoCargoContacto {
+            get {
+                return ResourceManager.GetString("AtributoCargoContacto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a usu_rol.
+        /// </summary>
+        internal static string AtributoCargoUsuario {
+            get {
+                return ResourceManager.GetString("AtributoCargoUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a acu_desarrollo.
         /// </summary>
         internal static string AtributoDesarrolloAcuerdo {
@@ -552,6 +570,24 @@ namespace DatosTotem.Modulo8 {
         internal static string ProcedimientoUsuarioAcuerdo {
             get {
                 return ResourceManager.GetString("ProcedimientoUsuarioAcuerdo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_ConsultarAsistenteContactoMinuta.
+        /// </summary>
+        internal static string ProcedureConsultarContactoMinuta {
+            get {
+                return ResourceManager.GetString("ProcedureConsultarContactoMinuta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_ConsultarAsistenteUsuarioMinuta.
+        /// </summary>
+        internal static string ProcedureConsultarUsuarioMinuta {
+            get {
+                return ResourceManager.GetString("ProcedureConsultarUsuarioMinuta", resourceCulture);
             }
         }
     }

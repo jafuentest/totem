@@ -115,7 +115,7 @@ CREATE PROCEDURE Procedure_ConsultarMinutasProyecto
 AS
  BEGIN
 	
-	SELECT Distinct(M.min_id) as min_id, M.min_fecha, M.min_motivo
+	SELECT Distinct(M.min_id) as min_id, M.min_fecha, M.min_motivo, M.min_observaciones
 	FROM MINUTA M, MIN_INV MI
 	WHERE (MI.INVOLUCRADOS_USUARIOS_PROYECTO_pro_id= @min_inv_proy or Mi.INVOLUCRADOS_CLIENTES_PROYECTO_pro_id =@min_inv_proy)
  END
@@ -174,7 +174,7 @@ AS
 
      SELECT AC.INVOLUCRADOS_CLIENTES_CONTACTO_con_id as idContacto
 	 FROM ACU_INV AC
-	 WHERE AC.ACUERDO_acu_id = @acu_id and AC.INVOLUCRADOS_CLIENTES_CONTACTO_con_id != null
+	 WHERE AC.ACUERDO_acu_id = @acu_id and AC.INVOLUCRADOS_CLIENTES_CONTACTO_con_id is not null
 END
 GO
 
@@ -188,23 +188,49 @@ AS
 
      SELECT AC.INVOLUCRADOS_USUARIOS_USUARIO_usu_id as idUsuario
 	 FROM ACU_INV AC
-	 WHERE AC.ACUERDO_acu_id = @acu_id and AC.INVOLUCRADOS_USUARIOS_USUARIO_usu_id != null
+	 WHERE AC.ACUERDO_acu_id = @acu_id and AC.INVOLUCRADOS_USUARIOS_USUARIO_usu_id is not null
 END
 GO
+
+------------------Procedimiento para consultar Asistentes Usuario en una Minuta----------------
+CREATE PROCEDURE Procedure_ConsultarAsistenteUsuarioMinuta
+  
+  @min_id [int]
+
+AS
+ BEGIN
+     SELECT M.INVOLUCRADOS_USUARIOS_USUARIO_usu_id as idUsuario FROM MIN_INV M
+	 WHERE M.MINUTA_min_id = 1 and M.INVOLUCRADOS_USUARIOS_USUARIO_usu_id is not null
+ END
+GO
+
+-----------------Procedimiento para consultar Asistentes Contacto en una Minuta---------------------
+CREATE PROCEDURE Procedure_ConsultarAsistenteContactoMinuta
+  
+  @min_id [int]
+
+AS
+ BEGIN
+     SELECT M.INVOLUCRADOS_CLIENTES_CONTACTO_con_id as idContacto FROM MIN_INV M
+	 WHERE M.INVOLUCRADOS_CLIENTES_CONTACTO_con_id is not NULL AND M.MINUTA_min_id = @min_id
+ END
+GO
+
 ----------------- Procedimiento para consultar algunos datos de Contacto --------------------------------------
-CREATE PROCEDURE Procedure_ConsultarContactoMinuta
+/*CREATE PROCEDURE Procedure_ConsultarContactoMinuta
 
        @acu_id [int],
 	   @pro_id [int]
 AS
  BEGIN
 	
-	SELECT C.con_id, C.con_nombre, C.con_apellido
+	SELECT C.con_id, C.con_nombre, C.con_apellido, (SELECT CA.car_nombre FROM CARGO CA, CONTACTO CO
+	                                                WHERE CA.car_id = CO.CARGO_car_id)
 	FROM  CONTACTO C, ACU_INV A
 	WHERE A.ACUERDO_acu_id = @acu_id and A.INVOLUCRADOS_CLIENTES_PROYECTO_pro_id= @pro_id 
 	      and A.INVOLUCRADOS_CLIENTES_CONTACTO_con_id = C.con_id
  END
-GO
+GO*/
 
 ----------------- Procedimiento para consultar algunos datos de Usuario --------------------------------------
 CREATE PROCEDURE Procedure_ConsultarUsuarioMinuta
@@ -214,7 +240,7 @@ CREATE PROCEDURE Procedure_ConsultarUsuarioMinuta
 AS
  BEGIN
 	
-	SELECT U.usu_id, U.usu_nombre, U.usu_apellido
+	SELECT U.usu_id, U.usu_nombre, U.usu_apellido, U.usu_rol
 	FROM  USUARIO U , ACU_INV A
 	WHERE A.ACUERDO_acu_id = @acu_id and A.INVOLUCRADOS_USUARIOS_PROYECTO_pro_id= @pro_id 
 	      and A.INVOLUCRADOS_USUARIOS_USUARIO_usu_id = U.usu_id
@@ -228,7 +254,7 @@ CREATE PROCEDURE Procedure_ConsultarUsuario
 AS
  BEGIN
 
-    SELECT U.usu_id, U.usu_nombre, U.usu_apellido
+    SELECT U.usu_id, U.usu_nombre, U.usu_apellido, U.usu_rol
 	FROM  USUARIO U
 	WHERE U.usu_id = @usu_id
  END
@@ -241,9 +267,9 @@ CREATE PROCEDURE Procedure_ConsultarContacto
 AS
  BEGIN
 
-    SELECT C.con_id, C.con_nombre, C.con_apellido
-	FROM  CONTACTO C
-	WHERE C.con_id = @con_id
+    SELECT C.con_id, C.con_nombre, C.con_apellido, CA.car_nombre
+	FROM  CONTACTO C, CARGO CA
+	WHERE C.con_id =  @con_id AND CA.car_id = C.CARGO_car_id
  END
 GO
 
