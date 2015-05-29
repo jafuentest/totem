@@ -1,0 +1,17 @@
+-------SECUENCIA USUARIO
+CREATE SEQUENCE secuenciaIdUsuario
+AS 
+	int
+	START WITH 1
+	INCREMENT BY 1;
+	
+go
+
+-------SECUENCIA CARGO---
+CREATE SEQUENCE secuenciaIdCargo
+AS 
+	int
+	START WITH 1
+	INCREMENT BY 1;
+ 
+go
