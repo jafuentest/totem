@@ -57,6 +57,7 @@ namespace LogicaNegociosTotem.Modulo1
                     DominioTotem.Usuario loginUser = new DominioTotem.Usuario();
                     loginUser.username = Username;
                     loginUser.clave = Clave;
+                    loginUser.CalcularHash();
                     DominioTotem.Usuario retornoUser= 
                         DatosTotem.Modulo1.BDLogin.ValidarLoginBD(loginUser);
                     intentos = 0;
@@ -166,6 +167,11 @@ namespace LogicaNegociosTotem.Modulo1
                 catch (ExcepcionesTotem.Modulo1.UsuarioVacioException ex)
                 {
                     throw new ExcepcionesTotem.Modulo1.UsuarioVacioException(
+                        ex.Codigo, ex.Mensaje, ex);
+                }
+                catch (ExcepcionesTotem.Modulo1.ErrorEnvioDeCorreoException ex)
+                {
+                    throw new ExcepcionesTotem.Modulo1.ErrorEnvioDeCorreoException(
                         ex.Codigo, ex.Mensaje, ex);
                 }
             }
@@ -330,7 +336,47 @@ namespace LogicaNegociosTotem.Modulo1
         /// de lo contrario retorna False</returns>
         public static bool CambioDeClave(DominioTotem.Usuario usuario)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                if (usuario != null && usuario.clave != null &&
+                    usuario.clave != "" && usuario.correo != null
+                    && usuario.correo != "")
+                {
+                    usuario.correo =
+                        DesencriptarConRijndael(usuario.correo,
+                        RecursosLogicaModulo1.Passphrase);
+                    usuario.CalcularHash();
+                    DatosTotem.Modulo1.BDLogin.CambiarClave(usuario);
+                    return true;
+                }
+                else
+                {
+                    throw new ExcepcionesTotem.Modulo1.UsuarioVacioException(
+                        RecursosLogicaModulo1.Codigo_Usuario_Vacio,
+                        RecursosLogicaModulo1.Mensaje_Usuario_Vacio,
+                        new ExcepcionesTotem.Modulo1.UsuarioVacioException());
+                }
+            }
+            catch (ExcepcionesTotem.Modulo1.UsuarioVacioException ex)
+            {
+                throw new ExcepcionesTotem.Modulo1.UsuarioVacioException(
+                    ex.Codigo, ex.Mensaje, ex);
+            }
+            catch (ExcepcionesTotem.Modulo1.EmailErradoException ex)
+            {
+                throw new ExcepcionesTotem.Modulo1.EmailErradoException(
+                    ex.Codigo, ex.Mensaje, ex);
+            }
+            catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
+            {
+                throw new ExcepcionesTotem.Modulo1.ParametroInvalidoException(
+                    ex.Codigo, ex.Mensaje, ex);
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    ex.Codigo, ex.Mensaje, ex);
+            }
         }
 
         /// <summary>

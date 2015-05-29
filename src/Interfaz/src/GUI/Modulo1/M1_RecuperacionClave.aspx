@@ -8,31 +8,38 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="contenidoCentral" Runat="Server">
-
+    <div id="serverAlert" runat="server"></div>
    <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
        <div id="alerta"></div>
-            <form id="recuperarClave" class="form-horizontal" action="M1_login.aspx" method="post">
+       
+            <form id="recuperarClave" class="form-horizontal"  method="post" runat="server">
 
-                <div  class="login-form"> 
+                <div  class="cambio_clave"> 
                    
 
-                  <div id="login-form-name1" class="form-group">
+                  <div runat="server" id="pswd_nuevo" class="form-group">
                       <label>Nueva Contraseña:</label>
-                     <input type="password" class="form-control login-field" style="width:70%;" value="" placeholder="Introduzca nueva clave" id="login-name1" name="claveNueva" />
+                     <input type="password" class="form-control" style="width:70%;" 
+                         value="" placeholder="Introduzca nueva clave" id="input_clave" runat="server"
+                         name="claveNueva" />
                   </div>
 
-                    <div id="login-form-name" class="form-group">
+                    <div runat="server" id="pswd_confirmacion" class="form-group">
                         <label>Confirme Nueva Contraseña:</label>
-                        <input type="password" class="form-control login-field" style="width:70%;" value="" placeholder="Confirme la nueva clave" id="login-name2" name="confirmaClaveNueva" />
+                        <input type="password" class="form-control" style="width:70%;" 
+                            value="" placeholder="Confirme la nueva clave" id="input_clave_confs" 
+                           runat="server" name="confirmaClaveNueva" />
                     </div>
 
 
                   <div class="form-group">
 		               <div class="form-group">
                          &nbsp; &nbsp;
-				            <button class="btn btn-primary" id="btn-Confirmar" type="submit" onclick="return login()" >Continuar</button>
+				            <button class="btn btn-primary" id="btn_Confirmar" type="submit" runat="server" 
+                                onserverclick="btn_Confirmar_ServerClick" >Continuar</button>
                         &nbsp;
-				            <a class="btn btn-default" href="M1_login.aspx">Cancelar</a>
+				            <a class="btn btn-default" href="M1_login.aspx">Cancelar</a
+                           <!-- cambiar para asegurar que el cookie se borre -->
                        </div>  
                   </div>
                   

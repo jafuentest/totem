@@ -19,11 +19,6 @@ public partial class M1_PreguntaSeguridad : System.Web.UI.Page
                 Master.MostrarMenuLateral = false;
                 Master.ShowDiv = false;
             }
-            else
-            {
-                Master.MostrarMenuLateral = false;
-                Master.ShowDiv = false;
-            }
 
         }
         try
@@ -44,19 +39,43 @@ public partial class M1_PreguntaSeguridad : System.Web.UI.Page
         }
         catch (ExcepcionesTotem.Modulo1.UsuarioVacioException ex)
         {
+            serverAlert.Attributes["class"] = "alert alert-danger alert-dismissible";
+            serverAlert.Attributes["role"] = "alert";
 
+            serverAlert.InnerHtml = "<div><button type=\"button\" class=\"close\" " +
+                "data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=" +
+                "\"true\">&times;</span></button>Error con la informacion del usuario, " +
+                "ingrese nuevamente al enlace enviado por correo</div>";
         }
         catch (ExcepcionesTotem.Modulo1.EmailErradoException ex)
         {
+            serverAlert.Attributes["class"] = "alert alert-danger alert-dismissible";
+            serverAlert.Attributes["role"] = "alert";
 
+            serverAlert.InnerHtml = "<div><button type=\"button\" class=\"close\" " +
+                "data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=" +
+                "\"true\">&times;</span></button>Hubo un error con el correo" +
+                " del usuario, intente nuevamente</div>";
         }
         catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
         {
+            serverAlert.Attributes["class"] = "alert alert-danger alert-dismissible";
+            serverAlert.Attributes["role"] = "alert";
 
+            serverAlert.InnerHtml = "<div><button type=\"button\" class=\"close\" " +
+                "data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=" +
+                "\"true\">&times;</span></button>Hubo un error interno de la aplicacion" +
+                ", porfavor intente nuevamente</div>";
         }
         catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
         {
+            serverAlert.Attributes["class"] = "alert alert-danger alert-dismissible";
+            serverAlert.Attributes["role"] = "alert";
 
+            serverAlert.InnerHtml = "<div><button type=\"button\" class=\"close\" " +
+                "data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=" +
+                "\"true\">&times;</span></button>Hubo un error con la conexion al servidor" +
+                ", porfavor intente nuevamente</div>";
         }
     }
 
@@ -74,34 +93,73 @@ public partial class M1_PreguntaSeguridad : System.Web.UI.Page
                     usuario.respuestaSeguridad = input_respuesta.Value;
                     if (LogicaNegociosTotem.Modulo1.LogicaLogin.ValidarRespuestaSecreta(usuario))
                     {
+                        HttpCookie aCookie = new HttpCookie("userInfo");
+                        aCookie.Values["usuario"] = Request.QueryString["usuario"];
+                        aCookie.Expires = DateTime.Now.AddMinutes(15);
+                        Response.Cookies.Add(aCookie);
                         Response.Redirect("~/src/GUI/Modulo1/M1_RecuperacionClave.aspx");
                     }
                     else
                     {
-                        //Mensaje de respuesta errada
+                        serverAlert.Attributes["class"] = "alert alert-danger alert-dismissible";
+                        serverAlert.Attributes["role"] = "alert";
+
+                        serverAlert.InnerHtml = "<div><button type=\"button\" class=\"close\" " +
+                            "data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=" +
+                            "\"true\">&times;</span></button>La respuesta ingresada " +
+                            "no coincide con la registrada, intente nuevamente</div>";
                     }
                 }
             }
             else
             {
-                //Alerta
+                serverAlert.Attributes["class"] = "alert alert-danger alert-dismissible";
+                serverAlert.Attributes["role"] = "alert";
+
+                serverAlert.InnerHtml = "<div><button type=\"button\" class=\"close\" " +
+                    "data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=" +
+                    "\"true\">&times;</span></button>Porfavor llene los campos " +
+                    "obligatorios</div>";
             }
         }
         catch (ExcepcionesTotem.Modulo1.RespuestaErradoException ex)
         {
-            
+            serverAlert.Attributes["class"] = "alert alert-danger alert-dismissible";
+            serverAlert.Attributes["role"] = "alert";
+
+            serverAlert.InnerHtml = "<div><button type=\"button\" class=\"close\" " +
+                "data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=" +
+                "\"true\">&times;</span></button>La respuesta ingresada " + 
+                "no coincide con la registrada, intente nuevamente</div>";
         }
         catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
         {
-            
+            serverAlert.Attributes["class"] = "alert alert-danger alert-dismissible";
+            serverAlert.Attributes["role"] = "alert";
+
+            serverAlert.InnerHtml = "<div><button type=\"button\" class=\"close\" " +
+                "data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=" +
+                "\"true\">&times;</span></button>Hubo un error interno de la aplicacion" +
+                ", porfavor intente nuevamente</div>";
         }
         catch (ExcepcionesTotem.Modulo1.UsuarioVacioException ex)
         {
-            
+            serverAlert.Attributes["class"] = "alert alert-danger alert-dismissible";
+            serverAlert.Attributes["role"] = "alert";
+
+            serverAlert.InnerHtml = "<div><button type=\"button\" class=\"close\" " +
+                "data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=" +
+                "\"true\">&times;</span></button>Error con la informacion del usuario</div>";
         }
         catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
         {
-            
+            serverAlert.Attributes["class"] = "alert alert-danger alert-dismissible";
+            serverAlert.Attributes["role"] = "alert";
+
+            serverAlert.InnerHtml = "<div><button type=\"button\" class=\"close\" " +
+                "data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=" +
+                "\"true\">&times;</span></button>Hubo un error con la conexion al servidor" +
+                ", porfavor intente nuevamente</div>";
         }
     }
 }

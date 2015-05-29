@@ -131,6 +131,12 @@ namespace DatosTotem.Modulo1
         }
         #endregion
 
+        #region Metodos de usuario
+        /// <summary>
+        /// Metodo para validar el correo de un usuario
+        /// </summary>
+        /// <param name="correo">String con el correo a validar en la base de datos</param>
+        /// <returns>true si el correo existe</returns>
         public static bool ValidarCorreoBD(string correo)
         {
             if (correo != null && correo != "")
@@ -204,6 +210,64 @@ namespace DatosTotem.Modulo1
                     new ExcepcionesTotem.Modulo1.EmailErradoException());
             }
         }
+
+        /// <summary>
+        /// Metodo que le cambia la clave a un usuario dado su correo y la nueva clave
+        /// </summary>
+        /// <param name="usuario">usuario con clave y correo cargado para cambiar
+        /// su clave</param>
+        /// <returns>bool true si se puede hacer</returns>
+        public static bool CambiarClave(DominioTotem.Usuario usuario)
+        {
+            try
+            {
+                if (usuario != null && usuario.correo != null &&
+                    usuario.clave != null && usuario.correo != ""
+                    && usuario.clave != "")
+                {
+                    List<Parametro> parametros = new List<Parametro>();
+                    Parametro parametro = new Parametro(
+                        RecursosBDModulo1.Parametro_Input_Correo,
+                        SqlDbType.VarChar,
+                        usuario.correo, false);
+                    parametros.Add(parametro);
+                    parametro = new Parametro(
+                        RecursosBDModulo1.Parametro_Input_Clave,
+                        SqlDbType.VarChar, usuario.clave, false);
+                    parametros.Add(parametro);
+                    BDConexion con = new BDConexion();
+                    con.EjecutarStoredProcedure(RecursosBDModulo1.Query_Cambiar_Clave,
+                        parametros);
+                    return true;
+                }
+                else
+                {
+                    throw new ExcepcionesTotem.Modulo1.UsuarioVacioException(
+                        RecursosBDModulo1.Codigo_Usuario_Vacio,
+                        RecursosBDModulo1.Mensaje_Usuario_Vacio,
+                        new ExcepcionesTotem.Modulo1.UsuarioVacioException());
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(ex.Codigo, ex.Mensaje, ex);
+            }
+            catch (ExcepcionesTotem.Modulo1.EmailErradoException ex)
+            {
+                throw new ExcepcionesTotem.Modulo1.EmailErradoException(ex.Codigo, ex.Mensaje, ex);
+            }
+            catch (ParametroInvalidoException ex)
+            {
+                throw new ParametroInvalidoException(RecursoGeneralBD.Codigo_Parametro_Errado,
+                    RecursoGeneralBD.Mensaje_Parametro_Errado, ex);
+            }
+        }
+        #endregion
 
         #region Obtener Pregunta Seguridad
         /// <summary>

@@ -51,11 +51,20 @@ public partial class login : System.Web.UI.Page
                     " con los pasos a seguir</div>";
           
             }
+            if (success.Equals("1"))
+            {
+                alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                alert.Attributes["role"] = "alert";
+
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" " + 
+                    "data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=" + 
+                    "\"true\">&times;</span></button>Se ha cambiado exitosamente" + 
+                    " su clave</div>";
+            }
         }
 
     }
     protected void Login_Click(object sender, EventArgs e) {
-        
         try
         {
             
