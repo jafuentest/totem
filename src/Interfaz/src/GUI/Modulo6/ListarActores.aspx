@@ -106,7 +106,6 @@
 	            modal.find('#caso_de_uso').text(name);
 	        });
 
-
 	        $('#btn-eliminar').on('click', function () {
 	            window.location.href = 'ListarActores.aspx?success=3&id=' + id;
 	        });
