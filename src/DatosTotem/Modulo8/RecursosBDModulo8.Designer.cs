@@ -680,5 +680,14 @@ namespace DatosTotem.Modulo8 {
                 return ResourceManager.GetString("ProcedureConsultarUsuarioMinuta", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_EliminarTodosInvolucrados.
+        /// </summary>
+        internal static string ProcedureEliminarInvolucradoMinuta {
+            get {
+                return ResourceManager.GetString("ProcedureEliminarInvolucradoMinuta", resourceCulture);
+            }
+        }
     }
 }

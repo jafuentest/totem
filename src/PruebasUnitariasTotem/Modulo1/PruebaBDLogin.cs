@@ -49,6 +49,7 @@ namespace PruebasUnitariasTotem.Modulo1
         {
             try
             {
+                user.CalcularHash();
                 DatosTotem.Modulo1.BDLogin.ValidarLoginBD(user);
             }
             catch (ExcepcionesTotem.Modulo1.UsuarioVacioException)

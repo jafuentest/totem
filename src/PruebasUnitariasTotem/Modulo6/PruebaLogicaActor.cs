@@ -79,7 +79,7 @@ namespace PruebasUnitariasTotem.Modulo6
             int Identificacion = listaActores[listaActores.Count - 1].IdentificacionActor;
 
             //Lo modificamos
-            Assert.IsTrue(logica.ModificarActor(Identificacion, "prueba", "prueba", 0));
+            Assert.IsTrue(logica.ModificarActor(Identificacion, "prueba", "prueba", 1));
         }
 
         /// <summary>

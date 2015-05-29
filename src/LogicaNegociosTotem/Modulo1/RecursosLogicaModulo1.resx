@@ -229,4 +229,8 @@
     <value>Si usted no solicito una recuperacion de clave, ignore este mensaje</value>
     <comment>Mensaje que se envia al final del correo</comment>
   </data>
+  <data name="Expresion_Regular_Correo" xml:space="preserve">
+    <value>\A(?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z</value>
+    <comment>Expresion regular para validar correos</comment>
+  </data>
 </root>

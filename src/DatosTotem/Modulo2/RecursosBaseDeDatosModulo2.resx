@@ -269,4 +269,16 @@
   <data name="NombreClienteNatural" xml:space="preserve">
     <value>@cj_nombre</value>
   </data>
+  <data name="NombreContacto" xml:space="preserve">
+    <value>@nombreContacto</value>
+  </data>
+  <data name="IdCargo" xml:space="preserve">
+    <value>@idCargo</value>
+  </data>
+  <data name="ProcedureListarClientesJuridicos" xml:space="preserve">
+    <value>Procedure_ConsultarTodosClientesJuridicos</value>
+  </data>
+  <data name="ProcedureListarClientesNaturales" xml:space="preserve">
+    <value>Procedure_ConsultarTodosClientesNaturales</value>
+  </data>
 </root>

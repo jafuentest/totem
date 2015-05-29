@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace LogicaNegociosTotem.Modulo1
 {
@@ -136,7 +137,12 @@ namespace LogicaNegociosTotem.Modulo1
             {
                 try
                 {
-                    if (DatosTotem.Modulo1.BDLogin.ValidarCorreoBD(usuario.correo))
+                    bool esCorreo = Regex.IsMatch(usuario.correo,
+                        RecursosLogicaModulo1.Expresion_Regular_Correo,
+                        RegexOptions.IgnoreCase);
+
+                    if (esCorreo && 
+                        DatosTotem.Modulo1.BDLogin.ValidarCorreoBD(usuario.correo))
                     {
                         EnviarEmail(usuario);
                         return true;

@@ -27,6 +27,7 @@ namespace PruebasUnitariasTotem.Modulo1
             Usuario user = new Usuario();
             user.username = RecursosPUMod1.UsuarioExitoso;
             user.clave = RecursosPUMod1.ClaveExitosa;
+            user.CalcularHash();
             DominioTotem.Usuario retornoUsuario= LogicaNegociosTotem.Modulo1.LogicaLogin.Login(user.username, user.clave);
             Assert.IsNotNull(retornoUsuario);
             Assert.AreEqual(user.username,retornoUsuario.username);

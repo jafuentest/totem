@@ -133,7 +133,7 @@ namespace PruebasUnitariasTotem.Modulo2
         /// Prueba el agregar un Cliente Juridico a Base de datos
         /// </summary>
         /// 
-        [Test]
+       /* [Test]
         public void PruebaAgregarClienteJuridicoBD() 
         {
             ClienteJuridico cliente = new ClienteJuridico();
@@ -144,7 +144,7 @@ namespace PruebasUnitariasTotem.Modulo2
 
             Assert.IsTrue(baseDeDatosCliente.AgregarClienteJuridico(cliente,fkLugar));
                    
-        }
+        }*/
 
 
         /// <summary>
