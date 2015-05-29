@@ -61,16 +61,23 @@ public partial class GUI_Modulo6_ListarActores : System.Web.UI.Page
 
             //Si se viene de un eliminar se procedera a eliminar y mostrar la alerta correspondiente
 			case "3":
+                //Casteamos explicitamente el ID del actor proveniente de un GET en la URL
 				idActor=Int32.Parse(Request.QueryString["id"]);
+
+                //Obtenemos el exito o fallo del proceso
                 bool exito= logica.EliminarActor(idActor,0);
+
+                //Evaluamos la condicion
                 if (exito)
                 {
+                    //Si la eliminacion fue exitosa mostramos esta alerta
                     alert.Attributes["class"] = "alert alert-success alert-dismissible";
                     alert.Attributes["role"] = "alert";
                     alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Actor eliminado exitosamente</div>";
                 }
                 else
                 {
+                    //Si fue fallida mostramos esta alerta
                     alert.Attributes["class"] = "alert alert-success alert-dismissible";
                     alert.Attributes["role"] = "alert";
                     alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Eliminacion fallida del actor</div>";
