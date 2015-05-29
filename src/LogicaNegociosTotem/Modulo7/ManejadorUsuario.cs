@@ -83,10 +83,9 @@ namespace LogicaNegociosTotem.Modulo7
         /// <returns>Regresa una lista de cargos</returns>
         public List<String> ListarCargosUsuarios()
         {
-
             List<String> listaCargos = new List<String>();
             BDUsuario conexion = new BDUsuario();
-            return conexion.ConsultaCargos();
+            return conexion.LeerCargosUsuarios();
         }
 
     }

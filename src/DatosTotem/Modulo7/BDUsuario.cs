@@ -319,14 +319,43 @@ namespace DatosTotem.Modulo7
             SqlDataReader resultadoConsulta;
             List<String> listCargos = new List<String>();
             BDConexion conexionBd = new BDConexion();
-            conexionBd.Conectar();
-            resultadoConsulta = conexionBd.EjecutarQuery(RecursosBaseDeDatosModulo7.QueryCargosUsuarios);
-            conexionBd.Desconectar();
-            while (resultadoConsulta.Read())
+            try
             {
-                listCargos.Add(resultadoConsulta.GetValue(0).ToString());
+                //  conexionBd.Conectar();
+                resultadoConsulta = conexionBd.EjecutarQuery(RecursosBaseDeDatosModulo7.QueryCargosUsuarios);
+                //   conexionBd.Desconectar();
+                while (resultadoConsulta.Read())
+                {
+                    listCargos.Add(resultadoConsulta.GetValue(0).ToString());
+                }
+                return listCargos;
             }
-            return listCargos;
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public List<String> LeerCargosUsuarios()
+        {
+            List<String> laLista = new List<String>();
+            BDConexion laConexion = new BDConexion();
+            List<Parametro> parametros = new List<Parametro>();
+            try
+            {
+                laConexion = new BDConexion();
+                DataTable dt = laConexion.EjecutarStoredProcedureTuplas("seleccionarCargosUsuarios", parametros);
+                foreach (DataRow row in dt.Rows)
+                {
+                    laLista.Add(row["nombreCargo"].ToString());
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return laLista;
         }
     }
 }

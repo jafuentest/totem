@@ -9,10 +9,6 @@ using System.Data;
 using System.Data.SqlClient;
 
 
-
-
-
-
 namespace DatosTotem.Modulo2
 {
 
@@ -33,9 +29,8 @@ namespace DatosTotem.Modulo2
         /// </summary>
         public BDCliente() 
         {
-            this.conexion = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\totem\totem\src\DatosTotem\BaseDeDatos\BaseDeDatosTotem.mdf;Integrated Security=True"); 
-           // this.conexion = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\BaseDeDatos\BaseDeDatosTotem.mdf;Integrated Security=True");
-            //this.conexion = new SqlConnection(@RecursoGeneralBD.StringDeConexion);
+            //this.conexion = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\Svillami\Desktop\totem - copia de las 1218 290515\src\DatosTotem\BaseDeDatos\BaseDeDatosTotem.mdf;Integrated Security=True");
+            this.conexion = new SqlConnection(@RecursoGeneralBD.StringDeConexion);
         }
 
 
@@ -209,59 +204,9 @@ namespace DatosTotem.Modulo2
         /// </summary>
         /// <param name="clienteNatural">Información del Cliente Natural</param>
         /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-        public bool ModificarClienteNatural(ClienteNatural clienteNatural,string cargo,string codigo,string numero)
+        public bool ModificarClienteNatural(ClienteNatural clienteNatural)
         {
-            bool respuesta = false;
-            
-            
-             
-            try
-            {
-                int nroDeFilasAfectadas = 0;
-
-                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureModificarClienteNatural, this.conexion);
-                this.comando.CommandType = CommandType.StoredProcedure;
-
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroCedula, Clientenatural.Nat_Id);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroNombre, Clientenatural.Nat_Nombre);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroApellido, Clientenatural.Nat_Apellido);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroCorreo, Clientenatural.Nat_Correo);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombrePais, Clientenatural.Nat_Pais);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombreEstado, Clientenatural.Nat_Estado);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombreCiudad, Clientenatural.Nat_Ciudad.NombreLugar);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombreDireccion, Clientenatural.Nat_Direccion);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombreCargo,cargo);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.Codigo, codigo);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.Numero, numero);
-                this.conexion.Open();
-
-                nroDeFilasAfectadas = this.comando.ExecuteNonQuery();
-
-                if (nroDeFilasAfectadas > 0)
-                    respuesta = true;
-
-
-            }
-
-            catch (SqlException e)
-            {
-                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
-                    RecursoGeneralBD.Mensaje, e);
-            }
-            catch (NullReferenceException e)
-            {
-                throw e;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            finally
-            {
-                this.conexion.Close();
-            }
-
-            return respuesta; 
+            throw new NotImplementedException();
         }
 
 
@@ -270,53 +215,9 @@ namespace DatosTotem.Modulo2
         /// </summary>
         /// <param name="clienteNatural">Información del Cliente Natural</param>
         /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-        public bool ModificarClienteJuridico(ClienteJuridico clienteJuridico)
+        public bool ModificarClienteJuridico(ClienteJuridico clienteNatural)
         {
-            bool respuesta = false;
-            string logo=string.Empty;
-            int fkLugar = 26; 
-
-            try
-            {
-                int nroDeFilasAfectadas = 0;
-
-                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureModificarClienteJuridico, this.conexion);
-                this.comando.CommandType = CommandType.StoredProcedure;
-
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroRif, clienteJuridico.Jur_Id);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroNombre, clienteJuridico.Jur_Nombre);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroLogo,logo);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ProcedureFkLugLug, fkLugar);
-                
-                this.conexion.Open();
-
-                nroDeFilasAfectadas = this.comando.ExecuteNonQuery();
-
-                if (nroDeFilasAfectadas > 0)
-                    respuesta = true;
-
-
-            }
-
-            catch (SqlException e)
-            {
-                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
-                    RecursoGeneralBD.Mensaje, e);
-            }
-            catch (NullReferenceException e)
-            {
-                throw e;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            finally
-            {
-                this.conexion.Close();
-            }
-
-            return respuesta;
+            throw new NotImplementedException();
         }
 
 
@@ -435,7 +336,56 @@ namespace DatosTotem.Modulo2
         /// <returns>Retorna una lista de Clientes Juridicos, null si el objeto no existe</returns>
         public List<ClienteJuridico> ConsultarClientesJuridicos()
         {
-            throw new NotImplementedException();
+            //Lista donde devolveremos los Clientes Jurudicos
+            List<ClienteJuridico> listaClientesJuridicos = new List<ClienteJuridico>();
+            try
+            {
+                //Respuesta de la consulta a la Base de Datos
+                SqlDataReader respuesta;
+
+                //Indicamos que es un Stored Procedure, cual utilizar y ademas la conexion que necesita
+                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureListarClientesJuridicos, this.conexion);
+                this.comando.CommandType = CommandType.StoredProcedure;
+
+                //Se abre conexion contra la Base de Datos
+                this.conexion.Open();
+
+                //Ejecutamos la consulta y traemos las filas que fueron obtenidas
+                respuesta = comando.ExecuteReader();
+
+                //Si se encontraron Clientes Juridicos comienza a agregar en la variable lista, sino, se devolvera vacia
+                if (respuesta.HasRows)
+                    //Recorremos cada fila devuelta de la consulta
+                    while (respuesta.Read())
+                    {
+                        //Creamos el Cliente Juridicos y lo anexamos a la lista
+                        ClienteJuridico aux = new ClienteJuridico(respuesta.GetString(0), respuesta.GetString(1));
+                        listaClientesJuridicos.Add(aux);
+                    }
+
+                //Cerramos conexion
+                this.conexion.Close();
+            }
+            catch (SqlException ex)
+            {
+                StringBuilder errorMessages = new StringBuilder();
+                for (int i = 0; i < ex.Errors.Count; i++)
+                {
+                    errorMessages.Append("Index #" + i + "\n" +
+                        "Message: " + ex.Errors[i].Message + "\n" +
+                        "LineNumber: " + ex.Errors[i].LineNumber + "\n" +
+                        "Source: " + ex.Errors[i].Source + "\n" +
+                        "Procedure: " + ex.Errors[i].Procedure + "\n");
+                }
+                Console.WriteLine(errorMessages.ToString());
+
+            }
+            catch (Exception error)
+            {
+                throw new Exception("Ha ocurrido un error inesperado al Listar", error);
+            }
+            //Retornamos la respuesta
+            return listaClientesJuridicos;
         }
 
 
@@ -445,7 +395,56 @@ namespace DatosTotem.Modulo2
         /// <returns>Retorna una lista de Clientes Naturales, null si el objeto no existe</returns>
         public List<ClienteNatural> ConsultarClientesNaturales()
         {
-            throw new NotImplementedException();
+            //Lista donde devolveremos los Clientes Naturales
+            List<ClienteNatural> listaClientesNaturales = new List<ClienteNatural>();
+            try
+            {
+                //Respuesta de la consulta a la Base de Datos
+                SqlDataReader respuesta;
+
+                //Indicamos que es un Stored Procedure, cual utilizar y ademas la conexion que necesita
+                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureListarClientesNaturales, this.conexion);
+                this.comando.CommandType = CommandType.StoredProcedure;
+
+                //Se abre conexion contra la Base de Datos
+                this.conexion.Open();
+
+                //Ejecutamos la consulta y traemos las filas que fueron obtenidas
+                respuesta = comando.ExecuteReader();
+
+                //Si se encontraron Clientes Naturales comienza a agregar en la variable lista, sino, se devolvera vacia
+                if (respuesta.HasRows)
+                    //Recorremos cada fila devuelta de la consulta
+                    while (respuesta.Read())
+                    {
+                        //Creamos el Cliente Natural y lo anexamos a la lista
+                        ClienteNatural aux = new ClienteNatural(respuesta.GetString(0), respuesta.GetString(1), respuesta.GetString(2), respuesta.GetString(3));
+                        listaClientesNaturales.Add(aux);
+                    }
+
+                //Cerramos conexion
+                this.conexion.Close();
+            }
+            catch (SqlException ex)
+            {
+                StringBuilder errorMessages = new StringBuilder();
+                for (int i = 0; i < ex.Errors.Count; i++)
+                {
+                    errorMessages.Append("Index #" + i + "\n" +
+                        "Message: " + ex.Errors[i].Message + "\n" +
+                        "LineNumber: " + ex.Errors[i].LineNumber + "\n" +
+                        "Source: " + ex.Errors[i].Source + "\n" +
+                        "Procedure: " + ex.Errors[i].Procedure + "\n");
+                }
+                Console.WriteLine(errorMessages.ToString());
+
+            }
+            catch (Exception error)
+            {
+                throw new Exception("Ha ocurrido un error inesperado al Listar", error);
+            }
+            //Retornamos la respuesta
+            return listaClientesNaturales;
         }
 
 
