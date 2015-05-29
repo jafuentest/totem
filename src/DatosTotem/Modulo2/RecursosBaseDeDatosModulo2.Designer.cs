@@ -298,6 +298,31 @@ namespace DatosTotem.Modulo2 {
             }
         }
 
+
+        /// <summary>
+        ///   Looks up a localized string similar to Procedure_ConsultarTodosClientesNaturales.
+        /// </summary>
+        internal static string ProcedureListarClientesNaturales
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedureListarClientesNaturales", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to .Procedure_ConsultarTodosClientesJuridicos.
+        /// </summary>
+        internal static string ProcedureListarClientesJuridicos
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedureListarClientesJuridicos", resourceCulture);
+            }
+        }
+
+        
+
         /// <summary>
         ///   Looks up a localized string similar to ParametroIdClienteJuridico.
         /// </summary>
@@ -309,6 +334,10 @@ namespace DatosTotem.Modulo2 {
             }
         }
 
+
+
+
+
         /// <summary>
         ///   Looks up a localized string similar to ParametroIdClienteJuridico.
         /// </summary>
@@ -319,6 +348,11 @@ namespace DatosTotem.Modulo2 {
                 return ResourceManager.GetString("Parametroidentificador", resourceCulture);
             }
         }
+
+
+
+
+
 
         /// <summary>
         ///   Looks up a localized string similar to ParametroIdClienteJuridico.
@@ -332,6 +366,9 @@ namespace DatosTotem.Modulo2 {
         }
 
 
+
+
+
         /// <summary>
         ///   Looks up a localized string similar to ParametroIdClienteJuridico.
         /// </summary>
@@ -343,7 +380,13 @@ namespace DatosTotem.Modulo2 {
             }
         }
 
-        
+
+
+
+
+
+
+
         /// <summary>
         ///   Looks up a localized string similar to ParametroIdClienteJuridico.
         /// </summary>
@@ -530,8 +573,6 @@ namespace DatosTotem.Modulo2 {
             }
         }
 
-      
-
         /// <summary>
         ///   Looks up a localized string similar to NombreDireccion.
         /// </summary>
@@ -543,6 +584,7 @@ namespace DatosTotem.Modulo2 {
             }
         }
 
+       
         /// <summary>
         ///   Looks up a localized string similar to Codigo.
         /// </summary>
@@ -566,39 +608,8 @@ namespace DatosTotem.Modulo2 {
             }
         }
 
-        /// <summary>
-        ///   Looks up a localized string similar to NombreClienteNatural.
-        /// </summary>
-        internal static string NombreClienteNatural
-        {
-            get
-            {
-                return ResourceManager.GetString("NombreClienteNatural", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to NombreContacto.
-        /// </summary>
-        internal static string NombreContacto
-        {
-            get
-            {
-                return ResourceManager.GetString("NombreContacto", resourceCulture);
-            }
-        }
 
 
-        /// <summary>
-        ///   Looks up a localized string similar to NombreContacto.
-        /// </summary>
-        internal static string IdCargo
-        {
-            get
-            {
-                return ResourceManager.GetString("IdCargo", resourceCulture);
-            }
-        }
 
         /// <summary>
         ///   Looks up a localized string similar to ProcedureListarClientesJuridicos.

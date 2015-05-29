@@ -27,71 +27,18 @@ namespace LogicaNegociosTotem.Modulo2
            baseDeDatosCliente = new BDCliente(); 
        }
 
-
-       /// <summary>
-       /// Método de lógica que llama al acceso a datos para
-       /// verificar la existencia de un cliente jurídico
-       /// </summary>
-       /// <param name="rif"></param>
-       /// <returns></returns>
-       public int VerificarExistenciaJuridico(string rif) 
-       {
-           return baseDeDatosCliente.VerificarExistenciaClienteJuridico(rif);
-       }
+       
 
        /// <summary>
        /// Método que solicita a acceso a datos que inserte el cliente jurídico nuevo
        /// </summary>
        /// <param name="clienteJuridico">Información del Cliente Jurídico</param>
        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-       public bool AgregarClienteJuridico(string rif, string nombre, int fkLugar,string direccion,int cargoId,string contactoNombre,
-           string apellidoNombre,int idCargo,string telefono,string cedula)
+       public bool AgregarClienteJuridico(string rif, string nombre, int fkLugar)
        {
-           try
-           {
-               int codTele = 0;
-               int idNumero = 0;
+           ClienteJuridico clienteJuridico = new ClienteJuridico(rif,nombre); 
 
-               string contenedorCodigo = string.Empty;
-               //Vamos a separar el string de telefono en codTele y IdNumero para 
-               //ser insertados como númericos en BD.
-               char[] cadena = telefono.ToCharArray();
-               char[] codigoAux = new char[4];
-               char[] numeroAux = new char[8];
-               string codigoSeparado = "";
-               string numeroSeparado = "";
-               int j = 0; 
-               for (int i = 0; i < cadena.Length; i++)
-               {
-                   //Los 3 primeros indices son para codigo
-                   if (i < 3)
-                   {
-                       codigoAux[i] = cadena[i];
-                       codigoSeparado = codigoSeparado + codigoAux[i]; 
-                       
-                   }
-                   //Los demás son para teléfono
-                   else
-                   {
-                       numeroAux[j] = cadena[i];
-                       numeroSeparado = numeroSeparado + numeroAux[j];
-                       j++; 
-                   }
-               }
-               
-               
-               codTele = Convert.ToInt32(codigoSeparado);
-               idNumero = Convert.ToInt32(numeroSeparado);
-
-               ClienteJuridico clienteJuridico = new ClienteJuridico(rif, nombre);
-
-               return baseDeDatosCliente.AgregarClienteJuridico(clienteJuridico, fkLugar,direccion,contactoNombre ,
-                   apellidoNombre, idCargo,codTele, idNumero,cedula);
-           }
-           catch(Exception e)
-           {
-               throw new ExcepcionesTotem.Modulo2.ClienteLogicaException("L_02_003","Error dentro de la capa lógica",e);
-           }
+           return baseDeDatosCliente.AgregarClienteJuridico(clienteJuridico, fkLugar);
        }
 
 
