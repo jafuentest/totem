@@ -325,7 +325,7 @@ namespace DatosTotem.Modulo4
                 List<Parametro> parametros = new List<Parametro>();
                 Parametro parametro = new Parametro(RecursosBDModulo4.ParametroUsuario, SqlDbType.VarChar, username, false);
                 parametros.Add(parametro);
-                parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, true);
+                /*parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, true);
                 parametros.Add(parametro);
                 parametro = new Parametro(RecursosBDModulo4.ParametroNombreProyecto, SqlDbType.VarChar, true);
                 parametros.Add(parametro);
@@ -336,7 +336,7 @@ namespace DatosTotem.Modulo4
                 parametro = new Parametro(RecursosBDModulo4.ParametroCostoProyecto, SqlDbType.Int, true);
                 parametros.Add(parametro);
                 parametro = new Parametro(RecursosBDModulo4.ParametroMonedaProyecto, SqlDbType.VarChar, true);
-                parametros.Add(parametro);
+                parametros.Add(parametro);*/
 
                 BDConexion con = new BDConexion();
                 DataTable resultados = con.EjecutarStoredProcedureTuplas(RecursosBDModulo4.ProcedimientosProyectosDeUsuario, parametros);

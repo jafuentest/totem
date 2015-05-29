@@ -120,21 +120,15 @@ GO
 
 CREATE PROCEDURE Procedure_ProyectosDeUsuario
  
-	@usu_username[varchar] (6),
-	@pro_codigo [varchar] (6)OUTPUT ,
-	@pro_nombre [varchar] (60) OUTPUT,
-	@pro_estado [bit] OUTPUT,
-	@pro_descripcion [varchar] (600)OUTPUT,
-	@pro_costo       [int] OUTPUT,
-	@pro_moneda      [varchar] (3)OUTPUT
+	@usu_username[varchar] (60)
 AS 
 BEGIN
-    SELECT @pro_codigo=pro_codigo, @pro_nombre=pro_nombre, @pro_estado=pro_estado, @pro_descripcion=pro_descripcion, @pro_costo=pro_costo, @pro_moneda=pro_moneda FROM PROYECTO INNER JOIN INVOLUCRADOS_USUARIOS ON PROYECTO.pro_id = INVOLUCRADOS_USUARIOS.PROYECTO_pro_id
-	WHERE (SELECT usu_id FROM USUARIO WHERE USUARIO.usu_username = @usu_username) = INVOLUCRADOS_USUARIOS.USUARIO_usu_id
-	RETURN
+    SELECT pro_codigo as codigo, pro_nombre as nombre , pro_estado as estado, pro_descripcion as descripcion, pro_costo as costo, pro_moneda as moneda
+	 from USUARIO U , INVOLUCRADOS_USUARIOS IU,PROYECTO P 
+	 where usu_username=@usu_username AND U.usu_id=IU.USUARIO_usu_id AND P.pro_id=IU.PROYECTO_pro_id
+
 END
 GO
-
 
 -- Procedimiento para Eliminar un Proyecto (solo para pruebas)---------------------
 

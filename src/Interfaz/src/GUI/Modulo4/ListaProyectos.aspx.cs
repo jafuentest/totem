@@ -33,7 +33,7 @@ public partial class GUI_Modulo4_ListaProyectos : System.Web.UI.Page
         }*/
 
         DataTable proyectos = new DataTable();
-        String username = "mapl93";
+        String username = "albertods";
         proyectos = LogicaNegociosTotem.Modulo4.LogicaProyecto.ConsultarTodosLosProyectos(username);
         if (proyectos.Rows.Count > 0)
         {
@@ -42,9 +42,9 @@ public partial class GUI_Modulo4_ListaProyectos : System.Web.UI.Page
                 this.jumbotronProyecto.Text += "<div class='form-group'>";
                 this.jumbotronProyecto.Text += "<div id='div_perfiles' class='col-sm-12 col-md-12 col-lg-12'>";
                 this.jumbotronProyecto.Text += "<div class='jumbotron'>";
-                this.jumbotronProyecto.Text += "<h2 class='sameLine'><a href='PerfilProyecto.aspx?success="+row["pro_codigo"].ToString()+"&success=-1'>" + row["pro_nombre"].ToString() + "</a></h2> <h5 class='sameLine'>COD: </h5> <h5 id='codigoProyecto' class='sameLine' runat='server'>" + row["pro_codigo"].ToString() + "</h5>";
-                this.jumbotronProyecto.Text += "<p class='desc'>" + row["pro_descripcion"].ToString() + "</p>";
-                if (bool.Parse(row["Nombre"].ToString()) == true)
+                this.jumbotronProyecto.Text += "<h2 class='sameLine'><a href='PerfilProyecto.aspx?success="+row["codigo"].ToString()+"&success=-1'>" + row["nombre"].ToString() + "</a></h2> <h5 class='sameLine'>COD: </h5> <h5 id='codigoProyecto' class='sameLine' runat='server'>" + row["codigo"].ToString() + "</h5>";
+                this.jumbotronProyecto.Text += "<p class='desc'>" + row["descripcion"].ToString() + "</p>";
+                if (bool.Parse(row["estado"].ToString()) == true)
                 {
                     this.jumbotronProyecto.Text += "<input disabled checked data-toggle='toggle' data-size='small' type='checkbox' data-on='Activo' data-off='Inactivo' data-onstyle='success' data-offstyle='warning' data-width='100'>";
                 }
