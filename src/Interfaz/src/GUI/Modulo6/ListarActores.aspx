@@ -87,41 +87,49 @@
 	</div>
 	<script type="text/javascript">
 		<!-- Data tables init -->
-    $(document).ready(function () {
-        $('#actores').DataTable();
-        var table = $('#actores').DataTable();
-        var caso_de_uso, tr;
-        var row;
-        var modal;
-        var id;   
-        var name;
-        var desc;
-        $('#modal-delete').on('show.bs.modal', function (event) {
-            row = $(event.relatedTarget).closest('tr');
-            modal = $(event.currentTarget);
-            id = row.attr('id').replace(/^actor\-/, '');
-            name = row.find('td.name').text();
-            desc = row.find('td.desc').text();
+	    $(document).ready(function () {
+	        $('#actores').DataTable();
+	        var table = $('#actores').DataTable();
+	        var caso_de_uso, tr;
+	        var row;
+	        var modal;
+	        var id;  
+	        var name;
+	        var desc;
+	        $('#modal-delete').on('show.bs.modal', function (event) {
+	            row = $(event.relatedTarget).closest('tr');
+	            modal = $(event.currentTarget);
+	            id = row.attr('id').replace(/^actor\-/, '');
+	            name = row.find('td.name').text();
+	            desc = row.find('td.desc').text();
 
-            modal.find('#caso_de_uso').text(name);
-        });
-
-
-        $('#btn-eliminar').on('click', function () {
-            window.location.href = 'ListarActores.aspx?success=3&id=' + id; 
-        });
-
-        $('#modal-update').on('show.bs.modal', function (event) {
-            var row = $(event.relatedTarget).closest('tr');
-            var modal = $(event.currentTarget);
-            var id = row.attr('id');
-            var name = row.find('td.name').text();
-            var desc = row.find('td.desc').text();
-            window.location.href = 'ListarActores.aspx?success=4&id=' + id;
-            modal.find('.modal-title').text('Modificar actor');
-        });
+	            modal.find('#caso_de_uso').text(name);
+	        });
 
 
-    });
+	        $('#btn-eliminar').on('click', function () {
+	            window.location.href = 'ListarActores.aspx?success=3&id=' + id;
+	        });
+
+	        $('#modal-update').on('show.bs.modal', function (event) {
+	            row = $(event.relatedTarget).closest('tr');
+	            modal = $(event.currentTarget);
+	            id = row.attr('id').replace(/^actor\-/, '');
+	            name = row.find('td.name').text();
+	            desc = row.find('td.desc').text();
+	            modal.find('.modal-title').text('Modificar actor');
+	            $('#descripcion').val(desc);
+
+	        });
+
+	        $('#btn-modificar').on('click', function () {
+	            var nombreNuevo = $('#nombre').val();
+	            var descripcionNueva = $('#descripcion').val();
+	            if (nombreNuevo != '') {
+	                window.location.href = 'ListarActores.aspx?success=2&id=' + id + '&nombre=' + nombreNuevo + '&descripcion=' + descripcionNueva;
+	            }
+
+	        });
+	    });
 	</script>
 </asp:Content>
