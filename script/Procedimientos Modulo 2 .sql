@@ -461,4 +461,13 @@ END;
 
 go
 
+/***------------Consultar todos los clientes Juridicos ----**/
+
+CREATE PROCEDURE Procedure_ConsultarTodosClientesJuridicos
+AS 
+select	cj_rif, 
+		cj_nombre
+from CLIENTE_JURIDICO;
+
+go
 
