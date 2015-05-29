@@ -32,7 +32,7 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             }*/
             if (!IsPostBack) // verificar si la pagina se muestra por primera vez
             {
-                this.LlenarPaises();
+              /*  this.LlenarPaises();*/
                 this.LlenarCargos();
             }
 
@@ -63,6 +63,9 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
         string estado = estadoEmpresa.InnerText;
         string ciudad = ciudadLista.InnerText;
         string direccion = direccionEmpresa.Value;*/
+        string pais = comboPais.Items[comboPais.SelectedIndex].Text;
+        string estado = comboEstado.Items[comboEstado.SelectedIndex].Text;
+        string ciudad = comboCiudad.Items[comboCiudad.SelectedIndex].Text; 
         string codigoPostal = codigoPostalEmpresa.Value;
         string telefono = telefonoEmpresa.Value;
         Contacto contacto = new Contacto();
@@ -73,6 +76,7 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
     
     }
 
+    /*
     /// <summary>
     /// Evento que se dispara cuando se selecciona algún elemento de 
     /// país y carga sus estados
@@ -231,7 +235,7 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error en la capa lógica</div>";
         }
     }
-
+    */
     private void LlenarCargos() 
     {
         try

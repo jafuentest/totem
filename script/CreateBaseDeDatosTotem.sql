@@ -1,7 +1,7 @@
 CREATE
   TABLE ACTOR
   (
-    act_id          INTEGER IDENTITY(0,1) NOT NULL ,
+    act_id          INTEGER IDENTITY(1,1) NOT NULL ,
     act_nombre      VARCHAR (100) NOT NULL ,
     act_descripcion VARCHAR (500) NOT NULL ,
     PROYECTO_pro_id INTEGER NOT NULL ,

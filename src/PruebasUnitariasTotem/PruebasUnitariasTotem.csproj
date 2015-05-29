@@ -50,6 +50,11 @@
     <Compile Include="Modulo1\PruebaExcepciones.cs" />
     <Compile Include="Modulo1\PruebaBDLogin.cs" />
     <Compile Include="Modulo1\PruebaLogicaLogin.cs" />
+    <Compile Include="Modulo1\RecursosPUMod1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosPUMod1.resx</DependentUpon>
+    </Compile>
     <Compile Include="Modulo2\PruebaBDCliente.cs" />
     <Compile Include="Modulo2\PruebaCliente.cs" />
     <Compile Include="Modulo2\PruebaContacto.cs" />
@@ -102,6 +107,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modulo1\RecursosPUMod1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosPUMod1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -57,12 +57,20 @@
                 <div class="form-group">
                     <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6">
                         <div class="dropdown" runat="server" id="contenedorComboPais">
-                            <select id="comboPais" runat="server"  onchange="alert('hello');"></select>
+                            <select id="comboPais" runat="server">
+                                
+                                <option value="0" runat="server" selected="selected">Seleccione País..</option>
+                                <option value="1" runat="server">Venezuela</option>
+                            </select>
                         </div>
                     </div>
                     <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
                         <div class="dropdown" runat="server" id="contenedorComboEstado">
-                            <select id="comboEstado" runat="server" onchange="CbCambioACiudad();"></select>
+                             <select id="comboEstado" runat="server">
+                                
+                                <option value="0" runat="server" selected="selected">Seleccione Estado..</option>
+                                <option value="2" runat="server">Dtto Capital</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -70,7 +78,11 @@
                     
                         <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
                             <div class="dropdown" runat="server" id="contenedorComboCiudad" >
-                                <select id="comboCiudad" runat="server" ></select>
+                                <select id="comboCiudad" runat="server" >
+                                
+                                <option value="0" runat="server" selected="selected">Seleccione Ciudad..</option>
+                                <option value="4" runat="server">Caracas</option>
+                            </select>
                             </div>
                         </div>
                     
