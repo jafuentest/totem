@@ -34,7 +34,7 @@ namespace LogicaNegociosTotem.Modulo3
         #region Constructor
         public LogicaInvolucrados(DominioTotem.Proyecto elProyecto)
         {
-            contactosInvolucrados = obtenerContactosInvolucradosProyecto(elProyecto);
+            //contactosInvolucrados = obtenerContactosInvolucradosProyecto(elProyecto);
             usuariosInvolucrados = obtenerUsuariosInvolucradosProyecto(elProyecto);
         }
         #endregion
@@ -131,6 +131,7 @@ namespace LogicaNegociosTotem.Modulo3
         public DominioTotem.ListaInvolucradoContacto obtenerContactosInvolucradosProyecto(
             DominioTotem.Proyecto elProyecto)
         {
+
             throw new NotImplementedException();
         }
         /// <summary>
@@ -141,7 +142,18 @@ namespace LogicaNegociosTotem.Modulo3
         public DominioTotem.ListaInvolucradoUsuario obtenerUsuariosInvolucradosProyecto(
             DominioTotem.Proyecto elProyecto)
         {
-            throw new NotImplementedException();
+
+            try
+            {
+             return BDInvolucrados.consultarUsuariosInvolucradosPorProyecto(elProyecto);
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+           
         }
     }
 }

@@ -12,7 +12,7 @@
                        <div id="alertlocal" >
                        </div>
                        <div  id="table-responsive">
-                           <table id="tableusers" class=" table table-striped table-hover display" runat="server">
+                           <table id="tableusers" class=" table table-striped table-hover display">
                              <thead>
                                <tr>
                                  <th>Nombre</th>
@@ -22,88 +22,8 @@
                                  <th>Acciones</th>
                                </tr>
                              </thead>
-                            <tbody>
-                            <tr>
-                              <td>Argenis</td>
-                              <td>Rodriguez</td>
-                              <td>Director General</td>
-                              <td>Cliente</td>
-                              <td>
-                                  <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo2/DetallarCliente.aspx") %>"></a>
-                                  <a  class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"  runat="server"></a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Scheryl</td>
-                              <td>Palencia</td>
-                              <td>Diseñador</td>
-                              <td>Compañia de Software</td>
-                              <td>
-                                  <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
-                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"  runat="server"></a>
-                              </td>   
-                            </tr>
-                                 <tr>
-                              <td>Rodolfo</td>
-                              <td>Graziano</td>
-                              <td>Analista</td>
-                              <td>Compañia de Software</td>
-                              <td>
-                                  <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
-                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"  runat="server"></a>
-                              </td>   
-                            </tr>
-                                   <tr>
-                              <td>Pedro</td>
-                              <td>Garcia</td>
-                              <td>Lider De Proyecto</td>
-                              <td>Compañia de Software</td>
-                              <td>
-                                  <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
-                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"  runat="server"></a>
-                              </td>   
-                            </tr>
-                                <tr>
-                              <td>Manuel</td>
-                              <td>Da silva</td>
-                              <td>Director General</td>
-                              <td>Cliente</td>
-                              <td>
-                                  <a class="btn btn-default glyphicon glyphicon-pencil"  href="<%= Page.ResolveUrl("~/GUI/Modulo2/DetallarCliente.aspx") %>"></a>
-                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"  runat="server"></a>
-                              </td>   
-                            </tr>
-                                <tr>
-                              <td>Ydalia</td>
-                              <td>Restrepo</td>
-                              <td>Director Ejecutivo</td>
-                              <td>Cliente</td>
-                              <td>
-                                  <a class="btn btn-default glyphicon glyphicon-pencil"  href="<%= Page.ResolveUrl("~/GUI/Modulo2/DetallarClientes.aspx") %>"></a>
-                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"  runat="server"></a>
-                              </td>   
-                            </tr>
-                                    <tr>
-                              <td>juan</td>
-                              <td>santos</td>
-                              <td>Arquitecto de Solucion</td>
-                              <td>Compañia de Software</td>
-                              <td>
-                                  <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
-                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"  runat="server"></a>
-                              </td>
-                            </tr>
-                            
-                            <tr>
-                              <td>Alberto</td>
-                              <td>Da Silva</td>
-                              <td>Lider del proyecto</td>
-                              <td>Compañia de Software</td>
-                              <td>
-                                  <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo7/DetalleUsuario.aspx?id=1") %>"></a>
-                                  <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#" runat="server"></a>
-                              </td>
-                            </tr>
+                            <tbody id="tablebody" runat="server">
+                            <asp:Literal runat="server" ID="laTabla"></asp:Literal>
                            </tbody>
                          </table>
                     </div>
