@@ -266,4 +266,7 @@
   <data name="Numero" xml:space="preserve">
     <value>@numero</value>
   </data>
+  <data name="NombreClienteNatural" xml:space="preserve">
+    <value>@cj_nombre</value>
+  </data>
 </root>

@@ -102,9 +102,11 @@ namespace LogicaNegociosTotem.Modulo2
        /// </summary>
        /// <param name="clienteNatural">Información del Cliente Natural</param>
        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-       public bool ModificarClienteJuridico(ClienteNatural clienteNatural,string cargo, string codigo, string numero)
+       public bool ModificarClienteJuridico(ClienteJuridico clienteJuridico)
        {
-          throw new NotImplementedException();
+           ClienteJuridico cliente = new ClienteJuridico();
+           cliente = clienteJuridico;
+           return baseDeDatosCliente.ModificarClienteJuridico(cliente);
        }
 
 
