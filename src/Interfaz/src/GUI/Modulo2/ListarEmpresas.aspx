@@ -34,27 +34,11 @@
                     <tr>
                         <th>Identificador</th>
                         <th>Nombre</th>
-                        <th>Teléfono</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td class="rif">J-000012595</td>
-                        <td>Alimentos Ronald, C.A.</td>
-                        <td>2125896412</td>
-                        <td>                         
-                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo2/DetallarEmpresa.aspx") %>"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="rif">J-000127795</td>
-                        <td>P&G Venezuela, C.A.</td>
-                        <td>2127658412</td>
-                        <td>                         
-                            <a class="btn btn-default glyphicon glyphicon-pencil" href="<%= Page.ResolveUrl("~/GUI/Modulo2/DetallarEmpresa.aspx") %>"></a>
-                        </td>
-                    </tr>
+                <tbody runat ="server" id="cuerpo">
+                   
                 </tbody>
             </table>
             <div id="modal-delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
