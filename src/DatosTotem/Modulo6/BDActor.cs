@@ -26,8 +26,8 @@ namespace DatosTotem.Modulo6
             try
             {
                 //Obtenemos la ruta de la Base de Datos
-                String[] aux = AppDomain.CurrentDomain.BaseDirectory.Split(new string[] { "Interfaz" }, StringSplitOptions.None);
-                String configuracion = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=" + aux[0] + @"DatosTotem\BaseDeDatos\BaseDeDatosTotem.mdf;Integrated Security=True";
+                String[] aux = AppDomain.CurrentDomain.BaseDirectory.Split(new string[] { "src" }, StringSplitOptions.None);
+                String configuracion = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=" + aux[0] + @"src\DatosTotem\BaseDeDatos\BaseDeDatosTotem.mdf;Integrated Security=True";
 
                 //La colocamos en la configuracion
                 this.conexion = new SqlConnection(configuracion);
