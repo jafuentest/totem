@@ -57,12 +57,12 @@
                 <div class="form-group">
                     <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6">
                         <div class="dropdown" runat="server" id="contenedorComboPais">
-                            <select id="comboPais" runat="server"  onchange="CbCambioAEstado"></select>
+                            <select id="comboPais" runat="server"  onchange="alert('hello');"></select>
                         </div>
                     </div>
                     <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
                         <div class="dropdown" runat="server" id="contenedorComboEstado">
-                            <select id="comboEstado" runat="server" onchange="CbCambioACiudad"></select>
+                            <select id="comboEstado" runat="server" onchange="CbCambioACiudad();"></select>
                         </div>
                     </div>
                 </div>

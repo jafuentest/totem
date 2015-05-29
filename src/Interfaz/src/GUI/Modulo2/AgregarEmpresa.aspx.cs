@@ -109,7 +109,7 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             List<Lugar> paises = logica.LlenarComboPaises();
             
             string prueba = "Seleccione Pais";
-            string nombreEvento = "CbCambioAEstado"; 
+            string nombreEvento = "alert('hello');"; 
             this.contenedorComboPais.InnerHtml = "<select runat=\"server\" id=\"comboPais\" class=\"btn btn-default dropdown-toggle\""
                                                + "onchange=\" " + nombreEvento + "\">" +
                                                 "<option id=\"opcionPais"+"0"+"\" runat=\"server\" value=\"0\">" +
@@ -154,7 +154,7 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             LogicaLugar logica = new LogicaLugar();
             List<Lugar> estados = logica.LlenarComboEstados(idPais);
             string prueba = "Seleccione Estado";
-            string nombreEvento = "CbCambioACiudad"; 
+            string nombreEvento = "CbCambioACiudad()"; 
             this.contenedorComboEstado.InnerHtml = "<select runat=\"server\" id=\"comboEstado\" class=\"btn btn-default dropdown-toggle\""
                                                + "onchange=\""+nombreEvento+"\">" +
                                                 "<option id=\"opcionEstado" + "0" + "\" runat=\"server\" value=\"0\">" +

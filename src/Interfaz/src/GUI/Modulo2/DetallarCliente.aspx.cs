@@ -17,7 +17,7 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
 
         if (!IsPostBack) 
         {
-        
+            this.DesplegarClienteNatural(); 
         }
 
        /* DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
@@ -61,5 +61,66 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
 
         //logica.ModificarClienteNatural();
     }
+
+    private void DesplegarClienteNatural() 
+    {
+        LogicaCliente logica = new LogicaCliente();
+        ClienteNatural cliente=logica.ConsultarClienteNatural(1);
+        List<string> telefonos = new List<string>(); 
+        telefonos = cliente.Nat_Telefonos; 
+        
+        foreach(string telefono in telefonos)
+        {
+            this.telefonoCliente.Value=telefono; 
+        }
+
+        this.direccionCliente.Value = cliente.Nat_Direccion; 
+        this.apellidoCliente.Value = cliente.Nat_Apellido;
+        this.nombreCliente.Value = cliente.Nat_Nombre;
+        this.cedulaCliente.Value = cliente.Nat_Id;
+        LlenaCampoPais(cliente.Nat_Pais);
+        LlenaCampoEstado(cliente.Nat_Estado);
+        LlenaCampoEstado(cliente.Nat_Ciudad.NombreLugar); 
+        this.comboEstado.Value = cliente.Nat_Estado;
+        this.comboCiudad.Value = cliente.Nat_Ciudad.NombreLugar;
+        this.codigopostalCliente.Value = cliente.Nat_Ciudad.CodigoPostal;
+        this.correoCliente.Value = cliente.Nat_Correo; 
+        
+    }
+
+    private void LlenaCampoPais(string pais) 
+    {
+
+        
+
+        
+        string nombreEvento = "CbCambioAEstado";
+        this.contenedorComboPais.InnerHtml = "<select runat=\"server\" id=\"comboPais\" class=\"btn btn-default dropdown-toggle\""
+                                           + "onchange=\" " + nombreEvento + "\">" +
+                                            "<option id=\"opcionPais" + "0" + "\" runat=\"server\" value=\""+pais+"\">" +pais+                                             
+                                            "</option>"+
+                                            "</select>"; 
+    
+    }
+
+    private void LlenaCampoEstado(string estado) 
+    {
+        string nombreEvento = "CbCambioACiudad";
+        this.contenedorComboEstado.InnerHtml = "<select runat=\"server\" id=\"comboEstado\" class=\"btn btn-default dropdown-toggle\""
+                                           + "onchange=\" " + nombreEvento + "\">" +
+                                            "<option id=\"opcionEstado" + "0" + "\" runat=\"server\" value=\"" + estado + "\">" + estado +
+                                            "</option>"+
+                                            "</select>";
+    }
+
+    private void LlenaCampoCiudad(string ciudad) 
+    {
+        this.contenedorComboCiudad.InnerHtml = "<select runat=\"server\" id=\"comboCiudad\" class=\"btn btn-default dropdown-toggle\">"+
+                                           
+                                            "<option id=\"opcionCiudad" + "0" + "\" runat=\"server\" value=\"" + ciudad + "\">" + ciudad +
+                                            "</option>"+
+                                            "</select>";
+    }
+
 
 }
