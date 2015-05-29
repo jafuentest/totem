@@ -86,7 +86,11 @@
 	<script type="text/javascript">
 		<!-- Data tables init -->
 	    $(document).ready(function () {
+
+            //Data table a modificar
 	        $('#actores').DataTable();
+
+            //Variables a usar
 	        var table = $('#actores').DataTable();
 	        var caso_de_uso, tr;
 	        var row;
@@ -94,34 +98,54 @@
 	        var id;  
 	        var name;
 	        var desc;
+
+            //Evento de Bootstrap disparado por el modal-delete
 	        $('#modal-delete').on('show.bs.modal', function (event) {
+
+                //Obtenemos el ID, mobre y descipcion del actor seleccionado
 	            row = $(event.relatedTarget).closest('tr');
 	            modal = $(event.currentTarget);
 	            id = row.attr('id').replace(/^actor\-/, '');
 	            name = row.find('td.name').text();
 	            desc = row.find('td.desc').text();
 
+                //Renombramos en el modal para saber a quien se va a eliminar
 	            modal.find('#caso_de_uso').text(name);
 	        });
 
+            //Evento al ser seleccionado la opcion eliminar del modal
 	        $('#btn-eliminar').on('click', function () {
+
+                //Se manda la opcion de eliminar
 	            window.location.href = 'ListarActores.aspx?success=3&id=' + id;
 	        });
 
+	        //Evento de Bootstrap disparado por el modal-delete
 	        $('#modal-update').on('show.bs.modal', function (event) {
+
+	            //Obtenemos el ID, mobre y descipcion del actor seleccionado
 	            row = $(event.relatedTarget).closest('tr');
 	            modal = $(event.currentTarget);
 	            id = row.attr('id').replace(/^actor\-/, '');
 	            name = row.find('td.name').text();
 	            desc = row.find('td.desc').text();
+
+                //Cambiamos el texto del modal
 	            modal.find('.modal-title').text('Modificar actor');
+
+                //El input de descripcion se llena con la descripcion que ya existe del actor
 	            $('#descripcion').val(desc);
 
 	        });
 
+	        //Evento al ser seleccionado la opcion actualizar del modal
 	        $('#btn-modificar').on('click', function () {
+
+                //Se obtiene el nombre y descripcion del actor
 	            var nombreNuevo = $('#nombre').val();
 	            var descripcionNueva = $('#descripcion').val();
+
+                //Si el usuario puso un nombre no vacio se manda
 	            if (nombreNuevo != '') {
 	                window.location.href = 'ListarActores.aspx?success=2&id=' + id + '&nombre=' + nombreNuevo + '&descripcion=' + descripcionNueva;
 	            }
