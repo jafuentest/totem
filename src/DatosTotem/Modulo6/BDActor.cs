@@ -5,6 +5,7 @@ using System.Text;
 using DominioTotem;
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
 
 
 
@@ -22,8 +23,16 @@ namespace DatosTotem.Modulo6
         //Constructor que inicializa la conexion indicando la ruta de la Base de Datos
         public BDActor()
         {
-            this.conexion = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\Teddy J Sears\Desktop\totem\src\DatosTotem\BaseDeDatos\BaseDeDatosTotem.mdf;Integrated Security=True");
-
+            try
+            {
+                //Configuramos la conexion hacia la Base de Datos
+                String configuracion = ConfigurationManager.ConnectionStrings["BaseDeDatosTotem"].ConnectionString;
+                this.conexion = new SqlConnection(configuracion);
+            }
+            catch (ConfigurationErrorsException e)
+            {
+                throw new ConfigurationErrorsException("Error en la Configuracion de la BD", e);
+            }
 
         }
 
