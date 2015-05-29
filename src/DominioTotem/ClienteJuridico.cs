@@ -90,8 +90,12 @@ namespace DominioTotem
          Jur_Id = string.Empty;
          Jur_Nombre = string.Empty;
          Jur_Direccion = string.Empty;
-         
+         Jur_Pais = string.Empty;
+         Jur_Estado = string.Empty;
+         Jur_Ciudad = null;
+         Jur_Direccion = string.Empty;
          Jur_Telefonos = null;
+         Jur_Contactos = null;
 
      }
 
@@ -101,11 +105,17 @@ namespace DominioTotem
        /// <param name="nombre">Nombre de la empresa</param>
      public ClienteJuridico(string nombre) 
      {
+        
          Jur_Id = string.Empty;
          Jur_Nombre = nombre;
          Jur_Direccion = string.Empty;
-        
+         Jur_Pais = string.Empty;
+         Jur_Estado = string.Empty;
+         Jur_Ciudad = null;
+         Jur_Direccion = string.Empty;
          Jur_Telefonos = null;
+         Jur_Contactos = null;
+       
      }
 
 
@@ -118,9 +128,13 @@ namespace DominioTotem
      {
          Jur_Id = id;
          Jur_Nombre = nombre;
-         Jur_Direccion = string.Empty;
          
+         Jur_Pais = string.Empty;
+         Jur_Estado = string.Empty;
+         Jur_Ciudad = null;
+         Jur_Direccion = string.Empty;
          Jur_Telefonos = null;
+         Jur_Contactos = null;
      }
 
 
@@ -135,8 +149,12 @@ namespace DominioTotem
          Jur_Id = id;
          Jur_Nombre = nombre;
          Jur_Direccion = direccion;
-         
+         Jur_Pais = string.Empty;
+         Jur_Estado = string.Empty;
+         Jur_Ciudad = null;
+        
          Jur_Telefonos = null;
+         Jur_Contactos = null;
      }
 
 
@@ -152,11 +170,13 @@ namespace DominioTotem
      {
          Jur_Id = id;
          Jur_Nombre = nombre;
+         Jur_Direccion = direccion;
          Jur_Pais = pais;
          Jur_Estado = estado;
-         Jur_Ciudad = ciudad; 
-         Jur_Direccion = direccion;         
+         Jur_Ciudad = ciudad;
+         
          Jur_Telefonos = null;
+         Jur_Contactos = null; 
      }
 
 
@@ -178,7 +198,7 @@ namespace DominioTotem
          Jur_Pais = pais;
          Jur_Estado = estado;
          Jur_Ciudad = ciudad;
-         Jur_Direccion = direccion;
+         
          Jur_Telefonos = telefonos;
      }
 
@@ -193,7 +213,7 @@ namespace DominioTotem
          Jur_Pais = pais;
          Jur_Estado = estado;
          Jur_Ciudad = ciudad;
-         Jur_Direccion = direccion;
+    
          Jur_Telefonos = telefonos;
          Jur_Contactos = contactos; 
 
