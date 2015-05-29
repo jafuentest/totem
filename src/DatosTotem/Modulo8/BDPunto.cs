@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using DominioTotem;
 using System.IO;
+using ExcepcionesTotem.Modulo8.ExcepcionesDeDatos;
+using ExcepcionesTotem;
 
 namespace DatosTotem.Modulo8
 {
@@ -47,10 +49,40 @@ namespace DatosTotem.Modulo8
 
             }
 
+            catch (NullReferenceException ex)
+            {
+
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                    RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            catch (ExceptionTotemConexionBD ex)
+            {
+
+                throw new ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                    RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                    RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                    RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
             catch (Exception ex)
             {
-                //Lanza excepcion logica propia
-                throw ex;
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                   RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
             }
 
@@ -80,10 +112,40 @@ namespace DatosTotem.Modulo8
                 return punto;
             }
 
-            catch (Exception ex)
+            catch (NullReferenceException ex)
             {
 
-                throw ex;
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                    RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            catch (ExceptionTotemConexionBD ex)
+            {
+
+                throw new ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                    RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                    RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                    RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
+            catch (Exception ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                   RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
             }
         }
@@ -96,37 +158,68 @@ namespace DatosTotem.Modulo8
         /// <returns>Retorna un boolean para saber si se realizo con éxito la operación</returns>
         public Boolean ModificarPuntoBD(Punto punto, int idMinuta)
         {
-            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoModificarPunto, con.Conectar());
-            sqlcom.CommandType = CommandType.StoredProcedure;
+            con = new BDConexion();
+            SqlConnection conect = con.Conectar();
 
-           
-            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDMinuta, SqlDbType.Int));
-            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDPunto, SqlDbType.Int));
-            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroTituloPunto, SqlDbType.VarChar));
-            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroDesarrolloPunto, SqlDbType.VarChar));
-
-            sqlcom.Parameters[RecursosBDModulo8.ParametroIDMinuta].Value = idMinuta;
-            sqlcom.Parameters[RecursosBDModulo8.ParametroIDPunto].Value = punto.Codigo;
-            sqlcom.Parameters[RecursosBDModulo8.ParametroTituloPunto].Value = punto.Titulo;
-            sqlcom.Parameters[RecursosBDModulo8.AtributoDesarrolloPunto].Value = punto.Desarrollo;
-
+            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoModificarPunto, conect);
             try
             {
-                con.Conectar().Open();
-                sqlcom.ExecuteNonQuery();
-                return true;
+                 sqlcom.CommandType = CommandType.StoredProcedure;    
+                 sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDMinuta, SqlDbType.Int));
+                 sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDPunto, SqlDbType.Int));
+                 sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroTituloPunto, SqlDbType.VarChar));
+                 sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroDesarrolloPunto, SqlDbType.VarChar));
 
+                 sqlcom.Parameters[RecursosBDModulo8.ParametroIDMinuta].Value = idMinuta;
+                 sqlcom.Parameters[RecursosBDModulo8.ParametroIDPunto].Value = punto.Codigo;
+                 sqlcom.Parameters[RecursosBDModulo8.ParametroTituloPunto].Value = punto.Titulo;
+                 sqlcom.Parameters[RecursosBDModulo8.AtributoDesarrolloPunto].Value = punto.Desarrollo;
+
+                 conect.Open();
+                 sqlcom.ExecuteNonQuery();
+                 return true;
+
+            }
+            catch (NullReferenceException ex)
+            {
+
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                    RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            catch (ExceptionTotemConexionBD ex)
+            {
+
+                throw new ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                    RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                    RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                    RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
             }
             catch (Exception ex)
             {
-                
-                throw ex;
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                   RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
             }
 
             finally
             {
-                con.Desconectar();
+                con.Desconectar(conect);
 
             }
         }
@@ -139,34 +232,67 @@ namespace DatosTotem.Modulo8
         /// <returns>Retorna un boolean para saber si se realizo con éxito la operación</returns>
         public Boolean AgregarPuntoBD(Punto punto, int idMinuta)
         {
-            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoAgregarPunto, con.Conectar());
-            sqlcom.CommandType = CommandType.StoredProcedure;
+            con = new BDConexion();
+            SqlConnection conect = con.Conectar();
 
-            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroTituloPunto, SqlDbType.VarChar));
-            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroDesarrolloPunto, SqlDbType.VarChar));
-            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroMinuta, SqlDbType.Int));
-
-            sqlcom.Parameters[RecursosBDModulo8.ParametroTituloPunto].Value = punto.Titulo;
-            sqlcom.Parameters[RecursosBDModulo8.AtributoDesarrolloPunto].Value = punto.Desarrollo;
-            sqlcom.Parameters[RecursosBDModulo8.ParametroMinuta].Value = idMinuta;
-
+            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoAgregarPunto, conect);
             try
             {
-                con.Conectar().Open();
+                sqlcom.CommandType = CommandType.StoredProcedure;
+
+                sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroTituloPunto, SqlDbType.VarChar));
+                sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroDesarrolloPunto, SqlDbType.VarChar));
+                sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroMinuta, SqlDbType.Int));
+
+                sqlcom.Parameters[RecursosBDModulo8.ParametroTituloPunto].Value = punto.Titulo;
+                sqlcom.Parameters[RecursosBDModulo8.AtributoDesarrolloPunto].Value = punto.Desarrollo;
+                sqlcom.Parameters[RecursosBDModulo8.ParametroMinuta].Value = idMinuta;
+
+                conect.Open();
                 sqlcom.ExecuteNonQuery();
                 return true;
 
             }
-            catch (Exception ex)
+            catch (NullReferenceException ex)
             {
 
-                throw ex;
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                    RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            catch (ExceptionTotemConexionBD ex)
+            {
+
+                throw new ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                    RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                    RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                    RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
+            catch (Exception ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                   RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
             }
 
             finally
             {
-                con.Desconectar();
+                con.Desconectar(conect);
 
             }
         }
@@ -179,32 +305,64 @@ namespace DatosTotem.Modulo8
         /// <returns>Retorna un boolean para saber si se realizo con éxito la operación</returns>
         public Boolean EliminarPuntoBD(Punto punto, int idMinuta)
         {
-            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoEliminarPunto, con.Conectar());
-            sqlcom.CommandType = CommandType.StoredProcedure;
-
-            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDMinuta, SqlDbType.Int));
-            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDPunto, SqlDbType.Int));
-
-            sqlcom.Parameters[RecursosBDModulo8.ParametroIDMinuta].Value = idMinuta;
-            sqlcom.Parameters[RecursosBDModulo8.ParametroIDPunto].Value = punto.Codigo;
-
+            con = new BDConexion();
+            SqlConnection conect = con.Conectar();
+            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoEliminarPunto, conect);
             try
             {
-                con.Conectar().Open();
+                sqlcom.CommandType = CommandType.StoredProcedure;
+
+                sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDMinuta, SqlDbType.Int));
+                sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDPunto, SqlDbType.Int));
+
+                sqlcom.Parameters[RecursosBDModulo8.ParametroIDMinuta].Value = idMinuta;
+                sqlcom.Parameters[RecursosBDModulo8.ParametroIDPunto].Value = punto.Codigo;
+
+                conect.Open();
                 sqlcom.ExecuteNonQuery();
                 return true;
 
             }
-            catch (Exception ex)
+            catch (NullReferenceException ex)
             {
 
-                throw ex;
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                    RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            catch (ExceptionTotemConexionBD ex)
+            {
+
+                throw new ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                    RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                    RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                    RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
+            catch (Exception ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                   RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
             }
 
             finally
             {
-                con.Desconectar();
+                con.Desconectar(conect);
 
             }
         }
