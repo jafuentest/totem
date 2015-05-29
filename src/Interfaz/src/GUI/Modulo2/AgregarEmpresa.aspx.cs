@@ -156,7 +156,7 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             string prueba = "Seleccione Estado";
             string nombreEvento = "CbCambioACiudad"; 
             this.contenedorComboEstado.InnerHtml = "<select runat=\"server\" id=\"comboEstado\" class=\"btn btn-default dropdown-toggle\""
-                                               + "onchange=\"CbCambioACiudad\">" +
+                                               + "onchange=\""+nombreEvento+"\">" +
                                                 "<option id=\"opcionEstado" + "0" + "\" runat=\"server\" value=\"0\">" +
                                                  prueba +
                                                 "</option>";

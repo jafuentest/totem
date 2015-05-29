@@ -15,7 +15,12 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
     {
         ((MasterPage)Page.Master).IdModulo = "2";
 
-        DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+        if (!IsPostBack) 
+        {
+        
+        }
+
+       /* DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
         if (user != null)
         {
             if (user.username != "" &&
@@ -29,7 +34,7 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
                 ((MasterPage)Page.Master).ShowDiv = false;
             }
 
-        }
+        }*/
       /*  else
         {
             Response.Redirect("../Modulo1/M1_login.aspx");
@@ -46,9 +51,9 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
         string nombre = nombreCliente.Value;
         string apellido = apellidoCliente.Value;
         string cedula = cedulaCliente.Value;
-        string pais = paisCliente.InnerText;
+        /*string pais = paisCliente.InnerText;
         string estado = estadoCliente.InnerText;
-        string ciudad = ciudadCliente.InnerText;
+        string ciudad = ciudadCliente.InnerText;*/
         string direccion = direccionCliente.Value;
         string codigoPostal = codigopostalCliente.Value;
         string correo = correoCliente.Value;
