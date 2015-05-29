@@ -22,9 +22,15 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     <!--AQUI SE DEFINE EL TAMANO DEL FORM Y SU UBICACION-->
     
-   
-    <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-        <form id="register_form" class="form-horizontal" action="#">
+    <!--ALERTAS-->
+    <!--Alertas de modificacion y eliminacion de requerimientos en la lista de requerimientos en el 1er acordeon-->
+    <div  class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
+        <div id="alert" runat="server">
+        </div>
+    </div>
+
+   <form runat="server" class="form-horizontal" method="POST">
+        <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
             <div class="form-group">
                 <div id="div_nombre" class="col-sm-8 col-md-8 col-lg-8">
 				    <input runat="server" type="text" id="Input_Nombre" placeholder="Nombre" onblur="fillCodigoTextField()" class="form-control" name="nombre"/>
@@ -91,21 +97,22 @@
 
             <div class="form-group">
 	            <div id="div_nota" class="col-sm-12 col-md-12 col-lg-12">
-                    <label class="note">¿No encuentra el cliente que busca? <a class="noteLink" href="#">Haz click aqui para agregarlo.</a></label>
+                    <label class="note">¿No encuentra el cliente que busca? <a class="noteLink" href="../Modulo2/AgregarCliente.aspx">Haz click aqui para agregarlo.</a></label>
                 </div>
             </div>
 
             <br>
             <div class="form-group">
 		        <div class="col-sm-1 col-md-1 col-lg-1">
-				    <a runat="Server" type="button" class="btn btn-primary" onclick="" href="../Modulo1/Default.aspx?success=2">Crear</a>
+				    <button runat="Server" type="submit" class="btn btn-primary" onserverclick="CreateProject_Click">Crear</button>
 			    </div>
                 <div class="col-sm-1 col-md-1 col-lg-1">
 				    <button class="btn btn-default" onclick="goBack()">Cancelar</button>
 			    </div>
 	        </div>
-        </form>
-    </div>
+        </div>
+   </form>
+    
     <script src="~/src/GUI/Modulo4/js/Validacion.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
 	<script src="bootstrap-toggle-master/doc/script.js"></script>

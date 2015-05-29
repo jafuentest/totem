@@ -21,7 +21,6 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 
     <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-
         <div class="form-group">
             <div id="div_buscar" class="col-sm-12 col-md-12 col-lg-12">
                 <div class="row">
@@ -34,43 +33,11 @@
                 </div>
             </div>
         </div>
-
         <br><br>
+    </div>
 
-        <div class="form-group">
-            <div id="div_perfiles" class="col-sm-12 col-md-12 col-lg-12">
-                <div class="jumbotron">
-                    <h2 class="sameLine"><a href="PerfilProyecto.aspx">Totem1</a></h2> <h5 class="sameLine">COD: </h5> <h5 id="codigoProyecto" class="sameLine" runat="server">T01</h5>
-                    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis pulvinar nisi, in dapibus leo. Aliquam ac gravida sem. Curabitur a aliquet tellus. Curabitur dui felis, luctus quis venenatis non, congue non nunc. Nam quis ipsum in dui egestas rutrum vel quis elit. Proin cursus lectus eget sem interdum tristique. Aliquam convallis elementum metus, eu hendrerit est aliquam vitae. Morbi suscipit sagittis venenatis. Etiam vehicula cursus convallis. Integer ultrices consequat dolor, hendrerit consectetur magna blandit eget. Curabitur nec vestibulum justo, lobortis mattis ipsum. Nullam enim est, placerat efficitur risus a, congue porttitor diam. Proin eget tortor dolor.</p>
-                    <input disabled checked data-toggle="toggle" data-size="small" type="checkbox" data-on="Activo" data-off="Inactivo" data-onstyle="success" data-offstyle="warning" data-width="100">
-                    <br><br>
-                    <p class="sameLine">Cliente: </p><p id="nombreCliente" class="sameLine bootstrapBlue">Carlo Magurno</p>
-                    <br>
-                    <p class="sameLine">Desarroladora: </p><p id="nombreDesarrolladora" class="sameLine bootstrapBlue">Grupo Desarrollo 2015</p>
-                </div>
-
-                <div class="jumbotron">
-                    <h2 class="sameLine"><a href="#">Totem02</a></h2> <h5 class="sameLine">COD: </h5> <h5 id="H1" class="sameLine" runat="server">T02</h5>
-                    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis pulvinar nisi, in dapibus leo. Aliquam ac gravida sem. Curabitur a aliquet tellus. Curabitur dui felis, luctus quis venenatis non, congue non nunc. Nam quis ipsum in dui egestas rutrum vel quis elit. Proin cursus lectus eget sem interdum tristique. Aliquam convallis elementum metus, eu hendrerit est aliquam vitae. Morbi suscipit sagittis venenatis. Etiam vehicula cursus convallis. Integer ultrices consequat dolor, hendrerit consectetur magna blandit eget. Curabitur nec vestibulum justo, lobortis mattis ipsum. Nullam enim est, placerat efficitur risus a, congue porttitor diam. Proin eget tortor dolor.</p>
-                    <input disabled unchecked data-toggle="toggle" data-size="small" type="checkbox" data-on="Activo" data-off="Inactivo" data-onstyle="success" data-offstyle="warning" data-width="100">
-                    <br><br>
-                    <p class="sameLine">Cliente: </p><p id="nombreCliente" class="sameLine bootstrapBlue">Carlo Magurno</p>
-                    <br>
-                    <p class="sameLine">Desarroladora: </p><p id="nombreDesarrolladora" class="sameLine bootstrapBlue">Grupo Desarrollo 2015</p>
-                </div>
-
-                <div class="jumbotron">
-                    <h2 class="sameLine"><a href="#">Totem03</a></h2> <h5 class="sameLine">COD: </h5> <h5 id="H2" class="sameLine" runat="server">T03</h5>
-                    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis pulvinar nisi, in dapibus leo. Aliquam ac gravida sem. Curabitur a aliquet tellus. Curabitur dui felis, luctus quis venenatis non, congue non nunc. Nam quis ipsum in dui egestas rutrum vel quis elit. Proin cursus lectus eget sem interdum tristique. Aliquam convallis elementum metus, eu hendrerit est aliquam vitae. Morbi suscipit sagittis venenatis. Etiam vehicula cursus convallis. Integer ultrices consequat dolor, hendrerit consectetur magna blandit eget. Curabitur nec vestibulum justo, lobortis mattis ipsum. Nullam enim est, placerat efficitur risus a, congue porttitor diam. Proin eget tortor dolor.</p>
-                    <input disabled unchecked data-toggle="toggle" data-size="small" type="checkbox" data-on="Activo" data-off="Inactivo" data-onstyle="success" data-offstyle="warning" data-width="100">
-                    <br><br>
-                    <p class="sameLine">Cliente: </p><p id="nombreCliente" class="sameLine bootstrapBlue">Carlo Magurno</p>
-                    <br>
-                    <p class="sameLine">Desarroladora: </p><p id="nombreDesarrolladora" class="sameLine bootstrapBlue">Grupo Desarrollo 2015</p>
-                </div>
-            </div>
-        </div>
-
+    <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
+        <asp:Literal runat="server" ID="jumbotronProyecto"></asp:Literal>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>

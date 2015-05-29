@@ -39,23 +39,8 @@
 
         <!--Jumbotron con informacion general sobre el proyecto-->
         <div class="form-group">
-            <div id="div_precio" class="col-sm-12 col-md-12 col-lg-12">
-                <div class="jumbotron">
-                    <h2 class="sameLine bootstrapBlue" id="nombreProyecto" runat="server">Totem01</h2> <h5 class="sameLine">COD: </h5> <h5 id="codigoProyecto" class="sameLine" runat="server">T01</h5>
-                    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis pulvinar nisi, in dapibus leo. Aliquam ac gravida sem. Curabitur a aliquet tellus. Curabitur dui felis, luctus quis venenatis non, congue non nunc. Nam quis ipsum in dui egestas rutrum vel quis elit. Proin cursus lectus eget sem interdum tristique. Aliquam convallis elementum metus, eu hendrerit est aliquam vitae. Morbi suscipit sagittis venenatis. Etiam vehicula cursus convallis. Integer ultrices consequat dolor, hendrerit consectetur magna blandit eget. Curabitur nec vestibulum justo, lobortis mattis ipsum. Nullam enim est, placerat efficitur risus a, congue porttitor diam. Proin eget tortor dolor.</p>
-                    <input disabled checked data-toggle="toggle" data-size="normal" type="checkbox" data-on="Activo" data-off="Inactivo" data-onstyle="success" data-offstyle="warning" data-width="100">
-                    <br><br>
-                    <p class="sameLine">Cliente: </p><p id="nombreCliente" class="sameLine bootstrapBlue">Carlo Magurno</p>
-                    <br>
-                    <p class="sameLine">Desarroladora: </p><p id="nombreDesarrolladora" class="sameLine bootstrapBlue">Grupo Desarrollo 2015</p>
-                    <br><br>
-                    <p>Progreso:</p>
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 3%;" data-toggle="tooltip" data-placement="top" title="N Requerimientos completados de M">
-                        0%
-                      </div>
-                    </div>
-                </div>
+            <div runat="server" id="div_proyecto" class="col-sm-12 col-md-12 col-lg-12">
+                
             </div>
         </div>
         

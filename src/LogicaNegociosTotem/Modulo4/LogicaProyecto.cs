@@ -105,7 +105,7 @@ namespace LogicaNegociosTotem.Modulo4
         {
             try
             {
-            return DatosTotem.Modulo4.BDProyecto.ConsultarProyectosUsuario(username);
+                return DatosTotem.Modulo4.BDProyecto.ConsultarProyectosUsuario(username);
             }
             catch(ExcepcionesTotem.Modulo4.InvolucradosInexistentesException e)
             {
