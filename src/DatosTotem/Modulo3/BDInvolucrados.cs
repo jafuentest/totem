@@ -433,7 +433,6 @@ namespace DatosTotem.Modulo3
                 //lanza otra
             }
         }
-
         public static List<String> consultarCargosContactos(ClienteJuridico laEmpresa)
         {
             BDConexion laConexion;
@@ -466,6 +465,50 @@ namespace DatosTotem.Modulo3
             }
 
             return laListaDeCargos;
+        }
+        public static Usuario datosUsuarioUsername(String user)
+        {
+            Usuario retorno = new Usuario();
+            retorno.username = user;
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro("@Username",  
+                SqlDbType.VarChar, user, false);
+            parametros.Add(parametro);
+            parametro = new Parametro("@Usu_nombre", 
+                SqlDbType.VarChar, true);
+            parametros.Add(parametro);
+            parametro = new Parametro("@Usu_apellido", 
+                SqlDbType.VarChar, true);
+            parametros.Add(parametro);
+            parametro = new Parametro("@Usu_cargo", 
+                SqlDbType.VarChar, true);
+            parametros.Add(parametro);
+            try
+            {
+                BDConexion con = new BDConexion();
+                List<Resultado> resultados = con.EjecutarStoredProcedure("Procedure_consultarDatosUsuarioUsername",
+                    parametros);
+                foreach (Resultado resultado in resultados)
+                {
+                    if (resultado.etiqueta.Equals("@Usu_cargo"))
+                    {
+                        retorno.cargo = resultado.valor;
+                    }
+                    if (resultado.etiqueta.Equals("@Usu_nombre"))
+                    {
+                        retorno.nombre = resultado.valor;
+                    }
+                    if (resultado.etiqueta.Equals("@Usu_apellido"))
+                    {
+                        retorno.apellido = resultado.valor;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+            return retorno;
         }
     }
 }

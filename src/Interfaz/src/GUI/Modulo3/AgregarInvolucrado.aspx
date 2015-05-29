@@ -40,7 +40,7 @@
                              </div>   
                             <div class="col-sm-5 col-md-5 col-lg-5" > 
                                <div class="dropdown" runat="server" id="divComboPersonal">
-                                    <asp:DropDownList ID="comboPersonal"  class="btn btn-default dropdown-toggle" runat="server">
+                                    <asp:DropDownList ID="comboPersonal"  class="btn btn-default dropdown-toggle" runat="server" OnSelectedIndexChanged ="AgregarInvolucrados_Click" AutoPostBack="true">
                                     </asp:DropDownList>
                                 </div>        
                             </div>    
@@ -58,7 +58,8 @@
                                  <th>Eliminar</th>
                                </tr>
                              </thead>
-                            <tbody>
+                            <tbody id="tablebody" runat="server">
+                                <asp:Literal runat="server" ID="laTabla"></asp:Literal>
                            </tbody>
                          </table>
                     </div>

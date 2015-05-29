@@ -164,5 +164,9 @@ namespace LogicaNegociosTotem.Modulo3
 
             return DatosTotem.Modulo3.BDInvolucrados.consultarCargosContactos(cli);
         }
+        public DominioTotem.Usuario obtenerDatosUsuarioUsername(String username)
+        {
+            return BDInvolucrados.datosUsuarioUsername(username);
+        }
     }
 }

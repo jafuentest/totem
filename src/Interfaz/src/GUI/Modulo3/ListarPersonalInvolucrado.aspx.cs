@@ -61,6 +61,8 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
         //elProy.Codigo =  pcookie.Values["projectCode"].ToString(); //De aqui se debe extraer el codigo del proyecto
         laListaDeUsuarios = logInv.obtenerUsuariosInvolucradosProyecto(elProy);
 
+        LogicaNegociosTotem.Modulo7.ManejadorUsuario mU = new LogicaNegociosTotem.Modulo7.ManejadorUsuario();
+
          foreach(Usuario u in laListaDeUsuarios.Lista)
          {
              this.laTabla.Text +="<tr>";

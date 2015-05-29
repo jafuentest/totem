@@ -87,6 +87,12 @@ namespace LogicaNegociosTotem.Modulo7
             BDUsuario conexion = new BDUsuario();
             return conexion.LeerCargosUsuarios();
         }
+        public List<Usuario> ListarUsuariosCargo(String elCargo)
+        {
+            List<String> laLista = new List<String>();
+            BDUsuario con = new BDUsuario();
+            return con.listarUsuariosPorCargo(elCargo);
+        }
 
     }
 }

@@ -1,4 +1,4 @@
-------------------+ PROCEDIMIENTOS MODULO 2 ----------------------------------------------------
+﻿------------------+ PROCEDIMIENTOS MODULO 2 ----------------------------------------------------
 
 ------------------+Verificar Cliente Juridico(ClienteJuridico cjid)------------------------------
 -- Método verificarClienteJuridico(ClienteJuridico laEmpresa) verifica si el cliente existe o no  
@@ -103,30 +103,27 @@ GO
 
 CREATE PROCEDURE ListarCargosPorEmpresa
 		
-	@cj_rif [nvarchar](20)		
+	@cj_rif int		
 AS 
 BEGIN
-		SELECT DISTINCT(car_nombre) 
-		FROM CARGO
-		WHERE car_id IN (SELECT DISTINCT (CARGO_car_id) FROM CONTACTO WHERE CLIENTE_JURIDICO_cj_id = 
-		(SELECT cj_id FROM CLIENTE_JURIDICO WHERE cj_rif = @cj_rif));				
+	SELECT DISTINCT(car_nombre) 
+	FROM CARGO
+	WHERE car_id IN (SELECT DISTINCT (CARGO_car_id) FROM CONTACTO WHERE CLIENTE_JURIDICO_cj_id = @cj_rif)	
 END;
-GO
 
 ------------------+ConsultarEmpleadosEmpresaCargo():list<cliente_juridico>------------------------------
 -- comentarios del grupo que pidio el metodo... 
 -- Metodo consultarEmpleadosEmpresaCargo(ClienteJuridico laEmpresa, String cargo) y devuelve una lista de Contacto con el nombre, apellido y cargo
 -- que son los empleados que desempe?an ese cargo en esa empresa.
-
 CREATE PROCEDURE ConsultarEmpleadosEmpresaCargo
 		
-	@cj_rif [nvarchar](20),
+	@cj_rif int,
 	@car_nombre [nvarchar](60)		
 AS 
 BEGIN
-		(SELECT con_nombre AS NOMBRECONTACTO, con_apellido AS APELLIDOCONTACTO, car_nombre AS CARGOCONTACTO
+		(SELECT con_nombre AS NOMBRECONTACTO, con_apellido AS APELLIDOCONTACTO, car_nombre AS CARGOCONTACTO, con_id as IDCONTACTO
 		 FROM CONTACTO, CARGO
-		 WHERE CLIENTE_JURIDICO_cj_id = (SELECT cj_id FROM CLIENTE_JURIDICO WHERE cj_rif = @cj_rif) 
+		 WHERE CLIENTE_JURIDICO_cj_id = @cj_rif  
 				AND CARGO_car_id = (SELECT car_id FROM CARGO WHERE car_nombre = @car_nombre)
 				AND CARGO_car_id = car_id);		
 END;

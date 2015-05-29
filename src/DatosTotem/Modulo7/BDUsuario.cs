@@ -173,6 +173,7 @@ namespace DatosTotem.Modulo7
             }
             return listUsuario;
         }
+
         /// <summary>
         /// Permite consultar la informacion de un usuario, segun su nombre, apellido y cargo
         /// </summary>
@@ -350,6 +351,33 @@ namespace DatosTotem.Modulo7
                     laLista.Add(row["nombreCargo"].ToString());
                 }
 
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return laLista;
+        }
+        public List<Usuario> listarUsuariosPorCargo(String elCargo)
+        {
+            List<Usuario> laLista = new List<Usuario>();
+            BDConexion laConexion = new BDConexion();
+            List<Parametro> parametros = new List<Parametro>();
+            parametros.Add(new Parametro("@cargo", SqlDbType.VarChar, elCargo, false));
+            try
+            {
+                laConexion = new BDConexion();
+                DataTable dt = laConexion.EjecutarStoredProcedureTuplas("ListarUsuariosPorCargo", parametros);
+                foreach (DataRow row in dt.Rows)
+                {
+                    Usuario u = new Usuario();
+                    u.apellido = row["usuarioApellido"].ToString();
+                    u.nombre = row["usuarioNombre"].ToString();
+                    u.username = row["usuarioUsername"].ToString();
+                    u.idUsuario = int.Parse(row["usuarioID"].ToString());
+                    u.cargo = row["cargoNombre"].ToString();
+                    laLista.Add(u);
+                }
             }
             catch (Exception ex)
             {

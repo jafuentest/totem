@@ -9,9 +9,11 @@ using DominioTotem;
 
 public partial class GUI_Modulo3_Default : System.Web.UI.Page
 {
-    private ListaInvolucradoContacto listaContactos;
-    private ListaInvolucradoUsuario listaUsuarios;
-   
+    private ListaInvolucradoContacto listaContactos = new ListaInvolucradoContacto();
+    private ListaInvolucradoUsuario listaUsuarios = new ListaInvolucradoUsuario();
+    private Proyecto elProyecto = new Proyecto();
+    bool cargoSeleccionado = false;
+    String usernameSeleccionado;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -22,7 +24,7 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
                        new EventHandler(actualizarComboCargos); 
         comboPersonal.SelectedIndexChanged +=
                 new EventHandler(actualizarComboPersonal);
-        
+        #region redireccion a login
         if (user != null)
         {
             if (user.username != "" && user.clave != "")
@@ -35,18 +37,23 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
                 ((MasterPage)Page.Master).MostrarMenuLateral = false;
                 ((MasterPage)Page.Master).ShowDiv = false;
             }
-
         }
         else
         {
             Response.Redirect("../Modulo1/M1_login.aspx");
         }
+        #endregion
         comboCargo.Enabled = false;
         comboPersonal.Enabled = false;
         if (!IsPostBack) // verificar si la pagina se muestra por primera vez
         {
             llenarComboTipoEmpresas();
         }
+        elProyecto.Codigo = "TOT"; //codigo del proyecto cableado para prueba del metodo
+        listaContactos.Proyecto = elProyecto;
+        listaUsuarios.Proyecto = elProyecto;
+        HttpCookie pcookie = Request.Cookies.Get("selectedProjectCookie");
+        //elProy.Codigo =  pcookie.Values["projectCode"].ToString(); //De aqui se debe extraer el codigo del proyecto
     }
 
     protected void llenarComboTipoEmpresas()
@@ -67,7 +74,6 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
 
         options.Add("-1", "Selecciona un cargo");
 
-        comboCargo.Items.Clear();
         if (!comboTipoEmpresa.SelectedValue.Equals("-1"))
         {
             comboCargo.Enabled = true;
@@ -114,16 +120,53 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
         comboCargo.DataTextField = "value";
         comboCargo.DataValueField = "key";
         comboCargo.DataBind();
+        cargoSeleccionado = true; 
     }
 
     protected void actualizarComboPersonal(object sender, EventArgs e)
     {
+        Dictionary<string, string> options = new Dictionary<string, string>();
 
+        options.Add("-1", "Selecciona un personal");
+
+        comboPersonal.Enabled = true;
+        if (comboTipoEmpresa.SelectedIndex == 2 && comboCargo.SelectedIndex != -1)
+        {
+            LogicaNegociosTotem.Modulo7.ManejadorUsuario mU = new LogicaNegociosTotem.Modulo7.ManejadorUsuario();
+            List<Usuario> listaUsuarios = new List<Usuario>();
+            listaUsuarios = mU.ListarUsuariosCargo(comboCargo.SelectedItem.ToString());
+            foreach (Usuario u in listaUsuarios)
+            {
+                options.Add(u.username, u.nombre + " " + u.apellido);
+            }
+            comboPersonal.DataSource = options;
+            comboPersonal.DataTextField = "value";
+            comboPersonal.DataValueField = "key";
+            comboPersonal.DataBind();
+        }
     }
 
     protected void AgregarInvolucrados_Click(object sender, EventArgs e)
     {
-        // Falta implementar jalando los comoboboxes
+            LogicaNegociosTotem.Modulo3.LogicaInvolucrados logInv = new 
+                LogicaNegociosTotem.Modulo3.LogicaInvolucrados();
+            Usuario elUsuario = logInv.obtenerDatosUsuarioUsername(comboPersonal.SelectedValue);
+            elUsuario.username = comboPersonal.SelectedValue;
+            if (listaUsuarios.agregarUsuarioAProyecto(elUsuario))
+            {
+                this.laTabla.Text += "<tr>";
+                this.laTabla.Text += "<td>" + elUsuario.nombre + "</td>";
+                this.laTabla.Text += "<td>" + elUsuario.apellido +"</td>";
+                this.laTabla.Text += "<td>" + elUsuario.cargo + "</td>";
+                this.laTabla.Text += "<td>Compañía De Software</td>";
+                this.laTabla.Text += "<td>";
+                this.laTabla.Text += "<a class=\"btn btn-default glyphicon glyphicon-pencil\" href=\"<%= Page.ResolveUrl(\"~/GUI/Modulo2/DetallarCliente.aspx\") % ></a>";
+                this.laTabla.Text += "<a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"  runat=\"server\"></a>";
+                this.laTabla.Text += "</td>";
+                this.laTabla.Text += "</tr>";
+
+                llenarComboTipoEmpresas();
+            }
     }
 
 
