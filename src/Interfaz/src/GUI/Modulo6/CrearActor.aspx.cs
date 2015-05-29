@@ -53,7 +53,10 @@ public partial class GUI_Modulo6_CrearActor : System.Web.UI.Page
         {
             LogicaActor logica = new LogicaActor();
             bool exito = logica.AgregarListarActor(nombre, descripcion, 0);
-            HttpContext.Current.Response.Redirect("ListarActores.aspx?success=1");
+            if (exito)
+                HttpContext.Current.Response.Redirect("ListarActores.aspx?success=1&exito=1");
+            else
+                HttpContext.Current.Response.Redirect("ListarActores.aspx?success=1&exito=0");
         }
 
     }

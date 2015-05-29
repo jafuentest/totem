@@ -90,10 +90,25 @@ public partial class GUI_Modulo6_ListarActores : System.Web.UI.Page
 		{
             //Si se viene de un agregar mostrara esta alerta
 			case "1":
-				alert.Attributes["class"] = "alert alert-success alert-dismissible";
-				alert.Attributes["role"] = "alert";
-				alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Actor agregado exitosamente</div>";
-				break;
+                //Obtenemos el exito o fracaso del proceso
+                String exito4 = Request.QueryString["exito"];
+
+                //Evaluamos la condicion
+                if (exito4.Equals("1"))
+                {
+                    //Si el agregar fue exitoso mostramos esta alerta
+                    alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                    alert.Attributes["role"] = "alert";
+                    alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Actor agregado exitosamente</div>";
+                }
+                else
+                {
+                    //Si el agregar fue fallido mostramos esta alerta
+                    alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+                    alert.Attributes["role"] = "alert";
+                    alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Actor ya existe</div>";
+                }
+                break;
 
             //Si se viene de un modificar se procedera a este y mostrar la alerta correspondiente
 			case "2":
@@ -119,7 +134,7 @@ public partial class GUI_Modulo6_ListarActores : System.Web.UI.Page
                 else
                 {
                     //Si la modificacion fue fallida mostramos esta alerta
-                    alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                    alert.Attributes["class"] = "alert alert-danger alert-dismissible";
                     alert.Attributes["role"] = "alert";
                     alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Modificacion fallida del actor</div>";
                 }
@@ -144,7 +159,7 @@ public partial class GUI_Modulo6_ListarActores : System.Web.UI.Page
                 else
                 {
                     //Si fue fallida mostramos esta alerta
-                    alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                    alert.Attributes["class"] = "alert alert-danger alert-dismissible";
                     alert.Attributes["role"] = "alert";
                     alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Eliminacion fallida del actor</div>";
                 }
