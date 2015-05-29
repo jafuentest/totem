@@ -176,7 +176,8 @@ AS
 		--Busco el ID del paso
 		DECLARE @idpaso INTEGER;
 		set @idpaso = (SELECT MAX(P.pas_id) FROM PASO P WHERE P.CASO_USO_cu_id=@idcasouso);
-
+		
+		--Busco cuantas extensiones tiene actualmente para agregar uno mas
 		DECLARE @numero INTEGER
 		set @numero = (SELECT MAX(E.ext_id) 
 		FROM EXTENSION E WHERE (E.PASO_pas_id = @idpaso) AND (E.PASO_CASO_USO_cu_id = @idcasouso));
