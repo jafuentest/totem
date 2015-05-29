@@ -42,7 +42,7 @@ namespace PruebasUnitariasTotem.Modulo4
             try
             {
                 Assert.IsTrue(LogicaNegociosTotem.Modulo4.LogicaProyecto.CrearProyecto(elProyecto));
-                DatosTotem.Modulo4.BDProyecto.EliminarProyecto("TES");
+                //DatosTotem.Modulo4.BDProyecto.EliminarProyecto("TES");
             }
             catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException)
             {
@@ -125,6 +125,14 @@ namespace PruebasUnitariasTotem.Modulo4
 
             
             DatosTotem.Modulo4.BDProyecto.EliminarProyecto("TES");
+
+        }
+
+        [Test]
+        public void PruebaConsultarProyectosUsuario()
+        {
+
+            Assert.IsNotNull(LogicaNegociosTotem.Modulo4.LogicaProyecto.ConsultarTodosLosProyectos("albertods"));
 
         }
     }

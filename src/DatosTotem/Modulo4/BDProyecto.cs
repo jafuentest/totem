@@ -285,7 +285,6 @@ namespace DatosTotem.Modulo4
 
                 if (resultados != null)
                 {
-                    Console.Out.WriteLine("/HOLLLLLLAAAAAAAAAAAAA"+resultados[2].valor);
                     Proyecto proyecto;
                     if (bool.Parse(resultados[2].valor))
                     {
@@ -324,9 +323,9 @@ namespace DatosTotem.Modulo4
 
                 //parametros para insertar un proyecto
                 List<Parametro> parametros = new List<Parametro>();
-                Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, username, false);
+                Parametro parametro = new Parametro(DatosTotem.Modulo7.RecursosBaseDeDatosModulo7.UsernameUsuario, SqlDbType.VarChar, username, false);
                 parametros.Add(parametro);
-                parametro = new Parametro(RecursosBDModulo4.ParametroCodigoConsultaProyecto, SqlDbType.VarChar, true);
+                parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, true);
                 parametros.Add(parametro);
                 parametro = new Parametro(RecursosBDModulo4.ParametroNombreProyecto, SqlDbType.VarChar, true);
                 parametros.Add(parametro);
@@ -343,18 +342,20 @@ namespace DatosTotem.Modulo4
                 DataTable resultados = con.EjecutarStoredProcedureTuplas(RecursosBDModulo4.ProcedimientosProyectosDeUsuario, parametros);
 
 
-                if (resultados != null)
+                if (resultados.Rows.Count > 0)
                 {
                     return resultados;
                 }
                 else
                 {
-                    return null;
+
+                    throw new ExcepcionesTotem.Modulo4.InvolucradosInexistentesException(RecursosBDModulo4.CodigoInvolucradosInexistentes,
+                     RecursosBDModulo4.MensajeInvolucradosInexistentes, new Exception());
 
                 }
 
             }
-            catch (NotImplementedException e)
+            catch (ExcepcionesTotem.Modulo4.InvolucradosInexistentesException e)
             {
                 throw e;
             }

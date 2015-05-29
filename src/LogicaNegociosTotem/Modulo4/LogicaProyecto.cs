@@ -28,9 +28,9 @@ namespace LogicaNegociosTotem.Modulo4
             {
                 return DatosTotem.Modulo4.BDProyecto.CrearProyecto(proyecto);
             }
-            catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException)
+            catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException e)
             {
-                return false;
+                throw e;
             }
         }
 
@@ -49,9 +49,9 @@ namespace LogicaNegociosTotem.Modulo4
             {
                 return DatosTotem.Modulo4.BDProyecto.CrearProyecto(proyecto,clienteJuridico);
             }
-            catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException)
+            catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException e)
             {
-                return false;
+                throw e;
             }
         }
 
@@ -69,9 +69,9 @@ namespace LogicaNegociosTotem.Modulo4
             {
                 return DatosTotem.Modulo4.BDProyecto.CrearProyecto(proyecto, clienteNatural);
             }
-            catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException)
+            catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException e)
             {
-                return false;
+                throw e;
             }
         }
 
@@ -91,15 +91,22 @@ namespace LogicaNegociosTotem.Modulo4
         }
 
         /// <summary>
-        /// Metodo para consultar un proyecto en BD
+        /// Metodo para consultar los proyecto de un usuario BD
         /// </summary>
-        /// <param name="username">codigo del proyecto a consultar
-        /// <returns>Devuelve como resultado un proyecto en caso 
+        /// <param name="username">usuario para obtener sus proyectos
+        /// <returns>Devuelve como resultado un DataTableen caso 
         /// contrario devuelve null</returns>
         /// 
         public static DataTable ConsultarTodosLosProyectos(String username)
         {
+            try
+            {
             return DatosTotem.Modulo4.BDProyecto.ConsultarProyectosUsuario(username);
+            }
+            catch(ExcepcionesTotem.Modulo4.InvolucradosInexistentesException e)
+            {
+                throw e;
+            }
         }
 
         #endregion

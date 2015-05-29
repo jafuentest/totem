@@ -18,5 +18,10 @@ namespace ExcepcionesTotem.Modulo4
         public RequerimientosInexistentesException(string message, Exception inner)
             : base(message, inner)
         { }
+
+        public RequerimientosInexistentesException(string codigo, string message, Exception inner)
+            : base(codigo, message, inner)
+        {
+        }
     }
 }
