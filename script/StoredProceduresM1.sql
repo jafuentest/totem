@@ -1,6 +1,6 @@
 CREATE PROCEDURE VALIDARLOGIN 
 	@Username varchar(60),
-	@Clave varchar(60),
+	@Clave varchar(MAX),
 	@Usu_nombre varchar(60) OUTPUT,
 	@Usu_apellido varchar(60) OUTPUT,
 	@Usu_rol varchar(60) OUTPUT,
@@ -50,3 +50,14 @@ CREATE PROCEDURE VALIDAR_CORREO
 
 	RETURN
 	GO
+
+CREATE PROCEDURE CAMBIAR_CLAVE
+	@Correo varchar(60),
+	@Clave varchar(MAX)
+	AS
+	begin
+    SET NOCOUNT ON 
+	UPDATE USUARIO SET
+	   usu_clave = @Clave
+    WHERE usu_correo = @Correo;
+end

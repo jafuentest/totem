@@ -438,7 +438,7 @@ CREATE
   (
     usu_id            INTEGER NOT NULL ,
     usu_username      VARCHAR (60) NOT NULL ,
-    usu_clave         VARCHAR (60) NOT NULL ,
+    usu_clave         VARCHAR (MAX) NOT NULL ,
     usu_nombre        VARCHAR (60) NOT NULL ,
     usu_apellido      VARCHAR (60) NOT NULL ,
     usu_rol           VARCHAR (60) NOT NULL ,

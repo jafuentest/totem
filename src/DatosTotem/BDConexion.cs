@@ -230,14 +230,14 @@ namespace DatosTotem
                     {
                         if (parametro.esOutput)
                         {
-                            comando.Parameters.Add(parametro.etiqueta, parametro.tipoDato, 500);
+                            comando.Parameters.Add(parametro.etiqueta, parametro.tipoDato, 32000);
                             comando.Parameters[parametro.etiqueta].Direction = ParameterDirection.Output;
                         }
                         else
                         {
                             if (parametro.valor != null)
                             {
-                                comando.Parameters.Add(new SqlParameter(parametro.etiqueta, parametro.tipoDato, 500));
+                                comando.Parameters.Add(new SqlParameter(parametro.etiqueta, parametro.tipoDato, 32000));
                                 comando.Parameters[parametro.etiqueta].Value = parametro.valor;
                             }
                             else
