@@ -94,5 +94,12 @@ namespace LogicaNegociosTotem.Modulo7
             ManejadorUsuario manejador = new ManejadorUsuario();
             List<Usuario> listaUsuario = manejador.listar();
         }
+
+        public static List<String> listarCargos()
+        {
+            ManejadorUsuario manejador = new ManejadorUsuario();
+            List<String> listaCargos = manejador.ListarCargosUsuarios();
+            return listaCargos;
+        }
     }
 }

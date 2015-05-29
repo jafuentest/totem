@@ -194,4 +194,8 @@
    WHERE CARGO_car_id = car_id</value>
     <comment>Permite obtener una lista con todos los usuario en el sistema</comment>
   </data>
+  <data name="QueryCargosUsuarios" xml:space="preserve">
+    <value>SELECT DISTINCT CAR_NOMBRE FROM CARGO, USUARIO WHERE CARGO_car_id=car_id</value>
+    <comment>Los cargos de los usuarios</comment>
+  </data>
 </root>

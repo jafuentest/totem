@@ -309,5 +309,24 @@ namespace DatosTotem.Modulo7
             return false;
         }
 
+
+
+        /// <summary>
+        /// Procedimiento para obtener todos los cargos de los usuarios.</summary> 
+        /// <returns>Returna una lista con todos los cargos de los usuarios</returns>
+        public List<String> ConsultaCargos()
+        {
+            SqlDataReader resultadoConsulta;
+            List<String> listCargos = new List<String>();
+            BDConexion conexionBd = new BDConexion();
+            conexionBd.Conectar();
+            resultadoConsulta = conexionBd.EjecutarQuery(RecursosBaseDeDatosModulo7.QueryCargosUsuarios);
+            conexionBd.Desconectar();
+            while (resultadoConsulta.Read())
+            {
+                listCargos.Add(resultadoConsulta.GetValue(0).ToString());
+            }
+            return listCargos;
+        }
     }
 }

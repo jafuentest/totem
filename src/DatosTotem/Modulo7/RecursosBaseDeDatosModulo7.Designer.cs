@@ -169,6 +169,15 @@ namespace DatosTotem.Modulo7 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a SELECT DISTINCT CAR_NOMBRE FROM CARGO, USUARIO WHERE CARGO_car_id=car_id.
+        /// </summary>
+        internal static string QueryCargosUsuarios {
+            get {
+                return ResourceManager.GetString("QueryCargosUsuarios", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a SELECT usu_username,usu_nombre,usu_apellido,car_nombre
         ///   FROM USUARIO,CARGO
         ///   WHERE CARGO_car_id = car_id.
