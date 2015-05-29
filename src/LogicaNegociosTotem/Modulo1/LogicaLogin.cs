@@ -331,6 +331,11 @@ namespace LogicaNegociosTotem.Modulo1
                 throw new ExcepcionesTotem.ExceptionTotemConexionBD(
                     ex.Codigo, ex.Mensaje, ex);
             }
+            catch (ExcepcionesTotem.Modulo1.EmailErradoException ex)
+            {
+                throw new ExcepcionesTotem.Modulo1.EmailErradoException(
+                    ex.Codigo, ex.Mensaje, ex);
+            }
         }
 
         /// <summary>
@@ -509,38 +514,48 @@ namespace LogicaNegociosTotem.Modulo1
         /// <returns>El texto desencriptado</returns>
         public static string DesencriptarConRijndael(string textoCifrado, string passPhrase)
         {
-            byte[] bytesDeTextoCifrado = Convert.FromBase64String(textoCifrado);
-            using (PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null))
+            try
             {
-                byte[] bytesDeClave = password.GetBytes(
-                Convert.ToInt32(RecursosLogicaModulo1.Tamano_Clave) / 8);
-                using (RijndaelManaged claveSimetrica = new RijndaelManaged())
+                byte[] bytesDeTextoCifrado = Convert.FromBase64String(textoCifrado);
+                using (PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null))
                 {
-                    claveSimetrica.Mode = CipherMode.CBC;
-
-                    byte[] salt =
-                        Encoding.ASCII.GetBytes(RecursosLogicaModulo1.Salt_Encriptado);
-
-                    using (ICryptoTransform desencriptor = 
-                        claveSimetrica.CreateDecryptor(bytesDeClave, salt))
+                    byte[] bytesDeClave = password.GetBytes(
+                    Convert.ToInt32(RecursosLogicaModulo1.Tamano_Clave) / 8);
+                    using (RijndaelManaged claveSimetrica = new RijndaelManaged())
                     {
-                        using (MemoryStream memoryStream = 
-                            new MemoryStream(bytesDeTextoCifrado))
+                        claveSimetrica.Mode = CipherMode.CBC;
+
+                        byte[] salt =
+                            Encoding.ASCII.GetBytes(RecursosLogicaModulo1.Salt_Encriptado);
+
+                        using (ICryptoTransform desencriptor =
+                            claveSimetrica.CreateDecryptor(bytesDeClave, salt))
                         {
-                            using (CryptoStream cryptoStream = 
-                                new CryptoStream(memoryStream, desencriptor, 
-                                    CryptoStreamMode.Read))
+                            using (MemoryStream memoryStream =
+                                new MemoryStream(bytesDeTextoCifrado))
                             {
-                                byte[] textoDesencriptado = new byte[bytesDeTextoCifrado.Length];
-                                int cuentaBytesDesencriptado = 
-                                    cryptoStream.Read(textoDesencriptado, 0, 
-                                    textoDesencriptado.Length);
-                                return Encoding.UTF8.GetString(textoDesencriptado, 
-                                    0, cuentaBytesDesencriptado);
+                                using (CryptoStream cryptoStream =
+                                    new CryptoStream(memoryStream, desencriptor,
+                                        CryptoStreamMode.Read))
+                                {
+                                    byte[] textoDesencriptado = new byte[bytesDeTextoCifrado.Length];
+                                    int cuentaBytesDesencriptado =
+                                        cryptoStream.Read(textoDesencriptado, 0,
+                                        textoDesencriptado.Length);
+                                    return Encoding.UTF8.GetString(textoDesencriptado,
+                                        0, cuentaBytesDesencriptado);
+                                }
                             }
                         }
                     }
                 }
+            }
+            catch (FormatException ex)
+            {
+                throw new ExcepcionesTotem.Modulo1.EmailErradoException(
+                    RecursosLogicaModulo1.Codigo_Email_Errado,
+                    RecursosLogicaModulo1.Mensaje_Email_errado,
+                    ex);
             }
         }
         #endregion

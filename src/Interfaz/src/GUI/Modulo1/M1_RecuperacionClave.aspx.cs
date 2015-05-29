@@ -15,7 +15,12 @@ public partial class M1_RecuperacionClave : System.Web.UI.Page
         {
                 Master.MostrarMenuLateral = false;
                 Master.ShowDiv = false;
-        } 
+        }
+        if (Request.Cookies["userInfo"] == null || 
+            Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) == "")
+        {
+            Response.Redirect("~/src/GUI/Modulo1/M1_login.aspx");
+        }
     }
     protected void btn_Confirmar_ServerClick(object sender, EventArgs e)
     {
@@ -35,6 +40,7 @@ public partial class M1_RecuperacionClave : System.Web.UI.Page
                                 Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]);
                             usuario.clave = input_clave.Value;
                             LogicaNegociosTotem.Modulo1.LogicaLogin.CambioDeClave(usuario);
+                            Request.Cookies["userInfo"]["usuario"] = "";
                             Response.Redirect("~/src/GUI/Modulo1/M1_login.aspx?success=1");
                         }
                         else
