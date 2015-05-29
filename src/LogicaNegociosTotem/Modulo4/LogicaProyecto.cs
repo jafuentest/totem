@@ -32,6 +32,10 @@ namespace LogicaNegociosTotem.Modulo4
             {
                 return false;
             }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
 
 
