@@ -21,19 +21,18 @@ public partial class login : System.Web.UI.Page
         }
 
         #region Redireccionamiento a Default
-        if (HttpContext.Current.Session["Credenciales"] != null)
-        {
-            HttpContext.Current.Response.Redirect("Default.aspx");
-        }
+        
         #endregion
 
         String log = Request.QueryString["logout"];
         if (log != null)
         {
-            if (log.Equals("false"))
+            if (log.Equals("true"))
             {
                
+
                  HttpContext.Current.Session.Abandon();
+                 HttpContext.Current.Response.Redirect("Default.aspx");
             }
         }
 

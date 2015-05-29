@@ -9,7 +9,7 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        ((MasterPage)Page.Master).IdModulo = "1";
+        ((MasterPage)Page.Master).IdModulo = "9";
 
         DominioTotem.Usuario user= HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
         if (user != null)
