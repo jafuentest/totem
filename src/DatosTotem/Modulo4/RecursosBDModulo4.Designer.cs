@@ -124,6 +124,15 @@ namespace DatosTotem.Modulo4 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to T_04_002.
+        /// </summary>
+        internal static string CodigoInvolucradosInexistentes {
+            get {
+                return ResourceManager.GetString("CodigoInvolucradosInexistentes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to T_04_001.
         /// </summary>
         internal static string CodigoProyectoExiste {
@@ -138,6 +147,15 @@ namespace DatosTotem.Modulo4 {
         internal static string MensajeCodigoProyectoExiste {
             get {
                 return ResourceManager.GetString("MensajeCodigoProyectoExiste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No hay proyectos asociados al usuario..
+        /// </summary>
+        internal static string MensajeInvolucradosInexistentes {
+            get {
+                return ResourceManager.GetString("MensajeInvolucradosInexistentes", resourceCulture);
             }
         }
         

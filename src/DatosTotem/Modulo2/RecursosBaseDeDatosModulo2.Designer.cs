@@ -566,6 +566,16 @@ namespace DatosTotem.Modulo2 {
             }
         }
 
+        /// <summary>
+        ///   Looks up a localized string similar to NombreClienteNatural.
+        /// </summary>
+        internal static string NombreClienteNatural
+        {
+            get
+            {
+                return ResourceManager.GetString("NombreClienteNatural", resourceCulture);
+            }
+        }
 
 
 

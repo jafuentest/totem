@@ -12,7 +12,7 @@ public partial class src_GUI_DetallarContacto : System.Web.UI.Page
         ((MasterPage)Page.Master).IdModulo = "2";
 
         DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
-        if (user != null)
+        /*if (user != null)
         {
             if (user.username != "" &&
                 user.clave != "")
@@ -30,5 +30,6 @@ public partial class src_GUI_DetallarContacto : System.Web.UI.Page
         {
             Response.Redirect("../Modulo1/M1_login.aspx");
         }
+    }*/
     }
 }

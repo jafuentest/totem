@@ -18,5 +18,10 @@ namespace ExcepcionesTotem.Modulo4
         public InvolucradosInexistentesException(string message, Exception inner)
             : base(message, inner)
         { }
+
+        public InvolucradosInexistentesException(string codigo, string message, Exception inner)
+            : base(codigo, message, inner)
+        {
+        }
     }
 }

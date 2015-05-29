@@ -56,46 +56,25 @@
 
                 <div class="form-group">
                     <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6">
-                        <div class="dropdown">
-                            <button id="paisCliente" runat="server" class="btn btn-default dropdown-toggle" name="pais-dd" type="button" data-toggle="dropdown" aria-expanded="true">
-                                País
-                                <span class="caret"></span>
-                            </button>
-                            <ul id="paisLista" class="dropdown-menu" role="menu" aria-labelledby="pais">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Venezuela</a></li>
-                            </ul>
+                        <div class="dropdown" runat="server" id="contenedorComboPais">
+                            <select id="comboPais" runat="server"  onchange="CbCambioAEstado"></select>
                         </div>
                     </div>
                     <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
-                        <div class="dropdown">
-                            <button id="estadoCliente" runat="server" class="btn btn-default dropdown-toggle" name="estado-dd" type="button" data-toggle="dropdown" aria-expanded="true">
-                                Estado
-                                <span class="caret"></span>
-                            </button>
-                            <ul id="estadoLista" runat="server" class="dropdown-menu" role="menu" aria-labelledby="estado">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Aragua</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Carabobo</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Distrito Capital</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Maracaibo</a></li>
-                            </ul>
+                        <div class="dropdown" runat="server" id="contenedorComboEstado">
+                            <select id="comboEstado" runat="server" onchange="CbCambioACiudad"></select>
                         </div>
                     </div>
                     </div>
+                                            
                     <div class="form-group">
-                        <div class="dropdown">
-                    <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
-                       <button id="ciudadCliente" class="btn btn-default dropdown-toggle" runat="server" name="ciudad-dd" type="button" data-toggle="dropdown" aria-expanded="true">
-                            Ciudad
-                            <span class="caret"></span>
-                        </button>
-                        <ul id="ciudadLista" runat="server" class="dropdown-menu" role="menu" aria-labelledby="ciudad">
-                            <li role="presentation"><a role="menuitem" tabindex="-1">Maracay</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1">Caracas</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1">Guarenas</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1">Los Teques</a></li>
-                        </ul>
-                    </div>
-                   </div>
+                    
+                        <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="dropdown" runat="server" id="contenedorComboCiudad" >
+                                <select id="comboCiudad" runat="server" ></select>
+                            </div>
+                        </div>
+                    
                 </div>
 
                
@@ -129,7 +108,7 @@
                     </div>
                 </div>
             </div>
-
+</div>
         </form>
     </div>
 

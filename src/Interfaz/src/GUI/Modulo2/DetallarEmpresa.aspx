@@ -53,45 +53,27 @@
 
                 <h2>Datos de localización</h2>
                 <div class="form-group">
-                    <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6">
-                        <div class="dropdown">
-                            <button id="paisEmpresa" runat="server" class="btn btn-default dropdown-toggle" name="pais-dd" type="button" data-toggle="dropdown" aria-expanded="true">
-                                Venezuela
-                                <span class="caret"></span>
-                            </button>
-                            <ul id="paisLista" runat="server" class="dropdown-menu" role="menu" aria-labelledby="pais">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Aragua</a></li>
-                            </ul>
+                   
+                        
+                            <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6">
+                        <div class="dropdown" runat="server" id="contenedorComboPais">
+                            <select id="comboPais" runat="server"  onchange="CbCambioAEstado"></select>
                         </div>
                     </div>
+                        </div>
+                    
                     <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
-                        <div class="dropdown">
-                            <button id="estadoEmpresa"  runat="server" class="btn btn-default dropdown-toggle" name="estado-dd" type="button" data-toggle="dropdown" aria-expanded="true">
-                                Aragua
-                                <span class="caret"></span>
-                            </button>
-                            <ul id="estadoLista" runat="server" class="dropdown-menu" role="menu" aria-labelledby="estado">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Aragua</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Carabobo</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Distrito Capital</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Maracaibo</a></li>
-                            </ul>
+                        <div class="dropdown" runat="server" id="contenedorComboEstado">
+                            
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="dropdown">
                     <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
-                         <button id="ciudadEmpresa" class="btn btn-default dropdown-toggle" runat="server" name="ciudad-dd" type="button" data-toggle="dropdown" aria-expanded="true">
-                            Ciudad
-                            <span class="caret"></span>
-                        </button>
-                        <ul id="ciudadLista" runat="server" class="dropdown-menu" role="menu" aria-labelledby="ciudad">
-                            <li role="presentation"><a role="menuitem" tabindex="-1">Maracay</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1">Caracas</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1">Guarenas</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1">Los Teques</a></li>
-                        </ul>
+                         <div class="dropdown" runat="server" id="Div1">
+                            
+                        </div>
                     </div>
                    </div>
                 </div>
@@ -121,7 +103,7 @@
             <table id="table-users" class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>Identificador</th>
+                        
                         <th>Nombres y Apellidos</th>
                         <th>Cargo</th>
                         
@@ -130,7 +112,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="rif">V-12452843</td>
+                        
                         <td>Pedro Perez</td>
                         <td>Gerente de Proyectos</td>
                        
@@ -140,7 +122,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="rif">V-18695231</td>
+                       
                         <td>Erika Rodríguez</td>
                         
                         <td>Director de Relaciones Exteriores</td>
@@ -149,7 +131,7 @@
                             <a class="btn btn-danger glyphicon glyphicon-remove-sign" data-toggle="modal" data-target="#modal-delete" href="#"></a>
                         </td>
                     </tr><tr>
-                        <td class="rif">V-14587412</td>
+                        
                         <td>Nestor Osorio</td>
                        
                         <td>Gerente de Talento Humano</td>
@@ -159,7 +141,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="rif">V-20145884</td>
+                        
                         <td>Seth Cursus</td>
                         
                         <td>Arquitecto del Software</td>
@@ -169,7 +151,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="rif">V-13584777</td>
+                        
                         <td>Liam Nisi</td>
                         
                         <td>Analista de Desarrollo</td>
@@ -195,14 +177,14 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                            <button id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarUsuario()">Eliminar</button>
+                            <button runat="server" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button id="btn_eliminar" runat="server" type="button" class="btn btn-primary" onclick="EliminarUsuario()">Eliminar</button>
                         </div>
                     </div> <!-- /.modal-content -->
                 </div> <!-- /.modal-dialog -->
             </div> <!-- /.modal -->
         </div> <!-- /.table-responsive -->
-    </div>
+    
 
 
 

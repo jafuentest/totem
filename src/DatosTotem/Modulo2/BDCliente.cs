@@ -209,9 +209,59 @@ namespace DatosTotem.Modulo2
         /// </summary>
         /// <param name="clienteNatural">Información del Cliente Natural</param>
         /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-        public bool ModificarClienteNatural(ClienteNatural clienteNatural)
+        public bool ModificarClienteNatural(ClienteNatural clienteNatural,string cargo,string codigo,string numero)
         {
-            throw new NotImplementedException();
+            bool respuesta = false;
+            
+            
+             
+            try
+            {
+                int nroDeFilasAfectadas = 0;
+
+                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureModificarClienteNatural, this.conexion);
+                this.comando.CommandType = CommandType.StoredProcedure;
+
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroCedula, Clientenatural.Nat_Id);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroNombre, Clientenatural.Nat_Nombre);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroApellido, Clientenatural.Nat_Apellido);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroCorreo, Clientenatural.Nat_Correo);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombrePais, Clientenatural.Nat_Pais);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombreEstado, Clientenatural.Nat_Estado);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombreCiudad, Clientenatural.Nat_Ciudad.NombreLugar);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombreDireccion, Clientenatural.Nat_Direccion);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombreCargo,cargo);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.Codigo, codigo);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.Numero, numero);
+                this.conexion.Open();
+
+                nroDeFilasAfectadas = this.comando.ExecuteNonQuery();
+
+                if (nroDeFilasAfectadas > 0)
+                    respuesta = true;
+
+
+            }
+
+            catch (SqlException e)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, e);
+            }
+            catch (NullReferenceException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                this.conexion.Close();
+            }
+
+            return respuesta; 
         }
 
 
@@ -220,9 +270,53 @@ namespace DatosTotem.Modulo2
         /// </summary>
         /// <param name="clienteNatural">Información del Cliente Natural</param>
         /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-        public bool ModificarClienteJuridico(ClienteJuridico clienteNatural)
+        public bool ModificarClienteJuridico(ClienteJuridico clienteJuridico)
         {
-            throw new NotImplementedException();
+            bool respuesta = false;
+            string logo=string.Empty;
+            int fkLugar = 26; 
+
+            try
+            {
+                int nroDeFilasAfectadas = 0;
+
+                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureModificarClienteJuridico, this.conexion);
+                this.comando.CommandType = CommandType.StoredProcedure;
+
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroRif, clienteJuridico.Jur_Id);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroNombre, clienteJuridico.Jur_Nombre);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroLogo,logo);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ProcedureFkLugLug, fkLugar);
+                
+                this.conexion.Open();
+
+                nroDeFilasAfectadas = this.comando.ExecuteNonQuery();
+
+                if (nroDeFilasAfectadas > 0)
+                    respuesta = true;
+
+
+            }
+
+            catch (SqlException e)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, e);
+            }
+            catch (NullReferenceException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                this.conexion.Close();
+            }
+
+            return respuesta;
         }
 
 

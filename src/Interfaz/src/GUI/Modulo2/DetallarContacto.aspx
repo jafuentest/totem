@@ -35,14 +35,14 @@
                     
                             <div class="form-group" Runat="Server">
                                 <div class="col-xs-12" Runat="Server">
-                                    <input class="form-control" placeholder="Nombres del Contacto" type="text" Runat ="Server" />
+                                    <input id="contactoNombre" runat="server" class="form-control" placeholder="Nombres del Contacto" type="text" Runat ="Server" />
                                 </div>
                             </div>
 
                             <div class="col-xs-12 form-group" Runat="Server"></div>
                             <div class="form-group" Runat="Server">
                                 <div class="col-xs-12" Runat="Server">
-                                    <input class="form-control" placeholder="Apellidos del Contacto" type="text" Runat="Server"/>
+                                    <input runat="server" id="apellidoContacto" class="form-control" placeholder="Apellidos del Contacto" type="text" Runat="Server"/>
                                 </div>
 
                             </div>
@@ -51,20 +51,12 @@
 
                             <!-- Split button -->
                             <div class="form-group">
-                                <div class="btn-group col-sm-12 col-md-12 col-lg-12" Runat="Server">
-                                     <button type="button" class="btn btn-default col-sm-11 col-md-11 col-lg-11" Runat="Server">Seleccione un cargo..</button>
-                                    <button type="button" class="btn btn-default dropdown-toggle col-md-1" data-toggle="dropdown" aria-expanded="false"     Runat="Server">
-                                        <span class="caret" Runat="Server"></span>
-                                        <span class="sr-only" Runat="Server">Toggle Dropdown</span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu" Runat="Server">
-
-
-                                        <li><a href="#">Gerente General</a></li>
-                                        <li><a href="#">Gerente de Proyectos</a></li>
-                                        <li><a href="#">Líder de Proyectos</a></li>
-
-                                    </ul>
+                               <div class="btn-group col-sm-10 col-md-10 col-lg-10">
+                                        <div id="contenedorCargo" runat="server" class="dropdown"> 
+                                        <select id="comboCargo" runat="server">
+                                                                                       
+                                        </select>
+                                       </div>
                                 </div>
                                
                             </div>
@@ -72,13 +64,13 @@
                             <div class="col-xs-12 form-group" Runat="Server"></div>
                             <div class="form-group" Runat="Server"> 
                                 <div class="col-xs-12" Runat="Server">
-                                    <input class="form-control" placeholder="Teléfono celular " type="text" Runat="Server" />
+                                    <input runat="server" id="telefonoUno" class="form-control" placeholder="Teléfono celular " type="text" Runat="Server" />
                                 </div>
                             </div>
                                 <div class="col-xs-12 form-group" Runat="Server"></div>
                                 <div class="form-group" Runat="Server"> 
                                     <div class="col-xs-12" Runat="Server">
-                                        <input class="form-control" placeholder="Teléfono celular alternativo" type="text" Runat="Server"/>
+                                        <input runat="server" id="telefonoDos" class="form-control" placeholder="Teléfono celular alternativo" type="text" Runat="Server"/>
                                     </div>
                                 </div>
 

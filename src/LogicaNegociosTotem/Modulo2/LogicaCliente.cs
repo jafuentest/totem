@@ -88,9 +88,11 @@ namespace LogicaNegociosTotem.Modulo2
        /// </summary>
        /// <param name="clienteNatural">Información del Cliente Natural</param>
        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-       public bool ModificarClienteNatural(ClienteNatural clienteNatural)
+       public bool ModificarClienteNatural(ClienteNatural clienteNatural,string cargo, string codigo, string numero)
        {
-           return baseDeDatosCliente.ModificarClienteNatural(clienteNatural);
+           ClienteNatural cliente = new ClienteNatural();
+           cliente = clienteNatural;
+           return baseDeDatosCliente.ModificarClienteNatural(cliente, cargo, codigo, numero);
        }
 
 
@@ -100,9 +102,11 @@ namespace LogicaNegociosTotem.Modulo2
        /// </summary>
        /// <param name="clienteNatural">Información del Cliente Natural</param>
        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-       public bool ModificarClienteJuridico(ClienteNatural clienteNatural)
+       public bool ModificarClienteJuridico(ClienteJuridico clienteJuridico)
        {
-           return baseDeDatosCliente.ModificarClienteNatural(clienteNatural);
+           ClienteJuridico cliente = new ClienteJuridico();
+           cliente = clienteJuridico;
+           return baseDeDatosCliente.ModificarClienteJuridico(cliente);
        }
 
 

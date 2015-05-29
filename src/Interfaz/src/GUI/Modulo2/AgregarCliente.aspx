@@ -56,74 +56,59 @@
                 </div>
                 
                 <h2>Datos de localización</h2>
-                <div class="form-group" Runat="Server">
-                    <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6" Runat="Server">
-                        <div class="dropdown" Runat="Server">
-                            <select id="comboPais" runat="server">
-                                
-                                <option value="0" runat="server" selected="selected">Seleccione País..</option>
-                                <option value="1" runat="server">Venezuela</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6" Runat="Server">
-                        <div class="dropdown">
-                            <select id="comboEstado" runat="server">
-                                
-                                <option value="0" runat="server" selected="selected">Seleccione Estado..</option>
-                                <option value="1" runat="server">Dtto Capital</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group" Runat="Server">
-                    <div id="ciudadNatural" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
-                        <button id="ciudad" class="btn btn-default dropdown-toogle col-sm-12 col-md-12 col-lg-12" name="ciudad-dd" type="button"data-toggle="dropdown" aria-expanded="true" >
-                            Ciudad
-                            <span class="caret" Runat="Server"></span>
-                        </button>
-                       <div class="form-group">
-                    <div class="dropdown">
-                    <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
-                       <select id="comboCiudad" runat="server" >
-                                
-                                <option value="0" runat="server" selected="selected">Seleccione Ciudad..</option>
-                                <option value="1" runat="server">Caracas</option>
-                            </select>
-                    </div>
-                  </div>
-                </div>
-                 </div>
-                      </div>
                 <div class="form-group">
-                    <div id="direccion" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
-                        <input id="direccionNatural" name="direccion" type="text" class="form-control" placeholder="Dirección detallada" Runat="Server"/>
+                    <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6">
+                        <div class="dropdown" runat="server" id="contenedorComboPais">
+                            <select id="comboPais" runat="server"  onchange="CbCambioAEstado"></select>
+                        </div>
+                    </div>
+                    <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
+                        <div class="dropdown" runat="server" id="contenedorComboEstado">
+                            <select id="comboEstado" runat="server" onchange="CbCambioACiudad"></select>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group" Runat="Server">
-                    <div id="div_cpostal" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
-                        <input id="codigopostalNatural" name="codigopostal" type="text" class="form-control" placeholder="Código postal" Runat="Server"/>
+                <div class="form-group">
+                    
+                        <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="dropdown" runat="server" id="contenedorComboCiudad" >
+                                <select id="comboCiudad" runat="server" ></select>
+                            </div>
+                        </div>
+                    
+                </div>
+
+                <div class="form-group">
+                    <div id="div_direccionEmpresa" class="col-sm-12 col-md-12 col-lg-12">
+                        <input id="direccionCliente" runat="server" name="direccion" type="text" class="form-control" placeholder="Dirección detallada" />
                     </div>
                 </div>
-                <div class="form-group" Runat="Server">
-                    <div id="div_correo" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
-                        <input id="correoNatural" name="correo" type="text" class="form-control" placeholder="Correo electrónico" Runat="Server"/>
+                <div class="form-group">
+                    <div id="div_cpostal" class="col-sm-12 col-md-12 col-lg-12">
+                        <input id="codigoPostalCliente" runat="server" name="codigopostal" type="text" class="form-control" placeholder="Código postal" />
                     </div>
                 </div>
-                <div class="form-group" Runat="Server">
-                    <div id="div_telefono" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
-                        <input id="telefonoNatural" name="telefono" type="text" class="form-control" placeholder="Teléfono" Runat="Server"/>
+
+                <div class="form-group">
+                    <div id="div_correo" class="col-sm-12 col-md-12 col-lg-12">
+                        <input id="correoCliente" runat="server" name="correo" type="text" class="form-control" placeholder="Correo electrónico" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div id="div_telefono" class="col-sm-12 col-md-12 col-lg-12">
+                        <input id="telefonoCliente" runat="server" name="telefono" type="text" class="form-control" placeholder="Teléfono" />
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div id="div_botones" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
-                        <a class="btn btn-primary" href="ListarClientes.aspx?success=regis">Agregar</a>
+                          <button type="submit" class="btn btn-primary" runat="server" onserverclick="AgregarCliente_Click">Agregar</button>
                         <a class="btn btn-default" href="ListarClientes.aspx">Cancelar</a>
                     </div>
                 </div>
             </div>
-
+    
         </form>
     </div>
 
