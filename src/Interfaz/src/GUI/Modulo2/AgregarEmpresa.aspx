@@ -56,30 +56,24 @@
                 <h2>Datos de localización</h2>
                 <div class="form-group">
                     <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6">
-                        <div class="dropdown">
-                            <select id="comboPais" runat="server">
-                            </select>
+                        <div class="dropdown" runat="server" id="contenedorComboPais">
+                            <select id="comboPais" runat="server"  onchange="CbCambioAEstado"></select>
                         </div>
                     </div>
                     <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
-                        <div class="dropdown">
-                            <select id="comboEstado" runat="server">
-
-                                <option id="opcionEstado" runat="server"></option>
-                            </select>
+                        <div class="dropdown" runat="server" id="contenedorComboEstado">
+                            <select id="comboEstado" runat="server" onchange="CbCambioACiudad"></select>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="dropdown">
+                    
                         <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
-                            <select id="comboCiudad" runat="server">
-
-                                <option value="0" runat="server" selected="selected">Seleccione Ciudad..</option>
-                                <option value="1" runat="server">Caracas</option>
-                            </select>
+                            <div class="dropdown" runat="server" id="contenedorComboCiudad" >
+                                <select id="comboCiudad" runat="server" ></select>
+                            </div>
                         </div>
-                    </div>
+                    
                 </div>
 
                 <div class="form-group">
@@ -129,19 +123,16 @@
 
                             <!-- Split button -->
                             <div class="form-group">
-                                <div class="dropdown">
+                               
                                     <div class="btn-group col-sm-10 col-md-10 col-lg-10">
+                                        <div id="contenedorCargo" runat="server" class="dropdown"> 
                                         <select id="comboCargo" runat="server">
-
-                                            <option value="0" runat="server" selected="selected">Seleccionar Cargo..</option>
-                                            <option value="1" runat="server">Gerente</option>
+                                                                                       
                                         </select>
+                                       </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-1 col-md-1 col-lg-1">
-                                    <button type="button" class="btn btn-default btn-circle glyphicon glyphicon-plus" onclick="agregarContacto()"></button>
-
-                                </div>
+                                
                             </div>
 
                             <div class="col-xs-10 form-group"></div>
@@ -173,12 +164,9 @@
                         <a class="btn btn-default" runat="server" href="ListarEmpresas.aspx">Cancelar</a>
                     </div>
                 </div>
-
+            </form>
             </div>
-        </form>
-    </div>
-
-
+  
 
     <script type="text/javascript" src="js/ValidacionesContacto.js"></script>
 

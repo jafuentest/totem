@@ -33,6 +33,7 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             if (!IsPostBack) // verificar si la pagina se muestra por primera vez
             {
                 this.LlenarPaises();
+                this.LlenarCargos();
             }
 
         }
@@ -56,7 +57,7 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
         string rif = rifEmpresa.Value;
         string nombre = nombreEmpresa.Value;
         
-        string pais=comboPais.Items[comboPais.SelectedIndex].Text; 
+        /*string pais=comboPais.Items[comboPais.SelectedIndex].Text; */
        
         /*string pais = paisEmpresa.InnerText;
         string estado = estadoEmpresa.InnerText;
@@ -72,6 +73,30 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
     
     }
 
+    /// <summary>
+    /// Evento que se dispara cuando se selecciona algún elemento de 
+    /// país y carga sus estados
+    /// </summary>
+    protected void CbCambioAEstado(object sender, EventArgs e) 
+    {
+        this.comboEstado.Items.Clear();
+        this.comboCiudad.Items.Clear();
+        int _idPais =this.comboPais.SelectedIndex;
+        LlenarEstados(_idPais);
+    }
+
+    /// <summary>
+    /// Evento que se dispara cuando se selecciona algún elemento de 
+    /// estados y carga sus ciudades
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void CbCambioACiudad(object sender, EventArgs e)
+    {
+        int _idEstado = this.comboEstado.SelectedIndex;
+        LlenarCiudades(_idEstado);
+    }
+
    /// <summary>
    /// Método que extrae la información de los paises para el
    /// combo
@@ -82,25 +107,26 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
         {
             LogicaLugar logica = new LogicaLugar();
             List<Lugar> paises = logica.LlenarComboPaises();
-            ListItem itemPais;
-
-            this.comboPais.Items.Clear();
-
-            itemPais = new ListItem();
-            this.comboPais.InnerHtml = "<option id='opcionPais' value='0' runat='server' "+"text ="+"'Seleccione Pais'>" + "</option>";
-           
             
-            /*itemPais.Text = "Seleccione un país";
-            itemPais.Value = "0";
-            this.comboPais.Items.Add(itemPais);
+            string prueba = "Seleccione Pais";
+            string nombreEvento = "CbCambioAEstado"; 
+            this.contenedorComboPais.InnerHtml = "<select runat=\"server\" id=\"comboPais\" class=\"btn btn-default dropdown-toggle\""
+                                               + "onchange=\" " + nombreEvento + "\">" +
+                                                "<option id=\"opcionPais"+"0"+"\" runat=\"server\" value=\"0\">" +
+                                                 prueba    +
+                                                "</option>"
+                                                ; 
 
-            foreach (Lugar objetoPais in paises)
+            
+           foreach (Lugar objetoPais in paises)
             {
-                itemPais = new ListItem();
-                itemPais.Text = objetoPais.NombreLugar;
-                itemPais.Value = objetoPais.IdLugar.ToString();
-                this.comboPais.Items.Add(itemPais);
-            }*/
+                this.contenedorComboPais.InnerHtml = contenedorComboPais.InnerHtml +
+                                                     "<option id=\"opcionPais" + objetoPais.IdLugar.ToString() + "\" runat=\"server\" value=\"" + objetoPais.IdLugar.ToString() + "\">" +
+                                                      objetoPais.NombreLugar +
+                                                     "</option>";
+            }
+
+            this.contenedorComboPais.InnerHtml= this.contenedorComboPais.InnerHtml+"</select>"; 
         }
         catch (ClienteDatosException e)
         {
@@ -127,22 +153,25 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
         {
             LogicaLugar logica = new LogicaLugar();
             List<Lugar> estados = logica.LlenarComboEstados(idPais);
-            ListItem itemEstado;
+            string prueba = "Seleccione Estado";
+            string nombreEvento = "CbCambioACiudad"; 
+            this.contenedorComboEstado.InnerHtml = "<select runat=\"server\" id=\"comboEstado\" class=\"btn btn-default dropdown-toggle\""
+                                               + "onchange=\"CbCambioACiudad\">" +
+                                                "<option id=\"opcionEstado" + "0" + "\" runat=\"server\" value=\"0\">" +
+                                                 prueba +
+                                                "</option>";
 
-            this.comboEstado.Items.Clear();
-            this.opcionEstado.Attributes["value"] = "0";
-            this.opcionEstado.Text = "Seleccione Estado";
-           /* itemEstado = new ListItem();
-            
-            this.comboEstado.Items.Add(itemEstado);
 
             foreach (Lugar objetoEstado in estados)
             {
-                itemEstado = new ListItem();
-                itemEstado.Text = objetoEstado.NombreLugar;
-                itemEstado.Value = objetoEstado.IdLugar.ToString();
-                this.comboEstado.Items.Add(itemEstado);
-            }*/
+
+                this.contenedorComboEstado.InnerHtml = contenedorComboEstado.InnerHtml +
+                                                     "<option id=\"opcionEstado" + objetoEstado.IdLugar.ToString() + "\" runat=\"server\" value=\"" + objetoEstado.IdLugar.ToString() + "\">" +
+                                                      objetoEstado.NombreLugar +
+                                                     "</option>";
+            }
+
+            this.contenedorComboEstado.InnerHtml = this.contenedorComboEstado.InnerHtml + "</select>"; 
 
         }
         catch (ClienteDatosException e)
@@ -170,23 +199,24 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
         {
             LogicaLugar logica = new LogicaLugar();
             List<Lugar> ciudades = logica.LlenarComboCiudades(idEstado);
-            ListItem itemCiudad;
+            
 
-            this.comboEstado.Items.Clear();
+            string prueba = "Seleccione Ciudad";
 
-            itemCiudad = new ListItem();
-            itemCiudad.Text = "Seleccione Estado";
-            itemCiudad.Value = "0";
-            this.comboCiudad.Items.Add(itemCiudad);
+            this.contenedorComboCiudad.InnerHtml = "<select runat=\"server\" id=\"comboCiudad\" class=\"btn btn-default dropdown-toggle\">" +
+                                                "<option id=\"opcionCiudad" + "0" + "\" runat=\"server\" value=\"0\">" +
+                                                 prueba +
+                                                "</option>";
 
             foreach (Lugar objetoCiudad in ciudades)
             {
-                itemCiudad = new ListItem();
-                itemCiudad.Text = objetoCiudad.NombreLugar;
-                itemCiudad.Value = objetoCiudad.IdLugar.ToString();
-                this.comboEstado.Items.Add(itemCiudad);
-            }
 
+                this.contenedorComboCiudad.InnerHtml = contenedorComboCiudad.InnerHtml +
+                                                     "<option id=\"opcionCiudad" + objetoCiudad.IdLugar.ToString() + "\" runat=\"server\" value=\"" + objetoCiudad.IdLugar.ToString() + "\">" +
+                                                      objetoCiudad.NombreLugar +
+                                                     "</option>";
+            }
+            this.contenedorComboCiudad.InnerHtml = this.contenedorComboCiudad.InnerHtml + "</select>"; 
         }
         catch (ClienteDatosException e)
         {
@@ -206,16 +236,26 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
     {
         try
         {
-            LogicaLugar logica = new LogicaLugar();
-            
-            ListItem itemCargo;
+            LogicaCliente logica = new LogicaCliente();
+            List<string> cargos = new List<string>();
+            cargos = logica.LlenarComboCargo(); 
+            string prueba="Seleccione cargo";
 
-            this.comboCargo.Items.Clear();
+            this.contenedorCargo.InnerHtml = "<select runat=\"server\" id=\"comboCargo\" class=\"btn btn-default dropdown-toggle\">" +
+                                                "<option id=\"opcionCargo" + "0" + "\" runat=\"server\" value=\"0\">" +
+                                                 prueba +
+                                                "</option>";
+            int numero = 0;
+            foreach (string cargo in cargos) 
+            {
+                this.contenedorCargo.InnerHtml = contenedorCargo.InnerHtml +
+                                                     "<option id=\"opcionCiudad" + numero.ToString() + "\" runat=\"server\" value=\"" + numero.ToString() + "\">" +
+                                                      cargo +
+                                                     "</option>";
+                numero++; 
+            }
 
-            itemCargo = new ListItem();
-            itemCargo.Text = "Seleccione Cargo";
-            itemCargo.Value = "0";
-            this.comboCargo.Items.Add(itemCargo);
+            this.contenedorCargo.InnerHtml = this.contenedorCargo.InnerHtml + "</select>";
         }
         catch (ClienteDatosException e)
         {
