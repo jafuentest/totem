@@ -15,7 +15,7 @@
             <div class="col-xs-12 visible-sm visible-xs form-group"></div>
 
             <label for="fechaReunion" class="col-xs-3 col-md-1 control-label">Fecha:</label> 
-            <label id="fechaReunion" class="col-xs-9 col-md-4 control-label label-control">10-05-2013</label>
+            <label id="fechaReunion" name="fechaReunion" class="col-xs-9 col-md-4 control-label label-control">10-05-2013</label>
 
             <div class="col-xs-12 visible-sm visible-xs form-group"></div>
 
@@ -25,229 +25,34 @@
             <div class="col-xs-12 form-group"></div>
 
             <label class="col-xs-12 control-label">Motivo de la Reunión:</label> 
-            <p class="col-xs-12">
+            <p id="motivo"class="col-xs-12">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint voluptate vitae asperiores harum eaque id quisquam tempore suscipit deleniti! Eum, impedit debitis autem tempora quaerat unde voluptatem molestias possimus delectus eius sapiente dolorem minima blanditiis aspernatur veniam, porro illo nam vel pariatur. Nesciunt delectus, labore quasi neque corporis nostrum recusandae numquam non, enim dolore porro, illo quia! Quasi, tenetur, excepturi!
             </p>
 
             <div class="col-xs-12 form-group"></div>
 
             <label class="col-xs-12 col-md-2 control-label">Participantes:</label>            
-            <div class="list-group col-xs-12 col-md-12">
-                <div id="1_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
-                    <div class="panel-boddy participante">                                                
-                        <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                        <div class="col-xs-10 col-sm-8 nombre-participante">
-                            <p class="participante-nombre">Daniel Sam</p>
-                            <p class="participante-rol"><small>Líder de Proyecto</small></p>
-                        </div>                        
-                    </div>
-                </div>
-                <div id="2_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
-                    <div class="panel-boddy participante">                                                
-                        <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                        <div class="col-xs-10 col-sm-8 nombre-participante">
-                            <p class="participante-nombre">Eloise Chávez</p>
-                            <p class="participante-rol"><small>Product Owner</small></p>
-                        </div>                        
-                    </div>
-                </div>
-                <div id="3_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
-                    <div class="panel-boddy participante">                                                
-                    <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                        <div class="col-xs-10 col-sm-8 nombre-participante">
-                            <p class="participante-nombre">César Contreras</p>
-                            <p class="participante-rol"><small>Desarrollador</small></p>
-                        </div>                        
-                    </div>
-                </div>
-                <div id="4_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
-                    <div class="panel-boddy participante">                                                
-                        <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                        <div class="col-xs-10 col-sm-8 nombre-participante">
-                            <p class="participante-nombre">Jonathan González</p>
-                            <p class="participante-rol"><small>Desarrollador</small></p>
-                        </div>                        
-                    </div>
-                </div>
-                <div id="5_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
-                    <div class="panel-boddy participante">                                                
-                        <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                        <div class="col-xs-10 col-sm-8 nombre-participante">
-                            <p class="participante-nombre">Gabriel Sarmiento</p>
-                            <p class="participante-rol"><small>Desarrollador</small></p>
-                        </div>                        
-                    </div>
-                </div>
-                <div id="5_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
-                    <div class="panel-boddy participante">                                                
-                        <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                        <div class="col-xs-10 col-sm-8 nombre-participante">
-                            <p class="participante-nombre">Henry Velásquez</p>
-                            <p class="participante-rol"><small>Analísta de Sistemas</small></p>
-                        </div>                        
-                    </div>
-                </div>
-                <div id="5_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
-                    <div class="panel-boddy participante">                                                
-                        <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                        <div class="col-xs-10 col-sm-8 nombre-participante">
-                            <p class="participante-nombre">Nancy Aguila</p>
-                            <p class="participante-rol"><small>Stakeholder</small></p>
-                        </div>                        
-                    </div>
-                </div>
+            <div id="listaParticipante" class="list-group col-xs-12 col-md-12">
+                
             </div>
             
             <label class="col-xs-12 control-label">Puntos Tratados:</label>
             
             <div class="col-xs-12">                   
-                <div class="panel-group" id="accordion">
-                    <div class="panel panel-default" id="panel1">
-                        <div class="panel-heading">
-                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-target="#punto1" 
-                                   href="#collapseOne">
-                                  Punto 1: Este es el nombre de un Punto
-                                </a>
-                              </h4>
-                        </div>
-                        <div id="punto1" class="panel-collapse collapse">
-                            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default" id="panel2">
-                        <div class="panel-heading">
-                             <h4 class="panel-title">
-                        <a data-toggle="collapse" data-target="#collapseTwo" 
-                           href="#collapseTwo" class="collapsed">
-                          Punto 2: Este es el nombre de un Punto
-                        </a>
-                      </h4>
-
-                        </div>
-                        <div id="collapseTwo" class="panel-collapse collapse">
-                            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default" id="panel3">
-                        <div class="panel-heading">
-                             <h4 class="panel-title">
-                        <a data-toggle="collapse" data-target="#collapseThree"
-                           href="#collapseThree" class="collapsed">
-                          Punto 3: Este es el nombre de un Punto
-                        </a>
-                      </h4>
-
-                        </div>
-                        <div id="collapseThree" class="panel-collapse collapse">
-                            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div>
-                        </div>
-                    </div>
+                <div class="panel-group" id="listaPunto">
+                    
                 </div>
             </div>  
             
             <label class="col-xs-12 control-label">Observaciones:</label> 
-            <p class="col-xs-12">
+            <p id="observaciones" class="col-xs-12">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint voluptate vitae asperiores harum eaque id quisquam tempore suscipit deleniti! Eum, impedit debitis autem tempora quaerat unde voluptatem molestias possimus delectus eius sapiente dolorem minima blanditiis aspernatur veniam, porro illo nam vel pariatur. Nesciunt delectus, labore quasi neque corporis nostrum recusandae numquam non, enim dolore porro, illo quia! Quasi, tenetur, excepturi!
             </p>
             
             <label class="col-xs-12 control-label">Acuerdos y Compromisos:</label> 
 
             <div class="col-xs-12"> 
-                <div class="panel-group" id="acordion">               
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-target="#collapsePrimero" 
-                                   href="#collapseOne">
-                                   Conferencia de Skype control de avances.
-                                </a>
-                            </h4>                                   
-                        </div>
-                        <div id="collapsePrimero" class="panel-collapse collapse">
-                            <div class="panel-body">
-
-                                <label class="col-xs-3 control-label">Fecha:</label>
-                                <label class="col-xs-9 control-label">10-05-2015</label> 
-                                             
-                                <label for="observacionesReunion" class="control-label col-xs-12">Involucrados:</label> 
-                                
-                                <div id="1_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
-                                    <div class="panel-boddy participante">                                                
-                                        <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                                        <div class="col-xs-10 col-sm-8 nombre-participante">
-                                            <p class="participante-nombre">Daniel Sam</p>
-                                            <p class="participante-rol"><small>Líder de Proyecto</small></p>
-                                        </div>                        
-                                    </div>
-                                </div>               
-                                <div id="3_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
-                                    <div class="panel-boddy participante">                                                
-                                        <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                                        <div class="col-xs-10 col-sm-8 nombre-participante">
-                                            <p class="participante-nombre">César Contreras</p>
-                                            <p class="participante-rol"><small>Desarrollador</small></p>
-                                        </div>                        
-                                    </div>
-                                </div>
-                                <div id="4_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
-                                    <div class="panel-boddy participante">                                                
-                                        <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                                        <div class="col-xs-10 col-sm-8 nombre-participante">
-                                            <p class="participante-nombre">Jonathan González</p>
-                                            <p class="participante-rol"><small>Desarrollador</small></p>
-                                        </div>                        
-                                    </div>
-                                </div>
-                                <div id="5_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
-                                    <div class="panel-boddy participante">                                                
-                                        <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                                        <div class="col-xs-10 col-sm-8 nombre-participante">
-                                            <p class="participante-nombre">Gabriel Sarmiento</p>
-                                            <p class="participante-rol"><small>Desarrollador</small></p>
-                                        </div>                        
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>                    
-                    </div> 
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-target="#collapse2" 
-                                   href="#collapseOne">
-                                   Este es otro compromiso.
-                                </a>
-                            </h4>                                   
-                        </div>
-                        <div id="collapse2" class="panel-collapse collapse">
-                            <div class="panel-body">
-
-                                <label class="col-xs-3 control-label">Fecha:</label>
-                                <label class="col-xs-9 control-label">10-05-2015</label> 
-                                             
-                                <label for="observacionesReunion" class="control-label col-xs-12">Involucrados:</label> 
-                                <div id="1_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
-                                    <div class="panel-boddy participante">                                                
-                                        <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                                        <div class="col-xs-10 col-sm-8 nombre-participante">
-                                            <p class="participante-nombre">Daniel Sam</p>
-                                            <p class="participante-rol"><small>Líder de Proyecto</small></p>
-                                        </div>                        
-                                    </div>
-                                </div>
-                                <div id="2_par" class="panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3">
-                                    <div class="panel-boddy participante">                                                
-                                        <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                                        <div class="col-xs-10 col-sm-8 nombre-participante">
-                                            <p class="participante-nombre">Eloise Chávez</p>
-                                            <p class="participante-rol"><small>Product Owner</small></p>
-                                        </div>                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>                    
-                    </div> 
+                <div class="panel-group" id="listaAcuerdo">               
                 </div>
              </div>
             <div class="col-xs-12">             
@@ -299,6 +104,7 @@
     </div>
 </div>
 
+<script type="text/javascript" src="js/detalleMinuta.js"></script>
 <script type="text/javascript">
     $('.panel-participante').on("click", function ()
     {
