@@ -41,8 +41,8 @@ namespace DatosTotem.Modulo2
         /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
         public bool AgregarClienteJuridico(ClienteJuridico clienteJuridico, int fkLugar) 
         {
-            bool respuesta = false;
-
+           bool respuesta = false;
+            
             try
             {
                 int nroDeFilasAfectadas = 0;
@@ -54,7 +54,13 @@ namespace DatosTotem.Modulo2
                 this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroNombre, clienteJuridico.Jur_Nombre);
                 this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroLogo, string.Empty);
                 this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroLugar, fkLugar);
-
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombreDireccion, nombreDireccion);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroCedula, cedulaContacto);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombreContacto,contactoNombre);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroApellido, apellidoNombre);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.IdCargo,idCargo);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.Codigo, codigo);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.Numero, numero);
                 this.conexion.Open();
 
                 nroDeFilasAfectadas = this.comando.ExecuteNonQuery();
@@ -83,7 +89,7 @@ namespace DatosTotem.Modulo2
                 this.conexion.Close(); 
             }
 
-            return respuesta;  
+            return respuesta; 
         }
 
 

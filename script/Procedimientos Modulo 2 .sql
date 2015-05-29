@@ -22,19 +22,71 @@ CREATE PROCEDURE Procedure_AgregarClienteJuridico
 	@cj_rif [nvarchar](20),
 	@nombre [nvarchar](60),
 	@cj_logo [nvarchar](60),
-	@Fklugar [int]
+	@Fklugar [int],
+	@nombreDireccion varchar(60),
+	@cedula          varchar(20),
+	@nombreContacto     varchar(60),
+	@apellido            varchar(60),
+	@idCargo         int,
+	
+	@codigo               int,
+	@numero               int
 	
 AS
 
 DECLARE @idMaxClienteJuridico int = 0
+DECLARE @idLugarDireccion int = 0
+DECLARE @idMaxLugar int = 0
+DECLARE @idMaxContacto  int =0
+DECLARE @idMaxTelefono int=0
+DECLARE @idTelefono int = 0
 
+ 
 BEGIN
+
+select @idLugarDireccion = count(LUG_id) from lugar 
+	 where  LUG_tipo = 'Direccion' and LUGAR_lug_id = @Fklugar;
+
+
+if (@idLugarDireccion = 0)
+		begin 
+			select @idMaxLugar = MAX(LUG_id) from lugar;
+
+			set @idMaxLugar = @idMaxLugar + 1;
+
+			INSERT INTO lugar VALUES (@idMaxLugar,@nombreDireccion,'Direccion',null,@Fklugar);
+
+			set @idLugarDireccion = @idMaxLugar;
+		end
+
 select @idMaxClienteJuridico = Max(cj_id) from CLIENTE_JURIDICO;
 
     set @idMaxClienteJuridico = @idMaxClienteJuridico + 1;
 
     INSERT INTO CLIENTE_JURIDICO(cj_ID, cj_rif, cj_nombre, cj_logo,LUGAR_lug_id)
     VALUES(@idMaxClienteJuridico, @cj_rif, @nombre, @cj_logo,@Fklugar);
+
+	
+
+SELECT @idMaxContacto = Max(con_id) FROM CONTACTO; 
+
+	set @idMaxContacto = @idMaxContacto +1; 
+
+	INSERT INTO CONTACTO(con_id,con_cedula,con_nombre,con_apellido,CLIENTE_JURIDICO_cj_id,CARGO_car_id,CLIENTE_NATURAL_cn_id)
+	VALUES(@idMaxContacto,@cedula,@nombreContacto,@apellido,@idMaxClienteJuridico,@idCargo,null);
+
+select @idTelefono=count(*) from telefono where tel_numero=@numero  and tel_codigo=@codigo
+
+if (@idTelefono=0)
+begin 
+			select @idMaxTelefono = Max(tel_id) from TELEFONO;
+
+			set @idMaxTelefono = @idMaxTelefono+1; 
+			INSERT INTO TELEFONO VALUES (@idMaxTelefono,@codigo,@numero,null,@idMaxContacto);
+
+			
+		end
+
 END;
 GO
  
