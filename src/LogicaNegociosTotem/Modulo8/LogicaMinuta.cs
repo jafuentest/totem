@@ -16,9 +16,7 @@ namespace LogicaNegociosTotem.Modulo8
             //return listaMinuta;
         }
 
-
-
-        public Minuta obtenerMinuta(int codigoMinuta)
+        public Minuta obtenerMinuta(Proyecto elProyecto, int codigoMinuta)
         {
             //Prueba Minuta Cable
             Minuta minuta = new Minuta()
@@ -97,6 +95,37 @@ namespace LogicaNegociosTotem.Modulo8
             //Fin Prueba Minuta
             return minuta;
            
+        }
+
+
+        public List<Usuario> ListaUsuario(Proyecto elProyecto)
+        {
+            List<Usuario> ListaUsuario = new List<Usuario>()
+            {
+                new Usuario()
+                {
+                    idUsuario = 1,
+                    nombre = "César",
+                    apellido = "Contreras",
+                    cargo = "Desarrollador"
+                },
+                new Usuario()
+                {
+                    idUsuario = 2,
+                    nombre = "María",
+                    apellido = "Vargas",
+                    cargo = "Desarrollador"
+                },
+                new Usuario()
+                {
+                    idUsuario = 3,
+                    nombre = "Jonathan",
+                    apellido = "González",
+                    cargo = "DBA"
+                }
+            };
+
+            return ListaUsuario;
         }
     }
 }

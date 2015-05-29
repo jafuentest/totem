@@ -39,7 +39,8 @@ public partial class GUI_Modulo8_DetalleMinutas : System.Web.UI.Page
     {
         int codMinuta = Int32.Parse(codigoMinuta);
         LogicaMinuta logicaMinuta = new LogicaMinuta();
-        Minuta minuta = logicaMinuta.obtenerMinuta(codMinuta);
+        Proyecto elProyecto = new Proyecto(){Codigo = "1"};
+        Minuta minuta = logicaMinuta.obtenerMinuta(elProyecto, codMinuta);
         var output = JsonConvert.SerializeObject(minuta);
         return output;
     }
