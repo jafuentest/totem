@@ -10,23 +10,25 @@ public partial class GUI_Modulo5_AgregarRequerimiento : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ((MasterPage)Page.Master).IdModulo = "5";
-        if (Request.Cookies["userInfo"] != null)
-        {
-            if (Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != "" &&
-                Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
-            {
-                ((MasterPage)Page.Master).ShowDiv = true;
-            }
-            else
-            {
-                ((MasterPage)Page.Master).MostrarMenuLateral = false;
-                ((MasterPage)Page.Master).ShowDiv = false;
-            }
 
-        }
-        else
-        {
-            Response.Redirect("../Modulo1/M1_login.aspx");
-        }
+	   DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+
+	   if ( user != null )
+	   {
+		  if ( user.username != "" &&
+			  user.clave != "" )
+		  {
+			 ((MasterPage)Page.Master).ShowDiv = true;
+		  }
+		  else
+		  {
+			 ((MasterPage)Page.Master).MostrarMenuLateral = false;
+			 ((MasterPage)Page.Master).ShowDiv = false;
+		  }
+	   }
+	   else
+	   {
+		  Response.Redirect("../Modulo1/M1_login.aspx");
+	   }
     }
 }
