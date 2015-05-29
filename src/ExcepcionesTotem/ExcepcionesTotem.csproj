@@ -66,12 +66,14 @@
     <Compile Include="Modulo7\CorreoRepeticoException.cs" />
     <Compile Include="Modulo7\RegistroUsuarioFallidoException.cs" />
     <Compile Include="Modulo7\UserNameRepetidoException.cs" />
+    <Compile Include="Modulo8\ExcepcionesDeDatos\AtributoIncorrectoException.cs" />
+    <Compile Include="Modulo8\ExcepcionesDeDatos\BDMinutaException.cs" />
+    <Compile Include="Modulo8\ExcepcionesDeDatos\ParametroIncorrectoException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modulo5\" />
     <Folder Include="Modulo6\" />
-    <Folder Include="Modulo8\ExcepcionesDedatos\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

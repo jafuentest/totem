@@ -5,6 +5,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using DominioTotem;
+using ExcepcionesTotem.Modulo8.ExcepcionesDeDatos;
+using ExcepcionesTotem;
 using System.IO;
 
 namespace DatosTotem.Modulo8
@@ -17,6 +19,7 @@ namespace DatosTotem.Modulo8
     {
 
         private BDConexion con;
+        private Minuta minuta;
 
         /// <summary>
         /// Método para consultar los datos de una minuta en la BD
@@ -25,15 +28,16 @@ namespace DatosTotem.Modulo8
         /// <returns>Retrorna el objeto Minuta</returns>
         public Minuta ConsultarMinutaBD(int id)
         {
-            Minuta minuta = new Minuta();
+            minuta = new Minuta();
             con = new BDConexion();
             SqlConnection conect = con.Conectar();
 
             SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoConsultarMinuta, conect);
-            sqlcom.CommandType = CommandType.StoredProcedure;
-            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDMinuta, id));
             try
-              {
+            {
+                sqlcom.CommandType = CommandType.StoredProcedure;
+                sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDMinuta, id));
+
                 SqlDataReader leer;
                 conect.Open();
                 leer = sqlcom.ExecuteReader();
@@ -46,12 +50,42 @@ namespace DatosTotem.Modulo8
 
             }
 
-            catch (Exception ex)
-            {
-                //Lanza excepcion logica propia
-                throw ex;
+            catch (NullReferenceException ex)
+             {
+
+                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                     RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+             }
+             catch(ExceptionTotemConexionBD ex)
+             {
                 
-            }
+                 throw new ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                     RecursoGeneralBD.Mensaje,ex);
+
+             }
+             catch (SqlException ex)
+             {
+                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                     RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+             }
+             catch (ParametroIncorrectoException ex)
+             {
+                 throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                     RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+             }
+             catch (AtributoIncorrectoException ex)
+             {
+                 throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                     RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+             }
+             catch (Exception ex)
+             {
+                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                    RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
+
+             }
 
             finally
             {
@@ -68,7 +102,7 @@ namespace DatosTotem.Modulo8
         /// <returns>Objeto Minuta</returns>
         public Minuta ObtenerObjetoMinutaBD(SqlDataReader BDMinuta)
         {
-            Minuta minuta = new Minuta();
+            minuta = new Minuta();
             con = new BDConexion();
             try
             {
@@ -80,12 +114,42 @@ namespace DatosTotem.Modulo8
                 return minuta;
             }
 
-            catch (Exception ex)
-            {
-               
-                throw ex;
+            catch (NullReferenceException ex)
+             {
 
-            }
+                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                     RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+             }
+             catch(ExceptionTotemConexionBD ex)
+             {
+                
+                 throw new ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                     RecursoGeneralBD.Mensaje,ex);
+
+             }
+             catch (SqlException ex)
+             {
+                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                     RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+             }
+             catch (ParametroIncorrectoException ex)
+             {
+                 throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                     RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+             }
+             catch (AtributoIncorrectoException ex)
+             {
+                 throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                     RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+             }
+             catch (Exception ex)
+             {
+                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                    RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
+
+             }
 
         }
 
@@ -99,31 +163,60 @@ namespace DatosTotem.Modulo8
             con = new BDConexion();
             SqlConnection conect = con.Conectar();
             SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoModificarMinuta, con.Conectar());
-            sqlcom.CommandType = CommandType.StoredProcedure;
-
-            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDMinuta, SqlDbType.Int));
-            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroFechaMinuta, SqlDbType.DateTime));
-            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroMotivoMinuta, SqlDbType.VarChar));
-            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroObservacionesMinuta, SqlDbType.VarChar));
-
-            sqlcom.Parameters[RecursosBDModulo8.ParametroIDMinuta].Value = min.Codigo;
-            sqlcom.Parameters[RecursosBDModulo8.ParametroFechaMinuta].Value = min.Fecha;
-            sqlcom.Parameters[RecursosBDModulo8.ParametroMotivoMinuta].Value = min.Motivo;
-            sqlcom.Parameters[RecursosBDModulo8.ParametroObservacionesMinuta].Value = min.Observaciones;
-
             try
             {
+                sqlcom.CommandType = CommandType.StoredProcedure;
+
+                sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDMinuta, SqlDbType.Int));
+                sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroFechaMinuta, SqlDbType.DateTime));
+                sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroMotivoMinuta, SqlDbType.VarChar));
+                sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroObservacionesMinuta, SqlDbType.VarChar));
+
+                sqlcom.Parameters[RecursosBDModulo8.ParametroIDMinuta].Value = min.Codigo;
+                sqlcom.Parameters[RecursosBDModulo8.ParametroFechaMinuta].Value = min.Fecha;
+                sqlcom.Parameters[RecursosBDModulo8.ParametroMotivoMinuta].Value = min.Motivo;
+                sqlcom.Parameters[RecursosBDModulo8.ParametroObservacionesMinuta].Value = min.Observaciones;
                 con.Conectar().Open();
                 sqlcom.ExecuteNonQuery();
                 return true;
 
             }
-            catch (Exception ex)
-            {
-                
-                throw ex;
+            catch (NullReferenceException ex)
+             {
 
-            }
+                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                     RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+             }
+             catch(ExceptionTotemConexionBD ex)
+             {
+                
+                 throw new ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                     RecursoGeneralBD.Mensaje,ex);
+
+             }
+             catch (SqlException ex)
+             {
+                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                     RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+             }
+             catch (ParametroIncorrectoException ex)
+             {
+                 throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                     RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+             }
+             catch (AtributoIncorrectoException ex)
+             {
+                 throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                     RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+             }
+             catch (Exception ex)
+             {
+                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                    RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
+
+             }
 
             finally
             {
@@ -143,29 +236,60 @@ namespace DatosTotem.Modulo8
             con = new BDConexion();
             SqlConnection conect = con.Conectar();
             SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoAgregarMinuta, con.Conectar());
-            sqlcom.CommandType = CommandType.StoredProcedure;
-
-            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroFechaMinuta, SqlDbType.DateTime));
-            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroMotivoMinuta, SqlDbType.VarChar));
-            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroObservacionesMinuta, SqlDbType.VarChar));
-
-            sqlcom.Parameters[RecursosBDModulo8.ParametroFechaMinuta].Value = min.Fecha;
-            sqlcom.Parameters[RecursosBDModulo8.ParametroMotivoMinuta].Value = min.Motivo;
-            sqlcom.Parameters[RecursosBDModulo8.ParametroObservacionesMinuta].Value = min.Observaciones;
-
             try
             {
+                sqlcom.CommandType = CommandType.StoredProcedure;
+
+                sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroFechaMinuta, SqlDbType.DateTime));
+                sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroMotivoMinuta, SqlDbType.VarChar));
+                sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroObservacionesMinuta, SqlDbType.VarChar));
+
+                sqlcom.Parameters[RecursosBDModulo8.ParametroFechaMinuta].Value = min.Fecha;
+                sqlcom.Parameters[RecursosBDModulo8.ParametroMotivoMinuta].Value = min.Motivo;
+                sqlcom.Parameters[RecursosBDModulo8.ParametroObservacionesMinuta].Value = min.Observaciones;
+
+            
                 con.Conectar().Open();
                 sqlcom.ExecuteNonQuery();
                 return true;
 
             }
-            catch (Exception ex)
-            {
+            catch (NullReferenceException ex)
+             {
 
-                throw ex;
+                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                     RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
 
-            }
+             }
+             catch(ExceptionTotemConexionBD ex)
+             {
+                
+                 throw new ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                     RecursoGeneralBD.Mensaje,ex);
+
+             }
+             catch (SqlException ex)
+             {
+                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                     RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+             }
+             catch (ParametroIncorrectoException ex)
+             {
+                 throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                     RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+             }
+             catch (AtributoIncorrectoException ex)
+             {
+                 throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                     RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+             }
+             catch (Exception ex)
+             {
+                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                    RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
+
+             }
 
             finally
             {
@@ -205,12 +329,42 @@ namespace DatosTotem.Modulo8
                 return listaMinuta;
             }
 
-            catch (Exception ex)
-            {
+             catch (NullReferenceException ex)
+             {
 
-                throw ex;
+                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                     RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
 
-            }
+             }
+             catch(ExceptionTotemConexionBD ex)
+             {
+                
+                 throw new ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                     RecursoGeneralBD.Mensaje,ex);
+
+             }
+             catch (SqlException ex)
+             {
+                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                     RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+             }
+             catch (ParametroIncorrectoException ex)
+             {
+                 throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                     RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+             }
+             catch (AtributoIncorrectoException ex)
+             {
+                 throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                     RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+             }
+             catch (Exception ex)
+             {
+                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                    RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
+
+             }
 
             finally
             {

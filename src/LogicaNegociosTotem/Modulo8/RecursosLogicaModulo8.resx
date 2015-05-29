@@ -123,6 +123,44 @@
   <data name="AtributoAcuerdoUsuario" xml:space="preserve">
     <value>idUsuario</value>
   </data>
+  <data name="Codigo" xml:space="preserve">
+    <value>T_00_001</value>
+    <comment>Codigo de error en la conexion con la BD</comment>
+  </data>
+  <data name="Codigo_ExcepcionAtributo" xml:space="preserve">
+    <value>T_08_05</value>
+  </data>
+  <data name="Codigo_ExcepcionGeneral" xml:space="preserve">
+    <value>T_08_03</value>
+  </data>
+  <data name="Codigo_ExcepcionNullReference" xml:space="preserve">
+    <value>T_08_01</value>
+  </data>
+  <data name="Codigo_ExcepcionParametro" xml:space="preserve">
+    <value>T_08_04</value>
+  </data>
+  <data name="Codigo_ExcepcionSql" xml:space="preserve">
+    <value>T_08_02</value>
+  </data>
+  <data name="Mensaje" xml:space="preserve">
+    <value>Error con la Conexion en la BaseDeDatosTotem, no se pudo abrir la conexion</value>
+    <comment>Mensaje al dar error en la conexion con la BD</comment>
+  </data>
+  <data name="Mensaje_ExcepcionAtributo" xml:space="preserve">
+    <value>Error uno de los atributos no existe en el procedimiento ejecutado</value>
+  </data>
+  <data name="Mensaje_ExcepcionGeneral" xml:space="preserve">
+    <value>Error se ha producido una excepcion</value>
+  </data>
+  <data name="Mensaje_ExcepcionNullReference" xml:space="preserve">
+    <value>Error existe una referencia nula</value>
+  </data>
+  <data name="Mensaje_ExcepcionSql" xml:space="preserve">
+    <value>Error existe un conflicto con la conexión a la base de datos</value>
+  </data>
+  <data name="Mensaje__ExcepcionParametro" xml:space="preserve">
+    <value>Error uno de los parametros no existe en el procedimiento ejecutado</value>
+  </data>
   <data name="ParametroIDAcuerdo" xml:space="preserve">
     <value>@acu_id</value>
     <comment>Parametro ID Acuerdo en los procedimientos en la BD </comment>
