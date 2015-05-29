@@ -323,7 +323,7 @@ namespace DatosTotem.Modulo4
 
                 //parametros para insertar un proyecto
                 List<Parametro> parametros = new List<Parametro>();
-                Parametro parametro = new Parametro(DatosTotem.Modulo7.RecursosBaseDeDatosModulo7.UsernameUsuario, SqlDbType.VarChar, username, false);
+                Parametro parametro = new Parametro(RecursosBDModulo4.ParametroUsuario, SqlDbType.VarChar, username, false);
                 parametros.Add(parametro);
                 parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, true);
                 parametros.Add(parametro);

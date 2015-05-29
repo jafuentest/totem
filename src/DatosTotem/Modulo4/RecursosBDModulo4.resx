@@ -205,6 +205,10 @@
     <value>@resultado</value>
     <comment>Resultado de los procedures</comment>
   </data>
+  <data name="ParametroUsuario" xml:space="preserve">
+    <value>@usu_username</value>
+    <comment>Usuario a consultar sus proyectos</comment>
+  </data>
   <data name="ProcedimientoAgregarProyecto" xml:space="preserve">
     <value>Procedure_AgregarProyecto</value>
     <comment>Agrega un proyecto en la BD</comment>
