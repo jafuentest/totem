@@ -397,6 +397,7 @@ CREATE
   TABLE REQUERIMIENTO
   (
     req_id          INTEGER NOT NULL ,
+    req_codigo      VARCHAR (15) NOT NULL ,
     req_descripcion VARCHAR (500) NOT NULL ,
     req_tipo        VARCHAR (25) NOT NULL ,
     req_prioridad   VARCHAR (10) NOT NULL ,

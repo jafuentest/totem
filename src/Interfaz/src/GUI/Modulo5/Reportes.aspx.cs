@@ -19,31 +19,31 @@ public partial class GUI_Modulo5_RFuncionalesID : System.Web.UI.Page
                 alert.Attributes["role"] = "alert";
                 alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Requerimiento eliminado exitosamente</div>";
             }
-            else
-                if (success.Equals("2"))
-                {
-                    alert.Attributes["class"] = "alert alert-success alert-dismissible";
-                    alert.Attributes["role"] = "alert";
-                    alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Requerimiento modificado exitosamente</div>";
-                }
-        }
-        if (Request.Cookies["userInfo"] != null)
-        {
-            if (Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != "" &&
-                Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
+	   else
+            if (success.Equals("2"))
             {
-                ((MasterPage)Page.Master).ShowDiv = true;
+                alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                alert.Attributes["role"] = "alert";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Requerimiento modificado exitosamente</div>";
             }
-            else
-            {
-                ((MasterPage)Page.Master).MostrarMenuLateral = false;
-                ((MasterPage)Page.Master).ShowDiv = false;
-            }
+	   }
+	   if (Request.Cookies["userInfo"] != null)
+	   {
+		  if (Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != "" &&
+			 Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
+		  {
+			 ((MasterPage)Page.Master).ShowDiv = true;
+		  }
+		  else
+		  {
+			 ((MasterPage)Page.Master).MostrarMenuLateral = false;
+			 ((MasterPage)Page.Master).ShowDiv = false;
+		  }
 
-        }
-        else
-        {
-            Response.Redirect("../Modulo1/M1_login.aspx");
-        }
+	   }
+	   else
+	   {
+		  Response.Redirect("../Modulo1/M1_login.aspx");
+	   }
     }
 }

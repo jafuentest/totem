@@ -5,21 +5,32 @@ using System.Text;
 
 namespace DominioTotem
 {
-    class Requerimiento
+    public class Requerimiento
     {
 	   #region Atributos
-	   private string id;
+	   private string codigo;
 	   private string descripcion;
 	   private string tipo;
 	   private string prioridad;
 	   private string estatus;
 	   #endregion
 
-	   #region Propiedades
-	   public string Id
+	   #region Constructor
+	   public Requerimiento(string codigo, string descripcion, string tipo, string prioridad, string estatus)
 	   {
-		  get { return id; }
-		  set { id = value; }
+		  Codigo = codigo;
+		  Descripcion = descripcion;
+		  Tipo = tipo;
+		  Prioridad = prioridad;
+		  Estatus = estatus;
+	   } 
+	   #endregion
+
+	   #region Propiedades
+	   public string Codigo
+	   {
+		  get { return codigo; }
+		  set { codigo = value; }
 	   }
 	   public string Descripcion
 	   {
