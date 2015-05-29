@@ -266,13 +266,14 @@
   <data name="Numero" xml:space="preserve">
     <value>@numero</value>
   </data>
-  <data name="ProcedureListarClientesNaturales" xml:space="preserve">
-    <value>Procedure_ConsultarTodosClientesNaturales</value>
-    <comment>Procedimiento para consultar todos los clientes naturales</comment>
+  <data name="NombreClienteNatural" xml:space="preserve">
+    <value>@cj_nombre</value>
   </data>
-  <data name="ProcedureListarClientesJuridicos" xml:space="preserve">
-    <value>Procedure_ConsultarTodosClientesJuridicos</value>
-    <comment>Procedimiento para consultar todos los clientes juridicos</comment>
+  <data name="NombreContacto" xml:space="preserve">
+    <value>@nombreContacto</value>
+  </data>
+  <data name="IdCargo" xml:space="preserve">
+    <value>@idCargo</value>
   </data>
   <data name="ProcedureListarClientesJuridicos" xml:space="preserve">
     <value>Procedure_ConsultarTodosClientesJuridicos</value>
