@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Web.Services;
+using DominioTotem;
+using LogicaNegociosTotem.Modulo8;
+using Newtonsoft.Json;
 
 public partial class GUI_Modulo8_DetalleMinutas : System.Web.UI.Page
 {
+    private static string codigoMinuta;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         ((MasterPage)Page.Master).IdModulo = "8";
@@ -25,5 +26,21 @@ public partial class GUI_Modulo8_DetalleMinutas : System.Web.UI.Page
             }
 
         }
+        codigoMinuta = Request.QueryString["idMinuta"];
+    }
+
+
+    /// <summary>
+    /// Método parar cargar los Detalles de la Minuta
+    /// </summary>
+    /// <returns>Retorna un String con JSON para poder cargar los Detalles de la Minuta</returns>
+    [WebMethod]
+    public static string detalleMinuta()
+    {
+        int codMinuta = Int32.Parse(codigoMinuta);
+        LogicaMinuta logicaMinuta = new LogicaMinuta();
+        Minuta minuta = logicaMinuta.obtenerMinuta(codMinuta);
+        var output = JsonConvert.SerializeObject(minuta);
+        return output;
     }
 }

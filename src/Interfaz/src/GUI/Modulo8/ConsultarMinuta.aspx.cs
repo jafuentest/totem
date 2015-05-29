@@ -85,7 +85,7 @@ public partial class GUI_Modulo8_ConsultarMinuta : System.Web.UI.Page
     /// <returns>Retorna un String con los Botones de Acción</returns>
     public static string BotonesAcciones(string id)
     {
-        string botonDetalle = "<a id='{0}' class='btn btn-primary glyphicon glyphicon-info-sign' href='<%= Page.ResolveUrl(\"~/GUI/Modulo8/DetalleMinutas.aspx\")%>'></a>";
+        string botonDetalle = "<a id='{0}' class='btn btn-primary glyphicon glyphicon-info-sign' href='DetalleMinutas.aspx?idMinuta={0}'></a>";
         botonDetalle = String.Format(botonDetalle, id);
 
         string botonModificar = "<a id='{0}' class='btn btn-default glyphicon glyphicon-pencil' href='<%= Page.ResolveUrl(\"~/GUI/Modulo8/ModificarMinuta.aspx\")%>'></a>";
