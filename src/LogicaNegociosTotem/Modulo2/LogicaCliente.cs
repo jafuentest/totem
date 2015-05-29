@@ -44,7 +44,7 @@ namespace LogicaNegociosTotem.Modulo2
        /// </summary>
        /// <param name="clienteJuridico">Información del Cliente Jurídico</param>
        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-       public bool AgregarClienteJuridico(string rif, string nombre, int fkLugar,string direccion,int cargoId,string contactoNombre,
+       public bool AgregarClienteJuridico(string rif, string nombre, int fkLugar,string direccion,string contactoNombre,
            string apellidoNombre,int idCargo,string telefono,string cedula)
        {
            try
