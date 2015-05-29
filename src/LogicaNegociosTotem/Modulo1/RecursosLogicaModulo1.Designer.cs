@@ -178,6 +178,15 @@ namespace LogicaNegociosTotem.Modulo1 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to \A(?:[a-z0-9!#$%&amp;&apos;*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;&apos;*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z.
+        /// </summary>
+        internal static string Expresion_Regular_Correo {
+            get {
+                return ResourceManager.GetString("Expresion_Regular_Correo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to http://localhost:22288/src/GUI/Modulo1/M1_PreguntaSeguridad.aspx?usuario=.
         /// </summary>
         internal static string Link_Recuperacion_Clave {
