@@ -56,43 +56,24 @@
 		</div>
         <div class="form-group">
             <div class="col-sm-10 col-md-10 col-lg-10">
-            <div class="dropdown">
-              <button  class="btn btn-default dropdown-toggle" type="button" id="dropdownRol" data-toggle="dropdown" aria-expanded="true" runat="server">
-                Seleccione un Rol
-                <span class="caret"></span>
-              </button>
-              <ul id="dprol" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                <li role="presentation"><a role="menuitem" tabindex="-1" >Usuario</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" >Admin</a></li>
-              </ul>
-            </div>
+                 <div class="dropdown" runat="server" id="divComboTipoRol">
+                 <asp:DropDownList ID="comboTipoRol"  class="btn btn-default dropdown-toggle" runat="server" >
+               </asp:DropDownList>
+             </div> 
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-sm-10 col-md-10 col-lg-10">
-            <div class="dropdown">
-              <button id="id-cargo" class="btn btn-default dropdown-toggle" type="button" name="dropdwonCargo" data-toggle="dropdown" aria-expanded="true">
-                Seleccione un Cargo
-                <span class="caret"></span>
-              </button>
-              <ul id="dpcargo" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                <li role="presentation"><a role="menuitem" tabindex="-1" >Gerente</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" >Desarrollador</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1">Diseñador</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" >L&iacute;der de Proyecto</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" >Arquitecto de Soluci&oacute;n</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" >Arquitecto de Base de Datos</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1">Documentador</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1">Otro</a></li>
-              </ul>
+     
+
+        <div class="form-group">  
+            <div class="col-sm-10 col-md-10 col-lg-10" > 
+             <div class="dropdown" runat="server" id="divComboCargo">
+              <asp:DropDownList ID="comboCargo"  class="btn btn-default dropdown-toggle" runat="server" >
+                 </asp:DropDownList>
+                    </div>    
+                 </div>
             </div>
-            </div>
-        </div>
-         <div class="form-group">
-			<div id="div_otrocargo" class="col-sm-10 col-md-10 col-lg-10">
-				<input id="id_otrocargo" type="text" placeholder="Otro Cargo" class="form-control" name="otrocargo" runat="server" disabled='true'/>
-			</div>
-		</div>
+
+
         <div class="form-group">
 			<div id="div_pregunta" class="col-sm-10 col-md-10 col-lg-10">
 				<input type="text" placeholder="Pregunta de Seguridad" class="form-control" name="pregunta" id="id_pregunta" runat="server"/>
