@@ -7,7 +7,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 
               <div class="col-sm-12 col-md-12 col-lg-12">
-                 <div id="alertlocal" >
+                 <div id="alertlocal" runat="server" >
                  </div>
               	  <form id="agregarpersonal" runat="server">
                        <div class="form-group">
@@ -40,7 +40,7 @@
                              </div>   
                             <div class="col-sm-5 col-md-5 col-lg-5" > 
                                <div class="dropdown" runat="server" id="divComboPersonal">
-                                    <asp:DropDownList ID="comboPersonal"  class="btn btn-default dropdown-toggle" runat="server">
+                                    <asp:DropDownList ID="comboPersonal"  class="btn btn-default dropdown-toggle" runat="server" OnSelectedIndexChanged ="AgregarInvolucrados_Click" AutoPostBack="true">
                                     </asp:DropDownList>
                                 </div>        
                             </div>    
@@ -58,7 +58,8 @@
                                  <th>Eliminar</th>
                                </tr>
                              </thead>
-                            <tbody>
+                            <tbody id="tablebody" runat="server">
+                                <asp:Literal runat="server" ID="laTabla"></asp:Literal>
                            </tbody>
                          </table>
                     </div>
@@ -108,7 +109,7 @@
                    </div> 
                       <div class="form-group">
                 <div class="col-sm-5 col-md-5 col-lg-5">
-                    <button id="btn-enviar" class="btn btn-primary"  type="submit" onclick="return false;">Agregar</button>
+                    <%--<asp:Button id="btn-enviar" class="btn btn-primary"  type="submit" runat="server" OnClick="btn_enviar_Click">Agregar</asp:Button>--%>
                     <a class="btn btn-default" href="ListarPersonalInvolucrado.aspx">Cancelar</a>
                 </div>
             </div>

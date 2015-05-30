@@ -55,15 +55,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseDeDatos\BaseDeDatosTotemDataSet.cs">
-      <DependentUpon>BaseDeDatosTotemDataSet.xsd</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="BaseDeDatos\BaseDeDatosTotemDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BaseDeDatosTotemDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="BDConexion.cs" />
     <Compile Include="Modulo3\RecursosBDModulo3.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -75,6 +66,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RecursosBDModulo4.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo5\BDRequerimiento.cs" />
+    <Compile Include="Modulo5\RecursosBDModulo5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosBDModulo5.resx</DependentUpon>
     </Compile>
     <Compile Include="Modulo7\BDUsuario.cs" />
     <Compile Include="Modulo7\RecursosBaseDeDatosModulo7.Designer.cs">
@@ -124,24 +121,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="BaseDeDatos\BaseDeDatosTotemDataSet.xsc">
-      <DependentUpon>BaseDeDatosTotemDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="BaseDeDatos\BaseDeDatosTotemDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BaseDeDatosTotemDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="BaseDeDatos\BaseDeDatosTotemDataSet.xss">
-      <DependentUpon>BaseDeDatosTotemDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modulo5\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
@@ -182,19 +165,23 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo2\RecursosBaseDeDatosModulo2.resx" />
     <EmbeddedResource Include="Modulo3\RecursosBDModulo3.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosBDModulo3.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo4\RecursosBDModulo4.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosBDModulo4.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulo5\RecursosBDModulo5.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosBDModulo5.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulo6\RecursosBDModulo6.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosBDModulo6.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo7\RecursosBaseDeDatosModulo7.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosBaseDeDatosModulo7.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo8\RecursosBDModulo8.resx">
@@ -202,9 +189,12 @@
       <LastGenOutput>RecursosBDModulo8.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RecursoGeneralBD.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursoGeneralBD.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BaseDeDatos\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

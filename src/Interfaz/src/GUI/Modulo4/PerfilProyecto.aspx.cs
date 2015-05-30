@@ -122,4 +122,20 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
 
         this.modifyButton.Text += "<a class='btn btn-primary' runat='server' href='ModificarProyecto.aspx?success='" + esteProyecto.Codigo + "&success=-1'>Modificar</a>";
     }
+
+    public void Ers(object sender, EventArgs e)
+    {
+        HttpCookie projectCookie = Request.Cookies.Get("selectedProjectCookie");
+        LogicaNegociosTotem.Modulo4.LogicaProyecto.GenerarERS(projectCookie.Values["projectCode"]);
+        Response.ClearContent();
+        Response.ClearHeaders();
+        Response.ContentType = "application/pdf";
+        Response.AddHeader
+        ("Content-Disposition", "attachment; filename=" + "ers.tex");
+        Response.TransmitFile("ers.pdf");
+        Response.End();
+        //Response.WriteFile(strS);
+        Response.Flush();
+        Response.Clear();
+    }
 }

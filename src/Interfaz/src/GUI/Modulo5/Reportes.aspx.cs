@@ -9,8 +9,11 @@ public partial class GUI_Modulo5_RFuncionalesID : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
         ((MasterPage)Page.Master).IdModulo = "5";
+
         String success = Request.QueryString["success"];
+
         if (success != null)
         {
             if (success.Equals("3"))
@@ -27,10 +30,13 @@ public partial class GUI_Modulo5_RFuncionalesID : System.Web.UI.Page
                 alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Requerimiento modificado exitosamente</div>";
             }
 	   }
-	   if (Request.Cookies["userInfo"] != null)
+
+	   DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+
+	   if (user != null)
 	   {
-		  if (Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != "" &&
-			 Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
+		  if (user.username != "" &&
+			  user.clave != "")
 		  {
 			 ((MasterPage)Page.Master).ShowDiv = true;
 		  }
@@ -39,11 +45,11 @@ public partial class GUI_Modulo5_RFuncionalesID : System.Web.UI.Page
 			 ((MasterPage)Page.Master).MostrarMenuLateral = false;
 			 ((MasterPage)Page.Master).ShowDiv = false;
 		  }
-
 	   }
 	   else
 	   {
 		  Response.Redirect("../Modulo1/M1_login.aspx");
 	   }
+
     }
 }

@@ -113,10 +113,10 @@ public partial class GUI_Modulo7_Registro : System.Web.UI.Page
             }
             else
             {
-                alert_apellido.Attributes["class"] = "alert alert-danger alert-dismissible";
-                alert_apellido.Attributes["role"] = "alert";
-                alert_apellido.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>El nombre esta vacio</div>";
-                alert_apellido.Visible = true;
+                alert_nombre.Attributes["class"] = "alert alert-danger alert-dismissible";
+                alert_nombre.Attributes["role"] = "alert";
+                alert_nombre.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>El nombre esta vacio</div>";
+                alert_nombre.Visible = true;
             }
             
         }

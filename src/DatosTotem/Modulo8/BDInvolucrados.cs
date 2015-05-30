@@ -557,6 +557,76 @@ namespace DatosTotem.Modulo8
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="idMinuta"></param>
+        /// <returns></returns>
+        public Boolean EliminarInvolucradoEnMinuta(int idMinuta)
+        {
+            con = new BDConexion();
+            SqlConnection conect = con.Conectar();
+
+            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedureEliminarInvolucradoMinuta, conect);
+            try
+            {
+                sqlcom.CommandType = CommandType.StoredProcedure;
+                conect.Open();
+
+                    sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDMinuta, SqlDbType.Int));
+
+                    sqlcom.Parameters[RecursosBDModulo8.ParametroIDMinuta].Value = idMinuta;
+
+                    sqlcom.ExecuteNonQuery();
+
+                return true;
+            }
+
+            catch (NullReferenceException ex)
+            {
+
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                    RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            catch (ExceptionTotemConexionBD ex)
+            {
+
+                throw new ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                    RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                    RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                    RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
+            catch (Exception ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                   RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
+
+            }
+
+            finally
+            {
+                con.Desconectar(conect);
+
+            }
+
+        }
+
+        /// <summary>
         /// Metodo para obtener un Objeto tipo Usuario
         /// </summary>
         /// <param name="BDUsuario">parametro de lectura sql</param>

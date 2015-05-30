@@ -49,6 +49,7 @@
     <Compile Include="Modulo2\LogicaLugar.cs" />
     <Compile Include="Modulo3\LogicaInvolucrados.cs" />
     <Compile Include="Modulo4\LogicaProyecto.cs" />
+    <Compile Include="Modulo5\LogicaRequerimiento.cs" />
     <Compile Include="Modulo6\LogicaActor.cs" />
     <Compile Include="Modulo6\LogicaCasoUso.cs" />
     <Compile Include="Modulo7\LogicaUsuario.cs" />
@@ -61,9 +62,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modulo5\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Compile Include="Modulo1\LogicaLogin.cs" />
   </ItemGroup>

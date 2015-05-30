@@ -117,97 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ApellidoUsuario" xml:space="preserve">
-    <value>@usu_apellido</value>
-    <comment>Atributo apellido usuario</comment>
+  <data name="CONSTANTE_RF" xml:space="preserve">
+    <value>RF</value>
   </data>
-  <data name="CargoUsuario" xml:space="preserve">
-    <value>@usu_car_nombre</value>
-    <comment>Atributo cargo usuario</comment>
-  </data>
-  <data name="ClaveUsuario" xml:space="preserve">
-    <value>@usu_clave</value>
-    <comment>Atributo clave usuario</comment>
-  </data>
-  <data name="conexion" xml:space="preserve">
-    <value>Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\Argenis\Desktop\totem\src\DatosTotem\BaseDeDatos\BaseDeDatosTotem.mdf;Integrated Security=True</value>
-    <comment>Permite conectarse a la BD</comment>
-  </data>
-  <data name="CorreoUsuario" xml:space="preserve">
-    <value>@usu_correo</value>
-    <comment>Atributo correo usuario</comment>
-  </data>
-  <data name="NombreUsuario" xml:space="preserve">
-    <value>@usu_nombre</value>
-    <comment>Atributo nombre usuario</comment>
-  </data>
-  <data name="PreguntaUsuario" xml:space="preserve">
-    <value>@usupreguntaseguridad</value>
-    <comment>Atributo pregunta usuario</comment>
-  </data>
-  <data name="ProcedimientoInsertarUsuario" xml:space="preserve">
-    <value>InsertarUsuario</value>
-    <comment>Nombre del procedimiento almacenado para Insertar usuario</comment>
-  </data>
-  <data name="ProcedimientoModificarUsuario" xml:space="preserve">
-    <value>ModificarUsuario</value>
-    <comment>Nombre del procedimiento para modificar usuario</comment>
-  </data>
-  <data name="QueryObtenerCargo" xml:space="preserve">
-    <value>SELECT car_nombre FROM CARGO,USUARIO WHERE car_id=</value>
-    <comment>Consulta cargo de usuario</comment>
-  </data>
-  <data name="queryObtenerUsuario" xml:space="preserve">
-    <value>SELECT * FROM USUARIO WHERE usu_username=</value>
-    <comment>Consulta Usuario</comment>
-  </data>
-  <data name="RespuestaUsuario" xml:space="preserve">
-    <value>@usurespuestaseguridad</value>
-    <comment>Atributo respuestausuario</comment>
-  </data>
-  <data name="RolUsuario" xml:space="preserve">
-    <value>@usu_rol</value>
-    <comment>Atributo rol usuario</comment>
-  </data>
-  <data name="UsernameUsuario" xml:space="preserve">
-    <value>@usu_username</value>
-    <comment>Atributo username usuario</comment>
-  </data>
-  <data name="ProcedimientoConsultarUsuario" xml:space="preserve">
-    <value>ConsultarUsuario</value>
-    <comment>Permite consultar los datos de un usuario</comment>
-  </data>
-  <data name="ProcedimientoUsuarioUnico" xml:space="preserve">
-    <value>UserNameUnico</value>
-    <comment>Consulta si un nombre de usuario es unico</comment>
-  </data>
-  <data name="Resultadorepetido" xml:space="preserve">
-    <value>@usu_resultado</value>
-  </data>
-  <data name="ProcedimientoCorreoUnico" xml:space="preserve">
-    <value>CorreoUnico</value>
-    <comment>Permite saber si el correo ya existe</comment>
-  </data>
-  <data name="QueryListarUsuario" xml:space="preserve">
-    <value>SELECT usu_username,usu_nombre,usu_apellido,car_nombre
-   FROM USUARIO,CARGO
-   WHERE CARGO_car_id = car_id</value>
-    <comment>Permite obtener una lista con todos los usuario en el sistema</comment>
-  </data>
-  <data name="CargosUsuarios" xml:space="preserve">
-    <value>SELECT DISTINCT CAR_NOMBRE FROM CARGO, USUARIO WHERE CARGO_car_id=car_id</value>
-    <comment>Permite consultar todoslos cargos de los usuarios</comment>
-  </data>
-  <data name="QueryCargosUsuarios" xml:space="preserve">
-    <value>SELECT DISTINCT CAR_NOMBRE FROM CARGO, USUARIO WHERE CARGO_car_id=car_id</value>
-    <comment>Los cargos de los usuarios</comment>
-  </data>
-  <data name="ConsultarClaveUsuario" xml:space="preserve">
-    <value>ConsultarClave</value>
-    <comment>Permite consultar la clave</comment>
-  </data>
-  <data name="ProcedimientoObtenerUsuario" xml:space="preserve">
-    <value>ObtenerDatosUsuario</value>
-    <comment>Permite obtener los datos del usuario</comment>
+  <data name="CONSTANTE_RNF" xml:space="preserve">
+    <value>RNF</value>
   </data>
 </root>

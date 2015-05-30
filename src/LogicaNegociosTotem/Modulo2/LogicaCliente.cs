@@ -27,47 +27,149 @@ namespace LogicaNegociosTotem.Modulo2
            baseDeDatosCliente = new BDCliente(); 
        }
 
+
+       /// <summary>
+       /// Método que llama a acceso a datos para
+       /// verificar la existencia de un cliente
+       /// </summary>
+       /// <param name="rif"></param>
+       /// <returns></returns>
+       public int VerificarExistenciaJuridico(string rif) 
+       {
+           return baseDeDatosCliente.VerificarExistenciaClienteJuridico(rif);
        
+       }
+
+       /// <summary>
+       /// Método que llama a acceso a datos para verificar la 
+       /// existencia de un cliente natural
+       /// </summary>
+       /// <param name="cedula"></param>
+       /// <returns></returns>
+       public int VerificarExistenciaNatural(string cedula)
+       {
+           return baseDeDatosCliente.VerificarExistenciaClienteNatural(cedula);
+
+       }
 
        /// <summary>
        /// Método que solicita a acceso a datos que inserte el cliente jurídico nuevo
        /// </summary>
        /// <param name="clienteJuridico">Información del Cliente Jurídico</param>
        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-       public bool AgregarClienteJuridico(string rif, string nombre, int fkLugar)
+      public bool AgregarClienteJuridico(string rif, string nombre, int fkLugar,string direccion,string contactoNombre,
+           string apellidoNombre,int idCargo,string telefono,string cedula)
        {
-           ClienteJuridico clienteJuridico = new ClienteJuridico(rif,nombre); 
+           try
+           {
+               int codTele = 0;
+               int idNumero = 0;
 
-           return baseDeDatosCliente.AgregarClienteJuridico(clienteJuridico, fkLugar);
+               string contenedorCodigo = string.Empty;
+               //Vamos a separar el string de telefono en codTele y IdNumero para 
+               //ser insertados como númericos en BD.
+               char[] cadena = telefono.ToCharArray();
+               char[] codigoAux = new char[4];
+               char[] numeroAux = new char[8];
+               string codigoSeparado = "";
+               string numeroSeparado = "";
+               int j = 0; 
+               for (int i = 0; i < cadena.Length; i++)
+               {
+                   //Los 3 primeros indices son para codigo
+                   if (i < 3)
+                   {
+                       codigoAux[i] = cadena[i];
+                       codigoSeparado = codigoSeparado + codigoAux[i]; 
+                       
+                   }
+                   //Los demás son para teléfono
+                   else
+                   {
+                       numeroAux[j] = cadena[i];
+                       numeroSeparado = numeroSeparado + numeroAux[j];
+                       j++; 
+                   }
+               }
+               
+               
+               codTele = Convert.ToInt32(codigoSeparado);
+               idNumero = Convert.ToInt32(numeroSeparado);
+
+               ClienteJuridico clienteJuridico = new ClienteJuridico(rif, nombre);
+
+               return baseDeDatosCliente.AgregarClienteJuridico(clienteJuridico, fkLugar,direccion,contactoNombre ,
+                   apellidoNombre, idCargo,codTele, idNumero,cedula);
+           }
+           catch(Exception e)
+           {
+               throw new ExcepcionesTotem.Modulo2.ClienteLogicaException("L_02_003","Error dentro de la capa lógica",e);
+           }
        }
-
 
        /// <summary>
        /// Método que solicita a acceso a datos que inserte el cliente natural nuevo
        /// </summary>
        /// <param name="clienteNatural">Información del Cliente Natural</param>
        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-       public bool AgregarClienteNatural(string identificador, string nombre, int fkLugar)
+       public bool AgregarClienteNatural(string identificador, string nombre, string apellido,
+           int fkLugar,string direccion,string correo, string telefono)
        {
-           //try
-          // {
 
-           
-               ClienteNatural clientenatural = new ClienteNatural(identificador, nombre);
-               return baseDeDatosCliente.AgregarClienteNatural(clientenatural, fkLugar);
-           
+           try
+           {
+               int codTele = 0;
+               int idNumero = 0;
 
-           //}
-          // catch (ExcepcionesTotem.Modulo2.ExcepcionLogicaClientes)
-        //   {
-             
-             //  throw new ExcepcionesTotem.Modulo2.ExcepcionLogicaClientes();
-           //}
-                
-            //}
-            
+               string contenedorCodigo = string.Empty;
+               //Vamos a separar el string de telefono en codTele y IdNumero para 
+               //ser insertados como númericos en BD.
+               char[] cadena = telefono.ToCharArray();
+               char[] codigoAux = new char[4];
+               char[] numeroAux = new char[8];
+               string codigoSeparado = "";
+               string numeroSeparado = "";
+               int j = 0;
+               for (int i = 0; i < cadena.Length; i++)
+               {
+                   //Los 3 primeros indices son para codigo
+                   if (i < 3)
+                   {
+                       codigoAux[i] = cadena[i];
+                       codigoSeparado = codigoSeparado + codigoAux[i];
 
-        }
+                   }
+                   //Los demás son para teléfono
+                   else
+                   {
+                       numeroAux[j] = cadena[i];
+                       numeroSeparado = numeroSeparado + numeroAux[j];
+                       j++;
+                   }
+               }
+
+
+               codTele = Convert.ToInt32(codigoSeparado);
+               idNumero = Convert.ToInt32(numeroSeparado);
+
+               ClienteNatural clienteNatural = new ClienteNatural();
+               clienteNatural.Nat_Id = identificador; 
+               clienteNatural.Nat_Nombre = nombre;
+               clienteNatural.Nat_Apellido = apellido;
+               clienteNatural.Nat_Direccion = direccion;
+               clienteNatural.Nat_Correo = correo; 
+               
+
+
+              return baseDeDatosCliente.AgregarClienteNatural(clienteNatural,
+                  fkLugar,codTele,idNumero);
+           }
+           catch (Exception e)
+           {
+               throw new ExcepcionesTotem.Modulo2.ClienteLogicaException("L_02_003", "Error dentro de la capa lógica", e);
+           }
+
+       }
 
 
        /// <summary>

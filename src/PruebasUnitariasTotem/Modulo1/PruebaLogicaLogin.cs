@@ -27,11 +27,9 @@ namespace PruebasUnitariasTotem.Modulo1
             Usuario user = new Usuario();
             user.username = RecursosPUMod1.UsuarioExitoso;
             user.clave = RecursosPUMod1.ClaveExitosa;
-            user.CalcularHash();
             DominioTotem.Usuario retornoUsuario= LogicaNegociosTotem.Modulo1.LogicaLogin.Login(user.username, user.clave);
             Assert.IsNotNull(retornoUsuario);
             Assert.AreEqual(user.username,retornoUsuario.username);
-            Assert.AreEqual(user.clave,retornoUsuario.clave);
             Assert.IsNotNull(retornoUsuario.correo);
             Assert.IsNotNull(retornoUsuario.nombre);
             Assert.IsNotNull(retornoUsuario.apellido);
@@ -71,7 +69,57 @@ namespace PruebasUnitariasTotem.Modulo1
             catch (Exception err) {
                 Assert.Fail("No se tuvo que haber disparado ninguna exception");
             }
-        }     
+        }
+        
+        /// <summary>
+        ///Metodo para probar la recuperacion de clave 
+        /// </summary>
+        [Test]
+        public void PruebaRecuperacionClave() {
+            Usuario user = new Usuario();
+            user.correo = RecursosPUMod1.CorreoExitoso;
+            Assert.IsTrue(LogicaLogin.RecuperacionDeClave(user));
+        }
+
+        /// <summary>
+        /// Metodo para probar la validacion de la respuesta secreta
+        /// </summary>
+        [Test]
+        public void PruebaValidarRespuestaSecreta() {
+            Usuario user = new Usuario();
+            user.correo = LogicaLogin.EncriptarConRijndael(RecursosPUMod1.CorreoExitoso, RecursosPUMod1.Passphrase);
+            user.respuestaSeguridad = RecursosPUMod1.RespuestaDeSeguridadExitosa;
+            Assert.IsTrue(LogicaLogin.ValidarRespuestaSecreta(user));
+            
+        
+        }
+
+        /// <summary>
+        /// Metodo para obtener la pregunta de seguridad
+        /// </summary>
+        [Test]
+        public void PruebaObtenerPreguntaDeSeguridad() {
+            Usuario user = new Usuario();
+            user.username = RecursosPUMod1.UsuarioExitoso;
+            user.correo = LogicaLogin.EncriptarConRijndael(RecursosPUMod1.CorreoExitoso, RecursosPUMod1.Passphrase);
+            user.respuestaSeguridad = RecursosPUMod1.RespuestaDeSeguridadExitosa;
+            DominioTotem.Usuario usuarioTmp = LogicaLogin.ObtenerPreguntaUsuario(user);
+            Assert.IsNotNull(usuarioTmp);
+            Assert.IsNotNull(usuarioTmp.preguntaSeguridad);
+            Assert.AreNotEqual(usuarioTmp.preguntaSeguridad,String.Empty);
+        }
+        
+        /// <summary>
+        /// Metodo para probar el cambio de clave
+        /// </summary>
+        [Test]
+        public void PruebaCambioDeClave() {
+            Usuario user = new Usuario();
+            user.username = RecursosPUMod1.UsuarioExitoso;
+            user.clave = RecursosPUMod1.ClaveExitosa;
+            user.correo = LogicaLogin.EncriptarConRijndael(RecursosPUMod1.CorreoExitoso, RecursosPUMod1.Passphrase);
+            Assert.IsTrue( LogicaLogin.CambioDeClave(user));
+        }
 
     }
 

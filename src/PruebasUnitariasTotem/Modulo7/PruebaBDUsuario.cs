@@ -34,8 +34,22 @@ namespace PruebasUnitariasTotem.Modulo7
         [Test]
         public void PruebaCorreoUnico()
         {
-            Assert.IsTrue(baseDeDatosUsuario.correoUnico("rodarge32@gmail.com"));
+            Assert.IsTrue(baseDeDatosUsuario.correoUnico("rodarge34@gmail.com"));
 
+        }
+        [Test]
+        public void PruebaDatosUsuario()
+        {
+            Usuario usuario = new Usuario();
+            usuario.username = "albertods";
+            Assert.IsNotNull(baseDeDatosUsuario.DatosUsuario(usuario));
+        }
+        [Test]
+        public void PruebaModificarUsuario()
+        {
+            Usuario usuario = new Usuario("albertods", "5563albert", "alberto07", "sdfgh", "Administrador", "rodarge33@hotmail.com", "mi perro", "dexter", "Desarrollador");
+
+            Assert.IsTrue(baseDeDatosUsuario.ModificarUsuario(usuario));
         }
         [Test]
         public void PruebaListaUsuario()
@@ -48,12 +62,7 @@ namespace PruebasUnitariasTotem.Modulo7
             Usuario usuario = new Usuario("Argenis04", "dfsfdf3232343", "Argenis", "Rodriguez", "Administrador", "rodarge32@gmail.com", "Como se llama mi perro", "slipy", "Desarrrollador");
             Assert.AreEqual("Desarrollador",baseDeDatosUsuario.ObtenerCargo("Argenis04"));
         }
-         [Test]
-         public void PruebaConsultarUsuario()
-         {
-             Usuario usuario = new Usuario("Argenis05", "dfsfdf3232343", "Argenis", "Rodriguez", "Administrador", "rodarge32@gmail.com", "Como se llama mi perro", "slipy", "Desarrrollador");
-             Assert.AreEqual("Argenis", (baseDeDatosUsuario.ConsultarUsuario("Argenis05")).nombre);          
-         }
+
         [Test]
          public void PruebaConsultarPregunta()
          {
@@ -61,10 +70,9 @@ namespace PruebasUnitariasTotem.Modulo7
              Assert.IsTrue(baseDeDatosUsuario.ConsultaPregunta("Argenis05", "Como se llama mi perro","Fox"));  
          }
         [Test]
-        public void PruebaModificarUsuario()
+        public void PruebaConsultarClave()
         {
-            Usuario usuario = new Usuario("Argenis06", "dfsfdf3232343", "Argenis", "Rodriguez", "Administrador", "rodarge32@gmail.com", "Como se llama mi perro", "slipy", "Desarrrollador");
-            Assert.IsTrue(baseDeDatosUsuario.ModificarUsuario(usuario));  
+            Assert.IsTrue(baseDeDatosUsuario.ConsultarClaveUsuario("albertods") == "");
         }
     }
 }

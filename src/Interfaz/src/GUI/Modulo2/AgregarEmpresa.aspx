@@ -98,11 +98,7 @@
                         <input id="codigoPostalEmpresa" runat="server" name="codigopostal" type="text" class="form-control" placeholder="Código postal" />
                     </div>
                 </div>
-                <div class="form-group">
-                    <div id="div_telefono" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="telefonoEmpresa" runat="server" name="telefono" type="text" class="form-control" placeholder="Teléfono" />
-                    </div>
-                </div>
+                
 
                 <h2>Contactos</h2>
 
@@ -119,14 +115,20 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-10">
-                                    <input runat="server" class="form-control" placeholder="Nombres del Contacto" type="text" />
+                                    <input id="cedulaContacto" runat="server" class="form-control" placeholder="Cédula del Contacto" type="text" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-xs-10">
+                                    <input id="nombreContacto" runat="server" class="form-control" placeholder="Nombres del Contacto" type="text" />
                                 </div>
                             </div>
 
                             <div class="col-xs-10 form-group"></div>
                             <div class="form-group">
                                 <div class="col-xs-10">
-                                    <input runat="server" class="form-control" placeholder="Apellidos del Contacto" type="text" />
+                                    <input id="apellidoContacto" runat="server" class="form-control" placeholder="Apellidos del Contacto" type="text" />
                                 </div>
 
                             </div>
@@ -139,7 +141,11 @@
                                     <div class="btn-group col-sm-10 col-md-10 col-lg-10">
                                         <div id="contenedorCargo" runat="server" class="dropdown"> 
                                         <select id="comboCargo" runat="server">
-                                                                                       
+                                              <option runat="server" value="0">Seleccione Cargo..</option>
+                                              <option runat="server" value="1">Gerente</option>
+                                              <option runat="server" value="2">Desarrollador</option> 
+                                            <option runat="server" value="3">Diseñador</option> 
+                                            <option runat="server" value="4">Arquitecto de Solucion</option>                                      
                                         </select>
                                        </div>
                                     </div>
@@ -150,15 +156,11 @@
                             <div class="col-xs-10 form-group"></div>
                             <div class="form-group">
                                 <div class="col-xs-10">
-                                    <input class="form-control" runat="server" placeholder="Teléfono celular " type="text" />
+                                    <input id="telefonoContacto" class="form-control" runat="server" placeholder="Teléfono celular " type="text" />
                                 </div>
                             </div>
                             <div class="col-xs-10 form-group"></div>
-                            <div class="form-group">
-                                <div class="col-xs-10">
-                                    <input class="form-control" runat="server" placeholder="Teléfono celular alternativo" type="text" />
-                                </div>
-                            </div>
+                            
 
 
 
@@ -172,7 +174,7 @@
 
                 <div class="form-group">
                     <div id="div_botones" class="col-sm-12 col-md-12 col-lg-12">
-                        <button type="submit" class="btn btn-primary" runat="server" onserverclick="AgregarEmpresa_Click">Agregar</button>
+                        <button id="botonAgregar" type="submit" class="btn btn-primary" runat="server" onserverclick="AgregarEmpresa_Click">Agregar</button>
                         <a class="btn btn-default" runat="server" href="ListarEmpresas.aspx">Cancelar</a>
                     </div>
                 </div>
