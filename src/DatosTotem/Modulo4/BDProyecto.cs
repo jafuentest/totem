@@ -236,7 +236,7 @@ namespace DatosTotem.Modulo4
                     }
                     else
                     {
-                        throw new NotImplementedException();
+                        return false;
 
                     }
 
