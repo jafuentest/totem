@@ -9,6 +9,15 @@ begin
 	WHERE usu_id = @usu_id;
 end
 go
+CREATE PROCEDURE ConsultarClave
+     @usu_username [varchar] (60),
+	 @usu_clave [varchar](60) OUTPUT
+AS 
+	SELECT @usu_clave = usu_clave
+	FROM USUARIO
+	WHERE usu_username = @usu_username
+RETURN
+go
 
 CREATE PROCEDURE ConsultarUsuario
      @usu_id [int]
@@ -20,6 +29,25 @@ begin
 	WHERE usu_id = @usu_id AND CARGO_car_id = car_id;
 	
 end
+go
+
+CREATE PROCEDURE ConsultarUsuarioSegunCargo
+	 @usu_cargo [varchar](60)
+AS 
+begin
+    SET NOCOUNT ON 
+    SELECT usu_id,usu_username,usu_clave,usu_nombre,usu_apellido,usu_rol,usu_correo,usu_pregseguridad,usu_respseguridad 
+    FROM USUARIO 
+	WHERE CARGO_car_id=(SELECT car_id FROM CARGO WHERE car_nombre=@usu_cargo)
+end
+go
+
+CREATE PROCEDURE CorreoUnico
+	 @usu_correo varchar(60),
+	 @usu_resultado varchar(60) OUTPUT
+AS 
+    SELECT @usu_resultado = usu_correo FROM USUARIO WHERE usu_correo = @usu_correo
+RETURN
 go
 
 CREATE PROCEDURE CrearCargo
@@ -54,7 +82,6 @@ begin
 	WHERE usu_id = @usu_id;
 end
 go
-
 CREATE PROCEDURE InsertarUsuario
      @usu_username [varchar](60),
      @usu_clave [varchar](60),
@@ -80,7 +107,8 @@ begin
            (SELECT car_id FROM CARGO WHERE  car_nombre = @usu_car_nombre)
     )
 end
-GO
+go
+
 
 CREATE PROCEDURE ModificarUsuario
 	 @usu_username [varchar](60),
@@ -95,7 +123,6 @@ CREATE PROCEDURE ModificarUsuario
 
 AS 
 begin
-    SET NOCOUNT ON 
 	UPDATE USUARIO SET
 	   usu_username = @usu_username,
 	   usu_clave = @usu_clave,
@@ -110,34 +137,18 @@ begin
 end
 go
 
-CREATE PROCEDURE CorreoUnico
-	 @usu_correo varchar(60),
-	 @usu_resultado varchar(60) OUTPUT
-AS 
-    SELECT @usu_resultado = usu_correo FROM USUARIO WHERE usu_correo = @usu_correo
-RETURN
-GO
+CREATE PROCEDURE OBTENER_PREGUNTA_SEGURIDAD
+	@Correo varchar(60),
+	@Usu_pregseguridad varchar(60) OUTPUT
+	AS
 
+	Select @Usu_pregseguridad =  Usu_pregseguridad
+	from Usuario
+	where usu_correo = @Correo
 
-CREATE PROCEDURE ConsultarUsuarioSegunCargo
-	 @usu_cargo [varchar](60)
-AS 
-begin
-    SET NOCOUNT ON 
-    SELECT usu_id,usu_username,usu_clave,usu_nombre,usu_apellido,usu_rol,usu_correo,usu_pregseguridad,usu_respseguridad 
-    FROM USUARIO 
-	WHERE CARGO_car_id=(SELECT car_id FROM CARGO WHERE car_nombre=@usu_cargo)
-end
-GO
-
-CREATE PROCEDURE UserNameUnico
-     @usu_username varchar(60),
-     @usu_resultado varchar(60) OUTPUT
-AS 
-    SELECT @usu_resultado = usu_username FROM USUARIO WHERE usu_username = @usu_username
-RETURN
-go
-CREATE PROCEDURE ObtenerDatosUsuario
+	RETURN
+	go
+	CREATE PROCEDURE ObtenerDatosUsuario
 	@usu_username varchar(60),
 	@usu_clave varchar(60) OUTPUT,
 	@usu_nombre varchar(60) OUTPUT,
@@ -151,5 +162,24 @@ CREATE PROCEDURE ObtenerDatosUsuario
 	Select 	@usu_clave = usu_clave,@usu_nombre = Usu_nombre, @usu_apellido = Usu_apellido , @usu_rol = Usu_rol, @usu_correo = Usu_correo,@usupreguntaseguridad=usu_pregseguridad,@usurespuestaseguridad=usu_respseguridad, @usu_car_nombre = car_nombre
 	from Usuario, cargo
 	where usu_username = @usu_username AND CARGO_car_id = car_id;
-	RETUR
+	RETURN
 	go
+	
+CREATE PROCEDURE UserNameUnico
+     @usu_username varchar(60),
+     @usu_resultado varchar(60) OUTPUT
+AS 
+    SELECT @usu_resultado = usu_username FROM USUARIO WHERE usu_username = @usu_username
+RETURN
+go
+
+CREATE PROCEDURE ConsultarUsuarioSegunCargo
+	 @usu_cargo [varchar](60)
+AS 
+begin
+    SET NOCOUNT ON 
+    SELECT usu_id,usu_username,usu_clave,usu_nombre,usu_apellido,usu_rol,usu_correo,usu_pregseguridad,usu_respseguridad 
+    FROM USUARIO 
+	WHERE CARGO_car_id=(SELECT car_id FROM CARGO WHERE car_nombre=@usu_cargo)
+end
+GO
