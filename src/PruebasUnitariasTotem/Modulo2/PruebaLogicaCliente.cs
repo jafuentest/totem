@@ -54,7 +54,7 @@ namespace PruebasUnitariasTotem.Modulo2
         /// a los clientes naturales
         /// </summary>
         /// 
-        [Test]
+       /* [Test]
         public void PruebaAgregarClienteNaturalLogica()
         {
 
@@ -64,7 +64,7 @@ namespace PruebasUnitariasTotem.Modulo2
             int fkLugarn = 26;
 
             Assert.IsTrue(logicaCliente.AgregarClienteNatural(identificador, nombreCliente, fkLugarn));
-        }
+        }*/
 
 
         /// <summary>

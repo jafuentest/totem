@@ -120,12 +120,12 @@ namespace DatosTotem.Modulo2
                 this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureAgregarClienteNatural, this.conexion);
                 this.comando.CommandType = CommandType.StoredProcedure;
 
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.Parametroidentificador, Clientenatural.Nat_Id);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroNombren, Clientenatural.Nat_Nombre);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroApellidon, Clientenatural.Nat_Apellido);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroCorreon, Clientenatural.Nat_Correo);              
-                
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombreDireccion, Clientenatural.Nat_Direccion);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.Parametroidentificador, clienteNatural.Nat_Id);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroNombren, clienteNatural.Nat_Nombre);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroApellidon, clienteNatural.Nat_Apellido);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroCorreon, clienteNatural.Nat_Correo);
+
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombreDireccion, clienteNatural.Nat_Direccion);
                 this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroLugarn, fkLugar);
 
               
