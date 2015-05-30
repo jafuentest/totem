@@ -29,8 +29,9 @@ namespace DatosTotem.Modulo2
         /// </summary>
         public BDCliente() 
         {
+            this.conexion = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\Alvaro\Documents\totem\totem\src\DatosTotem\BaseDeDatos\BaseDeDatosTotem.mdf;Integrated Security=True");
             //this.conexion = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\Svillami\Desktop\totem - copia de las 1218 290515\src\DatosTotem\BaseDeDatos\BaseDeDatosTotem.mdf;Integrated Security=True");
-            this.conexion = new SqlConnection(@RecursoGeneralBD.StringDeConexion);
+           // this.conexion = new SqlConnection(@RecursoGeneralBD.StringDeConexion);
         }
 
 
@@ -99,7 +100,7 @@ namespace DatosTotem.Modulo2
         /// </summary>
         /// <param name="clienteNatural">Información del Cliente Natural</param>
         /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-        public bool AgregarClienteNatural(ClienteNatural clienteNatural , int fkLugar) 
+        public bool AgregarClienteNatural(ClienteNatural clienteNatural , int fkLugar, int codigo, int numero) 
         {
 
              bool respuesta = false;
@@ -114,8 +115,15 @@ namespace DatosTotem.Modulo2
                 this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.Parametroidentificador, Clientenatural.Nat_Id);
                 this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroNombren, Clientenatural.Nat_Nombre);
                 this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroApellidon, Clientenatural.Nat_Apellido);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroCorreon, Clientenatural.Nat_Correo);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroCorreon, Clientenatural.Nat_Correo);              
+                
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombreDireccion, Clientenatural.Nat_Direccion);
                 this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroLugarn, fkLugar);
+
+              
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.Codigo, codigo);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.Numero, numero);
+                
                 this.conexion.Open();
 
                 nroDeFilasAfectadas = this.comando.ExecuteNonQuery();
