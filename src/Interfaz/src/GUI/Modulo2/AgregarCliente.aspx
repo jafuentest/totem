@@ -26,12 +26,12 @@
                 <h2>Datos básicos</h2>
                 <div class="form-group" Runat="Server">
                     <div id="div_nombre" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
-                        <input id="nombreNatural" name="nombre" type="text" class="form-control" placeholder="Nombre" Runat="Server" />
+                        <input id="nombreNatural" name="nombre" type="text" class="form-control" placeholder="Nombre" Runat="Server" maxlength="60"/>
                     </div>
                 </div>
                 <div class="form-group" Runat="Server">
                     <div id="div_apellido" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
-                        <input id="apellidoNatural" name="apellido" type="text" class="form-control" placeholder="Apellido" Runat="Server" />
+                        <input id="apellidoNatural" name="apellido" type="text" class="form-control" placeholder="Apellido" Runat="Server" maxlength="60" />
                     </div>
                 </div>
                 <div class="form-group" Runat="Server">
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div id="div_rif" class="col-sm-10 col-md-10 col-lg-10">
-                        <input id="cedulaNatural" name="identificador" type="text" class="form-control" placeholder="Identificador" Runat="Server"/>
+                        <input id="cedulaNatural" name="identificador" type="text" class="form-control" placeholder="Identificador" Runat="Server" maxlength="10"/>
                     </div>
                 </div>
                 
@@ -89,24 +89,24 @@
 
                 <div class="form-group">
                     <div id="div_direccionEmpresa" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="direccionCliente" runat="server" name="direccion" type="text" class="form-control" placeholder="Dirección detallada" />
+                        <input id="direccionCliente" runat="server" name="direccion" type="text" class="form-control" placeholder="Dirección detallada" maxlength="100" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div id="div_cpostal" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="codigoPostalCliente" runat="server" name="codigopostal" type="text" class="form-control" placeholder="Código postal" />
+                        <input id="codigoPostalCliente" runat="server" name="codigopostal" type="text" class="form-control" placeholder="Código postal" maxlength="8" />
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div id="div_correo" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="correoCliente" runat="server" name="correo" type="text" class="form-control" placeholder="Correo electrónico" />
+                        <input id="correoCliente" runat="server" name="correo" type="text" class="form-control" placeholder="Correo electrónico" maxlength="60" />
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div id="div_telefono" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="telefonoCliente" runat="server" name="telefono" type="text" class="form-control" placeholder="Teléfono" />
+                        <input id="telefonoCliente" runat="server" name="telefono" type="text" class="form-control" placeholder="Teléfono" maxlength="10" />
                     </div>
                 </div>
 

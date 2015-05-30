@@ -44,12 +44,12 @@
                         </div>
                     </div>
                     <div id="div_rif" class="col-sm-10 col-md-10 col-lg-10">
-                        <input id="rifEmpresa" name="rif" runat="server" type="text" class="form-control" placeholder="Identificador de la Empresa" />
+                        <input id="rifEmpresa" name="rif" runat="server" type="text" class="form-control" placeholder="Identificador de la Empresa" maxlength="10" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div id="div_nombre" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="nombreEmpresa" runat="server" name="nombre" type="text" class="form-control" placeholder="Nombre de la Empresa" />
+                        <input id="nombreEmpresa" runat="server" name="nombre" type="text" class="form-control" placeholder="Nombre de la Empresa" maxlength="20"  />
                     </div>
                 </div>
 
@@ -90,12 +90,12 @@
 
                 <div class="form-group">
                     <div id="div_direccionEmpresa" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="direccionEmpresa" runat="server" name="direccion" type="text" class="form-control" placeholder="Dirección detallada" />
+                        <input id="direccionEmpresa" runat="server" name="direccion" type="text" class="form-control" placeholder="Dirección detallada" maxlength="100" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div id="div_cpostal" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="codigoPostalEmpresa" runat="server" name="codigopostal" type="text" class="form-control" placeholder="Código postal" />
+                        <input id="codigoPostalEmpresa" runat="server" name="codigopostal" type="text" class="form-control" placeholder="Código postal" maxlength="10" />
                     </div>
                 </div>
                 
@@ -115,20 +115,20 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-10">
-                                    <input id="cedulaContacto" runat="server" class="form-control" placeholder="Cédula del Contacto" type="text" />
+                                    <input id="cedulaContacto" runat="server" class="form-control" placeholder="Cédula del Contacto" type="text" maxlength="10" />
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-xs-10">
-                                    <input id="nombreContacto" runat="server" class="form-control" placeholder="Nombres del Contacto" type="text" />
+                                    <input id="nombreContacto" runat="server" class="form-control" placeholder="Nombres del Contacto" type="text" maxlength="20" />
                                 </div>
                             </div>
 
                             <div class="col-xs-10 form-group"></div>
                             <div class="form-group">
                                 <div class="col-xs-10">
-                                    <input id="apellidoContacto" runat="server" class="form-control" placeholder="Apellidos del Contacto" type="text" />
+                                    <input id="apellidoContacto" runat="server" class="form-control" placeholder="Apellidos del Contacto" type="text" maxlength="20" />
                                 </div>
 
                             </div>
