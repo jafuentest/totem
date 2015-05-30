@@ -15,7 +15,7 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
     private Proyecto elProy = new Proyecto();
 
     private Usuario elUser = new Usuario();
-    
+
     protected void Page_Load(object sender, EventArgs e)
     {
         ((MasterPage)Page.Master).IdModulo = "3";
@@ -41,46 +41,90 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
             Response.Redirect("../Modulo1/M1_login.aspx");
         }
         //Muetra alerta en caso de que se haya asignado involucrados al proyecto
-         String success = Request.QueryString["success"];
-         if (success != null)
-         {
-             if (success.Equals("1"))
-             {
-                 alert.Attributes["class"] = "alert alert-success alert-dismissible";
-                 alert.Attributes["role"] = "alert";
-                 alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Personal agregado exitosamente</div>";
-                 
-             }
-         }
+        String success = Request.QueryString["success"];
+        if (success != null)
+        {
+            if (success.Equals("1"))
+            {
+                alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                alert.Attributes["role"] = "alert";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Personal agregado exitosamente</div>";
 
-        #region Llenar Data Table Con Usuarios Involucrados
-         elProy.Codigo = "TOT"; //codigo del proyecto cableado para prueba del metodo
+            }
+        }
+
+        #region Llenar Data Table Con Usuarios y Contactos Involucrados
+        elProy.Codigo = "TOT"; //codigo del proyecto cableado para prueba del metodo
         LogicaNegociosTotem.Modulo3.LogicaInvolucrados logInv = new LogicaNegociosTotem.Modulo3.LogicaInvolucrados(elProy);
-        
+
         HttpCookie pcookie = Request.Cookies.Get("selectedProjectCookie");
         //elProy.Codigo =  pcookie.Values["projectCode"].ToString(); //De aqui se debe extraer el codigo del proyecto
-        laListaDeUsuarios = logInv.obtenerUsuariosInvolucradosProyecto(elProy);
 
-        LogicaNegociosTotem.Modulo7.ManejadorUsuario mU = new LogicaNegociosTotem.Modulo7.ManejadorUsuario();
+        if (!IsPostBack)
+        {
+            try
+            {
+                laListaDeUsuarios = logInv.obtenerUsuariosInvolucradosProyecto(elProy);
+                laListaDeContactos = logInv.obtenerContactosInvolucradosProyecto(elProy);
 
-         foreach(Usuario u in laListaDeUsuarios.Lista)
-         {
-             this.laTabla.Text +="<tr>";
-             this.laTabla.Text +="<td>"+u.nombre.ToString()+"</td>";
-             this.laTabla.Text +="<td>"+u.apellido.ToString()+"</td>";
-             this.laTabla.Text +="<td>"+u.cargo.ToString()+"</td>";
-             this.laTabla.Text += "<td>Compañía De Software</td>";
-             this.laTabla.Text += "<td>";
-             this.laTabla.Text += "<a class=\"btn btn-default glyphicon glyphicon-pencil\" href=\"<%= Page.ResolveUrl(\"~/GUI/Modulo2/DetallarCliente.aspx\") % ></a>";
-             this.laTabla.Text += "<a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"  runat=\"server\"></a>";
-             this.laTabla.Text += "</td>";
-             this.laTabla.Text += "</tr>";
+                LogicaNegociosTotem.Modulo7.ManejadorUsuario mU = new LogicaNegociosTotem.Modulo7.ManejadorUsuario();
 
-         }
+                foreach (Usuario u in laListaDeUsuarios.Lista)
+                {
+                    this.laTabla.Text += "<tr>";
+                    this.laTabla.Text += "<td>" + u.nombre.ToString() + "</td>";
+                    this.laTabla.Text += "<td>" + u.apellido.ToString() + "</td>";
+                    this.laTabla.Text += "<td>" + u.cargo.ToString() + "</td>";
+                    this.laTabla.Text += "<td>Compañía De Software</td>";
+                    this.laTabla.Text += "<td>";
+                    this.laTabla.Text += "<a class=\"btn btn-default glyphicon glyphicon-pencil\" href=\"<%= Page.ResolveUrl(\"~/GUI/Modulo2/DetallarCliente.aspx\") % ></a>";
+                    this.laTabla.Text += "<a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"  runat=\"server\"></a>";
+                    this.laTabla.Text += "</td>";
+                    this.laTabla.Text += "</tr>";
+                }
+                foreach (Contacto c in laListaDeContactos.Lista)
+                {
+                    this.laTabla.Text += "<tr>";
+                    this.laTabla.Text += "<td>" + c.Con_Nombre.ToString() + "</td>";
+                    this.laTabla.Text += "<td>" + c.Con_Apellido.ToString() + "</td>";
+                    this.laTabla.Text += "<td>" + c.ConCargo.ToString() + "</td>";
+
+                    if (c.ConClienteJurid != null)
+                        this.laTabla.Text += "<td>" + c.ConClienteJurid.Jur_Nombre.ToString() + "</td>";
+
+                    if (c.ConClienteNat != null)
+                        this.laTabla.Text += "<td>" + c.ConClienteNat.Nat_Nombre.ToString() + "</td>";
+
+                    this.laTabla.Text += "<td>";
+                    this.laTabla.Text += "<a class=\"btn btn-default glyphicon glyphicon-pencil\" href=\"<%= Page.ResolveUrl(\"~/GUI/Modulo2/DetallarCliente.aspx\") % ></a>";
+                    this.laTabla.Text += "<a id=" + c.Con_Id.ToString() + " class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"  runat=\"server\"></a>";
+                    this.laTabla.Text += "</td>";
+                    this.laTabla.Text += "</tr>";
+                }
+            }
+            catch(ExcepcionesTotem.ExceptionTotem ex)
+            {
+
+            }
+            catch (Exception ex)
+            {
+
+            }
         #endregion
 
+        }
     }
 
-
-
+    protected void eliminarUsuario_OnClick(object sender, EventArgs e)
+    {
+        System.Console.WriteLine("ENTRA");
+        try
+        {
+          //implementacion para eliminar en BD pero no se logra pasar id a traves del modal..
+        }
+        catch(Exception ex)
+        { 
+        
+        }
+    }
 }

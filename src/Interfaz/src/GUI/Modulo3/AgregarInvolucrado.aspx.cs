@@ -12,18 +12,11 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
     private ListaInvolucradoContacto listaContactos = new ListaInvolucradoContacto();
     private ListaInvolucradoUsuario listaUsuarios = new ListaInvolucradoUsuario();
     private Proyecto elProyecto = new Proyecto();
-    bool cargoSeleccionado = false;
-    String usernameSeleccionado;
-
     protected void Page_Load(object sender, EventArgs e)
     {
         ((MasterPage)Page.Master).IdModulo = "3";
 
         DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
-        comboCargo.SelectedIndexChanged +=
-                       new EventHandler(actualizarComboCargos); 
-        comboPersonal.SelectedIndexChanged +=
-                new EventHandler(actualizarComboPersonal);
         #region redireccion a login
         if (user != null)
         {
@@ -43,19 +36,22 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
             Response.Redirect("../Modulo1/M1_login.aspx");
         }
         #endregion
-        comboCargo.Enabled = false;
-        comboPersonal.Enabled = false;
         if (!IsPostBack) // verificar si la pagina se muestra por primera vez
-        {
+        {            
+            comboCargo.Enabled = false;
+            comboPersonal.Enabled = false;
             llenarComboTipoEmpresas();
+            LogicaNegociosTotem.Modulo3.LogicaInvolucrados logInv = new
+                LogicaNegociosTotem.Modulo3.LogicaInvolucrados();
+
         }
+
         elProyecto.Codigo = "TOT"; //codigo del proyecto cableado para prueba del metodo
         listaContactos.Proyecto = elProyecto;
         listaUsuarios.Proyecto = elProyecto;
         HttpCookie pcookie = Request.Cookies.Get("selectedProjectCookie");
         //elProy.Codigo =  pcookie.Values["projectCode"].ToString(); //De aqui se debe extraer el codigo del proyecto
     }
-
     protected void llenarComboTipoEmpresas()
     {
         Dictionary<string, string> options = new Dictionary<string, string>();
@@ -120,7 +116,6 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
         comboCargo.DataTextField = "value";
         comboCargo.DataValueField = "key";
         comboCargo.DataBind();
-        cargoSeleccionado = true; 
     }
 
     protected void actualizarComboPersonal(object sender, EventArgs e)
@@ -148,26 +143,60 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
 
     protected void AgregarInvolucrados_Click(object sender, EventArgs e)
     {
-            LogicaNegociosTotem.Modulo3.LogicaInvolucrados logInv = new 
-                LogicaNegociosTotem.Modulo3.LogicaInvolucrados();
+        LogicaNegociosTotem.Modulo3.LogicaInvolucrados logInv = new LogicaNegociosTotem.Modulo3.LogicaInvolucrados();
             Usuario elUsuario = logInv.obtenerDatosUsuarioUsername(comboPersonal.SelectedValue);
             elUsuario.username = comboPersonal.SelectedValue;
+            #region agregar usuario en tabla y en bd
             if (listaUsuarios.agregarUsuarioAProyecto(elUsuario))
             {
-                this.laTabla.Text += "<tr>";
-                this.laTabla.Text += "<td>" + elUsuario.nombre + "</td>";
-                this.laTabla.Text += "<td>" + elUsuario.apellido +"</td>";
-                this.laTabla.Text += "<td>" + elUsuario.cargo + "</td>";
-                this.laTabla.Text += "<td>Compañía De Software</td>";
-                this.laTabla.Text += "<td>";
-                this.laTabla.Text += "<a class=\"btn btn-default glyphicon glyphicon-pencil\" href=\"<%= Page.ResolveUrl(\"~/GUI/Modulo2/DetallarCliente.aspx\") % ></a>";
-                this.laTabla.Text += "<a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"  runat=\"server\"></a>";
-                this.laTabla.Text += "</td>";
-                this.laTabla.Text += "</tr>";
+                try {
 
-                llenarComboTipoEmpresas();
+                    if(logInv.agregarUsuariosEnBD(listaUsuarios))
+                    {
+                        this.laTabla.Text += "<tr id=\"" + elUsuario.username + "\" >";
+                        this.laTabla.Text += "<td>" + elUsuario.nombre + "</td>";
+                        this.laTabla.Text += "<td>" + elUsuario.apellido + "</td>";
+                        this.laTabla.Text += "<td>" + elUsuario.cargo + "</td>";
+                        this.laTabla.Text += "<td>Compañía De Software</td>";
+                        this.laTabla.Text += "<td>";
+                        this.laTabla.Text += "<a class=\"btn btn-default glyphicon glyphicon-pencil\" href=\"<%= Page.ResolveUrl(\"~/GUI/Modulo2/DetallarCliente.aspx\") % ></a>";
+                        this.laTabla.Text += "<a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"  runat=\"server\"></a>";
+                        this.laTabla.Text += "</td>";
+                        this.laTabla.Text += "</tr>";
+
+                        comboCargo.SelectedIndex = 0;
+                        comboPersonal.SelectedIndex = 0;
+                        Dictionary<string, string> options = new Dictionary<string, string>();
+                        options.Add("-1", "Seleccione una opcion");
+                        comboCargo.Items.Clear();
+                        comboCargo.DataSource = options;
+                        comboCargo.DataTextField = "value";
+                        comboCargo.DataValueField = "key";
+                        comboCargo.DataBind();
+
+                        comboPersonal.Items.Clear();
+                        comboPersonal.DataSource = options;
+                        comboPersonal.DataTextField = "value";
+                        comboPersonal.DataValueField = "key";
+                        comboPersonal.DataBind();
+                    }
+                    else
+                    {
+                        
+                    }
+                }
+                catch(ExcepcionesTotem.Modulo3.InvolucradoRepetidoException ex)
+                {
+                }
+                catch (Exception ex)
+                {
+                }
             }
-    }
+            #endregion
 
+            }
+    //protected void btn_enviar_Click(object sender, EventArgs e)
+    //{
 
+    //}
 }

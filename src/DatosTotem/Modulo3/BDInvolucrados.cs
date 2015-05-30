@@ -86,15 +86,14 @@ namespace DatosTotem.Modulo3
                 if (ex.Number == 2627)
                     throw new ExcepcionesTotem.Modulo3.InvolucradoRepetidoException(
                         RecursosBDModulo3.Codigo_Involucrado_Repetido,
-                        RecursosBDModulo3.Mensaje_Involucrado_Repetido, ex);
+                        RecursosBDModulo3.Mensaje_Involucrado_Repetido, new Exception());
                 else
                     throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
-                        RecursoGeneralBD.Mensaje, ex);
+                        RecursoGeneralBD.Mensaje, new Exception());
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                return false;
-                //lanzas otra
+                throw new ExcepcionesTotem.ExceptionTotem("No se pudo completar la operacion", new Exception());
             }
         }
         /// <summary>
@@ -167,15 +166,14 @@ namespace DatosTotem.Modulo3
             if (ex.Number == 2627)
                 throw new ExcepcionesTotem.Modulo3.InvolucradoRepetidoException(
                     RecursosBDModulo3.Codigo_Involucrado_Repetido,
-                    RecursosBDModulo3.Mensaje_Involucrado_Repetido, ex);
+                    RecursosBDModulo3.Mensaje_Involucrado_Repetido, new Exception());
             else
                 throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
-                    RecursoGeneralBD.Mensaje, ex);
+                    RecursoGeneralBD.Mensaje, new Exception());
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
-            return false;
-            //lanza otra excepcion
+            throw new ExcepcionesTotem.ExceptionTotem("No se pudo completar la operacion", new Exception());
         }
     }
         /// <summary>
@@ -214,6 +212,7 @@ namespace DatosTotem.Modulo3
                     u.nombre = row[RecursosBDModulo3.aliasUsuarioNombre].ToString();
                     u.apellido = row[RecursosBDModulo3.aliasUsuarioApellido].ToString();
                     u.cargo = row[RecursosBDModulo3.aliasCargoNombre].ToString();
+                    u.username = row[RecursosBDModulo3.aliasUsuarioUsername].ToString();
                     lUsuarios.Add(u);
                 }
                 laListaDeUsuarios = new ListaInvolucradoUsuario(lUsuarios, p);
@@ -221,11 +220,11 @@ namespace DatosTotem.Modulo3
             catch (SqlException ex)
             {
                 throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
-                    RecursoGeneralBD.Mensaje, ex);
+                    RecursoGeneralBD.Mensaje, new Exception());
             }
             catch (Exception ex)
             {
-                //lanza otra
+                throw new ExcepcionesTotem.ExceptionTotem("No se pudo completar la operacion", new Exception());
             }
 
             return laListaDeUsuarios;
@@ -261,17 +260,25 @@ namespace DatosTotem.Modulo3
                     parametros);
                 foreach (DataRow row in dt.Rows)
                 {
-                    Contacto c     = new Contacto();
-                    c.Con_Id       = int.Parse(row[RecursosBDModulo3.aliasContactoID].ToString());
-                    c.Con_Nombre   = row[RecursosBDModulo3.aliasContactoNombre].ToString();
+                    Contacto c = new Contacto();
+                    c.Con_Id = int.Parse(row[RecursosBDModulo3.aliasContactoID].ToString());
+                    c.Con_Nombre = row[RecursosBDModulo3.aliasContactoNombre].ToString();
                     c.Con_Apellido = row[RecursosBDModulo3.aliasContactoApellido].ToString();
-                    c.ConCargo     = row[RecursosBDModulo3.aliasCargoNombre].ToString();
-                    c.ConClienteJurid = new ClienteJuridico();
-                    c.ConClienteJurid.Jur_Id = row[RecursosBDModulo3.aliasClienteJurID].ToString();
-                    c.ConClienteJurid.Jur_Nombre = row[RecursosBDModulo3.aliasClienteJurNombre].ToString();
-                    c.ConClienteNat = new ClienteNatural();
-                    c.ConClienteNat.Nat_Id = row[RecursosBDModulo3.aliasClienteNatID].ToString();
-                    c.ConClienteJurid.Jur_Nombre = row[RecursosBDModulo3.aliasClienteNatNombre].ToString();
+                    c.ConCargo = row[RecursosBDModulo3.aliasCargoNombre].ToString();
+                    System.Console.WriteLine(row[RecursosBDModulo3.aliasValor].ToString());
+                    if (row[RecursosBDModulo3.aliasValor].ToString().Equals("1"))
+                    {
+                        c.ConClienteJurid = new ClienteJuridico();
+                        c.ConClienteJurid.Jur_Id = row[RecursosBDModulo3.aliasClienteID].ToString();
+                        c.ConClienteJurid.Jur_Nombre = row[RecursosBDModulo3.aliasClienteNombre].ToString();
+
+                    }
+                    else
+                    {
+                        c.ConClienteNat = new ClienteNatural();
+                        c.ConClienteNat.Nat_Id = row[RecursosBDModulo3.aliasClienteID].ToString();
+                        c.ConClienteJurid.Jur_Nombre = row[RecursosBDModulo3.aliasClienteNombre].ToString();
+                    }
 
                     lContactos.Add(c);
                 }
@@ -280,12 +287,13 @@ namespace DatosTotem.Modulo3
             catch (SqlException ex)
             {
                 throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
-                    RecursoGeneralBD.Mensaje, ex);
+                    RecursoGeneralBD.Mensaje, new Exception());
             }
             catch (Exception ex)
             {
-                //lanzar otra
+                throw new ExcepcionesTotem.ExceptionTotem("No se pudo completar la operacion", new Exception());
             }
+
 
             return laListaDeContactos;
         }

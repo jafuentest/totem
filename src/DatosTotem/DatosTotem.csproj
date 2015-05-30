@@ -165,7 +165,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo2\RecursosBaseDeDatosModulo2.resx" />
     <EmbeddedResource Include="Modulo3\RecursosBDModulo3.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosBDModulo3.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo4\RecursosBDModulo4.resx">
@@ -189,7 +189,7 @@
       <LastGenOutput>RecursosBDModulo8.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RecursoGeneralBD.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursoGeneralBD.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>

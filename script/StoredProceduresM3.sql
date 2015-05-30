@@ -35,7 +35,7 @@ CREATE PROCEDURE Procedure_consultarInvUsuario
 	@proyecto_codigo [varchar](6)
 AS
  BEGIN
-	SELECT u.usu_id as usuarioID, u.usu_nombre as usuarioNombre, u.usu_apellido as usuarioApellido, c.car_nombre as cargoNombre
+	SELECT u.usu_id as usuarioID, u.usu_nombre as usuarioNombre, u.usu_apellido as usuarioApellido, c.car_nombre as cargoNombre, u.usu_username as usarioUsername
 	FROM INVOLUCRADOS_USUARIOS iu, USUARIO u, CARGO c
 	WHERE iu.PROYECTO_pro_id = (select pro_id from PROYECTO where pro_codigo = @proyecto_codigo)
 		  AND iu.USUARIO_usu_id = u.usu_id
