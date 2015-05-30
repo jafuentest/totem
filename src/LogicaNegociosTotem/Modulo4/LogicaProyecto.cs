@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using DominioTotem;
+using System.IO;
 
 namespace LogicaNegociosTotem.Modulo4
 {
@@ -148,17 +149,19 @@ namespace LogicaNegociosTotem.Modulo4
         {
             Process p1 = new Process();
             p1.StartInfo.FileName = @"C:/Program Files (x86)/MiKTeX 2.9/miktex/bin/pdflatex.exe";
-            p1.StartInfo.Arguments = @"C:\Users\MiguelAngel\Documents\totem\src\Interfaz\src\GUI\Modulo4\docs\ers.tex";
+            string a = Path.GetFullPath(@"ers.tex");
+            p1.StartInfo.Arguments = @"ers.tex";
             p1.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
             p1.StartInfo.RedirectStandardOutput = true;
             p1.StartInfo.UseShellExecute = false;
             try
             {
                 p1.Start();
-                var output = p1.StandardOutput.ReadToEnd();
 
-                Console.WriteLine(output);
-                p1.WaitForExit();
+                //p1.WaitForExit();
+                p1.Dispose();
+                
+
 
             }
             catch (Exception e)
@@ -193,8 +196,8 @@ namespace LogicaNegociosTotem.Modulo4
         {
             try
             {
-                EliminarArchivo(@"C:\Users\MiguelAngel\Documents\totem\src\Interfaz\src\GUI\Modulo4\docs\BaseErs.tex");
-                System.IO.StreamWriter ers = new System.IO.StreamWriter(@"C:\Users\MiguelAngel\Documents\totem\src\Interfaz\src\GUI\Modulo4\docs\BaseErs.tex");
+                EliminarArchivo(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\BaseErs.tex");
+                System.IO.StreamWriter ers = new System.IO.StreamWriter(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\BaseErs.tex");
                 ers.WriteLine("\\" + "documentclass{article}");
                 ers.WriteLine("\\" + "usepackage{graphicx}");
                 ers.WriteLine("\\" + "title");
@@ -267,18 +270,17 @@ namespace LogicaNegociosTotem.Modulo4
         public static void GenErs(String codigo)
         {
             string linea;
-            EliminarArchivo(@"C:\Users\MiguelAngel\Documents\totem\src\Interfaz\src\GUI\Modulo4\docs\ers.tex");
-            EliminarArchivo(@"C:\Users\MiguelAngel\Documents\totem\src\Interfaz\src\GUI\Modulo4\docs\ers.pdf");
+            EliminarArchivo(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\ers.tex");
             try
             {
                 Proyecto proyecto = LogicaNegociosTotem.Modulo4.LogicaProyecto.ConsultarProyecto(codigo);
                 ListaInvolucradoUsuario involucrados = new ListaInvolucradoUsuario();
                 LogicaNegociosTotem.Modulo3.LogicaInvolucrados logInv = new LogicaNegociosTotem.Modulo3.LogicaInvolucrados(proyecto);
                 involucrados = logInv.obtenerUsuariosInvolucradosProyecto(proyecto);
-
-
-                System.IO.StreamReader archivoBase = new System.IO.StreamReader(@"C:\Users\MiguelAngel\Documents\totem\src\Interfaz\src\GUI\Modulo4\docs\BaseErs.tex");
-                System.IO.StreamWriter ers = new System.IO.StreamWriter(@"C:\Users\MiguelAngel\Documents\totem\src\Interfaz\src\GUI\Modulo4\docs\ers.tex");
+                LogicaNegociosTotem.Modulo6.LogicaCasoUso cu = new Modulo6.LogicaCasoUso();
+                List<CasoDeUso> listaCU = cu.ListarCasosDeUso();
+                System.IO.StreamReader archivoBase = new System.IO.StreamReader(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\BaseErs.tex");
+                System.IO.StreamWriter ers = new System.IO.StreamWriter("ers.tex");
                 while ((linea = archivoBase.ReadLine()) != null)
                 {
                     switch (linea)
@@ -291,9 +293,9 @@ namespace LogicaNegociosTotem.Modulo4
                             string fecha = auxiliar.ToShortDateString();
                             ers.WriteLine(fecha);
                             break;
-                        case "autor":
+                        /*case "autor":
                             ers.WriteLine("Nombre Empresa Desarrolladora");
-                            break;
+                            break;*/
 
                         case "codigo":
                             ers.WriteLine(proyecto.Codigo);
@@ -311,7 +313,7 @@ namespace LogicaNegociosTotem.Modulo4
                             ers.WriteLine(proyecto.Costo);
                             break;
                         case "empresa":
-                            ers.WriteLine("Modulo 2");
+                            ers.WriteLine("Modulo 2 Falta");
                             Console.WriteLine("\\" + "item");
                             break;
                         case "\\" + "item" + " " + "involucrados":
@@ -346,27 +348,31 @@ namespace LogicaNegociosTotem.Modulo4
                             ers.WriteLine("\\" + "end{tabular}");
                             break;
                         case "casosDeUso":
-                            for (int i = 0; i <= 5; i++)
+                            foreach (CasoDeUso c in listaCU)
                             {
                                 ers.WriteLine("\\" + "begin{tabular}{|p{3cm}| p{10cm} |}");
                                 ers.WriteLine("\\" + "hline");
-                                ers.WriteLine("\\" + "bf" + " " + "Caso de Uso" + " " + "&" + " " + "TOT-CU-4-1-1" + " " + "Crear Proyecto" + "\\" + "\\");
+                                ers.WriteLine("\\" + "bf" + " " + "Caso de Uso" + " " + "&" + " " + c.IdentificadorCasoUso + " " + c.TituloCasoUso + "\\" + "\\");
                                 ers.WriteLine("\\" + "hline");
-                                ers.WriteLine("\\" + "bf" + " " + "Precondicion" + " " + "&" + " " + "TOT-CU-4-1-1" + " " + "El usuario tiene que estar registrado en el sistema como administrador y tener que haber ingresado al mismo" + "\\" + "\\");
+                                ers.WriteLine("\\" + "bf" + " " + "Precondicion" + " " + "&");
+                                foreach (String precondicion in c.PrecondicionesCasoUso)
+                                {
+                                    ers.WriteLine(precondicion);
+                                }
+                                ers.WriteLine("\\" + "\\");
                                 ers.WriteLine("\\" + "hline");
-                                ers.WriteLine("\\" + "bf" + " " + "Condicion Final de Exito" + " " + "&" + " " + "Proyecto creado. Se guarda en la base de datos y en el listado de proyectos del usuario que lo creo" + "\\" + "\\");
+                                ers.WriteLine("\\" + "bf" + " " + "Condicion Final de Exito" + " " + "&" + " " + c.CondicionExito + "\\" + "\\");
                                 ers.WriteLine("\\" + "hline");
-                                ers.WriteLine("\\" + "bf" + " " + "Condicion Final de Fallo" + " " + "&" + " " + "No se pudo crear el proyecto ni guardarlo" + "\\" + "\\");
+                                ers.WriteLine("\\" + "bf" + " " + "Condicion Final de Fallo" + " " + "&" + " " + c.CondicionFallo + "\\" + "\\");
                                 ers.WriteLine("\\" + "hline");
                                 ers.WriteLine("\\" + "bf" + " " + "Actor Primario" + "&" + " " + "Administrador" + "\\" + "\\");
                                 ers.WriteLine("\\" + "hline");
-                                ers.WriteLine("\\" + "bf" + " " + "Disparador" + " " + "&" + " " + "Seleccionar la opción Gestión de Proyectos" + "->" + "Proyectos" + "->" + "Crear Proyecto" + "\\" + "\\");
+                                ers.WriteLine("\\" + "bf" + " " + "Disparador" + " " + "&" + " " + c.DisparadorCasoUso + "\\" + "\\");
                                 ers.WriteLine("\\" + "hline");
                                 ers.WriteLine("\\" + "bf Escenario Principal de Exito &");
                                 ers.WriteLine("\\" + "begin{itemize}");
                                 for (int j = 0; j <= 2; j++)
                                 {
-
                                     ers.WriteLine("\\" + "item" + " " + j + " " + "El Administrador selecciona la opción Gestión de Proyectos");
                                 }
                                 ers.WriteLine("\\" + "end{itemize}");

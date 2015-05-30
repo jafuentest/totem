@@ -125,17 +125,23 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
 
     public void Ers(object sender, EventArgs e)
     {
-        HttpCookie projectCookie = Request.Cookies.Get("selectedProjectCookie");
-        LogicaNegociosTotem.Modulo4.LogicaProyecto.GenerarERS(projectCookie.Values["projectCode"]);
-        Response.ClearContent();
-        Response.ClearHeaders();
-        Response.ContentType = "application/pdf";
-        Response.AddHeader
-        ("Content-Disposition", "attachment; filename=" + "ers.tex");
-        Response.TransmitFile("ers.pdf");
-        Response.End();
-        //Response.WriteFile(strS);
-        Response.Flush();
-        Response.Clear();
+        try
+        {
+            HttpCookie projectCookie = Request.Cookies.Get("selectedProjectCookie");
+            LogicaNegociosTotem.Modulo4.LogicaProyecto.GenerarERS(projectCookie.Values["projectCode"]);
+            Response.ClearContent();
+            Response.ClearHeaders();
+            Response.ContentType = "application/pdf";
+            //Response.AddHeader("Content-Disposition", "attachment; filename=" + "ers.pdf");
+            Response.TransmitFile(@"C:\Program Files (x86)\IIS Express\ers.pdf");
+            Response.End();
+            //Response.WriteFile(strS);
+            Response.Flush();
+            Response.Clear();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+        }
     }
 }
