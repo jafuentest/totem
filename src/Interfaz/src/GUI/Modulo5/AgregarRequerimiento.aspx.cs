@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using DominioTotem;
 
 public partial class GUI_Modulo5_AgregarRequerimiento : System.Web.UI.Page
 {
@@ -30,5 +31,12 @@ public partial class GUI_Modulo5_AgregarRequerimiento : System.Web.UI.Page
 	   {
 		  Response.Redirect("../Modulo1/M1_login.aspx");
 	   }
+    }
+
+    public void ListarRequerimiento(Object sender, System.EventArgs e)
+    {
+	   CommandEventArgs ex = (CommandEventArgs)e;
+	   int codigo = 1;
+	   Label1.Text = LogicaNegociosTotem.Modulo5.LogicaRequerimiento.ConsultarRequerimiento(codigo);
     }
 }
