@@ -120,7 +120,7 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
         this.div_proyecto.InnerHtml += "</div>";
         this.div_proyecto.InnerHtml += "</div>";
 
-        this.modifyButton.Text += "<a class='btn btn-primary' runat='server' href='ModificarProyecto.aspx?success='" + esteProyecto.Codigo + "&success=-1'>Modificar</a>";
+        this.modifyButton.Text = "<a class='btn btn-primary' href='ModificarProyecto.aspx?success=" + esteProyecto.Codigo + "'>Modificar</a>";
     }
 
     public void Ers(object sender, EventArgs e)

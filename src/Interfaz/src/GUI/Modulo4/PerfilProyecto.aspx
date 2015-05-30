@@ -586,32 +586,17 @@
             <br>
 
         <!--BOTONES AL FINAL DE LA PAGINA DEL PERFIL DEL PROYECTO: MODIFICAR, ELIMINAR, GENERAR ERS, GENERAR FACTURA-->
-        <div class="form-group">
-            <div class="col-sm-2 col-md-2 col-lg-2">
-                 <form method="POST" runat="server">
-			        <button class="btn btn-default" runat="server" onserverclick="Ers">Generar ERS</button>
-                </form>
-		    </div>
-            <div class="col-sm-2 col-md-2 col-lg-2">
-                <form method="get" action="docs/Factura.pdf">
-			        <button class="btn btn-default">Generar Factura</button>
-                </form>
-		    </div>
-            <div class="col-md-offset-10">
-                <div class="col-sm-1 col-md-1 col-lg-1">
-			        <a class="btn btn-primary" href="<%= Page.ResolveUrl("~/GUI/Modulo4/ModificarProyecto.aspx?id=1") %>">Modificar</a>
-		        </div>
+            <div class="form-group">
                 <div class="col-sm-2 col-md-2 col-lg-2">
-                    <form method="get" action="docs/Factura.pdf">
-			            <button class="btn btn-default">Generar Factura</button>
-                    </form>
-		        </div>
-                <div class="col-md-offset-10">
-                    <div class="col-sm-1 col-md-1 col-lg-1">
-                        <asp:Literal runat="server" id="modifyButton"></asp:Literal>
-		            </div>
+                    <button class="btn btn-default" runat="server" onserverclick="Ers">Generar ERS</button>
                 </div>
-	        </div>
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                    <button class="btn btn-default">Generar Factura</button>
+                </div>
+                <div class="col-sm-2 col-md-2 col-lg-2 col-md-offset-6">
+                    <asp:Literal runat="server" id="modifyButton"></asp:Literal>
+                </div>
+            </div>
         </form>
 
 

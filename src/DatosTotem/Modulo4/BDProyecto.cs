@@ -261,7 +261,6 @@ namespace DatosTotem.Modulo4
         {
             try
             {
-
                 //parametros para insertar un proyecto
                 List<Parametro> parametros = new List<Parametro>();
                 Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, codigo, false);

@@ -61,7 +61,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
             selectedProject.InnerText = "Proyecto Seleccionado: " + pcookie.Values["projectName"].ToString();
         }
 
-        if (HttpContext.Current.Session["Credenciales"] != null)
+        /*if (HttpContext.Current.Session["Credenciales"] != null)
         {
                 ShowDiv = true;
 
@@ -76,7 +76,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
             {
                 Response.Redirect("~/src/GUI/Modulo1/M1_login.aspx");
             }
-        }
+        }*/
 	}
 
 }
