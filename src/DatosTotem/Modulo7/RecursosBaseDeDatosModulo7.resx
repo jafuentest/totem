@@ -194,8 +194,20 @@
    WHERE CARGO_car_id = car_id</value>
     <comment>Permite obtener una lista con todos los usuario en el sistema</comment>
   </data>
+  <data name="CargosUsuarios" xml:space="preserve">
+    <value>SELECT DISTINCT CAR_NOMBRE FROM CARGO, USUARIO WHERE CARGO_car_id=car_id</value>
+    <comment>Permite consultar todoslos cargos de los usuarios</comment>
+  </data>
   <data name="QueryCargosUsuarios" xml:space="preserve">
     <value>SELECT DISTINCT CAR_NOMBRE FROM CARGO, USUARIO WHERE CARGO_car_id=car_id</value>
     <comment>Los cargos de los usuarios</comment>
+  </data>
+  <data name="ConsultarClaveUsuario" xml:space="preserve">
+    <value>ConsultarClave</value>
+    <comment>Permite consultar la clave</comment>
+  </data>
+  <data name="ProcedimientoObtenerUsuario" xml:space="preserve">
+    <value>ObtenerDatosUsuario</value>
+    <comment>Permite obtener los datos del usuario</comment>
   </data>
 </root>

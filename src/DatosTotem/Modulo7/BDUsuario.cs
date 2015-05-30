@@ -1,4 +1,6 @@
-﻿using DominioTotem;
+﻿using DatosTotem.Modulo1;
+using DominioTotem;
+using ExcepcionesTotem.Modulo1;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -173,7 +175,6 @@ namespace DatosTotem.Modulo7
             }
             return listUsuario;
         }
-
         /// <summary>
         /// Permite consultar la informacion de un usuario, segun su nombre, apellido y cargo
         /// </summary>
@@ -235,6 +236,110 @@ namespace DatosTotem.Modulo7
             }
             return exito;
         }
+        /// <summary>
+        /// Metodo para validar el inicio de sesion en la base de datos
+        /// Excepciones posibles: 
+        /// LoginErradoException: Excepcion de login invalido
+        /// ExceptionTotemConexionBD: Excepcion de base de datos sql server
+        /// ParametroInvalidoException: Excepcion de parametros erroneos
+        /// UsuarioVacioException: Excepcion si alguna de la informacion del usuario
+        /// es vacia o incorrecta
+        /// </summary>
+        /// <param name="user">Usuario al que se le va a validar el inicio de sesion
+        /// debe tener como minimo el nombre de usuario o email y contrasena</param>
+        /// <returns>Retorna el objeto usuario si se pudo validar</returns>
+        public Usuario DatosUsuario(Usuario user)
+        {
+            if (user.username != null  && user.username != "")
+            {
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro parametro = new Parametro(RecursosBaseDeDatosModulo7.UsernameUsuario,
+                    SqlDbType.VarChar, user.username, false);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBaseDeDatosModulo7.ClaveUsuario,
+                    SqlDbType.VarChar, true);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBaseDeDatosModulo7.NombreUsuario,
+                    SqlDbType.VarChar, true);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBaseDeDatosModulo7.ApellidoUsuario,
+                    SqlDbType.VarChar, true);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBaseDeDatosModulo7.RolUsuario,
+                    SqlDbType.VarChar, true);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBaseDeDatosModulo7.CorreoUsuario,
+                    SqlDbType.VarChar, true);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBaseDeDatosModulo7.PreguntaUsuario,
+                    SqlDbType.VarChar, true);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBaseDeDatosModulo7.RespuestaUsuario,
+                SqlDbType.VarChar, true);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBaseDeDatosModulo7.CargoUsuario,
+                SqlDbType.VarChar, true);
+                parametros.Add(parametro);
+                try
+                {
+                    BDConexion con = new BDConexion();
+                    List<Resultado> resultados = con.EjecutarStoredProcedure(
+                        RecursosBaseDeDatosModulo7.ProcedimientoObtenerUsuario, parametros);
+                   
+                        foreach (Resultado resultado in resultados)
+                        {
+                            if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.NombreUsuario))
+                            {
+                                user.nombre = resultado.valor;
+                            }
+                            if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.ApellidoUsuario))
+                            {
+                                user.apellido = resultado.valor;
+                            }
+                            if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.RolUsuario))
+                            {
+                                user.rol = resultado.valor;
+                            }
+                            if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.CorreoUsuario))
+                            {
+                                user.correo = resultado.valor;
+                            }
+                            if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.CargoUsuario))
+                            {
+                                user.cargo = resultado.valor;
+                            }
+                            if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.PreguntaUsuario))
+                            {
+                                user.preguntaSeguridad = resultado.valor;
+                            }
+                            if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.RespuestaUsuario))
+                            {
+                                user.respuestaSeguridad = resultado.valor;
+                            }
+                        }                             
+                        return user;
+                   
+                }
+                catch (ExcepcionesTotem.Modulo1.LoginErradoException ex)
+                {
+                    throw new ExcepcionesTotem.Modulo1.LoginErradoException(ex.Codigo,
+                        ex.Mensaje, ex);
+                }
+                catch (SqlException ex)
+                {
+                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                        RecursoGeneralBD.Codigo,
+                        RecursoGeneralBD.Mensaje, ex);
+                }
+                
+            }
+            else
+            {
+                throw new UsuarioVacioException(
+                    RecursosBDModulo1.Codigo_Usuario_Vacio,
+                    RecursosBDModulo1.Mensaje_Usuario_Vacio, new Exception());
+            }
+        }
         /// <summary>Verifica si un correo existe o no en la BD</summary>
         /// <param name="correo">Se busca por el correo del usuario</param>
         /// <returns>Regresa true si existe y false si no existe el correo</returns>
@@ -279,6 +384,7 @@ namespace DatosTotem.Modulo7
             List<Parametro> parametros = new List<Parametro>();
             Parametro parametro = new Parametro(RecursosBaseDeDatosModulo7.UsernameUsuario,
                     SqlDbType.VarChar, elUsuario.username, false);
+            parametros.Add(parametro);
             parametro = new Parametro(RecursosBaseDeDatosModulo7.ClaveUsuario,
                     SqlDbType.VarChar, elUsuario.clave, false);
             parametros.Add(parametro);
@@ -287,6 +393,9 @@ namespace DatosTotem.Modulo7
             parametros.Add(parametro);
             parametro = new Parametro(RecursosBaseDeDatosModulo7.ApellidoUsuario,
                     SqlDbType.VarChar, elUsuario.apellido, false);
+            parametros.Add(parametro);
+            parametro = new Parametro(RecursosBaseDeDatosModulo7.RolUsuario,
+                    SqlDbType.VarChar, elUsuario.rol, false);
             parametros.Add(parametro);
             parametro = new Parametro(RecursosBaseDeDatosModulo7.CorreoUsuario,
                     SqlDbType.VarChar, elUsuario.correo, false);
@@ -307,10 +416,30 @@ namespace DatosTotem.Modulo7
                 exito = true;
             else
                 exito = false;
-            return false;
+            return exito;
         }
-
-
+        /// <summary>
+        /// Consulta la clave de un usuario
+        /// </summary>
+        /// <param name="userName">El nombre de usuario a buscar</param>
+        /// <returns>returna true en caso de que el usuario se modifique y false en caso de que no</returns>
+        public string ConsultarClaveUsuario(string userName)
+        {
+            Boolean exito;
+            string claveUsuario = "";
+            BDConexion conexionBD = new BDConexion();
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursosBaseDeDatosModulo7.UsernameUsuario,
+                    SqlDbType.VarChar, userName, false);
+            parametros.Add(parametro);
+            parametro = new Parametro(RecursosBaseDeDatosModulo7.ClaveUsuario,
+                    SqlDbType.VarChar,  true);
+            parametros.Add(parametro);
+            string query = RecursosBaseDeDatosModulo7.ConsultarClaveUsuario;
+            List<Resultado> resultados = conexionBD.EjecutarStoredProcedure(query, parametros);
+            claveUsuario = resultados[0].valor;
+            return claveUsuario;
+        }
 
         /// <summary>
         /// Procedimiento para obtener todos los cargos de los usuarios.</summary> 
@@ -320,21 +449,14 @@ namespace DatosTotem.Modulo7
             SqlDataReader resultadoConsulta;
             List<String> listCargos = new List<String>();
             BDConexion conexionBd = new BDConexion();
-            try
+            conexionBd.Conectar();
+            resultadoConsulta = conexionBd.EjecutarQuery(RecursosBaseDeDatosModulo7.QueryCargosUsuarios);
+            conexionBd.Desconectar();
+            while (resultadoConsulta.Read())
             {
-                //  conexionBd.Conectar();
-                resultadoConsulta = conexionBd.EjecutarQuery(RecursosBaseDeDatosModulo7.QueryCargosUsuarios);
-                //   conexionBd.Desconectar();
-                while (resultadoConsulta.Read())
-                {
-                    listCargos.Add(resultadoConsulta.GetValue(0).ToString());
-                }
-                return listCargos;
+                listCargos.Add(resultadoConsulta.GetValue(0).ToString());
             }
-            catch (Exception ex)
-            {
-                return null;
-            }
+            return listCargos;
         }
 
         public List<String> LeerCargosUsuarios()
@@ -385,5 +507,6 @@ namespace DatosTotem.Modulo7
             }
             return laLista;
         }
+    
     }
 }

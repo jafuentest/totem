@@ -71,6 +71,37 @@ namespace LogicaNegociosTotem.Modulo7
             Usuario usuario = conexion.ConsultarDatosUsuario(nombre,apellido,cargo);
             return usuario;
         }
+        /// <summary> Consulta la informacio de un Usuario </summary>
+        /// <param name="userName">El username del usuario</param>
+        /// <returns>Regresa un usuario</returns>
+        public Usuario consultarDatos(string userName)
+        {
+            BDUsuario conexion = new BDUsuario();
+            Usuario usuario = new Usuario();
+            usuario.username = "albertods";
+            usuario = conexion.DatosUsuario(usuario);
+            return usuario;
+        }
+        /// <summary>
+        /// Este metodo se conecta con la capa de datos, para obtener la clave del usuario
+        /// </summary>
+        /// <param name="elUsuario">usuario a consultar clave</param>
+        /// <returns>returna la clave del usuario</returns>
+        public string ObtnerClave(string userName)
+        {
+            BDUsuario conexion = new BDUsuario();
+            return conexion.ConsultarClaveUsuario(userName);
+        }
+        /// <summary>
+        /// Este metodo se conecta con la capa de datoso
+        /// </summary>
+        /// <param name="elUsuario">usuario a modificar</param>
+        /// <returns>returna boolean en caso de que sea exitoso</returns>
+        public Boolean ModificarManejador(Usuario elUsuario)
+        {
+            BDUsuario conexion = new BDUsuario();
+            return conexion.ModificarUsuario(elUsuario);
+        }
         /// <summary> Obtiene una lista de todos los usuarios que existen en el sistema </summary>
         /// <returns>Regresa una lista de usuarios de la BD</returns>
         public List<Usuario> listar()
@@ -79,6 +110,15 @@ namespace LogicaNegociosTotem.Modulo7
             return conexion.ObtenerListaUsuario();
         }
 
+        /// <summary>Obtiene una lista de todos los cargos de los usuarios</summary>
+        /// <returns>Regresa una lista de cargos</returns>
+      /*  public List<String> ListarCargosUsuarios()
+        {
+
+            List<String> listaCargos = new List<String>();
+            BDUsuario conexion = new BDUsuario();
+            return conexion.ConsultaCargos();
+        }*/
         /// <summary>Obtiene una lista de todos los cargos de los usuarios</summary>
         /// <returns>Regresa una lista de cargos</returns>
         public List<String> ListarCargosUsuarios()
@@ -93,6 +133,5 @@ namespace LogicaNegociosTotem.Modulo7
             BDUsuario con = new BDUsuario();
             return con.listarUsuariosPorCargo(elCargo);
         }
-
     }
 }
