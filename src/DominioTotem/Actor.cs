@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace DominioTotem
 {
@@ -52,15 +49,8 @@ namespace DominioTotem
         /// </summary>
         public String NombreActor
         {
-            get
-            {
-                return this.nombreActor;
-            }
-
-            set
-            {
-                this.nombreActor = value;
-            }
+            get { return this.nombreActor; }
+			set { this.nombreActor = value; }
         }
 
         /// <summary>
@@ -68,15 +58,8 @@ namespace DominioTotem
         /// </summary>
         public String DescripcionActor
         {
-            get
-            {
-                return this.descripcionActor;
-            }
-
-            set
-            {
-                this.descripcionActor = value;
-            }
+            get { return this.descripcionActor; }
+            set { this.descripcionActor = value; }
         }
 
         /// <summary>
@@ -84,15 +67,8 @@ namespace DominioTotem
         /// </summary>
         public int IdentificacionActor
         {
-            get
-            {
-                return this.idenficacionActor;
-            }
-
-            set
-            {
-                this.idenficacionActor = value;
-            }
+            get { return this.idenficacionActor; }
+            set { this.idenficacionActor = value; }
         }
     }
 

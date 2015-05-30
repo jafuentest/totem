@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using LogicaNegociosTotem.Modulo6;
+using System;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using LogicaNegociosTotem.Modulo6;
 
 /// <summary>
 /// Clase que contiene toda la logica de la pagina CrearActor
@@ -23,8 +19,8 @@ public partial class GUI_Modulo6_CrearActor : System.Web.UI.Page
 
         //Obtenemos la variable de sesion
         DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
-        if (user != null)
-        {
+		//if (user != null)
+		//{
             if (user.username != "" &&
                 user.clave != "")
             {
@@ -35,13 +31,11 @@ public partial class GUI_Modulo6_CrearActor : System.Web.UI.Page
                 ((MasterPage)Page.Master).MostrarMenuLateral = false;
                 ((MasterPage)Page.Master).ShowDiv = false;
             }
-
-        }
-        else
-        {
-            Response.Redirect("../Modulo1/M1_login.aspx");
-        }
-
+		//}
+		//else
+		//{
+		//	Response.Redirect("../Modulo1/M1_login.aspx");
+		//}
     }
 
     /// <summary>
@@ -78,8 +72,9 @@ public partial class GUI_Modulo6_CrearActor : System.Web.UI.Page
                     //Se despliega la advertencia
                     alert.Attributes["class"] = "alert alert-danger alert-dismissible";
                     alert.Attributes["role"] = "alert";
-                    alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Debe ingresar un nombre para el actor</div>";
-
+                    alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\"" +
+						" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>" +
+						"Debe ingresar un nombre para el actor</div>";
                 }
                 else
                 {

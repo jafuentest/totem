@@ -1,23 +1,33 @@
-﻿
+﻿using DominioTotem;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DominioTotem;
 
 namespace LogicaNegociosTotem.Modulo6
 {
-    class LogicaCasoUso
+    public class LogicaCasoUso : IDisposable
     {
-        public List<CasoDeUso> ListarCasosDeUso()
+        public LogicaCasoUso()
+		{ }
+		
+		public String ObtenerProximoID()
+		{
+			return "TOT_1_1_1";
+		}
+		
+		public List<CasoDeUso> ListarCasosDeUso()
         {
             int idCasoUso = 1;
             String identificadorCasoUso = "TOT_CU_1_1_1";
             String tituloCasoUso = "Iniciar Sesión";
-            
+            Actor actorPrmario = new Actor("Usuario", "Usuario Comun del sistema");
+
 			List<String> precondicionesCasoUso = new List<string>();
 			precondicionesCasoUso.Add("El usuario debe tener una cuenta iniciada");
 			precondicionesCasoUso.Add("El usuario debe tener su cuenta habilitada");
+
+            Requerimiento requerimiento = new Requerimiento("REQ_1_1", "El sistema debera hacer algo", "Funcional", "Alta", "Algo");
+            List<Requerimiento> requerimientos = new List<Requerimiento>();
+            requerimientos.Add(requerimiento);
 
             String condicionExito = "El usuario accede al sistema";
             String condicionFallo = "El sistema vuelve a mostrar la pantalla de inicio de sesión";
@@ -48,13 +58,19 @@ namespace LogicaNegociosTotem.Modulo6
 			escenarioExito.Add(paso1);
 			escenarioExito.Add(paso2);
 
-			CasoDeUso casoDeUso = new CasoDeUso(idCasoUso, identificadorCasoUso, tituloCasoUso, precondicionesCasoUso,
-				condicionExito, condicionFallo, disparadorCasoUso, escenarioExito);
+			CasoDeUso casoDeUso = new CasoDeUso(idCasoUso, identificadorCasoUso, tituloCasoUso, actorPrmario, null,
+                precondicionesCasoUso, requerimientos, condicionExito, condicionFallo, disparadorCasoUso,
+                escenarioExito);
 
 			List<CasoDeUso> lista = new List<CasoDeUso>();
 			lista.Add(casoDeUso);
 
 			return lista;
         }
-    }
+
+		void IDisposable.Dispose()
+		{
+			
+		}
+	}
 }

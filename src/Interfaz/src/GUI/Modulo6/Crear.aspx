@@ -8,10 +8,10 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Agregar</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 	<div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-		<form name="form_casodeuso" id="form_casodeuso" class="form-horizontal" action="<%= Page.ResolveUrl("~/GUI/Modulo6/Listar.aspx?success=1") %>" method="post">
+		<form runat="server" name="form_casodeuso" id="form_casodeuso" class="form-horizontal" action="Listar.aspx?success=1" method="post">
 			<div class="form-group">
 				<div id="div-id" class="col-sm-10 col-md-10 col-lg-10">
-					<input type="text" name="id" id="id" placeholder="ID" class="form-control" disabled="disabled" value="TOT_CU_6_1_2"/>
+					<asp:TextBox id="id" runat="server" CssClass="form-control"/>
 				</div>
 			</div>
 			<div class="form-group">
@@ -111,7 +111,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-md-6">
-					<button class="btn btn-primary" type="submit">Agregar</button>
+					<asp:Button runat="server" CssClass="btn btn-primary" Text="Agregar" OnClick="CrearCasoDeUso"/>
 					<a class="btn btn-default" href="Listar.aspx">Cancelar</a>
 				</div>
 			</div>
