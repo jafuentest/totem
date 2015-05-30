@@ -234,7 +234,6 @@ public partial class GUI_Modulo7_Registro : System.Web.UI.Page
         this.id_apellido.Value = "";
         this.id_correo.Value = "";
         this.id_nombre.Value = "";
-     //   this.id_otrocargo.Value = "";
         this.id_pregunta.Value = "";
         this.id_username.Value = "";
         this.password.Value = "";

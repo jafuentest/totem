@@ -27,7 +27,7 @@ public partial class GUI_Modulo7_ListarUsuarios : System.Web.UI.Page
                 String alert = Request.QueryString["success"];
                 if (alert == "true")
                 {
-                    alert_registro.Attributes["class"] = "alert alert-danger alert-dismissible";
+                    alert_registro.Attributes["class"] = "alert alert-success alert-dismissible";
                     alert_registro.Attributes["role"] = "alert";
                     alert_registro.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>El registro fue completado exitosamente</div>";
                     alert_registro.Visible = true;
