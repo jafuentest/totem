@@ -236,7 +236,7 @@ AS
 		--Leo todos los casos de uso asociados al requerimiento
 		SELECT C.cu_id, C.cu_identificador ,C.cu_titulo, C.cu_condexito, C.cu_condfallo, C.cu_disparador 
 		FROM CASO_USO C 
-		WHERE C.PROYECTO_pro_id=@idproyecto
+		WHERE C.PROYECTO_pro_id=@idproyecto;
 	END
 GO
 
