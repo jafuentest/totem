@@ -31,7 +31,7 @@ CREATE PROCEDURE Procedure_ModificarRequerimiento
 
 AS 
 BEGIN
- 	UPDATE REQUERMIENTO
+ 	UPDATE REQUERIMIENTO
  	SET
  		req_codigo = @req_codigo,
  		req_descripcion = @req_descripcion,
@@ -52,7 +52,7 @@ CREATE PROCEDURE Procedure_EliminarRequerimiento
 
 AS 
 BEGIN
- 	DELETE FROM REQUERMIENTO
+ 	DELETE FROM REQUERIMIENTO
  	WHERE req_id = @req_id;	
 END		 	
 GO
@@ -68,13 +68,13 @@ GO
 
 CREATE PROCEDURE Procedure_ConsultarTodosRequerimiento
 	
-	@pro_codigo [varchar] (6)
+	@pro_codigo INTEGER
 	   
 AS
  BEGIN
 	
 	SELECT req_codigo, req_descripcion, req_tipo, req_prioridad, req_estatus
-	FROM  REQUERMIENTO R
+	FROM  REQUERIMIENTO R
 	WHERE (R.PROYECTO_pro_id=@pro_codigo) 
  END
 GO
@@ -84,14 +84,14 @@ GO
 
 CREATE PROCEDURE Procedure_ConsultarRequerimientoFuncional
 	
-	@pro_codigo [varchar] (6)
+	@pro_codigo INTEGER
 	   
 AS
  BEGIN
 	
 	SELECT req_codigo, req_descripcion, req_prioridad, req_estatus
-	FROM  REQUERMIENTO R
-	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_tipo= "Funcional") 
+	FROM  REQUERIMIENTO R
+	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_tipo= 'Funcional') 
  END
 GO
 
@@ -99,14 +99,14 @@ GO
 
 CREATE PROCEDURE Procedure_ConsultarRequerimientoNoFuncional
 	
-	@pro_codigo [varchar] (6)
+	@pro_codigo INTEGER
 	   
 AS
  BEGIN
 	
 	SELECT req_codigo, req_descripcion, req_prioridad, req_estatus
-	FROM  REQUERMIENTO R
-	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_tipo= "No Funcional") 
+	FROM  REQUERIMIENTO R
+	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_tipo = 'No Funcional') 
  END
 GO
 
@@ -115,14 +115,14 @@ GO
 
 CREATE PROCEDURE Procedure_ConsultarRequerimientoFuncionalMax
 	
-	@pro_codigo [varchar] (6)
+	@pro_codigo INTEGER
 	   
 AS
  BEGIN
 	
 	SELECT req_codigo, req_descripcion, req_estatus
-	FROM  REQUERMIENTO R
-	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_prioridad = "Alta" and R.req_descripcion="Funcional") 
+	FROM  REQUERIMIENTO R
+	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_prioridad = 'Alta' and R.req_descripcion='Funcional') 
  END
 GO
 
@@ -130,14 +130,14 @@ GO
 
 CREATE PROCEDURE Procedure_ConsultarRequerimientoFuncionalMed
 	
-	@pro_codigo [varchar] (6)
+	@pro_codigo INTEGER
 	   
 AS
  BEGIN
 	
 	SELECT req_codigo, req_descripcion, req_estatus
-	FROM  REQUERMIENTO R
-	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_prioridad= "Media" and R.req_descripcion="Funcional") 
+	FROM  REQUERIMIENTO R
+	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_prioridad= 'Media' and R.req_descripcion='Funcional') 
  END
 GO
 
@@ -146,14 +146,14 @@ GO
 
 CREATE PROCEDURE Procedure_ConsultarRequerimientoFuncionalBaja
 	
-	@pro_codigo [varchar] (6)
+	@pro_codigo INTEGER
 	   
 AS
  BEGIN
 	
 	SELECT req_codigo, req_descripcion, req_estatus
-	FROM  REQUERMIENTO R
-	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_prioridad= "Baja" and R.req_descripcion="Funcional") 
+	FROM  REQUERIMIENTO R
+	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_prioridad= 'Baja' and R.req_descripcion='Funcional') 
  END
 GO
 
@@ -161,14 +161,14 @@ GO
 
 CREATE PROCEDURE Procedure_ConsultarRequerimientoNoFuncionalMax
 	
-	@pro_codigo [varchar] (6)
+	@pro_codigo INTEGER
 	   
 AS
  BEGIN
 	
 	SELECT req_codigo, req_descripcion, req_estatus
-	FROM  REQUERMIENTO R
-	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_prioridad = "Alta" and R.req_descripcion="No Funcional") 
+	FROM  REQUERIMIENTO R
+	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_prioridad = 'Alta' and R.req_descripcion='No Funcional') 
  END
 GO
 
@@ -176,14 +176,14 @@ GO
 
 CREATE PROCEDURE Procedure_ConsultarRequerimientoNoFuncionalMed
 	
-	@pro_codigo [varchar] (6)
+	@pro_codigo INTEGER
 	   
 AS
  BEGIN
 	
 	SELECT req_codigo, req_descripcion, req_estatus
-	FROM  REQUERMIENTO R
-	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_prioridad= "Media" and R.req_descripcion="No Funcional") 
+	FROM  REQUERIMIENTO R
+	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_prioridad= 'Media' and R.req_descripcion='No Funcional') 
  END
 GO
 
@@ -192,14 +192,14 @@ GO
 
 CREATE PROCEDURE Procedure_ConsultarRequerimientoNoFuncionalBaja
 	
-	@pro_codigo [varchar] (6)
+	@pro_codigo INTEGER
 	   
 AS
  BEGIN
 	
 	SELECT req_codigo, req_descripcion, req_estatus
-	FROM  REQUERMIENTO R
-	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_prioridad= "Baja" and R.req_descripcion="No Funcional") 
+	FROM  REQUERIMIENTO R
+	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_prioridad= 'Baja' and R.req_descripcion='No Funcional') 
  END
 GO
 

@@ -133,36 +133,47 @@ namespace PruebasUnitariasTotem.Modulo2
         /// Prueba el agregar un Cliente Juridico a Base de datos
         /// </summary>
         /// 
-       /* [Test]
+        [Test]
         public void PruebaAgregarClienteJuridicoBD() 
         {
             ClienteJuridico cliente = new ClienteJuridico();
             cliente.Jur_Id = "J-231425-5";
             cliente.Jur_Nombre = "Venetur";
-            
+            string direccion="Las Orquencias Av. Los Caoboso entre Cruce"+
+                "Dos y Colinas";
+            string contactoNombre="Pablo";
+            string contactoApellido ="Gomez";
+            int cargoId = 5; 
+
             int fkLugar = 26;
 
-            Assert.IsTrue(baseDeDatosCliente.AgregarClienteJuridico(cliente,fkLugar));
+            Assert.IsTrue(baseDeDatosCliente.AgregarClienteJuridico(cliente,
+                fkLugar, direccion, contactoNombre, contactoApellido,cargoId,
+                412,678905,"20631876"));
                    
-        }*/
+        }
 
 
         /// <summary>
         /// Prueba el agregar un Cliente Natural a Base de datos
         /// </summary>
         /// 
-      /*  [Test]
+       [Test]
         public void PruebaAgregarClienteNatural()
         {
             ClienteNatural cliente = new ClienteNatural();
-            cliente.Nat_Id = "11111111";
+            cliente.Nat_Id = "22223112";
             cliente.Nat_Nombre = "Valentina";
-
+            cliente.Nat_Apellido = "Scola";
+            cliente.Nat_Direccion = "Av. La salle djskajkda";
+            int codigo = 122;
+            int numero = 3214325; 
             int fkLugar = 16;
 
-            Assert.IsTrue(baseDeDatosCliente.AgregarClienteNatural(cliente, fkLugar));
+            Assert.IsTrue(baseDeDatosCliente.AgregarClienteNatural(cliente, 
+                fkLugar,codigo,numero));
 
-        }*/
+        }
 
         /// <summary>
         /// Prueba del método que consulta a un cliente natural por id

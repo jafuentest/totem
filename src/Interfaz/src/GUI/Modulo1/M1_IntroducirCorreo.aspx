@@ -18,7 +18,7 @@
                     
                   <div id="login-form-name" class="form-group">
                     <label>Introduzca su correo:</label>
-                    <input runat="server" type="text" class="form-control login-field" style="width:70%;" value="" placeholder="ejemplo@dominio.com" id="input_correo" name="correo" />
+                    <input maxlength="60" runat="server" type="text" class="form-control login-field" style="width:70%;" value="" placeholder="ejemplo@dominio.com" id="input_correo" name="correo" />
                   </div>
                   <div class="form-group">
 		               <div class="form-group">

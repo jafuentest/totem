@@ -20,14 +20,14 @@
                     <div id="login-form-name" class="form-group">
                         <div class ="col-sm-7 col-md-7 col-lg-7">
                             <label>Nombre de Usuario:</label>
-                            <input runat="server" type="text" class="form-control login-field" style="width:100%;" value="" placeholder="Ingrese nombre de usuario" name="usuario" id="input_usuario"/>
+                            <input maxlength="30" runat="server" type="text" class="form-control login-field" style="width:100%;" value="" placeholder="Ingrese nombre de usuario" name="usuario" id="input_usuario"/>
                         </div>
                     </div>
 
                     <div id="login-form-pass" class="form-group">
                          <div class ="col-sm-7 col-md-7 col-lg-7">
                             <label>Contraseña:</label>
-                             <input runat="server" type="password" class="form-control login-field" style="width:100%;" value="" placeholder="Contrase&ntilde;a" name="password" id="input_pswd"/>
+                             <input maxlength="30" runat="server" type="password" class="form-control login-field" style="width:100%;" value="" placeholder="Contrase&ntilde;a" name="password" id="input_pswd"/>
                     
                          </div>
                     </div>
