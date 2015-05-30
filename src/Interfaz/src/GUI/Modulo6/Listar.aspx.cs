@@ -64,7 +64,10 @@ public partial class GUI_Modulo6_Listar : System.Web.UI.Page
     {
         using (LogicaCasoUso logica = new LogicaCasoUso())
         {
-            List<CasoDeUso> lista = logica.ListarCasosDeUso();
+			//Cable
+			int idProyecto = 0;
+
+			List<CasoDeUso> lista = logica.ListarCasosDeUso(idProyecto);
             foreach (CasoDeUso caso in lista)
             {
                 TableRow fila = new TableRow();

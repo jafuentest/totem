@@ -11,8 +11,7 @@ public partial class GUI_Modulo6_Crear : System.Web.UI.Page
 		DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
 		if (user != null)
 		{
-			if (user.username != "" &&
-				user.clave != "")
+			if (user.username != "" && user.clave != "")
 			{
 				((MasterPage)Page.Master).ShowDiv = true;
 			}

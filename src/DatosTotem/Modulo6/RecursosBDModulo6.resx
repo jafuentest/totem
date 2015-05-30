@@ -125,6 +125,12 @@
     <value>@idactor</value>
     <comment>Atributo que identifica el ID del actor en la Base de Datos</comment>
   </data>
+  <data name="ID_CU" xml:space="preserve">
+    <value>@idcasouso</value>
+  </data>
+  <data name="ID_PROY" xml:space="preserve">
+    <value>@idproyecto</value>
+  </data>
   <data name="ID_PROY_ACTOR" xml:space="preserve">
     <value>@idproyecto</value>
     <comment>Atributo que identifica el proyecto al cual el actor estara asociado</comment>
@@ -132,6 +138,12 @@
   <data name="NOMBRE_ACTOR" xml:space="preserve">
     <value>@nombre</value>
     <comment>Atributo que identifica el nombre del actor</comment>
+  </data>
+  <data name="PROCEDURE" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PROCEDURE_" xml:space="preserve">
+    <value />
   </data>
   <data name="PROCEDURE_ELIMINAR_ACTOR" xml:space="preserve">
     <value>ELIMINAR_ACTOR</value>
@@ -144,6 +156,17 @@
   <data name="PROCEDURE_LEER_ACTOR" xml:space="preserve">
     <value>LEER_ACTOR</value>
     <comment>Procedure para leer los actores de la Base de Datos</comment>
+  </data>
+  <data name="PROCEDURE_LEER_CU" xml:space="preserve">
+    <value>LEER_CU</value>
+    <comment>Obtiene un Caso de Uso</comment>
+  </data>
+  <data name="PROCEDURE_LEER_PRECONDICION" xml:space="preserve">
+    <value>LEER_PRECONDICION</value>
+  </data>
+  <data name="PROCEDURE_LISTAR_CU" xml:space="preserve">
+    <value>LISTAR_CU</value>
+    <comment>Obtener todos los casos de uso</comment>
   </data>
   <data name="PROCEDURE_MODIFICAR_ACTOR" xml:space="preserve">
     <value>MODIFICAR_ACTOR</value>

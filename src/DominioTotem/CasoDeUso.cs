@@ -36,7 +36,22 @@ namespace DominioTotem
 			this._condicionFallo = condicionFallo;
 			this._disparadorCasoUso = disparadorCasoUso;
 			this._escenarioExito = escenarioExito;
+
+			//this._actorPrimario = actorPrimario;
+			//this._actoresSecundarios = actoresSecundarios;
+			//this._requerimientosAsociado = requerimientosAsociados;
+			//this._escenarioExito = escenarioExito;
         }
+
+		public CasoDeUso(int idCasoUso, string identificadorCasoUso, string tituloCasoUso, string condicionExito, string condicionFallo, string disparadorCasoUso)
+		{
+			this._idCasoUso = idCasoUso;
+			this._identificadorCasoUso = identificadorCasoUso;
+			this._tituloCasoUso = tituloCasoUso;
+			this._condicionExito = condicionExito;
+			this._condicionFallo = condicionFallo;
+			this._disparadorCasoUso = disparadorCasoUso;
+		}
 		#endregion
 
 		#region Propiedades
