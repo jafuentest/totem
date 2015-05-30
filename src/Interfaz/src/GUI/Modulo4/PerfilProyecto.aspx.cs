@@ -14,7 +14,7 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
     {
         ((MasterPage)Page.Master).IdModulo = "4";
 
-        /*DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+        DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
         if (user != null)
         {
             if (user.username != "" &&
@@ -32,7 +32,7 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
         else
         {
             Response.Redirect("../Modulo1/M1_login.aspx");
-        }*/
+        }
 
         String[] success = Request.QueryString["success"].Split(new Char [] {','});
         if (success != null)
@@ -72,7 +72,6 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
             }
         }
 
-        //DominioTotem.Proyecto proyecto = new DominioTotem.Proyecto();
         esteProyecto = LogicaNegociosTotem.Modulo4.LogicaProyecto.ConsultarProyecto(success[0]);
 
 
@@ -87,7 +86,6 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
         }
         else if (projectCookie.Values["projectCode"] != esteProyecto.Codigo)
         {
-            //ScriptManager.RegisterStartupScript(this,typeof(Page),"CallMyFunction","openModal()",true);
             Response.Cookies.Remove("selectedProjectCookie");
             projectCookie = new HttpCookie("selectedProjectCookie");
             projectCookie.Values["projectCode"] = esteProyecto.Codigo;

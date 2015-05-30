@@ -12,7 +12,7 @@ public partial class GUI_Modulo4_ListaProyectos : System.Web.UI.Page
     {
         ((MasterPage)Page.Master).IdModulo = "4";
 
-        /*DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+        DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
         if (user != null)
         {
             if (user.username != "" &&
@@ -30,10 +30,10 @@ public partial class GUI_Modulo4_ListaProyectos : System.Web.UI.Page
         else
         {
             Response.Redirect("../Modulo1/M1_login.aspx");
-        }*/
+        }
 
         DataTable proyectos = new DataTable();
-        String username = "mapl93";
+        String username = user.username;
         proyectos = LogicaNegociosTotem.Modulo4.LogicaProyecto.ConsultarTodosLosProyectos(username);
         if (proyectos != null)
         {

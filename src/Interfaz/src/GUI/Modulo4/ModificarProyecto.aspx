@@ -27,18 +27,15 @@
         <div class="form-group">
 
             <div id="div_nombre" class="col-sm-8 col-md-8 col-lg-8">
-                <asp:Literal runat="server" id="nombreProy"></asp:Literal>
-				<%--<input type="text" runat="server" id="nombreProy" placeholder="Nombre" class="form-control" value="" name="nombre"/>--%>
+				<input type="text" runat="server" id="nombreProy" placeholder="Nombre" class="form-control" value="" name="nombre"/>
 			</div>
 		    <div id="div_codigo" class="col-sm-2 col-md-2 col-lg-2">
-                <asp:Literal runat="server" id="codigoProy"></asp:Literal>
-				<%--<input type="text" runat="server" id="codigoProy" placeholder="Codigo" class="form-control" value="" name="codigo"/>--%>
+				<input type="text" runat="server" id="codigoProy" placeholder="Codigo" class="form-control" value="" name="codigo"/>
 			</div>
 		    </div>
             <div class="form-group">
 	            <div id="div_descripcion" class="col-sm-10 col-md-10 col-lg-10">
-                    <asp:Literal runat="server" id="descripcionProy"></asp:Literal>
-		            <%--<textarea placeholder="Descripcion" runat="server" id="descripcionProy" class="form-control" name="descripcion" rows="5"></textarea>--%>
+		            <textarea placeholder="Descripcion" runat="server" id="descripcionProy" class="form-control" name="descripcion" rows="5"></textarea>
 		        </div>
 	        </div>
             <label>Moneda</label>
@@ -57,8 +54,7 @@
                     </div>
                 </div>
                 <div id="div_precio" class="col-sm-3 col-md-3 col-lg-3">
-                    <asp:Literal runat="server" id="precioProy"></asp:Literal>
-                    <%--<input type="text" runat="server" id="precioProy" placeholder="Precio" value="" class="form-control" name="precio"/>--%>
+                    <input type="text" runat="server" id="precioProy" placeholder="Precio" value="" class="form-control" name="precio"/>
                 </div>
                 
                 <div id="div_activo" class="col-sm-3 col-md-3 col-lg-3">

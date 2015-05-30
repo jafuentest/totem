@@ -10,11 +10,8 @@ public partial class GUI_Modulo4_CrearProyecto : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ((MasterPage)Page.Master).IdModulo = "4";
-        ((MasterPage)Page.Master).ShowDiv = true;
 
-        //LogicaNegociosTotem.Modulo2.LogicaCliente
-
-        /*DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+        DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
         if (user != null)
         {
             if (user.username != "" &&
@@ -32,7 +29,7 @@ public partial class GUI_Modulo4_CrearProyecto : System.Web.UI.Page
         else
         {
             Response.Redirect("../Modulo1/M1_login.aspx");
-        }*/
+        }
 
         String success = Request.QueryString["success"];
         if (success != null)
