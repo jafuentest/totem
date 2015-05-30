@@ -230,13 +230,13 @@ GO
 
 /*Leer datos basicos del Caso de Uso*/
 CREATE PROCEDURE LEER_CU 
-	@idrequerimiento int
+	@idproyecto int
 AS
 	BEGIN
 		--Leo todos los casos de uso asociados al requerimiento
 		SELECT C.cu_id, C.cu_identificador ,C.cu_titulo, C.cu_condexito, C.cu_condfallo, C.cu_disparador 
-		FROM CASO_USO C, CU_REQUERIMIENTO U, REQUERIMIENTO R 
-		WHERE (R.req_id=@idrequerimiento) AND (U.CASO_USO_cu_id=C.cu_id AND R.req_id=U.REQUERIMIENTO_req_id);
+		FROM CASO_USO C 
+		WHERE C.PROYECTO_pro_id=@idproyecto
 	END
 GO
 
