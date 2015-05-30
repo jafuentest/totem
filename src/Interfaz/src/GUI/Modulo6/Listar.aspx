@@ -63,42 +63,17 @@
                         <div class="container-fluid" id="info">
                             <div class="row">
                                 <h3>Precondiciones</h3>
-                                    <ul>
-                                        <li>Usuario registrado</li>
-                                        <li>Usuario logeado</li>
-                                        <li>Proyecto creado</li>
-                                    </ul>
+                                <asp:BulletedList ID="precondiciones" runat="server"></asp:BulletedList>    
                                 <h3>Condición Final de Éxito</h3>
-                                <p>
-                                    Caso de uso creado
-                                </p>
+                                <p id="exito" runat="server"></p>
                                 <h3>Condición Final de Fallo</h3>
-                                <p>
-                                    El caso de uso no pudo ser creado
-                                </p>
+                                <p id="fallo" runat="server"></p>
                                 <h3>Disparador</h3>
-                                <p>
-                                    Seleccionar opción "Gestión de Casos de uso" → "Agregar caso de uso" del menú
-                                </p>
+                                <p id="disparador" runat="server"></p>
                                 <h3>Escenario Principal de Éxito</h3>
-                                    <ol>
-                                        <li>El usuario o admin selecciona la opción "Gestión de Casos de uso" → "Agregar caso de uso" del menú.</li>
-                                        <li>El sistema despliega la pantalla de obtener los datos del caso de uso.</li>
-                                        <li>El usuario o admin ingresa los números de los requerimientos asociados.</li>
-                                        <li>El sistema verifica la existencia de esos requerimientos.</li>
-                                        <li>El usuario o admin introduce los datos del caso de uso.</li>
-                                        <li>El sistema registra el caso de uso. Volver paso 2. El CU termina.</li>
-                                    </ol>
+                                <asp:BulletedList ID="escenarioExito" runat="server"></asp:BulletedList>
                                 <h3>Extensiones</h3>
-                                <p>
-                                    4-A. El o los requerimientos no existen.
-                                </p>
-                                <p style="text-indent: 5em;">
-                                    A1. Desplegar mensaje de error.
-                                </p>
-                                <p style="text-indent: 5em;">
-                                    A2. Volver al paso 2. 
-                                </p>
+								<asp:BulletedList ID="extensiones" runat="server"></asp:BulletedList>
                             </div>
                         </div>
                     </div>
