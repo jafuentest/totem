@@ -77,19 +77,17 @@ function aceptarConfirmacion()
     $.ajax(
    {
        type: "POST",
-       url: "ModificarMinuta.aspx/crearMinuta",
+       url: "CrearMinuta.aspx/crearMinuta",
        contentType: "application/json; charset=utf-8",
        data: "{'laMinuta':" + laData +"}",
        dataType: "text"
-   }).done(function (data)
-   {
-
+   }).done(function (data) {
+       alerta = "<div class='row'><div class='alert alert-success col-xs-12 col-md-push-3 col-md-8 col-lg-6 alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>¡Correcto!</strong> - Se ha Modificado la Minuta Correctamente</div></div>";
+       $(".alert").remove();                           //Elimina todas las Alertas
+       $(alerta).appendTo("#alertas");                 //Añade la Alerta de Éxito
+       $('#confirmacion').modal('toggle');             //Cierra el Modal
    });
 
-    alerta = "<div class='row'><div class='alert alert-success col-xs-12 col-md-push-3 col-md-8 col-lg-6 alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>¡Correcto!</strong> - Se ha Modificado la Minuta Correctamente</div></div>";
-    $(".alert").remove();                           //Elimina todas las Alertas
-    $(alerta).appendTo("#alertas");                 //Añade la Alerta de Éxito
-    $('#confirmacion').modal('toggle');             //Cierra el Modal
 }
 
 //Función para validar la minuta
