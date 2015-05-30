@@ -249,7 +249,7 @@ namespace DatosTotem.Modulo2
         /// Método que accede a la Base de Datos para Consultar un Cliente Jurídico en específico
         /// </summary>
         /// <returns>Retorna el objeto de tipo Cliente Juridico, null si el objeto no existe</returns>
-        public ClienteJuridico ConsultarClienteJuridico(int idCliente) 
+        public ClienteJuridico ConsultarClienteJuridico(string idCliente) 
         {
             ClienteJuridico clienteJuridico = new ClienteJuridico();
             try
@@ -257,7 +257,7 @@ namespace DatosTotem.Modulo2
 
                 this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureConsultarDatosClienteJuridico, this.conexion);
                 this.comando.CommandType = CommandType.StoredProcedure;
-                this.comando.Parameters.Add(new SqlParameter(RecursosBaseDeDatosModulo2.ParametroIdClienteJuridico,
+                this.comando.Parameters.Add(new SqlParameter(RecursosBaseDeDatosModulo2.ParametroRif,
                                             idCliente));
 
                 SqlDataReader lectura;

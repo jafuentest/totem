@@ -259,7 +259,7 @@ namespace PruebasUnitariasTotem.Modulo2
             clienteJur.Jur_Contactos = contactos;
             clienteJur.Jur_Telefonos = telefonos;
 
-            ClienteJuridico clienteActual = baseDeDatosCliente.ConsultarClienteJuridico(id);
+            ClienteJuridico clienteActual = baseDeDatosCliente.ConsultarClienteJuridico(clienteJur.Jur_Id);
             sonIguales = clienteJur.Equals(clienteActual);
             Assert.IsTrue(sonIguales); 
         
