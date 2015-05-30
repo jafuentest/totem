@@ -19,7 +19,7 @@ namespace PruebasUnitariasTotem.Modulo6
         private BDActor bdPrueba;
 
         /// <summary>
-        /// Inicializa la clase que probaremos
+        /// Inicializa la clase que probaremos y un Actor de prueba
         /// </summary>
         [SetUp]
         public void Init()
