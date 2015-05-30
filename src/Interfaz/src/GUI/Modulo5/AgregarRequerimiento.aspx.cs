@@ -33,9 +33,9 @@ public partial class GUI_Modulo5_AgregarRequerimiento : System.Web.UI.Page
 	   }
     }
 
-    public void ListarRequerimiento(Object sender, System.EventArgs e)
+
+    protected void ListarRequerimientosPorProyecto(object sender, EventArgs e)
     {
-	   CommandEventArgs ex = (CommandEventArgs)e;
 	   int codigo = 1;
 	   Label1.Text = LogicaNegociosTotem.Modulo5.LogicaRequerimiento.ConsultarRequerimiento(codigo);
     }

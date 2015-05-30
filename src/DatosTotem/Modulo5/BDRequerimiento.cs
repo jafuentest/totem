@@ -11,12 +11,12 @@ namespace DatosTotem.Modulo5
     {
 	   public static string ListarRequerimientosPorProyecto(int codigo)
 	   {
-		  string query = "";
+		  string query = "***";
 
 		  List<Parametro> parametros = new List<Parametro>();
 
 		  Parametro parametro = new Parametro("@pro_codigo",
-			 SqlDbType.VarChar, codigo.ToString(), false);
+			 SqlDbType.Int, Convert.ToString(codigo), false);
 		  parametros.Add(parametro);
 
 		  try
@@ -24,11 +24,16 @@ namespace DatosTotem.Modulo5
 			 BDConexion con = new BDConexion();
 			 List<Resultado> resultados = con.EjecutarStoredProcedure(
 				"Procedure_ConsultarTodosRequerimiento", parametros);
+
 			 if (resultados != null)
 			 {
+
+				query = resultados.ToString();
+
 				foreach (Resultado resultado in resultados)
 				{
-				    query = resultado.ToString();
+				    if( resultado.etiqueta.Equals("req_codigo") )
+					   query = (string) resultado.valor;
 				}
 			 }
 		  }
