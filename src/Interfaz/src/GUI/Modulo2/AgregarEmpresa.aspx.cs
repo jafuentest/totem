@@ -15,34 +15,29 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
     {
         ((MasterPage)Page.Master).IdModulo = "2";
 
-        /* DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
-         if (user != null)
-         {
-             if (user.username != "" &&
-                 user.clave != "")
-             {
-                 ((MasterPage)Page.Master).ShowDiv = true;
-                
-             }
-             else
-             {
-                 ((MasterPage)Page.Master).MostrarMenuLateral = false;
-                 ((MasterPage)Page.Master).ShowDiv = false;
-
-             }*/
-        if (!IsPostBack) // verificar si la pagina se muestra por primera vez
+        DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+        if (user != null)
         {
-            /*  this.LlenarPaises();*/
-            /*  this.LlenarCargos();*/
+            if (user.username != "" &&
+                user.clave != "")
+            {
+                ((MasterPage)Page.Master).ShowDiv = true;
+
+            }
+            else
+            {
+                ((MasterPage)Page.Master).MostrarMenuLateral = false;
+                ((MasterPage)Page.Master).ShowDiv = false;
+
+            }
+
+        }
+        else
+        {
+            Response.Redirect("../Modulo1/M1_login.aspx");
         }
 
     }
-    /*   else
-       {
-           Response.Redirect("../Modulo1/M1_login.aspx");
-       }*/
-
-
 
     /// <summary>
     /// Método que se ejecuta cuando el usuario presiona 

@@ -22,34 +22,32 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
         ClienteNatural clienteNatural;
         LogicaCliente logicaCliente = new LogicaCliente();
 
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        ((MasterPage)Page.Master).IdModulo = "2";
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            ((MasterPage)Page.Master).IdModulo = "2";
 
-     /*  DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
-        if (user != null)
-      {
-           if (user.username != "" &&
-                user.clave != "")
-           {
-                ((MasterPage)Page.Master).ShowDiv = true;
+            DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+            if (user != null)
+            {
+                if (user.username != "" &&
+                     user.clave != "")
+                {
+                    ((MasterPage)Page.Master).ShowDiv = true;
+                }
+                else
+                {
+                    ((MasterPage)Page.Master).MostrarMenuLateral = false;
+                    ((MasterPage)Page.Master).ShowDiv = false;
+                }
+
             }
             else
-           {
-                ((MasterPage)Page.Master).MostrarMenuLateral = false;
-                ((MasterPage)Page.Master).ShowDiv = false;
+            {
+                Response.Redirect("../Modulo1/M1_login.aspx");
+
+
             }
-
-      }
-        else
-        {
-           /*   Response.Redirect("../Modulo1/M1_login.aspx");*/
-        if (!IsPostBack) 
-        {
-            /*this.LlenarPaises(); */
         }
-
-       }
 
     /// <summary>
     /// Evento que se dispara cuando 
