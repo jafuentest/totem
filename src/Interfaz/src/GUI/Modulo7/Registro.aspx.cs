@@ -17,9 +17,6 @@ public partial class GUI_Modulo7_Registro : System.Web.UI.Page
         DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
 
 
-   //    comboCargo.SelectedIndexChanged +=
-     //                 new EventHandler(actualizarComboCargos);
-
 
         if (user != null)
         {
