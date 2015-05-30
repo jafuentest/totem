@@ -70,6 +70,7 @@
     <Compile Include="Modulo4\Prueba_Proyecto.cs" />
     <Compile Include="Modulo6\PruebaActor.cs" />
     <Compile Include="Modulo6\PruebaBDActor.cs" />
+    <Compile Include="Modulo6\PruebaBDActorExcepciones.cs" />
     <Compile Include="Modulo6\PruebaLogicaActor.cs" />
     <Compile Include="Modulo7\PruebaBDUsuario.cs" />
     <Compile Include="Modulo8\PruebaBDAcuerdo.cs" />
