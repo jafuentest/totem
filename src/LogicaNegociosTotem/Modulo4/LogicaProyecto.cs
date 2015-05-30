@@ -278,8 +278,12 @@ namespace LogicaNegociosTotem.Modulo4
                 LogicaNegociosTotem.Modulo3.LogicaInvolucrados logInv = new LogicaNegociosTotem.Modulo3.LogicaInvolucrados(proyecto);
                 involucrados = logInv.obtenerUsuariosInvolucradosProyecto(proyecto);
                 LogicaNegociosTotem.Modulo6.LogicaCasoUso cu = new Modulo6.LogicaCasoUso();
-                List<CasoDeUso> listaCU = cu.ListarCasosDeUso();
-                System.IO.StreamReader archivoBase = new System.IO.StreamReader(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\BaseErs.tex");
+                
+				//Cable por Fuentes
+				List<CasoDeUso> listaCU = cu.ListarCasosDeUso(0);
+				//Fin del cable
+                
+				System.IO.StreamReader archivoBase = new System.IO.StreamReader(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\BaseErs.tex");
                 System.IO.StreamWriter ers = new System.IO.StreamWriter("ers.tex");
                 while ((linea = archivoBase.ReadLine()) != null)
                 {
