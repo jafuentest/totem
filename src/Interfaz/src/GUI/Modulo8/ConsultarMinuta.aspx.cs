@@ -88,7 +88,7 @@ public partial class GUI_Modulo8_ConsultarMinuta : System.Web.UI.Page
         string botonDetalle = "<a id='{0}' class='btn btn-primary glyphicon glyphicon-info-sign' href='DetalleMinutas.aspx?idMinuta={0}'></a>";
         botonDetalle = String.Format(botonDetalle, id);
 
-        string botonModificar = "<a id='{0}' class='btn btn-default glyphicon glyphicon-pencil' href='<%= Page.ResolveUrl(\"~/GUI/Modulo8/ModificarMinuta.aspx\")%>'></a>";
+        string botonModificar = "<a id='{0}' class='btn btn-default glyphicon glyphicon-pencil' href='ModificarMinuta.aspx?idMinuta={0}'></a>";
         botonModificar = String.Format(botonModificar, id);
 
         string botonImprimir = "<a id='{0}' class='btn btn-success glyphicon glyphicon-print' href='<%= Page.ResolveUrl(\"~/GUI/Modulo8/MINUTA3.aspx\")%>'></a>";

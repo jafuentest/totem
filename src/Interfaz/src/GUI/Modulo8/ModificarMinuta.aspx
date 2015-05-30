@@ -29,49 +29,9 @@
 
             <div class="form-group">
                 <label for="participantes" class="col-xs-12 col-md-3 control-label">Participantes:</label>
-                <div class="list-group col-xs-12 col-md-8 col-lg-6">
-                    <div id="1_par" class="panel panel-default panel-participante col-xs-12 col-sm-6" onClick="seleccionado(this)">
-                        <div class="panel-boddy participante">
-                            <div class="col-xs-1 check-contenedor"><input type="checkbox" class="participante-check" id="1_par_check"/></div>
-                            <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                            <div class="col-xs-8 nombre-participante">
-                                <p class="participante-nombre">César Contreras</p>
-                                <p class="participante-rol"><small>Líder de Proyecto</small></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="2_par" class="panel panel-default panel-participante col-xs-12 col-sm-6" onClick="seleccionado(this)">
-                        <div class="panel-boddy participante">
-                            <div class="col-xs-1 check-contenedor"><input type="checkbox" class="participante-check" id="2_par_check"/></div>
-                            <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                            <div class="col-xs-8 nombre-participante">
-                                <p class="participante-nombre">Daniel Sam</p>
-                                <p class="participante-rol"><small>Product Owner</small></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="3_par" class="panel panel-default panel-participante col-xs-12 col-sm-6" onClick="seleccionado(this)">
-                        <div class="panel-boddy participante">
-                            <div class="col-xs-1 check-contenedor"><input type="checkbox" class="participante-check" id="3_par_check"/></div>
-                            <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                            <div class="col-xs-8 nombre-participante">
-                                <p class="participante-nombre">Ramón Quintero</p>
-                                <p class="participante-rol"><small>Desarrollador</small></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="4_par" class="panel panel-default panel-participante col-xs-12 col-sm-6" onClick="seleccionado(this)">
-                        <div class="panel-boddy participante">
-                            <div class="col-xs-1 check-contenedor"><input type="checkbox" class="participante-check" id="4_par_check"/></div>
-                            <div class="col-xs-2 img-participante-contenedor"><img class="img-participante" src="img/user.png" alt="Participante" /></div>
-                            <div class="col-xs-8 nombre-participante">
-                                <p class="participante-nombre">Ana Pérez</p>
-                                <p class="participante-rol"><small>Stakeholder</small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div id="listaParticipante" class="list-group col-xs-12 col-md-8 col-lg-6"></div>
             </div>
+
 
             <div class="col-xs-12 form-group"></div>
             <div class="form-group">
@@ -129,7 +89,7 @@
                     <h4 class="modal-title" >¿Desea guardar los cambios?</h4>
                 </div>
                 <div class="modal-footer">
-                    <a id="btn-confirmar" type="button" class="btn btn-primary" href="ConsultarMinuta.aspx?success=2">Aceptar</a>
+                    <a id="btn-confirmar" type="button" class="btn btn-primary" onClick="aceptarConfirmacion();">Aceptar</a>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
