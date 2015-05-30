@@ -137,3 +137,19 @@ AS
     SELECT @usu_resultado = usu_username FROM USUARIO WHERE usu_username = @usu_username
 RETURN
 go
+CREATE PROCEDURE ObtenerDatosUsuario
+	@usu_username varchar(60),
+	@usu_clave varchar(60) OUTPUT,
+	@usu_nombre varchar(60) OUTPUT,
+	@usu_apellido varchar(60) OUTPUT,
+	@usu_rol varchar(60) OUTPUT,
+	@Usu_correo varchar(60) OUTPUT,
+    @usupreguntaseguridad varchar(60) OUTPUT,
+	@usurespuestaseguridad varchar(60) OUTPUT,
+	@usu_car_nombre varchar(60) OUTPUT
+	 AS
+	Select 	@usu_clave = usu_clave,@usu_nombre = Usu_nombre, @usu_apellido = Usu_apellido , @usu_rol = Usu_rol, @usu_correo = Usu_correo,@usupreguntaseguridad=usu_pregseguridad,@usurespuestaseguridad=usu_respseguridad, @usu_car_nombre = car_nombre
+	from Usuario, cargo
+	where usu_username = @usu_username AND CARGO_car_id = car_id;
+	RETUR
+	go
