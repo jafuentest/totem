@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Personal Involucrado</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Listar Involucrados</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
-           
+     <form runat="server" class="form-horizontal" method="POST">
                        <div class="col-sm-12 col-md-12 col-lg-12">
                        <div id="alert" runat="server">
                        </div>
@@ -42,9 +42,9 @@
                         </div>
                        </div>
                       </div>
-                       <div class="modal-footer">
-                        <button id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarUsuario()">Eliminar</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                      <div id ="modalDeleteFooter" class="modal-footer">
+                        <%--<button id="btn-eliminar" type="button" class="btn btn-primary" opnclick="EliminarUsuario()">Elimina</button>--%>
+                        <button runat="server" id="btn_eliminar" type="submit" class="btn btn-primary" onserverclick="eliminarUsuario_OnClick">Eliminar</button><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                        </div>
                       </div><!-- /.modal-content -->
                      </div><!-- /.modal-dialog -->
@@ -54,6 +54,7 @@
                                 &nbsp;
                             
                     </div>
+         </form>
      <script type="text/javascript">
          //redirecciona al modulo 4
          function redireccion() {

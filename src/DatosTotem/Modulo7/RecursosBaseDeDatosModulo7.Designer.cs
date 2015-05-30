@@ -22,7 +22,7 @@ namespace DatosTotem.Modulo7 {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class RecursosBaseDeDatosModulo7 {
+    public class RecursosBaseDeDatosModulo7 {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace DatosTotem.Modulo7 {
         ///   Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DatosTotem.Modulo7.RecursosBaseDeDatosModulo7", typeof(RecursosBaseDeDatosModulo7).Assembly);
@@ -51,7 +51,7 @@ namespace DatosTotem.Modulo7 {
         ///   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,16 +63,25 @@ namespace DatosTotem.Modulo7 {
         /// <summary>
         ///   Busca una cadena traducida similar a @usu_apellido.
         /// </summary>
-        internal static string ApellidoUsuario {
+        public static string ApellidoUsuario {
             get {
                 return ResourceManager.GetString("ApellidoUsuario", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a SELECT DISTINCT CAR_NOMBRE FROM CARGO, USUARIO WHERE CARGO_car_id=car_id.
+        /// </summary>
+        public static string CargosUsuarios {
+            get {
+                return ResourceManager.GetString("CargosUsuarios", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a @usu_car_nombre.
         /// </summary>
-        internal static string CargoUsuario {
+        public static string CargoUsuario {
             get {
                 return ResourceManager.GetString("CargoUsuario", resourceCulture);
             }
@@ -81,7 +90,7 @@ namespace DatosTotem.Modulo7 {
         /// <summary>
         ///   Busca una cadena traducida similar a @usu_clave.
         /// </summary>
-        internal static string ClaveUsuario {
+        public static string ClaveUsuario {
             get {
                 return ResourceManager.GetString("ClaveUsuario", resourceCulture);
             }
@@ -90,16 +99,25 @@ namespace DatosTotem.Modulo7 {
         /// <summary>
         ///   Busca una cadena traducida similar a Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\Argenis\Desktop\totem\src\DatosTotem\BaseDeDatos\BaseDeDatosTotem.mdf;Integrated Security=True.
         /// </summary>
-        internal static string conexion {
+        public static string conexion {
             get {
                 return ResourceManager.GetString("conexion", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a ConsultarClave.
+        /// </summary>
+        public static string ConsultarClaveUsuario {
+            get {
+                return ResourceManager.GetString("ConsultarClaveUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a @usu_correo.
         /// </summary>
-        internal static string CorreoUsuario {
+        public static string CorreoUsuario {
             get {
                 return ResourceManager.GetString("CorreoUsuario", resourceCulture);
             }
@@ -108,7 +126,7 @@ namespace DatosTotem.Modulo7 {
         /// <summary>
         ///   Busca una cadena traducida similar a @usu_nombre.
         /// </summary>
-        internal static string NombreUsuario {
+        public static string NombreUsuario {
             get {
                 return ResourceManager.GetString("NombreUsuario", resourceCulture);
             }
@@ -117,7 +135,7 @@ namespace DatosTotem.Modulo7 {
         /// <summary>
         ///   Busca una cadena traducida similar a @usupreguntaseguridad.
         /// </summary>
-        internal static string PreguntaUsuario {
+        public static string PreguntaUsuario {
             get {
                 return ResourceManager.GetString("PreguntaUsuario", resourceCulture);
             }
@@ -126,7 +144,7 @@ namespace DatosTotem.Modulo7 {
         /// <summary>
         ///   Busca una cadena traducida similar a ConsultarUsuario.
         /// </summary>
-        internal static string ProcedimientoConsultarUsuario {
+        public static string ProcedimientoConsultarUsuario {
             get {
                 return ResourceManager.GetString("ProcedimientoConsultarUsuario", resourceCulture);
             }
@@ -135,7 +153,7 @@ namespace DatosTotem.Modulo7 {
         /// <summary>
         ///   Busca una cadena traducida similar a CorreoUnico.
         /// </summary>
-        internal static string ProcedimientoCorreoUnico {
+        public static string ProcedimientoCorreoUnico {
             get {
                 return ResourceManager.GetString("ProcedimientoCorreoUnico", resourceCulture);
             }
@@ -144,7 +162,7 @@ namespace DatosTotem.Modulo7 {
         /// <summary>
         ///   Busca una cadena traducida similar a InsertarUsuario.
         /// </summary>
-        internal static string ProcedimientoInsertarUsuario {
+        public static string ProcedimientoInsertarUsuario {
             get {
                 return ResourceManager.GetString("ProcedimientoInsertarUsuario", resourceCulture);
             }
@@ -153,18 +171,36 @@ namespace DatosTotem.Modulo7 {
         /// <summary>
         ///   Busca una cadena traducida similar a ModificarUsuario.
         /// </summary>
-        internal static string ProcedimientoModificarUsuario {
+        public static string ProcedimientoModificarUsuario {
             get {
                 return ResourceManager.GetString("ProcedimientoModificarUsuario", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a ObtenerDatosUsuario.
+        /// </summary>
+        public static string ProcedimientoObtenerUsuario {
+            get {
+                return ResourceManager.GetString("ProcedimientoObtenerUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a UserNameUnico.
         /// </summary>
-        internal static string ProcedimientoUsuarioUnico {
+        public static string ProcedimientoUsuarioUnico {
             get {
                 return ResourceManager.GetString("ProcedimientoUsuarioUnico", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a SELECT DISTINCT CAR_NOMBRE FROM CARGO, USUARIO WHERE CARGO_car_id=car_id.
+        /// </summary>
+        public static string QueryCargosUsuarios {
+            get {
+                return ResourceManager.GetString("QueryCargosUsuarios", resourceCulture);
             }
         }
         
@@ -173,7 +209,7 @@ namespace DatosTotem.Modulo7 {
         ///   FROM USUARIO,CARGO
         ///   WHERE CARGO_car_id = car_id.
         /// </summary>
-        internal static string QueryListarUsuario {
+        public static string QueryListarUsuario {
             get {
                 return ResourceManager.GetString("QueryListarUsuario", resourceCulture);
             }
@@ -182,7 +218,7 @@ namespace DatosTotem.Modulo7 {
         /// <summary>
         ///   Busca una cadena traducida similar a SELECT car_nombre FROM CARGO,USUARIO WHERE car_id=.
         /// </summary>
-        internal static string QueryObtenerCargo {
+        public static string QueryObtenerCargo {
             get {
                 return ResourceManager.GetString("QueryObtenerCargo", resourceCulture);
             }
@@ -191,7 +227,7 @@ namespace DatosTotem.Modulo7 {
         /// <summary>
         ///   Busca una cadena traducida similar a SELECT * FROM USUARIO WHERE usu_username=.
         /// </summary>
-        internal static string queryObtenerUsuario {
+        public static string queryObtenerUsuario {
             get {
                 return ResourceManager.GetString("queryObtenerUsuario", resourceCulture);
             }
@@ -200,7 +236,7 @@ namespace DatosTotem.Modulo7 {
         /// <summary>
         ///   Busca una cadena traducida similar a @usurespuestaseguridad.
         /// </summary>
-        internal static string RespuestaUsuario {
+        public static string RespuestaUsuario {
             get {
                 return ResourceManager.GetString("RespuestaUsuario", resourceCulture);
             }
@@ -209,7 +245,7 @@ namespace DatosTotem.Modulo7 {
         /// <summary>
         ///   Busca una cadena traducida similar a @usu_resultado.
         /// </summary>
-        internal static string Resultadorepetido {
+        public static string Resultadorepetido {
             get {
                 return ResourceManager.GetString("Resultadorepetido", resourceCulture);
             }
@@ -218,7 +254,7 @@ namespace DatosTotem.Modulo7 {
         /// <summary>
         ///   Busca una cadena traducida similar a @usu_rol.
         /// </summary>
-        internal static string RolUsuario {
+        public static string RolUsuario {
             get {
                 return ResourceManager.GetString("RolUsuario", resourceCulture);
             }
@@ -227,7 +263,7 @@ namespace DatosTotem.Modulo7 {
         /// <summary>
         ///   Busca una cadena traducida similar a @usu_username.
         /// </summary>
-        internal static string UsernameUsuario {
+        public static string UsernameUsuario {
             get {
                 return ResourceManager.GetString("UsernameUsuario", resourceCulture);
             }

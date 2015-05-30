@@ -31,9 +31,8 @@ namespace PruebasUnitariasTotem.Modulo1
         public void Init()
         {
             user = new Usuario();
-            user.username = "santiagop85";
-            user.clave = "santi1890a";
-           // user.CalcularHash();
+            user.username = RecursosPUMod1.UsuarioExitoso;
+            user.clave = RecursosPUMod1.ClaveExitosa;
         }
 
         /// <summary>
@@ -50,6 +49,7 @@ namespace PruebasUnitariasTotem.Modulo1
         {
             try
             {
+                user.CalcularHash();
                 DatosTotem.Modulo1.BDLogin.ValidarLoginBD(user);
             }
             catch (ExcepcionesTotem.Modulo1.UsuarioVacioException)
@@ -57,7 +57,7 @@ namespace PruebasUnitariasTotem.Modulo1
                 Assert.Fail("En login no deberia lanzar excepcion");
             }
             Assert.IsNotNull(user);
-            Assert.AreEqual(user.correo, "santiagobernal93@gmail.com");
+            Assert.AreEqual(user.correo, RecursosPUMod1.CorreoExitoso);
 
         }
 
@@ -81,7 +81,6 @@ namespace PruebasUnitariasTotem.Modulo1
 
         }
 
-
         /// <summary>
         /// Metodo para probar el metodo de BDLogin: Obtener pregunta de seguridad
         /// Se usa el objeto usuario creado en el setup y se valida que me traiga 
@@ -93,18 +92,17 @@ namespace PruebasUnitariasTotem.Modulo1
         {
             try
             {
-                user.correo = "santiagobernal93@gmail.com";
+                user.correo = RecursosPUMod1.CorreoExitoso;
                 user = DatosTotem.Modulo1.BDLogin.ObtenerPreguntaSeguridad(user);
             }
             catch (Exception)
             {
                 Assert.Fail("En obtener pregunta seguridad no deberia lanzar excepcion");
             }
-            Assert.AreEqual(user.preguntaSeguridad, "cual es mi carro favorito");
+            Assert.AreEqual(user.preguntaSeguridad, RecursosPUMod1.PreguntaDeSeguridad);
         }
 
-
-        /// <summary>
+       /// <summary>
         /// Metodo para probar el metodo de PruebaObtenerPreguntaSeguridadException dispare la exception UsuarioVacio
         /// </summary>
         [Test]
@@ -131,16 +129,10 @@ namespace PruebasUnitariasTotem.Modulo1
         [Test]
         public void PruebaValidarPreguntaSeguridad()
         {
-            user.correo = "santiagobernal93@gmail.com";
-            user.respuestaSeguridad = "chevette";
-            try
-            {
-                Assert.True(DatosTotem.Modulo1.BDLogin.ValidarPreguntaSeguridadBD(user));
-            }
-            catch (Exception)
-            {
-                Assert.Fail("En validar respuesta seguridad no deberia lanzar excepcion");
-            }
+            user.correo = RecursosPUMod1.CorreoExitoso;
+            user.respuestaSeguridad = RecursosPUMod1.RespuestaDeSeguridadExitosa;
+            Assert.True(DatosTotem.Modulo1.BDLogin.ValidarPreguntaSeguridadBD(user));
+            
         }
 
         /// <summary>

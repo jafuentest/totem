@@ -88,4 +88,11 @@
 	<opcion nombre="Crear Minuta" link="~/src/GUI/Modulo8/CrearMinuta.aspx">
 		<modulo id="8"></modulo>
 	</opcion>
+  <!-- Opciones del menú lateral del Login-->
+  <opcion nombre="Link Prueba" link="~/src/GUI/Modulo1/Default.aspx" imagen="~/img/Icons/modulo2.png">
+    <modulo id="9"></modulo>
+  </opcion>
+  <opcion nombre="Crear Minuta" link="~/src/GUI/Modulo8/CrearMinuta.aspx">
+    <modulo id="9"></modulo>
+  </opcion>
 </menuLateral>

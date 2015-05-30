@@ -5,6 +5,7 @@ using System.Text;
 using DatosTotem;
 using DatosTotem.Modulo3;
 
+
 namespace LogicaNegociosTotem.Modulo3
 {
     public class LogicaInvolucrados
@@ -34,9 +35,14 @@ namespace LogicaNegociosTotem.Modulo3
         #region Constructor
         public LogicaInvolucrados(DominioTotem.Proyecto elProyecto)
         {
-            //contactosInvolucrados = obtenerContactosInvolucradosProyecto(elProyecto);
+            contactosInvolucrados = obtenerContactosInvolucradosProyecto(elProyecto);
             usuariosInvolucrados = obtenerUsuariosInvolucradosProyecto(elProyecto);
         }
+        public LogicaInvolucrados()
+        {
+
+        }
+
         #endregion
         /// <summary>
         /// Metodo que agrega contacto a lista de contactos involucrados a un proyecto
@@ -90,13 +96,38 @@ namespace LogicaNegociosTotem.Modulo3
                 retorno = BDInvolucrados.agregarContactosInvolucrados(laListaCont);
 
             }
+            catch (ExcepcionesTotem.Modulo3.ListaSinInvolucradosException ex)
+            {
+                throw new ExcepcionesTotem.Modulo3.ListaSinInvolucradosException(RecursosBDModulo3.Codigo_ListaSinInv,
+                    RecursosBDModulo3.Mensaje_ListaSinInv, ex);
+            }
+            catch (ExcepcionesTotem.Modulo3.ContactoSinIDException ex)
+            {
+                throw new ExcepcionesTotem.Modulo3.ContactoSinIDException(
+                            RecursosBDModulo3.Codigo_ContactoSinID, RecursosBDModulo3.Mensaje_ContactoSinID,
+                            ex);
+            }
+            catch (ExcepcionesTotem.Modulo3.ListaSinProyectoException ex)
+            {
+                throw new ExcepcionesTotem.Modulo3.ListaSinProyectoException(RecursosBDModulo3.Codigo_ListaSinProy,
+             RecursosBDModulo3.Mensaje_ListaSinProy, ex);
+
+            }
             catch (ExcepcionesTotem.Modulo3.InvolucradoRepetidoException ex)
             {
-
+                throw new ExcepcionesTotem.Modulo3.InvolucradoRepetidoException(
+                    RecursosBDModulo3.Codigo_Involucrado_Repetido,
+                    RecursosBDModulo3.Mensaje_Involucrado_Repetido, ex);
             }
             catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
             {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
 
+            }
+            catch (ExcepcionesTotem.ExceptionTotem ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotem("No se pudo completar la operacion", ex);
             }
             return retorno;
         }
@@ -113,13 +144,43 @@ namespace LogicaNegociosTotem.Modulo3
                 retorno = BDInvolucrados.agregarUsuariosInvolucrados(laListaUsu);
 
             }
+            catch (ExcepcionesTotem.Modulo3.ProyectoSinCodigoException ex)
+            {
+                throw new ExcepcionesTotem.Modulo3.ProyectoSinCodigoException(
+                RecursosBDModulo3.Codigo_ProyectoSinCod, RecursosBDModulo3.Mensaje_ProyectoSinCod,
+                ex);
+
+            }
+            catch (ExcepcionesTotem.Modulo3.ListaSinProyectoException ex)
+            {
+                throw new ExcepcionesTotem.Modulo3.ListaSinProyectoException(RecursosBDModulo3.Codigo_ListaSinProy,
+                    RecursosBDModulo3.Mensaje_ListaSinProy, ex);
+            }
+            catch (ExcepcionesTotem.Modulo3.ListaSinInvolucradosException ex)
+            {
+                throw new ExcepcionesTotem.Modulo3.ListaSinInvolucradosException(RecursosBDModulo3.Codigo_ListaSinInv,
+                RecursosBDModulo3.Mensaje_ListaSinInv, ex);
+            }
             catch (ExcepcionesTotem.Modulo3.InvolucradoRepetidoException ex)
             {
+                throw new ExcepcionesTotem.Modulo3.InvolucradoRepetidoException(
+                        RecursosBDModulo3.Codigo_Involucrado_Repetido,
+                        RecursosBDModulo3.Mensaje_Involucrado_Repetido, ex);
+            }
+            catch (ExcepcionesTotem.Modulo3.UsuarioSinUsernameException ex)
+            {
+                throw new ExcepcionesTotem.Modulo3.UsuarioSinUsernameException(RecursosBDModulo3.Codigo_UsuarioSinUsername,
+                RecursosBDModulo3.Mensaje_UsuarioSinUsername, ex);
 
             }
             catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
             {
-
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                        RecursoGeneralBD.Mensaje, ex);
+            }
+            catch (ExcepcionesTotem.ExceptionTotem ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotem("No se pudo completar la operacion", ex);
             }
             return retorno;
         }
@@ -132,7 +193,27 @@ namespace LogicaNegociosTotem.Modulo3
             DominioTotem.Proyecto elProyecto)
         {
 
-            throw new NotImplementedException();
+            try
+            {
+                return BDInvolucrados.consultarContactosInvolucradosPorProyecto(elProyecto);
+
+            }
+            catch (ExcepcionesTotem.Modulo3.ProyectoSinCodigoException ex)
+            {
+                throw new ExcepcionesTotem.Modulo3.ProyectoSinCodigoException(
+                        RecursosBDModulo3.Codigo_ProyectoSinCod, RecursosBDModulo3.Mensaje_ProyectoSinCod,
+                        ex);
+
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+            }
+            catch (ExcepcionesTotem.ExceptionTotem ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotem("No se pudo completar la operacion", ex);
+            }
         }
         /// <summary>
         /// Metodo que carga la lista de los usuarios involucrados a un proyecto
@@ -142,18 +223,37 @@ namespace LogicaNegociosTotem.Modulo3
         public DominioTotem.ListaInvolucradoUsuario obtenerUsuariosInvolucradosProyecto(
             DominioTotem.Proyecto elProyecto)
         {
-
             try
             {
              return BDInvolucrados.consultarUsuariosInvolucradosPorProyecto(elProyecto);
 
             }
-            catch (Exception ex)
+            catch (ExcepcionesTotem.Modulo3.ProyectoSinCodigoException ex)
+            {
+                throw new ExcepcionesTotem.Modulo3.ProyectoSinCodigoException(
+                        RecursosBDModulo3.Codigo_ProyectoSinCod, RecursosBDModulo3.Mensaje_ProyectoSinCod,
+                        ex);
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+            }
+            catch (ExcepcionesTotem.ExceptionTotem ex)
             {
                 return null;
+                //throw new ExcepcionesTotem.ExceptionTotem("No se pudo completar la operacion", ex);
             }
+        }
+        public List<String> ListarCargosEmpleados(DominioTotem.ClienteJuridico cli)
+        {
+            List<String> listaCargos = new List<String>();
 
-           
+            return DatosTotem.Modulo3.BDInvolucrados.consultarCargosContactos(cli);
+        }
+        public DominioTotem.Usuario obtenerDatosUsuarioUsername(String username)
+        {
+            return BDInvolucrados.datosUsuarioUsername(username);
         }
     }
 }

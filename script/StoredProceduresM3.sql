@@ -35,7 +35,7 @@ CREATE PROCEDURE Procedure_consultarInvUsuario
 	@proyecto_codigo [varchar](6)
 AS
  BEGIN
-	SELECT u.usu_id as usuarioID, u.usu_nombre as usuarioNombre, u.usu_apellido as usuarioApellido, c.car_nombre as cargoNombre
+	SELECT u.usu_id as usuarioID, u.usu_nombre as usuarioNombre, u.usu_apellido as usuarioApellido, c.car_nombre as cargoNombre, u.usu_username as usarioUsername
 	FROM INVOLUCRADOS_USUARIOS iu, USUARIO u, CARGO c
 	WHERE iu.PROYECTO_pro_id = (select pro_id from PROYECTO where pro_codigo = @proyecto_codigo)
 		  AND iu.USUARIO_usu_id = u.usu_id
@@ -103,4 +103,35 @@ AS
 	COMMIT;
  END
 GO
+CREATE PROCEDURE Procedure_consultarDatosUsuarioUsername
+	@Username varchar(60),
+	@Usu_nombre varchar(60) OUTPUT,
+	@Usu_apellido varchar(60) OUTPUT,
+	@Usu_cargo varchar(60) OUTPUT
+AS
+BEGIN
+	SELECT @Usu_nombre = usu_nombre, @Usu_apellido = usu_apellido, @Usu_cargo = car_nombre
+	from USUARIO, CARGO
+	where
+		usu_username = @Username and CARGO_car_id = car_id
+END
 GO
+CREATE procedure seleccionarCargosUsuarios
+AS
+BEGIN
+SELECT DISTINCT CAR_NOMBRE as nombreCargo FROM CARGO, USUARIO WHERE CARGO_car_id=car_id
+END
+GO
+CREATE PROCEDURE ListarUsuariosPorCargo
+	@cargo varchar(60)
+
+AS
+BEGIN
+	Select u.usu_id as usuarioID, u.usu_nombre as usuarioNombre, u.usu_apellido as usuarioApellido,
+	u.usu_username as usuarioUsername, c.car_nombre as cargoNombre 
+	 from USUARIO u, CARGO c
+	where
+	c.car_nombre = @cargo and c.car_id = u.CARGO_car_id
+END
+GO
+

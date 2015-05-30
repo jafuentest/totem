@@ -189,6 +189,10 @@
     <value>@Usu_rol</value>
     <comment>Parametro de output para los stored procedure con el rol del usuario</comment>
   </data>
+  <data name="Query_Cambiar_Clave" xml:space="preserve">
+    <value>cambiar_clave</value>
+    <comment>Query para el stored procedure que le cambia la clave a un usuario</comment>
+  </data>
   <data name="Query_Obtener_Pregunta_Seguridad" xml:space="preserve">
     <value>obtener_pregunta_seguridad</value>
     <comment>Query para el stored procedure que me retorna la pregunta de seguridad del usuario</comment>

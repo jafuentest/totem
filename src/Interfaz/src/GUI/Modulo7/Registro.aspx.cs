@@ -16,6 +16,8 @@ public partial class GUI_Modulo7_Registro : System.Web.UI.Page
 
         DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
 
+
+
         if (user != null)
         {
             if (user.username != "" && user.clave != "")
@@ -40,7 +42,60 @@ public partial class GUI_Modulo7_Registro : System.Web.UI.Page
         else
         {
             Response.Redirect("../Modulo1/M1_login.aspx");
-        } 
+        }
+
+      if (!IsPostBack) // verificar si la pagina se muestra por primera vez
+        {
+
+            llenarComboTipoRol();
+            actualizarComboCargos();
+       }
+    }
+
+    protected void llenarComboTipoRol()
+    {
+        Dictionary<string, string> options = new Dictionary<string, string>();
+        options.Add("-1", "Selecciona una opcion");
+        options.Add("Usuario", "Usuario");
+        options.Add("Administrador", "Administrador");
+
+        comboTipoRol.DataSource = options;
+        comboTipoRol.DataTextField = "value";
+        comboTipoRol.DataValueField = "key";
+        comboTipoRol.DataBind();
+    }
+
+    protected void actualizarComboCargos()
+    {
+        Dictionary<string, string> options = new Dictionary<string, string>();
+       
+        options.Add("-1", "Selecciona cargo");
+
+     //   comboCargo.Items.Clear();
+       
+       
+                LogicaNegociosTotem.Modulo7.ManejadorUsuario mU = new LogicaNegociosTotem.Modulo7.ManejadorUsuario();
+                List<String> listaCargos = new List<String>();
+                listaCargos = mU.ListarCargosUsuarios();
+
+                try
+                {
+                    foreach (String cargo in listaCargos)
+                    {
+                        options.Add(cargo, cargo);
+                     
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            
+        
+        comboCargo.DataSource = options;
+        comboCargo.DataTextField = "value";
+        comboCargo.DataValueField = "key";
+        comboCargo.DataBind();
     }
 
     protected void btn_registrar_Click(object sender, EventArgs e)
@@ -57,24 +112,41 @@ public partial class GUI_Modulo7_Registro : System.Web.UI.Page
                         if(this.id_correo.Value != ""){
                             if(this.id_pregunta.Value != ""){
                                 if(this.id_respuesta.Value != ""){
-                                    if(this.password.Value == this.confirm_password.Value ){
-                                     LogicaNegociosTotem.Modulo7.LogicaUsuario.agregarUsuario(
-                                        new DominioTotem.Usuario(this.id_username.Value,
-                                        this.password.Value,
-                                        this.id_nombre.Value,
-                                        this.id_apellido.Value,
-                                        "Usuario",
-                                        this.id_correo.Value,
-                                        this.id_pregunta.Value,
-                                        this.id_respuesta.Value,
-                                        "Desarrollador"));
+                                    if (this.comboTipoRol.SelectedValue != "")  {
+                                        if  (this.password.Value == this.confirm_password.Value ) {
+                                                if (this.comboCargo.SelectedValue != "") {                                               
+                                                 LogicaNegociosTotem.Modulo7.LogicaUsuario.agregarUsuario(
+                                                    new DominioTotem.Usuario(this.id_username.Value,
+                                                    this.password.Value,
+                                                    this.id_nombre.Value,
+                                                    this.id_apellido.Value,
+                                                    this.comboTipoRol.SelectedValue,
+                                                    this.id_correo.Value,
+                                                    this.id_pregunta.Value,
+                                                    this.id_respuesta.Value,
+                                                    this.comboCargo.SelectedValue));
                                      Response.Redirect("../Modulo7/ListarUsuarios.aspx?success=true");
                                      }else{
                                          alert_password.Attributes["class"] = "alert alert-danger alert-dismissible";
                                          alert_password.Attributes["role"] = "alert";
-                                         alert_password.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>La respuesta de seguridad esta vacia</div>";
+                                         alert_password.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>No selecciono cargo</div>";
                                          alert_password.Visible = true;
                                     }
+                                     }else{
+                                         alert_password.Attributes["class"] = "alert alert-danger alert-dismissible";
+                                         alert_password.Attributes["role"] = "alert";
+                                         alert_password.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Password vacio</div>";
+                                         alert_password.Visible = true;
+
+                                }
+                                }else{
+                                    
+                                        alert_password.Attributes["class"] = "alert alert-danger alert-dismissible";
+                                        alert_password.Attributes["role"] = "alert";
+                                        alert_password.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>El rol esta vacio</div>";
+                                        alert_password.Visible = true;
+                                    
+                                }
                                 }else{
                                     alert_respuesta.Attributes["class"] = "alert alert-danger alert-dismissible";
                                     alert_respuesta.Attributes["role"] = "alert";
@@ -162,7 +234,7 @@ public partial class GUI_Modulo7_Registro : System.Web.UI.Page
         this.id_apellido.Value = "";
         this.id_correo.Value = "";
         this.id_nombre.Value = "";
-        this.id_otrocargo.Value = "";
+     //   this.id_otrocargo.Value = "";
         this.id_pregunta.Value = "";
         this.id_username.Value = "";
         this.password.Value = "";

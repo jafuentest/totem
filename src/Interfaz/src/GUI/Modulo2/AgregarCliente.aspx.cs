@@ -22,34 +22,32 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
         ClienteNatural clienteNatural;
         LogicaCliente logicaCliente = new LogicaCliente();
 
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        ((MasterPage)Page.Master).IdModulo = "2";
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            ((MasterPage)Page.Master).IdModulo = "2";
 
-     /*  DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
-        if (user != null)
-      {
-           if (user.username != "" &&
-                user.clave != "")
-           {
-                ((MasterPage)Page.Master).ShowDiv = true;
+            DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+            if (user != null)
+            {
+                if (user.username != "" &&
+                     user.clave != "")
+                {
+                    ((MasterPage)Page.Master).ShowDiv = true;
+                }
+                else
+                {
+                    ((MasterPage)Page.Master).MostrarMenuLateral = false;
+                    ((MasterPage)Page.Master).ShowDiv = false;
+                }
+
             }
             else
-           {
-                ((MasterPage)Page.Master).MostrarMenuLateral = false;
-                ((MasterPage)Page.Master).ShowDiv = false;
+            {
+                Response.Redirect("../Modulo1/M1_login.aspx");
+
+
             }
-
-      }
-        else
-        {
-           /*   Response.Redirect("../Modulo1/M1_login.aspx");*/
-        if (!IsPostBack) 
-        {
-            this.LlenarPaises(); 
         }
-
-       }
 
     /// <summary>
     /// Evento que se dispara cuando 
@@ -59,37 +57,55 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
     /// <param name="e"></param>
     protected void AgregarCliente_Click(object sender, EventArgs e) 
     {
+        bool agrego = false;
+        int existe = 0; 
+        
+        string nombre = nombreNatural.Value;
+        string apellido = apellidoNatural.Value;
+        string correo = correoCliente.Value;
+        string cedula = cedulaNatural.Value; 
+        LogicaCliente logica = new LogicaCliente();
+        int ciudad = Convert.ToInt32(comboCiudad.Items[comboCiudad.SelectedIndex].Value);
+        string direccion = direccionCliente.Value;
+        string telefono = telefonoCliente.Value;
+
+        existe = logicaCliente.VerificarExistenciaNatural(cedula);
+
+        if (existe == 0)
+        {
+            agrego = logicaCliente.AgregarClienteNatural(cedula, nombre,
+                apellido, ciudad, direccion, correo, telefono);
+            if (agrego)
+            {
+                alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                alert.Attributes["role"] = "alert";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Cliente agregado éxitosamente</div>";
+                this.botonAgregar.Disabled = true;
+            }
+            else
+            {
+                alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+                alert.Attributes["role"] = "alert";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>No se pudo agregar el cliente</div>";
+            }
+        }
+        else 
+        {
+            alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+            alert.Attributes["role"] = "alert";
+            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Cliente ya existente</div>";
+        }
     
     }
 
-         public ClienteNatural CreandoClienteNatural()
-        {
+   
              
 
-            clienteNatural = new ClienteNatural();
-            string nombre = nombreNatural.Value;
-            string apellido = apellidoNatural.Value;
-            /*string correo = correoNatural.Value;
-            
-          //  string estado = estadoNatural.InnerText;
-          //  string ciudad = ciudadNatural.InnerText;
-            string direccion = direccionNatural.Value;
-            string codigoPostal = codigopostalNatural.Value;
-            string telefono = telefonoNatural.Value;*/
+           
+        
 
 
-            LogicaCliente logica = new LogicaCliente();
- 
-
-            string pais = comboPais.Items[comboPais.SelectedIndex].Text; 
-
-
-
-            return clienteNatural;
-        }
-
-
-
+    /*
          /// <summary>
          /// Método que extrae la información de los paises para el
          /// combo
@@ -223,7 +239,7 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
                  alert.Attributes["role"] = "alert";
                  alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error en la capa lógica</div>";
              }
-         }
+         }*/
 
 
 

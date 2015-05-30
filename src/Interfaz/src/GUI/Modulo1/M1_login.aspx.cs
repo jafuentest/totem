@@ -21,19 +21,18 @@ public partial class login : System.Web.UI.Page
         }
 
         #region Redireccionamiento a Default
-        if (HttpContext.Current.Session["Credenciales"] != null)
-        {
-            HttpContext.Current.Response.Redirect("Default.aspx");
-        }
+        
         #endregion
 
         String log = Request.QueryString["logout"];
         if (log != null)
         {
-            if (log.Equals("false"))
+            if (log.Equals("true"))
             {
                
+
                  HttpContext.Current.Session.Abandon();
+                 HttpContext.Current.Response.Redirect("Default.aspx");
             }
         }
 
@@ -51,11 +50,20 @@ public partial class login : System.Web.UI.Page
                     " con los pasos a seguir</div>";
           
             }
+            if (success.Equals("1"))
+            {
+                alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                alert.Attributes["role"] = "alert";
+
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" " + 
+                    "data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=" + 
+                    "\"true\">&times;</span></button>Se ha cambiado exitosamente" + 
+                    " su clave</div>";
+            }
         }
 
     }
     protected void Login_Click(object sender, EventArgs e) {
-        
         try
         {
             

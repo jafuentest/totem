@@ -347,6 +347,18 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE Procedure_EliminarPuntoMinuta
+
+       @min_id [int]
+
+AS 
+BEGIN
+   DELETE FROM PUNTO
+	   	WHERE MINUTA_min_id = @min_id
+ 
+END
+GO
+
 -------------------- Procedimiento Eliminar Acuerdo
 CREATE PROCEDURE Procedure_EliminarAcuerdo
 
@@ -355,6 +367,16 @@ AS
 BEGIN
    DELETE FROM ACUERDO
           WHERE acu_id = @acu_id
+END
+GO
+
+CREATE PROCEDURE Procedure_EliminarAcuerdoMinuta
+
+       @min_id [int]
+AS
+BEGIN
+   DELETE FROM ACUERDO
+          WHERE MINUTA_min_id = @min_id
 END
 GO
 
@@ -387,3 +409,4 @@ BEGIN
    and INVOLUCRADOS_CLIENTES_PROYECTO_pro_id = @pro_id
 END
 GO
+

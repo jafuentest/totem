@@ -259,6 +259,15 @@ namespace DatosTotem.Modulo4 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to @usu_username.
+        /// </summary>
+        internal static string ParametroUsuario {
+            get {
+                return ResourceManager.GetString("ParametroUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Procedure_AgregarProyecto.
         /// </summary>
         internal static string ProcedimientoAgregarProyecto {

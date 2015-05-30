@@ -22,7 +22,7 @@ namespace DatosTotem.Modulo3 {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class RecursosBDModulo3 {
+    public class RecursosBDModulo3 {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace DatosTotem.Modulo3 {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DatosTotem.Modulo3.RecursosBDModulo3", typeof(RecursosBDModulo3).Assembly);
@@ -51,7 +51,7 @@ namespace DatosTotem.Modulo3 {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,16 +63,25 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to cargoNombre.
         /// </summary>
-        internal static string aliasCargoNombre {
+        public static string aliasCargoNombre {
             get {
                 return ResourceManager.GetString("aliasCargoNombre", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to clienteID.
+        /// </summary>
+        public static string aliasClienteID {
+            get {
+                return ResourceManager.GetString("aliasClienteID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to clienteJurID.
         /// </summary>
-        internal static string aliasClienteJurID {
+        public static string aliasClienteJurID {
             get {
                 return ResourceManager.GetString("aliasClienteJurID", resourceCulture);
             }
@@ -81,7 +90,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to clienteJurNombre.
         /// </summary>
-        internal static string aliasClienteJurNombre {
+        public static string aliasClienteJurNombre {
             get {
                 return ResourceManager.GetString("aliasClienteJurNombre", resourceCulture);
             }
@@ -90,7 +99,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to clienteNatID.
         /// </summary>
-        internal static string aliasClienteNatID {
+        public static string aliasClienteNatID {
             get {
                 return ResourceManager.GetString("aliasClienteNatID", resourceCulture);
             }
@@ -99,16 +108,25 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to clienteNatNombre.
         /// </summary>
-        internal static string aliasClienteNatNombre {
+        public static string aliasClienteNatNombre {
             get {
                 return ResourceManager.GetString("aliasClienteNatNombre", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to clienteNombre.
+        /// </summary>
+        public static string aliasClienteNombre {
+            get {
+                return ResourceManager.GetString("aliasClienteNombre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to contactoApellido.
         /// </summary>
-        internal static string aliasContactoApellido {
+        public static string aliasContactoApellido {
             get {
                 return ResourceManager.GetString("aliasContactoApellido", resourceCulture);
             }
@@ -117,7 +135,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to contactoID.
         /// </summary>
-        internal static string aliasContactoID {
+        public static string aliasContactoID {
             get {
                 return ResourceManager.GetString("aliasContactoID", resourceCulture);
             }
@@ -126,7 +144,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to contactoNombre.
         /// </summary>
-        internal static string aliasContactoNombre {
+        public static string aliasContactoNombre {
             get {
                 return ResourceManager.GetString("aliasContactoNombre", resourceCulture);
             }
@@ -135,7 +153,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to usuarioApellido.
         /// </summary>
-        internal static string aliasUsuarioApellido {
+        public static string aliasUsuarioApellido {
             get {
                 return ResourceManager.GetString("aliasUsuarioApellido", resourceCulture);
             }
@@ -144,7 +162,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to usuarioID.
         /// </summary>
-        internal static string aliasUsuarioID {
+        public static string aliasUsuarioID {
             get {
                 return ResourceManager.GetString("aliasUsuarioID", resourceCulture);
             }
@@ -153,16 +171,34 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to usuarioNombre.
         /// </summary>
-        internal static string aliasUsuarioNombre {
+        public static string aliasUsuarioNombre {
             get {
                 return ResourceManager.GetString("aliasUsuarioNombre", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to usuarioUsername.
+        /// </summary>
+        public static string aliasUsuarioUsername {
+            get {
+                return ResourceManager.GetString("aliasUsuarioUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to valor.
+        /// </summary>
+        public static string aliasValor {
+            get {
+                return ResourceManager.GetString("aliasValor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to T_03_005.
         /// </summary>
-        internal static string Codigo_ContactoSinID {
+        public static string Codigo_ContactoSinID {
             get {
                 return ResourceManager.GetString("Codigo_ContactoSinID", resourceCulture);
             }
@@ -171,7 +207,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to T_03_001.
         /// </summary>
-        internal static string Codigo_Involucrado_Repetido {
+        public static string Codigo_Involucrado_Repetido {
             get {
                 return ResourceManager.GetString("Codigo_Involucrado_Repetido", resourceCulture);
             }
@@ -180,7 +216,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to T_03_003.
         /// </summary>
-        internal static string Codigo_ListaSinInv {
+        public static string Codigo_ListaSinInv {
             get {
                 return ResourceManager.GetString("Codigo_ListaSinInv", resourceCulture);
             }
@@ -189,7 +225,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to T_03_002.
         /// </summary>
-        internal static string Codigo_ListaSinProy {
+        public static string Codigo_ListaSinProy {
             get {
                 return ResourceManager.GetString("Codigo_ListaSinProy", resourceCulture);
             }
@@ -198,7 +234,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to T_03_006.
         /// </summary>
-        internal static string Codigo_ProyectoSinCod {
+        public static string Codigo_ProyectoSinCod {
             get {
                 return ResourceManager.GetString("Codigo_ProyectoSinCod", resourceCulture);
             }
@@ -207,7 +243,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to T_03_004.
         /// </summary>
-        internal static string Codigo_UsuarioSinUsername {
+        public static string Codigo_UsuarioSinUsername {
             get {
                 return ResourceManager.GetString("Codigo_UsuarioSinUsername", resourceCulture);
             }
@@ -216,7 +252,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to No es posible agregar un contacto sin id.
         /// </summary>
-        internal static string Mensaje_ContactoSinID {
+        public static string Mensaje_ContactoSinID {
             get {
                 return ResourceManager.GetString("Mensaje_ContactoSinID", resourceCulture);
             }
@@ -225,7 +261,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to No puede existir un involucrado en un proyecto dos veces.
         /// </summary>
-        internal static string Mensaje_Involucrado_Repetido {
+        public static string Mensaje_Involucrado_Repetido {
             get {
                 return ResourceManager.GetString("Mensaje_Involucrado_Repetido", resourceCulture);
             }
@@ -234,7 +270,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to No es posible agregar una lista de involucrados vacia.
         /// </summary>
-        internal static string Mensaje_ListaSinInv {
+        public static string Mensaje_ListaSinInv {
             get {
                 return ResourceManager.GetString("Mensaje_ListaSinInv", resourceCulture);
             }
@@ -243,7 +279,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to No es posible agregar un involucrado a una lista que no posea un proyecto asociado.
         /// </summary>
-        internal static string Mensaje_ListaSinProy {
+        public static string Mensaje_ListaSinProy {
             get {
                 return ResourceManager.GetString("Mensaje_ListaSinProy", resourceCulture);
             }
@@ -252,7 +288,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to No es posible utilizar un proyecto sin codigo para gestionar involucrados.
         /// </summary>
-        internal static string Mensaje_ProyectoSinCod {
+        public static string Mensaje_ProyectoSinCod {
             get {
                 return ResourceManager.GetString("Mensaje_ProyectoSinCod", resourceCulture);
             }
@@ -261,7 +297,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to No es posible agregar un usuario que no posea username.
         /// </summary>
-        internal static string Mensaje_UsuarioSinUsername {
+        public static string Mensaje_UsuarioSinUsername {
             get {
                 return ResourceManager.GetString("Mensaje_UsuarioSinUsername", resourceCulture);
             }
@@ -270,7 +306,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to @proyecto_codigo.
         /// </summary>
-        internal static string ParamCodProy {
+        public static string ParamCodProy {
             get {
                 return ResourceManager.GetString("ParamCodProy", resourceCulture);
             }
@@ -279,7 +315,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to @contacto_id.
         /// </summary>
-        internal static string ParamContID {
+        public static string ParamContID {
             get {
                 return ResourceManager.GetString("ParamContID", resourceCulture);
             }
@@ -288,7 +324,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to @filas.
         /// </summary>
-        internal static string ParamFilas {
+        public static string ParamFilas {
             get {
                 return ResourceManager.GetString("ParamFilas", resourceCulture);
             }
@@ -297,7 +333,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to @usuario.
         /// </summary>
-        internal static string ParamUsername {
+        public static string ParamUsername {
             get {
                 return ResourceManager.GetString("ParamUsername", resourceCulture);
             }
@@ -306,7 +342,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to Procedure_consultarInvCliente.
         /// </summary>
-        internal static string StoredConsultarContacto {
+        public static string StoredConsultarContacto {
             get {
                 return ResourceManager.GetString("StoredConsultarContacto", resourceCulture);
             }
@@ -315,7 +351,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to Procedure_consultarInvUsuario.
         /// </summary>
-        internal static string StoredConsultarUsuario {
+        public static string StoredConsultarUsuario {
             get {
                 return ResourceManager.GetString("StoredConsultarUsuario", resourceCulture);
             }
@@ -324,7 +360,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to Contar_TuplasInvContacto.
         /// </summary>
-        internal static string StoredContarCliente {
+        public static string StoredContarCliente {
             get {
                 return ResourceManager.GetString("StoredContarCliente", resourceCulture);
             }
@@ -333,7 +369,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to Contar_TuplasInvUsuario.
         /// </summary>
-        internal static string StoredContarUsuario {
+        public static string StoredContarUsuario {
             get {
                 return ResourceManager.GetString("StoredContarUsuario", resourceCulture);
             }
@@ -342,7 +378,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to Procedure_eliminarInvCliente.
         /// </summary>
-        internal static string StoredEliminarContacto {
+        public static string StoredEliminarContacto {
             get {
                 return ResourceManager.GetString("StoredEliminarContacto", resourceCulture);
             }
@@ -351,7 +387,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to Procedure_eliminarInvUsuario.
         /// </summary>
-        internal static string StoredEliminarUsuario {
+        public static string StoredEliminarUsuario {
             get {
                 return ResourceManager.GetString("StoredEliminarUsuario", resourceCulture);
             }
@@ -360,7 +396,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to Procedure_InsertarInvCliente.
         /// </summary>
-        internal static string StoredInsertarCliente {
+        public static string StoredInsertarCliente {
             get {
                 return ResourceManager.GetString("StoredInsertarCliente", resourceCulture);
             }
@@ -369,7 +405,7 @@ namespace DatosTotem.Modulo3 {
         /// <summary>
         ///   Looks up a localized string similar to Procedure_InsertarInvUsuario.
         /// </summary>
-        internal static string StoredInsertarUsuario {
+        public static string StoredInsertarUsuario {
             get {
                 return ResourceManager.GetString("StoredInsertarUsuario", resourceCulture);
             }

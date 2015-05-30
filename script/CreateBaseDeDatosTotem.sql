@@ -1,7 +1,7 @@
 CREATE
   TABLE ACTOR
   (
-    act_id          INTEGER IDENTITY(0,1) NOT NULL ,
+    act_id          INTEGER IDENTITY(1,1) NOT NULL ,
     act_nombre      VARCHAR (100) NOT NULL ,
     act_descripcion VARCHAR (500) NOT NULL ,
     PROYECTO_pro_id INTEGER NOT NULL ,
@@ -73,7 +73,7 @@ GO
 CREATE
   TABLE CASO_USO
   (
-    cu_id            INTEGER NOT NULL ,
+    cu_id            INTEGER IDENTITY(1,1) NOT NULL ,
     cu_identificador VARCHAR (20) NOT NULL ,
     cu_titulo        VARCHAR (50) NOT NULL ,
     cu_condexito     VARCHAR (200) NOT NULL ,
@@ -438,7 +438,7 @@ CREATE
   (
     usu_id            INTEGER NOT NULL ,
     usu_username      VARCHAR (60) NOT NULL ,
-    usu_clave         VARCHAR (60) NOT NULL ,
+    usu_clave         VARCHAR (MAX) NOT NULL ,
     usu_nombre        VARCHAR (60) NOT NULL ,
     usu_apellido      VARCHAR (60) NOT NULL ,
     usu_rol           VARCHAR (60) NOT NULL ,

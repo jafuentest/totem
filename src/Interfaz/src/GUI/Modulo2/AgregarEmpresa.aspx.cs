@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 using DominioTotem;
 using LogicaNegociosTotem.Modulo2;
-using ExcepcionesTotem.Modulo2; 
+using ExcepcionesTotem.Modulo2;
 
 public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
 {
@@ -15,34 +15,29 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
     {
         ((MasterPage)Page.Master).IdModulo = "2";
 
-       /* DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+        DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
         if (user != null)
         {
             if (user.username != "" &&
                 user.clave != "")
             {
                 ((MasterPage)Page.Master).ShowDiv = true;
-                
+
             }
             else
             {
                 ((MasterPage)Page.Master).MostrarMenuLateral = false;
                 ((MasterPage)Page.Master).ShowDiv = false;
 
-            }*/
-            if (!IsPostBack) // verificar si la pagina se muestra por primera vez
-            {
-                this.LlenarPaises();
-                this.LlenarCargos();
             }
 
         }
-     /*   else
+        else
         {
             Response.Redirect("../Modulo1/M1_login.aspx");
-        }*/
-    
+        }
 
+    }
 
     /// <summary>
     /// Método que se ejecuta cuando el usuario presiona 
@@ -50,29 +45,58 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    protected void AgregarEmpresa_Click(object sender, EventArgs e) 
+    protected void AgregarEmpresa_Click(object sender, EventArgs e)
     {
+        int existe = 0;
+        bool agrego = false; 
         LogicaCliente logica = new LogicaCliente();
 
         string rif = rifEmpresa.Value;
         string nombre = nombreEmpresa.Value;
-        
+        string direccion = direccionEmpresa.Value; 
         /*string pais=comboPais.Items[comboPais.SelectedIndex].Text; */
-       
+
         /*string pais = paisEmpresa.InnerText;
         string estado = estadoEmpresa.InnerText;
         string ciudad = ciudadLista.InnerText;
         string direccion = direccionEmpresa.Value;*/
-        string codigoPostal = codigoPostalEmpresa.Value;
-        string telefono = telefonoEmpresa.Value;
+        string pais = comboPais.Items[comboPais.SelectedIndex].Text;
+        string estado = comboEstado.Items[comboEstado.SelectedIndex].Text;
+        string ciudad = comboCiudad.Items[comboCiudad.SelectedIndex].Text;
+        int lugar =Convert.ToInt32(comboCiudad.Items[comboCiudad.SelectedIndex].Value);
+        int cargo = Convert.ToInt32(comboCargo.Items[comboCargo.SelectedIndex].Value);
+        string cedula = cedulaContacto.Value; 
+        string telefono = telefonoContacto.Value;
         Contacto contacto = new Contacto();
-        contacto.Con_Nombre = "";
-        contacto.Con_Apellido = "";
+        contacto.Con_Nombre = nombreContacto.Value;
+        contacto.Con_Apellido = apellidoContacto.Value;
 
-        //logica.ModificarClienteJuridico();   
-    
+        existe = logica.VerificarExistenciaJuridico(cedula);
+
+        if (existe == 0)
+        {
+            agrego=logica.AgregarClienteJuridico(rif, nombre, lugar, direccion, contacto.Con_Nombre,
+            contacto.Con_Apellido, cargo, telefono, cedula);
+
+            if (agrego) 
+            {
+                alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                alert.Attributes["role"] = "alert";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Cliente agregado éxitosamente</div>";
+                this.botonAgregar.Disabled = true;
+            }
+
+        }
+        else 
+        {
+            alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+            alert.Attributes["role"] = "alert";
+            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Cliente ya existente</div>";
+        }
+        
     }
 
+    /*
     /// <summary>
     /// Evento que se dispara cuando se selecciona algún elemento de 
     /// país y carga sus estados
@@ -109,7 +133,7 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             List<Lugar> paises = logica.LlenarComboPaises();
             
             string prueba = "Seleccione Pais";
-            string nombreEvento = "CbCambioAEstado"; 
+            string nombreEvento = "alert('hello');"; 
             this.contenedorComboPais.InnerHtml = "<select runat=\"server\" id=\"comboPais\" class=\"btn btn-default dropdown-toggle\""
                                                + "onchange=\" " + nombreEvento + "\">" +
                                                 "<option id=\"opcionPais"+"0"+"\" runat=\"server\" value=\"0\">" +
@@ -154,7 +178,7 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             LogicaLugar logica = new LogicaLugar();
             List<Lugar> estados = logica.LlenarComboEstados(idPais);
             string prueba = "Seleccione Estado";
-            string nombreEvento = "CbCambioACiudad"; 
+            string nombreEvento = "CbCambioACiudad()"; 
             this.contenedorComboEstado.InnerHtml = "<select runat=\"server\" id=\"comboEstado\" class=\"btn btn-default dropdown-toggle\""
                                                + "onchange=\""+nombreEvento+"\">" +
                                                 "<option id=\"opcionEstado" + "0" + "\" runat=\"server\" value=\"0\">" +
@@ -231,7 +255,9 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error en la capa lógica</div>";
         }
     }
+    */
 
+    /*
     private void LlenarCargos() 
     {
         try
@@ -270,6 +296,6 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error en la capa lógica</div>";
         }
 
-    }
+    }*/
 
 }

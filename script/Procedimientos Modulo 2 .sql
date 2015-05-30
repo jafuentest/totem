@@ -1,4 +1,4 @@
-------------------+ PROCEDIMIENTOS MODULO 2 ----------------------------------------------------
+﻿------------------+ PROCEDIMIENTOS MODULO 2 ----------------------------------------------------
 
 ------------------+Verificar Cliente Juridico(ClienteJuridico cjid)------------------------------
 -- Método verificarClienteJuridico(ClienteJuridico laEmpresa) verifica si el cliente existe o no  
@@ -22,19 +22,71 @@ CREATE PROCEDURE Procedure_AgregarClienteJuridico
 	@cj_rif [nvarchar](20),
 	@nombre [nvarchar](60),
 	@cj_logo [nvarchar](60),
-	@Fklugar [int]
+	@Fklugar [int],
+	@nombreDireccion varchar(60),
+	@cedula          varchar(20),
+	@nombreContacto     varchar(60),
+	@apellido            varchar(60),
+	@idCargo         int,
+	
+	@codigo               int,
+	@numero               int
 	
 AS
 
 DECLARE @idMaxClienteJuridico int = 0
+DECLARE @idLugarDireccion int = 0
+DECLARE @idMaxLugar int = 0
+DECLARE @idMaxContacto  int =0
+DECLARE @idMaxTelefono int=0
+DECLARE @idTelefono int = 0
 
+ 
 BEGIN
+
+select @idLugarDireccion = count(LUG_id) from lugar 
+	 where  LUG_tipo = 'Direccion' and LUGAR_lug_id = @Fklugar;
+
+
+if (@idLugarDireccion = 0)
+		begin 
+			select @idMaxLugar = MAX(LUG_id) from lugar;
+
+			set @idMaxLugar = @idMaxLugar + 1;
+
+			INSERT INTO lugar VALUES (@idMaxLugar,@nombreDireccion,'Direccion',null,@Fklugar);
+
+			set @idLugarDireccion = @idMaxLugar;
+		end
+
 select @idMaxClienteJuridico = Max(cj_id) from CLIENTE_JURIDICO;
 
     set @idMaxClienteJuridico = @idMaxClienteJuridico + 1;
 
     INSERT INTO CLIENTE_JURIDICO(cj_ID, cj_rif, cj_nombre, cj_logo,LUGAR_lug_id)
     VALUES(@idMaxClienteJuridico, @cj_rif, @nombre, @cj_logo,@Fklugar);
+
+	
+
+SELECT @idMaxContacto = Max(con_id) FROM CONTACTO; 
+
+	set @idMaxContacto = @idMaxContacto +1; 
+
+	INSERT INTO CONTACTO(con_id,con_cedula,con_nombre,con_apellido,CLIENTE_JURIDICO_cj_id,CARGO_car_id,CLIENTE_NATURAL_cn_id)
+	VALUES(@idMaxContacto,@cedula,@nombreContacto,@apellido,@idMaxClienteJuridico,@idCargo,null);
+
+select @idTelefono=count(*) from telefono where tel_numero=@numero  and tel_codigo=@codigo
+
+if (@idTelefono=0)
+begin 
+			select @idMaxTelefono = Max(tel_id) from TELEFONO;
+
+			set @idMaxTelefono = @idMaxTelefono+1; 
+			INSERT INTO TELEFONO VALUES (@idMaxTelefono,@codigo,@numero,null,@idMaxContacto);
+
+			
+		end
+
 END;
 GO
  
@@ -103,30 +155,27 @@ GO
 
 CREATE PROCEDURE ListarCargosPorEmpresa
 		
-	@cj_rif [nvarchar](20)		
+	@cj_rif int		
 AS 
 BEGIN
-		SELECT DISTINCT(car_nombre) 
-		FROM CARGO
-		WHERE car_id IN (SELECT DISTINCT (CARGO_car_id) FROM CONTACTO WHERE CLIENTE_JURIDICO_cj_id = 
-		(SELECT cj_id FROM CLIENTE_JURIDICO WHERE cj_rif = @cj_rif));				
+	SELECT DISTINCT(car_nombre) 
+	FROM CARGO
+	WHERE car_id IN (SELECT DISTINCT (CARGO_car_id) FROM CONTACTO WHERE CLIENTE_JURIDICO_cj_id = @cj_rif)	
 END;
-GO
 
 ------------------+ConsultarEmpleadosEmpresaCargo():list<cliente_juridico>------------------------------
 -- comentarios del grupo que pidio el metodo... 
 -- Metodo consultarEmpleadosEmpresaCargo(ClienteJuridico laEmpresa, String cargo) y devuelve una lista de Contacto con el nombre, apellido y cargo
 -- que son los empleados que desempe?an ese cargo en esa empresa.
-
 CREATE PROCEDURE ConsultarEmpleadosEmpresaCargo
 		
-	@cj_rif [nvarchar](20),
+	@cj_rif int,
 	@car_nombre [nvarchar](60)		
 AS 
 BEGIN
-		(SELECT con_nombre AS NOMBRECONTACTO, con_apellido AS APELLIDOCONTACTO, car_nombre AS CARGOCONTACTO
+		(SELECT con_nombre AS NOMBRECONTACTO, con_apellido AS APELLIDOCONTACTO, car_nombre AS CARGOCONTACTO, con_id as IDCONTACTO
 		 FROM CONTACTO, CARGO
-		 WHERE CLIENTE_JURIDICO_cj_id = (SELECT cj_id FROM CLIENTE_JURIDICO WHERE cj_rif = @cj_rif) 
+		 WHERE CLIENTE_JURIDICO_cj_id = @cj_rif  
 				AND CARGO_car_id = (SELECT car_id FROM CARGO WHERE car_nombre = @car_nombre)
 				AND CARGO_car_id = car_id);		
 END;
@@ -150,17 +199,45 @@ GO
 -- luego de Insertar cliente natural, inserta en contacto los mismos datos.
 
 
+
+------------------+AgregarClienteNatural(ClienteNatural cn): bool------------------------------
+-- Agrega un nuevo cliente natural
+-- luego de Insertar cliente natural, inserta en contacto los mismos datos.
+
+
 CREATE PROCEDURE Procedure_AgregarClienteNatural
 	@cn_cedula [nvarchar](20),
 	@cn_nombre [nvarchar](60),
 	@cn_apellido [nvarchar](60),
+	@nombreDireccion varchar(100),
 	@cn_correo [nvarchar](60),
-	@LUGAR_lug_id [int]
+	@LUGAR_lug_id [int],
+	@codigo int,
+	@numero int
+
 AS
 DECLARE @idMaxClienteNatural int = 0
+DECLARE @idLugarDireccion int = 0
 DECLARE @idMaxContacto int = 0
+DECLARE @idMaxTelefono int=0
+DECLARE @idTelefono int = 0
+DECLARE @idMaxLugar int = 0
 
 BEGIN
+	
+	select @idLugarDireccion = count(LUG_id) from lugar 
+	 where  LUG_tipo = 'Direccion' and LUGAR_lug_id = @LUGAR_lug_id;
+	
+	if (@idLugarDireccion = 0)
+		begin 
+			select @idMaxLugar = MAX(LUG_id) from lugar;
+
+			set @idMaxLugar = @idMaxLugar + 1;
+
+			INSERT INTO lugar VALUES (@idMaxLugar,@nombreDireccion,'Direccion',null,@LUGAR_lug_id);
+
+			set @idLugarDireccion = @idMaxLugar;
+		end
 
 	select @idMaxClienteNatural = Max(cn_id) from CLIENTE_NATURAL;
 	select @idMaxContacto = MAX(con_id) from CONTACTO;
@@ -173,6 +250,18 @@ BEGIN
 	INSERT INTO CONTACTO (con_id,con_cedula,con_nombre,con_apellido,CLIENTE_JURIDICO_cj_id,CARGO_car_id,CLIENTE_NATURAL_cn_id)
     VALUES(@idMaxContacto, @cn_cedula,@cn_nombre,@cn_apellido,null, null,@idMaxClienteNatural);
 	
+	select @idTelefono=count(*) from telefono where tel_numero=@numero  and tel_codigo=@codigo
+
+if (@idTelefono=0)
+begin 
+			select @idMaxTelefono = Max(tel_id) from TELEFONO;
+
+			set @idMaxTelefono = @idMaxTelefono+1; 
+			INSERT INTO TELEFONO VALUES (@idMaxTelefono,@codigo,@numero,@idMaxClienteNatural,@idMaxContacto);
+
+			
+		end
+
 END;
 GO
 
@@ -446,7 +535,7 @@ BEGIN
 END;
 
 /***------------Llena el combo box de cargo----**/
-
+go
 
 
 CREATE PROCEDURE Procedure_llenarCBCargo
@@ -459,6 +548,15 @@ BEGIN
 	   WHERE car_nombre = @nombreCargo; 
 END;
 
+go
 
+/***------------Consultar todos los clientes Juridicos ----**/
 
+CREATE PROCEDURE Procedure_ConsultarTodosClientesJuridicos
+AS 
+select	cj_rif, 
+		cj_nombre
+from CLIENTE_JURIDICO;
+
+go
 

@@ -223,6 +223,15 @@ namespace DatosTotem.Modulo1 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to cambiar_clave.
+        /// </summary>
+        internal static string Query_Cambiar_Clave {
+            get {
+                return ResourceManager.GetString("Query_Cambiar_Clave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to obtener_pregunta_seguridad.
         /// </summary>
         internal static string Query_Obtener_Pregunta_Seguridad {

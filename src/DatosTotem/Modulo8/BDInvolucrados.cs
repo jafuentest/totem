@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using DominioTotem;
 using System.IO;
+using ExcepcionesTotem.Modulo8.ExcepcionesDeDatos;
+using ExcepcionesTotem;
 
 namespace DatosTotem.Modulo8
 {
@@ -16,6 +18,11 @@ namespace DatosTotem.Modulo8
     {
         private BDConexion con;
 
+        /// <summary>
+        /// Metodo para consultar los datos de Usuario
+        /// </summary>
+        /// <param name="idUsuario">id del Usuarios</param>
+        /// <returns>Retorna el Objeto Usuario</returns>
         public Usuario ConsultarUsuarioMinutas(int idUsuario)
         {
             Usuario usuario = new Usuario();
@@ -23,10 +30,11 @@ namespace DatosTotem.Modulo8
             SqlConnection conect = con.Conectar();
             
             SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoConsultarUsuarios,conect );
-            sqlcom.CommandType = CommandType.StoredProcedure;
-            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDUsuario, idUsuario));
             try
-              {
+            {
+                sqlcom.CommandType = CommandType.StoredProcedure;
+                sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDUsuario, idUsuario));
+            
                 SqlDataReader leer;
                 conect.Open();
                 leer = sqlcom.ExecuteReader();
@@ -39,10 +47,40 @@ namespace DatosTotem.Modulo8
 
             }
 
+            catch (NullReferenceException ex)
+            {
+
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                    RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            catch (ExceptionTotemConexionBD ex)
+            {
+
+                throw new ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                    RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                    RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                    RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
             catch (Exception ex)
             {
-                //Lanza excepcion logica propia
-                throw ex;
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                   RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
             }
 
@@ -54,6 +92,11 @@ namespace DatosTotem.Modulo8
 
         }
 
+        /// <summary>
+        /// Metodo para consultar los datos de contacto
+        /// </summary>
+        /// <param name="idContacto">id del Contacto</param>
+        /// <returns>Retorna el Objeto Contacto</returns>
         public Contacto ConsultarContactoMinutas(int idContacto)
         {
             Contacto contacto = new Contacto();
@@ -61,10 +104,11 @@ namespace DatosTotem.Modulo8
             SqlConnection conect = con.Conectar();
             
             SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoConsultarContactos, conect);
-            sqlcom.CommandType = CommandType.StoredProcedure;
-            sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDContacto, idContacto));
             try
-              {
+            {
+                sqlcom.CommandType = CommandType.StoredProcedure;
+                sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDContacto, idContacto));
+            
                 SqlDataReader leer;
                 conect.Open();
                 leer = sqlcom.ExecuteReader();
@@ -77,10 +121,40 @@ namespace DatosTotem.Modulo8
 
             }
 
+            catch (NullReferenceException ex)
+            {
+
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                    RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            catch (ExceptionTotemConexionBD ex)
+            {
+
+                throw new ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                    RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                    RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                    RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
             catch (Exception ex)
             {
-                //Lanza excepcion logica propia
-                throw ex;
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                   RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
             }
 
@@ -109,13 +183,14 @@ namespace DatosTotem.Modulo8
             con = new BDConexion();
             SqlConnection conect = con.Conectar();
             SqlCommand sqlcom = new SqlCommand(procedure, conect);
-            sqlcom.CommandType = CommandType.StoredProcedure;
-            sqlcom.Parameters.Add(new SqlParameter(parametro, id));
-
-            SqlDataReader leer;
-            conect.Open();
             try
             {
+                sqlcom.CommandType = CommandType.StoredProcedure;
+                sqlcom.Parameters.Add(new SqlParameter(parametro, id));
+
+                SqlDataReader leer;
+                conect.Open();
+            
                 leer = sqlcom.ExecuteReader();
 
                 while (leer.Read())
@@ -124,10 +199,40 @@ namespace DatosTotem.Modulo8
                 }
                 return i;
             }
+            catch (NullReferenceException ex)
+            {
+
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                    RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            catch (ExceptionTotemConexionBD ex)
+            {
+
+                throw new ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                    RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                    RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                    RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
             catch (Exception ex)
             {
-                //Lanza excepcion logica propia
-                throw ex;
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                   RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
             }
 
@@ -138,15 +243,24 @@ namespace DatosTotem.Modulo8
             }
         }
 
+        /// <summary>
+        /// Metodo para agregar un Usuario a la BD
+        /// </summary>
+        /// <param name="listaUsuario">lista de Usuario a agregar</param>
+        /// <param name="idAcuerdo">id de Acuerdo vinculado</param>
+        /// <param name="idProyecto">id de Proyecto</param>
+        /// <returns>Retorna un Boolean para saber si se realizo la operación con éxito</returns>
         public Boolean AgregarUsuarioEnAcuerdo(List<Usuario> listaUsuario, int idAcuerdo, int idProyecto)
         {
+            con = new BDConexion();
+            SqlConnection conect = con.Conectar();
+
+            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoAgregarUsuarioAcuerdo, conect);
+
             try
-            {
-
-                SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoAgregarUsuarioAcuerdo, con.Conectar());
+             {
                 sqlcom.CommandType = CommandType.StoredProcedure;
-                con.Conectar().Open();
-
+                conect.Open();
                 foreach (Usuario usuario in listaUsuario)
                 {
                     sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDAcuerdo, SqlDbType.Int));
@@ -163,28 +277,68 @@ namespace DatosTotem.Modulo8
                 return true;
             }
 
+            catch (NullReferenceException ex)
+            {
+
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                    RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            catch (ExceptionTotemConexionBD ex)
+            {
+
+                throw new ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                    RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                    RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                    RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
             catch (Exception ex)
             {
-                //Lanza excepcion logica propia
-                throw ex;
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                   RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
             }
 
             finally
             {
-                con.Desconectar();
+                con.Desconectar(conect);
 
             }
         }
 
+        /// <summary>
+        /// Metodo para Agregar un Contacto a un Acuerdo a la BD
+        /// </summary>
+        /// <param name="listaContacto">lista de Contactos a agregar</param>
+        /// <param name="idAcuerdo">id del Acuerdo vinculado</param>
+        /// <param name="idProyecto">id de Proyecto</param>
+        /// <returns>Retorna un Boolean para saber si se realizo la operación con éxito</returns>
         public Boolean AgregarContactoEnAcuerdo(List<Contacto> listaContacto, int idAcuerdo, int idProyecto)
         {
+
+            con = new BDConexion();
+            SqlConnection conect = con.Conectar();
+
+            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoAgregarContactoAcuerdo, conect);
             try
             {
-
-                SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoAgregarContactoAcuerdo, con.Conectar());
                 sqlcom.CommandType = CommandType.StoredProcedure;
-                con.Conectar().Open();
+                conect.Open();
 
                 foreach (Contacto contacto in listaContacto)
                 {
@@ -202,28 +356,67 @@ namespace DatosTotem.Modulo8
                 return true;
             }
 
+            catch (NullReferenceException ex)
+            {
+
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                    RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            catch (ExceptionTotemConexionBD ex)
+            {
+
+                throw new ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                    RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                    RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                    RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
             catch (Exception ex)
             {
-                //Lanza excepcion logica propia
-                throw ex;
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                   RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
             }
 
             finally
             {
-                con.Desconectar();
+                con.Desconectar(conect);
 
             }
         }
 
+        /// <summary>
+        /// Metodo para eliminar un Usuario de un Acuerdo
+        /// </summary>
+        /// <param name="listaUsuario">lista de Usuario que se desea eliminar</param>
+        /// <param name="idAcuerdo">id de Acuerdo vinculado</param>
+        /// <param name="idProyecto">id del Proyecto</param>
+        /// <returns>Retorna un Boolean para saber si se realizo la operación con éxito</returns>
         public Boolean EliminarUsuarioEnAcuerdo(List<Usuario> listaUsuario, int idAcuerdo, int idProyecto)
         {
+            con = new BDConexion();
+            SqlConnection conect = con.Conectar();
+
+            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientosEliminarAcuerdoUsuario, conect);
             try
             {
-
-                SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientosEliminarAcuerdoUsuario, con.Conectar());
                 sqlcom.CommandType = CommandType.StoredProcedure;
-                con.Conectar().Open();
+                conect.Open();
 
                 foreach (Usuario usuario in listaUsuario)
                 {
@@ -241,28 +434,67 @@ namespace DatosTotem.Modulo8
                 return true;
             }
 
+            catch (NullReferenceException ex)
+            {
+
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                    RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            catch (ExceptionTotemConexionBD ex)
+            {
+
+                throw new ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                    RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                    RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                    RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
             catch (Exception ex)
             {
-                //Lanza excepcion logica propia
-                throw ex;
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                   RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
             }
 
             finally
             {
-                con.Desconectar();
+                con.Desconectar(conect);
 
             }
         }
 
+        /// <summary>
+        /// Metodo para eliminar un Contacto de un Acuerdo
+        /// </summary>
+        /// <param name="listaContacto">lista de Contactos a eliminar</param>
+        /// <param name="idAcuerdo">id del acuerdo vinculado</param>
+        /// <param name="idProyecto">id del proyecto</param>
+        /// <returns>Retorna un Boolean para saber si se realizo con exito la operación</returns>
         public Boolean EliminarContactoEnAcuerdo(List<Contacto> listaContacto, int idAcuerdo, int idProyecto)
         {
+            con = new BDConexion();
+            SqlConnection conect = con.Conectar();
+
+            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoEliminarAcuerdoContacto, conect);
             try
             {
-
-                SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoEliminarAcuerdoContacto, con.Conectar());
                 sqlcom.CommandType = CommandType.StoredProcedure;
-                con.Conectar().Open();
+                conect.Open();
 
                 foreach (Contacto contacto in listaContacto)
                 {
@@ -280,20 +512,125 @@ namespace DatosTotem.Modulo8
                 return true;
             }
 
+            catch (NullReferenceException ex)
+            {
+
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                    RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            catch (ExceptionTotemConexionBD ex)
+            {
+
+                throw new ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                    RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                    RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                    RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
             catch (Exception ex)
             {
-                //Lanza excepcion logica propia
-                throw ex;
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                   RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
             }
 
             finally
             {
-                con.Desconectar();
+                con.Desconectar(conect);
 
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="idMinuta"></param>
+        /// <returns></returns>
+        public Boolean EliminarInvolucradoEnMinuta(int idMinuta)
+        {
+            con = new BDConexion();
+            SqlConnection conect = con.Conectar();
+
+            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedureEliminarInvolucradoMinuta, conect);
+            try
+            {
+                sqlcom.CommandType = CommandType.StoredProcedure;
+                conect.Open();
+
+                    sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDMinuta, SqlDbType.Int));
+
+                    sqlcom.Parameters[RecursosBDModulo8.ParametroIDMinuta].Value = idMinuta;
+
+                    sqlcom.ExecuteNonQuery();
+
+                return true;
+            }
+
+            catch (NullReferenceException ex)
+            {
+
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                    RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            catch (ExceptionTotemConexionBD ex)
+            {
+
+                throw new ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                    RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                    RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                    RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
+            catch (Exception ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                   RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
+
+            }
+
+            finally
+            {
+                con.Desconectar(conect);
+
+            }
+
+        }
+
+        /// <summary>
+        /// Metodo para obtener un Objeto tipo Usuario
+        /// </summary>
+        /// <param name="BDUsuario">parametro de lectura sql</param>
+        /// <returns>Retorna El Objeto Usuario</returns>
         public Usuario ObtenerObjetoUsuarioBD(SqlDataReader BDUsuario)
         {
             Usuario usuario = new Usuario();
@@ -307,14 +644,49 @@ namespace DatosTotem.Modulo8
                 return usuario;
             }
 
-            catch (Exception ex)
+            catch (NullReferenceException ex)
             {
 
-                throw ex;
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                    RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            catch (ExceptionTotemConexionBD ex)
+            {
+
+                throw new ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                    RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                    RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                    RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
+            catch (Exception ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                   RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
             }
         }
 
+        /// <summary>
+        /// Metodo para obtener Un Objeto tipo Contacto
+        /// </summary>
+        /// <param name="BDContacto">parametro de lectura sql</param>
+        /// <returns>Retorna el Objeto Contacto</returns>
         public Contacto ObtenerObjetoContactoBD(SqlDataReader BDContacto)
         {
             Contacto contacto = new Contacto();
@@ -328,10 +700,40 @@ namespace DatosTotem.Modulo8
                 return contacto;
             }
 
-            catch (Exception ex)
+            catch (NullReferenceException ex)
             {
 
-                throw ex;
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                    RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            catch (ExceptionTotemConexionBD ex)
+            {
+
+                throw new ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                    RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                    RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                    RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
+            catch (Exception ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                   RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
             }
         }

@@ -241,6 +241,96 @@ namespace DatosTotem.Modulo8 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a T_08_05.
+        /// </summary>
+        internal static string Codigo_ExcepcionAtributo {
+            get {
+                return ResourceManager.GetString("Codigo_ExcepcionAtributo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a T_08_03.
+        /// </summary>
+        internal static string Codigo_ExcepcionGeneral {
+            get {
+                return ResourceManager.GetString("Codigo_ExcepcionGeneral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a T_08_01.
+        /// </summary>
+        internal static string Codigo_ExcepcionNullReference {
+            get {
+                return ResourceManager.GetString("Codigo_ExcepcionNullReference", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a T_08_04.
+        /// </summary>
+        internal static string Codigo_ExcepcionParametro {
+            get {
+                return ResourceManager.GetString("Codigo_ExcepcionParametro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a T_08_02.
+        /// </summary>
+        internal static string Codigo_ExcepcionSql {
+            get {
+                return ResourceManager.GetString("Codigo_ExcepcionSql", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error uno de los parametros no existe en el procedimiento ejecutado.
+        /// </summary>
+        internal static string Mensaje__ExcepcionParametro {
+            get {
+                return ResourceManager.GetString("Mensaje__ExcepcionParametro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error uno de los atributos no existe en el procedimiento ejecutado.
+        /// </summary>
+        internal static string Mensaje_ExcepcionAtributo {
+            get {
+                return ResourceManager.GetString("Mensaje_ExcepcionAtributo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error se ha producido una excepcion.
+        /// </summary>
+        internal static string Mensaje_ExcepcionGeneral {
+            get {
+                return ResourceManager.GetString("Mensaje_ExcepcionGeneral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error existe una referencia nula.
+        /// </summary>
+        internal static string Mensaje_ExcepcionNullReference {
+            get {
+                return ResourceManager.GetString("Mensaje_ExcepcionNullReference", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error existe un conflicto con la conexión a la base de datos.
+        /// </summary>
+        internal static string Mensaje_ExcepcionSql {
+            get {
+                return ResourceManager.GetString("Mensaje_ExcepcionSql", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a @acu_desarrollo.
         /// </summary>
         internal static string ParametroDesarrolloAcuerdo {
@@ -588,6 +678,15 @@ namespace DatosTotem.Modulo8 {
         internal static string ProcedureConsultarUsuarioMinuta {
             get {
                 return ResourceManager.GetString("ProcedureConsultarUsuarioMinuta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_EliminarTodosInvolucrados.
+        /// </summary>
+        internal static string ProcedureEliminarInvolucradoMinuta {
+            get {
+                return ResourceManager.GetString("ProcedureEliminarInvolucradoMinuta", resourceCulture);
             }
         }
     }

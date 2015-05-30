@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using DatosTotem.Modulo8;
 using DominioTotem;
+using ExcepcionesTotem;
+using ExcepcionesTotem.Modulo8.ExcepcionesDeDatos;
 
 namespace LogicaNegociosTotem.Modulo8
 {
@@ -15,44 +19,120 @@ namespace LogicaNegociosTotem.Modulo8
 
         public List<Minuta> ListaMinuta(Proyecto elProyecto)
         {
-            
-            return minutaDatos.ConsultarMinutasProyecto(int.Parse(elProyecto.Codigo));
-            //return listaMinuta;
+            try
+            {
+                return minutaDatos.ConsultarMinutasProyecto(int.Parse(elProyecto.Codigo));
+            }
+            catch (NullReferenceException ex)
+            {
+
+                throw new BDMinutaException(RecursosLogicaModulo8.Codigo_ExcepcionNullReference,
+                    RecursosLogicaModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            catch (ExceptionTotemConexionBD ex)
+            {
+
+                throw new ExceptionTotemConexionBD(RecursosLogicaModulo8.Codigo,
+                    RecursosLogicaModulo8.Mensaje, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosLogicaModulo8.Codigo_ExcepcionSql,
+                    RecursosLogicaModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosLogicaModulo8.Codigo_ExcepcionParametro,
+                    RecursosLogicaModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosLogicaModulo8.Codigo_ExcepcionAtributo,
+                    RecursosLogicaModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
+            catch (Exception ex)
+            {
+                throw new BDMinutaException(RecursosLogicaModulo8.Codigo_ExcepcionGeneral,
+                   RecursosLogicaModulo8.Mensaje_ExcepcionGeneral, ex);
+
+            }
+
         }
 
         public Minuta obtenerMinuta(Proyecto elProyecto, int codigoMinuta)
         {
        
-            minuta = minutaDatos.ConsultarMinutaBD(codigoMinuta);
             List<int> invo = new List<int>();
             List<Usuario> usuarios = new List<Usuario>();
             List<Usuario> usuarios1 = new List<Usuario>();
             List<Acuerdo> listaAcuerdos = new List<Acuerdo>();
+            try
+            {
+                minuta = minutaDatos.ConsultarMinutaBD(codigoMinuta);
+                usuarios.Clear();
+                invo = involucrados.ConsultarInvolucrado(RecursosLogicaModulo8.ProcedureConsultarUsuarioMinuta
+                    , RecursosLogicaModulo8.AtributoAcuerdoUsuario, RecursosLogicaModulo8.ParametroIDMinuta, int.Parse(minuta.Codigo));
+                foreach (int i in invo)
+                {
+                    usuarios.Add(involucrados.ConsultarUsuarioMinutas(i));
+                }
+                minuta.ListaUsuario = usuarios;
+                minuta.ListaPunto = puntos.ConsultarPuntoBD(int.Parse(minuta.Codigo));
 
-            usuarios.Clear();
-            invo = involucrados.ConsultarInvolucrado(RecursosLogicaModulo8.ProcedureConsultarUsuarioMinuta
-                , RecursosLogicaModulo8.AtributoAcuerdoUsuario, RecursosLogicaModulo8.ParametroIDMinuta,int.Parse(minuta.Codigo));           
-            foreach (int i in invo)
-            {
-                usuarios.Add(involucrados.ConsultarUsuarioMinutas(i));
-            }
-            minuta.ListaUsuario = usuarios;
-            minuta.ListaPunto = puntos.ConsultarPuntoBD(int.Parse(minuta.Codigo));
+                listaAcuerdos = acuerdos.ConsultarAcuerdoBD(int.Parse(minuta.Codigo));
+                foreach (Acuerdo acu in listaAcuerdos)
+                {
 
-            listaAcuerdos = acuerdos.ConsultarAcuerdoBD(int.Parse(minuta.Codigo));
-            foreach (Acuerdo acu  in listaAcuerdos)
-            {
-               
-            invo = involucrados.ConsultarInvolucrado(RecursosLogicaModulo8.ProcedureConsultarUsuarioAcuerdo
-                , RecursosLogicaModulo8.AtributoAcuerdoUsuario, RecursosLogicaModulo8.ParametroIDAcuerdo, acu.Codigo);
-            foreach (int i in invo)
-            {
-                usuarios1.Add(involucrados.ConsultarUsuarioMinutas(i));
+                    invo = involucrados.ConsultarInvolucrado(RecursosLogicaModulo8.ProcedureConsultarUsuarioAcuerdo
+                        , RecursosLogicaModulo8.AtributoAcuerdoUsuario, RecursosLogicaModulo8.ParametroIDAcuerdo, acu.Codigo);
+                    foreach (int i in invo)
+                    {
+                        usuarios1.Add(involucrados.ConsultarUsuarioMinutas(i));
+                    }
+                    acu.ListaUsuario = usuarios1;
+                }
+                minuta.ListaAcuerdo = listaAcuerdos;
+                return minuta;
             }
-            acu.ListaUsuario = usuarios1;
+            catch (NullReferenceException ex)
+            {
+
+                throw new BDMinutaException(RecursosLogicaModulo8.Codigo_ExcepcionNullReference,
+                    RecursosLogicaModulo8.Mensaje_ExcepcionNullReference, ex);
+
             }
-            minuta.ListaAcuerdo = listaAcuerdos;
-            return minuta;
+            catch (ExceptionTotemConexionBD ex)
+            {
+
+                throw new ExceptionTotemConexionBD(RecursosLogicaModulo8.Codigo,
+                    RecursosLogicaModulo8.Mensaje, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosLogicaModulo8.Codigo_ExcepcionSql,
+                    RecursosLogicaModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosLogicaModulo8.Codigo_ExcepcionParametro,
+                    RecursosLogicaModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosLogicaModulo8.Codigo_ExcepcionAtributo,
+                    RecursosLogicaModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
+            catch (Exception ex)
+            {
+                throw new BDMinutaException(RecursosLogicaModulo8.Codigo_ExcepcionGeneral,
+                   RecursosLogicaModulo8.Mensaje_ExcepcionGeneral, ex);
+
+            }
            
         }
 

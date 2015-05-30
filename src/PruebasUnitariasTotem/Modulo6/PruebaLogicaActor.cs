@@ -41,7 +41,7 @@ namespace PruebasUnitariasTotem.Modulo6
         [Test]
         public void PruebaAgregar()
         {
-            Assert.IsTrue(logica.AgregarActor("prueba", "prueba", 0));
+            Assert.IsTrue(logica.AgregarActor("prueba", "prueba", 1));
         }
 
         /// <summary>
@@ -51,10 +51,10 @@ namespace PruebasUnitariasTotem.Modulo6
         public void PruebaLeer()
         {
             //Insertamos un valor de prueba
-            logica.AgregarActor("prueba", "prueba", 0);
+            logica.AgregarActor("prueba", "prueba", 1);
 
             //Leemos los actores
-            List<Actor> listaActores = logica.ListarActor(0);
+            List<Actor> listaActores = logica.ListarActor(1);
 
             /*Probamos que la lista devuelta no es nula y a su vez
             que nos devuelva un actor de predeterminado de prueba*/
@@ -70,13 +70,16 @@ namespace PruebasUnitariasTotem.Modulo6
         public void PruebaModificar()
         {
             //Insertamos un valor de prueba
-            logica.AgregarActor("prueba", "prueba", 0);
+            logica.AgregarActor("prueba", "prueba", 1);
 
             //Obtenemos ese valor de prueba
-            List<Actor> listaActores = logica.ListarActor(0);
+            List<Actor> listaActores = logica.ListarActor(1);
+
+            //Obtenemos el ID del Actor insertado de prueba
+            int Identificacion = listaActores[listaActores.Count - 1].IdentificacionActor;
 
             //Lo modificamos
-            Assert.IsTrue(logica.ModificarActor(listaActores[listaActores.Count - 1].IdentificacionActor, "prueba", "prueba", 0));
+            Assert.IsTrue(logica.ModificarActor(Identificacion, "prueba", "prueba", 1));
         }
 
         /// <summary>
@@ -86,13 +89,13 @@ namespace PruebasUnitariasTotem.Modulo6
         public void PruebaEliminar()
         {
             //Insertamos un valor de prueba
-            logica.AgregarActor("prueba", "prueba", 0);
+            logica.AgregarActor("prueba", "prueba", 1);
 
             //Leemos los actores
-            List<Actor> listaActores = logica.ListarActor(0);
+            List<Actor> listaActores = logica.ListarActor(1);
 
             //Eliminamos el valor de prueba insertado
-            Assert.IsTrue(logica.EliminarActor(listaActores[listaActores.Count - 1].IdentificacionActor, 0));
+            Assert.IsTrue(logica.EliminarActor(listaActores[listaActores.Count - 1].IdentificacionActor, 1));
         }
 
         /// <summary>
@@ -106,13 +109,13 @@ namespace PruebasUnitariasTotem.Modulo6
             String valorPrueba = aleatorio.Next().ToString();
 
             //Insertamos un valor de prueba
-            logica.AgregarActor("prueba", "prueba", 0);
+            logica.AgregarActor("prueba", "prueba", 1);
 
             //Si ese usuario ya existe en la Base de Datos me debe retornar falso
-            Assert.IsTrue(!logica.AgregarListarActor("prueba", "prueba", 0));
+            Assert.IsTrue(!logica.AgregarListarActor("prueba", "prueba", 1));
 
             //Si no existe debe retornarme verdadero indicando que la insercion fue exitosa
-            Assert.IsTrue(logica.AgregarListarActor(valorPrueba, valorPrueba, 0));
+            Assert.IsTrue(logica.AgregarListarActor(valorPrueba, valorPrueba, 1));
         }
 
         /// <summary>

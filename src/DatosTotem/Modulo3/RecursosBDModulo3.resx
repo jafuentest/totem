@@ -248,4 +248,16 @@
     <value>Procedure_InsertarInvUsuario</value>
     <comment>Nombre del StoredProcedure para insertar usuarios involucrados</comment>
   </data>
+  <data name="aliasUsuarioUsername" xml:space="preserve">
+    <value>usuarioUsername</value>
+  </data>
+  <data name="aliasClienteID" xml:space="preserve">
+    <value>clienteID</value>
+  </data>
+  <data name="aliasClienteNombre" xml:space="preserve">
+    <value>clienteNombre</value>
+  </data>
+  <data name="aliasValor" xml:space="preserve">
+    <value>valor</value>
+  </data>
 </root>

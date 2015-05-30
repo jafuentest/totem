@@ -43,6 +43,7 @@ AS
 	END
 GO
 
+
 /*Eliminar Actor*/
 CREATE PROCEDURE ELIMINAR_ACTOR 
 	@idactor int,
@@ -51,6 +52,8 @@ AS
 	BEGIN
 		DELETE FROM ACTOR WHERE PROYECTO_pro_id= @idproyecto AND act_id=@idactor;
 	END
+
+GO
 
 /* Leer casos de uso por actor */
 CREATE PROCEDURE LEER_CU_POR_ACTOR 
@@ -113,6 +116,7 @@ AS
 
 		--Inserto en la entidad interseccion
 		INSERT INTO CU_ACTOR VALUES (@idcasouso, @idactor);
+		
 	END
 GO
 
@@ -124,13 +128,16 @@ AS
 		--Busco el ID del caso de uso
 		DECLARE @idcasouso INTEGER;
 		set @idcasouso = (SELECT MAX(cu_id) from CASO_USO);
-
+		
 		--Busco cuantas precondiciones tiene actualmente para agregar una mas
 		DECLARE @numero INTEGER;
 		set @numero = (SELECT MAX(P.pre_id) from PRECONDICION P WHERE P.CASO_USO_cu_id=@idcasouso);
-
+		
 		--Inserto la precondicion
-		INSERT INTO PRECONDICION VALUES (@numero+1,@descripcion,@idcasouso);
+		if (@numero != null)
+			INSERT INTO PRECONDICION VALUES (@numero+1,@descripcion,@idcasouso);
+		else
+			INSERT INTO PRECONDICION VALUES (1,@descripcion,@idcasouso);
 	END
 GO
 
@@ -149,7 +156,11 @@ AS
 		set @numero = (SELECT MAX(P.pas_id) FROM PASO P WHERE P.CASO_USO_cu_id=@idcasouso);
 
 		--Inserto el paso
-		INSERT INTO PASO VALUES (@numero+1,@numeropaso,@paso,@idcasouso);
+		if (@numero != null)
+			INSERT INTO PASO VALUES (@numero+1,@numeropaso,@paso,@idcasouso);
+		else
+			INSERT INTO PASO VALUES (1,@numeropaso,@paso,@idcasouso);
+		
 	END
 GO
 
@@ -165,14 +176,19 @@ AS
 		--Busco el ID del paso
 		DECLARE @idpaso INTEGER;
 		set @idpaso = (SELECT MAX(P.pas_id) FROM PASO P WHERE P.CASO_USO_cu_id=@idcasouso);
-
+		
 		--Busco cuantas extensiones tiene actualmente para agregar uno mas
 		DECLARE @numero INTEGER
 		set @numero = (SELECT MAX(E.ext_id) 
 		FROM EXTENSION E WHERE (E.PASO_pas_id = @idpaso) AND (E.PASO_CASO_USO_cu_id = @idcasouso));
 
+
 		--Inserto la extension
-		INSERT INTO EXTENSION VALUES (@numero+1,@descripcion,@idpaso,@idcasouso); 
+		if (@numero != null)
+			INSERT INTO EXTENSION VALUES (@numero+1,@descripcion,@idpaso,@idcasouso);
+		else
+			INSERT INTO EXTENSION VALUES (1,@descripcion,@idpaso,@idcasouso);
+		
 	END
 GO
 
@@ -201,7 +217,10 @@ AS
 		WHERE (P.EXTENSION_ext_id=@idextension) AND (P.EXTENSION_PASO_pas_id=@idpaso) AND (P.EXTENSION_PASO_CASO_USO_cu_id=@idcasouso));
 
 		--Inserto el paso de la extension
-		INSERT INTO PASO_EXTENSION VALUES (@numero+1,@descripcion,@idextension,@idpaso,@idcasouso);
+		if (@numero != null)
+			INSERT INTO PASO_EXTENSION VALUES (@numero+1,@descripcion,@idextension,@idpaso,@idcasouso);
+		else
+			INSERT INTO PASO_EXTENSION VALUES (1,@descripcion,@idextension,@idpaso,@idcasouso);
 	END
 GO
 

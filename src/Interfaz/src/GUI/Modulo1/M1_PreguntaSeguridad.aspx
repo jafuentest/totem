@@ -10,6 +10,8 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 
     <div  class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
+        <div id="serverAlert" runat="server">
+        </div>
         <form id="preguntaSeguridad"  class="form-horizontal" method="post" runat="server">
 
                 <div  class="login-form"> 
