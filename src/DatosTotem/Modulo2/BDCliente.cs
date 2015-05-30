@@ -19,19 +19,27 @@ namespace DatosTotem.Modulo2
     public class BDCliente
     {
 
-        private BDConexion _operacionBD;
-        private ClienteNatural Clientenatural = new ClienteNatural();
-        private SqlConnection conexion;
-        private SqlCommand comando; 
-
+        //Conexion de la BD e instruccion a realizar
+        SqlConnection conexion;
+        SqlCommand comando;
         /// <summary>
         /// Constructor de la Clase BDCliente
         /// </summary>
         public BDCliente() 
         {
-            this.conexion = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\Alvaro\Documents\totem\totem\src\DatosTotem\BaseDeDatos\BaseDeDatosTotem.mdf;Integrated Security=True");
-            //this.conexion = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\Svillami\Desktop\totem - copia de las 1218 290515\src\DatosTotem\BaseDeDatos\BaseDeDatosTotem.mdf;Integrated Security=True");
-           // this.conexion = new SqlConnection(@RecursoGeneralBD.StringDeConexion);
+            try
+            {
+                //Obtenemos la ruta de la Base de Datos
+                String[] aux = AppDomain.CurrentDomain.BaseDirectory.Split(new string[] { "src" }, StringSplitOptions.None);
+                String configuracion = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=" + aux[0] + @"src\DatosTotem\BaseDeDatos\BaseDeDatosTotem.mdf;Integrated Security=True";
+
+                //La colocamos en la configuracion
+                this.conexion = new SqlConnection(configuracion);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error en la Configuracion de la BD", e);
+            }
         }
 
 
