@@ -41,6 +41,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
 	protected void Page_Load(object sender, EventArgs e)
 	{
+        
         ulNav.Visible = showDiv;
         menuLateral.Visible = mostrarMenuLateral; 
 		XmlDocument doc = new XmlDocument();
@@ -59,6 +60,13 @@ public partial class MasterPage : System.Web.UI.MasterPage
         if (pcookie != null)
         {
             selectedProject.InnerText = "Proyecto Seleccionado: " + pcookie.Values["projectName"].ToString();
+            this.perfilProyecto.Text = "";
+            this.perfilProyecto.Text = "<a runat='server' href='PerfilProyecto.aspx?success=" + pcookie.Values["projectCode"].ToString() + "&success=-1'>Detalle de Proyecto</a>";
+            
+        }
+        else{
+            this.perfilProyecto.Text = "";
+            this.perfilProyecto.Text = "<a runat='server' href='PerfilProyecto.aspx?'>Detalle de Proyecto</a>";
         }
 
         if (HttpContext.Current.Session["Credenciales"] != null)
