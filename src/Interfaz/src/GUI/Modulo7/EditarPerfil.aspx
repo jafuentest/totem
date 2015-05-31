@@ -23,14 +23,18 @@
            </div>
            <div id="alert_password" runat="server">
            </div>
+           <div id="alert" runat="server">
+           </div>
 
                 <div class="col-sm-10 col-md-10 col-lg-10" id="alertlocal" >
                 </div>
             <form id="detalle_form" class="form-horizontal" action="#" runat="server">
+             <asp:ScriptManager ID="ScriptManager1" runat="server">
+             </asp:ScriptManager>
             <div class="form-group">
 		        <div  class="col-sm-10 col-md-10 col-lg-10">
                     <label>Nombre de Usuario: </label>
-                    <input id="input_usuario" type="text" class="form-control" name="usuario" runat="server"/>
+                    <input id="input_usuario" type="text" class="form-control" name="usuario" runat="server" readonly="true"/>
 			    </div>
             </div>
             <div class="form-group">
@@ -65,7 +69,7 @@
             </div>
             <div class="form-group">
                 &nbsp; &nbsp;
-                <button runat="server" class="btn btn-info" data-toggle="modal" data-target="#modal-change-pswd" onserverclick="Unnamed1_Click1">Cambiar Contrase&ntilde;a</button>
+                <asp:Button runat="server" class="btn btn-info" data-toggle="modal" data-target="#modal_change_pswd" Text="Cambiar Contrase&ntilde;a" OnClick="Unnamed1_Click"></asp:Button>
             </div>
                 <div class="form-group">
                          &nbsp; &nbsp;
@@ -73,9 +77,9 @@
                         &nbsp;
 				            <a id="btn_cancel" href="../Modulo4/PerfilProyecto.aspx" class="btn btn-default">Cancelar</a>
 		        </div>
-            </form>
-        </div>
-            <div id="modal_change_pswd" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true" runat="server">
+       <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
+      <ContentTemplate>
+ <div id="modal_change_pswd" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -85,30 +89,35 @@
         <div class="modal-body">
           <div class="container-fluid">
             <div class="row">
-                <form id ="pswd-form">
               <div class="form-group">
                 <label for="pswd-viejo" class="control-label">Contrase&ntilde;a Actual:</label>
                 <input type="password" class="form-control" id="pswd_viejo"  name="pswdviejo" runat="server"/>
               </div>
-              <div class="form-group">
+              <asp:Panel runat="server" class="form-group">
                 <label for="pswd-nuevo" class="control-label">Contrase&ntilde;a Nueva:</label>
                 <input class="form-control" type="password" id="pswd_nuevo" name="pswdnuevo" runat="server"/>
-              </div>
-              <div class="form-group">
+              </asp:Panel>
+              <asp:Panel runat="server" class="form-group">
                 <label for="pswd-nuevo-conf" class="control-label">Confirmar Contrase&ntilde;a Nueva:</label>
                 <input class="form-control" type="password" id="pswd_nuevo_conf" name="pswdnuevoconf" runat="server"/>
-              </div>
-        </form>
+              </asp:Panel>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-primary" type="submit"  runat="server">Confirmar</button>
+		 <button runat="server" class="btn btn-primary" type="submit" data-dismiss="modal">Confirmar</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
         </div>
       </div><!-- /.modal-content -->
+
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
+    </ContentTemplate>
+    </asp:UpdatePanel>
+            </form>
+        
+        </div>
+
     <script src="js/Validacion.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
