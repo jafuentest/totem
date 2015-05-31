@@ -82,12 +82,13 @@ CREATE PROCEDURE INSERTAR_CU
 	@titulo [varchar] (50),
 	@condexito [varchar] (200),
 	@condfallo [varchar] (200),
-	@disparador [varchar] (200)
+	@disparador [varchar] (200),
+	@proyecto int
 AS
 	BEGIN
 		
 		--Inserto el caso de uso
-		INSERT INTO CASO_USO (cu_identificador,cu_titulo,cu_condexito,cu_condfallo,cu_disparador) VALUES (@identificador,@titulo,@condexito,@condfallo,@disparador);
+		INSERT INTO CASO_USO (cu_identificador,cu_titulo,cu_condexito,cu_condfallo,cu_disparador,PROYECTO_pro_id) VALUES (@identificador,@titulo,@condexito,@condfallo,@disparador,@proyecto);
 	END
 GO
 
