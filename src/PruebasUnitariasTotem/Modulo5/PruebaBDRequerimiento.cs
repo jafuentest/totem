@@ -11,7 +11,8 @@ namespace PruebasUnitariasTotem.Modulo5
     class PruebaBDRequerimiento
     {
 	   #region Atributos
-	   private int elCodigo;
+	   private int elId;
+	   private string elCodigo;
 	   private List<Requerimiento> listaRequerimientos =
 		  new List<Requerimiento>();
 	   #endregion
@@ -20,25 +21,37 @@ namespace PruebasUnitariasTotem.Modulo5
 	   [SetUp]
 	   public void init()
 	   {
-		  elCodigo = 1;
+		  elId = 1;
+		  elCodigo = "TOT";
 		  listaRequerimientos =
 			 new List<Requerimiento>();
 	   }
 	   [TearDown]
 	   public void clean()
 	   {
-		  elCodigo = 0;
+		  elId = 0;
+		  elCodigo = "";
 		  listaRequerimientos = null;
 	   } 
 	   #endregion
 
 	   #region Pruebas unitarias
 	   [Test]
+	   public void PruebaRetornarIdPorCodigoProyecto()
+	   {
+		  int id;
+		  id = DatosTotem.Modulo5.BDRequerimiento.
+			 RetornarIdPorCodigoProyecto(elCodigo);
+		  Assert.AreEqual(1, id);
+	   }
+	   [Test]
 	   public void PruebaConsultarRequerimientosPorProyecto()
 	   {
 		  listaRequerimientos =
 			 DatosTotem.Modulo5.BDRequerimiento.
-			 ConsultarRequerimientosPorProyecto(elCodigo);
+			 ConsultarRequerimientosPorProyecto(elId);
+		  Assert.AreEqual(1,
+			 listaRequerimientos[0].Id);
 		  Assert.AreEqual("TOT_RF_1",
 			 listaRequerimientos[0].Codigo.ToString());
 		  Assert.AreEqual("Funcional",
@@ -47,7 +60,7 @@ namespace PruebasUnitariasTotem.Modulo5
 			 listaRequerimientos[0].Prioridad.ToString());
 		  Assert.AreEqual("Finalizado",
 			 listaRequerimientos[0].Estatus.ToString());
-	   } 
+	   }
 	   #endregion
     }
 }

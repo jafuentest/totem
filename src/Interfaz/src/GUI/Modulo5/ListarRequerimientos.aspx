@@ -4,6 +4,12 @@
     Inherits="GUI_Modulo5_PrincipalProyecto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <style type="text/css">
+	   #table-requerimientos td
+	   {
+		  vertical-align: middle;
+	   }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">
     Gestión de requerimientos
@@ -17,77 +23,74 @@
     <div id="alert" runat="server">
     </div>
 
-    <div class="panel panel-primary" style="width:auto">
+    <div class="panel panel-primary" style="width: auto">
 	   <div class="panel-heading">
-		  <h3 class="panel-title" style="align-content:center">
+		  <h3 class="panel-title" style="align-content: center">
 			 Proyecto seleccionado
 		  </h3>
 	   </div>
-	   <div class="panel-body" style="width:auto">
+	   <div class="panel-body" style="width: auto">
 		  Nombre del proyecto: <br />
 		  Empresa cliente: <br />
 		  Estatus del proyecto: <br />
 	   </div>
     </div>
-
-    <br/>
-
     <h2 style="align-content:center">Requerimientos asociados</h2>
-    <div class="table-responsive">
-	   <table id="table-requerimientos" class="table table-striped table-hover">
-		  <thead>
-			 <tr>
-				<th>ID</th>
-				<th style="width: 530px">Requerimiento</th>
-				<th>Tipo</th>
-				<th style="width: 50px">Prioridad</th>
-				<th>Acciones</th>
-			 </tr>
-		  </thead>
-		  <tbody>
-			 <%
-			 foreach (DominioTotem.Requerimiento requerimiento
-				in ConsultarRequerimientosPorProyecto(1))
-			 {
-				%>
 
-			 <tr>
-				<td class="id">
-				    <%
-					   Response.Write(requerimiento.Codigo.
-						  ToString());
-				    %>
-				</td>
-				<td>
-				    <%
-					   Response.Write(requerimiento.Descripcion.
-						  ToString());
-				    %>
-				</td>
-				<td>
-				    <%
-					   Response.Write(requerimiento.Tipo.
-						  ToString());
-				    %>
-				</td>
-				<td>
-				    <%
-					   Response.Write(requerimiento.Prioridad.
-						  ToString());
-				    %>
-				</td>
-				<td>
-				    <a class="btn btn-default glyphicon glyphicon-pencil"
+    <div class="table-responsive">
+    <% if ( ListaRequerimientos != null )
+	  {
+		 %>
+	   <asp:Repeater ID="RRequerimientos" runat="server">
+		  <HeaderTemplate>
+			 <table id="table-requerimientos"
+				class="table table-striped table-hover">
+				<thead>
+				    <tr>
+					   <th>ID</th>
+					   <th style="width: 530px">Requerimiento</th>
+					   <th>Tipo</th>
+					   <th style="width: 50px">Prioridad</th>
+					   <th>Acciones</th>
+				    </tr>
+				</thead>
+				<tbody>
+		  </HeaderTemplate>
+		  <ItemTemplate>
+				<%
+				   /*
+				    * Evaluación de las propiedades pertenecientes
+				    * a la clase Requerimiento
+				    */
+				%>
+				<tr>
+				    <td><%# Eval("Codigo") %></td>
+				    <td><%# Eval("Descripcion") %></td>
+				    <td><%# Eval("Tipo") %></td>
+				    <td><%# Eval("Prioridad") %></td>
+				    <td>
+					   <a class="btn btn-default glyphicon glyphicon-pencil"
 					   data-toggle="modal" data-target="#modal-update"
-					   href="<% Response.Write(requerimiento.Codigo.ToString()); %>"></a>
-				    <a class="btn btn-danger glyphicon glyphicon-remove-sign"
+					   href="ListarRequerimientos.aspx?id=<%# Eval("Id") %>"></a>
+					   <a class="btn btn-danger glyphicon glyphicon-remove-sign"
 					   data-toggle="modal" data-target="#modal-delete"
-					   href="<% Response.Write(requerimiento.Codigo.ToString()); %>"></a>
-				</td>
-			 </tr>
-		  <%	 } %>
-		  </tbody>
-	   </table>
+					   href="ListarRequerimientos.aspx?id=<%# Eval("Id") %>"></a>
+				    </td>
+				</tr>
+		  </ItemTemplate>
+		  <FooterTemplate>
+				</tbody>
+			 </table>
+		  </FooterTemplate>
+	   </asp:Repeater>
+    <% }
+	  else
+	  {
+		 Response.Write("<p>" + MensajeEstado + "</p>");
+	  }
+	  %>
+    </div> <!-- .table-responsive -->
+    
 
         <div id="modal-delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -176,7 +179,6 @@
         </div><!-- /.modal-update-dialog -->
         </form>
       </div><!-- /.modal-update -->
-    </div><!-- table-responsive -->
     <!-- Data tables init -->
     <script src="js/Validacion.js"></script>
 	<script type="text/javascript">

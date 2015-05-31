@@ -142,11 +142,56 @@ namespace DatosTotem.Modulo5 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to T_05_001.
+        /// </summary>
+        internal static string EXCEPCION_PRO_NO_ENC_CODIGO {
+            get {
+                return ResourceManager.GetString("EXCEPCION_PRO_NO_ENC_CODIGO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El proyecto bajo el código especificado no ha sido encontrado o no existe.
+        /// </summary>
+        internal static string EXCEPCION_PRO_NO_ENC_MENSAJE {
+            get {
+                return ResourceManager.GetString("EXCEPCION_PRO_NO_ENC_MENSAJE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @pro_codigo.
         /// </summary>
-        internal static string PARAMETRO_CODIGO_PROYECTO {
+        internal static string PARAMETRO_PRO_CODIGO {
             get {
-                return ResourceManager.GetString("PARAMETRO_CODIGO_PROYECTO", resourceCulture);
+                return ResourceManager.GetString("PARAMETRO_PRO_CODIGO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @pro_id.
+        /// </summary>
+        internal static string PARAMETRO_PRO_ID {
+            get {
+                return ResourceManager.GetString("PARAMETRO_PRO_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M5_ConsultarRequerimientosPorProyecto.
+        /// </summary>
+        internal static string PROCEDIMIENTO_CONSULTAR_REQUERIMIENTOS_POR_PROYECTO {
+            get {
+                return ResourceManager.GetString("PROCEDIMIENTO_CONSULTAR_REQUERIMIENTOS_POR_PROYECTO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M5_RetornarIdPorCodigoProyecto.
+        /// </summary>
+        internal static string PROCEDIMIENTO_RETORNAR_ID_POR_CODIGO_PROYECTO {
+            get {
+                return ResourceManager.GetString("PROCEDIMIENTO_RETORNAR_ID_POR_CODIGO_PROYECTO", resourceCulture);
             }
         }
     }

@@ -20,6 +20,7 @@ namespace PruebasUnitariasTotem.Modulo5
 	   public void init()
 	   {
 		  elRequerimiento = new Requerimiento(
+			 1,
 			 "TOT_RF_1",
 			 "Descripcion Requerimiento Funcional 1 Totem",
 			 "Funcional",
@@ -43,6 +44,7 @@ namespace PruebasUnitariasTotem.Modulo5
 	   [Test]
 	   public void PruebaRequerimientoConValores()
 	   {
+		  Assert.AreEqual(1, elRequerimiento.Id);
 		  Assert.AreEqual("TOT_RF_1", elRequerimiento.Codigo);
 		  Assert.AreEqual("Descripcion Requerimiento Funcional 1 Totem",
 			 elRequerimiento.Descripcion);

@@ -61,6 +61,7 @@
     <Compile Include="Modulo4\CodigoRepetidoException.cs" />
     <Compile Include="Modulo4\InvolucradosInexistentesException.cs" />
     <Compile Include="Modulo4\RequerimientosInexistentesException.cs" />
+    <Compile Include="Modulo5\ProyectoNoEncontradoException.cs" />
     <Compile Include="Modulo7\ClaveNoValidaException.cs" />
     <Compile Include="Modulo7\CorreoInvalidoException.cs" />
     <Compile Include="Modulo7\CorreoRepeticoException.cs" />
@@ -72,7 +73,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Modulo5\" />
     <Folder Include="Modulo6\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

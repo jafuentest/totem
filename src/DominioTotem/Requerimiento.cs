@@ -8,6 +8,7 @@ namespace DominioTotem
     public class Requerimiento
     {
 	   #region Atributos
+	   private int id;
 	   private string codigo;
 	   private string descripcion;
 	   private string tipo;
@@ -23,10 +24,24 @@ namespace DominioTotem
 		  Tipo = tipo;
 		  Prioridad = prioridad;
 		  Estatus = estatus;
+	   }
+	   public Requerimiento(int id, string codigo, string descripcion, string tipo, string prioridad, string estatus)
+	   {
+		  Id = id;
+		  Codigo = codigo;
+		  Descripcion = descripcion;
+		  Tipo = tipo;
+		  Prioridad = prioridad;
+		  Estatus = estatus;
 	   } 
 	   #endregion
 
 	   #region Propiedades
+	   public int Id
+	   {
+		  get { return id; }
+		  set { id = value; }
+	   }
 	   public string Codigo
 	   {
 		  get { return codigo; }
