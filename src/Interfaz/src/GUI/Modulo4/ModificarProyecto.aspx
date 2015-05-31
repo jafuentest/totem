@@ -15,30 +15,38 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     <!--AQUI SE DEFINE EL TAMANO DEL FORM Y SU UBICACION-->
     <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-    <form id="register_form" class="form-horizontal" action="#">
+
+    <div class="form-group">
+            <div id="div_alertas" class="col-sm-12 col-md-12 col-lg-12">
+                <div id="alerts" runat="server">
+                </div>
+            </div>
+        </div>
+
+    <form runat="server" class="form-horizontal" method="POST">
         <div class="form-group">
 
             <div id="div_nombre" class="col-sm-8 col-md-8 col-lg-8">
-				<input type="text" placeholder="Nombre" class="form-control" value="Twitter" name="nombre"/>
+				<input type="text" runat="server" id="nombreProy" placeholder="Nombre" class="form-control" value="" name="nombre"/>
 			</div>
 		    <div id="div_codigo" class="col-sm-2 col-md-2 col-lg-2">
-				<input type="text" placeholder="Codigo" class="form-control" value="TWI" name="codigo"/>
+				<input type="text" runat="server" id="codigoProy" placeholder="Codigo" class="form-control" value="" name="codigo"/>
 			</div>
 		    </div>
             <div class="form-group">
 	            <div id="div_descripcion" class="col-sm-10 col-md-10 col-lg-10">
-		            <textarea placeholder="Descripcion" class="form-control" name="descripcion" rows="5">Twitter (NYSE: TWTR) es un servicio de microblogging, con sede en San Francisco, California, con filiales en San Antonio (Texas) y Boston (Massachusetts) en Estados Unidos. Twitter, Inc. fue creado originalmente en California, pero está bajo la jurisdicción de Delaware desde 2007.8 Desde que Jack Dorsey lo creó en marzo de 2006, y lo lanzó en julio del mismo año, la red ha ganado popularidad mundialmente y se estima que tiene más de 500 millones de usuarios, generando 65 millones de tuits al día y maneja más de 800 000 peticiones de búsqueda diarias.1 Ha sido apodado como el "SMS de Internet".9</textarea>
+		            <textarea placeholder="Descripcion" runat="server" id="descripcionProy" class="form-control" name="descripcion" rows="5"></textarea>
 		        </div>
 	        </div>
             <label>Moneda</label>
             <div class="form-group">
                 <div class="col-sm-1 col-md-1 col-lg-1">
                       <div class="dropdown">
-                          <button id="id-moneda" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+                          <button runat="server" id="monedaProy" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
                             &#164;
                             <span class="caret"></span>
                           </button>
-                          <ul id="dpmoneda" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                          <ul id="currencyProy" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                             <li role="presentation"><a role="menuitem" tabindex="-1" >Bs</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" >$</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" >€</a></li>
@@ -46,7 +54,7 @@
                     </div>
                 </div>
                 <div id="div_precio" class="col-sm-3 col-md-3 col-lg-3">
-                       <input type="text" id="Precio" placeholder="Precio" value="200000000" class="form-control" name="precio"/>
+                    <input type="text" runat="server" id="precioProy" placeholder="Precio" value="" class="form-control" name="precio"/>
                 </div>
                 
                 <div id="div_activo" class="col-sm-3 col-md-3 col-lg-3">
@@ -56,11 +64,11 @@
             <br>
             <div class="form-group">
 		        <div class="col-sm-1 col-md-1 col-lg-1">
-				    <a id="btn-modificar" type="button" class="btn btn-primary" href="PerfilProyecto.aspx?success=0">Modificar</a>
+				    <button runat="Server" type="submit" class="btn btn-primary" onserverclick="ModifyProject_Click">Modificar</button>
 			    </div>
                 <div class="col-sm-3 col-md-3 col-lg-3">
                     &nbsp;&nbsp;&nbsp;&nbsp;
-				    <a id="btn-eliminar" type="button" class="btn btn-default" href="PerfilProyecto.aspx">Cancelar</a>
+				    <a id="btn-eliminar" type="button" class="btn btn-default" href="javascript:history.back()">Cancelar</a>
 			    </div>
 	        </div>
         </form>

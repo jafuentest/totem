@@ -163,6 +163,8 @@ BEGIN
 	WHERE car_id IN (SELECT DISTINCT (CARGO_car_id) FROM CONTACTO WHERE CLIENTE_JURIDICO_cj_id = @cj_rif)	
 END;
 
+GO
+
 ------------------+ConsultarEmpleadosEmpresaCargo():list<cliente_juridico>------------------------------
 -- comentarios del grupo que pidio el metodo... 
 -- Metodo consultarEmpleadosEmpresaCargo(ClienteJuridico laEmpresa, String cargo) y devuelve una lista de Contacto con el nombre, apellido y cargo

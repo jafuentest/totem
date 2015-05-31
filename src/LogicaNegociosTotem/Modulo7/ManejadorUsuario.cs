@@ -78,7 +78,7 @@ namespace LogicaNegociosTotem.Modulo7
         {
             BDUsuario conexion = new BDUsuario();
             Usuario usuario = new Usuario();
-            usuario.username = "albertods";
+            usuario.username = userName;
             usuario = conexion.DatosUsuario(usuario);
             return usuario;
         }

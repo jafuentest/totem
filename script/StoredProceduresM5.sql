@@ -1,209 +1,150 @@
-
-
----Procedimiento para agregar un Requerimiento a un Proyecto--------------
+-- ========================================================================= --
+-- Agregar requerimiento
+-- ========================================================================= --
 
 CREATE PROCEDURE Procedure_AgregarRequerimiento
 
-        @req_codigo [varchar] (15),
-        @req_descripcion [varchar] (500),
-		@req_tipo [varchar] (25),
-		@req_prioridad [varchar] (10),
-		@req_estatus [varchar] (50),	
-		@PROYECTO_pro_id [int]
+	@req_id				[int],
+	@req_codigo			[varchar] (15),
+	@req_descripcion	[varchar] (500),
+	@req_tipo			[varchar] (25),
+	@req_prioridad		[varchar] (10),
+	@req_estatus		[varchar] (50),
+	@PROYECTO_pro_id	[int]
 
 AS 
-BEGIN
-		INSERT INTO REQUERIMIENTO(req_codigo, req_descripcion, req_tipo, req_prioridad, req_estatus, PROYECTO_pro_id)
-	    VALUES(@req_codigo,@req_descripcion,@req_tipo,@req_prioridad,@req_estatus,@PROYECTO_pro_id)
-END;
+	BEGIN
+		INSERT INTO REQUERIMIENTO(
+			req_codigo,
+			req_descripcion,
+			req_tipo,
+			req_prioridad,
+			req_estatus,
+			PROYECTO_pro_id
+		)
+		VALUES(
+			@req_codigo,
+			@req_descripcion,
+			@req_tipo,
+			@req_prioridad,
+			@req_estatus,
+			@PROYECTO_pro_id
+		)
+	END
 GO
 
----Procedimiento para Modificar un Requerimiento a un Proyecto--------------
+-- ========================================================================= --
+-- Modificar requerimiento
+-- ========================================================================= --
 
-CREATE PROCEDURE Procedure_ModificarRequerimiento
+CREATE PROCEDURE M5_ModificarRequerimiento
 
-        @req_id [int],
-        @req_codigo [varchar] (15),
-        @req_descripcion [varchar] (500),
-		@req_tipo [varchar] (25),
-		@req_prioridad [varchar] (10),
-		@req_estatus [varchar] (50)
+	@req_id				[int],
+	@req_codigo			[varchar] (15),
+	@req_descripcion	[varchar] (500),
+	@req_tipo			[varchar] (25),
+	@req_prioridad		[varchar] (10),
+	@req_estatus		[varchar] (50)
 
 AS 
-BEGIN
- 	UPDATE REQUERIMIENTO
- 	SET
- 		req_codigo = @req_codigo,
- 		req_descripcion = @req_descripcion,
- 		req_tipo = @req_tipo,
- 		req_prioridad = @req_prioridad,
- 		req_estatus =@req_estatus
- 	WHERE
- 		req_id = @req_id;		
-END		 	
+	BEGIN
+		UPDATE REQUERIMIENTO
+		SET
+			req_codigo		=	@req_codigo,
+			req_descripcion	=	@req_descripcion,
+			req_tipo		=	@req_tipo,
+			req_prioridad	=	@req_prioridad,
+			req_estatus		=	@req_estatus
+		WHERE
+			req_id			=	@req_id;
+	END
 GO
 
+-- ========================================================================= --
+-- Eliminar requerimiento
+-- ========================================================================= --
 
----Procedimiento para Eliminar un Requerimiento a un Proyecto--------------
+CREATE PROCEDURE M5_EliminarRequerimiento
 
-CREATE PROCEDURE Procedure_EliminarRequerimiento
+	@req_id				[int]
 
-        @req_id [int]
-
-AS 
-BEGIN
- 	DELETE FROM REQUERIMIENTO
- 	WHERE req_id = @req_id;	
-END		 	
-GO
-
-
-
-
-
-
-
-
-----Procedimiento para consultar TODOS los Requerimientos de un Proyecto----------------
-
-CREATE PROCEDURE Procedure_ConsultarTodosRequerimiento
-	
-	@pro_codigo INTEGER
-	   
 AS
- BEGIN
-	
-	SELECT req_codigo, req_descripcion, req_tipo, req_prioridad, req_estatus
-	FROM  REQUERIMIENTO R
-	WHERE (R.PROYECTO_pro_id=@pro_codigo) 
- END
+	BEGIN
+		DELETE FROM REQUERIMIENTO
+		WHERE req_id = @req_id;
+	END
 GO
 
+-- ========================================================================= --
+-- Retornar id según el código del proyecto
+-- ========================================================================= --
 
-----Procedimiento para consultar  los Requerimientos Funcionales de un Proyecto----------------
+CREATE PROCEDURE M5_RetornarIdPorCodigoProyecto
 
-CREATE PROCEDURE Procedure_ConsultarRequerimientoFuncional
-	
-	@pro_codigo INTEGER
-	   
+	@pro_codigo 		[varchar] (6),
+	@pro_id				[int]			OUTPUT
+
 AS
- BEGIN
-	
-	SELECT req_codigo, req_descripcion, req_prioridad, req_estatus
-	FROM  REQUERIMIENTO R
-	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_tipo= 'Funcional') 
- END
+	BEGIN
+		SELECT @pro_id = P.pro_id
+		FROM PROYECTO P
+		WHERE ( LOWER(P.pro_codigo) = LOWER(@pro_codigo) );
+	END
 GO
 
-----Procedimiento para consultar los Requerimientos NO Funcionales de un Proyecto----------------
+-- ========================================================================= --
+-- Consultar requerimientos por proyecto (Todos)
+-- ========================================================================= --
 
-CREATE PROCEDURE Procedure_ConsultarRequerimientoNoFuncional
-	
-	@pro_codigo INTEGER
-	   
+CREATE PROCEDURE M5_ConsultarRequerimientosPorProyecto
+
+	@pro_id			[int]
+
 AS
- BEGIN
-	
-	SELECT req_codigo, req_descripcion, req_prioridad, req_estatus
-	FROM  REQUERIMIENTO R
-	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_tipo = 'No Funcional') 
- END
+	BEGIN
+		SELECT	req_id, req_codigo, req_descripcion,
+				req_tipo, req_prioridad, req_estatus
+		FROM  REQUERIMIENTO R
+		WHERE ( R.PROYECTO_pro_id = @pro_id )
+	END
 GO
 
+-- ========================================================================= --
+-- Consultar requerimientos por proyecto (Tipo)
+-- ========================================================================= --
 
-----Procedimiento para listar los Requerimientos Funcionales  por maxima prioridad de un Proyecto----------------
+CREATE PROCEDURE M5_ConsultarRequerimientosPorTipo
 
-CREATE PROCEDURE Procedure_ConsultarRequerimientoFuncionalMax
-	
-	@pro_codigo INTEGER
-	   
+	@pro_id				[int],
+	@req_tipo			[varchar] (25)
+
 AS
- BEGIN
-	
-	SELECT req_codigo, req_descripcion, req_estatus
-	FROM  REQUERIMIENTO R
-	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_prioridad = 'Alta' and R.req_descripcion='Funcional') 
- END
+	BEGIN
+		SELECT	req_id, req_codigo, req_descripcion,
+				req_tipo, req_prioridad, req_estatus
+		FROM  REQUERIMIENTO R
+		WHERE ( R.PROYECTO_pro_id = @pro_id
+				and LOWER(R.req_tipo) = LOWER(@req_tipo) )
+	END
 GO
 
-----Procedimiento para listar los Requerimientos Funcionales  por media prioridad de un Proyecto----------------
+-- ========================================================================= --
+-- Consultar requerimientos por proyecto (Tipo y Prioridad)
+-- ========================================================================= --
 
-CREATE PROCEDURE Procedure_ConsultarRequerimientoFuncionalMed
-	
-	@pro_codigo INTEGER
-	   
+CREATE PROCEDURE M5_ConsultarRequerimientosPorTipoPrioridad
+
+	@pro_id				[int],
+	@req_tipo			[varchar] (25),
+	@req_prioridad		[varchar] (10)
+
 AS
- BEGIN
-	
-	SELECT req_codigo, req_descripcion, req_estatus
-	FROM  REQUERIMIENTO R
-	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_prioridad= 'Media' and R.req_descripcion='Funcional') 
- END
+	BEGIN
+		SELECT	req_id, req_codigo, req_descripcion,
+				req_tipo, req_prioridad, req_estatus
+		FROM  REQUERIMIENTO R
+		WHERE ( R.PROYECTO_pro_id = @pro_id
+				and LOWER(R.req_tipo) = LOWER(@req_tipo)
+				and LOWER(R.req_prioridad) = LOWER(@req_prioridad) )
+	END
 GO
-
-
-----Procedimiento para listar los Requerimientos Funcionales  por baja prioridad de un Proyecto----------------
-
-CREATE PROCEDURE Procedure_ConsultarRequerimientoFuncionalBaja
-	
-	@pro_codigo INTEGER
-	   
-AS
- BEGIN
-	
-	SELECT req_codigo, req_descripcion, req_estatus
-	FROM  REQUERIMIENTO R
-	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_prioridad= 'Baja' and R.req_descripcion='Funcional') 
- END
-GO
-
-----Procedimiento para listar los Requerimientos No Funcionales  por maxima prioridad de un Proyecto----------------
-
-CREATE PROCEDURE Procedure_ConsultarRequerimientoNoFuncionalMax
-	
-	@pro_codigo INTEGER
-	   
-AS
- BEGIN
-	
-	SELECT req_codigo, req_descripcion, req_estatus
-	FROM  REQUERIMIENTO R
-	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_prioridad = 'Alta' and R.req_descripcion='No Funcional') 
- END
-GO
-
-----Procedimiento para listar los Requerimientos No Funcionales por media prioridad de un Proyecto----------------
-
-CREATE PROCEDURE Procedure_ConsultarRequerimientoNoFuncionalMed
-	
-	@pro_codigo INTEGER
-	   
-AS
- BEGIN
-	
-	SELECT req_codigo, req_descripcion, req_estatus
-	FROM  REQUERIMIENTO R
-	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_prioridad= 'Media' and R.req_descripcion='No Funcional') 
- END
-GO
-
-
-----Procedimiento para listar los Requerimientos No Funcionales por baja prioridad de un Proyecto----------------
-
-CREATE PROCEDURE Procedure_ConsultarRequerimientoNoFuncionalBaja
-	
-	@pro_codigo INTEGER
-	   
-AS
- BEGIN
-	
-	SELECT req_codigo, req_descripcion, req_estatus
-	FROM  REQUERIMIENTO R
-	WHERE (R.PROYECTO_pro_id=@pro_codigo and R.req_prioridad= 'Baja' and R.req_descripcion='No Funcional') 
- END
-GO
-
-
-
-
-

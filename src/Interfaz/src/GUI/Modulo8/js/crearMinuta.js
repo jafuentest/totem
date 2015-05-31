@@ -1,13 +1,20 @@
-﻿var nroPuntos = 1;
-
-$('#1_par_check').attr('checked', false);
-$('#2_par_check').attr('checked', false);
-$('#3_par_check').attr('checked', false);
-$('#4_par_check').attr('checked', false);
-
-var acuerdos = 1;
+﻿//------------------------------------------------------VARIABLES GENERALES------------------------------------------------------------------------
+var nroPuntos = 0;          //Número de Puntos Activos 
+var nroAcuerdos = 0;        //Número de Acuerdos Activos
+var listaUsuario;           //Lista de Usuarios del Proyecto
+var StartDate = new Date("March 20, 2015"); //Fecha Mínima Posible para Seleccionar
+//-------------------------------------------------------FUNCIONES-------------------------------------------------------------------------------
 
 
+/// <summary>
+/// Función parar agregar la funcionalidad a la Fecha y al Select Multiple de cada Acuerdo
+/// </summary>
+/// <returns>retorna:
+/*
+    clase .fechaAcuerdo: Input de las fechas de los acuerdos se le implenta la funcionalidad de la librería Datetimepicker Bootstrap
+    clase .seleccionMultiple: Combobox con la lista de los involucrados del Proyecto se le implementa la funcionalidad del SelectMultipleBootstrap.
+*/
+//</returns>
 function CargaAcuerdo()
 {
     $('.fechaAcuerdo').datetimepicker(
@@ -57,28 +64,9 @@ function CargaAcuerdo()
     });
 }
 
-$(function ()
-{
-    StartDate = new Date("March 20, 2015");
-    $('#fechaReunion').datetimepicker(
-    {
-        locale: 'es',
-        useCurrent: true,
-        minDate: StartDate
-    }).on('show', function (e)
-    {
-        $('.day').click(function (event)
-        {
-            event.preventDefault();
-            event.stopPropagation();
-        });
-    });;
-
-    CargaAcuerdo();
-
-});
-
-
+// Descripción: Función Para darle Funcionalidad a los Verificar de los Participantes
+// Parámetros: obj ->  El objeto Check que se ha seleccionado
+// Retorna:  el Check lo habilita o deshabilita y cambia el color del DIV
 function seleccionado(obj)
 {
     var id = obj.id;                                            //ID del Div Seleccionado
@@ -94,74 +82,148 @@ function seleccionado(obj)
     }
 }
 
-function agregarPunto()
-{
-    nroPuntos++;
-    idPunto = nroPuntos.toString() + "-pun-div";
-    idBoton = nroPuntos.toString() + "-pun";
+// Descripción: Función Para Agregar DIV de un punto de una Minuta
+// Retorna: Un DIV con los campos para agregar las minutas usa el ID del
+function agregarPunto() {
+    idPunto = "punto" + nroPuntos.toString() + "_div";
+    idBoton = "punto" + nroPuntos.toString() + "_btn";
+    codigoPuntoTitulo = "punto" + nroPuntos.toString() + "_titulo";
+    codigoPuntoDesarrollo = "punto" + nroPuntos.toString() + "_desarrollo";
     $('#puntosMinuta').append(
-        "<div id='" + idPunto + "' class='panel panel-default panel-punto'>"
+        "<div id='" + idPunto + "' class='panel panel-default panel-punto codigoPunto'>"
         + "  <div class='panel-body panel-minuta'>"
         + "     <div class='col-xs-12'>"
         + "         <button type='button' id=" + idBoton + " class='close' data-dismiss='alert' onClick='borrarPunto(this);' aria-label='Close'><span aria-hidden='true'>&times;</span></button>"
-        + "         <input class='form-control' placeholder='Título del Punto' type='text'/>"
+        + "         <input id='" + codigoPuntoTitulo + "' class='form-control' placeholder='Título del Punto' type='text'/>"
         + "     </div>"
         + "     <div class='col-xs-12 form-group'></div>"
-        + "     <div class='col-xs-12'><textarea name='desarrollo' placeholder='Desarrollo del Punto' class='form-control' style='text-align:justify; resize:none;' rows=3></textarea></div>"
+        + "     <div class='col-xs-12'><textarea id='" + codigoPuntoDesarrollo + "'  name='desarrollo' placeholder='Desarrollo del Punto' class='form-control' style='text-align: justify;resize:none;' rows=3></textarea></div>"
         + " </div>"
         + "</div>"
     );
-    
+
 }
 
+// Descripción: Función Para Eliminar DIV de un punto de una Minuta
+// Parámetros: obj ->  El objeto que se desea Eliminar
 function borrarPunto(obj)
 {
     if ($('#puntosMinuta').find('.panel-punto').length > 1)
     {
-        idDiv = obj.id + "-div";
-        $('#' + idDiv).remove();
+        idBoton = obj.id;
+        codigoDIV = idBoton.replace("_btn", "_div");
+        $('#' + codigoDIV).remove();
         nroPuntos = nroPuntos - 1;
     }
 
 }
 
-function agregarAcuerdo()
-{
-    acuerdos++;
-    idDiv = acuerdos.toString() + "-acuerdo-div";
-    idBoton = acuerdos.toString() + "-acuerdo";
+
+// Descripción: Función Para Agregar DIV de un acuerdo de una Minuta
+// Retorna: Un div con los campos de Acuerdo
+function agregarAcuerdo() {
+    codigoAcuerdoDIV = "acuerdo" + nroAcuerdos.toString() + "_div";
+    codigoAcuerdoBTN = "acuerdo" + nroAcuerdos.toString() + "_btn";
+    codigoAcuerdoSelect = "acuerdo" + nroAcuerdos.toString() + "_select";
+    codigoAcuerdoFecha = "acuerdo" + nroAcuerdos.toString() + "_fecha";
+    codigoAcuerdoCompromiso = "acuerdo" + nroAcuerdos.toString() + "_compromiso";
+
     $('#acuerdosMinuta').append(
-        "<div id=" + idDiv + " class='panel panel-default panel-punto'>"
+        "<div id=" + codigoAcuerdoDIV + " class='panel panel-default panel-punto codigoAcuerdo'>"
         + " <div class='panel-body panel-minuta'>"
         + "     <div class='col-xs-12'>"
-        + "         <button type='button' id=" + idBoton + " class='close' data-dismiss='alert' onClick='borrarAcuerdo(this);' aria-label='Close'><span aria-hidden='true'>&times;</span></button>"
-        + "         <input class='form-control' placeholder='Acuerdo o Compromiso' type='text'/>"
+        + "         <button type='button' id=" + codigoAcuerdoBTN + " class='close' data-dismiss='alert' onClick='borrarAcuerdo(this);' aria-label='Close'><span aria-hidden='true'>&times;</span></button>"
+        + "         <input id='" + codigoAcuerdoCompromiso + "' class='form-control' class='tituloReunion' value='' placeholder='Acuerdo o Compromiso' type='text'/>"
         + "     </div>"
         + "     <div class='col-xs-12 form-group'></div>"
         + "     <div class='col-xs-12 col-md-4 date'> "
-        + "         <input type='text' class='form-control fechaAcuerdo' placeholder='Fecha de Entrega' name='1fechaAcuerdo' id='1fechaAcuerdo'/>"
+        + "         <input id='" + codigoAcuerdoFecha + "' type='text' class='form-control fechaAcuerdo' placeholder='Fecha de Entrega' />"
         + "     </div>"
         + "     <div class='col-xs-12 visible-xs form-group'></div>"
         + "     <div class='col-xs-12 col-md-8'>"
-        + "         <select class='seleccionMultiple' multiple='multiple'>"
-        + "             <option value='1'>César Contreras</option>"
-        + "             <option value='2'>Ana Pérez</option>"
-        + "             <option value='3'>Daniel Sam</option>"
-        + "             <option value='4'>Ramón Quintero</option>"
+        + "         <select id='" + codigoAcuerdoSelect + "' class='seleccionMultiple' multiple='multiple'>"
         + "         </select>"
         + "     </div>"
         + " </div>"
         + "</div>"
     );
-    CargaAcuerdo();
+
+    //Carga de Usuarios en el ComboBox
+    for (j = 0; j < listaUsuario.length; j++) {
+        var codigoUsuario = listaUsuario[j]["idUsuario"];
+        var nombreCompletoUsuario = listaUsuario[j]["nombre"] + " " + listaUsuario[j]["apellido"];
+        $('#' + codigoAcuerdoSelect).append("<option value = " + codigoUsuario + ">" + nombreCompletoUsuario + "</option>");
+    }
+    nroAcuerdos++;
+    CargaAcuerdo();          //Carga el Diseño MultiSelectBootstrap y DatePickerBootstrap de los Acuerdos
 }
 
-function borrarAcuerdo(obj)
-{
-    if ($('#acuerdosMinuta').find('.panel-punto').length > 1)
-    {
-        idDiv = obj.id + "-div";
-        $('#' + idDiv).remove();
-        acuerdos = acuerdos - 1;
+// Descripción: Función Para Eliminar DIV de un acuerdo de una Minuta
+// Parámetros: obj ->  El objeto que se desea Eliminar
+function borrarAcuerdo(obj) {
+    if ($('#acuerdosMinuta').find('.panel-punto').length > 1) {
+        idBoton = obj.id;
+        codigoDIV = idBoton.replace("_btn", "_div");
+        $('#' + codigoDIV).remove();
+        nroAcuerdos = nroAcuerdos - 1;
     }
 }
+
+//----------------------------------------------------------INICIO-----------------------------------------------------------------------------------
+
+$(function ()
+{
+    //Comunicación con el Servidor para traer los involucrados del Proyecto
+    $.ajax(
+    {
+        type: "POST",
+        url: "CrearMinuta.aspx/ListaInvolucrado",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
+    }).done(function (data) {
+        var str = JSON.stringify(eval("(" + data.d + ")")); //Valida la Data
+        json = $.parseJSON(str); //Convierte el String en JSON
+        listaUsuario = json;  //Asignación para usarlo en la carga de ComboBoxes de los Acuerdos más adelante
+
+        //Carga de los Involucrados en DIV con ID listaInvolucrado
+        for (i = 0; i < json.length; i++) {
+            var codigoUsuario = json[i]["idUsuario"];
+            var nombreCompletoUsuario = json[i]["nombre"] + " " + json[i]["apellido"];
+            var cargoUsuario = json[i]["cargo"];
+            var divUsuario = codigoUsuario + "_par";
+            var checkUsuario = codigoUsuario + "_par_check";
+
+            $('#listaInvolucrado').append(
+               "<div id='" + divUsuario + "' class='panel panel-default panel-participante col-xs-12 col-sm-6' onclick='seleccionado(this)'>"
+               + "   <div class='panel-boddy participante'>"
+               + "       <div class='col-xs-1 check-contenedor'><input type='checkbox' class='participante-check' id='" + checkUsuario + "'/></div>"
+               + "       <div class='col-xs-2 img-participante-contenedor'><img class='img-participante' src='img/user.png' alt='Participante' /></div>"
+               + "       <div class='col-xs-8 nombre-participante'>"
+               + "           <p class='participante-nombre'>" + nombreCompletoUsuario + "</p>"
+               + "           <p class='participante-rol'><small>" + cargoUsuario + "</small></p>"
+               + "       </div>"
+               + "   </div>"
+               + "</div>"
+            );
+            $('#' + checkUsuario).attr('checked', false);
+        }
+
+        //Se le da Funcionalidad del DatetimePickerBootstrap al campo Fecha de Minuta
+        $('#fechaReunion').datetimepicker(
+        {
+            locale: 'es',
+            useCurrent: true,
+            minDate: StartDate
+        }).on('show', function (e) {
+            $('.day').click(function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            });
+        });;
+
+        //Se carga un campo de Punto y Acuerdo
+        agregarPunto();
+        agregarAcuerdo();
+    });
+
+});

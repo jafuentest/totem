@@ -23,13 +23,15 @@ public partial class GUI_Modulo7_Registro : System.Web.UI.Page
             if (user.username != "" && user.clave != "")
             {
                 ((MasterPage)Page.Master).ShowDiv = true;
-                this.alert_apellido.Visible = false;
-                this.alert_correo.Visible = false;
-                this.alert_nombre.Visible = false;
-                this.alert_pregunta.Visible = false;
-                this.alert_respuesta.Visible = false;
-                this.alert_username.Visible = false;
-                this.alertlocal.Visible = false;
+                if (IsPostBack) { 
+                    this.alert_apellido.Visible = false;
+                    this.alert_correo.Visible = false;
+                    this.alert_nombre.Visible = false;
+                    this.alert_pregunta.Visible = false;
+                    this.alert_respuesta.Visible = false;
+                    this.alert_username.Visible = false;
+                    this.alertlocal.Visible = false;
+                }
             }
             else
             {
@@ -234,7 +236,6 @@ public partial class GUI_Modulo7_Registro : System.Web.UI.Page
         this.id_apellido.Value = "";
         this.id_correo.Value = "";
         this.id_nombre.Value = "";
-     //   this.id_otrocargo.Value = "";
         this.id_pregunta.Value = "";
         this.id_username.Value = "";
         this.password.Value = "";

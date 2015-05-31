@@ -11,7 +11,7 @@ end
 go
 CREATE PROCEDURE ConsultarClave
      @usu_username [varchar] (60),
-	 @usu_clave [varchar](60) OUTPUT
+	 @usu_clave [varchar](max) OUTPUT
 AS 
 	SELECT @usu_clave = usu_clave
 	FROM USUARIO
@@ -84,7 +84,7 @@ end
 go
 CREATE PROCEDURE InsertarUsuario
      @usu_username [varchar](60),
-     @usu_clave [varchar](60),
+     @usu_clave [varchar](max),
      @usu_nombre [varchar](60),
      @usu_apellido [varchar](60),
      @usu_rol [varchar](60),
@@ -112,7 +112,7 @@ go
 
 CREATE PROCEDURE ModificarUsuario
 	 @usu_username [varchar](60),
-	 @usu_clave [varchar](60),
+	 @usu_clave [varchar](max),
 	 @usu_nombre [varchar](60),
 	 @usu_apellido [varchar](60),
 	 @usu_rol [varchar](60),

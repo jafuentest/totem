@@ -37,10 +37,10 @@
 	</opcion>
 
 	<!-- Opciones del menú lateral del Módulo 5-->
-	<opcion nombre="Agregar Requerimientos" link="~/src/GUI/Modulo5/AgregarRequerimiento.aspx">
+	<opcion nombre="Agregar requerimientos" link="~/src/GUI/Modulo5/AgregarRequerimiento.aspx">
 		<modulo id="5"></modulo>
 	</opcion>
-	<opcion nombre="Listar Requerimientos" link="~/src/GUI/Modulo5/ListarRequerimientos.aspx">
+	<opcion nombre="Listar requerimientos" link="~/src/GUI/Modulo5/ListarRequerimientos.aspx">
 		<modulo id="5"></modulo>
 	</opcion>
 	<opcion nombre="Reportes" link="~/src/GUI/Modulo5/Reportes.aspx">

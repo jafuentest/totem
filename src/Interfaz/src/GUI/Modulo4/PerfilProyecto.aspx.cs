@@ -14,7 +14,7 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
     {
         ((MasterPage)Page.Master).IdModulo = "4";
 
-        /*DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+        DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
         if (user != null)
         {
             if (user.username != "" &&
@@ -32,12 +32,13 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
         else
         {
             Response.Redirect("../Modulo1/M1_login.aspx");
-        }*/
+        }
 
-        String[] success = Request.QueryString["success"].Split(new Char [] {','});
+        String success = Request.QueryString["success"];
         if (success != null)
         {
-            switch (success[1])
+            String[] successInfo = success.Split(new Char[] { ',' });
+            switch (successInfo[1])
             {
                 case "0":
                     alerts.Attributes["class"] = "alert alert-success alert-dismissible";
@@ -70,57 +71,62 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
                     alerts.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Involucrado eliminado exitosamente</div>";
                     break;
             }
-        }
 
-        //DominioTotem.Proyecto proyecto = new DominioTotem.Proyecto();
-        esteProyecto = LogicaNegociosTotem.Modulo4.LogicaProyecto.ConsultarProyecto(success[0]);
+            esteProyecto = LogicaNegociosTotem.Modulo4.LogicaProyecto.ConsultarProyecto(successInfo[0]);
 
+            HttpCookie projectCookie = Request.Cookies.Get("selectedProjectCookie");
 
-        HttpCookie projectCookie = Request.Cookies.Get("selectedProjectCookie");
+            if (projectCookie == null)
+            {
+                projectCookie = new HttpCookie("selectedProjectCookie");
+                projectCookie.Values["projectCode"] = esteProyecto.Codigo;
+                projectCookie.Values["projectName"] = esteProyecto.Nombre;
+                Response.Cookies.Add(projectCookie);
+            }
+            else if (projectCookie.Values["projectCode"] != esteProyecto.Codigo)
+            {
+                Response.Cookies.Remove("selectedProjectCookie");
+                projectCookie = new HttpCookie("selectedProjectCookie");
+                projectCookie.Values["projectCode"] = esteProyecto.Codigo;
+                projectCookie.Values["projectName"] = esteProyecto.Nombre;
+                Response.Cookies.Add(projectCookie);
+            }
 
-        if (projectCookie == null)
-        {
-            projectCookie = new HttpCookie("selectedProjectCookie");
-            projectCookie.Values["projectCode"] = esteProyecto.Codigo;
-            projectCookie.Values["projectName"] = esteProyecto.Nombre;
-            Response.Cookies.Add(projectCookie);
-        }
-        else if (projectCookie.Values["projectCode"] != esteProyecto.Codigo)
-        {
-            //ScriptManager.RegisterStartupScript(this,typeof(Page),"CallMyFunction","openModal()",true);
-            Response.Cookies.Remove("selectedProjectCookie");
-            projectCookie = new HttpCookie("selectedProjectCookie");
-            projectCookie.Values["projectCode"] = esteProyecto.Codigo;
-            projectCookie.Values["projectName"] = esteProyecto.Nombre;
-            Response.Cookies.Add(projectCookie);
-        }
+            this.div_proyecto.InnerHtml = "<div class='jumbotron'>";
+            this.div_proyecto.InnerHtml += "<h2 class='sameLine bootstrapBlue' id='nombreProyecto' runat='server'>" + esteProyecto.Nombre + "</h2> <h5 class='sameLine'>COD: </h5> <h5 id='codigoProyecto' class='sameLine' runat='server'>" + esteProyecto.Codigo + "</h5>";
+            this.div_proyecto.InnerHtml += "<p class='desc'>" + esteProyecto.Descripcion + "</p>";
+            if (esteProyecto.Estado == true)
+            {
+                this.div_proyecto.InnerHtml += "<input disabled checked data-toggle='toggle' data-size='normal' type='checkbox' data-on='Activo' data-off='Inactivo' data-onstyle='success' data-offstyle='warning' data-width='100'>";
+            }
+            else
+            {
+                this.div_proyecto.InnerHtml += "<input disabled unchecked data-toggle='toggle' data-size='normal' type='checkbox' data-on='Activo' data-off='Inactivo' data-onstyle='success' data-offstyle='warning' data-width='100'>";
+            }
+            this.div_proyecto.InnerHtml += "<br><br>";
+            this.div_proyecto.InnerHtml += "<p class='sameLine'>Cliente: </p><p id='nombreCliente' class='sameLine bootstrapBlue'>" + "</p>";
+            this.div_proyecto.InnerHtml += "<br><br>";
+            this.div_proyecto.InnerHtml += "<p>Progreso:</p>";
+            this.div_proyecto.InnerHtml += "<div class='progress'>";
+            //Aqui va la funcion para calcular el porcentaje de requerimientos realizados
+            this.div_proyecto.InnerHtml += "<div class='progress-bar progress-bar-success' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 3%;' data-toggle='tooltip' data-placement='top' title='" + " Requerimientos completados de " + "'>";
+            this.div_proyecto.InnerHtml += "0%";
+            this.div_proyecto.InnerHtml += "</div>";
+            this.div_proyecto.InnerHtml += "</div>";
+            this.div_proyecto.InnerHtml += "</div>";
 
-
-
-        this.div_proyecto.InnerHtml = "<div class='jumbotron'>";
-        this.div_proyecto.InnerHtml += "<h2 class='sameLine bootstrapBlue' id='nombreProyecto' runat='server'>" + esteProyecto.Nombre + "</h2> <h5 class='sameLine'>COD: </h5> <h5 id='codigoProyecto' class='sameLine' runat='server'>" + esteProyecto.Codigo + "</h5>";
-        this.div_proyecto.InnerHtml += "<p class='desc'>" + esteProyecto.Descripcion + "</p>";
-        if (esteProyecto.Estado == true)
-        {
-            this.div_proyecto.InnerHtml += "<input disabled checked data-toggle='toggle' data-size='normal' type='checkbox' data-on='Activo' data-off='Inactivo' data-onstyle='success' data-offstyle='warning' data-width='100'>";
+            this.modifyButton.Text = "<a class='btn btn-primary' href='ModificarProyecto.aspx?success=" + esteProyecto.Codigo + "'>Modificar</a>";
         }
         else
         {
-            this.div_proyecto.InnerHtml += "<input disabled unchecked data-toggle='toggle' data-size='normal' type='checkbox' data-on='Activo' data-off='Inactivo' data-onstyle='success' data-offstyle='warning' data-width='100'>";
+            this.div_proyecto.InnerHtml = "<div class='jumbotron'>";
+            this.div_proyecto.InnerHtml += "<h2 class='sameLine bootstrapBlue' id='nombreProyecto' runat='server'>:(</h2>";
+            this.div_proyecto.InnerHtml += "<p class='desc'>No hay ningun proyecto seleccionado...</p>";
+            this.div_proyecto.InnerHtml += "</div>";
+            this.div_proyecto.InnerHtml += "</div>";
+            this.div_proyecto.InnerHtml += "</div>";
         }
-        this.div_proyecto.InnerHtml += "<br><br>";
-        this.div_proyecto.InnerHtml += "<p class='sameLine'>Cliente: </p><p id='nombreCliente' class='sameLine bootstrapBlue'>"+"</p>";
-        this.div_proyecto.InnerHtml += "<br><br>";
-        this.div_proyecto.InnerHtml += "<p>Progreso:</p>";
-        this.div_proyecto.InnerHtml += "<div class='progress'>";
-        //Aqui va la funcion para calcular el porcentaje de requerimientos realizados
-        this.div_proyecto.InnerHtml += "<div class='progress-bar progress-bar-success' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 3%;' data-toggle='tooltip' data-placement='top' title='"+" Requerimientos completados de "+"'>";
-        this.div_proyecto.InnerHtml += "0%";
-        this.div_proyecto.InnerHtml += "</div>";
-        this.div_proyecto.InnerHtml += "</div>";
-        this.div_proyecto.InnerHtml += "</div>";
 
-        this.modifyButton.Text += "<a class='btn btn-primary' runat='server' href='ModificarProyecto.aspx?success='" + esteProyecto.Codigo + "&success=-1'>Modificar</a>";
     }
 
     public void Ers(object sender, EventArgs e)

@@ -410,3 +410,13 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE Procedure_EliminarTodosInvolucrados
+
+     @min_id [int]
+
+AS
+BEGIN
+   DELETE FROM MIN_INV 
+   WHERE MINUTA_min_id =  @min_id
+END
+GO

@@ -21,7 +21,15 @@ $.throttle = function (timeout, callback) { // Añadimos la función al namespac
 };
 $.throttle.timeout = false; // La variable timeout es nuestra referencia de la función setTimeout
 
-
+/// <summary>
+/// Función parar agregar la funcionalidad a la Fecha y al Select Multiple de cada Acuerdo
+/// </summary>
+/// <returns>retorna:
+/*
+    clase .fechaAcuerdo: Input de las fechas de los acuerdos se le implenta la funcionalidad de la librería Datetimepicker Bootstrap
+    clase .seleccionMultiple: Combobox con la lista de los involucrados del Proyecto.
+*/
+//</returns>
 function CargaAcuerdo()
 {
     $('.fechaAcuerdo').datetimepicker(
@@ -64,6 +72,7 @@ function CargaAcuerdo()
         }
     });
 }
+
 // Descripción: Función Para darle Funcionalidad a los Verificar de los Participantes
 // Parámetros: obj ->  El objeto Check que se ha seleccionado
 // Retorna:  el Check lo habilita o deshabilita y cambia el color del DIV
@@ -115,6 +124,7 @@ function agregarPunto()
     );
 
 }
+
 // Descripción: Función Para Eliminar DIV de un punto de una Minuta
 // Parámetros: obj ->  El objeto que se desea Eliminar
 function borrarPunto(obj)
@@ -128,6 +138,7 @@ function borrarPunto(obj)
     }
 
 }
+
 // Descripción: Función Para Agregar DIV de un acuerdo de una Minuta
 function agregarAcuerdo()
 {

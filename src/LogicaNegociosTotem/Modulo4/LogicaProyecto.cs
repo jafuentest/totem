@@ -112,7 +112,7 @@ namespace LogicaNegociosTotem.Modulo4
             }
             catch(ExcepcionesTotem.Modulo4.InvolucradosInexistentesException e)
             {
-                throw e;
+                return null;
             }
         }
 

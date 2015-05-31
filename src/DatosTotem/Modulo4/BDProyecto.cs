@@ -261,7 +261,6 @@ namespace DatosTotem.Modulo4
         {
             try
             {
-
                 //parametros para insertar un proyecto
                 List<Parametro> parametros = new List<Parametro>();
                 Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, codigo, false);
@@ -315,7 +314,7 @@ namespace DatosTotem.Modulo4
         /// Método para consultar un proyecto en la bd
         /// </summary>
         /// <param name="username">nombre del usuario a consultar </param>
-        /// <returns>Retrorna el proyecto</returns>
+        /// <returns>Retrorna los proyecto de los usuarios</returns>
         public static DataTable ConsultarProyectosUsuario(String username)
         {
             try
@@ -325,18 +324,6 @@ namespace DatosTotem.Modulo4
                 List<Parametro> parametros = new List<Parametro>();
                 Parametro parametro = new Parametro(RecursosBDModulo4.ParametroUsuario, SqlDbType.VarChar, username, false);
                 parametros.Add(parametro);
-                /*parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, true);
-                parametros.Add(parametro);
-                parametro = new Parametro(RecursosBDModulo4.ParametroNombreProyecto, SqlDbType.VarChar, true);
-                parametros.Add(parametro);
-                parametro = new Parametro(RecursosBDModulo4.ParametroEstadoProyecto, SqlDbType.Bit, true);
-                parametros.Add(parametro);
-                parametro = new Parametro(RecursosBDModulo4.ParametroDescripcionProyecto, SqlDbType.VarChar, true);
-                parametros.Add(parametro);
-                parametro = new Parametro(RecursosBDModulo4.ParametroCostoProyecto, SqlDbType.Int, true);
-                parametros.Add(parametro);
-                parametro = new Parametro(RecursosBDModulo4.ParametroMonedaProyecto, SqlDbType.VarChar, true);
-                parametros.Add(parametro);*/
 
                 BDConexion con = new BDConexion();
                 DataTable resultados = con.EjecutarStoredProcedureTuplas(RecursosBDModulo4.ProcedimientosProyectosDeUsuario, parametros);
@@ -427,5 +414,142 @@ namespace DatosTotem.Modulo4
         }
         #endregion
 
+        #region Contar Requerimientos
+
+        /// <summary>
+        /// Método para contar los requerimientos de un proyecto
+        /// </summary>
+        /// <param name="codigo">Codigo del proyecto a consultar </param>
+        /// <returns>Retorna el numero de requerimientos </returns>
+        public static int ContarRequerimientosProyecto(String codigo)
+        {
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, codigo, false);
+            parametros.Add(parametro);
+
+            parametro = new Parametro(RecursosBDModulo4.ParametroResultado, SqlDbType.Int, true);
+            parametros.Add(parametro);
+
+
+
+            BDConexion con = new BDConexion();
+            List<Resultado> resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoContarRequerimientosProyecto, parametros);
+
+
+            if (resultados!=null)
+            {
+                return int.Parse(resultados[0].valor);
+            }
+            else
+                return int.Parse(resultados[0].valor);
+        }
+
+
+        /// <summary>
+        /// Método para contar los requerimientos finalizados de un proyecto
+        /// </summary>
+        /// <param name="codigo">Codigo del proyecto a consultar </param>
+        /// <returns>Retorna el numero de requerimientos finalizados </returns>
+        public static int ContarRequerimientosFinalizadosProyecto(String codigo)
+        {
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, codigo, false);
+            parametros.Add(parametro);
+
+            parametro = new Parametro(RecursosBDModulo4.ParametroResultado, SqlDbType.Int, true);
+            parametros.Add(parametro);
+
+
+
+            BDConexion con = new BDConexion();
+            List<Resultado> resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProccedimientoContarRequerimientosFinalizadosProyecto, parametros);
+
+
+            if (resultados != null)
+            {
+                return int.Parse(resultados[0].valor);
+            }
+            else
+                return int.Parse(resultados[0].valor);
+        }
+
+        #endregion
+
+        #region Mostrar Clientes
+
+
+
+
+        /// <summary>
+        /// Método para cnsultar todos los clientes naturales
+        /// </summary>
+        /// <returns>Retrorna todos los clientes naturales</returns>
+        public static DataTable ConsultarTodoslosClienteNaturales()
+        {
+            try
+            {
+
+                //parametros para insertar un proyecto
+                List<Parametro> parametros = new List<Parametro>();
+                BDConexion con = new BDConexion();
+                DataTable resultados = con.EjecutarStoredProcedureTuplas(RecursosBDModulo4.ProcedimientoConsultarTodosClientesNaturales, parametros);
+
+
+                if (resultados.Rows.Count > 0)
+                {
+                    return resultados;
+                }
+                else
+                {
+
+                    throw new ExcepcionesTotem.Modulo2.ClienteInexistenteException(DatosTotem.Modulo2.RecursosBaseDeDatosModulo2.CodigoClienteInexistente,
+                     DatosTotem.Modulo2.RecursosBaseDeDatosModulo2.MensajeClienteInexistente, new Exception());
+
+                }
+
+            }
+            catch (ExcepcionesTotem.Modulo2.ClienteInexistenteException e)
+            {
+                throw e;
+            }
+        }
+
+        /// <summary>
+        /// Método para cnsultar todos los clientes juridicos
+        /// </summary>
+        /// <returns>Retrorna todos los clientes juridicos</returns>
+        public static DataTable ConsultarTodoslosClienteJuridicos()
+        {
+            try
+            {
+
+                //parametros para insertar un proyecto
+                List<Parametro> parametros = new List<Parametro>();
+                BDConexion con = new BDConexion();
+                DataTable resultados = con.EjecutarStoredProcedureTuplas(RecursosBDModulo4.ProcedimientoConsultarTodosClientesJuridicos, parametros);
+
+
+                if (resultados.Rows.Count > 0)
+                {
+                    return resultados;
+                }
+                else
+                {
+
+                    throw new ExcepcionesTotem.Modulo2.ClienteInexistenteException(DatosTotem.Modulo2.RecursosBaseDeDatosModulo2.CodigoClienteInexistente,
+                     DatosTotem.Modulo2.RecursosBaseDeDatosModulo2.MensajeClienteInexistente, new Exception());
+
+                }
+
+            }
+            catch (ExcepcionesTotem.Modulo2.ClienteInexistenteException e)
+            {
+                throw e;
+            }
+        }
+
+
+
+        #endregion
     }
 }

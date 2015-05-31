@@ -68,6 +68,9 @@
     <Compile Include="Modulo4\PruebaExcepciones.cs" />
     <Compile Include="Modulo4\PruebaLogicaProyecto.cs" />
     <Compile Include="Modulo4\Prueba_Proyecto.cs" />
+    <Compile Include="Modulo5\PruebaBDRequerimiento.cs" />
+    <Compile Include="Modulo5\PruebaLogicaRequerimiento.cs" />
+    <Compile Include="Modulo5\PruebaRequerimiento.cs" />
     <Compile Include="Modulo6\PruebaActor.cs" />
     <Compile Include="Modulo6\PruebaBDActor.cs" />
     <Compile Include="Modulo6\PruebaBDActorExcepciones.cs" />
@@ -79,9 +82,7 @@
     <Compile Include="Modulo8\PruebaBDPunto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modulo5\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DatosTotem\DatosTotem.csproj">
       <Project>{b4b3079e-15ec-4575-89cd-5ff052c22bda}</Project>

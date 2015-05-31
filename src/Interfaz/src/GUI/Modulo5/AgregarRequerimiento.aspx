@@ -5,10 +5,8 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Agregar Requerimiento</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     <div id="formularioAgregar" class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">      
-        <form id="agregar_requerimientos" class="form-horizontal" method="post" action="ListarRequerimientos.aspx?success=1" runat="server">
+        <form id="agregar_requerimientos" class="form-horizontal" method="post" runat="server">
             <div class="form-group">
-				<asp:Button ID="Button1" runat="server" Text="Button" CommandArgument="1" OnClick="ListarRequerimiento" />
-				<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 				<div id="div-id" class="col-sm-5 col-md-5 col-lg-5">
 					<input type="text" name="idreq" id="idreq_input" placeholder="ID" class="form-control" disabled="disabled" value="TOT_RF_5_1"/>
 				</div>
@@ -63,6 +61,7 @@
             </div>
         </form>
     </div>
+    <!--
     <script src="js/Validacion.js"></script>
     <script>
         function fillCodigoTextField() {
@@ -78,5 +77,6 @@
                 }
         }
     </script>
+    -->
 </asp:Content>
 

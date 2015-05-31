@@ -117,10 +117,64 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ATRIBUTO_PRO_ID" xml:space="preserve">
+    <value>PROYECTO_pro_id</value>
+    <comment>Atributo int utilizado para poder relacionar el requerimiento con un proyecto particular</comment>
+  </data>
+  <data name="ATRIBUTO_REQ_CODIGO" xml:space="preserve">
+    <value>req_codigo</value>
+    <comment>Atributo varchar utilizado para almacenar el código autogenerado para el requerimiento</comment>
+  </data>
+  <data name="ATRIBUTO_REQ_DESCRIPCION" xml:space="preserve">
+    <value>req_descripcion</value>
+    <comment>Atributo varchar utilizado para almacenar la descripción del requerimiento</comment>
+  </data>
+  <data name="ATRIBUTO_REQ_ESTATUS" xml:space="preserve">
+    <value>req_estatus</value>
+    <comment>Atributo varchar utilizado para almacenar el estatus actual del requerimiento, pudiendo ser no finalizado, finalizado o facturado</comment>
+  </data>
+  <data name="ATRIBUTO_REQ_ID" xml:space="preserve">
+    <value>req_id</value>
+    <comment>Atributo int secuencial utilizado para definir el identificador único del requerimiento en la base de datos</comment>
+  </data>
+  <data name="ATRIBUTO_REQ_PRIORIDAD" xml:space="preserve">
+    <value>req_prioridad</value>
+    <comment>Atributo varchar utilizado para almacenar la prioridad del requerimiento, pudiendo ser baja, media o alta</comment>
+  </data>
+  <data name="ATRIBUTO_REQ_TIPO" xml:space="preserve">
+    <value>req_tipo</value>
+    <comment>Atributo varchar utilizado para almacenar el tipo de requerimiento, pudiendo ser funcional o no funcional</comment>
+  </data>
   <data name="CONSTANTE_RF" xml:space="preserve">
     <value>RF</value>
+    <comment>Constante utilizada para definir el código utilizado en los requerimientos funcionales</comment>
   </data>
   <data name="CONSTANTE_RNF" xml:space="preserve">
     <value>RNF</value>
+    <comment>Constante utilizada para definir el código utilizado en los requerimientos no funcionales</comment>
+  </data>
+  <data name="EXCEPCION_PRO_NO_ENC_CODIGO" xml:space="preserve">
+    <value>T_05_001</value>
+    <comment>Código utilizado en la excepción producida al no ser encontrado o ser inexistente un proyecto</comment>
+  </data>
+  <data name="EXCEPCION_PRO_NO_ENC_MENSAJE" xml:space="preserve">
+    <value>El proyecto bajo el código especificado no ha sido encontrado o no existe</value>
+    <comment>Mensaje utilizado en la excepción producida al no ser encontrado o ser inexistente un proyecto</comment>
+  </data>
+  <data name="PARAMETRO_PRO_CODIGO" xml:space="preserve">
+    <value>@pro_codigo</value>
+    <comment>Parámetro utilizado para definir el código de entrada del proyecto</comment>
+  </data>
+  <data name="PARAMETRO_PRO_ID" xml:space="preserve">
+    <value>@pro_id</value>
+    <comment>Parámetro utilizado para definir el identificador numérico único del proyecto</comment>
+  </data>
+  <data name="PROCEDIMIENTO_CONSULTAR_REQUERIMIENTOS_POR_PROYECTO" xml:space="preserve">
+    <value>M5_ConsultarRequerimientosPorProyecto</value>
+    <comment>Procedimiento utilizado para poder retornar todos los requerimientos de un proyecto</comment>
+  </data>
+  <data name="PROCEDIMIENTO_RETORNAR_ID_POR_CODIGO_PROYECTO" xml:space="preserve">
+    <value>M5_RetornarIdPorCodigoProyecto</value>
+    <comment>Procedimiento utilizado para poder retornar el pro_id introduciendo el pro_codigo</comment>
   </data>
 </root>
