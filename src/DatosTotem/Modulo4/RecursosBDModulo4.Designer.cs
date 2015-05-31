@@ -124,6 +124,42 @@ namespace DatosTotem.Modulo4 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to T_04_005.
+        /// </summary>
+        internal static string CodigoBorrarArchivo {
+            get {
+                return ResourceManager.GetString("CodigoBorrarArchivo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_04_003.
+        /// </summary>
+        internal static string CodigoCasosDeUsoInexistente {
+            get {
+                return ResourceManager.GetString("CodigoCasosDeUsoInexistente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_04_006.
+        /// </summary>
+        internal static string CodigoCompilarTex {
+            get {
+                return ResourceManager.GetString("CodigoCompilarTex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_04_004.
+        /// </summary>
+        internal static string CodigoCrearArchivo {
+            get {
+                return ResourceManager.GetString("CodigoCrearArchivo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to T_04_002.
         /// </summary>
         internal static string CodigoInvolucradosInexistentes {
@@ -142,11 +178,47 @@ namespace DatosTotem.Modulo4 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No se puede crear el borrar.
+        /// </summary>
+        internal static string MensajeBorrarArchivo {
+            get {
+                return ResourceManager.GetString("MensajeBorrarArchivo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No hay casos de uso para este proyecto.
+        /// </summary>
+        internal static string MensajeCasosDeUsoInexistente {
+            get {
+                return ResourceManager.GetString("MensajeCasosDeUsoInexistente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El codigo de proyecto ya existe, por favor elija otro..
         /// </summary>
         internal static string MensajeCodigoProyectoExiste {
             get {
                 return ResourceManager.GetString("MensajeCodigoProyectoExiste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se puede compilar el .tex generado.
+        /// </summary>
+        internal static string MensajeCompilarTex {
+            get {
+                return ResourceManager.GetString("MensajeCompilarTex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se puede crear el archivo.
+        /// </summary>
+        internal static string MensajeCrearArchivo {
+            get {
+                return ResourceManager.GetString("MensajeCrearArchivo", resourceCulture);
             }
         }
         
@@ -268,6 +340,15 @@ namespace DatosTotem.Modulo4 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to M5_ContarRequerimientosFinalizadosPorProyecto.
+        /// </summary>
+        internal static string ProccedimientoContarRequerimientosFinalizadosProyecto {
+            get {
+                return ResourceManager.GetString("ProccedimientoContarRequerimientosFinalizadosProyecto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Procedure_AgregarProyecto.
         /// </summary>
         internal static string ProcedimientoAgregarProyecto {
@@ -300,6 +381,33 @@ namespace DatosTotem.Modulo4 {
         internal static string ProcedimientoConsultarProyecto {
             get {
                 return ResourceManager.GetString("ProcedimientoConsultarProyecto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procedure_ConsultarTodosClientesJuridicos.
+        /// </summary>
+        internal static string ProcedimientoConsultarTodosClientesJuridicos {
+            get {
+                return ResourceManager.GetString("ProcedimientoConsultarTodosClientesJuridicos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procedure_ConsultarTodosClientesNaturales.
+        /// </summary>
+        internal static string ProcedimientoConsultarTodosClientesNaturales {
+            get {
+                return ResourceManager.GetString("ProcedimientoConsultarTodosClientesNaturales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M5_ContarRequerimientosPorProyecto.
+        /// </summary>
+        internal static string ProcedimientoContarRequerimientosProyecto {
+            get {
+                return ResourceManager.GetString("ProcedimientoContarRequerimientosProyecto", resourceCulture);
             }
         }
         

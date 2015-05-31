@@ -142,3 +142,33 @@ AS
 	DELETE FROM PROYECTO WHERE (pro_codigo=@pro_codigo)
  END
 GO
+
+
+
+CREATE PROCEDURE M5_ContarRequerimientosFinalizadosPorProyecto
+
+	@pro_codigo			[varchar] (6),
+	@resultado int OUTPUT
+
+AS
+	BEGIN
+		SELECT	count(*)
+		FROM  REQUERIMIENTO R
+		WHERE ( R.PROYECTO_pro_id = (SELECT pro_id FROM PROYECTO  WHERE pro_codigo = @pro_codigo) and req_estatus='Finalizado' )
+	END
+GO
+
+
+
+CREATE PROCEDURE M5_ContarRequerimientosPorProyecto
+
+	@pro_codigo			[varchar] (6),
+	@resultado int OUTPUT
+
+AS
+	BEGIN
+		SELECT	count(*)
+		FROM  REQUERIMIENTO R
+		WHERE ( R.PROYECTO_pro_id = (SELECT pro_id FROM PROYECTO  WHERE pro_codigo = @pro_codigo) )
+	END
+GO
