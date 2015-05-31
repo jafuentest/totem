@@ -31,12 +31,7 @@ public partial class GUI_Modulo5_AgregarRequerimiento : System.Web.UI.Page
 	   {
 		  Response.Redirect("../Modulo1/M1_login.aspx");
 	   }
+
     }
 
-
-    protected void ListarRequerimientosPorProyecto(object sender, EventArgs e)
-    {
-	   int codigo = 1;
-	   string requerimiento = LogicaNegociosTotem.Modulo5.LogicaRequerimiento.ConsultarRequerimiento(codigo);
-    }
 }

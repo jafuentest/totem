@@ -11,25 +11,45 @@ namespace PruebasUnitariasTotem.Modulo5
     [TestFixture]
     class PruebaRequerimiento
     {
-        private Requerimiento elRequerimiento;
+	   #region Atributos
+	   private Requerimiento elRequerimiento; 
+	   #endregion
 
-        [SetUp]
-        public void init()
-        {
-            elRequerimiento = new Requerimiento("TOT_RF_1", "Descripcion Requerimiento Funcional 1 Totem", "Funcional", "Alta", "Finalizado");
-        }
-        [TearDown]
-        public void clean()
-        {
-            elRequerimiento = null;
-        }
+	   #region SetUp & TearDown
+	   [SetUp]
+	   public void init()
+	   {
+		  elRequerimiento = new Requerimiento(
+			 "TOT_RF_1",
+			 "Descripcion Requerimiento Funcional 1 Totem",
+			 "Funcional",
+			 "Alta",
+			 "Finalizado"
+		  );
+	   }
+	   [TearDown]
+	   public void clean()
+	   {
+		  elRequerimiento = null;
+	   } 
+	   #endregion
 
-        [Test]
-        public void pruebaReqNull()
-        {
-            Assert.IsNotNull(elRequerimiento);
-        }
-
-
+	   #region Pruebas unitarias
+	   [Test]
+	   public void PruebaRequerimientoNoNulo()
+	   {
+		  Assert.IsNotNull(elRequerimiento);
+	   }
+	   [Test]
+	   public void PruebaRequerimientoConValores()
+	   {
+		  Assert.AreEqual("TOT_RF_1", elRequerimiento.Codigo);
+		  Assert.AreEqual("Descripcion Requerimiento Funcional 1 Totem",
+			 elRequerimiento.Descripcion);
+		  Assert.AreEqual("Funcional", elRequerimiento.Tipo);
+		  Assert.AreEqual("Alta", elRequerimiento.Prioridad);
+		  Assert.AreEqual("Finalizado", elRequerimiento.Estatus);
+	   } 
+	   #endregion
     }
 }

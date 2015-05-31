@@ -61,6 +61,69 @@ namespace DatosTotem.Modulo5 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PROYECTO_pro_id.
+        /// </summary>
+        internal static string ATRIBUTO_PRO_ID {
+            get {
+                return ResourceManager.GetString("ATRIBUTO_PRO_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to req_codigo.
+        /// </summary>
+        internal static string ATRIBUTO_REQ_CODIGO {
+            get {
+                return ResourceManager.GetString("ATRIBUTO_REQ_CODIGO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to req_descripcion.
+        /// </summary>
+        internal static string ATRIBUTO_REQ_DESCRIPCION {
+            get {
+                return ResourceManager.GetString("ATRIBUTO_REQ_DESCRIPCION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to req_estatus.
+        /// </summary>
+        internal static string ATRIBUTO_REQ_ESTATUS {
+            get {
+                return ResourceManager.GetString("ATRIBUTO_REQ_ESTATUS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to req_id.
+        /// </summary>
+        internal static string ATRIBUTO_REQ_ID {
+            get {
+                return ResourceManager.GetString("ATRIBUTO_REQ_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to req_prioridad.
+        /// </summary>
+        internal static string ATRIBUTO_REQ_PRIORIDAD {
+            get {
+                return ResourceManager.GetString("ATRIBUTO_REQ_PRIORIDAD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to req_tipo.
+        /// </summary>
+        internal static string ATRIBUTO_REQ_TIPO {
+            get {
+                return ResourceManager.GetString("ATRIBUTO_REQ_TIPO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RF.
         /// </summary>
         internal static string CONSTANTE_RF {
@@ -75,6 +138,15 @@ namespace DatosTotem.Modulo5 {
         internal static string CONSTANTE_RNF {
             get {
                 return ResourceManager.GetString("CONSTANTE_RNF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @pro_codigo.
+        /// </summary>
+        internal static string PARAMETRO_CODIGO_PROYECTO {
+            get {
+                return ResourceManager.GetString("PARAMETRO_CODIGO_PROYECTO", resourceCulture);
             }
         }
     }

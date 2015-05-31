@@ -1,40 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using DominioTotem;
 
 namespace DatosTotem.Modulo5
 {
     public class BDRequerimiento
     {
-	   public static string ListarRequerimientosPorProyecto(int codigo)
+	   #region Consultar requerimientos por proyecto
+	   /// <summary>
+	   /// Método que permite consultar los requerimientos de un proyecto
+	   /// </summary>
+	   /// <param name="codigo">
+	   /// Código del proyecto a ser consultado
+	   /// <returns>
+	   /// Devuelve como resultado una lista con todos los
+	   /// requerimientos correspondientes al proyecto seleccionado
+	   /// </returns>
+	   public static List<Requerimiento>
+		ConsultarRequerimientosPorProyecto(int codigo)
 	   {
-		  string query = "***";
 
 		  List<Parametro> parametros = new List<Parametro>();
 
-		  Parametro parametro = new Parametro("@pro_codigo",
-			 SqlDbType.Int, Convert.ToString(codigo), false);
+		  List<Requerimiento> listaRequerimientos =
+			 new List<Requerimiento>();
+
+		  Parametro parametro = new Parametro(
+			 RecursosBDModulo5.PARAMETRO_CODIGO_PROYECTO,
+			 SqlDbType.Int, codigo.ToString(), false);
 		  parametros.Add(parametro);
 
 		  try
 		  {
-			 BDConexion con = new BDConexion();
-			 List<Resultado> resultados = con.EjecutarStoredProcedure(
-				"Procedure_ConsultarTodosRequerimiento", parametros);
+			 BDConexion conexion = new BDConexion();
 
-			 if (resultados != null)
+			 DataTable dataTableRequerimientos =
+				conexion.EjecutarStoredProcedureTuplas(
+				"M5_ConsultarRequerimientosPorProyecto", parametros);
+
+			 foreach (DataRow fila in dataTableRequerimientos.Rows)
 			 {
-
-				query = resultados.ToString();
-
-				foreach (Resultado resultado in resultados)
-				{
-				    if( resultado.etiqueta.Equals("req_codigo") )
-					   query = (string) resultado.valor;
-				}
+				listaRequerimientos.Add(
+				    new DominioTotem.Requerimiento(
+					   fila[RecursosBDModulo5.ATRIBUTO_REQ_CODIGO].ToString(),
+					   fila[RecursosBDModulo5.ATRIBUTO_REQ_DESCRIPCION].ToString(),
+					   fila[RecursosBDModulo5.ATRIBUTO_REQ_TIPO].ToString(),
+					   fila[RecursosBDModulo5.ATRIBUTO_REQ_PRIORIDAD].ToString(),
+					   fila[RecursosBDModulo5.ATRIBUTO_REQ_ESTATUS].ToString()
+				    )
+				);
 			 }
 		  }
 		  catch (SqlException ex)
@@ -44,8 +63,9 @@ namespace DatosTotem.Modulo5
 				RecursoGeneralBD.Mensaje, ex);
 		  }
 
-		  return query;
-	   }
-
+		  return listaRequerimientos;
+	   } 
+	   #endregion
     }
+
 }

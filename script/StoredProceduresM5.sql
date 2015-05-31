@@ -22,12 +22,12 @@ GO
 
 CREATE PROCEDURE Procedure_ModificarRequerimiento
 
-        @req_id [int],
-        @req_codigo [varchar] (15),
-        @req_descripcion [varchar] (500),
-		@req_tipo [varchar] (25),
-		@req_prioridad [varchar] (10),
-		@req_estatus [varchar] (50)
+	@req_id [int],
+	@req_codigo [varchar] (15),
+	@req_descripcion [varchar] (500),
+	@req_tipo [varchar] (25),
+	@req_prioridad [varchar] (10),
+	@req_estatus [varchar] (50)
 
 AS 
 BEGIN
@@ -64,19 +64,21 @@ GO
 
 
 
-----Procedimiento para consultar TODOS los Requerimientos de un Proyecto----------------
+-- ========================================================================= --
+-- Consultar requerimientos por proyecto
+-- ========================================================================= --
 
-CREATE PROCEDURE Procedure_ConsultarTodosRequerimiento
-	
-	@pro_codigo INTEGER
-	   
+CREATE PROCEDURE M5_ConsultarRequerimientosPorProyecto
+
+	@pro_codigo			[int]
+
 AS
- BEGIN
-	
-	SELECT req_codigo, req_descripcion, req_tipo, req_prioridad, req_estatus
-	FROM  REQUERIMIENTO R
-	WHERE (R.PROYECTO_pro_id=@pro_codigo) 
- END
+	BEGIN
+		SELECT	req_id, req_codigo, req_descripcion,
+				req_tipo, req_prioridad, req_estatus
+		FROM  REQUERIMIENTO R
+		WHERE ( R.PROYECTO_pro_id = @pro_codigo )
+	END
 GO
 
 
@@ -84,7 +86,7 @@ GO
 
 CREATE PROCEDURE Procedure_ConsultarRequerimientoFuncional
 	
-	@pro_codigo INTEGER
+	@pro_codigo [int]
 	   
 AS
  BEGIN
@@ -99,7 +101,7 @@ GO
 
 CREATE PROCEDURE Procedure_ConsultarRequerimientoNoFuncional
 	
-	@pro_codigo INTEGER
+	@pro_codigo [int]
 	   
 AS
  BEGIN
@@ -115,7 +117,7 @@ GO
 
 CREATE PROCEDURE Procedure_ConsultarRequerimientoFuncionalMax
 	
-	@pro_codigo INTEGER
+	@pro_codigo [int]
 	   
 AS
  BEGIN
@@ -130,7 +132,7 @@ GO
 
 CREATE PROCEDURE Procedure_ConsultarRequerimientoFuncionalMed
 	
-	@pro_codigo INTEGER
+	@pro_codigo [int]
 	   
 AS
  BEGIN
@@ -146,7 +148,7 @@ GO
 
 CREATE PROCEDURE Procedure_ConsultarRequerimientoFuncionalBaja
 	
-	@pro_codigo INTEGER
+	@pro_codigo [int]
 	   
 AS
  BEGIN
@@ -161,7 +163,7 @@ GO
 
 CREATE PROCEDURE Procedure_ConsultarRequerimientoNoFuncionalMax
 	
-	@pro_codigo INTEGER
+	@pro_codigo [int]
 	   
 AS
  BEGIN
@@ -176,7 +178,7 @@ GO
 
 CREATE PROCEDURE Procedure_ConsultarRequerimientoNoFuncionalMed
 	
-	@pro_codigo INTEGER
+	@pro_codigo [int]
 	   
 AS
  BEGIN
@@ -192,7 +194,7 @@ GO
 
 CREATE PROCEDURE Procedure_ConsultarRequerimientoNoFuncionalBaja
 	
-	@pro_codigo INTEGER
+	@pro_codigo [int]
 	   
 AS
  BEGIN

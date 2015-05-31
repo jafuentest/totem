@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 using DominioTotem;
-using LogicaNegociosTotem.Modulo5;
 
 namespace PruebasUnitariasTotem.Modulo5
 {
     [TestFixture]
-    class PruebaLogicaRequerimiento
+    class PruebaBDRequerimiento
     {
 	   #region Atributos
 	   private int elCodigo;
@@ -30,7 +29,7 @@ namespace PruebasUnitariasTotem.Modulo5
 	   {
 		  elCodigo = 0;
 		  listaRequerimientos = null;
-	   }
+	   } 
 	   #endregion
 
 	   #region Pruebas unitarias
@@ -38,7 +37,7 @@ namespace PruebasUnitariasTotem.Modulo5
 	   public void PruebaConsultarRequerimientosPorProyecto()
 	   {
 		  listaRequerimientos =
-			 LogicaNegociosTotem.Modulo5.LogicaRequerimiento.
+			 DatosTotem.Modulo5.BDRequerimiento.
 			 ConsultarRequerimientosPorProyecto(elCodigo);
 		  Assert.AreEqual("TOT_RF_1",
 			 listaRequerimientos[0].Codigo.ToString());
@@ -48,7 +47,7 @@ namespace PruebasUnitariasTotem.Modulo5
 			 listaRequerimientos[0].Prioridad.ToString());
 		  Assert.AreEqual("Finalizado",
 			 listaRequerimientos[0].Estatus.ToString());
-	   }
+	   } 
 	   #endregion
     }
 }

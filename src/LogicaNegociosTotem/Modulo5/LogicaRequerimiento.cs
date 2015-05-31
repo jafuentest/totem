@@ -9,7 +9,7 @@ using DominioTotem;
 namespace LogicaNegociosTotem.Modulo5
 {
     /// <summary>
-    /// Clase que maneja la logica de los requerimientos
+    /// Clase que maneja la lógica de los requerimientos
     /// </summary>
     public static class LogicaRequerimiento
     {
@@ -39,17 +39,21 @@ namespace LogicaNegociosTotem.Modulo5
         #endregion
 	   */
 
-        #region Consultar
-        /// <summary>
-        /// Metodo para consultar un proyecto en BD
+	   #region Consultar requerimientos por proyecto
+	   /// <summary>
+        /// Método que permite consultar los requerimientos de un proyecto
         /// </summary>
-        /// <param name="codigo">codigo del proyecto a consultar
-        /// <returns>Devuelve como resultado un proyecto en caso 
-        /// contrario devuelve null</returns>
-	   
-        public static string ConsultarRequerimiento(int codigo)
+        /// <param name="codigo">
+	   /// Código del proyecto a ser consultado
+        /// <returns>
+	   /// Devuelve como resultado una lista con todos los
+	   /// requerimientos correspondientes al proyecto seleccionado
+	   /// </returns>
+	   public static List<Requerimiento>
+		  ConsultarRequerimientosPorProyecto(int codigo)
         {
-            return DatosTotem.Modulo5.BDRequerimiento.ListarRequerimientosPorProyecto(codigo);
+		  return DatosTotem.Modulo5.BDRequerimiento.
+			 ConsultarRequerimientosPorProyecto(codigo);
         }
         #endregion
 
