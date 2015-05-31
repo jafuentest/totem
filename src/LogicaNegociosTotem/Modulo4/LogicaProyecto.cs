@@ -439,5 +439,30 @@ namespace LogicaNegociosTotem.Modulo4
         }
         #endregion
 
+        #region Contrar Requerimientos
+        public static int ContarRequerimientos(String codigo)
+        {
+            try
+            {
+                return DatosTotem.Modulo4.BDProyecto.ContarRequerimientosProyecto(codigo);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static int ContarRequerimientosFinalizados(String codigo)
+        {
+            try
+            {
+                return DatosTotem.Modulo4.BDProyecto.ContarRequerimientosFinalizadosProyecto(codigo);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        #endregion
     }
 }
