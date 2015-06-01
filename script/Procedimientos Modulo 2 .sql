@@ -686,3 +686,25 @@ and   car.car_id = con.CARGO_car_id
 and   pro.pro_codigo = @codigo; 
 
 go
+
+
+CREATE PROCEDURE Procedure_ConsultarDatosContactosEmpresa
+@cj_rif varchar(20)
+AS
+SELECT CON.con_id AS id,
+       Con.con_nombre as nombre,
+	   CON.con_apellido as apellido,
+	   car.car_nombre as cargo, 
+	   telf.tel_codigo as codigo,
+	   telf.tel_numero as numero
+
+FROM CONTACTO CON, 
+     CARGO CAR, 
+	 CLIENTE_JURIDICO CJ, 
+	 TELEFONO TELF
+WHERE CJ.cj_id = CON.CLIENTE_JURIDICO_cj_id
+AND   CON.con_id = TELF.CONTACTO_con_id
+AND   CAR.car_id = CON.CARGO_car_id	 
+AND   CJ.cj_rif = @cj_rif;	 
+ 
+ go
