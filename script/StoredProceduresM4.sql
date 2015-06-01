@@ -189,6 +189,9 @@ AS
  END
  GO
 
+ 
+ 
+ 
 CREATE PROCEDURE M5_ContarRequerimientosFinalizadosPorProyecto
 
 	@pro_codigo			[varchar] (6),
@@ -216,3 +219,52 @@ AS
 		WHERE ( R.PROYECTO_pro_id = (SELECT pro_id FROM PROYECTO  WHERE pro_codigo = @pro_codigo) )
 	END
 GO
+
+
+-- ========================================================================= --
+-- Consultar requerimientos por proyecto para la generacion de documentos(Todos)
+-- ========================================================================= --
+
+CREATE PROCEDURE M5_ConsultarRequerimientosFinalizadosPorProyecto
+
+	
+	@pro_codigo			[varchar] (6)
+
+AS
+	BEGIN
+		SELECT	req_id, req_codigo, req_descripcion,
+				req_tipo, req_prioridad,req_estatus
+		FROM  REQUERIMIENTO R
+		WHERE ( R.PROYECTO_pro_id = (SELECT pro_id FROM PROYECTO  WHERE pro_codigo = @pro_codigo) AND req_estatus='Finalizado' )
+	END
+GO
+
+CREATE PROCEDURE M5_ConsultarRequerimientosFuncionalesPorProyecto
+
+	
+	@pro_codigo			[varchar] (6)
+
+AS
+	BEGIN
+		SELECT	req_id, req_codigo, req_descripcion,
+				req_tipo, req_prioridad,req_estatus
+		FROM  REQUERIMIENTO R
+		WHERE ( R.PROYECTO_pro_id = (SELECT pro_id FROM PROYECTO  WHERE pro_codigo = @pro_codigo)AND req_tipo='Funcional')
+	END
+GO
+Funcional
+
+CREATE PROCEDURE M5_ConsultarRequerimientosNoFuncionalesPorProyecto
+
+	
+	@pro_codigo			[varchar] (6)
+
+AS
+	BEGIN
+		SELECT	req_id, req_codigo, req_descripcion,
+				req_tipo, req_prioridad,req_estatus
+		FROM  REQUERIMIENTO R
+		WHERE ( R.PROYECTO_pro_id = (SELECT pro_id FROM PROYECTO  WHERE pro_codigo = @pro_codigo) AND req_tipo='No Funcional')
+	END
+GO
+

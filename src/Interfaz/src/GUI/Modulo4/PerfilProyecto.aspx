@@ -570,14 +570,10 @@
         <!--BOTONES AL FINAL DE LA PAGINA DEL PERFIL DEL PROYECTO: MODIFICAR, ELIMINAR, GENERAR ERS, GENERAR FACTURA-->
             <div class="form-group">
                 <div class="col-sm-2 col-md-2 col-lg-2">
-                   <form method="POST" runat="server">
 			            <button class="btn btn-default" runat="server" onserverclick="Ers">Generar ERS</button>
-                   </form>
                 </div>
                 <div class="col-sm-2 col-md-2 col-lg-2">
-                    <form method="POST" runat="server">
 			            <button class="btn btn-default" runat="server" onserverclick="Factura">Generar Factura</button>
-                   </form>
                 </div>
                 <div class="col-sm-2 col-md-2 col-lg-2 col-md-offset-6">
                     <asp:Literal runat="server" id="modifyButton"></asp:Literal>

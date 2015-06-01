@@ -5,6 +5,7 @@ using System.Text;
 using DominioTotem;
 using DatosTotem.Modulo2;
 using ExcepcionesTotem.Modulo2;
+
 using DatosTotem;
  
 
@@ -36,8 +37,18 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns></returns>
        public int VerificarExistenciaJuridico(string rif) 
        {
-           return baseDeDatosCliente.VerificarExistenciaClienteJuridico(rif);
-       
+           try
+           {
+               return baseDeDatosCliente.VerificarExistenciaClienteJuridico(rif);
+           }
+           catch(OperacionInvalidaException e)
+           {
+               throw new OperacionInvalidaException("T_02_003","Operación no válida",e); 
+           }
+           catch(Exception e)
+           {
+               throw new Exception(e.Message); 
+           }
        }
 
        /// <summary>
@@ -48,8 +59,18 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns></returns>
        public int VerificarExistenciaNatural(string cedula)
        {
-           return baseDeDatosCliente.VerificarExistenciaClienteNatural(cedula);
-
+           try
+           {
+               return baseDeDatosCliente.VerificarExistenciaClienteNatural(cedula);
+           }
+           catch (OperacionInvalidaException e)
+           {
+               throw new OperacionInvalidaException("T_02_003", "Operación no válida", e);
+           }
+           catch (Exception e)
+           {
+               throw new Exception(e.Message);
+           }
        }
 
        /// <summary>
@@ -153,20 +174,25 @@ namespace LogicaNegociosTotem.Modulo2
                idNumero = Convert.ToInt32(numeroSeparado);
 
                ClienteNatural clienteNatural = new ClienteNatural();
-               clienteNatural.Nat_Id = identificador; 
+               clienteNatural.Nat_Id = identificador;
                clienteNatural.Nat_Nombre = nombre;
                clienteNatural.Nat_Apellido = apellido;
                clienteNatural.Nat_Direccion = direccion;
-               clienteNatural.Nat_Correo = correo; 
-               
+               clienteNatural.Nat_Correo = correo;
 
 
-              return baseDeDatosCliente.AgregarClienteNatural(clienteNatural,
-                  fkLugar,codTele,idNumero);
+
+               return baseDeDatosCliente.AgregarClienteNatural(clienteNatural,
+                   fkLugar, codTele, idNumero);
+           }
+
+           catch (FormatException e) 
+           {
+               throw new FormatoIncorrectoException("T_02_002","Tipo de dato con formato no válido",e); 
            }
            catch (Exception e)
            {
-               throw new ExcepcionesTotem.Modulo2.ClienteLogicaException("L_02_003", "Error dentro de la capa lógica", e);
+               throw new ExcepcionesTotem.Modulo2.ClienteLogicaException("T_02_003", "Error dentro de la capa lógica", e);
            }
 
        }
@@ -218,7 +244,19 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns>Retorna el objeto de tipo Cliente Juridico, null si el objeto no existe</returns>
        public ClienteJuridico ConsultarClienteJuridico(string id)
        {
-           return baseDeDatosCliente.ConsultarClienteJuridico( id); 
+           try
+           {
+               return baseDeDatosCliente.ConsultarClienteJuridico(id);
+           }
+           catch (OperacionInvalidaException)
+           {
+               throw new OperacionInvalidaException();
+           }
+           catch (Exception e) 
+           {
+               throw new ExcepcionesTotem.ExceptionTotem(RecursoGeneralBD.Codigo,
+                   RecursoGeneralBD.Mensaje, e); 
+           }
        }
 
 
@@ -228,8 +266,18 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns>Retorna el objeto de tipo Cliente Juridico, null si el objeto no existe</returns>
        public ClienteNatural ConsultarClienteNatural(int id)
        {
-           
-           return baseDeDatosCliente.ConsultarClienteNatural(id); 
+           try
+           {
+               return baseDeDatosCliente.ConsultarClienteNatural(id);
+           }
+           catch (OperacionInvalidaException)
+           {
+               throw new OperacionInvalidaException();
+           }
+           catch (Exception e)
+           {
+               throw e;
+           }
        }
 
        /// <summary>

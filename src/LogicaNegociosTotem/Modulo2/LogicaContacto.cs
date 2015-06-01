@@ -27,9 +27,9 @@ namespace LogicaNegociosTotem.Modulo2
         /// </summary>
         /// <param name="clienteJuridico">Información del Contacto</param>
         /// <returns>Retorna el objeto de tipo Contacto, null si el objeto no existe</returns>
-        public Contacto ConsultarDatosDeContacto(int identificador)
+        public Contacto ConsultarDatosDeContacto(string identificador)
         {
-            Contacto contacto = new Contacto(identificador);
+            
 
             /* try
              {
@@ -53,8 +53,26 @@ namespace LogicaNegociosTotem.Modulo2
            
              }*/
             throw new NotImplementedException();
+        }
 
+        public List<Contacto> ListarContactosEmpresa(string rif) 
+        {
+            try
+            {
+                return baseDeDatosContacto.ConsultarDatosContactos(rif);
+            }
+
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                ex.Codigo, ex.Mensaje, ex);
+            }
+            catch (Exception e) 
+            {
+                throw new Exception("Error en la capa lógica",e);
+            }
 
         }
+
     }
 }

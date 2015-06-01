@@ -244,6 +244,9 @@ namespace PruebasUnitariasTotem.Modulo2
             lug.CodigoPostal = "1020";
             List<Contacto> contactos = new List<Contacto>();
             List<string> telefonos = new List<string>();
+            Lugar direccion = new Lugar();
+            direccion.NombreLugar = "Parroquia Altagracia, Calle Guaicaipuro,"
+                                       + "Local 76, Bello Monte"; 
             string telefono = "4126666666";
             telefonos.Add(telefono);
             Contacto contacto = new Contacto("Reinaldo","Cortes");
@@ -254,8 +257,7 @@ namespace PruebasUnitariasTotem.Modulo2
             clienteJur.Jur_Pais = "Venezuela";
             clienteJur.Jur_Estado = "Dtto Capital";
             clienteJur.Jur_Ciudad = lug;
-            clienteJur.Jur_Direccion = "Parroquia Altagracia, Calle Guaicaipuro,"
-                                       +"Local 76, Bello Monte";
+            clienteJur.Jur_Direccion = direccion;
             clienteJur.Jur_Contactos = contactos;
             clienteJur.Jur_Telefonos = telefonos;
 

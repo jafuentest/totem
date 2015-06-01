@@ -32,9 +32,10 @@ namespace DatosTotem.Modulo2
                 //Obtenemos la ruta de la Base de Datos
                 String[] aux = AppDomain.CurrentDomain.BaseDirectory.Split(new string[] { "src" }, StringSplitOptions.None);
                 String configuracion = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=" + aux[0] + @"src\DatosTotem\BaseDeDatos\BaseDeDatosTotem.mdf;Integrated Security=True";
-
+                //String configuracionSinConexion = "";
                 //La colocamos en la configuracion
-                this.conexion = new SqlConnection(configuracion);
+               this.conexion = new SqlConnection(configuracion);
+                //this.conexion = new SqlConnection(configuracionSinConexion);
             }
             catch (Exception e)
             {
@@ -239,9 +240,55 @@ namespace DatosTotem.Modulo2
         /// </summary>
         /// <param name="clienteNatural">Información del Cliente Natural</param>
         /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-        public bool ModificarClienteJuridico(ClienteJuridico clienteNatural)
+        public bool ModificarClienteJuridico(ClienteJuridico clienteJuridico)
         {
-            throw new NotImplementedException();
+            bool respuesta = false;
+
+            try
+            {
+                int nroDeFilasAfectadas = 0;
+
+                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureModificarClienteJuridico, this.conexion);
+                this.comando.CommandType = CommandType.StoredProcedure;
+
+                
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroRif, clienteJuridico.Jur_Id);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombreClienteJuridico, clienteJuridico.Jur_Nombre);
+
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroIdCiudad, clienteJuridico.Jur_Ciudad.IdLugar);
+                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombreDireccion, clienteJuridico.Jur_Direccion.NombreLugar);
+
+
+                this.conexion.Open();
+
+                nroDeFilasAfectadas = this.comando.ExecuteNonQuery();
+
+                if (nroDeFilasAfectadas > 0)
+                    respuesta = true;
+
+
+            }
+
+            catch (SqlException e)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, e);
+            }
+            catch (NullReferenceException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                this.conexion.Close();
+            }
+
+            return respuesta;       
+           
         }
 
 
@@ -284,6 +331,13 @@ namespace DatosTotem.Modulo2
                 throw new ClienteInexistenteException(
                     RecursosBaseDeDatosModulo2.CodigoClienteInexistente,
                     RecursosBaseDeDatosModulo2.MensajeClienteInexistente,
+                    ex);
+            }
+            catch (InvalidOperationException ex) 
+            {
+                throw new OperacionInvalidaException
+                    ("T_02_005",
+                    "Operación inválida",
                     ex);
             }
             catch (Exception ex)
@@ -338,6 +392,13 @@ namespace DatosTotem.Modulo2
                 throw new ClienteInexistenteException(
                     RecursosBaseDeDatosModulo2.CodigoClienteInexistente,
                     RecursosBaseDeDatosModulo2.MensajeClienteInexistente,
+                    ex);
+            }
+            catch (InvalidOperationException ex)
+            {
+                throw new OperacionInvalidaException
+                    ("T_02_005",
+                    "Operación inválida",
                     ex);
             }
             catch (Exception ex)
@@ -537,6 +598,13 @@ namespace DatosTotem.Modulo2
                     RecursosBaseDeDatosModulo2.MensajeClienteInexistente,
                     ex);
             }
+
+            catch (InvalidOperationException ex)
+            {
+                throw new OperacionInvalidaException("T_02_005", "Error al tratar de realizar" +
+                    "operacion en Base de Datos", ex);
+
+            }
             catch (Exception ex)
             {
                 throw ex;
@@ -596,6 +664,12 @@ namespace DatosTotem.Modulo2
                     RecursosBaseDeDatosModulo2.CodigoClienteInexistente,
                     RecursosBaseDeDatosModulo2.MensajeClienteInexistente,
                     ex);
+            }
+            catch (InvalidOperationException ex) 
+            {
+                throw new OperacionInvalidaException("T_02_005","Error al tratar de realizar"+
+                    "operacion en Base de Datos",ex);
+                
             }
             catch (Exception ex)
             {
@@ -659,7 +733,7 @@ namespace DatosTotem.Modulo2
             return cargos; 
         }
 
-        
+      
 
         /// <summary>
         /// Método que obtiene directamente de la Base de Datos
@@ -721,24 +795,10 @@ namespace DatosTotem.Modulo2
             List<Contacto> contactos = new List<Contacto>(); 
            try
            {
-               clienteJuridico.Jur_Id = lector.GetString(1);
-               clienteJuridico.Jur_Nombre = lector.GetString(2);
-               clienteJuridico.Jur_Pais = lector.GetString(3);
-               clienteJuridico.Jur_Estado = lector.GetString(4);
-               lugar.NombreLugar = lector.GetString(5);
-               lugar.CodigoPostal = lector.GetInt32(6).ToString();
-               clienteJuridico.Jur_Ciudad = lugar; 
-               clienteJuridico.Jur_Direccion = lector.GetString(7);
-               int codigo = lector.GetInt32(8);
-               int numero = lector.GetInt32(9);
-               string numeroCompleto = codigo.ToString() + numero.ToString();
-               telefonos.Add(numeroCompleto); 
-               clienteJuridico.Jur_Telefonos = telefonos;
-               string nombreContacto = lector.GetString(10); 
-               string apellidoContacto = lector.GetString(11); 
-               contactos.Add(new Contacto(nombreContacto,apellidoContacto));
-               clienteJuridico.Jur_Contactos = contactos;      
-
+               clienteJuridico.Jur_Id = lector.GetString(0);
+               clienteJuridico.Jur_Nombre = lector.GetString(1);
+               lugar.IdLugar = lector.GetInt32(2);
+               clienteJuridico.Jur_Direccion = lugar; 
               
            }
            catch (SqlException ex)
@@ -756,6 +816,48 @@ namespace DatosTotem.Modulo2
 
            return clienteJuridico; 
          }
+
+
+        /// <summary>
+        /// Método que trae de la Base de Datos
+        /// los contactos que tiene una determinada empresa
+        /// </summary>
+        /// <param name="lector"></param>
+        /// <returns></returns>
+        public Contacto ObtenerBDContacto(SqlDataReader lector) 
+        {
+            Contacto contacto = new Contacto();
+            List<string> telefonos = new List<string>();
+            string telefono = string.Empty; 
+            try
+            {
+                contacto.Con_Id = Convert.ToInt32(lector.GetString(0));
+                contacto.Con_Nombre = lector.GetString(1);
+                contacto.Con_Apellido = lector.GetString(2);
+                contacto.ConCargo = lector.GetString(3);
+                int codigo = lector.GetInt32(4);
+                int numero = lector.GetInt32(5);
+                telefono = codigo.ToString() + numero.ToString();
+                telefonos.Add(telefono);
+                contacto.Con_Telefonos = telefonos; 
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return contacto; 
+        }
  }
 
     

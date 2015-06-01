@@ -169,6 +169,10 @@
     <value>T_04_001</value>
     <comment>Codigo de Proyecto existe</comment>
   </data>
+  <data name="CodigoRequerimientosInexistentes" xml:space="preserve">
+    <value>T_04_007</value>
+    <comment>Codigo de eror al no conseguir requerimientos</comment>
+  </data>
   <data name="MensajeBorrarArchivo" xml:space="preserve">
     <value>No se puede crear el borrar</value>
     <comment>Mensaje de error para cuando no se puede borrar el archivo para generar el pdf</comment>
@@ -192,6 +196,10 @@
   <data name="MensajeInvolucradosInexistentes" xml:space="preserve">
     <value>No hay proyectos asociados al usuario.</value>
     <comment>Mensaje de error para cuando no existen involucrados al proyecto</comment>
+  </data>
+  <data name="MensajeRequerimientosInexistentes" xml:space="preserve">
+    <value>No hay requerimentos para el proyecto</value>
+    <comment>Mensaje de error cuando no se encuentra ningun requerimiento por proyecto</comment>
   </data>
   <data name="ParametroBusqueda" xml:space="preserve">
     <value>
@@ -277,6 +285,18 @@
   <data name="ProcedimientoConsultarProyecto" xml:space="preserve">
     <value>Procedure_ConsultarProyecto</value>
     <comment>Consulta un proyecto en la BD</comment>
+  </data>
+  <data name="ProcedimientoConsultarRequerimientosFinalizadosPorProyecto" xml:space="preserve">
+    <value>M5_ConsultarRequerimientosFinalizadosPorProyecto</value>
+    <comment>Consulta los requerimientos finalizados por proyecto</comment>
+  </data>
+  <data name="ProcedimientoConsultarRequerimientosFuncionalesPorProyecto" xml:space="preserve">
+    <value>M5_ConsultarRequerimientosFuncionalesPorProyecto</value>
+    <comment>Consulta los requerimientos funcionales por proyecto</comment>
+  </data>
+  <data name="ProcedimientoConsultarRequerimientosNoFuncionalesPorProyecto" xml:space="preserve">
+    <value>M5_ConsultarRequerimientosNoFuncionalesPorProyecto</value>
+    <comment>Consulta los requerimientos no funcionales por proyecto</comment>
   </data>
   <data name="ProcedimientoConsultarTodosClientesJuridicos" xml:space="preserve">
     <value>Procedure_ConsultarTodosClientesJuridicos</value>
