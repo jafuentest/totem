@@ -14,7 +14,7 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
     {
         ((MasterPage)Page.Master).IdModulo = "4";
 
-        DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+        /*DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
         if (user != null)
         {
             if (user.username != "" &&
@@ -32,7 +32,7 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
         else
         {
             Response.Redirect("../Modulo1/M1_login.aspx");
-        }
+        }*/
 
         String success = Request.QueryString["success"];
         if (success != null)
@@ -108,12 +108,19 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
             this.div_proyecto.InnerHtml += "<br><br>";
             this.div_proyecto.InnerHtml += "<p>Progreso:</p>";
             this.div_proyecto.InnerHtml += "<div class='progress'>";
-            //Aqui va la funcion para calcular el porcentaje de requerimientos realizados
-            this.div_proyecto.InnerHtml += "<div class='progress-bar progress-bar-success' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 3%;' data-toggle='tooltip' data-placement='top' title='" + " Requerimientos completados de " + "'>";
-            this.div_proyecto.InnerHtml += "0%";
+            int[] progreso = LogicaNegociosTotem.Modulo4.LogicaProyecto.CalcularProgreso(esteProyecto.Codigo);
+            this.div_proyecto.InnerHtml += "<div class='progress-bar progress-bar-success' role='progressbar' aria-valuenow='" + progreso[2].ToString() + "' aria-valuemin='0' aria-valuemax='100' style='width: " + progreso[2].ToString() + "%;' data-toggle='tooltip' data-placement='top' title='" + progreso[1].ToString() + " Requerimientos completados de " + progreso[0].ToString() + "'>";
+            this.div_proyecto.InnerHtml += progreso[2].ToString() + "%";
             this.div_proyecto.InnerHtml += "</div>";
             this.div_proyecto.InnerHtml += "</div>";
             this.div_proyecto.InnerHtml += "</div>";
+            this.requerimientosBadge.InnerText = "0";
+            this.casosDeUsoBadge.InnerText = "0";
+            this.minutasBadge.InnerText = "0";
+            this.involucradosBadge.InnerText = "0";
+            
+
+            
 
             this.modifyButton.Text = "<a class='btn btn-primary' href='ModificarProyecto.aspx?success=" + esteProyecto.Codigo + "'>Modificar</a>";
         }

@@ -1,26 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/src/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="PerfilProyecto.aspx.cs" Inherits="GUI_Modulo4_PerfilProyecto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="bootstrap-toggle-master/css/bootstrap-toggle.css" rel="stylesheet">
-    <style>
-        .bootstrapBlue {
-            color: #337ab7;
-        }
-        .sameLine {
-            display: inline;
-        }
-        .desc {
-            font-style: italic;
-        }
-        .link{
-            font-size: 20px;
-            font-style: normal;
-        }
-        .link:hover{
-            text-decoration: none;
-        }
-    </style>
+    <link rel="stylesheet" href="css/Modulo4.css"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestion de Proyectos</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server"> Perfil</asp:Content>
@@ -51,7 +32,7 @@
                     <div class="panel-heading" role="tab" id="requerimientos">
                         <h3 class="panel-title">
                             <a class="link" href="#collapseRequerimientos" data-toggle="collapse" data-parent="#accordionRequerimientos">
-                                Requerimientos
+                                <span id="requerimientosBadge" runat="server" class="badge"></span> Requerimientos 
                             </a>
                         </h3>
                     </div>
@@ -180,7 +161,7 @@
                     <div class="panel-heading" role="tab" id="casosDeUso">
                         <h3 class="panel-title">
                             <a class="link" href="#collapseCasosDeUso" data-toggle="collapse" data-parent="#accordionCasosDeUso">
-                                Casos de Uso
+                                <span id="casosDeUsoBadge" runat="server" class="badge"></span> Casos de Uso
                             </a>
                         </h3>
                     </div>
@@ -311,7 +292,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="minutas">
                         <h3 class="panel-title">
-                            <a class="link" href="#collapseMinutas" data-toggle="collapse" data-parent="#accordionMinutas">Minutas
+                            <a class="link" href="#collapseMinutas" data-toggle="collapse" data-parent="#accordionMinutas">
+                                <span id="minutasBadge" runat="server" class="badge"></span> Minutas
                             </a>
                         </h3>
                     </div>
@@ -415,7 +397,7 @@
                     <div class="panel-heading" role="tab" id="involucrados">
                         <h3 class="panel-title">
                             <a class="link" href="#collapseInvolucrados" data-toggle="collapse" data-parent="#accordionInvolucrados">
-                                Involucrados
+                                <span id="involucradosBadge" runat="server" class="badge"></span> Involucrados
                             </a>
                         </h3>
                     </div>
@@ -839,7 +821,7 @@
                 </div>
                 </div>
             </div>
-        </div><!-- /.modal -->
+        </div>
 
     </div>
 
