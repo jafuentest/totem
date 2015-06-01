@@ -8,74 +8,93 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
         <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-            <form id="detalle-form" class="form-horizontal" action="#">
+           <div id="alert_nombre" runat="server">
+           </div>
+           <div id="alert_apellido" runat="server">
+           </div>
+           <div id="alert_username" runat="server">
+           </div>
+           <div id="alert_correo" runat="server">
+           </div>
+           <div id="alert_pregunta" runat="server">
+           </div>
+           <div id="alert_respuesta" runat="server">
+           </div>
+           <div id="alert_password" runat="server">
+           </div>
+           <div id="alert_eliminar" runat="server">
+           </div>
+           <div id="alert" runat="server">
+           </div>
+            <form id="detalle_form" class="form-horizontal" action="#" runat="server">
             <div class="form-group">
 		        <div  class="col-sm-10 col-md-10 col-lg-10">
                     <label>Nombre de Usuario: </label>
-                    <input type="text" value="aaciti" class="form-control" name="usuario" />
+                    <input runat="server" id="input_usuario" type="text" class="form-control" name="usuario" readonly="true"/>
 			    </div>
             </div>
             <div class="form-group">
 			    <div  class="col-sm-5 col-md-5 col-lg-10">
 				    <label>Nombre:</label>
-                    <input type="text" value="Luis" class="form-control" name="nombre"/>
+                    <input runat="server" id="input_nombre" type="text" class="form-control" name="nombre"/>
 			    </div>
             </div>
             <div class="form-group">
 	            <div  class="col-sm-10 col-md-10 col-lg-10">
 		            <label>Apellido: </label>
-                    <input type="text" value="Perez" class="form-control" name="apellido"/>
+                    <input runat="server" id="input_apelido" type="text" value="Perez" class="form-control" name="apellido"/>
 		        </div>
             </div>
             <div class="form-group">
 	            <div  class="col-sm-10 col-md-10 col-lg-10">
 		            <label>Correo: </label>
-                    <input type="text" value="aaciti@totem.com" class="form-control" name="correo"/>
+                    <input runat="server" id="input_correo" type="text" class="form-control" name="correo"/>
 		        </div>
             </div>
             <div class="form-group">
 	            <div  class="col-sm-10 col-md-10 col-lg-10">
 		            <label>Contrase&ntilde;a: </label>
-                    <input type="password" value="1234567" class="form-control" name="pswd"/>
+                    <input runat="server" id="pswd_nuevo" type="password" value="1234567" class="form-control" name="pswd"/>
 		        </div>
             </div>
             <div class="form-group">
 	            <div  class="col-sm-10 col-md-10 col-lg-10">
 		            <label>Confirmar Contrase&ntilde;a: </label>
-                    <input type="password" value="1234567" class="form-control" name="confirm-pswd"/>
+                    <input runat="server" id="pswd_nuevo_conf" type="password" class="form-control" name="confirm-pswd"/>
 		        </div>
             </div>
                 <div class="form-group">
             <div class="col-sm-10 col-md-10 col-lg-10">
                 <label>Rol: </label>
-            <div class="dropdown">
-              <button id="id-rol" class="btn btn-default dropdown-toggle" type="button" id="dropdownRol" data-toggle="dropdown" aria-expanded="true">
-                Seleccione un Rol
-                <span class="caret"></span>
-              </button>
-              <ul id="dprol" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                <li role="presentation"><a role="menuitem" tabindex="-1" >Usuario</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" >Admin</a></li>
-              </ul>
-            </div>
+        <div class="form-group">
+            <div class="col-sm-10 col-md-10 col-lg-10">
+                 <div class="dropdown" runat="server" id="divComboTipoRol">
+                 <asp:DropDownList ID="comboTipoRol"  class="btn btn-default dropdown-toggle" runat="server" >
+               </asp:DropDownList>
+             </div> 
             </div>
         </div>
-            <div class="form-group">
-			    <div  class="col-sm-10 col-md-5 col-lg-5">
-				    <label>Cargo:</label>
-                    <input type="text" value="Desarrollador" class="form-control" name="cargo" />
-			    </div>
+            </div>
+        </div>
+        <label>Cargo: </label>
+        <div class="form-group">  
+            <div class="col-sm-10 col-md-10 col-lg-10" > 
+             <div class="dropdown" runat="server" id="divComboCargo">
+              <asp:DropDownList ID="comboCargo"  class="btn btn-default dropdown-toggle" runat="server" >
+                 </asp:DropDownList>
+                    </div>    
+                 </div>
             </div>
             <div class="form-group">
 			    <div  class="col-sm-10 col-md-10 col-lg-10">
 				    <label>Pregunta de Seguridad:</label>
-                    <input type="text" value="Cual es el apellido de soltera de tu mama?" class="form-control" name="pregunta"/>
+                    <input runat="server" id="input_pregunta" type="text" class="form-control" name="pregunta"/>
 			    </div>
             </div>
             <div class="form-group">
 			    <div class="col-sm-10 col-md-10 col-lg-10">
 				    <label>Respuesta: </label>
-                    <input type="text" value="Jimenez" class="form-control" name="respuesta" />
+                    <input runat="server" id="input_respuesta" type="text" class="form-control" name="respuesta" />
 			    </div>
             </div>
                 <br />
@@ -257,11 +276,11 @@
                     <br />
                 <div class="form-group col-sm-10 col-md-10 col-lg-10">
                          &nbsp; &nbsp;
-				            <a class="btn btn-primary" href="ListarUsuarios.aspx?success=edit">Modificar</a>
+				            <button runat="server" type="submit" class="btn btn-primary" onserverclick="Unnamed1_Click">Modificar</button>
                         &nbsp;
 				            <a class="btn btn-default" href="ListarUsuarios.aspx">Cancelar</a>
                          &nbsp;
-                            <a class="btn btn-danger col-md-offset-6"  href="ListarUsuarios.aspx?success=elim">Eliminar</a>
+                            <button runat="server" type="submit" class="btn btn-danger col-md-offset-6"  onserverclick="Unnamed1_Click1">Eliminar</button>
 		        </div>
             </form>
         </div>

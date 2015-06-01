@@ -70,7 +70,7 @@ namespace LogicaNegociosTotem.Modulo7
                 //obtiene la clave actual del usuario
                 datoCompleto.clave = manejador.ObtnerClave(elUsuario.username);
                 //Es para saber si el usuario quiere cambiar de clave
-                if (elUsuario.clave != null)
+                if (elUsuario.clave != "")
                 {
                     //calcula el hash de la nueva clave
                     elUsuario.CalcularHash();
@@ -91,9 +91,19 @@ namespace LogicaNegociosTotem.Modulo7
                     }
                     else
                     {
-                        //en caso de que la clave introducida no coincida con la que esta en 
-                        //la base de datos se le agrega false a la variable.
-                        claveCoincide = false;
+                        if (nuevaClave != "")
+                        {
+                            //en caso de que exista una nueva clave, que reemplazara la actual
+                            datoCompleto.clave = nuevaClave;
+                            datoCompleto.CalcularHash();
+                        }
+                        else
+                        {
+                            //en caso de que la clave introducida no coincida con la que esta en 
+                            //la base de datos se le agrega false a la variable.
+                            claveCoincide = false;
+                        }
+
                     }           
                 }
                 //sobrrescribe los datos actuales del usuario con los datos nuevos
@@ -134,12 +144,39 @@ namespace LogicaNegociosTotem.Modulo7
             return true;
         }
         /// <summary>
+        /// Obtiene todos los detalles de un usuario seleccionado
+        /// <param name="userName">El nombre de usuario a obtener sus detalles</param> 
+        /// </summary>
+        public static Usuario detallesUsuario(string userName)
+        {            
+            ManejadorUsuario manejador = new ManejadorUsuario();
+            Usuario usuario = manejador.consultarDatos(userName);
+            usuario.clave = manejador.ObtnerClave(userName);
+            return usuario;
+        }
+        /// <summary>
+        /// Elimina un usuario seleccionado
+        /// <param name="userName">Usuario a eliminar</param> 
+        /// </summary>
+        public static void eliminarUsuario(string userName)
+        {
+            ManejadorUsuario manejador = new ManejadorUsuario();
+            try
+            {
+                manejador.EliminarManejador(userName);
+            }
+            catch(EliminacionUsuarioExcepcion){
+                throw new EliminacionUsuarioExcepcion();
+            }
+        }
+        /// <summary>
         /// Metodo que lista todos los usuarios existentes
         /// </summary>
-        public static void listarUsuario()
+        public static List<Usuario> listarUsuario()
         {
             ManejadorUsuario manejador = new ManejadorUsuario();
             List<Usuario> listaUsuario = manejador.listar();
+            return listaUsuario;
         }
 
 

@@ -74,12 +74,14 @@ go
 
 
 CREATE PROCEDURE EliminarUsuario
-     @usu_id [int] 
+     @usu_username [varchar](60) 
 AS 
 begin
     SET NOCOUNT ON 
+	DELETE FROM INVOLUCRADOS_USUARIOS
+	WHERE USUARIO_usu_id=(SELECT usu_id FROM USUARIO WHERE usu_username=@usu_username);
     DELETE FROM USUARIO
-	WHERE usu_id = @usu_id;
+	WHERE usu_username = @usu_username;
 end
 go
 CREATE PROCEDURE InsertarUsuario
@@ -183,3 +185,15 @@ begin
 	WHERE CARGO_car_id=(SELECT car_id FROM CARGO WHERE car_nombre=@usu_cargo)
 end
 GO
+
+CREATE PROCEDURE ListarUsuario
+	@usu_username varchar(60) OUTPUT,
+	@usu_nombre varchar(60) OUTPUT,
+	@usu_apellido varchar(60) OUTPUT,
+	@usu_car_nombre varchar(60)OUTPUT
+AS
+	Select 	@usu_nombre = Usu_nombre, @usu_apellido = Usu_apellido ,  @usu_car_nombre = car_nombre
+	from Usuario, cargo
+	where  CARGO_car_id = car_id;
+RETURN
+GO	

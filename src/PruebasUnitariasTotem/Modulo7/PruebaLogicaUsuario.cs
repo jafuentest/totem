@@ -32,7 +32,16 @@ namespace PruebasUnitariasTotem.Modulo7
         public void PruebaModificarLogica()
         {
             Usuario usuario = new Usuario("albertods", "5563albert", "alberto08", "sdfgh", "Administrador", "rodarge33@hotmail.com", "mi perro", "dexter", "Desarrollador");
-            Assert.IsTrue(LogicaUsuario.ModificarUsuario(usuario,"rodarge33@gmail.com",""));
+            Assert.IsTrue(LogicaUsuario.ModificarUsuario(usuario,"rodarge33@gmail.com"));
+        }
+        [Test]
+        public void PruebaEliminarUsuario()
+        {
+            ManejadorUsuario manejador = new ManejadorUsuario();
+            Usuario usuario = new Usuario("BaronRojo", "5563albert", "alberto08", "sdfgh", "Administrador", "rodarge100@hotmail.com", "mi perro", "dexter", "Desarrollador");
+            LogicaUsuario.agregarUsuario(usuario);
+            LogicaUsuario.eliminarUsuario(usuario.username);
+            Assert.IsTrue((LogicaUsuario.ObtenerDatos(usuario.username)).nombre == "");
         }
     }
 }

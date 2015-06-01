@@ -75,7 +75,11 @@
     </Compile>
     <Compile Include="Modulo6\BDCasoUso.cs" />
     <Compile Include="Modulo7\BDUsuario.cs" />
-    <Compile Include="Modulo7\RecursosBaseDeDatosModulo71.Designer.cs" />
+    <Compile Include="Modulo7\RecursosBaseDeDatosModulo7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosBaseDeDatosModulo7.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resultado.cs" />
     <Compile Include="Modulo1\BDLogin.cs" />
     <Compile Include="Modulo1\RecursosBDModulo1.Designer.cs">
