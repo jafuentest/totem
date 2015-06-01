@@ -167,7 +167,7 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
             Response.ClearHeaders();
             Response.ContentType = "application/pdf";
             //Response.AddHeader("Content-Disposition", "attachment; filename=" + "ers.pdf");
-            Response.TransmitFile(@"C:\Program Files (x86)\IIS Express\ers.pdf");
+            Response.TransmitFile(@"C:\Program Files (x86)\IIS Express\BaseFactura.pdf");
             Response.End();
             //Response.WriteFile(strS);
             Response.Flush();
