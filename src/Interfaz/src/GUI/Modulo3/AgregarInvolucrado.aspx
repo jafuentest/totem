@@ -6,11 +6,11 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Agregar Involucrados</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 
-              <div class="col-sm-12 col-md-12 col-lg-12">
-                 <div id="alertlocal" runat="server" >
-                 </div>
+              <div class="col-sm-12 col-md-12 col-lg-12" runat ="server">
               	  <form id="agregarpersonal" runat="server">
-                       <div class="form-group">
+                       <div class="form-group">                 
+                           <div id="alertlocal" runat="server" >
+                            </div>        
                             <div class="col-sm-3 col-md-3 col-lg-3">
                                     <label>Seleccione el tipo de empresa:</label>  
                              </div>   

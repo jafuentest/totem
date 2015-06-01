@@ -27,6 +27,14 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
             if (user.username != "" && user.clave != "")
             {
                 ((MasterPage)Page.Master).ShowDiv = true;
+                String alert = Request.QueryString["success"];
+                if (alert == "true")
+                {
+                    this.alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                    this.alert.Attributes["role"] = "alert";
+                    this.alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Personal agregado exitosamente</div>";
+                    this.alert.Visible = true;
+                }
             }
             else
             {
