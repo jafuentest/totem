@@ -93,7 +93,7 @@ BEGIN
 	RETURN
 END
 
-
+go
 
 --Procedimiento para verificar que tipo de cliente tiene un proyecto ----------------------
 CREATE PROCEDURE Procedure_ObtenerTipoClienteProyecto
@@ -271,7 +271,7 @@ AS
 		WHERE ( R.PROYECTO_pro_id = (SELECT pro_id FROM PROYECTO  WHERE pro_codigo = @pro_codigo)AND req_tipo='Funcional')
 	END
 GO
-Funcional
+
 
 CREATE PROCEDURE M5_ConsultarRequerimientosNoFuncionalesPorProyecto
 
