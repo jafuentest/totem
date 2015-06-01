@@ -134,4 +134,20 @@ BEGIN
 	c.car_nombre = @cargo and c.car_id = u.CARGO_car_id
 END
 GO
+CREATE PROCEDURE Procedure_consultarDatosContactoID(
+	@idContacto int,
+	@con_nombre varchar(60) OUTPUT,
+	@con_apellido varchar(60) OUTPUT,
+	@con_cargo varchar(60) OUTPUT,
+	@cj_nombre varchar(60) OUTPUT
+	)
+AS
+BEGIN
+	SELECT @con_nombre = con.con_nombre, @con_apellido = con.con_apellido, 
+	@con_cargo = car.car_nombre, @cj_nombre = cj.cj_nombre
+	from CONTACTO as con, CARGO as car, CLIENTE_JURIDICO as cj
+	where
+		con_id = @idContacto and CARGO_car_id = car_id
+		and con.CLIENTE_JURIDICO_cj_id = cj.cj_id
+END
 
