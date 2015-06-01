@@ -147,19 +147,17 @@ namespace LogicaNegociosTotem.Modulo4
         static void CompilarFactura()
         {
             Process p1 = new Process();
-            p1.StartInfo.FileName = @"C:/Program Files (x86)/MiKTeX 2.9/miktex/bin/pdflatex.exe";
-            p1.StartInfo.Arguments = "BaseFactura.tex";
+            p1.StartInfo.FileName = "pdflatex.exe";
+            p1.StartInfo.Arguments = @"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\BaseFactura.tex";
             //p1.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
-
+            string a = Path.GetFullPath("BaseFactura.tex");
+            Console.WriteLine("a");
             p1.StartInfo.RedirectStandardOutput = true;
             p1.StartInfo.UseShellExecute = false;
             try
             {
                 p1.Start();
-                p1.WaitForExit();
-                string a = p1.StandardOutput.ReadToEnd();
-                Console.WriteLine(a);
-
+                p1.Dispose();
 
             }
             catch (Exception e)
@@ -170,17 +168,15 @@ namespace LogicaNegociosTotem.Modulo4
         static void CompilarArchivoLatex()
         {
             Process p1 = new Process();
-            p1.StartInfo.FileName = @"C:/Program Files (x86)/MiKTeX 2.9/miktex/bin/pdflatex.exe";
+            p1.StartInfo.FileName = "pdflatex.exe";
             string a = Path.GetFullPath(@"ers.tex");
-            p1.StartInfo.Arguments = @"ers.tex";
+            p1.StartInfo.Arguments = @"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\ers.tex";
             p1.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
             p1.StartInfo.RedirectStandardOutput = true;
             p1.StartInfo.UseShellExecute = false;
             try
             {
                 p1.Start();
-
-                //p1.WaitForExit();
                 p1.Dispose();
                 
 
@@ -283,9 +279,9 @@ namespace LogicaNegociosTotem.Modulo4
         {
             try
             {
-                EliminarArchivo("BaseFactura.tex");
+                EliminarArchivo(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\BaseFactura.tex");
                 EliminarArchivo("BaseFactura.pdf");
-                System.IO.StreamWriter factura = new System.IO.StreamWriter("BaseFactura.tex");
+                System.IO.StreamWriter factura = new System.IO.StreamWriter(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\BaseFactura.tex");
                 factura.WriteLine("\\" + "documentclass{article}");
                 factura.WriteLine("\\" + "usepackage[utf8]{inputenc}");
                 factura.WriteLine("\\" + "usepackage{anysize}");
@@ -305,7 +301,7 @@ namespace LogicaNegociosTotem.Modulo4
                 factura.WriteLine("\\" + "hline");
                 factura.WriteLine(" ");
                 factura.WriteLine("\\" + "begin{center}");
-                factura.WriteLine("\\" + "Large" + "\\" + "bf Datos del Cliente");
+                factura.WriteLine("\\" + "Large" + "\\" + "bf PRobandooooo");
                 factura.WriteLine("\\" + "end{center}");
                 factura.WriteLine(" ");
                 factura.WriteLine("\\" + "begin{flushleft}");
@@ -393,14 +389,14 @@ namespace LogicaNegociosTotem.Modulo4
                 LogicaNegociosTotem.Modulo3.LogicaInvolucrados logInv = new LogicaNegociosTotem.Modulo3.LogicaInvolucrados(proyecto);
                 involucrados = logInv.obtenerUsuariosInvolucradosProyecto(proyecto);
                 LogicaNegociosTotem.Modulo6.LogicaCasoUso cu = new Modulo6.LogicaCasoUso();
-                List<Requerimiento> funcionales = DatosTotem.Modulo4.BDProyecto.ConsultarRequerimientosFuncionalesPorProyecto(codigo);
-                List<Requerimiento> noFuncional = DatosTotem.Modulo4.BDProyecto.ConsultarRequerimientosNoFuncionalesPorProyecto(codigo);
+                /*List<Requerimiento> funcionales = DatosTotem.Modulo4.BDProyecto.ConsultarRequerimientosFuncionalesPorProyecto(codigo);
+                List<Requerimiento> noFuncional = DatosTotem.Modulo4.BDProyecto.ConsultarRequerimientosNoFuncionalesPorProyecto(codigo);*/
 				//Cable por Fuentes
 				List<CasoDeUso> listaCU = cu.ListarCasosDeUso(0);
 				//Fin del cable
                 
 				System.IO.StreamReader archivoBase = new System.IO.StreamReader(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\BaseErs.tex");
-                System.IO.StreamWriter ers = new System.IO.StreamWriter("ers.tex");
+                System.IO.StreamWriter ers = new System.IO.StreamWriter(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\ers.tex");
                 while ((linea = archivoBase.ReadLine()) != null)
                 {
                     switch (linea)
@@ -413,9 +409,9 @@ namespace LogicaNegociosTotem.Modulo4
                             string fecha = auxiliar.ToShortDateString();
                             ers.WriteLine(fecha);
                             break;
-                        /*case "autor":
-                            ers.WriteLine("Nombre Empresa Desarrolladora");
-                            break;*/
+                        case "autor":
+                            ers.WriteLine("Autor");
+                            break;
 
                         case "codigo":
                             ers.WriteLine(proyecto.Codigo);
@@ -444,7 +440,7 @@ namespace LogicaNegociosTotem.Modulo4
                             }
                             break;
                         case "Rf":
-                            ers.WriteLine("\\" + "begin{tabular}{| l | p{7cm} | r |}");
+                            /*ers.WriteLine("\\" + "begin{tabular}{| l | p{7cm} | r |}");
                             ers.WriteLine("\\" + "hline");
                             ers.WriteLine("\\" + "bf ID & " + "\\" + "bf Requerimiento &" + " \\" + "bf Prioridad " + "\\" + "\\");
                             ers.WriteLine("\\" + "hline");
@@ -453,10 +449,10 @@ namespace LogicaNegociosTotem.Modulo4
                                 ers.WriteLine("ModuloWolf" + "&" + rf.Descripcion + "&" + rf.Prioridad + " " + "\\" + "\\");
                                 ers.WriteLine("\\" + "hline");
                             }
-                            ers.WriteLine("\\" + "end{tabular}");
+                            ers.WriteLine("\\" + "end{tabular}");*/
                             break;
                         case "Rnf":
-                            ers.WriteLine("\\" + "begin{tabular}{| l | p{7cm} | r |}");
+                            /*ers.WriteLine("\\" + "begin{tabular}{| l | p{7cm} | r |}");
                             ers.WriteLine("\\" + "hline");
                             ers.WriteLine("\\" + "bf ID & " + "\\" + "bf Requerimiento &" + " \\" + "bf Prioridad " + "\\" + "\\");
                             ers.WriteLine("\\" + "hline");
@@ -465,7 +461,7 @@ namespace LogicaNegociosTotem.Modulo4
                                 ers.WriteLine("ModuloWolf" + "&" + rnf.Descripcion + "&" + rnf.Prioridad + " " + "\\" + "\\");
                                 ers.WriteLine("\\" + "hline");
                             }
-                            ers.WriteLine("\\" + "end{tabular}");
+                            ers.WriteLine("\\" + "end{tabular}");*/
                             break;
                         case "casosDeUso":
                             foreach (CasoDeUso c in listaCU)
