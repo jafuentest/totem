@@ -463,10 +463,30 @@ namespace LogicaNegociosTotem.Modulo4
                 throw e;
             }
         }
+
+        public static int[] CalcularProgreso(String codigo)
+        {
+            try
+            {
+                int requrimientosTotales = ContarRequerimientos(codigo);
+                int requerimientosFinalizados = ContarRequerimientosFinalizados(codigo);
+                int progreso = (requerimientosFinalizados * 100) / requrimientosTotales;
+                int[] progresoTotal = new int[3];
+                progresoTotal[0] = requrimientosTotales;
+                progresoTotal[1] = requerimientosFinalizados;
+                progresoTotal[2] = progreso;
+                return progresoTotal;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            
+        }
         #endregion
 
         #region Buscar Proyectos
-        public DataTable BuscarProyectos(String busqueda)
+        public static DataTable BuscarProyectos(String busqueda)
         {
             try
             {
@@ -478,7 +498,7 @@ namespace LogicaNegociosTotem.Modulo4
             }
         }
 
-        public DataTable BuscarProyectosActivos(String busqueda)
+        public static DataTable BuscarProyectosActivos(String busqueda)
         {
             try
             {
@@ -490,7 +510,7 @@ namespace LogicaNegociosTotem.Modulo4
             }
         }
 
-        public DataTable BuscarProyectosInactivos(String busqueda)
+        public static DataTable BuscarProyectosInactivos(String busqueda)
         {
             try
             {
