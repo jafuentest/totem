@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DominioTotem;
+ 
 using DatosTotem.Modulo2;
 using ExcepcionesTotem.Modulo2;
 
@@ -333,9 +334,53 @@ namespace LogicaNegociosTotem.Modulo2
        {
            List<string> cargos = new List<string>();
            cargos = baseDeDatosCliente.LlenarCargoCombo();
-           return cargos; 
+           return cargos;
        }
 
+        #region Consultar Clientes según Nombre del Proyecto
+
+      /// <summary>
+      /// Método de la capa lógica que invoca a acceso a datos
+      /// para que le retorne los datos del cliente según el 
+      /// nombre de un proyecto 
+      /// </summary>
+      /// <param name="nombre">Nombre del Proyecto</param>
+      /// <returns>Los datos del Cliente Jurídico</returns>
+       public ClienteJuridico ConsultarClienteJNombreProyecto(string nombre) 
+       {
+           try
+           {
+               ClienteJuridico elCliente = new ClienteJuridico();
+               elCliente = baseDeDatosCliente.DatosClienteProyecto(nombre);
+               return elCliente;
+           }
+           catch (ExcepcionesTotem.ExceptionTotemConexionBD e) 
+           {
+               throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                   RecursoGeneralBD.Mensaje,e); 
+           }
+           catch (ClienteInexistenteException e)
+           {
+               throw new ExcepcionesTotem.Modulo2.ClienteInexistenteException(RecursosBaseDeDatosModulo2.CodigoClienteInexistente,
+                    RecursosBaseDeDatosModulo2.MensajeClienteInexistente,
+                    e);
+           }
+
+           catch (OperacionInvalidaException ex)
+           {
+               throw new OperacionInvalidaException
+                   (RecursosBaseDeDatosModulo2.CodigoOperacionInvalida,
+                   RecursosBaseDeDatosModulo2.MensajeOperacionInvalida,
+                   ex);
+           }
+           catch (ExcepcionesTotem.ExceptionTotem ex)
+           {
+               throw new ExcepcionesTotem.ExceptionTotem(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+           }
+       }
+
+        #endregion
 
     }
 }

@@ -293,4 +293,16 @@
   <data name="ProcedureCargarCodigoPostal" xml:space="preserve">
     <value>Procedure_CargarCodigoPostal</value>
   </data>
+  <data name="DatosClienteNombreProyecto" xml:space="preserve">
+    <value>DatosClientePorNombreProyecto</value>
+  </data>
+  <data name="NombreProyecto" xml:space="preserve">
+    <value>@nombreProyecto</value>
+  </data>
+  <data name="CodigoOperacionInvalida" xml:space="preserve">
+    <value>T_02_005</value>
+  </data>
+  <data name="MensajeOperacionInvalida" xml:space="preserve">
+    <value>Operación inválida</value>
+  </data>
 </root>

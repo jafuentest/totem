@@ -650,3 +650,38 @@ CREATE PROCEDURE Procedure_CargarCodigoPostal
 AS
 SELECT lug_codigopostal FROM LUGAR WHERE lug_id=@idCiudad;
 
+/*------Datos del Cliente según el nombre del proyecto--*/
+
+CREATE PROCEDURE DatosClientePorNombreProyecto
+@nombreProyecto varchar(100)
+AS
+SELECT 
+	   cj.cj_rif  as rif, 
+       cj_nombre as nombre,
+	   con.con_nombre as nombreContacto,
+	   con.con_apellido as nombreApellido,
+	   t.tel_codigo as codigo,
+	   t.tel_numero as numero, 
+	   (d.lug_nombre+'.'+c.lug_nombre +'.'+e.lug_nombre+','+p.lug_nombre) as direccion 
+
+FROM     PROYECTO PRO, 
+		 CLIENTE_JURIDICO CJ, 
+		 CONTACTO Con, 
+		 TELEFONO t, 
+		 CARGO car, 
+		 LUGAR p,
+	     LUGAR e,
+	     LUGAR c,
+	     LUGAR d
+
+WHERE p.lug_id = e.LUGAR_lug_id
+and   e.lug_id = c.LUGAR_lug_id
+and   c.lug_id = d.LUGAR_lug_id
+and   d.lug_id = CJ.LUGAR_lug_id
+and   CJ.cj_id = PRO.CLIENTE_JURIDICO_cj_id
+and   cj.cj_id = Con.CLIENTE_JURIDICO_cj_id
+and   con.con_id = t.CONTACTO_con_id
+and   car.car_id = con.CARGO_car_id
+AND   PRO.pro_nombre = @nombreProyecto;
+
+go

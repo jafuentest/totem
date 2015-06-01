@@ -668,5 +668,49 @@ namespace DatosTotem.Modulo2 {
             }
         }
 
+
+        /// <summary>
+        ///   Looks up a localized string similar to DatosClienteNombreProyecto.
+        /// </summary>
+        internal static string DatosClienteNombreProyecto
+        {
+            get
+            {
+                return ResourceManager.GetString("DatosClienteNombreProyecto", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to NombreProyecto.
+        /// </summary>
+        internal static string NombreProyecto
+        {
+            get
+            {
+                return ResourceManager.GetString("NombreProyecto", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MensajeOperacionInvalida.
+        /// </summary>
+        internal static string MensajeOperacionInvalida
+        {
+            get
+            {
+                return ResourceManager.GetString("MensajeOperacionInvalida", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to CodigoOperacionInvalida.
+        /// </summary>
+        internal static string CodigoOperacionInvalida
+        {
+            get
+            {
+                return ResourceManager.GetString("CodigoOperacionInvalida", resourceCulture);
+            }
+        }
     }
 }

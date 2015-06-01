@@ -333,11 +333,11 @@ namespace DatosTotem.Modulo2
                     RecursosBaseDeDatosModulo2.MensajeClienteInexistente,
                     ex);
             }
-            catch (InvalidOperationException ex) 
+            catch (InvalidOperationException ex)
             {
                 throw new OperacionInvalidaException
-                    ("T_02_005",
-                    "Operación inválida",
+                    (RecursosBaseDeDatosModulo2.CodigoOperacionInvalida,
+                    RecursosBaseDeDatosModulo2.MensajeOperacionInvalida,
                     ex);
             }
             catch (Exception ex)
@@ -397,8 +397,8 @@ namespace DatosTotem.Modulo2
             catch (InvalidOperationException ex)
             {
                 throw new OperacionInvalidaException
-                    ("T_02_005",
-                    "Operación inválida",
+                    (RecursosBaseDeDatosModulo2.CodigoOperacionInvalida,
+                    RecursosBaseDeDatosModulo2.MensajeOperacionInvalida,
                     ex);
             }
             catch (Exception ex)
@@ -601,9 +601,10 @@ namespace DatosTotem.Modulo2
 
             catch (InvalidOperationException ex)
             {
-                throw new OperacionInvalidaException("T_02_005", "Error al tratar de realizar" +
-                    "operacion en Base de Datos", ex);
-
+                throw new OperacionInvalidaException
+                    (RecursosBaseDeDatosModulo2.CodigoOperacionInvalida,
+                    RecursosBaseDeDatosModulo2.MensajeOperacionInvalida,
+                    ex);
             }
             catch (Exception ex)
             {
@@ -665,11 +666,12 @@ namespace DatosTotem.Modulo2
                     RecursosBaseDeDatosModulo2.MensajeClienteInexistente,
                     ex);
             }
-            catch (InvalidOperationException ex) 
+            catch (InvalidOperationException ex)
             {
-                throw new OperacionInvalidaException("T_02_005","Error al tratar de realizar"+
-                    "operacion en Base de Datos",ex);
-                
+                throw new OperacionInvalidaException
+                    (RecursosBaseDeDatosModulo2.CodigoOperacionInvalida,
+                    RecursosBaseDeDatosModulo2.MensajeOperacionInvalida,
+                    ex);
             }
             catch (Exception ex)
             {
@@ -858,9 +860,115 @@ namespace DatosTotem.Modulo2
 
             return contacto; 
         }
- }
+        #region Consultar Datos del Cliente según nombre proyecto
 
-    
+        /// <summary>
+        /// Método que retorna los datos de un cliente
+        /// jurídico dado el nombre de un proyecto
+        /// </summary>
+        /// <param name="nombreProyecto">Nombre del Proyecto</param>
+        /// <returns>Datos del Cliente Jurídico</returns>
+        public ClienteJuridico DatosClienteProyecto(string nombreProyecto) 
+        { 
+            ClienteJuridico clienteJuridico = new ClienteJuridico();
+            try
+            {
 
-    
+                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.DatosClienteNombreProyecto, this.conexion);
+                this.comando.CommandType = CommandType.StoredProcedure;
+                this.comando.Parameters.Add(new SqlParameter(RecursosBaseDeDatosModulo2.NombreProyecto,
+                                            nombreProyecto));
+
+                SqlDataReader lectura;
+                this.conexion.Open();
+                lectura = this.comando.ExecuteReader();
+
+                while (lectura.Read())
+                {
+                    clienteJuridico = RetornarClienteJuridicoBD(lectura);
+                }
+
+
+            }
+
+            catch (SqlException ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralBD.Codigo_Error_Desconexion,
+                    RecursoGeneralBD.Mensaje_Error_Desconexion,
+                    ex);
+            }
+            catch (NullReferenceException ex)
+            {
+                throw new ClienteInexistenteException(
+                    RecursosBaseDeDatosModulo2.CodigoClienteInexistente,
+                    RecursosBaseDeDatosModulo2.MensajeClienteInexistente,
+                    ex);
+            }
+            catch (InvalidOperationException ex) 
+            {
+                throw new OperacionInvalidaException
+                    (RecursosBaseDeDatosModulo2.CodigoOperacionInvalida,
+                    RecursosBaseDeDatosModulo2.MensajeOperacionInvalida,
+                    ex);
+            }
+            catch (Exception ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotem(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex); 
+            }
+            finally
+            {
+                this.conexion.Close();
+            }
+
+
+            return clienteJuridico; 
+        }
+
+        /// <summary>
+        /// Método que obtiene de la Base de Datos directamente los 
+        /// registros de la consulta asociada con el procedimiento
+        /// de Retornar datos del cliente según el nombre del proyeco
+        /// </summary>
+        /// <param name="lector"></param>
+        /// <returns>Datos del Cliente Jurídico</returns>
+        public ClienteJuridico RetornarClienteJuridicoBD(SqlDataReader lector) 
+        {
+            ClienteJuridico clienteJuridico = new ClienteJuridico();
+            Lugar lugar = new Lugar();
+            List<string> telefonos = new List<string>();
+            string elTelefono = string.Empty; 
+            
+            try
+            {
+                clienteJuridico.Jur_Id = lector.GetString(0);
+                clienteJuridico.Jur_Nombre = lector.GetString(1);
+                elTelefono = lector.GetInt32(4).ToString() + lector.GetInt32(5).ToString();
+                telefonos.Add(elTelefono);
+                clienteJuridico.Jur_Telefonos = telefonos;
+                lugar.NombreLugar = lector.GetString(6);
+                clienteJuridico.Jur_Direccion.NombreLugar = lugar.NombreLugar; 
+
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return clienteJuridico; 
+        }
+
+        #endregion
+
+    }
 }
