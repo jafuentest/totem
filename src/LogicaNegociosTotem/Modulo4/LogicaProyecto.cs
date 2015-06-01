@@ -641,5 +641,34 @@ namespace LogicaNegociosTotem.Modulo4
 
 
         #endregion
+
+        #region Buscar Clientes
+
+        public static DataTable BuscarClientesNaturales()
+        {
+            try
+            {
+                return DatosTotem.Modulo4.BDProyecto.ConsultarTodoslosClienteNaturales();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static DataTable BuscarClientesJuridicos()
+        {
+            try
+            {
+                return DatosTotem.Modulo4.BDProyecto.ConsultarTodoslosClienteJuridicos();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+
+        #endregion
     }
 }
