@@ -218,4 +218,20 @@
     <value>ListarUsuario</value>
     <comment>Procedimiento almacenado que permite listar los usuarios</comment>
   </data>
+  <data name="ApellidoUsu" xml:space="preserve">
+    <value>Apellido</value>
+    <comment>Apellido usuario</comment>
+  </data>
+  <data name="CargoNombre" xml:space="preserve">
+    <value>CargoNombre</value>
+    <comment>cargo del usuario</comment>
+  </data>
+  <data name="NombreUsu" xml:space="preserve">
+    <value>Nombre</value>
+    <comment>Nombre usuario</comment>
+  </data>
+  <data name="UsernameNombre" xml:space="preserve">
+    <value>NombreUsuario</value>
+    <comment>username del usuario</comment>
+  </data>
 </root>

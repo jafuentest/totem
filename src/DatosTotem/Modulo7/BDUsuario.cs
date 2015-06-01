@@ -156,62 +156,38 @@ namespace DatosTotem.Modulo7
         /// <returns>Returna una lista con todos los usuarios que hay en el sistema</returns>
         public List<Usuario> ObtenerListaUsuario()
         {
-                
-                List<Parametro> parametros = new List<Parametro>();
-               List<Usuario> listaUsuario = new List<Usuario>();
-                Usuario usuario = new Usuario();
-                Parametro parametro = new Parametro(RecursosBaseDeDatosModulo7.UsernameUsuario,
-                    SqlDbType.VarChar, true);
-                parametros.Add(parametro);
-                parametro = new Parametro(RecursosBaseDeDatosModulo7.NombreUsuario,
-                    SqlDbType.VarChar, true);
-                parametros.Add(parametro);
-                parametro = new Parametro(RecursosBaseDeDatosModulo7.ApellidoUsuario,
-                    SqlDbType.VarChar, true); 
-                parametros.Add(parametro);
-                parametro = new Parametro(RecursosBaseDeDatosModulo7.CargoUsuario,
-                    SqlDbType.VarChar, true);
-                parametros.Add(parametro);
-                try
-                {
-                    BDConexion con = new BDConexion();
-                    List<Resultado> resultados = con.EjecutarStoredProcedure(
-                        RecursosBaseDeDatosModulo7.ProcedimientoListarUsuario, parametros);
+            BDConexion laConexion;
+            List<Parametro> parametros;
 
-                    foreach (Resultado resultado in resultados)
-                    {
-                        if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.UsernameUsuario))
-                        {
-                            usuario.username = resultado.valor;
-                        }
-                        if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.NombreUsuario))
-                        {
-                            usuario.nombre = resultado.valor;
-                        }
-                        if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.ApellidoUsuario))
-                        {
-                            usuario.apellido = resultado.valor;
-                        }
-                        if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.CargoUsuario))
-                        {
-                            usuario.cargo = resultado.valor;
-                        }
-                        listaUsuario.Add(usuario);
-                    }
-                    return listaUsuario;
+            List<Usuario> lUsuarios = new List<Usuario>();
+            try
+            {
+                laConexion = new BDConexion();
+                parametros = new List<Parametro>();
 
-                }
-                catch (ExcepcionesTotem.Modulo1.LoginErradoException ex)
+                DataTable dt = laConexion.EjecutarStoredProcedureTuplas(RecursosBaseDeDatosModulo7.ProcedimientoListarUsuario, 
+                    parametros);
+                foreach (DataRow row in dt.Rows)
                 {
-                    throw new ExcepcionesTotem.Modulo1.LoginErradoException(ex.Codigo,
-                        ex.Mensaje, ex);
+                    Usuario u = new Usuario();
+                    u.username = row[RecursosBaseDeDatosModulo7.UsernameNombre].ToString();
+                    u.nombre = row[RecursosBaseDeDatosModulo7.NombreUsu].ToString();
+                    u.apellido = row[RecursosBaseDeDatosModulo7.ApellidoUsu].ToString();
+                    u.cargo = row[RecursosBaseDeDatosModulo7.CargoNombre].ToString();
+                    lUsuarios.Add(u);
                 }
-                catch (SqlException ex)
-                {
-                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(
-                        RecursoGeneralBD.Codigo,
-                        RecursoGeneralBD.Mensaje, ex);
             }
+            catch (SqlException ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, new Exception());
+            }
+            catch (Exception ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotem("No se pudo completar la operacion", new Exception());
+            }
+
+            return lUsuarios;
         }
         /// <summary>
         /// Permite consultar la informacion de un usuario, segun su nombre, apellido y cargo

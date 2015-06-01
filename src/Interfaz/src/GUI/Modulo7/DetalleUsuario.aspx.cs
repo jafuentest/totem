@@ -20,13 +20,12 @@ public partial class GUI_Modulo7_DetalleUsuario : System.Web.UI.Page
             {
 
                 ((MasterPage)Page.Master).ShowDiv = true;
-                String userName = Request.QueryString["p"];
+                String userName = Request.QueryString["username"];
 
                 //this.input_cargo.Value = datoUsuario.cargo;
 
                 if (!IsPostBack) // verificar si la pagina se muestra por primera vez
                 {
-                    userName = "johan7850";
                     Usuario datoUsuario = LogicaNegociosTotem.Modulo7.LogicaUsuario.ObtenerDatos(userName);
                     this.input_usuario.Value = datoUsuario.username;
                     this.input_nombre.Value = datoUsuario.nombre;
@@ -233,7 +232,7 @@ public partial class GUI_Modulo7_DetalleUsuario : System.Web.UI.Page
         try
         {
             LogicaNegociosTotem.Modulo7.LogicaUsuario.eliminarUsuario(this.input_usuario.Value);
-            Response.Redirect("../Modulo7/ListarUsuarios.aspx");
+            Response.Redirect("../Modulo7/ListarUsuarios.aspx?success-eliminacion=true");
         }
         catch (ExcepcionesTotem.Modulo7.EliminacionUsuarioExcepcion)
         {

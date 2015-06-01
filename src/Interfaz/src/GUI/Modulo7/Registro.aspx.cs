@@ -114,9 +114,12 @@ public partial class GUI_Modulo7_Registro : System.Web.UI.Page
                         if(this.id_correo.Value != ""){
                             if(this.id_pregunta.Value != ""){
                                 if(this.id_respuesta.Value != ""){
-                                    if (this.comboTipoRol.SelectedValue != "")  {
+                                    if (this.comboTipoRol.SelectedValue != "-1")
+                                    {
                                         if  (this.password.Value == this.confirm_password.Value ) {
-                                                if (this.comboCargo.SelectedValue != "") {                                               
+                                            if (this.comboCargo.SelectedValue != "-1")
+                                            {
+                                                if (this.password.Value != "" || this.confirm_password.Value!= "") {                                               
                                                  LogicaNegociosTotem.Modulo7.LogicaUsuario.agregarUsuario(
                                                     new DominioTotem.Usuario(this.id_username.Value,
                                                     this.password.Value,
@@ -128,6 +131,14 @@ public partial class GUI_Modulo7_Registro : System.Web.UI.Page
                                                     this.id_respuesta.Value,
                                                     this.comboCargo.SelectedValue));
                                      Response.Redirect("../Modulo7/ListarUsuarios.aspx?success=true");
+                                    }
+                                    else
+                                    {
+                                      alert_password.Attributes["class"] = "alert alert-danger alert-dismissible";
+                                      alert_password.Attributes["role"] = "alert";
+                                      alert_password.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>La contraseña está vacia</div>";
+                                      alert_password.Visible = true;
+                                      }
                                      }else{
                                          alert_password.Attributes["class"] = "alert alert-danger alert-dismissible";
                                          alert_password.Attributes["role"] = "alert";
@@ -137,7 +148,7 @@ public partial class GUI_Modulo7_Registro : System.Web.UI.Page
                                      }else{
                                          alert_password.Attributes["class"] = "alert alert-danger alert-dismissible";
                                          alert_password.Attributes["role"] = "alert";
-                                         alert_password.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Password vacio</div>";
+                                         alert_password.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>La clave no coincide</div>";
                                          alert_password.Visible = true;
 
                                 }

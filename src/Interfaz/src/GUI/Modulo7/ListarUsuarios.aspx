@@ -7,8 +7,12 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Usuarios del sistema
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
+
         <div id="alert" runat="server">
         </div>
+    <form id="lista_form" class="form-horizontal" action="#" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+   </asp:ScriptManager>
     <div class="table-responsive">
 		<table id="table_users" class="table table-striped table-hover">
 			<thead>
@@ -24,7 +28,9 @@
             <asp:Literal runat="server" ID="laTabla"></asp:Literal>
             </tbody>
 		</table>
-        <div id="modal-delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+     <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
+     <ContentTemplate>
+        <div id="modal_delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -35,18 +41,21 @@
           <div class="container-fluid">
             <div class="row">
                 <p>Seguro que desea eliminar el usuario:</p>
-                <p id="user-name"></p>
+                <p runat="server" id="user_name"></p>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-            <button id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarUsuario()">Eliminar</button>
+           <button id="eliminar" runat="server" class="btn btn-primary" type="submit" data-dismiss="modal" onserverclick="evento_eliminar">Eliminar</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>         
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
+     </ContentTemplate>
+    </asp:UpdatePanel>
 	</div>
+</form>
 	<!-- Data tables init -->
 	<script type="text/javascript">
 	    $(document).ready(function () {

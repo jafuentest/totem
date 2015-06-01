@@ -28,6 +28,7 @@ public partial class GUI_Modulo7_ListarUsuarios : System.Web.UI.Page
                 ((MasterPage)Page.Master).ShowDiv = true;
                 String alert_registro = Request.QueryString["success"];
                 String alert_eliminacion = Request.QueryString["success-eliminacion"];
+                String eliminacionusuario = Request.QueryString["usernameeliminar"];
                 if (alert_registro == "true")
                 {
                     this.alert.Attributes["class"] = "alert alert-success alert-dismissible";
@@ -38,8 +39,14 @@ public partial class GUI_Modulo7_ListarUsuarios : System.Web.UI.Page
                 if(alert_eliminacion == "true"){
                     this.alert.Attributes["class"] = "alert alert-success alert-dismissible";
                     this.alert.Attributes["role"] = "alert";
-                    this.alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>El registro fue completado exitosamente</div>";
+                    this.alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Se elimino correctamente</div>";
                     this.alert.Visible = true;
+                }
+                if (eliminacionusuario != null)
+                {
+                    this.user_name.InnerText = eliminacionusuario;
+                    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "modal_delete", "$('#modal_delete').modal();", true);
+                    upModal.Visible = true;
                 }
             }
             else
@@ -61,12 +68,13 @@ public partial class GUI_Modulo7_ListarUsuarios : System.Web.UI.Page
             foreach (Usuario usuario in listaUsuario)
             {
                 this.laTabla.Text += "<tr>";
+                this.laTabla.Text += "<td>" + usuario.username.ToString() + "</td>";
                 this.laTabla.Text += "<td>" + usuario.nombre.ToString() + "</td>";
                 this.laTabla.Text += "<td>" + usuario.apellido.ToString() + "</td>";
                 this.laTabla.Text += "<td>" + usuario.cargo.ToString() + "</td>";
                 this.laTabla.Text += "<td>";
-                this.laTabla.Text += "<a class=\"btn btn-default glyphicon glyphicon-pencil\" href=\"<%= Page.ResolveUrl(\"~/GUI/Modulo7/DetalleUsuario.aspx?username="+usuario.username+") % ></a>";
-                this.laTabla.Text += "<button type=\"submit\" id="+usuario.username+" class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\" onserverclick=\"evento_eliminar\" runat=\"server\"></button>";
+                this.laTabla.Text += "<a class=\"btn btn-default glyphicon glyphicon-pencil\" href=\"DetalleUsuario.aspx?username="+usuario.username+"\"></a>";
+                this.laTabla.Text += "<a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" href=\"ListarUsuarios.aspx?usernameeliminar=" + usuario.username + "\"></a>";
                 this.laTabla.Text += "</td>";
                 this.laTabla.Text += "</tr>";
         }
@@ -75,6 +83,18 @@ public partial class GUI_Modulo7_ListarUsuarios : System.Web.UI.Page
     }
     protected void evento_eliminar(object sender, EventArgs e)
     {
-        
+        string userName = this.user_name.InnerText;
+        try
+        {
+            LogicaNegociosTotem.Modulo7.LogicaUsuario.eliminarUsuario(userName);
+            Response.Redirect("../Modulo7/ListarUsuarios.aspx?success-eliminacion=true");
+        }
+        catch (ExcepcionesTotem.Modulo7.EliminacionUsuarioExcepcion)
+        {
+            this.alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+            this.alert.Attributes["role"] = "alert";
+            this.alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Eliminación de usuario fallida</div>";
+            this.alert.Visible = true;
+        }
     }
 }
