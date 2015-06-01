@@ -521,11 +521,20 @@ namespace DatosTotem.Modulo4 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Procedure_ObtenerTipoClienteProyecto.
+        /// </summary>
+        internal static string ProcedimientoObtenerTipoClienteProyecto {
+            get {
+                return ResourceManager.GetString("ProcedimientoObtenerTipoClienteProyecto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Procedure_ProyectosDeUsuario.
         /// </summary>
-        internal static string ProcedimientosProyectosDeUsuario {
+        internal static string ProcedimientoProyectosDeUsuario {
             get {
-                return ResourceManager.GetString("ProcedimientosProyectosDeUsuario", resourceCulture);
+                return ResourceManager.GetString("ProcedimientoProyectosDeUsuario", resourceCulture);
             }
         }
     }

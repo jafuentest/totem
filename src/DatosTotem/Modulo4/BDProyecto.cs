@@ -326,7 +326,7 @@ namespace DatosTotem.Modulo4
                 parametros.Add(parametro);
 
                 BDConexion con = new BDConexion();
-                DataTable resultados = con.EjecutarStoredProcedureTuplas(RecursosBDModulo4.ProcedimientosProyectosDeUsuario, parametros);
+                DataTable resultados = con.EjecutarStoredProcedureTuplas(RecursosBDModulo4.ProcedimientoProyectosDeUsuario, parametros);
 
 
                 if (resultados.Rows.Count > 0)
@@ -347,6 +347,9 @@ namespace DatosTotem.Modulo4
                 throw e;
             }
         }
+
+
+
 
         #endregion
 
@@ -403,6 +406,36 @@ namespace DatosTotem.Modulo4
 
             BDConexion con = new BDConexion();
             List<Resultado> resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoExisteProyecto, parametros);
+
+
+            if (int.Parse(resultados[0].valor) == 1)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+
+
+
+        /// <summary>
+        /// Método para obtener el tipo de cliente de un proyecto en la bd
+        /// </summary>
+        /// <param name="codigo">Codigo del proyecto a buscar</param>
+        /// <returns>Retorna true si es juridico y retorna false si es natural </returns>
+        public static bool ObtenerTipoClienteProyecto(String codigo)
+        {
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, codigo, false);
+            parametros.Add(parametro);
+
+            parametro = new Parametro(RecursosBDModulo4.ParametroResultado, SqlDbType.Int, true);
+            parametros.Add(parametro);
+
+
+
+            BDConexion con = new BDConexion();
+            List<Resultado> resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoObtenerTipoClienteProyecto, parametros);
 
 
             if (int.Parse(resultados[0].valor) == 1)

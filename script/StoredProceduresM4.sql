@@ -92,6 +92,25 @@ BEGIN
         SELECT @resultado = 0
 	RETURN
 END
+
+
+
+--Procedimiento para verificar que tipo de cliente tiene un proyecto ----------------------
+CREATE PROCEDURE Procedure_ObtenerTipoClienteProyecto
+ 
+		@pro_codigo[varchar] (6),
+		@resultado int OUTPUT
+AS 
+BEGIN
+    IF (SELECT CLIENTE_JURIDICO_cj_id FROM PROYECTO WHERE pro_codigo = @pro_codigo) IS NOT NULL
+        SELECT @resultado = 1
+    ELSE
+		IF(SELECT CLIENTE_NATURAL_cn_id FROM PROYECTO WHERE pro_codigo = @pro_codigo) IS NOT NULL
+        SELECT @resultado = 0
+	RETURN
+END
+
+
 -- Procedimiento para consultar un Proyecto----------------------
 go 
 CREATE PROCEDURE Procedure_ConsultarProyecto

@@ -322,7 +322,11 @@
     <value>Procedure_ModificarProyecto</value>
     <comment>Modifica losdatos de un proyecto en la BD</comment>
   </data>
-  <data name="ProcedimientosProyectosDeUsuario" xml:space="preserve">
+  <data name="ProcedimientoObtenerTipoClienteProyecto" xml:space="preserve">
+    <value>Procedure_ObtenerTipoClienteProyecto</value>
+    <comment>Procedimiento para obtener el tipo de cliente de un proyecto</comment>
+  </data>
+  <data name="ProcedimientoProyectosDeUsuario" xml:space="preserve">
     <value>Procedure_ProyectosDeUsuario</value>
     <comment>Procedimiento que muestra los proyectos de un usuario </comment>
   </data>
