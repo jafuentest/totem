@@ -393,7 +393,8 @@ namespace LogicaNegociosTotem.Modulo4
                 LogicaNegociosTotem.Modulo3.LogicaInvolucrados logInv = new LogicaNegociosTotem.Modulo3.LogicaInvolucrados(proyecto);
                 involucrados = logInv.obtenerUsuariosInvolucradosProyecto(proyecto);
                 LogicaNegociosTotem.Modulo6.LogicaCasoUso cu = new Modulo6.LogicaCasoUso();
-                
+                List<Requerimiento> funcionales = DatosTotem.Modulo4.BDProyecto.ConsultarRequerimientosFuncionalesPorProyecto(codigo);
+                List<Requerimiento> noFuncional = DatosTotem.Modulo4.BDProyecto.ConsultarRequerimientosNoFuncionalesPorProyecto(codigo);
 				//Cable por Fuentes
 				List<CasoDeUso> listaCU = cu.ListarCasosDeUso(0);
 				//Fin del cable
@@ -405,7 +406,7 @@ namespace LogicaNegociosTotem.Modulo4
                     switch (linea)
                     {
                         case ("titulo"):
-                            ers.WriteLine("Especificacion de Requerimientos de Software");
+                            ers.WriteLine("Probando requrimientos");
                             break;
                         case "fecha":
                             DateTime auxiliar = DateTime.Today;
@@ -447,9 +448,9 @@ namespace LogicaNegociosTotem.Modulo4
                             ers.WriteLine("\\" + "hline");
                             ers.WriteLine("\\" + "bf ID & " + "\\" + "bf Requerimiento &" + " \\" + "bf Prioridad " + "\\" + "\\");
                             ers.WriteLine("\\" + "hline");
-                            for (int i = 0; i <= 5; i++)
+                            foreach (Requerimiento rf in funcionales)
                             {
-                                ers.WriteLine("ModuloWolf" + "&" + "ModuloWolf" + "&" + "ModuloWolf" + " " + "\\" + "\\");
+                                ers.WriteLine("ModuloWolf" + "&" + rf.Descripcion + "&" + rf.Prioridad + " " + "\\" + "\\");
                                 ers.WriteLine("\\" + "hline");
                             }
                             ers.WriteLine("\\" + "end{tabular}");
@@ -459,9 +460,9 @@ namespace LogicaNegociosTotem.Modulo4
                             ers.WriteLine("\\" + "hline");
                             ers.WriteLine("\\" + "bf ID & " + "\\" + "bf Requerimiento &" + " \\" + "bf Prioridad " + "\\" + "\\");
                             ers.WriteLine("\\" + "hline");
-                            for (int i = 0; i <= 5; i++)
+                            foreach (Requerimiento rnf in noFuncional)
                             {
-                                ers.WriteLine("ModuloWolf" + "&" + "ModuloWolf" + "&" + "ModuloWolf" + " " + "\\" + "\\");
+                                ers.WriteLine("ModuloWolf" + "&" + rnf.Descripcion + "&" + rnf.Prioridad + " " + "\\" + "\\");
                                 ers.WriteLine("\\" + "hline");
                             }
                             ers.WriteLine("\\" + "end{tabular}");
