@@ -518,5 +518,102 @@ namespace DatosTotem.Modulo3
             }
             return retorno;
         }
+        public static Contacto datosContactoID(int idCon)
+        {
+            Contacto elContacto = new Contacto();
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro("@idContacto",  
+                SqlDbType.Int, idCon.ToString(), false);
+            parametros.Add(parametro);
+            parametro = new Parametro("@con_nombre", 
+                SqlDbType.VarChar, true);
+            parametros.Add(parametro);
+            parametro = new Parametro("@con_apellido", 
+                SqlDbType.VarChar, true);
+            parametros.Add(parametro);
+            parametro = new Parametro("@con_cargo", 
+                SqlDbType.VarChar, true);
+            parametros.Add(parametro);
+            parametro = new Parametro("@cj_nombre", 
+                SqlDbType.VarChar, true);
+            parametros.Add(parametro);
+
+            
+            BDConexion laConexion = new BDConexion();
+            try
+            {
+                List<Resultado> resultados = laConexion.EjecutarStoredProcedure("Procedure_consultarDatosContactoID", parametros);
+                foreach (Resultado resultado in resultados)
+                {
+                    elContacto.Con_Id = idCon;
+
+                    if (resultado.etiqueta.Equals("@con_cargo"))
+                    {
+                        elContacto.ConCargo = resultado.valor;
+                    }
+                    if (resultado.etiqueta.Equals("@con_nombre"))
+                    {
+                        elContacto.Con_Nombre = resultado.valor;
+                    }
+                    if (resultado.etiqueta.Equals("@con_apellido"))
+                    {
+                        elContacto.Con_Apellido = resultado.valor;
+                    }
+                    if (resultado.etiqueta.Equals("@cj_nombre"))
+                    {
+                        ClienteJuridico cj = new ClienteJuridico();
+                        cj.Jur_Nombre = resultado.valor;
+                        elContacto.ConClienteJurid = cj;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+            return elContacto;
+        }
+        public static List<Contacto> listarContactosPorCargoEmpresa(ClienteJuridico laEmpresa, String cargo)
+        {
+            BDConexion laConexion;
+            List<Contacto> laListaDeContactos = new List<Contacto>();
+
+            List<Parametro> parametros;
+
+            Parametro rifClienteJ, nombre_cargo;
+
+            try
+            {
+
+                laConexion = new BDConexion();
+                parametros = new List<Parametro>();
+
+                rifClienteJ = new Parametro("@cj_rif", SqlDbType.Int, laEmpresa.Jur_Id, false);
+                parametros.Add(rifClienteJ);
+
+                nombre_cargo = new Parametro("@car_nombre", SqlDbType.NVarChar, cargo, false);
+                parametros.Add(nombre_cargo);
+
+                DataTable dt = laConexion.EjecutarStoredProcedureTuplas(
+                               "ConsultarEmpleadosEmpresaCargo", parametros);
+                foreach (DataRow row in dt.Rows)
+                {
+                    Contacto c = new Contacto();
+
+                    c.Con_Nombre = row["NOMBRECONTACTO"].ToString();
+                    c.Con_Apellido = row["APELLIDOCONTACTO"].ToString();
+                    c.ConCargo = row["CARGOCONTACTO"].ToString();
+                    c.Con_Id = int.Parse(row["IDCONTACTO"].ToString());
+
+                    laListaDeContactos.Add(c);
+                }
+            }
+            catch (Exception e)
+            { }
+
+            return laListaDeContactos;
+
+        }
+
     }
 }
