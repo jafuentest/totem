@@ -169,6 +169,10 @@
     <value>@pro_id</value>
     <comment>Parámetro utilizado para definir el identificador numérico único del proyecto</comment>
   </data>
+  <data name="PROCEDIMIENTO_AGREGAR_REQUERIMIENTO" xml:space="preserve">
+    <value>Procedure_AgregarRequerimiento</value>
+    <comment>Procedimiento utilizado para insertar un nuevo requerimiento.</comment>
+  </data>
   <data name="PROCEDIMIENTO_CONSULTAR_REQUERIMIENTOS_POR_PROYECTO" xml:space="preserve">
     <value>M5_ConsultarRequerimientosPorProyecto</value>
     <comment>Procedimiento utilizado para poder retornar todos los requerimientos de un proyecto</comment>

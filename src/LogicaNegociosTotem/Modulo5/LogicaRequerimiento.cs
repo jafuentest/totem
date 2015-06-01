@@ -13,7 +13,7 @@ namespace LogicaNegociosTotem.Modulo5
     /// </summary>
     public static class LogicaRequerimiento
     {
-	   /*
+	   
         #region Crear
         /// <summary>
         /// Metodo para Agregar un requerimiento en la BD
@@ -23,21 +23,21 @@ namespace LogicaNegociosTotem.Modulo5
         /// <returns>Retorna True si se crea, de lo contrario genera
         /// una exception()</returns>
 
-        public static bool CrearRequerimiento(DominioTotem.Requerimiento requerimiento, DominioTotem.Proyecto proyecto)
+        public static bool CrearRequerimiento(DominioTotem.Requerimiento requerimiento, int idProyecto)
         {
 
             try
             {
-                return DatosTotem.Modulo5.BDRequerimiento.CrearRequerimiento(requerimiento);
+                return DatosTotem.Modulo5.BDRequerimiento.CrearRequerimientoBD(requerimiento, idProyecto);
             }
            
             catch (Exception e)
             {
-                return false;
+                throw e;
             }
         }
         #endregion
-	   */
+	   
 
 	   #region Retornar id por código del proyecto
 	   /// <summary>
