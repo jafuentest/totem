@@ -868,7 +868,7 @@ namespace DatosTotem.Modulo2
         /// </summary>
         /// <param name="nombreProyecto">Nombre del Proyecto</param>
         /// <returns>Datos del Cliente Jurídico</returns>
-        public ClienteJuridico DatosClienteProyecto(string nombreProyecto) 
+        public ClienteJuridico DatosClienteProyecto(string  codigo) 
         { 
             ClienteJuridico clienteJuridico = new ClienteJuridico();
             try
@@ -876,8 +876,8 @@ namespace DatosTotem.Modulo2
 
                 this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.DatosClienteNombreProyecto, this.conexion);
                 this.comando.CommandType = CommandType.StoredProcedure;
-                this.comando.Parameters.Add(new SqlParameter(RecursosBaseDeDatosModulo2.NombreProyecto,
-                                            nombreProyecto));
+                this.comando.Parameters.Add(new SqlParameter(RecursosBaseDeDatosModulo2.Codigo,
+                                            codigo));
 
                 SqlDataReader lectura;
                 this.conexion.Open();

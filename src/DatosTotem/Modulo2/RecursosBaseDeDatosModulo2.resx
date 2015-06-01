@@ -305,4 +305,7 @@
   <data name="MensajeOperacionInvalida" xml:space="preserve">
     <value>Operación inválida</value>
   </data>
+  <data name="ParametroIdProyecto" xml:space="preserve">
+    <value>@idProyecto</value>
+  </data>
 </root>

@@ -712,5 +712,16 @@ namespace DatosTotem.Modulo2 {
                 return ResourceManager.GetString("CodigoOperacionInvalida", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ParametroIdProyecto.
+        /// </summary>
+        internal static string ParametroIdProyecto
+        {
+            get
+            {
+                return ResourceManager.GetString("ParametroIdProyecto", resourceCulture);
+            }
+        }
     }
 }

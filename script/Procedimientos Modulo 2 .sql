@@ -653,7 +653,7 @@ SELECT lug_codigopostal FROM LUGAR WHERE lug_id=@idCiudad;
 /*------Datos del Cliente según el nombre del proyecto--*/
 
 CREATE PROCEDURE DatosClientePorNombreProyecto
-@nombreProyecto varchar(100)
+@codigo varchar(10) 
 AS
 SELECT 
 	   cj.cj_rif  as rif, 
@@ -662,6 +662,7 @@ SELECT
 	   con.con_apellido as nombreApellido,
 	   t.tel_codigo as codigo,
 	   t.tel_numero as numero, 
+
 	   (d.lug_nombre+'.'+c.lug_nombre +'.'+e.lug_nombre+','+p.lug_nombre) as direccion 
 
 FROM     PROYECTO PRO, 
@@ -682,6 +683,6 @@ and   CJ.cj_id = PRO.CLIENTE_JURIDICO_cj_id
 and   cj.cj_id = Con.CLIENTE_JURIDICO_cj_id
 and   con.con_id = t.CONTACTO_con_id
 and   car.car_id = con.CARGO_car_id
-AND   PRO.pro_nombre = @nombreProyecto;
+and   pro.pro_codigo = @codigo; 
 
 go

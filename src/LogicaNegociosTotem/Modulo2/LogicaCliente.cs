@@ -44,7 +44,8 @@ namespace LogicaNegociosTotem.Modulo2
            }
            catch(OperacionInvalidaException e)
            {
-               throw new OperacionInvalidaException("T_02_003","Operación no válida",e); 
+               throw new OperacionInvalidaException(RecursosLogicaModulo2.CodigoOperacionInvalida,
+                   RecursosLogicaModulo2.MensajeOperacionInvalida,e); 
            }
            catch(Exception e)
            {
@@ -66,7 +67,8 @@ namespace LogicaNegociosTotem.Modulo2
            }
            catch (OperacionInvalidaException e)
            {
-               throw new OperacionInvalidaException("T_02_003", "Operación no válida", e);
+               throw new OperacionInvalidaException(RecursosLogicaModulo2.CodigoOperacionInvalida,
+                   RecursosLogicaModulo2.MensajeOperacionInvalida, e);
            }
            catch (Exception e)
            {
@@ -346,12 +348,12 @@ namespace LogicaNegociosTotem.Modulo2
       /// </summary>
       /// <param name="nombre">Nombre del Proyecto</param>
       /// <returns>Los datos del Cliente Jurídico</returns>
-       public ClienteJuridico ConsultarClienteJNombreProyecto(string nombre) 
+       public ClienteJuridico ConsultarClienteJNombreProyecto(string codigo) 
        {
            try
            {
                ClienteJuridico elCliente = new ClienteJuridico();
-               elCliente = baseDeDatosCliente.DatosClienteProyecto(nombre);
+               elCliente = baseDeDatosCliente.DatosClienteProyecto(codigo);
                return elCliente;
            }
            catch (ExcepcionesTotem.ExceptionTotemConexionBD e) 
@@ -361,16 +363,16 @@ namespace LogicaNegociosTotem.Modulo2
            }
            catch (ClienteInexistenteException e)
            {
-               throw new ExcepcionesTotem.Modulo2.ClienteInexistenteException(RecursosBaseDeDatosModulo2.CodigoClienteInexistente,
-                    RecursosBaseDeDatosModulo2.MensajeClienteInexistente,
+               throw new ExcepcionesTotem.Modulo2.ClienteInexistenteException(RecursosLogicaModulo2.CodigoClienteInexistente,
+                    RecursosLogicaModulo2.MensajeClienteInexistente,
                     e);
            }
 
            catch (OperacionInvalidaException ex)
            {
                throw new OperacionInvalidaException
-                   (RecursosBaseDeDatosModulo2.CodigoOperacionInvalida,
-                   RecursosBaseDeDatosModulo2.MensajeOperacionInvalida,
+                   (RecursosLogicaModulo2.CodigoOperacionInvalida,
+                   RecursosLogicaModulo2.MensajeOperacionInvalida,
                    ex);
            }
            catch (ExcepcionesTotem.ExceptionTotem ex)
