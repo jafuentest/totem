@@ -2866,15 +2866,14 @@ GO
 
 CREATE PROCEDURE Procedure_AgregarInvolucradoCliente
 		 
-		@Minuta_min_id   [int],
 		@con_id          [int],
-		@pro_id      [int]
+		@pro_id          [varchar](6)
 		
 AS 
 BEGIN
 		INSERT INTO MIN_INV(MINUTA_min_id, INVOLUCRADOS_CLIENTES_CONTACTO_con_id, 
 				    INVOLUCRADOS_CLIENTES_PROYECTO_pro_id)
-	    VALUES(@Minuta_min_id, @con_id, (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id))
+	    VALUES((SELECT MAX(min_id) FROM MINUTA), @con_id, (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id))
 END;
 GO
 
@@ -2882,15 +2881,14 @@ GO
 
 CREATE PROCEDURE Procedure_AgregarInvolucradoUsuario
 		 
-		@Minuta_min_id   [int],
 		@usu_id          [int],
-		@pro_id      [int]
+		@pro_id          [varchar](6)
 		
 AS 
 BEGIN
 		INSERT INTO MIN_INV(MINUTA_min_id, INVOLUCRADOS_USUARIOS_USUARIO_usu_id, 
 		            INVOLUCRADOS_USUARIOS_PROYECTO_pro_id)
-	    VALUES(@Minuta_min_id, @usu_id, (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id))
+	    VALUES((SELECT MAX(min_id) FROM MINUTA), @usu_id, (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id))
 END;
 GO
 ------------------ Procedimientos para consultar------------------------------
@@ -2899,14 +2897,14 @@ GO
 
 CREATE PROCEDURE Procedure_ConsultarMinutasProyecto
 	
-	@pro_id [int]	
+	@min_inv_proy [varchar](6)	
 	   
 AS
  BEGIN
 	
 	SELECT Distinct(M.min_id) as min_id, M.min_fecha, M.min_motivo, M.min_observaciones
 	FROM MINUTA M, MIN_INV MI
-	WHERE (MI.INVOLUCRADOS_USUARIOS_PROYECTO_pro_id= @min_inv_proy or Mi.INVOLUCRADOS_CLIENTES_PROYECTO_pro_id =(SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id))
+	WHERE (MI.INVOLUCRADOS_USUARIOS_PROYECTO_pro_id= (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @min_inv_proy) or MI.INVOLUCRADOS_CLIENTES_PROYECTO_pro_id =(SELECT pro_id FROM PROYECTO WHERE pro_codigo= @min_inv_proy))
  END
 GO
 
@@ -2996,7 +2994,7 @@ CREATE PROCEDURE Procedure_ConsultarAcuerdoResponsablesUsuarioMinuta
 AS
  BEGIN 
 
-     SELECT AC.INVOLUCRADOS_USUARIOS_USUARIO_usu_id as idUsuario
+     SELECT DISTINCT(AC.INVOLUCRADOS_USUARIOS_USUARIO_usu_id) as idUsuario
 	 FROM ACU_INV AC
 	 WHERE AC.ACUERDO_acu_id = @acu_id and AC.INVOLUCRADOS_USUARIOS_USUARIO_usu_id is not null
 END
@@ -3031,7 +3029,7 @@ GO
 CREATE PROCEDURE Procedure_ConsultarUsuarioMinuta
 
        @acu_id [int],
-	   @pro_id [int]
+	   @pro_id [varchar](6)
 AS
  BEGIN
 	
@@ -3180,13 +3178,13 @@ CREATE PROCEDURE Procedure_EliminarUsuarioAcuerdo
 
      @acu_id [int],
 	 @usu_id [int],
-	 @pro_id [int]
+	 @pro_id [varchar](6)
 
 AS
 BEGIN
    DELETE FROM ACU_INV 
    WHERE ACUERDO_acu_id = @acu_id and INVOLUCRADOS_USUARIOS_USUARIO_usu_id = @usu_id
-   and INVOLUCRADOS_USUARIOS_PROYECTO_pro_id = @pro_id
+   and INVOLUCRADOS_USUARIOS_PROYECTO_pro_id = (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id)
 END
 GO
 
@@ -3195,13 +3193,13 @@ CREATE PROCEDURE Procedure_EliminarContactoAcuerdo
 
      @acu_id [int],
 	 @con_id [int],
-	 @pro_id [int]
+	 @pro_id [varchar](6)
 
 AS
 BEGIN
    DELETE FROM ACU_INV 
    WHERE ACUERDO_acu_id = @acu_id and INVOLUCRADOS_CLIENTES_CONTACTO_con_id = @con_id
-   and INVOLUCRADOS_CLIENTES_PROYECTO_pro_id = @pro_id
+   and INVOLUCRADOS_CLIENTES_PROYECTO_pro_id = (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id)
 END
 GO
 
@@ -3215,6 +3213,7 @@ BEGIN
    WHERE MINUTA_min_id =  @min_id
 END
 GO
+
 
 --End SP8
 
