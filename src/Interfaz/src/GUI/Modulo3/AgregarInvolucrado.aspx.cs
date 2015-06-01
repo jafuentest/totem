@@ -9,9 +9,14 @@ using DominioTotem;
 
 public partial class GUI_Modulo3_Default : System.Web.UI.Page
 {
-    private ListaInvolucradoContacto listaContactos = new ListaInvolucradoContacto();
-    private ListaInvolucradoUsuario listaUsuarios = new ListaInvolucradoUsuario();
+
+    #region Atributos
+    private static ListaInvolucradoContacto listaContactos;
+    private static ListaInvolucradoUsuario listaUsuarios;
     private Proyecto elProyecto = new Proyecto();
+    private LogicaNegociosTotem.Modulo3.LogicaInvolucrados logInv = new LogicaNegociosTotem.Modulo3.LogicaInvolucrados();
+    #endregion
+
     protected void Page_Load(object sender, EventArgs e)
     {
         ((MasterPage)Page.Master).IdModulo = "3";
@@ -36,15 +41,17 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
             Response.Redirect("../Modulo1/M1_login.aspx");
         }
         #endregion
+        #region Acciones que se realizan cuando la pagina se muestra por primera vez
         if (!IsPostBack) // verificar si la pagina se muestra por primera vez
         {
             comboCargo.Enabled = false;
             comboPersonal.Enabled = false;
             llenarComboTipoEmpresas();
-            LogicaNegociosTotem.Modulo3.LogicaInvolucrados logInv = new
-                LogicaNegociosTotem.Modulo3.LogicaInvolucrados();
-
+            logInv = new LogicaNegociosTotem.Modulo3.LogicaInvolucrados();
+            listaContactos = new ListaInvolucradoContacto(); 
+            listaUsuarios = new ListaInvolucradoUsuario();
         }
+        #endregion
 
         elProyecto.Codigo = "TOT"; //codigo del proyecto cableado para prueba del metodo
         listaContactos.Proyecto = elProyecto;
@@ -77,9 +84,8 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
             {
                 ClienteJuridico cli = new ClienteJuridico();
                 cli.Jur_Id = "1";
-                LogicaNegociosTotem.Modulo3.LogicaInvolucrados lInv = new LogicaNegociosTotem.Modulo3.LogicaInvolucrados();
                 List<String> listaCargos = new List<String>();
-                listaCargos = lInv.ListarCargosEmpleados(cli);
+                listaCargos = logInv.ListarCargosEmpleados(cli);
 
                 try
                 {
@@ -117,7 +123,6 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
         comboCargo.DataValueField = "key";
         comboCargo.DataBind();
     }
-
     protected void actualizarComboPersonal(object sender, EventArgs e)
     {
         Dictionary<string, string> options = new Dictionary<string, string>();
@@ -142,8 +147,6 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
             {
                 ClienteJuridico jur = new ClienteJuridico();
                 jur.Jur_Id = "1";
-                LogicaNegociosTotem.Modulo3.LogicaInvolucrados logInv =
-                    new LogicaNegociosTotem.Modulo3.LogicaInvolucrados();
                 List<Contacto> listaContactos = new List<Contacto>();
                 listaContactos = logInv.ListarContactoCargoEmpresa(jur, comboCargo.SelectedItem.ToString());
                 foreach (Contacto c in listaContactos)
@@ -157,114 +160,102 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
         comboPersonal.DataValueField = "key";
         comboPersonal.DataBind();
     }
-
     protected void AgregarInvolucrados_Click(object sender, EventArgs e)
     {
-        LogicaNegociosTotem.Modulo3.LogicaInvolucrados logInv =
-            new LogicaNegociosTotem.Modulo3.LogicaInvolucrados();
-
         if (comboTipoEmpresa.SelectedIndex == 2 && comboCargo.SelectedIndex != -1)
         {
-            #region agregar usuario en tabla y en bd
+            #region agregar usuario en la lista
 
             Usuario elUsuario = logInv.obtenerDatosUsuarioUsername(comboPersonal.SelectedValue);
             elUsuario.username = comboPersonal.SelectedValue;
 
             if (listaUsuarios.agregarUsuarioAProyecto(elUsuario))
             {
-                try
-                {
+                this.laTabla.Text += "<tr id=\"" + elUsuario.username + "\" >";
+                this.laTabla.Text += "<td>" + elUsuario.nombre + "</td>";
+                this.laTabla.Text += "<td>" + elUsuario.apellido + "</td>";
+                this.laTabla.Text += "<td>" + elUsuario.cargo + "</td>";
+                this.laTabla.Text += "<td>Compañía De Software</td>";
+                this.laTabla.Text += "<td>";
+                this.laTabla.Text += "<a class=\"btn btn-default glyphicon glyphicon-pencil\" href=\"<%= Page.ResolveUrl(\"~/GUI/Modulo2/DetallarCliente.aspx\") % ></a>";
+                this.laTabla.Text += "<a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"  runat=\"server\"></a>";
+                this.laTabla.Text += "</td>";
+                this.laTabla.Text += "</tr>";
 
-                    if (logInv.agregarUsuariosEnBD(listaUsuarios))
-                    {
-                        this.laTabla.Text += "<tr id=\"" + elUsuario.username + "\" >";
-                        this.laTabla.Text += "<td>" + elUsuario.nombre + "</td>";
-                        this.laTabla.Text += "<td>" + elUsuario.apellido + "</td>";
-                        this.laTabla.Text += "<td>" + elUsuario.cargo + "</td>";
-                        this.laTabla.Text += "<td>Compañía De Software</td>";
-                        this.laTabla.Text += "<td>";
-                        this.laTabla.Text += "<a class=\"btn btn-default glyphicon glyphicon-pencil\" href=\"<%= Page.ResolveUrl(\"~/GUI/Modulo2/DetallarCliente.aspx\") % ></a>";
-                        this.laTabla.Text += "<a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"  runat=\"server\"></a>";
-                        this.laTabla.Text += "</td>";
-                        this.laTabla.Text += "</tr>";
+                comboCargo.SelectedIndex = 0;
+                comboPersonal.SelectedIndex = 0;
+                Dictionary<string, string> options = new Dictionary<string, string>();
+                options.Add("-1", "Seleccione una opcion");
+                comboCargo.Items.Clear();
+                comboCargo.DataSource = options;
+                comboCargo.DataTextField = "value";
+                comboCargo.DataValueField = "key";
+                comboCargo.DataBind();
 
-                        comboCargo.SelectedIndex = 0;
-                        comboPersonal.SelectedIndex = 0;
-                        Dictionary<string, string> options = new Dictionary<string, string>();
-                        options.Add("-1", "Seleccione una opcion");
-                        comboCargo.Items.Clear();
-                        comboCargo.DataSource = options;
-                        comboCargo.DataTextField = "value";
-                        comboCargo.DataValueField = "key";
-                        comboCargo.DataBind();
+                comboPersonal.Items.Clear();
+                comboPersonal.DataSource = options;
+                comboPersonal.DataTextField = "value";
+                comboPersonal.DataValueField = "key";
+                comboPersonal.DataBind();
 
-                        comboPersonal.Items.Clear();
-                        comboPersonal.DataSource = options;
-                        comboPersonal.DataTextField = "value";
-                        comboPersonal.DataValueField = "key";
-                        comboPersonal.DataBind();
-                    }
-                    else
-                    {
-
-                    }
-                }
-                catch (ExcepcionesTotem.Modulo3.InvolucradoRepetidoException ex)
-                {
-                }
-                catch (Exception ex)
-                {
-                }
             }
             #endregion
         }
         else
         {
-            #region agregar contacto en tabla y en bd
+            #region agregar contacto en la lista
             Contacto elContacto = new Contacto();
             elContacto.Con_Id = int.Parse(comboPersonal.SelectedValue);
             elContacto = logInv.obtenerDatosContactoID(int.Parse(comboPersonal.SelectedValue));
             if (listaContactos.agregarContactoAProyecto(elContacto))
-            {
-                try
-                {
-                    if (logInv.agregarContactosEnBD(listaContactos))
-                    {
+            {       
+    
+                this.laTabla.Text += "<tr id=\"" + elContacto.Con_Id + "\" >";
+                this.laTabla.Text += "<td>" + elContacto.Con_Nombre + "</td>";
+                this.laTabla.Text += "<td>" + elContacto.Con_Apellido + "</td>";
+                this.laTabla.Text += "<td>" + elContacto.ConCargo + "</td>";
+                this.laTabla.Text += "<td>" + elContacto.ConClienteJurid.Jur_Nombre + "</td>";
+                this.laTabla.Text += "<td>";
+                this.laTabla.Text += "<a class=\"btn btn-default glyphicon glyphicon-pencil\" href=\"<%= Page.ResolveUrl(\"~/GUI/Modulo2/DetallarCliente.aspx\") % ></a>";
+                this.laTabla.Text += "<a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"  runat=\"server\"></a>";
+                this.laTabla.Text += "</td>";
+                this.laTabla.Text += "</tr>";
 
-                        this.laTabla.Text += "<tr id=\"" + elContacto.Con_Id + "\" >";
-                        this.laTabla.Text += "<td>" + elContacto.Con_Nombre + "</td>";
-                        this.laTabla.Text += "<td>" + elContacto.Con_Apellido + "</td>";
-                        this.laTabla.Text += "<td>" + elContacto.ConCargo + "</td>";
-                        this.laTabla.Text += "<td>" + elContacto.ConClienteJurid.Jur_Nombre + "</td>";
-                        this.laTabla.Text += "<td>";
-                        this.laTabla.Text += "<a class=\"btn btn-default glyphicon glyphicon-pencil\" href=\"<%= Page.ResolveUrl(\"~/GUI/Modulo2/DetallarCliente.aspx\") % ></a>";
-                        this.laTabla.Text += "<a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"  runat=\"server\"></a>";
-                        this.laTabla.Text += "</td>";
-                        this.laTabla.Text += "</tr>";
+                comboCargo.SelectedIndex = 0;
+                comboPersonal.SelectedIndex = 0;
+                Dictionary<string, string> options = new Dictionary<string, string>();
+                options.Add("-1", "Seleccione una opcion");
+                comboCargo.Items.Clear();
+                comboCargo.DataSource = options;
+                comboCargo.DataTextField = "value";
+                comboCargo.DataValueField = "key";
+                comboCargo.DataBind();
 
-                        comboCargo.SelectedIndex = 0;
-                        comboPersonal.SelectedIndex = 0;
-                        Dictionary<string, string> options = new Dictionary<string, string>();
-                        options.Add("-1", "Seleccione una opcion");
-                        comboCargo.Items.Clear();
-                        comboCargo.DataSource = options;
-                        comboCargo.DataTextField = "value";
-                        comboCargo.DataValueField = "key";
-                        comboCargo.DataBind();
-
-                        comboPersonal.Items.Clear();
-                        comboPersonal.DataSource = options;
-                        comboPersonal.DataTextField = "value";
-                        comboPersonal.DataValueField = "key";
-                        comboPersonal.DataBind();
-                    }
-                }
-                catch(Exception ex)
-                {
-
-                }
+                comboPersonal.Items.Clear();
+                comboPersonal.DataSource = options;
+                comboPersonal.DataTextField = "value";
+                comboPersonal.DataValueField = "key";
+                comboPersonal.DataBind();
             }
             #endregion
+        }
+    }
+    protected void btn_enviar_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            logInv.agregarContactosEnBD(listaContactos);
+        }
+        catch (Exception ex)
+        {
+
+        } try
+        {
+            logInv.agregarUsuariosEnBD(listaUsuarios);
+        }
+        catch (Exception ex)
+        {
+
         }
     }
 }

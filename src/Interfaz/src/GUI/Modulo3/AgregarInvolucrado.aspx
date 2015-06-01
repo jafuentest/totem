@@ -109,7 +109,7 @@
                    </div> 
                       <div class="form-group">
                 <div class="col-sm-5 col-md-5 col-lg-5">
-                    <%--<asp:Button id="btn-enviar" class="btn btn-primary"  type="submit" runat="server" OnClick="btn_enviar_Click">Agregar</asp:Button>--%>
+                    <asp:Button id="btnenviar" class="btn btn-primary"  type="submit" runat="server" OnClick="btn_enviar_Click" Text = "Agregar"></asp:Button>
                     <a class="btn btn-default" href="ListarPersonalInvolucrado.aspx">Cancelar</a>
                 </div>
             </div>
