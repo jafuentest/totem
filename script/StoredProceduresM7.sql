@@ -139,17 +139,6 @@ begin
 end
 go
 
-CREATE PROCEDURE OBTENER_PREGUNTA_SEGURIDAD
-	@Correo varchar(60),
-	@Usu_pregseguridad varchar(60) OUTPUT
-	AS
-
-	Select @Usu_pregseguridad =  Usu_pregseguridad
-	from Usuario
-	where usu_correo = @Correo
-
-	RETURN
-	go
 	CREATE PROCEDURE ObtenerDatosUsuario
 	@usu_username varchar(60),
 	@usu_clave varchar(60) OUTPUT,
@@ -186,14 +175,12 @@ begin
 end
 GO
 
+
+
 CREATE PROCEDURE ListarUsuario
-	@usu_username varchar(60) OUTPUT,
-	@usu_nombre varchar(60) OUTPUT,
-	@usu_apellido varchar(60) OUTPUT,
-	@usu_car_nombre varchar(60)OUTPUT
 AS
-	Select 	@usu_nombre = Usu_nombre, @usu_apellido = Usu_apellido ,  @usu_car_nombre = car_nombre
+	Select 	usu_username as NombreUsuario,usu_nombre as Nombre, usu_apellido as Apellido,  car_nombre as CargoNombre
 	from Usuario, cargo
 	where  CARGO_car_id = car_id;
 RETURN
-GO	
+go
