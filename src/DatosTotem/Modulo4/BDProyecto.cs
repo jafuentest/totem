@@ -436,12 +436,12 @@ namespace DatosTotem.Modulo4
             List<Resultado> resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoContarRequerimientosProyecto, parametros);
 
 
-            if (resultados!=null)
+            if (resultados != null)
             {
                 return int.Parse(resultados[0].valor);
             }
             else
-                return int.Parse(resultados[0].valor);
+                return 0;
         }
 
 
@@ -470,7 +470,7 @@ namespace DatosTotem.Modulo4
                 return int.Parse(resultados[0].valor);
             }
             else
-                return int.Parse(resultados[0].valor);
+                return 0;
         }
 
         #endregion
