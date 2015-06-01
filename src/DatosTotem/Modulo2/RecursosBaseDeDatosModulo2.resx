@@ -266,7 +266,7 @@
   <data name="Numero" xml:space="preserve">
     <value>@numero</value>
   </data>
-  <data name="NombreClienteNatural" xml:space="preserve">
+  <data name="NombreClienteJuridico" xml:space="preserve">
     <value>@cj_nombre</value>
   </data>
   <data name="NombreContacto" xml:space="preserve">
@@ -280,5 +280,32 @@
   </data>
   <data name="ProcedureListarClientesNaturales" xml:space="preserve">
     <value>Procedure_ConsultarTodosClientesNaturales</value>
+  </data>
+  <data name="ProcedureDatosContactos" xml:space="preserve">
+    <value>Procedure_ConsultarDatosContactosEmpresa</value>
+  </data>
+  <data name="ProcedureConsultarDireccionCompleta" xml:space="preserve">
+    <value>Procedure_consultarDireccionCompleta</value>
+  </data>
+  <data name="ParametroIdCiudad" xml:space="preserve">
+    <value>@idCiudad</value>
+  </data>
+  <data name="ProcedureCargarCodigoPostal" xml:space="preserve">
+    <value>Procedure_CargarCodigoPostal</value>
+  </data>
+  <data name="DatosClienteNombreProyecto" xml:space="preserve">
+    <value>DatosClientePorNombreProyecto</value>
+  </data>
+  <data name="NombreProyecto" xml:space="preserve">
+    <value>@nombreProyecto</value>
+  </data>
+  <data name="CodigoOperacionInvalida" xml:space="preserve">
+    <value>T_02_005</value>
+  </data>
+  <data name="MensajeOperacionInvalida" xml:space="preserve">
+    <value>Operación inválida</value>
+  </data>
+  <data name="ParametroIdProyecto" xml:space="preserve">
+    <value>@idProyecto</value>
   </data>
 </root>

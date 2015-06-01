@@ -160,11 +160,29 @@ namespace DatosTotem.Modulo7 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a EliminarUsuario.
+        /// </summary>
+        internal static string ProcedimientoEliminarUsuario {
+            get {
+                return ResourceManager.GetString("ProcedimientoEliminarUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a InsertarUsuario.
         /// </summary>
         internal static string ProcedimientoInsertarUsuario {
             get {
                 return ResourceManager.GetString("ProcedimientoInsertarUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ListarUsuario.
+        /// </summary>
+        internal static string ProcedimientoListarUsuario {
+            get {
+                return ResourceManager.GetString("ProcedimientoListarUsuario", resourceCulture);
             }
         }
         

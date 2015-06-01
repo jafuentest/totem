@@ -567,13 +567,13 @@ namespace DatosTotem.Modulo2 {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to NombreClienteNatural.
+        ///   Looks up a localized string similar to NombreClienteJuridico.
         /// </summary>
-        internal static string NombreClienteNatural
+        internal static string NombreClienteJuridico
         {
             get
             {
-                return ResourceManager.GetString("NombreClienteNatural", resourceCulture);
+                return ResourceManager.GetString("NombreClienteJuridico", resourceCulture);
             }
         }
 
@@ -622,5 +622,106 @@ namespace DatosTotem.Modulo2 {
             }
         }
 
+        /// <summary>
+        ///   Looks up a localized string similar to ProcedureDatosContactos.
+        /// </summary>
+        internal static string ProcedureDatosContactos
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedureDatosContactos", resourceCulture);
+            }
+        }
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to ProcedureConsultarDireccionCompleta.
+        /// </summary>
+        internal static string ProcedureConsultarDireccionCompleta
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedureConsultarDireccionCompleta", resourceCulture);
+            }
+        }
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to ParametroIdCiudad.
+        /// </summary>
+        internal static string ParametroIdCiudad
+        {
+            get
+            {
+                return ResourceManager.GetString("ParametroIdCiudad", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ProcedureCargarCodigoPostal.
+        /// </summary>
+        internal static string ProcedureCargarCodigoPostal
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedureCargarCodigoPostal", resourceCulture);
+            }
+        }
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to DatosClienteNombreProyecto.
+        /// </summary>
+        internal static string DatosClienteNombreProyecto
+        {
+            get
+            {
+                return ResourceManager.GetString("DatosClienteNombreProyecto", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to NombreProyecto.
+        /// </summary>
+        internal static string NombreProyecto
+        {
+            get
+            {
+                return ResourceManager.GetString("NombreProyecto", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MensajeOperacionInvalida.
+        /// </summary>
+        internal static string MensajeOperacionInvalida
+        {
+            get
+            {
+                return ResourceManager.GetString("MensajeOperacionInvalida", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to CodigoOperacionInvalida.
+        /// </summary>
+        internal static string CodigoOperacionInvalida
+        {
+            get
+            {
+                return ResourceManager.GetString("CodigoOperacionInvalida", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ParametroIdProyecto.
+        /// </summary>
+        internal static string ParametroIdProyecto
+        {
+            get
+            {
+                return ResourceManager.GetString("ParametroIdProyecto", resourceCulture);
+            }
+        }
     }
 }

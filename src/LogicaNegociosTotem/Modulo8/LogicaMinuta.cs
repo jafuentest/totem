@@ -16,7 +16,15 @@ namespace LogicaNegociosTotem.Modulo8
         private BDPunto puntos = new BDPunto();
         private BDAcuerdo acuerdos = new BDAcuerdo();
         private Minuta minuta;
+        private List<Usuario> usuarios;
+        private List<Contacto> contactos;
+        private List<Acuerdo> listaAcuerdos;
 
+        /// <summary>
+        /// Metodo que lista todas las minutas de un Proyecto
+        /// </summary>
+        /// <param name="elProyecto">id del Proyecto</param>
+        /// <returns>Retorna una Lista de Minutas</returns>
         public List<Minuta> ListaMinuta(Proyecto elProyecto)
         {
             try
@@ -62,37 +70,74 @@ namespace LogicaNegociosTotem.Modulo8
 
         }
 
+        /// <summary>
+        /// Metodo que Obtiene todos los campos de una Minuta
+        /// </summary>
+        /// <param name="elProyecto">id del proyecto asociado a la minuta</param>
+        /// <param name="codigoMinuta">codigo de la minuta a consultar</param>
+        /// <returns>Retorna el Objeto Minuta</returns>
         public Minuta obtenerMinuta(Proyecto elProyecto, int codigoMinuta)
         {
-       
             List<int> invo = new List<int>();
-            List<Usuario> usuarios = new List<Usuario>();
-            List<Usuario> usuarios1 = new List<Usuario>();
-            List<Acuerdo> listaAcuerdos = new List<Acuerdo>();
+            usuarios = new List<Usuario>();
+            contactos = new List<Contacto>();
+            listaAcuerdos = new List<Acuerdo>();
             try
             {
                 minuta = minutaDatos.ConsultarMinutaBD(codigoMinuta);
                 usuarios.Clear();
                 invo = involucrados.ConsultarInvolucrado(RecursosLogicaModulo8.ProcedureConsultarUsuarioMinuta
                     , RecursosLogicaModulo8.AtributoAcuerdoUsuario, RecursosLogicaModulo8.ParametroIDMinuta, int.Parse(minuta.Codigo));
-                foreach (int i in invo)
+                    if (invo.Count != 0)
+                    {
+                        foreach (int i in invo)
+                        {
+                            usuarios.Add(involucrados.ConsultarUsuarioMinutas(i));
+                        }
+                        minuta.ListaUsuario = usuarios;
+                    }
+                invo.Clear();
+                invo = involucrados.ConsultarInvolucrado(RecursosLogicaModulo8.ProcedureConsultarContactoMinuta,
+                    RecursosLogicaModulo8.AtributoAcuerdoContacto, RecursosLogicaModulo8.ParametroIDMinuta,int.Parse(minuta.Codigo));
+                if (invo.Count != 0)
                 {
-                    usuarios.Add(involucrados.ConsultarUsuarioMinutas(i));
+                    foreach (int i in invo)
+                    {
+                        contactos.Add(involucrados.ConsultarContactoMinutas(i));
+                    }
+                    minuta.ListaContacto = contactos;
                 }
-                minuta.ListaUsuario = usuarios;
                 minuta.ListaPunto = puntos.ConsultarPuntoBD(int.Parse(minuta.Codigo));
 
                 listaAcuerdos = acuerdos.ConsultarAcuerdoBD(int.Parse(minuta.Codigo));
+                usuarios.Clear();
+                contactos.Clear();
                 foreach (Acuerdo acu in listaAcuerdos)
                 {
 
                     invo = involucrados.ConsultarInvolucrado(RecursosLogicaModulo8.ProcedureConsultarUsuarioAcuerdo
                         , RecursosLogicaModulo8.AtributoAcuerdoUsuario, RecursosLogicaModulo8.ParametroIDAcuerdo, acu.Codigo);
-                    foreach (int i in invo)
+                        if (invo.Count != 0)
+                        {
+                            foreach (int i in invo)
+                            {
+                                usuarios.Add(involucrados.ConsultarUsuarioMinutas(i));
+                            }
+                            acu.ListaUsuario = usuarios;
+                        }
+
+                    invo.Clear();
+                    invo = involucrados.ConsultarInvolucrado(RecursosLogicaModulo8.ProcedureConsultarContactoMinuta,
+                    RecursosLogicaModulo8.AtributoAcuerdoContacto, RecursosLogicaModulo8.ParametroIDMinuta,int.Parse(minuta.Codigo));
+
+                    if (invo.Count != 0)
                     {
-                        usuarios1.Add(involucrados.ConsultarUsuarioMinutas(i));
+                        foreach (int i in invo)
+                        {
+                            contactos.Add(involucrados.ConsultarContactoMinutas(i));
+                        }
+                        acu.ListaContacto = contactos;
                     }
-                    acu.ListaUsuario = usuarios1;
                 }
                 minuta.ListaAcuerdo = listaAcuerdos;
                 return minuta;
@@ -138,117 +183,197 @@ namespace LogicaNegociosTotem.Modulo8
 
         public List<Usuario> ListaUsuario(Proyecto elProyecto)
         {
-            List<Usuario> ListaUsuario = new List<Usuario>()
+            List<int> numInvolucrados = new List<int>();
+            usuarios= new List<Usuario>();
+            try
             {
-                new Usuario()
+                numInvolucrados = involucrados.ConsultarInvolucrado(RecursosLogicaModulo8.ProcedureUsuarioProyecto,
+                    RecursosLogicaModulo8.AtributoUsuario,
+                    RecursosLogicaModulo8.ParametroIdProyecto, elProyecto.Codigo);
+                if (numInvolucrados != null)
                 {
-                    idUsuario = 1,
-                    nombre = "César",
-                    apellido = "Contreras",
-                    cargo = "Desarrollador"
-                },
-                new Usuario()
-                {
-                    idUsuario = 2,
-                    nombre = "María",
-                    apellido = "Vargas",
-                    cargo = "Desarrollador"
-                },
-                new Usuario()
-                {
-                    idUsuario = 3,
-                    nombre = "Jonathan",
-                    apellido = "González",
-                    cargo = "DBA"
+                    foreach (int i in numInvolucrados)
+                    {
+                        usuarios.Add(involucrados.ConsultarUsuarioMinutas(i));
+                    }
                 }
-            };
 
-            return ListaUsuario;
+                return usuarios;
+            }
+
+            catch (NullReferenceException ex)
+            {
+
+                throw new BDMinutaException(RecursosLogicaModulo8.Codigo_ExcepcionNullReference,
+                    RecursosLogicaModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            catch (ExceptionTotemConexionBD ex)
+            {
+
+                throw new ExceptionTotemConexionBD(RecursosLogicaModulo8.Codigo,
+                    RecursosLogicaModulo8.Mensaje, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosLogicaModulo8.Codigo_ExcepcionSql,
+                    RecursosLogicaModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosLogicaModulo8.Codigo_ExcepcionParametro,
+                    RecursosLogicaModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosLogicaModulo8.Codigo_ExcepcionAtributo,
+                    RecursosLogicaModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
+            catch (Exception ex)
+            {
+                throw new BDMinutaException(RecursosLogicaModulo8.Codigo_ExcepcionGeneral,
+                   RecursosLogicaModulo8.Mensaje_ExcepcionGeneral, ex);
+
+            }
+
+        }
+
+        public List<Contacto> ListaContacto(Proyecto elProyecto)
+        {
+            List<int> numInvolucrados = new List<int>();
+            contactos = new List<Contacto>();
+            try
+            {
+                numInvolucrados = involucrados.ConsultarInvolucrado(RecursosLogicaModulo8.ProcedureContactoProyecto, RecursosLogicaModulo8.AtributoContacto,
+                    RecursosLogicaModulo8.ParametroIdProyecto, elProyecto.Codigo);
+                if (numInvolucrados != null)
+                {
+                    foreach (int i in numInvolucrados)
+                    {
+                        contactos.Add(involucrados.ConsultarContactoMinutas(i));
+                    }
+                }
+                return contactos;
+            }
+            catch (NullReferenceException ex)
+            {
+
+                throw new BDMinutaException(RecursosLogicaModulo8.Codigo_ExcepcionNullReference,
+                    RecursosLogicaModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            catch (ExceptionTotemConexionBD ex)
+            {
+
+                throw new ExceptionTotemConexionBD(RecursosLogicaModulo8.Codigo,
+                    RecursosLogicaModulo8.Mensaje, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosLogicaModulo8.Codigo_ExcepcionSql,
+                    RecursosLogicaModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosLogicaModulo8.Codigo_ExcepcionParametro,
+                    RecursosLogicaModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosLogicaModulo8.Codigo_ExcepcionAtributo,
+                    RecursosLogicaModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
+            catch (Exception ex)
+            {
+                throw new BDMinutaException(RecursosLogicaModulo8.Codigo_ExcepcionGeneral,
+                   RecursosLogicaModulo8.Mensaje_ExcepcionGeneral, ex);
+
+            }
         }
 
         public string GuardarMinuta(Proyecto elProyecto, Minuta laMinuta)
         {
-            return "Completado";
-        }
-
-        public Minuta obtenerMinutaPrueba(Proyecto elProyecto, int codigoMinuta)
-        {
-            //Prueba Minuta Cable
-            Minuta minuta = new Minuta()
+            involucrados = new BDInvolucrados();
+            usuarios = new List<Usuario>();
+            contactos = new List<Contacto>();
+            minutaDatos.AgregarMinuta(laMinuta);
+            try
             {
-                Codigo = "1",
-                Motivo = "Reunión Skype",
-                Fecha = new DateTime(2015, 04, 25, 15, 35, 00),
-                Observaciones = "nada",
-                ListaUsuario = new List<Usuario>()
+                foreach (Punto pun in laMinuta.ListaPunto)
                 {
-                    new Usuario()
-                    {
-                        idUsuario = 1,
-                        nombre = "César",
-                        apellido = "Contreras",
-                        cargo = "Desarrollador"
-                    },
-                    new Usuario()
-                    {
-                        idUsuario = 2,
-                        nombre = "María",
-                        apellido = "Vargas",
-                        cargo = "Desarrollador"
-                    },
-                    new Usuario()
-                    {
-                        idUsuario = 3,
-                        nombre = "Jonathan",
-                        apellido = "González",
-                        cargo = "DBA"
-                    }
-                },
-                ListaPunto = new List<Punto>()
+                    puntos.AgregarPuntoBD(pun);
+                }
+
+                foreach (Acuerdo acu in laMinuta.ListaAcuerdo)
                 {
-                    new Punto()
+                    acuerdos.AgregarAcuerdosBD(acu, elProyecto.Codigo);
+                    usuarios = acu.ListaUsuario;
+                    if (usuarios != null)
                     {
-                        Codigo = 1,
-                        Desarrollo = "Esta es una Prueba 1",
-                        Titulo = "Título Prueba 1"                    
-                    },
-                    new Punto()
-                    {
-                        Codigo = 2,
-                        Desarrollo = "Esta es una Prueba 2",
-                        Titulo = "Título Prueba 2"                    
-                    }
-                },
-                ListaAcuerdo = new List<Acuerdo>()
-                {
-                    new Acuerdo()
-                    {
-                        Codigo = 1,
-                        Fecha = new DateTime(2015, 04, 29),
-                        Compromiso = "Compromiso Nro 1",
-                        ListaUsuario = new List<Usuario>()
+                        foreach (Usuario usu in usuarios)
                         {
-                            new Usuario()
-                            {
-                                idUsuario = 2,
-                                nombre = "María",
-                                apellido = "Vargas",
-                                cargo = "Desarrollador"
-                            },
-                            new Usuario()
-                            {
-                                idUsuario = 3,
-                                nombre = "Jonathan",
-                                apellido = "González",
-                                cargo = "DBA"
-                            }
+                            involucrados.AgregarUsuarioEnAcuerdo(usu, elProyecto.Codigo);
+                        }
+                    }
+                    contactos = acu.ListaContacto;
+                    if (contactos != null)
+                    {
+                        foreach (Contacto con in contactos)
+                        {
+                            involucrados.AgregarContactoEnAcuerdo(con, elProyecto.Codigo);
                         }
                     }
                 }
+                return "Completado";
+            }
+            catch (NullReferenceException ex)
+            {
 
-            };
-            //Fin Prueba Minuta
-            return minuta;
+                throw new BDMinutaException(RecursosLogicaModulo8.Codigo_ExcepcionNullReference,
+                    RecursosLogicaModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            catch (ExceptionTotemConexionBD ex)
+            {
+
+                throw new ExceptionTotemConexionBD(RecursosLogicaModulo8.Codigo,
+                    RecursosLogicaModulo8.Mensaje, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosLogicaModulo8.Codigo_ExcepcionSql,
+                    RecursosLogicaModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosLogicaModulo8.Codigo_ExcepcionParametro,
+                    RecursosLogicaModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosLogicaModulo8.Codigo_ExcepcionAtributo,
+                    RecursosLogicaModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
+            catch (Exception ex)
+            {
+                throw new BDMinutaException(RecursosLogicaModulo8.Codigo_ExcepcionGeneral,
+                   RecursosLogicaModulo8.Mensaje_ExcepcionGeneral, ex);
+
+            }
+        }
+
+        public string ModificarMinuta(Proyecto elProyecto, Minuta laMinuta)
+        {
+            
+
+            
+            return "Completado";
         }
     }
 }

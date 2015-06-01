@@ -92,6 +92,7 @@ public partial class GUI_Modulo7_EditarPerfil : System.Web.UI.Page
                                     usuario.username = this.input_usuario.Value;
                                     usuario.nombre = this.input_nombre.Value;
                                     usuario.apellido = this.input_apellido.Value;
+                                    usuario.clave = nuevaClave;
                                     usuario.preguntaSeguridad = this.input_pregunta.Value;
                                     usuario.respuestaSeguridad = this.input_respuesta.Value;
                                     usuario.correo = this.input_correo.Value;

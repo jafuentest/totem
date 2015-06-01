@@ -102,6 +102,18 @@ namespace LogicaNegociosTotem.Modulo7
             BDUsuario conexion = new BDUsuario();
             return conexion.ModificarUsuario(elUsuario);
         }
+        /// <summary>
+        /// Se conecta con la capa de datos para eliminar un usuario almacenado
+        /// </summary>
+        /// <param name="userName">usuario a eliminar</param>
+        /// <returns>returna boolean en caso de que sea exitoso</returns>
+        public void EliminarManejador(string userName)
+        {
+            BDUsuario conexion = new BDUsuario();
+            if (conexion.EliminarUsuario(userName) == false)
+                throw new EliminacionUsuarioExcepcion();
+
+        }
         /// <summary> Obtiene una lista de todos los usuarios que existen en el sistema </summary>
         /// <returns>Regresa una lista de usuarios de la BD</returns>
         public List<Usuario> listar()

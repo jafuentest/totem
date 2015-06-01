@@ -47,6 +47,7 @@ public partial class GUI_Modulo8_ModificarMinuta : System.Web.UI.Page
         LogicaMinuta logicaMinuta = new LogicaMinuta();
         Proyecto elProyecto = new Proyecto() { Codigo = "1" };
         List<Usuario> listaUsuario = logicaMinuta.ListaUsuario(elProyecto);
+        List<Contacto> listaContacto = logicaMinuta.ListaContacto(elProyecto);
         var output = JsonConvert.SerializeObject(listaUsuario);
         return output;
     }
@@ -61,7 +62,7 @@ public partial class GUI_Modulo8_ModificarMinuta : System.Web.UI.Page
         int codMinuta = Int32.Parse(codigoMinuta);
         LogicaMinuta logicaMinuta = new LogicaMinuta();
         Proyecto elProyecto = new Proyecto() { Codigo = "1" };
-        Minuta minuta = logicaMinuta.obtenerMinutaPrueba(elProyecto, codMinuta);
+        Minuta minuta = logicaMinuta.obtenerMinuta(elProyecto, codMinuta);
         var output = JsonConvert.SerializeObject(minuta);
         return output;
     }
@@ -132,7 +133,7 @@ public partial class GUI_Modulo8_ModificarMinuta : System.Web.UI.Page
 
         LogicaMinuta logicaMinuta = new LogicaMinuta();
         Proyecto elProyecto = new Proyecto() { Codigo = "1" };
-        string mensaje = logicaMinuta.GuardarMinuta(elProyecto, minuta);
+        string mensaje = logicaMinuta.ModificarMinuta(elProyecto, minuta);
         return mensaje;
     }
 }

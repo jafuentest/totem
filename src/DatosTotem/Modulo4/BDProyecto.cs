@@ -261,7 +261,7 @@ namespace DatosTotem.Modulo4
         {
             try
             {
-                //parametros para insertar un proyecto
+                //parametros para consultar un proyecto
                 List<Parametro> parametros = new List<Parametro>();
                 Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, codigo, false);
                 parametros.Add(parametro);
@@ -320,7 +320,7 @@ namespace DatosTotem.Modulo4
             try
             {
 
-                //parametros para insertar un proyecto
+                //parametros para consultar un proyecto
                 List<Parametro> parametros = new List<Parametro>();
                 Parametro parametro = new Parametro(RecursosBDModulo4.ParametroUsuario, SqlDbType.VarChar, username, false);
                 parametros.Add(parametro);
@@ -475,6 +475,176 @@ namespace DatosTotem.Modulo4
 
         #endregion
 
+        #region Consultar Requerimientos
+
+        /// <summary>
+        /// Método para consultar los requerimientos finalizados de un proyecto en la bd
+        /// </summary>
+        /// <param name="codigo">codigo del proyecto para buscar sus requerimientos </param>
+        /// <returns>Retrorna los requerimientos finalizados</returns>
+        public static List<Requerimiento> ConsultarRequerimientosFinalizadosPorProyecto(String codigo)
+        {
+            try
+            {
+
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro parametro = new Parametro(RecursosBDModulo4.ParametroUsuario, SqlDbType.VarChar, codigo, false);
+                parametros.Add(parametro);
+
+                BDConexion con = new BDConexion();
+                DataTable resultados = con.EjecutarStoredProcedureTuplas(RecursosBDModulo4.ProcedimientoConsultarRequerimientosFinalizadosPorProyecto, parametros);
+
+
+                if (resultados.Rows.Count > 0)
+                {
+                    
+
+                    List<Requerimiento> listaRequerimientos =
+                       new List<Requerimiento>();
+
+                    foreach (DataRow fila in resultados.Rows)
+                    {
+                        listaRequerimientos.Add(
+                            new DominioTotem.Requerimiento(
+                               Convert.ToInt32(fila[DatosTotem.Modulo5.RecursosBDModulo5.ATRIBUTO_REQ_ID]),
+                               fila[DatosTotem.Modulo5.RecursosBDModulo5.ATRIBUTO_REQ_CODIGO].ToString(),
+                               fila[DatosTotem.Modulo5.RecursosBDModulo5.ATRIBUTO_REQ_DESCRIPCION].ToString(),
+                               fila[DatosTotem.Modulo5.RecursosBDModulo5.ATRIBUTO_REQ_TIPO].ToString(),
+                               fila[DatosTotem.Modulo5.RecursosBDModulo5.ATRIBUTO_REQ_PRIORIDAD].ToString(),
+                               fila[DatosTotem.Modulo5.RecursosBDModulo5.ATRIBUTO_REQ_ESTATUS].ToString()
+                            )
+                        );
+                    }
+
+                    return listaRequerimientos;
+                }
+                else
+                {
+
+                    throw new ExcepcionesTotem.Modulo4.RequerimientosInexistentesException(RecursosBDModulo4.CodigoRequerimientosInexistentes,
+                     RecursosBDModulo4.MensajeRequerimientosInexistentes, new Exception());
+
+                }
+
+            }
+            catch (ExcepcionesTotem.Modulo4.RequerimientosInexistentesException e)
+            {
+                throw e;
+            }
+        }
+
+        /// <summary>
+        /// Método para consultar los requerimientos funcionales de un proyecto en la bd
+        /// </summary>
+        /// <param name="codigo">codigo del proyecto para buscar sus requerimientos </param>
+        /// <returns>Retrorna los requerimientos funcionales</returns>
+        public static List<Requerimiento> ConsultarRequerimientosFuncionalesPorProyecto(String codigo)
+        {
+            try
+            {
+
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro parametro = new Parametro(RecursosBDModulo4.ParametroUsuario, SqlDbType.VarChar, codigo, false);
+                parametros.Add(parametro);
+
+                BDConexion con = new BDConexion();
+                DataTable resultados = con.EjecutarStoredProcedureTuplas(RecursosBDModulo4.ProcedimientoConsultarRequerimientosFuncionalesPorProyecto, parametros);
+
+
+                if (resultados.Rows.Count > 0)
+                {
+                    List<Requerimiento> listaRequerimientos =
+                      new List<Requerimiento>();
+
+                    foreach (DataRow fila in resultados.Rows)
+                    {
+                        listaRequerimientos.Add(
+                            new DominioTotem.Requerimiento(
+                               Convert.ToInt32(fila[DatosTotem.Modulo5.RecursosBDModulo5.ATRIBUTO_REQ_ID]),
+                               fila[DatosTotem.Modulo5.RecursosBDModulo5.ATRIBUTO_REQ_CODIGO].ToString(),
+                               fila[DatosTotem.Modulo5.RecursosBDModulo5.ATRIBUTO_REQ_DESCRIPCION].ToString(),
+                               fila[DatosTotem.Modulo5.RecursosBDModulo5.ATRIBUTO_REQ_TIPO].ToString(),
+                               fila[DatosTotem.Modulo5.RecursosBDModulo5.ATRIBUTO_REQ_PRIORIDAD].ToString(),
+                               fila[DatosTotem.Modulo5.RecursosBDModulo5.ATRIBUTO_REQ_ESTATUS].ToString()
+                            )
+                        );
+                    }
+
+                    return listaRequerimientos;
+                }
+                else
+                {
+
+                    throw new ExcepcionesTotem.Modulo4.RequerimientosInexistentesException(RecursosBDModulo4.CodigoRequerimientosInexistentes,
+                     RecursosBDModulo4.MensajeRequerimientosInexistentes, new Exception());
+
+                }
+
+            }
+            catch (ExcepcionesTotem.Modulo4.RequerimientosInexistentesException e)
+            {
+                throw e;
+            }
+        }
+
+
+        /// <summary>
+        /// Método para consultar los requerimientos no funcionales de un proyecto en la bd
+        /// </summary>
+        /// <param name="codigo">codigo del proyecto para buscar sus requerimientos </param>
+        /// <returns>Retrorna los requerimientos no funcionales</returns>
+        public static List<Requerimiento> ConsultarRequerimientosNoFuncionalesPorProyecto(String codigo)
+        {
+            try
+            {
+
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro parametro = new Parametro(RecursosBDModulo4.ParametroUsuario, SqlDbType.VarChar, codigo, false);
+                parametros.Add(parametro);
+
+                BDConexion con = new BDConexion();
+                DataTable resultados = con.EjecutarStoredProcedureTuplas(RecursosBDModulo4.ProcedimientoConsultarRequerimientosNoFuncionalesPorProyecto, parametros);
+
+
+                if (resultados.Rows.Count > 0)
+                {
+                    List<Requerimiento> listaRequerimientos =
+                        new List<Requerimiento>();
+
+                    foreach (DataRow fila in resultados.Rows)
+                    {
+                        listaRequerimientos.Add(
+                            new DominioTotem.Requerimiento(
+                               Convert.ToInt32(fila[DatosTotem.Modulo5.RecursosBDModulo5.ATRIBUTO_REQ_ID]),
+                               fila[DatosTotem.Modulo5.RecursosBDModulo5.ATRIBUTO_REQ_CODIGO].ToString(),
+                               fila[DatosTotem.Modulo5.RecursosBDModulo5.ATRIBUTO_REQ_DESCRIPCION].ToString(),
+                               fila[DatosTotem.Modulo5.RecursosBDModulo5.ATRIBUTO_REQ_TIPO].ToString(),
+                               fila[DatosTotem.Modulo5.RecursosBDModulo5.ATRIBUTO_REQ_PRIORIDAD].ToString(),
+                               fila[DatosTotem.Modulo5.RecursosBDModulo5.ATRIBUTO_REQ_ESTATUS].ToString()
+                            )
+                        );
+                    }
+
+                    return listaRequerimientos;
+                }
+                else
+                {
+
+                    throw new ExcepcionesTotem.Modulo4.RequerimientosInexistentesException(RecursosBDModulo4.CodigoRequerimientosInexistentes,
+                     RecursosBDModulo4.MensajeRequerimientosInexistentes, new Exception());
+
+                }
+
+            }
+            catch (ExcepcionesTotem.Modulo4.RequerimientosInexistentesException e)
+            {
+                throw e;
+            }
+        }
+
+
+        #endregion 
+
         #region Mostrar Clientes
 
 
@@ -489,7 +659,6 @@ namespace DatosTotem.Modulo4
             try
             {
 
-                //parametros para insertar un proyecto
                 List<Parametro> parametros = new List<Parametro>();
                 BDConexion con = new BDConexion();
                 DataTable resultados = con.EjecutarStoredProcedureTuplas(RecursosBDModulo4.ProcedimientoConsultarTodosClientesNaturales, parametros);
@@ -523,7 +692,6 @@ namespace DatosTotem.Modulo4
             try
             {
 
-                //parametros para insertar un proyecto
                 List<Parametro> parametros = new List<Parametro>();
                 BDConexion con = new BDConexion();
                 DataTable resultados = con.EjecutarStoredProcedureTuplas(RecursosBDModulo4.ProcedimientoConsultarTodosClientesJuridicos, parametros);
@@ -564,7 +732,7 @@ namespace DatosTotem.Modulo4
         {
             
 
-                //parametros para insertar un proyecto
+                //parametros para buscar proyectos
                 List<Parametro> parametros = new List<Parametro>();
                 Parametro parametro = new Parametro(RecursosBDModulo4.ParametroBusqueda, SqlDbType.VarChar, busqueda, false);
                 parametros.Add(parametro);
@@ -597,7 +765,6 @@ namespace DatosTotem.Modulo4
         {
 
 
-            //parametros para insertar un proyecto
             List<Parametro> parametros = new List<Parametro>();
             Parametro parametro = new Parametro(RecursosBDModulo4.ParametroBusqueda, SqlDbType.VarChar, busqueda, false);
             parametros.Add(parametro);
@@ -629,7 +796,6 @@ namespace DatosTotem.Modulo4
         {
 
 
-            //parametros para insertar un proyecto
             List<Parametro> parametros = new List<Parametro>();
             Parametro parametro = new Parametro(RecursosBDModulo4.ParametroBusqueda, SqlDbType.VarChar, busqueda, false);
             parametros.Add(parametro);

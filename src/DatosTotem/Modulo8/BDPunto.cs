@@ -230,7 +230,7 @@ namespace DatosTotem.Modulo8
         /// <param name="punto">Objeto Minuta</param>
         /// <param name="idMinuta">Id de la Minuta relcionada</param>
         /// <returns>Retorna un boolean para saber si se realizo con éxito la operación</returns>
-        public Boolean AgregarPuntoBD(Punto punto, int idMinuta)
+        public Boolean AgregarPuntoBD(Punto punto)
         {
             con = new BDConexion();
             SqlConnection conect = con.Conectar();
@@ -242,16 +242,13 @@ namespace DatosTotem.Modulo8
 
                 sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroTituloPunto, SqlDbType.VarChar));
                 sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroDesarrolloPunto, SqlDbType.VarChar));
-                sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroMinuta, SqlDbType.Int));
 
                 sqlcom.Parameters[RecursosBDModulo8.ParametroTituloPunto].Value = punto.Titulo;
-                sqlcom.Parameters[RecursosBDModulo8.AtributoDesarrolloPunto].Value = punto.Desarrollo;
-                sqlcom.Parameters[RecursosBDModulo8.ParametroMinuta].Value = idMinuta;
+                sqlcom.Parameters[RecursosBDModulo8.ParametroDesarrolloPunto].Value = punto.Desarrollo;
 
                 conect.Open();
                 sqlcom.ExecuteNonQuery();
                 return true;
-
             }
             catch (NullReferenceException ex)
             {
@@ -295,6 +292,7 @@ namespace DatosTotem.Modulo8
                 con.Desconectar(conect);
 
             }
+
         }
 
         /// <summary>

@@ -51,6 +51,8 @@
     <Compile Include="Modulo2\ClienteInexistenteException.cs" />
     <Compile Include="Modulo2\ClienteDatosException.cs" />
     <Compile Include="Modulo2\ClienteLogicaException.cs" />
+    <Compile Include="Modulo2\FormatoIncorrectoException.cs" />
+    <Compile Include="Modulo2\OperacionInvalidaException.cs" />
     <Compile Include="Modulo3\ContactoSinIDException.cs" />
     <Compile Include="Modulo3\InvolucradoRepetidoException.cs" />
     <Compile Include="Modulo3\ListaSinInvolucradosException.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="Modulo7\ClaveNoValidaException.cs" />
     <Compile Include="Modulo7\CorreoInvalidoException.cs" />
     <Compile Include="Modulo7\CorreoRepeticoException.cs" />
+    <Compile Include="Modulo7\EliminacionUsuarioExcepcion.cs" />
     <Compile Include="Modulo7\RegistroUsuarioFallidoException.cs" />
     <Compile Include="Modulo7\UserNameRepetidoException.cs" />
     <Compile Include="Modulo8\ExcepcionesDeDatos\AtributoIncorrectoException.cs" />

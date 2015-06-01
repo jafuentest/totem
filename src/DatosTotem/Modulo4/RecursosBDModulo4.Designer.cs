@@ -178,6 +178,15 @@ namespace DatosTotem.Modulo4 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to T_04_007.
+        /// </summary>
+        internal static string CodigoRequerimientosInexistentes {
+            get {
+                return ResourceManager.GetString("CodigoRequerimientosInexistentes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No se puede crear el borrar.
         /// </summary>
         internal static string MensajeBorrarArchivo {
@@ -228,6 +237,15 @@ namespace DatosTotem.Modulo4 {
         internal static string MensajeInvolucradosInexistentes {
             get {
                 return ResourceManager.GetString("MensajeInvolucradosInexistentes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No hay requerimentos para el proyecto.
+        /// </summary>
+        internal static string MensajeRequerimientosInexistentes {
+            get {
+                return ResourceManager.GetString("MensajeRequerimientosInexistentes", resourceCulture);
             }
         }
         
@@ -418,6 +436,33 @@ namespace DatosTotem.Modulo4 {
         internal static string ProcedimientoConsultarProyecto {
             get {
                 return ResourceManager.GetString("ProcedimientoConsultarProyecto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M5_ConsultarRequerimientosFinalizadosPorProyecto.
+        /// </summary>
+        internal static string ProcedimientoConsultarRequerimientosFinalizadosPorProyecto {
+            get {
+                return ResourceManager.GetString("ProcedimientoConsultarRequerimientosFinalizadosPorProyecto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M5_ConsultarRequerimientosFuncionalesPorProyecto.
+        /// </summary>
+        internal static string ProcedimientoConsultarRequerimientosFuncionalesPorProyecto {
+            get {
+                return ResourceManager.GetString("ProcedimientoConsultarRequerimientosFuncionalesPorProyecto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M5_ConsultarRequerimientosNoFuncionalesPorProyecto.
+        /// </summary>
+        internal static string ProcedimientoConsultarRequerimientosNoFuncionalesPorProyecto {
+            get {
+                return ResourceManager.GetString("ProcedimientoConsultarRequerimientosNoFuncionalesPorProyecto", resourceCulture);
             }
         }
         

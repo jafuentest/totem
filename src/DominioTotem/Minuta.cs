@@ -14,6 +14,7 @@ namespace DominioTotem
         private string motivo;
         private string observaciones;
         private List<Usuario> usuario;
+        private List<Contacto> contacto;
         private List<Punto> punto;
         private List<Acuerdo> acuerdo; 
         #endregion
@@ -39,8 +40,9 @@ namespace DominioTotem
         }
 
         public Minuta(DateTime fecha, string motivo, string observaciones, List<Usuario> usuario,
-           List<Punto> punto)
+           List<Contacto> contacto, List<Punto> punto)
         {
+            this.contacto = contacto;
             this.fecha = fecha;
             this.motivo = motivo;
             this.observaciones = observaciones;
@@ -48,9 +50,10 @@ namespace DominioTotem
             this.punto = punto;
         }
 
-        public Minuta(string codigo, DateTime fecha, string motivo, string observaciones, List<Usuario> usuario, 
-            List<Punto> punto, List<Acuerdo> acuerdo)
+        public Minuta(string codigo, DateTime fecha, string motivo, string observaciones, List<Usuario> usuario,
+            List<Contacto> contacto, List<Punto> punto, List<Acuerdo> acuerdo)
         {
+            this.contacto = contacto;
             this.codigo = codigo;
             this.fecha = fecha;
             this.motivo = motivo;
@@ -91,6 +94,12 @@ namespace DominioTotem
         {
             get { return this.usuario; }
             set { this.usuario = value; }
+        }
+
+        public List<Contacto> ListaContacto
+        {
+            get { return this.contacto; }
+            set { this.contacto = value; }
         }
 
         public List<Punto> ListaPunto

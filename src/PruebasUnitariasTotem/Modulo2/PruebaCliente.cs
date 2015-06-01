@@ -107,6 +107,9 @@ namespace PruebasUnitariasTotem.Modulo2
             //de la empresa
             string nombre = "Veneden";
             clienteJuridico = new ClienteJuridico(nombre);
+            Lugar direccion = new Lugar();
+            direccion.NombreLugar = "Avenida La Salle con cruce calle villaflor, frente al McDonald's"
+                               + ",La Florida.Caracas.Venezuela";
             Assert.IsNotNull(clienteJuridico);
  
             //Rif de la Empresa
@@ -115,8 +118,7 @@ namespace PruebasUnitariasTotem.Modulo2
             Assert.IsNotNull(clienteJuridico);
 
             //RIF,Nombre y Dirección de la Empresa
-            string direccion = "Avenida La Salle con cruce calle villaflor, frente al McDonald's"
-                               +",La Florida.Caracas.Venezuela";
+            
             clienteJuridico = new ClienteJuridico(rif, nombre,direccion);
             Assert.IsNotNull(clienteJuridico);
 

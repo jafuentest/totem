@@ -52,6 +52,14 @@ namespace PruebasUnitariasTotem.Modulo7
             Assert.IsTrue(baseDeDatosUsuario.ModificarUsuario(usuario));
         }
         [Test]
+        public void PruebaEliminarUsuario()
+        {
+            Usuario usuario = new Usuario("AlfaPrueba", "5563albert", "alberto07", "sdfgh", "Administrador", "rodarge33@hotmail.com", "mi perro", "dexter", "Desarrollador");
+            Boolean seRealizo = baseDeDatosUsuario.RegitrarUsuario(usuario);
+            baseDeDatosUsuario.EliminarUsuario(usuario.username);
+            Assert.IsTrue(baseDeDatosUsuario.usernameUnico(usuario.username));
+        }
+        [Test]
         public void PruebaListaUsuario()
         {
             Assert.IsTrue(baseDeDatosUsuario.ObtenerListaUsuario().Count > 0);

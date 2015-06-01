@@ -55,38 +55,36 @@
 
                 <h2>Datos de localización</h2>
                 <div class="form-group">
-                    <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6">
+                   
+                        
+                            <div id="div_pais" class="col-sm-12 col-md-12 col-lg-12">
                         <div class="dropdown" runat="server" id="contenedorComboPais">
-                            <select id="comboPais" runat="server">
-                                
-                                <option value="0" runat="server" selected="selected">Seleccione País..</option>
-                                <option value="1" runat="server">Venezuela</option>
-                            </select>
+                            <asp:DropDownList ID="comboPais"  class="btn btn-default dropdown-toggle" runat="server" OnSelectedIndexChanged="CbCambioAEstado"  AutoPostBack="true">
+                                    </asp:DropDownList>
                         </div>
                     </div>
-                    <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
+                        </div>
+                    <div class="form-group">
+                    <div id="div_estado" class="col-sm-12 col-md-12 col-lg-12">
                         <div class="dropdown" runat="server" id="contenedorComboEstado">
-                             <select id="comboEstado" runat="server">
-                                
-                                <option value="0" runat="server" selected="selected">Seleccione Estado..</option>
-                                <option value="2" runat="server">Dtto Capital</option>
-                            </select>
+                            <asp:DropDownList ID="comboEstado"  class="btn btn-default dropdown-toggle" runat="server" OnSelectedIndexChanged="CbCambioACiudad" AutoPostBack="true">
+                                    </asp:DropDownList>
                         </div>
                     </div>
+                   </div>
                 </div>
+            <div class="form-group"></div>
                 <div class="form-group">
-                    
-                        <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
-                            <div class="dropdown" runat="server" id="contenedorComboCiudad" >
-                                <select id="comboCiudad" runat="server" >
-                                
-                                <option value="0" runat="server" selected="selected">Seleccione Ciudad..</option>
-                                <option value="4" runat="server">Caracas</option>
-                            </select>
-                            </div>
+                    <div class="dropdown">
+                    <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
+                         <div class="dropdown" runat="server" id="Div1">
+                            <asp:DropDownList ID="comboCiudad"  class="btn btn-default dropdown-toggle" runat="server" OnSelectedIndexChanged="CbCargarCodigoPostal"  AutoPostBack="true">
+                                    </asp:DropDownList>
                         </div>
-                    
+                    </div>
+                   </div>
                 </div>
+
 
                 <div class="form-group">
                     <div id="div_direccionEmpresa" class="col-sm-12 col-md-12 col-lg-12">
@@ -140,13 +138,8 @@
                                
                                     <div class="btn-group col-sm-10 col-md-10 col-lg-10">
                                         <div id="contenedorCargo" runat="server" class="dropdown"> 
-                                        <select id="comboCargo" runat="server">
-                                              <option runat="server" value="0">Seleccione Cargo..</option>
-                                              <option runat="server" value="1">Gerente</option>
-                                              <option runat="server" value="2">Desarrollador</option> 
-                                            <option runat="server" value="3">Diseñador</option> 
-                                            <option runat="server" value="4">Arquitecto de Solucion</option>                                      
-                                        </select>
+                                            <asp:DropDownList ID="comboCargo"  class="btn btn-default dropdown-toggle" runat="server"   AutoPostBack="true">
+                                    </asp:DropDownList>
                                        </div>
                                     </div>
                                 </div>
@@ -156,7 +149,7 @@
                             <div class="col-xs-10 form-group"></div>
                             <div class="form-group">
                                 <div class="col-xs-10">
-                                    <input id="telefonoContacto" class="form-control" runat="server" placeholder="Teléfono celular " type="text" />
+                                    <input id="telefonoContacto" class="form-control" runat="server" placeholder="Teléfono celular " type="text" maxlength="11"/>
                                 </div>
                             </div>
                             <div class="col-xs-10 form-group"></div>

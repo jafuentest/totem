@@ -5,9 +5,10 @@ using System.Text;
 
 namespace ExcepcionesTotem.Modulo2
 {
-    class ExcepcionContactosLogica : ExceptionTotem
+   public class OperacionInvalidaException:ExceptionTotem
     {
-        public ExcepcionContactosLogica()
+       
+        public OperacionInvalidaException()
             : base()
         { }
 
@@ -17,23 +18,20 @@ namespace ExcepcionesTotem.Modulo2
         /// </summary>
         /// <param name="mensajeExcepcion">String con la excepcion capturada </param>
 
-        public ExcepcionContactosLogica(string message)
+        public OperacionInvalidaException(string message)
             : base(message)
         {
         }
 
 
-        public ExcepcionContactosLogica(string message, Exception inner)
+        public OperacionInvalidaException(string message, Exception inner)
             : base(message, inner)
         {
         }
 
-        public ExcepcionContactosLogica(string codigo, string message, Exception inner)
+        public OperacionInvalidaException(string codigo, string message, Exception inner)
             : base(codigo, message, inner)
         {
         }
-
-
-
     }
 }

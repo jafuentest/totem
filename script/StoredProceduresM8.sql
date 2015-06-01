@@ -10,9 +10,7 @@ CREATE PROCEDURE Procedure_AgregarMinuta
 AS 
 BEGIN
 		INSERT INTO MINUTA(min_fecha, min_motivo, min_observaciones)
-	    VALUES(@min_fecha ,@min_motivo ,@min_observaciones);
-		SELECT MAX(min_id) as min_id FROM MINUTA
-
+	    VALUES(@min_fecha ,@min_motivo ,@min_observaciones)
 
 END;
 GO
@@ -22,12 +20,11 @@ GO
 CREATE PROCEDURE Procedure_AgregarPunto
 		 
 		@pun_titulo   [varchar] (100),
-		@pun_desarrollo  [varchar] (400),
-		@MINUTA_min_id 	[int]
+		@pun_desarrollo  [varchar] (400)
 AS 
 BEGIN
 		INSERT INTO PUNTO(pun_titulo, pun_desarrollo, MINUTA_min_id)
-	    VALUES(@pun_titulo ,@pun_desarrollo ,@MINUTA_min_id)
+	    VALUES(@pun_titulo ,@pun_desarrollo ,(SELECT MAX(min_id) FROM MINUTA))
 END;
 GO
 
@@ -37,43 +34,38 @@ CREATE PROCEDURE Procedure_AgregarAcuerdo
 		 
 		 
 		@acu_fecha   [date],
-		@acu_desarrollo  [varchar] (300),
-		@MINUTA_min_id 	[int]
+		@acu_desarrollo  [varchar] (300)
 AS 
 BEGIN
 
 		INSERT INTO ACUERDO(acu_fecha, acu_desarrollo, MINUTA_min_id)
-	    VALUES(@acu_fecha, @acu_desarrollo, @MINUTA_min_id);
-
-		SELECT MAX(A.acu_id) as acu_id
-		FROM ACUERDO A
+	    VALUES(@acu_fecha, @acu_desarrollo,	(SELECT MAX(min_id) FROM MINUTA));
 
 END;
 GO
 
+
 CREATE PROCEDURE Procedure_AgregarResponsablesUsuarioDeAcuerdos
-		 
-		@acu_id   [int],
+
 		@usu_id   [int],
-		@pro_id   [int]
+		@pro_id   [varchar](6)
 AS 
 BEGIN
 
 		INSERT INTO ACU_INV(ACUERDO_acu_id,INVOLUCRADOS_USUARIOS_USUARIO_usu_id,INVOLUCRADOS_USUARIOS_PROYECTO_pro_id)
-	    VALUES(@acu_id, @usu_id, (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id));
+	    VALUES((SELECT MAX(acu_id) FROM ACUERDO), @usu_id, (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id))
 END;
 GO
 
 CREATE PROCEDURE Procedure_AgregarResponsablesContactoDeAcuerdos
 		
-		@acu_id   [int],
 		@con_id   [int],
-		@pro_id   [int]
+		@pro_id   [varchar](6)
 AS 
 BEGIN
 
 		INSERT INTO ACU_INV(ACUERDO_acu_id,INVOLUCRADOS_CLIENTES_CONTACTO_con_id,INVOLUCRADOS_CLIENTES_PROYECTO_pro_id)
-	    VALUES(@acu_id, @con_id, (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id));
+	    VALUES((SELECT MAX(acu_id) FROM ACUERDO), @con_id, (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id));
 END;
 GO
 -------------------Procedimiento para Agregar un Involucrado Cliente ----------------------
@@ -167,6 +159,27 @@ AS
  END
 GO
 
+CREATE PROCEDURE Procedure_ConsultarInvolucradosUsuarioProyecto
+
+   @pro_id [varchar](6)
+
+AS
+ BEGIN
+     
+	 SELECT I.USUARIO_usu_id as usu_id FROM INVOLUCRADOS_USUARIOS I WHERE I.PROYECTO_pro_id = (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id);
+ END
+GO
+
+CREATE PROCEDURE Procedure_ConsultarInvolucradosContactoProyecto
+
+   @pro_id [varchar](6)
+
+AS
+ BEGIN
+     
+	 SELECT I.CONTACTO_con_id as con_id FROM INVOLUCRADOS_CLIENTES I WHERE I.PROYECTO_pro_id = (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id);
+ END
+GO
 ------------------- Procedimiento para consultar los responsables tipo contacto de los Acuerdos de la una Minuta
 CREATE PROCEDURE Procedure_ConsultarAcuerdoResponsablesContactoMinuta
 
@@ -219,21 +232,6 @@ AS
  END
 GO
 
------------------ Procedimiento para consultar algunos datos de Contacto --------------------------------------
-/*CREATE PROCEDURE Procedure_ConsultarContactoMinuta
-
-       @acu_id [int],
-	   @pro_id [int]
-AS
- BEGIN
-	
-	SELECT C.con_id, C.con_nombre, C.con_apellido, (SELECT CA.car_nombre FROM CARGO CA, CONTACTO CO
-	                                                WHERE CA.car_id = CO.CARGO_car_id)
-	FROM  CONTACTO C, ACU_INV A
-	WHERE A.ACUERDO_acu_id = @acu_id and A.INVOLUCRADOS_CLIENTES_PROYECTO_pro_id= @pro_id 
-	      and A.INVOLUCRADOS_CLIENTES_CONTACTO_con_id = C.con_id
- END
-GO*/
 
 ----------------- Procedimiento para consultar algunos datos de Usuario --------------------------------------
 CREATE PROCEDURE Procedure_ConsultarUsuarioMinuta

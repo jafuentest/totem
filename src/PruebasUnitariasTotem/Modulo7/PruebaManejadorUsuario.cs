@@ -45,5 +45,13 @@ namespace PruebasUnitariasTotem.Modulo7
             Usuario usuario = new Usuario("albertods", "5563albert", "alberto08", "sdfgh", "Administrador", "rodarge33@hotmail.com", "mi perro", "dexter", "Desarrollador");
             Assert.IsTrue(manejador.ModificarManejador(usuario));
         }
+        [Test]
+        public void PrebaEliminar()
+        {
+            Usuario usuario = new Usuario("argenis1000", "5563albert", "alberto08", "sdfgh", "Administrador", "rodarge3783@hotmail.com", "mi perro", "dexter", "Desarrollador");
+            manejador.RegistrarUsuario(usuario);
+            manejador.EliminarManejador(usuario.username);
+            Assert.IsTrue(manejador.consultarDatos(usuario.username).nombre == "");
+        }
     }
 }

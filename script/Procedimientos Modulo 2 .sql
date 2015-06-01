@@ -40,6 +40,7 @@ DECLARE @idMaxLugar int = 0
 DECLARE @idMaxContacto  int =0
 DECLARE @idMaxTelefono int=0
 DECLARE @idTelefono int = 0
+DECLARE @idDireccionAInsertar int = 0
 
  
 BEGIN
@@ -47,7 +48,10 @@ BEGIN
 select @idLugarDireccion = count(LUG_id) from lugar 
 	 where  LUG_tipo = 'Direccion' and LUGAR_lug_id = @Fklugar;
 
+select @idDireccionAInsertar = LUG_ID from lugar 
+	 where  LUG_tipo = 'Direccion' and LUGAR_lug_id = @Fklugar;
 
+/*Si la dirección es nueva o no existe*/
 if (@idLugarDireccion = 0)
 		begin 
 			select @idMaxLugar = MAX(LUG_id) from lugar;
@@ -56,15 +60,18 @@ if (@idLugarDireccion = 0)
 
 			INSERT INTO lugar VALUES (@idMaxLugar,@nombreDireccion,'Direccion',null,@Fklugar);
 
-			set @idLugarDireccion = @idMaxLugar;
+			set @idDireccionAInsertar =  @idMaxLugar; 
+			
 		end
 
+/*Busco el último id del cliente insertado e inserto 
+el último id + 1*/
 select @idMaxClienteJuridico = Max(cj_id) from CLIENTE_JURIDICO;
 
     set @idMaxClienteJuridico = @idMaxClienteJuridico + 1;
 
     INSERT INTO CLIENTE_JURIDICO(cj_ID, cj_rif, cj_nombre, cj_logo,LUGAR_lug_id)
-    VALUES(@idMaxClienteJuridico, @cj_rif, @nombre, @cj_logo,@Fklugar);
+    VALUES(@idMaxClienteJuridico, @cj_rif, @nombre, @cj_logo,@idDireccionAInsertar);
 
 	
 
@@ -90,6 +97,7 @@ begin
 END;
 GO
  
+ 
 
 ------------------+Modificar Cliente Juridico------------------------------
 -- Método Modificar Cliente Juridico Modifica los datos de la tabla Cliente Juridico segun el id asociado
@@ -98,22 +106,45 @@ CREATE PROCEDURE Procedure_modificarClienteJuridico
 
 	@cj_rif [nvarchar](20),
 	@cj_nombre [nvarchar](60),
-	@cj_logo [nvarchar](60),
-	@fk_lug_lug [int]        
+	@idCiudad int,
+	@nombreDireccion varchar(100)
+
+	     
 
 	AS
 	
+DECLARE @idMaxLugar int = 0
+DECLARE @idLugarDireccion int = 0
+
+
+BEGIN
+
+	select @idLugarDireccion = LUG_id from LUGAR where LUG_nombre = @nombreDireccion and LUG_tipo = 'Direccion' and LUGAR_lug_id = @idCiudad;
+
+	if (@idLugarDireccion = 0)
+		begin 
+			select @idMaxLugar = MAX(LUG_id) from lugar;
+
+			set @idMaxLugar = @idMaxLugar + 1;
+
+			INSERT INTO lugar VALUES (@idMaxLugar,@nombreDireccion,'Direccion',null,@idCiudad);
+
+			set @idLugarDireccion = @idMaxLugar;
+		end
+
 	UPDATE CLIENTE_JURIDICO 
 
 	SET 	
 		 	
 		cj_rif     = @cj_rif,
-		cj_nombre  = @cj_nombre,
-		cj_logo    = @cj_logo,    
-		LUGAR_lug_id  = (SELECT lug_id FROM LUGAR WHERE  lug_id = @fk_lug_lug)
+		cj_nombre  = @cj_nombre,		  
+		LUGAR_lug_id  = @idLugarDireccion
 	WHERE
 		cj_rif = @cj_rif
+END;
 GO
+
+
 
 
 
@@ -122,17 +153,16 @@ GO
  
 
 CREATE PROCEDURE Procedure_consultarDatosClienteJuridico
-@cj_rif   int 
+@cj_rif   varchar(20) 
 
 AS
    
-SELECT  DISTINCT (cj.cj_rif ), cj.cj_nombre as nombre_juridico , 
-	(CONCAT (l1.lug_tipo , ' ', l1.lug_nombre,' ' ,l1.lug_codigoPostal)) as lugar 
-	FROM CLIENTE_JURIDICO cj, Lugar l1, Lugar l2 , lugar l3
-	WHERE cj.cj_rif=@cj_rif 
-		  and cj.LUGAR_lug_id=l1.lug_id 	
-		  and l1.LUGAR_lug_id=l2.lug_id 
-		  and l2.LUGAR_lug_id=l3.lug_id ;
+SELECT  DISTINCT (cj.cj_rif ), 
+		cj.cj_nombre as nombre_juridico,
+		cj.LUGAR_lug_id 
+	
+	FROM CLIENTE_JURIDICO cj
+	WHERE cj.cj_rif=@cj_rif;
 GO		  
 
 ------------------+ClienteConId(string Cli_jur_id):list <cliente_juridico>------------------------------
@@ -195,6 +225,12 @@ BEGIN
 		(SELECT count(cn_cedula) FROM CLIENTE_NATURAL WHERE cn_cedula= @cn_cedula); 	
 END;
 GO
+
+------------------+AgregarClienteNatural(ClienteNatural cn): bool------------------------------
+-- Agrega un nuevo cliente natural
+-- luego de Insertar cliente natural, inserta en contacto los mismos datos.
+
+
 
 ------------------+AgregarClienteNatural(ClienteNatural cn): bool------------------------------
 -- Agrega un nuevo cliente natural
@@ -284,6 +320,7 @@ BEGIN
 END;
 GO
 
+
 /*---------Eliminar Cliente Natural-----------------------------*/
 
 CREATE PROCEDURE Procedure_EliminarClienteNatural
@@ -308,6 +345,7 @@ delete from CLIENTE_NATURAL where  cn_id=@idNatural;
 
 END;
 GO
+
 
 /*-------------Modificar Cliente Natural-------------------------------*/
 
@@ -562,3 +600,89 @@ from CLIENTE_JURIDICO;
 
 go
 
+CREATE PROCEDURE Procedure_consultarDireccionCompleta
+@idDireccion int
+AS
+BEGIN
+
+
+      SELECT C.LUG_id FROM LUGAR C, LUGAR D WHERE C.LUG_id = D.LUGAR_lug_id and D.LUG_id = @idDireccion and C.LUG_tipo ='Ciudad'
+       union
+	   SELECT E.LUG_id FROM LUGAR E, LUGAR C WHERE E.LUG_id = C.LUGAR_lug_id and C.LUG_id = 
+       (SELECT C.LUG_id FROM LUGAR C, LUGAR D WHERE C.LUG_id = D.LUGAR_lug_id and D.LUG_id = @idDireccion) and E.LUG_tipo = 'Estado'
+       union
+       SELECT P.LUG_id FROM LUGAR P, LUGAR E WHERE P.LUG_id = E.LUGAR_lug_id and E.LUG_id =
+       (SELECT E.LUG_id FROM LUGAR E, LUGAR C WHERE E.LUG_id = C.LUGAR_lug_id and C.LUG_id = 
+       (SELECT C.LUG_id FROM LUGAR C, LUGAR D WHERE C.LUG_id = D.LUGAR_lug_id and D.LUG_id = @idDireccion)) and P.LUG_tipo = 'País'
+
+
+END;
+go
+
+
+/*---Obtener dirección dado un id--*/
+
+CREATE PROCEDURE Procedure_obtenerDireccion
+@idDireccion integer
+AS
+BEGIN
+	   SELECT D.LUG_nombre 
+	   FROM LUGAR D
+	   WHERE D.LUG_tipo = 'Direccion' and D.lug_id= @idDireccion;
+END;
+go
+/***------------Llena el combo box de cargo----**/
+
+
+CREATE PROCEDURE Procedure_llenarCBCargo
+
+AS
+BEGIN
+	   SELECT 
+	   car_nombre
+	   FROM CARGO
+	   
+END;
+go
+
+CREATE PROCEDURE Procedure_CargarCodigoPostal
+@idCiudad int
+AS
+SELECT lug_codigopostal FROM LUGAR WHERE lug_id=@idCiudad;
+
+/*------Datos del Cliente según el nombre del proyecto--*/
+
+CREATE PROCEDURE DatosClientePorNombreProyecto
+@codigo varchar(10) 
+AS
+SELECT 
+	   cj.cj_rif  as rif, 
+       cj_nombre as nombre,
+	   con.con_nombre as nombreContacto,
+	   con.con_apellido as nombreApellido,
+	   t.tel_codigo as codigo,
+	   t.tel_numero as numero, 
+
+	   (d.lug_nombre+'.'+c.lug_nombre +'.'+e.lug_nombre+','+p.lug_nombre) as direccion 
+
+FROM     PROYECTO PRO, 
+		 CLIENTE_JURIDICO CJ, 
+		 CONTACTO Con, 
+		 TELEFONO t, 
+		 CARGO car, 
+		 LUGAR p,
+	     LUGAR e,
+	     LUGAR c,
+	     LUGAR d
+
+WHERE p.lug_id = e.LUGAR_lug_id
+and   e.lug_id = c.LUGAR_lug_id
+and   c.lug_id = d.LUGAR_lug_id
+and   d.lug_id = CJ.LUGAR_lug_id
+and   CJ.cj_id = PRO.CLIENTE_JURIDICO_cj_id
+and   cj.cj_id = Con.CLIENTE_JURIDICO_cj_id
+and   con.con_id = t.CONTACTO_con_id
+and   car.car_id = con.CARGO_car_id
+and   pro.pro_codigo = @codigo; 
+
+go

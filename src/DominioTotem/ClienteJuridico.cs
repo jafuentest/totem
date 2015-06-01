@@ -16,7 +16,7 @@ namespace DominioTotem
      private string cliJur_Pais;
      private string cliJur_Estado;
      private Lugar cliJur_Ciudad;
-     private string cliJur_Direccion;
+     private Lugar cliJur_Direccion;
      
      private List<string> cliJur_Telefono;
      private List<Contacto> cliJur_Contactos; 
@@ -56,7 +56,7 @@ namespace DominioTotem
          set { cliJur_Nombre = value; }
      }
 
-     public string Jur_Direccion
+     public Lugar Jur_Direccion
      {
          get { return cliJur_Direccion; }
          set { cliJur_Direccion = value; }
@@ -89,11 +89,11 @@ namespace DominioTotem
      {
          Jur_Id = string.Empty;
          Jur_Nombre = string.Empty;
-         Jur_Direccion = string.Empty;
+         Jur_Direccion = null;
          Jur_Pais = string.Empty;
          Jur_Estado = string.Empty;
          Jur_Ciudad = null;
-         Jur_Direccion = string.Empty;
+         
          Jur_Telefonos = null;
          Jur_Contactos = null;
 
@@ -108,11 +108,11 @@ namespace DominioTotem
         
          Jur_Id = string.Empty;
          Jur_Nombre = nombre;
-         Jur_Direccion = string.Empty;
+         Jur_Direccion = null;
          Jur_Pais = string.Empty;
          Jur_Estado = string.Empty;
          Jur_Ciudad = null;
-         Jur_Direccion = string.Empty;
+       
          Jur_Telefonos = null;
          Jur_Contactos = null;
        
@@ -132,7 +132,7 @@ namespace DominioTotem
          Jur_Pais = string.Empty;
          Jur_Estado = string.Empty;
          Jur_Ciudad = null;
-         Jur_Direccion = string.Empty;
+         Jur_Direccion = null;
          Jur_Telefonos = null;
          Jur_Contactos = null;
      }
@@ -144,7 +144,7 @@ namespace DominioTotem
      /// <param name="id">RIF o Identificador de la Empresa</param>
      /// <param name="nombre">Nombre de la Empresa</param>
     /// <param name="direccion">Dirección de la Empresa</param>
-     public ClienteJuridico(string id, string nombre, string direccion) 
+     public ClienteJuridico(string id, string nombre, Lugar direccion) 
      {
          Jur_Id = id;
          Jur_Nombre = nombre;
@@ -166,7 +166,7 @@ namespace DominioTotem
     /// <param name="direccion">Dirección de la Empresa</param>
     /// <param name="codigoPostal">Código Postal de la Empresa</param>
      public ClienteJuridico(string id, string nombre, string pais, string estado,
-         Lugar ciudad,string direccion)
+         Lugar ciudad,Lugar direccion)
      {
          Jur_Id = id;
          Jur_Nombre = nombre;
@@ -189,7 +189,7 @@ namespace DominioTotem
        /// <param name="codigoPostal">Código Postal de la Empresa</param>
        /// <param name="telefonos">Teléfonos de la Empresa</param>
      public ClienteJuridico(string id, string nombre, string pais, string estado,
-         Lugar ciudad, string direccion,
+         Lugar ciudad, Lugar direccion,
          List<string> telefonos)
      {
          Jur_Id = id;
@@ -203,7 +203,7 @@ namespace DominioTotem
      }
 
      public ClienteJuridico(string id, string nombre, string pais, string estado,
-          Lugar ciudad, string direccion,
+          Lugar ciudad, Lugar direccion,
           List<string> telefonos,
           List<Contacto> contactos)
      {

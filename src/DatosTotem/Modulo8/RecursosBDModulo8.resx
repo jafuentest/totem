@@ -346,4 +346,10 @@
   <data name="ProcedureEliminarInvolucradoMinuta" xml:space="preserve">
     <value>Procedure_EliminarTodosInvolucrados</value>
   </data>
+  <data name="ProcedureContactoProyecto" xml:space="preserve">
+    <value>Procedure_ConsultarInvolucradosContactoProyecto</value>
+  </data>
+  <data name="ProcedureUsuarioProyecto" xml:space="preserve">
+    <value>Procedure_ConsultarInvolucradosUsuarioProyecto</value>
+  </data>
 </root>

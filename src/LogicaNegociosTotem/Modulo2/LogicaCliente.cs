@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DominioTotem;
+ 
 using DatosTotem.Modulo2;
 using ExcepcionesTotem.Modulo2;
+
 using DatosTotem;
  
 
@@ -36,8 +38,19 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns></returns>
        public int VerificarExistenciaJuridico(string rif) 
        {
-           return baseDeDatosCliente.VerificarExistenciaClienteJuridico(rif);
-       
+           try
+           {
+               return baseDeDatosCliente.VerificarExistenciaClienteJuridico(rif);
+           }
+           catch(OperacionInvalidaException e)
+           {
+               throw new OperacionInvalidaException(RecursosLogicaModulo2.CodigoOperacionInvalida,
+                   RecursosLogicaModulo2.MensajeOperacionInvalida,e); 
+           }
+           catch(Exception e)
+           {
+               throw new Exception(e.Message); 
+           }
        }
 
        /// <summary>
@@ -48,8 +61,19 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns></returns>
        public int VerificarExistenciaNatural(string cedula)
        {
-           return baseDeDatosCliente.VerificarExistenciaClienteNatural(cedula);
-
+           try
+           {
+               return baseDeDatosCliente.VerificarExistenciaClienteNatural(cedula);
+           }
+           catch (OperacionInvalidaException e)
+           {
+               throw new OperacionInvalidaException(RecursosLogicaModulo2.CodigoOperacionInvalida,
+                   RecursosLogicaModulo2.MensajeOperacionInvalida, e);
+           }
+           catch (Exception e)
+           {
+               throw new Exception(e.Message);
+           }
        }
 
        /// <summary>
@@ -153,20 +177,25 @@ namespace LogicaNegociosTotem.Modulo2
                idNumero = Convert.ToInt32(numeroSeparado);
 
                ClienteNatural clienteNatural = new ClienteNatural();
-               clienteNatural.Nat_Id = identificador; 
+               clienteNatural.Nat_Id = identificador;
                clienteNatural.Nat_Nombre = nombre;
                clienteNatural.Nat_Apellido = apellido;
                clienteNatural.Nat_Direccion = direccion;
-               clienteNatural.Nat_Correo = correo; 
-               
+               clienteNatural.Nat_Correo = correo;
 
 
-              return baseDeDatosCliente.AgregarClienteNatural(clienteNatural,
-                  fkLugar,codTele,idNumero);
+
+               return baseDeDatosCliente.AgregarClienteNatural(clienteNatural,
+                   fkLugar, codTele, idNumero);
+           }
+
+           catch (FormatException e) 
+           {
+               throw new FormatoIncorrectoException("T_02_002","Tipo de dato con formato no válido",e); 
            }
            catch (Exception e)
            {
-               throw new ExcepcionesTotem.Modulo2.ClienteLogicaException("L_02_003", "Error dentro de la capa lógica", e);
+               throw new ExcepcionesTotem.Modulo2.ClienteLogicaException("T_02_003", "Error dentro de la capa lógica", e);
            }
 
        }
@@ -218,7 +247,19 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns>Retorna el objeto de tipo Cliente Juridico, null si el objeto no existe</returns>
        public ClienteJuridico ConsultarClienteJuridico(string id)
        {
-           return baseDeDatosCliente.ConsultarClienteJuridico( id); 
+           try
+           {
+               return baseDeDatosCliente.ConsultarClienteJuridico(id);
+           }
+           catch (OperacionInvalidaException)
+           {
+               throw new OperacionInvalidaException();
+           }
+           catch (Exception e) 
+           {
+               throw new ExcepcionesTotem.ExceptionTotem(RecursoGeneralBD.Codigo,
+                   RecursoGeneralBD.Mensaje, e); 
+           }
        }
 
 
@@ -228,8 +269,18 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns>Retorna el objeto de tipo Cliente Juridico, null si el objeto no existe</returns>
        public ClienteNatural ConsultarClienteNatural(int id)
        {
-           
-           return baseDeDatosCliente.ConsultarClienteNatural(id); 
+           try
+           {
+               return baseDeDatosCliente.ConsultarClienteNatural(id);
+           }
+           catch (OperacionInvalidaException)
+           {
+               throw new OperacionInvalidaException();
+           }
+           catch (Exception e)
+           {
+               throw e;
+           }
        }
 
        /// <summary>
@@ -285,9 +336,53 @@ namespace LogicaNegociosTotem.Modulo2
        {
            List<string> cargos = new List<string>();
            cargos = baseDeDatosCliente.LlenarCargoCombo();
-           return cargos; 
+           return cargos;
        }
 
+        #region Consultar Clientes según Nombre del Proyecto
+
+      /// <summary>
+      /// Método de la capa lógica que invoca a acceso a datos
+      /// para que le retorne los datos del cliente según el 
+      /// nombre de un proyecto 
+      /// </summary>
+      /// <param name="nombre">Nombre del Proyecto</param>
+      /// <returns>Los datos del Cliente Jurídico</returns>
+       public ClienteJuridico ConsultarClienteJNombreProyecto(string codigo) 
+       {
+           try
+           {
+               ClienteJuridico elCliente = new ClienteJuridico();
+               elCliente = baseDeDatosCliente.DatosClienteProyecto(codigo);
+               return elCliente;
+           }
+           catch (ExcepcionesTotem.ExceptionTotemConexionBD e) 
+           {
+               throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                   RecursoGeneralBD.Mensaje,e); 
+           }
+           catch (ClienteInexistenteException e)
+           {
+               throw new ExcepcionesTotem.Modulo2.ClienteInexistenteException(RecursosLogicaModulo2.CodigoClienteInexistente,
+                    RecursosLogicaModulo2.MensajeClienteInexistente,
+                    e);
+           }
+
+           catch (OperacionInvalidaException ex)
+           {
+               throw new OperacionInvalidaException
+                   (RecursosLogicaModulo2.CodigoOperacionInvalida,
+                   RecursosLogicaModulo2.MensajeOperacionInvalida,
+                   ex);
+           }
+           catch (ExcepcionesTotem.ExceptionTotem ex)
+           {
+               throw new ExcepcionesTotem.ExceptionTotem(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+           }
+       }
+
+        #endregion
 
     }
 }

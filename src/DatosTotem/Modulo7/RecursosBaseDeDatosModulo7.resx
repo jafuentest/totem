@@ -210,4 +210,12 @@
     <value>ObtenerDatosUsuario</value>
     <comment>Permite obtener los datos del usuario</comment>
   </data>
+  <data name="ProcedimientoEliminarUsuario" xml:space="preserve">
+    <value>EliminarUsuario</value>
+    <comment>Procedimiento para eliminar usuario de la base de datos</comment>
+  </data>
+  <data name="ProcedimientoListarUsuario" xml:space="preserve">
+    <value>ListarUsuario</value>
+    <comment>Procedimiento almacenado que permite listar los usuarios</comment>
+  </data>
 </root>

@@ -79,6 +79,24 @@ namespace LogicaNegociosTotem.Modulo8 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a con_id.
+        /// </summary>
+        internal static string AtributoContacto {
+            get {
+                return ResourceManager.GetString("AtributoContacto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a usu_id.
+        /// </summary>
+        internal static string AtributoUsuario {
+            get {
+                return ResourceManager.GetString("AtributoUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a T_00_001.
         /// </summary>
         internal static string Codigo {
@@ -205,6 +223,15 @@ namespace LogicaNegociosTotem.Modulo8 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a @pro_id.
+        /// </summary>
+        internal static string ParametroIdProyecto {
+            get {
+                return ResourceManager.GetString("ParametroIdProyecto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Procedure_ConsultarAcuerdoResponsablesContactoMinuta.
         /// </summary>
         internal static string ProcedureConsultarContactoAcuerdo {
@@ -237,6 +264,24 @@ namespace LogicaNegociosTotem.Modulo8 {
         internal static string ProcedureConsultarUsuarioMinuta {
             get {
                 return ResourceManager.GetString("ProcedureConsultarUsuarioMinuta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_ConsultarInvolucradosContactoProyecto.
+        /// </summary>
+        internal static string ProcedureContactoProyecto {
+            get {
+                return ResourceManager.GetString("ProcedureContactoProyecto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_ConsultarInvolucradosUsuarioProyecto.
+        /// </summary>
+        internal static string ProcedureUsuarioProyecto {
+            get {
+                return ResourceManager.GetString("ProcedureUsuarioProyecto", resourceCulture);
             }
         }
     }
