@@ -244,8 +244,7 @@ namespace DatosTotem.Modulo2
        /// para obtener el código postal dado el 
        /// identificador de una ciudad
        /// </summary>
-       /// <param name="idCiudad">Id de la ciudad al que 
-       /// pertenece dicho código postal</param>
+       /// <param name="idCiudad">Nombre de la ciudad</param>
        /// <returns>El número de código postal</returns>
        public int CargarCodigoPostal(int idCiudad) 
        {
@@ -257,7 +256,7 @@ namespace DatosTotem.Modulo2
            comando.Parameters.Add(new SqlParameter(RecursosBaseDeDatosModulo2.ParametroIdCiudad, idCiudad));
 
            SqlDataReader _lectura;
-           int idDireccion = 0;
+          
            try
            {
                this.conexion.Open();

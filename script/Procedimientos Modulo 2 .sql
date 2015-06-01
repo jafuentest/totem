@@ -119,7 +119,7 @@ DECLARE @idLugarDireccion int = 0
 
 BEGIN
 
-	select @idLugarDireccion = LUG_id from LUGAR where LUG_nombre = @nombreDireccion and LUG_tipo = 'Direccion' and LUGAR_lug_id = @idCiudad;
+	select @idLugarDireccion = lug_id from LUGAR where lug_nombre = @nombreDireccion and lug_tipo = 'Direccion' and LUGAR_lug_id = @idCiudad;
 
 	if (@idLugarDireccion = 0)
 		begin 

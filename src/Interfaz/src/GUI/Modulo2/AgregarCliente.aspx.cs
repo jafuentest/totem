@@ -47,6 +47,20 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
             {
                 this.LlenarPaises();    
             }
+
+            if (IsPostBack) 
+            {
+                this.alertApellido.Visible = false;
+                this.alertCedula.Visible = false;
+                this.alertCiudad.Visible = false;
+                this.alertCodigoPostal.Visible = false;
+                this.alertCorreo.Visible = false;
+                this.alertDireccion.Visible = false;
+                this.alertEstado.Visible = false;
+                this.alertNombre.Visible = false;
+                this.alertPais.Visible = false;
+                this.alertTelefono.Visible = false;            
+            }
         }
 
     /// <summary>
@@ -58,74 +72,168 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
     protected void AgregarCliente_Click(object sender, EventArgs e) 
     {
         bool agrego = false;
-        int existe = 0; 
-        
-        string nombre = nombreNatural.Value;
-        string apellido = apellidoNatural.Value;
-        string correo = correoCliente.Value;
-        string cedula = cedulaNatural.Value; 
-        string direccion = direccionCliente.Value;
-        string telefono = telefonoCliente.Value;
-        LogicaCliente logica = new LogicaCliente();
-        try
+        int existe = 0;
+
+        if (!ValidarCamposVacios())
         {
-
-            int ciudad = Convert.ToInt32(comboCiudad.Items[comboCiudad.SelectedIndex].Value);
-
-
-            existe = logicaCliente.VerificarExistenciaNatural(cedula);
-
-            if (existe == 0)
+            string nombre = nombreNatural.Value;
+            string apellido = apellidoNatural.Value;
+            string correo = correoCliente.Value;
+            string cedula = cedulaNatural.Value;
+            string direccion = direccionCliente.Value;
+            string telefono = telefonoCliente.Value;
+            LogicaCliente logica = new LogicaCliente();
+            try
             {
-                agrego = logicaCliente.AgregarClienteNatural(cedula, nombre,
-                    apellido, ciudad, direccion, correo, telefono);
-                if (agrego)
+
+                int ciudad = Convert.ToInt32(comboCiudad.Items[comboCiudad.SelectedIndex].Value);
+
+                //Verifica que el cliente exista en la Base de Datos 
+                existe = logicaCliente.VerificarExistenciaNatural(cedula);
+
+                if (existe == 0)
                 {
-                    alert.Attributes["class"] = "alert alert-success alert-dismissible";
-                    alert.Attributes["role"] = "alert";
-                    alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Cliente agregado éxitosamente</div>";
-                    this.botonAgregar.Disabled = true;
+                    agrego = logicaCliente.AgregarClienteNatural(cedula, nombre,
+                        apellido, ciudad, direccion, correo, telefono);
+                    if (agrego)
+                    {
+                        alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                        alert.Attributes["role"] = "alert";
+                        alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Cliente agregado éxitosamente</div>";
+                        this.botonAgregar.Disabled = true;
+                    }
+                    else
+                    {
+                        alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+                        alert.Attributes["role"] = "alert";
+                        alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>No se pudo agregar el cliente</div>";
+                    }
                 }
                 else
                 {
                     alert.Attributes["class"] = "alert alert-danger alert-dismissible";
                     alert.Attributes["role"] = "alert";
-                    alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>No se pudo agregar el cliente</div>";
+                    alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Cliente ya existente</div>";
                 }
             }
-            else
+
+            catch (ArgumentOutOfRangeException)
             {
                 alert.Attributes["class"] = "alert alert-danger alert-dismissible";
                 alert.Attributes["role"] = "alert";
-                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Cliente ya existente</div>";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Los datos" +
+                    " no pueden estar vacíos" + "</div>";
+            }
+            catch (FormatoIncorrectoException)
+            {
+                alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+                alert.Attributes["role"] = "alert";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error en el formato de tipo de datos</div>";
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD)
+            {
+                alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+                alert.Attributes["role"] = "alert";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error al conectarse a Base de Datos</div>";
+            }
+            catch (ExcepcionesTotem.ExceptionTotem)
+            {
+                alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+                alert.Attributes["role"] = "alert";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error en el sistema TOTEM. Por favor intente más tarde</div>";
             }
         }
+    }
 
-        catch(ArgumentOutOfRangeException)
+    /// <summary>
+    /// Método que verifica los campso vacíos 
+    /// </summary>
+    private bool ValidarCamposVacios()
+    {
+        bool vacio = false;
+
+        if (this.cedulaNatural.Value == "")
         {
-            alert.Attributes["class"] = "alert alert-danger alert-dismissible";
-            alert.Attributes["role"] = "alert";
-            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Los datos"+
-                " no pueden estar vacíos"+"</div>";
+            this.alertCedula.Attributes["class"] = "alert alert-danger alert-dismissible";
+            this.alertCedula.Attributes["role"] = "alert";
+            this.alertCedula.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>La cédula no debe estar vacía</div>";
+            this.alertCedula.Visible = true;
+            vacio = true;
         }
-        catch (FormatoIncorrectoException )
+
+        if (this.nombreNatural.Value == "")
         {
-            alert.Attributes["class"] = "alert alert-danger alert-dismissible";
-            alert.Attributes["role"] = "alert";
-            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error en el formato de tipo de datos</div>";
+            this.alertNombre.Attributes["class"] = "alert alert-danger alert-dismissible";
+            this.alertNombre.Attributes["role"] = "alert";
+            this.alertNombre.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>El nombre no debe estar vacío</div>";
+            this.alertNombre.Visible = true;
+            vacio = true;
         }
-        catch (ExcepcionesTotem.ExceptionTotemConexionBD) 
+
+        if (this.apellidoNatural.Value == "")
         {
-            alert.Attributes["class"] = "alert alert-danger alert-dismissible";
-            alert.Attributes["role"] = "alert";
-            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error al conectarse a Base de Datos</div>";
+            this.alertApellido.Attributes["class"] = "alert alert-danger alert-dismissible";
+            this.alertApellido.Attributes["role"] = "alert";
+            this.alertApellido.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>El apellido no debe estar vacío</div>";
+            this.alertApellido.Visible = true;
+            vacio = true;
         }
-        catch(ExcepcionesTotem.ExceptionTotem)
+
+       if (comboPais.SelectedValue == "0")
         {
-            alert.Attributes["class"] = "alert alert-danger alert-dismissible";
-            alert.Attributes["role"] = "alert";
-            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error en el sistema TOTEM. Por favor intente más tarde</div>";
+            this.alertPais.Attributes["class"] = "alert alert-danger alert-dismissible";
+            this.alertPais.Attributes["role"] = "alert";
+            this.alertPais.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Debe seleccionar país</div>";
+            this.alertPais.Visible = true;
+            vacio = true;
         }
+
+        if (comboEstado.SelectedValue == "0")
+        {
+            this.alertEstado.Attributes["class"] = "alert alert-danger alert-dismissible";
+            this.alertEstado.Attributes["role"] = "alert";
+            this.alertEstado.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Debe seleccionar estado</div>";
+            this.alertEstado.Visible = true;
+            vacio = true;
+        }
+
+        if (comboCiudad.SelectedValue == "0")
+        {
+            this.alertCiudad.Attributes["class"] = "alert alert-danger alert-dismissible";
+            this.alertCiudad.Attributes["role"] = "alert";
+            this.alertCiudad.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Debe seleccionar ciudad</div>";
+            this.alertCiudad.Visible = true;
+            vacio = true;
+        }
+
+        if (this.direccionCliente.Value == "")
+        {
+            this.alertDireccion.Attributes["class"] = "alert alert-danger alert-dismissible";
+            this.alertDireccion.Attributes["role"] = "alert";
+            this.alertDireccion.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>La dirección está vacía</div>";
+            this.alertDireccion.Visible = true;
+            vacio = true;
+        }
+
+        if (this.correoCliente.Value == "")
+        {
+            this.alertCorreo.Attributes["class"] = "alert alert-danger alert-dismissible";
+            this.alertCorreo.Attributes["role"] = "alert";
+            this.alertCorreo.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>El correo está vacío</div>";
+            this.alertCorreo.Visible = true;
+            vacio = true;
+        }
+        if (this.telefonoCliente.Value == "")
+        {
+            this.alertTelefono.Attributes["class"] = "alert alert-danger alert-dismissible";
+            this.alertTelefono.Attributes["role"] = "alert";
+            this.alertTelefono.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>El teléfono está vacío</div>";
+            this.alertTelefono.Visible = true;
+            vacio = true;
+        }
+
+
+        return vacio;
     }
 
 

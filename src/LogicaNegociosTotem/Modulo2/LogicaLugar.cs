@@ -129,7 +129,7 @@ namespace LogicaNegociosTotem.Modulo2
        /// el código postal de una ciudad pasándole 
        /// como parámetro el id de una ciudad
        /// </summary>
-       /// <param name="ciudad">Identificador de la Ciudad</param>
+       /// <param name="ciudad">Nombre de la ciudad</param>
        /// <returns>El número de código postal</returns>
        public int ObtenerCodigoPostal(int ciudad) 
        {

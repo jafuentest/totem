@@ -41,6 +41,17 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             this.LlenarPaises();
             this.CargarDatosEmpresa("J-11111111-1");
         }
+        if (IsPostBack) 
+        {
+            this.alertCiudad.Visible = false;
+            this.alertDireccion.Visible = false;
+            this.alertEstado.Visible = false;
+            this.alertNombreEmpresa.Visible = false;
+            this.alertPais.Visible = false;
+            this.alertRif.Visible = false;
+            this.alertTelefono.Visible = false;
+            this.alert.Visible = true; 
+        }
     }
 
     /// <summary>
@@ -53,70 +64,152 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
         
         Lugar ciudad = new Lugar(); 
         Lugar direccion = new Lugar();
-
-        try
+        if (!ValidarCamposVacios() )
         {
-            ciudad.IdLugar = Convert.ToInt32(comboCiudad.SelectedValue);
-            ciudad.NombreLugar = comboCiudad.Text;
-            direccion.NombreLugar = direccionEmpresa.Value;
-            string rif = rifEmpresa.Value;
-            string nombreEmp = nombreEmpresa.Value;
-            string pais = comboPais.Text;
-            string estado = comboEstado.Text;
 
-            ClienteJuridico cliente = new ClienteJuridico(rif, nombreEmp, pais,
-                estado, ciudad, direccion);
-
-
-
-            if (logica.ModificarClienteJuridico(cliente))
+            try
             {
-                alert.Attributes["class"] = "alert alert-success alert-dismissible";
-                alert.Attributes["role"] = "alert";
-                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Datos modificados del cliente éxitosamente</div>";
-                this.botonEditar.Disabled = true;
+                ciudad.IdLugar = Convert.ToInt32(comboCiudad.SelectedValue);
+                ciudad.NombreLugar = comboCiudad.Text;
+                direccion.NombreLugar = direccionEmpresa.Value;
+                string rif = rifEmpresa.Value;
+                string nombreEmp = nombreEmpresa.Value;
+                string pais = comboPais.Text;
+                string estado = comboEstado.Text;
+
+                ClienteJuridico cliente = new ClienteJuridico(rif, nombreEmp, pais,
+                    estado, ciudad, direccion);
+
+
+
+                if (logica.ModificarClienteJuridico(cliente))
+                {
+                    alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                    alert.Attributes["role"] = "alert";
+                    alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Datos modificados del cliente éxitosamente</div>";
+                    this.botonEditar.Disabled = true;
+                }
+                else
+                {
+                    alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+                    alert.Attributes["role"] = "alert";
+                    alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error al agregar al cliente</div>";
+                }
             }
-            else
+            catch (ArgumentOutOfRangeException)
             {
                 alert.Attributes["class"] = "alert alert-danger alert-dismissible";
                 alert.Attributes["role"] = "alert";
-                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error al agregar al cliente</div>";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Los datos" +
+                    " no pueden estar vacíos" + "</div>";
+            }
+            catch (FormatoIncorrectoException)
+            {
+                alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+                alert.Attributes["role"] = "alert";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error en el formato de tipo de datos</div>";
+            }
+            catch (OperacionInvalidaException)
+            {
+                alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+                alert.Attributes["role"] = "alert";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>" +
+                    "Se ha originado una operación no permitida" + "</div>";
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD)
+            {
+                alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+                alert.Attributes["role"] = "alert";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error al conectarse a Base de Datos</div>";
+            }
+            catch (ExcepcionesTotem.ExceptionTotem)
+            {
+                alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+                alert.Attributes["role"] = "alert";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error en el sistema TOTEM. Por favor intente más tarde</div>";
             }
         }
-        catch (ArgumentOutOfRangeException)
-        {
-            alert.Attributes["class"] = "alert alert-danger alert-dismissible";
-            alert.Attributes["role"] = "alert";
-            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Los datos" +
-                " no pueden estar vacíos" + "</div>";
-        }
-        catch (FormatoIncorrectoException)
-        {
-            alert.Attributes["class"] = "alert alert-danger alert-dismissible";
-            alert.Attributes["role"] = "alert";
-            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error en el formato de tipo de datos</div>";
-        }
-        catch (OperacionInvalidaException)
-        {
-            alert.Attributes["class"] = "alert alert-danger alert-dismissible";
-            alert.Attributes["role"] = "alert";
-            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>" +
-                "Se ha originado una operación no permitida" + "</div>";
-        }
-        catch (ExcepcionesTotem.ExceptionTotemConexionBD)
-        {
-            alert.Attributes["class"] = "alert alert-danger alert-dismissible";
-            alert.Attributes["role"] = "alert";
-            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error al conectarse a Base de Datos</div>";
-        }
-        catch (ExcepcionesTotem.ExceptionTotem)
-        {
-            alert.Attributes["class"] = "alert alert-danger alert-dismissible";
-            alert.Attributes["role"] = "alert";
-            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error en el sistema TOTEM. Por favor intente más tarde</div>";
-        }      
-
     }
+
+    /// <summary>
+    /// Método para validar que los campos de la interfaz no
+    /// se encuentren vacíos
+    /// </summary>
+    /// <returns></returns>
+    private bool ValidarCamposVacios() 
+    {
+        bool vacio = false;
+
+        if (rifEmpresa.Value == "")
+        {
+            this.alertRif.Attributes["class"] = "alert alert-danger alert-dismissible";
+            this.alertRif.Attributes["role"] = "alert";
+            this.alertRif.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>El Rif está vacío</div>";
+            this.alertRif.Visible = true;
+            vacio = true;
+        }
+
+        if (nombreEmpresa.Value == "")
+        {
+            this.alertNombreEmpresa.Attributes["class"] = "alert alert-danger alert-dismissible";
+            this.alertNombreEmpresa.Attributes["role"] = "alert";
+            this.alertNombreEmpresa.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>El nombre de la empresa está vacío</div>";
+            this.alertNombreEmpresa.Visible = true;
+            vacio = true;
+        }
+
+        if (direccionEmpresa.Value == "")
+        {
+            this.alertDireccion.Attributes["class"] = "alert alert-danger alert-dismissible";
+            this.alertDireccion.Attributes["role"] = "alert";
+            this.alertDireccion.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>La dirección está vacía</div>";
+            this.alertDireccion.Visible = true;
+            vacio = true;
+        }
+
+       if (comboPais.SelectedValue == "0")
+        {
+            this.alertPais.Attributes["class"] = "alert alert-danger alert-dismissible";
+            this.alertPais.Attributes["role"] = "alert";
+            this.alertPais.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Debe seleccionar país</div>";
+            this.alertPais.Visible = true;
+            vacio = true;
+        }
+
+        if (comboEstado.SelectedValue == "0")
+        {
+            this.alertEstado.Attributes["class"] = "alert alert-danger alert-dismissible";
+            this.alertEstado.Attributes["role"] = "alert";
+            this.alertEstado.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Debe seleccionar estado</div>";
+            this.alertEstado.Visible = true;
+            vacio = true;
+        }
+
+        if (comboCiudad.SelectedValue == "0")
+        {
+            this.alertCiudad.Attributes["class"] = "alert alert-danger alert-dismissible";
+            this.alertCiudad.Attributes["role"] = "alert";
+            this.alertCiudad.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Debe seleccionar ciudad</div>";
+            this.alertCiudad.Visible = true;
+            vacio = true;
+        }
+        
+        return vacio; 
+    }
+    /*
+    private bool ValidarTelefono() 
+    {
+        bool noValido = false;
+
+        if (!System.Text.RegularExpressions.Regex.IsMatch("^[0-9]", this.telefonoEmpresa.Value))
+        {
+            alertTelefono.Attributes["class"] = "alert alert-danger alert-dismissible";
+            alertTelefono.Attributes["role"] = "alert";
+            alertTelefono.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>El teléfono solamente es numérico</div>";
+            noValido = true; 
+        }
+        return noValido; 
+    }*/
 
 
      
@@ -159,7 +252,7 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
        try
         {
             cliente = logica.ConsultarClienteJuridico(id);
-
+            
             rifEmpresa.Value = cliente.Jur_Id;
             nombreEmpresa.Value = cliente.Jur_Nombre;
             
@@ -173,11 +266,18 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
                     cuerpo.InnerHtml + "<tr><td>" +
                     elContacto.Con_Nombre +
                     elContacto.Con_Apellido + "</td><td>" +
-                    elContacto.ConCargo +
+                    elContacto.ConCargo +                    
                     "</td><td><a class=\"btn btn-default glyphicon glyphicon-pencil\" data-toggle=\"modal\" data-target=\"#modal-update\" href=\"#\"></a><a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"></a></td></tr>"; ;
             }
             this.CargarDireccionEmpresa(cliente);
         }
+
+       catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+       {
+           alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+           alert.Attributes["role"] = "alert";
+           alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error al cargar los datos de la Base de Datos</div>";
+       }
         catch (ClienteDatosException e)
         {
             alert.Attributes["class"] = "alert alert-danger alert-dismissible";

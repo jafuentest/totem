@@ -19,6 +19,17 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     <div id="alert" runat ="server"> </div>
+    <div id="alertCedula" runat="server"> </div>
+    <div id="alertNombre" runat="server"></div>
+    <div id="alertApellido" runat="server"></div>
+    <div id="alertPais" runat="server"></div>
+    <div id="alertEstado" runat="server"></div>
+    <div id="alertCiudad" runat="server"></div>
+    <div id="alertCodigoPostal" runat="server"></div>
+    <div id="alertCorreo" runat="server"></div>
+    <div id="alertTelefono" runat="server"></div>
+    <div id="alertDireccion" runat="server"></div>
+   
     <div class="col-sm-8 col-md-8 col-lg-8 col-md-offset-2" Runat="Server">
         <form id="agregar_cliente" class="form-horizontal" action="#" method="post" Runat="Server">
 

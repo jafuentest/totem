@@ -26,6 +26,13 @@
     </div>
     <div id="alertlocal">
     </div>
+    <div id="alertRif" runat="server"> </div>
+    <div id="alertNombreEmpresa" runat="server"></div>
+    <div id="alertPais" runat="server"></div>
+     <div id="alertEstado" runat="server"></div>
+     <div id="alertCiudad" runat="server"></div>
+    <div id="alertDireccion" runat="server"></div>    
+    <div id="alertTelefono" runat="server"></div>
     <div class="col-sm-8 col-md-8 col-lg-8 col-md-offset-2">
         <form id="agregar_empresa" class="form-horizontal" action="#" method="post" Runat="Server">
 
@@ -45,7 +52,7 @@
                         </div>
                     </div>
                     <div id="div_rif" class="col-sm-10 col-md-10 col-lg-10">
-                        <input id="rifEmpresa" runat="server" name="rif" type="text" class="form-control" placeholder="RIF" maxlength="20" />
+                        <input id="rifEmpresa" runat="server" name="rif" type="text" class="form-control" placeholder="RIF" readonly="true" maxlength="20" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -113,7 +120,7 @@
                 <thead>
                     <tr>
                         <th>Nombres y Apellidos</th>
-                        <th>Telefono</th>
+                        <th>Cargo</th>
                         
                     </tr>
                 </thead>

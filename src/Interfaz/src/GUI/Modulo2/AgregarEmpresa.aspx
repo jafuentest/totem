@@ -23,8 +23,17 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" runat="Server">
     <div id="alert" runat="server">
     </div>
-    <div id="alertlocal">
-    </div>
+    <div id="alertRif" runat="server"> </div>
+    <div id="alertNombreEmpresa" runat="server"></div>
+    <div id="alertPais" runat="server"></div>
+     <div id="alertEstado" runat="server"></div>
+     <div id="alertCiudad" runat="server"></div>
+    <div id="alertDireccion" runat="server"></div>
+    <div id="alertCodigoPostal" runat="server"></div>
+    <div id="alertCedulaContacto" runat="server"></div>
+    <div id="alertNombreContacto" runat="server"></div>
+    <div id="alertApellidoContacto" runat="server"></div>
+    <div id="alertTelefonoContacto" runat="server"></div>
     <div class="col-sm-8 col-md-8 col-lg-8 col-md-offset-2">
         <form id="agregar_empresa" class="form-horizontal" action="#" method="post" runat="Server">
 
@@ -163,7 +172,7 @@
 
 
                     </div>
-                </div>
+               
 
                 <div class="form-group">
                     <div id="div_botones" class="col-sm-12 col-md-12 col-lg-12">
@@ -171,9 +180,10 @@
                         <a class="btn btn-default" runat="server" href="ListarEmpresas.aspx">Cancelar</a>
                     </div>
                 </div>
+                
             </form>
-            </div>
-  
+            
+   </div>
 
     <script type="text/javascript" src="js/ValidacionesContacto.js"></script>
 
