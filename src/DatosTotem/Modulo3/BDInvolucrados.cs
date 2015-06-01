@@ -81,15 +81,11 @@ namespace DatosTotem.Modulo3
                 else
                     return false;
             }
-            catch (SqlException ex)
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
             {
-                if (ex.Number == 2627)
-                    throw new ExcepcionesTotem.Modulo3.InvolucradoRepetidoException(
-                        RecursosBDModulo3.Codigo_Involucrado_Repetido,
-                        RecursosBDModulo3.Mensaje_Involucrado_Repetido, new Exception());
-                else
-                    throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
-                        RecursoGeneralBD.Mensaje, new Exception());
+                throw new ExcepcionesTotem.Modulo3.InvolucradoRepetidoException(
+                    RecursosBDModulo3.Codigo_Involucrado_Repetido,
+                    RecursosBDModulo3.Mensaje_Involucrado_Repetido, new Exception());
             }
             catch (Exception ex)
             {
@@ -350,7 +346,7 @@ namespace DatosTotem.Modulo3
 
                 laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredEliminarContacto, listaParametros);
                 laConexion = new BDConexion();
-                resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarUsuario, parametrosContar);
+                resultado = laConexion.EjecutarStoredProcedure(RecursosBDModulo3.StoredContarCliente, parametrosContar);
                 filasD = int.Parse(resultado[0].valor);
 
                 if ((filasA - 1) == filasD)

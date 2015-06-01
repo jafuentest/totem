@@ -24,16 +24,13 @@ namespace PruebasUnitariasTotem.Modulo3
         [SetUp]
         public void init()
         {
-            elProyecto = new Proyecto("TOT", "Totem", true, "asd", "$", 1234);
+            elProyecto = new Proyecto("FB", "Totem", true, "asd", "$", 1234);
             laLista = new ListaInvolucradoContacto(elProyecto);
             elContacto = new Contacto();
             elContacto.Con_Id = 1;
             laLista.agregarContactoAProyecto(elContacto);
             elContacto = new Contacto();
             elContacto.Con_Id = 2;
-            laLista.agregarContactoAProyecto(elContacto);
-            elContacto = new Contacto();
-            elContacto.Con_Id = 3;
             laLista.agregarContactoAProyecto(elContacto);
         }
         [TearDown]
@@ -65,10 +62,18 @@ namespace PruebasUnitariasTotem.Modulo3
         public void pruebaEliminarEliminarContactoInvolucrado()
         {
             int numFilasAnt, numFilasDesp;
+            elContacto = new Contacto();
+            elContacto.Con_Id = 3;
+            ListaInvolucradoContacto laLista2 = new ListaInvolucradoContacto(elProyecto);
+            laLista2.agregarContactoAProyecto(elContacto);
+            BDInvolucrados.agregarContactosInvolucrados(laLista2);
             numFilasAnt = BDInvolucrados.consultarContactosInvolucradosPorProyecto(elProyecto).Lista.ToArray().Length;
-            BDInvolucrados.eliminarContactoDeIvolucradosEnProyecto(elContacto, laLista);
+
+            BDInvolucrados.eliminarContactoDeIvolucradosEnProyecto(elContacto, laLista2);
+
             numFilasDesp = BDInvolucrados.consultarContactosInvolucradosPorProyecto(
                 elProyecto).Lista.ToArray().Length;
+            //Assert.IsTrue(BDInvolucrados.eliminarContactoDeIvolucradosEnProyecto(elContacto, laLista));
             Assert.AreEqual(numFilasAnt - 1, numFilasDesp);
         }
     }

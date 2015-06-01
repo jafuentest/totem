@@ -9,7 +9,6 @@ using DominioTotem;
 
 public partial class GUI_Modulo3_Default : System.Web.UI.Page
 {
-
     #region Atributos
     private static ListaInvolucradoContacto listaContactos;
     private static ListaInvolucradoUsuario listaUsuarios;
@@ -244,18 +243,60 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
     {
         try
         {
-            logInv.agregarContactosEnBD(listaContactos);
+            if (listaContactos.Lista.ToArray().Length != 0)
+                logInv.agregarContactosEnBD(listaContactos);
+            if (listaUsuarios.Lista.ToArray().Length != 0)
+                logInv.agregarUsuariosEnBD(listaUsuarios);
+            Response.Redirect("../Modulo3/ListarPersonalInvolucrado.aspx?success=true");
         }
-        catch (Exception ex)
+        catch (ExcepcionesTotem.Modulo3.ProyectoSinCodigoException ex)
         {
-
-        } try
-        {
-            logInv.agregarUsuariosEnBD(listaUsuarios);
+            this.alertlocal.Attributes["class"] = "alert alert-danger alert-dismissible";
+            this.alertlocal.Attributes["role"] = "alert";
+            this.alertlocal.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>" + ex.Mensaje + "</div>";
+            this.alertlocal.Visible = true;    
         }
-        catch (Exception ex)
+        catch (ExcepcionesTotem.Modulo3.ListaSinProyectoException ex)
         {
-
+            this.alertlocal.Attributes["class"] = "alert alert-danger alert-dismissible";
+            this.alertlocal.Attributes["role"] = "alert";
+            this.alertlocal.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>" + ex.Mensaje + "</div>";
+            this.alertlocal.Visible = true;    
+        }
+        catch (ExcepcionesTotem.Modulo3.ListaSinInvolucradosException ex)
+        {
+            this.alertlocal.Attributes["class"] = "alert alert-danger alert-dismissible";
+            this.alertlocal.Attributes["role"] = "alert";
+            this.alertlocal.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>" + ex.Mensaje + "</div>";
+            this.alertlocal.Visible = true;    
+        }
+        catch (ExcepcionesTotem.Modulo3.InvolucradoRepetidoException ex)
+        {
+            this.alertlocal.Attributes["class"] = "alert alert-danger alert-dismissible";
+            this.alertlocal.Attributes["role"] = "alert";
+            this.alertlocal.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>" + ex.Mensaje + "</div>";
+            this.alertlocal.Visible = true;    
+        }
+        catch (ExcepcionesTotem.Modulo3.UsuarioSinUsernameException ex)
+        {
+            this.alertlocal.Attributes["class"] = "alert alert-danger alert-dismissible";
+            this.alertlocal.Attributes["role"] = "alert";
+            this.alertlocal.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>" + ex.Mensaje + "</div>";
+            this.alertlocal.Visible = true;    
+        }
+        catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+        {
+            this.alertlocal.Attributes["class"] = "alert alert-danger alert-dismissible";
+            this.alertlocal.Attributes["role"] = "alert";
+            this.alertlocal.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>" + ex.Mensaje + "</div>";
+            this.alertlocal.Visible = true;    
+        }
+        catch (ExcepcionesTotem.ExceptionTotem ex)
+        {
+            this.alertlocal.Attributes["class"] = "alert alert-danger alert-dismissible";
+            this.alertlocal.Attributes["role"] = "alert";
+            this.alertlocal.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>" + ex.Mensaje + "</div>";
+            this.alertlocal.Visible = true;    
         }
     }
 }
