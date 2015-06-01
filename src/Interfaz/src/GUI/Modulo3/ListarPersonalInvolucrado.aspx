@@ -6,6 +6,8 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Listar Involucrados</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
      <form runat="server" class="form-horizontal" method="POST">
+             <asp:ScriptManager ID="ScriptManager1" runat="server">
+            </asp:ScriptManager>
                        <div class="col-sm-12 col-md-12 col-lg-12">
                        <div id="alert" runat="server">
                        </div>
@@ -26,9 +28,11 @@
                             <asp:Literal runat="server" ID="laTabla"></asp:Literal>
                            </tbody>
                          </table>
+                        <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional"> 
+                         <ContentTemplate> 
                     </div>
                    </div> 
-                   <div id="modal-delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+                   <div id="modal_delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                      <div class="modal-content">
                     <div class="modal-header">
@@ -39,16 +43,20 @@
                        <div class="container-fluid">
                         <div class="row">
                          <p>Seguro que desea eliminar a este involucrado del proyecto:</p>
+                         <p runat="server" id="user_name"></p>
+                         <p runat="server" id="contacto_id"></p>
                         </div>
                        </div>
                       </div>
                       <div id ="modalDeleteFooter" class="modal-footer">
-                        <%--<button id="btn-eliminar" type="button" class="btn btn-primary" opnclick="EliminarUsuario()">Elimina</button>--%>
-                        <button runat="server" id="btn_eliminar" type="submit" class="btn btn-primary" onserverclick="eliminarUsuario_OnClick">Eliminar</button><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                       </div>
+                         <button id="eliminar" runat="server" class="btn btn-primary" type="submit" data-dismiss="modal" onserverclick="evento_eliminar">Eliminar</button>
+                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>   
+                      </div>
                       </div><!-- /.modal-content -->
                      </div><!-- /.modal-dialog -->
                    </div><!-- /.modal -->
+                </ContentTemplate>
+                </asp:UpdatePanel>
                     <div class="form-group" >     
                            
                                 &nbsp;
