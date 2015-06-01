@@ -10,7 +10,10 @@ CREATE PROCEDURE Procedure_AgregarMinuta
 AS 
 BEGIN
 		INSERT INTO MINUTA(min_fecha, min_motivo, min_observaciones)
-	    VALUES(@min_fecha ,@min_motivo ,@min_observaciones)
+	    VALUES(@min_fecha ,@min_motivo ,@min_observaciones);
+		SELECT MAX(min_id) as min_id FROM MINUTA
+
+
 END;
 GO
 
@@ -57,7 +60,7 @@ AS
 BEGIN
 
 		INSERT INTO ACU_INV(ACUERDO_acu_id,INVOLUCRADOS_USUARIOS_USUARIO_usu_id,INVOLUCRADOS_USUARIOS_PROYECTO_pro_id)
-	    VALUES(@acu_id, @usu_id, @pro_id );
+	    VALUES(@acu_id, @usu_id, (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id));
 END;
 GO
 
@@ -70,7 +73,7 @@ AS
 BEGIN
 
 		INSERT INTO ACU_INV(ACUERDO_acu_id,INVOLUCRADOS_CLIENTES_CONTACTO_con_id,INVOLUCRADOS_CLIENTES_PROYECTO_pro_id)
-	    VALUES(@acu_id, @con_id, @pro_id );
+	    VALUES(@acu_id, @con_id, (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id));
 END;
 GO
 -------------------Procedimiento para Agregar un Involucrado Cliente ----------------------
@@ -79,13 +82,13 @@ CREATE PROCEDURE Procedure_AgregarInvolucradoCliente
 		 
 		@Minuta_min_id   [int],
 		@con_id          [int],
-		@con_pro_id      [int]
+		@pro_id      [int]
 		
 AS 
 BEGIN
 		INSERT INTO MIN_INV(MINUTA_min_id, INVOLUCRADOS_CLIENTES_CONTACTO_con_id, 
 				    INVOLUCRADOS_CLIENTES_PROYECTO_pro_id)
-	    VALUES(@Minuta_min_id, @con_id, @con_pro_id)
+	    VALUES(@Minuta_min_id, @con_id, (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id))
 END;
 GO
 
@@ -95,13 +98,13 @@ CREATE PROCEDURE Procedure_AgregarInvolucradoUsuario
 		 
 		@Minuta_min_id   [int],
 		@usu_id          [int],
-		@usu_pro_id      [int]
+		@pro_id      [int]
 		
 AS 
 BEGIN
 		INSERT INTO MIN_INV(MINUTA_min_id, INVOLUCRADOS_USUARIOS_USUARIO_usu_id, 
 		            INVOLUCRADOS_USUARIOS_PROYECTO_pro_id)
-	    VALUES(@Minuta_min_id, @usu_id, @usu_pro_id)
+	    VALUES(@Minuta_min_id, @usu_id, (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id))
 END;
 GO
 ------------------ Procedimientos para consultar------------------------------
@@ -110,14 +113,14 @@ GO
 
 CREATE PROCEDURE Procedure_ConsultarMinutasProyecto
 	
-	@min_inv_proy [int]	
+	@pro_id [int]	
 	   
 AS
  BEGIN
 	
 	SELECT Distinct(M.min_id) as min_id, M.min_fecha, M.min_motivo, M.min_observaciones
 	FROM MINUTA M, MIN_INV MI
-	WHERE (MI.INVOLUCRADOS_USUARIOS_PROYECTO_pro_id= @min_inv_proy or Mi.INVOLUCRADOS_CLIENTES_PROYECTO_pro_id =@min_inv_proy)
+	WHERE (MI.INVOLUCRADOS_USUARIOS_PROYECTO_pro_id= @min_inv_proy or Mi.INVOLUCRADOS_CLIENTES_PROYECTO_pro_id =(SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id))
  END
 GO
 
@@ -200,7 +203,7 @@ CREATE PROCEDURE Procedure_ConsultarAsistenteUsuarioMinuta
 AS
  BEGIN
      SELECT M.INVOLUCRADOS_USUARIOS_USUARIO_usu_id as idUsuario FROM MIN_INV M
-	 WHERE M.MINUTA_min_id = 1 and M.INVOLUCRADOS_USUARIOS_USUARIO_usu_id is not null
+	 WHERE M.MINUTA_min_id =@min_id and M.INVOLUCRADOS_USUARIOS_USUARIO_usu_id is not null
  END
 GO
 
@@ -242,7 +245,7 @@ AS
 	
 	SELECT U.usu_id, U.usu_nombre, U.usu_apellido, U.usu_rol
 	FROM  USUARIO U , ACU_INV A
-	WHERE A.ACUERDO_acu_id = @acu_id and A.INVOLUCRADOS_USUARIOS_PROYECTO_pro_id= @pro_id 
+	WHERE A.ACUERDO_acu_id = @acu_id and A.INVOLUCRADOS_USUARIOS_PROYECTO_pro_id= (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id) 
 	      and A.INVOLUCRADOS_USUARIOS_USUARIO_usu_id = U.usu_id
  END
 GO
