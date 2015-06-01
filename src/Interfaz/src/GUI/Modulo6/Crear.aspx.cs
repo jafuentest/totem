@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Web;
 using LogicaNegociosTotem.Modulo6;
+using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 
 public partial class GUI_Modulo6_Crear : System.Web.UI.Page
 {
@@ -41,5 +43,16 @@ public partial class GUI_Modulo6_Crear : System.Web.UI.Page
 	protected void CrearCasoDeUso(object sender, EventArgs e)
 	{
 
+	}
+	protected void agregarPrecondicion_Click(object sender, EventArgs e)
+	{
+		
+		HtmlGenericControl div = new HtmlGenericControl("div");
+		div.Attributes.Add("class", "col-sm-11 col-md-11 col-lg-11");
+		TextBox precondicion = new TextBox();
+		precondicion.CssClass = "form-control " + this.precondiciones.Controls.Count;
+		div.Controls.Add(precondicion);
+		this.precondiciones.Controls.Add(new HtmlGenericControl("br"));
+		this.precondiciones.Controls.Add(div);
 	}
 }

@@ -11,35 +11,36 @@
 		<form runat="server" name="form_casodeuso" id="form_casodeuso" class="form-horizontal" action="Listar.aspx?success=1" method="post">
 			<div class="form-group">
 				<div id="div-id" class="col-sm-10 col-md-10 col-lg-10">
-					<asp:TextBox id="id" runat="server" CssClass="form-control"/>
+					<asp:TextBox ID="id" runat="server" CssClass="form-control"/>
 				</div>
 			</div>
 			<div class="form-group">
 				<div id="div-nombre" class="col-sm-10 col-md-10 col-lg-10">
-					<input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control"/>
+					<asp:TextBox ID="nombre" runat="server" CssClass="form-control" />
 				</div>
 			</div>
 			<div class="form-group">
-				<div id="div-precondiciones" class="col-sm-10 col-md-10 col-lg-10">
+				<div class="col-sm-10 col-md-10 col-lg-10">
 					<h3>Precondiciones</h3>
 					<div class="form-group">
 						<div class="col-sm-11 col-md-11 col-lg-11">
-							<input type="text" placeholder="Precondición" class="form-control" id="precondicion_0" name="precondicion_0"/>
+							<asp:TextBox ID="precondicion_0" runat="server" placeholder="Precondición" CssClass="form-control" />
 						</div>
+						<asp:PlaceHolder ID="precondiciones" runat="server"></asp:PlaceHolder>
 						<div class="col-sm-1 col-md-1 col-lg-1">
-							<button type="button" class="btn btn-default btn-circle glyphicon glyphicon-plus" onclick="agregarPrecondicion()"></button>
+							<asp:Button ID="agregarPrecondicion" runat="server" CssClass="btn btn-default btn-circle glyphicon glyphicon-plus" OnClick="agregarPrecondicion_Click" Text="+" PostBackUrl="~/src/GUI/Modulo6/Crear.aspx"/>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="form-group">
 				<div id="div-condicionExito" class="col-sm-10 col-md-10 col-lg-10">
-					<input type="text" name="condicionExito" id="condicionExito" placeholder="Condición Final de Éxito" class="form-control"/>
+					<asp:TextBox ID="condicionExito" runat="server" placeholder="Condición Final de Éxito" CssClass="form-control"/>
 				</div>
 			</div>
 			<div class="form-group">
 				<div id="div-condicionFallo" class="col-sm-10 col-md-10 col-lg-10">
-					<input type="text" name="condicionFallo" id="condicionFallo" placeholder="Condición Final de Fallo" class="form-control"/>
+					<asp:TextBox ID="condicionFallo" runat="server" placeholder="Condición Final de Fallo" CssClass="form-control"/>
 				</div>
 			</div>
 			<div class="form-group">

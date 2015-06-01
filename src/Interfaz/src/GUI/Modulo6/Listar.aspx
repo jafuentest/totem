@@ -21,7 +21,7 @@
                 <asp:TableHeaderRow>
                     <asp:TableHeaderCell>ID</asp:TableHeaderCell>
                     <asp:TableHeaderCell>Nombre</asp:TableHeaderCell>
-                    <asp:TableHeaderCell>Actor Primario</asp:TableHeaderCell>
+                    <asp:TableHeaderCell>Actores</asp:TableHeaderCell>
                     <asp:TableHeaderCell>Requerimiento Asociado</asp:TableHeaderCell>
                     <asp:TableHeaderCell HorizontalAlign="Right">Acciones</asp:TableHeaderCell>
                 </asp:TableHeaderRow>
@@ -62,18 +62,18 @@
                     <div class="modal-body">
                         <div class="container-fluid" id="info">
                             <div class="row">
-                                <h3>Precondiciones</h3>
-                                <asp:BulletedList ID="precondiciones" runat="server"></asp:BulletedList>    
-                                <h3>Condición Final de Éxito</h3>
-                                <p id="exito" runat="server"></p>
-                                <h3>Condición Final de Fallo</h3>
-                                <p id="fallo" runat="server"></p>
-                                <h3>Disparador</h3>
-                                <p id="disparador" runat="server"></p>
-                                <h3>Escenario Principal de Éxito</h3>
-                                <asp:BulletedList ID="escenarioExito" runat="server"></asp:BulletedList>
-                                <h3>Extensiones</h3>
-								<asp:BulletedList ID="extensiones" runat="server"></asp:BulletedList>
+								<form runat="server">
+									<h3>Precondiciones</h3>
+									<asp:BulletedList ID="precondiciones" runat="server"></asp:BulletedList>    
+									<h3>Condición Final de Éxito</h3>
+									<ul><li id="exito" runat="server"></li></ul>
+									<h3>Condición Final de Fallo</h3>
+									<ul><li id="fallo" runat="server"></li></ul>
+									<h3>Disparador</h3>
+									<ul><li id="disparador" runat="server"></li></ul>
+									<h3>Escenario Principal de Éxito</h3>
+									<div id="escenarioPrincipal" runat="server"></div>
+								</form>
                             </div>
                         </div>
                     </div>
@@ -81,6 +81,25 @@
             </div>
         </div>
     </div>
+	<script type="text/javascript">
+		$(window).load(function () {
+			var detalle = getUrlParameter('detalle');
+			if (detalle != null && detalle != "")
+				$('#modal-info').modal('show');
+		});
+	</script>
+	<script type="text/javascript">
+		function getUrlParameter(sParam) {
+			var sPageURL = window.location.search.substring(1);
+			var sURLVariables = sPageURL.split('&');
+			for (var i = 0; i < sURLVariables.length; i++) {
+				var sParameterName = sURLVariables[i].split('=');
+				if (sParameterName[0] == sParam) {
+					return sParameterName[1];
+				}
+			}
+		}
+	</script>
     <script type="text/javascript">
     	//Data tables init
     	$(document).ready(function () {

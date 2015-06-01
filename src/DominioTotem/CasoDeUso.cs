@@ -9,41 +9,35 @@ namespace DominioTotem
 		private int _idCasoUso;
         private String _identificadorCasoUso;
         private String _tituloCasoUso;
-		private Actor _actorPrimario;
-		private List<Actor> _actoresSecundarios;
+		private List<Actor> _actores;
         private List<String> _precondicionesCasoUso;
 		private List<Requerimiento> _requerimientosAsociado;
         private String _condicionExito;
         private String _condicionFallo;
         private String _disparadorCasoUso;
-        private List<Dictionary<String, Dictionary<String, List<String>>>> _escenarioExito;
+        private List<Tuple<String, Dictionary<String, List<String>>>> _escenarioExito;
 		#endregion
 
 		#region Constructor
-		public CasoDeUso(int idCasoUso, String identificadorCasoUso, String tituloCasoUso, Actor actorPrimario,
+		public CasoDeUso(int idCasoUso, String identificadorCasoUso, String tituloCasoUso,
             List<Actor> actoresSecundarios, List<String> precondicionesCasoUso,
             List<Requerimiento> requerimientosAsociados, String condicionExito, String condicionFallo,
-            String disparadorCasoUso, List<Dictionary<String,Dictionary<String, List<String>>>> escenarioExito)
+            String disparadorCasoUso, List<Tuple<String,Dictionary<String, List<String>>>> escenarioExito)
 		{
 			this._idCasoUso = idCasoUso;
 			this._identificadorCasoUso = identificadorCasoUso;
 			this._tituloCasoUso = tituloCasoUso;
-            this._actorPrimario = actorPrimario;
-            this._actoresSecundarios = actoresSecundarios;
+            this._actores = actoresSecundarios;
 			this._precondicionesCasoUso = precondicionesCasoUso;
             this._requerimientosAsociado = requerimientosAsociados;
 			this._condicionExito = condicionExito;
 			this._condicionFallo = condicionFallo;
 			this._disparadorCasoUso = disparadorCasoUso;
 			this._escenarioExito = escenarioExito;
-
-			//this._actorPrimario = actorPrimario;
-			//this._actoresSecundarios = actoresSecundarios;
-			//this._requerimientosAsociado = requerimientosAsociados;
-			//this._escenarioExito = escenarioExito;
         }
 
-		public CasoDeUso(int idCasoUso, string identificadorCasoUso, string tituloCasoUso, string condicionExito, string condicionFallo, string disparadorCasoUso)
+		public CasoDeUso(int idCasoUso, string identificadorCasoUso, string tituloCasoUso, string condicionExito,
+			string condicionFallo, string disparadorCasoUso)
 		{
 			this._idCasoUso = idCasoUso;
 			this._identificadorCasoUso = identificadorCasoUso;
@@ -73,16 +67,10 @@ namespace DominioTotem
             set { _tituloCasoUso = value; }
 		}
 
-		public Actor ActorPrimario
+		public List<Actor> Actores
 		{
-			get { return _actorPrimario; }
-			set { _actorPrimario = value; }
-		}
-
-		public List<Actor> ActoresSecundarios
-		{
-			get { return _actoresSecundarios; }
-			set { _actoresSecundarios = value; }
+			get { return _actores; }
+			set { _actores = value; }
 		}
 
         public List<String> PrecondicionesCasoUso
@@ -115,7 +103,7 @@ namespace DominioTotem
             set { _disparadorCasoUso = value; }
         }
 
-        public List<Dictionary<String, Dictionary<String, List<String>>>> EscenarioExito
+        public List<Tuple<String, Dictionary<String, List<String>>>> EscenarioExito
         {
             get { return _escenarioExito; }
             set { _escenarioExito = value; }

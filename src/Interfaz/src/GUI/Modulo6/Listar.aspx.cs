@@ -10,6 +10,8 @@ public partial class GUI_Modulo6_Listar : System.Web.UI.Page
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		((MasterPage)Page.Master).IdModulo = "6";
+
+		#region checkLogin
 		DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
 		if (user != null)
 		{
@@ -28,8 +30,9 @@ public partial class GUI_Modulo6_Listar : System.Web.UI.Page
 		{
 			Response.Redirect("../Modulo1/M1_login.aspx");
 		}
+		#endregion
 
-        String success = Request.Params["success"];
+		String success = Request.Params["success"];
         if(success != null && !success.Equals(""))
             SetAlert (Int32.Parse(success));
         LlenarLista();
@@ -56,6 +59,12 @@ public partial class GUI_Modulo6_Listar : System.Web.UI.Page
                 alert.Attributes["role"] = "alert";
                 alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Caso de uso eliminado exitosamente</div>";
                 break;
+
+			case 4:
+				alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                alert.Attributes["role"] = "alert";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>No se encontró el caso de uso</div>";
+                break;
         }
     }
 
@@ -70,33 +79,37 @@ public partial class GUI_Modulo6_Listar : System.Web.UI.Page
             foreach (CasoDeUso caso in lista)
             {
                 TableRow fila = new TableRow();
-                
                 TableCell id = new TableCell();
                 TableCell titulo = new TableCell();
-                TableCell actorPrimario = new TableCell();
-                TableCell requerimientoAsociado = new TableCell();
+                TableCell actores = new TableCell();
+                TableCell requerimientoAsociados = new TableCell();
                 TableCell acciones = new TableCell();
 
                 id.Text = caso.IdentificadorCasoUso;
                 titulo.Text = caso.TituloCasoUso;
-                actorPrimario.Text = caso.ActorPrimario.NombreActor;
 
-                String requerimientos = "";
-                foreach (Requerimiento req in caso.RequerimientosAsociados)
-                {
-                    requerimientos += req.Descripcion + " ";
-                }
+				String[] strActores = new String[caso.Actores.Count];
+				int i = -1;	
+				foreach (Actor actor in caso.Actores)
+					strActores[++i] = actor.NombreActor;
+				actores.Text = String.Join(",", strActores);
 
-                requerimientoAsociado.Text = requerimientos;
+				String[] strRequerimientos = new String[caso.RequerimientosAsociados.Count];
+				i = -1;
+				foreach (Requerimiento requerimiento in caso.RequerimientosAsociados)
+					strRequerimientos[++i] = requerimiento.Descripcion;
+				requerimientoAsociados.Text = String.Join(",", strRequerimientos);
+
                 acciones.Text = "<a class=\"btn btn-primary glyphicon glyphicon-info-sign\" data-toggle=\"modal\"" +
-					"data-target=\"#modal-info\" href=\"Listar.aspx?detalle=1\"></a>" +
+					" href=\"Listar.aspx?detalle=" + caso.IdCasoUso + "\"></a>" +
 					" <a class=\"btn btn-default glyphicon glyphicon-pencil\" href=\"Modificar.aspx?id=1\"></a>" +
-					" <a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"></a>";
+					" <a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\"" +
+					" data-target=\"#modal-delete\" href=\"#\"></a>";
 
                 fila.Cells.Add(id);
                 fila.Cells.Add(titulo);
-                fila.Cells.Add(actorPrimario);
-                fila.Cells.Add(requerimientoAsociado);
+                fila.Cells.Add(actores);
+				fila.Cells.Add(requerimientoAsociados);
                 fila.Cells.Add(acciones);
 
 				this.table_example.Rows.Add(fila);
@@ -105,11 +118,16 @@ public partial class GUI_Modulo6_Listar : System.Web.UI.Page
 			String detalle = Request.Params["detalle"];
 			if (detalle != null && !detalle.Equals(""))
 			{
-				int i = Int32.Parse(detalle);
-				LlenarDetalle(lista, i);
+				try
+				{
+					LlenarDetalle(lista, Int32.Parse(detalle));
+				}
+				catch (FormatException)
+				{
+					SetAlert(4);
+				}
 			}
 		}
-
     }
 
 	private void LlenarDetalle(List<CasoDeUso> lista, int id)
@@ -117,15 +135,15 @@ public partial class GUI_Modulo6_Listar : System.Web.UI.Page
 		CasoDeUso elCaso = null;
 
 		foreach (CasoDeUso caso in lista)
-		{
 			if (caso.IdCasoUso == id)
 			{
 				elCaso = caso;
 				break;
 			}
-		}
 
-		if (elCaso != null)
+		if (elCaso == null)
+			SetAlert(4);
+		else
 		{
 			foreach (String strPrecondicion in elCaso.PrecondicionesCasoUso)
 			{
@@ -136,30 +154,27 @@ public partial class GUI_Modulo6_Listar : System.Web.UI.Page
 			this.exito.InnerText = elCaso.CondicionExito;
 			this.fallo.InnerText = elCaso.CondicionFallo;
 			this.disparador.InnerText = elCaso.DisparadorCasoUso;
-			
-			foreach (Dictionary<String, Dictionary<String, List<String>>> dictPaso in elCaso.EscenarioExito)
+			String extensiones = "<ul>";
+			foreach (Tuple<String, Dictionary<String, List<String>>> paso in elCaso.EscenarioExito)
 			{
-				foreach (String key in dictPaso.Keys)
+				extensiones += "<li>" + paso.Item1 + "</li>";
+				if (paso.Item2.Count > 0)
 				{
-					ListItem paso = new ListItem(key);
-					this.escenarioExito.Items.Add(paso);
-				}
-			}
-			
-			foreach (Dictionary<String, Dictionary<String, List<String>>> dictPaso in elCaso.EscenarioExito)
-			{
-				foreach (Dictionary<String, List<String>> val in dictPaso.Values)
-				{
-					foreach (KeyValuePair<String, List<String>> par in val)
+					extensiones += "<ul>";
+
+					foreach (KeyValuePair<String, List<String>> extension in paso.Item2)
 					{
-						foreach (String laExt in par.Value)
-						{
-							ListItem laExte = new ListItem(laExt);
-							this.extensiones.Items.Add(laExte);
-						}
+						extensiones += "<li>" + extension.Key + "</li><ul>";
+
+						foreach (String pasoExtension in extension.Value)
+							extensiones += "<li>" + pasoExtension + "</li>";
+						extensiones += "</ul>";
 					}
+					extensiones += "</ul>";
 				}
 			}
+			extensiones += "</ul>";
+			this.escenarioPrincipal.InnerHtml = extensiones;
 		}
 	}
 }

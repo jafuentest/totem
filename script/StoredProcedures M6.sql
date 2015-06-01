@@ -276,14 +276,13 @@ GO
 
 /*Leer extension(es) (Bifurcaciones) del Caso de Uso*/
 CREATE PROCEDURE LEER_EXTENSION 
-	@idpaso int,
-	@idcasouso int
+	@idpaso int
 AS
 	BEGIN
 		--Leo todas las extensiones asociadas al paso en especifico del Caso de Uso
 		SELECT E.ext_id, E.ext_descripcion 
 		FROM EXTENSION E 
-		WHERE (E.PASO_pas_id=@idpaso) AND (E.PASO_CASO_USO_cu_id=@idcasouso); 
+		WHERE (E.PASO_pas_id=@idpaso); 
 	END
 GO
 
@@ -317,7 +316,7 @@ CREATE PROCEDURE LEER_REQUERIMIENTO_DEL_CU
 	@idcasouso int
 AS
 	BEGIN
-		SELECT R.req_descripcion DESCRIPCION 
+		SELECT R.req_codigo, R.req_descripcion, R.req_tipo, R.req_prioridad, R.req_estatus DESCRIPCION 
 		FROM REQUERIMIENTO R, CU_REQUERIMIENTO O, CASO_USO C 
 		WHERE (C.cu_id=@idcasouso) AND (C.cu_id=O.CASO_USO_cu_id) AND (R.req_id=O.REQUERIMIENTO_req_id);
 	END

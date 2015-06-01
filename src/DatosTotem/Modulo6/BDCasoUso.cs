@@ -17,7 +17,8 @@ namespace DatosTotem.Modulo6
         {
             try
             {
-                this.conexion = new SqlConnection(ConfigurationManager.ConnectionStrings[RecursoGeneralBD.NombreBD].ConnectionString);
+                this.conexion = new SqlConnection(
+					ConfigurationManager.ConnectionStrings[RecursoGeneralBD.NombreBD].ConnectionString);
             }
             catch (ConfigurationErrorsException e)
             {
@@ -52,6 +53,38 @@ namespace DatosTotem.Modulo6
 
 				foreach(CasoDeUso caso in lista)
 				{
+					#region Requerimientos
+					this.instruccion = new SqlCommand(RecursosBDModulo6.PROCEDURE_LEER_REQUERIMIENTO_DEL_CU, this.conexion);
+					this.instruccion.CommandType = CommandType.StoredProcedure;
+					this.instruccion.Parameters.AddWithValue(RecursosBDModulo6.ID_CU, caso.IdCasoUso);
+					this.conexion.Open();
+
+					respuesta = instruccion.ExecuteReader();
+					List<Requerimiento> requerimientos = new List<Requerimiento>();
+					while (respuesta.Read())
+						requerimientos.Add(new Requerimiento(respuesta.GetString(0), respuesta.GetString(1),
+							respuesta.GetString(2), respuesta.GetString(3), respuesta.GetString(4)));
+
+					caso.RequerimientosAsociados = requerimientos;
+					this.conexion.Close();
+					#endregion
+					
+					#region Actores
+					this.instruccion = new SqlCommand(RecursosBDModulo6.PROCEDURE_LEER_ACTOR_DEL_CU, this.conexion);
+					this.instruccion.CommandType = CommandType.StoredProcedure;
+					this.instruccion.Parameters.AddWithValue(RecursosBDModulo6.ID_CU, caso.IdCasoUso);
+					this.conexion.Open();
+
+					respuesta = instruccion.ExecuteReader();
+					List<Actor> actores = new List<Actor>();
+					while (respuesta.Read())
+						actores.Add(new Actor(respuesta.GetString(0), respuesta.GetString(1)));
+
+					caso.Actores = actores;
+					this.conexion.Close();
+					#endregion
+
+					#region Precondiciones
 					this.instruccion = new SqlCommand(RecursosBDModulo6.PROCEDURE_LEER_PRECONDICION, this.conexion);
 					this.instruccion.CommandType = CommandType.StoredProcedure;
 					this.instruccion.Parameters.AddWithValue(RecursosBDModulo6.ID_CU, caso.IdCasoUso);
@@ -60,12 +93,36 @@ namespace DatosTotem.Modulo6
 					respuesta = instruccion.ExecuteReader();
 					List<String> precondiciones = new List<String>();
 					while (respuesta.Read())
-					{
 						precondiciones.Add(respuesta.GetString(0));
-					}
 					
 					caso.PrecondicionesCasoUso = precondiciones;
 					this.conexion.Close();
+					#endregion
+
+					#region Pasos
+					this.instruccion = new SqlCommand(RecursosBDModulo6.PROCEDURE_LEER_PASO, this.conexion);
+					this.instruccion.CommandType = CommandType.StoredProcedure;
+					this.instruccion.Parameters.AddWithValue(RecursosBDModulo6.ID_CU, caso.IdCasoUso);
+					this.conexion.Open();
+
+					respuesta = instruccion.ExecuteReader();
+					List<Tuple<String, Dictionary<String, List<String>>>> pasos = 
+						new List<Tuple<String, Dictionary<String, List<String>>>>();
+					while (respuesta.Read())
+					{
+						List<String> pasosExtension = new List<String>();
+						pasosExtension.Add("Se hace algo");
+						pasosExtension.Add("Se hace otra cosa");
+
+						Dictionary<String, List<String>> extensiones = new Dictionary<String, List<String>>();
+						extensiones.Add("El usuario cometio un error", pasosExtension);
+						
+						Tuple<String, Dictionary<String, List<String>>> paso =
+							new Tuple<String, Dictionary<String,List<String>>>(respuesta.GetString(1), extensiones);
+					}
+					caso.EscenarioExito = pasos;
+					this.conexion.Close();
+					#endregion
 				}
 			}
             catch (SqlException e)

@@ -115,24 +115,6 @@ namespace DatosTotem.Modulo6 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string PROCEDURE {
-            get {
-                return ResourceManager.GetString("PROCEDURE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string PROCEDURE_ {
-            get {
-                return ResourceManager.GetString("PROCEDURE_", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to ELIMINAR_ACTOR.
         /// </summary>
         internal static string PROCEDURE_ELIMINAR_ACTOR {
@@ -160,6 +142,15 @@ namespace DatosTotem.Modulo6 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to LEER_ACTOR_DEL_CU.
+        /// </summary>
+        internal static string PROCEDURE_LEER_ACTOR_DEL_CU {
+            get {
+                return ResourceManager.GetString("PROCEDURE_LEER_ACTOR_DEL_CU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LEER_CU.
         /// </summary>
         internal static string PROCEDURE_LEER_CU {
@@ -169,11 +160,38 @@ namespace DatosTotem.Modulo6 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to LEER_EXTENSION.
+        /// </summary>
+        internal static string PROCEDURE_LEER_EXTENSION {
+            get {
+                return ResourceManager.GetString("PROCEDURE_LEER_EXTENSION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LEER_PASO.
+        /// </summary>
+        internal static string PROCEDURE_LEER_PASO {
+            get {
+                return ResourceManager.GetString("PROCEDURE_LEER_PASO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LEER_PRECONDICION.
         /// </summary>
         internal static string PROCEDURE_LEER_PRECONDICION {
             get {
                 return ResourceManager.GetString("PROCEDURE_LEER_PRECONDICION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LEER_REQUERIMIENTO_DEL_CU.
+        /// </summary>
+        internal static string PROCEDURE_LEER_REQUERIMIENTO_DEL_CU {
+            get {
+                return ResourceManager.GetString("PROCEDURE_LEER_REQUERIMIENTO_DEL_CU", resourceCulture);
             }
         }
         

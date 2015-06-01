@@ -139,12 +139,6 @@
     <value>@nombre</value>
     <comment>Atributo que identifica el nombre del actor</comment>
   </data>
-  <data name="PROCEDURE" xml:space="preserve">
-    <value />
-  </data>
-  <data name="PROCEDURE_" xml:space="preserve">
-    <value />
-  </data>
   <data name="PROCEDURE_ELIMINAR_ACTOR" xml:space="preserve">
     <value>ELIMINAR_ACTOR</value>
     <comment>Procedure para eliminar un actor en la Base de Datos</comment>
@@ -157,12 +151,24 @@
     <value>LEER_ACTOR</value>
     <comment>Procedure para leer los actores de la Base de Datos</comment>
   </data>
+  <data name="PROCEDURE_LEER_ACTOR_DEL_CU" xml:space="preserve">
+    <value>LEER_ACTOR_DEL_CU</value>
+  </data>
   <data name="PROCEDURE_LEER_CU" xml:space="preserve">
     <value>LEER_CU</value>
     <comment>Obtiene un Caso de Uso</comment>
   </data>
+  <data name="PROCEDURE_LEER_EXTENSION" xml:space="preserve">
+    <value>LEER_EXTENSION</value>
+  </data>
+  <data name="PROCEDURE_LEER_PASO" xml:space="preserve">
+    <value>LEER_PASO</value>
+  </data>
   <data name="PROCEDURE_LEER_PRECONDICION" xml:space="preserve">
     <value>LEER_PRECONDICION</value>
+  </data>
+  <data name="PROCEDURE_LEER_REQUERIMIENTO_DEL_CU" xml:space="preserve">
+    <value>LEER_REQUERIMIENTO_DEL_CU</value>
   </data>
   <data name="PROCEDURE_LISTAR_CU" xml:space="preserve">
     <value>LISTAR_CU</value>
