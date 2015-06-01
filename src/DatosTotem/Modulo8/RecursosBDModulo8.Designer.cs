@@ -682,11 +682,29 @@ namespace DatosTotem.Modulo8 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_ConsultarInvolucradosContactoProyecto.
+        /// </summary>
+        internal static string ProcedureContactoProyecto {
+            get {
+                return ResourceManager.GetString("ProcedureContactoProyecto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Procedure_EliminarTodosInvolucrados.
         /// </summary>
         internal static string ProcedureEliminarInvolucradoMinuta {
             get {
                 return ResourceManager.GetString("ProcedureEliminarInvolucradoMinuta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_ConsultarInvolucradosUsuarioProyecto.
+        /// </summary>
+        internal static string ProcedureUsuarioProyecto {
+            get {
+                return ResourceManager.GetString("ProcedureUsuarioProyecto", resourceCulture);
             }
         }
     }

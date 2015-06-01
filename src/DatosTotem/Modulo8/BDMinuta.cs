@@ -153,6 +153,7 @@ namespace DatosTotem.Modulo8
 
         }
 
+
         /// <summary>
         /// Metodo para modificar los campos más importantes de una Minuta
         /// </summary>
@@ -248,10 +249,11 @@ namespace DatosTotem.Modulo8
                 sqlcom.Parameters[RecursosBDModulo8.ParametroMotivoMinuta].Value = min.Motivo;
                 sqlcom.Parameters[RecursosBDModulo8.ParametroObservacionesMinuta].Value = min.Observaciones;
 
-            
                 con.Conectar().Open();
                 sqlcom.ExecuteNonQuery();
+
                 return true;
+                
 
             }
             catch (NullReferenceException ex)

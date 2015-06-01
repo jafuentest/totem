@@ -35,7 +35,7 @@ public partial class GUI_Modulo8_CrearMinuta : System.Web.UI.Page
         LogicaMinuta logicaMinuta = new LogicaMinuta();
         List<Usuario> listaUsuario = logicaMinuta.ListaUsuario(new Proyecto()
         {
-            Codigo = "1"
+            Codigo = "TOT"
         });
         var output = JsonConvert.SerializeObject(listaUsuario);
         return output;
@@ -92,8 +92,8 @@ public partial class GUI_Modulo8_CrearMinuta : System.Web.UI.Page
         }
 
         string fechaMinuta = minutaDinamica["fecha"];
-        DateTime fechaMi = DateTime.ParseExact(fechaMinuta, "dd/MM/yyyy HH:mm", null);
-
+        //DateTime fechaMi = DateTime.ParseExact(fechaMinuta, "dd/MM/yyyy HH:mm", null);
+        DateTime fechaMi = DateTime.Now;
         Minuta minuta = new Minuta
         {
             Fecha = fechaMi,

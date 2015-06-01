@@ -313,40 +313,27 @@ namespace DatosTotem.Modulo8
         /// <param name="idMinuta">id de la minuta con la cual se encuentran vinculados los acuerdos </param>
         /// <param name="idProyecto">id del proyecto</param>
         /// <returns>retorna un boolean para saber si se realizo con exito la operación</returns>
-        public Boolean AgregarAcuerdosBD(List<Acuerdo> listaAcuerdo, int idMinuta, int idProyecto)
+        public Boolean AgregarAcuerdosBD(Acuerdo acuerdo, string idProyecto)
         {
+            inv = new BDInvolucrados();
             con = new BDConexion();
             SqlConnection conect = con.Conectar();
 
             SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoAgregarAcuerdo, conect);
             try
             {
-                    sqlcom.CommandType = CommandType.StoredProcedure;
-                    conect.Open();
+                sqlcom.CommandType = CommandType.StoredProcedure;
+                conect.Open();
 
-                      foreach (Acuerdo acuerdo in listaAcuerdo)
-                         {
+                    sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroFechaAcuerdo, SqlDbType.Date));
+                    sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroDesarrolloAcuerdo, SqlDbType.VarChar));
 
-                           sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroFechaAcuerdo, SqlDbType.Date));
-                           sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroDesarrolloAcuerdo, SqlDbType.VarChar));
-                           sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroMinuta, SqlDbType.Int));
+                    sqlcom.Parameters[RecursosBDModulo8.ParametroFechaAcuerdo].Value = acuerdo.Fecha;
+                    sqlcom.Parameters[RecursosBDModulo8.ParametroDesarrolloAcuerdo].Value = acuerdo.Compromiso;
+                    sqlcom.ExecuteNonQuery();
 
-                           sqlcom.Parameters[RecursosBDModulo8.ParametroFechaAcuerdo].Value = acuerdo.Fecha;
-                           sqlcom.Parameters[RecursosBDModulo8.ParametroDesarrolloAcuerdo].Value = acuerdo.Compromiso;
-                           sqlcom.Parameters[RecursosBDModulo8.ParametroMinuta].Value = idMinuta;          
-                           sqlcom.ExecuteNonQuery();
-                           SqlDataReader leer = sqlcom.ExecuteReader();
-                           int idAcuerdo= int.Parse(leer[RecursosBDModulo8.AtributoIDAcuerdo].ToString());
-
-                           if (inv.AgregarUsuarioEnAcuerdo(acuerdo.ListaUsuario, idAcuerdo, idProyecto) != true ||
-                               inv.AgregarContactoEnAcuerdo(acuerdo.ListaContacto, idAcuerdo, idProyecto) != true)
-                           {
-                               throw new Exception();
-                           }
-                           
-                         }
-                      return true;
-                   }
+                return true;
+            }
 
             catch (NullReferenceException ex)
             {
@@ -384,13 +371,12 @@ namespace DatosTotem.Modulo8
                    RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
             }
-
-                finally
-                {
-                    con.Desconectar(conect);
-
-                }
+            finally
+            {
+                con.Desconectar(conect);
             }
+        }
+
         
         #endregion
 

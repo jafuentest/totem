@@ -177,7 +177,7 @@ namespace DatosTotem.Modulo8
         /// <param name="id">Es el id del Acuerdo o Minuta que se encuentra vinculado con los 
         /// Involucrados</param>
         /// <returns></returns>
-        public List<int> ConsultarInvolucrado(string procedure, string atributoInvo, string parametro, int id)
+        public List<int> ConsultarInvolucrado(string procedure, string atributoInvo, string parametro, string id)
         {
             List<int> i = new List<int>();
             con = new BDConexion();
@@ -243,40 +243,28 @@ namespace DatosTotem.Modulo8
             }
         }
 
-        /// <summary>
-        /// Metodo para agregar un Usuario a la BD
-        /// </summary>
-        /// <param name="listaUsuario">lista de Usuario a agregar</param>
-        /// <param name="idAcuerdo">id de Acuerdo vinculado</param>
-        /// <param name="idProyecto">id de Proyecto</param>
-        /// <returns>Retorna un Boolean para saber si se realizo la operación con éxito</returns>
-        public Boolean AgregarUsuarioEnAcuerdo(List<Usuario> listaUsuario, int idAcuerdo, int idProyecto)
+        public List<int> ConsultarInvolucrado(string procedure, string atributoInvo, string parametro, int id)
         {
+            List<int> i = new List<int>();
             con = new BDConexion();
             SqlConnection conect = con.Conectar();
-
-            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoAgregarUsuarioAcuerdo, conect);
-
+            SqlCommand sqlcom = new SqlCommand(procedure, conect);
             try
-             {
+            {
                 sqlcom.CommandType = CommandType.StoredProcedure;
+                sqlcom.Parameters.Add(new SqlParameter(parametro, id));
+
+                SqlDataReader leer;
                 conect.Open();
-                foreach (Usuario usuario in listaUsuario)
+
+                leer = sqlcom.ExecuteReader();
+
+                while (leer.Read())
                 {
-                    sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDAcuerdo, SqlDbType.Int));
-                    sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDUsuario, SqlDbType.Int));
-                    sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDProyecto, SqlDbType.Int));
-
-                    sqlcom.Parameters[RecursosBDModulo8.ParametroIDAcuerdo].Value = idAcuerdo;
-                    sqlcom.Parameters[RecursosBDModulo8.ParametroIDUsuario].Value = usuario.idUsuario;
-                    sqlcom.Parameters[RecursosBDModulo8.ParametroIDProyecto].Value = idProyecto;
-                    sqlcom.ExecuteNonQuery();
-
+                    i.Add(int.Parse(leer[atributoInvo].ToString()));
                 }
-
-                return true;
+                return i;
             }
-
             catch (NullReferenceException ex)
             {
 
@@ -319,6 +307,34 @@ namespace DatosTotem.Modulo8
                 con.Desconectar(conect);
 
             }
+        }
+
+
+        /// <summary>
+        /// Metodo para agregar un Usuario a la BD
+        /// </summary>
+        /// <param name="listaUsuario">lista de Usuario a agregar</param>
+        /// <param name="idAcuerdo">id de Acuerdo vinculado</param>
+        /// <param name="idProyecto">id de Proyecto</param>
+        /// <returns>Retorna un Boolean para saber si se realizo la operación con éxito</returns>
+        public Boolean AgregarUsuarioEnAcuerdo(Usuario usuario, string idProyecto)
+        {
+            con = new BDConexion();
+            SqlConnection conect = con.Conectar();
+            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoAgregarUsuarioAcuerdo,conect);
+
+                sqlcom.CommandType = CommandType.StoredProcedure;
+                conect.Open();
+
+                    sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDUsuario, SqlDbType.Int));
+                    sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDProyecto, SqlDbType.VarChar));
+
+                    sqlcom.Parameters[RecursosBDModulo8.ParametroIDUsuario].Value = usuario.idUsuario;
+                    sqlcom.Parameters[RecursosBDModulo8.ParametroIDProyecto].Value = idProyecto;
+                    sqlcom.ExecuteNonQuery();
+
+                return true;
+
         }
 
         /// <summary>
@@ -328,30 +344,23 @@ namespace DatosTotem.Modulo8
         /// <param name="idAcuerdo">id del Acuerdo vinculado</param>
         /// <param name="idProyecto">id de Proyecto</param>
         /// <returns>Retorna un Boolean para saber si se realizo la operación con éxito</returns>
-        public Boolean AgregarContactoEnAcuerdo(List<Contacto> listaContacto, int idAcuerdo, int idProyecto)
+        public Boolean AgregarContactoEnAcuerdo(Contacto contacto, string idProyecto)
         {
-
             con = new BDConexion();
             SqlConnection conect = con.Conectar();
 
-            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoAgregarContactoAcuerdo, conect);
+            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoAgregarContactoAcuerdo,conect);
             try
             {
                 sqlcom.CommandType = CommandType.StoredProcedure;
                 conect.Open();
 
-                foreach (Contacto contacto in listaContacto)
-                {
-                    sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDAcuerdo, SqlDbType.Int));
                     sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDContacto, SqlDbType.Int));
-                    sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDProyecto, SqlDbType.Int));
+                    sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDProyecto, SqlDbType.VarChar));
 
-                    sqlcom.Parameters[RecursosBDModulo8.ParametroIDAcuerdo].Value = idAcuerdo;
                     sqlcom.Parameters[RecursosBDModulo8.ParametroIDContacto].Value = contacto.Con_Id;
                     sqlcom.Parameters[RecursosBDModulo8.ParametroIDProyecto].Value = idProyecto;
                     sqlcom.ExecuteNonQuery();
-
-                }
 
                 return true;
             }
@@ -392,12 +401,11 @@ namespace DatosTotem.Modulo8
                    RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
             }
-
             finally
             {
                 con.Desconectar(conect);
-
             }
+
         }
 
         /// <summary>
@@ -407,7 +415,7 @@ namespace DatosTotem.Modulo8
         /// <param name="idAcuerdo">id de Acuerdo vinculado</param>
         /// <param name="idProyecto">id del Proyecto</param>
         /// <returns>Retorna un Boolean para saber si se realizo la operación con éxito</returns>
-        public Boolean EliminarUsuarioEnAcuerdo(List<Usuario> listaUsuario, int idAcuerdo, int idProyecto)
+        public Boolean EliminarUsuarioEnAcuerdo(List<Usuario> listaUsuario, int idAcuerdo, string idProyecto)
         {
             con = new BDConexion();
             SqlConnection conect = con.Conectar();
@@ -422,7 +430,7 @@ namespace DatosTotem.Modulo8
                 {
                     sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDAcuerdo, SqlDbType.Int));
                     sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDUsuario, SqlDbType.Int));
-                    sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDProyecto, SqlDbType.Int));
+                    sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDProyecto, SqlDbType.VarChar));
 
                     sqlcom.Parameters[RecursosBDModulo8.ParametroIDUsuario].Value = idAcuerdo;
                     sqlcom.Parameters[RecursosBDModulo8.ParametroIDUsuario].Value = usuario.idUsuario;

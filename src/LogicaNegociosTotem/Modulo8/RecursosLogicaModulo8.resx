@@ -123,6 +123,12 @@
   <data name="AtributoAcuerdoUsuario" xml:space="preserve">
     <value>idUsuario</value>
   </data>
+  <data name="AtributoContacto" xml:space="preserve">
+    <value>con_id</value>
+  </data>
+  <data name="AtributoUsuario" xml:space="preserve">
+    <value>usu_id</value>
+  </data>
   <data name="Codigo" xml:space="preserve">
     <value>T_00_001</value>
     <comment>Codigo de error en la conexion con la BD</comment>
@@ -169,6 +175,9 @@
     <value>@min_id</value>
     <comment>Parametro en BD que contiene el ID de la Minuta a consultar</comment>
   </data>
+  <data name="ParametroIdProyecto" xml:space="preserve">
+    <value>@pro_id</value>
+  </data>
   <data name="ProcedureConsultarContactoAcuerdo" xml:space="preserve">
     <value>Procedure_ConsultarAcuerdoResponsablesContactoMinuta</value>
   </data>
@@ -180,5 +189,11 @@
   </data>
   <data name="ProcedureConsultarUsuarioMinuta" xml:space="preserve">
     <value>Procedure_ConsultarAsistenteUsuarioMinuta</value>
+  </data>
+  <data name="ProcedureContactoProyecto" xml:space="preserve">
+    <value>Procedure_ConsultarInvolucradosContactoProyecto</value>
+  </data>
+  <data name="ProcedureUsuarioProyecto" xml:space="preserve">
+    <value>Procedure_ConsultarInvolucradosUsuarioProyecto</value>
   </data>
 </root>
