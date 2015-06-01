@@ -49,12 +49,12 @@ namespace LogicaNegociosTotem.Modulo4
         /// <param name="clienteJuridico">Cliente juridico del proyecto</param>
         /// <returns>Retorna True si se crea, de lo contrario genera
         /// una exception(CodigoRepetido)</returns>
-        public static bool CrearProyecto(DominioTotem.Proyecto proyecto, DominioTotem.ClienteJuridico clienteJuridico)
+        public static bool CrearProyectoClienteJuridico(DominioTotem.Proyecto proyecto, String id)
         {
 
             try
             {
-                return DatosTotem.Modulo4.BDProyecto.CrearProyecto(proyecto,clienteJuridico);
+                return DatosTotem.Modulo4.BDProyecto.CrearProyectoClienteJuridico(proyecto, id);
             }
             catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException e)
             {
@@ -69,12 +69,12 @@ namespace LogicaNegociosTotem.Modulo4
         /// <param name="clienteNatural">Cliente natural del proyecto</param>
         /// <returns>Retorna True si se crea, de lo contrario genera
         /// una exception(CodigoRepetido)</returns>
-        public static bool CrearProyecto(DominioTotem.Proyecto proyecto, DominioTotem.ClienteNatural clienteNatural)
+        public static bool CrearProyectoClienteNatural(DominioTotem.Proyecto proyecto, String id)
         {
 
             try
             {
-                return DatosTotem.Modulo4.BDProyecto.CrearProyecto(proyecto, clienteNatural);
+                return DatosTotem.Modulo4.BDProyecto.CrearProyectoClieteNatural(proyecto, id);
             }
             catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException e)
             {
@@ -658,6 +658,30 @@ namespace LogicaNegociosTotem.Modulo4
             try
             {
                 return DatosTotem.Modulo4.BDProyecto.ConsultarTodoslosClienteJuridicos();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static int ObtenerIDClienteNatural(string cedula)
+        {
+            try
+            {
+                return DatosTotem.Modulo4.BDProyecto.ObtenerIdClienteNatural(cedula);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static int ObtenerIDClienteJuridico(string rif)
+        {
+            try
+            {
+                return DatosTotem.Modulo4.BDProyecto.ObtenerIdClienteJuridico(rif);
             }
             catch (Exception e)
             {
