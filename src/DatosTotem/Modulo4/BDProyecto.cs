@@ -551,5 +551,107 @@ namespace DatosTotem.Modulo4
 
 
         #endregion
+
+        #region Buscar
+
+
+        /// <summary>
+        /// Método para buscar proyectos en la bd
+        /// </summary>
+        /// <param name="busqueda">Cadena para la busqueda</param>
+        /// <returns>Retrorna los proyectos de relacionado con el parametro</returns>
+        public static DataTable BuscarProyectos(String busqueda)
+        {
+            
+
+                //parametros para insertar un proyecto
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro parametro = new Parametro(RecursosBDModulo4.ParametroBusqueda, SqlDbType.VarChar, busqueda, false);
+                parametros.Add(parametro);
+
+                BDConexion con = new BDConexion();
+                DataTable resultados = con.EjecutarStoredProcedureTuplas(RecursosBDModulo4.ProcedimientoBuscarProyecto, parametros);
+
+
+                if (resultados.Rows.Count > 0)
+                {
+                    return resultados;
+                }
+                else
+                {
+
+                    return null;
+
+                }
+
+            
+        }
+
+
+        /// <summary>
+        /// Método para buscar los proyectos inactivos en la bd
+        /// </summary>
+        /// <param name="busqueda">Cadena para la busqueda</param>
+        /// <returns>Retrorna los proyectos de relacionado con el parametro</returns>
+        public static DataTable BuscarProyectosInactivos(String busqueda)
+        {
+
+
+            //parametros para insertar un proyecto
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursosBDModulo4.ParametroBusqueda, SqlDbType.VarChar, busqueda, false);
+            parametros.Add(parametro);
+
+            BDConexion con = new BDConexion();
+            DataTable resultados = con.EjecutarStoredProcedureTuplas(RecursosBDModulo4.ProcedimientoBuscarProyectoInactivo, parametros);
+
+
+            if (resultados.Rows.Count > 0)
+            {
+                return resultados;
+            }
+            else
+            {
+
+                return null;
+
+            }
+
+
+        }
+
+        /// <summary>
+        /// Método para buscar los proyectos activos en la bd
+        /// </summary>
+        /// <param name="busqueda">Cadena para la busqueda</param>
+        /// <returns>Retrorna los proyectos activos de relacionado con el parametro</returns>
+        public static DataTable BuscarProyectosActivos(String busqueda)
+        {
+
+
+            //parametros para insertar un proyecto
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursosBDModulo4.ParametroBusqueda, SqlDbType.VarChar, busqueda, false);
+            parametros.Add(parametro);
+
+            BDConexion con = new BDConexion();
+            DataTable resultados = con.EjecutarStoredProcedureTuplas(RecursosBDModulo4.ProcedimientoBuscarProyectoActivo, parametros);
+
+
+            if (resultados.Rows.Count > 0)
+            {
+                return resultados;
+            }
+            else
+            {
+
+                return null;
+
+            }
+
+
+        }
+
+        #endregion
     }
 }

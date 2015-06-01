@@ -143,7 +143,51 @@ AS
  END
 GO
 
+-- Procedimiento para buscar un Proyecto----------------------
 
+CREATE PROCEDURE Procedure_BuscarProyecto
+	
+	@parametro [varchar] (60) 
+	   
+AS
+ BEGIN
+	
+	SELECT pro_codigo, pro_nombre, pro_estado,pro_descripcion,pro_costo,pro_moneda
+	FROM PROYECTO 
+	WHERE (pro_codigo LIKE '%@parametro%') OR (pro_nombre LIKE '%@parametro%')
+	RETURN
+ END
+ GO
+ -- Procedimiento para buscar un Proyecto inactivo----------------------
+
+CREATE PROCEDURE Procedure_BuscarProyectoInactivo
+	
+	@parametro [varchar] (60) 
+	   
+AS
+ BEGIN
+	
+	SELECT pro_codigo, pro_nombre, pro_estado,pro_descripcion,pro_costo,pro_moneda
+	FROM PROYECTO 
+	WHERE (pro_codigo LIKE '%@parametro%') OR (pro_nombre LIKE '%@parametro%') AND (pro_estado = 0)
+	RETURN
+ END
+ GO
+ -- Procedimiento para buscar un Proyecto activo----------------------
+
+CREATE PROCEDURE Procedure_BuscarProyectoActivo
+	
+	@parametro [varchar] (60) 
+	   
+AS
+ BEGIN
+	
+	SELECT pro_codigo, pro_nombre, pro_estado,pro_descripcion,pro_costo,pro_moneda
+	FROM PROYECTO 
+	WHERE (pro_codigo LIKE '%@parametro%') OR (pro_nombre LIKE '%@parametro%') AND (pro_estado = 1)
+	RETURN
+ END
+ GO
 
 CREATE PROCEDURE M5_ContarRequerimientosFinalizadosPorProyecto
 

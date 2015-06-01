@@ -232,6 +232,16 @@ namespace DatosTotem.Modulo4 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 
+        ///@parametro.
+        /// </summary>
+        internal static string ParametroBusqueda {
+            get {
+                return ResourceManager.GetString("ParametroBusqueda", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @CLIENTE_JURIDICO_cj_id.
         /// </summary>
         internal static string ParametroClienteJuridico {
@@ -372,6 +382,33 @@ namespace DatosTotem.Modulo4 {
         internal static string ProcedimientoAgregarProyectoClienteNatural {
             get {
                 return ResourceManager.GetString("ProcedimientoAgregarProyectoClienteNatural", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procedure_BuscarProyecto.
+        /// </summary>
+        internal static string ProcedimientoBuscarProyecto {
+            get {
+                return ResourceManager.GetString("ProcedimientoBuscarProyecto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procedure_BuscarProyectoActivo.
+        /// </summary>
+        internal static string ProcedimientoBuscarProyectoActivo {
+            get {
+                return ResourceManager.GetString("ProcedimientoBuscarProyectoActivo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procedure_BuscarProyectoInactivo.
+        /// </summary>
+        internal static string ProcedimientoBuscarProyectoInactivo {
+            get {
+                return ResourceManager.GetString("ProcedimientoBuscarProyectoInactivo", resourceCulture);
             }
         }
         

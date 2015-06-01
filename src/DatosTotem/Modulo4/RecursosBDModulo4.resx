@@ -193,6 +193,11 @@
     <value>No hay proyectos asociados al usuario.</value>
     <comment>Mensaje de error para cuando no existen involucrados al proyecto</comment>
   </data>
+  <data name="ParametroBusqueda" xml:space="preserve">
+    <value>
+@parametro</value>
+    <comment>parametro para buscar proyectos</comment>
+  </data>
   <data name="ParametroClienteJuridico" xml:space="preserve">
     <value>@CLIENTE_JURIDICO_cj_id</value>
     <comment>Cliente natural del proyecto para usar en procedures</comment>
@@ -256,6 +261,18 @@
   <data name="ProcedimientoAgregarProyectoClienteNatural" xml:space="preserve">
     <value>Procedure_AgregarProyectoClienteNatural</value>
     <comment>Agrega un proyecto con cliente natural en la BD</comment>
+  </data>
+  <data name="ProcedimientoBuscarProyecto" xml:space="preserve">
+    <value>Procedure_BuscarProyecto</value>
+    <comment>Procedimiento para buscar proyectos</comment>
+  </data>
+  <data name="ProcedimientoBuscarProyectoActivo" xml:space="preserve">
+    <value>Procedure_BuscarProyectoActivo</value>
+    <comment>Procedimiento para buscar proyectos activos</comment>
+  </data>
+  <data name="ProcedimientoBuscarProyectoInactivo" xml:space="preserve">
+    <value>Procedure_BuscarProyectoInactivo</value>
+    <comment>Procedimiento para buscar proyectos inactivos</comment>
   </data>
   <data name="ProcedimientoConsultarProyecto" xml:space="preserve">
     <value>Procedure_ConsultarProyecto</value>
