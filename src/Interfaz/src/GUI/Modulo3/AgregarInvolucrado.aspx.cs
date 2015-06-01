@@ -37,7 +37,7 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
         }
         #endregion
         if (!IsPostBack) // verificar si la pagina se muestra por primera vez
-        {            
+        {
             comboCargo.Enabled = false;
             comboPersonal.Enabled = false;
             llenarComboTipoEmpresas();
@@ -88,7 +88,7 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
                         options.Add(cargo, cargo);
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
 
                 }
@@ -134,24 +134,48 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
             {
                 options.Add(u.username, u.nombre + " " + u.apellido);
             }
-            comboPersonal.DataSource = options;
-            comboPersonal.DataTextField = "value";
-            comboPersonal.DataValueField = "key";
-            comboPersonal.DataBind();
+
         }
+        else
+        {
+            if (comboTipoEmpresa.SelectedIndex == 1 && comboCargo.SelectedIndex != -1)
+            {
+                ClienteJuridico jur = new ClienteJuridico();
+                jur.Jur_Id = "1";
+                LogicaNegociosTotem.Modulo3.LogicaInvolucrados logInv =
+                    new LogicaNegociosTotem.Modulo3.LogicaInvolucrados();
+                List<Contacto> listaContactos = new List<Contacto>();
+                listaContactos = logInv.ListarContactoCargoEmpresa(jur, comboCargo.SelectedItem.ToString());
+                foreach (Contacto c in listaContactos)
+                {
+                    options.Add(c.Con_Id.ToString(), c.Con_Nombre + " " + c.Con_Apellido);
+                }
+            }
+        }
+        comboPersonal.DataSource = options;
+        comboPersonal.DataTextField = "value";
+        comboPersonal.DataValueField = "key";
+        comboPersonal.DataBind();
     }
 
     protected void AgregarInvolucrados_Click(object sender, EventArgs e)
     {
-        LogicaNegociosTotem.Modulo3.LogicaInvolucrados logInv = new LogicaNegociosTotem.Modulo3.LogicaInvolucrados();
+        LogicaNegociosTotem.Modulo3.LogicaInvolucrados logInv =
+            new LogicaNegociosTotem.Modulo3.LogicaInvolucrados();
+
+        if (comboTipoEmpresa.SelectedIndex == 2 && comboCargo.SelectedIndex != -1)
+        {
+            #region agregar usuario en tabla y en bd
+
             Usuario elUsuario = logInv.obtenerDatosUsuarioUsername(comboPersonal.SelectedValue);
             elUsuario.username = comboPersonal.SelectedValue;
-            #region agregar usuario en tabla y en bd
+
             if (listaUsuarios.agregarUsuarioAProyecto(elUsuario))
             {
-                try {
+                try
+                {
 
-                    if(logInv.agregarUsuariosEnBD(listaUsuarios))
+                    if (logInv.agregarUsuariosEnBD(listaUsuarios))
                     {
                         this.laTabla.Text += "<tr id=\"" + elUsuario.username + "\" >";
                         this.laTabla.Text += "<td>" + elUsuario.nombre + "</td>";
@@ -182,10 +206,10 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
                     }
                     else
                     {
-                        
+
                     }
                 }
-                catch(ExcepcionesTotem.Modulo3.InvolucradoRepetidoException ex)
+                catch (ExcepcionesTotem.Modulo3.InvolucradoRepetidoException ex)
                 {
                 }
                 catch (Exception ex)
@@ -193,10 +217,54 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
                 }
             }
             #endregion
+        }
+        else
+        {
+            #region agregar contacto en tabla y en bd
+            Contacto elContacto = new Contacto();
+            elContacto.Con_Id = int.Parse(comboPersonal.SelectedValue);
+            elContacto = logInv.obtenerDatosContactoID(int.Parse(comboPersonal.SelectedValue));
+            if (listaContactos.agregarContactoAProyecto(elContacto))
+            {
+                try
+                {
+                    if (logInv.agregarContactosEnBD(listaContactos))
+                    {
 
+                        this.laTabla.Text += "<tr id=\"" + elContacto.Con_Id + "\" >";
+                        this.laTabla.Text += "<td>" + elContacto.Con_Nombre + "</td>";
+                        this.laTabla.Text += "<td>" + elContacto.Con_Apellido + "</td>";
+                        this.laTabla.Text += "<td>" + elContacto.ConCargo + "</td>";
+                        this.laTabla.Text += "<td>" + elContacto.ConClienteJurid.Jur_Nombre + "</td>";
+                        this.laTabla.Text += "<td>";
+                        this.laTabla.Text += "<a class=\"btn btn-default glyphicon glyphicon-pencil\" href=\"<%= Page.ResolveUrl(\"~/GUI/Modulo2/DetallarCliente.aspx\") % ></a>";
+                        this.laTabla.Text += "<a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"  runat=\"server\"></a>";
+                        this.laTabla.Text += "</td>";
+                        this.laTabla.Text += "</tr>";
+
+                        comboCargo.SelectedIndex = 0;
+                        comboPersonal.SelectedIndex = 0;
+                        Dictionary<string, string> options = new Dictionary<string, string>();
+                        options.Add("-1", "Seleccione una opcion");
+                        comboCargo.Items.Clear();
+                        comboCargo.DataSource = options;
+                        comboCargo.DataTextField = "value";
+                        comboCargo.DataValueField = "key";
+                        comboCargo.DataBind();
+
+                        comboPersonal.Items.Clear();
+                        comboPersonal.DataSource = options;
+                        comboPersonal.DataTextField = "value";
+                        comboPersonal.DataValueField = "key";
+                        comboPersonal.DataBind();
+                    }
+                }
+                catch(Exception ex)
+                {
+
+                }
             }
-    //protected void btn_enviar_Click(object sender, EventArgs e)
-    //{
-
-    //}
+            #endregion
+        }
+    }
 }

@@ -255,5 +255,29 @@ namespace LogicaNegociosTotem.Modulo3
         {
             return BDInvolucrados.datosUsuarioUsername(username);
         }
+
+        public List<DominioTotem.Contacto> ListarContactoCargoEmpresa(DominioTotem.ClienteJuridico jur, String cargo)
+        {
+            try
+            {
+                return DatosTotem.Modulo3.BDInvolucrados.listarContactosPorCargoEmpresa(jur, cargo);
+            }
+            catch (Exception ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotem();
+            }
+        }
+
+        public DominioTotem.Contacto obtenerDatosContactoID(int id)
+        {
+            try
+            {
+                return BDInvolucrados.datosContactoID(id);
+            }
+            catch (Exception ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotem();
+            }
+        }
     }
 }

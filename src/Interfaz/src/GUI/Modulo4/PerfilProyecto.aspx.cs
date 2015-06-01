@@ -157,4 +157,25 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
             Console.WriteLine(ex);
         }
     }
+    public void Factura(object sender, EventArgs e)
+    {
+        try
+        {
+            HttpCookie projectCookie = Request.Cookies.Get("selectedProjectCookie");
+            LogicaNegociosTotem.Modulo4.LogicaProyecto.GenerarFactura(projectCookie.Values["projectCode"]);
+            Response.ClearContent();
+            Response.ClearHeaders();
+            Response.ContentType = "application/pdf";
+            //Response.AddHeader("Content-Disposition", "attachment; filename=" + "ers.pdf");
+            Response.TransmitFile(@"C:\Program Files (x86)\IIS Express\ers.pdf");
+            Response.End();
+            //Response.WriteFile(strS);
+            Response.Flush();
+            Response.Clear();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+        }
+    }
 }

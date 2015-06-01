@@ -144,7 +144,29 @@ namespace LogicaNegociosTotem.Modulo4
         /// Excepciones posibles: 
         ///
         /// </summary>
+        static void CompilarFactura()
+        {
+            Process p1 = new Process();
+            p1.StartInfo.FileName = @"C:/Program Files (x86)/MiKTeX 2.9/miktex/bin/pdflatex.exe";
+            p1.StartInfo.Arguments = "BaseFactura.tex";
+            //p1.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
 
+            p1.StartInfo.RedirectStandardOutput = true;
+            p1.StartInfo.UseShellExecute = false;
+            try
+            {
+                p1.Start();
+                p1.WaitForExit();
+                string a = p1.StandardOutput.ReadToEnd();
+                Console.WriteLine(a);
+
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
         static void CompilarArchivoLatex()
         {
             Process p1 = new Process();
@@ -255,6 +277,99 @@ namespace LogicaNegociosTotem.Modulo4
             {
                 Console.WriteLine(e);
             }
+        }
+
+        static void FacturaBase()
+        {
+            try
+            {
+                EliminarArchivo("BaseFactura.tex");
+                EliminarArchivo("BaseFactura.pdf");
+                System.IO.StreamWriter factura = new System.IO.StreamWriter("BaseFactura.tex");
+                factura.WriteLine("\\" + "documentclass{article}");
+                factura.WriteLine("\\" + "usepackage[utf8]{inputenc}");
+                factura.WriteLine("\\" + "usepackage{anysize}");
+                factura.WriteLine("\\" + "marginsize{1cm}{1cm}{1cm}{1cm}");
+                factura.WriteLine("\\" + "begin{document}");
+                factura.WriteLine(" ");
+                factura.WriteLine("\\" + "begin{flushright}");
+                factura.WriteLine("\\" + "Large Fecha de emisión:");
+                factura.WriteLine("\\" + "bf");
+                factura.WriteLine("fecha");
+                factura.WriteLine("\\" + "end{flushright}");
+                factura.WriteLine(" ");
+                factura.WriteLine("\\" + "begin{flushleft}");
+                factura.WriteLine(" ");
+                factura.WriteLine("\\" + "begin{tabular}{|p{19 cm}|}");
+                factura.WriteLine(" ");
+                factura.WriteLine("\\" + "hline");
+                factura.WriteLine(" ");
+                factura.WriteLine("\\" + "begin{center}");
+                factura.WriteLine("\\" + "Large" + "\\" + "bf Datos del Cliente");
+                factura.WriteLine("\\" + "end{center}");
+                factura.WriteLine(" ");
+                factura.WriteLine("\\" + "begin{flushleft}");
+                factura.WriteLine("\\" + "Large  Razon Social: ");
+                factura.WriteLine("razon");
+                factura.WriteLine("\\" + "\\");
+                factura.WriteLine("\\" + "Large  ID: ");
+                factura.WriteLine("id");
+                factura.WriteLine("\\" + "\\");
+                factura.WriteLine("\\" + "Large Direccion:");
+                factura.WriteLine("direccion");
+                factura.WriteLine("\\" + "\\");
+                factura.WriteLine("\\" + "Large Telefono: ");
+                factura.WriteLine("telefono");
+                factura.WriteLine("\\" + "\\");
+                factura.WriteLine("\\" + "end{flushleft}");
+                factura.WriteLine("\\" + "\\");
+                factura.WriteLine("\\" + "hline");
+                factura.WriteLine(" ");
+                factura.WriteLine(" ");
+                factura.WriteLine("\\" + "end{tabular}");
+                factura.WriteLine("\\" + "linebreak[5]");
+                factura.WriteLine("\\" + "newline");
+                factura.WriteLine(" ");
+                factura.WriteLine(" ");
+                factura.WriteLine("\\" + "begin{tabular}{|p{14 cm}|p{4.6 cm}|}");
+                factura.WriteLine(" ");
+                factura.WriteLine("\\" + "hline");
+                factura.WriteLine(" ");
+                factura.WriteLine("\\" + "Large" + "\\" + "bf" + " " + "Requerimiento" + " " + "&" + " " + "\\" + "Large" + "\\" + "bf Precio" + "\\" + "\\");
+                factura.WriteLine("\\" + "hline");
+                factura.WriteLine("requerimiento & monto");
+                factura.WriteLine("\\" + "\\");
+                factura.WriteLine("\\" + "hline");
+                factura.WriteLine("\\" + "end{tabular}");
+                factura.WriteLine(" ");
+                factura.WriteLine(" ");
+                factura.WriteLine("\\" + "begin{tabbing}");
+                factura.WriteLine("\\" + "hspace*{9cm}" + "\\" + "=" + "\\" + "hspace*{5cm}" + "\\" + "=" + "\\" + "hspace*{6cm}" + "\\" + "kill");
+                factura.WriteLine("\\" + "Large" + "\\" + "bf Subtotal:");
+                factura.WriteLine("subtotal");
+                factura.WriteLine("\\" + ">" + "\\" + "Large" + "\\" + "bf Iva:");
+                factura.WriteLine("iva");
+                factura.WriteLine("\\" + ">" + "\\" + "Large" + "\\" + "bf Total: ");
+                factura.WriteLine("total");
+                factura.WriteLine("\\" + "\\");
+                factura.WriteLine("\\" + "end{tabbing}");
+                factura.WriteLine(" ");
+                factura.WriteLine("\\" + "begin{tabbing}");
+                factura.WriteLine("\\" + "newline");
+                factura.WriteLine("\\" + "hspace*{13cm}" + "\\" + "=" + "\\" + "hspace*{1cm}" + "\\" + "kill");
+                factura.WriteLine("\\" + "Large" + " " + "\\" + "bf Firma Receptor");
+                factura.WriteLine("\\" + ">" + "\\" + "Large " + "\\" + "bf Firma Presidente");
+                factura.WriteLine("\\" + "end{tabbing}");
+                factura.WriteLine("\\" + "end{flushleft}");
+                factura.WriteLine("\\" + "end{document}");
+
+                factura.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
         }
 
 
@@ -435,7 +550,9 @@ namespace LogicaNegociosTotem.Modulo4
         /// <param name="codigo">Codigo del proyecto al que se le generara la factura</param>
         public static void GenerarFactura(String codigo)
         {
-            throw new NotImplementedException();
+            FacturaBase();
+            CompilarFactura();
+
         }
         #endregion
 
