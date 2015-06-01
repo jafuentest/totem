@@ -243,27 +243,31 @@ namespace DatosTotem.Modulo8
             }
         }
 
-        public List<int> ConsultarInvolucrado(string procedure, string atributoInvo, string parametro, int id)
+        /// <summary>
+        /// Metodo para agregar un Usuario a la BD
+        /// </summary>
+        /// <param name="listaUsuario">lista de Usuario a agregar</param>
+        /// <param name="idAcuerdo">id de Acuerdo vinculado</param>
+        /// <param name="idProyecto">id de Proyecto</param>
+        /// <returns>Retorna un Boolean para saber si se realizo la operación con éxito</returns>
+        public Boolean AgregarUsuarioEnAcuerdo(Usuario usuario, string idProyecto)
         {
-            List<int> i = new List<int>();
             con = new BDConexion();
             SqlConnection conect = con.Conectar();
-            SqlCommand sqlcom = new SqlCommand(procedure, conect);
+            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoAgregarUsuarioAcuerdo,conect);
             try
             {
                 sqlcom.CommandType = CommandType.StoredProcedure;
-                sqlcom.Parameters.Add(new SqlParameter(parametro, id));
-
-                SqlDataReader leer;
                 conect.Open();
 
-                leer = sqlcom.ExecuteReader();
+                sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDUsuario, SqlDbType.Int));
+                sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDProyecto, SqlDbType.VarChar));
 
-                while (leer.Read())
-                {
-                    i.Add(int.Parse(leer[atributoInvo].ToString()));
-                }
-                return i;
+                sqlcom.Parameters[RecursosBDModulo8.ParametroIDUsuario].Value = usuario.idUsuario;
+                sqlcom.Parameters[RecursosBDModulo8.ParametroIDProyecto].Value = idProyecto;
+                sqlcom.ExecuteNonQuery();
+
+                return true;
             }
             catch (NullReferenceException ex)
             {
@@ -307,33 +311,70 @@ namespace DatosTotem.Modulo8
                 con.Desconectar(conect);
 
             }
+
         }
 
-
-        /// <summary>
-        /// Metodo para agregar un Usuario a la BD
-        /// </summary>
-        /// <param name="listaUsuario">lista de Usuario a agregar</param>
-        /// <param name="idAcuerdo">id de Acuerdo vinculado</param>
-        /// <param name="idProyecto">id de Proyecto</param>
-        /// <returns>Retorna un Boolean para saber si se realizo la operación con éxito</returns>
-        public Boolean AgregarUsuarioEnAcuerdo(Usuario usuario, string idProyecto)
+        public Boolean AgregarInvolucradoEnMinuta(int involucrado, string idProyecto, string procedure, string parametro)
         {
             con = new BDConexion();
             SqlConnection conect = con.Conectar();
-            SqlCommand sqlcom = new SqlCommand(RecursosBDModulo8.ProcedimientoAgregarUsuarioAcuerdo,conect);
-
+            SqlCommand sqlcom = new SqlCommand(procedure, conect);
+            try
+            {
                 sqlcom.CommandType = CommandType.StoredProcedure;
                 conect.Open();
 
-                    sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDUsuario, SqlDbType.Int));
-                    sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDProyecto, SqlDbType.VarChar));
+                sqlcom.Parameters.Add(new SqlParameter(parametro, SqlDbType.Int));
+                sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDProyecto, SqlDbType.VarChar));
 
-                    sqlcom.Parameters[RecursosBDModulo8.ParametroIDUsuario].Value = usuario.idUsuario;
-                    sqlcom.Parameters[RecursosBDModulo8.ParametroIDProyecto].Value = idProyecto;
-                    sqlcom.ExecuteNonQuery();
+                sqlcom.Parameters[RecursosBDModulo8.ParametroIDUsuario].Value = involucrado;
+                sqlcom.Parameters[RecursosBDModulo8.ParametroIDProyecto].Value = idProyecto;
+                sqlcom.ExecuteNonQuery();
 
                 return true;
+            }
+            catch (NullReferenceException ex)
+            {
+
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                    RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            catch (ExceptionTotemConexionBD ex)
+            {
+
+                throw new ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                    RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                    RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                    RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
+            catch (Exception ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                   RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
+
+            }
+
+            finally
+            {
+                con.Desconectar(conect);
+
+            }
 
         }
 
@@ -645,7 +686,7 @@ namespace DatosTotem.Modulo8
 
             try
             {
-                usuario.clave = BDUsuario[RecursosBDModulo8.AtributoIDUsuario].ToString();
+                usuario.idUsuario =int.Parse(BDUsuario[RecursosBDModulo8.AtributoIDUsuario].ToString());
                 usuario.nombre = BDUsuario[RecursosBDModulo8.AtributoNombreUsuario].ToString();
                 usuario.apellido = BDUsuario[RecursosBDModulo8.AtributoApellidoUsuario].ToString();
                 usuario.cargo = BDUsuario[RecursosBDModulo8.AtributoCargoUsuario].ToString();

@@ -214,6 +214,15 @@ namespace LogicaNegociosTotem.Modulo8 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a @con_id.
+        /// </summary>
+        internal static string ParametroIdContacto {
+            get {
+                return ResourceManager.GetString("ParametroIdContacto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a @min_id.
         /// </summary>
         internal static string ParametroIDMinuta {
@@ -228,6 +237,33 @@ namespace LogicaNegociosTotem.Modulo8 {
         internal static string ParametroIdProyecto {
             get {
                 return ResourceManager.GetString("ParametroIdProyecto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a @usu_id.
+        /// </summary>
+        internal static string ParametroIdUsuario {
+            get {
+                return ResourceManager.GetString("ParametroIdUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_AgregarInvolucradoCliente.
+        /// </summary>
+        internal static string ProcedureAgregarContactoMinuta {
+            get {
+                return ResourceManager.GetString("ProcedureAgregarContactoMinuta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_AgregarInvolucradoUsuario.
+        /// </summary>
+        internal static string ProcedureAgregarUsuarioMinuta {
+            get {
+                return ResourceManager.GetString("ProcedureAgregarUsuarioMinuta", resourceCulture);
             }
         }
         

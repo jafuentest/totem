@@ -105,7 +105,7 @@ public partial class GUI_Modulo8_CrearMinuta : System.Web.UI.Page
         };
 
         LogicaMinuta logicaMinuta = new LogicaMinuta();
-        Proyecto elProyecto = new Proyecto() { Codigo = "1" };
+        Proyecto elProyecto = new Proyecto() { Codigo = "TOT" };
         string mensaje = logicaMinuta.GuardarMinuta(elProyecto, minuta);
         return mensaje;
     }

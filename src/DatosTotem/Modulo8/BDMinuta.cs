@@ -305,7 +305,7 @@ namespace DatosTotem.Modulo8
         /// </summary>
         /// <param name="idProyecto">id de proyecto que se desea buscar</param>
         /// <returns>Retorna lista de minutas</returns>
-        public List<Minuta> ConsultarMinutasProyecto(int idProyecto)
+        public List<Minuta> ConsultarMinutasProyecto(string idProyecto)
         {
             con = new BDConexion();
             List<Minuta> listaMinuta = new List<Minuta>();

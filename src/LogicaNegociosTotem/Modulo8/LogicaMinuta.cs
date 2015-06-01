@@ -29,7 +29,7 @@ namespace LogicaNegociosTotem.Modulo8
         {
             try
             {
-                return minutaDatos.ConsultarMinutasProyecto(int.Parse(elProyecto.Codigo));
+                return minutaDatos.ConsultarMinutasProyecto(elProyecto.Codigo);
             }
             catch (NullReferenceException ex)
             {
@@ -79,26 +79,29 @@ namespace LogicaNegociosTotem.Modulo8
         public Minuta obtenerMinuta(Proyecto elProyecto, int codigoMinuta)
         {
             List<int> invo = new List<int>();
+            List<int> invoAcuerdo = new List<int>();
             usuarios = new List<Usuario>();
+            List<Usuario> usuariosAcuerdo = new List<Usuario>();
             contactos = new List<Contacto>();
+            List<Contacto> contactosAcuerdo = new List<Contacto>();
             listaAcuerdos = new List<Acuerdo>();
             try
             {
                 minuta = minutaDatos.ConsultarMinutaBD(codigoMinuta);
                 usuarios.Clear();
                 invo = involucrados.ConsultarInvolucrado(RecursosLogicaModulo8.ProcedureConsultarUsuarioMinuta
-                    , RecursosLogicaModulo8.AtributoAcuerdoUsuario, RecursosLogicaModulo8.ParametroIDMinuta, int.Parse(minuta.Codigo));
-                    if (invo.Count != 0)
+                    , RecursosLogicaModulo8.AtributoAcuerdoUsuario, RecursosLogicaModulo8.ParametroIDMinuta, minuta.Codigo);
+                if (invo.Count != 0)
+                {
+                    foreach (int i in invo)
                     {
-                        foreach (int i in invo)
-                        {
-                            usuarios.Add(involucrados.ConsultarUsuarioMinutas(i));
-                        }
-                        minuta.ListaUsuario = usuarios;
+                        usuarios.Add(involucrados.ConsultarUsuarioMinutas(i));
                     }
+                    minuta.ListaUsuario = usuarios;
+                }
                 invo.Clear();
                 invo = involucrados.ConsultarInvolucrado(RecursosLogicaModulo8.ProcedureConsultarContactoMinuta,
-                    RecursosLogicaModulo8.AtributoAcuerdoContacto, RecursosLogicaModulo8.ParametroIDMinuta,int.Parse(minuta.Codigo));
+                    RecursosLogicaModulo8.AtributoAcuerdoContacto, RecursosLogicaModulo8.ParametroIDMinuta, minuta.Codigo);
                 if (invo.Count != 0)
                 {
                     foreach (int i in invo)
@@ -110,35 +113,23 @@ namespace LogicaNegociosTotem.Modulo8
                 minuta.ListaPunto = puntos.ConsultarPuntoBD(int.Parse(minuta.Codigo));
 
                 listaAcuerdos = acuerdos.ConsultarAcuerdoBD(int.Parse(minuta.Codigo));
-                usuarios.Clear();
-                contactos.Clear();
-                foreach (Acuerdo acu in listaAcuerdos)
-                {
+                      foreach (Acuerdo acu in listaAcuerdos)
+                          {
+                                invoAcuerdo = involucrados.ConsultarInvolucrado(RecursosLogicaModulo8.ProcedureConsultarUsuarioAcuerdo
+                                      , RecursosLogicaModulo8.AtributoAcuerdoUsuario, RecursosLogicaModulo8.ParametroIDAcuerdo, acu.Codigo.ToString());
+                                if (invoAcuerdo != null)
+                                  {
+                                      foreach (int a in invoAcuerdo)
+                                      {
+                                          usuariosAcuerdo.Add(involucrados.ConsultarUsuarioMinutas(a));
+                                      }
+                                    acu.ListaUsuario = usuariosAcuerdo;
+                                  }
+                                usuariosAcuerdo = null;
+                                usuariosAcuerdo = new List<Usuario>();
+                               invo.Clear();
 
-                    invo = involucrados.ConsultarInvolucrado(RecursosLogicaModulo8.ProcedureConsultarUsuarioAcuerdo
-                        , RecursosLogicaModulo8.AtributoAcuerdoUsuario, RecursosLogicaModulo8.ParametroIDAcuerdo, acu.Codigo);
-                        if (invo.Count != 0)
-                        {
-                            foreach (int i in invo)
-                            {
-                                usuarios.Add(involucrados.ConsultarUsuarioMinutas(i));
-                            }
-                            acu.ListaUsuario = usuarios;
-                        }
-
-                    invo.Clear();
-                    invo = involucrados.ConsultarInvolucrado(RecursosLogicaModulo8.ProcedureConsultarContactoMinuta,
-                    RecursosLogicaModulo8.AtributoAcuerdoContacto, RecursosLogicaModulo8.ParametroIDMinuta,int.Parse(minuta.Codigo));
-
-                    if (invo.Count != 0)
-                    {
-                        foreach (int i in invo)
-                        {
-                            contactos.Add(involucrados.ConsultarContactoMinutas(i));
-                        }
-                        acu.ListaContacto = contactos;
-                    }
-                }
+                          }
                 minuta.ListaAcuerdo = listaAcuerdos;
                 return minuta;
             }
@@ -178,9 +169,13 @@ namespace LogicaNegociosTotem.Modulo8
                    RecursosLogicaModulo8.Mensaje_ExcepcionGeneral, ex);
 
             }
-           
         }
 
+        /// <summary>
+        /// Metodo que obtiene el listado de los involucrados de un proyecto
+        /// </summary>
+        /// <param name="elProyecto">el objeto Proyecto</param>
+        /// <returns>retorna un lista de Usuarios</returns>
         public List<Usuario> ListaUsuario(Proyecto elProyecto)
         {
             List<int> numInvolucrados = new List<int>();
@@ -240,6 +235,11 @@ namespace LogicaNegociosTotem.Modulo8
 
         }
 
+        /// <summary>
+        /// Metodo que obtiene el listado de los involucrados de un proyecto
+        /// </summary>
+        /// <param name="elProyecto">el objeto Proyecto</param>
+        /// <returns>retorna un lista de Contactos</returns>
         public List<Contacto> ListaContacto(Proyecto elProyecto)
         {
             List<int> numInvolucrados = new List<int>();
@@ -295,6 +295,12 @@ namespace LogicaNegociosTotem.Modulo8
             }
         }
 
+        /// <summary>
+        /// Metodo que conecta con la capa de datos para guardar la minuta en la BD
+        /// </summary>
+        /// <param name="elProyecto">Obejeto Proyecto</param>
+        /// <param name="laMinuta">Objeto Minuta</param>
+        /// <returns>Retorna un string para saber si la operación se llevo con éxito</returns>
         public string GuardarMinuta(Proyecto elProyecto, Minuta laMinuta)
         {
             involucrados = new BDInvolucrados();
@@ -303,31 +309,53 @@ namespace LogicaNegociosTotem.Modulo8
             minutaDatos.AgregarMinuta(laMinuta);
             try
             {
-                foreach (Punto pun in laMinuta.ListaPunto)
+                if (laMinuta.ListaPunto != null)
                 {
-                    puntos.AgregarPuntoBD(pun);
+                    foreach (Punto pun in laMinuta.ListaPunto)
+                    {
+                        puntos.AgregarPuntoBD(pun);
+                    }
+                }
+                if (laMinuta.ListaUsuario != null)
+                {
+                    foreach (Usuario usu in laMinuta.ListaUsuario)
+                    {
+                        involucrados.AgregarInvolucradoEnMinuta(usu.idUsuario, elProyecto.Codigo,
+                            RecursosLogicaModulo8.ProcedureAgregarUsuarioMinuta, RecursosLogicaModulo8.ParametroIdUsuario);
+                    }
+                }
+                if (laMinuta.ListaContacto != null)
+                {
+                    foreach (Contacto con in laMinuta.ListaContacto)
+                    {
+                        involucrados.AgregarInvolucradoEnMinuta(con.Con_Id, elProyecto.Codigo, RecursosLogicaModulo8.ProcedureAgregarContactoMinuta,
+                            RecursosLogicaModulo8.ParametroIdContacto);
+                    }
+                }
+                if (laMinuta.ListaAcuerdo != null)
+                {
+                    foreach (Acuerdo acu in laMinuta.ListaAcuerdo)
+                    {
+                        acuerdos.AgregarAcuerdosBD(acu, elProyecto.Codigo);
+                        usuarios = acu.ListaUsuario;
+                        if (usuarios != null)
+                        {
+                            foreach (Usuario usu in usuarios)
+                            {
+                                involucrados.AgregarUsuarioEnAcuerdo(usu, elProyecto.Codigo);
+                            }
+                        }
+                        contactos = acu.ListaContacto;
+                        if (contactos != null)
+                        {
+                            foreach (Contacto con in contactos)
+                            {
+                                involucrados.AgregarContactoEnAcuerdo(con, elProyecto.Codigo);
+                            }
+                        }
+                    }
                 }
 
-                foreach (Acuerdo acu in laMinuta.ListaAcuerdo)
-                {
-                    acuerdos.AgregarAcuerdosBD(acu, elProyecto.Codigo);
-                    usuarios = acu.ListaUsuario;
-                    if (usuarios != null)
-                    {
-                        foreach (Usuario usu in usuarios)
-                        {
-                            involucrados.AgregarUsuarioEnAcuerdo(usu, elProyecto.Codigo);
-                        }
-                    }
-                    contactos = acu.ListaContacto;
-                    if (contactos != null)
-                    {
-                        foreach (Contacto con in contactos)
-                        {
-                            involucrados.AgregarContactoEnAcuerdo(con, elProyecto.Codigo);
-                        }
-                    }
-                }
                 return "Completado";
             }
             catch (NullReferenceException ex)
@@ -366,7 +394,9 @@ namespace LogicaNegociosTotem.Modulo8
                    RecursosLogicaModulo8.Mensaje_ExcepcionGeneral, ex);
 
             }
+           
         }
+
 
         public string ModificarMinuta(Proyecto elProyecto, Minuta laMinuta)
         {

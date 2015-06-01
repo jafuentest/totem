@@ -64,7 +64,7 @@ public partial class GUI_Modulo8_ConsultarMinuta : System.Web.UI.Page
         LogicaMinuta logicaMinuta = new LogicaMinuta();
         List<Minuta> listaMinuta = logicaMinuta.ListaMinuta(new Proyecto()
         {
-            Codigo = "1"
+            Codigo = "TOT"
         });
         var dataResponse = new ResponseDataMinuta()
         {

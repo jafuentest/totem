@@ -171,12 +171,24 @@
     <value>@acu_id</value>
     <comment>Parametro ID Acuerdo en los procedimientos en la BD </comment>
   </data>
+  <data name="ParametroIdContacto" xml:space="preserve">
+    <value>@con_id</value>
+  </data>
   <data name="ParametroIDMinuta" xml:space="preserve">
     <value>@min_id</value>
     <comment>Parametro en BD que contiene el ID de la Minuta a consultar</comment>
   </data>
   <data name="ParametroIdProyecto" xml:space="preserve">
     <value>@pro_id</value>
+  </data>
+  <data name="ParametroIdUsuario" xml:space="preserve">
+    <value>@usu_id</value>
+  </data>
+  <data name="ProcedureAgregarContactoMinuta" xml:space="preserve">
+    <value>Procedure_AgregarInvolucradoCliente</value>
+  </data>
+  <data name="ProcedureAgregarUsuarioMinuta" xml:space="preserve">
+    <value>Procedure_AgregarInvolucradoUsuario</value>
   </data>
   <data name="ProcedureConsultarContactoAcuerdo" xml:space="preserve">
     <value>Procedure_ConsultarAcuerdoResponsablesContactoMinuta</value>
