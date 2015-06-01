@@ -464,5 +464,45 @@ namespace LogicaNegociosTotem.Modulo4
             }
         }
         #endregion
+
+        #region Buscar Proyectos
+        public DataTable BuscarProyectos(String busqueda)
+        {
+            try
+            {
+                return DatosTotem.Modulo4.BDProyecto.BuscarProyectos(busqueda);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public DataTable BuscarProyectosActivos(String busqueda)
+        {
+            try
+            {
+                return DatosTotem.Modulo4.BDProyecto.BuscarProyectosActivos(busqueda);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public DataTable BuscarProyectosInactivos(String busqueda)
+        {
+            try
+            {
+                return DatosTotem.Modulo4.BDProyecto.BuscarProyectosInactivos(busqueda);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+
+        #endregion
     }
 }
