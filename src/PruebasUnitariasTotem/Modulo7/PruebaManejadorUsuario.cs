@@ -21,6 +21,9 @@ namespace PruebasUnitariasTotem.Modulo7
             
             manejador = new ManejadorUsuario();
         }
+        /// <summary>
+        /// Prueba para el metodo registrar usuario
+        /// </summary>
         [Test]
         public void PruebaRegistrarUsuario()
         {
@@ -34,17 +37,26 @@ namespace PruebasUnitariasTotem.Modulo7
 
             }
         }
+        /// <summary>
+        /// Prueba para el metodo consultar datos
+        /// </summary>
         [Test]
         public void PruebaConsultarDatos()
         {
             Assert.IsNotNull(manejador.consultarDatos("albertods"));
         }
+        /// <summary>
+        /// Prueba para el metodo modificar usuario
+        /// </summary>
         [Test]
         public void PruebaModificar()
         {
             Usuario usuario = new Usuario("albertods", "5563albert", "alberto08", "sdfgh", "Administrador", "rodarge33@hotmail.com", "mi perro", "dexter", "Desarrollador");
             Assert.IsTrue(manejador.ModificarManejador(usuario));
         }
+        /// <summary>
+        /// Prueba para el metodo eliminar usuario
+        /// </summary>
         [Test]
         public void PrebaEliminar()
         {

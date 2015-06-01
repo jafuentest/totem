@@ -63,25 +63,7 @@ namespace DatosTotem.Modulo7
             }
             return true;
         }
-        /// <summary>
-        /// Obtiene el cargo perteneciente a un usuario
-        /// </summary>
-        /// <param name="cargoUsuario">La clave foranea del cargo del usuario</param>
-        /// <returns>returna el cargo del usuario a consultar</returns>
-        public String ObtenerCargo(String userName)
-        {
-            SqlDataReader resultadoConsulta;
-            BDConexion conexionBd = new BDConexion();
-            String nombreCargo;
-            conexionBd.Conectar();
-            resultadoConsulta = conexionBd.EjecutarQuery(RecursosBaseDeDatosModulo7.QueryObtenerCargo + userName);
-            conexionBd.Desconectar();
-            if (resultadoConsulta.Read())
-                nombreCargo = resultadoConsulta.GetValue(0).ToString();
-            else
-                nombreCargo = "";
-            return nombreCargo;
-        }
+       
         /// <summary>
         /// Obtiene un usuario
         /// </summary>
@@ -111,27 +93,7 @@ namespace DatosTotem.Modulo7
                 usuario = null;
             return usuario;
         }
-        /// <summary>
-        /// Verifica que la respuesta de seguridad sea correcta
-        /// </summary>
-        /// <param name="userName">El username del usuario</param>
-        /// <param name="preguntaUsuario">la  pregunta del usuario</param>
-        /// <param name="respuestaUsuario">la respuesta del usuario</param>
-        /// <returns>returna true en caso de que la pregunta y a respuesta concuerde con lo que esta en la base de datos y false en caso de que no coincida</returns>
-        public Boolean ConsultaPregunta(String userName, String preguntaUsuario, String respuestaUsuario)
-        {
-            SqlDataReader resultadoConsulta;
-            BDConexion conexionBd = new BDConexion();
-            Boolean valorResultado = false;
-            conexionBd.Conectar();
-            resultadoConsulta = conexionBd.EjecutarQuery("SELECT * FROM USUARIO WHERE usu_username=" + userName + " AND usu_pregseguridad=" + preguntaUsuario + " AND usu_respseguridad=" + preguntaUsuario);
-            conexionBd.Desconectar();
-            if (resultadoConsulta.HasRows)
-                valorResultado = true;
-            else
-                valorResultado = false;
-            return valorResultado;
-        }
+    
         /// <summary>
         /// Procedimiento para obtener todos los usuarios que estan ocupando un cargo
         /// </summary>

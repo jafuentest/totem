@@ -19,24 +19,36 @@ namespace PruebasUnitariasTotem.Modulo7
         {
             baseDeDatosUsuario = new BDUsuario();
         }
+        /// <summary>
+        /// Prueba para el metodo registrar usuario
+        /// </summary>
         [Test]
         public void PruebaRegistrarUsuario()
         {
             Usuario usuario = new Usuario("Argenis03", "dfsfdf3232343", "Argenis", "Rodriguez", "Administrador", "rodarge32@gmail.com", "Como se llama mi perro", "slipy", "Desarrollador");
             Assert.IsTrue(baseDeDatosUsuario.RegitrarUsuario(usuario));
         }
+        /// <summary>
+        /// Prueba para el metodo de username unico
+        /// </summary>
         [Test]
         public void PruebaUsernameUnico()
         {
             Assert.IsTrue(baseDeDatosUsuario.usernameUnico("albertodfds"));
 
         }
+        /// <summary>
+        /// Prueba para el metodo de correo unico
+        /// </summary>
         [Test]
         public void PruebaCorreoUnico()
         {
             Assert.IsTrue(baseDeDatosUsuario.correoUnico("rodarge34@gmail.com"));
 
         }
+        /// <summary>
+        /// Prueba para el metodo datos de usurios
+        /// </summary>
         [Test]
         public void PruebaDatosUsuario()
         {
@@ -44,6 +56,9 @@ namespace PruebasUnitariasTotem.Modulo7
             usuario.username = "albertods";
             Assert.IsNotNull(baseDeDatosUsuario.DatosUsuario(usuario));
         }
+        /// <summary>
+        /// Prueba para el metodo de modificar usuario
+        /// </summary>
         [Test]
         public void PruebaModificarUsuario()
         {
@@ -51,6 +66,9 @@ namespace PruebasUnitariasTotem.Modulo7
 
             Assert.IsTrue(baseDeDatosUsuario.ModificarUsuario(usuario));
         }
+        /// <summary>
+        /// Prueba para el metodo eliminar usuario
+        /// </summary>
         [Test]
         public void PruebaEliminarUsuario()
         {
@@ -59,28 +77,22 @@ namespace PruebasUnitariasTotem.Modulo7
             baseDeDatosUsuario.EliminarUsuario(usuario.username);
             Assert.IsTrue(baseDeDatosUsuario.usernameUnico(usuario.username));
         }
+        /// <summary>
+        /// Prueba para el metodo listar los usuarios
+        /// </summary>
         [Test]
         public void PruebaListaUsuario()
         {
             Assert.IsTrue(baseDeDatosUsuario.ObtenerListaUsuario().Count > 0);
         }
-         [Test]
-        public void PruebaObtenercargos()
-        {
-            Usuario usuario = new Usuario("Argenis04", "dfsfdf3232343", "Argenis", "Rodriguez", "Administrador", "rodarge32@gmail.com", "Como se llama mi perro", "slipy", "Desarrrollador");
-            Assert.AreEqual("Desarrollador",baseDeDatosUsuario.ObtenerCargo("Argenis04"));
-        }
 
-        [Test]
-         public void PruebaConsultarPregunta()
-         {
-             Usuario usuario = new Usuario("Argenis05", "dfsfdf3232343", "Argenis", "Rodriguez", "Administrador", "rodarge32@gmail.com", "Como se llama mi perro", "Fox", "Desarrrollador");
-             Assert.IsTrue(baseDeDatosUsuario.ConsultaPregunta("Argenis05", "Como se llama mi perro","Fox"));  
-         }
+        /// <summary>
+        /// Prueba para el metodo consultar la clave
+        /// </summary>
         [Test]
         public void PruebaConsultarClave()
         {
-            Assert.IsTrue(baseDeDatosUsuario.ConsultarClaveUsuario("albertods") == "");
+            Assert.AreEqual("5563albert",baseDeDatosUsuario.ConsultarClaveUsuario("albertods"));
         }
     }
 }

@@ -51,17 +51,6 @@ namespace DominioTotem
             this.cargo = cargo;
         }
 
-        public void ModificarUsuario(Usuario usuario)
-        {
-            this.username = usuario.username;
-            this.clave = usuario.clave;
-            this.nombre = usuario.nombre;
-            this.apellido = usuario.apellido;
-            this.rol = usuario.rol;
-            this.correo = usuario.correo;
-            this.preguntaSeguridad = usuario.preguntaSeguridad;
-            this.cargo = usuario.cargo;
-        }
 
         public Boolean ValidarCorreo(String correoValidar)
         {

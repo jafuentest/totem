@@ -42,14 +42,7 @@ namespace LogicaNegociosTotem.Modulo7
             if (valido == false)
                 throw new CorreoRepetidoException();            
         }
-        /// <summary> Obtiene el cargo de un usuario </summary>
-        /// <param name="userName">Se busca por el username del usuario</param>
-        /// <returns>Regresa el cargo del usuario</returns>
-        public String obtenerCargoDeUsuarios(String userName)
-        {
-            BDUsuario conexion= new BDUsuario();
-            return conexion.ObtenerCargo(userName);
-        }
+ 
         /// <summary>Obtiene una lista de todos los usuarios segun el cargo</summary>
         /// <param name="cargo">El cargo por el que se va a filtrar</param>
         /// <returns>Regresa una lista de usuarios</returns>

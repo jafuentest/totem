@@ -14,7 +14,9 @@ namespace PruebasUnitariasTotem.Modulo7
     [TestFixture]
     public class PruebaLogicaUsuario
     {
-
+        /// <summary>
+        /// Prueba para el metodo de listar cargos
+        /// </summary>
 
         [Test]
         public void PruebaListaCargos() {
@@ -22,18 +24,27 @@ namespace PruebasUnitariasTotem.Modulo7
             Assert.IsTrue(LogicaUsuario.listarCargos().Count > 0);
             
         }
+        /// <summary>
+        /// Prueba para el metodo de obterner datos
+        /// </summary>
         [Test]
         public void PruebaObtenerdatos()
         {
 
             Assert.IsNotNull(LogicaUsuario.ObtenerDatos("albertods"));
         }
+        /// <summary>
+        /// Prueba para el metodo modificicar logica
+        /// </summary>
         [Test]
         public void PruebaModificarLogica()
         {
             Usuario usuario = new Usuario("albertods", "5563albert", "alberto08", "sdfgh", "Administrador", "rodarge33@hotmail.com", "mi perro", "dexter", "Desarrollador");
             Assert.IsTrue(LogicaUsuario.ModificarUsuario(usuario,"rodarge33@gmail.com"));
         }
+        /// <summary>
+        /// Prueba para el metodo eliminar usuario
+        /// </summary>
         [Test]
         public void PruebaEliminarUsuario()
         {

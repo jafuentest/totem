@@ -76,6 +76,8 @@
     <Compile Include="Modulo6\PruebaBDActorExcepciones.cs" />
     <Compile Include="Modulo6\PruebaLogicaActor.cs" />
     <Compile Include="Modulo7\PruebaBDUsuario.cs" />
+    <Compile Include="Modulo7\PruebaLogicaUsuario.cs" />
+    <Compile Include="Modulo7\PruebaManejadorUsuario.cs" />
     <Compile Include="Modulo8\PruebaBDAcuerdo.cs" />
     <Compile Include="Modulo8\PruebaBDInvolucrados.cs" />
     <Compile Include="Modulo8\PruebaBDMinuta.cs" />
