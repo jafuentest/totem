@@ -154,7 +154,7 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
                 if (logInv.eliminarUsuarioDeBD(user, laListaDeUsuarios))
                     Response.Redirect("../Modulo3/ListarPersonalInvolucrado.aspx?success-eliminacion=true");
             }
-            catch (ExcepcionesTotem.Modulo7.EliminacionUsuarioExcepcion)
+            catch (Exception ex)
             {
                 this.alert.Attributes["class"] = "alert alert-danger alert-dismissible";
                 this.alert.Attributes["role"] = "alert";
@@ -172,11 +172,11 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
                     if (logInv.eliminarContactoDeBD(contacto, laListaDeContactos))
                         Response.Redirect("../Modulo3/ListarPersonalInvolucrado.aspx?success-eliminacion=true");
                 }
-                catch (ExcepcionesTotem.Modulo7.EliminacionUsuarioExcepcion)
+                catch (Exception ex)
                 {
                     this.alert.Attributes["class"] = "alert alert-danger alert-dismissible";
                     this.alert.Attributes["role"] = "alert";
-                    this.alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Eliminación de usuario fallida</div>";
+                    this.alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Eliminación de contacto fallida</div>";
                     this.alert.Visible = true;
                 }
             }
