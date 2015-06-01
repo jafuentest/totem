@@ -15,7 +15,7 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
     {
         ((MasterPage)Page.Master).IdModulo = "2";
 
-        DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+       /* DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
         if (user != null)
         {
             if (user.username != "" &&
@@ -34,9 +34,14 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
         }
         else
         {
-            Response.Redirect("../Modulo1/M1_login.aspx");
+          /*  Response.Redirect("../Modulo1/M1_login.aspx");
+        }*/
+        if (!IsPostBack) 
+        {
+            this.LlenarPaises();
+            this.LlenarCargos();
+            
         }
-
     }
 
     /// <summary>
@@ -53,59 +58,89 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
 
         string rif = rifEmpresa.Value;
         string nombre = nombreEmpresa.Value;
-        string direccion = direccionEmpresa.Value; 
-        /*string pais=comboPais.Items[comboPais.SelectedIndex].Text; */
-
-        /*string pais = paisEmpresa.InnerText;
-        string estado = estadoEmpresa.InnerText;
-        string ciudad = ciudadLista.InnerText;
-        string direccion = direccionEmpresa.Value;*/
-        string pais = comboPais.Items[comboPais.SelectedIndex].Text;
-        string estado = comboEstado.Items[comboEstado.SelectedIndex].Text;
-        string ciudad = comboCiudad.Items[comboCiudad.SelectedIndex].Text;
-        int lugar =Convert.ToInt32(comboCiudad.Items[comboCiudad.SelectedIndex].Value);
-        int cargo = Convert.ToInt32(comboCargo.Items[comboCargo.SelectedIndex].Value);
-        string cedula = cedulaContacto.Value; 
-        string telefono = telefonoContacto.Value;
-        Contacto contacto = new Contacto();
-        contacto.Con_Nombre = nombreContacto.Value;
-        contacto.Con_Apellido = apellidoContacto.Value;
-
-        existe = logica.VerificarExistenciaJuridico(cedula);
-
-        if (existe == 0)
+        string direccion = direccionEmpresa.Value;
+        try
         {
-            agrego=logica.AgregarClienteJuridico(rif, nombre, lugar, direccion, contacto.Con_Nombre,
-            contacto.Con_Apellido, cargo, telefono, cedula);
+            string pais = comboPais.Items[comboPais.SelectedIndex].Text;
+            string estado = comboEstado.Items[comboEstado.SelectedIndex].Text;
+            string ciudad = comboCiudad.Items[comboCiudad.SelectedIndex].Text;
+            int lugar = Convert.ToInt32(comboCiudad.Items[comboCiudad.SelectedIndex].Value);
+            int cargo = Convert.ToInt32(comboCargo.Items[comboCargo.SelectedIndex].Value);
+            string cedula = cedulaContacto.Value;
+            string telefono = telefonoContacto.Value;
+            Contacto contacto = new Contacto();
+            contacto.Con_Nombre = nombreContacto.Value;
+            contacto.Con_Apellido = apellidoContacto.Value;
 
-            if (agrego) 
+            existe = logica.VerificarExistenciaJuridico(cedula);
+
+            if (existe == 0)
             {
-                alert.Attributes["class"] = "alert alert-success alert-dismissible";
-                alert.Attributes["role"] = "alert";
-                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Cliente agregado éxitosamente</div>";
-                this.botonAgregar.Disabled = true;
-            }
+                agrego = logica.AgregarClienteJuridico(rif, nombre, lugar, direccion, contacto.Con_Nombre,
+                contacto.Con_Apellido, cargo, telefono, cedula);
 
+                if (agrego)
+                {
+                    alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                    alert.Attributes["role"] = "alert";
+                    alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Cliente agregado éxitosamente</div>";
+                    this.botonAgregar.Disabled = true;
+                }
+
+            }
+            else
+            {
+                alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+                alert.Attributes["role"] = "alert";
+                alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Cliente ya existente</div>";
+            }
         }
-        else 
+        catch (ArgumentOutOfRangeException)
         {
             alert.Attributes["class"] = "alert alert-danger alert-dismissible";
             alert.Attributes["role"] = "alert";
-            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Cliente ya existente</div>";
+            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Los datos" +
+                " no pueden estar vacíos" + "</div>";
         }
+        catch (OperacionInvalidaException) 
+        {
+            alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+            alert.Attributes["role"] = "alert";
+            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>"+
+                "Se ha originado una operación no permitida" +"</div>";
+        }
+        catch (FormatoIncorrectoException)
+        {
+            alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+            alert.Attributes["role"] = "alert";
+            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error en el formato de tipo de datos</div>";
+        }
+        catch (ExcepcionesTotem.ExceptionTotemConexionBD)
+        {
+            alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+            alert.Attributes["role"] = "alert";
+            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error al conectarse a Base de Datos</div>";
+        }
+        catch (ExcepcionesTotem.ExceptionTotem)
+        {
+            alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+            alert.Attributes["role"] = "alert";
+            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error en el sistema TOTEM. Por favor intente más tarde</div>";
+        }
+
         
     }
 
-    /*
+
     /// <summary>
     /// Evento que se dispara cuando se selecciona algún elemento de 
     /// país y carga sus estados
     /// </summary>
-    protected void CbCambioAEstado(object sender, EventArgs e) 
+    protected void CbCambioAEstado(object sender, EventArgs e)
     {
         this.comboEstado.Items.Clear();
         this.comboCiudad.Items.Clear();
-        int _idPais =this.comboPais.SelectedIndex;
+        int _idPais = Convert.ToInt32(this.comboPais.SelectedValue);
         LlenarEstados(_idPais);
     }
 
@@ -117,40 +152,63 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
     /// <param name="e"></param>
     protected void CbCambioACiudad(object sender, EventArgs e)
     {
-        int _idEstado = this.comboEstado.SelectedIndex;
+        int _idEstado = Convert.ToInt32(this.comboEstado.SelectedValue);
         LlenarCiudades(_idEstado);
     }
-
-   /// <summary>
-   /// Método que extrae la información de los paises para el
-   /// combo
-   /// </summary>
-    private void LlenarPaises() 
+    /// <summary>
+    /// Evento que se dispara al seleccionar algunos 
+    /// de los valores que tiene ciudad
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void CbCargarCodigoPostal(object sender, EventArgs e) 
     {
+        int _idCiudad = Convert.ToInt32(this.comboCiudad.SelectedValue);
+        CargarCodigoPostal(_idCiudad);
+        
+    }
+
+    private void CargarCodigoPostal(int idCiudad) 
+    {
+        LogicaLugar logicaLugar = new LogicaLugar();
+        int numero = logicaLugar.ObtenerCodigoPostal(idCiudad);
+        this.codigoPostalEmpresa.Value = numero.ToString(); 
+    }
+
+    /*
+    /// <summary>
+    /// Método encargado de cargar los datos de una empresa
+    /// al iniciar la página
+    /// </summary>
+    private void CargarDatosEmpresa(string id)
+    {
+        ClienteJuridico cliente = new ClienteJuridico();
+        List<Contacto> contactos = new List<Contacto>();
+        Contacto contacto = new Contacto();
+        LogicaCliente logica = new LogicaCliente();
+        LogicaContacto logicaContacto = new LogicaContacto();
+
         try
         {
-            LogicaLugar logica = new LogicaLugar();
-            List<Lugar> paises = logica.LlenarComboPaises();
-            
-            string prueba = "Seleccione Pais";
-            string nombreEvento = "alert('hello');"; 
-            this.contenedorComboPais.InnerHtml = "<select runat=\"server\" id=\"comboPais\" class=\"btn btn-default dropdown-toggle\""
-                                               + "onchange=\" " + nombreEvento + "\">" +
-                                                "<option id=\"opcionPais"+"0"+"\" runat=\"server\" value=\"0\">" +
-                                                 prueba    +
-                                                "</option>"
-                                                ; 
+            cliente = logica.ConsultarClienteJuridico(id);
 
-            
-           foreach (Lugar objetoPais in paises)
+            rifEmpresa.Value = cliente.Jur_Id;
+            nombreEmpresa.Value = cliente.Jur_Nombre;
+
+            contactos = logicaContacto.ListarContactosEmpresa(rifEmpresa.Value);
+
+
+
+            foreach (Contacto elContacto in contactos)
             {
-                this.contenedorComboPais.InnerHtml = contenedorComboPais.InnerHtml +
-                                                     "<option id=\"opcionPais" + objetoPais.IdLugar.ToString() + "\" runat=\"server\" value=\"" + objetoPais.IdLugar.ToString() + "\">" +
-                                                      objetoPais.NombreLugar +
-                                                     "</option>";
+                cuerpo.InnerHtml =
+                    cuerpo.InnerHtml + "<tr><td>" +
+                    elContacto.Con_Nombre +
+                    elContacto.Con_Apellido + "</td><td>" +
+                    elContacto.ConCargo +
+                    "</td><td><a class=\"btn btn-default glyphicon glyphicon-pencil\" data-toggle=\"modal\" data-target=\"#modal-update\" href=\"#\"></a><a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"></a></td></tr>"; ;
             }
-
-            this.contenedorComboPais.InnerHtml= this.contenedorComboPais.InnerHtml+"</select>"; 
+            this.CargarDireccionEmpresa(cliente);
         }
         catch (ClienteDatosException e)
         {
@@ -165,37 +223,80 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error en la capa lógica</div>";
         }
 
-     }
+
+    }*/
+
+    /// <summary>
+    /// Método que extrae la información de los paises para el
+    /// combo
+    /// </summary>
+    private void LlenarPaises()
+    {
+        try
+        {
+            LogicaLugar logica = new LogicaLugar();
+            List<Lugar> paises = logica.LlenarComboPaises();
+            ListItem itemPais;
+
+            this.comboPais.Items.Clear();
+            itemPais = new ListItem();
+            itemPais.Text = "Seleccione Pais";
+            itemPais.Value = "0";
+            this.comboPais.Items.Add(itemPais);
+
+
+            foreach (Lugar objetoPais in paises)
+            {
+                itemPais = new ListItem();
+                itemPais.Text = objetoPais.NombreLugar;
+                itemPais.Value = objetoPais.IdLugar.ToString();
+                this.comboPais.Items.Add(itemPais);
+            }
+
+
+        }
+        catch (ClienteDatosException e)
+        {
+            alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+            alert.Attributes["role"] = "alert";
+            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error en la capa de datos</div>";
+        }
+        catch (ClienteLogicaException e)
+        {
+            alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+            alert.Attributes["role"] = "alert";
+            alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error en la capa lógica</div>";
+        }
+
+    }
 
     /// <summary>
     /// Método que extrae la información de los 
     /// estados para el combo
     /// </summary>
-    private void LlenarEstados(int idPais) 
+    private void LlenarEstados(int idPais)
     {
-        try 
+        try
         {
             LogicaLugar logica = new LogicaLugar();
             List<Lugar> estados = logica.LlenarComboEstados(idPais);
-            string prueba = "Seleccione Estado";
-            string nombreEvento = "CbCambioACiudad()"; 
-            this.contenedorComboEstado.InnerHtml = "<select runat=\"server\" id=\"comboEstado\" class=\"btn btn-default dropdown-toggle\""
-                                               + "onchange=\""+nombreEvento+"\">" +
-                                                "<option id=\"opcionEstado" + "0" + "\" runat=\"server\" value=\"0\">" +
-                                                 prueba +
-                                                "</option>";
+            ListItem itemEstado;
+
+            this.comboEstado.Items.Clear();
+            itemEstado = new ListItem();
+            itemEstado.Text = "Seleccione Estado";
+            itemEstado.Value = "0";
+            this.comboEstado.Items.Add(itemEstado);
 
 
             foreach (Lugar objetoEstado in estados)
             {
-
-                this.contenedorComboEstado.InnerHtml = contenedorComboEstado.InnerHtml +
-                                                     "<option id=\"opcionEstado" + objetoEstado.IdLugar.ToString() + "\" runat=\"server\" value=\"" + objetoEstado.IdLugar.ToString() + "\">" +
-                                                      objetoEstado.NombreLugar +
-                                                     "</option>";
+                itemEstado = new ListItem();
+                itemEstado.Text = objetoEstado.NombreLugar;
+                itemEstado.Value = objetoEstado.IdLugar.ToString();
+                this.comboEstado.Items.Add(itemEstado);
             }
 
-            this.contenedorComboEstado.InnerHtml = this.contenedorComboEstado.InnerHtml + "</select>"; 
 
         }
         catch (ClienteDatosException e)
@@ -223,24 +324,22 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
         {
             LogicaLugar logica = new LogicaLugar();
             List<Lugar> ciudades = logica.LlenarComboCiudades(idEstado);
-            
+            ListItem itemCiudad;
 
-            string prueba = "Seleccione Ciudad";
+            this.comboCiudad.Items.Clear();
+            itemCiudad = new ListItem();
+            itemCiudad.Text = "Seleccione Ciudad";
+            itemCiudad.Value = "0";
+            this.comboEstado.Items.Add(itemCiudad);
 
-            this.contenedorComboCiudad.InnerHtml = "<select runat=\"server\" id=\"comboCiudad\" class=\"btn btn-default dropdown-toggle\">" +
-                                                "<option id=\"opcionCiudad" + "0" + "\" runat=\"server\" value=\"0\">" +
-                                                 prueba +
-                                                "</option>";
 
             foreach (Lugar objetoCiudad in ciudades)
             {
-
-                this.contenedorComboCiudad.InnerHtml = contenedorComboCiudad.InnerHtml +
-                                                     "<option id=\"opcionCiudad" + objetoCiudad.IdLugar.ToString() + "\" runat=\"server\" value=\"" + objetoCiudad.IdLugar.ToString() + "\">" +
-                                                      objetoCiudad.NombreLugar +
-                                                     "</option>";
+                itemCiudad = new ListItem();
+                itemCiudad.Text = objetoCiudad.NombreLugar;
+                itemCiudad.Value = objetoCiudad.IdLugar.ToString();
+                this.comboCiudad.Items.Add(itemCiudad);
             }
-            this.contenedorComboCiudad.InnerHtml = this.contenedorComboCiudad.InnerHtml + "</select>"; 
         }
         catch (ClienteDatosException e)
         {
@@ -255,33 +354,36 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error en la capa lógica</div>";
         }
     }
-    */
+    
 
-    /*
+    
     private void LlenarCargos() 
     {
         try
         {
             LogicaCliente logica = new LogicaCliente();
             List<string> cargos = new List<string>();
-            cargos = logica.LlenarComboCargo(); 
-            string prueba="Seleccione cargo";
+            ListItem itemCargo; 
+            cargos = logica.LlenarComboCargo();
+            this.comboCargo.Items.Clear();
 
-            this.contenedorCargo.InnerHtml = "<select runat=\"server\" id=\"comboCargo\" class=\"btn btn-default dropdown-toggle\">" +
-                                                "<option id=\"opcionCargo" + "0" + "\" runat=\"server\" value=\"0\">" +
-                                                 prueba +
-                                                "</option>";
-            int numero = 0;
+            itemCargo = new ListItem();
+            itemCargo.Text = "Seleccione Cargo";
+            itemCargo.Value = "0";
+            this.comboCargo.Items.Add(itemCargo);           
+
+           int numero = 1; 
             foreach (string cargo in cargos) 
             {
-                this.contenedorCargo.InnerHtml = contenedorCargo.InnerHtml +
-                                                     "<option id=\"opcionCiudad" + numero.ToString() + "\" runat=\"server\" value=\"" + numero.ToString() + "\">" +
-                                                      cargo +
-                                                     "</option>";
-                numero++; 
+                itemCargo = new ListItem();
+                itemCargo.Text = cargo;
+                itemCargo.Value = numero.ToString();
+                numero++;
+                this.comboCargo.Items.Add(itemCargo);
+
             }
 
-            this.contenedorCargo.InnerHtml = this.contenedorCargo.InnerHtml + "</select>";
+           
         }
         catch (ClienteDatosException e)
         {
@@ -296,6 +398,6 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Error en la capa lógica</div>";
         }
 
-    }*/
+    }
 
 }

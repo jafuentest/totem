@@ -567,13 +567,13 @@ namespace DatosTotem.Modulo2 {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to NombreClienteNatural.
+        ///   Looks up a localized string similar to NombreClienteJuridico.
         /// </summary>
-        internal static string NombreClienteNatural
+        internal static string NombreClienteJuridico
         {
             get
             {
-                return ResourceManager.GetString("NombreClienteNatural", resourceCulture);
+                return ResourceManager.GetString("NombreClienteJuridico", resourceCulture);
             }
         }
 
@@ -619,6 +619,52 @@ namespace DatosTotem.Modulo2 {
             get
             {
                 return ResourceManager.GetString("ProcedureListarClientesNaturales", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ProcedureDatosContactos.
+        /// </summary>
+        internal static string ProcedureDatosContactos
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedureDatosContactos", resourceCulture);
+            }
+        }
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to ProcedureConsultarDireccionCompleta.
+        /// </summary>
+        internal static string ProcedureConsultarDireccionCompleta
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedureConsultarDireccionCompleta", resourceCulture);
+            }
+        }
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to ParametroIdCiudad.
+        /// </summary>
+        internal static string ParametroIdCiudad
+        {
+            get
+            {
+                return ResourceManager.GetString("ParametroIdCiudad", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ProcedureCargarCodigoPostal.
+        /// </summary>
+        internal static string ProcedureCargarCodigoPostal
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedureCargarCodigoPostal", resourceCulture);
             }
         }
 

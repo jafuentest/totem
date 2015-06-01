@@ -29,7 +29,7 @@ namespace PruebasUnitariasTotem.Modulo2
             Contacto contacto = new Contacto();
         }
 
-
+        /*
         /// <summary>
         /// Se prueba que la clase pueda agregar 
         /// a los clientes jurídicos
@@ -52,7 +52,7 @@ namespace PruebasUnitariasTotem.Modulo2
         
         
         
-        }
+        }*/
 
  
 

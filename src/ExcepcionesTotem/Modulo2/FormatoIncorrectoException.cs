@@ -5,9 +5,9 @@ using System.Text;
 
 namespace ExcepcionesTotem.Modulo2
 {
-    class ExcepcionContactosDatos : ExceptionTotem
+    public class FormatoIncorrectoException : ExceptionTotem
     {
-        public ExcepcionContactosDatos()
+       public FormatoIncorrectoException()
             : base()
         { }
 
@@ -17,23 +17,21 @@ namespace ExcepcionesTotem.Modulo2
         /// </summary>
         /// <param name="mensajeExcepcion">String con la excepcion capturada </param>
 
-        public ExcepcionContactosDatos(string message)
+        public FormatoIncorrectoException(string message)
             : base(message)
         {
         }
 
 
-        public ExcepcionContactosDatos(string message, Exception inner)
+        public FormatoIncorrectoException(string message, Exception inner)
             : base(message, inner)
         {
         }
 
-        public ExcepcionContactosDatos(string codigo, string message, Exception inner)
+        public FormatoIncorrectoException(string codigo, string message, Exception inner)
             : base(codigo, message, inner)
         {
         }
-
-
 
     }
 }

@@ -192,10 +192,105 @@ namespace DatosTotem.Modulo2
            return _listaLugar;
        }
 
+       /// <summary>
+       /// Consulta la direccion con pais estado ciudad y direccion
+       /// </summary>
+       /// <param name="direccion">id la direccion para buscar a donde pertenece</param>
+       /// <returns>lista deid correspondiente al pais, estado, ciudad y direccion</returns>
+       public List<int> ConsultarDireccionCompletaBD(int direccion)
+       {
+           List<int> direccionCompleta = new List<int>();
+           
+           this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureConsultarDireccionCompleta,
+                                this.conexion);
+           comando.CommandType = CommandType.StoredProcedure;
+           comando.Parameters.Add(new SqlParameter(RecursosBaseDeDatosModulo2.ParametroIdDireccion, direccion));
+
+           SqlDataReader _lectura;
+           int idDireccion = 0;
+           try
+           {
+               this.conexion.Open();
+               _lectura = comando.ExecuteReader();
+               while (_lectura.Read())
+               {
+                   idDireccion = _lectura.GetInt32(0);
+                   direccionCompleta.Add(idDireccion);
+               }
+           }
+           catch (SqlException ex)
+           {
+               throw ex;
+           }
+           catch (NullReferenceException ex)
+           {
+               throw ex;
+           }
+           catch (Exception ex)
+           {
+               throw ex;
+
+           }
+           finally
+           {
+               this.conexion.Close();
+           }
+
+           return direccionCompleta;
+       }
+
+       /// <summary>
+       /// Método que accede a Base de Datos 
+       /// para obtener el código postal dado el 
+       /// identificador de una ciudad
+       /// </summary>
+       /// <param name="idCiudad">Id de la ciudad al que 
+       /// pertenece dicho código postal</param>
+       /// <returns>El número de código postal</returns>
+       public int CargarCodigoPostal(int idCiudad) 
+       {
+
+           int numero = 0; 
+           this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureCargarCodigoPostal,
+                                this.conexion);
+           comando.CommandType = CommandType.StoredProcedure;
+           comando.Parameters.Add(new SqlParameter(RecursosBaseDeDatosModulo2.ParametroIdCiudad, idCiudad));
+
+           SqlDataReader _lectura;
+           int idDireccion = 0;
+           try
+           {
+               this.conexion.Open();
+               _lectura = comando.ExecuteReader();
+               while (_lectura.Read())
+               {
+                   numero = _lectura.GetInt32(0);
+               }
+           }
+           catch (SqlException ex)
+           {
+               throw ex;
+           }
+           catch (NullReferenceException ex)
+           {
+               throw ex;
+           }
+           catch (Exception ex)
+           {
+               throw ex;
+
+           }
+           finally
+           {
+               this.conexion.Close();
+           }
+
+           return numero;
+       }
 
        /// <summary>
        /// Método que accede directamente a Base de Datos
-       /// para la recuperación de una lista de lugares
+       /// para la recuperación de un registro de lugar
        /// </summary>
        /// <param name="lector">lector de Base de Datos</param>
        /// <returns>Lugar a buscar</returns>
@@ -225,6 +320,48 @@ namespace DatosTotem.Modulo2
            return lugar; 
        }
 
+
+       /// <summary>
+       /// Consulta la direccion completa de un empleado en particular
+       /// </summary>
+       /// <param name="direccion">id de la direccion donde reside el empleado</param>
+       /// <returns>un stringcon la informacion del pais, estado, ciudad y direccio de un empleado</returns>
+       public string ObtenerDireccionConcatenadaBD(int direccion)
+       {
+           string _direccion = string.Empty;
+           
+           SqlCommand comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureObtenerDireccion, this.conexion);
+           comando.CommandType = CommandType.StoredProcedure;
+           comando.Parameters.Add(new SqlParameter(RecursosBaseDeDatosModulo2.ParametroIdDireccion, direccion));
+           SqlDataReader _lectura;
+
+           try
+           {
+               this.conexion.Open();
+               _lectura = comando.ExecuteReader();
+               while (_lectura.Read())
+               {
+                   _direccion = _lectura.GetString(0);
+               }
+           }
+           catch (SqlException ex)
+           {
+               throw ex;
+           }
+           catch (NullReferenceException ex)
+           {
+               throw ex;
+           }
+           catch (Exception ex)
+           {
+               throw ex;
+           }
+           finally
+           {
+               this.conexion.Close();
+           }
+           return _direccion;
+       }
 
     }
 }
