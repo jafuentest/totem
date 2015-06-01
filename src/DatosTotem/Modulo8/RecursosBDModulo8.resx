@@ -352,4 +352,7 @@
   <data name="ProcedureUsuarioProyecto" xml:space="preserve">
     <value>Procedure_ConsultarInvolucradosUsuarioProyecto</value>
   </data>
+  <data name="Procedure1" xml:space="preserve">
+    <value>DELETE FROM MINUTA WHERE min_id =</value>
+  </data>
 </root>

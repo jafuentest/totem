@@ -664,6 +664,15 @@ namespace DatosTotem.Modulo8 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a DELETE FROM MINUTA WHERE min_id =.
+        /// </summary>
+        internal static string Procedure1 {
+            get {
+                return ResourceManager.GetString("Procedure1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Procedure_ConsultarAsistenteContactoMinuta.
         /// </summary>
         internal static string ProcedureConsultarContactoMinuta {

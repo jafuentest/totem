@@ -355,7 +355,6 @@ namespace LogicaNegociosTotem.Modulo8
                         }
                     }
                 }
-
                 return "Completado";
             }
             catch (NullReferenceException ex)
@@ -398,12 +397,78 @@ namespace LogicaNegociosTotem.Modulo8
         }
 
 
-        public string ModificarMinuta(Proyecto elProyecto, Minuta laMinuta)
+        public string ModificarMinuta(Proyecto elProyecto, Minuta nueva, Minuta laMinuta)
         {
-            
+            try
+            {
+                involucrados.EliminarInvolucradoEnMinuta(int.Parse(laMinuta.Codigo));
+                foreach (Acuerdo acu in laMinuta.ListaAcuerdo)
+                {
+                    if (acu.ListaUsuario != null)
+                    {
+                        foreach (Usuario usu in acu.ListaUsuario)
+                        {
+                            involucrados.EliminarUsuarioEnAcuerdo(usu, acu.Codigo, elProyecto.Codigo);
+                        }
+                    }
+                    if (acu.ListaContacto != null)
+                    {
+                        foreach (Contacto con in acu.ListaContacto)
+                        {
+                            involucrados.EliminarContactoEnAcuerdo(con, acu.Codigo, elProyecto.Codigo);
+                        }
+                    }
+                    acuerdos.EliminarAcuerdoBD(acu.Codigo);
+                }
 
-            
-            return "Completado";
+                foreach (Punto pun in laMinuta.ListaPunto)
+                {
+                    puntos.EliminarPuntoBD(pun, int.Parse(laMinuta.Codigo));
+                }
+
+                minutaDatos.EliminarMinuta(int.Parse(laMinuta.Codigo));
+
+                this.GuardarMinuta(elProyecto, nueva);
+
+                return "Completado";
+            }
+            catch (NullReferenceException ex)
+            {
+
+                throw new BDMinutaException(RecursosLogicaModulo8.Codigo_ExcepcionNullReference,
+                    RecursosLogicaModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            catch (ExceptionTotemConexionBD ex)
+            {
+
+                throw new ExceptionTotemConexionBD(RecursosLogicaModulo8.Codigo,
+                    RecursosLogicaModulo8.Mensaje, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosLogicaModulo8.Codigo_ExcepcionSql,
+                    RecursosLogicaModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosLogicaModulo8.Codigo_ExcepcionParametro,
+                    RecursosLogicaModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosLogicaModulo8.Codigo_ExcepcionAtributo,
+                    RecursosLogicaModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
+            catch (Exception ex)
+            {
+                throw new BDMinutaException(RecursosLogicaModulo8.Codigo_ExcepcionGeneral,
+                   RecursosLogicaModulo8.Mensaje_ExcepcionGeneral, ex);
+
+            }
         }
+
     }
 }

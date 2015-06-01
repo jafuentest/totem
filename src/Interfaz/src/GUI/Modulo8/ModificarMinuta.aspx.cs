@@ -14,7 +14,7 @@ using Newtonsoft.Json.Linq;
 public partial class GUI_Modulo8_ModificarMinuta : System.Web.UI.Page
 {
     private static string codigoMinuta;
-
+    private static Minuta minuta = new Minuta();
     protected void Page_Load(object sender, EventArgs e)
     {
         ((MasterPage)Page.Master).IdModulo = "8";
@@ -45,7 +45,7 @@ public partial class GUI_Modulo8_ModificarMinuta : System.Web.UI.Page
     public static string ListaUsuario()
     {
         LogicaMinuta logicaMinuta = new LogicaMinuta();
-        Proyecto elProyecto = new Proyecto() { Codigo = "1" };
+        Proyecto elProyecto = new Proyecto() { Codigo = "TOT" };
         List<Usuario> listaUsuario = logicaMinuta.ListaUsuario(elProyecto);
         List<Contacto> listaContacto = logicaMinuta.ListaContacto(elProyecto);
         var output = JsonConvert.SerializeObject(listaUsuario);
@@ -61,8 +61,8 @@ public partial class GUI_Modulo8_ModificarMinuta : System.Web.UI.Page
     {
         int codMinuta = Int32.Parse(codigoMinuta);
         LogicaMinuta logicaMinuta = new LogicaMinuta();
-        Proyecto elProyecto = new Proyecto() { Codigo = "1" };
-        Minuta minuta = logicaMinuta.obtenerMinuta(elProyecto, codMinuta);
+        Proyecto elProyecto = new Proyecto() { Codigo = "TOT" };
+        minuta = logicaMinuta.obtenerMinuta(elProyecto, codMinuta);
         var output = JsonConvert.SerializeObject(minuta);
         return output;
     }
@@ -75,7 +75,6 @@ public partial class GUI_Modulo8_ModificarMinuta : System.Web.UI.Page
     public static string crearMinuta(object laMinuta)
     {
         dynamic minutaDinamica = laMinuta;
-        
         List<Usuario> listaUsuario = new List<Usuario>();
         for (int i = 0; i<minutaDinamica["involucrado"].Length; i++)
         {
@@ -120,7 +119,7 @@ public partial class GUI_Modulo8_ModificarMinuta : System.Web.UI.Page
         string fechaMinuta = minutaDinamica["fecha"];
         DateTime fechaMi = DateTime.ParseExact(fechaMinuta, "dd/MM/yyyy HH:mm", null);
 
-        Minuta minuta = new Minuta
+        Minuta minutaNueva = new Minuta
         {
             Codigo = codigoMinuta,
             Fecha = fechaMi,
@@ -132,8 +131,8 @@ public partial class GUI_Modulo8_ModificarMinuta : System.Web.UI.Page
         };
 
         LogicaMinuta logicaMinuta = new LogicaMinuta();
-        Proyecto elProyecto = new Proyecto() { Codigo = "1" };
-        string mensaje = logicaMinuta.ModificarMinuta(elProyecto, minuta);
+        Proyecto elProyecto = new Proyecto() { Codigo = "TOT" };
+        string mensaje = logicaMinuta.ModificarMinuta(elProyecto, minutaNueva, minuta);
         return mensaje;
     }
 }

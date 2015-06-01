@@ -456,7 +456,7 @@ namespace DatosTotem.Modulo8
         /// <param name="idAcuerdo">id de Acuerdo vinculado</param>
         /// <param name="idProyecto">id del Proyecto</param>
         /// <returns>Retorna un Boolean para saber si se realizo la operación con éxito</returns>
-        public Boolean EliminarUsuarioEnAcuerdo(List<Usuario> listaUsuario, int idAcuerdo, string idProyecto)
+        public Boolean EliminarUsuarioEnAcuerdo(Usuario usuario, int idAcuerdo, string idProyecto)
         {
             con = new BDConexion();
             SqlConnection conect = con.Conectar();
@@ -467,8 +467,6 @@ namespace DatosTotem.Modulo8
                 sqlcom.CommandType = CommandType.StoredProcedure;
                 conect.Open();
 
-                foreach (Usuario usuario in listaUsuario)
-                {
                     sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDAcuerdo, SqlDbType.Int));
                     sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDUsuario, SqlDbType.Int));
                     sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDProyecto, SqlDbType.VarChar));
@@ -477,9 +475,6 @@ namespace DatosTotem.Modulo8
                     sqlcom.Parameters[RecursosBDModulo8.ParametroIDUsuario].Value = usuario.idUsuario;
                     sqlcom.Parameters[RecursosBDModulo8.ParametroIDProyecto].Value = idProyecto;
                     sqlcom.ExecuteNonQuery();
-
-                }
-
                 return true;
             }
 
@@ -534,7 +529,7 @@ namespace DatosTotem.Modulo8
         /// <param name="idAcuerdo">id del acuerdo vinculado</param>
         /// <param name="idProyecto">id del proyecto</param>
         /// <returns>Retorna un Boolean para saber si se realizo con exito la operación</returns>
-        public Boolean EliminarContactoEnAcuerdo(List<Contacto> listaContacto, int idAcuerdo, int idProyecto)
+        public Boolean EliminarContactoEnAcuerdo(Contacto contacto, int idAcuerdo, string idProyecto)
         {
             con = new BDConexion();
             SqlConnection conect = con.Conectar();
@@ -545,19 +540,14 @@ namespace DatosTotem.Modulo8
                 sqlcom.CommandType = CommandType.StoredProcedure;
                 conect.Open();
 
-                foreach (Contacto contacto in listaContacto)
-                {
                     sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDAcuerdo, SqlDbType.Int));
                     sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDContacto, SqlDbType.Int));
-                    sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDProyecto, SqlDbType.Int));
+                    sqlcom.Parameters.Add(new SqlParameter(RecursosBDModulo8.ParametroIDProyecto, SqlDbType.VarChar));
 
                     sqlcom.Parameters[RecursosBDModulo8.ParametroIDUsuario].Value = idAcuerdo;
                     sqlcom.Parameters[RecursosBDModulo8.ParametroIDContacto].Value = contacto.Con_Id;
                     sqlcom.Parameters[RecursosBDModulo8.ParametroIDProyecto].Value = idProyecto;
                     sqlcom.ExecuteNonQuery();
-
-                }
-
                 return true;
             }
 
