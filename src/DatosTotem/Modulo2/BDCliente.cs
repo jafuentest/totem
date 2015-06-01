@@ -778,7 +778,7 @@ namespace DatosTotem.Modulo2
                lugar.NombreLugar = lector.GetString(5);
                lugar.CodigoPostal = lector.GetInt32(6).ToString();
                clienteJuridico.Jur_Ciudad = lugar; 
-               clienteJuridico.Jur_Direccion = lector.GetString(7);
+               clienteJuridico.Jur_Direccion.NombreLugar = lector.GetString(7);
                int codigo = lector.GetInt32(8);
                int numero = lector.GetInt32(9);
                string numeroCompleto = codigo.ToString() + numero.ToString();
