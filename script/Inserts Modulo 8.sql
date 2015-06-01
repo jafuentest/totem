@@ -34,14 +34,6 @@ INSERT INTO dbo.ACUERDO(acu_fecha, acu_desarrollo, MINUTA_min_id) VALUES ('20150
 
 /*-------------------Inserts de Involucrados en Minuta------------------------*/
 
-insert into INVOLUCRADOS_CLIENTES values (1,1);
-insert into INVOLUCRADOS_CLIENTES values (2,1);
-insert into INVOLUCRADOS_CLIENTES values (3,1);
-
-insert into INVOLUCRADOS_USUARIOS values (1,1);
-insert into INVOLUCRADOS_USUARIOS values (2,1);
-insert into INVOLUCRADOS_USUARIOS values (3,1);
-
 INSERT INTO ACU_INV (ACUERDO_acu_id,INVOLUCRADOS_USUARIOS_USUARIO_usu_id,INVOLUCRADOS_USUARIOS_PROYECTO_pro_id) VALUES (1,1,1);
 INSERT INTO ACU_INV (ACUERDO_acu_id,INVOLUCRADOS_USUARIOS_USUARIO_usu_id,INVOLUCRADOS_USUARIOS_PROYECTO_pro_id) VALUES (1,2,1);
 
