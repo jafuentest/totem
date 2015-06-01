@@ -18,7 +18,7 @@
     Detallar Cliente Natural 
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
-
+     <div id="alert" runat ="server"> </div>
     <div class="col-sm-8 col-md-8 col-lg-8 col-md-offset-2">
         <form id="agregar_cliente" class="form-horizontal" action="#" method="post" Runat="Server">
 
@@ -55,30 +55,33 @@
                  <h2>Datos de localización</h2>
 
                 <div class="form-group">
-                    <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6">
+                    <div id="div_pais" class="col-sm-4 col-md-4 col-lg-">
                         <div class="dropdown" runat="server" id="contenedorComboPais">
-                            <select id="comboPais" runat="server"  onchange="CbCambioAEstado"></select>
+                            <select id="comboPais" runat="server"  >
+                                <option value="0" runat="server" selected="selected">Seleccione País..</option>
+                                <option value="1" runat="server">Venezuela</option>
+                            </select>
                         </div>
                     </div>
-                    <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
+                    <div id="div_estado" class="col-sm-4 col-md-4 col-lg-4">
                         <div class="dropdown" runat="server" id="contenedorComboEstado">
-                            <select id="comboEstado" runat="server" onchange="CbCambioACiudad"></select>
+                            <select id="comboEstado" runat="server">
+                                 <option value="0" runat="server" selected="selected">Seleccione Estado..</option>
+                                <option value="2" runat="server">Dtto Capital</option>
+                            </select> 
                         </div>
                     </div>
-                    </div>
-                                            
-                    <div class="form-group">
-                    
-                        <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
+                    <div id="div_ciudad" class="col-sm-4 col-md-4 col-lg-4">
                             <div class="dropdown" runat="server" id="contenedorComboCiudad" >
-                                <select id="comboCiudad" runat="server" ></select>
+                                <select id="comboCiudad" runat="server" >
+                                     <option value="0" runat="server" selected="selected">Seleccione Ciudad..</option>
+                                <option value="4" runat="server">Caracas</option>
+                                </select>
                             </div>
                         </div>
+                    </div>
                     
-                </div>
-
-               
-
+              
                 <div class="form-group">
                     <div id="div_direccion" class="col-sm-12 col-md-12 col-lg-12">
                         <input id="direccionCliente" runat="server" name="direccion" type="text" class="form-control" placeholder="Dirección detallada" />
@@ -103,15 +106,12 @@
      
                 <div class="form-group">
                     <div id="div_botones" class="col-sm-12 col-md-12 col-lg-12">
-                        <button id="botonEditar" runat="server" class="btn btn-primary" onserverclick="EditarCliente_Click" >Editar</button>
+                        <button id="botonEditar" runat="server" class="btn btn-primary" onserverclick="EditarCliente_Click" type="submit">Editar</button>
                         <a class="btn btn-default" href="ListarClientes.aspx">Cancelar</a>
                     </div>
                 </div>
             </div>
             </form>
 </div>
-        
-    
-
 </asp:Content>
 

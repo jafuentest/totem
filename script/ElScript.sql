@@ -1407,27 +1407,22 @@ GO
 
 CREATE PROCEDURE Procedure_ModificarClienteNatural
 
-@cedula         varchar(20),
-@nombre         varchar (60),
-@apellido       varchar(60) ,
-@correo         varchar (60),
+@cn_cedula         varchar(20),
+@nombre            varchar (60),
+@cn_apellido       varchar(60) ,
+@nombrePais        varchar(100),
+@nombreEstado      varchar(100),
+@nombreCiudad      varchar(100),
+@nombreDireccion   varchar(100),
+@cn_correo         varchar (60), 
+@codigo			   integer,
+@numero			   integer 
 
-@nombrePais     varchar(100),
-@nombreEstado   varchar(100),
-@nombreCiudad   varchar(100),
-@nombreDireccion varchar(100),
-@nombreCargo    varchar(60), 
-
- 
-@codigo         integer,
-@numero         integer
 as
 DECLARE @idCiudad  integer
 DECLARE @idNatural integer
 DECLARE @idLugarDireccion integer
 DECLARE @idMaxLugar  integer
-DECLARE @idMaxCargo  integer
-DECLARE @idCargoInsertar integer
 
 begin
 
@@ -1436,18 +1431,12 @@ begin
 
 	from lugar p,
 		 lugar e,
-		 lugar c, 
-		 lugar d
+		 lugar c
 
-	where p.lug_id = e.LUGAR_lug_id
-	 and  e.lug_id = c.LUGAR_lug_id
-	 and  c.lug_id = d.LUGAR_lug_id
-	 and  p.lug_nombre=@nombrePais and p.lug_tipo='País'
-	 and  e.lug_nombre=@nombreEstado and e.lug_tipo='Estado'
-	 and  c.lug_nombre=@nombreCiudad and c.lug_tipo='Ciudad';
+	where p.lug_tipo = 'País' and p.lug_nombre=@nombrePais and p.lug_id=e.LUGAR_lug_id and
+	      e.lug_tipo= 'Estado' and e.lug_nombre= @nombreEstado and e.lug_id= c.LUGAR_lug_id and
+		  c.lug_tipo = 'Ciudad' and c.lug_nombre = @nombreCiudad;
 	 
-
-
 	select @idLugarDireccion = count(LUG_id) from lugar 
 	 where LUG_nombre = @nombreDireccion and LUG_tipo = 'Direccion' and LUGAR_lug_id = @idCiudad;
 	
@@ -1463,22 +1452,7 @@ begin
 			set @idLugarDireccion = @idMaxLugar;
 		end
 		
-	 select @idCargoInsertar=count(car_id) from cargo where car_nombre = @nombreCargo ; 
-	
-	if (@idCargoInsertar = 0)
-		begin 
-			select @idMaxCargo = MAX(car_id) from cargo;
-
-			set @idMaxCargo = @idMaxCargo + 1;
-
-			INSERT INTO cargo VALUES (@idMaxCargo,@nombreCargo);
-
-			set @idCargoInsertar = @idMaxCargo ;
-		end
-	
-	
-	select @idNatural=cn_id from CLIENTE_NATURAL where cn_cedula=@cedula;
-	
+	select @idNatural=cn_id from CLIENTE_NATURAL where cn_cedula=@cn_cedula;
 	
 
 	update TELEFONO 
@@ -1487,23 +1461,21 @@ begin
 		where CLIENTE_NATURAL_cn_id = @idNatural
 		
  	update CONTACTO
-	     set con_cedula = @cedula,
+	     set con_cedula = @cn_cedula,
 		     con_nombre = @nombre,
-			 con_apellido = @apellido,
-			 CARGO_car_id = @idCargoInsertar
-		where con_id = @idNatural
+			 con_apellido = @cn_apellido
+		where CLIENTE_NATURAL_cn_id = @idNatural
 		
 	
 	update CLIENTE_NATURAL
-	     set cn_cedula = @cedula,
+	     set cn_cedula = @cn_cedula,
 		     cn_nombre = @nombre,
-			 cn_apellido = @apellido,
-			 cn_correo = @correo,
+			 cn_apellido = @cn_apellido,
+			 cn_correo = @cn_correo,
 			 LUGAR_lug_id = @idLugarDireccion
 	where cn_id = @idNatural
 end;
 GO
-
 /*-------------Consultar Todos los Clientes Naturales------------------------------------*/
 
 CREATE PROCEDURE Procedure_ConsultarTodosClientesNaturales
