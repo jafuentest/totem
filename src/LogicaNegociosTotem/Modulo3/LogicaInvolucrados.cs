@@ -82,7 +82,6 @@ namespace LogicaNegociosTotem.Modulo3
             throw new NotImplementedException();
             //return usuariosInvolucrados.eliminarUsuarioDeProyecto(elUsuario);
         }
-
         /// <summary>
         /// Metodo que agrega una lista de contactos involucrados a la base de datos
         /// </summary>
@@ -277,6 +276,29 @@ namespace LogicaNegociosTotem.Modulo3
             catch (Exception ex)
             {
                 throw new ExcepcionesTotem.ExceptionTotem();
+            }
+        }
+
+        public bool eliminarUsuarioDeBD(DominioTotem.Usuario u, DominioTotem.ListaInvolucradoUsuario lista)
+        {
+            try
+            {
+                return BDInvolucrados.eliminarUsuariosDeIvolucradosEnProyecto(u, lista);
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public bool eliminarContactoDeBD(DominioTotem.Contacto c, DominioTotem.ListaInvolucradoContacto lista)
+        {
+            try
+            {
+                return BDInvolucrados.eliminarContactoDeIvolucradosEnProyecto(c, lista);
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
     }

@@ -22,7 +22,7 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
         {
             ((MasterPage)Page.Master).IdModulo = "2";
 
-           /* DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+            DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
             if (user != null)
             {
                 if (user.username != "" &&
@@ -39,9 +39,9 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
             }
             else
             {
-                /*Response.Redirect("../Modulo1/M1_login.aspx");
+                Response.Redirect("../Modulo1/M1_login.aspx");
 
-            }*/
+            }
 
             if (!IsPostBack) 
             {

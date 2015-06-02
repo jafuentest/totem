@@ -178,7 +178,15 @@ namespace LogicaNegociosTotem.Modulo7
             List<Usuario> listaUsuario = manejador.listar();
             return listaUsuario;
         }
-
+        /// <summary>
+        /// Metodo que lista todos los usuarios existentes
+        /// </summary>
+        public static List<Proyecto> listarProyectoUsuario(string userName)
+        {
+            ManejadorUsuario manejador = new ManejadorUsuario();
+            List<Proyecto> listaProyecto = manejador.ListarProyectoUsuario(userName);
+            return listaProyecto;
+        }
 
         /// <summary>
         /// Metodo que lista todos los cargos de los usuarios

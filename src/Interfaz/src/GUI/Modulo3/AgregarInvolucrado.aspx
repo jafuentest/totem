@@ -7,7 +7,9 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 
               <div class="col-sm-12 col-md-12 col-lg-12" runat ="server">
-              	  <form id="agregarpersonal" runat="server">
+              	  <form id="agregarpersonal" runat="server">             
+                        <asp:ScriptManager ID="ScriptManager1" runat="server">
+                        </asp:ScriptManager>
                        <div class="form-group">                 
                            <div id="alertlocal" runat="server" >
                             </div>        
@@ -62,8 +64,10 @@
                                 <asp:Literal runat="server" ID="laTabla"></asp:Literal>
                            </tbody>
                          </table>
+                        <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional"> 
+                         <ContentTemplate> 
                     </div>
-                   <div id="modal-delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+                   <div id="modal_delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
                    <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -74,38 +78,20 @@
                             <div class="container-fluid">
                                 <div class="row">
                                   <p>Seguro de que deseas quitar a esta persona de la selección?</p>
+                                     <p runat="server" id="user_name"></p>
+                                     <p runat="server" id="contacto_id"></p>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                           <button id="btn-eliminar" type="button" class="btn btn-primary">Eliminar</button>
-                           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                         <button id="eliminar" runat="server" class="btn btn-primary" type="submit" data-dismiss="modal" onserverclick="evento_eliminar">Eliminar</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                        </div>
                       </div><!-- /.modal-content -->
                    </div><!-- /.modal-dialog -->
                    </div><!-- /.modal -->   
-                   <div id="modal-confirmacion" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
-                   <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                           <h4 class="modal-title" >Confirmaci&oacute;n</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="container-fluid">
-                                <div class="row">
-                                  <p>Seguro de que deseas agregar el personal seleccionado al proyecto?</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                           <button id="btn-confirmar" type="button" class="btn btn-primary">Aceptar</button>
-                           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar
-                           </button>
-                        </div>
-                      </div><!-- /.modal-content -->
-                   </div><!-- /.modal-dialog -->
-                   </div><!-- /.modal -->                                                    
+                </ContentTemplate>
+                </asp:UpdatePanel>                                                
                    </div> 
                       <div class="form-group">
                 <div class="col-sm-5 col-md-5 col-lg-5">

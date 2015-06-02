@@ -81,7 +81,7 @@ namespace DatosTotem.Modulo4
         /// <param name="proyecto">Proyecto a insertar en la bd</param>
         /// <param name="clienteJuridico">Cliente juridico del proyecto</param>
         /// <returns>Retrorna True si se crea, False si no </returns>
-        public static bool CrearProyecto(Proyecto proyecto, ClienteJuridico clienteJuridico)
+        public static bool CrearProyectoClienteJuridico(Proyecto proyecto, String clienteJuridicoID)
         {
             //Si no existe el proyecto se agrega 
             if (!ExisteProyecto(proyecto.Codigo))
@@ -102,7 +102,7 @@ namespace DatosTotem.Modulo4
                     parametros.Add(parametro);
                     parametro = new Parametro(RecursosBDModulo4.ParametroMonedaProyecto, SqlDbType.VarChar, proyecto.Moneda, false);
                     parametros.Add(parametro);
-                    parametro = new Parametro(RecursosBDModulo4.ParametroClienteJuridico, SqlDbType.Int, clienteJuridico.Jur_Id, false);
+                    parametro = new Parametro(RecursosBDModulo4.ParametroClienteJuridico, SqlDbType.Int, clienteJuridicoID, false);
                     parametros.Add(parametro);
 
 
@@ -141,7 +141,7 @@ namespace DatosTotem.Modulo4
         /// <param name="proyecto">Proyecto a insertar en la bd</param>
         /// <param name="clienteNatural">Cliente natural del proyecto</param>
         /// <returns>Retrorna True si se crea, False si no </returns>
-        public static bool CrearProyecto(Proyecto proyecto, ClienteNatural clienteNatural)
+        public static bool CrearProyectoClieteNatural(Proyecto proyecto, String clienteNaturalID)
         {
            
             //Si no existe el proyecto se agrega 
@@ -163,7 +163,7 @@ namespace DatosTotem.Modulo4
                     parametros.Add(parametro);
                     parametro = new Parametro(RecursosBDModulo4.ParametroMonedaProyecto, SqlDbType.VarChar, proyecto.Moneda, false);
                     parametros.Add(parametro);
-                    parametro = new Parametro(RecursosBDModulo4.ParametroClienteNatural, SqlDbType.Int, clienteNatural.Nat_Id, false);
+                    parametro = new Parametro(RecursosBDModulo4.ParametroClienteNatural, SqlDbType.Int, clienteNaturalID, false);
                     parametros.Add(parametro);
 
 
@@ -207,47 +207,41 @@ namespace DatosTotem.Modulo4
         {
             //si cambio de codigo y no esta en uso ademas de que el proyecto a modificar existe
             // o si no hay cambio de codigo verifica que existe el proyecto a modificar
-            if ((!(proyecto.Codigo.Equals(codigoAnterior)) && (!ExisteProyecto(proyecto.Codigo)) && (ExisteProyecto(codigoAnterior))) ||
-                (proyecto.Codigo.Equals(codigoAnterior) && (ExisteProyecto(proyecto.Codigo))))
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, proyecto.Codigo, false);
+            parametros.Add(parametro);
+            parametro = new Parametro(RecursosBDModulo4.ParametroNombreProyecto, SqlDbType.VarChar, proyecto.Nombre, false);
+            parametros.Add(parametro);
+            parametro = new Parametro(RecursosBDModulo4.ParametroEstadoProyecto, SqlDbType.Bit, proyecto.Estado.ToString(), false);
+            parametros.Add(parametro);
+            parametro = new Parametro(RecursosBDModulo4.ParametroDescripcionProyecto, SqlDbType.VarChar, proyecto.Descripcion, false);
+            parametros.Add(parametro);
+            parametro = new Parametro(RecursosBDModulo4.ParametroCostoProyecto, SqlDbType.Int, proyecto.Costo.ToString(), false);
+            parametros.Add(parametro);
+            parametro = new Parametro(RecursosBDModulo4.ParametroMonedaProyecto, SqlDbType.VarChar, proyecto.Moneda, false);
+            parametros.Add(parametro);
+            parametro = new Parametro(RecursosBDModulo4.ParametroCodigoAnteriorProyecto, SqlDbType.VarChar, codigoAnterior, false);
+            parametros.Add(parametro);
+
+            try
             {
-                List<Parametro> parametros = new List<Parametro>();
-                Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, proyecto.Codigo, false);
-                parametros.Add(parametro);
-                parametro = new Parametro(RecursosBDModulo4.ParametroNombreProyecto, SqlDbType.VarChar, proyecto.Nombre, false);
-                parametros.Add(parametro);
-                parametro = new Parametro(RecursosBDModulo4.ParametroEstadoProyecto, SqlDbType.Bit, proyecto.Estado.ToString(), false);
-                parametros.Add(parametro);
-                parametro = new Parametro(RecursosBDModulo4.ParametroDescripcionProyecto, SqlDbType.VarChar, proyecto.Descripcion, false);
-                parametros.Add(parametro);
-                parametro = new Parametro(RecursosBDModulo4.ParametroCostoProyecto, SqlDbType.Int, proyecto.Costo.ToString(), false);
-                parametros.Add(parametro);
-                parametro = new Parametro(RecursosBDModulo4.ParametroMonedaProyecto, SqlDbType.VarChar, proyecto.Moneda, false);
-                parametros.Add(parametro);
-                parametro = new Parametro(RecursosBDModulo4.ParametroCodigoAnteriorProyecto, SqlDbType.VarChar, codigoAnterior, false);
-                parametros.Add(parametro);
-
-                try
+                BDConexion con = new BDConexion();
+                List<Resultado> resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoModificarProyecto, parametros);
+                if (resultados != null)
                 {
-                    BDConexion con = new BDConexion();
-                    List<Resultado> resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoModificarProyecto, parametros);
-                    if (resultados != null)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-
-                    }
+                    return true;
+                }
+                else
+                {
+                    return false;
 
                 }
-                catch (NotImplementedException e)
-                {
-                    throw e;
-                }
+
             }
-            else
-                return false;
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
         #endregion
 
@@ -680,9 +674,6 @@ namespace DatosTotem.Modulo4
 
         #region Mostrar Clientes
 
-
-
-
         /// <summary>
         /// Método para cnsultar todos los clientes naturales
         /// </summary>
@@ -750,6 +741,66 @@ namespace DatosTotem.Modulo4
         }
 
 
+
+        #endregion
+
+        #region Buscar ID Cliente
+
+        public static int ObtenerIdClienteNatural(String cedula)
+        {
+            try
+            {
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCedulaCliente, SqlDbType.VarChar, cedula, false);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo4.ParametroIDClienteNaturalOutput, SqlDbType.Int, true);
+                parametros.Add(parametro);
+
+                BDConexion con = new BDConexion();
+                List<Resultado> resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoObtenerIDClienteNatural, parametros);
+
+                if (resultados != null)
+                {
+                    return int.Parse(resultados[0].valor);
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static int ObtenerIdClienteJuridico(String rif)
+        {
+            try
+            {
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro parametro = new Parametro(RecursosBDModulo4.ParametroRIFCliente, SqlDbType.VarChar, rif, false);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo4.ParametroIDClienteJuridicoOutput, SqlDbType.Int, true);
+                parametros.Add(parametro);
+
+                BDConexion con = new BDConexion();
+                List<Resultado> resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoObtenerIDClienteJuridico, parametros);
+
+                if (resultados != null)
+                {
+                    return int.Parse(resultados[0].valor);
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
 
         #endregion
 

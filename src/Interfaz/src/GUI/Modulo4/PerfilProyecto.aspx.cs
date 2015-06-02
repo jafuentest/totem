@@ -14,7 +14,7 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
     {
         ((MasterPage)Page.Master).IdModulo = "4";
 
-        /*DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+        DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
         if (user != null)
         {
             if (user.username != "" &&
@@ -32,7 +32,7 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
         else
         {
             Response.Redirect("../Modulo1/M1_login.aspx");
-        }*/
+        }
 
         String success = Request.QueryString["success"];
         if (success != null)
@@ -97,11 +97,11 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
             this.div_proyecto.InnerHtml += "<p class='desc'>" + esteProyecto.Descripcion + "</p>";
             if (esteProyecto.Estado == true)
             {
-                this.div_proyecto.InnerHtml += "<input disabled checked data-toggle='toggle' data-size='normal' type='checkbox' data-on='Activo' data-off='Inactivo' data-onstyle='success' data-offstyle='warning' data-width='100'>";
+                this.div_proyecto.InnerHtml += "<input type='checkbox' checked disabled> Activo";
             }
             else
             {
-                this.div_proyecto.InnerHtml += "<input disabled unchecked data-toggle='toggle' data-size='normal' type='checkbox' data-on='Activo' data-off='Inactivo' data-onstyle='success' data-offstyle='warning' data-width='100'>";
+                this.div_proyecto.InnerHtml += "<input type='checkbox' unchecked disabled> Inactivo";
             }
             this.div_proyecto.InnerHtml += "<br><br>";
             this.div_proyecto.InnerHtml += "<p class='sameLine'>Cliente: </p><p id='nombreCliente' class='sameLine bootstrapBlue'>" + "</p>";
@@ -114,13 +114,6 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
             this.div_proyecto.InnerHtml += "</div>";
             this.div_proyecto.InnerHtml += "</div>";
             this.div_proyecto.InnerHtml += "</div>";
-            this.requerimientosBadge.InnerText = "0";
-            this.casosDeUsoBadge.InnerText = "0";
-            this.minutasBadge.InnerText = "0";
-            this.involucradosBadge.InnerText = "0";
-            
-
-            
 
             this.modifyButton.Text = "<a class='btn btn-primary' href='ModificarProyecto.aspx?success=" + esteProyecto.Codigo + "'>Modificar</a>";
         }
@@ -167,7 +160,7 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
             Response.ClearHeaders();
             Response.ContentType = "application/pdf";
             //Response.AddHeader("Content-Disposition", "attachment; filename=" + "ers.pdf");
-            Response.TransmitFile(@"C:\Program Files (x86)\IIS Express\BaseFactura.pdf");
+            Response.TransmitFile(@"C:\Program Files (x86)\IIS Express\factura.pdf");
             Response.End();
             //Response.WriteFile(strS);
             Response.Flush();

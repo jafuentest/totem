@@ -15,7 +15,7 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ((MasterPage)Page.Master).IdModulo = "2";
-/*
+
         DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
         if (user != null)
         {
@@ -30,11 +30,11 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
                 ((MasterPage)Page.Master).ShowDiv = false;
             }
 
-        }*/
-       /* else
+        }
+        else
         {
             Response.Redirect("../Modulo1/M1_login.aspx");
-        }*/
+        }
 
         if (!IsPostBack) 
         {

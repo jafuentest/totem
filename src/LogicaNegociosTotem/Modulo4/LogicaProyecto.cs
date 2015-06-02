@@ -6,6 +6,7 @@ using System.Text;
 using System.Data;
 using DominioTotem;
 using System.IO;
+using System.Threading;
 
 namespace LogicaNegociosTotem.Modulo4
 {
@@ -49,12 +50,12 @@ namespace LogicaNegociosTotem.Modulo4
         /// <param name="clienteJuridico">Cliente juridico del proyecto</param>
         /// <returns>Retorna True si se crea, de lo contrario genera
         /// una exception(CodigoRepetido)</returns>
-        public static bool CrearProyecto(DominioTotem.Proyecto proyecto, DominioTotem.ClienteJuridico clienteJuridico)
+        public static bool CrearProyectoClienteJuridico(DominioTotem.Proyecto proyecto, String id)
         {
 
             try
             {
-                return DatosTotem.Modulo4.BDProyecto.CrearProyecto(proyecto,clienteJuridico);
+                return DatosTotem.Modulo4.BDProyecto.CrearProyectoClienteJuridico(proyecto, id);
             }
             catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException e)
             {
@@ -69,12 +70,12 @@ namespace LogicaNegociosTotem.Modulo4
         /// <param name="clienteNatural">Cliente natural del proyecto</param>
         /// <returns>Retorna True si se crea, de lo contrario genera
         /// una exception(CodigoRepetido)</returns>
-        public static bool CrearProyecto(DominioTotem.Proyecto proyecto, DominioTotem.ClienteNatural clienteNatural)
+        public static bool CrearProyectoClienteNatural(DominioTotem.Proyecto proyecto, String id)
         {
 
             try
             {
-                return DatosTotem.Modulo4.BDProyecto.CrearProyecto(proyecto, clienteNatural);
+                return DatosTotem.Modulo4.BDProyecto.CrearProyectoClieteNatural(proyecto, id);
             }
             catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException e)
             {
@@ -139,48 +140,20 @@ namespace LogicaNegociosTotem.Modulo4
 
         #region Generar Documentos
 
-        /// <summary>
-        /// Metodo para compilar el documento .tex 
-        /// Excepciones posibles: 
-        ///
-        /// </summary>
-        static void CompilarFactura()
-        {
-            Process p1 = new Process();
-            p1.StartInfo.FileName = "pdflatex.exe";
-            p1.StartInfo.Arguments = @"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\BaseFactura.tex";
-            //p1.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
-            string a = Path.GetFullPath("BaseFactura.tex");
-            Console.WriteLine("a");
-            p1.StartInfo.RedirectStandardOutput = true;
-            p1.StartInfo.UseShellExecute = false;
-            try
-            {
-                p1.Start();
-                p1.Dispose();
 
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-        }
-        static void CompilarArchivoLatex()
+        static void CompilarArchivoLatex(string path)
         {
             Process p1 = new Process();
             p1.StartInfo.FileName = "pdflatex.exe";
-            string a = Path.GetFullPath(@"ers.tex");
-            p1.StartInfo.Arguments = @"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\ers.tex";
+            p1.StartInfo.Arguments = path;
             p1.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
             p1.StartInfo.RedirectStandardOutput = true;
             p1.StartInfo.UseShellExecute = false;
             try
             {
                 p1.Start();
+                System.Threading.Thread.Sleep(1000);
                 p1.Dispose();
-                
-
-
             }
             catch (Exception e)
             {
@@ -210,7 +183,7 @@ namespace LogicaNegociosTotem.Modulo4
             }
         }
 
-        static void ArchivoBase()
+        static void BaseErs()
         {
             try
             {
@@ -275,7 +248,7 @@ namespace LogicaNegociosTotem.Modulo4
             }
         }
 
-        static void FacturaBase()
+        static void BaseFactura()
         {
             try
             {
@@ -301,7 +274,7 @@ namespace LogicaNegociosTotem.Modulo4
                 factura.WriteLine("\\" + "hline");
                 factura.WriteLine(" ");
                 factura.WriteLine("\\" + "begin{center}");
-                factura.WriteLine("\\" + "Large" + "\\" + "bf PRobandooooo");
+                factura.WriteLine("\\" + "Large" + "\\" + "bf Datos Cliente");
                 factura.WriteLine("\\" + "end{center}");
                 factura.WriteLine(" ");
                 factura.WriteLine("\\" + "begin{flushleft}");
@@ -368,41 +341,69 @@ namespace LogicaNegociosTotem.Modulo4
 
         }
 
-
-
-        /// <summary>
-        /// Metodo para generar el documento ERS del un proyecto (archivo .pdf descargable).
-        /// Excepciones posibles: 
-        /// CasosDeUsoInexistentesException()
-        /// RequerimientosInexistentesException()
-        /// InvolucradosInexistentesException()
-        /// </summary>
-        /// <param name="codigo">Codigo del proyecto al que se le generara el ERS</param>
-        public static void GenErs(String codigo)
+        public static void EnsambleFactura(List<Requerimiento> reqs, double costoRequerimiento, double total, double subtotal, double iva)
         {
-            string linea;
-            EliminarArchivo(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\ers.tex");
             try
             {
-                Proyecto proyecto = LogicaNegociosTotem.Modulo4.LogicaProyecto.ConsultarProyecto(codigo);
-                ListaInvolucradoUsuario involucrados = new ListaInvolucradoUsuario();
-                LogicaNegociosTotem.Modulo3.LogicaInvolucrados logInv = new LogicaNegociosTotem.Modulo3.LogicaInvolucrados(proyecto);
-                involucrados = logInv.obtenerUsuariosInvolucradosProyecto(proyecto);
-                LogicaNegociosTotem.Modulo6.LogicaCasoUso cu = new Modulo6.LogicaCasoUso();
-                /*List<Requerimiento> funcionales = DatosTotem.Modulo4.BDProyecto.ConsultarRequerimientosFuncionalesPorProyecto(codigo);
-                List<Requerimiento> noFuncional = DatosTotem.Modulo4.BDProyecto.ConsultarRequerimientosNoFuncionalesPorProyecto(codigo);*/
-				//Cable por Fuentes
-				List<CasoDeUso> listaCU = cu.ListarCasosDeUso(0);
-				//Fin del cable
-                
-				System.IO.StreamReader archivoBase = new System.IO.StreamReader(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\BaseErs.tex");
+                string linea;
+                System.IO.StreamReader archivoBase = new System.IO.StreamReader(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\BaseFactura.tex");
+                System.IO.StreamWriter factura = new System.IO.StreamWriter(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\factura.tex");
+                while ((linea = archivoBase.ReadLine()) != null)
+                {
+                    switch (linea)
+                    {
+                        case "fecha":
+                            DateTime auxiliar = DateTime.Today;
+                            string fecha = auxiliar.ToShortDateString();
+                            factura.WriteLine(fecha);
+                            break;
+                        case "requerimiento & monto":
+                            foreach (Requerimiento rf in reqs)
+                            {
+                                factura.WriteLine(rf.Descripcion + "&" + costoRequerimiento + " " + "\\" + "\\");
+                                factura.WriteLine("\\" + "hline");
+                            }
+                            break;
+                        case "subtotal":
+                            factura.WriteLine(subtotal);
+                            break;
+                        case "iva":
+                            factura.WriteLine(iva);
+                            break;
+                        case "total":
+                            factura.WriteLine(total);
+                            break;
+                        default:
+                            factura.WriteLine(linea);
+                            break;
+                    }
+                    
+                }
+                archivoBase.Close();
+                factura.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+  
+            
+        }
+
+        public static void EnsambleErs(Proyecto proyecto, List<Usuario> involucrados, List<Requerimiento> reqFuncionales, List<Requerimiento> reqNoFuncionales, List<CasoDeUso> casosDeUso)
+        {
+            try
+            {
+            string linea;
+            System.IO.StreamReader archivoBase = new System.IO.StreamReader(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\BaseErs.tex");
                 System.IO.StreamWriter ers = new System.IO.StreamWriter(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\ers.tex");
                 while ((linea = archivoBase.ReadLine()) != null)
                 {
                     switch (linea)
                     {
                         case ("titulo"):
-                            ers.WriteLine("Probando requrimientos");
+                            ers.WriteLine("Especificacion de Requerimientos De Software");
                             break;
                         case "fecha":
                             DateTime auxiliar = DateTime.Today;
@@ -434,37 +435,37 @@ namespace LogicaNegociosTotem.Modulo4
                             break;
                         case "\\" + "item" + " " + "involucrados":
                             Console.WriteLine(linea);
-                            foreach (Usuario u in involucrados.Lista)
+                            foreach (Usuario u in involucrados)
                             {
                                 ers.WriteLine("\\" + "item" + " " + "Nombre:" + " " + u.nombre + " " + "Cargo:" + " " + u.cargo);
                             }
                             break;
                         case "Rf":
-                            /*ers.WriteLine("\\" + "begin{tabular}{| l | p{7cm} | r |}");
+                            ers.WriteLine("\\" + "begin{tabular}{| l | p{7cm} | r |}");
                             ers.WriteLine("\\" + "hline");
                             ers.WriteLine("\\" + "bf ID & " + "\\" + "bf Requerimiento &" + " \\" + "bf Prioridad " + "\\" + "\\");
                             ers.WriteLine("\\" + "hline");
-                            foreach (Requerimiento rf in funcionales)
+                            foreach (Requerimiento rf in reqFuncionales)
                             {
                                 ers.WriteLine("ModuloWolf" + "&" + rf.Descripcion + "&" + rf.Prioridad + " " + "\\" + "\\");
                                 ers.WriteLine("\\" + "hline");
                             }
-                            ers.WriteLine("\\" + "end{tabular}");*/
+                            ers.WriteLine("\\" + "end{tabular}");
                             break;
                         case "Rnf":
-                            /*ers.WriteLine("\\" + "begin{tabular}{| l | p{7cm} | r |}");
+                            ers.WriteLine("\\" + "begin{tabular}{| l | p{7cm} | r |}");
                             ers.WriteLine("\\" + "hline");
                             ers.WriteLine("\\" + "bf ID & " + "\\" + "bf Requerimiento &" + " \\" + "bf Prioridad " + "\\" + "\\");
                             ers.WriteLine("\\" + "hline");
-                            foreach (Requerimiento rnf in noFuncional)
+                            foreach (Requerimiento rnf in reqNoFuncionales)
                             {
                                 ers.WriteLine("ModuloWolf" + "&" + rnf.Descripcion + "&" + rnf.Prioridad + " " + "\\" + "\\");
                                 ers.WriteLine("\\" + "hline");
                             }
-                            ers.WriteLine("\\" + "end{tabular}");*/
+                            ers.WriteLine("\\" + "end{tabular}");
                             break;
                         case "casosDeUso":
-                            foreach (CasoDeUso c in listaCU)
+                            foreach (CasoDeUso c in casosDeUso)
                             {
                                 ers.WriteLine("\\" + "begin{tabular}{|p{3cm}| p{10cm} |}");
                                 ers.WriteLine("\\" + "hline");
@@ -516,11 +517,83 @@ namespace LogicaNegociosTotem.Modulo4
                 archivoBase.Close();
                 ers.Close();
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        
+        
+        
+        
+        }
+
+
+
+        /// <summary>
+        /// Metodo para generar el documento ERS del un proyecto (archivo .pdf descargable).
+        /// Excepciones posibles: 
+        /// CasosDeUsoInexistentesException()
+        /// RequerimientosInexistentesException()
+        /// InvolucradosInexistentesException()
+        /// </summary>
+        /// <param name="codigo">Codigo del proyecto al que se le generara el ERS</param>
+        /// 
+
+        public static void GenFactura(String codigo)
+        {
+
+            EliminarArchivo(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\factura.tex");
+            EliminarArchivo(@"C:\Program Files (x86)\IIS Express\factura.pdf");
+            try
+            {
+                int[] progreso = CalcularProgreso(codigo);
+                Proyecto proyecto = LogicaNegociosTotem.Modulo4.LogicaProyecto.ConsultarProyecto(codigo);
+                int costo = proyecto.Costo;
+                int totalRequerimientos = progreso[0];
+                int totalFinalizados = progreso[1];
+                double precioRequerimiento = costo / totalRequerimientos;
+                double subtotal = precioRequerimiento * totalFinalizados;
+                double iva = ((0.12 * subtotal));
+                double total = subtotal + iva;
+
+                List<Requerimiento> rF = DatosTotem.Modulo5.BDRequerimiento.ConsultarRequerimientosPorProyecto(1);
+                LogicaNegociosTotem.Modulo4.LogicaProyecto.EnsambleFactura(rF, precioRequerimiento, total, subtotal, iva);
+            }
 
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
+
+
+        }
+
+        public static void GenErs(String codigo)
+        {
+            
+            EliminarArchivo(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\ers.tex");
+            EliminarArchivo(@"C:\Program Files (x86)\IIS Express\ers.pdf");
+            try
+            {
+                Proyecto proyecto = LogicaNegociosTotem.Modulo4.LogicaProyecto.ConsultarProyecto(codigo);
+                ListaInvolucradoUsuario involucrados = new ListaInvolucradoUsuario();
+                LogicaNegociosTotem.Modulo3.LogicaInvolucrados logInv = new LogicaNegociosTotem.Modulo3.LogicaInvolucrados(proyecto);
+                involucrados = logInv.obtenerUsuariosInvolucradosProyecto(proyecto);
+                LogicaNegociosTotem.Modulo6.LogicaCasoUso cu = new Modulo6.LogicaCasoUso();
+                List<Requerimiento> rF = DatosTotem.Modulo5.BDRequerimiento.ConsultarRequerimientosPorProyecto(1);
+                List<Requerimiento> rNF= DatosTotem.Modulo5.BDRequerimiento.ConsultarRequerimientosPorProyecto(1);
+                //Cable por Fuentes
+				List<CasoDeUso> listaCU = cu.ListarCasosDeUso(1);
+				//Fin del cable
+                LogicaNegociosTotem.Modulo4.LogicaProyecto.EnsambleErs(proyecto, involucrados.Lista, rF, rNF, listaCU);
+            }
+            
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+                
+				
         }
         /// <summary>
         /// Metodo para generar el documento ERS del un proyecto (archivo .pdf descargable).
@@ -532,10 +605,14 @@ namespace LogicaNegociosTotem.Modulo4
         /// <param name="codigo">Codigo del proyecto al que se le generara el ERS</param>
         public static void GenerarERS(String codigo)
         {
-            ArchivoBase();
+            string path = @"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\ers.tex";
+            BaseErs();
             GenErs(codigo);
 
-            CompilarArchivoLatex();
+            CompilarArchivoLatex(path);
+            CompilarArchivoLatex(path);
+            CompilarArchivoLatex(path);
+
         }
 
         /// <summary>
@@ -547,8 +624,10 @@ namespace LogicaNegociosTotem.Modulo4
         /// <param name="codigo">Codigo del proyecto al que se le generara la factura</param>
         public static void GenerarFactura(String codigo)
         {
-            FacturaBase();
-            CompilarFactura();
+            string path = @"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\factura.tex"; 
+            BaseFactura();
+            GenFactura(codigo);
+            CompilarArchivoLatex(path);
 
         }
         #endregion
@@ -658,6 +737,30 @@ namespace LogicaNegociosTotem.Modulo4
             try
             {
                 return DatosTotem.Modulo4.BDProyecto.ConsultarTodoslosClienteJuridicos();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static int ObtenerIDClienteNatural(string cedula)
+        {
+            try
+            {
+                return DatosTotem.Modulo4.BDProyecto.ObtenerIdClienteNatural(cedula);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static int ObtenerIDClienteJuridico(string rif)
+        {
+            try
+            {
+                return DatosTotem.Modulo4.BDProyecto.ObtenerIdClienteJuridico(rif);
             }
             catch (Exception e)
             {

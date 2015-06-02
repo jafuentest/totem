@@ -250,12 +250,20 @@ namespace DatosTotem.Modulo4 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
-        ///@parametro.
+        ///   Looks up a localized string similar to @parametro.
         /// </summary>
         internal static string ParametroBusqueda {
             get {
                 return ResourceManager.GetString("ParametroBusqueda", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @cedula.
+        /// </summary>
+        internal static string ParametroCedulaCliente {
+            get {
+                return ResourceManager.GetString("ParametroCedulaCliente", resourceCulture);
             }
         }
         
@@ -332,6 +340,24 @@ namespace DatosTotem.Modulo4 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to @idClienteJuridico.
+        /// </summary>
+        internal static string ParametroIDClienteJuridicoOutput {
+            get {
+                return ResourceManager.GetString("ParametroIDClienteJuridicoOutput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @idClienteNatural.
+        /// </summary>
+        internal static string ParametroIDClienteNaturalOutput {
+            get {
+                return ResourceManager.GetString("ParametroIDClienteNaturalOutput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @pro_moneda.
         /// </summary>
         internal static string ParametroMonedaProyecto {
@@ -355,6 +381,15 @@ namespace DatosTotem.Modulo4 {
         internal static string ParametroResultado {
             get {
                 return ResourceManager.GetString("ParametroResultado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @rif.
+        /// </summary>
+        internal static string ParametroRIFCliente {
+            get {
+                return ResourceManager.GetString("ParametroRIFCliente", resourceCulture);
             }
         }
         
@@ -517,6 +552,24 @@ namespace DatosTotem.Modulo4 {
         internal static string ProcedimientoModificarProyecto {
             get {
                 return ResourceManager.GetString("ProcedimientoModificarProyecto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procedimiento_ObtenerIDClienteJuridico.
+        /// </summary>
+        internal static string ProcedimientoObtenerIDClienteJuridico {
+            get {
+                return ResourceManager.GetString("ProcedimientoObtenerIDClienteJuridico", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procedimiento_ObtenerIDClienteNatural.
+        /// </summary>
+        internal static string ProcedimientoObtenerIDClienteNatural {
+            get {
+                return ResourceManager.GetString("ProcedimientoObtenerIDClienteNatural", resourceCulture);
             }
         }
         

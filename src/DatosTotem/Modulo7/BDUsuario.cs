@@ -152,6 +152,48 @@ namespace DatosTotem.Modulo7
             return lUsuarios;
         }
         /// <summary>
+        /// Procedimiento para obtener todos todos los proyectos en los que esta un usuario
+        /// </summary>
+        /// <returns>Returna una lista con  los proyectos de un usuario en el sistema</returns>
+        public List<Proyecto> ObtenerListaProyectoUsuario(string userName)
+        {
+            BDConexion laConexion;
+            List<Parametro> parametros;
+
+            List<Proyecto> proyectoUsuario = new List<Proyecto>();
+            try
+            {
+                laConexion = new BDConexion();
+                parametros = new List<Parametro>();
+                Parametro parametro = new Parametro(RecursosBaseDeDatosModulo7.UsernameUsuario,
+        SqlDbType.VarChar, userName, false);
+                parametros.Add(parametro);
+                DataTable dt = laConexion.EjecutarStoredProcedureTuplas(
+                                RecursosBaseDeDatosModulo7.ProcedimientoListarProyecto,
+                               parametros);
+                foreach (DataRow row in dt.Rows)
+                {
+                    Proyecto u = new Proyecto();
+                    u.Codigo = row[RecursosBaseDeDatosModulo7.ProyectoCodigo].ToString();
+                    u.Nombre = row[RecursosBaseDeDatosModulo7.ProyectoNombre].ToString();
+                    u.Descripcion = row[RecursosBaseDeDatosModulo7.ProyectoDescripcion].ToString();
+                    u.Costo = int.Parse(row[RecursosBaseDeDatosModulo7.ProyectoCosto].ToString());
+                    proyectoUsuario.Add(u);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, new Exception());
+            }
+            catch (Exception ex)
+            {
+                throw new ExcepcionesTotem.ExceptionTotem("No se pudo completar la operacion", new Exception());
+            }
+
+            return proyectoUsuario;
+        }
+        /// <summary>
         /// Permite consultar la informacion de un usuario, segun su nombre, apellido y cargo
         /// </summary>
         /// <param name="nombre">El nombre del usuario que se desea consultar</param>

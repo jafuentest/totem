@@ -32,7 +32,7 @@
 	<opcion nombre="Crear Proyecto" link="~/src/GUI/Modulo4/CrearProyecto.aspx">
 		<modulo id="4"></modulo>
 	</opcion>
-	<opcion nombre="Buscar..." link="~/src/GUI/Modulo4/ListaProyectos.aspx">
+	<opcion nombre="Mis Proyectos" link="~/src/GUI/Modulo4/ListaProyectos.aspx">
 		<modulo id="4"></modulo>
 	</opcion>
 
