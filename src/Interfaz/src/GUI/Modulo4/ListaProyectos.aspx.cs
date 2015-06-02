@@ -11,6 +11,7 @@ public partial class GUI_Modulo4_ListaProyectos : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ((MasterPage)Page.Master).IdModulo = "4";
+        ((MasterPage)Page.Master).ShowDiv = true;
 
         DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
         if (user != null)
@@ -42,24 +43,22 @@ public partial class GUI_Modulo4_ListaProyectos : System.Web.UI.Page
                 foreach (DataRow row in proyectos.Rows)
                 {
                     this.jumbotronProyecto.Text += "<div class='form-group'>";
-                    this.jumbotronProyecto.Text += "<div id='div_perfiles' class='col-sm-12 col-md-12 col-lg-12'>";
+                   // this.jumbotronProyecto.Text += "<div id='div_perfiles' class='col-sm-12 col-md-12 col-lg-12'>";
                     this.jumbotronProyecto.Text += "<div class='jumbotron'>";
                     this.jumbotronProyecto.Text += "<h2 class='sameLine'><a href='PerfilProyecto.aspx?success=" + row["codigo"].ToString() + "&success=-1'>" + row["nombre"].ToString() + "</a></h2> <h5 class='sameLine'>COD: </h5> <h5 id='codigoProyecto' class='sameLine' runat='server'>" + row["codigo"].ToString() + "</h5>";
                     this.jumbotronProyecto.Text += "<p class='desc'>" + row["descripcion"].ToString() + "</p>";
                     if (bool.Parse(row["estado"].ToString()) == true)
                     {
-                        this.jumbotronProyecto.Text += "<input disabled checked data-toggle='toggle' data-size='small' type='checkbox' data-on='Activo' data-off='Inactivo' data-onstyle='success' data-offstyle='warning' data-width='100'>";
+                        this.jumbotronProyecto.Text += "<input type='checkbox' checked disabled> Activo";
                     }
                     else
                     {
-                        this.jumbotronProyecto.Text += "<input disabled unchecked data-toggle='toggle' data-size='small' type='checkbox' data-on='Activo' data-off='Inactivo' data-onstyle='success' data-offstyle='warning' data-width='100'>";
+                        this.jumbotronProyecto.Text += "<input type='checkbox' unchecked disabled> Inactivo";
                     }
                     this.jumbotronProyecto.Text += "<br><br>";
                     this.jumbotronProyecto.Text += "<p class='sameLine'>Cliente: </p><p id='nombreCliente' class='sameLine bootstrapBlue'>" + "</p>";
-                    this.jumbotronProyecto.Text += "<br>";
-                    this.jumbotronProyecto.Text += "<p class='sameLine'>Desarroladora: </p><p id='nombreDesarrolladora' class='sameLine bootstrapBlue'>" + "</p>";
                     this.jumbotronProyecto.Text += "</div>";
-                    this.jumbotronProyecto.Text += "</div>";
+                    //this.jumbotronProyecto.Text += "</div>";
                     this.jumbotronProyecto.Text += "</div>";
                 }
             }
@@ -76,4 +75,5 @@ public partial class GUI_Modulo4_ListaProyectos : System.Web.UI.Page
             this.jumbotronProyecto.Text += "</div>";
         }
     }
+
 }
