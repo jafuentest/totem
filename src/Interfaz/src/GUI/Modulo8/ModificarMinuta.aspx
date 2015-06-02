@@ -23,7 +23,7 @@
             <div class="form-group">
                 <label for="motivo" class="col-xs-12 col-md-3 control-label">Motivo:</label> 
 			    <div id="div_motivo" class="col-xs-12 col-md-8 col-lg-6">
-                    <textarea name="motivo" id="motivo" placeholder="Exponga brevemente el motivo de la reunión" class="form-control" style="text-align: justify;resize:none;" rows=4></textarea>			
+                    <textarea name="motivo" id="motivo" maxlength="150" placeholder="Exponga brevemente el motivo de la reunión" class="form-control" style="text-align: justify;resize:none;" rows=4></textarea>			
 			    </div>
             </div>
 
@@ -67,7 +67,7 @@
             <div class="form-group">
                 <label for="observaciones" class="col-xs-12 col-md-3 control-label">Observaciones:</label> 
 			    <div id="div_observaciones" class="col-xs-12 col-md-8 col-lg-6">
-                    <textarea name="observaciones" id="observaciones" placeholder="Observaciones" class="form-control" style="text-align: justify;resize:none;" rows=4></textarea>			
+                    <textarea name="observaciones" id="observaciones" maxlength="200" placeholder="Observaciones" class="form-control" style="text-align: justify;resize:none;" rows=4></textarea>			
 			    </div>
             </div>
         

@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.Services;
-using System.Web.UI.WebControls;
 using DominioTotem;
-using DominioTotem.ResponseObject;
 using LogicaNegociosTotem.Modulo8;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+
 
 public partial class GUI_Modulo8_ModificarMinuta : System.Web.UI.Page
 {
     private static string codigoMinuta;
     private static Minuta minuta = new Minuta();
+    private static string codigoProyecto;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         ((MasterPage)Page.Master).IdModulo = "8";
@@ -34,6 +31,7 @@ public partial class GUI_Modulo8_ModificarMinuta : System.Web.UI.Page
 
         }
         codigoMinuta = Request.QueryString["idMinuta"];
+        codigoProyecto = Server.HtmlEncode(Request.Cookies["selectedProjectCookie"]["projectCode"]);
     }
 
 
@@ -45,7 +43,7 @@ public partial class GUI_Modulo8_ModificarMinuta : System.Web.UI.Page
     public static string ListaUsuario()
     {
         LogicaMinuta logicaMinuta = new LogicaMinuta();
-        Proyecto elProyecto = new Proyecto() { Codigo = "TOT" };
+        Proyecto elProyecto = new Proyecto() { Codigo = codigoProyecto };
         List<Usuario> listaUsuario = logicaMinuta.ListaUsuario(elProyecto);
         List<Contacto> listaContacto = logicaMinuta.ListaContacto(elProyecto);
         var output = JsonConvert.SerializeObject(listaUsuario);
@@ -61,7 +59,7 @@ public partial class GUI_Modulo8_ModificarMinuta : System.Web.UI.Page
     {
         int codMinuta = Int32.Parse(codigoMinuta);
         LogicaMinuta logicaMinuta = new LogicaMinuta();
-        Proyecto elProyecto = new Proyecto() { Codigo = "TOT" };
+        Proyecto elProyecto = new Proyecto() { Codigo = codigoProyecto };
         minuta = logicaMinuta.obtenerMinuta(elProyecto, codMinuta);
         var output = JsonConvert.SerializeObject(minuta);
         return output;
@@ -131,7 +129,7 @@ public partial class GUI_Modulo8_ModificarMinuta : System.Web.UI.Page
         };
 
         LogicaMinuta logicaMinuta = new LogicaMinuta();
-        Proyecto elProyecto = new Proyecto() { Codigo = "TOT" };
+        Proyecto elProyecto = new Proyecto() { Codigo = codigoProyecto };
         string mensaje = logicaMinuta.ModificarMinuta(elProyecto, minutaNueva, minuta);
         return mensaje;
     }

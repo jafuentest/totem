@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 public partial class GUI_Modulo8_DetalleMinutas : System.Web.UI.Page
 {
     private static string codigoMinuta;
-
+    private static string codigoProyecto;
     protected void Page_Load(object sender, EventArgs e)
     {
         ((MasterPage)Page.Master).IdModulo = "8";
@@ -27,6 +27,7 @@ public partial class GUI_Modulo8_DetalleMinutas : System.Web.UI.Page
 
         }
         codigoMinuta = Request.QueryString["idMinuta"];
+        codigoProyecto = Server.HtmlEncode(Request.Cookies["selectedProjectCookie"]["projectCode"]);
     }
 
 
@@ -39,7 +40,7 @@ public partial class GUI_Modulo8_DetalleMinutas : System.Web.UI.Page
     {
         int codMinuta = Int32.Parse(codigoMinuta);
         LogicaMinuta logicaMinuta = new LogicaMinuta();
-        Proyecto elProyecto = new Proyecto(){Codigo = "1"};
+        Proyecto elProyecto = new Proyecto() { Codigo = codigoProyecto };
         Minuta minuta = logicaMinuta.obtenerMinuta(elProyecto, codMinuta);
         var output = JsonConvert.SerializeObject(minuta);
         return output;

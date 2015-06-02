@@ -26,7 +26,7 @@ function aceptarConfirmacion()
         codigoPunto = codigo.replace("_div", "");
         codigoTitulo = codigoPunto + '_titulo';
         codigoDesarrollo = codigoPunto + '_desarrollo';
-
+        
         tituloPunto = $('#' + codigoTitulo).val();
         desarrolloPunto = $('#' + codigoDesarrollo).val();
         if (tituloPunto != "")
@@ -77,7 +77,7 @@ function aceptarConfirmacion()
     $.ajax(
    {
        type: "POST",
-       url: "CrearMinuta.aspx/crearMinuta",
+       url: "ModificarMinuta.aspx/crearMinuta",
        contentType: "application/json; charset=utf-8",
        data: "{'laMinuta':" + laData +"}",
        dataType: "text"

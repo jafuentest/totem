@@ -94,14 +94,14 @@ function agregarPunto() {
         + "  <div class='panel-body panel-minuta'>"
         + "     <div class='col-xs-12'>"
         + "         <button type='button' id=" + idBoton + " class='close' data-dismiss='alert' onClick='borrarPunto(this);' aria-label='Close'><span aria-hidden='true'>&times;</span></button>"
-        + "         <input id='" + codigoPuntoTitulo + "' class='form-control' placeholder='Título del Punto' type='text'/>"
+        + "         <input id='" + codigoPuntoTitulo + "' class='form-control' maxlength='100' placeholder='Título del Punto' type='text'/>"
         + "     </div>"
         + "     <div class='col-xs-12 form-group'></div>"
-        + "     <div class='col-xs-12'><textarea id='" + codigoPuntoDesarrollo + "'  name='desarrollo' placeholder='Desarrollo del Punto' class='form-control' style='text-align: justify;resize:none;' rows=3></textarea></div>"
+        + "     <div class='col-xs-12'><textarea id='" + codigoPuntoDesarrollo + "'  name='desarrollo' maxlength='200' placeholder='Desarrollo del Punto' class='form-control' style='text-align: justify;resize:none;' rows=3></textarea></div>"
         + " </div>"
         + "</div>"
     );
-
+    nroPuntos++;
 }
 
 // Descripción: Función Para Eliminar DIV de un punto de una Minuta
@@ -133,7 +133,7 @@ function agregarAcuerdo() {
         + " <div class='panel-body panel-minuta'>"
         + "     <div class='col-xs-12'>"
         + "         <button type='button' id=" + codigoAcuerdoBTN + " class='close' data-dismiss='alert' onClick='borrarAcuerdo(this);' aria-label='Close'><span aria-hidden='true'>&times;</span></button>"
-        + "         <input id='" + codigoAcuerdoCompromiso + "' class='form-control' class='tituloReunion' value='' placeholder='Acuerdo o Compromiso' type='text'/>"
+        + "         <input id='" + codigoAcuerdoCompromiso + "' class='form-control' maxlength='120' class='tituloReunion' value='' placeholder='Acuerdo o Compromiso' type='text'/>"
         + "     </div>"
         + "     <div class='col-xs-12 form-group'></div>"
         + "     <div class='col-xs-12 col-md-4 date'> "

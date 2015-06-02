@@ -7,12 +7,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 
 public partial class GUI_Modulo8_ConsultarMinuta : System.Web.UI.Page
 {
+    private static string codigoProyecto ;
     protected void Page_Load(object sender, EventArgs e)
     {
         ((MasterPage)Page.Master).IdModulo = "8";
@@ -51,6 +50,7 @@ public partial class GUI_Modulo8_ConsultarMinuta : System.Web.UI.Page
             }
 
         }
+        codigoProyecto = Server.HtmlEncode(Request.Cookies["selectedProjectCookie"]["projectCode"]);
     }
 
 
@@ -62,9 +62,10 @@ public partial class GUI_Modulo8_ConsultarMinuta : System.Web.UI.Page
     public static string ListaMinuta()
     {
         LogicaMinuta logicaMinuta = new LogicaMinuta();
+
         List<Minuta> listaMinuta = logicaMinuta.ListaMinuta(new Proyecto()
         {
-            Codigo = "TOT"
+            Codigo = codigoProyecto
         });
         var dataResponse = new ResponseDataMinuta()
         {
@@ -91,7 +92,7 @@ public partial class GUI_Modulo8_ConsultarMinuta : System.Web.UI.Page
         string botonModificar = "<a id='{0}' class='btn btn-default glyphicon glyphicon-pencil' href='ModificarMinuta.aspx?idMinuta={0}'></a>";
         botonModificar = String.Format(botonModificar, id);
 
-        string botonImprimir = "<a id='{0}' class='btn btn-success glyphicon glyphicon-print' href='<%= Page.ResolveUrl(\"~/GUI/Modulo8/MINUTA3.aspx\")%>'></a>";
+        string botonImprimir = "<a id='{0}' class='btn btn-success glyphicon glyphicon-print' href='DetalleMinutas.aspx?idMinuta={0}'></a>";
         botonImprimir = String.Format(botonImprimir, id);
 
         return botonDetalle + botonModificar + botonImprimir;
