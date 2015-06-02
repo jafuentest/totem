@@ -57,6 +57,29 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
         listaUsuarios.Proyecto = elProyecto;
         HttpCookie pcookie = Request.Cookies.Get("selectedProjectCookie");
         //elProy.Codigo =  pcookie.Values["projectCode"].ToString(); //De aqui se debe extraer el codigo del proyecto
+
+        String eliminacionUsuario = Request.QueryString["usuarioaeliminar"];
+        String eliminacionContacto = Request.QueryString["contactoaeliminar"];
+
+        if (eliminacionUsuario != null || eliminacionContacto != null)
+        {
+            if (eliminacionContacto == null)
+                this.user_name.InnerText = eliminacionUsuario;
+            else
+                this.contacto_id.InnerText = eliminacionContacto;
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "modal_delete", "$('#modal_delete').modal();", true);
+            upModal.Visible = true;
+        }
+
+        String alert_eliminacion = Request.QueryString["success-eliminacion"];
+
+        if (alert_eliminacion == "true")
+        {
+            this.alertlocal.Attributes["class"] = "alert alert-success alert-dismissible";
+            this.alertlocal.Attributes["role"] = "alert";
+            this.alertlocal.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Se elimino correctamente</div>";
+            this.alertlocal.Visible = true;
+        }
     }
     protected void llenarComboTipoEmpresas()
     {
@@ -176,8 +199,7 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
                 this.laTabla.Text += "<td>" + elUsuario.cargo + "</td>";
                 this.laTabla.Text += "<td>Compañía De Software</td>";
                 this.laTabla.Text += "<td>";
-                this.laTabla.Text += "<a class=\"btn btn-default glyphicon glyphicon-pencil\" href=\"<%= Page.ResolveUrl(\"~/GUI/Modulo2/DetallarCliente.aspx\") % ></a>";
-                this.laTabla.Text += "<a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"  runat=\"server\"></a>";
+                this.laTabla.Text += "<a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" href=\"AgregarInvolucrado.aspx?usuarioaeliminar=" + elUsuario.username + "\"></a>";
                 this.laTabla.Text += "</td>";
                 this.laTabla.Text += "</tr>";
 
@@ -215,8 +237,7 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
                 this.laTabla.Text += "<td>" + elContacto.ConCargo + "</td>";
                 this.laTabla.Text += "<td>" + elContacto.ConClienteJurid.Jur_Nombre + "</td>";
                 this.laTabla.Text += "<td>";
-                this.laTabla.Text += "<a class=\"btn btn-default glyphicon glyphicon-pencil\" href=\"<%= Page.ResolveUrl(\"~/GUI/Modulo2/DetallarCliente.aspx\") % ></a>";
-                this.laTabla.Text += "<a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"  runat=\"server\"></a>";
+                this.laTabla.Text += "<a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" href=\"AgregarInvolucrado.aspx?contactoaeliminar=" + elContacto.Con_Id + "\"></a>";
                 this.laTabla.Text += "</td>";
                 this.laTabla.Text += "</tr>";
 
@@ -298,5 +319,39 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
             this.alertlocal.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>" + ex.Mensaje + "</div>";
             this.alertlocal.Visible = true;    
         }
+    }
+    protected void evento_eliminar(object sender, EventArgs e)
+    {
+        if (!this.user_name.InnerText.Equals(""))
+        {
+            Usuario user = new Usuario();
+            user.username = this.user_name.InnerHtml;
+
+             if(listaUsuarios.eliminarUsuarioDeListaPorUsername(user, listaUsuarios))
+                    Response.Redirect("../Modulo3/AgregarInvolucrado.aspx?success-eliminacion=true");
+            else
+            {
+                this.alertlocal.Attributes["class"] = "alert alert-danger alert-dismissible";
+                this.alertlocal.Attributes["role"] = "alert";
+                this.alertlocal.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Eliminación de usuario fallida</div>";
+                this.alertlocal.Visible = true;
+            }
+        }
+        else
+            if (!this.contacto_id.InnerText.Equals(""))
+            {
+                Contacto contacto = new Contacto();
+                contacto.Con_Id = int.Parse(this.contacto_id.InnerText);
+
+                if (listaContactos.eliminarContactoDeListaPorID(contacto, listaContactos))
+                    Response.Redirect("../Modulo3/AgregarInvolucrado.aspx?success-eliminacion=true");
+                else
+                {
+                    this.alertlocal.Attributes["class"] = "alert alert-danger alert-dismissible";
+                    this.alertlocal.Attributes["role"] = "alert";
+                    this.alertlocal.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Eliminación de contacto fallida</div>";
+                    this.alertlocal.Visible = true;
+                }
+            }
     }
 }
