@@ -114,13 +114,6 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
             this.div_proyecto.InnerHtml += "</div>";
             this.div_proyecto.InnerHtml += "</div>";
             this.div_proyecto.InnerHtml += "</div>";
-            this.requerimientosBadge.InnerText = "0";
-            this.casosDeUsoBadge.InnerText = "0";
-            this.minutasBadge.InnerText = "0";
-            this.involucradosBadge.InnerText = "0";
-            
-
-            
 
             this.modifyButton.Text = "<a class='btn btn-primary' href='ModificarProyecto.aspx?success=" + esteProyecto.Codigo + "'>Modificar</a>";
         }

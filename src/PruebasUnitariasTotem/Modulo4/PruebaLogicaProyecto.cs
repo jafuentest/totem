@@ -57,7 +57,7 @@ namespace PruebasUnitariasTotem.Modulo4
 
             try
             {
-                Assert.IsTrue(LogicaNegociosTotem.Modulo4.LogicaProyecto.CrearProyecto(elProyecto, elClienteJuridico));
+                Assert.IsTrue(LogicaNegociosTotem.Modulo4.LogicaProyecto.CrearProyectoClienteJuridico(elProyecto, elClienteJuridico.Jur_Id));
                 DatosTotem.Modulo4.BDProyecto.EliminarProyecto("TES");
             }
             catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException)
@@ -73,7 +73,7 @@ namespace PruebasUnitariasTotem.Modulo4
             elClienteNatural.Nat_Id="1";
             try
             {
-                Assert.IsTrue(LogicaNegociosTotem.Modulo4.LogicaProyecto.CrearProyecto(elProyecto, elClienteJuridico));
+                Assert.IsTrue(LogicaNegociosTotem.Modulo4.LogicaProyecto.CrearProyectoClienteNatural(elProyecto, elClienteNatural.Nat_Id));
                 DatosTotem.Modulo4.BDProyecto.EliminarProyecto("TES");
             }
             catch (ExcepcionesTotem.Modulo4.CodigoRepetidoException)

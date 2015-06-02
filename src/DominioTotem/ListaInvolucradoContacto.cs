@@ -88,5 +88,21 @@ namespace DominioTotem
             else
                 return false;
         }
+
+        public bool eliminarContactoDeListaPorID(Contacto c, ListaInvolucradoContacto lista)
+        {
+            bool retorno = false;
+            foreach (Contacto elContacto in lista.Lista)
+            {
+                if (elContacto.Con_Id == c.Con_Id)
+                { 
+                    lista.eliminarContactoDeProyecto(elContacto);
+                    retorno = true;
+                }
+                else
+                    retorno = false;
+            }
+            return retorno;
+        }
     }
 }

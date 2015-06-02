@@ -90,5 +90,20 @@ namespace DominioTotem
             else
                 return false;
         }
+        public bool eliminarUsuarioDeListaPorUsername(Usuario u, ListaInvolucradoUsuario lista)
+        {
+            bool retorno = false;
+            foreach (Usuario elUsuario in lista.Lista)
+            {
+                if (elUsuario.username == u.username)
+                {
+                    lista.eliminarUsuarioDeProyecto(elUsuario);
+                    retorno = true;
+                }
+                else
+                    retorno = false;
+            }
+            return retorno;
+        }
     }
 }
