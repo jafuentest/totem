@@ -234,4 +234,24 @@
     <value>NombreUsuario</value>
     <comment>username del usuario</comment>
   </data>
+  <data name="ProyectoCodigo" xml:space="preserve">
+    <value>CodigoProyecto</value>
+    <comment>codigo de un proyecto de un usuario seleccionado</comment>
+  </data>
+  <data name="ProyectoCosto" xml:space="preserve">
+    <value>CostoProyecto</value>
+    <comment>Costo de un proyecto de un usuario seleccionado</comment>
+  </data>
+  <data name="ProyectoDescripcion" xml:space="preserve">
+    <value>DescripcionProyecto</value>
+    <comment>Descripcion de un proyecto de un usuario seleccionado</comment>
+  </data>
+  <data name="ProyectoNombre" xml:space="preserve">
+    <value>NombreProyecto</value>
+    <comment>nombre de un proyecto de un usuario seleccionado</comment>
+  </data>
+  <data name="ProcedimientoListarProyecto" xml:space="preserve">
+    <value>ListarProyectoUsuario</value>
+    <comment>Procedimiento para listar los proyectos de un usuario</comment>
+  </data>
 </root>

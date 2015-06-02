@@ -1,4 +1,5 @@
 ﻿using DominioTotem;
+using LogicaNegociosTotem.Modulo7;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,7 +60,26 @@ public partial class GUI_Modulo7_DetalleUsuario : System.Web.UI.Page
         else
         {
             Response.Redirect("../Modulo1/M1_login.aspx");
-        } 
+        }
+
+        #region Llenar Data Table Con Usuarios
+        if (!IsPostBack)
+        {
+            List<Proyecto> listaProyectoUsuario = LogicaUsuario.listarProyectoUsuario(this.input_usuario.Value);
+            foreach (Proyecto proyecto in listaProyectoUsuario)
+            {
+                this.laTabla.Text += "<tr>";
+                this.laTabla.Text += "<td>" + proyecto.Codigo.ToString() + "</td>";
+                this.laTabla.Text += "<td>" + proyecto.Nombre.ToString() + "</td>";
+                this.laTabla.Text += "<td>" + proyecto.Descripcion.ToString() + "</td>";
+                this.laTabla.Text += "<td>" + proyecto.Costo.ToString() + "</td>";
+                this.laTabla.Text += "<td>";
+                this.laTabla.Text += "<a   href=\"~/GUI/Modulo4/PerfilProyecto.aspx\" class=\"btn btn-default glyphicon glyphicon-info-sign\" \\></a>";                
+                this.laTabla.Text += "</td>";
+                this.laTabla.Text += "</tr>";
+            }
+        }
+        #endregion
     }
 
     protected void llenarComboTipoRol(string rolUsuario)
