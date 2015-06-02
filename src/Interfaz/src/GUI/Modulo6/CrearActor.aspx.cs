@@ -19,8 +19,8 @@ public partial class GUI_Modulo6_CrearActor : System.Web.UI.Page
 
         //Obtenemos la variable de sesion
         DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
-		//if (user != null)
-		//{
+		if (user != null)
+		{
             if (user.username != "" &&
                 user.clave != "")
             {
@@ -31,11 +31,11 @@ public partial class GUI_Modulo6_CrearActor : System.Web.UI.Page
                 ((MasterPage)Page.Master).MostrarMenuLateral = false;
                 ((MasterPage)Page.Master).ShowDiv = false;
             }
-		//}
-		//else
-		//{
-		//	Response.Redirect("../Modulo1/M1_login.aspx");
-		//}
+		}
+		else
+		{
+			Response.Redirect("../Modulo1/M1_login.aspx");
+		}
     }
 
     /// <summary>
