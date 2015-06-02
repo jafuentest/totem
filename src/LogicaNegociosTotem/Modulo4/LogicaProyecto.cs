@@ -139,36 +139,11 @@ namespace LogicaNegociosTotem.Modulo4
 
         #region Generar Documentos
 
-        /// <summary>
-        /// Metodo para compilar el documento .tex 
-        /// Excepciones posibles: 
-        ///
-        /// </summary>
-        /*static void CompilarFactura()
-        {
-            Process p1 = new Process();
-            p1.StartInfo.FileName = "pdflatex.exe";
-            p1.StartInfo.Arguments = @"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\GUI\Modulo4\docs\BaseFactura.tex";
-            //p1.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
-            string a = Path.GetFullPath("BaseFactura.tex");
-            Console.WriteLine("a");
-            p1.StartInfo.RedirectStandardOutput = true;
-            p1.StartInfo.UseShellExecute = false;
-            try
-            {
-                p1.Start();
-                p1.Dispose();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-        }*/
+
         static void CompilarArchivoLatex(string path)
         {
             Process p1 = new Process();
             p1.StartInfo.FileName = "pdflatex.exe";
-            //string a = Path.GetFullPath(@"ers.tex");
             p1.StartInfo.Arguments = path;
             p1.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
             p1.StartInfo.RedirectStandardOutput = true;
@@ -297,7 +272,7 @@ namespace LogicaNegociosTotem.Modulo4
                 factura.WriteLine("\\" + "hline");
                 factura.WriteLine(" ");
                 factura.WriteLine("\\" + "begin{center}");
-                factura.WriteLine("\\" + "Large" + "\\" + "bf PRobandooooo");
+                factura.WriteLine("\\" + "Large" + "\\" + "bf Datos Cliente");
                 factura.WriteLine("\\" + "end{center}");
                 factura.WriteLine(" ");
                 factura.WriteLine("\\" + "begin{flushleft}");
@@ -426,7 +401,7 @@ namespace LogicaNegociosTotem.Modulo4
                     switch (linea)
                     {
                         case ("titulo"):
-                            ers.WriteLine("arreglando El Codigo 23645");
+                            ers.WriteLine("Especificacion de Requerimientos De Software");
                             break;
                         case "fecha":
                             DateTime auxiliar = DateTime.Today;
@@ -633,6 +608,9 @@ namespace LogicaNegociosTotem.Modulo4
             GenErs(codigo);
 
             CompilarArchivoLatex(path);
+            CompilarArchivoLatex(path);
+            CompilarArchivoLatex(path);
+
         }
 
         /// <summary>
