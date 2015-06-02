@@ -171,8 +171,7 @@ namespace LogicaNegociosTotem.Modulo2
 
        }
 
-
-       /// <summary>
+/// <summary>
        /// Método que le solicita a acceso a datos que borre el cliente natural seleccionado
        /// ,en la Base de Datos
        /// </summary>
@@ -180,7 +179,27 @@ namespace LogicaNegociosTotem.Modulo2
        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
        public bool EliminarClienteNatural(string cedula)
        {
-           return baseDeDatosCliente.EliminarClienteNatural(cedula);
+           try
+           {
+               return baseDeDatosCliente.EliminarClienteNatural(cedula);
+           }
+           catch(ExcepcionesTotem.ExceptionTotemConexionBD e)
+            {
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralBD.Codigo_Error_Desconexion,
+                    RecursoGeneralBD.Mensaje_Error_Desconexion,
+                    e);
+            }
+           catch(NullReferenceException e)
+           {
+               throw new ClienteInexistenteException("T_02_002"
+                   , "Cliente Inexistente", e);
+           }
+           catch(Exception e)
+           {
+               throw new ExcepcionesTotem.ExceptionTotem(RecursoGeneralBD.Codigo,
+                  RecursoGeneralBD.Mensaje, e);
+           }
        }
 
 
@@ -190,12 +209,7 @@ namespace LogicaNegociosTotem.Modulo2
        /// </summary>
        /// <param name="clienteNatural">Información del Cliente Natural</param>
        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-      // public bool ModificarClienteNatural(ClienteNatural clienteNatural,string cargo, string codigo, string numero)
-       //{
-          // ClienteNatural cliente = new ClienteNatural();
-          // cliente = clienteNatural;
-          // return baseDeDatosCliente.ModificarClienteNatural(cliente, cargo, codigo, numero);
-       //}
+      
 
        public bool ModificarClienteNatural(string identificador, string nombre, string apellido, string correo, string pais,
            string estado, string ciudad, string direccion, string telefono)
