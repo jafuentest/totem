@@ -1605,17 +1605,9 @@ END;
 go
 
 
-CREATE PROCEDURE Procedure_llenarCBCargo
-@nombreCargo varchar(60)
-AS
-BEGIN
-	   SELECT 
-	   car_nombre
-	   FROM CARGO
-	   WHERE car_nombre = @nombreCargo; 
-END;
 
-go
+
+
 
 /***------------Consultar todos los clientes Juridicos ----**/
 
