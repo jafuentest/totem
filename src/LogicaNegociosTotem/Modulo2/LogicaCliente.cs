@@ -360,6 +360,50 @@ namespace LogicaNegociosTotem.Modulo2
            return cargos; 
        }
 
+       #region Consultar Clientes según Nombre del Proyecto
+
+       /// <summary>
+       /// Método de la capa lógica que invoca a acceso a datos
+       /// para que le retorne los datos del cliente según el 
+       /// nombre de un proyecto 
+       /// </summary>
+       /// <param name="nombre">Nombre del Proyecto</param>
+       /// <returns>Los datos del Cliente Jurídico</returns>
+       public ClienteJuridico ConsultarClienteJNombreProyecto(string codigo)
+       {
+           try
+           {
+               ClienteJuridico elCliente = new ClienteJuridico();
+               elCliente = baseDeDatosCliente.DatosClienteProyecto(codigo);
+               return elCliente;
+           }
+           catch (ExcepcionesTotem.ExceptionTotemConexionBD e)
+           {
+               throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
+                   RecursoGeneralBD.Mensaje, e);
+           }
+           catch (ClienteInexistenteException e)
+           {
+               throw new ExcepcionesTotem.Modulo2.ClienteInexistenteException(RecursosLogicaModulo2.CodigoClienteInexistente,
+                    RecursosLogicaModulo2.MensajeClienteInexistente,
+                    e);
+           }
+
+           catch (OperacionInvalidaException ex)
+           {
+               throw new OperacionInvalidaException
+                   (RecursosLogicaModulo2.CodigoOperacionInvalida,
+                   RecursosLogicaModulo2.MensajeOperacionInvalida,
+                   ex);
+           }
+           catch (ExcepcionesTotem.ExceptionTotem ex)
+           {
+               throw new ExcepcionesTotem.ExceptionTotem(RecursoGeneralBD.Codigo,
+                    RecursoGeneralBD.Mensaje, ex);
+           }
+       }
+
+       #endregion
 
     }
 }
