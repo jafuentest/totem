@@ -32,7 +32,7 @@
                     <div class="panel-heading" role="tab" id="requerimientos">
                         <h3 class="panel-title">
                             <a class="link" href="#collapseRequerimientos" data-toggle="collapse" data-parent="#accordionRequerimientos">
-                                <span id="requerimientosBadge" runat="server" class="badge"></span> Requerimientos 
+                                Requerimientos 
                             </a>
                         </h3>
                     </div>
@@ -161,7 +161,7 @@
                     <div class="panel-heading" role="tab" id="casosDeUso">
                         <h3 class="panel-title">
                             <a class="link" href="#collapseCasosDeUso" data-toggle="collapse" data-parent="#accordionCasosDeUso">
-                                <span id="casosDeUsoBadge" runat="server" class="badge"></span> Casos de Uso
+                                Casos de Uso
                             </a>
                         </h3>
                     </div>
@@ -293,7 +293,7 @@
                     <div class="panel-heading" role="tab" id="minutas">
                         <h3 class="panel-title">
                             <a class="link" href="#collapseMinutas" data-toggle="collapse" data-parent="#accordionMinutas">
-                                <span id="minutasBadge" runat="server" class="badge"></span> Minutas
+                                Minutas
                             </a>
                         </h3>
                     </div>
@@ -397,7 +397,7 @@
                     <div class="panel-heading" role="tab" id="involucrados">
                         <h3 class="panel-title">
                             <a class="link" href="#collapseInvolucrados" data-toggle="collapse" data-parent="#accordionInvolucrados">
-                                <span id="involucradosBadge" runat="server" class="badge"></span> Involucrados
+                                Involucrados
                             </a>
                         </h3>
                     </div>
