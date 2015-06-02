@@ -6,6 +6,7 @@ using System.Text;
 using System.Data;
 using DominioTotem;
 using System.IO;
+using System.Threading;
 
 namespace LogicaNegociosTotem.Modulo4
 {
@@ -151,6 +152,7 @@ namespace LogicaNegociosTotem.Modulo4
             try
             {
                 p1.Start();
+                System.Threading.Thread.Sleep(1000);
                 p1.Dispose();
             }
             catch (Exception e)
