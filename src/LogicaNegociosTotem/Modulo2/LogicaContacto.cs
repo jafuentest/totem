@@ -69,7 +69,7 @@ namespace LogicaNegociosTotem.Modulo2
             }
             catch (Exception e) 
             {
-                throw new Exception("Error en la capa lógica",e);
+                throw new ExcepcionesTotem.Modulo2.ClienteLogicaException("Error en la capa lógica",e);
             }
 
         }

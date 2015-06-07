@@ -105,7 +105,7 @@ namespace DatosTotem.Modulo2
            string telefono = string.Empty;
            try
            {
-               contacto.Con_Id = Convert.ToInt32(lector.GetString(0));
+               contacto.Con_Id = lector.GetInt32(0);
                contacto.Con_Nombre = lector.GetString(1);
                contacto.Con_Apellido = lector.GetString(2);
                contacto.ConCargo = lector.GetString(3);
