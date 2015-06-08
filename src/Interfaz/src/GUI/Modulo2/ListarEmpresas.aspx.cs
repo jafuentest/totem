@@ -9,11 +9,11 @@ using DominioTotem;
 
 public partial class GUI_Modulo2_ListarEmpresas : System.Web.UI.Page
 {
+    private static List<ClienteJuridico> listaEstatica;
     protected void Page_Load(object sender, EventArgs e)
     {
         ((MasterPage)Page.Master).IdModulo = "2";
 
-        
         String success = Request.QueryString["success"];
         if (success != null)
         {
@@ -52,22 +52,45 @@ public partial class GUI_Modulo2_ListarEmpresas : System.Web.UI.Page
                 ((MasterPage)Page.Master).MostrarMenuLateral = false;
                 ((MasterPage)Page.Master).ShowDiv = false;
             }
-
         }
         else
         {
             Response.Redirect("../Modulo1/M1_login.aspx");
         }
 
-        LogicaCliente logica = new LogicaCliente();
-        List<ClienteJuridico> listaClientesJuridicos = logica.ConsultarClientesJuridicos();
-
-        foreach (ClienteJuridico clienteLista in listaClientesJuridicos)
+        if (!IsPostBack)
         {
-            cuerpo.InnerHtml = cuerpo.InnerHtml + "<tr><td>" + clienteLista.Jur_Id + "</td><td>" + clienteLista.Jur_Nombre + "</td><td><a class=\"btn btn-default glyphicon glyphicon-pencil\" data-toggle=\"modal\" data-target=\"#modal-update\" href=\"#\"></a><a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"></a></td></tr>";
-            //  cuerpo.InnerHtml = cuerpo.InnerHtml + "<tr id=\"actor-" + actorLista.IdentificacionActor + "\"><td class=\"name\">" + actorLista.NombreActor + "</td><td class=\"desc\">" + actorLista.DescripcionActor + "</td><td class=\"actions\"><a class=\"btn btn-default glyphicon glyphicon-pencil\" data-toggle=\"modal\" data-target=\"#modal-update\" href=\"#\"></a><a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"></a></td></tr>";
-           
+            listaEstatica = new List<ClienteJuridico>();
+            consultarEmpresas();
+        }
+    }
+    public void consultarEmpresas()
+    {
+        try
+        {
+            listaEstatica = LogicaCliente.consultarListaClientesJuridicos();
+            foreach(ClienteJuridico elCliente in listaEstatica)
+            {
+                this.laTabla.Text += RecursoInterfazM2.AbrirEtiqueta_tr;
+                this.laTabla.Text += RecursoInterfazM2.AbrirEtiqueta_td + elCliente.Jur_Rif 
+                    + RecursoInterfazM2.CerrarEtiqueta_td;
+                this.laTabla.Text += RecursoInterfazM2.AbrirEtiqueta_td + elCliente.Jur_Nombre
+                    + RecursoInterfazM2.CerrarEtiqueta_td;
+                this.laTabla.Text += RecursoInterfazM2.AbrirEtiqueta_td;
+                this.laTabla.Text += RecursoInterfazM2.AbrirBotonDetalle + elCliente.Jur_Id +
+                    RecursoInterfazM2.CerrarBoton;
+                this.laTabla.Text += RecursoInterfazM2.AbrirBotonModificar + elCliente.Jur_Id +
+                    RecursoInterfazM2.CerrarBoton;
+                this.laTabla.Text += RecursoInterfazM2.AbrirBotonEliminar + elCliente.Jur_Id + 
+                    RecursoInterfazM2.CerrarBoton;
+                this.laTabla.Text += RecursoInterfazM2.CerrarEtiqueta_td;
+                this.laTabla.Text += RecursoInterfazM2.CerrarEtiqueta_tr;
+            }
+        }
+        catch(Exception ex)
+        {
 
         }
     }
+
 }

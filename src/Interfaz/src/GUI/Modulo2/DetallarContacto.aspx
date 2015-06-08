@@ -14,7 +14,7 @@
     <script type="text/javascript" src="<%= Page.ResolveUrl("~/src/GUI/Modulo2/js/validation.js") %>"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">
-    Gestión de Clientes 
+    Gestión De Clientes 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">
     Detallar Contacto
@@ -25,9 +25,6 @@
         <form id="agregar_empresa" class="form-horizontal" action="#" method="post" Runat="Server">
 
             <div class="row col-sm-12 col-md-12 col-lg-12" Runat="Server">      
-                
-
-                
 
                 <div class="form-group" Runat="Server" ></div>
 
@@ -35,48 +32,36 @@
                     
                             <div class="form-group" Runat="Server">
                                 <div class="col-xs-12" Runat="Server">
-                                    <input id="contactoNombre" runat="server" class="form-control" placeholder="Nombres del Contacto" type="text" Runat ="Server" />
+                                    <input id="contactoNombre" runat="server" class="form-control" placeholder="Nombres del Contacto" type="text" />
                                 </div>
                             </div>
 
                             <div class="col-xs-12 form-group" Runat="Server"></div>
                             <div class="form-group" Runat="Server">
                                 <div class="col-xs-12" Runat="Server">
-                                    <input runat="server" id="apellidoContacto" class="form-control" placeholder="Apellidos del Contacto" type="text" Runat="Server"/>
+                                    <input runat="server" id="apellidoContacto" class="form-control" placeholder="Apellidos del Contacto" type="text" />
                                 </div>
 
                             </div>
-                            <div class="col-xs-12 form-group" Runat="Server"></div>
-
 
                             <!-- Split button -->
                             <div class="form-group">
-                               <div class="btn-group col-sm-10 col-md-10 col-lg-10">
+                                    <div class="btn-group col-sm-12 col-md-12 col-lg-12">
                                         <div id="contenedorCargo" runat="server" class="dropdown"> 
-                                        <select id="comboCargo" runat="server">
-                                                                                       
-                                        </select>
+                                            <asp:DropDownList ID="comboCargo"  class="btn btn-default dropdown-toggle" runat="server"   AutoPostBack="true"></asp:DropDownList>
                                        </div>
-                                </div>
-                               
-                            </div>
-
-                            <div class="col-xs-12 form-group" Runat="Server"></div>
-                            <div class="form-group" Runat="Server"> 
-                                <div class="col-xs-12" Runat="Server">
-                                    <input runat="server" id="telefonoUno" class="form-control" placeholder="Teléfono celular " type="text" Runat="Server" />
-                                </div>
-                            </div>
-                                <div class="col-xs-12 form-group" Runat="Server"></div>
-                                <div class="form-group" Runat="Server"> 
-                                    <div class="col-xs-12" Runat="Server">
-                                        <input runat="server" id="telefonoDos" class="form-control" placeholder="Teléfono celular alternativo" type="text" Runat="Server"/>
                                     </div>
+                              </div>
+
+                           <div class="form-group">
+                                <div id="div_cod_telefono" class="col-sm-4 col-md-4 col-lg-4">
+                                    <input id="codTelefono" runat="server" name="codigoTELF" type="text" class="form-control" placeholder="+(cod)" maxlength="4" />
                                 </div>
-
-                            
-
+                                <div id="div_telefono" class="col-sm-8 col-md-8 col-lg-8">
+                                    <input id="telefonoCliente" runat="server" name="telefono" type="text" class="form-control" placeholder="Teléfono" maxlength="7" />
+                                </div>
                             </div>
+                     </div>
 
 
 

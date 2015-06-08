@@ -60,29 +60,14 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
     /// </summary>
     protected void EditarEmpresa_Click(object sender, EventArgs e) 
     {
-        LogicaCliente logica = new LogicaCliente();
         
-        Lugar ciudad = new Lugar(); 
-        Lugar direccion = new Lugar();
         if (!ValidarCamposVacios() )
         {
 
             try
             {
-                ciudad.IdLugar = Convert.ToInt32(comboCiudad.SelectedValue);
-                ciudad.NombreLugar = comboCiudad.Text;
-                direccion.NombreLugar = direccionEmpresa.Value;
-                string rif = rifEmpresa.Value;
-                string nombreEmp = nombreEmpresa.Value;
-                string pais = comboPais.Text;
-                string estado = comboEstado.Text;
-
-                ClienteJuridico cliente = new ClienteJuridico(rif, nombreEmp, pais,
-                    estado, ciudad, direccion);
-
-
-
-                if (logica.ModificarClienteJuridico(cliente))
+                //if (logica.ModificarClienteJuridico(cliente))
+                if(true)
                 {
                     alert.Attributes["class"] = "alert alert-success alert-dismissible";
                     alert.Attributes["role"] = "alert";
@@ -246,20 +231,9 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
         ClienteJuridico cliente = new ClienteJuridico();
         List<Contacto> contactos = new List<Contacto>();
         Contacto contacto = new Contacto(); 
-        LogicaCliente logica = new LogicaCliente();
-        LogicaContacto logicaContacto = new LogicaContacto();
-
        try
         {
-            cliente = logica.ConsultarClienteJuridico(id);
-            
-            rifEmpresa.Value = cliente.Jur_Id;
-            nombreEmpresa.Value = cliente.Jur_Nombre;
-            
-            contactos = logicaContacto.ListarContactosEmpresa(rifEmpresa.Value);
-            
-
-            
+                       
             foreach (Contacto elContacto in contactos)
             {
                 cuerpo.InnerHtml =
@@ -302,8 +276,6 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
     {
         try
         {
-            LogicaLugar logica = new LogicaLugar();
-            List<Lugar> paises = logica.LlenarComboPaises();
             ListItem itemPais;
 
             this.comboPais.Items.Clear();
@@ -313,13 +285,13 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             this.comboPais.Items.Add(itemPais);
 
             
-           foreach (Lugar objetoPais in paises)
-            {
-                itemPais = new ListItem();
-                itemPais.Text = objetoPais.NombreLugar;
-                itemPais.Value = objetoPais.IdLugar.ToString();
-                this.comboPais.Items.Add(itemPais); 
-            }
+           //foreach (Lugar objetoPais in paises)
+           // {
+           //     itemPais = new ListItem();
+           //     itemPais.Text = objetoPais.NombreLugar;
+           //     itemPais.Value = objetoPais.IdLugar.ToString();
+           //     this.comboPais.Items.Add(itemPais); 
+           // }
 
            
         }
@@ -346,8 +318,6 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
     {
         try 
         {
-            LogicaLugar logica = new LogicaLugar();
-            List<Lugar> estados = logica.LlenarComboEstados(idPais);
             ListItem itemEstado;
 
             this.comboEstado.Items.Clear();
@@ -357,13 +327,13 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             this.comboEstado.Items.Add(itemEstado);
 
 
-            foreach (Lugar objetoEstado in estados)
-            {
-                itemEstado = new ListItem();
-                itemEstado.Text = objetoEstado.NombreLugar;
-                itemEstado.Value = objetoEstado.IdLugar.ToString();
-                this.comboEstado.Items.Add(itemEstado); 
-            }
+            //foreach (Lugar objetoEstado in estados)
+            //{
+            //    itemEstado = new ListItem();
+            //    itemEstado.Text = objetoEstado.NombreLugar;
+            //    itemEstado.Value = objetoEstado.IdLugar.ToString();
+            //    this.comboEstado.Items.Add(itemEstado); 
+            //}
 
            
         }
@@ -390,8 +360,6 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
     {
         try
         {
-            LogicaLugar logica = new LogicaLugar();
-            List<Lugar> ciudades = logica.LlenarComboCiudades(idEstado);
             ListItem itemCiudad;
 
             this.comboCiudad.Items.Clear();
@@ -401,13 +369,13 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             this.comboEstado.Items.Add(itemCiudad);
 
 
-            foreach (Lugar objetoCiudad in ciudades)
-            {
-                itemCiudad = new ListItem();
-                itemCiudad.Text = objetoCiudad.NombreLugar;
-                itemCiudad.Value = objetoCiudad.IdLugar.ToString();
-                this.comboCiudad.Items.Add(itemCiudad);
-            }
+            //foreach (Lugar objetoCiudad in ciudades)
+            //{
+            //    itemCiudad = new ListItem();
+            //    itemCiudad.Text = objetoCiudad.NombreLugar;
+            //    itemCiudad.Value = objetoCiudad.IdLugar.ToString();
+            //    this.comboCiudad.Items.Add(itemCiudad);
+            //}
         }
         catch (ClienteDatosException e)
         {
@@ -425,31 +393,31 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
 
          private void CargarDireccionEmpresa(ClienteJuridico cliente)
         {
-             LogicaLugar logica = new LogicaLugar();
+             //LogicaLugar logica = new LogicaLugar();
              try
              {
-                 this.comboPais.DataSource = logica.LlenarComboPaises();
+                 //this.comboPais.DataSource = logica.LlenarComboPaises();
                  this.comboPais.DataTextField = "NombreLugar";
                  this.comboPais.DataValueField = "IdLugar";
                  this.comboPais.DataBind();
 
-                 this.comboPais.Items.FindByValue(logica.ConsultarDireccionCompleta(cliente.Jur_Direccion.IdLugar).ElementAt(0).ToString()).Selected = true;
+                 //this.comboPais.Items.FindByValue(logica.ConsultarDireccionCompleta(cliente.Jur_Direccion.IdLugar).ElementAt(0).ToString()).Selected = true;
 
-                 this.comboEstado.DataSource = logica.LlenarComboEstados(logica.ConsultarDireccionCompleta(cliente.Jur_Direccion.IdLugar).ElementAt(0));
+                 //this.comboEstado.DataSource = logica.LlenarComboEstados(logica.ConsultarDireccionCompleta(cliente.Jur_Direccion.IdLugar).ElementAt(0));
                  this.comboEstado.DataTextField = "NombreLugar";
                  this.comboEstado.DataValueField = "IdLugar";
                  this.comboEstado.DataBind();
 
-                 this.comboEstado.Items.FindByValue(logica.ConsultarDireccionCompleta(cliente.Jur_Direccion.IdLugar).ElementAt(1).ToString()).Selected = true;
+                 //this.comboEstado.Items.FindByValue(logica.ConsultarDireccionCompleta(cliente.Jur_Direccion.IdLugar).ElementAt(1).ToString()).Selected = true;
 
-                 this.comboCiudad.DataSource = logica.LlenarComboCiudades(logica.ConsultarDireccionCompleta(cliente.Jur_Direccion.IdLugar).ElementAt(1));
+                 //this.comboCiudad.DataSource = logica.LlenarComboCiudades(logica.ConsultarDireccionCompleta(cliente.Jur_Direccion.IdLugar).ElementAt(1));
                  this.comboCiudad.DataTextField = "NombreLugar";
                  this.comboCiudad.DataValueField = "IdLugar";
                  this.comboCiudad.DataBind();
 
-                 this.comboCiudad.Items.FindByValue(logica.ConsultarDireccionCompleta(cliente.Jur_Direccion.IdLugar).ElementAt(2).ToString()).Selected = true;
+                 //this.comboCiudad.Items.FindByValue(logica.ConsultarDireccionCompleta(cliente.Jur_Direccion.IdLugar).ElementAt(2).ToString()).Selected = true;
 
-                 this.direccionEmpresa.Value = logica.ObtenerDireccionCompleta(cliente.Jur_Direccion.IdLugar);
+                 //this.direccionEmpresa.Value = logica.ObtenerDireccionCompleta(cliente.Jur_Direccion.IdLugar);
              }
              catch (ExcepcionesTotem.ExceptionTotemConexionBD)
              {

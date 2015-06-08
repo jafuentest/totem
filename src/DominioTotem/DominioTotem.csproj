@@ -45,6 +45,7 @@
     <Compile Include="ClienteJuridico.cs" />
     <Compile Include="ClienteNatural.cs" />
     <Compile Include="Contacto.cs" />
+    <Compile Include="Direccion.cs" />
     <Compile Include="ListaInvolucradoContacto.cs" />
     <Compile Include="ListaInvolucradoUsuario.cs" />
     <Compile Include="Lugar.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Punto.cs" />
     <Compile Include="Requerimiento.cs" />
     <Compile Include="ResponseObject\ResponseDataMinuta.cs" />
+    <Compile Include="Telefono.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup />

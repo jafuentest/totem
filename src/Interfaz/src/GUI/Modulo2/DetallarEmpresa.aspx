@@ -15,10 +15,10 @@
     <script type="text/javascript" src="<%= Page.ResolveUrl("~/src/GUI/Modulo2/js/validation.js") %>"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">
-    Gestión de empresas
+    Gestión De Empresas
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">
-    Detallar empresa
+    Detallar Empresa
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 
@@ -37,62 +37,42 @@
         <form id="agregar_empresa" class="form-horizontal" action="#" method="post" Runat="Server">
 
             <div class="row col-sm-12 col-md-12 col-lg-12">
-                <h2>Datos básicos</h2>
+                <h2>Datos Básicos</h2>
                 <div class="form-group">
-                    <div id="div_rsocial" class="col-sm-2 col-md-2 col-lg-2">
-                        <div class="dropdown">
-                            <button id="rsocial" class="btn btn-default dropdown-toggle" name="rsocial-dd" type="button" data-toggle="dropdown" aria-expanded="true">
-                                J
-                                <span class="caret"></span>
-                            </button>
-                            <ul id="rsocial-dd" class="dropdown-menu" role="menu" aria-labelledby="rsocial">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >J</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >G</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div id="div_rif" class="col-sm-10 col-md-10 col-lg-10">
+                    
+                    <div id="div_rif" class="col-sm-12 col-md-12 col-lg-12">
                         <input id="rifEmpresa" runat="server" name="rif" type="text" class="form-control" placeholder="RIF" readonly="true" maxlength="20" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div id="div_nombre" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="nombreEmpresa" runat="server" name="nombre" type="text" class="form-control" placeholder="Nombre" value="Alimentos Ronald, C.A." maxlength="60" />
+                        <input id="nombreEmpresa" runat="server" name="nombre" type="text" class="form-control" placeholder="Nombre" maxlength="60" />
                     </div>
                 </div>
                
-
                 <h2>Datos de localización</h2>
+                    
                 <div class="form-group">
-                   
-                        
-                            <div id="div_pais" class="col-sm-12 col-md-12 col-lg-12">
-                        <div class="dropdown" runat="server" id="contenedorComboPais">
-                            <asp:DropDownList ID="comboPais"  class="btn btn-default dropdown-toggle" runat="server" OnSelectedIndexChanged="CbCambioAEstado"  AutoPostBack="true">
-                                    </asp:DropDownList>
-                        </div>
-                    </div>
-                        </div>
-                    <div class="form-group">
-                    <div id="div_estado" class="col-sm-12 col-md-12 col-lg-12">
-                        <div class="dropdown" runat="server" id="contenedorComboEstado">
-                            <asp:DropDownList ID="comboEstado"  class="btn btn-default dropdown-toggle" runat="server" OnSelectedIndexChanged="CbCambioACiudad" AutoPostBack="true">
-                                    </asp:DropDownList>
-                        </div>
-                    </div>
-                   </div>
-                </div>
-            <div class="form-group"></div>
-                <div class="form-group">
-                    <div class="dropdown">
-                    <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
-                         <div class="dropdown" runat="server" id="Div1">
-                            <asp:DropDownList ID="comboCiudad"  class="btn btn-default dropdown-toggle" runat="server"  AutoPostBack="true">
-                                    </asp:DropDownList>
-                        </div>
-                    </div>
-                   </div>
-                </div>
+                            <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6">
+                                <div class="dropdown" runat="server" id="contenedorComboPais">
+                                <asp:DropDownList ID="comboPais"  class="btn btn-default dropdown-toggle" runat="server"  AutoPostBack="true"></asp:DropDownList>
+                                </div>
+                            </div>
+
+                            <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
+                                <div class="dropdown" runat="server" id="contenedorComboEstado">
+                                <asp:DropDownList ID="comboEstado"  class="btn btn-default dropdown-toggle" runat="server" AutoPostBack="true"></asp:DropDownList>
+                                </div>
+                            </div>
+                     </div>
+                     <div class="form-group">
+                            <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="dropdown" runat="server" id="Div1">
+                                <asp:DropDownList ID="comboCiudad"  class="btn btn-default dropdown-toggle" runat="server"  AutoPostBack="true"></asp:DropDownList>
+                                </div>
+                            </div>
+                     </div>
+                    
 
 
                 <div class="form-group">
@@ -105,9 +85,13 @@
                         <input id="codigopostalEmpresa" runat="server" name="codigopostal" type="text" class="form-control" placeholder="Código postal" maxlength="4" readonly="true" />
                     </div>
                 </div>
+                
                 <div class="form-group">
-                    <div id="div_telefono" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="telefonoEmpresa" runat="server" name="telefono" type="text" class="form-control" placeholder="Teléfono" maxlength="15" />
+                    <div id="div_cod_telefono" class="col-sm-4 col-md-4 col-lg-4">
+                        <input id="codTelefono" runat="server" name="codigoTELF" type="text" class="form-control" placeholder="+(cod)" maxlength="4" />
+                    </div>
+                    <div id="div_telefono" class="col-sm-8 col-md-8 col-lg-8">
+                        <input id="telefonoCliente" runat="server" name="telefono" type="text" class="form-control" placeholder="Teléfono" maxlength="7" />
                     </div>
                 </div>
 

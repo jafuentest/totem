@@ -3,1028 +3,655 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DominioTotem;
-using ExcepcionesTotem;
-using ExcepcionesTotem.Modulo2;
+using ExcepcionesTotem.Modulo1;
 using System.Data;
+using System.Data.Sql;
 using System.Data.SqlClient;
-
+using System.Configuration;
 
 namespace DatosTotem.Modulo2
 {
-
     /// <summary>
-    /// Clase encargada de acceder a la base de Datos relacionadas con la información sobre la gestión
-    /// de Clientes y Empresas.
+    /// Clase para la conexion a base de datos para las clases de clientes
     /// </summary>
-    public class BDCliente
+    public static class BDCliente
     {
-
-        //Conexion de la BD e instruccion a realizar
-        SqlConnection conexion;
-        SqlCommand comando;
         /// <summary>
-        /// Constructor de la Clase BDCliente
+        /// Metodo para insertar un cliente juridico en BD
         /// </summary>
-        public BDCliente() 
+        /// <param name="elCliente">Cliente juridico a insertar en BD</param>
+        public static void agregarClienteJuridico(ClienteJuridico elCliente)
         {
+            BDConexion laConexion = new BDConexion();
+
+            #region Llenado de arreglo de parametros
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro elParametro = new Parametro(RecursoBDModulo2.ParamJurRif, SqlDbType.VarChar, 
+                elCliente.Jur_Rif, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamJurNombre, SqlDbType.VarChar, 
+                elCliente.Jur_Nombre, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamJurLogo, SqlDbType.VarChar, 
+                elCliente.Jur_Logo, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamPais, SqlDbType.VarChar,
+                elCliente.Jur_Direccion.ElPais, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamEstado, SqlDbType.VarChar,
+                elCliente.Jur_Direccion.ElEstado, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamCiudad, SqlDbType.VarChar,
+                elCliente.Jur_Direccion.LaCiudad, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamDireccion, SqlDbType.VarChar,
+                elCliente.Jur_Direccion.LaDireccion, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamCodigoPostal, SqlDbType.Int,
+                elCliente.Jur_Direccion.CodigoPostal, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamContactoCedula, SqlDbType.VarChar,
+                elCliente.Jur_Contactos[0].ConCedula, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamContactoNombre, SqlDbType.VarChar,
+                elCliente.Jur_Contactos[0].Con_Nombre, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamContactoApellido, SqlDbType.VarChar,
+                elCliente.Jur_Contactos[0].Con_Apellido, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamContactoCargo, SqlDbType.VarChar,
+                elCliente.Jur_Contactos[0].ConCargo, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamContactoCodTel, SqlDbType.VarChar,
+                elCliente.Jur_Contactos[0].Con_Telefono.Codigo, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamContactoNumTel, SqlDbType.VarChar,
+                elCliente.Jur_Contactos[0].Con_Telefono.Numero, false);
+            parametros.Add(elParametro);
+            #endregion
+
             try
             {
-                //Obtenemos la ruta de la Base de Datos
-                String[] aux = AppDomain.CurrentDomain.BaseDirectory.Split(new string[] { "src" }, StringSplitOptions.None);
-                String configuracion = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=" + aux[0] + @"src\DatosTotem\BaseDeDatos\BaseDeDatosTotem.mdf;Integrated Security=True";
-
-                //La colocamos en la configuracion
-                this.conexion = new SqlConnection(configuracion);
+                laConexion.EjecutarStoredProcedure(RecursoBDModulo2.AgregarClienteJur, 
+                    parametros);
             }
-            catch (Exception e)
+            catch(Exception ex)
             {
-                throw new Exception("Error en la Configuracion de la BD", e);
+
             }
         }
-
-
         /// <summary>
-        /// Método que accede a la Base de Datos para Agregar un Cliente Jurídico
+        /// Metodo para consultar la lista de los clientes juridicos
         /// </summary>
-        /// <param name="clienteJuridico">Información del Cliente Jurídico</param>
-        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-        public bool AgregarClienteJuridico(ClienteJuridico clienteJuridico, int fkLugar,string nombreDireccion,string contactoNombre,string apellidoNombre,int idCargo,int codigo,int numero,string 
-            cedulaContacto) 
+        /// <returns>Lista de clientes que se encuentran en BD</returns>
+        public static List<ClienteJuridico> consultarListaClientesJuridicos()
         {
-           bool respuesta = false;
-            
+            BDConexion laConexion = new BDConexion();
+            List<ClienteJuridico> laLista = new List<ClienteJuridico>();
+            DataTable resultado = new DataTable();
+            List<Parametro> parametros = new List<Parametro>();
+            ClienteJuridico elCliente;
+            Direccion laDireccion;
             try
             {
-                int nroDeFilasAfectadas = 0;
+                resultado = laConexion.EjecutarStoredProcedureTuplas(RecursoBDModulo2.ConsultarListaClientesJur, parametros);
 
-                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureAgregarClienteJuridico, this.conexion);
-                this.comando.CommandType = CommandType.StoredProcedure;
-
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroRif, clienteJuridico.Jur_Id);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroNombre, clienteJuridico.Jur_Nombre);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroLogo, string.Empty);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroLugar, fkLugar);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombreDireccion, nombreDireccion);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroCedula, cedulaContacto);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombreContacto,contactoNombre);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroApellido, apellidoNombre);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.IdCargo,idCargo);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.Codigo, codigo);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.Numero, numero);
-                this.conexion.Open();
-
-                nroDeFilasAfectadas = this.comando.ExecuteNonQuery();
-
-                if (nroDeFilasAfectadas > 0)
-                    respuesta = true; 
-
-            }
-
-            catch (SqlException e)
-            {
-                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
-                    RecursoGeneralBD.Codigo,
-                    RecursoGeneralBD.Mensaje,e); 
-            }
-            catch (NullReferenceException e)
-            {
-                throw e; 
-            }
-            catch (Exception e)
-            {
-                throw e;  
-            }
-            finally 
-            {
-                this.conexion.Close(); 
-            }
-
-            return respuesta; 
-        }
-
-
-        /// <summary>
-        /// Método que accede a la Base de Datos para Agregar un Cliente Natural
-        /// </summary>
-        /// <param name="clienteNatural">Información del Cliente Natural</param>
-        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-        public bool AgregarClienteNatural(ClienteNatural clienteNatural , int fkLugar, int codigo, int numero) 
-        {
-
-             bool respuesta = false;
-
-            try
-            {
-                int nroDeFilasAfectadas = 0;
-
-                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureAgregarClienteNatural, this.conexion);
-                this.comando.CommandType = CommandType.StoredProcedure;
-
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.Parametroidentificador, clienteNatural.Nat_Id);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroNombren, clienteNatural.Nat_Nombre);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroApellidon, clienteNatural.Nat_Apellido);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroCorreon, clienteNatural.Nat_Correo);
-
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombreDireccion, clienteNatural.Nat_Direccion);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroLugarn, fkLugar);
-
-              
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.Codigo, codigo);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.Numero, numero);
-                
-                this.conexion.Open();
-
-                nroDeFilasAfectadas = this.comando.ExecuteNonQuery();
-
-                if (nroDeFilasAfectadas > 0)
-                    respuesta = true;
-
-
-            }
-
-            catch (SqlException e)
-            {
-                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
-                    RecursoGeneralBD.Mensaje, e);
-            }
-            catch (NullReferenceException e)
-            {
-                throw e;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            finally
-            {
-                this.conexion.Close();
-            }
-
-            return respuesta;       
-           
-        
-        }
-
-
-        /// <summary>
-        /// Método que accede a la Base de Datos para Eliminar un Cliente Natural
-        /// </summary>
-        /// <param name="clienteNatural">Información del Cliente Natural</param>
-        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-        public bool EliminarClienteNatural(string cedula)
-        {
-            bool respuesta = false;
-
-            try
-            {
-                int nroDeFilasAfectadas = 0;
-
-                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureEliminarClienteNatural, this.conexion);
-                this.comando.CommandType = CommandType.StoredProcedure;
-
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroCedula, cedula);
-               
-                this.conexion.Open();
-
-                nroDeFilasAfectadas = this.comando.ExecuteNonQuery();
-
-                if (nroDeFilasAfectadas > 0)
-                    respuesta = true;
-                
-            }
-
-            catch (SqlException ex)
-            {
-                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
-                    RecursoGeneralBD.Codigo,
-                    RecursoGeneralBD.Mensaje,
-                    ex);
-            }
-            catch (NullReferenceException ex)
-            {
-                throw new ClienteInexistenteException(
-                    RecursosBaseDeDatosModulo2.CodigoClienteInexistente,
-                    RecursosBaseDeDatosModulo2.MensajeClienteInexistente,
-                    ex);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                this.conexion.Close();
-            }
-
-            return respuesta;  
-
-           
-        }
-
-
-        /// <summary>
-        /// Método que accede a la Base de Datos para Modificar un Cliente Natural
-        /// </summary>
-        /// <param name="clienteNatural">Información del Cliente Natural</param>
-        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-       
-        public bool ModificarClienteNatural(ClienteNatural clienteNatural, string ciudad, int codigo, int numero)
-        {
-
-            bool respuesta = false;
-
-            try
-            {
-                int nroDeFilasAfectadas = 0;
-
-                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureModificarClienteNatural, this.conexion);
-                this.comando.CommandType = CommandType.StoredProcedure;
-
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.Parametroidentificador, clienteNatural.Nat_Id);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroNombre, clienteNatural.Nat_Nombre);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroApellidon, clienteNatural.Nat_Apellido);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombrePais, clienteNatural.Nat_Pais);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombreEstado, clienteNatural.Nat_Estado);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombreCiudad, ciudad);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombreDireccion, clienteNatural.Nat_Direccion);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroCorreon, clienteNatural.Nat_Correo);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.Codigo, codigo );
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.Numero, numero);
-
-                this.conexion.Open();
-
-                nroDeFilasAfectadas = this.comando.ExecuteNonQuery();
-
-                if (nroDeFilasAfectadas > 0)
-                    respuesta = true;
-
-
-            }
-
-            catch (SqlException e)
-            {
-                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
-                    RecursoGeneralBD.Mensaje, e);
-            }
-            catch (NullReferenceException e)
-            {
-                throw e;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            finally
-            {
-                this.conexion.Close();
-            }
-
-            return respuesta;
-
-
-        }
-
-        
-        /// <summary>
-        /// Método que accede a la Base de Datos para Modificar un Cliente Jurídico
-        /// </summary>
-        /// <param name="clienteNatural">Información del Cliente Natural</param>
-        /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-        public bool ModificarClienteJuridico(ClienteJuridico clienteJuridico)
-        {
-            bool respuesta = false;
-
-            try
-            {
-                int nroDeFilasAfectadas = 0;
-
-                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureModificarClienteJuridico, this.conexion);
-                this.comando.CommandType = CommandType.StoredProcedure;
-
-                
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroRif, clienteJuridico.Jur_Id);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombreClienteJuridico, clienteJuridico.Jur_Nombre);
-
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.ParametroIdCiudad, clienteJuridico.Jur_Ciudad.IdLugar);
-                this.comando.Parameters.AddWithValue(RecursosBaseDeDatosModulo2.NombreDireccion, clienteJuridico.Jur_Direccion.NombreLugar);
-
-
-                this.conexion.Open();
-
-                nroDeFilasAfectadas = this.comando.ExecuteNonQuery();
-
-                if (nroDeFilasAfectadas > 0)
-                    respuesta = true;
-
-
-            }
-
-            catch (SqlException e)
-            {
-                throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
-                    RecursoGeneralBD.Mensaje, e);
-            }
-            catch (NullReferenceException e)
-            {
-                throw e;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            finally
-            {
-                this.conexion.Close();
-            }
-
-            return respuesta;       
-           
-        }
-
-        /// <summary>
-        /// Método que accede a la Base de Datos para Consultar un Cliente Jurídico en específico
-        /// </summary>
-        /// <returns>Retorna el objeto de tipo Cliente Juridico, null si el objeto no existe</returns>
-        public ClienteJuridico ConsultarClienteJuridico(string idCliente) 
-        {
-            ClienteJuridico clienteJuridico = new ClienteJuridico();
-            try
-            {
-
-                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureConsultarDatosClienteJuridico, this.conexion);
-                this.comando.CommandType = CommandType.StoredProcedure;
-                this.comando.Parameters.Add(new SqlParameter(RecursosBaseDeDatosModulo2.ParametroRif,
-                                            idCliente));
-
-                SqlDataReader lectura;
-                this.conexion.Open();
-                lectura = this.comando.ExecuteReader();
-
-                while (lectura.Read())
+                foreach (DataRow row in resultado.Rows)
                 {
-                    clienteJuridico = ObtenerClienteJuridicoBD(lectura);
+                    laDireccion = new Direccion();
+                    elCliente = new ClienteJuridico();
+                    elCliente.Jur_Id = int.Parse(row[RecursoBDModulo2.AliasClienteJurID].ToString());
+
+                    elCliente.Jur_Nombre = row[RecursoBDModulo2.AliasClienteJurNombre].ToString();
+                    elCliente.Jur_Logo = row[RecursoBDModulo2.AliasClienteJurLogo].ToString();
+                    elCliente.Jur_Rif = row[RecursoBDModulo2.AliasClienteJurRif].ToString();
+                    laDireccion.LaDireccion = row[RecursoBDModulo2.AliasClienteJurDireccion].ToString();
+                    laDireccion.CodigoPostal = row[RecursoBDModulo2.AliasClienteJurCodPost].ToString();
+                    laDireccion.LaCiudad = row[RecursoBDModulo2.AliasClienteJurCiudad].ToString();
+                    laDireccion.ElEstado = row[RecursoBDModulo2.AliasClienteJurEstado].ToString();
+                    laDireccion.ElPais = row[RecursoBDModulo2.AliasClienteJurPais].ToString();
+                    elCliente.Jur_Direccion = laDireccion;
+                    laLista.Add(elCliente);
                 }
+                
+                return laLista;
 
-
             }
-
-            catch (SqlException ex)
+            catch(Exception ex)
             {
-                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
-                    RecursoGeneralBD.Codigo,
-                    RecursoGeneralBD.Mensaje,
-                    ex);
+                //arreglar excepciones
+                throw new Exception();
             }
-            catch (NullReferenceException ex)
-            {
-                throw new ClienteInexistenteException(
-                    RecursosBaseDeDatosModulo2.CodigoClienteInexistente,
-                    RecursosBaseDeDatosModulo2.MensajeClienteInexistente,
-                    ex);
-            }
-			
-			catch (InvalidOperationException ex)
-            {
-                throw new OperacionInvalidaException
-                    (RecursosBaseDeDatosModulo2.CodigoOperacionInvalida,
-                    RecursosBaseDeDatosModulo2.MensajeOperacionInvalida,
-                    ex);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                this.conexion.Close();
-            }
-
-
-            return clienteJuridico;            
         }
-
-
         /// <summary>
-        /// Método que accede a la Base de Datos para Consultar un Cliente Natural en específico
+        /// Metodo para consultar los datos de un cliente juridico
         /// </summary>
-        /// <returns>Retorna el objeto de tipo Cliente Juridico, null si el objeto no existe</returns>
-        public ClienteNatural ConsultarClienteNatural(int idCliente)
+        /// <param name="idClienteJur">
+        /// Identificador del cliente juridico para realizar la busqueda
+        /// </param>
+        /// <returns>Retorna el cliente con todos sus datos</returns>
+        public static ClienteJuridico consultarDatosClienteJuridicoId(int idClienteJur)
         {
-            ClienteNatural clienteNatural = new ClienteNatural();
+            BDConexion laConexion = new BDConexion();
+            DataTable resultado = new DataTable();
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursoBDModulo2.ParamIDClienteJur, 
+                SqlDbType.Int, idClienteJur.ToString(), false);
+            parametros.Add(parametro);
+            ClienteJuridico elCliente = new ClienteJuridico();
             try
             {
+                resultado = laConexion.EjecutarStoredProcedureTuplas(RecursoBDModulo2.ConsultarDatosClienteJur, parametros);
 
-                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureDetallarCliente, this.conexion);
-                this.comando.CommandType = CommandType.StoredProcedure;
-                this.comando.Parameters.Add(new SqlParameter(RecursosBaseDeDatosModulo2.ParametroIdClienteNatural,
-                                            idCliente));
-
-                SqlDataReader lectura;
-                this.conexion.Open();
-                lectura = this.comando.ExecuteReader();
-
-                while (lectura.Read())
+                foreach (DataRow row in resultado.Rows)
                 {
-                    clienteNatural = ObtenerClienteNaturalBD(lectura);
+                    elCliente = new ClienteJuridico();
+                    elCliente.Jur_Id = int.Parse(row[RecursoBDModulo2.AliasClienteJurID].ToString());
+
+                    elCliente.Jur_Nombre = row[RecursoBDModulo2.AliasClienteJurNombre].ToString();
+                    elCliente.Jur_Logo = row[RecursoBDModulo2.AliasClienteJurLogo].ToString();
+                    elCliente.Jur_Rif = row[RecursoBDModulo2.AliasClienteJurRif].ToString();
+                    elCliente.Jur_Direccion.LaDireccion = row[RecursoBDModulo2.AliasClienteJurDireccion].ToString();
+                    elCliente.Jur_Direccion.CodigoPostal = row[RecursoBDModulo2.AliasClienteJurCodPost].ToString();
+                    elCliente.Jur_Direccion.LaCiudad = row[RecursoBDModulo2.AliasClienteJurCiudad].ToString();
+                    elCliente.Jur_Direccion.ElEstado = row[RecursoBDModulo2.AliasClienteJurEstado].ToString();
+                    elCliente.Jur_Direccion.ElPais = row[RecursoBDModulo2.AliasClienteJurPais].ToString();
+
                 }
-
-
-            }
-            catch (SqlException ex)
-            {
-                throw new ExceptionTotemConexionBD(
-                    RecursoGeneralBD.Codigo,
-                    RecursoGeneralBD.Mensaje,
-                    ex);
-            }
-            catch (NullReferenceException ex)
-            {
-                throw new ClienteInexistenteException(
-                    RecursosBaseDeDatosModulo2.CodigoClienteInexistente,
-                    RecursosBaseDeDatosModulo2.MensajeClienteInexistente,
-                    ex);
-            }
-			  catch (InvalidOperationException ex)
-            {
-                throw new OperacionInvalidaException
-                    (RecursosBaseDeDatosModulo2.CodigoOperacionInvalida,
-                    RecursosBaseDeDatosModulo2.MensajeOperacionInvalida,
-                    ex);
+                return elCliente;
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception();
             }
-
-            finally
-            {
-                this.conexion.Close();
-            }
-
-
-            return clienteNatural;
         }
-
         /// <summary>
-        /// Método que accede a la Base de Datos para consultar una lista de Clientes Jurídicos
+        /// Metodo para consultar los datos de un contacto
         /// </summary>
-        /// <returns>Retorna una lista de Clientes Juridicos, null si el objeto no existe</returns>
-        public List<ClienteJuridico> ConsultarClientesJuridicos()
+        /// <param name="idCon">Identificador del contacto para realizar la busqueda</param>
+        /// <returns>Retorna el contacto con todos sus datos</returns>
+        public static Contacto consultarDatosContactoID(int idCon)
         {
-            //Lista donde devolveremos los Clientes Jurudicos
-            List<ClienteJuridico> listaClientesJuridicos = new List<ClienteJuridico>();
+            Contacto elContacto = new Contacto();
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursoBDModulo2.ParamIDContacto,
+                SqlDbType.Int, idCon.ToString(), false);
+            parametros.Add(parametro);
+            parametro = new Parametro(RecursoBDModulo2.ParamContactoNombre,
+                SqlDbType.VarChar, true);
+            parametros.Add(parametro);
+            parametro = new Parametro(RecursoBDModulo2.ParamContactoApellido,
+                SqlDbType.VarChar, true);
+            parametros.Add(parametro);
+            parametro = new Parametro(RecursoBDModulo2.ParamContactoCargo,
+                SqlDbType.VarChar, true);
+            parametros.Add(parametro);
+            parametro = new Parametro(RecursoBDModulo2.ParamContactoCodTel, 
+                SqlDbType.VarChar ,true);
+            parametros.Add(parametro);
+            parametro = new Parametro(RecursoBDModulo2.ParamContactoNumTel,
+                SqlDbType.VarChar, true);
+            parametros.Add(parametro);
+
+            BDConexion laConexion = new BDConexion();
             try
             {
-                //Respuesta de la consulta a la Base de Datos
-                SqlDataReader respuesta;
-
-                //Indicamos que es un Stored Procedure, cual utilizar y ademas la conexion que necesita
-                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureListarClientesJuridicos, this.conexion);
-                this.comando.CommandType = CommandType.StoredProcedure;
-
-                //Se abre conexion contra la Base de Datos
-                this.conexion.Open();
-
-                //Ejecutamos la consulta y traemos las filas que fueron obtenidas
-                respuesta = comando.ExecuteReader();
-
-                //Si se encontraron Clientes Juridicos comienza a agregar en la variable lista, sino, se devolvera vacia
-                if (respuesta.HasRows)
-                    //Recorremos cada fila devuelta de la consulta
-                    while (respuesta.Read())
+                elContacto.Con_Id = idCon;
+                List<Resultado> resultados = laConexion.EjecutarStoredProcedure(RecursoBDModulo2.ConsultarDatosContacto, parametros);
+                foreach (Resultado resultado in resultados)
+                {
+                    if (resultado.etiqueta.Equals(RecursoBDModulo2.ParamContactoCargo))
                     {
-                        //Creamos el Cliente Juridicos y lo anexamos a la lista
-                        ClienteJuridico aux = new ClienteJuridico(respuesta.GetString(0), respuesta.GetString(1));
-                        listaClientesJuridicos.Add(aux);
+                        elContacto.ConCargo = resultado.valor;
+                    }
+                    if (resultado.etiqueta.Equals(RecursoBDModulo2.ParamContactoNombre))
+                    {
+                        elContacto.Con_Nombre = resultado.valor;
+                    }
+                    if (resultado.etiqueta.Equals(RecursoBDModulo2.ParamContactoApellido))
+                    {
+                        elContacto.Con_Apellido = resultado.valor;
+                    }
+                    if (resultado.etiqueta.Equals(RecursoBDModulo2.ParamContactoCodTel))
+                    {
+                        elContacto.Con_Telefono.Codigo = resultado.valor;
+                    }
+                    if (resultado.etiqueta.Equals(RecursoBDModulo2.ParamContactoNumTel))
+                    {
+                        elContacto.Con_Telefono.Numero = resultado.valor;
                     }
 
-                //Cerramos conexion
-                this.conexion.Close();
-            }
-            catch (SqlException ex)
-            {
-                StringBuilder errorMessages = new StringBuilder();
-                for (int i = 0; i < ex.Errors.Count; i++)
-                {
-                    errorMessages.Append("Index #" + i + "\n" +
-                        "Message: " + ex.Errors[i].Message + "\n" +
-                        "LineNumber: " + ex.Errors[i].LineNumber + "\n" +
-                        "Source: " + ex.Errors[i].Source + "\n" +
-                        "Procedure: " + ex.Errors[i].Procedure + "\n");
                 }
-                Console.WriteLine(errorMessages.ToString());
-
-            }
-            catch (Exception error)
-            {
-                throw new Exception("Ha ocurrido un error inesperado al Listar", error);
-            }
-            //Retornamos la respuesta
-            return listaClientesJuridicos;
-        }
-
-
-        /// <summary>
-        /// Método que accede a la Base de Datos para consultar una lista de Clientes Naturales
-        /// </summary>
-        /// <returns>Retorna una lista de Clientes Naturales, null si el objeto no existe</returns>
-        public List<ClienteNatural> ConsultarClientesNaturales()
-        {
-            //Lista donde devolveremos los Clientes Naturales
-            List<ClienteNatural> listaClientesNaturales = new List<ClienteNatural>();
-            try
-            {
-                //Respuesta de la consulta a la Base de Datos
-                SqlDataReader respuesta;
-
-                //Indicamos que es un Stored Procedure, cual utilizar y ademas la conexion que necesita
-                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureListarClientesNaturales, this.conexion);
-                this.comando.CommandType = CommandType.StoredProcedure;
-
-                //Se abre conexion contra la Base de Datos
-                this.conexion.Open();
-
-                //Ejecutamos la consulta y traemos las filas que fueron obtenidas
-                respuesta = comando.ExecuteReader();
-
-                //Si se encontraron Clientes Naturales comienza a agregar en la variable lista, sino, se devolvera vacia
-                if (respuesta.HasRows)
-                    //Recorremos cada fila devuelta de la consulta
-                    while (respuesta.Read())
-                    {
-                        //Creamos el Cliente Natural y lo anexamos a la lista
-                        ClienteNatural aux = new ClienteNatural(respuesta.GetString(0), respuesta.GetString(1), respuesta.GetString(2), respuesta.GetString(3));
-                        listaClientesNaturales.Add(aux);
-                    }
-
-                //Cerramos conexion
-                this.conexion.Close();
-            }
-            catch (SqlException ex)
-            {
-                StringBuilder errorMessages = new StringBuilder();
-                for (int i = 0; i < ex.Errors.Count; i++)
-                {
-                    errorMessages.Append("Index #" + i + "\n" +
-                        "Message: " + ex.Errors[i].Message + "\n" +
-                        "LineNumber: " + ex.Errors[i].LineNumber + "\n" +
-                        "Source: " + ex.Errors[i].Source + "\n" +
-                        "Procedure: " + ex.Errors[i].Procedure + "\n");
-                }
-                Console.WriteLine(errorMessages.ToString());
-
-            }
-            catch (Exception error)
-            {
-                throw new Exception("Ha ocurrido un error inesperado al Listar", error);
-            }
-            //Retornamos la respuesta
-            return listaClientesNaturales;
-        }
-
-
-       /// <summary>
-       /// Método que retorna una lista de Clientes Jurídicos dado un parámetro de búsqueda
-       /// </summary>
-       /// <param name="parametroBusqueda">Parámetro de Búsqueda</param>
-       /// <returns>Retorna una lista de clientes jurídicos que cumplan con el 
-       /// parámetro de búsqueda, null si ninguno cumple con el parámetro</returns>
-        public List<ClienteJuridico> ConsultarClientesJuridicosParametrizados(string parametroBusqueda)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Método que retorna una lista de Clientes Naturales dado un parámetro de búsqueda
-        /// </summary>
-        /// <param name="parametroBusqueda">Parámetro de Búsqueda</param>
-        /// <returns>Retorna una lista de clientes naturales que cumplan con el 
-        /// parámetro de búsqueda, null si ninguno cumple con el parámetro</returns>
-        public List<ClienteNatural> ConsultarClientesNaturalesParametrizados(string parametroBusqueda)
-        {
-            throw new NotImplementedException();
-        }
-
-       /// <summary>
-        /// Método que accede a la Base de Datos para 
-        /// verificar la existencia de un cliente natural
-        /// </summary>
-        /// <param name="identificador">RIF a verificar</param>
-        /// <returns>0 si no existe, 1 o más si existe</returns>
-        public int VerificarExistenciaClienteJuridico(string identificador) 
-        {
-            int cantidad = 0; 
-            try
-            {
-
-                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureVerificarClienteJuridico, this.conexion);
-                this.comando.CommandType = CommandType.StoredProcedure;
-                this.comando.Parameters.Add(new SqlParameter(RecursosBaseDeDatosModulo2.ParametroRif,
-                                            identificador));
-
-                SqlDataReader lectura;
-                this.conexion.Open();
-                lectura = this.comando.ExecuteReader();
-
-                while (lectura.Read())
-                {
-                    cantidad = lectura.GetInt32(0);
-                }
-
-
-            }
-
-            catch (SqlException ex)
-            {
-                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
-                    RecursoGeneralBD.Codigo,
-                    RecursoGeneralBD.Mensaje,
-                    ex);
-            }
-            catch (NullReferenceException ex)
-            {
-                throw new ClienteInexistenteException(
-                    RecursosBaseDeDatosModulo2.CodigoClienteInexistente,
-                    RecursosBaseDeDatosModulo2.MensajeClienteInexistente,
-                    ex);
-            }
-
-            catch (InvalidOperationException ex)
-            {
-                throw new OperacionInvalidaException
-                    (RecursosBaseDeDatosModulo2.CodigoOperacionInvalida,
-                    RecursosBaseDeDatosModulo2.MensajeOperacionInvalida,
-                    ex);
+                return elContacto;
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception();
             }
-            finally
-            {
-                this.conexion.Close();
-            }
-
-
-            return cantidad;
-
-
-            
         }
-
         /// <summary>
-        /// Método que accede a la Base de Datos para 
-        /// verificar la existencia de un cliente natural
+        /// Metodo para consultar todos los contactos que posee un cliente juridico asociados
         /// </summary>
-        /// <param name="cedula">Cédula a verificar</param>
-        /// <returns>0 si no existe, 1 o más si existe</returns>
-        public int VerificarExistenciaClienteNatural(string cedula) 
+        /// <param name="elCliente">Cliente del que se desea consultar la lista de contactos</param>
+        /// <returns>Lista de contactos asociados a un cliente juridico</returns>
+        public static List<Contacto> consultarListaDeContactosJuridico(ClienteJuridico elCliente)
         {
+            BDConexion laConexion = new BDConexion();
+            List<Contacto> laLista = new List<Contacto>();
+            Contacto elContacto;
 
-            int cantidad = 0;
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursoBDModulo2.ParamIDClienteJur, SqlDbType.Int, 
+                elCliente.Jur_Id.ToString(), false);
+            parametros.Add(parametro);
+
             try
             {
-
-                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureVerificarClienteNatural, this.conexion);
-                this.comando.CommandType = CommandType.StoredProcedure;
-                this.comando.Parameters.Add(new SqlParameter(RecursosBaseDeDatosModulo2.Parametroidentificador,
-                                            cedula));
-
-                SqlDataReader lectura;
-                this.conexion.Open();
-                lectura = this.comando.ExecuteReader();
-
-                while (lectura.Read())
+                DataTable resultado = laConexion.EjecutarStoredProcedureTuplas(
+                    RecursoBDModulo2.ConsultarListaContactosJurID, parametros);
+                foreach (DataRow row in resultado.Rows)
                 {
-                    cantidad = lectura.GetInt32(0);
+                    elContacto = new Contacto();
+                    elContacto.Con_Id = int.Parse(row[RecursoBDModulo2.AliasContactoID].ToString());
+                    elContacto.Con_Nombre = row[RecursoBDModulo2.AliasContactoNombre].ToString();
+                    elContacto.Con_Apellido = row[RecursoBDModulo2.AliasContactoApellido].ToString();
+                    elContacto.ConCargo = row[RecursoBDModulo2.AliasCargoContacto].ToString();
+                    elContacto.ConCedula = row[RecursoBDModulo2.AliasContactoCedula].ToString();
+                    elContacto.Con_Telefono.Codigo = row[RecursoBDModulo2.AliasCodigoTelefono].ToString();
+                    elContacto.Con_Telefono.Numero = row[RecursoBDModulo2.AliasNumTelefono].ToString();
+
+                    laLista.Add(elContacto);
                 }
-
-
-            }
-
-            catch (SqlException ex)
-            {
-                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
-                    RecursoGeneralBD.Codigo,
-                    RecursoGeneralBD.Mensaje,
-                    ex);
-            }
-            catch (NullReferenceException ex)
-            {
-                throw new ClienteInexistenteException(
-                    RecursosBaseDeDatosModulo2.CodigoClienteInexistente,
-                    RecursosBaseDeDatosModulo2.MensajeClienteInexistente,
-                    ex);
-            }
-            catch (InvalidOperationException ex)
-            {
-                throw new OperacionInvalidaException
-                    (RecursosBaseDeDatosModulo2.CodigoOperacionInvalida,
-                    RecursosBaseDeDatosModulo2.MensajeOperacionInvalida,
-                    ex);
+                return laLista;
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception();
             }
-            finally
-            {
-                this.conexion.Close();
-            }
-
-
-            return cantidad;
         }
-
         /// <summary>
-        /// Método que accede a la Base de Datos para
-        /// obtener un listado de cargos 
+        /// Metodo para eliminar un cliente juridico
         /// </summary>
-        /// <returns>Nombre de los cargos existentes</returns>
-        public List<string> LlenarCargoCombo() 
+        /// <param name="elCliente">Cliente juridico que se desea eliminar</param>
+        public static void eliminarClienteJuridico(ClienteJuridico elCliente)
         {
-            List<string> cargos = new List<string>();
-            string cargo = ""; 
+            BDConexion laConexion = new BDConexion();
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursoBDModulo2.ParamIDClienteJur, SqlDbType.Int,
+                elCliente.Jur_Id.ToString(), false);
+            parametros.Add(parametro);
+            try
+            {
+                laConexion.EjecutarStoredProcedure(RecursoBDModulo2.EliminarClienteJuridico, parametros);
+            }
+            catch (Exception ex)
+            {
+                //arreglar excepciones
+                throw new Exception();
+            }
+        }
+        /// <summary>
+        /// Metodo para eliminar un contacto de BD
+        /// </summary>
+        /// <param name="elContacto">Contacto que se desea eliminar</param>
+        public static void eliminarContacto(Contacto elContacto)
+        {
+            BDConexion laConexion = new BDConexion();
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursoBDModulo2.EliminarContacto, SqlDbType.Int,
+                elContacto.Con_Id.ToString(), false);
+            parametros.Add(parametro);
             try 
             {
-                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.ProcedureLlenarComboCargo, this.conexion);
-                this.comando.CommandType = CommandType.StoredProcedure;
-                
-
-                SqlDataReader lectura;
-                this.conexion.Open();
-                lectura = this.comando.ExecuteReader();
-                while (lectura.Read())
-                {
-                    cargo = lectura.GetString(0);
-                    cargos.Add(cargo); 
-                }
-            }
-            catch (SqlException ex)
-            {
-                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
-                    RecursoGeneralBD.Codigo,
-                    RecursoGeneralBD.Mensaje,
-                    ex);
-            }
-            catch (NullReferenceException ex)
-            {
-                throw new ClienteInexistenteException(
-                    RecursosBaseDeDatosModulo2.CodigoClienteInexistente,
-                    RecursosBaseDeDatosModulo2.MensajeClienteInexistente,
-                    ex);
+                laConexion.EjecutarStoredProcedure(RecursoBDModulo2.EliminarContacto, parametros);
             }
             catch (Exception ex)
             {
-                throw ex;
+                //arreglar excepciones
+                throw new Exception();
             }
-            finally
-            {
-                this.conexion.Close();
-            }
-            return cargos; 
         }
-
-        
-
         /// <summary>
-        /// Método que obtiene directamente de la Base de Datos
-        /// un registro de tipo Cliente Natural
+        /// Metodo para modificar cliente juridico
         /// </summary>
-        /// <param name="lector">Cliente Natural seleccionado</param>
-        public ClienteNatural ObtenerClienteNaturalBD(SqlDataReader lector) 
+        /// <param name="elCliente">Cliente que se desea modificar</param>
+        public static void modificarClienteJuridico(ClienteJuridico elCliente)
         {
-            ClienteNatural clienteNatural = new ClienteNatural();
-            Lugar lugar = new Lugar();
-            List<string> telefonos = new List<string>(); 
-           try
-           {
-               clienteNatural.Nat_Id = lector.GetString(0);
-               clienteNatural.Nat_Nombre = lector.GetString(1);
-               clienteNatural.Nat_Apellido = lector.GetString(2);
-               clienteNatural.Nat_Correo = lector.GetString(4);
-               int codigo = lector.GetInt32(5);
-               int numero = lector.GetInt32(6);
-               string numeroCompleto = codigo.ToString() + numero.ToString();
-               telefonos.Add(numeroCompleto); 
-               clienteNatural.Nat_Telefonos=telefonos;
-               clienteNatural.Nat_Pais = lector.GetString(7);
-               clienteNatural.Nat_Estado = lector.GetString(8);
-               lugar.NombreLugar = lector.GetString(9);
-               clienteNatural.Nat_Direccion = lector.GetString(10);
-
-               lugar.CodigoPostal = lector.GetInt32(11).ToString();
-               clienteNatural.Nat_Ciudad = lugar; 
-           }
-           catch (SqlException ex)
-           {
-               throw ex; 
-           }
-           catch (NullReferenceException ex)
-           {
-               throw  ex;
-           }
-           catch (Exception ex) 
-           {
-               throw ex; 
-           }
-
-           return clienteNatural; 
-         }
-
-
-        /// <summary>
-        /// Método que obtiene directamente de Base de Datos
-        /// la información relacionada a un cliente Jurídico
-        /// </summary>
-        /// <param name="lector">Cliente Jurídico Seleccionado</param>
-        /// <returns></returns>
-        public ClienteJuridico ObtenerClienteJuridicoBD(SqlDataReader lector) 
-        {
-            ClienteJuridico clienteJuridico = new ClienteJuridico();
-            Lugar lugar = new Lugar();
-            List<string> telefonos = new List<string>();
-            List<Contacto> contactos = new List<Contacto>(); 
-           try
-           {
-               clienteJuridico.Jur_Id = lector.GetString(0);
-               clienteJuridico.Jur_Nombre = lector.GetString(1);
-               lugar.IdLugar = lector.GetInt32(2);
-               clienteJuridico.Jur_Direccion = lugar; 
-              
-           }
-           catch (SqlException ex)
-           {
-               throw ex; 
-           }
-           catch (NullReferenceException ex)
-           {
-               throw  ex;
-           }
-           catch (Exception ex) 
-           {
-               throw ex; 
-           }
-
-           return clienteJuridico; 
-         }
-
-		 
-		  /// <summary>
-        /// Método que trae de la Base de Datos
-        /// los contactos que tiene una determinada empresa
-        /// </summary>
-        /// <param name="lector"></param>
-        /// <returns></returns>
-        public Contacto ObtenerBDContacto(SqlDataReader lector) 
-        {
-            Contacto contacto = new Contacto();
-            List<string> telefonos = new List<string>();
-            string telefono = string.Empty; 
+            BDConexion laConexion = new BDConexion();
+            ClienteJuridico clienteModificado = new ClienteJuridico();
+            #region Llenado de parametros
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro elParametro = new Parametro(RecursoBDModulo2.ParamJurRif, SqlDbType.VarChar,
+                elCliente.Jur_Id.ToString(), false);
+            parametros.Add(elParametro); 
+            elParametro = new Parametro(RecursoBDModulo2.ParamJurRif, SqlDbType.VarChar,
+                 elCliente.Jur_Rif, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamJurNombre, SqlDbType.VarChar,
+                elCliente.Jur_Nombre, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamJurLogo, SqlDbType.VarChar,
+                elCliente.Jur_Logo, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamDireccion, SqlDbType.VarChar,
+                elCliente.Jur_Direccion.LaDireccion, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamCodigoPostal, SqlDbType.Int,
+                elCliente.Jur_Direccion.CodigoPostal, false);
+            parametros.Add(elParametro);
+            #endregion
             try
             {
-                contacto.Con_Id = Convert.ToInt32(lector.GetString(0));
-                contacto.Con_Nombre = lector.GetString(1);
-                contacto.Con_Apellido = lector.GetString(2);
-                contacto.ConCargo = lector.GetString(3);
-                int codigo = lector.GetInt32(4);
-                int numero = lector.GetInt32(5);
-                telefono = codigo.ToString() + numero.ToString();
-                telefonos.Add(telefono);
-                contacto.Con_Telefonos = telefonos; 
-
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-            
-            catch (NullReferenceException ex)
-            {
-                throw ex;
+                laConexion.EjecutarStoredProcedure(RecursoBDModulo2.ModificarClienteJur,
+                    parametros);
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception();
             }
-
-            return contacto; 
         }
-		 
-		 #region Consultar Datos del Cliente según nombre proyecto
-
         /// <summary>
-        /// Método que retorna los datos de un cliente
-        /// jurídico dado el nombre de un proyecto
+        /// Metodo para insertar un cliente natural en BD
         /// </summary>
-        /// <param name="nombreProyecto">Nombre del Proyecto</param>
-        /// <returns>Datos del Cliente Jurídico</returns>
-        public ClienteJuridico DatosClienteProyecto(string  codigo) 
-        { 
-            ClienteJuridico clienteJuridico = new ClienteJuridico();
+        /// <param name="elCliente">cliente a insertar en BD</param>
+        public static void agregarClienteNatural(ClienteNatural elCliente)
+        {
+            BDConexion laConexion = new BDConexion();
+
+            #region Llenado de arreglo de parametros
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro elParametro = new Parametro(RecursoBDModulo2.ParamCedulaClienteNat, SqlDbType.VarChar,
+                elCliente.Nat_Cedula, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamNombreClienteNat, SqlDbType.VarChar,
+                elCliente.Nat_Nombre, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamApellidoClienteNat, SqlDbType.VarChar,
+                elCliente.Nat_Apellido, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamCorreoClienteNat, SqlDbType.VarChar,
+                elCliente.Nat_Correo, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamCodigoTelef, SqlDbType.VarChar,
+                elCliente.Nat_Telefono.Codigo, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamNumeroTelef, SqlDbType.VarChar,
+                elCliente.Nat_Telefono.Numero, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamPais, SqlDbType.VarChar,
+                elCliente.Nat_Direccion.ElPais, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamEstado, SqlDbType.VarChar,
+                elCliente.Nat_Direccion.ElEstado, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamCiudad, SqlDbType.VarChar,
+                elCliente.Nat_Direccion.LaCiudad, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamDireccion, SqlDbType.VarChar,
+                elCliente.Nat_Direccion.LaDireccion, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamCodigoPostal, SqlDbType.Int,
+                elCliente.Nat_Direccion.CodigoPostal, false);
+            parametros.Add(elParametro);
+            #endregion
+
             try
             {
+                laConexion.EjecutarStoredProcedure(RecursoBDModulo2.AgregarClienteNat, parametros);
+            }
+            catch (Exception ex)
+            {
 
-                this.comando = new SqlCommand(RecursosBaseDeDatosModulo2.DatosClienteNombreProyecto, this.conexion);
-                this.comando.CommandType = CommandType.StoredProcedure;
-                this.comando.Parameters.Add(new SqlParameter(RecursosBaseDeDatosModulo2.Codigo,
-                                            codigo));
+            }
+        }
+        /// <summary>
+        /// Metodo para consultar la lista de clientes naturales
+        /// </summary>
+        /// <returns>lista de clientes naturales en BD</returns>
+        public static List<ClienteNatural> consultarListaClientesNaturales()
+        {
+            BDConexion laConexion = new BDConexion();
+            List<ClienteNatural> laLista = new List<ClienteNatural>();
+            DataTable resultado = new DataTable();
+            List<Parametro> parametros = new List<Parametro>();
+            ClienteNatural elCliente;
+            try
+            {
+                resultado = laConexion.EjecutarStoredProcedureTuplas(RecursoBDModulo2.ConsultarListaClienteNat, 
+                    parametros);
 
-                SqlDataReader lectura;
-                this.conexion.Open();
-                lectura = this.comando.ExecuteReader();
-
-                while (lectura.Read())
+                foreach (DataRow row in resultado.Rows)
                 {
-                    clienteJuridico = RetornarClienteJuridicoBD(lectura);
+                    elCliente = new ClienteNatural();
+                    elCliente.Nat_Id = int.Parse(row[RecursoBDModulo2.AliasClienteJurID].ToString());
+                    elCliente.Nat_Nombre = row[RecursoBDModulo2.AliasNombreClienteNat].ToString();
+                    elCliente.Nat_Apellido = row[RecursoBDModulo2.AliasApellidoClienteNat].ToString();
+                    elCliente.Nat_Cedula = row[RecursoBDModulo2.AliasCedulaClienteNat].ToString();
+                    elCliente.Nat_Correo = row[RecursoBDModulo2.AliasCorreoClienteNat].ToString();
+                    elCliente.Nat_Telefono.Codigo = row[RecursoBDModulo2.AliasCodigoTelefono].ToString();
+                    elCliente.Nat_Telefono.Numero = row[RecursoBDModulo2.AliasNumTelefono].ToString();
+                    elCliente.Nat_Direccion.LaDireccion = row[RecursoBDModulo2.AliasNombreDireccion].ToString();
+                    elCliente.Nat_Direccion.CodigoPostal = row[RecursoBDModulo2.AliasCodPostalDireccion].ToString();
+                    elCliente.Nat_Direccion.LaCiudad = row[RecursoBDModulo2.AliasNombreCiudad].ToString();
+                    elCliente.Nat_Direccion.ElEstado = row[RecursoBDModulo2.AliasNombreEstado].ToString();
+                    elCliente.Nat_Direccion.ElPais = row[RecursoBDModulo2.AliasNombrePais].ToString();
+                    laLista.Add(elCliente);
                 }
 
+                return laLista;
 
-            }
-
-            catch (SqlException ex)
-            {
-                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
-                    RecursoGeneralBD.Codigo_Error_Desconexion,
-                    RecursoGeneralBD.Mensaje_Error_Desconexion,
-                    ex);
-            }
-            catch (NullReferenceException ex)
-            {
-                throw new ClienteInexistenteException(
-                    RecursosBaseDeDatosModulo2.CodigoClienteInexistente,
-                    RecursosBaseDeDatosModulo2.MensajeClienteInexistente,
-                    ex);
-            }
-            catch (InvalidOperationException ex) 
-            {
-                throw new OperacionInvalidaException
-                    (RecursosBaseDeDatosModulo2.CodigoOperacionInvalida,
-                    RecursosBaseDeDatosModulo2.MensajeOperacionInvalida,
-                    ex);
             }
             catch (Exception ex)
             {
-                throw new ExcepcionesTotem.ExceptionTotem(RecursoGeneralBD.Codigo,
-                    RecursoGeneralBD.Mensaje, ex); 
+                //arreglar excepciones
+                throw new Exception();
             }
-            finally
-            {
-                this.conexion.Close();
-            }
-
-
-            return clienteJuridico; 
         }
-
         /// <summary>
-        /// Método que obtiene de la Base de Datos directamente los 
-        /// registros de la consulta asociada con el procedimiento
-        /// de Retornar datos del cliente según el nombre del proyeco
+        /// Metodo para consultar los datos de un cliente natural
         /// </summary>
-        /// <param name="lector"></param>
-        /// <returns>Datos del Cliente Jurídico</returns>
-        public ClienteJuridico RetornarClienteJuridicoBD(SqlDataReader lector) 
+        /// <param name="idClienteNat">
+        /// Identificador del cliente natural para realizar la busqueda
+        /// </param>
+        /// <returns>Retorna el cliente con todos sus datos</returns>
+        public static ClienteNatural consultarDatosClienteNaturalId(int idClienteNat)
         {
-            ClienteJuridico clienteJuridico = new ClienteJuridico();
-            Lugar lugar = new Lugar();
-            List<string> telefonos = new List<string>();
-            string elTelefono = string.Empty; 
-            
+            BDConexion laConexion = new BDConexion();
+            DataTable resultado = new DataTable();
+            List<Parametro> parametros = new List<Parametro>();
+            ClienteNatural elCliente = new ClienteNatural();
+            Parametro elParametro;
+
+            elParametro = new Parametro(RecursoBDModulo2.ParamIDClienteNat, 
+                SqlDbType.Int, idClienteNat.ToString(), false);
+            parametros.Add(elParametro);
             try
             {
-                clienteJuridico.Jur_Id = lector.GetString(0);
-                clienteJuridico.Jur_Nombre = lector.GetString(1);
-                elTelefono = lector.GetInt32(4).ToString() + lector.GetInt32(5).ToString();
-                telefonos.Add(elTelefono);
-                clienteJuridico.Jur_Telefonos = telefonos;
-                lugar.NombreLugar = lector.GetString(6);
-                clienteJuridico.Jur_Direccion.NombreLugar = lugar.NombreLugar; 
+                resultado = laConexion.EjecutarStoredProcedureTuplas(RecursoBDModulo2.ConsultarDatosClienteNat,
+                                                                     parametros);
+                foreach (DataRow row in resultado.Rows)
+                {
+                    elCliente.Nat_Id = int.Parse(row[RecursoBDModulo2.AliasClienteJurID].ToString());
+                    elCliente.Nat_Nombre = row[RecursoBDModulo2.AliasNombreClienteNat].ToString();
+                    elCliente.Nat_Apellido = row[RecursoBDModulo2.AliasApellidoClienteNat].ToString();
+                    elCliente.Nat_Cedula = row[RecursoBDModulo2.AliasCedulaClienteNat].ToString();
+                    elCliente.Nat_Correo = row[RecursoBDModulo2.AliasCorreoClienteNat].ToString();
+                    elCliente.Nat_Telefono.Codigo = row[RecursoBDModulo2.AliasCodigoTelefono].ToString();
+                    elCliente.Nat_Telefono.Numero = row[RecursoBDModulo2.AliasNumTelefono].ToString();
+                    elCliente.Nat_Direccion.LaDireccion = row[RecursoBDModulo2.AliasNombreDireccion].ToString();
+                    elCliente.Nat_Direccion.CodigoPostal = row[RecursoBDModulo2.AliasCodPostalDireccion].ToString();
+                    elCliente.Nat_Direccion.LaCiudad = row[RecursoBDModulo2.AliasNombreCiudad].ToString();
+                    elCliente.Nat_Direccion.ElEstado = row[RecursoBDModulo2.AliasNombreEstado].ToString();
+                    elCliente.Nat_Direccion.ElPais = row[RecursoBDModulo2.AliasNombrePais].ToString();
 
+                }
+
+                return elCliente;
 
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
-                throw ex;
+                throw new Exception();
             }
-            catch (NullReferenceException ex)
+        }
+        /// <summary>
+        /// Metodo para eliminar un cliente natural
+        /// </summary>
+        /// <param name="elCliente">Cliente natural que se desea eliminar</param>
+        public static void eliminarClienteNatural(ClienteNatural elCliente)
+        {
+            BDConexion laConexion = new BDConexion();
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursoBDModulo2.ParamIDClienteNat, SqlDbType.Int,
+                elCliente.Nat_Id.ToString(), false);
+            parametros.Add(parametro);
+            try
             {
-                throw ex;
+                laConexion.EjecutarStoredProcedure(RecursoBDModulo2.EliminarClienteNat, parametros);
+            }
+            catch (Exception ex)
+            {
+                //arreglar excepciones
+                throw new Exception();
+            }
+        }
+        /// <summary>
+        /// Metodo para modificar cliente natural
+        /// </summary>
+        /// <param name="elCliente">Cliente que se desea modificar</param>
+        public static void modificarClienteNatural(ClienteNatural elCliente)
+        {
+            BDConexion laConexion = new BDConexion();
+            ClienteNatural clienteModificado = new ClienteNatural();
+            #region Llenado de parametros
+            List<Parametro> parametros = new List<Parametro>();
+
+            Parametro elParametro = new Parametro(RecursoBDModulo2.ParamIDClienteNat, SqlDbType.VarChar,
+                elCliente.Nat_Id.ToString(), false);
+            parametros.Add(elParametro);
+
+            elParametro = new Parametro(RecursoBDModulo2.ParamCedulaClienteNat, SqlDbType.VarChar,
+                 elCliente.Nat_Cedula, false);
+            parametros.Add(elParametro);
+
+            elParametro = new Parametro(RecursoBDModulo2.ParamNombreClienteNat, SqlDbType.VarChar,
+                elCliente.Nat_Nombre, false);
+            parametros.Add(elParametro);
+
+            elParametro = new Parametro(RecursoBDModulo2.ParamApellidoClienteNat, SqlDbType.VarChar,
+                elCliente.Nat_Apellido, false);
+            parametros.Add(elParametro);
+
+            elParametro = new Parametro(RecursoBDModulo2.ParamDireccion, SqlDbType.VarChar,
+                elCliente.Nat_Direccion.LaDireccion, false);
+            parametros.Add(elParametro);
+
+            elParametro = new Parametro(RecursoBDModulo2.ParamCodigoPostal, SqlDbType.Int,
+                elCliente.Nat_Direccion.CodigoPostal, false);
+            parametros.Add(elParametro);
+
+            elParametro = new Parametro(RecursoBDModulo2.ParamCorreoClienteNat, SqlDbType.Int,
+                elCliente.Nat_Correo, false);
+            parametros.Add(elParametro);
+
+            elParametro = new Parametro(RecursoBDModulo2.ParamCodigoTelef, SqlDbType.Int,
+                elCliente.Nat_Telefono.Codigo, false);
+            parametros.Add(elParametro);
+
+            elParametro = new Parametro(RecursoBDModulo2.ParamNumeroTelef, SqlDbType.Int,
+                elCliente.Nat_Telefono.Numero, false);
+            parametros.Add(elParametro);
+
+            #endregion
+            try
+            {
+                laConexion.EjecutarStoredProcedure(RecursoBDModulo2.ModificarClienteNat,
+                    parametros);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+        }
+        /// <summary>
+        /// Metodo para consultar en BD toda la lista de paises
+        /// </summary>
+        /// <returns></returns>
+        public static List<String> consultarPaises()
+        {
+            List<String> laLista = new List<String>();
+            BDConexion laConexion = new BDConexion();
+            DataTable resultado = new DataTable();
+            try
+            {
+                resultado = laConexion.EjecutarStoredProcedureTuplas(RecursoBDModulo2.ConsultarPaises, new List<Parametro>());
+                foreach (DataRow row in resultado.Rows)
+                {
+                    laLista.Add(row[RecursoBDModulo2.NombreLugar].ToString());
+                }
+                return laLista;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
-            return clienteJuridico; 
         }
-
-        #endregion
+        /// <summary>
+        /// Metodo para consultar todos los estados de un pais en especifico
+        /// </summary>
+        /// <param name="elPais">pais del que se desean saber los estados</param>
+        /// <returns>lista de estados del pais seleccionado</returns>
+        public static List<String> consultarEstadosPorPais(String elPais)
+        {
+            List<String> laLista = new List<String>();
+            BDConexion laConexion = new BDConexion();
+            DataTable resultado = new DataTable();
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursoBDModulo2.ParamPais, SqlDbType.VarChar, elPais, false);
+            parametros.Add(parametro);
+            try
+            {
+                resultado = laConexion.EjecutarStoredProcedureTuplas(RecursoBDModulo2.ConsultarEstadosPorPais,
+                    parametros);
+                foreach (DataRow row in resultado.Rows)
+                {
+                    laLista.Add(row[RecursoBDModulo2.NombreLugar].ToString());
+                }
+                return laLista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        /// <summary>
+        /// Metodo para consultar las ciudades de un estado en especifico
+        /// </summary>
+        /// <param name="elEstado">Estado del que se desean saber las ciudades</param>
+        /// <returns>lista de ciudades del estado seleccionado</returns>
+        public static List<String> consultarCiudadesPorEstado(String elEstado)
+        {
+            List<String> laLista = new List<String>();
+            BDConexion laConexion = new BDConexion();
+            DataTable resultado = new DataTable();
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursoBDModulo2.ParamEstado, SqlDbType.VarChar, elEstado, false);
+            parametros.Add(parametro);
+            try
+            {
+                resultado = laConexion.EjecutarStoredProcedureTuplas(RecursoBDModulo2.ConsultarCiudadesPorEstado,
+                    parametros);
+                foreach (DataRow row in resultado.Rows)
+                {
+                    laLista.Add(row[RecursoBDModulo2.NombreLugar].ToString());
+                }
+                return laLista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }    
 
     }
- }
-
-    
-
-    
-
+}

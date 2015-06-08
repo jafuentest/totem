@@ -24,8 +24,8 @@ namespace PruebasUnitariasTotem.Modulo4
             elProyecto = new Proyecto("TES", "Test", true, "Test descripcion", "Bs", 1000000);
             elClienteJuridico = new ClienteJuridico();
             elClienteNatural = new ClienteNatural();
-            elClienteJuridico.Jur_Id = "2";
-            elClienteNatural.Nat_Id = "1";
+            elClienteJuridico.Jur_Id = 2;
+            elClienteNatural.Nat_Id = 1;
       
         }
         [TearDown]
@@ -53,7 +53,7 @@ namespace PruebasUnitariasTotem.Modulo4
         [Test]
         public void PruebaCrearProyectoClienteJuridico()
         {
-            elClienteJuridico.Jur_Id="2";
+            elClienteJuridico.Jur_Id=2;
 
             try
             {
@@ -70,7 +70,7 @@ namespace PruebasUnitariasTotem.Modulo4
         public void PruebaCrearProyectoClienteNatural()
         {
 
-            elClienteNatural.Nat_Id="1";
+            elClienteNatural.Nat_Id=1;
             try
             {
                 Assert.IsTrue(LogicaNegociosTotem.Modulo4.LogicaProyecto.CrearProyectoClienteNatural(elProyecto, elClienteNatural.Nat_Id));

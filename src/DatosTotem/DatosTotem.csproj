@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BDConexion.cs" />
+    <Compile Include="Modulo2\RecursoBDModulo2.Designer.cs" />
     <Compile Include="Modulo3\RecursosBDModulo3.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -88,9 +89,6 @@
       <DependentUpon>RecursosBDModulo1.resx</DependentUpon>
     </Compile>
     <Compile Include="Modulo2\BDCliente.cs" />
-    <Compile Include="Modulo2\BDContacto.cs" />
-    <Compile Include="Modulo2\BDLugar.cs" />
-    <Compile Include="Modulo2\RecursosBaseDeDatosModulo2.Designer.cs" />
     <Compile Include="Modulo3\BDInvolucrados.cs" />
     <Compile Include="Modulo6\BDActor.cs" />
     <Compile Include="Modulo6\RecursosBDModulo6.Designer.cs">
@@ -164,7 +162,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosBDModulo1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo2\RecursosBaseDeDatosModulo2.resx" />
+    <EmbeddedResource Include="Modulo2\RecursoBDModulo2.resx" />
     <EmbeddedResource Include="Modulo3\RecursosBDModulo3.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosBDModulo3.Designer.cs</LastGenOutput>

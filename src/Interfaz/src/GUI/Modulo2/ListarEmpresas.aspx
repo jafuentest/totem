@@ -38,7 +38,7 @@
                     </tr>
                 </thead>
                 <tbody runat ="server" id="cuerpo">
-                   
+                <asp:Literal runat="server" ID="laTabla"></asp:Literal>
                 </tbody>
             </table>
             <div id="modal-delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">

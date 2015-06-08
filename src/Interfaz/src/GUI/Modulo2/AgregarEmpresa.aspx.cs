@@ -39,7 +39,7 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
         if (!IsPostBack) 
         {
             this.LlenarPaises();
-            this.LlenarCargos();
+            //this.LlenarCargos();
             
         }
 
@@ -70,7 +70,6 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
     {
         int existe = 0;
         bool agrego = false; 
-        LogicaCliente logica = new LogicaCliente();
 
         if (!ValidarCamposVacios())
         {
@@ -85,17 +84,17 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
                 int lugar = Convert.ToInt32(comboCiudad.Items[comboCiudad.SelectedIndex].Value);
                 int cargo = Convert.ToInt32(comboCargo.Items[comboCargo.SelectedIndex].Value);
                 string cedula = cedulaContacto.Value;
-                string telefono = telefonoContacto.Value;
+                //string telefono = telefonoContacto.Value;
                 Contacto contacto = new Contacto();
                 contacto.Con_Nombre = nombreContacto.Value;
                 contacto.Con_Apellido = apellidoContacto.Value;
 
-                existe = logica.VerificarExistenciaJuridico(cedula);
+                //existe = logica.VerificarExistenciaJuridico(cedula);
 
                 if (existe == 0)
                 {
-                    agrego = logica.AgregarClienteJuridico(rif, nombre, lugar, direccion, contacto.Con_Nombre,
-                    contacto.Con_Apellido, cargo, telefono, cedula);
+                   // agrego = logica.AgregarClienteJuridico(rif, nombre, lugar, direccion, contacto.Con_Nombre,
+                   // contacto.Con_Apellido, cargo, cedula);
 
                     if (agrego)
                     {
@@ -211,14 +210,14 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             vacio = true;
         }
 
-        if (telefonoContacto.Value == "")
-        {
-            this.alertTelefonoContacto.Attributes["class"] = "alert alert-danger alert-dismissible";
-            this.alertTelefonoContacto.Attributes["role"] = "alert";
-            this.alertTelefonoContacto.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>El teléfono está vacío</div>";
-            this.alertTelefonoContacto.Visible = true;
-            vacio = true;
-        }
+        //if (telefonoContacto.Value == "")
+        //{
+        //    this.alertTelefonoContacto.Attributes["class"] = "alert alert-danger alert-dismissible";
+        //    this.alertTelefonoContacto.Attributes["role"] = "alert";
+        //    this.alertTelefonoContacto.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>El teléfono está vacío</div>";
+        //    this.alertTelefonoContacto.Visible = true;
+        //    vacio = true;
+        //}
 
         if (comboPais.SelectedValue == "0") 
         {
@@ -249,7 +248,7 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
 
         return vacio; 
     }
-    /*
+   
     private bool ValidarExpresionesRegulares()
     {
         bool noValido = false;
@@ -294,13 +293,13 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             noValido = true;
         }
 
-        if (!System.Text.RegularExpressions.Regex.IsMatch("^[0-9]+$", this.telefonoContacto.Value))
-        {
-            alertTelefonoContacto.Attributes["class"] = "alert alert-danger alert-dismissible";
-            alertTelefonoContacto.Attributes["role"] = "alert";
-            alertTelefonoContacto.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>El teléfono solamente debe ser numérico</div>";
-            noValido = true;
-        }
+        //if (!System.Text.RegularExpressions.Regex.IsMatch("^[0-9]+$", this.telefonoContacto.Value))
+        //{
+        //    alertTelefonoContacto.Attributes["class"] = "alert alert-danger alert-dismissible";
+        //    alertTelefonoContacto.Attributes["role"] = "alert";
+        //    alertTelefonoContacto.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>El teléfono solamente debe ser numérico</div>";
+        //    noValido = true;
+        //}
         
         if (!System.Text.RegularExpressions.Regex.IsMatch("^([A-Za-zÑñáéíóúÁÉÍÓÚ0-9,.:/-/ ]+)$", this.direccionEmpresa.Value))
         {
@@ -313,7 +312,7 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
 
 
         return noValido;
-    }*/
+    }
 
 
 
@@ -355,9 +354,9 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
 
     private void CargarCodigoPostal(int idCiudad) 
     {
-        LogicaLugar logicaLugar = new LogicaLugar();
-        int numero = logicaLugar.ObtenerCodigoPostal(idCiudad);
-        this.codigoPostalEmpresa.Value = numero.ToString(); 
+       // LogicaLugar logicaLugar = new LogicaLugar();
+       // int numero = logicaLugar.ObtenerCodigoPostal(idCiudad);
+        //this.codigoPostalEmpresa.Value = numero.ToString(); 
     }
 
    
@@ -370,8 +369,7 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
     {
         try
         {
-            LogicaLugar logica = new LogicaLugar();
-            List<Lugar> paises = logica.LlenarComboPaises();
+            
             ListItem itemPais;
 
             this.comboPais.Items.Clear();
@@ -381,13 +379,13 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             this.comboPais.Items.Add(itemPais);
 
 
-            foreach (Lugar objetoPais in paises)
-            {
-                itemPais = new ListItem();
-                itemPais.Text = objetoPais.NombreLugar;
-                itemPais.Value = objetoPais.IdLugar.ToString();
-                this.comboPais.Items.Add(itemPais);
-            }
+            //foreach (Lugar objetoPais in paises)
+            //{
+            //    itemPais = new ListItem();
+            //    itemPais.Text = objetoPais.NombreLugar;
+            //    itemPais.Value = objetoPais.IdLugar.ToString();
+            //    this.comboPais.Items.Add(itemPais);
+            //}
 
 
         }
@@ -414,8 +412,6 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
     {
         try
         {
-            LogicaLugar logica = new LogicaLugar();
-            List<Lugar> estados = logica.LlenarComboEstados(idPais);
             ListItem itemEstado;
 
             this.comboEstado.Items.Clear();
@@ -425,13 +421,13 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             this.comboEstado.Items.Add(itemEstado);
 
 
-            foreach (Lugar objetoEstado in estados)
-            {
-                itemEstado = new ListItem();
-                itemEstado.Text = objetoEstado.NombreLugar;
-                itemEstado.Value = objetoEstado.IdLugar.ToString();
-                this.comboEstado.Items.Add(itemEstado);
-            }
+            //foreach (Lugar objetoEstado in estados)
+            //{
+            //    itemEstado = new ListItem();
+            //    itemEstado.Text = objetoEstado.NombreLugar;
+            //    itemEstado.Value = objetoEstado.IdLugar.ToString();
+            //    this.comboEstado.Items.Add(itemEstado);
+            //}
 
 
         }
@@ -458,8 +454,6 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
     {
         try
         {
-            LogicaLugar logica = new LogicaLugar();
-            List<Lugar> ciudades = logica.LlenarComboCiudades(idEstado);
             ListItem itemCiudad;
 
             this.comboCiudad.Items.Clear();
@@ -469,13 +463,13 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
             this.comboEstado.Items.Add(itemCiudad);
 
 
-            foreach (Lugar objetoCiudad in ciudades)
-            {
-                itemCiudad = new ListItem();
-                itemCiudad.Text = objetoCiudad.NombreLugar;
-                itemCiudad.Value = objetoCiudad.IdLugar.ToString();
-                this.comboCiudad.Items.Add(itemCiudad);
-            }
+            //foreach (Lugar objetoCiudad in ciudades)
+            //{
+            //    itemCiudad = new ListItem();
+            //    itemCiudad.Text = objetoCiudad.NombreLugar;
+            //    itemCiudad.Value = objetoCiudad.IdLugar.ToString();
+            //    this.comboCiudad.Items.Add(itemCiudad);
+            //}
         }
         catch (ClienteDatosException e)
         {
@@ -497,10 +491,8 @@ public partial class GUI_Modulo2_AgregarEmpresa : System.Web.UI.Page
     {
         try
         {
-            LogicaCliente logica = new LogicaCliente();
             List<string> cargos = new List<string>();
             ListItem itemCargo; 
-            cargos = logica.LlenarComboCargo();
             this.comboCargo.Items.Clear();
 
             itemCargo = new ListItem();

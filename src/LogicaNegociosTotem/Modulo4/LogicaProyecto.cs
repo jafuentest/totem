@@ -50,7 +50,7 @@ namespace LogicaNegociosTotem.Modulo4
         /// <param name="clienteJuridico">Cliente juridico del proyecto</param>
         /// <returns>Retorna True si se crea, de lo contrario genera
         /// una exception(CodigoRepetido)</returns>
-        public static bool CrearProyectoClienteJuridico(DominioTotem.Proyecto proyecto, String id)
+        public static bool CrearProyectoClienteJuridico(DominioTotem.Proyecto proyecto, int id)
         {
 
             try
@@ -70,7 +70,7 @@ namespace LogicaNegociosTotem.Modulo4
         /// <param name="clienteNatural">Cliente natural del proyecto</param>
         /// <returns>Retorna True si se crea, de lo contrario genera
         /// una exception(CodigoRepetido)</returns>
-        public static bool CrearProyectoClienteNatural(DominioTotem.Proyecto proyecto, String id)
+        public static bool CrearProyectoClienteNatural(DominioTotem.Proyecto proyecto, int id)
         {
 
             try

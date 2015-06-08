@@ -9,42 +9,38 @@ namespace DominioTotem
     {
         #region Atributos
         private int conId;
-        private string conNombre;
-        private string conApellido;
-        private string conCargo;
-        private List<string> conTelefonos;
+        private String conCedula;
+        private String conNombre;
+        private String conApellido;
+        private String conCargo;
+        private Telefono conTelefono;
         private ClienteJuridico clienteJuridico;
         private ClienteNatural clienteNatural; 
 
         #endregion
 
         #region Propiedades
-
-
         public int Con_Id
         {
             get { return conId; }
             set { conId = value; }
         }
-
-        public string Con_Nombre
+        public String Con_Nombre
         {
             get { return conNombre; }
             set { conNombre = value; }
         }
-        public string Con_Apellido
+        public String Con_Apellido
         {
             get { return conApellido; }
             set { conApellido = value; }
         }
-
-
-        public List<string> Con_Telefonos
+        public Telefono Con_Telefono
         {
-            get { return conTelefonos; }
-            set { conTelefonos = value; }
+            get { return conTelefono; }
+            set { conTelefono = value; }
         }
-        public string ConCargo
+        public String ConCargo
         {
             get { return conCargo; }
             set { conCargo = value; }
@@ -61,6 +57,12 @@ namespace DominioTotem
             get { return clienteNatural; }
             set { clienteNatural = value; }
         }
+
+        public String ConCedula
+        {
+            get { return conCedula; }
+            set { conCedula = value; }
+        }
        
      #endregion
 
@@ -72,10 +74,10 @@ namespace DominioTotem
         public Contacto() 
         {
             Con_Id = 0;
-            Con_Nombre = string.Empty;
-            Con_Apellido = string.Empty;
-            ConCargo = string.Empty;
-            Con_Telefonos = null;
+            Con_Nombre = String.Empty;
+            Con_Apellido = String.Empty;
+            ConCargo = String.Empty;
+            Con_Telefono = null;
             ConClienteJurid = null;
             ConClienteNat = null; 
         }
@@ -88,10 +90,10 @@ namespace DominioTotem
         public Contacto(int id) 
         {
             Con_Id = id;
-            Con_Nombre = string.Empty;
-            Con_Apellido = string.Empty;
-            ConCargo = string.Empty;
-            Con_Telefonos = null;
+            Con_Nombre = String.Empty;
+            Con_Apellido = String.Empty;
+            ConCargo = String.Empty;
+            Con_Telefono = null;
             ConClienteJurid = null;
             ConClienteNat = null; 
         }
@@ -102,13 +104,13 @@ namespace DominioTotem
        /// </summary>
        /// <param name="nombre">Nombres de la Persona Contacto de la Empresa</param>
        /// <param name="apellido">Apellidos de la Persona Contacto de la Empresa</param>
-        public Contacto(string nombre, string apellido) 
+        public Contacto(String nombre, String apellido) 
         {
             Con_Id = 0;
             Con_Nombre = nombre; 
             Con_Apellido = apellido;
-            ConCargo = string.Empty;
-            Con_Telefonos = null;
+            ConCargo = String.Empty;
+            Con_Telefono = null;
             ConClienteJurid = null;
             ConClienteNat = null; 
         }
@@ -120,13 +122,13 @@ namespace DominioTotem
        /// <param name="id">Número de Cédula o Identificador de la Clase Contacto</param>
        /// <param name="nombre">Nombres de la Persona Contacto de la Empresa</param>
        /// <param name="apellido">Apellidos de la Persona Contacto de la Empresa</param>
-        public Contacto(int id, string nombre, string apellido) 
+        public Contacto(int id, String nombre, String apellido) 
         {
             Con_Id = id;
             Con_Nombre = nombre;
             Con_Apellido = apellido;
-            ConCargo = string.Empty;
-            Con_Telefonos = null; 
+            ConCargo = String.Empty;
+            Con_Telefono = null; 
         }
 
        /// <summary>
@@ -136,13 +138,13 @@ namespace DominioTotem
         /// <param name="nombre">Nombres de la Persona Contacto de la Empresa</param>
         /// <param name="apellido">Apellidos de la Persona Contacto de la Empresa</param>
        /// <param name="cargo">Cargo que ocupa la Persona Contacto dentro de la Empresa</param>
-        public Contacto(int id, string nombre, string apellido, string cargo) 
+        public Contacto(int id, String nombre, String apellido, String cargo) 
         {
             Con_Id = id;
             Con_Nombre = nombre;
             Con_Apellido = apellido;
             ConCargo = cargo;
-            Con_Telefonos = null;
+            Con_Telefono = null;
             ConClienteJurid = null;
             ConClienteNat = null; 
         }
@@ -156,14 +158,14 @@ namespace DominioTotem
         /// <param name="nombre">Nombres de la Persona Contacto de la Empresa</param>
         /// <param name="apellido">Apellidos de la Persona Contacto de la Empresa</param>
         /// <param name="cargo">Cargo que ocupa la Persona Contacto dentro de la Empresa</param>
-       /// <param name="telefonos">Télefonos de la Persona Contacto</param>
-        public Contacto(int id, string nombre, string apellido, string cargo, List<string> telefonos) 
+       /// <param name="telefono">Télefonos de la Persona Contacto</param>
+        public Contacto(int id, String nombre, String apellido, String cargo, Telefono telefono) 
         {
             Con_Id = id;
             Con_Nombre = nombre;
             Con_Apellido = apellido;
             ConCargo = cargo;
-            Con_Telefonos = telefonos;
+            Con_Telefono = telefono;
             ConClienteJurid = null;
             ConClienteNat = null; 
         
@@ -177,14 +179,14 @@ namespace DominioTotem
      /// <param name="apellido">Apellidos de la Persona Contacto de la Empresa</param>
      /// <param name="cargo">Cargo que ocupa la Persona Contacto dentro de la Empresa</param>
      /// <param name="clienteNatural">El cliente natural del contacto</param>
-     /// <param name="telefonos">Télefonos de la Persona Contacto</param>
-       public Contacto(int id, string nombre, string apellido, string cargo, ClienteNatural clienteNatural ,List<string> telefonos)
+     /// <param name="telefono">Télefonos de la Persona Contacto</param>
+       public Contacto(int id, String nombre, String apellido, String cargo, ClienteNatural clienteNatural ,Telefono telefono)
        {
            Con_Id = id;
            Con_Nombre = nombre;
            Con_Apellido = apellido;
            ConCargo = cargo;
-           Con_Telefonos = telefonos;
+           Con_Telefono = telefono;
            ConClienteJurid = null;
            ConClienteNat = clienteNatural; 
        }
@@ -197,14 +199,14 @@ namespace DominioTotem
        /// <param name="apellido">Apellidos de la Persona Contacto de la Empresa</param>
        /// <param name="cargo">Cargo que ocupa la Persona Contacto dentro de la Empresa</param>
        /// <param name="clienteJuridico">El cliente jurídico o empresa a la que pertenece el contacto</param>
-       /// <param name="telefonos"></param>
-       public Contacto(int id, string nombre, string apellido, string cargo, ClienteJuridico clienteJuridico, List<string> telefonos)
+       /// <param name="telefono"></param>
+       public Contacto(int id, String nombre, String apellido, String cargo, ClienteJuridico clienteJuridico, Telefono telefono)
        {
            Con_Id = id;
            Con_Nombre = nombre;
            Con_Apellido = apellido;
            ConCargo = cargo;
-           Con_Telefonos = telefonos;
+           Con_Telefono = telefono;
            ConClienteJurid = clienteJuridico;
            ConClienteNat = null; 
                

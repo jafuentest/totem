@@ -61,16 +61,16 @@ public partial class GUI_Modulo2_ListarClientes : System.Web.UI.Page
 
 
 
-        LogicaCliente logica = new LogicaCliente();
-         List<ClienteNatural> listaClientesNaturales = logica.ConsultarClientesNaturales();
+        //LogicaCliente logica = new LogicaCliente();
+       //  List<ClienteNatural> listaClientesNaturales = logica.ConsultarClientesNaturales();
 
-        foreach (ClienteNatural clienteLista in listaClientesNaturales)
-        {
-            cuerpo.InnerHtml = cuerpo.InnerHtml + "<tr><td>" + clienteLista.Nat_Id + "</td><td>" + clienteLista.Nat_Nombre + "</td><td>" + clienteLista.Nat_Apellido + "</td><td>" + clienteLista.Nat_Correo + "</td><td><a class=\"btn btn-default glyphicon glyphicon-pencil\" data-toggle=\"modal\" data-target=\"#modal-update\" href=\"#\"></a><a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"></a></td></tr>";
-            // cuerpo.InnerHtml = cuerpo.InnerHtml + "<tr id=\"actor-" + actorLista.IdentificacionActor + "\"><td class=\"name\">" + actorLista.NombreActor + "</td><td class=\"desc\">" + actorLista.DescripcionActor + "</td><td class=\"actions\"><a class=\"btn btn-default glyphicon glyphicon-pencil\" data-toggle=\"modal\" data-target=\"#modal-update\" href=\"#\"></a><a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"></a></td></tr>";
+        //foreach (ClienteNatural clienteLista in listaClientesNaturales)
+        //{
+        //    cuerpo.InnerHtml = cuerpo.InnerHtml + "<tr><td>" + clienteLista.Nat_Id + "</td><td>" + clienteLista.Nat_Nombre + "</td><td>" + clienteLista.Nat_Apellido + "</td><td>" + clienteLista.Nat_Correo + "</td><td><a class=\"btn btn-default glyphicon glyphicon-pencil\" data-toggle=\"modal\" data-target=\"#modal-update\" href=\"#\"></a><a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"></a></td></tr>";
+        //    // cuerpo.InnerHtml = cuerpo.InnerHtml + "<tr id=\"actor-" + actorLista.IdentificacionActor + "\"><td class=\"name\">" + actorLista.NombreActor + "</td><td class=\"desc\">" + actorLista.DescripcionActor + "</td><td class=\"actions\"><a class=\"btn btn-default glyphicon glyphicon-pencil\" data-toggle=\"modal\" data-target=\"#modal-update\" href=\"#\"></a><a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" data-toggle=\"modal\" data-target=\"#modal-delete\" href=\"#\"></a></td></tr>";
 
 
-         }
+        // }
     }
 
 }

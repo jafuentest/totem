@@ -11,13 +11,7 @@ using ExcepcionesTotem.Modulo2;
 
 public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
 {
-
-
-       
-
         ClienteNatural clienteNatural;
-        LogicaCliente logicaCliente = new LogicaCliente();
-
         protected void Page_Load(object sender, EventArgs e)
         {
             ((MasterPage)Page.Master).IdModulo = "2";
@@ -82,19 +76,15 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
             string cedula = cedulaNatural.Value;
             string direccion = direccionCliente.Value;
             string telefono = telefonoCliente.Value;
-            LogicaCliente logica = new LogicaCliente();
             try
             {
 
                 int ciudad = Convert.ToInt32(comboCiudad.Items[comboCiudad.SelectedIndex].Value);
 
                 //Verifica que el cliente exista en la Base de Datos 
-                existe = logicaCliente.VerificarExistenciaNatural(cedula);
 
                 if (existe == 0)
                 {
-                    agrego = logicaCliente.AgregarClienteNatural(cedula, nombre,
-                        apellido, ciudad, direccion, correo, telefono);
                     if (agrego)
                     {
                         alert.Attributes["class"] = "alert alert-success alert-dismissible";
@@ -275,16 +265,9 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
 
     private void CargarCodigoPostal(int idCiudad)
     {
-        LogicaLugar logicaLugar = new LogicaLugar();
-        int numero = logicaLugar.ObtenerCodigoPostal(idCiudad);
-        this.codigoPostalCliente.Value = numero.ToString();
+        //int numero = logicaLugar.ObtenerCodigoPostal(idCiudad);
+       // this.codigoPostalCliente.Value = numero.ToString();
     }
-
-
-
-
-
-
 
     /// <summary>
     /// Método que extrae la información de los paises para el
@@ -294,8 +277,6 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
     {
         try
         {
-            LogicaLugar logica = new LogicaLugar();
-            List<Lugar> paises = logica.LlenarComboPaises();
             ListItem itemPais;
 
             this.comboPais.Items.Clear();
@@ -305,13 +286,13 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
             this.comboPais.Items.Add(itemPais);
 
 
-            foreach (Lugar objetoPais in paises)
-            {
-                itemPais = new ListItem();
-                itemPais.Text = objetoPais.NombreLugar;
-                itemPais.Value = objetoPais.IdLugar.ToString();
-                this.comboPais.Items.Add(itemPais);
-            }
+            //foreach (Lugar objetoPais in paises)
+            //{
+            //    itemPais = new ListItem();
+            //    itemPais.Text = objetoPais.NombreLugar;
+            //    itemPais.Value = objetoPais.IdLugar.ToString();
+            //    this.comboPais.Items.Add(itemPais);
+            //}
 
 
         }
@@ -338,8 +319,6 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
     {
         try
         {
-            LogicaLugar logica = new LogicaLugar();
-            List<Lugar> estados = logica.LlenarComboEstados(idPais);
             ListItem itemEstado;
 
             this.comboEstado.Items.Clear();
@@ -349,13 +328,13 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
             this.comboEstado.Items.Add(itemEstado);
 
 
-            foreach (Lugar objetoEstado in estados)
-            {
-                itemEstado = new ListItem();
-                itemEstado.Text = objetoEstado.NombreLugar;
-                itemEstado.Value = objetoEstado.IdLugar.ToString();
-                this.comboEstado.Items.Add(itemEstado);
-            }
+            //foreach (Lugar objetoEstado in estados)
+            //{
+            //    itemEstado = new ListItem();
+            //    itemEstado.Text = objetoEstado.NombreLugar;
+            //    itemEstado.Value = objetoEstado.IdLugar.ToString();
+            //    this.comboEstado.Items.Add(itemEstado);
+            //}
 
 
         }
@@ -382,8 +361,6 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
     {
         try
         {
-            LogicaLugar logica = new LogicaLugar();
-            List<Lugar> ciudades = logica.LlenarComboCiudades(idEstado);
             ListItem itemCiudad;
 
             this.comboCiudad.Items.Clear();
@@ -393,13 +370,13 @@ public partial class GUI_Modulo2_AgregarCliente : System.Web.UI.Page
             this.comboEstado.Items.Add(itemCiudad);
 
 
-            foreach (Lugar objetoCiudad in ciudades)
-            {
-                itemCiudad = new ListItem();
-                itemCiudad.Text = objetoCiudad.NombreLugar;
-                itemCiudad.Value = objetoCiudad.IdLugar.ToString();
-                this.comboCiudad.Items.Add(itemCiudad);
-            }
+            //foreach (Lugar objetoCiudad in ciudades)
+            //{
+            //    itemCiudad = new ListItem();
+            //    itemCiudad.Text = objetoCiudad.NombreLugar;
+            //    itemCiudad.Value = objetoCiudad.IdLugar.ToString();
+            //    this.comboCiudad.Items.Add(itemCiudad);
+            //}
         }
         catch (ClienteDatosException e)
         {

@@ -23,63 +23,47 @@
         <form id="agregar_cliente" class="form-horizontal" action="#" method="post" Runat="Server">
 
             <div class="row col-sm-12 col-md-12 col-lg-12">
-                <h2>Datos básicos</h2>
+                
+                <h2>Datos Básicos</h2>
+                
                 <div class="form-group">
                     <div id="div_nombre" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="nombreCliente"  runat="server" name="nombre" type="text" class="form-control" placeholder="Nombre" value="Pedro" />
+                        <input id="nombreCliente"  runat="server" name="nombre" type="text" class="form-control" placeholder="Nombre" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div id="div_apellido" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="apellidoCliente" runat="server" name="apellido" type="text" class="form-control" placeholder="Apellido" value="Pérez" />
+                        <input id="apellidoCliente" runat="server" name="apellido" type="text" class="form-control" placeholder="Apellido" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <div id="div_rsocial" class="col-sm-2 col-md-2 col-lg-2">
-                        <div class="dropdown">
-                            <button id="rsocialCliente" class="btn btn-default dropdown-toggle" name="rsocial-dd" type="button" data-toggle="dropdown" aria-expanded="true">
-                                V
-                                <span class="caret"></span>
-                            </button>
-                            <ul id="rsocial-dd" class="dropdown-menu" role="menu" aria-labelledby="rsocial">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >V</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >E</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div id="div_rif" class="col-sm-10 col-md-10 col-lg-10">
-                        <input id="cedulaCliente" runat="server" name="rif" type="text" class="form-control" placeholder="Cédula" value="12452843" />
+                    <div id="div_rif" class="col-sm-12 col-md-12 col-lg-12">
+                        <input id="cedulaCliente" runat="server" name="rif" type="text" class="form-control" placeholder="Cédula" maxlength="10"/>
                     </div>
                 </div>
 
-                 <h2>Datos de localización</h2>
+                 <h2>Datos De Localización</h2>
 
                 <div class="form-group">
-                    <div id="div_pais" class="col-sm-4 col-md-4 col-lg-">
-                        <div class="dropdown" runat="server" id="contenedorComboPais">
-                            <select id="comboPais" runat="server"  >
-                                <option value="0" runat="server" selected="selected">Seleccione País..</option>
-                                <option value="1" runat="server">Venezuela</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div id="div_estado" class="col-sm-4 col-md-4 col-lg-4">
-                        <div class="dropdown" runat="server" id="contenedorComboEstado">
-                            <select id="comboEstado" runat="server">
-                                 <option value="0" runat="server" selected="selected">Seleccione Estado..</option>
-                                <option value="2" runat="server">Dtto Capital</option>
-                            </select> 
-                        </div>
-                    </div>
-                    <div id="div_ciudad" class="col-sm-4 col-md-4 col-lg-4">
-                            <div class="dropdown" runat="server" id="contenedorComboCiudad" >
-                                <select id="comboCiudad" runat="server" >
-                                     <option value="0" runat="server" selected="selected">Seleccione Ciudad..</option>
-                                <option value="4" runat="server">Caracas</option>
-                                </select>
+                            <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6">
+                                <div class="dropdown" runat="server" id="contenedorComboPais">
+                                <asp:DropDownList ID="comboPais"  class="btn btn-default dropdown-toggle" runat="server"  AutoPostBack="true"></asp:DropDownList>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+
+                            <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
+                                <div class="dropdown" runat="server" id="contenedorComboEstado">
+                                <asp:DropDownList ID="comboEstado"  class="btn btn-default dropdown-toggle" runat="server" AutoPostBack="true"></asp:DropDownList>
+                                </div>
+                            </div>
+                     </div>
+                     <div class="form-group">
+                            <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="dropdown" runat="server" id="Div1">
+                                <asp:DropDownList ID="comboCiudad"  class="btn btn-default dropdown-toggle" runat="server"  AutoPostBack="true"></asp:DropDownList>
+                                </div>
+                            </div>
+                     </div>
                     
               
                 <div class="form-group">
@@ -98,11 +82,15 @@
                             <input id="correoCliente" runat="server" name="correo" type="text" class="form-control" placeholder="Correo electrónico"  />
                         </div>
                     </div>
+
                     <div class="form-group">
-                        <div id="div_telefono" class="col-sm-12 col-md-12 col-lg-12">
-                            <input id="telefonoCliente" runat="server"  name="telefono" type="text" class="form-control" placeholder="Teléfono"  />
+                    <div id="div_cod_telefono" class="col-sm-4 col-md-4 col-lg-4">
+                        <input id="codTelefono" runat="server" name="codigoTELF" type="text" class="form-control" placeholder="+(cod)" maxlength="4" />
                     </div>
+                    <div id="div_telefono" class="col-sm-8 col-md-8 col-lg-8">
+                        <input id="telefonoCliente" runat="server" name="telefono" type="text" class="form-control" placeholder="Teléfono" maxlength="7" />
                     </div>
+                </div>
      
                 <div class="form-group">
                     <div id="div_botones" class="col-sm-12 col-md-12 col-lg-12">

@@ -81,7 +81,7 @@ namespace DatosTotem.Modulo4
         /// <param name="proyecto">Proyecto a insertar en la bd</param>
         /// <param name="clienteJuridico">Cliente juridico del proyecto</param>
         /// <returns>Retrorna True si se crea, False si no </returns>
-        public static bool CrearProyectoClienteJuridico(Proyecto proyecto, String clienteJuridicoID)
+        public static bool CrearProyectoClienteJuridico(Proyecto proyecto, int clienteJuridicoID)
         {
             //Si no existe el proyecto se agrega 
             if (!ExisteProyecto(proyecto.Codigo))
@@ -102,7 +102,7 @@ namespace DatosTotem.Modulo4
                     parametros.Add(parametro);
                     parametro = new Parametro(RecursosBDModulo4.ParametroMonedaProyecto, SqlDbType.VarChar, proyecto.Moneda, false);
                     parametros.Add(parametro);
-                    parametro = new Parametro(RecursosBDModulo4.ParametroClienteJuridico, SqlDbType.Int, clienteJuridicoID, false);
+                    parametro = new Parametro(RecursosBDModulo4.ParametroClienteJuridico, SqlDbType.Int, clienteJuridicoID.ToString(), false);
                     parametros.Add(parametro);
 
 
@@ -141,7 +141,7 @@ namespace DatosTotem.Modulo4
         /// <param name="proyecto">Proyecto a insertar en la bd</param>
         /// <param name="clienteNatural">Cliente natural del proyecto</param>
         /// <returns>Retrorna True si se crea, False si no </returns>
-        public static bool CrearProyectoClieteNatural(Proyecto proyecto, String clienteNaturalID)
+        public static bool CrearProyectoClieteNatural(Proyecto proyecto, int clienteNaturalID)
         {
            
             //Si no existe el proyecto se agrega 
@@ -163,7 +163,7 @@ namespace DatosTotem.Modulo4
                     parametros.Add(parametro);
                     parametro = new Parametro(RecursosBDModulo4.ParametroMonedaProyecto, SqlDbType.VarChar, proyecto.Moneda, false);
                     parametros.Add(parametro);
-                    parametro = new Parametro(RecursosBDModulo4.ParametroClienteNatural, SqlDbType.Int, clienteNaturalID, false);
+                    parametro = new Parametro(RecursosBDModulo4.ParametroClienteNatural, SqlDbType.Int, clienteNaturalID.ToString(), false);
                     parametros.Add(parametro);
 
 
@@ -749,8 +749,8 @@ namespace DatosTotem.Modulo4
                 else
                 {
 
-                    throw new ExcepcionesTotem.Modulo2.ClienteInexistenteException(DatosTotem.Modulo2.RecursosBaseDeDatosModulo2.CodigoClienteInexistente,
-                     DatosTotem.Modulo2.RecursosBaseDeDatosModulo2.MensajeClienteInexistente, new Exception());
+                    throw new ExcepcionesTotem.Modulo2.ClienteInexistenteException("error",
+                     "error", new Exception());
 
                 }
 
@@ -782,8 +782,8 @@ namespace DatosTotem.Modulo4
                 else
                 {
 
-                    throw new ExcepcionesTotem.Modulo2.ClienteInexistenteException(DatosTotem.Modulo2.RecursosBaseDeDatosModulo2.CodigoClienteInexistente,
-                     DatosTotem.Modulo2.RecursosBaseDeDatosModulo2.MensajeClienteInexistente, new Exception());
+                    throw new ExcepcionesTotem.Modulo2.ClienteInexistenteException("error",
+                     "error", new Exception());
 
                 }
 
