@@ -679,11 +679,11 @@ namespace LogicaNegociosTotem.Modulo4
         #endregion
 
         #region Buscar Proyectos
-        public static DataTable BuscarProyectos(String busqueda)
+        public static DataTable BuscarProyectos(String busqueda, String username)
         {
             try
             {
-                return DatosTotem.Modulo4.BDProyecto.BuscarProyectos(busqueda);
+                return DatosTotem.Modulo4.BDProyecto.BuscarProyectos(busqueda, username);
             }
             catch (Exception e)
             {
@@ -691,11 +691,11 @@ namespace LogicaNegociosTotem.Modulo4
             }
         }
 
-        public static DataTable BuscarProyectosActivos(String busqueda)
+        public static DataTable BuscarProyectosActivos(String busqueda, String username)
         {
             try
             {
-                return DatosTotem.Modulo4.BDProyecto.BuscarProyectosActivos(busqueda);
+                return DatosTotem.Modulo4.BDProyecto.BuscarProyectosActivos(busqueda, username);
             }
             catch (Exception e)
             {
@@ -703,11 +703,11 @@ namespace LogicaNegociosTotem.Modulo4
             }
         }
 
-        public static DataTable BuscarProyectosInactivos(String busqueda)
+        public static DataTable BuscarProyectosInactivos(String busqueda, String username)
         {
             try
             {
-                return DatosTotem.Modulo4.BDProyecto.BuscarProyectosInactivos(busqueda);
+                return DatosTotem.Modulo4.BDProyecto.BuscarProyectosInactivos(busqueda, username);
             }
             catch (Exception e)
             {
@@ -744,7 +744,7 @@ namespace LogicaNegociosTotem.Modulo4
             }
         }
 
-        public static int ObtenerIDClienteNatural(string cedula)
+        public static int ObtenerIDClienteNatural(String cedula)
         {
             try
             {
@@ -756,11 +756,36 @@ namespace LogicaNegociosTotem.Modulo4
             }
         }
 
-        public static int ObtenerIDClienteJuridico(string rif)
+        public static int ObtenerIDClienteJuridico(String rif)
         {
             try
             {
                 return DatosTotem.Modulo4.BDProyecto.ObtenerIdClienteJuridico(rif);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+
+        public static DataTable ObtenerNombreClienteNatural(String codigo)
+        {
+            try
+            {
+                return DatosTotem.Modulo4.BDProyecto.ConsultarNombreClienteNatural(codigo);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static DataTable ObtenerNombreClienteJuridico(String codigo)
+        {
+            try
+            {
+                return DatosTotem.Modulo4.BDProyecto.ConsultarNombreClienteJuridico(codigo);
             }
             catch (Exception e)
             {

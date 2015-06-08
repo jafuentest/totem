@@ -556,6 +556,24 @@ namespace DatosTotem.Modulo4 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Procedure_NombreClineteJuridico.
+        /// </summary>
+        internal static string ProcedimientoNombreClineteJuridico {
+            get {
+                return ResourceManager.GetString("ProcedimientoNombreClineteJuridico", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procedure_NombreClineteNatural.
+        /// </summary>
+        internal static string ProcedimientoNombreClineteNatural {
+            get {
+                return ResourceManager.GetString("ProcedimientoNombreClineteNatural", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Procedimiento_ObtenerIDClienteJuridico.
         /// </summary>
         internal static string ProcedimientoObtenerIDClienteJuridico {

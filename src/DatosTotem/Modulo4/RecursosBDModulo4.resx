@@ -353,4 +353,12 @@
     <value>Procedure_ProyectosDeUsuario</value>
     <comment>Procedimiento que muestra los proyectos de un usuario </comment>
   </data>
+  <data name="ProcedimientoNombreClineteJuridico" xml:space="preserve">
+    <value>Procedure_NombreClineteJuridico</value>
+    <comment>Procedimiento que retorna el nombre de un cliente juridico dado el codigo de un proyecto</comment>
+  </data>
+  <data name="ProcedimientoNombreClineteNatural" xml:space="preserve">
+    <value>Procedure_NombreClineteNatural</value>
+    <comment>Procedimiento que retorna el nombre de un cliente natural dado el codigo de un proyecto</comment>
+  </data>
 </root>

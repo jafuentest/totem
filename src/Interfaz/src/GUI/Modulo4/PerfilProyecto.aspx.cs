@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text;
+using System.Data;
 
 public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
 {
@@ -14,7 +15,7 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
     {
         ((MasterPage)Page.Master).IdModulo = "4";
 
-        DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
+        /*DominioTotem.Usuario user = HttpContext.Current.Session["Credenciales"] as DominioTotem.Usuario;
         if (user != null)
         {
             if (user.username != "" &&
@@ -32,7 +33,7 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
         else
         {
             Response.Redirect("../Modulo1/M1_login.aspx");
-        }
+        }*/
 
         String success = Request.QueryString["success"];
         if (success != null)
@@ -104,7 +105,22 @@ public partial class GUI_Modulo4_PerfilProyecto : System.Web.UI.Page
                 this.div_proyecto.InnerHtml += "<input type='checkbox' unchecked disabled> Inactivo";
             }
             this.div_proyecto.InnerHtml += "<br><br>";
-            this.div_proyecto.InnerHtml += "<p class='sameLine'>Cliente: </p><p id='nombreCliente' class='sameLine bootstrapBlue'>" + "</p>";
+            DataTable nombreClienteNatural = LogicaNegociosTotem.Modulo4.LogicaProyecto.ObtenerNombreClienteNatural(esteProyecto.Codigo);
+            DataTable nombreClienteJuridico = LogicaNegociosTotem.Modulo4.LogicaProyecto.ObtenerNombreClienteJuridico(esteProyecto.Codigo);
+            if (nombreClienteNatural != null)
+            {
+                foreach (DataRow cliente in nombreClienteNatural.Rows)
+                {
+                    this.div_proyecto.InnerHtml += "<p class='sameLine'>Cliente: " + cliente["cn_nombre"].ToString() + " " + cliente["cn_apellido"].ToString() + "</p><p id='nombreCliente' class='sameLine bootstrapBlue'>" + "</p>";
+                }
+            }
+            if (nombreClienteJuridico != null)
+            {
+                foreach (DataRow cliente in nombreClienteJuridico.Rows)
+                {
+                    this.div_proyecto.InnerHtml += "<p class='sameLine'>Cliente: " + cliente["cj_nombre"].ToString() + "</p><p id='nombreCliente' class='sameLine bootstrapBlue'>" + "</p>";
+                }
+            } 
             this.div_proyecto.InnerHtml += "<br><br>";
             this.div_proyecto.InnerHtml += "<p>Progreso:</p>";
             this.div_proyecto.InnerHtml += "<div class='progress'>";

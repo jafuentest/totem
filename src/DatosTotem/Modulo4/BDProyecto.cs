@@ -342,7 +342,61 @@ namespace DatosTotem.Modulo4
             }
         }
 
+        public static DataTable ConsultarNombreClienteNatural(String codigo)
+        {
+            try
+            {
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, codigo, false);
+                parametros.Add(parametro);
 
+                BDConexion con = new BDConexion();
+                DataTable resultados = con.EjecutarStoredProcedureTuplas(RecursosBDModulo4.ProcedimientoNombreClineteNatural, parametros);
+
+
+                if (resultados.Rows.Count > 0)
+                {
+                    return resultados;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static DataTable ConsultarNombreClienteJuridico(String codigo)
+        {
+            try
+            {
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, codigo, false);
+                parametros.Add(parametro);
+
+                BDConexion con = new BDConexion();
+                DataTable resultados = con.EjecutarStoredProcedureTuplas(RecursosBDModulo4.ProcedimientoNombreClineteJuridico, parametros);
+
+
+                if (resultados.Rows.Count > 0)
+                {
+                    return resultados;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
 
 
         #endregion
@@ -744,7 +798,7 @@ namespace DatosTotem.Modulo4
 
         #endregion
 
-        #region Buscar ID Cliente
+        #region Buscar Cliente
 
         public static int ObtenerIdClienteNatural(String cedula)
         {
@@ -804,7 +858,7 @@ namespace DatosTotem.Modulo4
 
         #endregion
 
-        #region Buscar
+        #region Buscar Proyectos
 
 
         /// <summary>
@@ -812,13 +866,15 @@ namespace DatosTotem.Modulo4
         /// </summary>
         /// <param name="busqueda">Cadena para la busqueda</param>
         /// <returns>Retrorna los proyectos de relacionado con el parametro</returns>
-        public static DataTable BuscarProyectos(String busqueda)
+        public static DataTable BuscarProyectos(String busqueda, String username)
         {
-            
-
+            try
+            {
                 //parametros para buscar proyectos
                 List<Parametro> parametros = new List<Parametro>();
                 Parametro parametro = new Parametro(RecursosBDModulo4.ParametroBusqueda, SqlDbType.VarChar, busqueda, false);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo4.ParametroUsuario, SqlDbType.VarChar, username, false);
                 parametros.Add(parametro);
 
                 BDConexion con = new BDConexion();
@@ -831,11 +887,13 @@ namespace DatosTotem.Modulo4
                 }
                 else
                 {
-
                     return null;
-
                 }
-
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
             
         }
 
@@ -845,30 +903,33 @@ namespace DatosTotem.Modulo4
         /// </summary>
         /// <param name="busqueda">Cadena para la busqueda</param>
         /// <returns>Retrorna los proyectos de relacionado con el parametro</returns>
-        public static DataTable BuscarProyectosInactivos(String busqueda)
+        public static DataTable BuscarProyectosInactivos(String busqueda, String username)
         {
-
-
-            List<Parametro> parametros = new List<Parametro>();
-            Parametro parametro = new Parametro(RecursosBDModulo4.ParametroBusqueda, SqlDbType.VarChar, busqueda, false);
-            parametros.Add(parametro);
-
-            BDConexion con = new BDConexion();
-            DataTable resultados = con.EjecutarStoredProcedureTuplas(RecursosBDModulo4.ProcedimientoBuscarProyectoInactivo, parametros);
-
-
-            if (resultados.Rows.Count > 0)
+            try
             {
-                return resultados;
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro parametro = new Parametro(RecursosBDModulo4.ParametroBusqueda, SqlDbType.VarChar, busqueda, false);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo4.ParametroUsuario, SqlDbType.VarChar, username, false);
+                parametros.Add(parametro);
+
+                BDConexion con = new BDConexion();
+                DataTable resultados = con.EjecutarStoredProcedureTuplas(RecursosBDModulo4.ProcedimientoBuscarProyectoInactivo, parametros);
+
+
+                if (resultados.Rows.Count > 0)
+                {
+                    return resultados;
+                }
+                else
+                {
+                    return null;
+                }
             }
-            else
+            catch (Exception e)
             {
-
-                return null;
-
+                throw e;
             }
-
-
         }
 
         /// <summary>
@@ -876,29 +937,33 @@ namespace DatosTotem.Modulo4
         /// </summary>
         /// <param name="busqueda">Cadena para la busqueda</param>
         /// <returns>Retrorna los proyectos activos de relacionado con el parametro</returns>
-        public static DataTable BuscarProyectosActivos(String busqueda)
+        public static DataTable BuscarProyectosActivos(String busqueda, String username)
         {
-
-
-            List<Parametro> parametros = new List<Parametro>();
-            Parametro parametro = new Parametro(RecursosBDModulo4.ParametroBusqueda, SqlDbType.VarChar, busqueda, false);
-            parametros.Add(parametro);
-
-            BDConexion con = new BDConexion();
-            DataTable resultados = con.EjecutarStoredProcedureTuplas(RecursosBDModulo4.ProcedimientoBuscarProyectoActivo, parametros);
-
-
-            if (resultados.Rows.Count > 0)
+            try
             {
-                return resultados;
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro parametro = new Parametro(RecursosBDModulo4.ParametroBusqueda, SqlDbType.VarChar, busqueda, false);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosBDModulo4.ParametroUsuario, SqlDbType.VarChar, username, false);
+                parametros.Add(parametro);
+
+                BDConexion con = new BDConexion();
+                DataTable resultados = con.EjecutarStoredProcedureTuplas(RecursosBDModulo4.ProcedimientoBuscarProyectoActivo, parametros);
+
+
+                if (resultados.Rows.Count > 0)
+                {
+                    return resultados;
+                }
+                else
+                {
+                    return null;
+                }
             }
-            else
+            catch (Exception e)
             {
-
-                return null;
-
+                throw e;
             }
-
 
         }
 

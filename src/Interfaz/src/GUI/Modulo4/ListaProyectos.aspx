@@ -9,17 +9,23 @@
 
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 
-    <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-        <asp:Literal runat="server" ID="jumbotronProyecto"></asp:Literal>
+    <div>
+        <form runat="server" class="form-horizontal" method="POST">
+            <div class="col-sm-7 col-md-7 col-lg-7 col-md-offset-1">
+                <asp:TextBox id="tbBusqueda" runat="server" placeholder="Buscar..." class="form-control" style="display: inline"></asp:TextBox>
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">    
+                <asp:DropDownList id="comboFiltro"  class="btn btn-default dropdown-toggle" runat="server" style="display: inline">
+                </asp:DropDownList>
+            </div>
+            <div class="col-sm-1 col-md-1 col-lg-1">
+                <button runat="Server" type="submit" class="btn btn-primary" onserverclick="BuscarProyectos">Buscar</button>   
+            </div>
+        
+            <br><br><br>
+            <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
+                <asp:Literal runat="server" ID="jumbotronProyecto"></asp:Literal>
+            </div>
+        </form>
     </div>
-    <script type="text/javascript">
-        $("#dpmoneda li a").click(function () {
-
-            $("#id-moneda").html($(this).text() + ' <span class="caret"></span>');
-
-        });
-        function goBack() {
-            window.history.back();
-        }
-    </script>
 </asp:Content>
