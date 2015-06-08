@@ -40,12 +40,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entidad.cs" />
+    <Compile Include="Entidades\Modulo 2\ClienteJuridico.cs" />
+    <Compile Include="Entidades\Modulo 2\ClienteNatural.cs" />
+    <Compile Include="Entidades\Modulo 2\Contacto.cs" />
+    <Compile Include="Entidades\Modulo 2\Direccion.cs" />
+    <Compile Include="Entidades\Modulo 2\Telefono.cs" />
     <Compile Include="Fabrica\FabricaEntidades.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entidades\Modulo 1\" />
-    <Folder Include="Entidades\Modulo 2\" />
     <Folder Include="Entidades\Modulo 3\" />
     <Folder Include="Entidades\Modulo 4\" />
     <Folder Include="Entidades\Modulo 5\" />

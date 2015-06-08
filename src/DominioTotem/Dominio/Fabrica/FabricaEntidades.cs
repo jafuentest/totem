@@ -11,6 +11,27 @@ namespace Dominio.Fabrica
         #endregion
 
         #region Modulo 2
+        public Entidades.Modulo2.ClienteJuridico ObtenerClienteJuridico()
+        {
+            return new Entidades.Modulo2.ClienteJuridico();
+        }
+        public Entidades.Modulo2.ClienteNatural ObtenerClienteNatural()
+        {
+            return new Entidades.Modulo2.ClienteNatural();
+        }
+        public Entidades.Modulo2.Contacto ObtenerContacto()
+        {
+            return new Entidades.Modulo2.Contacto();
+        }
+        public Entidades.Modulo2.Direccion ObtenerDireccion()
+        {
+            return new Entidades.Modulo2.Direccion();
+        }
+        public Entidades.Modulo2.Telefono ObtenerTelefono()
+        {
+            return new Entidades.Modulo2.Telefono();
+        }
+        
         #endregion
 
         #region Modulo 3
