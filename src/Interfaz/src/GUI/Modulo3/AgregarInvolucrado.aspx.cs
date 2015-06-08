@@ -105,7 +105,7 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
             if (comboTipoEmpresa.SelectedValue.Equals("1"))
             {
                 ClienteJuridico cli = new ClienteJuridico();
-                cli.Jur_Id = "1";
+                cli.Jur_Id = 1;
                 List<String> listaCargos = new List<String>();
                 listaCargos = logInv.ListarCargosEmpleados(cli);
 
@@ -168,7 +168,7 @@ public partial class GUI_Modulo3_Default : System.Web.UI.Page
             if (comboTipoEmpresa.SelectedIndex == 1 && comboCargo.SelectedIndex != -1)
             {
                 ClienteJuridico jur = new ClienteJuridico();
-                jur.Jur_Id = "1";
+                jur.Jur_Id = 1;
                 List<Contacto> listaContactos = new List<Contacto>();
                 listaContactos = logInv.ListarContactoCargoEmpresa(jur, comboCargo.SelectedItem.ToString());
                 foreach (Contacto c in listaContactos)

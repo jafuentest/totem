@@ -55,12 +55,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RecursosPUMod1.resx</DependentUpon>
     </Compile>
-    <Compile Include="Modulo2\PruebaBDCliente.cs" />
-    <Compile Include="Modulo2\PruebaCliente.cs" />
-    <Compile Include="Modulo2\PruebaContacto.cs" />
-    <Compile Include="Modulo2\PruebaLogicaCliente.cs" />
-    <Compile Include="Modulo2\PruebaLogicaContacto.cs" />
-    <Compile Include="Modulo2\PruebaLugar.cs" />
     <Compile Include="Modulo3\PruebaBDInvolucrados.cs" />
     <Compile Include="Modulo3\PruebaListaInvContacto.cs" />
     <Compile Include="Modulo3\PruebaListaInvUsuario.cs" />
@@ -84,7 +78,9 @@
     <Compile Include="Modulo8\PruebaBDPunto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Modulo2\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DatosTotem\DatosTotem.csproj">
       <Project>{b4b3079e-15ec-4575-89cd-5ff052c22bda}</Project>

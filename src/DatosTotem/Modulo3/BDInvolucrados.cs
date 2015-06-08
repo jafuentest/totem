@@ -265,14 +265,14 @@ namespace DatosTotem.Modulo3
                     if (row[RecursosBDModulo3.aliasValor].ToString().Equals("1"))
                     {
                         c.ConClienteJurid = new ClienteJuridico();
-                        c.ConClienteJurid.Jur_Id = row[RecursosBDModulo3.aliasClienteID].ToString();
+                        c.ConClienteJurid.Jur_Id = int.Parse(row[RecursosBDModulo3.aliasClienteID].ToString());
                         c.ConClienteJurid.Jur_Nombre = row[RecursosBDModulo3.aliasClienteNombre].ToString();
 
                     }
                     else
                     {
                         c.ConClienteNat = new ClienteNatural();
-                        c.ConClienteNat.Nat_Id = row[RecursosBDModulo3.aliasClienteID].ToString();
+                        c.ConClienteNat.Nat_Id = int.Parse(row[RecursosBDModulo3.aliasClienteID].ToString());
                         c.ConClienteJurid.Jur_Nombre = row[RecursosBDModulo3.aliasClienteNombre].ToString();
                     }
 
@@ -451,7 +451,7 @@ namespace DatosTotem.Modulo3
                 parametros = new List<Parametro>();
 
                 rifClienteJ = new Parametro("@cj_rif", SqlDbType.Int
-                                            , laEmpresa.Jur_Id, false);
+                                            , laEmpresa.Jur_Id.ToString(), false);
                 parametros.Add(rifClienteJ);
 
                 DataTable dt = laConexion.EjecutarStoredProcedureTuplas("ListarCargosPorEmpresa", parametros);
@@ -584,7 +584,7 @@ namespace DatosTotem.Modulo3
                 laConexion = new BDConexion();
                 parametros = new List<Parametro>();
 
-                rifClienteJ = new Parametro("@cj_rif", SqlDbType.Int, laEmpresa.Jur_Id, false);
+                rifClienteJ = new Parametro("@cj_rif", SqlDbType.Int, laEmpresa.Jur_Id.ToString(), false);
                 parametros.Add(rifClienteJ);
 
                 nombre_cargo = new Parametro("@car_nombre", SqlDbType.NVarChar, cargo, false);

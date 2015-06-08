@@ -90,12 +90,12 @@ public partial class GUI_Modulo4_CrearProyecto : System.Web.UI.Page
                 if (comboTipoCliente.SelectedValue.Equals("1"))
                 {
                     int idClienteNatural = LogicaNegociosTotem.Modulo4.LogicaProyecto.ObtenerIDClienteNatural(dpCLientes.SelectedValue);
-                    saved = LogicaNegociosTotem.Modulo4.LogicaProyecto.CrearProyectoClienteNatural(proyecto, idClienteNatural.ToString());
+                    saved = LogicaNegociosTotem.Modulo4.LogicaProyecto.CrearProyectoClienteNatural(proyecto, idClienteNatural);
                 }
                 else
                 {
                     int idClienteJuridico = LogicaNegociosTotem.Modulo4.LogicaProyecto.ObtenerIDClienteJuridico(dpCLientes.SelectedValue);
-                    saved = LogicaNegociosTotem.Modulo4.LogicaProyecto.CrearProyectoClienteJuridico(proyecto, idClienteJuridico.ToString());
+                    saved = LogicaNegociosTotem.Modulo4.LogicaProyecto.CrearProyectoClienteJuridico(proyecto, idClienteJuridico);
                 }
 
                 if (saved == true)

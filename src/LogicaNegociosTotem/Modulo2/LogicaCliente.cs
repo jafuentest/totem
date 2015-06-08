@@ -4,406 +4,193 @@ using System.Linq;
 using System.Text;
 using DominioTotem;
 using DatosTotem.Modulo2;
+using ExcepcionesTotem;
 using ExcepcionesTotem.Modulo2;
-using DatosTotem;
- 
 
 namespace LogicaNegociosTotem.Modulo2
 {
-
     /// <summary>
-    /// Clase encargada de gestionar la lógica de negocios relacionada a la gestión 
-    /// de Clientes y Empresas
+    /// Clase para el manejo de la logica
+    /// de clientes juridicos y naturales
+    /// con sus contactos
     /// </summary>
-   public class LogicaCliente
+    public static class LogicaCliente
     {
-
-       private BDCliente baseDeDatosCliente; 
-       /// <summary>
-       /// Constructor de la Clase LogicaCliente
-       /// </summary>
-       public LogicaCliente() 
-       {
-           baseDeDatosCliente = new BDCliente(); 
-       }
-
-
-       /// <summary>
-       /// Método que llama a acceso a datos para
-       /// verificar la existencia de un cliente
-       /// </summary>
-       /// <param name="rif"></param>
-       /// <returns></returns>
-       public int VerificarExistenciaJuridico(string rif) 
-       {
-           return baseDeDatosCliente.VerificarExistenciaClienteJuridico(rif);
-       
-       }
-
-       /// <summary>
-       /// Método que llama a acceso a datos para verificar la 
-       /// existencia de un cliente natural
-       /// </summary>
-       /// <param name="cedula"></param>
-       /// <returns></returns>
-       public int VerificarExistenciaNatural(string cedula)
-       {
-           return baseDeDatosCliente.VerificarExistenciaClienteNatural(cedula);
-
-       }
-
-       /// <summary>
-       /// Método que solicita a acceso a datos que inserte el cliente jurídico nuevo
-       /// </summary>
-       /// <param name="clienteJuridico">Información del Cliente Jurídico</param>
-       /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-      public bool AgregarClienteJuridico(string rif, string nombre, int fkLugar,string direccion,string contactoNombre,
-           string apellidoNombre,int idCargo,string telefono,string cedula)
-       {
-           try
-           {
-               int codTele = 0;
-               int idNumero = 0;
-
-               string contenedorCodigo = string.Empty;
-               //Vamos a separar el string de telefono en codTele y IdNumero para 
-               //ser insertados como númericos en BD.
-               char[] cadena = telefono.ToCharArray();
-               char[] codigoAux = new char[4];
-               char[] numeroAux = new char[8];
-               string codigoSeparado = "";
-               string numeroSeparado = "";
-               int j = 0; 
-               for (int i = 0; i < cadena.Length; i++)
-               {
-                   //Los 3 primeros indices son para codigo
-                   if (i < 3)
-                   {
-                       codigoAux[i] = cadena[i];
-                       codigoSeparado = codigoSeparado + codigoAux[i]; 
-                       
-                   }
-                   //Los demás son para teléfono
-                   else
-                   {
-                       numeroAux[j] = cadena[i];
-                       numeroSeparado = numeroSeparado + numeroAux[j];
-                       j++; 
-                   }
-               }
-               
-               
-               codTele = Convert.ToInt32(codigoSeparado);
-               idNumero = Convert.ToInt32(numeroSeparado);
-
-               ClienteJuridico clienteJuridico = new ClienteJuridico(rif, nombre);
-
-               return baseDeDatosCliente.AgregarClienteJuridico(clienteJuridico, fkLugar,direccion,contactoNombre ,
-                   apellidoNombre, idCargo,codTele, idNumero,cedula);
-           }
-           catch(Exception e)
-           {
-               throw new ExcepcionesTotem.Modulo2.ClienteLogicaException("L_02_003","Error dentro de la capa lógica",e);
-           }
-       }
-
-       /// <summary>
-       /// Método que solicita a acceso a datos que inserte el cliente natural nuevo
-       /// </summary>
-       /// <param name="clienteNatural">Información del Cliente Natural</param>
-       /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-       public bool AgregarClienteNatural(string identificador, string nombre, string apellido,
-           int fkLugar,string direccion,string correo, string telefono)
-       {
-
-           try
-           {
-               int codTele = 0;
-               int idNumero = 0;
-
-               string contenedorCodigo = string.Empty;
-               //Vamos a separar el string de telefono en codTele y IdNumero para 
-               //ser insertados como númericos en BD.
-               char[] cadena = telefono.ToCharArray();
-               char[] codigoAux = new char[4];
-               char[] numeroAux = new char[8];
-               string codigoSeparado = "";
-               string numeroSeparado = "";
-               int j = 0;
-               for (int i = 0; i < cadena.Length; i++)
-               {
-                   //Los 3 primeros indices son para codigo
-                   if (i < 3)
-                   {
-                       codigoAux[i] = cadena[i];
-                       codigoSeparado = codigoSeparado + codigoAux[i];
-
-                   }
-                   //Los demás son para teléfono
-                   else
-                   {
-                       numeroAux[j] = cadena[i];
-                       numeroSeparado = numeroSeparado + numeroAux[j];
-                       j++;
-                   }
-               }
-
-
-               codTele = Convert.ToInt32(codigoSeparado);
-               idNumero = Convert.ToInt32(numeroSeparado);
-
-               ClienteNatural clienteNatural = new ClienteNatural();
-               clienteNatural.Nat_Id = identificador; 
-               clienteNatural.Nat_Nombre = nombre;
-               clienteNatural.Nat_Apellido = apellido;
-               clienteNatural.Nat_Direccion = direccion;
-               clienteNatural.Nat_Correo = correo; 
-               
-
-
-              return baseDeDatosCliente.AgregarClienteNatural(clienteNatural,
-                  fkLugar,codTele,idNumero);
-           }
-           catch (Exception e)
-           {
-               throw new ExcepcionesTotem.Modulo2.ClienteLogicaException("L_02_003", "Error dentro de la capa lógica", e);
-           }
-
-       }
-
-/// <summary>
-       /// Método que le solicita a acceso a datos que borre el cliente natural seleccionado
-       /// ,en la Base de Datos
-       /// </summary>
-       /// <param name="clienteNatural">Información del Cliente Natural</param>
-       /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-       public bool EliminarClienteNatural(string cedula)
-       {
-           try
-           {
-               return baseDeDatosCliente.EliminarClienteNatural(cedula);
-           }
-           catch(ExcepcionesTotem.ExceptionTotemConexionBD e)
+        public static void agregarClienteJuridico(ClienteJuridico elCliente)
+        {
+            try
             {
-                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
-                    RecursoGeneralBD.Codigo_Error_Desconexion,
-                    RecursoGeneralBD.Mensaje_Error_Desconexion,
-                    e);
+                BDCliente.agregarClienteJuridico(elCliente);
             }
-           catch(NullReferenceException e)
-           {
-               throw new ClienteInexistenteException("T_02_002"
-                   , "Cliente Inexistente", e);
-           }
-           catch(Exception e)
-           {
-               throw new ExcepcionesTotem.ExceptionTotem(RecursoGeneralBD.Codigo,
-                  RecursoGeneralBD.Mensaje, e);
-           }
-       }
+            catch (Exception ex)
+            {
 
+            }
+        }
+        public static List<ClienteJuridico> consultarListaClientesJuridicos()
+        {
+            try
+            {
+                return BDCliente.consultarListaClientesJuridicos();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static ClienteJuridico consultarDatosClienteJuridicoId(int idClienteJur)
+        {
+            try
+            {
+                return BDCliente.consultarDatosClienteJuridicoId(idClienteJur);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static Contacto consultarDatosContactoID(int idCon)
+        {
+            try
+            {
+                return BDCliente.consultarDatosContactoID(idCon);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static List<Contacto> consultarListaDeContactosJuridico(ClienteJuridico elCliente)
+        {
+            try
+            {
+                return BDCliente.consultarListaDeContactosJuridico(elCliente);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void eliminarClienteJuridico(ClienteJuridico elCliente)
+        {
+            try
+            {
+                BDCliente.eliminarClienteJuridico(elCliente);
+            }
+            catch(Exception ex)
+            {
 
-       /// <summary>
-       ///  Método que le solicita a acceso a datos que actualice los datos del cliente natural seleccionado, 
-       /// en la Base de Datos
-       /// </summary>
-       /// <param name="clienteNatural">Información del Cliente Natural</param>
-       /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-      
+            }
+        }
+        public static void eliminarContacto(Contacto elContacto)
+        {
+            try
+            {
+                BDCliente.eliminarContacto(elContacto);
+            }
+            catch (Exception ex)
+            {
 
-       public bool ModificarClienteNatural(string identificador, string nombre, string apellido, string correo, string pais,
-           string estado, string ciudad, string direccion, string telefono)
-       {
+            }
+        }
+        public static void modificarClienteJuridico(ClienteJuridico elCliente)
+        {
+            try
+            {
+                BDCliente.modificarClienteJuridico(elCliente);
+            }
+            catch(Exception ex)
+            {
 
-           try
-           {
-               int codTele = 0;
-               int idNumero = 0;
+            }
+        }
+        public static void agregarClienteNatural(ClienteNatural elCliente)
+        {
+            try
+            {
+                BDCliente.agregarClienteNatural(elCliente);
+            }
+            catch(Exception ex)
+            {
 
-               string contenedorCodigo = string.Empty;
-               //Vamos a separar el string de telefono en codTele y IdNumero para 
-               //ser insertados como númericos en BD.
-               char[] cadena = telefono.ToCharArray();
-               char[] codigoAux = new char[4];
-               char[] numeroAux = new char[8];
-               string codigoSeparado = "";
-               string numeroSeparado = "";
-               int j = 0;
-               for (int i = 0; i < cadena.Length; i++)
-               {
-                   //Los 3 primeros indices son para codigo
-                   if (i < 3)
-                   {
-                       codigoAux[i] = cadena[i];
-                       codigoSeparado = codigoSeparado + codigoAux[i];
-
-                   }
-                   //Los demás son para teléfono
-                   else
-                   {
-                       numeroAux[j] = cadena[i];
-                       numeroSeparado = numeroSeparado + numeroAux[j];
-                       j++;
-                   }
-               }
-
-
-               codTele = Convert.ToInt32(codigoSeparado);
-               idNumero = Convert.ToInt32(numeroSeparado);
-              
-               ClienteNatural clienteNatural = new ClienteNatural();
-               clienteNatural.Nat_Id = identificador;
-               clienteNatural.Nat_Nombre = nombre;
-               clienteNatural.Nat_Apellido = apellido;
-               clienteNatural.Nat_Pais = pais;
-               clienteNatural.Nat_Estado = estado;
-               clienteNatural.Nat_Correo = correo;
-               clienteNatural.Nat_Direccion = direccion;
-
-               return baseDeDatosCliente.ModificarClienteNatural(clienteNatural, ciudad, codTele, idNumero);
-           }
-           catch (Exception e)
-           {
-               throw new ExcepcionesTotem.Modulo2.ClienteLogicaException("L_02_003", "Error dentro de la capa lógica", e);
-           }
-
-       }
-
-
-       /// <summary>
-       ///  Método que le solicita a acceso a datos que actualice los datos del cliente jurídico seleccionado, 
-       /// en la Base de Datos
-       /// </summary>
-       /// <param name="clienteNatural">Información del Cliente Natural</param>
-       /// <returns>Retorna true si lo realizó, false en caso contrario</returns>
-       public bool ModificarClienteJuridico(ClienteJuridico clienteJuridico)
-       {
-           ClienteJuridico cliente = new ClienteJuridico();
-           cliente = clienteJuridico;
-           return baseDeDatosCliente.ModificarClienteJuridico(cliente);
-       }
-
-
-       /// <summary>
-       ///  Método que solicita a acceso a datos un cliente juridico en particular
-       /// </summary>
-       /// <returns>Retorna el objeto de tipo Cliente Juridico, null si el objeto no existe</returns>
-       public ClienteJuridico ConsultarClienteJuridico(string id)
-       {
-           return baseDeDatosCliente.ConsultarClienteJuridico( id); 
-       }
-
-
-       /// <summary>
-       /// Método que solicita a acceso a datos un cliente natural en particular
-       /// </summary>
-       /// <returns>Retorna el objeto de tipo Cliente Juridico, null si el objeto no existe</returns>
-       public ClienteNatural ConsultarClienteNatural(int id)
-       {
-           
-           return baseDeDatosCliente.ConsultarClienteNatural(id); 
-       }
-
-       /// <summary>
-       /// Método que solicita a acceso a datos la lista de todos los clientes juridicos
-       /// </summary>
-       /// <returns>Retorna una lista de Clientes Juridicos, null si el objeto no existe</returns>
-       public List<ClienteJuridico> ConsultarClientesJuridicos()
-       {
-           return baseDeDatosCliente.ConsultarClientesJuridicos();
-       }
-
-
-       /// <summary>
-       /// Método que solicita a acceso a datos la lista de todos los clientes naturales
-       /// </summary>
-       /// <returns>Retorna una lista de Clientes Naturales, null si el objeto no existe</returns>
-       public List<ClienteNatural> ConsultarClientesNaturales()
-       {
-           return baseDeDatosCliente.ConsultarClientesNaturales();
-       }
-
-
-       /// <summary>
-       /// Método que solicita a la capa de datos la información sobre los clientes jurídicos dado 
-       /// un parámetro de búsqueda
-       /// </summary>
-       /// <param name="parametroBusqueda">Parámetro de Búsqueda</param>
-       /// <returns>Retorna una lista de clientes jurídicos que cumplan con el 
-       /// parámetro de búsqueda, null si ninguno cumple con el parámetro</returns>
-       public List<ClienteJuridico> ConsultarClientesJuridicosParametrizados(string parametroBusqueda)
-       {
-           return baseDeDatosCliente.ConsultarClientesJuridicosParametrizados(parametroBusqueda);
-       }
-
-       /// <summary>
-       /// Método que solicita a la capa de datos la información sobre los clientes naturales dado 
-       /// un parámetro de búsqueda
-       /// </summary>
-       /// <param name="parametroBusqueda">Parámetro de Búsqueda</param>
-       /// <returns>Retorna una lista de clientes naturales que cumplan con el 
-       /// parámetro de búsqueda, null si ninguno cumple con el parámetro</returns>
-       public List<ClienteNatural> ConsultarClientesNaturalesParametrizados(string parametroBusqueda)
-       {
-           return baseDeDatosCliente.ConsultarClientesNaturalesParametrizados(parametroBusqueda);
-       }
-
-       /// <summary>
-       /// Método que llama acceso a datos para buscar el listado de cargos 
-       /// a llenar
-       /// </summary>
-       /// <returns></returns>
-       public List<string> LlenarComboCargo() 
-       {
-           List<string> cargos = new List<string>();
-           cargos = baseDeDatosCliente.LlenarCargoCombo();
-           return cargos; 
-       }
-
-       #region Consultar Clientes según Nombre del Proyecto
-
-       /// <summary>
-       /// Método de la capa lógica que invoca a acceso a datos
-       /// para que le retorne los datos del cliente según el 
-       /// nombre de un proyecto 
-       /// </summary>
-       /// <param name="nombre">Nombre del Proyecto</param>
-       /// <returns>Los datos del Cliente Jurídico</returns>
-       public ClienteJuridico ConsultarClienteJNombreProyecto(string codigo)
-       {
-           try
-           {
-               ClienteJuridico elCliente = new ClienteJuridico();
-               elCliente = baseDeDatosCliente.DatosClienteProyecto(codigo);
-               return elCliente;
-           }
-           catch (ExcepcionesTotem.ExceptionTotemConexionBD e)
-           {
-               throw new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralBD.Codigo,
-                   RecursoGeneralBD.Mensaje, e);
-           }
-           catch (ClienteInexistenteException e)
-           {
-               throw new ExcepcionesTotem.Modulo2.ClienteInexistenteException(RecursosLogicaModulo2.CodigoClienteInexistente,
-                    RecursosLogicaModulo2.MensajeClienteInexistente,
-                    e);
-           }
-
-           catch (OperacionInvalidaException ex)
-           {
-               throw new OperacionInvalidaException
-                   (RecursosLogicaModulo2.CodigoOperacionInvalida,
-                   RecursosLogicaModulo2.MensajeOperacionInvalida,
-                   ex);
-           }
-           catch (ExcepcionesTotem.ExceptionTotem ex)
-           {
-               throw new ExcepcionesTotem.ExceptionTotem(RecursoGeneralBD.Codigo,
-                    RecursoGeneralBD.Mensaje, ex);
-           }
-       }
-
-       #endregion
-
+            }
+        }
+        public static List<ClienteNatural> consultarListaClientesNaturales()
+        {
+            try
+            {
+                return BDCliente.consultarListaClientesNaturales();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static ClienteNatural consultarDatosClienteNaturalId(int idClienteNat)
+        {
+            try 
+            {
+                return BDCliente.consultarDatosClienteNaturalId(idClienteNat);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void eliminarClienteNatural(ClienteNatural elCliente)
+        {
+            try
+            {
+                BDCliente.eliminarClienteNatural(elCliente);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void modificarClienteNatural(ClienteNatural elCliente)
+        {
+            try
+            {
+                BDCliente.modificarClienteNatural(elCliente);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static List<String> consultarPaises()
+        {
+            try
+            {
+                return BDCliente.consultarPaises();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static List<String> consultarEstadosPorPais(String elPais)
+        {
+            try
+            {
+                return BDCliente.consultarEstadosPorPais(elPais); 
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static List<String> consultarCiudadesPorEstado(String elEstado)
+        {
+            try
+            {
+                return BDCliente.consultarCiudadesPorEstado(elEstado);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }    
     }
 }

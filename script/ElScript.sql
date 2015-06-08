@@ -1,4 +1,4 @@
---Begin CREATES
+﻿--Begin CREATES
 CREATE
   TABLE ACTOR
   (
@@ -95,7 +95,7 @@ GO
 CREATE
   TABLE CLIENTE_JURIDICO
   (
-    cj_id        INTEGER NOT NULL ,
+    cj_id        INTEGER IDENTITY(1,1) NOT NULL ,
     cj_rif       VARCHAR (20) NOT NULL ,
     cj_nombre    VARCHAR (60) NOT NULL ,
     cj_logo      VARCHAR (60) ,
@@ -116,7 +116,7 @@ GO
 CREATE
   TABLE CLIENTE_NATURAL
   (
-    cn_id        INTEGER NOT NULL ,
+    cn_id        INTEGER IDENTITY(1,1) NOT NULL ,
 	cn_cedula    VARCHAR (20) NOT NULL ,
     cn_nombre    VARCHAR (60) NOT NULL ,
     cn_apellido  VARCHAR (60) NOT NULL ,
@@ -137,7 +137,7 @@ GO
 CREATE
   TABLE CONTACTO
   (
-    con_id                 INTEGER NOT NULL ,
+    con_id                 INTEGER IDENTITY(1,1) NOT NULL ,
 	con_cedula    		   VARCHAR (20) NOT NULL ,
     con_nombre             VARCHAR (100) NOT NULL ,
     con_apellido           VARCHAR (50) NOT NULL ,
@@ -244,7 +244,7 @@ GO
 CREATE
   TABLE LUGAR
   (
-    lug_id           INTEGER NOT NULL ,
+    lug_id           INTEGER IDENTITY(1,1) NOT NULL ,
     lug_nombre       VARCHAR (100) NOT NULL ,
     lug_tipo         VARCHAR (40) NOT NULL ,
     lug_codigopostal INTEGER ,
@@ -419,9 +419,9 @@ GO
 CREATE
   TABLE TELEFONO
   (
-    tel_id                INTEGER NOT NULL ,
-    tel_codigo            INTEGER NOT NULL ,
-    tel_numero            INTEGER NOT NULL ,
+    tel_id                INTEGER IDENTITY(1,1) NOT NULL ,
+    tel_codigo            VARCHAR (5)  NOT NULL ,
+    tel_numero            VARCHAR (20) NOT NULL ,
     CLIENTE_NATURAL_cn_id INTEGER ,
     CONTACTO_con_id       INTEGER ,
     CONSTRAINT TELEFONO_PK PRIMARY KEY CLUSTERED (tel_id)
@@ -1053,668 +1053,504 @@ go
 --End SP1
 
 --Begin SP2
-------------------+ PROCEDIMIENTOS MODULO 2 ----------------------------------------------------
+--------------------------PROCEDURE CONSULTAR PAISES----------------------------
+CREATE PROCEDURE M2_ConsultarPaises
+AS
+BEGIN
+	select lug_nombre
+	from LUGAR where lug_tipo = 'Pais';
+END;
+GO
+----------------------PROCEDURE CONSULTAR ESTADOS POR PAIS-----------------------
+CREATE PROCEDURE M2_ConsultarEstadosPorPais
+	@pais [varchar](60)
+AS
+BEGIN
+	select lug_nombre
+	from LUGAR 
+	where lug_tipo = 'Estado' and 
+		  LUGAR_lug_id = (select lug_id from LUGAR 
+					      where lug_nombre = @pais and lug_tipo = 'Pais');
+END;
+GO
+--------------------PROCEDURE CONSULTAR CIUDADES POR ESTADO----------------------
+CREATE PROCEDURE M2_ConsultarCiudadesPorEstado
+	@estado [varchar](60)
+AS
+BEGIN
+	select lug_nombre
+	from LUGAR 
+	where lug_tipo = 'Ciudad' and 
+		  LUGAR_lug_id = (select lug_id from LUGAR 
+					      where lug_nombre = @estado and lug_tipo = 'Estado');
+END;
+go
+------------------------PROCEDURE INSERTAR PAISES--------------------------------
+CREATE PROCEDURE M2_InsertarPaises
+AS
+BEGIN
+	DECLARE @nombresarray TABLE(nombres VARCHAR(100));
+	DECLARE @i int;
+	set @i = 0;
+	insert into @nombresarray 
+	values ('Aruba'),('Afghanistan'),('Angola'),('Anguilla'),('Albania'),('Andorra'),('Netherlands Antilles'),('United Arab Emirates'),
+	('Argentina'),('Armenia'),('American Samoa'),('Antarctica'),('French Southern territories'),('Antigua and Barbuda'),('Australia'),
+	('Austria'),('Azerbaijan'),('Burundi'),('Belgium'),('Benin'),('Burkina Faso'),('Bangladesh'),('Bulgaria'),('Bahrain'),('Bahamas'),
+	('Bosnia and Herzegovina'),('Belarus'),('Belize'),('Bermuda'),('Bolivia'),('Brazil'),('Barbados'),('Brunei'),('Bhutan'),('Bouvet Island'),
+	('Botswana'),('Central African Republic'),('Canada'),('Cocos (Keeling) Islands'),('Switzerland'),('Chile'),('China'),('Côte d’Ivoire'),('Cameroon'),
+	('Congo, The Democratic Republic of the'),('Congo'),('Cook Islands'),('Colombia'),('Comoros'),('Cape Verde'),('Costa Rica'),('Cuba'),('Christmas Island'),
+	('Cayman Islands'),('Cyprus'),('Czech Republic'),('Germany'),('Djibouti'),('Dominica'),('Denmark'),('Dominican Republic'),('Algeria'),('Ecuador'),('Egypt'),
+	('Eritrea'),('Western Sahara'),('Spain'),('Estonia'),('Ethiopia'),('Finland'),('Fiji Islands'),('Falkland Islands'),('France'),('Faroe Islands'),
+	('Micronesia, Federated States of'),('Gabon'),('United Kingdom'),('Georgia'),('Ghana'),('Gibraltar'),('Guinea'),('Guadeloupe'),('Gambia'),('Guinea-Bissau'),
+	('Equatorial Guinea'),('Greece'),('Grenada'),('Greenland'),('Guatemala'),('French Guiana'),('Guam'),('Guyana'),('Hong Kong'),('Heard Island and McDonald Islands'),
+	('Honduras'),('Croatia'),('Haiti'),('Hungary'),('Indonesia'),('India'),('British Indian Ocean Territory'),('Ireland'),('Iran'),('Iraq'),('Iceland'),('Israel'),
+	('Italy'),('Jamaica'),('Jordan'),('Japan'),('Kazakstan'),('Kenya'),('Kyrgyzstan'),('Cambodia'),('Kiribati'),('Saint Kitts and Nevis'),('South Korea'),('Kuwait'),
+	('Laos'),('Lebanon'),('Liberia'),('Libyan Arab Jamahiriya'),('Saint Lucia'),('Liechtenstein'),('Sri Lanka'),('Lesotho'),('Lithuania'),('Luxembourg'),('Latvia'),
+	('Macao'),('Morocco'),('Monaco'),('Moldova'),('Madagascar'),('Maldives'),('Mexico'),('Marshall Islands'),('Macedonia'),('Mali'),('Malta'),('Myanmar'),('Mongolia'),
+	('Northern Mariana Islands'),('Mozambique'),('Mauritania'),('Martinique'),('Mauritius'),('Malawi'),('Malaysia'),('Mayotte'),('Namibia'),('New Caledonia'),('Niger'),
+	('Norfolk Island'),('Nigeria'),('Nicaragua'),('Niue'),('Netherlands'),('Norway'),('Nepal'),('Nauru'),('New Zealand'),('Oman'),('Pakistan'),('Panama'),('Pitcairn'),
+	('Peru'),('Philippines'),('Palau'),('Papua New Guinea'),('Poland'),('Puerto Rico'),('North Korea'),('Portugal'),('Paraguay'),('Palestine'),('French Polynesia'),
+	('Qatar'),('Réunion'),('Romania'),('Russian Federation'),('Rwanda'),('Saudi Arabia'),('Sudan'),('Senegal'),('Singapore'),
+	('South Georgia and the South Sandwich Islands'),('Saint Helena'),('Svalbard and Jan Mayen'),('Solomon Islands'),('Sierra Leone'),
+	('El Salvador'),('San Marino'),('Somalia'),('Saint Pierre and Miquelon'),('Sao Tome and Principe'),('Suriname'),('Slovakia'),('Slovenia'),
+	('Sweden'),('Swaziland'),('Seychelles'),('Syria'),('Turks and Caicos Islands'),('Chad'),('Togo'),('Thailand'),('Tajikistan'),('Tokelau'),
+	('Turkmenistan'),('East Timor'),('Tonga'),('Trinidad and Tobago'),('Tunisia'),('Turkey'),('Tuvalu'),('Taiwan'),('Tanzania'),('Uganda'),('Ukraine'),
+	('United States Minor Outlying Islands'),('Uruguay'),('United States'),('Uzbekistan'),('Holy See (Vatican City State)'),('Saint Vincent and the Grenadines'),
+	('Venezuela'),('South America'),('Virgin Islands, British'),('Virgin Islands, U.S.'),('Vietnam'),('Vanuatu'),('Wallis and Futuna'),('Samoa'),('Yemen'),('Yugoslavia'),
+	('South Africa'),('Zambia'),('Zimbabwe');
+	
+	while (@i < (select count(*) from @nombresarray))
+	begin
+		insert into LUGAR (lug_nombre, lug_tipo) 
+		values ((
+		SELECT a.nombres
+		FROM
+			(SELECT ROW_NUMBER() OVER (ORDER BY  nombres) AS ROWNUMBERS, * 
+			FROM @nombresarray) a
+		WHERE a.ROWNUMBERS = @i)
+		, 'Pais');
+		set @i = @i + 1;
+	end	
+END;
+go
+------------------------PROCEDURE AGREGAR CLIENTE_JURIDICO----------------------- 
+CREATE PROCEDURE M2_AgregarClienteJur	 
+	
+--Datos de la empresa
+    @cj_rif       [VARCHAR] (20),
+    @cj_nombre    [VARCHAR] (60),
+    @cj_logo      [VARCHAR] (60),
+	
+--Direccion de la empresa
+	
+    @pais         [VARCHAR] (100),
+	
+    @estado       [VARCHAR] (100),
+	
+    @ciudad       [VARCHAR] (100), 
+	
+    @direccion    [VARCHAR] (100),
+	
+    @codigo_post  [int], 
+	
+--Datos del contacto
+	
+    @con_cedula   [VARCHAR] (20),
+    @con_nombre   [VARCHAR] (100),
+    @con_apellido [VARCHAR] (50),
+	
+--Nombre del cargo del contacto
+	
+    @con_cargo    [VARCHAR] (60),
+	
+--Telefono del contacto
+	
+    @con_cod_tel  [VARCHAR] (5),
+	
+    @con_num_tel  [VARCHAR] (20)
 
-------------------+Verificar Cliente Juridico(ClienteJuridico cjid)------------------------------
--- Método verificarClienteJuridico(ClienteJuridico laEmpresa) verifica si el cliente existe o no  
+AS 
+
+BEGIN
+	
+DECLARE @num_paises as int;
+	
+select @num_paises = count(*)
+	from LUGAR where lug_nombre = @pais and lug_tipo = 'País';
+
+	
+DECLARE @num_estados as int;
+	
+select @num_estados = count(*)
+	from LUGAR where lug_nombre = @estado and lug_tipo = 'Estado';
+
+	
+DECLARE @num_ciudades as int;
+	
+select @num_ciudades = count(*)
+	from LUGAR where lug_nombre = @ciudad and lug_tipo = 'Ciudad';
+
+	
+DECLARE @num_cargos as int;
+	
+select @num_cargos = count(*)
+	from CARGO where car_nombre = @con_cargo;
+
+	
+if @num_paises = 0
+		
+	INSERT INTO LUGAR (lug_nombre, lug_tipo, LUGAR_lug_id) 
+		
+	VALUES (@pais, 'País', null);
+		
+	
+if @num_estados = 0
+		
+	INSERT INTO LUGAR (lug_nombre, lug_tipo, LUGAR_lug_id) 
+		
+	VALUES (@estado, 'Estado', 
+		
+	(SELECT l.lug_id FROM LUGAR l WHERE l.lug_nombre = @pais and l.lug_tipo = 'País'));
+
+	
+if @num_ciudades = 0
+		
+	INSERT INTO LUGAR (lug_nombre, lug_tipo, LUGAR_lug_id) 
+		
+	VALUES (@ciudad, 'Ciudad', 
+		
+	(SELECT l.lug_id FROM LUGAR l WHERE l.lug_nombre = @estado and l.lug_tipo = 'Estado'));
+	
+	
+	
+INSERT INTO LUGAR (lug_nombre, lug_tipo, lug_codigopostal, LUGAR_lug_id)
+	
+VALUES (@direccion, 'Direccion', @codigo_post, 
+	
+(SELECT l.lug_id FROM LUGAR l WHERE l.lug_nombre = @ciudad and l.lug_tipo = 'Ciudad'));
+
+	
+
+INSERT INTO CLIENTE_JURIDICO (cj_rif, cj_nombre, cj_logo, LUGAR_lug_id)
+	
+VALUES (@cj_rif, @cj_nombre, @cj_logo, (SELECT MAX(lug_id) FROM LUGAR));
+
+	
+
+if @num_cargos = 0
+		
+	INSERT INTO CARGO (car_nombre) VALUES (@con_cargo);
+
+	
+
+INSERT INTO CONTACTO (con_cedula, con_nombre, con_apellido, CLIENTE_JURIDICO_cj_id, CARGO_car_id) 
+	
+VALUES (@con_cedula, @con_nombre, @con_apellido, 
+	(SELECT MAX(cj_id) FROM CLIENTE_JURIDICO), 
+	
+(SELECT car_id FROM CARGO WHERE car_nombre = @con_cargo));
+	
+	
+
+INSERT INTO TELEFONO (tel_codigo, tel_numero, CONTACTO_con_id) VALUES (@con_cod_tel, @con_num_tel, 
+	
+(SELECT con_id FROM CONTACTO WHERE con_cedula = @con_cedula));
 
 
-CREATE PROCEDURE Procedure_verificarClienteJuridico
-		 
-		@cj_rif [nvarchar](20)	
+END;
+GO
+------------------------PROCEDURE MODIFICAR CLIENTE_JURIDICO----------------------- 
+CREATE PROCEDURE M2_ModificarClienteJur	 
+	--Datos de la empresa
+	@cj_id		  [int], 
+	@cj_rif       [VARCHAR] (20),
+    @cj_nombre    [VARCHAR] (60),
+    @cj_logo      [VARCHAR] (60),
+	--Direccion de la empresa
+	@direccion    [VARCHAR] (100),
+	@codigo_post  [int]
 AS 
 BEGIN
-		(SELECT count(cj_rif) FROM CLIENTE_JURIDICO WHERE cj_rif = @cj_rif);
-END;
-GO
 
-------------------+Agregar Cliente Juridico------------------------------
--- Método Agregar Cliente Juridico inserta todos los datos pertenecientesa a la tabla Cliente_Juridico
+	if (@direccion != (select lug_nombre from LUGAR where lug_id = (select LUGAR_lug_id from CLIENTE_JURIDICO where cj_id = @cj_id)))
+		UPDATE LUGAR
+		SET
+			lug_nombre       = @direccion,
+			lug_codigopostal = @codigo_post
+		WHERE
+			lug_id = (select LUGAR_lug_id from CLIENTE_JURIDICO where cj_id = @cj_id);
 
-
-CREATE PROCEDURE Procedure_AgregarClienteJuridico
-	 
-	@cj_rif [nvarchar](20),
-	@nombre [nvarchar](60),
-	@cj_logo [nvarchar](60),
-	@Fklugar [int],
-	@nombreDireccion varchar(60),
-	@cedula          varchar(20),
-	@nombreContacto     varchar(60),
-	@apellido            varchar(60),
-	@idCargo         int,
-	
-	@codigo               int,
-	@numero               int
-	
-AS
-
-DECLARE @idMaxClienteJuridico int = 0
-DECLARE @idLugarDireccion int = 0
-DECLARE @idMaxLugar int = 0
-DECLARE @idMaxContacto  int =0
-DECLARE @idMaxTelefono int=0
-DECLARE @idTelefono int = 0
-DECLARE @idDireccionAInsertar int = 0
-
- 
-BEGIN
-
-select @idLugarDireccion = count(LUG_id) from lugar 
-	 where  LUG_tipo = 'Direccion' and LUGAR_lug_id = @Fklugar;
-
-select @idDireccionAInsertar = LUG_ID from lugar 
-	 where  LUG_tipo = 'Direccion' and LUGAR_lug_id = @Fklugar;
-
-/*Si la dirección es nueva o no existe*/
-if (@idLugarDireccion = 0)
-		begin 
-			select @idMaxLugar = MAX(LUG_id) from lugar;
-
-			set @idMaxLugar = @idMaxLugar + 1;
-
-			INSERT INTO lugar VALUES (@idMaxLugar,@nombreDireccion,'Direccion',null,@Fklugar);
-
-			set @idDireccionAInsertar =  @idMaxLugar; 
-			
-		end
-
-/*Busco el último id del cliente insertado e inserto 
-el último id + 1*/
-select @idMaxClienteJuridico = Max(cj_id) from CLIENTE_JURIDICO;
-
-    set @idMaxClienteJuridico = @idMaxClienteJuridico + 1;
-
-    INSERT INTO CLIENTE_JURIDICO(cj_ID, cj_rif, cj_nombre, cj_logo,LUGAR_lug_id)
-    VALUES(@idMaxClienteJuridico, @cj_rif, @nombre, @cj_logo,@idDireccionAInsertar);
-
-	
-
-SELECT @idMaxContacto = Max(con_id) FROM CONTACTO; 
-
-	set @idMaxContacto = @idMaxContacto +1; 
-
-	INSERT INTO CONTACTO(con_id,con_cedula,con_nombre,con_apellido,CLIENTE_JURIDICO_cj_id,CARGO_car_id,CLIENTE_NATURAL_cn_id)
-	VALUES(@idMaxContacto,@cedula,@nombreContacto,@apellido,@idMaxClienteJuridico,@idCargo,null);
-
-select @idTelefono=count(*) from telefono where tel_numero=@numero  and tel_codigo=@codigo
-
-if (@idTelefono=0)
-begin 
-			select @idMaxTelefono = Max(tel_id) from TELEFONO;
-
-			set @idMaxTelefono = @idMaxTelefono+1; 
-			INSERT INTO TELEFONO VALUES (@idMaxTelefono,@codigo,@numero,null,@idMaxContacto);
-
-			
-		end
-
-END;
-GO
- 
- 
-
-------------------+Modificar Cliente Juridico------------------------------
--- Método Modificar Cliente Juridico Modifica los datos de la tabla Cliente Juridico segun el id asociado
-
-CREATE PROCEDURE Procedure_modificarClienteJuridico
-
-	@cj_rif [nvarchar](20),
-	@cj_nombre [nvarchar](60),
-	@idCiudad int,
-	@nombreDireccion varchar(100)
-
-	     
-
-	AS
-	
-DECLARE @idMaxLugar int = 0
-DECLARE @idLugarDireccion int = 0
-
-
-BEGIN
-
-	select @idLugarDireccion = LUG_id from LUGAR where LUG_nombre = @nombreDireccion and LUG_tipo = 'Direccion' and LUGAR_lug_id = @idCiudad;
-
-	if (@idLugarDireccion = 0)
-		begin 
-			select @idMaxLugar = MAX(LUG_id) from lugar;
-
-			set @idMaxLugar = @idMaxLugar + 1;
-
-			INSERT INTO lugar VALUES (@idMaxLugar,@nombreDireccion,'Direccion',null,@idCiudad);
-
-			set @idLugarDireccion = @idMaxLugar;
-		end
-
-	UPDATE CLIENTE_JURIDICO 
-
-	SET 	
-		 	
-		cj_rif     = @cj_rif,
-		cj_nombre  = @cj_nombre,		  
-		LUGAR_lug_id  = @idLugarDireccion
+	UPDATE CLIENTE_JURIDICO
+	SET 
+		cj_nombre = @cj_nombre,
+		cj_logo   = @cj_logo,
+		cj_rif    = @cj_logo,
+		LUGAR_lug_id = (select lug_id from LUGAR where lug_nombre = @direccion)
 	WHERE
-		cj_rif = @cj_rif
+		cj_id = @cj_id;
 END;
 GO
-
-
-
-
-
-------------------+consultar Datos Cliente Juridico------------------------------
--- Método Consultar Cliente Juridico Consulta todos los datos pertenecientesa a la tabla Cliente_Juridico según el id
- 
-
-CREATE PROCEDURE Procedure_consultarDatosClienteJuridico
-@cj_rif   varchar(20) 
-
+------------------------PROCEDURE SELECCIONAR LISTA DE CLIENTE_JURIDICO----------------------- 
+CREATE PROCEDURE M2_ConsultarListaClienteJur
 AS
-   
-SELECT  DISTINCT (cj.cj_rif ), 
-		cj.cj_nombre as nombre_juridico,
-		cj.LUGAR_lug_id 
-	
-	FROM CLIENTE_JURIDICO cj
-	WHERE cj.cj_rif=@cj_rif;
-GO		  
-
-------------------+ClienteConId(string Cli_jur_id):list <cliente_juridico>------------------------------
-
---comentarios del grupo que pidio el metodo... 
---Para el formulario de crear proyectos, es necesario tener un método que retorne
---todos los clientes con su id o clave primaria, no importa si son naturales o jurídicos
-
-CREATE PROCEDURE ClienteConIdJuridico				
-AS 
 BEGIN
-		SELECT cj_rif AS RIFJURIDICO, cj_nombre AS NOMBREJURIDICO FROM CLIENTE_JURIDICO;				
+	select cli.cj_id as clienteJurID, cli.cj_nombre as clienteJurNombre, cli.cj_rif as clienteJurRif,
+		   cli.cj_logo as clienteJurLogo, direccion.lug_nombre as clienteJurDir, 
+		   direccion.lug_codigopostal as clienteJurCodPost, ciudad.lug_nombre as clienteJurCiudad, 
+		   estado.lug_nombre as clienteJurEstado, pais.lug_nombre as clienteJurPais
+	from 
+		CLIENTE_JURIDICO cli, LUGAR pais, LUGAR estado, LUGAR ciudad, LUGAR direccion 
+	where
+		cli.LUGAR_lug_id = direccion.lug_id and direccion.LUGAR_lug_id = ciudad.lug_id
+		and ciudad.LUGAR_lug_id = estado.lug_id and estado.LUGAR_lug_id = pais.lug_id
 END;
 GO
-
-------------------+ListarCargosPorEmpresa(ClienteJuridico cj):list<string>------------------------------
---comentarios del grupo que pidio el metodo... 
--- Metodo listarCargosPorEmpresa(ClienteJuridico laEmpresa) y devuelve una lista de strings que es el nombre de cada cargo que poseen los empleados
--- pertenecientes a esa empresa.
-
-CREATE PROCEDURE ListarCargosPorEmpresa
-		
-	@cj_rif int		
-AS 
-BEGIN
-	SELECT DISTINCT(car_nombre) 
-	FROM CARGO
-	WHERE car_id IN (SELECT DISTINCT (CARGO_car_id) FROM CONTACTO WHERE CLIENTE_JURIDICO_cj_id = @cj_rif)	
-END;
-
-GO
-
-------------------+ConsultarEmpleadosEmpresaCargo():list<cliente_juridico>------------------------------
--- comentarios del grupo que pidio el metodo... 
--- Metodo consultarEmpleadosEmpresaCargo(ClienteJuridico laEmpresa, String cargo) y devuelve una lista de Contacto con el nombre, apellido y cargo
--- que son los empleados que desempe?an ese cargo en esa empresa.
-CREATE PROCEDURE ConsultarEmpleadosEmpresaCargo
-		
-	@cj_rif int,
-	@car_nombre [nvarchar](60)		
-AS 
-BEGIN
-		(SELECT con_nombre AS NOMBRECONTACTO, con_apellido AS APELLIDOCONTACTO, car_nombre AS CARGOCONTACTO, con_id as IDCONTACTO
-		 FROM CONTACTO, CARGO
-		 WHERE CLIENTE_JURIDICO_cj_id = @cj_rif  
-				AND CARGO_car_id = (SELECT car_id FROM CARGO WHERE car_nombre = @car_nombre)
-				AND CARGO_car_id = car_id);		
-END;
-GO
-
-
-------------------+VerificarClienteNatural(string Cli_nat_id): bool------------------------------
--- Dada la cedula verifica si existe o no el cliente natural 
-
-CREATE PROCEDURE Procedure_verificarClienteNatural
-		
-	@cn_cedula [nvarchar](20)		
-AS 
-BEGIN
-		(SELECT count(cn_cedula) FROM CLIENTE_NATURAL WHERE cn_cedula= @cn_cedula); 	
-END;
-GO
-
-------------------+AgregarClienteNatural(ClienteNatural cn): bool------------------------------
--- Agrega un nuevo cliente natural
--- luego de Insertar cliente natural, inserta en contacto los mismos datos.
-
-
-
-------------------+AgregarClienteNatural(ClienteNatural cn): bool------------------------------
--- Agrega un nuevo cliente natural
--- luego de Insertar cliente natural, inserta en contacto los mismos datos.
-
-
-
-------------------+AgregarClienteNatural(ClienteNatural cn): bool------------------------------
--- Agrega un nuevo cliente natural
--- luego de Insertar cliente natural, inserta en contacto los mismos datos.
-
-
-CREATE PROCEDURE Procedure_AgregarClienteNatural
-	@cn_cedula [nvarchar](20),
-	@cn_nombre [nvarchar](60),
-	@cn_apellido [nvarchar](60),
-	@nombreDireccion varchar(100),
-	@cn_correo [nvarchar](60),
-	@LUGAR_lug_id [int],
-	@codigo int,
-	@numero int
-
-AS
-DECLARE @idMaxClienteNatural int = 0
-DECLARE @idLugarDireccion int = 0
-DECLARE @idMaxContacto int = 0
-DECLARE @idMaxTelefono int=0
-DECLARE @idTelefono int = 0
-DECLARE @idMaxLugar int = 0
-
-BEGIN
-	
-	select @idLugarDireccion = count(LUG_id) from lugar 
-	 where  LUG_tipo = 'Direccion' and LUGAR_lug_id = @LUGAR_lug_id;
-	
-	if (@idLugarDireccion = 0)
-		begin 
-			select @idMaxLugar = MAX(LUG_id) from lugar;
-
-			set @idMaxLugar = @idMaxLugar + 1;
-
-			INSERT INTO lugar VALUES (@idMaxLugar,@nombreDireccion,'Direccion',null,@LUGAR_lug_id);
-
-			set @idLugarDireccion = @idMaxLugar;
-		end
-
-	select @idMaxClienteNatural = Max(cn_id) from CLIENTE_NATURAL;
-	select @idMaxContacto = MAX(con_id) from CONTACTO;
-    set @idMaxClienteNatural = @idMaxClienteNatural + 1;
-	set @idMaxContacto = @idMaxContacto + 1;
-	
-    INSERT INTO CLIENTE_NATURAL(cn_id,cn_cedula,cn_nombre,cn_apellido,cn_correo,LUGAR_lug_id)
-    VALUES(@idMaxClienteNatural, @cn_cedula,@cn_nombre,@cn_apellido,@cn_correo,@LUGAR_lug_id);
-	
-	INSERT INTO CONTACTO (con_id,con_cedula,con_nombre,con_apellido,CLIENTE_JURIDICO_cj_id,CARGO_car_id,CLIENTE_NATURAL_cn_id)
-    VALUES(@idMaxContacto, @cn_cedula,@cn_nombre,@cn_apellido,null, null,@idMaxClienteNatural);
-	
-	select @idTelefono=count(*) from telefono where tel_numero=@numero  and tel_codigo=@codigo
-
-if (@idTelefono=0)
-begin 
-			select @idMaxTelefono = Max(tel_id) from TELEFONO;
-
-			set @idMaxTelefono = @idMaxTelefono+1; 
-			INSERT INTO TELEFONO VALUES (@idMaxTelefono,@codigo,@numero,@idMaxClienteNatural,@idMaxContacto);
-
-			
-		end
-
-END;
-GO
-
-------------------+ConsultarDatosDeContacto(Contacto c): list<datos>------------------------------
--- comentarios del grupo que pidio el metodo... 
--- Un método consultarDatosDeContacto(Contacto c) que devuelva nombre, apellido, cargo y nombre de la empresa en la q trabaja
-
-CREATE PROCEDURE ConsultarDatosDeContacto
-		
-	@con_cedula [int]		
-AS 
-BEGIN
-		(SELECT con_cedula as CEDULA, con_nombre AS NOMBRE, con_apellido AS APELLIDO, car_nombre AS CARGO , cj_nombre AS EMPRESATRABAJO 
-		FROM CONTACTO, CLIENTE_JURIDICO, CARGO
-		WHERE CLIENTE_JURIDICO_cj_id= cj_id
-				AND CARGO_car_id = car_id
-				AND con_cedula =@con_cedula); 	
-END;
-GO
-
-
-/*---------Eliminar Cliente Natural-----------------------------*/
-
-CREATE PROCEDURE Procedure_EliminarClienteNatural
-@cedula varchar (20)
-AS
-DECLARE 
-@idNatural integer 
-BEGIN
-
-select  @idNatural = t.CLIENTE_NATURAL_cn_id 
-from TELEFONO t,
-     CONTACTO co, 
-     CLIENTE_NATURAL cn
-where cn.cn_id=t.CLIENTE_NATURAL_cn_id
-AND   cn.cn_id=co.CLIENTE_NATURAL_cn_id
-AND   cn.cn_cedula = @cedula;
-
-
-delete from TELEFONO where CLIENTE_NATURAL_cn_id=@idNatural;
-delete from CONTACTO where CLIENTE_NATURAL_cn_id=@idNatural
-delete from CLIENTE_NATURAL where  cn_id=@idNatural;
-
-END;
-GO
-
-
-/*-------------Modificar Cliente Natural-------------------------------*/
-
-
-CREATE PROCEDURE Procedure_ModificarClienteNatural
-
-@cn_cedula         varchar(20),
-@nombre            varchar (60),
-@cn_apellido       varchar(60) ,
-@nombrePais        varchar(100),
-@nombreEstado      varchar(100),
-@nombreCiudad      varchar(100),
-@nombreDireccion   varchar(100),
-@cn_correo         varchar (60), 
-@codigo			   integer,
-@numero			   integer 
-
-as
-DECLARE @idCiudad  integer
-DECLARE @idNatural integer
-DECLARE @idLugarDireccion integer
-DECLARE @idMaxLugar  integer
-
-begin
-
-	select 
-		@idCiudad=c.lug_id
-
-	from lugar p,
-		 lugar e,
-		 lugar c
-
-	where p.lug_tipo = 'País' and p.lug_nombre=@nombrePais and p.lug_id=e.LUGAR_lug_id and
-	      e.lug_tipo= 'Estado' and e.lug_nombre= @nombreEstado and e.lug_id= c.LUGAR_lug_id and
-		  c.lug_tipo = 'Ciudad' and c.lug_nombre = @nombreCiudad;
-	 
-	select @idLugarDireccion = count(LUG_id) from lugar 
-	 where LUG_nombre = @nombreDireccion and LUG_tipo = 'Direccion' and LUGAR_lug_id = @idCiudad;
-	
-	
-	if (@idLugarDireccion = 0)
-		begin 
-			select @idMaxLugar = MAX(LUG_id) from lugar;
-
-			set @idMaxLugar = @idMaxLugar + 1;
-
-			INSERT INTO lugar VALUES (@idMaxLugar,@nombreDireccion,'Direccion',null,@idCiudad);
-
-			set @idLugarDireccion = @idMaxLugar;
-		end
-		
-	select @idNatural=cn_id from CLIENTE_NATURAL where cn_cedula=@cn_cedula;
-	
-
-	update TELEFONO 
-		 set tel_codigo = @codigo,
-		     tel_numero = @numero
-		where CLIENTE_NATURAL_cn_id = @idNatural
-		
- 	update CONTACTO
-	     set con_cedula = @cn_cedula,
-		     con_nombre = @nombre,
-			 con_apellido = @cn_apellido
-		where CLIENTE_NATURAL_cn_id = @idNatural
-		
-	
-	update CLIENTE_NATURAL
-	     set cn_cedula = @cn_cedula,
-		     cn_nombre = @nombre,
-			 cn_apellido = @cn_apellido,
-			 cn_correo = @cn_correo,
-			 LUGAR_lug_id = @idLugarDireccion
-	where cn_id = @idNatural
-end;
-GO
-/*-------------Consultar Todos los Clientes Naturales------------------------------------*/
-
-CREATE PROCEDURE Procedure_ConsultarTodosClientesNaturales
-AS 
-SELECT cn_cedula, 
-	   cn_nombre,
-	   cn_apellido,
-	   cn_correo 
-FROM CLIENTE_NATURAL
-GO
-
-/*---------------Mostrar Datos detallados Cliente Natural----------------------------------*/
-
-CREATE PROCEDURE Procedure_ConsultarDatosDetalladosClienteNat
-@idClienteNat integer
-AS 
-
-SELECT cn.cn_cedula, 
-	   cn.cn_nombre,
-	   cn.cn_apellido,
-	   carg.car_nombre,
-	   cn.cn_correo,
-	   t.tel_codigo,
-	   t.tel_numero,
-	   p.lug_nombre as pais,
-	   e.lug_nombre as estado, 
-	   c.lug_nombre as ciudad, 
-	   d.lug_nombre as direccion,
-	   c.lug_codigopostal as codigoPostal
-	    
-FROM 
-	   CLIENTE_NATURAL cn, 
-	   TELEFONO t,
-	   LUGAR p,
-	   LUGAR e,
-	   LUGAR c,
-	   LUGAR d,
-	   CONTACTO cont,
-	   CARGO carg
-
-WHERE p.lug_id = e.LUGAR_lug_id
-and   e.lug_id = c.LUGAR_lug_id
-and   c.lug_id = d.LUGAR_lug_id
-and   d.lug_id = cn.LUGAR_lug_id
-and   cn.cn_id = cont.CLIENTE_NATURAL_cn_id
-and   carg.car_id = cont.CLIENTE_NATURAL_cn_id
-and   cn.cn_id = @idClienteNat
-and   cn.cn_id=t.tel_id;
-GO
-
-/*-----------------Consulta Parametrizada de Clientes Naturales-----------------------------*/
-
-CREATE PROCEDURE Procedure_ConsultarClientesNaturalesParametrizados
+-------------------PROCEDURE SELECCIONAR LISTA DE CONTACTOS DE JURIDICOS POR ID------------------ 
+CREATE PROCEDURE M2_ConsultarListaContactosJurID
 (
-    @busqueda varchar (100)
-)           
+	@idClienteJur [int]
+)
 AS
-SELECT	Distinct(cn_id),
-        cn_cedula,
-		cn_nombre,
-		cn_apellido,
-		cn_correo
-
-FROM	CLIENTE_NATURAL
-		
-WHERE	( UPPER(cn_cedula) LIKE UPPER(@busqueda) + '%') OR
-		( UPPER(cn_nombre) LIKE UPPER(@busqueda) + '%') OR
-		( UPPER(cn_apellido) LIKE UPPER(@busqueda) + '%') OR
-		( UPPER(cn_correo) LIKE UPPER(@busqueda) + '%') 
-Group by cn_id,
-		 cn_cedula,
-		 cn_nombre,
-		 cn_apellido,
-		 cn_correo
-ORDER BY cn_nombre ASC,
-		 cn_apellido ASC;
+BEGIN
+	select con.con_id as contactoID, con.con_cedula as contactoCedula, con.con_nombre as contactoNombre,
+		   con.con_apellido as contactoApellido, tel.tel_codigo as COD_TELEFONO, tel.tel_numero NUM_TELEFONO,
+		   car.car_nombre as contactoCargo
+	from CONTACTO con, CLIENTE_JURIDICO cli, TELEFONO tel, CARGO car
+	where
+		con.CLIENTE_JURIDICO_cj_id = cli.cj_id and tel.CONTACTO_con_id = con_id and car.car_id = con.CARGO_car_id
+END;
 GO
-
-/*---Procedimientos de Lugar--*/
-
-/*---------------Llenar Combo Pais-------------*/
-CREATE PROCEDURE Procedure_llenarCBPais
+-------------------PROCEDURE SELECCIONAR DATOS DE CONTACTO POR ID------------------ 
+CREATE PROCEDURE M2_ConsultarDatosContacto
+(
+	@idContacto [int]
+)
 AS
 BEGIN
-	   SELECT LUG_id, LUG_nombre
-	   FROM LUGAR
-	   WHERE LUG_tipo = 'País';
+	select con.con_id as contactoID, con.con_cedula as contactoCedula, con.con_nombre as contactoNombre,
+		   con.con_apellido as contactoApellido, tel.tel_codigo as COD_TELEFONO, tel.tel_numero NUM_TELEFONO,
+		   car.car_nombre as contactoCargo
+	from CONTACTO con, CLIENTE_JURIDICO cli, TELEFONO tel, CARGO car
+	where
+		con.con_id = @idContacto and con.CLIENTE_JURIDICO_cj_id = cli.cj_id and 
+		tel.CONTACTO_con_id = con_id and car.car_id = con.CARGO_car_id
 END;
-
-go
-
-/*---Llenar Combo Estado--*/
-CREATE PROCEDURE Procedure_llenarCBEstado
-@idPais integer
-AS
-BEGIN
-SELECT E.LUG_id, E.LUG_nombre 
-	   FROM LUGAR E
-	   WHERE E.LUG_tipo = 'Estado' and E.LUGAR_lug_id = @idPais;
-END;
-
-go
-
-/*-----Llenar Combo Ciudad--------------------------*/
-CREATE PROCEDURE Procedure_llenarCBCiudad
-@idEstado integer
-AS
-BEGIN
-SELECT C.LUG_id, C.LUG_nombre 
-	   FROM LUGAR C
-	   WHERE C.LUG_tipo = 'Ciudad' and C.LUGAR_lug_id = @idEstado;
-END;
-go
-
-/*---Obtener dirección dado un id--*/
-
-CREATE PROCEDURE Procedure_obtenerDireccion
-@idDireccion integer
-AS
-BEGIN
-	   SELECT D.LUG_nombre 
-	   FROM LUGAR D
-	   WHERE D.LUG_tipo = 'Direccion' and D.lug_id= @idDireccion;
-END;
-
-/***------------Llena el combo box de cargo----**/
-go
-
-
-
-
-
-
-/***------------Consultar todos los clientes Juridicos ----**/
-
-CREATE PROCEDURE Procedure_ConsultarTodosClientesJuridicos
-AS 
-select	cj_rif, 
-		cj_nombre
-from CLIENTE_JURIDICO;
-
-go
-
-CREATE PROCEDURE Procedure_consultarDireccionCompleta
-@idDireccion int
+GO
+-------------------PROCEDURE ELIMINAR CLIENTE_JURIDICO------------------ 
+CREATE PROCEDURE M2_EliminarClienteJuridico
+(
+	@idClienteJur [int]
+)
 AS
 BEGIN
 
+	delete from LUGAR 
+	where 
+		lug_id = (select LUGAR_lug_id 
+				  from CLIENTE_JURIDICO
+				  where cj_id = @idClienteJur);
 
-      SELECT C.LUG_id FROM LUGAR C, LUGAR D WHERE C.LUG_id = D.LUGAR_lug_id and D.LUG_id = @idDireccion and C.LUG_tipo ='Ciudad'
-       union
-	   SELECT E.LUG_id FROM LUGAR E, LUGAR C WHERE E.LUG_id = C.LUGAR_lug_id and C.LUG_id = 
-       (SELECT C.LUG_id FROM LUGAR C, LUGAR D WHERE C.LUG_id = D.LUGAR_lug_id and D.LUG_id = @idDireccion) and E.LUG_tipo = 'Estado'
-       union
-       SELECT P.LUG_id FROM LUGAR P, LUGAR E WHERE P.LUG_id = E.LUGAR_lug_id and E.LUG_id =
-       (SELECT E.LUG_id FROM LUGAR E, LUGAR C WHERE E.LUG_id = C.LUGAR_lug_id and C.LUG_id = 
-       (SELECT C.LUG_id FROM LUGAR C, LUGAR D WHERE C.LUG_id = D.LUGAR_lug_id and D.LUG_id = @idDireccion)) and P.LUG_tipo = 'País'
+	delete from TELEFONO
+	where
+		CONTACTO_con_id in (select con_id 
+						   from CONTACTO 
+						   where CLIENTE_JURIDICO_cj_id = @idClienteJur);
 
+	delete from CONTACTO
+	where
+		CLIENTE_JURIDICO_cj_id = @idClienteJur;
 
+	delete from CLIENTE_JURIDICO
+	where
+		cj_id = @idClienteJur;
+		
+	
 END;
-go
-
-
-
-
-CREATE PROCEDURE Procedure_llenarCBCargo
-
+GO
+-------------------PROCEDURE ELIMINAR CONTACTO POR ID------------------ 
+CREATE PROCEDURE M2_EliminarContacto
+(
+	@idContacto [int]
+)
 AS
 BEGIN
-	   SELECT 
-	   car_nombre
-	   FROM CARGO
-	   
+	delete from TELEFONO
+	where
+		CONTACTO_con_id = @idContacto;
+
+	delete from CONTACTO
+	where
+		con_id = @idContacto;
+	
 END;
+GO
+--------------------PROCEDURE AGREGAR CLIENTE_NATURAL--------------
+create procedure M2_AgregarClienteNat
+
+    @cn_cedula    [VARCHAR] (20),
+    @cn_nombre    [VARCHAR] (60),
+    @cn_apellido  [VARCHAR] (60),
+    @cn_correo    [VARCHAR] (60),
+	---direccion del cliente natural
+    @direccion	  [VARCHAR] (100),
+	@pais		  [VARCHAR]	(100),
+	@estado       [VARCHAR] (100),
+	@ciudad	      [VARCHAR] (100),
+	---codigo postal de la direccion
+	@codigo_post  [INT],
+	---telefono del cliente natural
+	@codigo_tel [VARCHAR](5) ,
+	@numero_tel [VARCHAR] (20)
+as
+	begin
+		declare @num_paises as int;
+		select @num_paises = count(*)
+		from LUGAR where lug_nombre = @pais and lug_tipo = 'País';
+
+		declare @num_estados as int;
+		select @num_estados = count(*)
+		from LUGAR where lug_nombre = @estado and lug_tipo = 'Estado';
+
+		declare @num_ciudad as int;
+		select @num_ciudad = count(*)
+		from LUGAR where lug_nombre = @ciudad and lug_tipo = 'Ciudad';
+
+		if @num_paises = 0 
+			insert into LUGAR (lug_nombre, lug_tipo, LUGAR_lug_id) values (@pais,'País', null);
+
+		if @num_estados = 0
+			insert into LUGAR (lug_nombre, lug_tipo, LUGAR_lug_id) values (@estado,'Estado', (select lug_id
+			from LUGAR where lug_nombre = @pais and lug_tipo = 'País'));
+		
+		if @num_ciudad = 0
+			insert into LUGAR (lug_nombre, lug_tipo, LUGAR_lug_id) values (@ciudad,'Ciudad', (select lug_id
+			from LUGAR where lug_nombre = @estado and lug_tipo = 'Estado'));
+
+		insert into LUGAR (lug_nombre, lug_tipo, lug_codigopostal, LUGAR_lug_id)
+		values (@direccion, 'Direccion', @codigo_post, (select lug_id from LUGAR
+		where lug_nombre = @ciudad and lug_tipo = 'Ciudad'));
+
+		insert into CLIENTE_NATURAL (cn_nombre, cn_apellido, cn_cedula, cn_correo, LUGAR_lug_id)
+		values (@cn_nombre, @cn_apellido, @cn_cedula, @cn_correo, (select MAX (lug_id) from LUGAR));
+
+		insert into CONTACTO (con_nombre, con_apellido, con_cedula, CLIENTE_NATURAL_cn_id)
+		values (@cn_nombre, @cn_apellido, @cn_cedula, (select MAX(cn_id) from CLIENTE_NATURAL));
+
+	    insert into TELEFONO (tel_codigo, tel_numero, CLIENTE_NATURAL_cn_id, CONTACTO_con_id) values (@codigo_tel, @numero_tel, (select cn_id from
+		CLIENTE_NATURAL where cn_cedula = @cn_cedula), (select con_id from CONTACTO where con_cedula = @cn_cedula));
+
+	end;
+go
+--------------------PROCEDURE MODIFICAR CLIENTE_NATURAL--------------
+create procedure M2_ModificarClienteNat
+	@cn_id		  [int],
+    @cn_cedula    [VARCHAR] (20),
+    @cn_nombre    [VARCHAR] (60),
+    @cn_apellido  [VARCHAR] (60),
+    @cn_correo    [VARCHAR] (60),
+	---direccion del cliente natural
+    @direccion	  [VARCHAR] (100),
+	@cod_postal	  [int],
+	---telefono del cliente natural
+	@codigo_tel [VARCHAR](5) ,
+	@numero_tel [VARCHAR] (20)
+as
+	begin
+
+		declare @num_direccion as int;
+		select @num_direccion = count(*)
+		from LUGAR where lug_nombre = @direccion and lug_tipo = 'Direccion';
+
+		if (@direccion != (select lug_nombre from LUGAR where lug_id = (select LUGAR_lug_id from CLIENTE_NATURAL where cn_id = @cn_id)))
+			update LUGAR
+			set lug_nombre = @direccion,
+				lug_codigopostal = @cod_postal
+			where lug_id = (select LUGAR_lug_id from CLIENTE_NATURAL where cn_id = @cn_id);
+
+
+		update CLIENTE_NATURAL
+		set cn_cedula = @cn_cedula,
+			cn_nombre = @cn_nombre,
+			cn_apellido = @cn_apellido,
+			cn_correo = @cn_correo
+		where cn_id = @cn_id;
+
+		update CONTACTO
+		set con_cedula = @cn_cedula,
+			con_nombre = @cn_nombre,
+			con_apellido = @cn_apellido
+		where con_id = @cn_id;
+		
+		update TELEFONO
+		set tel_codigo = @codigo_tel,
+			tel_numero = @numero_tel
+		where CLIENTE_NATURAL_cn_id = (select cn_id from CLIENTE_NATURAL where cn_id = @cn_id);
+	end;
+go
+--------------------PROCEDURE CONSULTAR LISTA CLIENTE_NATURAL--------------
+create procedure M2_ConsultarListaClienteNat
+as
+	begin
+
+	select cn.cn_id as ID_CLIENTENATURAL, cn.cn_nombre as NOMBRE_CLIENTENATURAL, cn.cn_apellido as APELLIDO_CLIENTENATURAL,
+						cn.cn_cedula as CEDULA_CLIENTENATURAL, cn.cn_correo as CORREO_CLIENTENATURAL, tel.tel_codigo as COD_TELEFONO,
+						tel.tel_numero as NUM_TELEFONO, direccion.lug_nombre as NOMBRE_DIR, direccion.lug_codigopostal as CODPOSTAL_DIR, 
+						ciudad.lug_nombre as NOMBRE_CIUDAD, estado.lug_nombre as NOMBRE_ESTADO, pais.lug_nombre as NOMBRE_PAIS 
+	from CLIENTE_NATURAL cn, LUGAR pais, LUGAR estado, LUGAR ciudad, LUGAR direccion, TELEFONO tel
+	where tel.CLIENTE_NATURAL_cn_id = cn.cn_id and cn.LUGAR_lug_id = direccion.lug_id and direccion.LUGAR_lug_id = ciudad.lug_id and
+		  ciudad.LUGAR_lug_id = estado.lug_id and estado.LUGAR_lug_id = pais.lug_id;
+	end;
+go
+--------------------PROCEDURE CONSULTAR DATOS CLIENTE_NATURAL--------------
+create procedure M2_ConsultarDatosClienteNat
+	@idClienteNat [int]
+as
+	begin
+
+	select cn.cn_id as ID_CLIENTENATURAL, cn.cn_nombre as NOMBRE_CLIENTENATURAL, cn.cn_apellido as APELLIDO_CLIENTENATURAL,
+						cn.cn_cedula as CEDULA_CLIENTENATURAL, cn.cn_correo as CORREO_CLIENTENATURAL, tel.tel_codigo as COD_TELEFONO,
+						tel.tel_numero as NUM_TELEFONO, direccion.lug_nombre as NOMBRE_DIR, direccion.lug_codigopostal as CODPOSTAL_DIR, 
+						ciudad.lug_nombre as NOMBRE_CIUDAD, estado.lug_nombre as NOMBRE_ESTADO, pais.lug_nombre as NOMBRE_PAIS 
+	from CLIENTE_NATURAL cn, LUGAR pais, LUGAR estado, LUGAR ciudad, LUGAR direccion, TELEFONO tel
+	where tel.CLIENTE_NATURAL_cn_id = cn.cn_id and cn.LUGAR_lug_id = direccion.lug_id and direccion.LUGAR_lug_id = ciudad.lug_id and
+		  ciudad.LUGAR_lug_id = estado.lug_id and estado.LUGAR_lug_id = pais.lug_id and cn.cn_id = @idClienteNat;
+	end;
+go
+--------------------PROCEDURE CONSULTAR DATOS CONTACTO CLIENTE_NATURAL ID--------------
+create procedure M2_ConsultarDatosContactoNatID
+	@idClienteNat [int]
+as
+	begin
+		
+			select con.con_id as contactoID, con.con_cedula as contactoCedula, con.con_nombre contactoNombre,
+				   con.con_apellido as contactoApellido
+			from CLIENTE_NATURAL cn, CONTACTO con
+			where cn.cn_id = con.CLIENTE_NATURAL_cn_id;
+	end;
+go
+--------------------PROCEDURE ELIMINAR CLIENTE_NATURAL -------------
+create procedure M2_EliminarClienteNat
+	@idClienteNat [int]
+as
+	begin
+		delete 
+		from LUGAR
+		where lug_id = (select LUGAR_lug_id from CLIENTE_NATURAL where cn_id = @idClienteNat);
+
+		delete 
+		from TELEFONO
+		where CLIENTE_NATURAL_cn_id = @idClienteNat;
+
+		delete
+		from CONTACTO
+		where CLIENTE_NATURAL_cn_id = @idClienteNat;
+
+		delete 
+		from CLIENTE_NATURAL
+		where cn_id = @idClienteNat;
+	end;
 go
 
-CREATE PROCEDURE Procedure_CargarCodigoPostal
-@idCiudad int
-AS
-SELECT lug_codigopostal FROM LUGAR WHERE lug_id=@idCiudad;
-
-/*------Datos del Cliente según el nombre del proyecto--*/
-go
-CREATE PROCEDURE DatosClientePorNombreProyecto
-@codigo varchar(10) 
-AS
-SELECT 
-	   cj.cj_rif  as rif, 
-       cj_nombre as nombre,
-	   con.con_nombre as nombreContacto,
-	   con.con_apellido as nombreApellido,
-	   t.tel_codigo as codigo,
-	   t.tel_numero as numero, 
-
-	   (d.lug_nombre+'.'+c.lug_nombre +'.'+e.lug_nombre+','+p.lug_nombre) as direccion 
-
-FROM     PROYECTO PRO, 
-		 CLIENTE_JURIDICO CJ, 
-		 CONTACTO Con, 
-		 TELEFONO t, 
-		 CARGO car, 
-		 LUGAR p,
-	     LUGAR e,
-	     LUGAR c,
-	     LUGAR d
-
-WHERE p.lug_id = e.LUGAR_lug_id
-and   e.lug_id = c.LUGAR_lug_id
-and   c.lug_id = d.LUGAR_lug_id
-and   d.lug_id = CJ.LUGAR_lug_id
-and   CJ.cj_id = PRO.CLIENTE_JURIDICO_cj_id
-and   cj.cj_id = Con.CLIENTE_JURIDICO_cj_id
-and   con.con_id = t.CONTACTO_con_id
-and   car.car_id = con.CARGO_car_id
-and   pro.pro_codigo = @codigo; 
-
-go
-
-
-CREATE PROCEDURE Procedure_ConsultarDatosContactosEmpresa
-@cj_rif varchar(20)
-AS
-SELECT CON.con_id AS id,
-       Con.con_nombre as nombre,
-	   CON.con_apellido as apellido,
-	   car.car_nombre as cargo, 
-	   telf.tel_codigo as codigo,
-	   telf.tel_numero as numero
-
-FROM CONTACTO CON, 
-     CARGO CAR, 
-	 CLIENTE_JURIDICO CJ, 
-	 TELEFONO TELF
-WHERE CJ.cj_id = CON.CLIENTE_JURIDICO_cj_id
-AND   CON.con_id = TELF.CONTACTO_con_id
-AND   CAR.car_id = CON.CARGO_car_id	 
-AND   CJ.cj_rif = @cj_rif;	 
- 
- go
 --End SP2
 
 --Begin SP3
@@ -1742,14 +1578,22 @@ CREATE PROCEDURE Procedure_consultarInvCliente
 AS
  BEGIN
 	SELECT co.con_id as contactoID, co.con_nombre as contactoNombre, co.con_apellido as contactoApellido,
-		   ca.car_nombre as cargoNombre, cn.cn_nombre as clienteNatNombre, cj.cj_nombre as clienteJurNombre,
-		   cj.cj_id as clienteJurID, cn.cn_id as clienteNatID 
-	FROM INVOLUCRADOS_CLIENTES ic, CONTACTO co,  CLIENTE_JURIDICO cj, CLIENTE_NATURAL cn, CARGO ca
-	WHERE ic.PROYECTO_pro_id = (select pro_id from PROYECTO where pro_codigo = @proyecto_codigo) and
-		  ic.CONTACTO_con_id = co.con_id  and co.CARGO_car_id = ca.car_id and cj.cj_id = co.CLIENTE_JURIDICO_cj_id
-		  and co.CLIENTE_NATURAL_cn_id = cn.cn_id
+		   ca.car_nombre as cargoNombre, cj.cj_nombre as clienteNombre,
+		   cj.cj_id as clienteID, 1 as valor
+	FROM INVOLUCRADOS_CLIENTES ic, CONTACTO co,  CLIENTE_JURIDICO cj, CARGO ca
+	WHERE ic.PROYECTO_pro_id = (select pro_id from PROYECTO where pro_codigo = 'TOT') and
+		  ic.CONTACTO_con_id = co.con_id  and co.CARGO_car_id = ca.car_id
+		  and co.CLIENTE_JURIDICO_cj_id = cj.cj_id
+	UNION
+	SELECT co.con_id as contactoID, co.con_nombre as contactoNombre, co.con_apellido as contactoApellido,
+		   ca.car_nombre as cargoNombre, cn.cn_nombre as clienteNombre,
+		   cn.cn_id as clienteID, 2 as valor
+	FROM INVOLUCRADOS_CLIENTES ic, CONTACTO co,  CLIENTE_NATURAL cn, CARGO ca
+	WHERE ic.PROYECTO_pro_id = (select pro_id from PROYECTO where pro_codigo = 'TOT') and
+		  ic.CONTACTO_con_id = co.con_id  and co.CARGO_car_id = ca.car_id
+		  and co.CLIENTE_NATURAL_cn_id =  cn_id
  END
-GO
+ GO
 -----------------------PROCEDIMIENTO PARA CONSULTAR INVOLUCRADOS_USUARIOS---------------------------
 CREATE PROCEDURE Procedure_consultarInvUsuario
 	@proyecto_codigo [varchar](6)
@@ -1870,7 +1714,7 @@ BEGIN
 		con_id = @idContacto and CARGO_car_id = car_id
 		and con.CLIENTE_JURIDICO_cj_id = cj.cj_id
 END
-
+go
 
 --End SP3
 
@@ -3511,17 +3355,6 @@ insert into Cargo (car_id,car_nombre) values (NEXT VALUE FOR secuenciaIdCargo,'A
 
 
 
-insert into usuario  values (NEXT VALUE FOR secuenciaIdUsuario,'albertods','5563albert','Albeto','Da Silva','Administrador','alberto21ds@gmail.com','como se llama mi perro','fifi',(Select car_id from Cargo where car_nombre='Gerente'));
-insert into usuario values (NEXT VALUE FOR secuenciaIdUsuario,'argenis12','123546hola','Argenis','Rodriguez','Administrador','rodarge32@gmail.com','como se llama mi gato','miau',(Select car_id from Cargo where car_nombre='Desarrollador'));
-insert into usuario values (NEXT VALUE FOR secuenciaIdUsuario,'scherylu12','gilopo145','Scheryl','Palencia','Usuario','scheryluci@gmail.com','mi isla favorita','ibiza',(Select car_id from Cargo where car_nombre='Diseñador'));
-insert into usuario values (NEXT VALUE FOR secuenciaIdUsuario,'carlo125','carlo1990','Carlo','Unda','Usuario','carlos651@gmail.com','como se llama mi tio mayor','juan',(Select car_id from Cargo where car_nombre='Lider de Proyecto'));
-insert into usuario values (NEXT VALUE FOR secuenciaIdUsuario,'santiagop85','santi1890a','Santiago','Bernal','Usuario','santiagobernal93@gmail.com','cual es mi carro favorito','chevette',(Select car_id from Cargo where car_nombre='Arquitecto de Solucion'));
-insert into usuario values (NEXT VALUE FOR secuenciaIdUsuario,'Maria78la','4212mar','Maria','Vargas','Usuario','mariavargas@gmail.com','como se llama mi perro','dogui',(Select car_id from Cargo where car_nombre='Arquitecto de Solucion'));
-insert into usuario values (NEXT VALUE FOR secuenciaIdUsuario,'Roger1245','roger47824','Roger','Perez','Usuario','rogerperez123@gmail.com','como se llama mi papa','pedro',(Select car_id from Cargo where car_nombre='Arquitecto de Base de Datos'));
-insert into usuario values (NEXT VALUE FOR secuenciaIdUsuario,'Juanfe1422','juan78009!!','Juan','Fuentes','Usuario','juanfuentes12@gmail.com','cual es mi bebida alcoholica favorita','anis',(Select car_id from Cargo where car_nombre='Gerente'));
-insert into usuario values (NEXT VALUE FOR secuenciaIdUsuario,'eduardo785','edu7582?1','Eduardo','Palacios','Usuario','eduardo852@gmail.com','cual es mi color favorito','rosado',(Select car_id from Cargo where car_nombre='Desarrollador'));
-insert into usuario values (NEXT VALUE FOR secuenciaIdUsuario,'johan7850','!!?hola8541','Johan','plascensia','Usuario','Johaplas123@gmail.com','cual es mi clave de wifi','nosepreguntaleaotro',(Select car_id from Cargo where car_nombre='Arquitecto de Base de Datos'));
-
 insert into usuario  values (NEXT VALUE FOR secuenciaIdUsuario,'albertods','96-FF-4D-0A-31-9B-D3-BF-0D-E9-AE-A3-44-5C-A2-2F-C8-73-AD-7E-5C-4A-39-BD-E5-DE-40-F7-BA-26-CB-03','Albeto','Da Silva','Administrador','alberto21ds@gmail.com','como se llama mi perro','fifi',(Select car_id from Cargo where car_nombre='Gerente'));
 insert into usuario values (NEXT VALUE FOR secuenciaIdUsuario,'argenis12','B4-81-04-AA-D4-2A-FB-1D-54-80-C3-A8-7B-F7-F2-A0-87-95-CD-B0-0C-4B-54-01-D2-14-77-CA-FC-DC-5D-5C','Argenis','Rodriguez','Administrador','rodarge32@gmail.com','como se llama mi gato','miau',(Select car_id from Cargo where car_nombre='Desarrollador'));
 insert into usuario values (NEXT VALUE FOR secuenciaIdUsuario,'scherylu12','BF-14-DE-68-79-22-23-A5-F8-CD-1D-3A-14-72-96-18-66-3B-3A-20-36-C9-77-FD-AA-D8-A2-A1-A6-E2-AD-74','Scheryl','Palencia','Usuario','scheryluci@gmail.com','mi isla favorita','ibiza',(Select car_id from Cargo where car_nombre='Diseñador'));
@@ -3539,137 +3372,136 @@ insert into usuario values (NEXT VALUE FOR secuenciaIdUsuario,'johan7850','7E-B5
 
 
 /*---------------------------------------LUGAR-----------------------------------------*/
-INSERT INTO LUGAR VALUES(1,'Venezuela','País',null,null);
+INSERT INTO LUGAR VALUES('Venezuela','País',null,null);
 go
-INSERT INTO LUGAR VALUES(2,'Dtto Capital','Estado',null,1);
+INSERT INTO LUGAR VALUES('Dtto Capital','Estado',null,1);
 go
-INSERT INTO LUGAR VALUES(3,'Mirada','Estado',null,2);
+INSERT INTO LUGAR VALUES('Mirada','Estado',null,2);
 go
-INSERT INTO LUGAR VALUES(4,'Caracas','Ciudad',1020,2);
+INSERT INTO LUGAR VALUES('Caracas','Ciudad',1020,2);
 go
-INSERT INTO LUGAR VALUES(5,'Los Teques','Ciudad',1011,3);
+INSERT INTO LUGAR VALUES('Los Teques','Ciudad',1011,3);
 go
-INSERT INTO LUGAR VALUES(6,'Guarenas','Ciudad',1015,3);
+INSERT INTO LUGAR VALUES('Guarenas','Ciudad',1015,3);
 go
-INSERT INTO LUGAR VALUES(7,'Parroquia Caricuao UD 3, Bloque 6, piso 1, apt 01','Direccion',null,4);
+INSERT INTO LUGAR VALUES('Parroquia Caricuao UD 3, Bloque 6, piso 1, apt 01','Direccion',null,4);
 go
-INSERT INTO LUGAR VALUES(8,'Parroquia San Juan, Bloque 16, piso 4, apt 04','Direccion',null,4);
+INSERT INTO LUGAR VALUES('Parroquia San Juan, Bloque 16, piso 4, apt 04','Direccion',null,4);
 go
-INSERT INTO LUGAR VALUES(9,'Parroquia Altagracia, Edif 3, piso 8, apt 07','Direccion',null,4);
+INSERT INTO LUGAR VALUES('Parroquia Altagracia, Edif 3, piso 8, apt 07','Direccion',null,4);
 go
-INSERT INTO LUGAR VALUES(10,'Parroquia Candelaria, edif 8, piso 15, apt 05','Direccion',null,4);
+INSERT INTO LUGAR VALUES('Parroquia Candelaria, edif 8, piso 15, apt 05','Direccion',null,4);
 go
-INSERT INTO LUGAR VALUES(11,'Parroquia San pedro, residencia Virgen María, Casa # 3','Direccion',null,5);
+INSERT INTO LUGAR VALUES('Parroquia San pedro, residencia Virgen María, Casa # 3','Direccion',null,5);
 go
-INSERT INTO LUGAR VALUES(12,'Zona industrial de Cloris Urb. Terrazas del Este, Primera Etapa, edif 20, apt 3-2','Direccion',null,6);
+INSERT INTO LUGAR VALUES('Zona industrial de Cloris Urb. Terrazas del Este, Primera Etapa, edif 20, apt 3-2','Direccion',null,6);
 go
-INSERT INTO LUGAR VALUES(13,'Parroquia Caricuao, Calle A, Local Q, Coche','Direccion',null,4);
+INSERT INTO LUGAR VALUES('Parroquia Caricuao, Calle A, Local Q, Coche','Direccion',null,4);
 go
-INSERT INTO LUGAR VALUES(14,'Parroquia San Juan, Calle C, Local 34, Santa Rosa de Lima','Direccion',null,4);
+INSERT INTO LUGAR VALUES('Parroquia San Juan, Calle C, Local 34, Santa Rosa de Lima','Direccion',null,4);
 go
-INSERT INTO LUGAR VALUES(15,'Parroquia Altagracia, Calle Guaicaipuro, Local 76, Bello Monte','Direccion',null,4);
+INSERT INTO LUGAR VALUES('Parroquia Altagracia, Calle Guaicaipuro, Local 76, Bello Monte','Direccion',null,4);
 go
-INSERT INTO LUGAR VALUES(16,'Parroquia Candelaria, De Tablitas A Sordo, Parcelas 2-5, Los Ruices','Direccion',null,4);
+INSERT INTO LUGAR VALUES('Parroquia Candelaria, De Tablitas A Sordo, Parcelas 2-5, Los Ruices','Direccion',null,4);
 go
-INSERT INTO LUGAR VALUES(17,'Parroquia San Pedro, Avenida Principal de Lomas de Prados del Este, Indialca, Alto Prado','Direccion',null,5);
+INSERT INTO LUGAR VALUES('Parroquia San Pedro, Avenida Principal de Lomas de Prados del Este, Indialca, Alto Prado','Direccion',null,5);
 go
-INSERT INTO LUGAR VALUES(18,'Estados Unidos','País',null,NULL);
+INSERT INTO LUGAR VALUES('Estados Unidos','País',null,NULL);
 go
-INSERT INTO LUGAR VALUES(19,'Florida','Estado',null,18);
+INSERT INTO LUGAR VALUES('Florida','Estado',null,18);
 go
-INSERT INTO LUGAR VALUES(20,'Georgia','Estado',null,18);
+INSERT INTO LUGAR VALUES('Georgia','Estado',null,18);
 go
-INSERT INTO LUGAR VALUES(21,'Jacksonville','Ciudad',29320,19);
+INSERT INTO LUGAR VALUES('Jacksonville','Ciudad',29320,19);
 go
-INSERT INTO LUGAR VALUES(22,'Miami','Ciudad',83921,19);
+INSERT INTO LUGAR VALUES('Miami','Ciudad',83921,19);
 go
-INSERT INTO LUGAR VALUES(23,'Atlanta','Ciudad',82193,20);
+INSERT INTO LUGAR VALUES('Atlanta','Ciudad',82193,20);
 go
-INSERT INTO LUGAR VALUES(24,'Eastport Apartments, The 11701 Palm Lake Drive Jacksonville, FL 32218-3985','Direccion',null,21);
+INSERT INTO LUGAR VALUES('Eastport Apartments, The 11701 Palm Lake Drive Jacksonville, FL 32218-3985','Direccion',null,21);
 go
-INSERT INTO LUGAR VALUES(25,'La Esperanza 3800 University Blvd S Jacksonville, FL 32216-4328','Direccion',null,21);
+INSERT INTO LUGAR VALUES('La Esperanza 3800 University Blvd S Jacksonville, FL 32216-4328','Direccion',null,21);
 go
-INSERT INTO LUGAR VALUES(26,'1231 PENNSYLVANIA AV 10','Direccion',null,22);
+INSERT INTO LUGAR VALUES('1231 PENNSYLVANIA AV 10','Direccion',null,22);
 go
-INSERT INTO LUGAR VALUES(27,'1250 WEST AV 10D','Direccion',null,22);
+INSERT INTO LUGAR VALUES('1250 WEST AV 10D','Direccion',null,22);
 go
-INSERT INTO LUGAR VALUES(28,'415 Fairburn Rd SW Atlanta, GA 30331-1996','Direccion',null,23);
+INSERT INTO LUGAR VALUES('415 Fairburn Rd SW Atlanta, GA 30331-1996','Direccion',null,23);
 go
-INSERT INTO LUGAR VALUES(29,'1800 Windridge Dr Sandy Springs, GA 30350-2873','Direccion',null,23);
+INSERT INTO LUGAR VALUES('1800 Windridge Dr Sandy Springs, GA 30350-2873','Direccion',null,23);
 go
 
 /*---------------------------------------CLIENTE_JURIDICO-----------------------------------------*/
-INSERT INTO CLIENTE_JURIDICO VALUES (1,'J-11111111-1','Locatel',null,15);
+INSERT INTO CLIENTE_JURIDICO VALUES ('J-11111111-1','Locatel',null,15);
 go
-INSERT INTO CLIENTE_JURIDICO VALUES (2,'J-22222222-2','Swatch',null,24);
+INSERT INTO CLIENTE_JURIDICO VALUES ('J-22222222-2','Swatch',null,24);
 go
-INSERT INTO CLIENTE_JURIDICO VALUES (3,'J-33333333-3','Tealca',null,25);
+INSERT INTO CLIENTE_JURIDICO VALUES ('J-33333333-3','Tealca',null,25);
 go
-INSERT INTO CLIENTE_JURIDICO VALUES (4,'J-44444444-4','PaperMate',null,26);
+INSERT INTO CLIENTE_JURIDICO VALUES ('J-44444444-4','PaperMate',null,26);
 go
-INSERT INTO CLIENTE_JURIDICO VALUES (5,'J-55555555-5','Vernet',null,28);
+INSERT INTO CLIENTE_JURIDICO VALUES ('J-55555555-5','Vernet',null,28);
 go
 
 
 /*---------------------------------------CLIENTE_NATURAL-----------------------------------------*/
-INSERT INTO CLIENTE_NATURAL VALUES(1,11111111,'Valentina','Scioli','valensciove@hotmail.com',16);
+INSERT INTO CLIENTE_NATURAL VALUES(11111111,'Valentina','Scioli','valensciove@hotmail.com',16);
 go
-INSERT INTO CLIENTE_NATURAL VALUES(2,22222222,'Guillermo','Gonzalez','guillegonzale@gmail.com',17);
+INSERT INTO CLIENTE_NATURAL VALUES(22222222,'Guillermo','Gonzalez','guillegonzale@gmail.com',17);
 go
-INSERT INTO CLIENTE_NATURAL VALUES(3,33333333,'Francisco','Torres','franctorre@hotmail.com',13);
+INSERT INTO CLIENTE_NATURAL VALUES(33333333,'Francisco','Torres','franctorre@hotmail.com',13);
 go
-INSERT INTO CLIENTE_NATURAL VALUES(4,44444444,'Pedro','De Jesus','pedrdejesus@gmail.com',25);
+INSERT INTO CLIENTE_NATURAL VALUES(44444444,'Pedro','De Jesus','pedrdejesus@gmail.com',25);
 go
-INSERT INTO CLIENTE_NATURAL VALUES(5,55555555,'Jessica','De Torres','jesidetorres@gmail.com',26);
+INSERT INTO CLIENTE_NATURAL VALUES(55555555,'Jessica','De Torres','jesidetorres@gmail.com',26);
 go
-
 
 /*---------------------------------------CONTACTO-----------------------------------------*/
 /*--------------------CONTACTO CLIENTE_JURIDICO------------------------*/
-INSERT INTO CONTACTO VALUES(1,66666666,'Reinaldo','Cortes',1,1,null);
+INSERT INTO CONTACTO VALUES(66666666,'Reinaldo','Cortes',1,1,null);
 go
-INSERT INTO CONTACTO VALUES(2,77777777,'Mercedes','Amilibia',2,2,null);
+INSERT INTO CONTACTO VALUES(77777777,'Mercedes','Amilibia',2,2,null);
 go
-INSERT INTO CONTACTO VALUES(3,88888888,'Amaranta','Ruiz',3,3,null);
+INSERT INTO CONTACTO VALUES(88888888,'Amaranta','Ruiz',3,3,null);
 go
-INSERT INTO CONTACTO VALUES(4,99999999,'Sebastian','Perez',4,4,null);
+INSERT INTO CONTACTO VALUES(99999999,'Sebastian','Perez',4,4,null);
 go
-INSERT INTO CONTACTO VALUES(5,10101011,'Felipe','Mendes',5,5,null);
+INSERT INTO CONTACTO VALUES(10101011,'Felipe','Mendes',5,5,null);
 go
 
 /*--------------------CONTACTO CLIENTE_NATURAL------------------------*/
-INSERT INTO CONTACTO VALUES(6,11111111,'Valentina','Scioli',null,null,1);
+INSERT INTO CONTACTO VALUES(11111111,'Valentina','Scioli',null,null,1);
 go
-INSERT INTO CONTACTO VALUES(7,22222222,'Guillermo','Gonzalez',null,null,2);
+INSERT INTO CONTACTO VALUES(22222222,'Guillermo','Gonzalez',null,null,2);
 go
-INSERT INTO CONTACTO VALUES(8,33333333,'Francisco','Torres',null,null,3);
+INSERT INTO CONTACTO VALUES(33333333,'Francisco','Torres',null,null,3);
 go
-INSERT INTO CONTACTO VALUES(9,44444444,'Pedro','De Jesus',null,null,4);
+INSERT INTO CONTACTO VALUES(44444444,'Pedro','De Jesus',null,null,4);
 go
-INSERT INTO CONTACTO VALUES(10,55555555,'Jessica','De Torres',null,null,5);
+INSERT INTO CONTACTO VALUES(55555555,'Jessica','De Torres',null,null,5);
 go
 
 
 /*---------------------------------------TELEFONO-----------------------------------------*/
-INSERT INTO TELEFONO VALUES(1,212,1111111,1,null);
+INSERT INTO TELEFONO VALUES('212','1111111',1,null);
 go
-INSERT INTO TELEFONO VALUES(2,223,2222222,2,null);
+INSERT INTO TELEFONO VALUES('223','2222222',2,null);
 go
-INSERT INTO TELEFONO VALUES(3,424,3333333,3,null);
+INSERT INTO TELEFONO VALUES('424','3333333',3,null);
 go
-INSERT INTO TELEFONO VALUES(4,212,4444444,4,null);
+INSERT INTO TELEFONO VALUES('212','4444444',4,null);
 go
-INSERT INTO TELEFONO VALUES(5,416,5555555,5,null);
+INSERT INTO TELEFONO VALUES('416','5555555',5,null);
 go
-INSERT INTO TELEFONO VALUES(6,412,6666666,null,1);
+INSERT INTO TELEFONO VALUES('412','6666666',null,1);
 go
-INSERT INTO TELEFONO VALUES(7,212,7777777,null,2);
+INSERT INTO TELEFONO VALUES('212','7777777',null,2);
 go
-INSERT INTO TELEFONO VALUES(8,412,8888888,null,3);
+INSERT INTO TELEFONO VALUES('412','8888888',null,3);
 go
-INSERT INTO TELEFONO VALUES(9,212,9999999,null,4);
+INSERT INTO TELEFONO VALUES('212','9999999',null,4);
 go
-INSERT INTO TELEFONO VALUES(10,212,5111110,null,5);
+INSERT INTO TELEFONO VALUES('212','5111110',null,5);
 
 --END Inserts 2
 
@@ -3844,14 +3676,6 @@ INSERT INTO dbo.ACUERDO(acu_fecha, acu_desarrollo, MINUTA_min_id) VALUES ('20150
 INSERT INTO dbo.ACUERDO(acu_fecha, acu_desarrollo, MINUTA_min_id) VALUES ('20150503','Links de Descarga de los Recursos',(SELECT min_id FROM MINUTA WHERE min_motivo = 'Recursos a Utilizar'));
 
 /*-------------------Inserts de Involucrados en Minuta------------------------*/
-
-insert into INVOLUCRADOS_CLIENTES values (1,1);
-insert into INVOLUCRADOS_CLIENTES values (2,1);
-insert into INVOLUCRADOS_CLIENTES values (3,1);
-
-insert into INVOLUCRADOS_USUARIOS values (1,1);
-insert into INVOLUCRADOS_USUARIOS values (2,1);
-insert into INVOLUCRADOS_USUARIOS values (3,1);
 
 INSERT INTO ACU_INV (ACUERDO_acu_id,INVOLUCRADOS_USUARIOS_USUARIO_usu_id,INVOLUCRADOS_USUARIOS_PROYECTO_pro_id) VALUES (1,1,1);
 INSERT INTO ACU_INV (ACUERDO_acu_id,INVOLUCRADOS_USUARIOS_USUARIO_usu_id,INVOLUCRADOS_USUARIOS_PROYECTO_pro_id) VALUES (1,2,1);

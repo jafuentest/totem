@@ -38,7 +38,7 @@ namespace PruebasUnitariasTotem.Modulo8
         public void PruebaConsultarMinutasProyecto()
         {
             listaMinuta.Clear();
-            listaMinuta =bdMinuta.ConsultarMinutasProyecto(1);
+            //listaMinuta =bdMinuta.ConsultarMinutasProyecto(1);
             Assert.AreEqual(listaMinuta.Count(),3);
         }
 

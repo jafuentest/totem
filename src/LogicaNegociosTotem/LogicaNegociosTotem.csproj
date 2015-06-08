@@ -45,9 +45,11 @@
       <DependentUpon>RecursosLogicaModulo1.resx</DependentUpon>
     </Compile>
     <Compile Include="Modulo2\LogicaCliente.cs" />
-    <Compile Include="Modulo2\LogicaContacto.cs" />
-    <Compile Include="Modulo2\LogicaLugar.cs" />
-    <Compile Include="Modulo2\RecursosLogicaModulo2.Designer.cs" />
+    <Compile Include="Modulo2\RecursoInterfazM2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursoInterfazM2.resx</DependentUpon>
+    </Compile>
     <Compile Include="Modulo3\LogicaInvolucrados.cs" />
     <Compile Include="Modulo4\LogicaProyecto.cs" />
     <Compile Include="Modulo5\LogicaRequerimiento.cs" />
@@ -86,7 +88,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosLogicaModulo1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo2\RecursosLogicaModulo2.resx" />
+    <EmbeddedResource Include="Modulo2\RecursoInterfazM2.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursoInterfazM2.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulo8\RecursosLogicaModulo8.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosLogicaModulo8.Designer.cs</LastGenOutput>

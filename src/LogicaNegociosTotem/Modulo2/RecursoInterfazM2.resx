@@ -117,16 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CodigoClienteInexistente" xml:space="preserve">
-    <value>T_02_001</value>
+  <data name="AbrirBotonDetalle" xml:space="preserve">
+    <value>&lt;a class="btn btn-primary glyphicon glyphicon-info-sign" href="DetallarEmpresa.aspx?detalle=</value>
   </data>
-  <data name="CodigoOperacionInvalida" xml:space="preserve">
-    <value>T_02_005</value>
+  <data name="AbrirBotonEliminar" xml:space="preserve">
+    <value>&lt;a class="btn btn-danger glyphicon glyphicon-remove-sign" href="ListarEmpresas.aspx?empresaaeliminar=</value>
   </data>
-  <data name="MensajeClienteInexistente" xml:space="preserve">
-    <value>No se ha podido encontrar al Cliente</value>
+  <data name="AbrirBotonModificar" xml:space="preserve">
+    <value>&lt;a class="btn btn-default glyphicon glyphicon-pencil" href="ModificarEmpresa.aspx?id=</value>
   </data>
-  <data name="MensajeOperacionInvalida" xml:space="preserve">
-    <value>Operación inválida</value>
+  <data name="AbrirEtiqueta_td" xml:space="preserve">
+    <value>&lt;td&gt;</value>
+  </data>
+  <data name="AbrirEtiqueta_tr" xml:space="preserve">
+    <value>&lt;tr&gt;</value>
+  </data>
+  <data name="CerrarBoton" xml:space="preserve">
+    <value>"&gt;&lt;/a&gt;</value>
+  </data>
+  <data name="CerrarEtiqueta_td" xml:space="preserve">
+    <value>&lt;/td&gt;</value>
+  </data>
+  <data name="CerrarEtiqueta_tr" xml:space="preserve">
+    <value>&lt;/tr&gt;</value>
   </data>
 </root>
