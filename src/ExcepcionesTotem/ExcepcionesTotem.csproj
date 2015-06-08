@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAOException.cs" />
     <Compile Include="ExceptionTotem.cs" />
     <Compile Include="ExceptionTotemConexionBD.cs" />
     <Compile Include="Modulo1\IntentosFallidosException.cs" />

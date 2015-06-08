@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatosTotem", "src\DatosTotem\DatosTotem.csproj", "{B4B3079E-15EC-4575-89CD-5FF052C22BDA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Datos", "Datos", "{0656A7B9-A719-45AA-986D-9F94652C596C}"
@@ -25,28 +23,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaNegociosTotem", "src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebasUnitariasTotem", "src\PruebasUnitariasTotem\PruebasUnitariasTotem.csproj", "{64C7FA06-721F-4338-A867-30DE53B121EE}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Interfaz", "http://localhost:22288", "{913F6A1A-2F3B-48E7-94CA-145237E7AB3D}"
-	ProjectSection(WebsiteProperties) = preProject
-		UseIISExpress = "true"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		ProjectReferences = "{70c79b2e-094d-49ba-bc84-d7cd7443abff}|LogicaNegociosTotem.dll;{B4B3079E-15EC-4575-89CD-5FF052C22BDA}|DatosTotem.dll;{71398660-3B9B-4BED-91B3-B968A4EBF02E}|DominioTotem.dll;{AAA3900A-9CED-4F07-9CEE-D86208C39437}|ExcepcionesTotem.dll;"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_22288"
-		Debug.AspNetCompiler.PhysicalPath = "src\Interfaz\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_22288\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_22288"
-		Release.AspNetCompiler.PhysicalPath = "src\Interfaz\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_22288\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "src\Interfaz\"
-		DefaultWebSiteLanguage = "Visual C#"
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vista", "src\Interfaz\src\Vista\Vista.csproj", "{B913059A-34F1-435C-A675-D216054DA566}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentadores", "src\Interfaz\src\Presentadores\Presentadores.csproj", "{621ABA92-2A73-4B4C-A3FA-7EBBDD89AA9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contratos", "src\Interfaz\src\Contratos\Contratos.csproj", "{C295FF71-0B9B-40D4-B76F-0EFBAF1C3CE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comandos", "src\LogicaNegociosTotem\Comandos\Comandos.csproj", "{599466E8-E67A-4B93-BA44-A45079957C95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "src\DominioTotem\Dominio\Dominio.csproj", "{41DD6620-EB5E-4529-B66D-D29A27FA2E5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAO", "src\DatosTotem\DAO\DAO.csproj", "{D9ACE21A-77B5-4E5A-BB70-C77BC5A39A6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,20 +61,45 @@ Global
 		{64C7FA06-721F-4338-A867-30DE53B121EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64C7FA06-721F-4338-A867-30DE53B121EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64C7FA06-721F-4338-A867-30DE53B121EE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{913F6A1A-2F3B-48E7-94CA-145237E7AB3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{913F6A1A-2F3B-48E7-94CA-145237E7AB3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{913F6A1A-2F3B-48E7-94CA-145237E7AB3D}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{913F6A1A-2F3B-48E7-94CA-145237E7AB3D}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{B913059A-34F1-435C-A675-D216054DA566}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B913059A-34F1-435C-A675-D216054DA566}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B913059A-34F1-435C-A675-D216054DA566}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B913059A-34F1-435C-A675-D216054DA566}.Release|Any CPU.Build.0 = Release|Any CPU
+		{621ABA92-2A73-4B4C-A3FA-7EBBDD89AA9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{621ABA92-2A73-4B4C-A3FA-7EBBDD89AA9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{621ABA92-2A73-4B4C-A3FA-7EBBDD89AA9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{621ABA92-2A73-4B4C-A3FA-7EBBDD89AA9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C295FF71-0B9B-40D4-B76F-0EFBAF1C3CE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C295FF71-0B9B-40D4-B76F-0EFBAF1C3CE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C295FF71-0B9B-40D4-B76F-0EFBAF1C3CE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C295FF71-0B9B-40D4-B76F-0EFBAF1C3CE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{599466E8-E67A-4B93-BA44-A45079957C95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{599466E8-E67A-4B93-BA44-A45079957C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{599466E8-E67A-4B93-BA44-A45079957C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{599466E8-E67A-4B93-BA44-A45079957C95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41DD6620-EB5E-4529-B66D-D29A27FA2E5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41DD6620-EB5E-4529-B66D-D29A27FA2E5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41DD6620-EB5E-4529-B66D-D29A27FA2E5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41DD6620-EB5E-4529-B66D-D29A27FA2E5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9ACE21A-77B5-4E5A-BB70-C77BC5A39A6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9ACE21A-77B5-4E5A-BB70-C77BC5A39A6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9ACE21A-77B5-4E5A-BB70-C77BC5A39A6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9ACE21A-77B5-4E5A-BB70-C77BC5A39A6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B4B3079E-15EC-4575-89CD-5FF052C22BDA} = {0656A7B9-A719-45AA-986D-9F94652C596C}
+		{D9ACE21A-77B5-4E5A-BB70-C77BC5A39A6C} = {0656A7B9-A719-45AA-986D-9F94652C596C}
 		{AAA3900A-9CED-4F07-9CEE-D86208C39437} = {9F3D3069-A59A-4FC5-9E6E-3914ECB65799}
 		{70C79B2E-094D-49BA-BC84-D7CD7443ABFF} = {1924E660-31E5-4FD7-89D6-A560C3ABADE9}
+		{599466E8-E67A-4B93-BA44-A45079957C95} = {1924E660-31E5-4FD7-89D6-A560C3ABADE9}
 		{71398660-3B9B-4BED-91B3-B968A4EBF02E} = {C553EAB8-A262-4815-BA3F-C7C58BD9CD13}
-		{913F6A1A-2F3B-48E7-94CA-145237E7AB3D} = {A4B46370-2BC8-4FDF-AB93-79A6A61D0683}
+		{41DD6620-EB5E-4529-B66D-D29A27FA2E5A} = {C553EAB8-A262-4815-BA3F-C7C58BD9CD13}
+		{B913059A-34F1-435C-A675-D216054DA566} = {A4B46370-2BC8-4FDF-AB93-79A6A61D0683}
+		{621ABA92-2A73-4B4C-A3FA-7EBBDD89AA9B} = {A4B46370-2BC8-4FDF-AB93-79A6A61D0683}
+		{C295FF71-0B9B-40D4-B76F-0EFBAF1C3CE6} = {A4B46370-2BC8-4FDF-AB93-79A6A61D0683}
 		{64C7FA06-721F-4338-A867-30DE53B121EE} = {DC2EF444-199D-4B93-B23D-C638F0DC5BAC}
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D9ACE21A-77B5-4E5A-BB70-C77BC5A39A6C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DAO</RootNamespace>
+    <AssemblyName>DAO</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAO\DAO.cs" />
+    <Compile Include="DAO\Parametro.cs" />
+    <Compile Include="DAO\RecursoGeneralDAO.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursoGeneralDAO.resx</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\Resultado.cs" />
+    <Compile Include="Fabrica\FabricaAbstractaDAO.cs" />
+    <Compile Include="Fabrica\FabricaDAOSqlServer.cs" />
+    <Compile Include="IntefazDAO\IDao.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DAO\Modulo 1\" />
+    <Folder Include="DAO\Modulo 2\" />
+    <Folder Include="DAO\Modulo 3\" />
+    <Folder Include="DAO\Modulo 4\" />
+    <Folder Include="DAO\Modulo 5\" />
+    <Folder Include="DAO\Modulo 6\" />
+    <Folder Include="DAO\Modulo 7\" />
+    <Folder Include="DAO\Modulo 8\" />
+    <Folder Include="IntefazDAO\Modulo 1\" />
+    <Folder Include="IntefazDAO\Modulo 2\" />
+    <Folder Include="IntefazDAO\Modulo 3\" />
+    <Folder Include="IntefazDAO\Modulo 4\" />
+    <Folder Include="IntefazDAO\Modulo 5\" />
+    <Folder Include="IntefazDAO\Modulo 6\" />
+    <Folder Include="IntefazDAO\Modulo 7\" />
+    <Folder Include="IntefazDAO\Modulo 8\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DAO\RecursoGeneralDAO.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursoGeneralDAO.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
