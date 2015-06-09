@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Dominio.Entidades.Modulo6; 
 
 namespace Dominio.Fabrica
 {
@@ -44,6 +45,17 @@ namespace Dominio.Fabrica
         #endregion
 
         #region Modulo 6
+
+        public Actor ObtenerActor() 
+        {
+            return new Actor(); 
+        }
+
+        public CasoDeUso ObtenerCasoDeUso() 
+        {
+            return new CasoDeUso(); 
+        }
+
         #endregion
 
         #region Modulo 7

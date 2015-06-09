@@ -45,6 +45,9 @@
     <Compile Include="Entidades\Modulo 2\Contacto.cs" />
     <Compile Include="Entidades\Modulo 2\Direccion.cs" />
     <Compile Include="Entidades\Modulo 2\Telefono.cs" />
+    <Compile Include="Entidades\Modulo 5\Requerimiento.cs" />
+    <Compile Include="Entidades\Modulo 6\Actor.cs" />
+    <Compile Include="Entidades\Modulo 6\CasoDeUso.cs" />
     <Compile Include="Fabrica\FabricaEntidades.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -52,8 +55,6 @@
     <Folder Include="Entidades\Modulo 1\" />
     <Folder Include="Entidades\Modulo 3\" />
     <Folder Include="Entidades\Modulo 4\" />
-    <Folder Include="Entidades\Modulo 5\" />
-    <Folder Include="Entidades\Modulo 6\" />
     <Folder Include="Entidades\Modulo 7\" />
     <Folder Include="Entidades\Modulo 8\" />
   </ItemGroup>
