@@ -41,6 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\DAO.cs" />
+    <Compile Include="DAO\Modulo 6\RecursosDAOModulo6.Designer.cs">
+      <DependentUpon>RecursosDAOModulo6.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="DAO\Parametro.cs" />
     <Compile Include="DAO\RecursoGeneralDAO.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -59,7 +64,6 @@
     <Folder Include="DAO\Modulo 3\" />
     <Folder Include="DAO\Modulo 4\" />
     <Folder Include="DAO\Modulo 5\" />
-    <Folder Include="DAO\Modulo 6\" />
     <Folder Include="DAO\Modulo 7\" />
     <Folder Include="DAO\Modulo 8\" />
     <Folder Include="IntefazDAO\Modulo 1\" />
@@ -72,6 +76,10 @@
     <Folder Include="IntefazDAO\Modulo 8\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="DAO\Modulo 6\RecursosDAOModulo6.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosDAOModulo6.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="DAO\RecursoGeneralDAO.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursoGeneralDAO.Designer.cs</LastGenOutput>
