@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AgregarClienteJur" xml:space="preserve">
+    <value>M2_AgregarClienteJur</value>
+  </data>
+  <data name="AgregarClienteNat" xml:space="preserve">
+    <value>M2_AgregarClienteNat</value>
+  </data>
+  <data name="AliasApellidoClienteNat" xml:space="preserve">
+    <value>APELLIDO_CLIENTENATURAL</value>
+  </data>
+  <data name="AliasCargoContacto" xml:space="preserve">
+    <value>contactoCargo</value>
+  </data>
+  <data name="AliasCedulaClienteNat" xml:space="preserve">
+    <value>CEDULA_CLIENTENATURAL</value>
+  </data>
+  <data name="AliasClienteJurCiudad" xml:space="preserve">
+    <value>clienteJurCiudad</value>
+  </data>
+  <data name="AliasClienteJurCodPost" xml:space="preserve">
+    <value>clienteJurCodPost</value>
+  </data>
+  <data name="AliasClienteJurDireccion" xml:space="preserve">
+    <value>clienteJurDir</value>
+  </data>
+  <data name="AliasClienteJurEstado" xml:space="preserve">
+    <value>clienteJurEstado</value>
+  </data>
+  <data name="AliasClienteJurID" xml:space="preserve">
+    <value>clienteJurID</value>
+  </data>
+  <data name="AliasClienteJurLogo" xml:space="preserve">
+    <value>clienteJurLogo</value>
+  </data>
+  <data name="AliasClienteJurNombre" xml:space="preserve">
+    <value>clienteJurNombre</value>
+  </data>
+  <data name="AliasClienteJurPais" xml:space="preserve">
+    <value>clienteJurPais</value>
+  </data>
+  <data name="AliasClienteJurRif" xml:space="preserve">
+    <value>clienteJurRif</value>
+  </data>
+  <data name="AliasCodigoTelefono" xml:space="preserve">
+    <value>COD_TELEFONO</value>
+  </data>
+  <data name="AliasCodPostalDireccion" xml:space="preserve">
+    <value>CODPOSTAL_DIR</value>
+  </data>
+  <data name="AliasContactoApellido" xml:space="preserve">
+    <value>contactoApellido</value>
+  </data>
+  <data name="AliasContactoCedula" xml:space="preserve">
+    <value>contactoCedula</value>
+  </data>
+  <data name="AliasContactoID" xml:space="preserve">
+    <value>contactoID</value>
+  </data>
+  <data name="AliasContactoNombre" xml:space="preserve">
+    <value>contactoNombre</value>
+  </data>
+  <data name="AliasCorreoClienteNat" xml:space="preserve">
+    <value>CORREO_CLIENTENATURAL</value>
+  </data>
+  <data name="AliasIDClienteNat" xml:space="preserve">
+    <value>ID_CLIENTENATURAL</value>
+  </data>
+  <data name="AliasNombreCiudad" xml:space="preserve">
+    <value>NOMBRE_CIUDAD</value>
+  </data>
+  <data name="AliasNombreClienteNat" xml:space="preserve">
+    <value>NOMBRE_CLIENTENATURAL</value>
+  </data>
+  <data name="AliasNombreDireccion" xml:space="preserve">
+    <value>NOMBRE_DIR</value>
+  </data>
+  <data name="AliasNombreEstado" xml:space="preserve">
+    <value>NOMBRE_ESTADO</value>
+  </data>
+  <data name="AliasNombrePais" xml:space="preserve">
+    <value>NOMBRE_PAIS</value>
+  </data>
+  <data name="AliasNumTelefono" xml:space="preserve">
+    <value>NUM_TELEFONO</value>
+  </data>
+  <data name="ConsultarCiudadesPorEstado" xml:space="preserve">
+    <value>M2_ConsultarCiudadesPorEstado</value>
+  </data>
+  <data name="ConsultarDatosClienteJur" xml:space="preserve">
+    <value>M2_ConsultarDatosClienteJur</value>
+  </data>
+  <data name="ConsultarDatosClienteNat" xml:space="preserve">
+    <value>M2_ConsultarDatosClienteNat</value>
+  </data>
+  <data name="ConsultarDatosContacto" xml:space="preserve">
+    <value>M2_ConsultarDatosContacto</value>
+  </data>
+  <data name="ConsultarDatosContactoNatID" xml:space="preserve">
+    <value>M2_ConsultarDatosContactoNatID</value>
+  </data>
+  <data name="ConsultarEstadosPorPais" xml:space="preserve">
+    <value>M2_ConsultarEstadosPorPais</value>
+  </data>
+  <data name="ConsultarListaClienteNat" xml:space="preserve">
+    <value>M2_ConsultarListaClienteNat</value>
+  </data>
+  <data name="ConsultarListaClientesJur" xml:space="preserve">
+    <value>M2_ConsultarListaClienteJur</value>
+  </data>
+  <data name="ConsultarListaContactosJurID" xml:space="preserve">
+    <value>M2_ConsultarListaContactosJurID</value>
+  </data>
+  <data name="ConsultarPaises" xml:space="preserve">
+    <value>M2_ConsultarPaises</value>
+  </data>
+  <data name="EliminarClienteJuridico" xml:space="preserve">
+    <value>M2_EliminarClienteJuridico</value>
+  </data>
+  <data name="EliminarClienteNat" xml:space="preserve">
+    <value>M2_EliminarClienteNat</value>
+  </data>
+  <data name="EliminarContacto" xml:space="preserve">
+    <value>M2_EliminarContacto</value>
+  </data>
+  <data name="ModificarClienteJur" xml:space="preserve">
+    <value>M2_ModificarClienteJur</value>
+  </data>
+  <data name="ModificarClienteNat" xml:space="preserve">
+    <value>M2_ModificarClienteNat</value>
+  </data>
+  <data name="NombreLugar" xml:space="preserve">
+    <value>lug_nombre</value>
+  </data>
+  <data name="ParamApellidoClienteNat" xml:space="preserve">
+    <value>@cn_apellido</value>
+  </data>
+  <data name="ParamCedulaClienteNat" xml:space="preserve">
+    <value>@cn_cedula</value>
+  </data>
+  <data name="ParamCiudad" xml:space="preserve">
+    <value>@ciudad</value>
+  </data>
+  <data name="ParamCodigoPostal" xml:space="preserve">
+    <value>@codigo_post</value>
+  </data>
+  <data name="ParamCodigoTelef" xml:space="preserve">
+    <value>@codigo_tel</value>
+  </data>
+  <data name="ParamContactoApellido" xml:space="preserve">
+    <value>@con_apellido</value>
+  </data>
+  <data name="ParamContactoCargo" xml:space="preserve">
+    <value>@con_cargo</value>
+  </data>
+  <data name="ParamContactoCedula" xml:space="preserve">
+    <value>@con_cedula</value>
+  </data>
+  <data name="ParamContactoCodTel" xml:space="preserve">
+    <value>@con_cod_tel</value>
+  </data>
+  <data name="ParamContactoNombre" xml:space="preserve">
+    <value>@con_nombre</value>
+  </data>
+  <data name="ParamContactoNumTel" xml:space="preserve">
+    <value>@con_num_tel</value>
+  </data>
+  <data name="ParamCorreoClienteNat" xml:space="preserve">
+    <value>@cn_correo</value>
+  </data>
+  <data name="ParamDireccion" xml:space="preserve">
+    <value>@direccion</value>
+  </data>
+  <data name="ParamEstado" xml:space="preserve">
+    <value>@estado</value>
+  </data>
+  <data name="ParamIDClienteJur" xml:space="preserve">
+    <value>@idClienteJur</value>
+  </data>
+  <data name="ParamIDClienteNat" xml:space="preserve">
+    <value>@idClienteNat</value>
+  </data>
+  <data name="ParamIDContacto" xml:space="preserve">
+    <value>@idContacto</value>
+  </data>
+  <data name="ParamJurLogo" xml:space="preserve">
+    <value>@cj_logo</value>
+  </data>
+  <data name="ParamJurNombre" xml:space="preserve">
+    <value>@cj_nombre</value>
+  </data>
+  <data name="ParamJurRif" xml:space="preserve">
+    <value>@cj_rif</value>
+  </data>
+  <data name="ParamNombreClienteNat" xml:space="preserve">
+    <value>@cn_nombre</value>
+  </data>
+  <data name="ParamNumeroTelef" xml:space="preserve">
+    <value>@numero_tel</value>
+  </data>
+  <data name="ParamPais" xml:space="preserve">
+    <value>@pais</value>
+  </data>
+</root>
