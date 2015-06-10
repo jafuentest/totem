@@ -40,17 +40,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IContratoMasterPage.cs" />
+    <Compile Include="Modulo5\IContratoAgregarRequerimiento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Modulo 1\" />
-    <Folder Include="Modulo 2\" />
-    <Folder Include="Modulo 3\" />
-    <Folder Include="Modulo 4\" />
-    <Folder Include="Modulo 5\" />
-    <Folder Include="Modulo 6\" />
-    <Folder Include="Modulo 7\" />
-    <Folder Include="Modulo 8\" />
+    <Folder Include="Modulo1\" />
+    <Folder Include="Modulo2\" />
+    <Folder Include="Modulo3\" />
+    <Folder Include="Modulo4\" />
+    <Folder Include="Modulo6\" />
+    <Folder Include="Modulo7\" />
+    <Folder Include="Modulo8\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

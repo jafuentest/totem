@@ -11,8 +11,8 @@ namespace Vista.Master
 {
     public partial class MasterPage : System.Web.UI.MasterPage, IContratoMasterPage
     {
-        private PresentadorMasterPage presentador;
-        private String idModulo;
+        public PresentadorMasterPage presentador { get; set; }
+        public String idModulo { get; set; }
 
         public MasterPage()
         {
@@ -55,9 +55,8 @@ namespace Vista.Master
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            presentador.CargarMenuLateral();
-            presentador.RevisarCookies();
-            presentador.RevisarSession();
+            //presentador.RevisarCookies();
+            //presentador.RevisarSession();
         }
 
 

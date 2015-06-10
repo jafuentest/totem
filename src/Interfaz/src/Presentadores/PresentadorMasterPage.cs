@@ -29,7 +29,7 @@ namespace Presentadores
         /// </summary>
         public void CargarMenuLateral()
         {
-            if ((!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/M1_login.aspx")) &&
+            /*if ((!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/M1_login.aspx")) &&
                    (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/M1_IntroducirCorreo.aspx")) &&
                    (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/M1_PreguntaSeguridad.aspx")) &&
                    (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/M1_RecuperacionClave.aspx")))
@@ -38,7 +38,7 @@ namespace Presentadores
                 vista.menuLateral = false;
             }
             else
-            {
+            {*/
                 XmlDocument doc = new XmlDocument();
                 doc.Load(HttpContext.Current.Server.MapPath(
                     RecursosGeneralPresentadores.Direccion_XML));
@@ -47,12 +47,12 @@ namespace Presentadores
                     foreach (XmlNode subNode in node.ChildNodes)
                         if (!(subNode.Attributes["id"] == null) && subNode.Attributes["id"].InnerText.Equals(vista.idModulo))
                         {
-                            vista.opcionesDeMenu += "<li><a href='<%= Page.ResolveUrl(" +
-                                  node.Attributes["link"].InnerText + ") %>'><%= " +
-                                  node.Attributes["nombre"].InnerText + " %></a></li>";
+                            vista.opcionesDeMenu += "<li><a href='" +
+                                  node.Attributes["link"].InnerText + "'>" +
+                                  node.Attributes["nombre"].InnerText + "</a></li>";
                             break;
                         }
-            }
+            //}
   
         }
 

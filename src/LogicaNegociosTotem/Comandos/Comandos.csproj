@@ -44,14 +44,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Comandos\Modulo 1\" />
-    <Folder Include="Comandos\Modulo 2\" />
-    <Folder Include="Comandos\Modulo 3\" />
-    <Folder Include="Comandos\Modulo 4\" />
-    <Folder Include="Comandos\Modulo 5\" />
-    <Folder Include="Comandos\Modulo 6\" />
-    <Folder Include="Comandos\Modulo 7\" />
-    <Folder Include="Comandos\Modulo 8\" />
+    <Folder Include="Comandos\Modulo1\" />
+    <Folder Include="Comandos\Modulo2\" />
+    <Folder Include="Comandos\Modulo3\" />
+    <Folder Include="Comandos\Modulo4\" />
+    <Folder Include="Comandos\Modulo5\" />
+    <Folder Include="Comandos\Modulo6\" />
+    <Folder Include="Comandos\Modulo7\" />
+    <Folder Include="Comandos\Modulo8\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\DominioTotem\Dominio\Dominio.csproj">

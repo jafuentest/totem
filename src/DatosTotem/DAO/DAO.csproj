@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\DAO.cs" />
-    <Compile Include="DAO\Modulo 6\RecursosDAOModulo6.Designer.cs">
+    <Compile Include="DAO\Modulo6\RecursosDAOModulo6.Designer.cs">
       <DependentUpon>RecursosDAOModulo6.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -59,24 +59,24 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DAO\Modulo 1\" />
-    <Folder Include="DAO\Modulo 2\" />
-    <Folder Include="DAO\Modulo 3\" />
-    <Folder Include="DAO\Modulo 4\" />
-    <Folder Include="DAO\Modulo 5\" />
-    <Folder Include="DAO\Modulo 7\" />
-    <Folder Include="DAO\Modulo 8\" />
-    <Folder Include="IntefazDAO\Modulo 1\" />
-    <Folder Include="IntefazDAO\Modulo 2\" />
-    <Folder Include="IntefazDAO\Modulo 3\" />
-    <Folder Include="IntefazDAO\Modulo 4\" />
-    <Folder Include="IntefazDAO\Modulo 5\" />
-    <Folder Include="IntefazDAO\Modulo 6\" />
-    <Folder Include="IntefazDAO\Modulo 7\" />
-    <Folder Include="IntefazDAO\Modulo 8\" />
+    <Folder Include="DAO\Modulo1\" />
+    <Folder Include="DAO\Modulo2\" />
+    <Folder Include="DAO\Modulo3\" />
+    <Folder Include="DAO\Modulo4\" />
+    <Folder Include="DAO\Modulo5\" />
+    <Folder Include="DAO\Modulo7\" />
+    <Folder Include="DAO\Modulo8\" />
+    <Folder Include="IntefazDAO\Modulo1\" />
+    <Folder Include="IntefazDAO\Modulo2\" />
+    <Folder Include="IntefazDAO\Modulo3\" />
+    <Folder Include="IntefazDAO\Modulo4\" />
+    <Folder Include="IntefazDAO\Modulo5\" />
+    <Folder Include="IntefazDAO\Modulo6\" />
+    <Folder Include="IntefazDAO\Modulo7\" />
+    <Folder Include="IntefazDAO\Modulo8\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DAO\Modulo 6\RecursosDAOModulo6.resx">
+    <EmbeddedResource Include="DAO\Modulo6\RecursosDAOModulo6.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosDAOModulo6.Designer.cs</LastGenOutput>
     </EmbeddedResource>

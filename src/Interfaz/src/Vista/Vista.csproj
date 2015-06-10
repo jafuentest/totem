@@ -28,7 +28,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -100,6 +100,7 @@
     <Content Include="img\Icons\modulo7.png" />
     <Content Include="img\Icons\modulo8.png" />
     <Content Include="Master\menuLateral.xml" />
+    <Content Include="Modulo5\AgregarRequerimiento.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +110,13 @@
     </Compile>
     <Compile Include="Master\MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo5\AgregarRequerimiento.aspx.cs">
+      <DependentUpon>AgregarRequerimiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo5\AgregarRequerimiento.aspx.designer.cs">
+      <DependentUpon>AgregarRequerimiento.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -129,14 +137,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Modulo 1\" />
-    <Folder Include="Modulo 2\" />
-    <Folder Include="Modulo 3\" />
-    <Folder Include="Modulo 4\" />
-    <Folder Include="Modulo 5\" />
-    <Folder Include="Modulo 6\" />
-    <Folder Include="Modulo 7\" />
-    <Folder Include="Modulo 8\" />
+    <Folder Include="Modulo1\" />
+    <Folder Include="Modulo2\" />
+    <Folder Include="Modulo3\" />
+    <Folder Include="Modulo4\" />
+    <Folder Include="Modulo6\" />
+    <Folder Include="Modulo7\" />
+    <Folder Include="Modulo8\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Contratos\Contratos.csproj">
