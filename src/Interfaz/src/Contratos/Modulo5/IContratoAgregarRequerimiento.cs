@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Contratos.Modulo_5
+namespace Contratos.Modulo5
 {
     public interface IContratoAgregarRequerimiento
     {
@@ -12,6 +12,5 @@ namespace Contratos.Modulo_5
         string requerimiento { get; }
         string prioridad { get; }
         bool finalizado { get; }
-       
     }
 }

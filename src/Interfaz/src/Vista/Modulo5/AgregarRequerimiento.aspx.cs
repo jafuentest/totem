@@ -8,23 +8,23 @@ using System.Web.UI.WebControls;
 namespace Vista.Modulo5
 {
     public partial class AgregarRequerimiento : System.Web.UI.Page, 
-        Contratos.Modulo_5.IContratoAgregarRequerimiento
+        Contratos.Modulo5.IContratoAgregarRequerimiento
 {
-        private Presentadores.Modulo_5.PresentadorAgregarRequerimiento presentador;
+        private Presentadores.Modulo5.PresentadorAgregarRequerimiento presentador;
 
         public AgregarRequerimiento()
         {
-            presentador = new Presentadores.Modulo_5.PresentadorAgregarRequerimiento(this);
+            presentador = new Presentadores.Modulo5.PresentadorAgregarRequerimiento(this);
         }
 
         #region Contrato
-        string Contratos.Modulo_5.IContratoAgregarRequerimiento.idRequerimiento
+        string Contratos.Modulo5.IContratoAgregarRequerimiento.idRequerimiento
         {
             get { return inputIdRequerimiento.Value; }
             set { inputIdRequerimiento.Value = value; }
         }
 
-        bool Contratos.Modulo_5.IContratoAgregarRequerimiento.funcional
+        bool Contratos.Modulo5.IContratoAgregarRequerimiento.funcional
         {
             get
             {
@@ -35,12 +35,12 @@ namespace Vista.Modulo5
             }
         }
 
-        string Contratos.Modulo_5.IContratoAgregarRequerimiento.requerimiento
+        string Contratos.Modulo5.IContratoAgregarRequerimiento.requerimiento
         {
             get { return inputRequerimiento.InnerText; }
         }
 
-        string Contratos.Modulo_5.IContratoAgregarRequerimiento.prioridad
+        string Contratos.Modulo5.IContratoAgregarRequerimiento.prioridad
         {
             get
             {
@@ -56,7 +56,7 @@ namespace Vista.Modulo5
             }
         }
 
-        bool Contratos.Modulo_5.IContratoAgregarRequerimiento.finalizado
+        bool Contratos.Modulo5.IContratoAgregarRequerimiento.finalizado
         {
             get { return false; }
         }

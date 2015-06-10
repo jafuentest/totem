@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Contratos.Modulo_5;
+using Contratos.Modulo5;
 using System.Web.UI;
 
-namespace Presentadores.Modulo_5
+namespace Presentadores.Modulo5
 {
     public class PresentadorAgregarRequerimiento
     {
@@ -16,10 +16,6 @@ namespace Presentadores.Modulo_5
             this.vista = vista;
         }
 
-        public void MostrarMenuLateral()
-        {
-            
-        }
 
     }
 }
