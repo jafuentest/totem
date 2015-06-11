@@ -11,6 +11,10 @@ namespace DAO.Fabrica
         #endregion
 
         #region Modulo 2
+        public override IntefazDAO.Modulo_2.IDaoClienteJuridico ObtenerDaoClienteJuridico()
+        {
+            return new DAO.Modulo_2.DaoClienteJuridico();
+        }
         #endregion
 
         #region Modulo 3

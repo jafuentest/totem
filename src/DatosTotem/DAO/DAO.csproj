@@ -60,6 +60,7 @@
     <Compile Include="Fabrica\FabricaDAOSqlServer.cs" />
     <Compile Include="IntefazDAO\IDao.cs" />
     <Compile Include="IntefazDAO\Modulo2\IDaoClienteJuridico.cs" />
+    <Compile Include="IntefazDAO\Modulo5\IDaoRequerimiento.cs" />
     <Compile Include="IntefazDAO\Modulo6\IDaoActor.cs" />
     <Compile Include="IntefazDAO\Modulo6\IDaoCasoDeUso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,7 +75,6 @@
     <Folder Include="IntefazDAO\Modulo1\" />
     <Folder Include="IntefazDAO\Modulo3\" />
     <Folder Include="IntefazDAO\Modulo4\" />
-    <Folder Include="IntefazDAO\Modulo5\" />
     <Folder Include="IntefazDAO\Modulo7\" />
     <Folder Include="IntefazDAO\Modulo8\" />
   </ItemGroup>

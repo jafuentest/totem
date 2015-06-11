@@ -100,6 +100,7 @@
     <Content Include="img\Icons\modulo7.png" />
     <Content Include="img\Icons\modulo8.png" />
     <Content Include="Master\menuLateral.xml" />
+    <Content Include="Modulo2\AgregarEmpresa.aspx" />
     <Content Include="Modulo5\AgregarRequerimiento.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -110,6 +111,13 @@
     </Compile>
     <Compile Include="Master\MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo2\AgregarEmpresa.aspx.cs">
+      <DependentUpon>AgregarEmpresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo2\AgregarEmpresa.aspx.designer.cs">
+      <DependentUpon>AgregarEmpresa.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulo5\AgregarRequerimiento.aspx.cs">
       <DependentUpon>AgregarRequerimiento.aspx</DependentUpon>
@@ -138,7 +146,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modulo1\" />
-    <Folder Include="Modulo2\" />
     <Folder Include="Modulo3\" />
     <Folder Include="Modulo4\" />
     <Folder Include="Modulo6\" />
