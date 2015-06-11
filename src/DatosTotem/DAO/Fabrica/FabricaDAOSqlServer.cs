@@ -26,7 +26,7 @@ namespace DAO.Fabrica
         #region Modulo 5
         public override IntefazDAO.Modulo5.IDaoRequerimiento ObtenerDAORequerimiento()
         {
-            throw new NotImplementedException();
+            return new DAO.Modulo5.DAORequerimiento();
         }
         #endregion
 

@@ -50,14 +50,6 @@ namespace DAO.IntefazDAO.Modulo5
         /// <param name="requerimiento"></param>
         /// <returns></returns>
         bool AgregarRequerimiento(Dominio.Entidad requerimiento, int idProyecto);
-
-        /// <summary>
-        /// Firma de metodo que busca el requerimiento en la base de datos
-        /// por el codigo
-        /// </summary>
-        /// <param name="codigo">Codigo del proyecto</param>
-        /// <returns>El requerimiento como una entidad</returns>
-        Dominio.Entidad BuscarRequerimientoPorCodigo(String codigoProyecto);
      
         #endregion
     }
