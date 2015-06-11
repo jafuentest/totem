@@ -43,12 +43,12 @@ namespace Dominio.Fabrica
         #endregion
 
         #region Modulo 5
-        public Entidades.Modulo5.Requerimiento ObtenerRequerimiento()
+        public static Entidad ObtenerRequerimiento()
         {
             return new Entidades.Modulo5.Requerimiento();
         }
 
-        public Entidades.Modulo5.Requerimiento
+        public static Entidad
             ObtenerRequerimiento(string codigo, string descripcion, string tipo,
             string prioridad, string estatus)
         {
