@@ -20,6 +20,10 @@ namespace DAO.Fabrica
         #endregion
 
         #region Modulo 5
+        public override IntefazDAO.Modulo5.IDaoRequerimiento ObtenerDAORequerimiento()
+        {
+            throw new NotImplementedException();
+        }
         #endregion
 
         #region Modulo 6
@@ -30,5 +34,7 @@ namespace DAO.Fabrica
 
         #region Modulo 8
         #endregion
+
+        
     }
 }
