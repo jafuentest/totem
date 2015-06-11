@@ -69,6 +69,7 @@
     <Compile Include="Modulo4\RequerimientosInexistentesException.cs" />
     <Compile Include="Modulo5\ProyectoNoEncontradoException.cs" />
     <Compile Include="Modulo6\ExcepcionesDAO\AgregarActorBDDAOException.cs" />
+    <Compile Include="Modulo6\ExcepcionesDAO\AgregarActorNuloDAOException.cs" />
     <Compile Include="Modulo6\ExcepcionesDAO\EliminarActorBDDAOException.cs" />
     <Compile Include="Modulo6\ExcepcionesDAO\LeerCasoUsoBDDAOException.cs" />
     <Compile Include="Modulo6\ExcepcionesDAO\ModificarActorBDDAOException.cs" />

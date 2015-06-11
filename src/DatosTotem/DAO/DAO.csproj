@@ -43,6 +43,7 @@
     <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\Modulo2\DaoClienteJuridico.cs" />
     <Compile Include="DAO\Modulo2\RecursoBDModulo2.Designer.cs" />
+    <Compile Include="DAO\Modulo6\DAOActor.cs" />
     <Compile Include="DAO\Modulo6\RecursosDAOModulo6.Designer.cs">
       <DependentUpon>RecursosDAOModulo6.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -59,6 +60,8 @@
     <Compile Include="Fabrica\FabricaDAOSqlServer.cs" />
     <Compile Include="IntefazDAO\IDao.cs" />
     <Compile Include="IntefazDAO\Modulo2\IDaoClienteJuridico.cs" />
+    <Compile Include="IntefazDAO\Modulo6\IDaoActor.cs" />
+    <Compile Include="IntefazDAO\Modulo6\IDaoCasoDeUso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -72,7 +75,6 @@
     <Folder Include="IntefazDAO\Modulo3\" />
     <Folder Include="IntefazDAO\Modulo4\" />
     <Folder Include="IntefazDAO\Modulo5\" />
-    <Folder Include="IntefazDAO\Modulo6\" />
     <Folder Include="IntefazDAO\Modulo7\" />
     <Folder Include="IntefazDAO\Modulo8\" />
   </ItemGroup>

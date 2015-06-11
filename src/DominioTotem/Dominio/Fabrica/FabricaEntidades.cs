@@ -60,12 +60,12 @@ namespace Dominio.Fabrica
 
         #region Modulo 6
 
-        public Actor ObtenerActor() 
+        public static Entidad ObtenerActor() 
         {
             return new Actor(); 
         }
 
-        public CasoDeUso ObtenerCasoDeUso() 
+        public static Entidad ObtenerCasoDeUso() 
         {
             return new CasoDeUso(); 
         }
