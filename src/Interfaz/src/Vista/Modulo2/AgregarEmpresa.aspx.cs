@@ -4,12 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Presentadores.Modulo2;
 
 namespace Vista.Modulo2
 {
     public partial class AgregarEmpresa : System.Web.UI.Page, Contratos.Modulo2.IContratoAgregarEmpresa
     {
-        private Presentadores.Modulo2.PresentadorAgregarEmpresa presentador;
+        private PresentadorAgregarEmpresa presentador;
         public AgregarEmpresa ()
 	    {
             presentador = new Presentadores.Modulo2.PresentadorAgregarEmpresa(this);
@@ -19,6 +20,7 @@ namespace Vista.Modulo2
             this.Master.idModulo = "2";
             this.Master.presentador.CargarMenuLateral();
         }
+
         #region Contrato
         string Contratos.Modulo2.IContratoAgregarEmpresa.rifEmpresa
         {
@@ -149,6 +151,29 @@ namespace Vista.Modulo2
             set
             {
                 comboCargo.SelectedValue = value;
+            }
+        }
+        string Contratos.Modulo2.IContratoAgregarEmpresa.codTelefono
+        {
+            get
+            {
+                return codTelefono.Value;
+            }
+            set
+            {
+                codTelefono.Value = value;
+            }
+        }
+
+        string Contratos.Modulo2.IContratoAgregarEmpresa.telefonoCliente
+        {
+            get
+            {
+                return telefonoCliente.Value;
+            }
+            set
+            {
+                telefonoCliente.Value = value;
             }
         }
         #endregion

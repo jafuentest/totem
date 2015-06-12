@@ -100,7 +100,13 @@
     <Content Include="img\Icons\modulo7.png" />
     <Content Include="img\Icons\modulo8.png" />
     <Content Include="Master\menuLateral.xml" />
+    <Content Include="Modulo2\AgregarCliente.aspx" />
     <Content Include="Modulo2\AgregarEmpresa.aspx" />
+    <Content Include="Modulo2\DetallarCliente.aspx" />
+    <Content Include="Modulo2\DetallarContacto.aspx" />
+    <Content Include="Modulo2\DetallarEmpresa.aspx" />
+    <Content Include="Modulo2\ListarClientes.aspx" />
+    <Content Include="Modulo2\ListarEmpresas.aspx" />
     <Content Include="Modulo5\AgregarRequerimiento.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -112,12 +118,54 @@
     <Compile Include="Master\MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
+    <Compile Include="Modulo2\AgregarCliente.aspx.cs">
+      <DependentUpon>AgregarCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo2\AgregarCliente.aspx.designer.cs">
+      <DependentUpon>AgregarCliente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modulo2\AgregarEmpresa.aspx.cs">
       <DependentUpon>AgregarEmpresa.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Modulo2\AgregarEmpresa.aspx.designer.cs">
       <DependentUpon>AgregarEmpresa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo2\DetallarCliente.aspx.cs">
+      <DependentUpon>DetallarCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo2\DetallarCliente.aspx.designer.cs">
+      <DependentUpon>DetallarCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo2\DetallarContacto.aspx.cs">
+      <DependentUpon>DetallarContacto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo2\DetallarContacto.aspx.designer.cs">
+      <DependentUpon>DetallarContacto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo2\DetallarEmpresa.aspx.cs">
+      <DependentUpon>DetallarEmpresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo2\DetallarEmpresa.aspx.designer.cs">
+      <DependentUpon>DetallarEmpresa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo2\ListarClientes.aspx.cs">
+      <DependentUpon>ListarClientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo2\ListarClientes.aspx.designer.cs">
+      <DependentUpon>ListarClientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo2\ListarEmpresas.aspx.cs">
+      <DependentUpon>ListarEmpresas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo2\ListarEmpresas.aspx.designer.cs">
+      <DependentUpon>ListarEmpresas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulo5\AgregarRequerimiento.aspx.cs">
       <DependentUpon>AgregarRequerimiento.aspx</DependentUpon>

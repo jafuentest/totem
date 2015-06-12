@@ -119,7 +119,14 @@
                                 </div>
 
                             </div>
-
+                            <div class="form-group">
+                                <div id="div_cod_telefono" class="col-sm-4 col-md-4 col-lg-4">
+                                    <input id="codTelefono" runat="server" name="codigoTELF" type="text" class="form-control" placeholder="+(cod)" maxlength="4" />
+                                </div>
+                                <div id="div_telefono" class="col-sm-8 col-md-8 col-lg-8">
+                                    <input id="telefonoCliente" runat="server" name="telefono" type="text" class="form-control" placeholder="Teléfono" maxlength="7" />
+                                </div>
+                            </div>
                             <div class="form-group">
                                
                                     <div class="btn-group col-sm-12 col-md-12 col-lg-12">

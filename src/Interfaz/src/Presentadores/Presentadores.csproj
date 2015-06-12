@@ -40,7 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modulo2\PresentadorAgregarCliente.cs" />
     <Compile Include="Modulo2\PresentadorAgregarEmpresa.cs" />
+    <Compile Include="Modulo2\PresentadorDetallarCliente.cs" />
+    <Compile Include="Modulo2\PresentadorDetallarContacto.cs" />
+    <Compile Include="Modulo2\PresentadorDetallarEmpresa.cs" />
+    <Compile Include="Modulo2\PresentadorListarClientes.cs" />
+    <Compile Include="Modulo2\PresentadorListarEmpresas.cs" />
     <Compile Include="Modulo5\PresentadorAgregarRequerimiento.cs" />
     <Compile Include="PresentadorMasterPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

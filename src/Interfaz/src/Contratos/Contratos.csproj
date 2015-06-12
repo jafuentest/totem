@@ -40,7 +40,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IContratoMasterPage.cs" />
+    <Compile Include="Modulo2\IContratoAgregarCliente.cs" />
     <Compile Include="Modulo2\IContratoAgregarEmpresa.cs" />
+    <Compile Include="Modulo2\IContratoDetallarCliente.cs" />
+    <Compile Include="Modulo2\IContratoDetallarContacto.cs" />
+    <Compile Include="Modulo2\IContratoDetallarEmpresa.cs" />
+    <Compile Include="Modulo2\IContratoListarClientes.cs" />
+    <Compile Include="Modulo2\IContratoListarEmpresas.cs" />
     <Compile Include="Modulo5\IContratoAgregarRequerimiento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
