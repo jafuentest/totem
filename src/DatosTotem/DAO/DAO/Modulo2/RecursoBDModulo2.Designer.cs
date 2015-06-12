@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DAO.DAO.Modulo_2 {
+namespace DAO.DAO.Modulo2 {
     using System;
     
     

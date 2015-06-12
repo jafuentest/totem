@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\Modulo2\DaoClienteJuridico.cs" />
+    <Compile Include="DAO\Modulo2\DaoClienteNatural.cs" />
     <Compile Include="DAO\Modulo2\RecursoBDModulo2.Designer.cs" />
     <Compile Include="DAO\Modulo5\DAORequerimiento.cs" />
     <Compile Include="DAO\Modulo6\DAOActor.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Fabrica\FabricaDAOSqlServer.cs" />
     <Compile Include="IntefazDAO\IDao.cs" />
     <Compile Include="IntefazDAO\Modulo2\IDaoClienteJuridico.cs" />
+    <Compile Include="IntefazDAO\Modulo2\IDaoClienteNatural.cs" />
     <Compile Include="IntefazDAO\Modulo5\IDaoRequerimiento.cs" />
     <Compile Include="IntefazDAO\Modulo6\IDaoActor.cs" />
     <Compile Include="IntefazDAO\Modulo6\IDaoCasoDeUso.cs" />
