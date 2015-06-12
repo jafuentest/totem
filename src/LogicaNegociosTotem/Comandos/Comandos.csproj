@@ -40,6 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comando.cs" />
+    <Compile Include="Comandos\Modulo5\ComandoAgregarRequerimiento.cs" />
+    <Compile Include="Comandos\Modulo5\ComandoConsultarRequerimiento.cs" />
+    <Compile Include="Comandos\Modulo5\ComandoConsultarRequerimientosProyecto.cs" />
+    <Compile Include="Comandos\Modulo5\ComandoEliminarRequerimiento.cs" />
+    <Compile Include="Comandos\Modulo5\ComandoModificarRequerimiento.cs" />
     <Compile Include="Fabrica\FabricaComandos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -48,7 +53,6 @@
     <Folder Include="Comandos\Modulo2\" />
     <Folder Include="Comandos\Modulo3\" />
     <Folder Include="Comandos\Modulo4\" />
-    <Folder Include="Comandos\Modulo5\" />
     <Folder Include="Comandos\Modulo6\" />
     <Folder Include="Comandos\Modulo7\" />
     <Folder Include="Comandos\Modulo8\" />

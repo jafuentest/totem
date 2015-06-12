@@ -43,6 +43,7 @@
     <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\Modulo2\DaoClienteJuridico.cs" />
     <Compile Include="DAO\Modulo2\RecursoBDModulo2.Designer.cs" />
+    <Compile Include="DAO\Modulo5\DAORequerimiento.cs" />
     <Compile Include="DAO\Modulo6\DAOActor.cs" />
     <Compile Include="DAO\Modulo6\RecursosDAOModulo6.Designer.cs">
       <DependentUpon>RecursosDAOModulo6.resx</DependentUpon>
@@ -69,7 +70,6 @@
     <Folder Include="DAO\Modulo1\" />
     <Folder Include="DAO\Modulo3\" />
     <Folder Include="DAO\Modulo4\" />
-    <Folder Include="DAO\Modulo5\" />
     <Folder Include="DAO\Modulo7\" />
     <Folder Include="DAO\Modulo8\" />
     <Folder Include="IntefazDAO\Modulo1\" />
