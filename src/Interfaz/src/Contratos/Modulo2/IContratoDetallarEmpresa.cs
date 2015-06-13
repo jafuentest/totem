@@ -9,13 +9,11 @@ namespace Contratos.Modulo2
     {
         string rifEmpresa { get; set; }
         string nombreEmpresa { get; set; }
-        string comboPais { get; set; }
-        string comboEstado { get; set; }
-        string comboCiudad { get; set; }
+        string paisEmpresa { get; set; }
+        string estadoEmpresa { get; set; }
+        string ciudadEmpresa { get; set; }
         string direccionEmpresa { get; set; }
-        string codigoPostalEmpresa { get; set; }
+        string codigoPostal { get; set; }
         string laTabla { get; set; }
-        string contacto_id { get; set; }
-        string contacto_nombreyap { get; set; }
     }
 }

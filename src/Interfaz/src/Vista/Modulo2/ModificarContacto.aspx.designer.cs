@@ -10,7 +10,7 @@
 namespace Vista.Modulo2 {
     
     
-    public partial class DetallarContacto {
+    public partial class ModificarContacto {
         
         /// <summary>
         /// agregar_empresa control.
@@ -37,7 +37,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label contactoNombre;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText contactoNombre;
         
         /// <summary>
         /// apellidoContacto control.
@@ -46,7 +46,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label apellidoContacto;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText apellidoContacto;
         
         /// <summary>
         /// cedulaContacto control.
@@ -55,7 +55,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label cedulaContacto;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText cedulaContacto;
         
         /// <summary>
         /// contenedorCargo control.
@@ -67,22 +67,31 @@ namespace Vista.Modulo2 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl contenedorCargo;
         
         /// <summary>
-        /// cargoContacto control.
+        /// comboCargo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label cargoContacto;
+        protected global::System.Web.UI.WebControls.DropDownList comboCargo;
         
         /// <summary>
-        /// telefono control.
+        /// codTelefono control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label telefono;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText codTelefono;
+        
+        /// <summary>
+        /// telefonoCliente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText telefonoCliente;
         
         /// <summary>
         /// div_botones control.

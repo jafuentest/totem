@@ -8,13 +8,13 @@ using Presentadores.Modulo2;
 
 namespace Vista.Modulo2
 {
-    public partial class DetallarContacto : System.Web.UI.Page, Contratos.Modulo2.IContratoDetallarContacto
+    public partial class DetallarContacto : System.Web.UI.Page,Contratos.Modulo2.IContratoDetallarContacto
     {
         private PresentadorDetallarContacto presentador;
 
         public DetallarContacto()
         {
-            presentador = new PresentadorDetallarContacto(this);
+            presentador = new Presentadores.Modulo2.PresentadorDetallarContacto(this);
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,16 +22,15 @@ namespace Vista.Modulo2
             this.Master.presentador.CargarMenuLateral();
         }
 
-        #region Contrato
-        string Contratos.Modulo2.IContratoDetallarContacto.nombreContacto
+        string Contratos.Modulo2.IContratoDetallarContacto.contactoNombre
         {
             get
             {
-                return contactoNombre.Value;
+                return contactoNombre.Text;
             }
             set
             {
-                contactoNombre.Value = value;
+                contactoNombre.Text = value;
             }
         }
 
@@ -39,11 +38,11 @@ namespace Vista.Modulo2
         {
             get
             {
-                return apellidoContacto.Value;
+                return apellidoContacto.Text;
             }
             set
             {
-                apellidoContacto.Value = value;
+                apellidoContacto.Text = value;
             }
         }
 
@@ -51,37 +50,36 @@ namespace Vista.Modulo2
         {
             get
             {
-                return cedulaContacto.Value;
+                return cedulaContacto.Text;
             }
             set
             {
-                cedulaContacto.Value = value;
+                cedulaContacto.Text = value;
             }
         }
 
-        string Contratos.Modulo2.IContratoDetallarContacto.codTelefono
+        string Contratos.Modulo2.IContratoDetallarContacto.cargoContacto
         {
             get
             {
-                return codTelefono.Value;
+                return cargoContacto.Text;
             }
             set
             {
-                codTelefono.Value = value;
+                cargoContacto.Text = value;
             }
         }
 
-        string Contratos.Modulo2.IContratoDetallarContacto.telefonoContacto
+        string Contratos.Modulo2.IContratoDetallarContacto.telefono
         {
             get
             {
-                return telefonoCliente.Value;
+                return telefono.Text;
             }
             set
             {
-                telefonoCliente.Value = value;
+                telefono.Text = value;
             }
         }
-        #endregion
     }
 }

@@ -13,78 +13,6 @@ namespace Vista.Modulo2 {
     public partial class DetallarEmpresa {
         
         /// <summary>
-        /// alert control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alert;
-        
-        /// <summary>
-        /// alertRif control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alertRif;
-        
-        /// <summary>
-        /// alertNombreEmpresa control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alertNombreEmpresa;
-        
-        /// <summary>
-        /// alertPais control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alertPais;
-        
-        /// <summary>
-        /// alertEstado control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alertEstado;
-        
-        /// <summary>
-        /// alertCiudad control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alertCiudad;
-        
-        /// <summary>
-        /// alertDireccion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alertDireccion;
-        
-        /// <summary>
-        /// alertTelefono control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alertTelefono;
-        
-        /// <summary>
         /// agregar_empresa control.
         /// </summary>
         /// <remarks>
@@ -100,7 +28,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText rifEmpresa;
+        protected global::System.Web.UI.WebControls.Label rifEmpresa;
         
         /// <summary>
         /// nombreEmpresa control.
@@ -109,7 +37,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText nombreEmpresa;
+        protected global::System.Web.UI.WebControls.Label nombreEmpresa;
         
         /// <summary>
         /// contenedorComboPais control.
@@ -121,13 +49,13 @@ namespace Vista.Modulo2 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl contenedorComboPais;
         
         /// <summary>
-        /// comboPais control.
+        /// paisEmpresa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList comboPais;
+        protected global::System.Web.UI.WebControls.Label paisEmpresa;
         
         /// <summary>
         /// contenedorComboEstado control.
@@ -139,13 +67,13 @@ namespace Vista.Modulo2 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl contenedorComboEstado;
         
         /// <summary>
-        /// comboEstado control.
+        /// estadoEmpresa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList comboEstado;
+        protected global::System.Web.UI.WebControls.Label estadoEmpresa;
         
         /// <summary>
         /// Div1 control.
@@ -157,13 +85,13 @@ namespace Vista.Modulo2 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
         
         /// <summary>
-        /// comboCiudad control.
+        /// ciudadEmpresa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList comboCiudad;
+        protected global::System.Web.UI.WebControls.Label ciudadEmpresa;
         
         /// <summary>
         /// direccionEmpresa control.
@@ -172,16 +100,16 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText direccionEmpresa;
+        protected global::System.Web.UI.WebControls.Label direccionEmpresa;
         
         /// <summary>
-        /// codigopostalEmpresa control.
+        /// codigoPostal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText codigopostalEmpresa;
+        protected global::System.Web.UI.WebControls.Label codigoPostal;
         
         /// <summary>
         /// cuerpo control.
@@ -200,42 +128,6 @@ namespace Vista.Modulo2 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal laTabla;
-        
-        /// <summary>
-        /// contacto_id control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl contacto_id;
-        
-        /// <summary>
-        /// contacto_nombreyap control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl contacto_nombreyap;
-        
-        /// <summary>
-        /// btn_eliminar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btn_eliminar;
-        
-        /// <summary>
-        /// botonEditar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton botonEditar;
         
         /// <summary>
         /// Master property.

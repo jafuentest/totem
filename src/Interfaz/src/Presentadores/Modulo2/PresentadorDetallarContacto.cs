@@ -9,6 +9,7 @@ namespace Presentadores.Modulo2
     public class PresentadorDetallarContacto
     {
         private IContratoDetallarContacto vista;
+
         public PresentadorDetallarContacto(IContratoDetallarContacto laVista)
         {
             vista = laVista;

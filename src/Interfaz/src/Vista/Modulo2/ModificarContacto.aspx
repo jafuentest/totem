@@ -1,6 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/MasterPage.Master" AutoEventWireup="true" CodeBehind="DetallarContacto.aspx.cs" Inherits="Vista.Modulo2.DetallarContacto" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/MasterPage.Master" AutoEventWireup="true" CodeBehind="ModificarContacto.aspx.cs" Inherits="Vista.Modulo2.ModificarContacto" %>
 <%@ MasterType  virtualPath="~/Master/MasterPage.master"%> 
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
      <!-- Custom CSS for input[type="file"] -->
     <link href="<%= Page.ResolveUrl("~/src/GUI/Modulo2/css/agregar-empresa.css") %>" rel="stylesheet" />
@@ -18,7 +17,7 @@
     Gestión De Clientes 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">
-    Detallar Contacto
+    Modificar Contacto
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 
@@ -33,20 +32,20 @@
                     
                             <div class="form-group" Runat="Server">
                                 <div class="col-xs-12" Runat="Server">
-                                    <asp:Label ID="contactoNombre" runat="server" name="nombreContacto" class="form-control" ></asp:Label>
+                                    <input id="contactoNombre" runat="server" class="form-control" placeholder="Nombres del Contacto" type="text" />
                                 </div>
                             </div>
 
                             <div class="col-xs-12 form-group" Runat="Server"></div>
                             <div class="form-group" Runat="Server">
                                 <div class="col-xs-12" Runat="Server">
-                                   <asp:Label ID="apellidoContacto" runat="server" name="apellidoContacto" class="form-control" ></asp:Label>
+                                    <input runat="server" id="apellidoContacto" class="form-control" placeholder="Apellidos del Contacto" type="text" />
                                 </div>
 
                             </div>                            
                             <div class="form-group" Runat="Server">
                                 <div class="col-xs-12" Runat="Server">
-                                    <asp:Label ID="cedulaContacto" runat="server" name="cedulaContacto" class="form-control" ></asp:Label>
+                                    <input runat="server" id="cedulaContacto" class="form-control" placeholder="cedula del Contacto" type="text" />
                                 </div>
 
                             </div>
@@ -55,23 +54,30 @@
                             <div class="form-group">
                                     <div class="btn-group col-sm-12 col-md-12 col-lg-12">
                                         <div id="contenedorCargo" runat="server" class="dropdown"> 
-                                           <asp:Label ID="cargoContacto" runat="server" name="cargoContacto" class="form-control" ></asp:Label>
+                                            <asp:DropDownList ID="comboCargo"  class="btn btn-default dropdown-toggle" runat="server"   AutoPostBack="true"></asp:DropDownList>
                                        </div>
                                     </div>
                               </div>
 
                            <div class="form-group">
-    
-                             <div id="div_telefono" class="col-sm-12 col-md-12 col-lg-12">
-                                <asp:Label id="telefono" runat="server" name="telefono" type="text" class="form-control"/>
-                             </div>
-
-                          </div>
+                                <div id="div_cod_telefono" class="col-sm-4 col-md-4 col-lg-4">
+                                    <input id="codTelefono" runat="server" name="codigoTELF" type="text" class="form-control" placeholder="+(cod)" maxlength="4" />
+                                </div>
+                                <div id="div_telefono" class="col-sm-8 col-md-8 col-lg-8">
+                                    <input id="telefonoCliente" runat="server" name="telefono" type="text" class="form-control" placeholder="Teléfono" maxlength="7" />
+                                </div>
+                            </div>
                      </div>
+
+
+
+                        
+
 
                     <div class="form-group">
                         <div id="div_botones" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
-                            <a class="btn btn-default" href="ListarEmpresas.aspx" Runat="Server">Volver</a>
+                            <a class="btn btn-primary" href="ListarEmpresas.aspx?success=regis" Runat="Server">Editar</a>
+                            <a class="btn btn-default" href="ListarEmpresas.aspx" Runat="Server">Cancelar</a>
                         </div>
                     </div>
 
@@ -80,5 +86,4 @@
     </div>
 
 </asp:Content>
-
 

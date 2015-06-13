@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Presentadores.Modulo2;
-
 namespace Vista.Modulo2
 {
     public partial class DetallarCliente : System.Web.UI.Page, Contratos.Modulo2.IContratoDetallarCliente
@@ -13,23 +12,26 @@ namespace Vista.Modulo2
         private PresentadorDetallarCliente presentador;
         public DetallarCliente()
         {
-            presentador = new PresentadorDetallarCliente(this);
+            presentador = new Presentadores.Modulo2.PresentadorDetallarCliente(this);
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Master.idModulo = "2";
             this.Master.presentador.CargarMenuLateral();
+
         }
-        #region Contrato
+
+        #region Contratos
         string Contratos.Modulo2.IContratoDetallarCliente.nombreCliente
         {
             get
             {
-                return nombreCliente.Value;
+                return nombreCliente.Text;
             }
             set
             {
-                nombreCliente.Value = value;
+                nombreCliente.Text = value;
             }
         }
 
@@ -37,11 +39,11 @@ namespace Vista.Modulo2
         {
             get
             {
-                return apellidoCliente.Value;
+                return apellidoCliente.Text;
             }
             set
             {
-                apellidoCliente.Value = value;
+                apellidoCliente.Text = value;
             }
         }
 
@@ -49,109 +51,98 @@ namespace Vista.Modulo2
         {
             get
             {
-                return cedulaCliente.Value;
+                return cedulaCliente.Text;
             }
             set
             {
-                cedulaCliente.Value = value;
+                cedulaCliente.Text = value;
             }
         }
 
-        string Contratos.Modulo2.IContratoDetallarCliente.comboPais
+        string Contratos.Modulo2.IContratoDetallarCliente.pais
         {
             get
             {
-                return comboPais.SelectedValue;
+                return pais.Text;
             }
             set
             {
-                comboPais.SelectedValue = value;
+                pais.Text = value;
             }
         }
 
-        string Contratos.Modulo2.IContratoDetallarCliente.comboEstado
+        string Contratos.Modulo2.IContratoDetallarCliente.estado
         {
             get
             {
-                return comboEstado.SelectedValue;
+                return estado.Text;
             }
             set
             {
-                comboEstado.SelectedValue = value;
+                estado.Text = value;
             }
         }
 
-        string Contratos.Modulo2.IContratoDetallarCliente.comboCiudad
+        string Contratos.Modulo2.IContratoDetallarCliente.ciudad
         {
             get
             {
-                return comboCiudad.SelectedValue;
+                return ciudad.Text;
             }
             set
             {
-                comboCiudad.SelectedValue = value;
+                ciudad.Text = value;
             }
         }
 
-        string Contratos.Modulo2.IContratoDetallarCliente.direccionCliente
+        string Contratos.Modulo2.IContratoDetallarCliente.direccion
         {
             get
             {
-                return direccionCliente.Value;
+                return direccion.Text;
             }
             set
             {
-                direccionCliente.Value = value;
+                direccion.Text = value;
             }
         }
 
-        string Contratos.Modulo2.IContratoDetallarCliente.codigoPostalCliente
+        string Contratos.Modulo2.IContratoDetallarCliente.codpostal
         {
             get
             {
-                return codigopostalCliente.Value;
+                return codpostal.Text;
             }
             set
             {
-                codigopostalCliente.Value = value;
+                codpostal.Text = value;
             }
         }
 
-        string Contratos.Modulo2.IContratoDetallarCliente.correoCliente
+        string Contratos.Modulo2.IContratoDetallarCliente.correocliente
         {
             get
             {
-                return correoCliente.Value;
+                return correocliente.Text;
             }
             set
             {
-                correoCliente.Value = value;
+                correocliente.Text = value;
             }
         }
 
-        string Contratos.Modulo2.IContratoDetallarCliente.codTelefono
+        string Contratos.Modulo2.IContratoDetallarCliente.telefono
         {
             get
             {
-                return codTelefono.Value;
+                return telefono.Text;
             }
             set
             {
-                codTelefono.Value = value;
-            }
-        }
-
-        string Contratos.Modulo2.IContratoDetallarCliente.telefonoCliente
-        {
-            get
-            {
-                return telefonoCliente.Value;
-            }
-            set
-            {
-                telefonoCliente.Value = value;
+                telefono.Text = value;
             }
         }
         #endregion
+
     }
 }

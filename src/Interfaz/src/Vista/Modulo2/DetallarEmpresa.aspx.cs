@@ -14,23 +14,24 @@ namespace Vista.Modulo2
 
         public DetallarEmpresa()
         {
-            presentador = new PresentadorDetallarEmpresa(this);
+            presentador = new Presentadores.Modulo2.PresentadorDetallarEmpresa(this);
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Master.idModulo = "2";
             this.Master.presentador.CargarMenuLateral();
         }
-        #region Contrato
+
         string Contratos.Modulo2.IContratoDetallarEmpresa.rifEmpresa
         {
             get
             {
-                return rifEmpresa.Value;
+                return rifEmpresa.Text;
             }
             set
             {
-                rifEmpresa.Value = value;
+                rifEmpresa.Text = value;
             }
         }
 
@@ -38,47 +39,47 @@ namespace Vista.Modulo2
         {
             get
             {
-                return nombreEmpresa.Value;
+                return nombreEmpresa.Text;
             }
             set
             {
-                nombreEmpresa.Value = value;
+                nombreEmpresa.Text = value;
             }
         }
 
-        string Contratos.Modulo2.IContratoDetallarEmpresa.comboPais
+        string Contratos.Modulo2.IContratoDetallarEmpresa.paisEmpresa
         {
             get
             {
-                return comboPais.SelectedValue;
+                return paisEmpresa.Text;
             }
             set
             {
-                comboPais.SelectedValue = value;
+                paisEmpresa.Text = value;
             }
         }
 
-        string Contratos.Modulo2.IContratoDetallarEmpresa.comboEstado
+        string Contratos.Modulo2.IContratoDetallarEmpresa.estadoEmpresa
         {
             get
             {
-                return comboEstado.SelectedValue;
+                return estadoEmpresa.Text;
             }
             set
             {
-                comboEstado.SelectedValue = value;
+                estadoEmpresa.Text = value;
             }
         }
 
-        string Contratos.Modulo2.IContratoDetallarEmpresa.comboCiudad
+        string Contratos.Modulo2.IContratoDetallarEmpresa.ciudadEmpresa
         {
             get
             {
-                return comboCiudad.SelectedValue;
+                return ciudadEmpresa.Text; 
             }
             set
             {
-                comboCiudad.SelectedValue = value;
+                ciudadEmpresa.Text = value;
             }
         }
 
@@ -86,23 +87,23 @@ namespace Vista.Modulo2
         {
             get
             {
-                return direccionEmpresa.Value;
+                return direccionEmpresa.Text;
             }
             set
             {
-                direccionEmpresa.Value = value;
+                direccionEmpresa.Text = value;
             }
         }
 
-        string Contratos.Modulo2.IContratoDetallarEmpresa.codigoPostalEmpresa
+        string Contratos.Modulo2.IContratoDetallarEmpresa.codigoPostal
         {
             get
             {
-                return codigopostalEmpresa.Value;
+                return codigoPostal.Text;
             }
             set
             {
-                codigopostalEmpresa.Value = value;
+                codigoPostal.Text = value;
             }
         }
 
@@ -117,30 +118,5 @@ namespace Vista.Modulo2
                 laTabla.Text = value;
             }
         }
-
-        string Contratos.Modulo2.IContratoDetallarEmpresa.contacto_id
-        {
-            get
-            {
-                return contacto_id.InnerText;
-            }
-            set
-            {
-                contacto_id.InnerText = value;
-            }
-        }
-
-        string Contratos.Modulo2.IContratoDetallarEmpresa.contacto_nombreyap
-        {
-            get
-            {
-                return contacto_nombreyap.InnerText;
-            }
-            set
-            {
-                contacto_nombreyap.InnerText = value;
-            }
-        }
-        #endregion
     }
 }

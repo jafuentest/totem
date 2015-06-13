@@ -6,11 +6,10 @@ using Contratos.Modulo2;
 
 namespace Presentadores.Modulo2
 {
-    public class PresentadorDetallarEmpresa
+    public class PresentadorModificarContacto
     {
-        private IContratoDetallarEmpresa vista;
-
-        public PresentadorDetallarEmpresa(IContratoDetallarEmpresa laVista)
+        private IContratoModificarContacto vista;
+        public PresentadorModificarContacto(IContratoModificarContacto laVista)
         {
             vista = laVista;
         }

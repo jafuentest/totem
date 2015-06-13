@@ -10,13 +10,12 @@ namespace Contratos.Modulo2
         string nombreCliente { get; set; }
         string apellidoCliente { get; set; }
         string cedulaCliente { get; set; }
-        string comboPais { get; set; }
-        string comboEstado { get; set; }
-        string comboCiudad { get; set; }
-        string direccionCliente { get; set; }
-        string codigoPostalCliente { get; set; }
-        string correoCliente { get; set; }
-        string codTelefono { get; set; }
-        string telefonoCliente { get; set; }
+        string pais { get; set; }
+        string estado { get; set; }
+        string ciudad { get; set; }
+        string direccion { get; set; }
+        string codpostal { get; set; }
+        string correocliente { get; set; }
+        string telefono { get; set; }
     }
 }

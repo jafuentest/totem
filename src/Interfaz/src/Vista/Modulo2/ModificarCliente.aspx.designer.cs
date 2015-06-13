@@ -10,7 +10,7 @@
 namespace Vista.Modulo2 {
     
     
-    public partial class DetallarCliente {
+    public partial class ModificarCliente {
         
         /// <summary>
         /// alert control.
@@ -37,7 +37,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label nombreCliente;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText nombreCliente;
         
         /// <summary>
         /// apellidoCliente control.
@@ -46,7 +46,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label apellidoCliente;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText apellidoCliente;
         
         /// <summary>
         /// cedulaCliente control.
@@ -55,7 +55,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label cedulaCliente;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText cedulaCliente;
         
         /// <summary>
         /// contenedorComboPais control.
@@ -67,13 +67,13 @@ namespace Vista.Modulo2 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl contenedorComboPais;
         
         /// <summary>
-        /// pais control.
+        /// comboPais control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label pais;
+        protected global::System.Web.UI.WebControls.DropDownList comboPais;
         
         /// <summary>
         /// contenedorComboEstado control.
@@ -85,13 +85,13 @@ namespace Vista.Modulo2 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl contenedorComboEstado;
         
         /// <summary>
-        /// estado control.
+        /// comboEstado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label estado;
+        protected global::System.Web.UI.WebControls.DropDownList comboEstado;
         
         /// <summary>
         /// Div1 control.
@@ -103,49 +103,67 @@ namespace Vista.Modulo2 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
         
         /// <summary>
-        /// ciudad control.
+        /// comboCiudad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ciudad;
+        protected global::System.Web.UI.WebControls.DropDownList comboCiudad;
         
         /// <summary>
-        /// direccion control.
+        /// direccionCliente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label direccion;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText direccionCliente;
         
         /// <summary>
-        /// codpostal control.
+        /// codigopostalCliente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label codpostal;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText codigopostalCliente;
         
         /// <summary>
-        /// correocliente control.
+        /// correoCliente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label correocliente;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText correoCliente;
         
         /// <summary>
-        /// telefono control.
+        /// codTelefono control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label telefono;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText codTelefono;
+        
+        /// <summary>
+        /// telefonoCliente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText telefonoCliente;
+        
+        /// <summary>
+        /// botonEditar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton botonEditar;
         
         /// <summary>
         /// Master property.
