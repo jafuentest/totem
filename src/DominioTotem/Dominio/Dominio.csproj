@@ -48,6 +48,9 @@
     <Compile Include="Entidades\Modulo5\Requerimiento.cs" />
     <Compile Include="Entidades\Modulo6\Actor.cs" />
     <Compile Include="Entidades\Modulo6\CasoDeUso.cs" />
+    <Compile Include="Entidades\Modulo8\Acuerdo.cs" />
+    <Compile Include="Entidades\Modulo8\Minuta.cs" />
+    <Compile Include="Entidades\Modulo8\Punto.cs" />
     <Compile Include="Fabrica\FabricaEntidades.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -56,7 +59,6 @@
     <Folder Include="Entidades\Modulo3\" />
     <Folder Include="Entidades\Modulo4\" />
     <Folder Include="Entidades\Modulo7\" />
-    <Folder Include="Entidades\Modulo8\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
