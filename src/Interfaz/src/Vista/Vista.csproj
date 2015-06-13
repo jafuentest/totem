@@ -108,6 +108,8 @@
     <Content Include="Modulo2\ListarClientes.aspx" />
     <Content Include="Modulo2\ListarEmpresas.aspx" />
     <Content Include="Modulo5\AgregarRequerimiento.aspx" />
+    <Content Include="Modulo5\ListarRequerimientos.aspx" />
+    <Content Include="Modulo5\Reportes.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -173,6 +175,13 @@
     </Compile>
     <Compile Include="Modulo5\AgregarRequerimiento.aspx.designer.cs">
       <DependentUpon>AgregarRequerimiento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo5\ListarRequerimientos.aspx.cs">
+      <DependentUpon>ListarRequerimientos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo5\Reportes.aspx.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -48,6 +48,8 @@
     <Compile Include="Modulo2\IContratoListarClientes.cs" />
     <Compile Include="Modulo2\IContratoListarEmpresas.cs" />
     <Compile Include="Modulo5\IContratoAgregarRequerimiento.cs" />
+    <Compile Include="Modulo5\IContratoListarRequerimientos.cs" />
+    <Compile Include="Modulo5\IContratoReportes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

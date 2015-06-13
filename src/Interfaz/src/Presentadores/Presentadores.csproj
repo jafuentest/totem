@@ -48,6 +48,8 @@
     <Compile Include="Modulo2\PresentadorListarClientes.cs" />
     <Compile Include="Modulo2\PresentadorListarEmpresas.cs" />
     <Compile Include="Modulo5\PresentadorAgregarRequerimiento.cs" />
+    <Compile Include="Modulo5\PresentadorListarRequerimiento.cs" />
+    <Compile Include="Modulo5\PresentadorReportes.cs" />
     <Compile Include="PresentadorMasterPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecursosGeneralPresentadores.Designer.cs">
