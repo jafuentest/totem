@@ -52,6 +52,14 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="DAO\Modulo8\DaoAcuerdo.cs" />
+    <Compile Include="DAO\Modulo8\DaoMinuta.cs" />
+    <Compile Include="DAO\Modulo8\DaoPunto.cs" />
+    <Compile Include="DAO\Modulo8\RecursosBDModulo8.Designer.cs">
+      <DependentUpon>RecursosBDModulo8.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="DAO\Parametro.cs" />
     <Compile Include="DAO\RecursoGeneralDAO.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -67,6 +75,9 @@
     <Compile Include="IntefazDAO\Modulo5\IDaoRequerimiento.cs" />
     <Compile Include="IntefazDAO\Modulo6\IDaoActor.cs" />
     <Compile Include="IntefazDAO\Modulo6\IDaoCasoDeUso.cs" />
+    <Compile Include="IntefazDAO\Modulo8\IDaoAcuerdo.cs" />
+    <Compile Include="IntefazDAO\Modulo8\IDaoMinuta.cs" />
+    <Compile Include="IntefazDAO\Modulo8\IDaoPunto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -74,18 +85,20 @@
     <Folder Include="DAO\Modulo3\" />
     <Folder Include="DAO\Modulo4\" />
     <Folder Include="DAO\Modulo7\" />
-    <Folder Include="DAO\Modulo8\" />
     <Folder Include="IntefazDAO\Modulo1\" />
     <Folder Include="IntefazDAO\Modulo3\" />
     <Folder Include="IntefazDAO\Modulo4\" />
     <Folder Include="IntefazDAO\Modulo7\" />
-    <Folder Include="IntefazDAO\Modulo8\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DAO\Modulo2\RecursoBDModulo2.resx" />
     <EmbeddedResource Include="DAO\Modulo6\RecursosDAOModulo6.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosDAOModulo6.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DAO\Modulo8\RecursosBDModulo8.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosBDModulo8.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="DAO\RecursoGeneralDAO.resx">
       <Generator>ResXFileCodeGenerator</Generator>
