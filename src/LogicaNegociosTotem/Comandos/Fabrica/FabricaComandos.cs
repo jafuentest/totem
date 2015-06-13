@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Dominio;
+using Comandos.Comandos.Modulo6;  
 
 namespace Comandos.Fabrica
 {
@@ -45,6 +47,12 @@ namespace Comandos.Fabrica
         #endregion
 
         #region Modulo 6
+
+        public static Comando<Entidad, bool> CrearComandoAgregarActor() 
+        {
+            return new ComandoAgregarActor(); 
+        }
+
         #endregion
 
         #region Modulo 7

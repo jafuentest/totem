@@ -46,6 +46,7 @@
     <Compile Include="DAO\Modulo2\RecursoBDModulo2.Designer.cs" />
     <Compile Include="DAO\Modulo5\DAORequerimiento.cs" />
     <Compile Include="DAO\Modulo6\DAOActor.cs" />
+    <Compile Include="DAO\Modulo6\DAOCasoDeUso.cs" />
     <Compile Include="DAO\Modulo6\RecursosDAOModulo6.Designer.cs">
       <DependentUpon>RecursosDAOModulo6.resx</DependentUpon>
       <AutoGen>True</AutoGen>
