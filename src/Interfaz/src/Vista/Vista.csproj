@@ -107,6 +107,9 @@
     <Content Include="Modulo2\DetallarEmpresa.aspx" />
     <Content Include="Modulo2\ListarClientes.aspx" />
     <Content Include="Modulo2\ListarEmpresas.aspx" />
+    <Content Include="Modulo2\ModificarCliente.aspx" />
+    <Content Include="Modulo2\ModificarContacto.aspx" />
+    <Content Include="Modulo2\ModificarEmpresa.aspx" />
     <Content Include="Modulo5\AgregarRequerimiento.aspx" />
     <Content Include="Modulo5\ListarRequerimientos.aspx" />
     <Content Include="Modulo5\Reportes.aspx" />
@@ -168,6 +171,24 @@
     </Compile>
     <Compile Include="Modulo2\ListarEmpresas.aspx.designer.cs">
       <DependentUpon>ListarEmpresas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo2\ModificarCliente.aspx.cs">
+      <DependentUpon>ModificarCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo2\ModificarCliente.aspx.designer.cs">
+      <DependentUpon>ModificarCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo2\ModificarContacto.aspx.cs">
+      <DependentUpon>ModificarContacto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo2\ModificarContacto.aspx.designer.cs">
+      <DependentUpon>ModificarContacto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo2\ModificarEmpresa.aspx.cs">
+      <DependentUpon>ModificarEmpresa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo2\ModificarEmpresa.aspx.designer.cs">
+      <DependentUpon>ModificarEmpresa.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulo5\AgregarRequerimiento.aspx.cs">
       <DependentUpon>AgregarRequerimiento.aspx</DependentUpon>

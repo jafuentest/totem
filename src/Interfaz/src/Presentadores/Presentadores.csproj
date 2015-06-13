@@ -47,6 +47,9 @@
     <Compile Include="Modulo2\PresentadorDetallarEmpresa.cs" />
     <Compile Include="Modulo2\PresentadorListarClientes.cs" />
     <Compile Include="Modulo2\PresentadorListarEmpresas.cs" />
+    <Compile Include="Modulo2\PresentadorModificarCliente.cs" />
+    <Compile Include="Modulo2\PresentadorModificarContacto.cs" />
+    <Compile Include="Modulo2\PresentadorModificarEmpresa.cs" />
     <Compile Include="Modulo5\PresentadorAgregarRequerimiento.cs" />
     <Compile Include="Modulo5\PresentadorListarRequerimiento.cs" />
     <Compile Include="Modulo5\PresentadorReportes.cs" />
