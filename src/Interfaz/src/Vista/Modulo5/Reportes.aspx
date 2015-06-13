@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/src/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="Reportes.aspx.cs" Inherits="GUI_Modulo5_RFuncionalesID" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/MasterPage.master" AutoEventWireup="true" CodeFile="Reportes.aspx.cs" Inherits="GUI_Modulo5_RFuncionalesID" %>
+<%@ MasterType  virtualPath="~/Master/MasterPage.master"%> 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Requerimientos</asp:Content>

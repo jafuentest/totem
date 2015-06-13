@@ -9,7 +9,7 @@ public partial class GUI_Modulo5_RFuncionalesID : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
 
     }
 }

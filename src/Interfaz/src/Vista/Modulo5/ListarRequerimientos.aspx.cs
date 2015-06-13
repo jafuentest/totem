@@ -13,7 +13,7 @@ public partial class GUI_Modulo5_PrincipalProyecto : System.Web.UI.Page,
     private  Presentadores.Modulo5.PresentadorListarRequerimiento presentador;
     
     List<Requerimiento> listaRequerimientos;
-    
+    string MensajeEstado;
 
     /// <summary>
     /// Constructor de la clase de la vista

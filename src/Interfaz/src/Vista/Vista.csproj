@@ -174,18 +174,21 @@
     </Compile>
     <Compile Include="Modulo2\ModificarCliente.aspx.cs">
       <DependentUpon>ModificarCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Modulo2\ModificarCliente.aspx.designer.cs">
       <DependentUpon>ModificarCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulo2\ModificarContacto.aspx.cs">
       <DependentUpon>ModificarContacto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Modulo2\ModificarContacto.aspx.designer.cs">
       <DependentUpon>ModificarContacto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulo2\ModificarEmpresa.aspx.cs">
       <DependentUpon>ModificarEmpresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Modulo2\ModificarEmpresa.aspx.designer.cs">
       <DependentUpon>ModificarEmpresa.aspx</DependentUpon>
@@ -203,6 +206,7 @@
     </Compile>
     <Compile Include="Modulo5\Reportes.aspx.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -231,6 +235,14 @@
     <Folder Include="Modulo8\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\DominioTotem\DominioTotem.csproj">
+      <Project>{71398660-3b9b-4bed-91b3-b968a4ebf02e}</Project>
+      <Name>DominioTotem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\DominioTotem\Dominio\Dominio.csproj">
+      <Project>{41dd6620-eb5e-4529-b66d-d29a27fa2e5a}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Contratos\Contratos.csproj">
       <Project>{c295ff71-0b9b-40d4-b76f-0efbaf1c3ce6}</Project>
       <Name>Contratos</Name>
