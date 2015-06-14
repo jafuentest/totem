@@ -73,6 +73,14 @@ namespace Dominio.Fabrica
         #endregion
 
         #region Modulo 7
+        /// <summary>
+        /// Metodo que permite instanciar a la clase Usuario con sus atributos vacios
+        /// </summary>
+        /// <returns>el Usuario con sus atributos vacios</returns>
+        public Entidad ObtenerUsuario ()
+        {
+            return new Entidades.Modulo7.Usuario();
+        }
         #endregion
 
         #region Modulo 8
