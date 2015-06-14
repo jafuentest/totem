@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Dominio; 
+using Dominio;
+using DAO.Fabrica.FabricaAbstractaDAO;
+using DAO.DAO.Modulo6;
+ 
+  
 
 namespace Comandos.Comandos.Modulo6
 {
@@ -18,7 +22,18 @@ namespace Comandos.Comandos.Modulo6
        /// contrario</returns>
        public override bool Ejecutar(Entidad parametro)
        {
-           throw new NotImplementedException();
+           try
+           {
+               DAO.Fabrica.FabricaAbstractaDAO fabricaDaoSqlServer = DAO.Fabrica.FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+
+               DAO.DAO.Modulo6.DAOActor daoActor = (DAO.DAO.Modulo6.DAOActor)fabricaDaoSqlServer.ObtenerDAOActor();
+               bool resultado = daoActor.Agregar(parametro);
+               return resultado;
+           }
+           catch ( Exception ex)
+           {
+               throw ex;
+           }
        }
     }
 }
