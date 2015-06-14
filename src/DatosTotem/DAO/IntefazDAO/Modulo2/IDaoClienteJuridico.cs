@@ -8,6 +8,13 @@ namespace DAO.IntefazDAO.Modulo2
 {
     public interface IDaoClienteJuridico : IDao<Entidad, bool, Entidad>
     {
+        Entidad consultarDatosContactoID(Entidad parametro);
+        List<Entidad> consultarListaDeContactosJuridico(Entidad parametro);
+        bool eliminarClienteJuridico(Entidad parametro);
+        bool eliminarContacto(Entidad parametro);
+        List<String> consultarPaises();
+        List<String> consultarEstadosPorPais(String elPais);
+        List<String> consultarCiudadesPorEstado(String elEstado);
 
     }
 }

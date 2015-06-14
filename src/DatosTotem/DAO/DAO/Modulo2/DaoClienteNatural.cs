@@ -109,7 +109,6 @@ namespace DAO.DAO.Modulo2
             #endregion
             try
             {
-
                 List<Resultado> tmp = EjecutarStoredProcedure(RecursoBDModulo2.ModificarClienteNat,
                     parametros);
                 return (tmp.ToArray().Length > 0);
@@ -213,5 +212,103 @@ namespace DAO.DAO.Modulo2
                 throw new Exception();
             }
         }
+
+        public bool eliminarClienteNatural(Entidad parametro)
+        {
+            FabricaEntidades laFabrica = new FabricaEntidades();
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametroStored = new Parametro(RecursoBDModulo2.EliminarContacto, SqlDbType.Int,
+               parametro.Id.ToString(), false);
+            parametros.Add(parametroStored);
+            try
+            {
+                List<Resultado> tmp = EjecutarStoredProcedure(RecursoBDModulo2.EliminarClienteNat, parametros);
+                return (tmp.ToArray().Length > 0);
+
+            }
+            catch (Exception ex)
+            {
+                //arreglar excepciones
+                throw new Exception();
+            }
+
+        }
+        /// <summary>
+        /// Metodo para consultar en BD toda la lista de paises
+        /// </summary>
+        /// <returns></returns>
+        public List<String> consultarPaises()
+        {
+            List<String> laLista = new List<String>();
+            DataTable resultado = new DataTable();
+            try
+            {
+                resultado = EjecutarStoredProcedureTuplas(RecursoBDModulo2.ConsultarPaises, new List<Parametro>());
+                foreach (DataRow row in resultado.Rows)
+                {
+                    laLista.Add(row[RecursoBDModulo2.NombreLugar].ToString());
+                }
+                return laLista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        /// <summary>
+        /// Metodo para consultar todos los estados de un pais en especifico
+        /// </summary>
+        /// <param name="elPais">pais del que se desean saber los estados</param>
+        /// <returns>lista de estados del pais seleccionado</returns>
+        public List<String> consultarEstadosPorPais(String elPais)
+        {
+            List<String> laLista = new List<String>();
+            DataTable resultado = new DataTable();
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursoBDModulo2.ParamPais, SqlDbType.VarChar, elPais, false);
+            parametros.Add(parametro);
+            try
+            {
+                resultado = EjecutarStoredProcedureTuplas(RecursoBDModulo2.ConsultarEstadosPorPais,
+                    parametros);
+                foreach (DataRow row in resultado.Rows)
+                {
+                    laLista.Add(row[RecursoBDModulo2.NombreLugar].ToString());
+                }
+                return laLista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        /// <summary>
+        /// Metodo para consultar las ciudades de un estado en especifico
+        /// </summary>
+        /// <param name="elEstado">Estado del que se desean saber las ciudades</param>
+        /// <returns>lista de ciudades del estado seleccionado</returns>
+        public List<String> consultarCiudadesPorEstado(String elEstado)
+        {
+            List<String> laLista = new List<String>();
+            DataTable resultado = new DataTable();
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursoBDModulo2.ParamEstado, SqlDbType.VarChar, elEstado, false);
+            parametros.Add(parametro);
+            try
+            {
+                resultado = EjecutarStoredProcedureTuplas(RecursoBDModulo2.ConsultarCiudadesPorEstado,
+                    parametros);
+                foreach (DataRow row in resultado.Rows)
+                {
+                    laLista.Add(row[RecursoBDModulo2.NombreLugar].ToString());
+                }
+                return laLista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }
