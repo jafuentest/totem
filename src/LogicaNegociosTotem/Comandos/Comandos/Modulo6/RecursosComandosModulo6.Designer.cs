@@ -61,6 +61,15 @@ namespace Comandos.Comandos.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a ComandoAgregarActor.
+        /// </summary>
+        internal static string ClaseComandoAgregarActor {
+            get {
+                return ResourceManager.GetString("ClaseComandoAgregarActor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a T_06_051.
         /// </summary>
         internal static string CodigoExcepcionComandoAgregarActorBD {

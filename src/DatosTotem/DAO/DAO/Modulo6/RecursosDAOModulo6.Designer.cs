@@ -61,6 +61,24 @@ namespace DAO.DAO.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a DAOActor.
+        /// </summary>
+        internal static string ClaseDAOActor {
+            get {
+                return ResourceManager.GetString("ClaseDAOActor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a DAOCasoDeUso.
+        /// </summary>
+        internal static string ClaseDAOCasoDeUso {
+            get {
+                return ResourceManager.GetString("ClaseDAOCasoDeUso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a T_06_002.
         /// </summary>
         internal static string CodigoExcepcionAgregarActorBD {

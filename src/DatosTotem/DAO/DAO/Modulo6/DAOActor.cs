@@ -9,7 +9,8 @@ using DAO.IntefazDAO.Modulo6;
 using System.Data;
 using System.Data.Sql;
 using System.Data.SqlClient;
-using ExcepcionesTotem.Modulo6.ExcepcionesDAO;  
+using ExcepcionesTotem.Modulo6.ExcepcionesDAO;
+using ExcepcionesTotem;  
 
 namespace DAO.DAO.Modulo6
 {
@@ -44,24 +45,42 @@ namespace DAO.DAO.Modulo6
            }
            catch (SqlException e)
            {
-               throw new AgregarActorBDDAOException(
+              
+                   
+                  AgregarActorBDDAOException exDaoActor = new AgregarActorBDDAOException(
                    RecursosDAOModulo6.CodigoExcepcionAgregarActorBD,
                    RecursosDAOModulo6.MensajeExcepcionAgregarActorBD, 
                    e);
+
+                  Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
+                      exDaoActor);
+
+                  throw exDaoActor; 
+               
            }
            catch (NullReferenceException e)
            {
-               throw new AgregarActorNuloDAOException(
+               AgregarActorNuloDAOException exDaoActor = new AgregarActorNuloDAOException(
                    RecursosDAOModulo6.CodigoExcepcionAgregarActorNulo,
                    RecursosDAOModulo6.MensajeExcepcionAgregarActorNulo, 
-                   e); 
+                   e);
+               Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
+                      exDaoActor);
+
+               throw exDaoActor; 
+               
            }
            catch (Exception e) 
            {
-               throw new AgregarActorDAOException(
+               AgregarActorDAOException exDaoActor =  new AgregarActorDAOException(
                    RecursosDAOModulo6.CodigoExcepcionAgregarActorError,
                    RecursosDAOModulo6.MensajeExcepcionAgregarActorError,
-                   e);  
+                   e);
+
+               Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
+                     exDaoActor);
+
+               throw exDaoActor; 
            }
        }
 

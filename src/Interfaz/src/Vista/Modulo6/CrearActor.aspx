@@ -23,7 +23,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-md-6">
-					<button runat="server" class="btn btn-primary" type="submit" onserverclick="Agregar_Actor">Agregar</button>
+					<button runat="server" class="btn btn-primary" type="submit">Agregar</button>
 					<a class="btn btn-default" href="ListarActores.aspx">Cancelar</a>
 				</div>
 			</div>

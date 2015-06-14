@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using Dominio;
 using ExcepcionesTotem.Modulo6.ExcepcionesComando;
-using ExcepcionesTotem.Modulo6.ExcepcionesDAO; 
+using ExcepcionesTotem.Modulo6.ExcepcionesDAO;
+using ExcepcionesTotem; 
 using DAO.DAO.Modulo6;
  
   
@@ -31,26 +32,49 @@ namespace Comandos.Comandos.Modulo6
                bool resultado = daoActor.Agregar(parametro);
                return resultado;
            }
+
            catch (AgregarActorBDDAOException ex)
            {
-               throw new AgregarActorComandoBDException(
+
+              AgregarActorComandoBDException exComandoAgregarActor = new AgregarActorComandoBDException(
                    RecursosComandosModulo6.CodigoExcepcionComandoAgregarActorBD,
                    RecursosComandosModulo6.MensajeExcepcionComandoAgregarActorBD,
                    ex);
+
+              Logger.EscribirError(RecursosComandosModulo6.ClaseComandoAgregarActor,
+                  exComandoAgregarActor);
+
+              throw exComandoAgregarActor; 
+
            }
+
+
            catch (AgregarActorNuloDAOException ex) 
            {
-               throw new AgregarActorComandoNullException(
+               AgregarActorComandoNullException exComandoAgregarActor = new AgregarActorComandoNullException(
                    RecursosComandosModulo6.CodigoExcepcionComandoAgregarActorNulo,
                    RecursosComandosModulo6.MensajeExcepcionComandoAgregarActorNulo,
-                   ex); 
+                   ex);
+
+               Logger.EscribirError(RecursosComandosModulo6.ClaseComandoAgregarActor,
+                 exComandoAgregarActor);
+
+               throw exComandoAgregarActor; 
+
            }
+
            catch (AgregarActorDAOException ex)
            {
-               throw new AgregarActorComandoException(
+              AgregarActorComandoException exComandoAgregarActor =  new AgregarActorComandoException(
                    RecursosComandosModulo6.CodigoExcepcionComandoAgregarActorError,
                    RecursosComandosModulo6.MensajeExcepcionComandoAgregarActorError,
-                   ex); 
+                   ex);
+
+              Logger.EscribirError(RecursosComandosModulo6.ClaseComandoAgregarActor,
+                 exComandoAgregarActor);
+
+              throw exComandoAgregarActor; 
+
            }
        }
     }

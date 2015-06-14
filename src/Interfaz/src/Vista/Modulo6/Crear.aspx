@@ -29,7 +29,7 @@
 						</div>
 						<asp:PlaceHolder ID="precondiciones" runat="server"></asp:PlaceHolder>
 						<div class="col-sm-1 col-md-1 col-lg-1">
-							<asp:Button ID="agregarPrecondicion" runat="server" CssClass="btn btn-default btn-circle glyphicon glyphicon-plus" OnClick="agregarPrecondicion_Click" Text="+" PostBackUrl="~/src/GUI/Modulo6/Crear.aspx"/>
+							<asp:Button ID="agregarPrecondicion" runat="server" CssClass="btn btn-default btn-circle glyphicon glyphicon-plus"/>
 						</div>
 					</div>
 				</div>
@@ -113,7 +113,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-md-6">
-					<asp:Button runat="server" CssClass="btn btn-primary" Text="Agregar" OnClick="CrearCasoDeUso"/>
+					<asp:Button runat="server" CssClass="btn btn-primary" Text="Agregar"/>
 					<a class="btn btn-default" href="Listar.aspx">Cancelar</a>
 				</div>
 			</div>

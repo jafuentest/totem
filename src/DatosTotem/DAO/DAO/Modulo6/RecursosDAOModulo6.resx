@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ClaseDAOActor" xml:space="preserve">
+    <value>DAOActor</value>
+  </data>
+  <data name="ClaseDAOCasoDeUso" xml:space="preserve">
+    <value>DAOCasoDeUso</value>
+  </data>
   <data name="CodigoExcepcionAgregarActorBD" xml:space="preserve">
     <value>T_06_002</value>
   </data>
