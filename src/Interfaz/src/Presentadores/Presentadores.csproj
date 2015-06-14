@@ -53,6 +53,7 @@
     <Compile Include="Modulo5\PresentadorAgregarRequerimiento.cs" />
     <Compile Include="Modulo5\PresentadorListarRequerimiento.cs" />
     <Compile Include="Modulo5\PresentadorReportes.cs" />
+    <Compile Include="Modulo6\PresentadorAgregarActor.cs" />
     <Compile Include="PresentadorMasterPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecursosGeneralPresentadores.Designer.cs">
@@ -66,7 +67,6 @@
     <Folder Include="Modulo1\" />
     <Folder Include="Modulo3\" />
     <Folder Include="Modulo4\" />
-    <Folder Include="Modulo6\" />
     <Folder Include="Modulo7\" />
     <Folder Include="Modulo8\" />
   </ItemGroup>

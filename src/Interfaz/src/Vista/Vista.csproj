@@ -113,6 +113,12 @@
     <Content Include="Modulo5\AgregarRequerimiento.aspx" />
     <Content Include="Modulo5\ListarRequerimientos.aspx" />
     <Content Include="Modulo5\Reportes.aspx" />
+    <Content Include="Modulo6\Crear.aspx" />
+    <Content Include="Modulo6\CrearActor.aspx" />
+    <Content Include="Modulo6\Listar.aspx" />
+    <Content Include="Modulo6\ListarActores.aspx" />
+    <Content Include="Modulo6\Modificar.aspx" />
+    <Content Include="Modulo6\ReporteActores.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -208,6 +214,48 @@
       <DependentUpon>Reportes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Modulo6\Crear.aspx.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo6\Crear.aspx.designer.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo6\CrearActor.aspx.cs">
+      <DependentUpon>CrearActor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo6\CrearActor.aspx.designer.cs">
+      <DependentUpon>CrearActor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo6\Listar.aspx.cs">
+      <DependentUpon>Listar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo6\Listar.aspx.designer.cs">
+      <DependentUpon>Listar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo6\ListarActores.aspx.cs">
+      <DependentUpon>ListarActores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo6\ListarActores.aspx.designer.cs">
+      <DependentUpon>ListarActores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo6\Modificar.aspx.cs">
+      <DependentUpon>Modificar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo6\Modificar.aspx.designer.cs">
+      <DependentUpon>Modificar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo6\ReporteActores.aspx.cs">
+      <DependentUpon>ReporteActores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo6\ReporteActores.aspx.designer.cs">
+      <DependentUpon>ReporteActores.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -230,7 +278,6 @@
     <Folder Include="Modulo1\" />
     <Folder Include="Modulo3\" />
     <Folder Include="Modulo4\" />
-    <Folder Include="Modulo6\" />
     <Folder Include="Modulo7\" />
     <Folder Include="Modulo8\" />
   </ItemGroup>

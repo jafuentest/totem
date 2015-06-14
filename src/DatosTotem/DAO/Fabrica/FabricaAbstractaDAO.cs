@@ -33,6 +33,10 @@ namespace DAO.Fabrica
             #endregion
 
             #region Modulo 6
+
+                public abstract IntefazDAO.Modulo6.IDaoActor ObtenerDAOActor();
+                public abstract IntefazDAO.Modulo6.IDaoCasoDeUso ObtenerDAOCasoDeUso();
+            
             #endregion
 
             #region Modulo 7

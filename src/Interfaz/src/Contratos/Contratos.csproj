@@ -53,13 +53,13 @@
     <Compile Include="Modulo5\IContratoAgregarRequerimiento.cs" />
     <Compile Include="Modulo5\IContratoListarRequerimientos.cs" />
     <Compile Include="Modulo5\IContratoReportes.cs" />
+    <Compile Include="Modulo6\IContratoAgregarActor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modulo1\" />
     <Folder Include="Modulo3\" />
     <Folder Include="Modulo4\" />
-    <Folder Include="Modulo6\" />
     <Folder Include="Modulo7\" />
     <Folder Include="Modulo8\" />
   </ItemGroup>

@@ -68,6 +68,9 @@
     <Compile Include="Modulo4\InvolucradosInexistentesException.cs" />
     <Compile Include="Modulo4\RequerimientosInexistentesException.cs" />
     <Compile Include="Modulo5\ProyectoNoEncontradoException.cs" />
+    <Compile Include="Modulo6\ExcepcionesComando\AgregarActorComandoBDException.cs" />
+    <Compile Include="Modulo6\ExcepcionesComando\AgregarActorComandoException.cs" />
+    <Compile Include="Modulo6\ExcepcionesComando\AgregarActorComandoNullException.cs" />
     <Compile Include="Modulo6\ExcepcionesDAO\AgregarActorBDDAOException.cs" />
     <Compile Include="Modulo6\ExcepcionesDAO\AgregarActorNuloDAOException.cs" />
     <Compile Include="Modulo6\ExcepcionesDAO\EliminarActorBDDAOException.cs" />
@@ -84,9 +87,7 @@
     <Compile Include="Modulo8\ExcepcionesDeDatos\ParametroIncorrectoException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modulo6\ExcepcionesComando\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

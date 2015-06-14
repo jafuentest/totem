@@ -35,6 +35,16 @@ namespace DAO.Fabrica
         #endregion
 
         #region Modulo 6
+        public override IntefazDAO.Modulo6.IDaoActor ObtenerDAOActor() 
+        {
+            return new DAO.Modulo6.DAOActor(); 
+        }
+
+        public override IntefazDAO.Modulo6.IDaoCasoDeUso ObtenerDAOCasoDeUso()
+        {
+            return new DAO.Modulo6.DAOCasoDeUso(); 
+        }
+
         #endregion
 
         #region Modulo 7
