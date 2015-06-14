@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -37,11 +40,25 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="this.Log">
+      <HintPath>..\..\packages\this.Log.0.0.3.0\lib\net40\this.Log.dll</HintPath>
+    </Reference>
+    <Reference Include="this.Log-log4net">
+      <HintPath>..\..\packages\this.Log-log4net.0.0.3.0\lib\net40\this.Log-log4net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAOException.cs" />
+    <Compile Include="ExcepcionesTotemRecursosGenerales.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExcepcionesTotemRecursosGenerales.resx</DependentUpon>
+    </Compile>
     <Compile Include="ExceptionTotem.cs" />
     <Compile Include="ExceptionTotemConexionBD.cs" />
+    <Compile Include="LogExtensions.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="LoggerException.cs" />
     <Compile Include="Modulo1\IntentosFallidosException.cs" />
     <Compile Include="Modulo1\ParametroInvalidoException.cs" />
     <Compile Include="Modulo1\UsuarioVacioException.cs" />
@@ -88,7 +105,18 @@
     <Compile Include="Modulo8\ExcepcionesDeDatos\ParametroIncorrectoException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Log.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ExcepcionesTotemRecursosGenerales.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExcepcionesTotemRecursosGenerales.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
