@@ -44,20 +44,23 @@ namespace DAO.DAO.Modulo6
            }
            catch (SqlException e)
            {
-               throw new AgregarActorBDDAOException("T_06_002",
-                   "Error en la conexión a datos al agregar actor", 
+               throw new AgregarActorBDDAOException(
+                   RecursosDAOModulo6.CodigoExcepcionAgregarActorBD,
+                   RecursosDAOModulo6.MensajeExcepcionAgregarActorBD, 
                    e);
            }
            catch (NullReferenceException e)
            {
-               throw new AgregarActorNuloDAOException("T_06_003",
-                   "Se está agregando un actor nulo", 
+               throw new AgregarActorNuloDAOException(
+                   RecursosDAOModulo6.CodigoExcepcionAgregarActorNulo,
+                   RecursosDAOModulo6.MensajeExcepcionAgregarActorNulo, 
                    e); 
            }
            catch (Exception e) 
            {
-               throw new ExcepcionesTotem.DAOException("T_06_003",
-                   "Error al agregar actor",
+               throw new AgregarActorDAOException(
+                   RecursosDAOModulo6.CodigoExcepcionAgregarActorError,
+                   RecursosDAOModulo6.MensajeExcepcionAgregarActorError,
                    e);  
            }
        }

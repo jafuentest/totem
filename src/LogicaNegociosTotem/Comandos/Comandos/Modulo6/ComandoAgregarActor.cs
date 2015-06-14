@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Dominio;
-
+using ExcepcionesTotem.Modulo6.ExcepcionesComando;
+using ExcepcionesTotem.Modulo6.ExcepcionesDAO; 
 using DAO.DAO.Modulo6;
  
   
@@ -30,9 +31,26 @@ namespace Comandos.Comandos.Modulo6
                bool resultado = daoActor.Agregar(parametro);
                return resultado;
            }
-           catch ( Exception ex)
+           catch (AgregarActorBDDAOException ex)
            {
-               throw ex;
+               throw new AgregarActorComandoBDException(
+                   RecursosComandosModulo6.CodigoExcepcionComandoAgregarActorBD,
+                   RecursosComandosModulo6.MensajeExcepcionComandoAgregarActorBD,
+                   ex);
+           }
+           catch (AgregarActorNuloDAOException ex) 
+           {
+               throw new AgregarActorComandoNullException(
+                   RecursosComandosModulo6.CodigoExcepcionComandoAgregarActorNulo,
+                   RecursosComandosModulo6.MensajeExcepcionComandoAgregarActorNulo,
+                   ex); 
+           }
+           catch (AgregarActorDAOException ex)
+           {
+               throw new AgregarActorComandoException(
+                   RecursosComandosModulo6.CodigoExcepcionComandoAgregarActorError,
+                   RecursosComandosModulo6.MensajeExcepcionComandoAgregarActorError,
+                   ex); 
            }
        }
     }

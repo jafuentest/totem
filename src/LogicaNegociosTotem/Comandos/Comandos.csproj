@@ -62,6 +62,11 @@
     <Compile Include="Comandos\Modulo5\ComandoEliminarRequerimiento.cs" />
     <Compile Include="Comandos\Modulo5\ComandoModificarRequerimiento.cs" />
     <Compile Include="Comandos\Modulo6\ComandoAgregarActor.cs" />
+    <Compile Include="Comandos\Modulo6\RecursosComandosModulo6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosComandosModulo6.resx</DependentUpon>
+    </Compile>
     <Compile Include="Fabrica\FabricaComandos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -81,6 +86,16 @@
       <Project>{41dd6620-eb5e-4529-b66d-d29a27fa2e5a}</Project>
       <Name>Dominio %28Dominio\Dominio%29</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\ExcepcionesTotem\ExcepcionesTotem.csproj">
+      <Project>{aaa3900a-9ced-4f07-9cee-d86208c39437}</Project>
+      <Name>ExcepcionesTotem</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Comandos\Modulo6\RecursosComandosModulo6.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosComandosModulo6.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

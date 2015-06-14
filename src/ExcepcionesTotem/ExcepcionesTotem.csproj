@@ -72,6 +72,7 @@
     <Compile Include="Modulo6\ExcepcionesComando\AgregarActorComandoException.cs" />
     <Compile Include="Modulo6\ExcepcionesComando\AgregarActorComandoNullException.cs" />
     <Compile Include="Modulo6\ExcepcionesDAO\AgregarActorBDDAOException.cs" />
+    <Compile Include="Modulo6\ExcepcionesDAO\AgregarActorDAOException.cs" />
     <Compile Include="Modulo6\ExcepcionesDAO\AgregarActorNuloDAOException.cs" />
     <Compile Include="Modulo6\ExcepcionesDAO\EliminarActorBDDAOException.cs" />
     <Compile Include="Modulo6\ExcepcionesDAO\LeerCasoUsoBDDAOException.cs" />
