@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Dominio;
-using Comandos.Comandos.Modulo6;  
+using Comandos.Comandos.Modulo6;
+using Comandos.Comandos.Modulo2; 
 
 namespace Comandos.Fabrica
 {
@@ -13,6 +14,71 @@ namespace Comandos.Fabrica
         #endregion
 
         #region Modulo 2
+        public static Comando<Entidad, bool> CrearComandoAgregarClienteJuridico()
+        {
+            return new ComandoAgregarClienteJuridico();
+        }
+        public static Comando<Entidad, bool> CrearComandoAgregarClienteNatural()
+        {
+            return new ComandoAgregarClienteNatural();
+        }
+        public static Comando<String, List<String>> CrearComandoConsultarCiudadPorEstado()
+        {
+            return new ComandoConsultarCiudadPorEstado();
+        }
+        public static Comando<Entidad, Entidad> CrearComandoConsultarClienteJurXID()
+        {
+            return new ComandoConsultarClienteJurXID(); 
+        }
+        public static Comando<Entidad, Entidad> CrearComandoConsultarDatosContactoID()
+        {
+            return new ComandoConsultarDatosContactoID();
+        }
+        public static Comando<String, List<String>> CrearComandoConsultarEstadosPorPais()
+        {
+            return new ComandoConsultarEstadosPorPais();
+        }
+        public static Comando<Entidad,List<Entidad>> CrearComandoConsultarListaContactos()
+        {
+            return new ComandoConsultarListaContactos();
+        }
+        public static Comando<Boolean,List<String>> CrearComandoConsultarListaPaises()
+        {
+            return new ComandoConsultarListaPaises();
+        } 
+        public static Comando<bool, List<Entidad>> CrearComandoConsultarTodosClienteJuridico()
+        {
+            return new ComandoConsultarTodosClienteJuridico();
+        }
+        public static Comando<Entidad, List<Entidad>> CrearComandoConsultarTodosClienteNatural()
+        {
+            return new ComandoConsultarTodosClienteNatural();
+        }
+        public static Comando<Entidad, Entidad> CrearComandoConsultarXIDClienteNatural()
+        {
+            return new ComandoConsultarXIDClienteNatural();
+        }
+
+        public static Comando<Entidad, bool> CrearComandoEliminarClienteJuridico()
+        {
+            return new ComandoEliminarClienteJuridico();
+        }
+        public static Comando<Entidad, bool> CrearComandoEliminarClienteNatural()
+        {
+            return new ComandoEliminarClienteNatural();
+        }
+        public static Comando<Entidad,bool> CrearComandoEliminarContacto()
+        {
+            return new ComandoEliminarContacto();
+        }
+        public static Comando<Entidad, bool> CrearComandoModificarClienteJuridico()
+        {
+            return new ComandoModificarClienteJuridico();
+        }
+        public static Comando<Entidad, bool> CrearComandoModificarClienteNatural()
+        {
+            return new ComandoModificarClienteNatural();
+        }
         #endregion
 
         #region Modulo 3

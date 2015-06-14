@@ -40,6 +40,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comando.cs" />
+    <Compile Include="Comandos\Modulo2\ComandoAgregarClienteJuridico.cs" />
+    <Compile Include="Comandos\Modulo2\ComandoAgregarClienteNatural.cs" />
+    <Compile Include="Comandos\Modulo2\ComandoConsultarCiudadPorEstado.cs" />
+    <Compile Include="Comandos\Modulo2\ComandoConsultarClienteJurXID.cs" />
+    <Compile Include="Comandos\Modulo2\ComandoConsultarDatosContactoID.cs" />
+    <Compile Include="Comandos\Modulo2\ComandoConsultarEstadosPorPais.cs" />
+    <Compile Include="Comandos\Modulo2\ComandoConsultarListaContactos.cs" />
+    <Compile Include="Comandos\Modulo2\ComandoConsultarListaPaises.cs" />
+    <Compile Include="Comandos\Modulo2\ComandoConsultarTodosClienteJuridico.cs" />
+    <Compile Include="Comandos\Modulo2\ComandoConsultarTodosClienteNatural.cs" />
+    <Compile Include="Comandos\Modulo2\ComandoConsultarXIDClienteNatural.cs" />
+    <Compile Include="Comandos\Modulo2\ComandoEliminarClienteJuridico.cs" />
+    <Compile Include="Comandos\Modulo2\ComandoEliminarContacto.cs" />
+    <Compile Include="Comandos\Modulo2\ComandoModificarClienteJuridico.cs" />
+    <Compile Include="Comandos\Modulo2\ComandoModificarClienteNatural.cs" />
+    <Compile Include="Comandos\Modulo2\ComandoEliminarClienteNatural.cs" />
     <Compile Include="Comandos\Modulo5\ComandoAgregarRequerimiento.cs" />
     <Compile Include="Comandos\Modulo5\ComandoConsultarRequerimiento.cs" />
     <Compile Include="Comandos\Modulo5\ComandoConsultarRequerimientosProyecto.cs" />
@@ -51,7 +67,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Comandos\Modulo1\" />
-    <Folder Include="Comandos\Modulo2\" />
     <Folder Include="Comandos\Modulo3\" />
     <Folder Include="Comandos\Modulo4\" />
     <Folder Include="Comandos\Modulo7\" />
