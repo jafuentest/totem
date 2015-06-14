@@ -15,13 +15,18 @@ namespace Comandos.Comandos.Modulo5
         /// <returns>true si se logro editar</returns>
         public override bool Ejecutar(Dominio.Entidad parametro)
         {
+            try
+            {
+                DAO.Fabrica.FabricaAbstractaDAO fabricaDaoSqlServer = DAO.Fabrica.FabricaAbstractaDAO.ObtenerFabricaSqlServer();
 
-            DAO.Fabrica.FabricaAbstractaDAO fabricaDaoSqlServer = DAO.Fabrica.FabricaDAOSqlServer.ObtenerFabricaSqlServer();
-            
-            DAO.DAO.Modulo5.DAORequerimiento daoRequerimiento = (DAO.DAO.Modulo5.DAORequerimiento)fabricaDaoSqlServer.ObtenerDAORequerimiento();
-           
-            return daoRequerimiento.Modificar(parametro);
-
+                DAO.DAO.Modulo5.DAORequerimiento daoRequerimiento = (DAO.DAO.Modulo5.DAORequerimiento)fabricaDaoSqlServer.ObtenerDAORequerimiento();
+                bool resultado = daoRequerimiento.Modificar(parametro);
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
         }
     }

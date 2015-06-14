@@ -45,6 +45,11 @@
     <Compile Include="DAO\Modulo2\DaoClienteNatural.cs" />
     <Compile Include="DAO\Modulo2\RecursoBDModulo2.Designer.cs" />
     <Compile Include="DAO\Modulo5\DAORequerimiento.cs" />
+    <Compile Include="DAO\Modulo5\RecursosDAOModulo5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosDAOModulo5.resx</DependentUpon>
+    </Compile>
     <Compile Include="DAO\Modulo6\DAOActor.cs" />
     <Compile Include="DAO\Modulo6\DAOCasoDeUso.cs" />
     <Compile Include="DAO\Modulo6\RecursosDAOModulo6.Designer.cs">
@@ -92,6 +97,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DAO\Modulo2\RecursoBDModulo2.resx" />
+    <EmbeddedResource Include="DAO\Modulo5\RecursosDAOModulo5.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosDAOModulo5.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="DAO\Modulo6\RecursosDAOModulo6.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosDAOModulo6.Designer.cs</LastGenOutput>
