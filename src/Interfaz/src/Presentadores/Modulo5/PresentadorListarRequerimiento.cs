@@ -32,5 +32,21 @@ namespace Presentadores.Modulo5
         public void ListarRequerimientosPorProyecto(String codigo) {
             throw new NotImplementedException();
         }
+
+        /// <summary>
+        /// Metodo encargado de eliminar un requerimiento particular
+        /// </summary>
+        public void EliminarRequerimiento() {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Metodo encargado de modificar un requerimiento particular
+        /// </summary>
+        public void ModificarRequerimiento() {
+
+            throw new NotImplementedException();
+        
+        }
     }
 }

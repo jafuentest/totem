@@ -27,9 +27,8 @@ public partial class GUI_Modulo5_PrincipalProyecto : System.Web.UI.Page,
     #region Page_Load()
     protected void Page_Load(object sender, EventArgs e)
     {
-        
-       this.presentador.ListarRequerimientosPorProyecto("TOT");
-    
+        //this.Master.idModulo = "5";
+        //this.Master.presentador.CargarMenuLateral();       
     } 
     #endregion
 }

@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="TOTEM © 2015 | Requerimientos" Language="C#"
     MasterPageFile="~/Master/MasterPage.Master" AutoEventWireup="true"
     CodeFile="ListarRequerimientos.aspx.cs"
-    Inherits="Vista.Modulo5.GUI_Modulo5_PrincipalProyecto" %>
+    Inherits="GUI_Modulo5_PrincipalProyecto" %>
 <%@ MasterType  virtualPath="~/Master/MasterPage.master"%> 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
@@ -38,57 +38,7 @@
     <h2 style="align-content:center">Requerimientos asociados</h2>
 
     <div class="table-responsive">
-    <% if ( ListaRequerimientos != null )
-	  {
-		 %>
-	   <asp:Repeater ID="RRequerimientos" runat="server">
-		  <HeaderTemplate>
-			 <table id="table-requerimientos"
-				class="table table-striped table-hover">
-				<thead>
-				    <tr>
-					   <th>ID</th>
-					   <th style="width: 530px">Requerimiento</th>
-					   <th>Tipo</th>
-					   <th style="width: 50px">Prioridad</th>
-					   <th>Acciones</th>
-				    </tr>
-				</thead>
-				<tbody>
-		  </HeaderTemplate>
-		  <ItemTemplate>
-				<%
-				   /*
-				    * Evaluación de las propiedades pertenecientes
-				    * a la clase Requerimiento
-				    */
-				%>
-				<tr>
-				    <td><%# Eval("Codigo") %></td>
-				    <td><%# Eval("Descripcion") %></td>
-				    <td><%# Eval("Tipo") %></td>
-				    <td><%# Eval("Prioridad") %></td>
-				    <td>
-					   <a class="btn btn-default glyphicon glyphicon-pencil"
-					   data-toggle="modal" data-target="#modal-update"
-					   href="ListarRequerimientos.aspx?id=<%# Eval("Id") %>"></a>
-					   <a class="btn btn-danger glyphicon glyphicon-remove-sign"
-					   data-toggle="modal" data-target="#modal-delete"
-					   href="ListarRequerimientos.aspx?id=<%# Eval("Id") %>"></a>
-				    </td>
-				</tr>
-		  </ItemTemplate>
-		  <FooterTemplate>
-				</tbody>
-			 </table>
-		  </FooterTemplate>
-	   </asp:Repeater>
-    <% }
-	  else
-	  {
-		 Response.Write("<p>" + MensajeEstado + "</p>");
-	  }
-	  %>
+   
     </div> <!-- .table-responsive -->
     
 
