@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 
 namespace Dominio.Entidades.Modulo7
 {
-    class Usuario:Entidad
+    public class Usuario:Entidad
     {
         #region Atributos
         //Atributos de la Clase Usuario

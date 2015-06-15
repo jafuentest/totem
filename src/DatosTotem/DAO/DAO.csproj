@@ -63,9 +63,9 @@
     </Compile>
     <Compile Include="DAO\Modulo7\DAOUsuario.cs" />
     <Compile Include="DAO\Modulo7\RecursosBaseDeDatosModulo7.Designer.cs">
-      <DependentUpon>RecursosBaseDeDatosModulo7.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosBaseDeDatosModulo7.resx</DependentUpon>
     </Compile>
     <Compile Include="DAO\Modulo8\DaoAcuerdo.cs" />
     <Compile Include="DAO\Modulo8\DaoMinuta.cs" />
