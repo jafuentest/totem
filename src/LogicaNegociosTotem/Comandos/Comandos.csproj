@@ -67,6 +67,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RecursosComandosModulo6.resx</DependentUpon>
     </Compile>
+    <Compile Include="Comandos\Modulo7\ComandoAgregarUsuario.cs" />
+    <Compile Include="Comandos\Modulo7\ComandoValidarCorreoUnico.cs" />
+    <Compile Include="Comandos\Modulo7\ComandoValidarUsernameUnico.cs" />
     <Compile Include="Fabrica\FabricaComandos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -74,7 +77,6 @@
     <Folder Include="Comandos\Modulo1\" />
     <Folder Include="Comandos\Modulo3\" />
     <Folder Include="Comandos\Modulo4\" />
-    <Folder Include="Comandos\Modulo7\" />
     <Folder Include="Comandos\Modulo8\" />
   </ItemGroup>
   <ItemGroup>

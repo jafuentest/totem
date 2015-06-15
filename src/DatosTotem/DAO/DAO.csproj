@@ -57,6 +57,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="DAO\Modulo7\DAOUsuario.cs" />
+    <Compile Include="DAO\Modulo7\RecursosBaseDeDatosModulo7.Designer.cs">
+      <DependentUpon>RecursosBaseDeDatosModulo7.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="DAO\Modulo8\DaoAcuerdo.cs" />
     <Compile Include="DAO\Modulo8\DaoMinuta.cs" />
     <Compile Include="DAO\Modulo8\DaoPunto.cs" />
@@ -80,6 +86,7 @@
     <Compile Include="IntefazDAO\Modulo5\IDaoRequerimiento.cs" />
     <Compile Include="IntefazDAO\Modulo6\IDaoActor.cs" />
     <Compile Include="IntefazDAO\Modulo6\IDaoCasoDeUso.cs" />
+    <Compile Include="IntefazDAO\Modulo7\IDaoUsuario.cs" />
     <Compile Include="IntefazDAO\Modulo8\IDaoAcuerdo.cs" />
     <Compile Include="IntefazDAO\Modulo8\IDaoMinuta.cs" />
     <Compile Include="IntefazDAO\Modulo8\IDaoPunto.cs" />
@@ -89,11 +96,9 @@
     <Folder Include="DAO\Modulo1\" />
     <Folder Include="DAO\Modulo3\" />
     <Folder Include="DAO\Modulo4\" />
-    <Folder Include="DAO\Modulo7\" />
     <Folder Include="IntefazDAO\Modulo1\" />
     <Folder Include="IntefazDAO\Modulo3\" />
     <Folder Include="IntefazDAO\Modulo4\" />
-    <Folder Include="IntefazDAO\Modulo7\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DAO\Modulo2\RecursoBDModulo2.resx" />
@@ -104,6 +109,10 @@
     <EmbeddedResource Include="DAO\Modulo6\RecursosDAOModulo6.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosDAOModulo6.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DAO\Modulo7\RecursosBaseDeDatosModulo7.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosBaseDeDatosModulo7.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="DAO\Modulo8\RecursosBDModulo8.resx">
       <Generator>ResXFileCodeGenerator</Generator>
