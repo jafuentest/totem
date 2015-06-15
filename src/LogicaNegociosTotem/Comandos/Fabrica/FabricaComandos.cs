@@ -131,6 +131,24 @@ namespace Comandos.Fabrica
         {
             return new ComandoAgregarUsuario();
         }
+
+        /// <summary>
+        /// Metodo que Instancia el comando de validar Username Unico
+        /// </summary>
+        /// <returns></returns>
+        public static Comando<String,bool> CrearComandoValidarUsernameUnico()
+        {
+            return new ComandoValidarUsernameUnico();
+        }
+
+        /// <summary>
+        /// Metodo que instancia el comando de validar Correo unico
+        /// </summary>
+        /// <returns></returns>
+        public static Comando<String, bool> CrearComandoValidarCorreoUnico()
+        {
+            return new ComandoValidarCorreoUnico();
+        }
         #endregion
 
         #region Modulo 8
