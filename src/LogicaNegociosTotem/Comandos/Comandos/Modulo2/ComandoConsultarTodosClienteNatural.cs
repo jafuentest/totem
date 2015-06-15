@@ -9,10 +9,10 @@ using DAO.IntefazDAO.Modulo2;
 
 namespace Comandos.Comandos.Modulo2
 {
-    public class ComandoConsultarTodosClienteNatural : Comando<Entidad, List<Entidad>>
+    public class ComandoConsultarTodosClienteNatural : Comando<bool, List<Entidad>>
     {
 
-        public override List<Entidad> Ejecutar(Entidad parametro)
+        public override List<Entidad> Ejecutar(bool parametro)
         {
             try
             {

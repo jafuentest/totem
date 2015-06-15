@@ -50,6 +50,11 @@
     <Compile Include="Modulo2\PresentadorModificarCliente.cs" />
     <Compile Include="Modulo2\PresentadorModificarContacto.cs" />
     <Compile Include="Modulo2\PresentadorModificarEmpresa.cs" />
+    <Compile Include="Modulo2\RecursoInterfazM2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursoInterfazM2.resx</DependentUpon>
+    </Compile>
     <Compile Include="Modulo5\PresentadorAgregarRequerimiento.cs" />
     <Compile Include="Modulo5\PresentadorListarRequerimiento.cs" />
     <Compile Include="Modulo5\PresentadorReportes.cs" />
@@ -71,12 +76,24 @@
     <Folder Include="Modulo8\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Modulo2\RecursoInterfazM2.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursoInterfazM2.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="RecursosGeneralPresentadores.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosGeneralPresentadores.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\DominioTotem\Dominio\Dominio.csproj">
+      <Project>{41dd6620-eb5e-4529-b66d-d29a27fa2e5a}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\LogicaNegociosTotem\Comandos\Comandos.csproj">
+      <Project>{599466e8-e67a-4b93-ba44-a45079957c95}</Project>
+      <Name>Comandos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Contratos\Contratos.csproj">
       <Project>{c295ff71-0b9b-40d4-b76f-0efbaf1c3ce6}</Project>
       <Name>Contratos</Name>

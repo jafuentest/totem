@@ -50,7 +50,7 @@ namespace Comandos.Fabrica
         {
             return new ComandoConsultarTodosClienteJuridico();
         }
-        public static Comando<Entidad, List<Entidad>> CrearComandoConsultarTodosClienteNatural()
+        public static Comando<bool, List<Entidad>> CrearComandoConsultarTodosClienteNatural()
         {
             return new ComandoConsultarTodosClienteNatural();
         }

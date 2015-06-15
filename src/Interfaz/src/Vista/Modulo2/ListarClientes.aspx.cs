@@ -19,6 +19,7 @@ namespace Vista.Modulo2
         {
             this.Master.idModulo = "2";
             this.Master.presentador.CargarMenuLateral();
+            presentador.consultarClientes();
         }
         #region Contrato
         string Contratos.Modulo2.IContratoListarClientes.laTabla

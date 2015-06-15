@@ -35,7 +35,6 @@
                         <th>Identificador</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
-                        <th>Empresa</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>

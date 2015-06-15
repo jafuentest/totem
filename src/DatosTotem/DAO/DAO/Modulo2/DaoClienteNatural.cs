@@ -186,7 +186,7 @@ namespace DAO.DAO.Modulo2
                     laDireccion = (Direccion)laFabrica.ObtenerDireccion();
                     elTelefono = (Telefono)laFabrica.ObtenerTelefono();
                     elCliente = (ClienteNatural)laFabrica.ObtenerClienteNatural();
-                    elCliente.Id = int.Parse(row[RecursoBDModulo2.AliasClienteJurID].ToString());
+                    elCliente.Id = int.Parse(row[RecursoBDModulo2.AliasIDClienteNat].ToString());
                     elCliente.Nat_Nombre = row[RecursoBDModulo2.AliasNombreClienteNat].ToString();
                     elCliente.Nat_Apellido = row[RecursoBDModulo2.AliasApellidoClienteNat].ToString();
                     elCliente.Nat_Cedula = row[RecursoBDModulo2.AliasCedulaClienteNat].ToString();

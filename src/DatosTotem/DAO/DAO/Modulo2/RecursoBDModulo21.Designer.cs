@@ -39,7 +39,7 @@ namespace DAO.DAO.Modulo2 {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DAO.DAO.Modulo_2.RecursoBDModulo2", typeof(RecursoBDModulo2).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DAO.DAO.Modulo2.RecursoBDModulo2", typeof(RecursoBDModulo2).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
