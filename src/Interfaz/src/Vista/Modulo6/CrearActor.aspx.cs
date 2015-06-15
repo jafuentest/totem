@@ -39,5 +39,13 @@ namespace Vista.Modulo6
             this.Master.presentador.CargarMenuLateral();
             this.presentador.AgregarActor_Click(); 
         }
+
+        protected void AgregarActorClick(object sender, EventArgs e)
+        {
+            string dataCruda = nombre_actor.Value;
+            string encodedinput = Server.HtmlEncode(dataCruda);
+            label.Text = "Hola" + encodedinput; 
+
+        }
     }
 }

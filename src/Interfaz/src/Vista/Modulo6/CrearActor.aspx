@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/MasterPage.Master" AutoEventWireup="true" CodeBehind="CrearActor.aspx.cs" Inherits="Vista.Modulo6.CrearActor" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/MasterPage.Master" AutoEventWireup="true" ValidateRequest="false" CodeBehind="CrearActor.aspx.cs" Inherits="Vista.Modulo6.CrearActor" %>
 <%@ MasterType  virtualPath="~/Master/MasterPage.master"%> 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -11,6 +11,38 @@
                 </div>
 	<div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
 		<form runat="server" class="form-horizontal" method="POST">
+            <asp:RequiredFieldValidator id="RequiredFieldValidator7" runat="server"
+                    ControlToValidate="nombre_actor"
+                    Text="Nombre de Actor requerido"
+                    ErrorMessage="Se requiere la Dirección"
+                    ForeColor="Red">
+                </asp:RequiredFieldValidator>
+            <br />
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator5" 
+                        runat="server" 
+                        ControlToValidate="nombre_actor"
+                        ErrorMessage="Solo se admiten caracteres alfabéticos"  
+                        Text="El nombre del actor debe ser alfanumérico" ForeColor="Red"
+                       ValidationExpression="(?=.*\d)(?=.*[a-zA-Z]).*$">
+                </asp:RegularExpressionValidator>
+            <br />
+            <asp:RequiredFieldValidator id="RequiredFieldValidator1" runat="server"
+                    ControlToValidate="descripcion_actor"
+                    Text="Descripción requerida"
+                    ErrorMessage="Se requiere la Dirección"
+                    ForeColor="Red">
+                </asp:RequiredFieldValidator>
+            <br />
+
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" 
+                        runat="server" 
+                        ControlToValidate="descripcion_actor"
+                        ErrorMessage="Solo se admiten caracteres alfabéticos"  
+                        Text="La descripción solo permite , - . : como caracteres especiales" ForeColor="Red"
+                       ValidationExpression="^([A-Za-zÑñáéíóúÁÉÍÓÚ0-9,.:\-\ ]+)$">
+                </asp:RegularExpressionValidator>
+
+
 			<div class="form-group">
 				<div id="div-nombre" class="col-sm-10 col-md-10 col-lg-10">
 					<input id="nombre_actor" type="text" runat="server" name="nombre" placeholder="Nombre" class="form-control"  />
@@ -23,7 +55,8 @@
 			</div>
 			<div class="form-group">
 				<div class="col-md-6">
-					<button runat="server" class="btn btn-primary" type="submit" >Agregar</button>
+                    <asp:Label ID="label" runat="server" ></asp:Label>
+					<button runat="server" class="btn btn-primary" type="submit" onserverclick="AgregarActorClick">Agregar</button>
 					<a class="btn btn-default" href="ListarActores.aspx">Cancelar</a>
 				</div>
 			</div>
