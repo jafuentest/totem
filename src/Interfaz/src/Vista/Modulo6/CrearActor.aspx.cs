@@ -37,6 +37,7 @@ namespace Vista.Modulo6
         {
             this.Master.idModulo = "6";
             this.Master.presentador.CargarMenuLateral();
+            this.presentador.AgregarActor_Click(); 
         }
     }
 }
