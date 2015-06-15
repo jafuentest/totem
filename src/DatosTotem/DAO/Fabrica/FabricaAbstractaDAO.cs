@@ -40,6 +40,11 @@ namespace DAO.Fabrica
             #endregion
 
             #region Modulo 7
+            /// <summary>
+            /// Metodo abstracto para la Fabrica contreta FabricaDaoSqlServer que crea la interfaz IDaoUsuario
+            /// </summary>
+            /// <returns>La creacion de la interfaz IdaoUsuario</returns>
+            public abstract IntefazDAO.Modulo7.IDaoUsuario ObtenerDAOUsuario();
             #endregion
 
             #region Modulo 8

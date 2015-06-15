@@ -48,6 +48,14 @@ namespace DAO.Fabrica
         #endregion
 
         #region Modulo 7
+        /// <summary>
+        /// Metodo sobreescrito de la Fabrica Abstracta para crear el objeto concreto DAOUsuario
+        /// </summary>
+        /// <returns>El objeto concreto DAOUsuario</returns>
+        public override IntefazDAO.Modulo7.IDaoUsuario ObtenerDAOUsuario()
+        {
+            return new DAO.Modulo7.DAOUsuario();
+        }
         #endregion
 
         #region Modulo 8
