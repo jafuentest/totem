@@ -57,39 +57,39 @@ namespace Vista.Modulo2
             }
         }
 
-        string Contratos.Modulo2.IContratoModificarCliente.comboPais
+        DropDownList Contratos.Modulo2.IContratoModificarCliente.comboPais
         {
             get
             {
-                return comboPais.SelectedValue;
+                return comboPais;
             }
             set
             {
-                comboPais.SelectedValue = value;
+                comboPais= value;
             }
         }
 
-        string Contratos.Modulo2.IContratoModificarCliente.comboEstado
+        DropDownList Contratos.Modulo2.IContratoModificarCliente.comboEstado
         {
             get
             {
-                return comboEstado.SelectedValue;
+                return comboEstado;
             }
             set
             {
-                comboEstado.SelectedValue = value;
+                comboEstado = value;
             }
         }
 
-        string Contratos.Modulo2.IContratoModificarCliente.comboCiudad
+        DropDownList Contratos.Modulo2.IContratoModificarCliente.comboCiudad
         {
             get
             {
-                return comboCiudad.SelectedValue;
+                return comboCiudad;
             }
             set
             {
-                comboCiudad.SelectedValue = value;
+                comboCiudad = value;
             }
         }
 

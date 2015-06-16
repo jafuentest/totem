@@ -82,6 +82,10 @@
       <Project>{aaa3900a-9ced-4f07-9cee-d86208c39437}</Project>
       <Name>ExcepcionesTotem</Name>
     </ProjectReference>
+    <ProjectReference Include="Comandos\Comandos.csproj">
+      <Project>{599466e8-e67a-4b93-ba44-a45079957c95}</Project>
+      <Name>Comandos</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Modulo1\RecursosLogicaModulo1.resx">

@@ -14,5 +14,6 @@ namespace Presentadores.Modulo2
         {
             this.vista = laVista;
         }
+
     }
 }

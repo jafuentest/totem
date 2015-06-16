@@ -59,15 +59,15 @@ namespace Vista.Modulo2
             }
         }
 
-        string Contratos.Modulo2.IContratoModificarContacto.comboCargo
+        DropDownList Contratos.Modulo2.IContratoModificarContacto.comboCargo
         {
             get 
             {
-                return comboCargo.SelectedValue;
+                return comboCargo;
             }
             set 
             {
-                comboCargo.SelectedValue = value;
+                comboCargo = value;
             }
         }
 

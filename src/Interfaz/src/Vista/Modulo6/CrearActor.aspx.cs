@@ -36,15 +36,19 @@ namespace Vista.Modulo6
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Master.idModulo = "6";
-            this.Master.presentador.CargarMenuLateral();
-            this.presentador.AgregarActor_Click(); 
+            if (!IsPostBack)
+            {
+                this.Master.presentador.CargarMenuLateral();
+            }
+            
         }
 
         protected void AgregarActorClick(object sender, EventArgs e)
         {
             string dataCruda = nombre_actor.Value;
             string encodedinput = Server.HtmlEncode(dataCruda);
-            label.Text = "Hola" + encodedinput; 
+            label.Text = "Hola" + encodedinput;
+            // this.presentador.AgregarActor_Click();
 
         }
     }

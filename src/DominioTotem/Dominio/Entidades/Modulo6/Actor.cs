@@ -1,4 +1,5 @@
 ﻿using System;
+using Dominio.Entidades.Modulo4; 
 
 
 namespace Dominio.Entidades.Modulo6
@@ -12,6 +13,9 @@ namespace Dominio.Entidades.Modulo6
         
         private String nombreActor;
         private String descripcionActor;
+        private Proyecto proyectoAsociado;
+
+        
         #endregion
 
 
@@ -34,6 +38,12 @@ namespace Dominio.Entidades.Modulo6
             set { this.descripcionActor = value; }
         }
 
+        public Proyecto ProyectoAsociado
+        {
+            get { return proyectoAsociado; }
+            set { proyectoAsociado = value; }
+        } 
+
         #endregion
 
         #region Constructores
@@ -45,7 +55,8 @@ namespace Dominio.Entidades.Modulo6
             :base(0)
         {
             NombreActor = string.Empty;
-            DescripcionActor = string.Empty; 
+            DescripcionActor = string.Empty;
+            ProyectoAsociado = null; 
         }
 
         /// <summary>
@@ -53,11 +64,12 @@ namespace Dominio.Entidades.Modulo6
         /// </summary>
         /// <param name="nombre">El nombre con el que se nombrara el actor</param>
         /// <param name="descripcion">Descripion de que hace o quien es</param>
-        public Actor(String nombre, String descripcion)
+        public Actor(String nombre, String descripcion, Proyecto elProyecto)
             :base(0)
         {
             NombreActor = nombre;
             DescripcionActor = descripcion;
+            ProyectoAsociado = elProyecto; 
         }
         #endregion
 
@@ -83,6 +95,7 @@ namespace Dominio.Entidades.Modulo6
                     Actor aux = obj as Actor;
                     esIgual &= aux.NombreActor.Equals(NombreActor);
                     esIgual &= aux.DescripcionActor.Equals(DescripcionActor);
+                    esIgual &= aux.ProyectoAsociado.Equals(ProyectoAsociado);
                     esIgual &= aux.Id == Id;
                 }
                 

@@ -45,9 +45,12 @@
     <Compile Include="Entidades\Modulo2\Contacto.cs" />
     <Compile Include="Entidades\Modulo2\Direccion.cs" />
     <Compile Include="Entidades\Modulo2\Telefono.cs" />
+    <Compile Include="Entidades\Modulo4\Proyecto.cs" />
     <Compile Include="Entidades\Modulo5\Requerimiento.cs" />
     <Compile Include="Entidades\Modulo6\Actor.cs" />
     <Compile Include="Entidades\Modulo6\CasoDeUso.cs" />
+    <Compile Include="Entidades\Modulo6\Extension.cs" />
+    <Compile Include="Entidades\Modulo6\Paso.cs" />
     <Compile Include="Entidades\Modulo7\Usuario.cs" />
     <Compile Include="Entidades\Modulo8\Acuerdo.cs" />
     <Compile Include="Entidades\Modulo8\Minuta.cs" />
@@ -58,7 +61,6 @@
   <ItemGroup>
     <Folder Include="Entidades\Modulo1\" />
     <Folder Include="Entidades\Modulo3\" />
-    <Folder Include="Entidades\Modulo4\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

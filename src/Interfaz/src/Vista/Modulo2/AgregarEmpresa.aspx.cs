@@ -45,40 +45,39 @@ namespace Vista.Modulo2
                 nombreEmpresa.Value = value;
             }
         }
-
-        string Contratos.Modulo2.IContratoAgregarEmpresa.comboPais
+        DropDownList Contratos.Modulo2.IContratoAgregarEmpresa.comboPais
         {
             get
             {
-                return comboPais.SelectedValue;
+                return comboPais;
             }
             set
             {
-                comboPais.SelectedValue = value;
+                comboPais = value;
             }
         }
 
-        string Contratos.Modulo2.IContratoAgregarEmpresa.comboEstado
+        DropDownList Contratos.Modulo2.IContratoAgregarEmpresa.comboEstado
         {
             get
             {
-                return comboEstado.SelectedValue;
+                return comboEstado;
             }
             set
             {
-                comboEstado.SelectedValue = value;
+                comboEstado = value;
             }
         }
 
-        string Contratos.Modulo2.IContratoAgregarEmpresa.comboCiudad
+        DropDownList Contratos.Modulo2.IContratoAgregarEmpresa.comboCiudad
         {
             get
             {
-                return comboCiudad.SelectedValue;
+                return comboCiudad;
             }
             set
             {
-                comboCiudad.SelectedValue = value;
+                comboCiudad = value;
             }
         }
 
@@ -142,17 +141,18 @@ namespace Vista.Modulo2
             }
         }
 
-        string Contratos.Modulo2.IContratoAgregarEmpresa.comboCargo
+        DropDownList Contratos.Modulo2.IContratoAgregarEmpresa.comboCargo
         {
             get
             {
-                return comboCargo.SelectedValue;
+                return comboCargo;
             }
             set
             {
-                comboCargo.SelectedValue = value;
+                comboCargo = value;
             }
         }
+
         string Contratos.Modulo2.IContratoAgregarEmpresa.codTelefono
         {
             get

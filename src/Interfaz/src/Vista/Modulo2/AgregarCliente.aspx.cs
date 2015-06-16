@@ -23,6 +23,7 @@ namespace Vista.Modulo2
             this.Master.presentador.CargarMenuLateral();
         }
         #region Contrato
+        
         string Contratos.Modulo2.IContratoAgregarCliente.nombreNatural
         {
             get
@@ -47,15 +48,15 @@ namespace Vista.Modulo2
             }
         }
 
-        string Contratos.Modulo2.IContratoAgregarCliente.comboRSocial
+        DropDownList Contratos.Modulo2.IContratoAgregarCliente.comboRSocial
         {
             get
             {
-                return comboRSocial.SelectedValue;
+                return comboRSocial;
             }
             set
             {
-                comboRSocial.SelectedValue = value;
+                comboRSocial = value;
             }
         }
 
@@ -71,39 +72,39 @@ namespace Vista.Modulo2
             }
         }
 
-        string Contratos.Modulo2.IContratoAgregarCliente.comboPais
+        DropDownList Contratos.Modulo2.IContratoAgregarCliente.comboPais
         {
             get
             {
-                return comboPais.SelectedValue;
+                return comboPais;
             }
             set
             {
-                comboPais.SelectedValue = value;
+                comboPais = value;
             }
         }
 
-        string Contratos.Modulo2.IContratoAgregarCliente.comboEstado
+        DropDownList Contratos.Modulo2.IContratoAgregarCliente.comboEstado
         {
             get
             {
-                return comboEstado.SelectedValue;
+                return comboEstado;
             }
             set
             {
-                comboEstado.SelectedValue = value;
+                comboEstado = value;
             }
         }
 
-        string Contratos.Modulo2.IContratoAgregarCliente.comboCiudad
+        DropDownList Contratos.Modulo2.IContratoAgregarCliente.comboCiudad
         {
             get
             {
-                return comboCiudad.SelectedValue;
+                return comboCiudad;
             }
             set
             {
-                comboCiudad.SelectedValue = value;
+                comboCiudad = value;
             }
         }
 

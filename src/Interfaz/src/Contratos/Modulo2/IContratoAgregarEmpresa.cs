@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web;
+using System.Web.UI.WebControls;
 
 namespace Contratos.Modulo2
 {
@@ -9,15 +11,15 @@ namespace Contratos.Modulo2
     {
         string rifEmpresa { get; set; }
         string nombreEmpresa { get; set; }
-        string comboPais { get; set; }
-        string comboEstado { get; set; }
-        string comboCiudad { get; set; }
+        DropDownList comboPais { get; set; }
+        DropDownList comboEstado { get; set; }
+        DropDownList comboCiudad { get; set; }
         string direccionEmpresa { get; set; }
         string codigoPostalEmpresa { get; set; }
         string cedulaContacto { get; set; }
         string nombreContacto { get; set; }
         string apellidoContacto { get; set; }
-        string comboCargo { get; set; }
+        DropDownList comboCargo { get; set; }
         string codTelefono { get; set; }
         string telefonoCliente { get; set; }
 
