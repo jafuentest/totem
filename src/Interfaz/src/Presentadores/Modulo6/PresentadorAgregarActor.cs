@@ -6,14 +6,20 @@ using Contratos.Modulo6;
 using Presentadores;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls; 
+using System.Web.UI.WebControls;
+using Dominio.Entidades.Modulo6;
+using Dominio.Fabrica;
+using Dominio;
+using Comandos.Comandos;
+using Comandos.Fabrica; 
 
 namespace Presentadores.Modulo6
 {
     public class PresentadorAgregarActor
     {
         private IContratoAgregarActor vista;
-         
+        private Actor elActor; 
+ 
         public PresentadorAgregarActor(IContratoAgregarActor vista) 
         {
             this.vista = vista; 
@@ -25,12 +31,27 @@ namespace Presentadores.Modulo6
         /// </summary>
         public void AgregarActor_Click() 
         {
-            //Mi lista de datos a validar
-            List<string> listaVacios = new List<string>();
-            listaVacios.Add(this.vista.nombreActor);
-            listaVacios.Add(this.vista.descActor);
+            bool agrego = false; 
+            Entidad entidad = FabricaEntidades.ObtenerActor();
+            
+            elActor = entidad as Actor;
+            elActor.NombreActor = vista.nombreActor;
+            elActor.DescripcionActor = vista.descActor;
+            //elActor.ProyectoAsociado.Id = 1; 
 
-            Validaciones.ValidarCamposVacios(listaVacios);
+            try
+            {
+
+                Comandos.Comando<Entidad, bool> comandoAgregarActor =
+                FabricaComandos.CrearComandoAgregarActor();
+            
+               agrego = comandoAgregarActor.Ejecutar(elActor); 
+            }
+            catch (Exception e) 
+            {
+                //Falta implementar excepciones
+                throw e; 
+            }
             
 
         }

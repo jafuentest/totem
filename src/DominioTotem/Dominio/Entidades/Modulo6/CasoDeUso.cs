@@ -16,7 +16,7 @@ namespace Dominio.Entidades.Modulo6
         private String _condicionExito;
         private String _condicionFallo;
         private String _disparadorCasoUso;
-        private List<Tuple<String, Dictionary<String, List<String>>>> _escenarioExito;
+        private List<Paso> _escenarioExito;
 		#endregion
 
 		#region Constructor
@@ -62,7 +62,7 @@ namespace Dominio.Entidades.Modulo6
 		public CasoDeUso(String identificadorCasoUso, String tituloCasoUso,
             List<Actor> actoresSecundarios, List<String> precondicionesCasoUso,
             List<Requerimiento> requerimientosAsociados, String condicionExito, String condicionFallo,
-            String disparadorCasoUso, List<Tuple<String,Dictionary<String, List<String>>>> escenarioExito)
+            String disparadorCasoUso, List<Paso> escenarioExito)
             :base(0)
 		{
 			
@@ -154,7 +154,7 @@ namespace Dominio.Entidades.Modulo6
             set { _disparadorCasoUso = value; }
         }
 
-        public List<Tuple<String, Dictionary<String, List<String>>>> EscenarioExito
+        public List<Paso> EscenarioExito
         {
             get { return _escenarioExito; }
             set { _escenarioExito = value; }

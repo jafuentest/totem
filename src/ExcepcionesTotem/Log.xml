@@ -1,1 +1,21 @@
 ï»¿<?xml version="1.0" encoding="utf-8" ?> 
+2015-06-16 00:13:51,790 ERROR DAOActor - *******************************************************
+2015-06-16 00:13:51,796 ERROR DAOActor - Mensaje: Error en la conexión a Base de Datos al agregar el actor.
+2015-06-16 00:13:51,796 ERROR DAOActor - Origen: 
+2015-06-16 00:13:51,796 ERROR DAOActor - Metodo: 
+2015-06-16 00:13:51,796 ERROR DAOActor - StackTrace: 
+2015-06-16 00:13:51,867 ERROR DAOActor - InnerException: System.Data.SqlClient.SqlException (0x80131904): An attempt to attach an auto-named database for file C:\totem\totem\src\Interfaz\src\Vista\App_Data\BaseDeDatosTotem.mdf failed. A database with the same name exists, or specified file cannot be opened, or it is located on UNC share.
+   en DAO.DAO.DAO.EjecutarStoredProcedure(String query, List`1 parametros) en c:\totem\totem\src\DatosTotem\DAO\DAO\DAO.cs:línea 143
+   en DAO.DAO.Modulo6.DAOActor.Agregar(Entidad parametro) en c:\totem\totem\src\DatosTotem\DAO\DAO\Modulo6\DAOActor.cs:línea 42
+ClientConnectionId:fc9bca59-7776-480f-8a45-20c0fdb26bce
+2015-06-16 00:13:51,924 ERROR ComandoAgregarActor - *******************************************************
+2015-06-16 00:13:51,924 ERROR ComandoAgregarActor - Mensaje: Error en la conexión a Base de Datos al agregar el actor.
+2015-06-16 00:13:51,924 ERROR ComandoAgregarActor - Origen: 
+2015-06-16 00:13:51,924 ERROR ComandoAgregarActor - Metodo: 
+2015-06-16 00:13:51,924 ERROR ComandoAgregarActor - StackTrace: 
+2015-06-16 00:13:51,926 ERROR ComandoAgregarActor - InnerException: ExcepcionesTotem.Modulo6.ExcepcionesDAO.AgregarActorBDDAOException: Error en la conexión a Base de Datos al agregar el actor. ---> System.Data.SqlClient.SqlException: An attempt to attach an auto-named database for file C:\totem\totem\src\Interfaz\src\Vista\App_Data\BaseDeDatosTotem.mdf failed. A database with the same name exists, or specified file cannot be opened, or it is located on UNC share.
+   en DAO.DAO.DAO.EjecutarStoredProcedure(String query, List`1 parametros) en c:\totem\totem\src\DatosTotem\DAO\DAO\DAO.cs:línea 143
+   en DAO.DAO.Modulo6.DAOActor.Agregar(Entidad parametro) en c:\totem\totem\src\DatosTotem\DAO\DAO\Modulo6\DAOActor.cs:línea 42
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en DAO.DAO.Modulo6.DAOActor.Agregar(Entidad parametro) en c:\totem\totem\src\DatosTotem\DAO\DAO\Modulo6\DAOActor.cs:línea 58
+   en Comandos.Comandos.Modulo6.ComandoAgregarActor.Ejecutar(Entidad parametro) en c:\totem\totem\src\LogicaNegociosTotem\Comandos\Comandos\Modulo6\ComandoAgregarActor.cs:línea 32

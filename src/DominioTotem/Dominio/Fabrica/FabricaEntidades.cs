@@ -70,6 +70,16 @@ namespace Dominio.Fabrica
             return new CasoDeUso(); 
         }
 
+        public static Entidad ObtenerExtension() 
+        {
+            return new Extension(); 
+        }
+
+        public static Entidad ObtenerPaso() 
+        {
+            return new Paso(); 
+        }
+
         #endregion
 
         #region Modulo 7
