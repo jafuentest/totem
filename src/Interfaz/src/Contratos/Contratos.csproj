@@ -50,6 +50,8 @@
     <Compile Include="Modulo2\IContratoModificarCliente.cs" />
     <Compile Include="Modulo2\IContratoModificarContacto.cs" />
     <Compile Include="Modulo2\IContratoModificarEmpresa.cs" />
+    <Compile Include="Modulo3\IContratoAgregarInvolucrado.cs" />
+    <Compile Include="Modulo3\IContratoListarInvolucrado.cs" />
     <Compile Include="Modulo5\IContratoAgregarRequerimiento.cs" />
     <Compile Include="Modulo5\IContratoListarRequerimientos.cs" />
     <Compile Include="Modulo5\IContratoReportes.cs" />
@@ -58,7 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modulo1\" />
-    <Folder Include="Modulo3\" />
     <Folder Include="Modulo4\" />
     <Folder Include="Modulo7\" />
     <Folder Include="Modulo8\" />
