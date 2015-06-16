@@ -22,6 +22,7 @@ namespace Comandos.Comandos.Modulo7
         /// <returns>Verdadero si es valido, falso sino es valido</returns>
         public override bool Ejecutar(String parametro)
         {
+            Console.WriteLine("ENTRE EN EL USERNAME");
             //throw new NotImplementedException();
             FabricaAbstractaDAO usernameUnico = FabricaDAOSqlServer.ObtenerFabricaSqlServer();
            // IDaoUsuario daoUsuario = usernameUnico.ObtenerDAOUsuario();

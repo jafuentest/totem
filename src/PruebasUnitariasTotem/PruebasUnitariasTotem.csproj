@@ -70,6 +70,7 @@
     <Compile Include="Modulo6\PruebaBDActorExcepciones.cs" />
     <Compile Include="Modulo6\PruebaLogicaActor.cs" />
     <Compile Include="Modulo7\PruebaBDUsuario.cs" />
+    <Compile Include="Modulo7\PruebaComandoAgregarUsuario.cs" />
     <Compile Include="Modulo7\PruebaLogicaUsuario.cs" />
     <Compile Include="Modulo7\PruebaManejadorUsuario.cs" />
     <Compile Include="Modulo8\PruebaBDAcuerdo.cs" />
@@ -90,9 +91,17 @@
       <Project>{71398660-3b9b-4bed-91b3-b968a4ebf02e}</Project>
       <Name>DominioTotem</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DominioTotem\Dominio\Dominio.csproj">
+      <Project>{41dd6620-eb5e-4529-b66d-d29a27fa2e5a}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ExcepcionesTotem\ExcepcionesTotem.csproj">
       <Project>{aaa3900a-9ced-4f07-9cee-d86208c39437}</Project>
       <Name>ExcepcionesTotem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogicaNegociosTotem\Comandos\Comandos.csproj">
+      <Project>{599466e8-e67a-4b93-ba44-a45079957c95}</Project>
+      <Name>Comandos</Name>
     </ProjectReference>
     <ProjectReference Include="..\LogicaNegociosTotem\LogicaNegociosTotem.csproj">
       <Project>{70c79b2e-094d-49ba-bc84-d7cd7443abff}</Project>

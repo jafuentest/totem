@@ -46,8 +46,64 @@ namespace DAO.DAO.Modulo7
         /// <returns>Verdadero si el usuario fue agregado o falso sino fue agregado</returns>
         public bool AgregarUsuario(Entidad parametro)
         {
-            Usuario usuarioRegistrar = (Usuario)parametro;
-            return false;
+            //Casteamos explicitamente para trabajar con el usuario que registraremos
+            Usuario elUsuario = (Usuario)parametro;
+            
+            //Calculamos el hash de su clave
+            elUsuario.CalcularHash();
+
+             //Indicaremos si la insercion fue exitosa o fallida
+            bool exito = false;
+            try
+            {
+                //Variable que cambiara su valor si las filas de la Base de Datos fueron alteradas (se inserto)
+                Int32 filasAfectadas = 0;
+
+                //Indicamos que es un stored procedure, cual utilizar y ademas la conexion que necesita
+                this.instruccion = new SqlCommand(RecursosBaseDeDatosModulo7.ProcedimientoInsertarUsuario, this.conexion);
+                this.instruccion.CommandType = CommandType.StoredProcedure;
+
+                //Le agregamos los valores correspondientes a las variables de stored procedure
+                this.instruccion.Parameters.AddWithValue(RecursosBaseDeDatosModulo7.UsernameUsuario,
+                    elUsuario.Username);
+                this.instruccion.Parameters.AddWithValue(RecursosBaseDeDatosModulo7.ClaveUsuario,
+                    elUsuario.Clave);
+                this.instruccion.Parameters.AddWithValue(RecursosBaseDeDatosModulo7.NombreUsuario,
+                    elUsuario.Nombre);
+                this.instruccion.Parameters.AddWithValue(RecursosBaseDeDatosModulo7.ApellidoUsuario,
+                    elUsuario.Apellido);
+                this.instruccion.Parameters.AddWithValue(RecursosBaseDeDatosModulo7.RolUsuario,
+                    elUsuario.Rol);
+                this.instruccion.Parameters.AddWithValue(RecursosBaseDeDatosModulo7.CorreoUsuario,
+                    elUsuario.Correo);
+                this.instruccion.Parameters.AddWithValue(RecursosBaseDeDatosModulo7.PreguntaUsuario,
+                    elUsuario.PreguntaSeguridad);
+                this.instruccion.Parameters.AddWithValue(RecursosBaseDeDatosModulo7.RespuestaUsuario,
+                    elUsuario.RespuestaSeguridad);
+                this.instruccion.Parameters.AddWithValue(RecursosBaseDeDatosModulo7.CargoUsuario,
+                    elUsuario.Cargo);
+
+
+                //Se abre conexion contra la Base de Datos
+                this.conexion.Open();
+
+                //Ejecutamos la consulta y traemos las filas que fueron altearadas (agregadas en este caso)
+                filasAfectadas = this.instruccion.ExecuteNonQuery();
+
+                //Cerramos conexion
+                this.conexion.Close();
+
+                //Si la respuesta es mayor que uno entonces se agrego exitosamente
+                if (filasAfectadas > 0)
+                    exito = true;
+            }
+            catch (Exception error)
+            {
+                throw new Exception("Ha ocurrido un error inesperado al agregar", error);
+            }
+
+
+            return exito;
         }
 
         /// <summary>
@@ -72,11 +128,15 @@ namespace DAO.DAO.Modulo7
                 this.instruccion.Parameters.Add(RecursosBaseDeDatosModulo7.Resultadorepetido,SqlDbType.VarChar,60);
                 this.instruccion.Parameters[RecursosBaseDeDatosModulo7.Resultadorepetido].Direction = ParameterDirection.Output;
 
+                Console.WriteLine("Antes del Open");
+
                 //Se abre conexion contra la Base de Datos
                 this.conexion.Open();
 
                 //Ejecutamos la consulta y traemos si existe el username que se desea registrar
                 this.instruccion.ExecuteNonQuery();
+
+                Console.WriteLine("El query es: " + this.instruccion.Parameters[RecursosBaseDeDatosModulo7.Resultadorepetido].Value.ToString());
 
                 //Si existe se indicara que es falso, caso contrario se indicara que es verdadero
                 if (this.instruccion.Parameters[RecursosBaseDeDatosModulo7.Resultadorepetido].Value.ToString() == "")

@@ -23,6 +23,8 @@ namespace Comandos.Comandos.Modulo7
         /// <returns>returns true si se realizo bien y false, si no se realizo</returns>
         public override bool Ejecutar(Entidad parametro)
         {
+            //Variable que retornara el exito o fallo del registro
+            bool exito = false;
            // throw new NotImplementedException();
            
           //  ComandoValidarUsernameUnico validarUsername = FabricaComandos.CrearComandoValidarUsernameUnico();
@@ -30,18 +32,19 @@ namespace Comandos.Comandos.Modulo7
             Comando<String, bool> validarUsername = FabricaComandos.CrearComandoValidarUsernameUnico();
             Comando<String, bool> validarCorreo = FabricaComandos.CrearComandoValidarCorreoUnico();
             Usuario elUsuario = (Usuario)parametro;
-            
+            Console.WriteLine("NO HE ENTRADO EN EL IF");
             //   try
             //   {
-            // if (validarUsername.Ejecutar(elUsuario.Username) && validarCorreo.Ejecutar(elUsuario.Correo) == false)
-            //{
+             if (validarUsername.Ejecutar(elUsuario.Username) && validarCorreo.Ejecutar(elUsuario.Correo) == true)
+            {
+                Console.WriteLine("ENTRE EN EL IF");
                 //elUsuario.CalcularHash();
                 //    manejador.RegistrarUsuario(parametro);
-            FabricaAbstractaDAO fabrica = FabricaDAOSqlServer.ObtenerFabricaSqlServer();
-            IDaoUsuario daoUsuario = fabrica.ObtenerDAOUsuario();
-            bool exito = daoUsuario.AgregarUsuario(parametro);
+                FabricaAbstractaDAO fabrica = FabricaDAOSqlServer.ObtenerFabricaSqlServer();
+                IDaoUsuario daoUsuario = fabrica.ObtenerDAOUsuario();
+                exito = daoUsuario.AgregarUsuario(parametro);
 
-         //   }
+            }
                 
                        
                         
@@ -71,7 +74,7 @@ namespace Comandos.Comandos.Modulo7
             {
                 throw new CorreoRepetidoException();
             }*/
-                 return false;
+                 return exito;
         }
     }
 }
