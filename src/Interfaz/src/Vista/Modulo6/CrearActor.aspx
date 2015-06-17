@@ -27,8 +27,8 @@
                         ControlToValidate="nombre_actor"
                         class="alert alert-danger alert-dismissible"
                         ErrorMessage="Solo se admiten caracteres alfabéticos"  
-                        Text="El nombre del actor debe ser alfanumérico" 
-                       ValidationExpression="(?=.*\d)(?=.*[a-zA-Z]).*$">
+                        Text="El nombre del actor debe ser alfabético" 
+                       ValidationExpression="^[a-zA-Z ]*$">
                 </asp:RegularExpressionValidator>
             <br />
             <br />

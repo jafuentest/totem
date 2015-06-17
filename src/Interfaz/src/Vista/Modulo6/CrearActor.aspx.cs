@@ -48,7 +48,7 @@ namespace Vista.Modulo6
             string dataCruda = nombre_actor.Value;
             string encodedinput = Server.HtmlEncode(dataCruda);
             label.Text = "Hola" + encodedinput;
-            // this.presentador.AgregarActor_Click();
+             this.presentador.AgregarActor_Click();
 
         }
     }

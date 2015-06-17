@@ -44,14 +44,19 @@ namespace Presentadores.Modulo6
 
                 Comandos.Comando<Entidad, bool> comandoAgregarActor =
                 FabricaComandos.CrearComandoAgregarActor();
-            
-               agrego = comandoAgregarActor.Ejecutar(elActor); 
+
+                agrego = comandoAgregarActor.Ejecutar(elActor);
             }
-            catch (Exception e) 
+            catch (HttpRequestValidationException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
             {
                 //Falta implementar excepciones
-                throw e; 
+                throw e;
             }
+            
             
 
         }
