@@ -182,7 +182,6 @@ namespace DAO.DAO.Modulo2
                 throw new Exception();
             }
         }
-
         public Entidad consultarDatosContactoID(Entidad parametro)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
@@ -396,6 +395,23 @@ namespace DAO.DAO.Modulo2
                 throw ex;
             }
         }
-
+        public List<String> consultarListaCargos()
+        {
+            List<String> laLista = new List<String>();
+            DataTable resultado = new DataTable();
+            try
+            {
+                resultado = EjecutarStoredProcedureTuplas(RecursoBDModulo2.ConsultarListaCargos, new List<Parametro>());
+                foreach (DataRow row in resultado.Rows)
+                {
+                    laLista.Add(row[RecursoBDModulo2.AliasCargoNombre].ToString());
+                }
+                return laLista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

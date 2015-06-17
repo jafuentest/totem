@@ -82,6 +82,20 @@ namespace Dominio.Entidades.Modulo2
          Jur_Direccion = dir;
          Jur_Logo = elLogo;
      }
+     public ClienteJuridico(String nombre, List<Entidad> contactos, Entidad dir,
+         String elRif, String logo):base()
+     {
+         List<Contacto> c = new List<Contacto>();
+         Jur_Nombre = nombre;
+         Jur_Rif = elRif;
+         foreach (Entidad e in contactos)
+         {
+             c.Add((Contacto)e);
+         }
+         Jur_Contactos = c;
+         Jur_Direccion = (Direccion)dir;
+         Jur_Logo = logo;
+     }
      #endregion
      public override bool Equals(object obj)
      {

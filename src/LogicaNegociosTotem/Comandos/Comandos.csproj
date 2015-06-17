@@ -46,6 +46,7 @@
     <Compile Include="Comandos\Modulo2\ComandoConsultarClienteJurXID.cs" />
     <Compile Include="Comandos\Modulo2\ComandoConsultarDatosContactoID.cs" />
     <Compile Include="Comandos\Modulo2\ComandoConsultarEstadosPorPais.cs" />
+    <Compile Include="Comandos\Modulo2\ComandoConsultarListaCargos.cs" />
     <Compile Include="Comandos\Modulo2\ComandoConsultarListaContactos.cs" />
     <Compile Include="Comandos\Modulo2\ComandoConsultarListaPaises.cs" />
     <Compile Include="Comandos\Modulo2\ComandoConsultarTodosClienteJuridico.cs" />

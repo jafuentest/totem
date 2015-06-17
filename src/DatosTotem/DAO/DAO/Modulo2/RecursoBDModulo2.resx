@@ -318,4 +318,10 @@
   <data name="ParamPais" xml:space="preserve">
     <value>@pais</value>
   </data>
+  <data name="AliasCargoNombre" xml:space="preserve">
+    <value>nombreCargo</value>
+  </data>
+  <data name="ConsultarListaCargos" xml:space="preserve">
+    <value>M2_ConsultarListaCargos</value>
+  </data>
 </root>

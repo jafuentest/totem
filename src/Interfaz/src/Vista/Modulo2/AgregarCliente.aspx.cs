@@ -19,11 +19,17 @@ namespace Vista.Modulo2
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.Master.idModulo = "2";
-            this.Master.presentador.CargarMenuLateral();
+
+            if (!IsPostBack)
+            {
+                this.Master.idModulo = "2";
+                this.Master.presentador.CargarMenuLateral();
+                presentador.deshabilitarCombos();
+                presentador.llenarComboPais();
+            }
         }
         #region Contrato
-        
+
         string Contratos.Modulo2.IContratoAgregarCliente.nombreNatural
         {
             get
@@ -45,18 +51,6 @@ namespace Vista.Modulo2
             set
             {
                 apellidoNatural.Value = value;
-            }
-        }
-
-        DropDownList Contratos.Modulo2.IContratoAgregarCliente.comboRSocial
-        {
-            get
-            {
-                return comboRSocial;
-            }
-            set
-            {
-                comboRSocial = value;
             }
         }
 
@@ -168,5 +162,20 @@ namespace Vista.Modulo2
             }
         }
         #endregion
+        protected void comboPais_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            presentador.llenarComboEstadosXPais(comboPais.SelectedValue);
+        }
+
+        protected void comboEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            presentador.llenarComboCiudadXEstado(comboEstado.SelectedValue);
+        }
+
+        protected void botonAgregar_Click1(object sender, EventArgs e)
+        {
+            presentador.agregarCliente();
+        }
+
     }
 }

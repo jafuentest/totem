@@ -15,6 +15,6 @@ namespace DAO.IntefazDAO.Modulo2
         List<String> consultarPaises();
         List<String> consultarEstadosPorPais(String elPais);
         List<String> consultarCiudadesPorEstado(String elEstado);
-
+        List<String> consultarListaCargos();
     }
 }

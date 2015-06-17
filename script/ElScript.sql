@@ -1053,6 +1053,16 @@ go
 --End SP1
 
 --Begin SP2
+--------------------------PROCEDURE CONSULTAR CARGOS----------------------------
+CREATE PROCEDURE M2_ConsultarListaCargos 
+AS
+BEGIN
+	SELECT DISTINCT CAR_NOMBRE  as nombreCargo
+	FROM CARGO 
+	WHERE CAR_NOMBRE NOT IN (SELECT DISTINCT CAR_NOMBRE as nombreCargo 
+							 FROM CARGO, USUARIO WHERE CARGO_car_id=car_id)
+END;
+go
 --------------------------PROCEDURE CONSULTAR PAISES----------------------------
 CREATE PROCEDURE M2_ConsultarPaises
 AS
@@ -1115,7 +1125,7 @@ BEGIN
 	('El Salvador'),('San Marino'),('Somalia'),('Saint Pierre and Miquelon'),('Sao Tome and Principe'),('Suriname'),('Slovakia'),('Slovenia'),
 	('Sweden'),('Swaziland'),('Seychelles'),('Syria'),('Turks and Caicos Islands'),('Chad'),('Togo'),('Thailand'),('Tajikistan'),('Tokelau'),
 	('Turkmenistan'),('East Timor'),('Tonga'),('Trinidad and Tobago'),('Tunisia'),('Turkey'),('Tuvalu'),('Taiwan'),('Tanzania'),('Uganda'),('Ukraine'),
-	('United States Minor Outlying Islands'),('Uruguay'),('United States'),('Uzbekistan'),('Holy See (Vatican City State)'),('Saint Vincent and the Grenadines'),
+	('United States Minor Outlying Islands'),('Uruguay'),('Estados Unidos'),('Uzbekistan'),('Holy See (Vatican City State)'),('Saint Vincent and the Grenadines'),
 	('Venezuela'),('South America'),('Virgin Islands, British'),('Virgin Islands, U.S.'),('Vietnam'),('Vanuatu'),('Wallis and Futuna'),('Samoa'),('Yemen'),('Yugoslavia'),
 	('South Africa'),('Zambia'),('Zimbabwe');
 	
@@ -3372,63 +3382,61 @@ insert into usuario values (NEXT VALUE FOR secuenciaIdUsuario,'johan7850','7E-B5
 
 
 /*---------------------------------------LUGAR-----------------------------------------*/
-INSERT INTO LUGAR VALUES('Venezuela','País',null,null);
+exec dbo.M2_InsertarPaises;
 go
-INSERT INTO LUGAR VALUES('Dtto Capital','Estado',null,1);
+INSERT INTO LUGAR VALUES('Distrito Capital','Estado',null, (select lug_id from LUGAR where lug_nombre = 'Venezuela'));
 go
-INSERT INTO LUGAR VALUES('Mirada','Estado',null,2);
+INSERT INTO LUGAR VALUES('Miranda','Estado',null,(select lug_id from LUGAR where lug_nombre = 'Venezuela'));
 go
-INSERT INTO LUGAR VALUES('Caracas','Ciudad',1020,2);
+INSERT INTO LUGAR VALUES('Caracas','Ciudad',1020,(select lug_id from LUGAR where lug_nombre = 'Distrito Capital'));
 go
-INSERT INTO LUGAR VALUES('Los Teques','Ciudad',1011,3);
+INSERT INTO LUGAR VALUES('Los Teques','Ciudad',1011,(select lug_id from LUGAR where lug_nombre = 'Miranda'));
 go
-INSERT INTO LUGAR VALUES('Guarenas','Ciudad',1015,3);
+INSERT INTO LUGAR VALUES('Guarenas','Ciudad',1015,(select lug_id from LUGAR where lug_nombre = 'Miranda'));
 go
-INSERT INTO LUGAR VALUES('Parroquia Caricuao UD 3, Bloque 6, piso 1, apt 01','Direccion',null,4);
+INSERT INTO LUGAR VALUES('Parroquia Caricuao UD 3, Bloque 6, piso 1, apt 01','Direccion',null,(select lug_id from LUGAR where lug_nombre = 'Caracas'));
 go
-INSERT INTO LUGAR VALUES('Parroquia San Juan, Bloque 16, piso 4, apt 04','Direccion',null,4);
+INSERT INTO LUGAR VALUES('Parroquia San Juan, Bloque 16, piso 4, apt 04','Direccion',null,(select lug_id from LUGAR where lug_nombre = 'Caracas'));
 go
-INSERT INTO LUGAR VALUES('Parroquia Altagracia, Edif 3, piso 8, apt 07','Direccion',null,4);
+INSERT INTO LUGAR VALUES('Parroquia Altagracia, Edif 3, piso 8, apt 07','Direccion',null,(select lug_id from LUGAR where lug_nombre = 'Guarenas'));
 go
-INSERT INTO LUGAR VALUES('Parroquia Candelaria, edif 8, piso 15, apt 05','Direccion',null,4);
+INSERT INTO LUGAR VALUES('Parroquia Candelaria, edif 8, piso 15, apt 05','Direccion',null,(select lug_id from LUGAR where lug_nombre = 'Caracas'));
 go
-INSERT INTO LUGAR VALUES('Parroquia San pedro, residencia Virgen María, Casa # 3','Direccion',null,5);
+INSERT INTO LUGAR VALUES('Parroquia San pedro, residencia Virgen María, Casa # 3','Direccion',null,(select lug_id from LUGAR where lug_nombre = 'Caracas'));
 go
-INSERT INTO LUGAR VALUES('Zona industrial de Cloris Urb. Terrazas del Este, Primera Etapa, edif 20, apt 3-2','Direccion',null,6);
+INSERT INTO LUGAR VALUES('Zona industrial de Cloris Urb. Terrazas del Este, Primera Etapa, edif 20, apt 3-2','Direccion',null,(select lug_id from LUGAR where lug_nombre = 'Los Teques'));
 go
-INSERT INTO LUGAR VALUES('Parroquia Caricuao, Calle A, Local Q, Coche','Direccion',null,4);
+INSERT INTO LUGAR VALUES('Parroquia Caricuao, Calle A, Local Q, Coche','Direccion',null,(select lug_id from LUGAR where lug_nombre = 'Caracas'));
 go
-INSERT INTO LUGAR VALUES('Parroquia San Juan, Calle C, Local 34, Santa Rosa de Lima','Direccion',null,4);
+INSERT INTO LUGAR VALUES('Parroquia San Juan, Calle C, Local 34, Santa Rosa de Lima','Direccion',null,(select lug_id from LUGAR where lug_nombre = 'Caracas'));
 go
-INSERT INTO LUGAR VALUES('Parroquia Altagracia, Calle Guaicaipuro, Local 76, Bello Monte','Direccion',null,4);
+INSERT INTO LUGAR VALUES('Parroquia Altagracia, Calle Guaicaipuro, Local 76, Bello Monte','Direccion',null,(select lug_id from LUGAR where lug_nombre = 'Guarenas'));
 go
-INSERT INTO LUGAR VALUES('Parroquia Candelaria, De Tablitas A Sordo, Parcelas 2-5, Los Ruices','Direccion',null,4);
+INSERT INTO LUGAR VALUES('Parroquia Candelaria, De Tablitas A Sordo, Parcelas 2-5, Los Ruices','Direccion',null,(select lug_id from LUGAR where lug_nombre = 'Caracas'));
 go
-INSERT INTO LUGAR VALUES('Parroquia San Pedro, Avenida Principal de Lomas de Prados del Este, Indialca, Alto Prado','Direccion',null,5);
+INSERT INTO LUGAR VALUES('Parroquia San Pedro, Avenida Principal de Lomas de Prados del Este, Indialca, Alto Prado','Direccion',null,(select lug_id from LUGAR where lug_nombre = 'Caracas'));
 go
-INSERT INTO LUGAR VALUES('Estados Unidos','País',null,NULL);
+INSERT INTO LUGAR VALUES('Florida','Estado',null,(select lug_id from LUGAR where lug_nombre = 'Estados Unidos'));
 go
-INSERT INTO LUGAR VALUES('Florida','Estado',null,18);
+INSERT INTO LUGAR VALUES('Georgia','Estado',null,(select lug_id from LUGAR where lug_nombre = 'Estados Unidos'));
 go
-INSERT INTO LUGAR VALUES('Georgia','Estado',null,18);
+INSERT INTO LUGAR VALUES('Jacksonville','Ciudad',29320,(select lug_id from LUGAR where lug_nombre = 'Florida'));
 go
-INSERT INTO LUGAR VALUES('Jacksonville','Ciudad',29320,19);
+INSERT INTO LUGAR VALUES('Miami','Ciudad',83921,(select lug_id from LUGAR where lug_nombre = 'Florida'));
 go
-INSERT INTO LUGAR VALUES('Miami','Ciudad',83921,19);
+INSERT INTO LUGAR VALUES('Atlanta','Ciudad',82193,(select lug_id from LUGAR where lug_nombre = 'Georgia'));
 go
-INSERT INTO LUGAR VALUES('Atlanta','Ciudad',82193,20);
+INSERT INTO LUGAR VALUES('Eastport Apartments, The 11701 Palm Lake Drive Jacksonville, FL 32218-3985','Direccion',null,(select lug_id from LUGAR where lug_nombre = 'Jacksonville'));
 go
-INSERT INTO LUGAR VALUES('Eastport Apartments, The 11701 Palm Lake Drive Jacksonville, FL 32218-3985','Direccion',null,21);
+INSERT INTO LUGAR VALUES('La Esperanza 3800 University Blvd S Jacksonville, FL 32216-4328','Direccion',null,(select lug_id from LUGAR where lug_nombre = 'Jacksonville'));
 go
-INSERT INTO LUGAR VALUES('La Esperanza 3800 University Blvd S Jacksonville, FL 32216-4328','Direccion',null,21);
+INSERT INTO LUGAR VALUES('1231 PENNSYLVANIA AV 10','Direccion',null,(select lug_id from LUGAR where lug_nombre = 'Miami'));
 go
-INSERT INTO LUGAR VALUES('1231 PENNSYLVANIA AV 10','Direccion',null,22);
+INSERT INTO LUGAR VALUES('1250 WEST AV 10D','Direccion',null,(select lug_id from LUGAR where lug_nombre = 'Miami'));
 go
-INSERT INTO LUGAR VALUES('1250 WEST AV 10D','Direccion',null,22);
+INSERT INTO LUGAR VALUES('415 Fairburn Rd SW Atlanta, GA 30331-1996','Direccion',null,(select lug_id from LUGAR where lug_nombre = 'Atlanta'));
 go
-INSERT INTO LUGAR VALUES('415 Fairburn Rd SW Atlanta, GA 30331-1996','Direccion',null,23);
-go
-INSERT INTO LUGAR VALUES('1800 Windridge Dr Sandy Springs, GA 30350-2873','Direccion',null,23);
+INSERT INTO LUGAR VALUES('1800 Windridge Dr Sandy Springs, GA 30350-2873','Direccion',null,(select lug_id from LUGAR where lug_nombre = 'Atlanta'));
 go
 
 /*---------------------------------------CLIENTE_JURIDICO-----------------------------------------*/
@@ -3456,7 +3464,12 @@ go
 INSERT INTO CLIENTE_NATURAL VALUES(55555555,'Jessica','De Torres','jesidetorres@gmail.com',26);
 go
 
-/*---------------------------------------CONTACTO-----------------------------------------*/
+/*---------------------------------------CARGO-----------------------------------------*/
+insert into Cargo (car_id,car_nombre) values (NEXT VALUE FOR secuenciaIdCargo,'Gerente General');
+insert into Cargo (car_id,car_nombre) values (NEXT VALUE FOR secuenciaIdCargo,'Administrador');
+insert into Cargo (car_id,car_nombre) values (NEXT VALUE FOR secuenciaIdCargo,'Secretaria');
+insert into Cargo (car_id,car_nombre) values (NEXT VALUE FOR secuenciaIdCargo,'Gerente de finanzas');
+insert into Cargo (car_id,car_nombre) values (NEXT VALUE FOR secuenciaIdCargo,'Recursos Humanos');
 /*--------------------CONTACTO CLIENTE_JURIDICO------------------------*/
 INSERT INTO CONTACTO VALUES(66666666,'Reinaldo','Cortes',1,1,null);
 go

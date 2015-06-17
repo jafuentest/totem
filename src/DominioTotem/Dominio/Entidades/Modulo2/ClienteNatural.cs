@@ -96,6 +96,18 @@ namespace Dominio.Entidades.Modulo2
             Nat_Direccion = dir;
             Nat_Telefono = null;
         }
+        public ClienteNatural(String nombre, String apellido, String correo, Entidad dir, Entidad telefono, String cedula)
+            : base()
+        {
+            Nat_Nombre = nombre;
+            Nat_Apellido = apellido;
+            Nat_Cedula = cedula;
+            Nat_Correo = correo;
+            Nat_Direccion = (Direccion)dir;
+            Nat_Telefono = (Telefono)telefono;
+        }
+
+
         #endregion
        
         public override bool Equals(object obj)

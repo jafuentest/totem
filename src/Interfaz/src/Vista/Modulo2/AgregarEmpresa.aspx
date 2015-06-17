@@ -22,23 +22,10 @@
     Agregar Cliente Juridico
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" runat="Server">
-    <div id="alert" runat="server">
-    </div>
-    <div id="alertRif" runat="server"> </div>
-    <div id="alertNombreEmpresa" runat="server"></div>
-    <div id="alertPais" runat="server"></div>
-     <div id="alertEstado" runat="server"></div>
-     <div id="alertCiudad" runat="server"></div>
-    <div id="alertDireccion" runat="server"></div>
-    <div id="alertCodigoPostal" runat="server"></div>
-    <div id="alertCedulaContacto" runat="server"></div>
-    <div id="alertNombreContacto" runat="server"></div>
-    <div id="alertApellidoContacto" runat="server"></div>
-    <div id="alertTelefonoContacto" runat="server"></div>
-    <div class="col-sm-8 col-md-8 col-lg-8 col-md-offset-2">
+    <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
+        <div id="alert" runat="server">
+        </div>
         <form id="agregar_empresa" class="form-horizontal" action="#" method="post" runat="Server">
-
-            <div class="row col-sm-12 col-md-12 col-lg-12">
                 
                 <!-- SECCION DE DATOS BASICOS -->
                 <h2>Datos Básicos</h2>
@@ -60,20 +47,20 @@
                     <div class="form-group">
                             <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="dropdown" runat="server" id="contenedorComboPais">
-                                <asp:DropDownList ID="comboPais"  class="btn btn-default dropdown-toggle" runat="server" OnSelectedIndexChanged="CbCambioAEstado"  AutoPostBack="true"></asp:DropDownList>
+                                <asp:DropDownList ID="comboPais"  class="btn btn-default dropdown-toggle" runat="server" AutoPostBack="true" OnSelectedIndexChanged="comboPais_SelectedIndexChanged"></asp:DropDownList>
                                 </div>
                             </div>
-
                             <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="dropdown" runat="server" id="contenedorComboEstado">
-                                <asp:DropDownList ID="comboEstado"  class="btn btn-default dropdown-toggle" runat="server" OnSelectedIndexChanged="CbCambioACiudad" AutoPostBack="true"></asp:DropDownList>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:DropDownList ID="comboEstado"  class="btn btn-default dropdown-toggle" runat="server" AutoPostBack="true" OnSelectedIndexChanged="comboEstado_SelectedIndexChanged"></asp:DropDownList>
                                 </div>
                             </div>
-                     </div>
-                     <div class="form-group">
+                        </div>
+                        <div class="form-group">
                             <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
                                 <div class="dropdown" runat="server" id="Div1">
-                                <asp:DropDownList ID="comboCiudad"  class="btn btn-default dropdown-toggle" runat="server" OnSelectedIndexChanged="CbCargarCodigoPostal"  AutoPostBack="true"></asp:DropDownList>
+                                <asp:DropDownList ID="comboCiudad"  class="btn btn-default dropdown-toggle" runat="server"></asp:DropDownList>
                                 </div>
                             </div>
                      </div>
@@ -89,9 +76,6 @@
                         <input id="codigoPostalEmpresa" runat="server" name="codigopostal" type="text" class="form-control" placeholder="Código postal" maxlength="10" />
                     </div>
                 </div>
-                
-            </div>
-
                  <!-- SECCION DE CONTACTO -->
                 <h2>Contactos</h2>
 
@@ -131,7 +115,7 @@
                                
                                     <div class="btn-group col-sm-12 col-md-12 col-lg-12">
                                         <div id="contenedorCargo" runat="server" class="dropdown"> 
-                                            <asp:DropDownList ID="comboCargo"  class="btn btn-default dropdown-toggle" runat="server"   AutoPostBack="true">
+                                            <asp:DropDownList ID="comboCargo"  class="btn btn-default dropdown-toggle" runat="server">
                                     </asp:DropDownList>
                                        </div>
                                     </div>
@@ -142,13 +126,12 @@
                
                 <div class="form-group">
                     <div id="div_botones" class="col-sm-12 col-md-12 col-lg-12">
-                        <button id="botonAgregar" type="submit" class="btn btn-primary" runat="server" onserverclick="AgregarEmpresa_Click">Agregar</button>
+                        <Asp:Button id="botonAgregar" type="submit" class="btn btn-primary" runat="server" Text="Agregar" OnClick="botonAgregar_Click"></Asp:Button>
                         <a class="btn btn-default" runat="server" href="ListarEmpresas.aspx">Cancelar</a>
                     </div>
                 </div>
             </form>
-     </div>
-
+        </div>
     <script type="text/javascript" src="js/ValidacionesContacto.js"></script>
 
 </asp:Content>

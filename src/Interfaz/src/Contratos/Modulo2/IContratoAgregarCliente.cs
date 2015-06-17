@@ -12,7 +12,6 @@ namespace Contratos.Modulo2
     {
         string nombreNatural{ get; set; }
         string apellidoNatural{ get; set; }
-        DropDownList comboRSocial { get; set; }
         string cedulaNatural{ get; set; }
         DropDownList comboPais{ get; set; }
         DropDownList comboEstado{ get; set; }

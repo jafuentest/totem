@@ -18,19 +18,11 @@
     Agregar Cliente Natural 
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
-    <div id="alert" runat ="server"> </div>
-    <div id="alertCedula" runat="server"> </div>
-    <div id="alertNombre" runat="server"></div>
-    <div id="alertApellido" runat="server"></div>
-    <div id="alertPais" runat="server"></div>
-    <div id="alertEstado" runat="server"></div>
-    <div id="alertCiudad" runat="server"></div>
-    <div id="alertCodigoPostal" runat="server"></div>
-    <div id="alertCorreo" runat="server"></div>
-    <div id="alertTelefono" runat="server"></div>
-    <div id="alertDireccion" runat="server"></div>
-   
-    <div class="col-sm-8 col-md-8 col-lg-8 col-md-offset-2" Runat="Server">
+    
+
+     <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
+          <div id="alert" runat ="server"> </div>
+
         <form id="agregar_cliente" class="form-horizontal" action="#" method="post" Runat="Server">
 
             <div class="row col-sm-12 col-md-12 col-lg-12" Runat="Server">
@@ -47,13 +39,7 @@
                     </div>
                 </div>
                 <div class="form-group" Runat="Server">
-                    <div id="div_rsocial" class="col-sm-2 col-md-2 col-lg-2" Runat="Server">
-                        <div class="dropdown" Runat="Server">
-                            <asp:DropDownList ID="comboRSocial"  class="btn btn-default dropdown-toggle" runat="server" OnSelectedIndexChanged="CbCambioAEstado"  AutoPostBack="true">
-                                    </asp:DropDownList>
-                        </div>
-                    </div>
-                    <div id="div_rif" class="col-sm-10 col-md-10 col-lg-10">
+                    <div id="div_rif" class="col-sm-12 col-md-12 col-lg-12">
                         <input id="cedulaNatural" name="identificador" type="text" class="form-control" placeholder="Identificador" Runat="Server" maxlength="10"/>
                     </div>
                 </div>
@@ -66,13 +52,15 @@
                 <div class="form-group">
                     <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6">
                         <div class="dropdown" runat="server" id="contenedorComboPais">
-                            <asp:DropDownList ID="comboPais"  class="btn btn-default dropdown-toggle" runat="server" OnSelectedIndexChanged="CbCambioAEstado"  AutoPostBack="true">
+                            <asp:DropDownList ID="comboPais"  class="btn btn-default dropdown-toggle" runat="server" AutoPostBack="true" OnSelectedIndexChanged="comboPais_SelectedIndexChanged">
                                     </asp:DropDownList>
                         </div>
                     </div>
+
                     <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
                         <div class="dropdown" runat="server" id="contenedorComboEstado">
-                           <asp:DropDownList ID="comboEstado"  class="btn btn-default dropdown-toggle" runat="server" OnSelectedIndexChanged="CbCambioACiudad" AutoPostBack="true">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           <asp:DropDownList ID="comboEstado"  class="btn btn-default dropdown-toggle" runat="server"  AutoPostBack="true" OnSelectedIndexChanged="comboEstado_SelectedIndexChanged">
                                     </asp:DropDownList>
                         </div>
                     </div>
@@ -81,7 +69,7 @@
                     
                         <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
                             <div class="dropdown" runat="server" id="contenedorComboCiudad" >
-                                 <asp:DropDownList ID="comboCiudad"  class="btn btn-default dropdown-toggle" runat="server" OnSelectedIndexChanged="CbCargarCodigoPostal"  AutoPostBack="true">
+                                 <asp:DropDownList ID="comboCiudad"  class="btn btn-default dropdown-toggle" runat="server">
                                     </asp:DropDownList>
                             </div>
                         </div>
@@ -116,7 +104,7 @@
 
                 <div class="form-group">
                     <div id="div_botones" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
-                          <button id="botonAgregar" type="submit" class="btn btn-primary" runat="server" onserverclick="AgregarCliente_Click">Agregar</button>
+                          <asp:Button id="botonAgregar" Text="Agregar" type="submit" class="btn btn-primary" runat="server" OnClick="botonAgregar_Click1"></asp:Button>
                         <a class="btn btn-default" href="ListarClientes.aspx">Cancelar</a>
                     </div>
                 </div>

@@ -17,8 +17,14 @@ namespace Vista.Modulo2
 	    }
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.Master.idModulo = "2";
-            this.Master.presentador.CargarMenuLateral();
+            if (!IsPostBack)
+            {
+                this.Master.idModulo = "2";
+                this.Master.presentador.CargarMenuLateral();
+                presentador.deshabilitarCombos();
+                presentador.llenarComboPais();
+                presentador.llenarComboCargos();
+            }
         }
 
         #region Contrato
@@ -177,5 +183,20 @@ namespace Vista.Modulo2
             }
         }
         #endregion
+
+        protected void botonAgregar_Click(object sender, EventArgs e)
+        {
+            presentador.agregarEmpresa();
+        }
+
+        protected void comboPais_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            presentador.llenarComboEstadosPorPais(comboPais.SelectedValue);
+        }
+
+        protected void comboEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            presentador.llenarComboCiudadesPorEstado(comboEstado.SelectedValue);
+        }
     }
 }

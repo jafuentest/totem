@@ -184,17 +184,39 @@ namespace Dominio.Entidades.Modulo2
        /// <param name="clienteJuridico">El cliente jurídico o empresa a la que pertenece el contacto</param>
        /// <param name="telefono"></param>
        public Contacto(int id, String nombre, String apellido, String cargo, ClienteJuridico clienteJuridico,
-           Telefono telefono) : base(id)
+           Telefono telefono)
+           : base(id)
        {
            Con_Nombre = nombre;
            Con_Apellido = apellido;
            ConCargo = cargo;
            Con_Telefono = telefono;
            ConClienteJurid = clienteJuridico;
-           ConClienteNat = null; 
-               
-       }
+           ConClienteNat = null;
 
+       }
+       public Contacto(String cedula, String nombre, String apellido, String cargo, Entidad clienteJuridico,
+           Entidad telefono)
+           : base()
+       {
+           ConCedula = cedula;
+           Con_Nombre = nombre;
+           Con_Apellido = apellido;
+           ConCargo = cargo;
+           Con_Telefono = (Telefono)telefono;
+           ConClienteJurid = (ClienteJuridico)clienteJuridico;
+           ConClienteNat = null;
+
+       }
+       public Contacto(String cedula, String nombre, String apellido, String cargo, Entidad telefono)
+       {
+           ConCedula = cedula;
+           Con_Nombre = nombre;
+           Con_Apellido = apellido;
+           ConCargo = cargo;
+           Con_Telefono = (Telefono)telefono;
+           ConClienteNat = null;
+       }
         #endregion
 
     }

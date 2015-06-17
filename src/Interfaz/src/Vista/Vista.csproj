@@ -58,6 +58,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\BaseDeDatosTotem.mdf" />
+    <Content Include="App_Data\BaseDeDatosTotem_log.ldf">
+      <DependentUpon>BaseDeDatosTotem.mdf</DependentUpon>
+    </Content>
     <Content Include="assets\bs\assets\css\docs.min.css" />
     <Content Include="assets\bs\assets\css\src\anchor.css" />
     <Content Include="assets\bs\assets\css\src\docs.css" />
@@ -279,7 +283,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Modulo1\" />
     <Folder Include="Modulo3\" />
     <Folder Include="Modulo4\" />

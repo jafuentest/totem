@@ -97,6 +97,15 @@ namespace DAO.DAO.Modulo2 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to nombreCargo.
+        /// </summary>
+        public static string AliasCargoNombre {
+            get {
+                return ResourceManager.GetString("AliasCargoNombre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CEDULA_CLIENTENATURAL.
         /// </summary>
         public static string AliasCedulaClienteNat {
@@ -363,6 +372,15 @@ namespace DAO.DAO.Modulo2 {
         public static string ConsultarEstadosPorPais {
             get {
                 return ResourceManager.GetString("ConsultarEstadosPorPais", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M2_ConsultarListaCargos.
+        /// </summary>
+        public static string ConsultarListaCargos {
+            get {
+                return ResourceManager.GetString("ConsultarListaCargos", resourceCulture);
             }
         }
         

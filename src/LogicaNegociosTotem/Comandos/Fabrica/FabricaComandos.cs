@@ -80,6 +80,10 @@ namespace Comandos.Fabrica
         {
             return new ComandoModificarClienteNatural();
         }
+        public static Comando<bool, List<String>> CrearComandoConsultarListaCargos()
+        {
+            return new ComandoConsultarListaCargos();
+        }
         #endregion
 
         #region Modulo 3

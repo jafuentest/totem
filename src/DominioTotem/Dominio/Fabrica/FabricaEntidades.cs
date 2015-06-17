@@ -33,6 +33,28 @@ namespace Dominio.Fabrica
         {
             return new Entidades.Modulo2.Telefono();
         }
+        public Entidad ObtenerDireccion(String pais, String estado, String ciudad, String direccion, String codigop)
+        {
+            return new Entidades.Modulo2.Direccion(pais, estado, ciudad, direccion, codigop);
+        }
+        public Entidad ObtenerTelefono(String elCodigo, String elNumero)
+        {
+            return new Entidades.Modulo2.Telefono(elCodigo, elNumero);
+        }
+        public Entidad ObtenerContacto(String cedula, String nombre, String apellido, String cargo, Entidad telefono)
+        {
+            return new Entidades.Modulo2.Contacto(cedula, nombre, apellido, cargo, telefono);
+        }
+        public Entidad ObtenerClienteJuridico(String nombre, List<Entidad> contactos, Entidad dir,
+         String elRif, String logo)
+        {
+            return new Entidades.Modulo2.ClienteJuridico(nombre, contactos, dir, elRif, logo);
+        }
+
+        public Entidad ObtenerClienteNatural(String nombre, String apellido, String correo, Entidad dir, Entidad telefono, String cedula)
+        {
+            return new Entidades.Modulo2.ClienteNatural(nombre, apellido, correo, dir, telefono, cedula);
+        }
         
         #endregion
 

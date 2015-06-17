@@ -39,6 +39,11 @@ namespace Dominio.Entidades.Modulo2
             codigo = elCodigo;
             numero = elNumero;
         }
+        public Telefono(String elCodigo, String elNumero) : base()
+        {
+            codigo = elCodigo;
+            numero = elNumero;
+        }
         #endregion
     }
 }
