@@ -87,9 +87,16 @@ namespace Dominio.Fabrica
         /// Metodo que permite instanciar a la clase Usuario con sus atributos vacios
         /// </summary>
         /// <returns>el Usuario con sus atributos vacios</returns>
-        public Entidad ObtenerUsuario ()
+        public static Entidad ObtenerUsuario()
         {
             return new Entidades.Modulo7.Usuario();
+        }
+
+        public static Entidad ObtenerUsuario(String username, String clave, String nombre, String apellido, 
+            String rol, String correo, String preguntaSeguridad, String respuestaSeguridad, String cargo )
+        {
+            return new Entidades.Modulo7.Usuario(username, clave, nombre, apellido, rol, correo, preguntaSeguridad, 
+                respuestaSeguridad, cargo);
         }
         #endregion
 

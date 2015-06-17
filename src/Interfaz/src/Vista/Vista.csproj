@@ -115,6 +115,7 @@
     <Content Include="Modulo6\ListarActores.aspx" />
     <Content Include="Modulo6\Modificar.aspx" />
     <Content Include="Modulo6\ReporteActores.aspx" />
+    <Content Include="Modulo7\AgregarUsuario.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -252,6 +253,13 @@
     <Compile Include="Modulo6\ReporteActores.aspx.designer.cs">
       <DependentUpon>ReporteActores.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modulo7\AgregarUsuario.aspx.cs">
+      <DependentUpon>AgregarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo7\AgregarUsuario.aspx.designer.cs">
+      <DependentUpon>AgregarUsuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -275,7 +283,6 @@
     <Folder Include="Modulo1\" />
     <Folder Include="Modulo3\" />
     <Folder Include="Modulo4\" />
-    <Folder Include="Modulo7\" />
     <Folder Include="Modulo8\" />
   </ItemGroup>
   <ItemGroup>
