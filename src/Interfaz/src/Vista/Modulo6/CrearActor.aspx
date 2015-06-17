@@ -9,8 +9,7 @@
     Agregar Actor
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" runat="server">
-<div id="alert" runat="server">
-                </div>
+
 	<div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
 		<form runat="server" class="form-horizontal" method="POST">
             <asp:RequiredFieldValidator id="RequiredFieldValidator7" runat="server"

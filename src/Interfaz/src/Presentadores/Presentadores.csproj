@@ -59,6 +59,11 @@
     <Compile Include="Modulo5\PresentadorListarRequerimiento.cs" />
     <Compile Include="Modulo5\PresentadorReportes.cs" />
     <Compile Include="Modulo6\PresentadorAgregarActor.cs" />
+    <Compile Include="Modulo6\RecursosPresentadorModulo6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosPresentadorModulo6.resx</DependentUpon>
+    </Compile>
     <Compile Include="Modulo7\PresentadorAgregarUsuario.cs" />
     <Compile Include="PresentadorMasterPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,6 +85,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursoInterfazM2.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulo6\RecursosPresentadorModulo6.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosPresentadorModulo6.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="RecursosGeneralPresentadores.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosGeneralPresentadores.Designer.cs</LastGenOutput>
@@ -89,6 +98,10 @@
     <ProjectReference Include="..\..\..\DominioTotem\Dominio\Dominio.csproj">
       <Project>{41dd6620-eb5e-4529-b66d-d29a27fa2e5a}</Project>
       <Name>Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ExcepcionesTotem\ExcepcionesTotem.csproj">
+      <Project>{aaa3900a-9ced-4f07-9cee-d86208c39437}</Project>
+      <Name>ExcepcionesTotem</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\LogicaNegociosTotem\Comandos\Comandos.csproj">
       <Project>{599466e8-e67a-4b93-ba44-a45079957c95}</Project>

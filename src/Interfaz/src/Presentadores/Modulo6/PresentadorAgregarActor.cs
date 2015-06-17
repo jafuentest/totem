@@ -11,7 +11,10 @@ using Dominio.Entidades.Modulo6;
 using Dominio.Fabrica;
 using Dominio;
 using Comandos.Comandos;
-using Comandos.Fabrica; 
+using Comandos.Fabrica;
+using ExcepcionesTotem;
+using ExcepcionesTotem.Modulo6.ExcepcionesPresentador;
+using ExcepcionesTotem.Modulo6.ExcepcionesComando;
 
 namespace Presentadores.Modulo6
 {
@@ -47,14 +50,57 @@ namespace Presentadores.Modulo6
 
                 agrego = comandoAgregarActor.Ejecutar(elActor);
             }
+
+            catch(AgregarActorComandoBDException e)
+            {
+                AgregarActorBDPresentadorException exAgregarActorPresentador =
+                        new AgregarActorBDPresentadorException(
+                            RecursosPresentadorModulo6.CodigoMensajePresentadorBDException,
+                            RecursosPresentadorModulo6.MensajePresentadorBDException,
+                            e);
+                Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                    , e);
+
+                throw exAgregarActorPresentador;
+            }
+            
+            catch (AgregarActorComandoNullException e)
+            {
+                AgregarActorNuloPresentadorException exAgregarActorPresentador =
+                        new AgregarActorNuloPresentadorException(
+                            RecursosPresentadorModulo6.CodigoMensajePresentadorNuloException,
+                            RecursosPresentadorModulo6.MensajePresentadorNuloException,
+                            e);
+                Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                    , e);
+
+                throw exAgregarActorPresentador;
+            }
+            
             catch (HttpRequestValidationException e)
             {
-                throw e;
+                CaracteresMaliciososException exAgregarActorPresentador = 
+                        new CaracteresMaliciososException(
+                            RecursosPresentadorModulo6.CodigoMensajePresentadorMalicioso,
+                            RecursosPresentadorModulo6.MensajeCodigoMaliciosoException,
+                            e);
+                Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                    ,e);
+
+                throw exAgregarActorPresentador; 
+                
             }
-            catch (Exception e)
+            catch (AgregarActorComandoException e)
             {
-                //Falta implementar excepciones
-                throw e;
+                AgregarActorPresentadorException exAgregarActorPresentador =
+                         new AgregarActorPresentadorException(
+                             RecursosPresentadorModulo6.CodigoMensajePresentadorException,
+                             RecursosPresentadorModulo6.MensajePresentadorException,
+                             e);
+                Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                    , e);
+
+                throw exAgregarActorPresentador; 
             }
             
             

@@ -33,6 +33,11 @@ namespace Vista.Modulo6
 
         #endregion
 
+        /// <summary>
+        /// Evento que se genera al cargar la página
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Master.idModulo = "6";
@@ -43,12 +48,15 @@ namespace Vista.Modulo6
             
         }
 
+        /// <summary>
+        /// Evento que se genera al darle click de aceptar, y
+        /// llama al método de presentador de agregar click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void AgregarActorClick(object sender, EventArgs e)
         {
-            string dataCruda = nombre_actor.Value;
-            string encodedinput = Server.HtmlEncode(dataCruda);
-            label.Text = "Hola" + encodedinput;
-             this.presentador.AgregarActor_Click();
+           this.presentador.AgregarActor_Click();
 
         }
     }
