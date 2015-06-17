@@ -22,6 +22,10 @@ namespace DAO.Fabrica
         #endregion
 
         #region Modulo 3
+        public override IntefazDAO.Modulo3.IDaoInvolucrados ObtenerDaoInvolucrados()
+        {
+            return new DAO.Modulo3.DAOInvolucrados();
+        }
         #endregion
 
         #region Modulo 4

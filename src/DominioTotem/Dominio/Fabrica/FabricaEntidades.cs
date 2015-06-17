@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using Dominio.Entidades.Modulo6; 
 using Dominio.Entidades;
+using Dominio.Entidades.Modulo4;
+using Dominio.Entidades.Modulo7;
+using Dominio.Entidades.Modulo2;
 
 namespace Dominio.Fabrica
 {
@@ -59,6 +62,30 @@ namespace Dominio.Fabrica
         #endregion
 
         #region Modulo 3
+        public static Entidad ObtenetListaInvolucradoContacto()
+        {
+            return new Entidades.Modulo3.ListaInvolucradoContacto();
+        }
+        public static Entidad ObtenetListaInvolucradoContacto(Proyecto p)
+        {
+            return new Entidades.Modulo3.ListaInvolucradoContacto(p);
+        }
+        public static Entidad ObtenetListaInvolucradoContacto(List<Contacto> laLista, Proyecto p)
+        {
+            return new Entidades.Modulo3.ListaInvolucradoContacto(laLista, p);
+        }
+        public static Entidad ObtenetListaInvolucradoUsuario()
+        {
+            return new Entidades.Modulo3.ListaInvolucradoUsuario();
+        }
+        public static Entidad ObtenetListaInvolucradoUsuario(Proyecto p)
+        {
+            return new Entidades.Modulo3.ListaInvolucradoUsuario(p);
+        }
+        public static Entidad ObtenetListaInvolucradoUsuario(List<Usuario> laLista, Proyecto p)
+        {
+            return new Entidades.Modulo3.ListaInvolucradoUsuario(laLista, p);
+        } 
         #endregion
 
         #region Modulo 4
