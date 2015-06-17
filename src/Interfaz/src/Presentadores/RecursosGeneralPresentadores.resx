@@ -141,6 +141,14 @@
     <value>100</value>
     <comment>La maxima cantidad de caracteres permitidos para los datos a validar</comment>
   </data>
+  <data name="Mensaje_Error_BaseDatos" xml:space="preserve">
+    <value>Error con la conexion a la base de datos, intente nuevamente</value>
+    <comment>Mensaje de error si ocurrio un error con la conexion a la base de datos</comment>
+  </data>
+  <data name="Mensaje_Error_InputInvalido" xml:space="preserve">
+    <value>El texto ingresado es invalido, intente nuevamente</value>
+    <comment>Mensaje de error si el usuario ingreso un texto que no cumple con las validaciones</comment>
+  </data>
   <data name="Minima_Cantidad_Caracteres" xml:space="preserve">
     <value>4</value>
     <comment>La minima cantidad de caracteres permitidas para los datos a validar</comment>

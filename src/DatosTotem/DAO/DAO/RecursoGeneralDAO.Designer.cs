@@ -61,6 +61,60 @@ namespace DAO.DAO {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to T_00_001.
+        /// </summary>
+        internal static string Codigo_Error_BaseDatos {
+            get {
+                return ResourceManager.GetString("Codigo_Error_BaseDatos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_00_003.
+        /// </summary>
+        internal static string Codigo_Error_Desconexion {
+            get {
+                return ResourceManager.GetString("Codigo_Error_Desconexion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_00_02.
+        /// </summary>
+        internal static string Codigo_Parametro_Errado {
+            get {
+                return ResourceManager.GetString("Codigo_Parametro_Errado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error con la Conexion en la BaseDeDatosTotem, no se pudo abrir la conexion.
+        /// </summary>
+        internal static string Mensaje_Error_BaseDatos {
+            get {
+                return ResourceManager.GetString("Mensaje_Error_BaseDatos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al Desconectarse con la BaseDeDatosTotem.
+        /// </summary>
+        internal static string Mensaje_Error_Desconexion {
+            get {
+                return ResourceManager.GetString("Mensaje_Error_Desconexion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error en un parametro del stored procedure.
+        /// </summary>
+        internal static string Mensaje_Parametro_Errado {
+            get {
+                return ResourceManager.GetString("Mensaje_Parametro_Errado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BaseDeDatosTotem.
         /// </summary>
         internal static string Nombre_Base_Datos {

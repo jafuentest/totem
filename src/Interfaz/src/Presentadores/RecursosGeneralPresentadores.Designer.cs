@@ -115,6 +115,24 @@ namespace Presentadores {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error con la conexion a la base de datos, intente nuevamente.
+        /// </summary>
+        internal static string Mensaje_Error_BaseDatos {
+            get {
+                return ResourceManager.GetString("Mensaje_Error_BaseDatos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El texto ingresado es invalido, intente nuevamente.
+        /// </summary>
+        internal static string Mensaje_Error_InputInvalido {
+            get {
+                return ResourceManager.GetString("Mensaje_Error_InputInvalido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 4.
         /// </summary>
         internal static string Minima_Cantidad_Caracteres {
