@@ -9,19 +9,20 @@ using Contratos.Modulo7;
 
 namespace Vista.Modulo7
 {
-    public partial class AgregarUsuario : System.Web.UI.Page
+    public partial class AgregarUsuario : System.Web.UI.Page, IContratoAgregarUsuario
     {
         private PresentadorAgregarUsuario presentador;
 
         public AgregarUsuario ()
         {
-          //  presentador = new PresentadorAgregarUsuario(this);
+           presentador = new PresentadorAgregarUsuario(this);
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
+
 
         /// <summary>
         /// Evento que se dispara al agregar un Usuario
@@ -31,6 +32,114 @@ namespace Vista.Modulo7
         protected void Agregar_Usuario(object sender, EventArgs e)
         {
           
+        }
+
+        public string username
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public string clave
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public string nombreUsuario
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public string apellidoUsuario
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public string rolUsuario
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public string correoUsuario
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public string preguntaUsuario
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public string respuestaUsuario
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public string cargoUsuario
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }
