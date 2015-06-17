@@ -2,19 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.UI.WebControls;
 
 namespace Contratos.Modulo7
 {
+    /// <summary>
+    /// Interface que contiene la firma de las propiedades a ser usadas por la vista
+    /// </summary>
     public interface IContratoAgregarUsuario
     {
-        string username { get; set; }
-        string clave { get; set; }
-        string nombreUsuario { get; set; }
-        string apellidoUsuario { get; set; }
-        string rolUsuario { get; set; }
-        string correoUsuario { get; set; }
-        string preguntaUsuario { get; set; }
-        string respuestaUsuario { get; set; }
-        string cargoUsuario { get; set; }
+        //Variables que se usaran en la interfaz
+        string username { get; }
+        string clave { get; }
+        string nombreUsuario { get; }
+        string apellidoUsuario { get; }
+        string rolUsuario { get; }
+        string correoUsuario { get; }
+        string preguntaUsuario { get; }
+        string respuestaUsuario { get; }
+        string cargoUsuario { get; }
+        DropDownList comboTipoRol { get; set; }
+
     }
 }

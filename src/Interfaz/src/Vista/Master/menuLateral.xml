@@ -77,7 +77,7 @@
 	<opcion nombre="Listar Usuarios" link="~/Modulo7/ListarUsuarios.aspx">
 		<modulo id="7"></modulo>
 	</opcion>
-	<opcion nombre="Agregar Usuario" link="~/Modulo7/Registro.aspx">
+	<opcion nombre="Agregar Usuario" link="~/Modulo7/AgregarUsuario.aspx">
 		<modulo id="7"></modulo>
 	</opcion>
 

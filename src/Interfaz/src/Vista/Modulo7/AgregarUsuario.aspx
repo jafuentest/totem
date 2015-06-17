@@ -1,14 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/src/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="AgregarUsuaio.aspx.cs" Inherits="GUI_Modulo7_Registro" %>
-
-<script runat="server">
-
-    protected void Unnamed_ServerClick(object sender, EventArgs e)
-    {
-
-    }
-</script>
-
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/MasterPage.Master" AutoEventWireup="true" CodeBehind="AgregarUsuario.aspx.cs" Inherits="Vista.Modulo7.AgregarUsuario" %>
+<%@ MasterType  virtualPath="~/Master/MasterPage.master"%> 
 <asp:Content ID="Content3" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Usuarios</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="subtitulo" Runat="Server">Registro
@@ -66,7 +57,7 @@
         <div class="form-group">
             <div class="col-sm-10 col-md-10 col-lg-10">
                  <div class="dropdown" runat="server" id="divComboTipoRol">
-                 <asp:DropDownList ID="comboTipoRol"  class="btn btn-default dropdown-toggle" runat="server" >
+                 <asp:DropDownList ID="ComboTipoRol"  class="btn btn-default dropdown-toggle" runat="server" >
                </asp:DropDownList>
              </div> 
             </div>
@@ -95,7 +86,7 @@
 		</div>
         <div class="form-group">
 		    <div class="col-sm-5 col-md-5 col-lg-5">
-				<button runat="server" class="btn btn-primary" type="submit" onserverclick="Unnamed_ServerClick">Registrar</button>
+				<button runat="server" class="btn btn-primary" type="submit" onserverclick="Agregar_Usuario">Registrar</button>
                 <a class="btn btn-default" href="AgregarUsuario.aspx">Cancelar</a>
 			</div>
 	    </div>
