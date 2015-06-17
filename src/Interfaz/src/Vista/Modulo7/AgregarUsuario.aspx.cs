@@ -9,59 +9,13 @@ using Contratos.Modulo7;
 
 namespace Vista.Modulo7
 {
-    public partial class Registro : System.Web.UI.Page, IContratoAgregarUsuario
+    public partial class AgregarUsuario : System.Web.UI.Page
     {
         private PresentadorAgregarUsuario presentador;
 
-        public Registro ()
+        public AgregarUsuario ()
         {
-            presentador = new PresentadorAgregarUsuario(this);
-        }
-
-        string username 
-        { 
-            get ; 
-            set; 
-        }
-        string clave 
-        {   
-            get; 
-            set; 
-        }
-        string nombreUsuario 
-        { 
-            get; 
-            set; 
-        }
-        string apellidoUsuario 
-        { 
-            get; 
-            set; 
-        }
-        string rolUsuario 
-        { 
-            get; 
-            set; 
-        }
-        string correoUsuario 
-        { 
-            get; 
-            set;
-        }
-        string preguntaUsuario 
-        { 
-            get; 
-            set; 
-        }
-        string respuestaUsuario 
-        { 
-            get; 
-            set; 
-        }
-        string cargoUsuario 
-        { 
-            get; 
-            set; 
+          //  presentador = new PresentadorAgregarUsuario(this);
         }
 
         protected void Page_Load(object sender, EventArgs e)

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/src/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="Registro.aspx.cs" Inherits="GUI_Modulo7_Registro" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/src/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="AgregarUsuaio.aspx.cs" Inherits="GUI_Modulo7_Registro" %>
 
 <script runat="server">
 

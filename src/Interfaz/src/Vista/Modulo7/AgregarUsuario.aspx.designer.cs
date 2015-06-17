@@ -11,7 +11,7 @@ namespace Vista.Modulo7
 {
 
 
-    public partial class Registro
+    public partial class AgregarUsuario
     {
 
         /// <summary>
