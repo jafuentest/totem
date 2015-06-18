@@ -1053,6 +1053,23 @@ go
 --End SP1
 
 --Begin SP2
+------------------------PROCEDURE SELECCIONAR CLIENTE_JURIDICO POR ID----------------------- 
+CREATE PROCEDURE M2_ConsultarDatosClienteJur
+	@idClienteJur [int]
+AS
+BEGIN
+	select cli.cj_id as clienteJurID, cli.cj_nombre as clienteJurNombre, cli.cj_rif as clienteJurRif,
+		   cli.cj_logo as clienteJurLogo, direccion.lug_nombre as clienteJurDir, 
+		   direccion.lug_codigopostal as clienteJurCodPost, ciudad.lug_nombre as clienteJurCiudad, 
+		   estado.lug_nombre as clienteJurEstado, pais.lug_nombre as clienteJurPais
+	from 
+		CLIENTE_JURIDICO cli, LUGAR pais, LUGAR estado, LUGAR ciudad, LUGAR direccion 
+	where
+		cli.LUGAR_lug_id = direccion.lug_id and direccion.LUGAR_lug_id = ciudad.lug_id
+		and ciudad.LUGAR_lug_id = estado.lug_id and estado.LUGAR_lug_id = pais.lug_id
+		and cli.cj_id = @idClienteJur
+END;
+go
 --------------------------PROCEDURE CONSULTAR CARGOS----------------------------
 CREATE PROCEDURE M2_ConsultarListaCargos 
 AS
@@ -3440,28 +3457,28 @@ INSERT INTO LUGAR VALUES('1800 Windridge Dr Sandy Springs, GA 30350-2873','Direc
 go
 
 /*---------------------------------------CLIENTE_JURIDICO-----------------------------------------*/
-INSERT INTO CLIENTE_JURIDICO VALUES ('J-11111111-1','Locatel',null,15);
+INSERT INTO CLIENTE_JURIDICO VALUES ('J-11111111-1','Locatel',null,(select lug_id from LUGAR where lug_nombre = 'Parroquia Caricuao UD 3, Bloque 6, piso 1, apt 01'));
 go
-INSERT INTO CLIENTE_JURIDICO VALUES ('J-22222222-2','Swatch',null,24);
+INSERT INTO CLIENTE_JURIDICO VALUES ('J-22222222-2','Swatch',null,(select lug_id from LUGAR where lug_nombre = 'Parroquia San Juan, Bloque 16, piso 4, apt 04'));
 go
-INSERT INTO CLIENTE_JURIDICO VALUES ('J-33333333-3','Tealca',null,25);
+INSERT INTO CLIENTE_JURIDICO VALUES ('J-33333333-3','Tealca',null,(select lug_id from LUGAR where lug_nombre = 'Parroquia Altagracia, Edif 3, piso 8, apt 07'));
 go
-INSERT INTO CLIENTE_JURIDICO VALUES ('J-44444444-4','PaperMate',null,26);
+INSERT INTO CLIENTE_JURIDICO VALUES ('J-44444444-4','PaperMate',null,(select lug_id from LUGAR where lug_nombre = 'Parroquia Candelaria, edif 8, piso 15, apt 05'));
 go
-INSERT INTO CLIENTE_JURIDICO VALUES ('J-55555555-5','Vernet',null,28);
+INSERT INTO CLIENTE_JURIDICO VALUES ('J-55555555-5','Vernet',null,(select lug_id from LUGAR where lug_nombre = 'Parroquia San pedro, residencia Virgen María, Casa # 3'));
 go
 
 
 /*---------------------------------------CLIENTE_NATURAL-----------------------------------------*/
-INSERT INTO CLIENTE_NATURAL VALUES(11111111,'Valentina','Scioli','valensciove@hotmail.com',16);
+INSERT INTO CLIENTE_NATURAL VALUES(11111111,'Valentina','Scioli','valensciove@hotmail.com',(select lug_id from LUGAR where lug_nombre = 'Zona industrial de Cloris Urb. Terrazas del Este, Primera Etapa, edif 20, apt 3-2'));
 go
-INSERT INTO CLIENTE_NATURAL VALUES(22222222,'Guillermo','Gonzalez','guillegonzale@gmail.com',17);
+INSERT INTO CLIENTE_NATURAL VALUES(22222222,'Guillermo','Gonzalez','guillegonzale@gmail.com',(select lug_id from LUGAR where lug_nombre = 'Parroquia Caricuao, Calle A, Local Q, Coche'));
 go
-INSERT INTO CLIENTE_NATURAL VALUES(33333333,'Francisco','Torres','franctorre@hotmail.com',13);
+INSERT INTO CLIENTE_NATURAL VALUES(33333333,'Francisco','Torres','franctorre@hotmail.com',(select lug_id from LUGAR where lug_nombre = 'Parroquia San Juan, Calle C, Local 34, Santa Rosa de Lima'));
 go
-INSERT INTO CLIENTE_NATURAL VALUES(44444444,'Pedro','De Jesus','pedrdejesus@gmail.com',25);
+INSERT INTO CLIENTE_NATURAL VALUES(44444444,'Pedro','De Jesus','pedrdejesus@gmail.com',(select lug_id from LUGAR where lug_nombre = 'Parroquia Altagracia, Calle Guaicaipuro, Local 76, Bello Monte'));
 go
-INSERT INTO CLIENTE_NATURAL VALUES(55555555,'Jessica','De Torres','jesidetorres@gmail.com',26);
+INSERT INTO CLIENTE_NATURAL VALUES(55555555,'Jessica','De Torres','jesidetorres@gmail.com',(select lug_id from LUGAR where lug_nombre = 'Parroquia Candelaria, De Tablitas A Sordo, Parcelas 2-5, Los Ruices'));
 go
 
 /*---------------------------------------CARGO-----------------------------------------*/

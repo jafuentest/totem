@@ -58,7 +58,11 @@ namespace Dominio.Fabrica
         {
             return new Entidades.Modulo2.ClienteNatural(nombre, apellido, correo, dir, telefono, cedula);
         }
-        
+
+        public Entidad ObtenerClienteJuridico(int id)
+        {
+            return new Entidades.Modulo2.ClienteJuridico(id);
+        }
         #endregion
 
         #region Modulo 3
