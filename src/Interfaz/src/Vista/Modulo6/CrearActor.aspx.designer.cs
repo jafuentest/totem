@@ -13,6 +13,24 @@ namespace Vista.Modulo6 {
     public partial class CrearActor {
         
         /// <summary>
+        /// Control labelMensajeExito.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelMensajeExito;
+        
+        /// <summary>
+        /// Control labelMensajeError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelMensajeError;
+        
+        /// <summary>
         /// Control RequiredFieldValidator7.
         /// </summary>
         /// <remarks>
@@ -67,13 +85,13 @@ namespace Vista.Modulo6 {
         protected global::System.Web.UI.HtmlControls.HtmlInputText descripcion_actor;
         
         /// <summary>
-        /// Control label.
+        /// Control botonAgregar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label;
+        protected global::System.Web.UI.HtmlControls.HtmlButton botonAgregar;
         
         /// <summary>
         /// Propiedad Master.

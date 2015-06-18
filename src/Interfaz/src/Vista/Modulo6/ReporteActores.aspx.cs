@@ -11,7 +11,11 @@ namespace Vista.Modulo6
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            this.Master.idModulo = "6";
+            if (!IsPostBack)
+            {
+                this.Master.presentador.CargarMenuLateral();
+            }
         }
     }
 }

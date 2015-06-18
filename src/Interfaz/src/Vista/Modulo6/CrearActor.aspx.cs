@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;  
 
 using Presentadores.Modulo6; 
 
@@ -31,6 +32,26 @@ namespace Vista.Modulo6
             set { descripcion_actor.Value = value; }
         }
 
+        Label Contratos.Modulo6.IContratoAgregarActor.mensajeExito
+        {
+            get { return labelMensajeExito; }
+            set { labelMensajeExito = value; }  
+        }
+
+        Label Contratos.Modulo6.IContratoAgregarActor.mensajeError
+        {
+            get { return labelMensajeError; }
+            set { labelMensajeError = value; }
+        }
+
+        HtmlButton Contratos.Modulo6.IContratoAgregarActor.botonAgregar 
+        {
+            get { return botonAgregar; }
+            set { botonAgregar = value; }
+        }
+
+        
+
         #endregion
 
         /// <summary>
@@ -45,7 +66,12 @@ namespace Vista.Modulo6
             {
                 this.Master.presentador.CargarMenuLateral();
             }
-            
+
+            if (IsPostBack) 
+            {
+                this.presentador.LimpiarPagina(); 
+            }
+                        
         }
 
         /// <summary>
@@ -56,6 +82,7 @@ namespace Vista.Modulo6
         /// <param name="e"></param>
         protected void AgregarActorClick(object sender, EventArgs e)
         {
+            
            this.presentador.AgregarActor_Click();
 
         }

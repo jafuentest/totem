@@ -135,6 +135,9 @@
   <data name="MensajeCodigoMaliciosoException" xml:space="preserve">
     <value>Ha ingresado un código malicioso, por favor ingrese carácteres correctos.</value>
   </data>
+  <data name="MensajeExitoAgregarActor" xml:space="preserve">
+    <value>Actor agregado éxitosamente</value>
+  </data>
   <data name="MensajePresentadorBDException" xml:space="preserve">
     <value>Error al conectar con la base de datos.</value>
   </data>

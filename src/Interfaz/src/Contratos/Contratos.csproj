@@ -55,6 +55,8 @@
     <Compile Include="Modulo5\IContratoListarRequerimientos.cs" />
     <Compile Include="Modulo5\IContratoReportes.cs" />
     <Compile Include="Modulo6\IContratoAgregarActor.cs" />
+    <Compile Include="Modulo6\IContratoAgregarCasoDeUso.cs" />
+    <Compile Include="Modulo6\IContratoReporteActores.cs" />
     <Compile Include="Modulo7\IContratoAgregarUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -63,6 +65,12 @@
     <Folder Include="Modulo3\" />
     <Folder Include="Modulo4\" />
     <Folder Include="Modulo8\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\DominioTotem\Dominio\Dominio.csproj">
+      <Project>{41dd6620-eb5e-4529-b66d-d29a27fa2e5a}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

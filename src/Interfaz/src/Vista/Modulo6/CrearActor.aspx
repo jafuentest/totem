@@ -9,7 +9,10 @@
     Agregar Actor
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" runat="server">
-
+    <asp:Label ID="labelMensajeExito" Visible="false"  class="alert alert-sucess alert-dismissible" runat="server"></asp:Label>
+    <asp:Label ID="labelMensajeError" Visible="false"  class="alert alert-danger alert-dismissible" runat="server"></asp:Label>
+    <br />
+    <br />
 	<div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
 		<form runat="server" class="form-horizontal" method="POST">
             <asp:RequiredFieldValidator id="RequiredFieldValidator7" runat="server"
@@ -62,8 +65,8 @@
 			</div>
 			<div class="form-group">
 				<div class="col-md-6">
-                    <asp:Label ID="label" runat="server" ></asp:Label>
-					<button runat="server" class="btn btn-primary" type="submit" onserverclick="AgregarActorClick">Agregar</button>
+                                      
+					<button runat="server" id="botonAgregar" class="btn btn-primary" onserverclick="AgregarActorClick">Agregar</button>
 					<a class="btn btn-default" href="ListarActores.aspx">Cancelar</a>
 				</div>
 			</div>

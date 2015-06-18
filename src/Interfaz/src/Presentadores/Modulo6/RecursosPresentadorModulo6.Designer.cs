@@ -115,6 +115,15 @@ namespace Presentadores.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Actor agregado éxitosamente.
+        /// </summary>
+        internal static string MensajeExitoAgregarActor {
+            get {
+                return ResourceManager.GetString("MensajeExitoAgregarActor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error al conectar con la base de datos..
         /// </summary>
         internal static string MensajePresentadorBDException {

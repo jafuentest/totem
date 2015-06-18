@@ -28,13 +28,25 @@ namespace Presentadores.Modulo6
             this.vista = vista; 
         }
 
+        
+
+        /// <summary>
+        /// Método que se ejecuta al recargar la página
+        /// </summary>
+        public void LimpiarPagina() 
+        {
+            vista.mensajeError.Visible = false;
+            vista.mensajeExito.Visible = false;
+            
+        }
+
         /// <summary>
         /// Método que se encarga de la lógica 
         /// al generarse el evento para agregar Actor
         /// </summary>
         public void AgregarActor_Click() 
         {
-            bool agrego = false; 
+            
             Entidad entidad = FabricaEntidades.ObtenerActor();
             
             elActor = entidad as Actor;
@@ -48,7 +60,11 @@ namespace Presentadores.Modulo6
                 Comandos.Comando<Entidad, bool> comandoAgregarActor =
                 FabricaComandos.CrearComandoAgregarActor();
 
-                agrego = comandoAgregarActor.Ejecutar(elActor);
+                if (comandoAgregarActor.Ejecutar(elActor)) 
+                {
+                    MostrarMensajeExito(RecursosPresentadorModulo6.MensajeExitoAgregarActor);
+                    vista.botonAgregar.Disabled = true; 
+                }
             }
 
             catch(AgregarActorComandoBDException e)
@@ -61,7 +77,7 @@ namespace Presentadores.Modulo6
                 Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
                     , e);
 
-                throw exAgregarActorPresentador;
+                MostrarMensajeError(exAgregarActorPresentador.Mensaje);
             }
             
             catch (AgregarActorComandoNullException e)
@@ -74,7 +90,7 @@ namespace Presentadores.Modulo6
                 Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
                     , e);
 
-                throw exAgregarActorPresentador;
+                MostrarMensajeError(exAgregarActorPresentador.Mensaje);
             }
             
             catch (HttpRequestValidationException e)
@@ -87,7 +103,7 @@ namespace Presentadores.Modulo6
                 Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
                     ,e);
 
-                throw exAgregarActorPresentador; 
+                MostrarMensajeError(exAgregarActorPresentador.Mensaje); 
                 
             }
             catch (AgregarActorComandoException e)
@@ -100,11 +116,35 @@ namespace Presentadores.Modulo6
                 Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
                     , e);
 
-                throw exAgregarActorPresentador; 
-            }
-            
-            
+                MostrarMensajeError(exAgregarActorPresentador.Mensaje);
+            }          
 
         }
+
+        /// <summary>
+        /// Método que se ejecuta para desplegar un mensaje de 
+        /// éxito por pantalla
+        /// </summary>
+        /// <param name="mensaje"></param>
+        public void MostrarMensajeExito(string mensaje)
+        {
+            vista.mensajeExito.Visible = true; 
+            vista.mensajeExito.Text = mensaje;
+        }
+
+
+        /// <summary>
+        /// Método que se ejecuta para desplegar un mensaje de error 
+        /// por pantalla. 
+        /// </summary>
+        /// <param name="mensaje"></param>
+        public void MostrarMensajeError(string mensaje)
+        {
+            vista.mensajeError.Visible = true; 
+            vista.mensajeError.Text = mensaje;
+        }
+
+
+
     }
 }
