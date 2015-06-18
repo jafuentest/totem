@@ -150,6 +150,19 @@ namespace Dominio.Fabrica
         #endregion
 
         #region Modulo 8
+
+        public Entidad ObtenerMinuta()
+        {
+            return new Entidades.Modulo8.Minuta();
+        }
+        public Entidad ObtenerAcuerdo()
+        {
+            return new Entidades.Modulo8.Acuerdo();
+        }
+        public Entidad ObtenerPunto()
+        {
+            return new Entidades.Modulo8.Punto();
+        }
         #endregion
     }
 }
