@@ -203,7 +203,8 @@ namespace DAO.DAO.Modulo8
 
             FabricaEntidades laFabrica = new FabricaEntidades();
             List<Entidad> laLista = new List<Entidad>();
-            DataTable resultado = new DataTable();List<Parametro> parametros = new List<Parametro>();
+            DataTable resultado = new DataTable();
+            List<Parametro> parametros = new List<Parametro>();
             Parametro parametroStored = new Parametro(RecursosBDModulo8.ParametroProyectoMinuta,
                 SqlDbType.VarChar, idProyecto, false);
             parametros.Add(parametroStored);
