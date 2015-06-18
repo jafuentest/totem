@@ -21,8 +21,10 @@ namespace Vista.Modulo2
         {
             this.Master.idModulo = "2";
             this.Master.presentador.CargarMenuLateral();
+            String detalleEmpresa = Request.QueryString["detalle"];
+            presentador.cargarDatos(detalleEmpresa);
         }
-
+        #region Contrato
         string Contratos.Modulo2.IContratoDetallarEmpresa.rifEmpresa
         {
             get
@@ -118,5 +120,6 @@ namespace Vista.Modulo2
                 laTabla.Text = value;
             }
         }
+        #endregion
     }
 }

@@ -117,13 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AbrirBotonDetalle" xml:space="preserve">
+  <data name="AbrirBotonDetalleCliente" xml:space="preserve">
+    <value>&lt;a class="btn btn-primary glyphicon glyphicon-info-sign" href="DetallarCliente.aspx?detalle=</value>
+  </data>
+  <data name="AbrirBotonDetalleEmpresa" xml:space="preserve">
     <value>&lt;a class="btn btn-primary glyphicon glyphicon-info-sign" href="DetallarEmpresa.aspx?detalle=</value>
   </data>
-  <data name="AbrirBotonEliminar" xml:space="preserve">
+  <data name="AbrirBotonEliminarCliente" xml:space="preserve">
+    <value>&lt;a class="btn btn-danger glyphicon glyphicon-remove-sign" href="ListarClientes.aspx?clienteaeliminar=</value>
+  </data>
+  <data name="AbrirBotonEliminarEmpresa" xml:space="preserve">
     <value>&lt;a class="btn btn-danger glyphicon glyphicon-remove-sign" href="ListarEmpresas.aspx?empresaaeliminar=</value>
   </data>
-  <data name="AbrirBotonModificar" xml:space="preserve">
+  <data name="AbrirBotonModificarCliente" xml:space="preserve">
+    <value>&lt;a class="btn btn-default glyphicon glyphicon-pencil" href="ModificarCliente.aspx?id=</value>
+  </data>
+  <data name="AbrirBotonModificarEmpresa" xml:space="preserve">
     <value>&lt;a class="btn btn-default glyphicon glyphicon-pencil" href="ModificarEmpresa.aspx?id=</value>
   </data>
   <data name="AbrirEtiqueta_td" xml:space="preserve">

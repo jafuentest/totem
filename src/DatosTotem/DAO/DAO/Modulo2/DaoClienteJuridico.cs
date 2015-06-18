@@ -115,26 +115,29 @@ namespace DAO.DAO.Modulo2
             List<Parametro> parametros = new List<Parametro>();
             Parametro parametroStored = new Parametro(RecursoBDModulo2.ParamIDClienteJur,
                 SqlDbType.Int, parametro.Id.ToString(), false);
+            ClienteJuridico elCliente;
+            Direccion laDireccion;
             parametros.Add(parametroStored);
-            ClienteJuridico elCliente = (ClienteJuridico)laFabrica.ObtenerClienteJuridico();
+            elCliente = (ClienteJuridico)laFabrica.ObtenerClienteJuridico();
             try
             {
                 resultado = EjecutarStoredProcedureTuplas(RecursoBDModulo2.ConsultarDatosClienteJur, parametros);
 
                 foreach (DataRow row in resultado.Rows)
                 {
-                    
+                    laDireccion = (Direccion)laFabrica.ObtenerDireccion();
+                    elCliente = (ClienteJuridico)laFabrica.ObtenerClienteJuridico();
                     elCliente.Id = int.Parse(row[RecursoBDModulo2.AliasClienteJurID].ToString());
 
                     elCliente.Jur_Nombre = row[RecursoBDModulo2.AliasClienteJurNombre].ToString();
                     elCliente.Jur_Logo = row[RecursoBDModulo2.AliasClienteJurLogo].ToString();
                     elCliente.Jur_Rif = row[RecursoBDModulo2.AliasClienteJurRif].ToString();
-                    elCliente.Jur_Direccion.LaDireccion = row[RecursoBDModulo2.AliasClienteJurDireccion].ToString();
-                    elCliente.Jur_Direccion.CodigoPostal = row[RecursoBDModulo2.AliasClienteJurCodPost].ToString();
-                    elCliente.Jur_Direccion.LaCiudad = row[RecursoBDModulo2.AliasClienteJurCiudad].ToString();
-                    elCliente.Jur_Direccion.ElEstado = row[RecursoBDModulo2.AliasClienteJurEstado].ToString();
-                    elCliente.Jur_Direccion.ElPais = row[RecursoBDModulo2.AliasClienteJurPais].ToString();
-
+                    laDireccion.LaDireccion = row[RecursoBDModulo2.AliasClienteJurDireccion].ToString();
+                    laDireccion.CodigoPostal = row[RecursoBDModulo2.AliasClienteJurCodPost].ToString();
+                    laDireccion.LaCiudad = row[RecursoBDModulo2.AliasClienteJurCiudad].ToString();
+                    laDireccion.ElEstado = row[RecursoBDModulo2.AliasClienteJurEstado].ToString();
+                    laDireccion.ElPais = row[RecursoBDModulo2.AliasClienteJurPais].ToString();
+                    elCliente.Jur_Direccion = laDireccion;
                 }
                 return elCliente;
             }

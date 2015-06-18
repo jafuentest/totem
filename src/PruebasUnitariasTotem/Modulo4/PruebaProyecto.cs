@@ -6,33 +6,32 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using DominioTotem;
 
-namespace PruebasUnitarias
+namespace PruebasUnitariasTotem.Modulo4
 {
-
     [TestFixture]
-    class Prueba_Proyecto
+    class PruebaProyecto
     {
         private Proyecto elProyecto;
 
         [SetUp]
         public void init()
         {
-            elProyecto = new Proyecto("TOT","Totem",true,"Sistema de gestion de proyectos","BsF",1000000);
+            elProyecto = new Proyecto("TOT","Totem",true,"Sistema de gestion de proyectos",
+			 "BsF",1000000);
         }
         [TearDown]
         public void clean()
         {
             elProyecto = null;
         }
-
         
         [Test]
-        public void pruebaCtor()
+        public void PruebaProyectoNoNulo()
         {
             Assert.IsNotNull(elProyecto);
         }
         [Test]
-        public void pruebaCtorConProyecto()
+        public void PruebaCrearProyecto()
         {   
             Assert.AreEqual("TOT", elProyecto.Codigo);
             Assert.AreEqual("Totem", elProyecto.Nombre);
@@ -40,7 +39,6 @@ namespace PruebasUnitarias
             Assert.AreEqual("Sistema de gestion de proyectos", elProyecto.Descripcion);
             Assert.AreEqual("BsF", elProyecto.Moneda);
             Assert.AreEqual(1000000, elProyecto.Costo);
-        }
-       
+        }       
     }
 }

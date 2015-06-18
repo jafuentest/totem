@@ -153,5 +153,10 @@ namespace Vista.Modulo2
             }
         }
         #endregion
+
+        protected void EditarCliente_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

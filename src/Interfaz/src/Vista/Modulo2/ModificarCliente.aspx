@@ -94,7 +94,7 @@
      
                 <div class="form-group">
                     <div id="div_botones" class="col-sm-12 col-md-12 col-lg-12">
-                        <button id="botonEditar" runat="server" class="btn btn-primary" onserverclick="EditarCliente_Click" type="submit">Editar</button>
+                        <asp:Button id="botonEditar" runat="server" class="btn btn-primary" OnClick="EditarCliente_Click" type="submit" Text="Editar"></asp:Button>
                         <a class="btn btn-default" href="ListarClientes.aspx">Cancelar</a>
                     </div>
                 </div>
