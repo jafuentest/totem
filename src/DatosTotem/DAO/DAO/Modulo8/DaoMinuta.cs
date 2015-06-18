@@ -261,6 +261,56 @@ namespace DAO.DAO.Modulo8
             }
         }
         #endregion
+
+         /// <summary>
+        /// Metodo para Eliminar una Minuta
+        /// </summary>
+        /// <param name="idMinuta">Id de la Minuta a eliminar</param>
+        /// <returns>Retorna un boolean para saber si se realizo con éxito la operación</returns>
+        public bool EliminarMinuta(int idMinuta)
+        {
+            List<Parametro> parametros = new List<Parametro>();
+            /* Parametro parametroStored = new Parametro(RecursosBDModulo8.ParametroIDMinuta, SqlDbType.Int, idMinuta.ToString(), false);
+             parametros.Add(parametroStored);*/
+
+            try
+            {
+                List<Resultado> tmp = EjecutarStoredProcedure(RecursosBDModulo8.Procedure1 + idMinuta, parametros);
+                return (tmp.ToArray().Length > 0);
+            }
+            catch (NullReferenceException ex)
+            {
+
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                    RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                    RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                    RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                    RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
+            catch (Exception ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                   RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
+
+            }
+
+
+        }
     }
 
 }
