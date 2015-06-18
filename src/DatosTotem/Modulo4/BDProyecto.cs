@@ -6,8 +6,6 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using DominioTotem;
-using System.Data;
-using System.Data.SqlClient;
 using System.IO;
 
 namespace DatosTotem.Modulo4

@@ -9,15 +9,16 @@ namespace ExcepcionesTotem.Modulo4
     {
         public CasosDeUsoInexistentesException()
             : base()
-        { }
-
+        {
+	   }
         public CasosDeUsoInexistentesException(string message)
             : base(message)
-        { }
-
+        {
+	   }
         public CasosDeUsoInexistentesException(string message, Exception inner)
             : base(message, inner)
-        { }
+        {
+	   }
         public CasosDeUsoInexistentesException(string codigo, string message, Exception inner)
             : base(codigo, message, inner)
         {
