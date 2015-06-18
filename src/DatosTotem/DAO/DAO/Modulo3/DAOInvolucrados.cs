@@ -3,6 +3,7 @@ using Dominio.Entidades.Modulo2;
 using Dominio.Entidades.Modulo3;
 using Dominio.Entidades.Modulo4;
 using Dominio.Entidades.Modulo7;
+using Dominio.Fabrica;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -176,6 +177,7 @@ namespace DAO.DAO.Modulo3
         /// <returns>lista de usuarios involucrados al proyecto que recibe como parametro</returns>
         public ListaInvolucradoUsuario ConsultarUsuariosInvolucradosPorProyecto(Proyecto p)
         {
+            FabricaEntidades laFabrica = new FabricaEntidades();
             ListaInvolucradoUsuario laListaDeUsuarios = new ListaInvolucradoUsuario();
             List<Parametro> parametros;
             Parametro codigoProyecto;
@@ -198,7 +200,7 @@ namespace DAO.DAO.Modulo3
                     parametros);
                 foreach (DataRow row in dt.Rows)
                 {
-                    Usuario u = new Usuario();
+                    Usuario u = (Usuario)FabricaEntidades.ObtenerUsuario();
                     u.IdUsuario = int.Parse(row[RecursosBDModulo3.aliasUsuarioID].ToString());
                     u.Nombre = row[RecursosBDModulo3.aliasUsuarioNombre].ToString();
                     u.Apellido = row[RecursosBDModulo3.aliasUsuarioApellido].ToString();
@@ -206,7 +208,8 @@ namespace DAO.DAO.Modulo3
                     u.Username = row[RecursosBDModulo3.aliasUsuarioUsername].ToString();
                     lUsuarios.Add(u);
                 }
-                laListaDeUsuarios = new ListaInvolucradoUsuario(lUsuarios, p);
+                laListaDeUsuarios = (ListaInvolucradoUsuario)FabricaEntidades.
+                                    ObtenetListaInvolucradoUsuario(lUsuarios, p);
             }
             catch (SqlException ex)
             {
@@ -226,7 +229,9 @@ namespace DAO.DAO.Modulo3
         /// <returns>lista de contactos involucrados al proyecto que recibe como parametro</returns>
         public ListaInvolucradoContacto ConsultarContactosInvolucradosPorProyecto(Proyecto p)
         {
-            ListaInvolucradoContacto laListaDeContactos = new ListaInvolucradoContacto();
+            FabricaEntidades laFabrica = new FabricaEntidades();
+            ListaInvolucradoContacto laListaDeContactos = (ListaInvolucradoContacto)FabricaEntidades.
+                                                          ObtenetListaInvolucradoContacto();
             List<Parametro> parametros;
             Parametro codigoProyecto = null ;
 
@@ -248,7 +253,7 @@ namespace DAO.DAO.Modulo3
                     parametros);
                 foreach (DataRow row in dt.Rows)
                 {
-                    Contacto c = new Contacto();
+                    Contacto c = (Contacto)laFabrica.ObtenerContacto();
                     c.Id = int.Parse(row[RecursosBDModulo3.aliasContactoID].ToString());
                     c.Con_Nombre = row[RecursosBDModulo3.aliasContactoNombre].ToString();
                     c.Con_Apellido = row[RecursosBDModulo3.aliasContactoApellido].ToString();
@@ -256,21 +261,22 @@ namespace DAO.DAO.Modulo3
                     System.Console.WriteLine(row[RecursosBDModulo3.aliasValor].ToString());
                     if (row[RecursosBDModulo3.aliasValor].ToString().Equals("1"))
                     {
-                        c.ConClienteJurid = new ClienteJuridico();
+                        c.ConClienteJurid = (ClienteJuridico)laFabrica.ObtenerClienteJuridico();
                         c.ConClienteJurid.Id = int.Parse(row[RecursosBDModulo3.aliasClienteID].ToString());
                         c.ConClienteJurid.Jur_Nombre = row[RecursosBDModulo3.aliasClienteNombre].ToString();
 
                     }
                     else
                     {
-                        c.ConClienteNat = new ClienteNatural();
+                        c.ConClienteNat = (ClienteNatural)laFabrica.ObtenerClienteNatural();
                         c.ConClienteNat.Id = int.Parse(row[RecursosBDModulo3.aliasClienteID].ToString());
                         c.ConClienteJurid.Jur_Nombre = row[RecursosBDModulo3.aliasClienteNombre].ToString();
                     }
 
                     lContactos.Add(c);
                 }
-                laListaDeContactos = new ListaInvolucradoContacto(lContactos, p);
+                laListaDeContactos = (ListaInvolucradoContacto)FabricaEntidades.
+                                        ObtenetListaInvolucradoContacto(lContactos, p);
             }
             catch (SqlException ex)
             {
@@ -459,7 +465,7 @@ namespace DAO.DAO.Modulo3
         }
         public Usuario DatosUsuarioUsername(String user)
         {
-            Usuario retorno = new Usuario();
+            Usuario retorno = (Usuario)FabricaEntidades.ObtenerUsuario();
             retorno.Username = user;
             List<Parametro> parametros = new List<Parametro>();
             Parametro parametro = new Parametro(RecursosBDModulo3.ParamUser,
@@ -502,7 +508,8 @@ namespace DAO.DAO.Modulo3
         }
         public Contacto DatosContactoID(int idCon)
         {
-            Contacto elContacto = new Contacto();
+            FabricaEntidades laFabrica = new FabricaEntidades();
+            Contacto elContacto = (Contacto)laFabrica.ObtenerContacto();
             List<Parametro> parametros = new List<Parametro>();
             Parametro parametro = new Parametro(RecursosBDModulo3.ParamIdContacto,
                 SqlDbType.Int, idCon.ToString(), false);
@@ -541,7 +548,7 @@ namespace DAO.DAO.Modulo3
                     }
                     if (resultado.etiqueta.Equals(RecursosBDModulo3.ParamCjNombre))
                     {
-                        ClienteJuridico cj = new ClienteJuridico();
+                        ClienteJuridico cj = (ClienteJuridico)laFabrica.ObtenerClienteJuridico();
                         cj.Jur_Nombre = resultado.valor;
                         elContacto.ConClienteJurid = cj;
                     }
@@ -555,6 +562,7 @@ namespace DAO.DAO.Modulo3
         }
         public List<Contacto> ListarContactosPorCargoEmpresa(ClienteJuridico laEmpresa, String cargo)
         {
+            FabricaEntidades laFabrica = new FabricaEntidades();
             List<Contacto> laListaDeContactos = new List<Contacto>();
 
             List<Parametro> parametros;
@@ -576,7 +584,7 @@ namespace DAO.DAO.Modulo3
                                RecursosBDModulo3.StoredConsultarEmpleadosEmprsa, parametros);
                 foreach (DataRow row in dt.Rows)
                 {
-                    Contacto c = new Contacto();
+                    Contacto c = (Contacto)laFabrica.ObtenerContacto();
 
                     c.Con_Nombre = row[RecursosBDModulo3.ColumnaNombreContacto].ToString();
                     c.Con_Apellido = row[RecursosBDModulo3.ColumnaApellidoContacto].ToString();

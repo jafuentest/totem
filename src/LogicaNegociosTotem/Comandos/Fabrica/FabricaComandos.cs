@@ -87,6 +87,52 @@ namespace Comandos.Fabrica
         #endregion
 
         #region Modulo 3
+        public static Comando<Dominio.Entidad, Boolean> CrearComandoAgregarContactosInvolucrados()
+        {
+            return new Comandos.Modulo3.ComandoAgregarContactosInvolucrados();
+        }
+        public static Comando<Dominio.Entidad, Boolean> CrearComandoAgregarUsuarioInvolucrados()
+        {
+            return new Comandos.Modulo3.ComandoAgregarUsuariosInvolucrados();
+        }
+        public static Comando<Dominio.Entidad, List<Dominio.Entidad>> CrearConsultarCargosContactos()
+        {
+            return new Comandos.Modulo3.ComandoConsultarCargosContactos();
+        }
+        public static Comando<Dominio.Entidad, Boolean> CrearComandoConsultarContactoInvolucrados()
+        {
+            return new Comandos.Modulo3.ComandoAgregarContactosInvolucrados();
+        }
+        public static Comando<Dominio.Entidad, List<Dominio.Entidad>> CrearComandoConsultarUsuariosInvolucrados()
+        {
+
+            return new Comandos.Modulo3.ComandoConsultarUsuariosInvolucradosPorProyecto();
+        }
+        public static Comando<Dominio.Entidad, Dominio.Entidad> CrearComandoDatosContactoID()
+        {
+
+            return new Comandos.Modulo3.ComandoDatosContactoID();
+        }
+        public static Comando<Dominio.Entidad, Dominio.Entidad> CrearComandoDatosUsuariosUsername()
+        {
+
+            return new Comandos.Modulo3.ComandoDatosUsuarioUsername();
+        }
+        public static Comando<Dominio.Entidad, Boolean> CrearComandoEliminarContactoDeInvolucradosEnProyecto()
+        {
+
+            return new Comandos.Modulo3.ComandoEliminarContactoDeIvolucradosEnProyecto();
+        }
+        public static Comando<Dominio.Entidad, Boolean> CrearComandoEliminarUsuariosDeInvolucradosEnProyecto()
+        {
+
+            return new Comandos.Modulo3.ComandoEliminarUsuariosDeIvolucradosEnProyecto();
+        }
+        public static Comando<Entidad, List<Dominio.Entidad>> CrearComandoListarContactosPorCargoEmpresa()
+        {
+
+            return new Comandos.Modulo3.ComandoListarContactosPorCargoEmpresa();
+        }
         #endregion
 
         #region Modulo 4

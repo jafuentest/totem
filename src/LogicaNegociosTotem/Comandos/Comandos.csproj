@@ -57,6 +57,16 @@
     <Compile Include="Comandos\Modulo2\ComandoModificarClienteJuridico.cs" />
     <Compile Include="Comandos\Modulo2\ComandoModificarClienteNatural.cs" />
     <Compile Include="Comandos\Modulo2\ComandoEliminarClienteNatural.cs" />
+    <Compile Include="Comandos\Modulo3\ComandoAgregarContactosInvolucrados.cs" />
+    <Compile Include="Comandos\Modulo3\ComandoAgregarUsuariosInvolucrados.cs" />
+    <Compile Include="Comandos\Modulo3\ComandoConsultarCargosContactos.cs" />
+    <Compile Include="Comandos\Modulo3\ComandoConsultarContactosInvolucradosPorProyecto.cs" />
+    <Compile Include="Comandos\Modulo3\ComandoConsultarUsuariosInvolucradosPorProyecto.cs" />
+    <Compile Include="Comandos\Modulo3\ComandoDatosContactoID.cs" />
+    <Compile Include="Comandos\Modulo3\ComandoDatosUsuarioUsername.cs" />
+    <Compile Include="Comandos\Modulo3\ComandoEliminarContactoDeIvolucradosEnProyecto.cs" />
+    <Compile Include="Comandos\Modulo3\ComandoEliminarUsuariosDeIvolucradosEnProyecto.cs" />
+    <Compile Include="Comandos\Modulo3\ComandoListarContactosPorCargoEmpresa.cs" />
     <Compile Include="Comandos\Modulo5\ComandoAgregarRequerimiento.cs" />
     <Compile Include="Comandos\Modulo5\ComandoConsultarRequerimiento.cs" />
     <Compile Include="Comandos\Modulo5\ComandoConsultarRequerimientosProyecto.cs" />
@@ -76,7 +86,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Comandos\Modulo1\" />
-    <Folder Include="Comandos\Modulo3\" />
     <Folder Include="Comandos\Modulo4\" />
     <Folder Include="Comandos\Modulo8\" />
   </ItemGroup>
