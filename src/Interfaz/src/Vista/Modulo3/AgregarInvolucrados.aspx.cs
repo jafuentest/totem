@@ -61,6 +61,27 @@ namespace Vista.Modulo3
 
         #endregion contrato
 
+
+          protected void actualizarComboCargos(object sender, EventArgs e)
+          {
+              
+          }
+          protected void actualizarComboPersonal(object sender, EventArgs e)
+          {
+              
+          }
+          protected void AgregarInvolucrados_Click(object sender, EventArgs e)
+          {
+             
+          }
+          protected void btn_enviar_Click(object sender, EventArgs e)
+          {
+       
+          }
+          protected void evento_eliminar(object sender, EventArgs e)
+          {
+      
+          }
        
     }
 }

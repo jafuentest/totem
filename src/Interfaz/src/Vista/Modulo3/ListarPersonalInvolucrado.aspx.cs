@@ -38,6 +38,11 @@ namespace Vista.Modulo3
             }
         }
         #endregion contrato
-       
+
+
+        protected void evento_eliminar(object sender, EventArgs e)
+        {
+          
+        }
     }
 }
