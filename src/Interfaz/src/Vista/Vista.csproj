@@ -106,6 +106,8 @@
     <Content Include="Modulo2\ModificarCliente.aspx" />
     <Content Include="Modulo2\ModificarContacto.aspx" />
     <Content Include="Modulo2\ModificarEmpresa.aspx" />
+    <Content Include="Modulo3\AgregarInvolucrados.aspx" />
+    <Content Include="Modulo3\ListarPersonalInvolucrado.aspx" />
     <Content Include="Modulo5\AgregarRequerimiento.aspx" />
     <Content Include="Modulo5\ListarRequerimientos.aspx" />
     <Content Include="Modulo5\Reportes.aspx" />
@@ -196,6 +198,20 @@
     <Compile Include="Modulo2\ModificarEmpresa.aspx.designer.cs">
       <DependentUpon>ModificarEmpresa.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modulo3\AgregarInvolucrados.aspx.cs">
+      <DependentUpon>AgregarInvolucrados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo3\AgregarInvolucrados.aspx.designer.cs">
+      <DependentUpon>AgregarInvolucrados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo3\ListarPersonalInvolucrado.aspx.cs">
+      <DependentUpon>ListarPersonalInvolucrado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo3\ListarPersonalInvolucrado.aspx.designer.cs">
+      <DependentUpon>ListarPersonalInvolucrado.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modulo5\AgregarRequerimiento.aspx.cs">
       <DependentUpon>AgregarRequerimiento.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -281,7 +297,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Modulo1\" />
-    <Folder Include="Modulo3\" />
     <Folder Include="Modulo4\" />
     <Folder Include="Modulo8\" />
   </ItemGroup>
