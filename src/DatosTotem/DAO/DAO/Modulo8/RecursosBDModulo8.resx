@@ -129,6 +129,12 @@
   <data name="AtributoApellidoUsuario" xml:space="preserve">
     <value>usu_apellido</value>
   </data>
+  <data name="AtributoCargoContacto" xml:space="preserve">
+    <value>car_nombre</value>
+  </data>
+  <data name="AtributoCargoUsuario" xml:space="preserve">
+    <value>usu_rol</value>
+  </data>
   <data name="AtributoDesarrolloAcuerdo" xml:space="preserve">
     <value>acu_desarrollo</value>
   </data>
@@ -174,6 +180,36 @@
   </data>
   <data name="AtributoTituloPunto" xml:space="preserve">
     <value>pun_titulo</value>
+  </data>
+  <data name="Codigo_ExcepcionAtributo" xml:space="preserve">
+    <value>T_08_05</value>
+  </data>
+  <data name="Codigo_ExcepcionGeneral" xml:space="preserve">
+    <value>T_08_03</value>
+  </data>
+  <data name="Codigo_ExcepcionNullReference" xml:space="preserve">
+    <value>T_08_01</value>
+  </data>
+  <data name="Codigo_ExcepcionParametro" xml:space="preserve">
+    <value>T_08_04</value>
+  </data>
+  <data name="Codigo_ExcepcionSql" xml:space="preserve">
+    <value>T_08_02</value>
+  </data>
+  <data name="Mensaje_ExcepcionAtributo" xml:space="preserve">
+    <value>Error uno de los atributos no existe en el procedimiento ejecutado</value>
+  </data>
+  <data name="Mensaje_ExcepcionGeneral" xml:space="preserve">
+    <value>Error se ha producido una excepcion</value>
+  </data>
+  <data name="Mensaje_ExcepcionNullReference" xml:space="preserve">
+    <value>Error existe una referencia nula</value>
+  </data>
+  <data name="Mensaje_ExcepcionSql" xml:space="preserve">
+    <value>Error existe un conflicto con la conexión a la base de datos</value>
+  </data>
+  <data name="Mensaje__ExcepcionParametro" xml:space="preserve">
+    <value>Error uno de los parametros no existe en el procedimiento ejecutado</value>
   </data>
   <data name="ParametroDesarrolloAcuerdo" xml:space="preserve">
     <value>@acu_desarrollo</value>
@@ -301,11 +337,8 @@
   <data name="ProcedimientoUsuarioAcuerdo" xml:space="preserve">
     <value>Procedure_ConsultarAcuerdoResponsablesUsuarioMinuta</value>
   </data>
-  <data name="AtributoCargoContacto" xml:space="preserve">
-    <value>car_nombre</value>
-  </data>
-  <data name="AtributoCargoUsuario" xml:space="preserve">
-    <value>usu_rol</value>
+  <data name="Procedure1" xml:space="preserve">
+    <value>DELETE FROM MINUTA WHERE min_id =</value>
   </data>
   <data name="ProcedureConsultarContactoMinuta" xml:space="preserve">
     <value>Procedure_ConsultarAsistenteContactoMinuta</value>
@@ -313,46 +346,13 @@
   <data name="ProcedureConsultarUsuarioMinuta" xml:space="preserve">
     <value>Procedure_ConsultarAsistenteUsuarioMinuta</value>
   </data>
-  <data name="Codigo_ExcepcionAtributo" xml:space="preserve">
-    <value>T_08_05</value>
-  </data>
-  <data name="Codigo_ExcepcionGeneral" xml:space="preserve">
-    <value>T_08_03</value>
-  </data>
-  <data name="Codigo_ExcepcionNullReference" xml:space="preserve">
-    <value>T_08_01</value>
-  </data>
-  <data name="Codigo_ExcepcionParametro" xml:space="preserve">
-    <value>T_08_04</value>
-  </data>
-  <data name="Codigo_ExcepcionSql" xml:space="preserve">
-    <value>T_08_02</value>
-  </data>
-  <data name="Mensaje_ExcepcionAtributo" xml:space="preserve">
-    <value>Error uno de los atributos no existe en el procedimiento ejecutado</value>
-  </data>
-  <data name="Mensaje_ExcepcionGeneral" xml:space="preserve">
-    <value>Error se ha producido una excepcion</value>
-  </data>
-  <data name="Mensaje_ExcepcionNullReference" xml:space="preserve">
-    <value>Error existe una referencia nula</value>
-  </data>
-  <data name="Mensaje_ExcepcionSql" xml:space="preserve">
-    <value>Error existe un conflicto con la conexión a la base de datos</value>
-  </data>
-  <data name="Mensaje__ExcepcionParametro" xml:space="preserve">
-    <value>Error uno de los parametros no existe en el procedimiento ejecutado</value>
+  <data name="ProcedureContactoProyecto" xml:space="preserve">
+    <value>Procedure_ConsultarInvolucradosContactoProyecto</value>
   </data>
   <data name="ProcedureEliminarInvolucradoMinuta" xml:space="preserve">
     <value>Procedure_EliminarTodosInvolucrados</value>
   </data>
-  <data name="ProcedureContactoProyecto" xml:space="preserve">
-    <value>Procedure_ConsultarInvolucradosContactoProyecto</value>
-  </data>
   <data name="ProcedureUsuarioProyecto" xml:space="preserve">
     <value>Procedure_ConsultarInvolucradosUsuarioProyecto</value>
-  </data>
-  <data name="Procedure1" xml:space="preserve">
-    <value>DELETE FROM MINUTA WHERE min_id =</value>
   </data>
 </root>

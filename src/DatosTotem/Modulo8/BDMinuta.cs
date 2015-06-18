@@ -20,7 +20,6 @@ namespace DatosTotem.Modulo8
 
         private BDConexion con;
         private Minuta minuta;
-
         /// <summary>
         /// Método para consultar los datos de una minuta en la BD
         /// </summary>
@@ -299,7 +298,7 @@ namespace DatosTotem.Modulo8
 
             }
         }
-
+        
         /// <summary>
         /// Metodo que devuelve una lista de todas las minutas asociadas a un Proyecto
         /// </summary>
