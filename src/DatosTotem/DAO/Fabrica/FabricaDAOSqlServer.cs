@@ -63,8 +63,19 @@ namespace DAO.Fabrica
         #endregion
 
         #region Modulo 8
+            public override IntefazDAO.Modulo8.IDaoAcuerdo ObtenerDAOAcuerto()
+            {
+                return new DAO.Modulo8.DaoAcuerdo();
+            }
+            public override IntefazDAO.Modulo8.IDaoMinuta ObtenerDAOMinuta()
+            {
+                return new DAO.Modulo8.DaoMinuta();
+            }
+            public override IntefazDAO.Modulo8.IDaoPunto ObtenerDAOPunto()
+            {
+                return new DAO.Modulo8.DaoPunto();
+            }
         #endregion
 
-        
     }
 }

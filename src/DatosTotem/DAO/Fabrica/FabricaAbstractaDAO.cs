@@ -49,6 +49,9 @@ namespace DAO.Fabrica
             #endregion
 
             #region Modulo 8
+                public abstract IntefazDAO.Modulo8.IDaoAcuerdo ObtenerDAOAcuerto();
+                public abstract IntefazDAO.Modulo8.IDaoMinuta ObtenerDAOMinuta();
+                public abstract IntefazDAO.Modulo8.IDaoPunto ObtenerDAOPunto();
             #endregion
 
         #endregion
