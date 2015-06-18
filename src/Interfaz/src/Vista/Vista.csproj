@@ -40,6 +40,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\Newtonsoft.Json.5.0.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -109,7 +112,8 @@
     <Content Include="Modulo3\AgregarInvolucrados.aspx" />
     <Content Include="Modulo3\ListarPersonalInvolucrado.aspx" />
     <Content Include="Modulo5\AgregarRequerimiento.aspx" />
-    <Content Include="Modulo5\ListarRequerimientos.aspx" />
+    <Content Include="Modulo5\Listar.aspx" />
+    <Content Include="Modulo5\ModificarRequerimiento.aspx" />
     <Content Include="Modulo5\Reportes.aspx" />
     <Content Include="Modulo6\Crear.aspx" />
     <Content Include="Modulo6\CrearActor.aspx" />
@@ -219,13 +223,26 @@
     <Compile Include="Modulo5\AgregarRequerimiento.aspx.designer.cs">
       <DependentUpon>AgregarRequerimiento.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Modulo5\ListarRequerimientos.aspx.cs">
-      <DependentUpon>ListarRequerimientos.aspx</DependentUpon>
+    <Compile Include="Modulo5\Listar.aspx.cs">
+      <DependentUpon>Listar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo5\Listar.aspx.designer.cs">
+      <DependentUpon>Listar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo5\ModificarRequerimiento.aspx.cs">
+      <DependentUpon>ModificarRequerimiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo5\ModificarRequerimiento.aspx.designer.cs">
+      <DependentUpon>ModificarRequerimiento.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulo5\Reportes.aspx.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo5\Reportes.aspx.designer.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulo6\Crear.aspx.cs">
       <DependentUpon>Crear.aspx</DependentUpon>
@@ -287,6 +304,7 @@
     <Content Include="assets\bs\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="img\Icons\.DS_Store" />
     <Content Include="Master\MasterPage.Master" />
+    <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

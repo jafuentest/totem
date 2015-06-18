@@ -1,5 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/MasterPage.Master" AutoEventWireup="true" CodeFile="Reportes.aspx.cs" Inherits="GUI_Modulo5_RFuncionalesID" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Master/MasterPage.Master" AutoEventWireup="true" CodeBehind="Reportes.aspx.cs" Inherits="Vista.Modulo5.Reportes" %>
 <%@ MasterType  virtualPath="~/Master/MasterPage.master"%> 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Requerimientos</asp:Content>
@@ -265,55 +266,55 @@
 <script type="text/javascript">
     $('#funcionales').click(function () {/*metodo para filtrar la tabla de requerimientos para que solo aparezcan los funcionales y
                                            activa el boton de generar documento*/
-            var busqueda = 'Funcional';
-            $('#btn-imprimir').attr("disabled", false);
-            $('#btn-imprimir').attr("onclick", "window.location.href='docs/RequerimientosFuncionales.pdf'");
-            $('tr').hide();
+        var busqueda = 'Funcional';
+        $('#btn-imprimir').attr("disabled", false);
+        $('#btn-imprimir').attr("onclick", "window.location.href='docs/RequerimientosFuncionales.pdf'");
+        $('tr').hide();
 
-            $('tr td.Type').each(function () {
+        $('tr td.Type').each(function () {
 
-                if ($(this).text() == busqueda) {
+            if ($(this).text() == busqueda) {
 
-                    $(this).parent().show();
-                }
-            });
-
+                $(this).parent().show();
+            }
         });
-        $("#tipo-dd li a").click(function () {//agrega el texto del elemento del dropdown al titulo del mismo
 
-            $("#tipoid").html($(this).text() + ' <span class="caret"></span>');
+    });
+    $("#tipo-dd li a").click(function () {//agrega el texto del elemento del dropdown al titulo del mismo
 
-        });
-        $('#nofuncionales').click(function () {/*metodo para filtrar la tabla de requerimientos para que solo aparezcan los no funcionales 
+        $("#tipoid").html($(this).text() + ' <span class="caret"></span>');
+
+    });
+    $('#nofuncionales').click(function () {/*metodo para filtrar la tabla de requerimientos para que solo aparezcan los no funcionales 
                                                  y activa el boton de generar documento*/
-            var busqueda = 'No Funcional';
-            $('#btn-imprimir').attr("disabled", false);
-            $('#btn-imprimir').attr("onclick", "window.location.href='docs/RequerimientosNoFuncionales.pdf'");
-            $('tr').hide();
+        var busqueda = 'No Funcional';
+        $('#btn-imprimir').attr("disabled", false);
+        $('#btn-imprimir').attr("onclick", "window.location.href='docs/RequerimientosNoFuncionales.pdf'");
+        $('tr').hide();
 
-            $('tr td.Type').each(function () {
+        $('tr td.Type').each(function () {
 
-                if ($(this).text() == busqueda) {
+            if ($(this).text() == busqueda) {
 
-                    $(this).parent().show();
-                }
+                $(this).parent().show();
+            }
         });
     });
 	</script>
     <script src="js/Validacion.js"></script>
     <script>
-            function fillCodigoTextField() {
-                var idTextField = document.getElementById("idreq_input");
-                var funcionalRadio = document.getElementById("input_tipo_funcional");
-                var nofuncionalRadio = document.getElementById("input_tipo_nofuncional");
+        function fillCodigoTextField() {
+            var idTextField = document.getElementById("idreq_input");
+            var funcionalRadio = document.getElementById("input_tipo_funcional");
+            var nofuncionalRadio = document.getElementById("input_tipo_nofuncional");
 
-                if (funcionalRadio.checked) {
-                    idTextField.value = "TOT_RF_5_1";
-                } else
-                    if (nofuncionalRadio.checked) {
-                        idTextField.value = "TOT_RNF_5_1";
-                    }
-            }
+            if (funcionalRadio.checked) {
+                idTextField.value = "TOT_RF_5_1";
+            } else
+                if (nofuncionalRadio.checked) {
+                    idTextField.value = "TOT_RNF_5_1";
+                }
+        }
     </script>
 </asp:Content>
 

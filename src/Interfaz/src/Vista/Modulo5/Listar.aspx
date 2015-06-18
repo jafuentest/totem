@@ -1,7 +1,5 @@
-﻿<%@ Page Title="TOTEM © 2015 | Requerimientos" Language="C#"
-    MasterPageFile="~/src/GUI/Master/MasterPage.master" AutoEventWireup="true"
-    CodeFile="ListarRequerimientos.aspx.cs"
-    Inherits="GUI_Modulo5_PrincipalProyecto" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Master/MasterPage.Master" AutoEventWireup="true" CodeBehind="Listar.aspx.cs" Inherits="Vista.Modulo5.Listar" %>
+<%@ MasterType  virtualPath="~/Master/MasterPage.master"%> 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
@@ -29,17 +27,17 @@
 			 Proyecto seleccionado
 		  </h3>
 	   </div>
-	   <div class="panel-body" style="width: auto">
-		  Nombre del proyecto:<br />
-		  Empresa cliente: <br />
-		  Estatus del proyecto: <br />
+	   <div class="panel-body" style="width: auto" id="infor">
+		  <asp:Label ID="infoproyect" runat="server">Nombre del proyecto:</asp:Label> <br />
+		  <asp:Label ID="infoclient" runat="server">Empresa cliente:</asp:Label> <br />
+		  <asp:Label ID="infostatus" runat="server">Estatus del proyecto:</asp:Label> <br />
 	   </div>
     </div>
     <h2 style="align-content:center">Requerimientos asociados</h2>
 
     <div class="table-responsive">
-    <% if ( ListaRequerimientos != null )
-	  {
+    <% //if ( ListaRequerimientos != null )
+	  //{
 		 %>
 	   <asp:Repeater ID="RRequerimientos" runat="server">
 		  <HeaderTemplate>
@@ -83,11 +81,11 @@
 			 </table>
 		  </FooterTemplate>
 	   </asp:Repeater>
-    <% }
+    <% /*}
 	  else
 	  {
 		 Response.Write("<p>" + MensajeEstado + "</p>");
-	  }
+	  }*/
 	  %>
     </div> <!-- .table-responsive -->
     
@@ -218,19 +216,18 @@
 	    });
 	</script>
     <script>
-            function fillCodigoTextField() {
-                var idTextField = document.getElementById("idreq_input");
-                var funcionalRadio = document.getElementById("input_tipo_funcional");
-                var nofuncionalRadio = document.getElementById("input_tipo_nofuncional");
+        function fillCodigoTextField() {
+            var idTextField = document.getElementById("idreq_input");
+            var funcionalRadio = document.getElementById("input_tipo_funcional");
+            var nofuncionalRadio = document.getElementById("input_tipo_nofuncional");
 
-                if (funcionalRadio.checked) {
-                    idTextField.value = "TOT_RF_5_1";
-                } else
-                    if (nofuncionalRadio.checked) {
-                        idTextField.value = "TOT_RNF_5_1";
-                    }
-            }
+            if (funcionalRadio.checked) {
+                idTextField.value = "TOT_RF_5_1";
+            } else
+                if (nofuncionalRadio.checked) {
+                    idTextField.value = "TOT_RNF_5_1";
+                }
+        }
     </script>
  
 </asp:Content>
-
