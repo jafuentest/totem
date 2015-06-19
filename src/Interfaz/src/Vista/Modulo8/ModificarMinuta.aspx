@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/src/GUI/Master/MasterPage.master" AutoEventWireup="true" CodeFile="ModificarMinuta.aspx.cs" Inherits="GUI_Modulo8_ModificarMinuta" %>
-<%@ MasterType TypeName="MasterPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/MasterPage.Master" AutoEventWireup="true" CodeFile="ModificarMinuta.aspx.cs" Inherits="Vista.Modulo8.ModificarMinuta" %>
+<%@ MasterType virtualPath="~/Master/MasterPage.master"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Minutas</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Modificar</asp:Content>
