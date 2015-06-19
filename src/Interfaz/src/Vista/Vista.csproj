@@ -124,6 +124,7 @@
     <Content Include="Modulo6\Modificar.aspx" />
     <Content Include="Modulo6\ReporteActores.aspx" />
     <Content Include="Modulo7\AgregarUsuario.aspx" />
+    <Content Include="Modulo7\ListarUsuarios.aspx" />
     <Content Include="Modulo8\ConsultarMinuta.aspx" />
     <Content Include="Modulo8\CrearMinuta.aspx" />
     <Content Include="Modulo8\css\bootstrap-datetimepicker.min.css" />
@@ -327,6 +328,13 @@
     </Compile>
     <Compile Include="Modulo7\AgregarUsuario.aspx.designer.cs">
       <DependentUpon>AgregarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo7\ListarUsuarios.aspx.cs">
+      <DependentUpon>ListarUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo7\ListarUsuarios.aspx.designer.cs">
+      <DependentUpon>ListarUsuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulo8\ConsultarMinuta.aspx.cs">
       <DependentUpon>ConsultarMinuta.aspx</DependentUpon>

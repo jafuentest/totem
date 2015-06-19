@@ -161,11 +161,37 @@ namespace Dominio.Fabrica
             return new Entidades.Modulo7.Usuario();
         }
 
+        /// <summary>
+        /// Metodo que permite instanciar a la clase usuario sin el ID de la base de Datos
+        /// </summary>
+        /// <param name="username">Username del usuario</param>
+        /// <param name="clave">Clave del usuario</param>
+        /// <param name="nombre">Nombre del usuario</param>
+        /// <param name="apellido">Apellido del usuario</param>
+        /// <param name="rol">Rol que ocupa</param>
+        /// <param name="correo">Correo del Usuario</param>
+        /// <param name="preguntaSeguridad">Pregunta de seguridad si olvida su clave</param>
+        /// <param name="respuestaSeguridad">Respuesta a la pregunta de seguridad</param>
+        /// <param name="cargo">Cargo que ocupa</param>
+        /// <returns>El usuario completo sin su ID de Base de Datos</returns>
         public static Entidad ObtenerUsuario(String username, String clave, String nombre, String apellido, 
             String rol, String correo, String preguntaSeguridad, String respuestaSeguridad, String cargo )
         {
             return new Entidades.Modulo7.Usuario(username, clave, nombre, apellido, rol, correo, preguntaSeguridad, 
                 respuestaSeguridad, cargo);
+        }
+
+        /// <summary>
+        /// Metodo que instancia el Usuario con sus datos basicos
+        /// </summary>
+        /// <param name="username">Username del usuario</param>
+        /// <param name="nombre">Nombre del usuario</param>
+        /// <param name="apellido">Apellido del usuario</param>
+        /// <param name="cargo">Cargo que ocupa</param>
+        /// <returns>El usuario con sus datos basicos</returns>
+        public static Entidad ObtenerUsuario(String username, String nombre, String apellido, String cargo)
+        {
+            return new Entidades.Modulo7.Usuario(username, nombre, apellido, cargo);
         }
         #endregion
 

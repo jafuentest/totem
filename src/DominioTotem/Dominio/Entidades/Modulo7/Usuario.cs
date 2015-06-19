@@ -35,16 +35,16 @@ namespace Dominio.Entidades.Modulo7
         /// <summary>
         /// Constructor de la clase Usuario que contiene el id de la Base de Datos
         /// </summary>
-        /// <param name="idUsuario"></param>
-        /// <param name="username"></param>
-        /// <param name="clave"></param>
-        /// <param name="nombre"></param>
-        /// <param name="apellido"></param>
-        /// <param name="rol"></param>
-        /// <param name="correo"></param>
-        /// <param name="preguntaSeguridad"></param>
-        /// <param name="respuestaSeguridad"></param>
-        /// <param name="cargo"></param>
+        /// <param name="idUsuario">su ID en la Base de Datos</param>
+        /// <param name="username">Username del usuario</param>
+        /// <param name="clave">Clave del usuario</param>
+        /// <param name="nombre">Nombre del usuario</param>
+        /// <param name="apellido">Apellido del usuario</param>
+        /// <param name="rol">Rol que ocupa</param>
+        /// <param name="correo">Correo del Usuario</param>
+        /// <param name="preguntaSeguridad">Pregunta de seguridad si olvida su clave</param>
+        /// <param name="respuestaSeguridad">Respuesta a la pregunta de seguridad</param>
+        /// <param name="cargo">Cargo que ocupa</param>
         public Usuario(int idUsuario, string username, string clave, string nombre, string apellido, string rol,
             string correo, string preguntaSeguridad, string respuestaSeguridad, string cargo):base(idUsuario)
         {
@@ -63,15 +63,15 @@ namespace Dominio.Entidades.Modulo7
         /// <summary>
         /// Constructor de la clase Usuario que no contiene el id de la Base de Datos
         /// </summary>
-        /// <param name="username"></param>
-        /// <param name="clave"></param>
-        /// <param name="nombre"></param>
-        /// <param name="apellido"></param>
-        /// <param name="rol"></param>
-        /// <param name="correo"></param>
-        /// <param name="preguntaSeguridad"></param>
-        /// <param name="respuestaSeguridad"></param>
-        /// <param name="cargo"></param>
+        /// <param name="username">Username del usuario</param>
+        /// <param name="clave">Clave del usuario</param>
+        /// <param name="nombre">Nombre del usuario</param>
+        /// <param name="apellido">Apellido del usuario</param>
+        /// <param name="rol">Rol que ocupa</param>
+        /// <param name="correo">Correo del Usuario</param>
+        /// <param name="preguntaSeguridad">Pregunta de seguridad si olvida su clave</param>
+        /// <param name="respuestaSeguridad">Respuesta a la pregunta de seguridad</param>
+        /// <param name="cargo">Cargo que ocupa</param>
         public Usuario(string username, string clave, string nombre, string apellido, string rol, string correo, 
             string preguntaSeguridad, string respuestaSeguridad, string cargo):base()
         {
@@ -84,6 +84,22 @@ namespace Dominio.Entidades.Modulo7
             this.preguntaSeguridad = preguntaSeguridad;
             this.respuestaSeguridad = respuestaSeguridad;
             this.cargo = cargo;
+        }
+
+        /// <summary>
+        /// Constructor de la clase Usuario que contiene su informacion basica
+        /// </summary>
+        /// <param name="username">Username del usuario</param>
+        /// <param name="nombre">Nombre del usuario</param>
+        /// <param name="apellido">Apellido del usuario</param>
+        /// <param name="cargo">Cargo que ocupa</param>
+        public Usuario(string username, string nombre, string apellido, string cargo):base()
+        {
+            this.username = username;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.cargo = cargo;
+            
         }
         #endregion
 

@@ -208,6 +208,11 @@ namespace Comandos.Fabrica
         {
             return new ComandoListarCargos();
         }
+
+        public static Comando<bool,List<Entidad>> CrearComandoListarUsuarios()
+        {
+            return new ComandoListarUsuarios();
+        }
         #endregion
 
         #region Modulo 8

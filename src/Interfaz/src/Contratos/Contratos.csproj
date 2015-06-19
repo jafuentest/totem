@@ -62,6 +62,7 @@
     <Compile Include="Modulo6\IContratoAgregarCasoDeUso.cs" />
     <Compile Include="Modulo6\IContratoReporteActores.cs" />
     <Compile Include="Modulo7\IContratoAgregarUsuario.cs" />
+    <Compile Include="Modulo7\IContratoListarUsuarios.cs" />
     <Compile Include="Modulo8\IContratoConsultarMinuta.cs" />
     <Compile Include="Modulo8\IContratoCrearMinuta.cs" />
     <Compile Include="Modulo8\IContratoDetalleMinutas.cs" />
