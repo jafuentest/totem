@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 namespace DAO.IntefazDAO.Modulo4
 {
     public interface IDaoProyecto : IDao<Dominio.Entidad, Boolean, Dominio.Entidad>
@@ -31,7 +32,7 @@ namespace DAO.IntefazDAO.Modulo4
         /// a modificar</param>
         /// <returns>True si el proyecto es modificado exitosamente</returns>
 
-        bool agregarProyecto(Dominio.Entidad proyecto);
+        bool modificarProyecto(Dominio.Entidad proyecto, String codigoAnterior);
         # endregion
 
         # region Firma consultarProyecto
@@ -73,7 +74,7 @@ namespace DAO.IntefazDAO.Modulo4
         /// <param name="codigo">Codigo del proyecto a consultar </param>
         /// <returns>Retorna el numero de requerimientos </returns>
 
-        int ContarRequerimientosProyecto(String codigo);
+        int contarRequerimientosProyecto(String codigo);
         # endregion
 
         # region Firma consultarRequerimientosFinalizadosPorProyecto
@@ -90,7 +91,7 @@ namespace DAO.IntefazDAO.Modulo4
         /// Método para consultar todos los clientes naturales
         /// </summary>
         /// <returns>Retorna todos los clientes naturales</returns>
-        System.Data.DataTable ConsultarTodoslosClienteNaturales();
+        System.Data.DataTable consultarTodoslosClienteNaturales();
         # endregion
 
         # region Firma obtenerIdClienteNatural
@@ -107,7 +108,8 @@ namespace DAO.IntefazDAO.Modulo4
         /// </summary>
         /// <param name="busqueda">Cadena para la busqueda</param>
         /// <returns>Retrorna los proyectos de relacionado con el parametro</returns>
-         System.Data.DataTable buscarProyectos(String busqueda, String username);
+        System.Data.DataTable buscarProyectos(String busqueda, String username);
+       
         # endregion
         
         # endregion

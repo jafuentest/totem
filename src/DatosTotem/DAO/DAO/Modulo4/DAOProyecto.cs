@@ -3,12 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Dominio.Entidades.Modulo4;
+
 namespace DAO.DAO.Modulo4
 {
     class DAOProyecto : DAO, IntefazDAO.Modulo4.IDaoProyecto
     {
 
-        #region de Metodos Proyecto
+        #region Metodos IDao
+
+        public Boolean Agregar(Dominio.Entidad parametro)
+        {
+            throw new NotImplementedException();
+        }
+        public Boolean Modificar(Dominio.Entidad parametro)
+        {
+            throw new NotImplementedException();
+        }
+        public Dominio.Entidad ConsultarXId(Dominio.Entidad parametro)
+        {
+            throw new NotImplementedException();
+        }
+        public List<Dominio.Entidad> ConsultarTodos()
+        {
+            throw new NotImplementedException();
+        } 
+
+        #endregion
+
+        #region Metodos IDaoProyecto
 
         # region agregarProyecto
         /// <summary>
@@ -19,54 +41,54 @@ namespace DAO.DAO.Modulo4
         /// a agregar</param>
         /// <returns>True si el proyecto es creado exitosamente</returns>
 
-        public bool AgregarProyecto(Proyecto proyecto)
-        {
-            //Si no existe el proyecto se agrega
-            if (!existeProyecto(proyecto.codigo))
-            {
-                try
-                {
-                    //parametros para insertar un proyecto
-                    List<Parametro> parametros = new List<Parametro>();
-                    Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, proyecto.Codigo, false);
-                    parametros.Add(parametro);
-                    parametro = new Parametro(RecursosBDModulo4.ParametroNombreProyecto, SqlDbType.VarChar, proyecto.Nombre, false);
-                    parametros.Add(parametro);
-                    parametro = new Parametro(RecursosBDModulo4.ParametroEstadoProyecto, SqlDbType.Bit, proyecto.Estado.ToString(), false);
-                    parametros.Add(parametro);
-                    parametro = new Parametro(RecursosBDModulo4.ParametroDescripcionProyecto, SqlDbType.VarChar, proyecto.Descripcion, false);
-                    parametros.Add(parametro);
-                    parametro = new Parametro(RecursosBDModulo4.ParametroCostoProyecto, SqlDbType.Int, proyecto.Costo.ToString(), false);
-                    parametros.Add(parametro);
-                    parametro = new Parametro(RecursosBDModulo4.ParametroMonedaProyecto, SqlDbType.VarChar, proyecto.Moneda, false);
-                    parametros.Add(parametro);
+        //public bool AgregarProyecto(Proyecto proyecto)
+        //{
+        //    //Si no existe el proyecto se agrega
+        //    if (!existeProyecto(proyecto.codigo))
+        //    {
+        //        try
+        //        {
+        //            //parametros para insertar un proyecto
+        //            List<Parametro> parametros = new List<Parametro>();
+        //            Parametro parametro = new Parametro(RecursosBDModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, proyecto.Codigo, false);
+        //            parametros.Add(parametro);
+        //            parametro = new Parametro(RecursosBDModulo4.ParametroNombreProyecto, SqlDbType.VarChar, proyecto.Nombre, false);
+        //            parametros.Add(parametro);
+        //            parametro = new Parametro(RecursosBDModulo4.ParametroEstadoProyecto, SqlDbType.Bit, proyecto.Estado.ToString(), false);
+        //            parametros.Add(parametro);
+        //            parametro = new Parametro(RecursosBDModulo4.ParametroDescripcionProyecto, SqlDbType.VarChar, proyecto.Descripcion, false);
+        //            parametros.Add(parametro);
+        //            parametro = new Parametro(RecursosBDModulo4.ParametroCostoProyecto, SqlDbType.Int, proyecto.Costo.ToString(), false);
+        //            parametros.Add(parametro);
+        //            parametro = new Parametro(RecursosBDModulo4.ParametroMonedaProyecto, SqlDbType.VarChar, proyecto.Moneda, false);
+        //            parametros.Add(parametro);
 
-                    BDConexion con = new BDConexion();
-                    List<Resultado> resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoAgregarProyecto, parametros);
+        //            BDConexion con = new BDConexion();
+        //            List<Resultado> resultados = con.EjecutarStoredProcedure(RecursosBDModulo4.ProcedimientoAgregarProyecto, parametros);
 
-                    //si la creacion es correcta retorna true
+        //            //si la creacion es correcta retorna true
 
-                    if (resultados != null)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        throw new NotImplementedException();
+        //            if (resultados != null)
+        //            {
+        //                return true;
+        //            }
+        //            else
+        //            {
+        //                throw new NotImplementedException();
 
-                    }
+        //            }
 
-                }
-                catch (NotImplementedException e)
-                {
-                    throw e;
-                }
-            }
-            else
-                //el codigo existe por lo tanto no se crea el proyecto
-                throw new ExcepcionesTotem.Modulo4.CodigoRepetidoException(RecursosBDModulo4.CodigoProyectoExiste,
-                           RecursosBDModulo4.MensajeCodigoProyectoExiste, new Exception());
-        }
+        //        }
+        //        catch (NotImplementedException e)
+        //        {
+        //            throw e;
+        //        }
+        //    }
+        //    else
+        //        //el codigo existe por lo tanto no se crea el proyecto
+        //        throw new ExcepcionesTotem.Modulo4.CodigoRepetidoException(RecursosBDModulo4.CodigoProyectoExiste,
+        //                   RecursosBDModulo4.MensajeCodigoProyectoExiste, new Exception());
+        //}
         # endregion
 
         # region modificarProyecto
@@ -80,7 +102,15 @@ namespace DAO.DAO.Modulo4
         /// a modificar</param>
         /// <returns>True si el proyecto es modificado exitosamente</returns>
 
-        bool agregarProyecto(Dominio.Entidad proyecto);
+
+        public bool agregarProyecto(Dominio.Entidad proyecto)
+        {
+            throw new NotImplementedException();
+        }
+        public bool modificarProyecto(Dominio.Entidad proyecto, String codigoAnterior)
+        {
+            throw new NotImplementedException();
+        }
         # endregion
 
         # region consultarProyecto
@@ -91,7 +121,10 @@ namespace DAO.DAO.Modulo4
         /// <param name="codigo"> codigo del proyecto a consultar</param>
         /// <returns>Entidad con la informacion del proyecto consultado</returns>
 
-        Dominio.Entidad consultarProyecto(String codigo);
+        public Dominio.Entidad consultarProyecto(String codigo)
+        {
+            throw new NotImplementedException();
+        }
         # endregion
 
         # region eliminarProyecto
@@ -102,7 +135,10 @@ namespace DAO.DAO.Modulo4
         /// <param name="codigo"> codigo del proyecto a eliminar</param>
         /// <returns>True si el proyecto fue eliminado excitosamente</returns>
 
-        bool eliminarProyecto(String codigo);
+        public bool eliminarProyecto(String codigo)
+        {
+            throw new NotImplementedException();
+        }
         # endregion
 
         # region existeProyecto
@@ -112,7 +148,10 @@ namespace DAO.DAO.Modulo4
         /// <param name="codigo">Codigo del proyecto a verificar</param>
         /// <returns>Retrorna true si existe o false si no existe</returns>
 
-        bool existeProyecto(String codigo);
+        public bool existeProyecto(String codigo)
+        {
+            throw new NotImplementedException();
+        }
         # endregion
 
         # region contarRequerimientos
@@ -122,7 +161,10 @@ namespace DAO.DAO.Modulo4
         /// <param name="codigo">Codigo del proyecto a consultar </param>
         /// <returns>Retorna el numero de requerimientos </returns>
 
-        int ContarRequerimientosProyecto(String codigo);
+        public int contarRequerimientosProyecto(String codigo)
+        {
+            throw new NotImplementedException();
+        }
         # endregion
 
         # region consultarRequerimientosFinalizadosPorProyecto
@@ -131,15 +173,21 @@ namespace DAO.DAO.Modulo4
         /// </summary>
         /// <param name="codigo">codigo del proyecto para buscar sus requerimientos </param>
         /// <returns>Retrorna los requerimientos finalizados</returns>
-        List<Dominio.Entidad> consultarRequerimientosFinalizadosPorProyecto(String codigo);
+        public List<Dominio.Entidad> consultarRequerimientosFinalizadosPorProyecto(String codigo)
+        {
+            throw new NotImplementedException();
+        }
         # endregion
 
-        # region ConsultarTodoslosClienteNaturales
+        # region consultarTodoslosClienteNaturales
         /// <summary>
         /// Método para consultar todos los clientes naturales
         /// </summary>
         /// <returns>Retorna todos los clientes naturales</returns>
-        System.Data.DataTable ConsultarTodoslosClienteNaturales();
+        public System.Data.DataTable consultarTodoslosClienteNaturales()
+        {
+            throw new NotImplementedException();
+        }
         # endregion
 
         # region obtenerIdClienteNatural
@@ -147,7 +195,10 @@ namespace DAO.DAO.Modulo4
         /// Método para consultar el id de un cliente naturale
         /// </summary>
         /// <returns>Retorna todos los clientes naturales</returns>
-        int obtenerIdClienteNatural(String cedula);
+        public int obtenerIdClienteNatural(String cedula)
+        {
+            throw new NotImplementedException();
+        }
         # endregion
 
         # region buscarProyectos
@@ -156,7 +207,10 @@ namespace DAO.DAO.Modulo4
         /// </summary>
         /// <param name="busqueda">Cadena para la busqueda</param>
         /// <returns>Retrorna los proyectos de relacionado con el parametro</returns>
-        System.Data.DataTable buscarProyectos(String busqueda, String username);
+        public System.Data.DataTable buscarProyectos(String busqueda, String username)
+        {
+            throw new NotImplementedException();
+        }
         # endregion
 
         # endregion
