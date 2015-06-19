@@ -7,6 +7,7 @@ using Dominio;
 using Comandos;
 using Comandos.Fabrica;
 using Dominio.Entidades.Modulo2;
+using Dominio.Fabrica;
 
 namespace Presentadores.Modulo2
 {
@@ -53,6 +54,43 @@ namespace Presentadores.Modulo2
             {
 
             }
+        }
+        public bool eliminarCliente(String idCliente)
+        {
+            Comando<Entidad, bool> comandoEliminarCliente =
+                FabricaComandos.CrearComandoEliminarClienteNatural();
+
+            FabricaEntidades laFabrica = new FabricaEntidades();
+            Entidad entidad = laFabrica.ObtenerClienteNatural();
+            entidad.Id = int.Parse(idCliente);
+
+            return comandoEliminarCliente.Ejecutar(entidad);
+
+        }
+
+        public bool desplegarModal(String eliminarCliente)
+        {
+            bool retorno = false;
+            FabricaEntidades laFabrica = new FabricaEntidades();
+            Comando<Entidad, Entidad> comandoConsultar =
+                FabricaComandos.CrearComandoConsultarXIDClienteNatural();
+
+            Entidad entidad = laFabrica.ObtenerClienteNatural();
+            entidad.Id = int.Parse(eliminarCliente);
+            try
+            {
+                ClienteNatural elCliente = (ClienteNatural)comandoConsultar.Ejecutar(entidad);
+                vista.cliente_cedula = elCliente.Nat_Cedula;
+                vista.cliente_nombreyap = elCliente.Nat_Nombre + " " + elCliente.Nat_Apellido;
+                if (elCliente != null)
+                    retorno = true;
+            }
+            catch (Exception ex)
+            {
+                retorno = false;
+            }
+
+            return retorno;
         }
     }
 }

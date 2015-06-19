@@ -19,7 +19,21 @@ namespace Vista.Modulo2
         {
             this.Master.idModulo = "2";
             this.Master.presentador.CargarMenuLateral();
-            presentador.consultarClientes();
+            if (!IsPostBack) 
+                presentador.consultarClientes();
+            String exitoEliminacion = Request.QueryString["success-eliminacion"];
+            String eliminarCliente = Request.QueryString["clienteaeliminar"];
+            if (eliminarCliente != null)
+                if (presentador.desplegarModal(eliminarCliente))
+                    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "modal-delete", "$('#modal-delete').modal();", true);
+
+            if (eliminarCliente == "true")
+            {
+                this.alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                this.alert.Attributes["role"] = "alert";
+                this.alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Se elimino correctamente</div>";
+                this.alert.Visible = true;
+            }
         }
         #region Contrato
         string Contratos.Modulo2.IContratoListarClientes.laTabla
@@ -58,5 +72,12 @@ namespace Vista.Modulo2
             }
         }
         #endregion
+
+        protected void EliminarClienteNat(object sender, EventArgs e)
+        {
+            String eliminarCliente = Request.QueryString["clienteaeliminar"];
+            if (presentador.eliminarCliente(eliminarCliente))
+                Response.Redirect("../Modulo2/ListarClientes.aspx?success-eliminacion=true");
+        }
     }
 }

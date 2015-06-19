@@ -1470,14 +1470,14 @@ as
 go
 --------------------PROCEDURE MODIFICAR CLIENTE_NATURAL--------------
 create procedure M2_ModificarClienteNat
-	@cn_id		  [int],
+	@idClienteNat		  [int],
     @cn_cedula    [VARCHAR] (20),
     @cn_nombre    [VARCHAR] (60),
     @cn_apellido  [VARCHAR] (60),
     @cn_correo    [VARCHAR] (60),
 	---direccion del cliente natural
     @direccion	  [VARCHAR] (100),
-	@cod_postal	  [int],
+	@codigo_postal	  [int],
 	---telefono del cliente natural
 	@codigo_tel [VARCHAR](5) ,
 	@numero_tel [VARCHAR] (20)
@@ -1488,30 +1488,28 @@ as
 		select @num_direccion = count(*)
 		from LUGAR where lug_nombre = @direccion and lug_tipo = 'Direccion';
 
-		if (@direccion != (select lug_nombre from LUGAR where lug_id = (select LUGAR_lug_id from CLIENTE_NATURAL where cn_id = @cn_id)))
-			update LUGAR
-			set lug_nombre = @direccion,
-				lug_codigopostal = @cod_postal
-			where lug_id = (select LUGAR_lug_id from CLIENTE_NATURAL where cn_id = @cn_id);
-
+		update LUGAR
+		set lug_nombre = @direccion,
+			lug_codigopostal = @codigo_postal
+		where lug_id = (select LUGAR_lug_id from CLIENTE_NATURAL where cn_id = @idClienteNat);
 
 		update CLIENTE_NATURAL
 		set cn_cedula = @cn_cedula,
 			cn_nombre = @cn_nombre,
 			cn_apellido = @cn_apellido,
 			cn_correo = @cn_correo
-		where cn_id = @cn_id;
+		where cn_id = @idClienteNat;
 
 		update CONTACTO
 		set con_cedula = @cn_cedula,
 			con_nombre = @cn_nombre,
 			con_apellido = @cn_apellido
-		where con_id = @cn_id;
+		where con_id = @idClienteNat;
 		
 		update TELEFONO
 		set tel_codigo = @codigo_tel,
 			tel_numero = @numero_tel
-		where CLIENTE_NATURAL_cn_id = (select cn_id from CLIENTE_NATURAL where cn_id = @cn_id);
+		where CLIENTE_NATURAL_cn_id = (select cn_id from CLIENTE_NATURAL where cn_id = @idClienteNat);
 	end;
 go
 --------------------PROCEDURE CONSULTAR LISTA CLIENTE_NATURAL--------------
@@ -1560,10 +1558,6 @@ create procedure M2_EliminarClienteNat
 	@idClienteNat [int]
 as
 	begin
-		delete 
-		from LUGAR
-		where lug_id = (select LUGAR_lug_id from CLIENTE_NATURAL where cn_id = @idClienteNat);
-
 		delete 
 		from TELEFONO
 		where CLIENTE_NATURAL_cn_id = @idClienteNat;

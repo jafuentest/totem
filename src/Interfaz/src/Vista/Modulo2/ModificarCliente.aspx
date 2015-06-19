@@ -44,15 +44,16 @@
 
                  <h2>Datos De Localización</h2>
 
-                <div class="form-group">
+                    <div class="form-group">
                             <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="dropdown" runat="server" id="contenedorComboPais">
                                 <asp:DropDownList ID="comboPais"  class="btn btn-default dropdown-toggle" runat="server"  AutoPostBack="true"></asp:DropDownList>
                                 </div>
                             </div>
-
+                            
                             <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="dropdown" runat="server" id="contenedorComboEstado">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <asp:DropDownList ID="comboEstado"  class="btn btn-default dropdown-toggle" runat="server" AutoPostBack="true"></asp:DropDownList>
                                 </div>
                             </div>
@@ -94,7 +95,7 @@
      
                 <div class="form-group">
                     <div id="div_botones" class="col-sm-12 col-md-12 col-lg-12">
-                        <asp:Button id="botonEditar" runat="server" class="btn btn-primary" OnClick="EditarCliente_Click" type="submit" Text="Editar"></asp:Button>
+                        <asp:Button id="botonEditar" runat="server" class="btn btn-primary" onclick="EditarCliente_Click" type="submit" Text="Editar"></asp:Button>
                         <a class="btn btn-default" href="ListarClientes.aspx">Cancelar</a>
                     </div>
                 </div>

@@ -17,8 +17,16 @@ namespace Vista.Modulo2
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.Master.idModulo = "2";
-            this.Master.presentador.CargarMenuLateral();
+            if (!IsPostBack)
+            {
+                this.Master.idModulo = "2";
+                this.Master.presentador.CargarMenuLateral();
+                String edicionCliente = Request.QueryString["id"];
+
+                presentador.cargarCliente(edicionCliente);
+                presentador.llenarComboPais();
+            }
+
         }
         #region Contrato
         string Contratos.Modulo2.IContratoModificarCliente.nombreCliente
@@ -65,7 +73,7 @@ namespace Vista.Modulo2
             }
             set
             {
-                comboPais= value;
+                comboPais = value;
             }
         }
 
@@ -154,9 +162,22 @@ namespace Vista.Modulo2
         }
         #endregion
 
+        protected void comboPais_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            presentador.llenarComboEstadosXPais(comboPais.SelectedValue);
+        }
+
+        protected void comboEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            presentador.llenarComboCiudadXEstado(comboEstado.SelectedValue);
+        }
+
         protected void EditarCliente_Click(object sender, EventArgs e)
         {
 
+            String edicionCliente = Request.QueryString["id"];
+            if (presentador.modificarCliente(edicionCliente))
+                Response.Redirect("../Modulo2/ListarClientes.aspx?success-eliminacion=true");
         }
     }
 }

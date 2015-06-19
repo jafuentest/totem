@@ -22,7 +22,9 @@
     Listar Clientes Naturales 
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
-
+    <form runat="server" class="form-horizontal" method="POST">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
     <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
         <div id="alert" runat="server">
         </div>
@@ -60,14 +62,14 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                            <button id="btn-eliminar" type="button" class="btn btn-primary" onclick="EliminarUsuario()">Eliminar</button>
+                            <button id="btnEliminar" runat="server" type="button" class="btn btn-primary" onserverclick = "EliminarClienteNat">Eliminar</button>
                         </div>
                     </div> <!-- /.modal-content -->
                 </div> <!-- /.modal-dialog -->
             </div> <!-- /.modal -->
         </div> <!-- /.table-responsive -->
     </div> <!-- /.col-10 -->
-
+        </form>
     <!-- Data tables init -->
     <script type="text/javascript">
         $(document).ready(function () {

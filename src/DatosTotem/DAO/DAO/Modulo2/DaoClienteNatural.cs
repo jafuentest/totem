@@ -67,45 +67,37 @@ namespace DAO.DAO.Modulo2
         public bool Modificar(Entidad parametro)
         {
             ClienteNatural elCliente = (ClienteNatural)parametro;
-            #region Llenado de parametros
-            List<Parametro> parametros = new List<Parametro>();
 
-            Parametro elParametro = new Parametro(RecursoBDModulo2.ParamIDClienteNat, SqlDbType.VarChar,
+            #region Llenado de arreglo de parametros
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro elParametro = new Parametro(RecursoBDModulo2.ParamIDClienteNat, SqlDbType.Int,
                 elCliente.Id.ToString(), false);
             parametros.Add(elParametro);
-
             elParametro = new Parametro(RecursoBDModulo2.ParamCedulaClienteNat, SqlDbType.VarChar,
-                 elCliente.Nat_Cedula, false);
+                elCliente.Nat_Cedula, false);
             parametros.Add(elParametro);
-
             elParametro = new Parametro(RecursoBDModulo2.ParamNombreClienteNat, SqlDbType.VarChar,
                 elCliente.Nat_Nombre, false);
             parametros.Add(elParametro);
-
             elParametro = new Parametro(RecursoBDModulo2.ParamApellidoClienteNat, SqlDbType.VarChar,
                 elCliente.Nat_Apellido, false);
             parametros.Add(elParametro);
-
+            elParametro = new Parametro(RecursoBDModulo2.ParamCorreoClienteNat, SqlDbType.VarChar,
+                elCliente.Nat_Correo, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamCodigoTelef, SqlDbType.VarChar,
+                elCliente.Nat_Telefono.Codigo, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamNumeroTelef, SqlDbType.VarChar,
+                elCliente.Nat_Telefono.Numero, false);
+            parametros.Add(elParametro);
+            
             elParametro = new Parametro(RecursoBDModulo2.ParamDireccion, SqlDbType.VarChar,
                 elCliente.Nat_Direccion.LaDireccion, false);
             parametros.Add(elParametro);
-
             elParametro = new Parametro(RecursoBDModulo2.ParamCodigoPostal, SqlDbType.Int,
                 elCliente.Nat_Direccion.CodigoPostal, false);
             parametros.Add(elParametro);
-
-            elParametro = new Parametro(RecursoBDModulo2.ParamCorreoClienteNat, SqlDbType.Int,
-                elCliente.Nat_Correo, false);
-            parametros.Add(elParametro);
-
-            elParametro = new Parametro(RecursoBDModulo2.ParamCodigoTelef, SqlDbType.Int,
-                elCliente.Nat_Telefono.Codigo, false);
-            parametros.Add(elParametro);
-
-            elParametro = new Parametro(RecursoBDModulo2.ParamNumeroTelef, SqlDbType.Int,
-                elCliente.Nat_Telefono.Numero, false);
-            parametros.Add(elParametro);
-
             #endregion
             try
             {
@@ -217,7 +209,7 @@ namespace DAO.DAO.Modulo2
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
             List<Parametro> parametros = new List<Parametro>();
-            Parametro parametroStored = new Parametro(RecursoBDModulo2.EliminarContacto, SqlDbType.Int,
+            Parametro parametroStored = new Parametro(RecursoBDModulo2.ParamIDClienteNat, SqlDbType.Int,
                parametro.Id.ToString(), false);
             parametros.Add(parametroStored);
             try
