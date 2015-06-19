@@ -1,4 +1,4 @@
-CREATE PROCEDURE VALIDARLOGIN 
+CREATE PROCEDURE validar_login
 	@Username varchar(60),
 	@Clave varchar(MAX),
 	@Usu_nombre varchar(60) OUTPUT,
@@ -8,14 +8,14 @@ CREATE PROCEDURE VALIDARLOGIN
 	@Usu_cargo varchar(60) OUTPUT
 	 AS
 
-	Select 	@Usu_nombre = Usu_nombre, @Usu_apellido = Usu_apellido , @Usu_rol = Usu_rol, @Usu_correo = Usu_correo, @Usu_cargo = car_nombre
-	from Usuario, cargo
+	Select 	@Usu_nombre = usu_nombre, @Usu_apellido = usu_apellido , @Usu_rol = usu_rol, @Usu_correo = usu_correo, @Usu_cargo = car_nombre
+	from USUARIO, CARGO
 	where usu_username = @Username and usu_clave = @Clave and CARGO_car_id = car_id;
 
 	RETURN
 	GO
 
-CREATE PROCEDURE OBTENER_PREGUNTA_SEGURIDAD
+CREATE PROCEDURE obtener_pregunta_seguridad
 	@Correo varchar(60),
 	@Usu_pregseguridad varchar(60) OUTPUT
 	AS
@@ -27,7 +27,7 @@ CREATE PROCEDURE OBTENER_PREGUNTA_SEGURIDAD
 	RETURN
 	GO
 
-CREATE PROCEDURE VALIDAR_PREGUNTA_SEGURIDAD
+CREATE PROCEDURE validar_pregunta_seguridad
 	@Correo varchar(60),
 	@Usu_respseguridad varchar(100) OUTPUT
 	AS
@@ -39,7 +39,7 @@ CREATE PROCEDURE VALIDAR_PREGUNTA_SEGURIDAD
 	RETURN
 	GO
 
-CREATE PROCEDURE VALIDAR_CORREO
+CREATE PROCEDURE validar_correo
 	@Correo varchar(60),
 	@usu_correo varchar(60) OUTPUT
 	AS
@@ -51,7 +51,7 @@ CREATE PROCEDURE VALIDAR_CORREO
 	RETURN
 	GO
 
-CREATE PROCEDURE CAMBIAR_CLAVE
+CREATE PROCEDURE cambiar_clave
 	@Correo varchar(60),
 	@Clave varchar(MAX)
 	AS

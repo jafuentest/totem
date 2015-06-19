@@ -69,12 +69,12 @@ namespace Presentadores
 
             else
             {
-                if ((!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/M1_login.aspx")) &&
+                if ((!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/Login.aspx")) &&
                    (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/M1_IntroducirCorreo.aspx")) &&
                    (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/M1_PreguntaSeguridad.aspx")) &&
                    (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/M1_RecuperacionClave.aspx")))
                 {
-                    HttpContext.Current.Response.Redirect("~/Modulo1/M1_login.aspx");
+                    HttpContext.Current.Response.Redirect("../Modulo1/Login.aspx");
                 }
             }
         }
@@ -99,5 +99,13 @@ namespace Presentadores
                 vista.perfilProyecto = "<a runat='server' href='PerfilProyecto.aspx?'>Detalle de Proyecto</a>";
             }
         }
+
+
+        public void ManejarEventoSalir_Click()
+        {
+            HttpContext.Current.Session.Abandon();
+            HttpContext.Current.Response.Redirect("../Modulo1/Login.aspx");
+        }
+
     }
 }

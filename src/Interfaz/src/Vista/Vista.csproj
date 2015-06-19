@@ -99,6 +99,8 @@
     <Content Include="img\Icons\modulo7.png" />
     <Content Include="img\Icons\modulo8.png" />
     <Content Include="Master\menuLateral.xml" />
+    <Content Include="Modulo1\Default.aspx" />
+    <Content Include="Modulo1\Login.aspx" />
     <Content Include="Modulo2\AgregarCliente.aspx" />
     <Content Include="Modulo2\AgregarEmpresa.aspx" />
     <Content Include="Modulo2\DetallarCliente.aspx" />
@@ -131,6 +133,20 @@
     </Compile>
     <Compile Include="Master\MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo1\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo1\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo1\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo1\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulo2\AgregarCliente.aspx.cs">
       <DependentUpon>AgregarCliente.aspx</DependentUpon>
@@ -314,7 +330,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Modulo1\" />
     <Folder Include="Modulo4\" />
     <Folder Include="Modulo8\" />
   </ItemGroup>

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IContratoMasterPage.cs" />
+    <Compile Include="Modulo1\IContratoLogin.cs" />
     <Compile Include="Modulo2\IContratoAgregarCliente.cs" />
     <Compile Include="Modulo2\IContratoAgregarEmpresa.cs" />
     <Compile Include="Modulo2\IContratoDetallarCliente.cs" />
@@ -64,7 +65,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Modulo1\" />
     <Folder Include="Modulo4\" />
     <Folder Include="Modulo8\" />
   </ItemGroup>

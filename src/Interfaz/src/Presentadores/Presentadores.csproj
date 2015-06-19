@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modulo1\PresentadorLogin.cs" />
     <Compile Include="Modulo2\PresentadorAgregarCliente.cs" />
     <Compile Include="Modulo2\PresentadorAgregarEmpresa.cs" />
     <Compile Include="Modulo2\PresentadorDetallarCliente.cs" />
@@ -78,7 +79,6 @@
     <Compile Include="Validaciones.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Modulo1\" />
     <Folder Include="Modulo4\" />
     <Folder Include="Modulo8\" />
   </ItemGroup>
