@@ -76,6 +76,7 @@
       <DependentUpon>RecursosBaseDeDatosModulo7.resx</DependentUpon>
     </Compile>
     <Compile Include="DAO\Modulo8\DaoAcuerdo.cs" />
+    <Compile Include="DAO\Modulo8\DaoInvolucradosMinuta.cs" />
     <Compile Include="DAO\Modulo8\DaoMinuta.cs" />
     <Compile Include="DAO\Modulo8\DaoPunto.cs" />
     <Compile Include="DAO\Modulo8\RecursosBDModulo8.Designer.cs">
@@ -102,6 +103,7 @@
     <Compile Include="IntefazDAO\Modulo6\IDaoCasoDeUso.cs" />
     <Compile Include="IntefazDAO\Modulo7\IDaoUsuario.cs" />
     <Compile Include="IntefazDAO\Modulo8\IDaoAcuerdo.cs" />
+    <Compile Include="IntefazDAO\Modulo8\IDaoInvolucradosMinuta.cs" />
     <Compile Include="IntefazDAO\Modulo8\IDaoMinuta.cs" />
     <Compile Include="IntefazDAO\Modulo8\IDaoPunto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

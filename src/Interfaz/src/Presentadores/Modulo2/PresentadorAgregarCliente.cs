@@ -124,11 +124,12 @@ namespace Presentadores.Modulo2
             List<String> alfabeticos = new List<String>();
             List<String> alfanumericos = new List<String>();
             List<String> numericos = new List<String>();
+            List<String> correo = new List<String>();
 
             alfabeticos.Add(vista.apellidoNatural);
             alfabeticos.Add(vista.nombreNatural);
 
-            alfanumericos.Add(vista.correoCliente);
+            correo.Add(vista.correoCliente);
             alfanumericos.Add(vista.direccionCliente);
 
             numericos.Add(vista.cedulaNatural);
@@ -136,14 +137,16 @@ namespace Presentadores.Modulo2
             numericos.Add(vista.codTelefono);
             numericos.Add(vista.telefonoCliente);
             Regex expresion = new Regex(@"[0-9]{1,9}(\.[0-9]{0,2})?$");
-            Regex expresion2 = new Regex(@"^.*(?=.*[0-9])(?=.*[a-zA-ZñÑ\s]).*$");
+            Regex expresion2 = new Regex(@"\d{1,5}\s\w.\s(\b\w*\b\s){1,2}\w*\.");
+            Regex expresion3 = new Regex(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z");
 
-            if (Validaciones.ValidarCamposVacios(alfabeticos) || Validaciones.ValidarCamposVacios(alfabeticos) ||
-                Validaciones.ValidarCamposVacios(numericos))
+
+            if (Validaciones.ValidarCamposVacios(alfabeticos) && Validaciones.ValidarCamposVacios(alfabeticos) &&
+                Validaciones.ValidarCamposVacios(numericos) && Validaciones.ValidarCamposVacios(correo)) 
             {
                 if (Validaciones.ValidarCaracteresAlfabeticos(alfabeticos))
                 {
-                    if (Validaciones.ValidarExpresionRegular(alfanumericos, expresion2))
+                    if (Validaciones.ValidarExpresionRegular(correo, expresion3))
                     {
                         if (Validaciones.ValidarExpresionRegular(numericos, expresion))
                         {

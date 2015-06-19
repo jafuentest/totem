@@ -9,15 +9,16 @@ namespace ExcepcionesTotem.Modulo4
     {
         public CrearArchivoException()
             : base()
-        { }
-
+        {
+	   }
         public CrearArchivoException(string message)
             : base(message)
-        { }
-
+        {
+	   }
         public CrearArchivoException(string message, Exception inner)
             : base(message, inner)
-        { }
+        {
+	   }
         public CrearArchivoException(string codigo, string message, Exception inner)
             : base(codigo, message, inner)
         {

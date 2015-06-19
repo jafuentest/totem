@@ -79,6 +79,8 @@
       <DependentUpon>RecursosComandosModulo6.resx</DependentUpon>
     </Compile>
     <Compile Include="Comandos\Modulo7\ComandoAgregarUsuario.cs" />
+    <Compile Include="Comandos\Modulo7\ComandoListarCargos.cs" />
+    <Compile Include="Comandos\Modulo7\ComandoListarUsuarios.cs" />
     <Compile Include="Comandos\Modulo7\ComandoValidarCorreoUnico.cs" />
     <Compile Include="Comandos\Modulo7\ComandoValidarUsernameUnico.cs" />
     <Compile Include="Fabrica\FabricaComandos.cs" />

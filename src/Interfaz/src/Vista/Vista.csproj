@@ -99,6 +99,8 @@
     <Content Include="img\Icons\modulo7.png" />
     <Content Include="img\Icons\modulo8.png" />
     <Content Include="Master\menuLateral.xml" />
+    <Content Include="Modulo1\Default.aspx" />
+    <Content Include="Modulo1\Login.aspx" />
     <Content Include="Modulo2\AgregarCliente.aspx" />
     <Content Include="Modulo2\AgregarEmpresa.aspx" />
     <Content Include="Modulo2\DetallarCliente.aspx" />
@@ -112,9 +114,9 @@
     <Content Include="Modulo3\AgregarInvolucrados.aspx" />
     <Content Include="Modulo3\ListarPersonalInvolucrado.aspx" />
     <Content Include="Modulo5\AgregarRequerimiento.aspx" />
-    <Content Include="Modulo5\Listar.aspx" />
+    <Content Include="Modulo5\ListarRequerimientos.aspx" />
     <Content Include="Modulo5\ModificarRequerimiento.aspx" />
-    <Content Include="Modulo5\Reportes.aspx" />
+    <Content Include="Modulo5\ReporteRequerimientos.aspx" />
     <Content Include="Modulo6\Crear.aspx" />
     <Content Include="Modulo6\CrearActor.aspx" />
     <Content Include="Modulo6\Listar.aspx" />
@@ -122,6 +124,26 @@
     <Content Include="Modulo6\Modificar.aspx" />
     <Content Include="Modulo6\ReporteActores.aspx" />
     <Content Include="Modulo7\AgregarUsuario.aspx" />
+    <Content Include="Modulo7\ListarUsuarios.aspx" />
+    <Content Include="Modulo8\ConsultarMinuta.aspx" />
+    <Content Include="Modulo8\CrearMinuta.aspx" />
+    <Content Include="Modulo8\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Modulo8\css\bootstrap-multiselect.css" />
+    <Content Include="Modulo8\css\jquery.datetimepicker.css" />
+    <Content Include="Modulo8\css\Minutas.css" />
+    <Content Include="Modulo8\DetalleMinutas.aspx" />
+    <Content Include="Modulo8\img\user.png" />
+    <Content Include="Modulo8\js\bootstrap-datetimepicker.js" />
+    <Content Include="Modulo8\js\bootstrap-multiselect.js" />
+    <Content Include="Modulo8\js\consultarMinuta.js" />
+    <Content Include="Modulo8\js\crearMinuta.js" />
+    <Content Include="Modulo8\js\detalleMinuta.js" />
+    <Content Include="Modulo8\js\modificarMinuta.js" />
+    <Content Include="Modulo8\js\moment-with-locales.min.js" />
+    <Content Include="Modulo8\js\validacionesCrearMinuta.js" />
+    <Content Include="Modulo8\js\validacionesGuardarMinuta.js" />
+    <Content Include="Modulo8\ModificarMinuta.aspx" />
+    <Content Include="Modulo8\validaciones\Validacion.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +153,20 @@
     </Compile>
     <Compile Include="Master\MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo1\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo1\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo1\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo1\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulo2\AgregarCliente.aspx.cs">
       <DependentUpon>AgregarCliente.aspx</DependentUpon>
@@ -223,12 +259,12 @@
     <Compile Include="Modulo5\AgregarRequerimiento.aspx.designer.cs">
       <DependentUpon>AgregarRequerimiento.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Modulo5\Listar.aspx.cs">
-      <DependentUpon>Listar.aspx</DependentUpon>
+    <Compile Include="Modulo5\ListarRequerimientos.aspx.cs">
+      <DependentUpon>ListarRequerimientos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Modulo5\Listar.aspx.designer.cs">
-      <DependentUpon>Listar.aspx</DependentUpon>
+    <Compile Include="Modulo5\ListarRequerimientos.aspx.designer.cs">
+      <DependentUpon>ListarRequerimientos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulo5\ModificarRequerimiento.aspx.cs">
       <DependentUpon>ModificarRequerimiento.aspx</DependentUpon>
@@ -237,12 +273,12 @@
     <Compile Include="Modulo5\ModificarRequerimiento.aspx.designer.cs">
       <DependentUpon>ModificarRequerimiento.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Modulo5\Reportes.aspx.cs">
-      <DependentUpon>Reportes.aspx</DependentUpon>
+    <Compile Include="Modulo5\ReporteRequerimientos.aspx.cs">
+      <DependentUpon>ReporteRequerimientos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Modulo5\Reportes.aspx.designer.cs">
-      <DependentUpon>Reportes.aspx</DependentUpon>
+    <Compile Include="Modulo5\ReporteRequerimientos.aspx.designer.cs">
+      <DependentUpon>ReporteRequerimientos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulo6\Crear.aspx.cs">
       <DependentUpon>Crear.aspx</DependentUpon>
@@ -293,6 +329,41 @@
     <Compile Include="Modulo7\AgregarUsuario.aspx.designer.cs">
       <DependentUpon>AgregarUsuario.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modulo7\ListarUsuarios.aspx.cs">
+      <DependentUpon>ListarUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo7\ListarUsuarios.aspx.designer.cs">
+      <DependentUpon>ListarUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo8\ConsultarMinuta.aspx.cs">
+      <DependentUpon>ConsultarMinuta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo8\ConsultarMinuta.aspx.designer.cs">
+      <DependentUpon>ConsultarMinuta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo8\CrearMinuta.aspx.cs">
+      <DependentUpon>CrearMinuta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo8\CrearMinuta.aspx.designer.cs">
+      <DependentUpon>CrearMinuta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo8\DetalleMinutas.aspx.cs">
+      <DependentUpon>DetalleMinutas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo8\DetalleMinutas.aspx.designer.cs">
+      <DependentUpon>DetalleMinutas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo8\ModificarMinuta.aspx.cs">
+      <DependentUpon>ModificarMinuta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo8\ModificarMinuta.aspx.designer.cs">
+      <DependentUpon>ModificarMinuta.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -314,9 +385,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Modulo1\" />
     <Folder Include="Modulo4\" />
-    <Folder Include="Modulo8\" />
+    <Folder Include="Modulo8\docs\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\DominioTotem\DominioTotem.csproj">

@@ -7,23 +7,18 @@ using System.Web.UI.WebControls;
 
 namespace Vista.Modulo5
 {
-    public partial class Listar : System.Web.UI.Page,Contratos.Modulo5.IContratoListar
+    public partial class ListarRequerimientos : System.Web.UI.Page,Contratos.Modulo5.IContratoListarRequerimientos
     {
-        private Presentadores.Modulo5.PresentadorListar presentador;
+        private Presentadores.Modulo5.PresentadorListarRequerimientos presentador;
 
-        public Listar()
+        public ListarRequerimientos()
         {
-            this.presentador = new Presentadores.Modulo5.PresentadorListar(this);
+            this.presentador = new Presentadores.Modulo5.PresentadorListarRequerimientos(this);
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Master.idModulo = "5";
             this.Master.presentador.CargarMenuLateral();
-            Dominio.Entidades.Modulo7.Usuario login = HttpContext.Current.Session["Credenciales"] as Dominio.Entidades.Modulo7.Usuario;
-            if (login == null)
-            {
-                Response.Redirect(" ~/src/Interfaz/Vista/Modulo1/M1_Login.aspx");
-            }
         }
 
 

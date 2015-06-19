@@ -2,9 +2,8 @@
 -- Agregar requerimiento
 -- ========================================================================= --
 
-CREATE PROCEDURE Procedure_AgregarRequerimiento
+CREATE PROCEDURE M5_AgregarRequerimiento
 
-	@req_id				[int],
 	@req_codigo			[varchar] (15),
 	@req_descripcion	[varchar] (500),
 	@req_tipo			[varchar] (25),
@@ -148,3 +147,19 @@ AS
 				and LOWER(R.req_prioridad) = LOWER(@req_prioridad) )
 	END
 GO
+
+-- ========================================================================= --
+-- Obtener id del proyecto dado el codigo de requerimiento
+-- ========================================================================= --
+
+CREATE PROCEDURE M5_RetornarIdPorCodigoRequerimiento
+  @req_codigo varchar (25),
+  @pro_id int OUTPUT
+
+  As
+    BEGIN
+      SELECT DISTINCT @pro_id = PROYECTO_pro_id
+      FROM Requerimiento
+      WHERE req_codigo = @req_codigo
+    END
+  GO

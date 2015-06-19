@@ -67,9 +67,13 @@ namespace Vista.Modulo5
         {
             this.Master.idModulo = "5";
             this.Master.presentador.CargarMenuLateral();
-            Dominio.Entidades.Modulo7.Usuario login = HttpContext.Current.Session["Credenciales"] as Dominio.Entidades.Modulo7.Usuario;
+            presentador.ObtenerUsuarioLogeado();
 
+        }
 
+        protected void AgregarRequerimiento_Click(object sender, EventArgs e)
+        {
+            presentador.AgregarRequerimiento();
         }
     }
 }

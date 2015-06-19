@@ -61,29 +61,56 @@ namespace Presentadores.Modulo2 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;a class=&quot;btn btn-primary glyphicon glyphicon-info-sign&quot; href=&quot;DetallarCliente.aspx?detalle=.
+        /// </summary>
+        public static string AbrirBotonDetalleCliente {
+            get {
+                return ResourceManager.GetString("AbrirBotonDetalleCliente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;a class=&quot;btn btn-primary glyphicon glyphicon-info-sign&quot; href=&quot;DetallarEmpresa.aspx?detalle=.
         /// </summary>
-        public static string AbrirBotonDetalle {
+        public static string AbrirBotonDetalleEmpresa {
             get {
-                return ResourceManager.GetString("AbrirBotonDetalle", resourceCulture);
+                return ResourceManager.GetString("AbrirBotonDetalleEmpresa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;a class=&quot;btn btn-danger glyphicon glyphicon-remove-sign&quot; href=&quot;ListarClientes.aspx?clienteaeliminar=.
+        /// </summary>
+        public static string AbrirBotonEliminarCliente {
+            get {
+                return ResourceManager.GetString("AbrirBotonEliminarCliente", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;a class=&quot;btn btn-danger glyphicon glyphicon-remove-sign&quot; href=&quot;ListarEmpresas.aspx?empresaaeliminar=.
         /// </summary>
-        public static string AbrirBotonEliminar {
+        public static string AbrirBotonEliminarEmpresa {
             get {
-                return ResourceManager.GetString("AbrirBotonEliminar", resourceCulture);
+                return ResourceManager.GetString("AbrirBotonEliminarEmpresa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;a class=&quot;btn btn-default glyphicon glyphicon-pencil&quot; href=&quot;ModificarCliente.aspx?id=.
+        /// </summary>
+        public static string AbrirBotonModificarCliente {
+            get {
+                return ResourceManager.GetString("AbrirBotonModificarCliente", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;a class=&quot;btn btn-default glyphicon glyphicon-pencil&quot; href=&quot;ModificarEmpresa.aspx?id=.
         /// </summary>
-        public static string AbrirBotonModificar {
+        public static string AbrirBotonModificarEmpresa {
             get {
-                return ResourceManager.GetString("AbrirBotonModificar", resourceCulture);
+                return ResourceManager.GetString("AbrirBotonModificarEmpresa", resourceCulture);
             }
         }
         

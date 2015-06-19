@@ -185,7 +185,7 @@ namespace Comandos.Fabrica
         /// <summary>
         /// Metodo que Instancia el comando de validar Username Unico
         /// </summary>
-        /// <returns></returns>
+        /// <returns>El comando validar Username unico</returns>
         public static Comando<String,bool> CrearComandoValidarUsernameUnico()
         {
             return new ComandoValidarUsernameUnico();
@@ -194,10 +194,24 @@ namespace Comandos.Fabrica
         /// <summary>
         /// Metodo que instancia el comando de validar Correo unico
         /// </summary>
-        /// <returns></returns>
+        /// <returns>El comando validar Correo Unico</returns>
         public static Comando<String, bool> CrearComandoValidarCorreoUnico()
         {
             return new ComandoValidarCorreoUnico();
+        }
+
+        /// <summary>
+        /// Metodo que instancia el comando de Listar los cargos
+        /// </summary>
+        /// <returns>El comando Listar Combo cargos</returns>
+        public static Comando <bool,List<String>> CrearComandoListarCargos()
+        {
+            return new ComandoListarCargos();
+        }
+
+        public static Comando<bool,List<Entidad>> CrearComandoListarUsuarios()
+        {
+            return new ComandoListarUsuarios();
         }
         #endregion
 

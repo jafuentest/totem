@@ -56,10 +56,14 @@ namespace Vista.Master
         protected void Page_Load(object sender, EventArgs e)
         {
             //presentador.RevisarCookies();
-            //presentador.RevisarSession();
+            ulNav.Visible = false;
+            presentador.RevisarSession();
         }
 
-
+        protected void Salir_Click(object sender, EventArgs e)
+        {
+            presentador.ManejarEventoSalir_Click();
+        }
 
     }
 

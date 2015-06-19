@@ -103,14 +103,17 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Opciones<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="<%= Page.ResolveUrl("~/Modulo7/EditarPerfil.aspx") %>">Editar Perfil</a></li>
-                                <li><a id="anchor_logout" href="<%= Page.ResolveUrl("~/Modulo1/M1_login.aspx?logout=true") %>">Salir</a></li>
+                                <li>
+                                    <form runat="server">
+                                        <asp:Button id="b1" CssClass="btn btn-block" Text="Salir" runat="server" />
+                                    </form>
+                                    </li>
                             </ul>
 					    </li>
 				    </ul>
 			    </div>
 		    </div>
 	    </nav>
-
         <div class="container-fluid">
 		    <div class="row">
 			    <div class="col-sm-3 col-md-2 sidebar" id="menuLateral" runat="server">

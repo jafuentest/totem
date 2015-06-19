@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modulo1\PresentadorLogin.cs" />
     <Compile Include="Modulo2\PresentadorAgregarCliente.cs" />
     <Compile Include="Modulo2\PresentadorAgregarEmpresa.cs" />
     <Compile Include="Modulo2\PresentadorDetallarCliente.cs" />
@@ -58,9 +59,9 @@
     <Compile Include="Modulo3\PresentadorAgregarInvolucrado.cs" />
     <Compile Include="Modulo3\PresentadorListarInvolucrado.cs" />
     <Compile Include="Modulo5\PresentadorAgregarRequerimiento.cs" />
-    <Compile Include="Modulo5\PresentadorListar.cs" />
+    <Compile Include="Modulo5\PresentadorListarRequerimientos.cs" />
     <Compile Include="Modulo5\PresentadorModificarRequerimiento.cs" />
-    <Compile Include="Modulo5\PresentadorReportes.cs" />
+    <Compile Include="Modulo5\PresentadorReporteRequerimientos.cs" />
     <Compile Include="Modulo6\PresentadorAgregarActor.cs" />
     <Compile Include="Modulo6\RecursosPresentadorModulo6.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -68,6 +69,11 @@
       <DependentUpon>RecursosPresentadorModulo6.resx</DependentUpon>
     </Compile>
     <Compile Include="Modulo7\PresentadorAgregarUsuario.cs" />
+    <Compile Include="Modulo7\PresentadorListarUsuarios.cs" />
+    <Compile Include="Modulo8\PresentadorConsultarMinuta.cs" />
+    <Compile Include="Modulo8\PresentadorCrearMinuta.cs" />
+    <Compile Include="Modulo8\PresentadorDetalleMinutas.cs" />
+    <Compile Include="Modulo8\PresentadorModificarMinuta.cs" />
     <Compile Include="PresentadorMasterPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecursosGeneralPresentadores.Designer.cs">
@@ -78,9 +84,7 @@
     <Compile Include="Validaciones.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Modulo1\" />
     <Folder Include="Modulo4\" />
-    <Folder Include="Modulo8\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Modulo2\RecursoInterfazM2.resx">

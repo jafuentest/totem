@@ -10,7 +10,7 @@
 namespace Vista.Modulo5 {
     
     
-    public partial class Listar {
+    public partial class ListarRequerimientos {
         
         /// <summary>
         /// Control alert.

@@ -96,6 +96,10 @@ namespace Dominio.Entidades.Modulo2
          Jur_Direccion = (Direccion)dir;
          Jur_Logo = logo;
      }
+
+     public ClienteJuridico(int id):base(id)
+     {
+     }
      #endregion
      public override bool Equals(object obj)
      {

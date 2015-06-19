@@ -32,6 +32,18 @@ namespace DAO.IntefazDAO.Modulo7
         /// <param name="correo">el correo que se desea registrar</param>
         /// <returns>Verdadero si es valido, falso si ya existe</returns>
         bool ValidarCorreoUnico(String correo);
+
+        /// <summary>
+        /// Firma de metodo que implementara la logica de Listar los cargos de la Base de Datos
+        /// </summary>
+        /// <returns>Lista con todos los cargos de la Base de Datos</returns>
+        List<String> ListarCargos();
+
+        /// <summary>
+        /// Firma de metodo que implementara la logica de Listar los Usuarios de la Base de Datos
+        /// </summary>
+        /// <returns>Lista con todos los usuarios de la Base de Datos</returns>
+        List<Entidad> ListarUsuarios();
         
     }
 }

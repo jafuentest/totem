@@ -67,8 +67,8 @@
             <br />
             <div class="form-group">
                 <div class="col-sm-5 col-md-5 col-lg-5">
-                    <button id="btn-agregarReq" disabled="disabled" class="btn btn-primary" 
-                        type="submit" onclick="return checkform();">Agregar</button>
+                    <button runat="server" id="btn-agregarReq" disabled="disabled" class="btn btn-primary" 
+                        type="submit" onserverclick="AgregarRequerimiento_Click">Agregar</button>
                     <a class="btn btn-default" href="ListarRequerimientos.aspx">Cancelar</a>
                 </div>
             </div>

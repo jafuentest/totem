@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IContratoMasterPage.cs" />
+    <Compile Include="Modulo1\IContratoLogin.cs" />
     <Compile Include="Modulo2\IContratoAgregarCliente.cs" />
     <Compile Include="Modulo2\IContratoAgregarEmpresa.cs" />
     <Compile Include="Modulo2\IContratoDetallarCliente.cs" />
@@ -54,19 +55,22 @@
     <Compile Include="Modulo3\IContratoAgregarInvolucrado.cs" />
     <Compile Include="Modulo3\IContratoListarInvolucrado.cs" />
     <Compile Include="Modulo5\IContratoAgregarRequerimiento.cs" />
-    <Compile Include="Modulo5\IContratoListar.cs" />
-    <Compile Include="Modulo5\IContratoReportes.cs" />
+    <Compile Include="Modulo5\IContratoListarRequerimientos.cs" />
+    <Compile Include="Modulo5\IContratoReporteRequerimientos.cs" />
     <Compile Include="Modulo5\IContratoModificarRequerimiento.cs" />
     <Compile Include="Modulo6\IContratoAgregarActor.cs" />
     <Compile Include="Modulo6\IContratoAgregarCasoDeUso.cs" />
     <Compile Include="Modulo6\IContratoReporteActores.cs" />
     <Compile Include="Modulo7\IContratoAgregarUsuario.cs" />
+    <Compile Include="Modulo7\IContratoListarUsuarios.cs" />
+    <Compile Include="Modulo8\IContratoConsultarMinuta.cs" />
+    <Compile Include="Modulo8\IContratoCrearMinuta.cs" />
+    <Compile Include="Modulo8\IContratoDetalleMinutas.cs" />
+    <Compile Include="Modulo8\IContratoModificarMinuta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Modulo1\" />
     <Folder Include="Modulo4\" />
-    <Folder Include="Modulo8\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\DominioTotem\Dominio\Dominio.csproj">

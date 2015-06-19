@@ -259,7 +259,7 @@
     <value>@ciudad</value>
   </data>
   <data name="ParamCodigoPostal" xml:space="preserve">
-    <value>@codigo_post</value>
+    <value>@codigo_postal</value>
   </data>
   <data name="ParamCodigoTelef" xml:space="preserve">
     <value>@codigo_tel</value>

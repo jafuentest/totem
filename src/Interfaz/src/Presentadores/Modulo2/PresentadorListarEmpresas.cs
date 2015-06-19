@@ -35,11 +35,11 @@ namespace Presentadores.Modulo2
                     vista.laTabla += RecursoInterfazM2.AbrirEtiqueta_td + elCliente.Jur_Nombre
                         + RecursoInterfazM2.CerrarEtiqueta_td;
                     vista.laTabla += RecursoInterfazM2.AbrirEtiqueta_td;
-                    vista.laTabla += RecursoInterfazM2.AbrirBotonDetalle + elCliente.Id +
+                    vista.laTabla += RecursoInterfazM2.AbrirBotonDetalleEmpresa + elCliente.Id +
                         RecursoInterfazM2.CerrarBoton;
-                    vista.laTabla += RecursoInterfazM2.AbrirBotonModificar + elCliente.Id +
+                    vista.laTabla += RecursoInterfazM2.AbrirBotonModificarEmpresa + elCliente.Id +
                         RecursoInterfazM2.CerrarBoton;
-                    vista.laTabla += RecursoInterfazM2.AbrirBotonEliminar + elCliente.Id +
+                    vista.laTabla += RecursoInterfazM2.AbrirBotonEliminarCliente + elCliente.Id +
                         RecursoInterfazM2.CerrarBoton;
                     vista.laTabla += RecursoInterfazM2.CerrarEtiqueta_td;
                     vista.laTabla += RecursoInterfazM2.CerrarEtiqueta_tr;

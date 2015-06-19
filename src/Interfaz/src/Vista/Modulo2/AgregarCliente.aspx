@@ -18,11 +18,9 @@
     Agregar Cliente Natural 
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
-    
-
      <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-          <div id="alert" runat ="server"> </div>
-
+        <div id="alert" runat ="server">
+        </div>
         <form id="agregar_cliente" class="form-horizontal" action="#" method="post" Runat="Server">
 
             <div class="row col-sm-12 col-md-12 col-lg-12" Runat="Server">
@@ -43,10 +41,8 @@
                         <input id="cedulaNatural" name="identificador" type="text" class="form-control" placeholder="Identificador" Runat="Server" maxlength="10"/>
                     </div>
                 </div>
-                
-                <div class="form-group">
-                </div>
-                
+
+                <br />
                 <!-- SECCION DE DATOS DE LOCALIZACION -->
                 <h2>Datos de Localización</h2>
                 <div class="form-group">
@@ -56,7 +52,6 @@
                                     </asp:DropDownList>
                         </div>
                     </div>
-
                     <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
                         <div class="dropdown" runat="server" id="contenedorComboEstado">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -66,16 +61,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    
                         <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
                             <div class="dropdown" runat="server" id="contenedorComboCiudad" >
                                  <asp:DropDownList ID="comboCiudad"  class="btn btn-default dropdown-toggle" runat="server">
                                     </asp:DropDownList>
                             </div>
                         </div>
-                    
                 </div>
-
                 <div class="form-group">
                     <div id="div_direccionEmpresa" class="col-sm-12 col-md-12 col-lg-12">
                         <input id="direccionCliente" runat="server" name="direccion" type="text" class="form-control" placeholder="Dirección detallada" maxlength="100" />
@@ -92,7 +84,6 @@
                         <input id="correoCliente" runat="server" name="correo" type="text" class="form-control" placeholder="Correo electrónico" maxlength="60" />
                     </div>
                 </div>
-
                 <div class="form-group">
                     <div id="div_cod_telefono" class="col-sm-4 col-md-4 col-lg-4">
                         <input id="codTelefono" runat="server" name="codigoTELF" type="text" class="form-control" placeholder="+(cod)" maxlength="4" />
@@ -101,7 +92,6 @@
                         <input id="telefonoCliente" runat="server" name="telefono" type="text" class="form-control" placeholder="Teléfono" maxlength="7" />
                     </div>
                 </div>
-
                 <div class="form-group">
                     <div id="div_botones" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
                           <asp:Button id="botonAgregar" Text="Agregar" type="submit" class="btn btn-primary" runat="server" OnClick="botonAgregar_Click1"></asp:Button>
@@ -109,7 +99,6 @@
                     </div>
                 </div>
             </div>
-    
         </form>
     </div>
 

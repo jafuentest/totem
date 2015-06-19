@@ -9,17 +9,17 @@ namespace Presentadores.Modulo5
    /// <summary>
    /// Presentadorla de vista ListarRequerimiento 
    /// </summary>
-    public class PresentadorListar
+    public class PresentadorListarRequerimientos
     {
         /// <summary>
         /// Vista asociada al presentador
         /// </summary>
-        private IContratoListar vista;
+        private IContratoListarRequerimientos vista;
         /// <summary>
         /// Constructor del presentador de la vista ListarContratos
         /// </summary>
         /// <param name="vista">vista la cual usuara el presentador</param>
-        public PresentadorListar(IContratoListar vista)
+        public PresentadorListarRequerimientos(IContratoListarRequerimientos vista)
         {
             this.vista = vista;
         }

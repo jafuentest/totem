@@ -1053,6 +1053,23 @@ go
 --End SP1
 
 --Begin SP2
+------------------------PROCEDURE SELECCIONAR CLIENTE_JURIDICO POR ID----------------------- 
+CREATE PROCEDURE M2_ConsultarDatosClienteJur
+	@idClienteJur [int]
+AS
+BEGIN
+	select cli.cj_id as clienteJurID, cli.cj_nombre as clienteJurNombre, cli.cj_rif as clienteJurRif,
+		   cli.cj_logo as clienteJurLogo, direccion.lug_nombre as clienteJurDir, 
+		   direccion.lug_codigopostal as clienteJurCodPost, ciudad.lug_nombre as clienteJurCiudad, 
+		   estado.lug_nombre as clienteJurEstado, pais.lug_nombre as clienteJurPais
+	from 
+		CLIENTE_JURIDICO cli, LUGAR pais, LUGAR estado, LUGAR ciudad, LUGAR direccion 
+	where
+		cli.LUGAR_lug_id = direccion.lug_id and direccion.LUGAR_lug_id = ciudad.lug_id
+		and ciudad.LUGAR_lug_id = estado.lug_id and estado.LUGAR_lug_id = pais.lug_id
+		and cli.cj_id = @idClienteJur
+END;
+go
 --------------------------PROCEDURE CONSULTAR CARGOS----------------------------
 CREATE PROCEDURE M2_ConsultarListaCargos 
 AS
@@ -1453,14 +1470,14 @@ as
 go
 --------------------PROCEDURE MODIFICAR CLIENTE_NATURAL--------------
 create procedure M2_ModificarClienteNat
-	@cn_id		  [int],
+	@idClienteNat		  [int],
     @cn_cedula    [VARCHAR] (20),
     @cn_nombre    [VARCHAR] (60),
     @cn_apellido  [VARCHAR] (60),
     @cn_correo    [VARCHAR] (60),
 	---direccion del cliente natural
     @direccion	  [VARCHAR] (100),
-	@cod_postal	  [int],
+	@codigo_postal	  [int],
 	---telefono del cliente natural
 	@codigo_tel [VARCHAR](5) ,
 	@numero_tel [VARCHAR] (20)
@@ -1471,30 +1488,28 @@ as
 		select @num_direccion = count(*)
 		from LUGAR where lug_nombre = @direccion and lug_tipo = 'Direccion';
 
-		if (@direccion != (select lug_nombre from LUGAR where lug_id = (select LUGAR_lug_id from CLIENTE_NATURAL where cn_id = @cn_id)))
-			update LUGAR
-			set lug_nombre = @direccion,
-				lug_codigopostal = @cod_postal
-			where lug_id = (select LUGAR_lug_id from CLIENTE_NATURAL where cn_id = @cn_id);
-
+		update LUGAR
+		set lug_nombre = @direccion,
+			lug_codigopostal = @codigo_postal
+		where lug_id = (select LUGAR_lug_id from CLIENTE_NATURAL where cn_id = @idClienteNat);
 
 		update CLIENTE_NATURAL
 		set cn_cedula = @cn_cedula,
 			cn_nombre = @cn_nombre,
 			cn_apellido = @cn_apellido,
 			cn_correo = @cn_correo
-		where cn_id = @cn_id;
+		where cn_id = @idClienteNat;
 
 		update CONTACTO
 		set con_cedula = @cn_cedula,
 			con_nombre = @cn_nombre,
 			con_apellido = @cn_apellido
-		where con_id = @cn_id;
+		where con_id = @idClienteNat;
 		
 		update TELEFONO
 		set tel_codigo = @codigo_tel,
 			tel_numero = @numero_tel
-		where CLIENTE_NATURAL_cn_id = (select cn_id from CLIENTE_NATURAL where cn_id = @cn_id);
+		where CLIENTE_NATURAL_cn_id = (select cn_id from CLIENTE_NATURAL where cn_id = @idClienteNat);
 	end;
 go
 --------------------PROCEDURE CONSULTAR LISTA CLIENTE_NATURAL--------------
@@ -1543,10 +1558,6 @@ create procedure M2_EliminarClienteNat
 	@idClienteNat [int]
 as
 	begin
-		delete 
-		from LUGAR
-		where lug_id = (select LUGAR_lug_id from CLIENTE_NATURAL where cn_id = @idClienteNat);
-
 		delete 
 		from TELEFONO
 		where CLIENTE_NATURAL_cn_id = @idClienteNat;
@@ -2051,10 +2062,8 @@ GO
 -- ========================================================================= --
 -- Agregar requerimiento
 -- ========================================================================= --
-go
-CREATE PROCEDURE Procedure_AgregarRequerimiento
+CREATE PROCEDURE M5_AgregarRequerimiento
 
-	@req_id				[int],
 	@req_codigo			[varchar] (15),
 	@req_descripcion	[varchar] (500),
 	@req_tipo			[varchar] (25),
@@ -2199,6 +2208,22 @@ AS
 	END
 GO
 
+-- ========================================================================= --
+-- Obtener id del proyecto dado el codigo de requerimiento
+-- ========================================================================= --
+
+CREATE PROCEDURE M5_RetornarIdPorCodigoRequerimiento
+  @req_codigo varchar (25),
+  @pro_id int OUTPUT
+
+  As
+    BEGIN
+      SELECT DISTINCT @pro_id = PROYECTO_pro_id
+      FROM Requerimiento
+      WHERE req_codigo = @req_codigo
+    END
+  GO
+  
 --End SP5
 
 --Begin SP6
@@ -3424,7 +3449,7 @@ INSERT INTO LUGAR VALUES('Jacksonville','Ciudad',29320,(select lug_id from LUGAR
 go
 INSERT INTO LUGAR VALUES('Miami','Ciudad',83921,(select lug_id from LUGAR where lug_nombre = 'Florida'));
 go
-INSERT INTO LUGAR VALUES('Atlanta','Ciudad',82193,(select lug_id from LUGAR where lug_nombre = 'Georgia'));
+INSERT INTO LUGAR VALUES('Atlanta','Ciudad',82193,(select lug_id from LUGAR where lug_nombre = 'Georgia' and lug_tipo = 'Estado'));
 go
 INSERT INTO LUGAR VALUES('Eastport Apartments, The 11701 Palm Lake Drive Jacksonville, FL 32218-3985','Direccion',null,(select lug_id from LUGAR where lug_nombre = 'Jacksonville'));
 go
@@ -3440,28 +3465,28 @@ INSERT INTO LUGAR VALUES('1800 Windridge Dr Sandy Springs, GA 30350-2873','Direc
 go
 
 /*---------------------------------------CLIENTE_JURIDICO-----------------------------------------*/
-INSERT INTO CLIENTE_JURIDICO VALUES ('J-11111111-1','Locatel',null,15);
+INSERT INTO CLIENTE_JURIDICO VALUES ('J-11111111-1','Locatel',null,(select lug_id from LUGAR where lug_nombre = 'Parroquia Caricuao UD 3, Bloque 6, piso 1, apt 01'));
 go
-INSERT INTO CLIENTE_JURIDICO VALUES ('J-22222222-2','Swatch',null,24);
+INSERT INTO CLIENTE_JURIDICO VALUES ('J-22222222-2','Swatch',null,(select lug_id from LUGAR where lug_nombre = 'Parroquia San Juan, Bloque 16, piso 4, apt 04'));
 go
-INSERT INTO CLIENTE_JURIDICO VALUES ('J-33333333-3','Tealca',null,25);
+INSERT INTO CLIENTE_JURIDICO VALUES ('J-33333333-3','Tealca',null,(select lug_id from LUGAR where lug_nombre = 'Parroquia Altagracia, Edif 3, piso 8, apt 07'));
 go
-INSERT INTO CLIENTE_JURIDICO VALUES ('J-44444444-4','PaperMate',null,26);
+INSERT INTO CLIENTE_JURIDICO VALUES ('J-44444444-4','PaperMate',null,(select lug_id from LUGAR where lug_nombre = 'Parroquia Candelaria, edif 8, piso 15, apt 05'));
 go
-INSERT INTO CLIENTE_JURIDICO VALUES ('J-55555555-5','Vernet',null,28);
+INSERT INTO CLIENTE_JURIDICO VALUES ('J-55555555-5','Vernet',null,(select lug_id from LUGAR where lug_nombre = 'Parroquia San pedro, residencia Virgen María, Casa # 3'));
 go
 
 
 /*---------------------------------------CLIENTE_NATURAL-----------------------------------------*/
-INSERT INTO CLIENTE_NATURAL VALUES(11111111,'Valentina','Scioli','valensciove@hotmail.com',16);
+INSERT INTO CLIENTE_NATURAL VALUES(11111111,'Valentina','Scioli','valensciove@hotmail.com',(select lug_id from LUGAR where lug_nombre = 'Zona industrial de Cloris Urb. Terrazas del Este, Primera Etapa, edif 20, apt 3-2'));
 go
-INSERT INTO CLIENTE_NATURAL VALUES(22222222,'Guillermo','Gonzalez','guillegonzale@gmail.com',17);
+INSERT INTO CLIENTE_NATURAL VALUES(22222222,'Guillermo','Gonzalez','guillegonzale@gmail.com',(select lug_id from LUGAR where lug_nombre = 'Parroquia Caricuao, Calle A, Local Q, Coche'));
 go
-INSERT INTO CLIENTE_NATURAL VALUES(33333333,'Francisco','Torres','franctorre@hotmail.com',13);
+INSERT INTO CLIENTE_NATURAL VALUES(33333333,'Francisco','Torres','franctorre@hotmail.com',(select lug_id from LUGAR where lug_nombre = 'Parroquia San Juan, Calle C, Local 34, Santa Rosa de Lima'));
 go
-INSERT INTO CLIENTE_NATURAL VALUES(44444444,'Pedro','De Jesus','pedrdejesus@gmail.com',25);
+INSERT INTO CLIENTE_NATURAL VALUES(44444444,'Pedro','De Jesus','pedrdejesus@gmail.com',(select lug_id from LUGAR where lug_nombre = 'Parroquia Altagracia, Calle Guaicaipuro, Local 76, Bello Monte'));
 go
-INSERT INTO CLIENTE_NATURAL VALUES(55555555,'Jessica','De Torres','jesidetorres@gmail.com',26);
+INSERT INTO CLIENTE_NATURAL VALUES(55555555,'Jessica','De Torres','jesidetorres@gmail.com',(select lug_id from LUGAR where lug_nombre = 'Parroquia Candelaria, De Tablitas A Sordo, Parcelas 2-5, Los Ruices'));
 go
 
 /*---------------------------------------CARGO-----------------------------------------*/
