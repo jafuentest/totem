@@ -85,6 +85,10 @@
     <Compile Include="Modulo4\InvolucradosInexistentesException.cs" />
     <Compile Include="Modulo4\RequerimientosInexistentesException.cs" />
     <Compile Include="Modulo5\ProyectoNoEncontradoException.cs" />
+    <Compile Include="Modulo5\RequerimientoInvalidoException.cs" />
+    <Compile Include="Modulo5\RequerimientoNoCreadoException.cs" />
+    <Compile Include="Modulo5\RequerimientoNoEliminadoException.cs" />
+    <Compile Include="Modulo5\RequerimientoNoModificadoException.cs" />
     <Compile Include="Modulo6\ExcepcionesComando\AgregarActorComandoBDException.cs" />
     <Compile Include="Modulo6\ExcepcionesComando\AgregarActorComandoException.cs" />
     <Compile Include="Modulo6\ExcepcionesComando\AgregarActorComandoNullException.cs" />
