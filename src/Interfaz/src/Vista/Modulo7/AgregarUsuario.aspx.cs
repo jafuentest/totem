@@ -136,9 +136,13 @@ namespace Vista.Modulo7
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Master.idModulo = "7";
-            this.Master.presentador.CargarMenuLateral();
+            
             if(!IsPostBack)
+            {
+                this.Master.presentador.CargarMenuLateral();
                 presentador.llenarCombos();
+            }
+                
         }
 
         /// <summary>
