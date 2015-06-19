@@ -54,8 +54,8 @@
     <Compile Include="Modulo3\IContratoAgregarInvolucrado.cs" />
     <Compile Include="Modulo3\IContratoListarInvolucrado.cs" />
     <Compile Include="Modulo5\IContratoAgregarRequerimiento.cs" />
-    <Compile Include="Modulo5\IContratoListar.cs" />
-    <Compile Include="Modulo5\IContratoReportes.cs" />
+    <Compile Include="Modulo5\IContratoListarRequerimientos.cs" />
+    <Compile Include="Modulo5\IContratoReporteRequerimientos.cs" />
     <Compile Include="Modulo5\IContratoModificarRequerimiento.cs" />
     <Compile Include="Modulo6\IContratoAgregarActor.cs" />
     <Compile Include="Modulo6\IContratoAgregarCasoDeUso.cs" />

@@ -58,9 +58,9 @@
     <Compile Include="Modulo3\PresentadorAgregarInvolucrado.cs" />
     <Compile Include="Modulo3\PresentadorListarInvolucrado.cs" />
     <Compile Include="Modulo5\PresentadorAgregarRequerimiento.cs" />
-    <Compile Include="Modulo5\PresentadorListar.cs" />
+    <Compile Include="Modulo5\PresentadorListarRequerimientos.cs" />
     <Compile Include="Modulo5\PresentadorModificarRequerimiento.cs" />
-    <Compile Include="Modulo5\PresentadorReportes.cs" />
+    <Compile Include="Modulo5\PresentadorReporteRequerimientos.cs" />
     <Compile Include="Modulo6\PresentadorAgregarActor.cs" />
     <Compile Include="Modulo6\RecursosPresentadorModulo6.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -9,7 +9,7 @@ namespace Contratos.Modulo5
     /// <summary>
     /// Contrato asociado a la vista ListarRequerimiento
     /// </summary>
-    public interface IContratoListar
+    public interface IContratoListarRequerimientos
     {
 
         string IdProyecto { set; get; }
