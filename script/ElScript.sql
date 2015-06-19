@@ -3455,7 +3455,7 @@ INSERT INTO LUGAR VALUES('Jacksonville','Ciudad',29320,(select lug_id from LUGAR
 go
 INSERT INTO LUGAR VALUES('Miami','Ciudad',83921,(select lug_id from LUGAR where lug_nombre = 'Florida'));
 go
-INSERT INTO LUGAR VALUES('Atlanta','Ciudad',82193,(select lug_id from LUGAR where lug_nombre = 'Georgia'));
+INSERT INTO LUGAR VALUES('Atlanta','Ciudad',82193,(select lug_id from LUGAR where lug_nombre = 'Georgia' and lug_tipo = 'Estado'));
 go
 INSERT INTO LUGAR VALUES('Eastport Apartments, The 11701 Palm Lake Drive Jacksonville, FL 32218-3985','Direccion',null,(select lug_id from LUGAR where lug_nombre = 'Jacksonville'));
 go

@@ -19,6 +19,8 @@ namespace Vista.Modulo2
         {
             this.Master.idModulo = "2";
             this.Master.presentador.CargarMenuLateral();
+            String detalleCliente = Request.QueryString["detalle"];
+            presentador.cargarDatos(detalleCliente);
 
         }
 
