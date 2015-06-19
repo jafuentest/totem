@@ -68,6 +68,10 @@
       <DependentUpon>RecursosPresentadorModulo6.resx</DependentUpon>
     </Compile>
     <Compile Include="Modulo7\PresentadorAgregarUsuario.cs" />
+    <Compile Include="Modulo8\PresentadorConsultarMinuta.cs" />
+    <Compile Include="Modulo8\PresentadorCrearMinuta.cs" />
+    <Compile Include="Modulo8\PresentadorDetalleMinutas.cs" />
+    <Compile Include="Modulo8\PresentadorModificarMinuta.cs" />
     <Compile Include="PresentadorMasterPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecursosGeneralPresentadores.Designer.cs">
@@ -80,7 +84,6 @@
   <ItemGroup>
     <Folder Include="Modulo1\" />
     <Folder Include="Modulo4\" />
-    <Folder Include="Modulo8\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Modulo2\RecursoInterfazM2.resx">

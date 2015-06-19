@@ -1,0 +1,161 @@
+﻿#fechaReunion
+{
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.list-group 
+{
+    padding-left: 15px;
+}
+
+.participante
+{
+    height: 50px;
+}
+
+.img-participante 
+{
+  height: 40px;
+  width: auto;
+}
+
+.img-participante-contenedor
+{
+    line-height: 50px;
+    padding-left: 0px;
+}
+
+.nombre-participante
+{
+    padding-left: 15px;
+    line-height: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.check-contenedor
+{
+    padding-left: 0px;
+    line-height: 50px;
+}
+
+.panel-participante, .panel-punto
+{
+    margin-bottom: 0px;
+}
+.panel-participante:hover
+{
+  background-color: #a2c63c;
+  color: #fff;
+  font-weight: bold;
+}
+
+.panel-participante-seleccionado
+{
+    background-color: #5BC0DE;
+    color: #fff;
+    font-weight: bold;
+}
+
+.botones
+{
+    padding-left: 10px;
+}
+
+.btn-circle 
+{
+    margin-left: 5px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    padding: 0px 0;
+    font-size: 12px;
+    line-height: 1.42;
+    border-radius: 100px;
+    float:right;
+    color: #808080;
+}
+
+.list-group
+{
+    margin-bottom: 0px;
+}
+
+button.close
+{
+    padding-top: 5px;
+}
+
+.panel-minuta
+{
+    padding-top: 0px;
+}
+
+.btn-right
+{
+    float: right;
+}
+
+.participante-nombre
+{
+    padding-top: 15px;
+}
+
+.participante-rol
+{
+    font-style: italic;
+}
+
+.control-label 
+{
+    padding-top: 8px;
+}
+.form-control[readonly] 
+{
+    background-color: #ffffff;
+    border-color: #ffffff;
+    color: #000000;
+}
+
+.panel-participante:hover
+{
+    cursor: pointer;
+}
+
+.icon-eye 
+{
+    padding-top: 10px;
+    font-size: 2em;
+}
+
+.modalPersona .modal-body 
+{
+    display: inline-block;
+}
+.label-control 
+{
+    font-weight: normal;
+}
+.panel-group .panel 
+{
+    margin-top: 5px;
+}
+@media(max-width:767px) 
+{
+    
+    .temp-form 
+    {
+        margin-top: -15px;
+    }
+}
+
+@media (max-width:992px)
+{
+    .img-person 
+    {
+        height: 160px;
+        margin: 0 auto;
+    }  
+}

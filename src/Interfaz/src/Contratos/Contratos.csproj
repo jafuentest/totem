@@ -61,12 +61,15 @@
     <Compile Include="Modulo6\IContratoAgregarCasoDeUso.cs" />
     <Compile Include="Modulo6\IContratoReporteActores.cs" />
     <Compile Include="Modulo7\IContratoAgregarUsuario.cs" />
+    <Compile Include="Modulo8\IContratoConsultarMinuta.cs" />
+    <Compile Include="Modulo8\IContratoCrearMinuta.cs" />
+    <Compile Include="Modulo8\IContratoDetalleMinutas.cs" />
+    <Compile Include="Modulo8\IContratoModificarMinuta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modulo1\" />
     <Folder Include="Modulo4\" />
-    <Folder Include="Modulo8\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\DominioTotem\Dominio\Dominio.csproj">
