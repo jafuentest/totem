@@ -102,6 +102,7 @@ namespace Vista.Modulo5 {
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton inputStatusFinalizado;
         
+        
         /// <summary>
         /// Master property.
         /// </summary>

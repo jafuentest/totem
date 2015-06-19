@@ -35,6 +35,8 @@ namespace DAO.DAO.Modulo5
                         return Convert.ToInt32(resultado.valor);
                     }
                 }
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                    new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
 
                 throw new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException(
                             RecursosDAOModulo5.CODIGO_EXCEPCION_REQUERIMIENTO_ERRADO,
@@ -43,10 +45,16 @@ namespace DAO.DAO.Modulo5
             }
             catch (ExcepcionesTotem.Modulo5.RequerimientoInvalidoException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
                 throw ex;
             }
             catch (SqlException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
                 throw new ExcepcionesTotem.ExceptionTotemConexionBD(
                     RecursoGeneralDAO.Codigo_Error_BaseDatos,
                     RecursoGeneralDAO.Mensaje_Error_BaseDatos,
@@ -54,10 +62,16 @@ namespace DAO.DAO.Modulo5
             }
             catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
                 throw ex;
             }
             catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
                 throw ex;
             }
             
@@ -157,6 +171,7 @@ namespace DAO.DAO.Modulo5
                 int idProyecto = BuscarIdProyecto(requerimiento.Codigo);
                 if (idProyecto != null)
                 {
+                    #region Asignacion de Parametros
                     List<Parametro> parametros = new List<Parametro>();
                     Parametro parametroBD = new Parametro(
                         RecursosDAOModulo5.PARAMETRO_REQ_CODIGO, SqlDbType.VarChar, 
@@ -182,6 +197,8 @@ namespace DAO.DAO.Modulo5
                         RecursosDAOModulo5.PARAMETRO_PROYECTO_PRO_ID, SqlDbType.Int,
                         Convert.ToString(idProyecto), false);
                     parametros.Add(parametroBD);
+                    #endregion
+
                     List<Resultado> resultados = 
                         EjecutarStoredProcedure(RecursosDAOModulo5.PROCEDIMIENTO_CREAR_REQUERIMIENTO,
                         parametros);
@@ -190,18 +207,28 @@ namespace DAO.DAO.Modulo5
                         return true;
                     }
                 }
+     
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                    new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
 
                 throw new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException(
                             RecursosDAOModulo5.CODIGO_EXCEPCION_REQUERIMIENTO_ERRADO,
                             RecursosDAOModulo5.MENSAJE_EXCEPCION_REQUERIMIENTO_ERRADO,
                             new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
             }
+            #region Capturar Excepciones
             catch (ExcepcionesTotem.Modulo5.RequerimientoInvalidoException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
                 throw ex;
             }
             catch (SqlException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
                 throw new ExcepcionesTotem.ExceptionTotemConexionBD(
                     RecursoGeneralDAO.Codigo_Error_BaseDatos,
                     RecursoGeneralDAO.Mensaje_Error_BaseDatos,
@@ -209,13 +236,19 @@ namespace DAO.DAO.Modulo5
             }
             catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
                 throw ex;
             }
             catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
                 throw ex;
             }
-            
+            #endregion
         }
 
         /// <summary>
