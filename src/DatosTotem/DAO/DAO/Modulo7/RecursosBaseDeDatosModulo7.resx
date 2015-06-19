@@ -254,4 +254,8 @@
     <value>@usu_username</value>
     <comment>Atributo username usuario</comment>
   </data>
+  <data name="PROCEDIMIENTO_SELECCIONAR_CARGOS" xml:space="preserve">
+    <value>seleccionarCargos</value>
+    <comment>Stored Procedure que consulta los cargos existentes</comment>
+  </data>
 </root>

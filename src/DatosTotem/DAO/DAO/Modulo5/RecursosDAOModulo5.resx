@@ -145,6 +145,10 @@
     <value>req_tipo</value>
     <comment>Atributo varchar utilizado para almacenar el tipo de requerimiento, pudiendo ser funcional o no funcional</comment>
   </data>
+  <data name="CODIGO_EXCEPCION_REQUERIMIENTO_ERRADO" xml:space="preserve">
+    <value>T_05_005</value>
+    <comment>Codigo de la excepcion de un requerimiento errado</comment>
+  </data>
   <data name="CONSTANTE_DELIMITADOR_DE_CODIGO" xml:space="preserve">
     <value>_</value>
     <comment>Constante utilizada para tomar el caracter delimitador del código de requerimiento</comment>
@@ -188,6 +192,14 @@
   <data name="EXCEPCION_REQ_NO_MOD_MENSAJE" xml:space="preserve">
     <value>El requerimiento no ha podido ser modificado correctamente</value>
     <comment>Mensaje utilizado en la excepción producida al no ser modificado un requerimiento</comment>
+  </data>
+  <data name="MENSAJE_EXCEPCION_REQUERIMIENTO_ERRADO" xml:space="preserve">
+    <value>El requerimiento tiene unos datos errados</value>
+    <comment>Mensaje de error de la excepcion de un requerimiento errado</comment>
+  </data>
+  <data name="PARAMETRO_PROYECTO_PRO_ID" xml:space="preserve">
+    <value>@PROYECTO_pro_id</value>
+    <comment>Parametro utilizado para relacionar el id del proyecto</comment>
   </data>
   <data name="PARAMETRO_PRO_CODIGO" xml:space="preserve">
     <value>@pro_codigo</value>

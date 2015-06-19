@@ -169,6 +169,15 @@ namespace DAO.DAO.Modulo7 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to seleccionarCargos.
+        /// </summary>
+        internal static string PROCEDIMIENTO_SELECCIONAR_CARGOS {
+            get {
+                return ResourceManager.GetString("PROCEDIMIENTO_SELECCIONAR_CARGOS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ConsultarUsuario.
         /// </summary>
         internal static string ProcedimientoConsultarUsuario {

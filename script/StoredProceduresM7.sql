@@ -187,7 +187,17 @@ go
 CREATE PROCEDURE ListarProyectoUsuario
 	@usu_username[varchar](60)
 AS
+   
    SELECT pro_codigo AS CodigoProyecto,pro_nombre AS NombreProyecto,pro_descripcion AS DescripcionProyecto,pro_costo AS CostoProyecto
    FROM USUARIO,INVOLUCRADOS_USUARIOS,PROYECTO
    WHERE usu_username=@usu_username AND usu_id=USUARIO_usu_id AND PROYECTO_pro_id=pro_id
 RETURN
+GO
+
+/*
+CREATE procedure seleccionarCargos
+AS
+BEGIN
+SELECT DISTINCT CAR_NOMBRE as nombreCargo FROM CARGO, USUARIO WHERE CARGO_car_id=car_id
+END*/
+GO

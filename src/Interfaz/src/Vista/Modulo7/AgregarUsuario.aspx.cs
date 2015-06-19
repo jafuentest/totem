@@ -47,6 +47,15 @@ namespace Vista.Modulo7
            
         }
 
+        public string confirmarClave
+        {
+            get
+            {
+                return this.confirm_password.Value;
+
+            }
+        }
+
         public string nombreUsuario
         {
             get
@@ -61,15 +70,6 @@ namespace Vista.Modulo7
             get
             {
                 return this.id_apellido.Value;
-            }
-            
-        }
-
-        public string rolUsuario
-        {
-            get
-            {
-                return this.comboTipoRol.SelectedValue;
             }
             
         }
@@ -101,15 +101,6 @@ namespace Vista.Modulo7
             
         }
 
-        public string cargoUsuario
-        {
-            get
-            {
-                return this.comboCargo.SelectedValue;
-            }
-            
-        }
-
         public DropDownList comboTipoRol
         {
             get 
@@ -119,6 +110,19 @@ namespace Vista.Modulo7
             set
             {
                 this.ComboTipoRol = value;
+            }
+
+        }
+
+        public DropDownList comboTipoCargo
+        {
+            get
+            {
+                return this.comboCargo;
+            }
+            set
+            {
+                this.comboCargo = value;
             }
 
         }
@@ -132,8 +136,13 @@ namespace Vista.Modulo7
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Master.idModulo = "7";
-            this.Master.presentador.CargarMenuLateral();
-            presentador.llenarComboTipoRol();
+            
+            if(!IsPostBack)
+            {
+                this.Master.presentador.CargarMenuLateral();
+                presentador.llenarCombos();
+            }
+                
         }
 
         /// <summary>
@@ -143,7 +152,7 @@ namespace Vista.Modulo7
         /// <param name="e">Clase Base de clases que con tienen la informacion del evento</param>
         protected void Agregar_Usuario(object sender, EventArgs e)
         {
-           bool exito = presentador.AgregarUsuario();
+            bool exito = presentador.AgregarUsuario();
         }
     }
 }

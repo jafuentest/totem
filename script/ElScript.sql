@@ -2068,10 +2068,8 @@ GO
 -- ========================================================================= --
 -- Agregar requerimiento
 -- ========================================================================= --
-go
-CREATE PROCEDURE Procedure_AgregarRequerimiento
+CREATE PROCEDURE M5_AgregarRequerimiento
 
-	@req_id				[int],
 	@req_codigo			[varchar] (15),
 	@req_descripcion	[varchar] (500),
 	@req_tipo			[varchar] (25),
@@ -2216,6 +2214,22 @@ AS
 	END
 GO
 
+-- ========================================================================= --
+-- Obtener id del proyecto dado el codigo de requerimiento
+-- ========================================================================= --
+
+CREATE PROCEDURE M5_RetornarIdPorCodigoRequerimiento
+  @req_codigo varchar (25),
+  @pro_id int OUTPUT
+
+  As
+    BEGIN
+      SELECT DISTINCT @pro_id = PROYECTO_pro_id
+      FROM Requerimiento
+      WHERE req_codigo = @req_codigo
+    END
+  GO
+  
 --End SP5
 
 --Begin SP6
@@ -3441,7 +3455,7 @@ INSERT INTO LUGAR VALUES('Jacksonville','Ciudad',29320,(select lug_id from LUGAR
 go
 INSERT INTO LUGAR VALUES('Miami','Ciudad',83921,(select lug_id from LUGAR where lug_nombre = 'Florida'));
 go
-INSERT INTO LUGAR VALUES('Atlanta','Ciudad',82193,(select lug_id from LUGAR where lug_nombre = 'Georgia'));
+INSERT INTO LUGAR VALUES('Atlanta','Ciudad',82193,(select lug_id from LUGAR where lug_nombre = 'Georgia' and lug_tipo = 'Estado'));
 go
 INSERT INTO LUGAR VALUES('Eastport Apartments, The 11701 Palm Lake Drive Jacksonville, FL 32218-3985','Direccion',null,(select lug_id from LUGAR where lug_nombre = 'Jacksonville'));
 go
