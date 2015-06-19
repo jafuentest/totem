@@ -14,14 +14,15 @@ namespace Contratos.Modulo7
         //Variables que se usaran en la interfaz
         string username { get; }
         string clave { get; }
+        string confirmarClave { get; }
         string nombreUsuario { get; }
         string apellidoUsuario { get; }
-        string rolUsuario { get; }
         string correoUsuario { get; }
         string preguntaUsuario { get; }
         string respuestaUsuario { get; }
-        string cargoUsuario { get; }
         DropDownList comboTipoRol { get; set; }
+        DropDownList comboTipoCargo { get; set; }
+
 
     }
 }

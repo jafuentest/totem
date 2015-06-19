@@ -71,6 +71,7 @@
     <Compile Include="Modulo6\PruebaLogicaActor.cs" />
     <Compile Include="Modulo7\PruebaBDUsuario.cs" />
     <Compile Include="Modulo7\PruebaComandoAgregarUsuario.cs" />
+    <Compile Include="Modulo7\PruebaComandoListarCargos.cs" />
     <Compile Include="Modulo7\PruebaLogicaUsuario.cs" />
     <Compile Include="Modulo7\PruebaManejadorUsuario.cs" />
     <Compile Include="Modulo8\PruebaBDAcuerdo.cs" />
@@ -83,6 +84,10 @@
     <Folder Include="Modulo2\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DatosTotem\DAO\DAO.csproj">
+      <Project>{d9ace21a-77b5-4e5a-bb70-c77bc5a39a6c}</Project>
+      <Name>DAO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DatosTotem\DatosTotem.csproj">
       <Project>{b4b3079e-15ec-4575-89cd-5ff052c22bda}</Project>
       <Name>DatosTotem</Name>
