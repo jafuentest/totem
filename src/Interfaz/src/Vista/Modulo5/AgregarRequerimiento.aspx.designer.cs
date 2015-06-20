@@ -13,6 +13,15 @@ namespace Vista.Modulo5 {
     public partial class AgregarRequerimiento {
         
         /// <summary>
+        /// alert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alert;
+        
+        /// <summary>
         /// agregar_requerimientos control.
         /// </summary>
         /// <remarks>
@@ -102,6 +111,14 @@ namespace Vista.Modulo5 {
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton inputStatusFinalizado;
         
+        /// <summary>
+        /// btn_agregarReq control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btn_agregarReq;
         
         /// <summary>
         /// Master property.

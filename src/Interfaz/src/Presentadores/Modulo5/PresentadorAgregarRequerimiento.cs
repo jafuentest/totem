@@ -27,7 +27,27 @@ namespace Presentadores.Modulo5
 
         public void AgregarRequerimiento()
         {
+            try
+            {
+                if (!vista.idRequerimiento.Equals("") && !vista.prioridad.Equals("") &&
+                    !vista.requerimiento.Equals("") && vista.funcional != null &&
+                    vista.finalizado != null)
+                {
 
+                    Comandos.Comando<Dominio.Entidad, Boolean> comandoAgregar;
+                    Dominio.Entidad requerimiento;
+                    requerimiento = Dominio.Fabrica.FabricaEntidades.ObtenerRequerimiento(
+                        vista.idRequerimiento, vista.requerimiento, vista.funcional,
+                        vista.prioridad, vista.finalizado);
+
+                    comandoAgregar = Comandos.Fabrica.FabricaComandos.CrearComandoAgregarRequerimiento();
+                    comandoAgregar.Ejecutar(requerimiento);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
     }
