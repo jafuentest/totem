@@ -104,9 +104,9 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="<%= Page.ResolveUrl("~/Modulo7/EditarPerfil.aspx") %>">Editar Perfil</a></li>
                                 <li>
-                                    <form runat="server">
-                                        <asp:Button id="b1" CssClass="btn btn-block" Text="Salir" runat="server" />
-                                    </form>
+
+                                        
+
                                     </li>
                             </ul>
 					    </li>
