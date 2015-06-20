@@ -269,8 +269,6 @@ namespace DAO.DAO.Modulo7
         /// <returns>Lista con todos los usuarios obtenidos de la Base de Datos</returns>
         public List<Entidad> ListarUsuarios()
         {
-           // throw new NotImplementedException();
-
             //Lista que sera la respuesta de la consulta;
             List<Entidad> usuarios = new List<Entidad>();
 
@@ -294,13 +292,57 @@ namespace DAO.DAO.Modulo7
                     //Recorremos cada fila devuelta de la consulta
                     while (respuesta.Read())
                     {
-                        //Creamos el Actor y lo anexamos a la lista
-                        //Actor aux = new Actor(respuesta.GetInt32(2), respuesta.GetString(0), respuesta.GetString(1));
-                        //listaActores.Add(aux);
-
                         //Creamos el Usuario y lo anexamos a la lista
                         Entidad aux = FabricaEntidades.ObtenerUsuario(respuesta.GetString(0), respuesta.GetString(1),
                             respuesta.GetString(2), respuesta.GetString(3));
+                        usuarios.Add(aux);
+
+                    }
+
+                //Cerramos conexion
+                this.conexion.Close();
+            }
+            catch (Exception error)
+            {
+                throw new Exception("Ha ocurrido un error inesperado al Listar", error);
+            }
+
+            //Retornamos la respuesta
+            return usuarios;
+        }
+
+        public List<Entidad> ListarUsuariosPorCargo(String cargo)
+        {
+            //Lista que sera la respuesta de la consulta;
+            List<Entidad> usuarios = new List<Entidad>();
+
+            try
+            {
+                //Respuesta de la consulta hecha a la Base de Datos
+                SqlDataReader respuesta;
+
+                //Indicamos que es un Stored Procedure, cual utilizar y ademas la conexion que necesita
+                this.instruccion = new SqlCommand("ListarUsuariosPorCargo", this.conexion);
+                this.instruccion.CommandType = CommandType.StoredProcedure;
+
+                //Le agregamos los valores correspondientes a las variables de Stored Procedure
+                this.instruccion.Parameters.AddWithValue("@cargo", cargo);
+
+                //Se abre conexion contra la Base de Datos
+                this.conexion.Open();
+
+                //Ejecutamos la consulta y traemos las filas que fueron obtenidas
+                respuesta = instruccion.ExecuteReader();
+
+                //Si se encontraron Usuarios se comienzan a agregar a la variable lista, sino, se devolvera vacia
+                if (respuesta.HasRows)
+                    //Recorremos cada fila devuelta de la consulta
+                    while (respuesta.Read())
+                    {
+                        //Creamos el Usuario y lo anexamos a la lista
+                        Entidad aux = FabricaEntidades.ObtenerUsuario(respuesta.GetString(3),respuesta.GetString(1),
+                            respuesta.GetString(2),respuesta.GetString(4));
+                        aux.Id = respuesta.GetInt32(0);
                         usuarios.Add(aux);
 
                     }

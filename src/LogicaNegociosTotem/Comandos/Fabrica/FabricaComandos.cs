@@ -223,9 +223,22 @@ namespace Comandos.Fabrica
             return new ComandoListarCargos();
         }
 
+        /// <summary>
+        /// Metodo que instancia el comando de Listar los Usuarios
+        /// </summary>
+        /// <returns>Todos los Usuarios del sistema</returns>
         public static Comando<bool,List<Entidad>> CrearComandoListarUsuarios()
         {
             return new ComandoListarUsuarios();
+        }
+
+        /// <summary>
+        /// Metodo que instancia el comando de Listar los Usuarios segun su cargo
+        /// </summary>
+        /// <returns>Todos los usuarios que tengan ese cargo</returns>
+        public static Comando<String, List<Entidad>> CrearComandoListarUsuariosPorCargo()
+        {
+            return new ComandoListarUsuariosPorCargo();
         }
         #endregion
 
