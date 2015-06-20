@@ -2234,16 +2234,25 @@ go
 CREATE PROCEDURE INSERTAR_ACTOR 
 	@nombre [varchar] (100),
 	@descripcion [varchar] (500),
-	@idproyecto int
+	@codigoProyecto varchar(6),
+	@afectado int OUTPUT
 AS
+DECLARE @idProyecto int = 0
 	BEGIN
 		-- Activo la funcion para saber si la  Base de Datos fue alterada
 		SET NOCOUNT OFF
 
+		select @idProyecto=pro_id from proyecto where pro_codigo=@codigoProyecto;
+		 
+
 		--Inserto el Actor
-		INSERT INTO ACTOR (act_nombre,act_descripcion,PROYECTO_pro_id) VALUES (@nombre,@descripcion,@idproyecto)
+		INSERT INTO ACTOR (act_nombre,act_descripcion,PROYECTO_pro_id) VALUES (@nombre,@descripcion,@idproyecto);
 		
+		select @afectado=count(*) from actor 
+				where act_nombre=@nombre 
+				and  PROYECTO_pro_id=@idproyecto; 
 	END
+	
 GO
 
 /*Leer actor(es)*/
@@ -2294,6 +2303,16 @@ AS
 		FROM CASO_USO C, CU_ACTOR R, ACTOR A 
 		WHERE (A.act_nombre=@nombreActor AND A.PROYECTO_pro_id= @idproyecto) AND (R.CASO_USO_cu_id=C.cu_id AND R.ACTOR_act_id=A.act_id);
 	END
+GO
+
+/*Verifica la existencia del actor*/
+
+CREATE PROCEDURE ValidarExitenciaActor
+@nombre varchar(30),
+@existe int OUTPUT
+AS
+	SET NOCOUNT OFF;
+	SELECT @existe=count(*) from actor where act_nombre =@nombre;
 GO
 
 /*==========================================================================================================================*/
