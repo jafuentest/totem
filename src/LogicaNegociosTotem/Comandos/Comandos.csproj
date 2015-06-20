@@ -67,6 +67,7 @@
     <Compile Include="Comandos\Modulo3\ComandoEliminarContactoDeIvolucradosEnProyecto.cs" />
     <Compile Include="Comandos\Modulo3\ComandoEliminarUsuariosDeIvolucradosEnProyecto.cs" />
     <Compile Include="Comandos\Modulo3\ComandoListarContactosPorCargoEmpresa.cs" />
+    <Compile Include="Comandos\Modulo4\ComandoAgregarProyecto.cs" />
     <Compile Include="Comandos\Modulo5\ComandoAgregarRequerimiento.cs" />
     <Compile Include="Comandos\Modulo5\ComandoConsultarRequerimiento.cs" />
     <Compile Include="Comandos\Modulo5\ComandoConsultarRequerimientosProyecto.cs" />
@@ -88,7 +89,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Comandos\Modulo1\" />
-    <Folder Include="Comandos\Modulo4\" />
     <Folder Include="Comandos\Modulo8\" />
   </ItemGroup>
   <ItemGroup>

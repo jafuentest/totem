@@ -29,6 +29,10 @@ namespace DAO.Fabrica
         #endregion
 
         #region Modulo 4
+        public override IntefazDAO.Modulo4.IDaoProyecto ObtenerDAOProyecto()
+        {
+            return new DAO.Modulo4.DAOProyecto();
+        }
         #endregion
 
         #region Modulo 5

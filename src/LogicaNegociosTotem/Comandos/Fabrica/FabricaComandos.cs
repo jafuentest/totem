@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Dominio;
-using Comandos.Comandos.Modulo6;
 using Comandos.Comandos.Modulo2;
+using Comandos.Comandos.Modulo4;
+using Comandos.Comandos.Modulo6;
 using Comandos.Comandos.Modulo7;
 
 namespace Comandos.Fabrica
@@ -136,6 +137,10 @@ namespace Comandos.Fabrica
         #endregion
 
         #region Modulo 4
+        public static Comando<Dominio.Entidad, Boolean> CrearComandoAgregarProyecto()
+        {
+            return new ComandoAgregarProyecto();
+        }
         #endregion
 
         #region Modulo 5
