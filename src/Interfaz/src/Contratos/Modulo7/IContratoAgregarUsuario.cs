@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 namespace Contratos.Modulo7
 {
     /// <summary>
-    /// Interface que contiene la firma de las propiedades a ser usadas por la vista
+    /// Interface que contiene la firma de las propiedades a ser usadas por la vista de AgregarUsuario
     /// </summary>
     public interface IContratoAgregarUsuario
     {

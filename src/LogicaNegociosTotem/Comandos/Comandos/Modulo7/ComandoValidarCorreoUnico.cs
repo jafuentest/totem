@@ -11,7 +11,7 @@ namespace Comandos.Comandos.Modulo7
     /// <summary>
     /// Comando para validar si el correo ingresado existe o no
     /// </summary>
-    class ComandoValidarCorreoUnico : Comando <String,bool>
+    public class ComandoValidarCorreoUnico : Comando <String,bool>
     {
         /// <summary>
         /// Metodo para validar si el correo existe o no
@@ -20,10 +20,16 @@ namespace Comandos.Comandos.Modulo7
         /// <returns>Verdadero si es valido, falso si ya esta registrado en la BD</returns>
         public override bool Ejecutar(String parametro)
         {
-         //   throw new NotImplementedException();
+            //Instanciamos la fabrica concreta SQLServer
             FabricaAbstractaDAO correoValido = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+
+            //Instanciamos el DAOUsuario
             IDaoUsuario daoUsuario = correoValido.ObtenerDAOUsuario();
+
+            //Ejecutamos la instruccion pertinente y esperamos la respuesta
             bool valido = daoUsuario.ValidarCorreoUnico(parametro);
+
+            //Retornamos la respuesta
             return valido;
         }
     }

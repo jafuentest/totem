@@ -6,6 +6,9 @@ using System.Security.Cryptography;
 
 namespace Dominio.Entidades.Modulo7
 {
+    /// <summary>
+    /// Clase que representa al Usuario y contiene todos sus atributos heredando de Entidad lo correspondiente al ID
+    /// </summary>
     public class Usuario:Entidad
     {
         #region Atributos

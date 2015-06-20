@@ -25,10 +25,7 @@ namespace Comandos.Comandos.Modulo7
         {
             //Variable que retornara el exito o fallo del registro
             bool exito = false;
-           // throw new NotImplementedException();
-           
-          //  ComandoValidarUsernameUnico validarUsername = FabricaComandos.CrearComandoValidarUsernameUnico();
-            //Entidad elUsuario = (Usuario)parametro;
+                      
             Comando<String, bool> validarUsername = FabricaComandos.CrearComandoValidarUsernameUnico();
             Comando<String, bool> validarCorreo = FabricaComandos.CrearComandoValidarCorreoUnico();
             Usuario elUsuario = (Usuario)parametro;
@@ -74,6 +71,7 @@ namespace Comandos.Comandos.Modulo7
             {
                 throw new CorreoRepetidoException();
             }*/
+                //Retornamos la respuesta
                  return exito;
         }
     }
