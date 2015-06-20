@@ -21,8 +21,7 @@ namespace Comandos.Comandos.Modulo7
         /// <returns>Lista que contiene todos los usuarios de la Base de Datos</returns>
         public override List<Entidad> Ejecutar(bool parametro)
         {
- 	        //throw new NotImplementedException();
-            //Lista que contendra todos los usuarios
+ 	        //Lista que contendra todos los usuarios
             List<Entidad> listaUsuarios;
 
             //Instanciamos la fabrica

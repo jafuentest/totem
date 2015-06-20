@@ -117,44 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Codigo_Error_InputInvalido" xml:space="preserve">
-    <value>T_00_004</value>
-    <comment>Codigo de error si algun input es invalido</comment>
+  <data name="ClaseComandoAgregarActor" xml:space="preserve">
+    <value>ComandoAgregarActor</value>
   </data>
-  <data name="Direccion_XML" xml:space="preserve">
-    <value>~/Master/menuLateral.xml</value>
-    <comment>Ubicacion del archivo XML con los datos del menu lateral</comment>
+  <data name="ClaseComandoConsultarActores" xml:space="preserve">
+    <value>ComandoConsultarActores</value>
   </data>
-  <data name="Expresion_Regular_Alfabeticos" xml:space="preserve">
-    <value>^[A-Z a-z]*$</value>
-    <comment>Expresion regular de caracteres alfabeticos</comment>
+  <data name="CodigoExcepcionComandoAgregarActorBD" xml:space="preserve">
+    <value>T_06_051</value>
   </data>
-  <data name="Expresion_Regular_Alfanumericos" xml:space="preserve">
-    <value>\\w</value>
-    <comment>Expresion regular de caracteres alfanumericos</comment>
+  <data name="CodigoExcepcionComandoAgregarActorError" xml:space="preserve">
+    <value>T_06_050</value>
   </data>
-  <data name="Expresion_Regular_Numericos" xml:space="preserve">
-    <value>\\d</value>
-    <comment>Expresion regular de caracteres numericos</comment>
+  <data name="CodigoExcepcionComandoAgregarActorNulo" xml:space="preserve">
+    <value>T_06_052</value>
   </data>
-  <data name="Formato_Fecha" xml:space="preserve">
-    <value>dd/MM/yyyy</value>
-    <comment>El formato de la fecha utilizada en el sistema</comment>
+  <data name="CodigoExcepcionComandoConsultarActoresBD" xml:space="preserve">
+    <value>T_06_053</value>
   </data>
-  <data name="Maxima_Cantidad_Caracteres" xml:space="preserve">
-    <value>100</value>
-    <comment>La maxima cantidad de caracteres permitidos para los datos a validar</comment>
+  <data name="CodigoExcepcionComandoConsultarActoresNulo" xml:space="preserve">
+    <value>T_06_055</value>
   </data>
-  <data name="Mensaje_Error_BaseDatos" xml:space="preserve">
-    <value>Error con la conexion a la base de datos, intente nuevamente</value>
-    <comment>Mensaje de error si ocurrio un error con la conexion a la base de datos</comment>
+  <data name="MensajeExcepcionComandoAgregarActorBD" xml:space="preserve">
+    <value>Error en la conexión a Base de Datos al agregar el actor.</value>
   </data>
-  <data name="Mensaje_Error_InputInvalido" xml:space="preserve">
-    <value>El texto ingresado es invalido, intente nuevamente</value>
-    <comment>Mensaje de error si el usuario ingreso un texto que no cumple con las validaciones</comment>
+  <data name="MensajeExcepcionComandoAgregarActorError" xml:space="preserve">
+    <value>Error del sistema al agregar el actor. Por favor intente más tarde.</value>
   </data>
-  <data name="Minima_Cantidad_Caracteres" xml:space="preserve">
-    <value>4</value>
-    <comment>La minima cantidad de caracteres permitidas para los datos a validar</comment>
+  <data name="MensajeExcepcionComandoAgregarActorNulo" xml:space="preserve">
+    <value>El actor que intento agregar tiene datos vacíos.</value>
+  </data>
+  <data name="MensajeExcepcionComandoConsultarActoresBD" xml:space="preserve">
+    <value>T_06_054</value>
+  </data>
+  <data name="MensajeExcepcionComandoConsultarActoresError" xml:space="preserve">
+    <value>T_06_057</value>
+  </data>
+  <data name="MensajeExcepcionComandoConsultarActoresNulo" xml:space="preserve">
+    <value>T_06_056</value>
   </data>
 </root>

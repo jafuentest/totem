@@ -5,7 +5,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Requerimientos</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Agregar Requerimiento</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
-    <div id="formularioAgregar" class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">      
+    <div id="formularioAgregar" class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1"> 
+        <div id="alert" runat="server">
+                </div>     
         <form id="agregar_requerimientos" class="form-horizontal" method="post" runat="server">
             <div class="form-group">
 				<div id="div-id" class="col-sm-5 col-md-5 col-lg-5">
@@ -67,28 +69,12 @@
             <br />
             <div class="form-group">
                 <div class="col-sm-5 col-md-5 col-lg-5">
-                    <button runat="server" id="btn-agregarReq" disabled="disabled" class="btn btn-primary" 
+                    <button runat="server" id="btn_agregarReq" class="btn btn-primary" 
                         type="submit" onserverclick="AgregarRequerimiento_Click">Agregar</button>
                     <a class="btn btn-default" href="ListarRequerimientos.aspx">Cancelar</a>
                 </div>
             </div>
         </form>
     </div>
-    <!--
-    <script src="js/Validacion.js"></script>
-    <script>
-        function fillCodigoTextField() {
-            var idTextField = document.getElementById("idreq_input");
-            var funcionalRadio = document.getElementById("input_tipo_funcional");
-            var nofuncionalRadio = document.getElementById("input_tipo_no_funcional");
-
-            if (funcionalRadio.checked) {
-                idTextField.value ="TOT_RF_5_1";
-            }else
-                if (nofuncionalRadio.checked) {
-                    idTextField.value = "TOT_RNF_5_1";
-                }
-        }
-    </script>
-    -->
+    
 </asp:Content>

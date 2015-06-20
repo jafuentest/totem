@@ -117,44 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Codigo_Error_InputInvalido" xml:space="preserve">
-    <value>T_00_004</value>
-    <comment>Codigo de error si algun input es invalido</comment>
+  <data name="Alerta_Clase_Error" xml:space="preserve">
+    <value>alert alert-danger alert-dismissible</value>
+    <comment>Clase de Error para la alerta de la interfaz</comment>
   </data>
-  <data name="Direccion_XML" xml:space="preserve">
-    <value>~/Master/menuLateral.xml</value>
-    <comment>Ubicacion del archivo XML con los datos del menu lateral</comment>
+  <data name="Alerta_Html" xml:space="preserve">
+    <value>&lt;div&gt;&lt;button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"&gt;&lt;span aria-hidden=\"true\"&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;</value>
+    <comment>Html necesario para la muestra de la alerta</comment>
   </data>
-  <data name="Expresion_Regular_Alfabeticos" xml:space="preserve">
-    <value>^[A-Z a-z]*$</value>
-    <comment>Expresion regular de caracteres alfabeticos</comment>
+  <data name="Alerta_Html_Final" xml:space="preserve">
+    <value>&lt;/div&gt;</value>
+    <comment>Final del html</comment>
   </data>
-  <data name="Expresion_Regular_Alfanumericos" xml:space="preserve">
-    <value>\\w</value>
-    <comment>Expresion regular de caracteres alfanumericos</comment>
+  <data name="Alerta_Mensaje_Campos_Invalidos" xml:space="preserve">
+    <value>Hay un error con los campos ingresados, intente nuevamente</value>
+    <comment>Mensaje de error de campos invalidos</comment>
   </data>
-  <data name="Expresion_Regular_Numericos" xml:space="preserve">
-    <value>\\d</value>
-    <comment>Expresion regular de caracteres numericos</comment>
-  </data>
-  <data name="Formato_Fecha" xml:space="preserve">
-    <value>dd/MM/yyyy</value>
-    <comment>El formato de la fecha utilizada en el sistema</comment>
-  </data>
-  <data name="Maxima_Cantidad_Caracteres" xml:space="preserve">
-    <value>100</value>
-    <comment>La maxima cantidad de caracteres permitidos para los datos a validar</comment>
-  </data>
-  <data name="Mensaje_Error_BaseDatos" xml:space="preserve">
-    <value>Error con la conexion a la base de datos, intente nuevamente</value>
-    <comment>Mensaje de error si ocurrio un error con la conexion a la base de datos</comment>
-  </data>
-  <data name="Mensaje_Error_InputInvalido" xml:space="preserve">
-    <value>El texto ingresado es invalido, intente nuevamente</value>
-    <comment>Mensaje de error si el usuario ingreso un texto que no cumple con las validaciones</comment>
-  </data>
-  <data name="Minima_Cantidad_Caracteres" xml:space="preserve">
-    <value>4</value>
-    <comment>La minima cantidad de caracteres permitidas para los datos a validar</comment>
+  <data name="Alerta_Rol" xml:space="preserve">
+    <value>alert</value>
+    <comment>Rol que hace la alerta</comment>
   </data>
 </root>

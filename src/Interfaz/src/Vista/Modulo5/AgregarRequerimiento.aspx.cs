@@ -9,7 +9,7 @@ namespace Vista.Modulo5
 {
     public partial class AgregarRequerimiento : System.Web.UI.Page, 
         Contratos.Modulo5.IContratoAgregarRequerimiento
-{
+    {
         private Presentadores.Modulo5.PresentadorAgregarRequerimiento presentador;
 
         public AgregarRequerimiento()
@@ -24,14 +24,14 @@ namespace Vista.Modulo5
             set { inputIdRequerimiento.Value = value; }
         }
 
-        bool Contratos.Modulo5.IContratoAgregarRequerimiento.funcional
+        string Contratos.Modulo5.IContratoAgregarRequerimiento.funcional
         {
             get
             {
                 if (inputFuncional.Checked)
-                    return true;
+                    return "Funcional";
                 else
-                    return false;
+                    return "No Funcional";
             }
         }
 
@@ -56,11 +56,25 @@ namespace Vista.Modulo5
             }
         }
 
-        bool Contratos.Modulo5.IContratoAgregarRequerimiento.finalizado
+        string Contratos.Modulo5.IContratoAgregarRequerimiento.finalizado
         {
-            get { return false; }
+            get { return "No Finalizado"; }
         }
 
+        string Contratos.Modulo5.IContratoAgregarRequerimiento.alertaClase
+        {
+            set { alert.Attributes["class"] = value; }
+        }
+
+        string Contratos.Modulo5.IContratoAgregarRequerimiento.alertaRol
+        {
+            set { alert.Attributes["role"] = value; }
+        }
+
+        string Contratos.Modulo5.IContratoAgregarRequerimiento.alerta
+        {
+            set { alert.InnerHtml = value; }
+        }
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -75,5 +89,8 @@ namespace Vista.Modulo5
         {
             presentador.AgregarRequerimiento();
         }
+
+
+        
     }
 }

@@ -14,6 +14,7 @@ CREATE PROCEDURE M5_AgregarRequerimiento
 AS 
 	BEGIN
 		INSERT INTO REQUERIMIENTO(
+			req_id,
 			req_codigo,
 			req_descripcion,
 			req_tipo,
@@ -22,6 +23,7 @@ AS
 			PROYECTO_pro_id
 		)
 		VALUES(
+			NEXT VALUE FOR secuenciaRequerimiento,
 			@req_codigo,
 			@req_descripcion,
 			@req_tipo,

@@ -96,11 +96,11 @@ namespace Comandos.Fabrica
         {
             return new Comandos.Modulo3.ComandoAgregarUsuariosInvolucrados();
         }
-        public static Comando<Dominio.Entidad, List<String>> CrearConsultarCargosContactos()
+        public static Comando<Dominio.Entidad, List<String>> CrearComandoConsultarCargosContactos()
         {
             return new Comandos.Modulo3.ComandoConsultarCargosContactos();
         }
-        public static Comando<Dominio.Entidad, Dominio.Entidad> CrearConsultarContactosInvolucradosPorProyecto()
+        public static Comando<Dominio.Entidad, Dominio.Entidad> CrearComandoConsultarContactosInvolucradosPorProyecto()
         {
             return new Comandos.Modulo3.ComandoConsultarContactosInvolucradosPorProyecto();
         }
@@ -223,9 +223,31 @@ namespace Comandos.Fabrica
             return new ComandoListarCargos();
         }
 
+        /// <summary>
+        /// Metodo que instancia el comando de Listar los Usuarios
+        /// </summary>
+        /// <returns>Todos los Usuarios del sistema</returns>
         public static Comando<bool,List<Entidad>> CrearComandoListarUsuarios()
         {
             return new ComandoListarUsuarios();
+        }
+
+        /// <summary>
+        /// Metodo que instancia el comando de Listar los Usuarios segun su cargo
+        /// </summary>
+        /// <returns>Todos los usuarios que tengan ese cargo</returns>
+        public static Comando<String, List<Entidad>> CrearComandoListarUsuariosPorCargo()
+        {
+            return new ComandoListarUsuariosPorCargo();
+        }
+
+        /// <summary>
+        /// Metodo que instancia el comando de Listar todos los cargos que ya estan en los Usuarios
+        /// </summary>
+        /// <returns>Todos los cargos que ya estan ocupados por al menos un usuario</returns>
+        public static Comando <bool,List<String>> CrearComandoLeerCargosUsuarios()
+        {
+            return new ComandoLeerCargosUsuarios();
         }
         #endregion
 

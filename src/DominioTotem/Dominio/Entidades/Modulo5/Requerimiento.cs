@@ -14,6 +14,7 @@ namespace Dominio.Entidades.Modulo5
 	   private string tipo;
 	   private string prioridad;
 	   private string estatus;
+       private string codigoProyecto;
 	   #endregion
 
 	   #region Constructor
@@ -37,6 +38,17 @@ namespace Dominio.Entidades.Modulo5
 		  Prioridad = prioridad;
 		  Estatus = estatus;
 	   }
+
+       public Requerimiento(string codigo, string descripcion, string tipo, string prioridad, string estatus, 
+           string codigoProyecto) : base(0)
+       {
+           Codigo = codigo;
+           Descripcion = descripcion;
+           Tipo = tipo;
+           Prioridad = prioridad;
+           Estatus = estatus;
+           CodigoProyecto = codigoProyecto;
+       }
 	   
 	   #endregion
 
@@ -65,7 +77,12 @@ namespace Dominio.Entidades.Modulo5
 	   {
 		  get { return estatus; }
 		  set { estatus = value; }
-	   } 
+	   }
+       public string CodigoProyecto
+       {
+           get { return codigoProyecto; }
+           set { codigoProyecto = value; }
+       }
 	   #endregion
     }
 }
