@@ -135,14 +135,14 @@
   <data name="CodigoExcepcionComandoTipoDeDatoErroneo" xml:space="preserve">
     <value>T_06_053</value>
   </data>
-  <data name="MensajeExcepcionComandoAgregarActorBD" xml:space="preserve">
-    <value>Error en la conexión a Base de Datos al agregar el actor.</value>
+  <data name="MensajeExcepcionComandoBD" xml:space="preserve">
+    <value>Error en la conexión a Base de Datos.</value>
   </data>
-  <data name="MensajeExcepcionComandoAgregarActorError" xml:space="preserve">
+  <data name="MensajeExcepcionComandoError" xml:space="preserve">
     <value>Error del sistema al agregar el actor. Por favor intente más tarde.</value>
   </data>
-  <data name="MensajeExcepcionComandoAgregarActorNulo" xml:space="preserve">
-    <value>El actor que intento agregar tiene datos vacíos.</value>
+  <data name="MensajeExcepcionComandoObjetoNulo" xml:space="preserve">
+    <value>Objeto con referencia nula.</value>
   </data>
   <data name="MensajeTipoDeDatoErroneoComandoExcepcion" xml:space="preserve">
     <value>Error al convertir de un tipo de dato en otro.</value>

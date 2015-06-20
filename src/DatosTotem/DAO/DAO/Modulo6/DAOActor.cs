@@ -54,9 +54,9 @@ namespace DAO.DAO.Modulo6
             {
 
 
-                AgregarActorBDDAOException exDaoActor = new AgregarActorBDDAOException(
+                BDDAOException exDaoActor = new BDDAOException(
                  RecursosDAOModulo6.CodigoExcepcionAgregarActorBD,
-                 RecursosDAOModulo6.MensajeExcepcionAgregarActorBD,
+                 RecursosDAOModulo6.MensajeExcepcionBD,
                  e);
 
                 Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
@@ -67,9 +67,9 @@ namespace DAO.DAO.Modulo6
             }
             catch (NullReferenceException e)
             {
-                AgregarActorNuloDAOException exDaoActor = new AgregarActorNuloDAOException(
+                ObjetoNuloDAOException exDaoActor = new ObjetoNuloDAOException(
                     RecursosDAOModulo6.CodigoExcepcionAgregarActorNulo,
-                    RecursosDAOModulo6.MensajeExcepcionAgregarActorNulo,
+                    RecursosDAOModulo6.MensajeExcepcionObjetoNulo,
                     e);
                 Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
                        exDaoActor);
@@ -79,9 +79,9 @@ namespace DAO.DAO.Modulo6
             }
             catch (Exception e)
             {
-                AgregarActorDAOException exDaoActor = new AgregarActorDAOException(
+                ErrorDesconocidoDAOException exDaoActor = new ErrorDesconocidoDAOException(
                     RecursosDAOModulo6.CodigoExcepcionAgregarActorError,
-                    RecursosDAOModulo6.MensajeExcepcionAgregarActorError,
+                    RecursosDAOModulo6.MensajeExcepcionErrorDesconocido,
                     e);
 
                 Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
@@ -131,9 +131,9 @@ namespace DAO.DAO.Modulo6
             {
 
 
-                AgregarActorBDDAOException exDaoActor = new AgregarActorBDDAOException(
+                BDDAOException exDaoActor = new BDDAOException(
                  RecursosDAOModulo6.CodigoExcepcionAgregarActorBD,
-                 RecursosDAOModulo6.MensajeExcepcionAgregarActorBD,
+                 RecursosDAOModulo6.MensajeExcepcionBD,
                  e);
 
                 Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
@@ -144,9 +144,9 @@ namespace DAO.DAO.Modulo6
             }
             catch (NullReferenceException e)
             {
-                AgregarActorNuloDAOException exDaoActor = new AgregarActorNuloDAOException(
+                ObjetoNuloDAOException exDaoActor = new ObjetoNuloDAOException(
                     RecursosDAOModulo6.CodigoExcepcionAgregarActorNulo,
-                    RecursosDAOModulo6.MensajeExcepcionAgregarActorNulo,
+                    RecursosDAOModulo6.MensajeExcepcionObjetoNulo,
                     e);
                 Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
                        exDaoActor);
@@ -169,9 +169,9 @@ namespace DAO.DAO.Modulo6
             }
             catch (Exception e)
             {
-                AgregarActorDAOException exDaoActor = new AgregarActorDAOException(
+                ErrorDesconocidoDAOException exDaoActor = new ErrorDesconocidoDAOException(
                     RecursosDAOModulo6.CodigoExcepcionAgregarActorError,
-                    RecursosDAOModulo6.MensajeExcepcionAgregarActorError,
+                    RecursosDAOModulo6.MensajeExcepcionErrorDesconocido,
                     e);
 
                 Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,

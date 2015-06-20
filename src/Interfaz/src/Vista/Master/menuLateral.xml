@@ -47,27 +47,27 @@
 		<modulo id="5"></modulo>
 	</opcion>
 	<!-- Opciones del menú lateral del Módulo 6-->
-	<opcion nombre="Agregar Caso de Uso" link="~/Modulo6/Crear.aspx">
+	<opcion nombre="Agregar Caso de Uso" link="Crear.aspx">
 		<modulo id="6"/>
 		<rol nombre="usuario"/>
 		<rol nombre="administrador"/>
 	</opcion>
-	<opcion nombre="Listar Casos de Uso" link="~/Modulo6/Listar.aspx">
+	<opcion nombre="Listar Casos de Uso" link="Listar.aspx">
 		<modulo id="6"></modulo>
 		<rol nombre="usuario"/>
 		<rol nombre="administrador"/>
 	</opcion>
-	<opcion nombre="Casos de Uso por Actor" link="~/Modulo6/ReporteActores.aspx">
+	<opcion nombre="Casos de Uso por Actor" link="ReporteActores.aspx">
 		<modulo id="6"></modulo>
 		<rol nombre="usuario"/>
 		<rol nombre="administrador"/>
 	</opcion>
-	<opcion nombre="Agregar Actor" link="~/Modulo6/CrearActor.aspx">
+	<opcion nombre="Agregar Actor" link="CrearActor.aspx">
 		<modulo id="6"></modulo>
 		<rol nombre="usuario"/>
 		<rol nombre="administrador"/>
 	</opcion>
-	<opcion nombre="Listar Actores" link="~/Modulo6/ListarActores.aspx">
+	<opcion nombre="Listar Actores" link="ListarActores.aspx">
 		<modulo id="6"></modulo>
 		<rol nombre="usuario"/>
 		<rol nombre="administrador"/>

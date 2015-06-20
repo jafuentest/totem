@@ -5,24 +5,24 @@ using System.Text;
 
 namespace ExcepcionesTotem.Modulo6.ExcepcionesComando
 {
-   public class AgregarActorComandoException:ExceptionTotem
+   public class ComandoException:ExceptionTotem
     {
        
-        public AgregarActorComandoException()
+        public ComandoException()
             : base()
         { }
 
-        public AgregarActorComandoException(string message)
+        public ComandoException(string message)
             : base(message)
         {
         }
 
-        public AgregarActorComandoException(string message, Exception inner)
+        public ComandoException(string message, Exception inner)
             : base(message, inner)
         {
         }
 
-        public AgregarActorComandoException(string codigo, string message, Exception inner)
+        public ComandoException(string codigo, string message, Exception inner)
             : base(codigo, message, inner)
         {
         }

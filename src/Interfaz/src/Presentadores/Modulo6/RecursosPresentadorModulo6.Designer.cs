@@ -115,15 +115,6 @@ namespace Presentadores.Modulo6 {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a T_06_105.
-        /// </summary>
-        internal static string CodigoMensajePresentadorTipoDeDatoErroneo1 {
-            get {
-                return ResourceManager.GetString("CodigoMensajePresentadorTipoDeDatoErroneo1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a El actor ya se encuentra registrado en Base de Datos..
         /// </summary>
         internal static string MensajeActorExistente {
