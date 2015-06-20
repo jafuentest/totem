@@ -135,9 +135,6 @@
   <data name="CodigoMensajePresentadorTipoDeDatoErroneo" xml:space="preserve">
     <value>T_06_105</value>
   </data>
-  <data name="CodigoMensajePresentadorTipoDeDatoErroneo1" xml:space="preserve">
-    <value>T_06_105</value>
-  </data>
   <data name="MensajeActorExistente" xml:space="preserve">
     <value>El actor ya se encuentra registrado en Base de Datos.</value>
   </data>

@@ -32,12 +32,12 @@ namespace Comandos.Comandos.Modulo6
                 return resultado;
             }
 
-            catch (AgregarActorBDDAOException ex)
+            catch (BDDAOException ex)
             {
 
-                AgregarActorComandoBDException exComandoAgregarActor = new AgregarActorComandoBDException(
+                ComandoBDException exComandoAgregarActor = new ComandoBDException(
                      RecursosComandosModulo6.CodigoExcepcionComandoAgregarActorBD,
-                     RecursosComandosModulo6.MensajeExcepcionComandoAgregarActorBD,
+                     RecursosComandosModulo6.MensajeExcepcionComandoBD,
                      ex);
 
                 Logger.EscribirError(RecursosComandosModulo6.ClaseComandoVerificarExistenciaActor,
@@ -59,11 +59,11 @@ namespace Comandos.Comandos.Modulo6
                 throw exComandoAgregarActor;
             }
 
-            catch (AgregarActorNuloDAOException ex)
+            catch (ObjetoNuloDAOException ex)
             {
-                AgregarActorComandoNullException exComandoAgregarActor = new AgregarActorComandoNullException(
+                ComandoNullException exComandoAgregarActor = new ComandoNullException(
                     RecursosComandosModulo6.CodigoExcepcionComandoAgregarActorNulo,
-                    RecursosComandosModulo6.MensajeExcepcionComandoAgregarActorNulo,
+                    RecursosComandosModulo6.MensajeExcepcionComandoObjetoNulo,
                     ex);
 
                 Logger.EscribirError(RecursosComandosModulo6.ClaseComandoVerificarExistenciaActor,
@@ -73,11 +73,11 @@ namespace Comandos.Comandos.Modulo6
 
             }
 
-            catch (AgregarActorDAOException ex)
+            catch (ErrorDesconocidoDAOException ex)
             {
-                AgregarActorComandoException exComandoAgregarActor = new AgregarActorComandoException(
+                ComandoException exComandoAgregarActor = new ComandoException(
                      RecursosComandosModulo6.CodigoExcepcionComandoAgregarActorError,
-                     RecursosComandosModulo6.MensajeExcepcionComandoAgregarActorError,
+                     RecursosComandosModulo6.MensajeExcepcionComandoError,
                      ex);
 
                 Logger.EscribirError(RecursosComandosModulo6.ClaseComandoVerificarExistenciaActor,

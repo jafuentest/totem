@@ -18,13 +18,18 @@ namespace DAO.DAO.Modulo7
     /// </summary>
     public class DAOUsuario : IDaoUsuario
     {
+        //Conexion hacia la base de Datos y la instruccion (Consulta) que se le hara
         private SqlConnection conexion;
         private SqlCommand instruccion;
 
+        /// <summary>
+        /// Constructor de la clase DAO que instancia una conexion nueva con la Base de Datos
+        /// </summary>
         public DAOUsuario()
         {
             try
             {
+               //Sino existe conexion se hace una nueva indicando la ruta donde esta la BD con el Configuration Manager
                 if (this.conexion == null)
                     this.conexion = new SqlConnection(ConfigurationManager.
                     ConnectionStrings[RecursoGeneralDAO.Nombre_Base_Datos].ConnectionString);
@@ -210,6 +215,8 @@ namespace DAO.DAO.Modulo7
                 valido = false;
 
             }
+
+            //Retornamos la respuesta
             return valido;
         }
 

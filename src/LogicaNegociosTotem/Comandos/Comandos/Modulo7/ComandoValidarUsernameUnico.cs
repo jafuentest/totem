@@ -13,7 +13,7 @@ namespace Comandos.Comandos.Modulo7
     /// <summary>
     /// Comando para validar si el username ingresado existe o no
     /// </summary>
-    class ComandoValidarUsernameUnico : Comando <String,bool>
+    public class ComandoValidarUsernameUnico : Comando <String,bool>
     {
         /// <summary>
         /// Metodo para validar si el username existe o no
@@ -22,16 +22,20 @@ namespace Comandos.Comandos.Modulo7
         /// <returns>Verdadero si es valido, falso sino es valido</returns>
         public override bool Ejecutar(String parametro)
         {
-            Console.WriteLine("ENTRE EN EL USERNAME");
-            //throw new NotImplementedException();
+            //Instanciamos la fabrica
             FabricaAbstractaDAO usernameUnico = FabricaDAOSqlServer.ObtenerFabricaSqlServer();
-           // IDaoUsuario daoUsuario = usernameUnico.ObtenerDAOUsuario();
+
+            //Instanciamos el DAO
             IDaoUsuario daoUsuario = usernameUnico.ObtenerDAOUsuario();
+
+            //Ejecutamos la instruccion y obtenemos la respuesta pertinente
             bool valido = daoUsuario.ValidarUsernameUnico(parametro);
             /*if (valido == false)
                 throw new UserNameRepetidoException();*/
             // usernameUnico.ObtenerDAOUsuario();
             //Boolean valido = conexion.usernameUnico(userName);
+
+            //Retornamos la respuesta
             return valido;
         }
     }

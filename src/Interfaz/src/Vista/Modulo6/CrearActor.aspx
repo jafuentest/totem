@@ -9,7 +9,7 @@
     Agregar Actor
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" runat="server">
-    <asp:Label ID="labelMensajeExito" Visible="false"  class="alert alert-sucess alert-dismissible" runat="server"></asp:Label>
+    <asp:Label ID="labelMensajeExito" Visible="false"  class="alert alert-sucess" runat="server"></asp:Label>
     <asp:Label ID="labelMensajeError" Visible="false"  class="alert alert-danger alert-dismissible" runat="server"></asp:Label>
     <br />
     <br />

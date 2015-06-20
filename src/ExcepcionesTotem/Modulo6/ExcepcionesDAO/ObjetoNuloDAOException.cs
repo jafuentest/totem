@@ -2,27 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ExcepcionesTotem; 
 
 namespace ExcepcionesTotem.Modulo6.ExcepcionesDAO
 {
-   public class ModificarActorBDDAOException:DAOException
+   public class ObjetoNuloDAOException:DAOException
     {
-        public ModificarActorBDDAOException()
+       
+       public ObjetoNuloDAOException()
             : base()
         { }
 
-        public ModificarActorBDDAOException(string message)
+        public ObjetoNuloDAOException(string message)
             : base(message)
         {
         }
 
-        public ModificarActorBDDAOException(string message, Exception inner)
+        public ObjetoNuloDAOException(string message, Exception inner)
             : base(message, inner)
         {
         }
 
-        public ModificarActorBDDAOException(string codigo, string message, Exception inner)
+        public ObjetoNuloDAOException(string codigo, string message, Exception inner)
             : base(codigo, message, inner)
         {
         }

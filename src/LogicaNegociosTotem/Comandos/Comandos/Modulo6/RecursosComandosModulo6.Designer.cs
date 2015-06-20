@@ -115,29 +115,29 @@ namespace Comandos.Comandos.Modulo6 {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Error en la conexión a Base de Datos al agregar el actor..
+        ///   Busca una cadena traducida similar a Error en la conexión a Base de Datos..
         /// </summary>
-        internal static string MensajeExcepcionComandoAgregarActorBD {
+        internal static string MensajeExcepcionComandoBD {
             get {
-                return ResourceManager.GetString("MensajeExcepcionComandoAgregarActorBD", resourceCulture);
+                return ResourceManager.GetString("MensajeExcepcionComandoBD", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Error del sistema al agregar el actor. Por favor intente más tarde..
         /// </summary>
-        internal static string MensajeExcepcionComandoAgregarActorError {
+        internal static string MensajeExcepcionComandoError {
             get {
-                return ResourceManager.GetString("MensajeExcepcionComandoAgregarActorError", resourceCulture);
+                return ResourceManager.GetString("MensajeExcepcionComandoError", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a El actor que intento agregar tiene datos vacíos..
+        ///   Busca una cadena traducida similar a Objeto con referencia nula..
         /// </summary>
-        internal static string MensajeExcepcionComandoAgregarActorNulo {
+        internal static string MensajeExcepcionComandoObjetoNulo {
             get {
-                return ResourceManager.GetString("MensajeExcepcionComandoAgregarActorNulo", resourceCulture);
+                return ResourceManager.GetString("MensajeExcepcionComandoObjetoNulo", resourceCulture);
             }
         }
         
