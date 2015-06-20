@@ -7,7 +7,6 @@ using Dominio;
 using Dominio.Fabrica;
 using Dominio.Entidades.Modulo8;
 using System.Data;
-using System.Data;
 using ExcepcionesTotem;
 using ExcepcionesTotem.Modulo8;
 using ExcepcionesTotem.Modulo8.ExcepcionesDeDatos;
@@ -20,54 +19,7 @@ namespace DAO.DAO.Modulo8
         #region Agregar
         public bool Agregar(Entidad parametro)
         {
-            Minuta laMinuta = (Minuta)parametro;
-
-            List<Parametro> parametros = new List<Parametro>();
-            Parametro elParametro = new Parametro(RecursosBDModulo8.ParametroFechaMinuta, SqlDbType.DateTime,
-                laMinuta.Fecha.ToShortDateString(), false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursosBDModulo8.ParametroMotivoMinuta, SqlDbType.VarChar,
-                laMinuta.Motivo, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursosBDModulo8.ParametroObservacionesMinuta, SqlDbType.VarChar,
-                laMinuta.Observaciones, false);
-            parametros.Add(elParametro);
-            
-
-            try
-            {
-                List<Resultado> tmp = EjecutarStoredProcedure(RecursosBDModulo8.ProcedimientoAgregarMinuta, parametros);
-                return (tmp.ToArray().Length > 0);
-            }
-            catch (NullReferenceException ex)
-            {
-
-                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
-                    RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
-
-            }
-            catch (SqlException ex)
-            {
-                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
-                    RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
-
-            }
-            catch (ParametroIncorrectoException ex)
-            {
-                throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
-                    RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
-            }
-            catch (AtributoIncorrectoException ex)
-            {
-                throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
-                    RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
-            }
-            catch (Exception ex)
-            {
-                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
-                   RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
-
-            }
+            throw new NotImplementedException();
         }
         #endregion
         #region Modificar
@@ -79,7 +31,7 @@ namespace DAO.DAO.Modulo8
            
             List<Parametro> parametros = new List<Parametro>();
             Parametro elParametro = new Parametro(RecursosBDModulo8.ParametroIDMinuta, SqlDbType.Int,
-                laMinuta.Codigo, false);
+                laMinuta.Id.ToString(), false);
             parametros.Add(elParametro);
             elParametro = new Parametro(RecursosBDModulo8.ParametroFechaMinuta, SqlDbType.DateTime,
                  laMinuta.Fecha.ToShortDateString(), false);
@@ -147,7 +99,7 @@ namespace DAO.DAO.Modulo8
                 foreach (DataRow row in resultado.Rows)
                 {
 
-                    laMinuta.Codigo = row[RecursosBDModulo8.AtributoIDMinuta].ToString();
+                    laMinuta.Id = int.Parse(row[RecursosBDModulo8.AtributoIDMinuta].ToString());
                     laMinuta.Fecha = DateTime.Parse(row[RecursosBDModulo8.AtributoFechaMinuta].ToString());
                     laMinuta.Motivo = row[RecursosBDModulo8.AtributoMotivoMinuta].ToString();
                     laMinuta.Observaciones = row[RecursosBDModulo8.AtributoObservacionesMinuta].ToString();
@@ -223,7 +175,7 @@ namespace DAO.DAO.Modulo8
 
 
                     laMinuta = (Minuta)laFabrica.ObtenerMinuta();
-                    laMinuta.Codigo = row[RecursosBDModulo8.AtributoIDMinuta].ToString();
+                    laMinuta.Id = int.Parse(row[RecursosBDModulo8.AtributoIDMinuta].ToString());
                     laMinuta.Fecha = DateTime.Parse(row[RecursosBDModulo8.AtributoFechaMinuta].ToString());
                     laMinuta.Motivo = row[RecursosBDModulo8.AtributoMotivoMinuta].ToString();
                     laMinuta.Observaciones = row[RecursosBDModulo8.AtributoObservacionesMinuta].ToString();
@@ -293,11 +245,11 @@ namespace DAO.DAO.Modulo8
 
 
                     laMinuta = (Minuta)laFabrica.ObtenerMinuta();
-                    laMinuta.Codigo = row[RecursosBDModulo8.AtributoIDMinuta].ToString();
+                    laMinuta.Id =  int.Parse(row[RecursosBDModulo8.AtributoIDMinuta].ToString());
                     laMinuta.Fecha = DateTime.Parse(row[RecursosBDModulo8.AtributoFechaMinuta].ToString());
                     laMinuta.Motivo = row[RecursosBDModulo8.AtributoMotivoMinuta].ToString();
                     laMinuta.Observaciones = row[RecursosBDModulo8.AtributoObservacionesMinuta].ToString();
-                    laLista.Add(laMinuta);
+                    
                 }
 
 
@@ -344,17 +296,12 @@ namespace DAO.DAO.Modulo8
         public bool EliminarMinuta(int idMinuta)
         {
             List<Parametro> parametros = new List<Parametro>();
-           /*  Parametro parametroStored = new Parametro(RecursosBDModulo8.ParametroIDMinuta, SqlDbType.Int, idMinuta.ToString(), false);
+             Parametro parametroStored = new Parametro(RecursosBDModulo8.ParametroIDMinuta, SqlDbType.Int, idMinuta.ToString(), false);
              parametros.Add(parametroStored); 
             
-            
-            
-            Esto va a fallar Arreglar SP
-            */
-
             try
             {
-                List<Resultado> tmp = EjecutarStoredProcedure(RecursosBDModulo8.Procedure1 + idMinuta, parametros);
+                List<Resultado> tmp = EjecutarStoredProcedure(RecursosBDModulo8.ProcedimientoEliminarMinuta, parametros);
                 return (tmp.ToArray().Length > 0);
             }
             catch (NullReferenceException ex)
@@ -389,6 +336,140 @@ namespace DAO.DAO.Modulo8
             }
 
 
+        }
+
+        /// <summary>
+        /// Metodo para buscar la ultima minuta en bd
+        /// </summary>
+        /// <returns>Retorna un boolean para saber si se realizo con éxito la operación</returns>
+        public int BuscarUltimaMinuta()
+        {
+            FabricaEntidades laFabrica = new FabricaEntidades();
+            List<Entidad> laLista = new List<Entidad>();
+            DataTable resultado = new DataTable();
+            List<Parametro> parametros = new List<Parametro>();
+            int result=0;
+            Minuta laMinuta = (Minuta)laFabrica.ObtenerMinuta();
+            try
+            {
+                resultado = EjecutarStoredProcedureTuplas(RecursosBDModulo8.ProcedimientoBuscarUltimaMinuta, parametros);
+
+                foreach (DataRow row in resultado.Rows)
+                {
+                    result = int.Parse(row[RecursosBDModulo8.AtributoIDMinuta].ToString());
+                }
+
+
+            }
+            catch (NullReferenceException ex)
+            {
+
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                    RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                    RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                    RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                    RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
+            catch (Exception ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                   RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
+
+            }
+            return result;
+
+        }
+
+        /// <summary>
+        /// Metodo para guardar una Minuta en la BD
+        /// </summary>
+        /// <param name="parametro">Objeto de tipo Minuta</param>
+        /// <returns>retorna el id de la minuta insertada en caso contrario retorna 0</returns>
+        public int AgregarMinuta(Entidad parametro)
+        {
+            Minuta laMinuta = (Minuta)parametro;
+
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro elParametro = new Parametro(RecursosBDModulo8.ParametroFechaMinuta, SqlDbType.DateTime,
+                laMinuta.Fecha.ToShortDateString(), false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursosBDModulo8.ParametroMotivoMinuta, SqlDbType.VarChar,
+                laMinuta.Motivo, false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursosBDModulo8.ParametroObservacionesMinuta, SqlDbType.VarChar,
+                laMinuta.Observaciones, false);
+            parametros.Add(elParametro);
+
+
+            /* try
+             {
+                 List<Resultado> tmp = EjecutarStoredProcedure(RecursosBDModulo8.ProcedimientoAgregarMinuta, parametros);
+                 return (tmp.ToArray().Length > 0);
+             }*/
+
+
+
+            DataTable resultado = new DataTable();
+            int idMinutaInsert;
+            try
+            {
+                resultado = EjecutarStoredProcedureTuplas(RecursosBDModulo8.ProcedimientoAgregarMinuta, parametros);
+
+                foreach (DataRow row in resultado.Rows)
+                {
+
+                    idMinutaInsert = int.Parse(row[RecursosBDModulo8.AtributoIDMinuta].ToString());
+
+                    return idMinutaInsert;
+
+                }
+            }
+
+            catch (NullReferenceException ex)
+            {
+
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                    RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                    RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                    RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                    RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
+            catch (Exception ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                   RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
+
+            }
+            return 0;
         }
     }
 

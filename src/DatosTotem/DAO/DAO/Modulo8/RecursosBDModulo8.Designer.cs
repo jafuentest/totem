@@ -511,6 +511,15 @@ namespace DAO.DAO.Modulo8 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Procedure_BuscarUltimaMinuta.
+        /// </summary>
+        internal static string ProcedimientoBuscarUltimaMinuta {
+            get {
+                return ResourceManager.GetString("ProcedimientoBuscarUltimaMinuta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Procedure_ConsultarAcuerdos.
         /// </summary>
         internal static string ProcedimientoConsultarAcuerdo {
@@ -606,6 +615,15 @@ namespace DAO.DAO.Modulo8 {
         internal static string ProcedimientoEliminarAcuerdoContacto {
             get {
                 return ResourceManager.GetString("ProcedimientoEliminarAcuerdoContacto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procedure_EliminarMinuta.
+        /// </summary>
+        internal static string ProcedimientoEliminarMinuta {
+            get {
+                return ResourceManager.GetString("ProcedimientoEliminarMinuta", resourceCulture);
             }
         }
         
