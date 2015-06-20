@@ -2996,9 +2996,6 @@ BEGIN
 END;
 GO
 
- INSERT INTO MINUTA(min_fecha, min_motivo, min_observaciones) Output Inserted.min_id
-	    VALUES('2015-04-25 12:00:00.000' ,'Requerimientos' ,'')
-
 -------------------Procedimiento para Agregar un Punto ----------------------
 
 CREATE PROCEDURE Procedure_AgregarPunto

@@ -50,25 +50,39 @@ namespace PruebasUnitariasTotem.Modulo8
         [Test]
         public void PruebaConsultarMinutaBD()
         {
-            minuta = (Minuta)daominuta.ConsultarMinutaBD(1);
-            Assert.AreEqual(minuta.Fecha, DateTime.Parse("2015-04-25 12:00:00.000"));
-            Assert.AreEqual(minuta.Motivo, "Requerimientos");
-            Assert.AreEqual(minuta.Observaciones, "");
+            minuta.Id = 1;
+            minuta.Fecha = DateTime.Parse("2015-04-25 18:00:00.000");
+            minuta.Motivo = "Prueba";
+            minuta.Observaciones = "";
+            int id = daominuta.AgregarMinuta(minuta);
+            Minuta minuta2 = (Minuta)daominuta.ConsultarMinutaBD(id);
+
+            Assert.AreEqual(minuta.Fecha, minuta2.Fecha);
+            Assert.AreEqual(minuta.Motivo, minuta2.Motivo);
+            Assert.AreEqual(minuta.Observaciones, minuta2.Observaciones);
+            daominuta.EliminarMinuta(id);
         }
-/*
+
         /// <summary>
         /// Metodo que prueba que se modifica una Minuta a la BD correctamente
         /// </summary>
         [Test]
         public void PruebaModificarMinutaBD()
         {
-            minuta.Codigo = "1";
+            minuta.Id = 1;
             minuta.Fecha = DateTime.Parse("2015-04-25 18:00:00.000");
             minuta.Motivo = "Prueba";
             minuta.Observaciones = "";
+            int id = daominuta.AgregarMinuta(minuta);
+            minuta.Id = id;
+            minuta.Motivo = "Prueba Modificada";
             Assert.IsTrue(daominuta.Modificar(minuta));
+            Minuta minuta2 = (Minuta)daominuta.ConsultarMinutaBD(id);
+            Assert.AreEqual(minuta2.Motivo, "Prueba Modificada");
+
+            daominuta.EliminarMinuta(id);
         }
-        */
+        
         /// <summary>
         /// Metodo que prueba que se agrega una Minuta a la BD correctamente
         /// </summary>
@@ -81,14 +95,7 @@ namespace PruebasUnitariasTotem.Modulo8
             minuta.Observaciones = "";
             int id=daominuta.AgregarMinuta(minuta);   
             Assert.IsTrue(id > 0);
-          //  daominuta.EliminarMinuta(id);
-            /*
-            System.Console.Out.WriteLine("ahasdasdasdas :"+id);
-            Minuta minuta2;
-            minuta2 = (Minuta)daominuta.ConsultarMinutaBD(id);
-            Assert.AreEqual(minuta.Fecha, minuta2.Fecha);
-            Assert.AreEqual(minuta.Motivo, minuta2.Motivo);
-            Assert.AreEqual(minuta.Observaciones, minuta2.Observaciones);*/
+            daominuta.EliminarMinuta(id);
         }
 
 
@@ -98,7 +105,11 @@ namespace PruebasUnitariasTotem.Modulo8
         [Test]
         public void PruebaEliminarMinuta()
         {
-           
+            minuta.Id = 1;
+            minuta.Fecha = DateTime.Parse("2015-04-25 18:00:00.000");
+            minuta.Motivo = "Prueba";
+            minuta.Observaciones = "";
+            int id = daominuta.AgregarMinuta(minuta);
             Assert.IsTrue(daominuta.EliminarMinuta(daominuta.BuscarUltimaMinuta()));
         }
         /// <summary>

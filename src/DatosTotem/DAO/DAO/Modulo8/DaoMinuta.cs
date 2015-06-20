@@ -34,7 +34,7 @@ namespace DAO.DAO.Modulo8
                 laMinuta.Id.ToString(), false);
             parametros.Add(elParametro);
             elParametro = new Parametro(RecursosBDModulo8.ParametroFechaMinuta, SqlDbType.DateTime,
-                 laMinuta.Fecha.ToShortDateString(), false);
+                 laMinuta.Fecha.ToString("yyyy-MM-dd HH':'mm':'ss"), false);
             parametros.Add(elParametro);
             elParametro = new Parametro(RecursosBDModulo8.ParametroMotivoMinuta, SqlDbType.VarChar,
                 laMinuta.Motivo, false);
@@ -47,7 +47,15 @@ namespace DAO.DAO.Modulo8
             {
                 List<Resultado> tmp = EjecutarStoredProcedure(RecursosBDModulo8.ProcedimientoModificarMinuta,
                     parametros);
-                return (tmp.ToArray().Length > 0);
+                if (tmp != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+
+                }
             }
             catch (NullReferenceException ex)
             {
@@ -98,7 +106,8 @@ namespace DAO.DAO.Modulo8
 
                 foreach (DataRow row in resultado.Rows)
                 {
-
+                  
+                    System.Console.Out.WriteLine(row[RecursosBDModulo8.AtributoFechaMinuta].ToString());
                     laMinuta.Id = int.Parse(row[RecursosBDModulo8.AtributoIDMinuta].ToString());
                     laMinuta.Fecha = DateTime.Parse(row[RecursosBDModulo8.AtributoFechaMinuta].ToString());
                     laMinuta.Motivo = row[RecursosBDModulo8.AtributoMotivoMinuta].ToString();
@@ -244,6 +253,7 @@ namespace DAO.DAO.Modulo8
                 {
 
 
+                    System.Console.Out.WriteLine(row[RecursosBDModulo8.AtributoFechaMinuta].ToString());
                     laMinuta = (Minuta)laFabrica.ObtenerMinuta();
                     laMinuta.Id =  int.Parse(row[RecursosBDModulo8.AtributoIDMinuta].ToString());
                     laMinuta.Fecha = DateTime.Parse(row[RecursosBDModulo8.AtributoFechaMinuta].ToString());
@@ -302,8 +312,19 @@ namespace DAO.DAO.Modulo8
             try
             {
                 List<Resultado> tmp = EjecutarStoredProcedure(RecursosBDModulo8.ProcedimientoEliminarMinuta, parametros);
-                return (tmp.ToArray().Length > 0);
+             
+                if (tmp != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+
+                }
             }
+
+               
             catch (NullReferenceException ex)
             {
 
@@ -406,7 +427,7 @@ namespace DAO.DAO.Modulo8
 
             List<Parametro> parametros = new List<Parametro>();
             Parametro elParametro = new Parametro(RecursosBDModulo8.ParametroFechaMinuta, SqlDbType.DateTime,
-                laMinuta.Fecha.ToShortDateString(), false);
+                laMinuta.Fecha.ToString("yyyy-MM-dd HH':'mm':'ss"), false);
             parametros.Add(elParametro);
             elParametro = new Parametro(RecursosBDModulo8.ParametroMotivoMinuta, SqlDbType.VarChar,
                 laMinuta.Motivo, false);
@@ -414,15 +435,6 @@ namespace DAO.DAO.Modulo8
             elParametro = new Parametro(RecursosBDModulo8.ParametroObservacionesMinuta, SqlDbType.VarChar,
                 laMinuta.Observaciones, false);
             parametros.Add(elParametro);
-
-
-            /* try
-             {
-                 List<Resultado> tmp = EjecutarStoredProcedure(RecursosBDModulo8.ProcedimientoAgregarMinuta, parametros);
-                 return (tmp.ToArray().Length > 0);
-             }*/
-
-
 
             DataTable resultado = new DataTable();
             int idMinutaInsert;
