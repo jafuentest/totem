@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Dominio;
-using Comandos.Comandos.Modulo2;
-using Comandos.Comandos.Modulo4;
 using Comandos.Comandos.Modulo6;
+using Comandos.Comandos.Modulo2;
 using Comandos.Comandos.Modulo7;
 
 namespace Comandos.Fabrica
@@ -81,70 +80,12 @@ namespace Comandos.Fabrica
         {
             return new ComandoModificarClienteNatural();
         }
-        public static Comando<bool, List<String>> CrearComandoConsultarListaCargos()
-        {
-            return new ComandoConsultarListaCargos();
-        }
         #endregion
 
         #region Modulo 3
-        public static Comando<Dominio.Entidad, Boolean> CrearComandoAgregarContactosInvolucrados()
-        {
-            return new Comandos.Modulo3.ComandoAgregarContactosInvolucrados();
-        }
-        public static Comando<Dominio.Entidad, Boolean> CrearComandoAgregarUsuarioInvolucrados()
-        {
-            return new Comandos.Modulo3.ComandoAgregarUsuariosInvolucrados();
-        }
-        public static Comando<Dominio.Entidad, List<String>> CrearConsultarCargosContactos()
-        {
-            return new Comandos.Modulo3.ComandoConsultarCargosContactos();
-        }
-        public static Comando<Dominio.Entidad, Dominio.Entidad> CrearConsultarContactosInvolucradosPorProyecto()
-        {
-            return new Comandos.Modulo3.ComandoConsultarContactosInvolucradosPorProyecto();
-        }
-        public static Comando<Dominio.Entidad, Boolean> CrearComandoConsultarContactoInvolucrados()
-        {
-            return new Comandos.Modulo3.ComandoAgregarContactosInvolucrados();
-        }
-        public static Comando<Dominio.Entidad, Dominio.Entidad> CrearComandoConsultarUsuariosInvolucrados()
-        {
-
-            return new Comandos.Modulo3.ComandoConsultarUsuariosInvolucradosPorProyecto();
-        }
-        public static Comando<int, Dominio.Entidad> CrearComandoDatosContactoID()
-        {
-
-            return new Comandos.Modulo3.ComandoDatosContactoID();
-        }
-        public static Comando<String, Dominio.Entidad> CrearComandoDatosUsuariosUsername()
-        {
-
-            return new Comandos.Modulo3.ComandoDatosUsuarioUsername();
-        }
-        public static Comando<Dominio.Entidad, Boolean> CrearComandoEliminarContactoDeInvolucradosEnProyecto()
-        {
-
-            return new Comandos.Modulo3.ComandoEliminarContactoDeIvolucradosEnProyecto();
-        }
-        public static Comando<Dominio.Entidad, Boolean> CrearComandoEliminarUsuariosDeInvolucradosEnProyecto()
-        {
-
-            return new Comandos.Modulo3.ComandoEliminarUsuariosDeIvolucradosEnProyecto();
-        }
-        public static Comando<Entidad, List<Dominio.Entidad>> CrearComandoListarContactosPorCargoEmpresa()
-        {
-
-            return new Comandos.Modulo3.ComandoListarContactosPorCargoEmpresa();
-        }
         #endregion
 
         #region Modulo 4
-        public static Comando<Dominio.Entidad, Boolean> CrearComandoAgregarProyecto()
-        {
-            return new ComandoAgregarProyecto();
-        }
         #endregion
 
         #region Modulo 5
@@ -179,10 +120,12 @@ namespace Comandos.Fabrica
             return new ComandoAgregarActor(); 
         }
 
-        public static Comando<string, bool> CrearComandoVerificarActor()
+        public static Comando<bool, List<Entidad>> CrearComandoConsultarActores()
         {
-            return new ComandoVerificarExistenciaActor();
+            return new ComandoConsultarActores();
         }
+         
+
 
         #endregion
 
@@ -194,38 +137,6 @@ namespace Comandos.Fabrica
         public static Comando<Entidad,bool> CrearComandoAgregarUsuario()
         {
             return new ComandoAgregarUsuario();
-        }
-
-        /// <summary>
-        /// Metodo que Instancia el comando de validar Username Unico
-        /// </summary>
-        /// <returns>El comando validar Username unico</returns>
-        public static Comando<String,bool> CrearComandoValidarUsernameUnico()
-        {
-            return new ComandoValidarUsernameUnico();
-        }
-
-        /// <summary>
-        /// Metodo que instancia el comando de validar Correo unico
-        /// </summary>
-        /// <returns>El comando validar Correo Unico</returns>
-        public static Comando<String, bool> CrearComandoValidarCorreoUnico()
-        {
-            return new ComandoValidarCorreoUnico();
-        }
-
-        /// <summary>
-        /// Metodo que instancia el comando de Listar los cargos
-        /// </summary>
-        /// <returns>El comando Listar Combo cargos</returns>
-        public static Comando <bool,List<String>> CrearComandoListarCargos()
-        {
-            return new ComandoListarCargos();
-        }
-
-        public static Comando<bool,List<Entidad>> CrearComandoListarUsuarios()
-        {
-            return new ComandoListarUsuarios();
         }
         #endregion
 
