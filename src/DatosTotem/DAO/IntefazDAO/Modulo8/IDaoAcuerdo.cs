@@ -8,5 +8,8 @@ namespace DAO.IntefazDAO.Modulo8
 {
     public interface IDaoAcuerdo : IDao<Entidad, bool, Entidad>
     {
+        #region Firma de Metodos
+
+        #endregion
     }
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Dominio.Entidades.Modulo7;
+using Dominio.Entidades.Modulo2;
 
 namespace Dominio.Entidades.Modulo8
 {
@@ -11,11 +13,12 @@ namespace Dominio.Entidades.Modulo8
     public class Acuerdo : Entidad
     {
         #region Atributos
+
         private int codigo;
         private DateTime fecha;
         private string compromiso;
-        /*private List<Contacto> listaContacto;
-        private List<Usuario> listaUsuario;*/
+        private List<Contacto> listaContacto;
+        private List<Usuario> listaUsuario;
 
         #endregion
 
@@ -23,33 +26,22 @@ namespace Dominio.Entidades.Modulo8
 
         public Acuerdo()
         {
+
         }
 
-        /*public Acuerdo(DateTime fecha, string compromiso)
-        {
-            this.fecha = fecha;
-            this.compromiso = compromiso;
-        }
-
-        public Acuerdo(int codigo, DateTime fecha, string compromiso)
+        public Acuerdo(int codigo, DateTime fecha, string compromiso, List<Contacto> listaContacto, List<Usuario> listaUsuario)
         {
             this.codigo = codigo;
             this.fecha = fecha;
             this.compromiso = compromiso;
-        }
-
-        public Acuerdo(DateTime fecha, string compromiso, List<Contacto> listaContacto, List<Usuario> listaUsuario)
-        {
-            this.fecha = fecha;
-            this.compromiso = compromiso;
             this.listaContacto = listaContacto;
             this.listaUsuario = listaUsuario;
-        }*/
+        }
         #endregion
 
         #region Propiedades
 
-        /*public int Codigo
+        public int Codigo
         {
             get { return this.codigo; }
             set { this.codigo = value; }
@@ -77,7 +69,7 @@ namespace Dominio.Entidades.Modulo8
         {
             get { return this.listaUsuario; }
             set { this.listaUsuario = value; }
-        }*/
+        }
 
         #endregion
     }

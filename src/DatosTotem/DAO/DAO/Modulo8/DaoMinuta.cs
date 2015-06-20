@@ -22,7 +22,6 @@ namespace DAO.DAO.Modulo8
         {
             Minuta laMinuta = (Minuta)parametro;
 
-          
             List<Parametro> parametros = new List<Parametro>();
             Parametro elParametro = new Parametro(RecursosBDModulo8.ParametroFechaMinuta, SqlDbType.DateTime,
                 laMinuta.Fecha.ToShortDateString(), false);

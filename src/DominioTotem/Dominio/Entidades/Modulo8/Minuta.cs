@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Dominio.Entidades.Modulo7;
+using Dominio.Entidades.Modulo2;
 
 namespace Dominio.Entidades.Modulo8
 {
@@ -16,8 +18,8 @@ namespace Dominio.Entidades.Modulo8
         private DateTime fecha;
         private string motivo;
         private string observaciones;
-        /*private List<Usuario> usuario;
-        private List<Contacto> contacto;*/
+        private List<Usuario> usuario;
+        private List<Contacto> contacto;
         private List<Punto> punto;
         private List<Acuerdo> acuerdo;
 
@@ -26,32 +28,7 @@ namespace Dominio.Entidades.Modulo8
         #region Constructores
         public Minuta()
         {
-        }
-
-        public Minuta(DateTime fecha, string motivo, string observaciones)
-        {
-            this.fecha = fecha;
-            this.motivo = motivo;
-            this.observaciones = observaciones;
-        }
-
-        public Minuta(string codigo, DateTime fecha, string motivo, string observaciones)
-        {
-            this.codigo = codigo;
-            this.fecha = fecha;
-            this.motivo = motivo;
-            this.observaciones = observaciones;
-        }
-
-        /*public Minuta(DateTime fecha, string motivo, string observaciones, List<Usuario> usuario,
-           List<Contacto> contacto, List<Punto> punto)
-        {
-            this.contacto = contacto;
-            this.fecha = fecha;
-            this.motivo = motivo;
-            this.observaciones = observaciones;
-            this.usuario = usuario;
-            this.punto = punto;
+            
         }
 
         public Minuta(string codigo, DateTime fecha, string motivo, string observaciones, List<Usuario> usuario,
@@ -65,7 +42,7 @@ namespace Dominio.Entidades.Modulo8
             this.usuario = usuario;
             this.punto = punto;
             this.acuerdo = acuerdo;
-        }*/
+        }
 
         #endregion
 
@@ -94,7 +71,7 @@ namespace Dominio.Entidades.Modulo8
             set { this.observaciones = value; }
         }
 
-        /*public List<Usuario> ListaUsuario
+        public List<Usuario> ListaUsuario
         {
             get { return this.usuario; }
             set { this.usuario = value; }
@@ -104,7 +81,7 @@ namespace Dominio.Entidades.Modulo8
         {
             get { return this.contacto; }
             set { this.contacto = value; }
-        }*/
+        }
 
         public List<Punto> ListaPunto
         {
