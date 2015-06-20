@@ -96,11 +96,11 @@ namespace Comandos.Fabrica
         {
             return new Comandos.Modulo3.ComandoAgregarUsuariosInvolucrados();
         }
-        public static Comando<Dominio.Entidad, List<String>> CrearConsultarCargosContactos()
+        public static Comando<Dominio.Entidad, List<String>> CrearComandoConsultarCargosContactos()
         {
             return new Comandos.Modulo3.ComandoConsultarCargosContactos();
         }
-        public static Comando<Dominio.Entidad, Dominio.Entidad> CrearConsultarContactosInvolucradosPorProyecto()
+        public static Comando<Dominio.Entidad, Dominio.Entidad> CrearComandoConsultarContactosInvolucradosPorProyecto()
         {
             return new Comandos.Modulo3.ComandoConsultarContactosInvolucradosPorProyecto();
         }

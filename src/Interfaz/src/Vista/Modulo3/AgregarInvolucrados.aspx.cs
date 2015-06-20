@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Web.Services;
 using DominioTotem;
 using Presentadores.Modulo3;
+using Contratos.Modulo3;
 
 namespace Vista.Modulo3
 {
@@ -21,6 +22,10 @@ namespace Vista.Modulo3
         {
             this.Master.idModulo = "3";
             this.Master.presentador.CargarMenuLateral();
+            if (!IsPostBack)
+            {
+               presentador.LlenarComboEmpresa();
+            }
         }
 
         #region contrato
@@ -75,7 +80,7 @@ namespace Vista.Modulo3
 
           protected void actualizarComboCargos(object sender, EventArgs e)
           {
-              
+              presentador.ListarCargo();
           }
           protected void actualizarComboPersonal(object sender, EventArgs e)
           {
