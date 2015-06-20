@@ -29,12 +29,11 @@ namespace DAO.DAO
 
             try
             {
-                strConexion = ConfigurationManager.
+
+                    strConexion = ConfigurationManager.
                     ConnectionStrings[RecursoGeneralDAO.Nombre_Base_Datos].ConnectionString;
-                if (conexion == null)
-                {
                     conexion = new SqlConnection(strConexion);
-                }
+                
 
             }
 

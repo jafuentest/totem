@@ -21,11 +21,12 @@ namespace DAO.DAO.Modulo5
             try
             {
                 List<Parametro> parametros = new List<Parametro>();
-                Parametro parametro = new Parametro(RecursosDAOModulo5.PARAMETRO_REQ_CODIGO,
+                Parametro parametro = new Parametro(RecursosDAOModulo5.PARAMETRO_PRO_CODIGO,
                     SqlDbType.VarChar, codigo, false);
                 parametros.Add(parametro);
                 parametro = new Parametro(RecursosDAOModulo5.PARAMETRO_PRO_ID,
                     SqlDbType.Int, true);
+                parametros.Add(parametro);
                 List<Resultado> resultados = EjecutarStoredProcedure(
                     RecursosDAOModulo5.PROCEDIMIENTO_RETORNAR_ID_POR_CODIGO_PROYECTO, parametros);
                 foreach (Resultado resultado in resultados)
