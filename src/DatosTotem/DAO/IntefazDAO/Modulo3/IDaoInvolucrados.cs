@@ -12,16 +12,16 @@ namespace DAO.IntefazDAO.Modulo3
 {
     public interface IDaoInvolucrados: IDao<Entidad, bool, Entidad>
     {
-        bool AgregarUsuariosInvolucrados(ListaInvolucradoUsuario listaUsuarios);
-        bool AgregarContactosInvolucrados(ListaInvolucradoContacto listaContactos);
-        ListaInvolucradoUsuario ConsultarUsuariosInvolucradosPorProyecto(Proyecto p);
-        ListaInvolucradoContacto ConsultarContactosInvolucradosPorProyecto(Proyecto p);
-        bool EliminarContactoDeIvolucradosEnProyecto(Contacto c, ListaInvolucradoContacto l);
-        bool EliminarUsuariosDeIvolucradosEnProyecto(Usuario u, ListaInvolucradoUsuario l);
-        List<String> ConsultarCargosContactos(ClienteJuridico laEmpresa);
-        Usuario DatosUsuarioUsername(String user);
-        Contacto DatosContactoID(int idCon);
-        List<Contacto> ListarContactosPorCargoEmpresa(ClienteJuridico laEmpresa, String cargo);
+        bool AgregarUsuariosInvolucrados(Entidad parametro);
+        bool AgregarContactosInvolucrados(Entidad parametro);
+        Entidad ConsultarUsuariosInvolucradosPorProyecto(Entidad parametro);
+        Entidad ConsultarContactosInvolucradosPorProyecto(Entidad parametro);
+        bool EliminarContactoDeIvolucradosEnProyecto(Entidad parametroc, Entidad parametrol);
+        bool EliminarUsuariosDeIvolucradosEnProyecto(Entidad parametrou, Entidad parametrol);
+        List<String> ConsultarCargosContactos(Entidad parametro);
+        Entidad DatosUsuarioUsername(String user);
+        Entidad DatosContactoID(int idCon);
+        List<Entidad> ListarContactosPorCargoEmpresa(Entidad parametro, String cargo);
         bool Agregar(Dominio.Entidad parametro);
         bool Modificar(Dominio.Entidad parametro);
         Dominio.Entidad ConsultarXId(Dominio.Entidad parametro);

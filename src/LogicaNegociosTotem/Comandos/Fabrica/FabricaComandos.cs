@@ -96,25 +96,29 @@ namespace Comandos.Fabrica
         {
             return new Comandos.Modulo3.ComandoAgregarUsuariosInvolucrados();
         }
-        public static Comando<Dominio.Entidad, List<Dominio.Entidad>> CrearConsultarCargosContactos()
+        public static Comando<Dominio.Entidad, List<String>> CrearConsultarCargosContactos()
         {
             return new Comandos.Modulo3.ComandoConsultarCargosContactos();
+        }
+        public static Comando<Dominio.Entidad, Dominio.Entidad> CrearConsultarContactosInvolucradosPorProyecto()
+        {
+            return new Comandos.Modulo3.ComandoConsultarContactosInvolucradosPorProyecto();
         }
         public static Comando<Dominio.Entidad, Boolean> CrearComandoConsultarContactoInvolucrados()
         {
             return new Comandos.Modulo3.ComandoAgregarContactosInvolucrados();
         }
-        public static Comando<Dominio.Entidad, List<Dominio.Entidad>> CrearComandoConsultarUsuariosInvolucrados()
+        public static Comando<Dominio.Entidad, Dominio.Entidad> CrearComandoConsultarUsuariosInvolucrados()
         {
 
             return new Comandos.Modulo3.ComandoConsultarUsuariosInvolucradosPorProyecto();
         }
-        public static Comando<Dominio.Entidad, Dominio.Entidad> CrearComandoDatosContactoID()
+        public static Comando<int, Dominio.Entidad> CrearComandoDatosContactoID()
         {
 
             return new Comandos.Modulo3.ComandoDatosContactoID();
         }
-        public static Comando<Dominio.Entidad, Dominio.Entidad> CrearComandoDatosUsuariosUsername()
+        public static Comando<String, Dominio.Entidad> CrearComandoDatosUsuariosUsername()
         {
 
             return new Comandos.Modulo3.ComandoDatosUsuarioUsername();

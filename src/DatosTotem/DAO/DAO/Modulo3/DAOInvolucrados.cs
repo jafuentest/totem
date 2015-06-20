@@ -1,4 +1,5 @@
 ﻿using DAO.IntefazDAO.Modulo3;
+using Dominio;
 using Dominio.Entidades.Modulo2;
 using Dominio.Entidades.Modulo3;
 using Dominio.Entidades.Modulo4;
@@ -20,11 +21,12 @@ namespace DAO.DAO.Modulo3
         /// </summary>
         /// <param name="lista">lista de usuarios a insertar</param>
         /// <returns>Valor booleano que refleja el exito de la operacion</returns>
-        public bool AgregarUsuariosInvolucrados(ListaInvolucradoUsuario listaUsuarios)
+        public bool AgregarUsuariosInvolucrados(Entidad parametro)
         {
             int filasA, filasD;
             Proyecto elProyecto;
             bool exito = false;
+            ListaInvolucradoUsuario listaUsuarios = (ListaInvolucradoUsuario) parametro;
             if (listaUsuarios.Proyecto != null)
                 elProyecto = listaUsuarios.Proyecto;
             else
@@ -97,11 +99,12 @@ namespace DAO.DAO.Modulo3
         /// </summary>
         /// <param name="lista">lista de contactos a insertar</param>
         /// <returns>Valor booleano que refleja el exito de la operacion</returns>
-        public bool AgregarContactosInvolucrados(ListaInvolucradoContacto listaContactos)
+        public bool AgregarContactosInvolucrados(Entidad parametro)
         {
             int filasA, filasD;
             Proyecto elProyecto;
             bool exito = false;
+            ListaInvolucradoContacto listaContactos = (ListaInvolucradoContacto)parametro;
             if (listaContactos.Proyecto != null)
                 elProyecto = listaContactos.Proyecto;
             else
@@ -175,10 +178,11 @@ namespace DAO.DAO.Modulo3
         /// </summary>
         /// <param name="p">proyecto del que se desean saber los involucrados</param>
         /// <returns>lista de usuarios involucrados al proyecto que recibe como parametro</returns>
-        public ListaInvolucradoUsuario ConsultarUsuariosInvolucradosPorProyecto(Proyecto p)
+        public Entidad ConsultarUsuariosInvolucradosPorProyecto(Entidad parametro)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
             ListaInvolucradoUsuario laListaDeUsuarios = new ListaInvolucradoUsuario();
+            Proyecto p = (Proyecto)parametro;
             List<Parametro> parametros;
             Parametro codigoProyecto;
 
@@ -225,13 +229,14 @@ namespace DAO.DAO.Modulo3
         /// <summary>
         /// Metodo que consulta los contactos involucrados a un proyecto dado
         /// </summary>
-        /// <param name="p">proyecto del que se desean saber los involucrados</param>
+        /// <param name="parametro">proyecto del que se desean saber los involucrados</param>
         /// <returns>lista de contactos involucrados al proyecto que recibe como parametro</returns>
-        public ListaInvolucradoContacto ConsultarContactosInvolucradosPorProyecto(Proyecto p)
+        public Entidad ConsultarContactosInvolucradosPorProyecto(Entidad parametro)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
             ListaInvolucradoContacto laListaDeContactos = (ListaInvolucradoContacto)FabricaEntidades.
                                                           ObtenetListaInvolucradoContacto();
+            Proyecto p = (Proyecto)parametro;
             List<Parametro> parametros;
             Parametro codigoProyecto = null ;
 
@@ -293,13 +298,14 @@ namespace DAO.DAO.Modulo3
         /// <summary>
         /// Metodo que elimina un contacto involucrado a un proyecto
         /// </summary>
-        /// <param name="c">contacto a eliminar</param>
+        /// <param name="parametroc">contacto a eliminar</param>
         /// <param name="p">proyecto al que esta asociado</param>
         /// <returns>Valor booleano que refleja el exito de la operacion</returns>
-        public bool EliminarContactoDeIvolucradosEnProyecto(Contacto c, ListaInvolucradoContacto l)
+        public bool EliminarContactoDeIvolucradosEnProyecto(Entidad parametroc, Entidad parametrol)
         {
             int filasA, filasD;
-
+            Contacto c = (Contacto)parametroc;
+            ListaInvolucradoContacto l = (ListaInvolucradoContacto)parametrol;
             Parametro paramProyectoCod = null;
             Parametro paramContactoId = null;
             Parametro paramFilas = null;
@@ -367,10 +373,12 @@ namespace DAO.DAO.Modulo3
         /// <param name="c">usuario a eliminar</param>
         /// <param name="p">proyecto al que esta asociado</param>
         /// <returns>Valor booleano que refleja el exito de la operacion</returns>
-        public bool EliminarUsuariosDeIvolucradosEnProyecto(Usuario u, ListaInvolucradoUsuario l)
+        public bool EliminarUsuariosDeIvolucradosEnProyecto(Entidad parametrou, Entidad parametrol)
         {
             int filasA, filasD;
             bool exito = false;
+            Usuario u = (Usuario)parametrou;
+            ListaInvolucradoUsuario l = (ListaInvolucradoUsuario)parametrol;
             Parametro paramProyectoCod = null;
             Parametro paramFilas = null;
             Parametro paramUsuario = null;
@@ -431,11 +439,11 @@ namespace DAO.DAO.Modulo3
             }
             return exito;
         }
-        public List<String> ConsultarCargosContactos(ClienteJuridico laEmpresa)
+        public List<String> ConsultarCargosContactos(Entidad parametro)
         {
             List<String> laListaDeCargos = new List<String>();
             List<Parametro> parametros;
-
+            ClienteJuridico laEmpresa = (ClienteJuridico)parametro;
             Parametro rifClienteJ;
             try
             {
@@ -463,7 +471,7 @@ namespace DAO.DAO.Modulo3
 
             return laListaDeCargos;
         }
-        public Usuario DatosUsuarioUsername(String user)
+        public Entidad DatosUsuarioUsername(String user)
         {
             Usuario retorno = (Usuario)FabricaEntidades.ObtenerUsuario();
             retorno.Username = user;
@@ -506,7 +514,7 @@ namespace DAO.DAO.Modulo3
             }
             return retorno;
         }
-        public Contacto DatosContactoID(int idCon)
+        public Entidad DatosContactoID(int idCon)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
             Contacto elContacto = (Contacto)laFabrica.ObtenerContacto();
@@ -560,11 +568,11 @@ namespace DAO.DAO.Modulo3
             }
             return elContacto;
         }
-        public List<Contacto> ListarContactosPorCargoEmpresa(ClienteJuridico laEmpresa, String cargo)
+        public List<Entidad> ListarContactosPorCargoEmpresa(Entidad parametro, String cargo)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
-            List<Contacto> laListaDeContactos = new List<Contacto>();
-
+            List<Entidad> laListaDeContactos = new List<Entidad>();
+            ClienteJuridico laEmpresa = (ClienteJuridico)parametro;
             List<Parametro> parametros;
 
             Parametro rifClienteJ, nombre_cargo;
