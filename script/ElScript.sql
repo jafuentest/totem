@@ -2978,7 +2978,6 @@ AS
   INCREMENT BY 1;
  
 go
-
 ------------------ Procedimientos del Módulo 8 ------------------------
 ------------------ Procedimientos para Agregar -----------------------
 
@@ -2988,13 +2987,17 @@ CREATE PROCEDURE Procedure_AgregarMinuta
 		@min_fecha   [datetime],
 		@min_motivo  [varchar] (200),
 		@min_observaciones 	[varchar] (500)
+	   
 AS 
 BEGIN
-		INSERT INTO MINUTA(min_fecha, min_motivo, min_observaciones)
+		INSERT INTO MINUTA(min_fecha, min_motivo, min_observaciones) Output Inserted.min_id
 	    VALUES(@min_fecha ,@min_motivo ,@min_observaciones)
 
 END;
 GO
+
+ INSERT INTO MINUTA(min_fecha, min_motivo, min_observaciones) Output Inserted.min_id
+	    VALUES('2015-04-25 12:00:00.000' ,'Requerimientos' ,'')
 
 -------------------Procedimiento para Agregar un Punto ----------------------
 
@@ -3401,6 +3404,24 @@ BEGIN
 END
 GO
 
+--------------- Procedimiento para Eliminar una minuta 
+CREATE PROCEDURE Procedure_EliminarMinuta
+
+     @min_id [int]
+
+AS
+BEGIN
+   DELETE FROM MINUTA 
+   WHERE min_id =  @min_id
+END
+GO
+--------------- Procedimiento para buscar la ultima una minuta 
+CREATE PROCEDURE Procedure_BuscarUltimaMinuta
+AS
+BEGIN
+   SELECT MAX(min_id)AS min_id FROM MINUTA
+END
+GO
 
 --End SP8
 
