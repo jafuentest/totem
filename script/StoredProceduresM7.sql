@@ -199,5 +199,5 @@ CREATE procedure seleccionarCargos
 AS
 BEGIN
 SELECT DISTINCT CAR_NOMBRE as nombreCargo FROM CARGO, USUARIO WHERE CARGO_car_id=car_id
-END*/
-GO
+END
+GO*/

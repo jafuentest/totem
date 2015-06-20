@@ -240,6 +240,15 @@ namespace Comandos.Fabrica
         {
             return new ComandoListarUsuariosPorCargo();
         }
+
+        /// <summary>
+        /// Metodo que instancia el comando de Listar todos los cargos que ya estan en los Usuarios
+        /// </summary>
+        /// <returns>Todos los cargos que ya estan ocupados por al menos un usuario</returns>
+        public static Comando <bool,List<String>> CrearComandoLeerCargosUsuarios()
+        {
+            return new ComandoLeerCargosUsuarios();
+        }
         #endregion
 
         #region Modulo 8

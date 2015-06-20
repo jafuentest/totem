@@ -228,7 +228,8 @@ namespace DAO.DAO.Modulo7
             SqlDataReader respuesta;
 
             //Indicamos que es un Stored Procedure, cual utilizar y ademas la conexion que necesita
-            this.instruccion = new SqlCommand(RecursosBaseDeDatosModulo7.PROCEDIMIENTO_SELECCIONAR_CARGOS, this.conexion);
+            this.instruccion = new SqlCommand(RecursosBaseDeDatosModulo7.PROCEDIMIENTO_SELECCIONAR_CARGOS,
+                this.conexion);
             this.instruccion.CommandType = CommandType.StoredProcedure;
 
             //Se abre conexion contra la Base de Datos
@@ -242,10 +243,6 @@ namespace DAO.DAO.Modulo7
                 //Recorremos cada fila devuelta de la consulta
                 while (respuesta.Read())
                 {
-                    //Creamos el Actor y lo anexamos a la lista
-                    //Actor aux = new Actor(respuesta.GetInt32(2), respuesta.GetString(0), respuesta.GetString(1));
-                    //listaActores.Add(aux);
-
                     //Llenamos la lista
                     cargos.Add(respuesta.GetString(0));
 
@@ -311,6 +308,11 @@ namespace DAO.DAO.Modulo7
             return usuarios;
         }
 
+        /// <summary>
+        /// Metodo que se conecta con la Base de Datos para traer todos los Usuarios segun un cargo en especifico
+        /// </summary>
+        /// <param name="cargo">El cargo del que se desea obtener los usuarios</param>
+        /// <returns>Todos los usuarios que ocupan ese cargo</returns>
         public List<Entidad> ListarUsuariosPorCargo(String cargo)
         {
             //Lista que sera la respuesta de la consulta;
@@ -357,6 +359,52 @@ namespace DAO.DAO.Modulo7
 
             //Retornamos la respuesta
             return usuarios;
+        }
+
+        /// <summary>
+        /// Metodo que ejecuta la consulta de leer todos los cargos de la BD si y solo si ese cargo lo tiene al menos un usuario
+        /// </summary>
+        /// <returns>Todos los cargos listados de la Base de Datos</returns>
+        public List<String> LeerCargosUsuarios()
+        {
+            //Lista que sera la respuesta de la consulta;
+            List<String> cargos = new List<String>();
+
+            try
+            {
+                //Respuesta de la consulta hecha a la Base de Datos
+                SqlDataReader respuesta;
+
+                //Indicamos que es un Stored Procedure, cual utilizar y ademas la conexion que necesita
+                this.instruccion = new SqlCommand("seleccionarCargosUsuarios", this.conexion);
+                this.instruccion.CommandType = CommandType.StoredProcedure;
+
+                //Se abre conexion contra la Base de Datos
+                this.conexion.Open();
+
+                //Ejecutamos la consulta y traemos las filas que fueron obtenidas
+                respuesta = instruccion.ExecuteReader();
+
+                //Si se encontraron cargos se comienzan a agregar a la variable lista, sino, se devolvera vacia
+                if (respuesta.HasRows)
+                    //Recorremos cada fila devuelta de la consulta
+                    while (respuesta.Read())
+                    {
+                        //Llenamos la lista
+                        cargos.Add(respuesta.GetString(0));
+
+                    }
+
+                //Cerramos conexion
+                this.conexion.Close();
+            }
+            catch (Exception error)
+            {
+                throw new Exception("Ha ocurrido un error inesperado al Listar", error);
+            }
+
+            //Retornamos la respuesta
+            return cargos;
         }
     }
 }
