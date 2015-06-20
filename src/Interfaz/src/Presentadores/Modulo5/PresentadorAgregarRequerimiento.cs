@@ -92,8 +92,16 @@ namespace Presentadores.Modulo5
 
                     comandoAgregar = Comandos.Fabrica.FabricaComandos.CrearComandoAgregarRequerimiento();
                     comandoAgregar.Ejecutar(requerimiento);
-                    
+
                 }
+            }
+            catch (ExcepcionesTotem.Modulo5.CamposInvalidosException ex)
+            {
+                vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Error;
+                vista.alertaRol = RecursosPresentadorModulo5.Alerta_Rol;
+                vista.alerta = RecursosPresentadorModulo5.Alerta_Html +
+                    RecursosPresentadorModulo5.Alerta_Mensaje_Campos_Invalidos +
+                    RecursosPresentadorModulo5.Alerta_Html_Final;
             }
             catch (Exception e)
             {

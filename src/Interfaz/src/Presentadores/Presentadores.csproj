@@ -64,10 +64,10 @@
     <Compile Include="Modulo5\PresentadorListarRequerimientos.cs" />
     <Compile Include="Modulo5\PresentadorModificarRequerimiento.cs" />
     <Compile Include="Modulo5\PresentadorReporteRequerimientos.cs" />
-    <Compile Include="Modulo5\RecursosPresentadorAgregarRequerimiento.Designer.cs">
+    <Compile Include="Modulo5\RecursosPresentadorModulo5.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RecursosPresentadorAgregarRequerimiento.resx</DependentUpon>
+      <DependentUpon>RecursosPresentadorModulo5.resx</DependentUpon>
     </Compile>
     <Compile Include="Modulo6\PresentadorAgregarActor.cs" />
     <Compile Include="Modulo6\RecursosPresentadorModulo6.Designer.cs">
@@ -98,9 +98,9 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursoInterfazM2.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo5\RecursosPresentadorAgregarRequerimiento.resx">
+    <EmbeddedResource Include="Modulo5\RecursosPresentadorModulo5.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>RecursosPresentadorAgregarRequerimiento.Designer.cs</LastGenOutput>
+      <LastGenOutput>RecursosPresentadorModulo5.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo6\RecursosPresentadorModulo6.resx">
       <Generator>ResXFileCodeGenerator</Generator>

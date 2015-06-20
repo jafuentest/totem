@@ -22,14 +22,14 @@ namespace Presentadores.Modulo5 {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class RecursosPresentadorAgregarRequerimiento {
+    internal class RecursosPresentadorModulo5 {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal RecursosPresentadorAgregarRequerimiento() {
+        internal RecursosPresentadorModulo5() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Presentadores.Modulo5 {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Presentadores.Modulo5.RecursosPresentadorAgregarRequerimiento", typeof(RecursosPresentadorAgregarRequerimiento).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Presentadores.Modulo5.RecursosPresentadorModulo5", typeof(RecursosPresentadorModulo5).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,51 @@ namespace Presentadores.Modulo5 {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to alert alert-danger alert-dismissible.
+        /// </summary>
+        internal static string Alerta_Clase_Error {
+            get {
+                return ResourceManager.GetString("Alerta_Clase_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;div&gt;&lt;button type=\&quot;button\&quot; class=\&quot;close\&quot; data-dismiss=\&quot;alert\&quot; aria-label=\&quot;Close\&quot;&gt;&lt;span aria-hidden=\&quot;true\&quot;&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;.
+        /// </summary>
+        internal static string Alerta_Html {
+            get {
+                return ResourceManager.GetString("Alerta_Html", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;/div&gt;.
+        /// </summary>
+        internal static string Alerta_Html_Final {
+            get {
+                return ResourceManager.GetString("Alerta_Html_Final", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hay un error con los campos ingresados, intente nuevamente.
+        /// </summary>
+        internal static string Alerta_Mensaje_Campos_Invalidos {
+            get {
+                return ResourceManager.GetString("Alerta_Mensaje_Campos_Invalidos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to alert.
+        /// </summary>
+        internal static string Alerta_Rol {
+            get {
+                return ResourceManager.GetString("Alerta_Rol", resourceCulture);
             }
         }
     }

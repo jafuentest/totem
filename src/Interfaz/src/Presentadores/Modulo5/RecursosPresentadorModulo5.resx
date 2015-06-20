@@ -117,4 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Alerta_Clase_Error" xml:space="preserve">
+    <value>alert alert-danger alert-dismissible</value>
+    <comment>Clase de Error para la alerta de la interfaz</comment>
+  </data>
+  <data name="Alerta_Html" xml:space="preserve">
+    <value>&lt;div&gt;&lt;button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"&gt;&lt;span aria-hidden=\"true\"&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;</value>
+    <comment>Html necesario para la muestra de la alerta</comment>
+  </data>
+  <data name="Alerta_Html_Final" xml:space="preserve">
+    <value>&lt;/div&gt;</value>
+    <comment>Final del html</comment>
+  </data>
+  <data name="Alerta_Mensaje_Campos_Invalidos" xml:space="preserve">
+    <value>Hay un error con los campos ingresados, intente nuevamente</value>
+    <comment>Mensaje de error de campos invalidos</comment>
+  </data>
+  <data name="Alerta_Rol" xml:space="preserve">
+    <value>alert</value>
+    <comment>Rol que hace la alerta</comment>
+  </data>
 </root>
