@@ -69,28 +69,12 @@
             <br />
             <div class="form-group">
                 <div class="col-sm-5 col-md-5 col-lg-5">
-                    <button runat="server" id="btn_agregarReq" disabled="disabled" class="btn btn-primary" 
+                    <button runat="server" id="btn_agregarReq" class="btn btn-primary" 
                         type="submit" onserverclick="AgregarRequerimiento_Click">Agregar</button>
                     <a class="btn btn-default" href="ListarRequerimientos.aspx">Cancelar</a>
                 </div>
             </div>
         </form>
     </div>
-    <!--
-    <script src="js/Validacion.js"></script>
-    <script>
-        function fillCodigoTextField() {
-            var idTextField = document.getElementById("idreq_input");
-            var funcionalRadio = document.getElementById("input_tipo_funcional");
-            var nofuncionalRadio = document.getElementById("input_tipo_no_funcional");
-
-            if (funcionalRadio.checked) {
-                idTextField.value ="TOT_RF_5_1";
-            }else
-                if (nofuncionalRadio.checked) {
-                    idTextField.value = "TOT_RNF_5_1";
-                }
-        }
-    </script>
-    -->
+    
 </asp:Content>

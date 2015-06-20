@@ -61,6 +61,15 @@ namespace Presentadores {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to T_00_004.
+        /// </summary>
+        internal static string Codigo_Error_InputInvalido {
+            get {
+                return ResourceManager.GetString("Codigo_Error_InputInvalido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ~/Master/menuLateral.xml.
         /// </summary>
         internal static string Direccion_XML {
