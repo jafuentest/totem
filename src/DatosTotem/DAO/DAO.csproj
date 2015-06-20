@@ -55,7 +55,11 @@
       <DependentUpon>RecursosBDModulo3.resx</DependentUpon>
     </Compile>
     <Compile Include="DAO\Modulo4\DAOProyecto.cs" />
-    <Compile Include="DAO\Modulo4\RecursosBDModulo4.Designer.cs" />
+    <Compile Include="DAO\Modulo4\RecursosDAOModulo4.Designer.cs">
+      <DependentUpon>RecursosDAOModulo4.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="DAO\Modulo5\DAORequerimiento.cs" />
     <Compile Include="DAO\Modulo5\RecursosDAOModulo5.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -121,7 +125,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosBDModulo3.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="DAO\Modulo4\RecursosBDModulo4.resx" />
+    <EmbeddedResource Include="DAO\Modulo4\RecursosDAOModulo4.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosDAOModulo4.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="DAO\Modulo5\RecursosDAOModulo5.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosDAOModulo5.Designer.cs</LastGenOutput>
