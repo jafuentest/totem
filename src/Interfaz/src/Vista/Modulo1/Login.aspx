@@ -39,7 +39,7 @@
                     <br />
                         <div id="ChangeContainer" runat="server" class="col-lg-6 col-md-6 col-sm-6 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 text-center">
                          </br>
-                        <a class="login-link" href="M1_IntroducirCorreo.aspx">¿Olvid&oacute; su contrase&ntilde;a?</a>
+                        <a class="login-link" href="IntroducirCorreo.aspx">¿Olvid&oacute; su contrase&ntilde;a?</a>
                         </div>
                         </div>
                     </div>

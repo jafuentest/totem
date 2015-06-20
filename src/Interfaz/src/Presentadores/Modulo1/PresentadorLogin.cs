@@ -1,6 +1,7 @@
 ﻿using System.Web;
 using Contratos.Modulo1;
-using Dominio.Entidades.Modulo7;
+using Dominio;
+using Dominio.Fabrica;
 
 namespace Presentadores.Modulo1
 {
@@ -18,7 +19,7 @@ namespace Presentadores.Modulo1
             string usuario = vista.Usuario;
             string clave = vista.Clave;
 
-           if (usuario.Equals(""))
+            if (usuario.Equals(""))
             {
                 vista.Mensaje = "Ingrese un Username";
             }
@@ -28,8 +29,9 @@ namespace Presentadores.Modulo1
             }
             else
             {
-                HttpContext.Current.Session["Credenciales"] = new Usuario("albertods", "123456", "Alberto", "APELLIDO",
+                Entidad credenciales = FabricaEntidades.ObtenerUsuario("albertods", "123456", "Alberto", "APELLIDO",
                     "Administrador", "correo", null, null, null);
+                HttpContext.Current.Session["Credenciales"] = credenciales;
                 HttpContext.Current.Response.Redirect("Default.aspx");
             }
 

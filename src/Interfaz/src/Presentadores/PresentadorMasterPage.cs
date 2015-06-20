@@ -70,7 +70,7 @@ namespace Presentadores
             else
             {
                 if ((!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/Login.aspx")) &&
-                   (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/M1_IntroducirCorreo.aspx")) &&
+                   (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/IntroducirCorreo.aspx")) &&
                    (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/M1_PreguntaSeguridad.aspx")) &&
                    (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/M1_RecuperacionClave.aspx")))
                 {

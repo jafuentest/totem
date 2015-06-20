@@ -100,7 +100,9 @@
     <Content Include="img\Icons\modulo8.png" />
     <Content Include="Master\menuLateral.xml" />
     <Content Include="Modulo1\Default.aspx" />
+    <Content Include="Modulo1\IntroducirCorreo.aspx" />
     <Content Include="Modulo1\Login.aspx" />
+    <Content Include="Modulo1\PreguntaSeguridad.aspx" />
     <Content Include="Modulo2\AgregarCliente.aspx" />
     <Content Include="Modulo2\AgregarEmpresa.aspx" />
     <Content Include="Modulo2\DetallarCliente.aspx" />
@@ -160,12 +162,26 @@
     <Compile Include="Modulo1\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modulo1\IntroducirCorreo.aspx.cs">
+      <DependentUpon>IntroducirCorreo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo1\IntroducirCorreo.aspx.designer.cs">
+      <DependentUpon>IntroducirCorreo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modulo1\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Modulo1\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo1\PreguntaSeguridad.aspx.cs">
+      <DependentUpon>PreguntaSeguridad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo1\PreguntaSeguridad.aspx.designer.cs">
+      <DependentUpon>PreguntaSeguridad.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulo2\AgregarCliente.aspx.cs">
       <DependentUpon>AgregarCliente.aspx</DependentUpon>

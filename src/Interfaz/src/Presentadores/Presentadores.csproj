@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modulo1\PresentadorCorreo.cs" />
     <Compile Include="Modulo1\PresentadorLogin.cs" />
+    <Compile Include="Modulo1\PresentadorPregunta.cs" />
     <Compile Include="Modulo2\PresentadorAgregarCliente.cs" />
     <Compile Include="Modulo2\PresentadorAgregarEmpresa.cs" />
     <Compile Include="Modulo2\PresentadorDetallarCliente.cs" />
