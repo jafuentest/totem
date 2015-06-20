@@ -67,6 +67,7 @@
     <Compile Include="Comandos\Modulo3\ComandoEliminarContactoDeIvolucradosEnProyecto.cs" />
     <Compile Include="Comandos\Modulo3\ComandoEliminarUsuariosDeIvolucradosEnProyecto.cs" />
     <Compile Include="Comandos\Modulo3\ComandoListarContactosPorCargoEmpresa.cs" />
+    <Compile Include="Comandos\Modulo4\ComandoAgregarProyecto.cs" />
     <Compile Include="Comandos\Modulo5\ComandoAgregarRequerimiento.cs" />
     <Compile Include="Comandos\Modulo5\ComandoConsultarRequerimiento.cs" />
     <Compile Include="Comandos\Modulo5\ComandoConsultarRequerimientosProyecto.cs" />
@@ -80,6 +81,7 @@
     </Compile>
     <Compile Include="Comandos\Modulo7\ComandoAgregarUsuario.cs" />
     <Compile Include="Comandos\Modulo7\ComandoListarCargos.cs" />
+    <Compile Include="Comandos\Modulo7\ComandoListarUsuarios.cs" />
     <Compile Include="Comandos\Modulo7\ComandoValidarCorreoUnico.cs" />
     <Compile Include="Comandos\Modulo7\ComandoValidarUsernameUnico.cs" />
     <Compile Include="Fabrica\FabricaComandos.cs" />
@@ -87,7 +89,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Comandos\Modulo1\" />
-    <Folder Include="Comandos\Modulo4\" />
     <Folder Include="Comandos\Modulo8\" />
   </ItemGroup>
   <ItemGroup>

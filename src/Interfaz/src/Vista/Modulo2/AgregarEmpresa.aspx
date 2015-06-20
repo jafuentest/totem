@@ -1,18 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/MasterPage.Master" AutoEventWireup="true" CodeBehind="AgregarEmpresa.aspx.cs" Inherits="Vista.Modulo2.AgregarEmpresa" %>
 <%@ MasterType  virtualPath="~/Master/MasterPage.master"%> 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-
-<%--    <!-- Custom CSS for input[type="file"] -->
-    <link href="<%= Page.ResolveUrl("/css/agregar-empresa.css") %>" rel="stylesheet" />
+  <%-- <!-- Custom CSS for input[type="file"] -->
+    <link href="<%= Page.ResolveUrl("~/css/agregar-empresa.css") %>" rel="stylesheet" />
 
     <!-- Custom JS for image preview -->
-    <script type="text/javascript" src="<%= Page.ResolveUrl("~/src/GUI/Modulo2/js/image-preview.js") %>"></script>
-
-    <!-- Custom JS for dropdown items -->
-    <script type="text/javascript" src="<%= Page.ResolveUrl("~/src/GUI/Modulo2/js/dropdown-ae.js") %>"></script>
+    <script type="text/javascript" src="<%= Page.ResolveUrl("~/js/image-preview.js") %>"></script>
 
     <!-- Custom JS for Bootstrap Validation -->
-    <script type="text/javascript" src="<%= Page.ResolveUrl("~/src/GUI/Modulo2/js/validation.js") %>"></script>--%>
+    <script type="text/javascript" src="<%= Page.ResolveUrl("~/js/validation.js") %>"></script>--%>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="Server">
@@ -30,7 +26,6 @@
                 <!-- SECCION DE DATOS BASICOS -->
                 <h2>Datos Básicos</h2>
                 <div class="form-group">
-          
                     <div id="div_rif" class="col-sm-12 col-md-12 col-lg-12">
                         <input id="rifEmpresa" name="rif" runat="server" type="text" class="form-control" placeholder="Identificador de la Empresa" maxlength="10" />
                     </div>

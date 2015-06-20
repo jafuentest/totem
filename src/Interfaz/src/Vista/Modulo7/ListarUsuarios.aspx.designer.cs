@@ -7,19 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Vista.Modulo2 {
+namespace Vista.Modulo7 {
     
     
-    public partial class ListarClientes {
-        
-        /// <summary>
-        /// ScriptManager1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+    public partial class ListarUsuarios {
         
         /// <summary>
         /// alert control.
@@ -31,13 +22,31 @@ namespace Vista.Modulo2 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl alert;
         
         /// <summary>
-        /// cuerpo control.
+        /// lista_form control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cuerpo;
+        protected global::System.Web.UI.HtmlControls.HtmlForm lista_form;
+        
+        /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
+        /// tablebody control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tablebody;
         
         /// <summary>
         /// laTabla control.
@@ -49,31 +58,31 @@ namespace Vista.Modulo2 {
         protected global::System.Web.UI.WebControls.Literal laTabla;
         
         /// <summary>
-        /// cliente_cedula control.
+        /// upModal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cliente_cedula;
+        protected global::System.Web.UI.UpdatePanel upModal;
         
         /// <summary>
-        /// cliente_nombreyap control.
+        /// user_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cliente_nombreyap;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl user_name;
         
         /// <summary>
-        /// btnEliminar control.
+        /// eliminar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnEliminar;
+        protected global::System.Web.UI.HtmlControls.HtmlButton eliminar;
         
         /// <summary>
         /// Master property.

@@ -129,7 +129,7 @@ namespace Vista.Modulo7
         #endregion
 
         /// <summary>
-        /// Evento que se dispara el Agregar un usuario
+        /// Evento que se dispara al cargar la pagina
         /// </summary>
         /// <param name="sender">Objeto que manda el evento</param>
         /// <param name="e">Clase Base de clases que con tienen la informacion del evento</param>
@@ -140,7 +140,7 @@ namespace Vista.Modulo7
             if(!IsPostBack)
             {
                 this.Master.presentador.CargarMenuLateral();
-                presentador.llenarCombos();
+                presentador.LlenarCombos();
             }
                 
         }

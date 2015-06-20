@@ -502,7 +502,7 @@ namespace DAO.DAO.Modulo2 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @codigo_post.
+        ///   Looks up a localized string similar to @codigo_postal.
         /// </summary>
         public static string ParamCodigoPostal {
             get {

@@ -148,15 +148,12 @@ namespace Presentadores.Modulo2
             numericos.Add(vista.codTelefono);
             numericos.Add(vista.telefonoCliente);
             Regex expresion = new Regex(@"[0-9]{1,9}(\.[0-9]{0,2})?$");
-            Regex expresion2 = new Regex(@"^.*(?=.*[0-9])(?=.*[a-zA-ZñÑ\s]).*$");
 
-            if (Validaciones.ValidarCamposVacios(alfabeticos) || Validaciones.ValidarCamposVacios(alfabeticos) ||
+            if (Validaciones.ValidarCamposVacios(alfabeticos) && Validaciones.ValidarCamposVacios(alfabeticos) &&
                 Validaciones.ValidarCamposVacios(numericos))
             {
                 if (Validaciones.ValidarCaracteresAlfabeticos(alfabeticos))
                 {
-                    if (Validaciones.ValidarExpresionRegular(alfanumericos, expresion2))
-                    {
                         if (Validaciones.ValidarExpresionRegular(numericos,expresion))
                         {
                             FabricaEntidades fabrica = new FabricaEntidades();
@@ -179,9 +176,6 @@ namespace Presentadores.Modulo2
                                 throw ex;
                             }
                         }
-                        else
-                            return false;
-                    }
                     else
                         return false;
                 }

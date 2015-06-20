@@ -50,7 +50,7 @@
                        <br />
                        <div class="col-sm-12 col-md-12 col-lg-12">
                        <div  id="table-responsive">
-                           <table id="table-example" class=" table table-striped table-hover display">
+                           <table id="laTabla" class=" table table-striped table-hover display">
                              <thead>
                                <tr>
                                  <th>Nombre</th>

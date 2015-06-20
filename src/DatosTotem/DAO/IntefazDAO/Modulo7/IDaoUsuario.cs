@@ -36,8 +36,14 @@ namespace DAO.IntefazDAO.Modulo7
         /// <summary>
         /// Firma de metodo que implementara la logica de Listar los cargos de la Base de Datos
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Lista con todos los cargos de la Base de Datos</returns>
         List<String> ListarCargos();
+
+        /// <summary>
+        /// Firma de metodo que implementara la logica de Listar los Usuarios de la Base de Datos
+        /// </summary>
+        /// <returns>Lista con todos los usuarios de la Base de Datos</returns>
+        List<Entidad> ListarUsuarios();
         
     }
 }

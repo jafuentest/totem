@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Dominio;
-using Comandos.Comandos.Modulo6;
 using Comandos.Comandos.Modulo2;
+using Comandos.Comandos.Modulo4;
+using Comandos.Comandos.Modulo6;
 using Comandos.Comandos.Modulo7;
 
 namespace Comandos.Fabrica
@@ -95,25 +96,29 @@ namespace Comandos.Fabrica
         {
             return new Comandos.Modulo3.ComandoAgregarUsuariosInvolucrados();
         }
-        public static Comando<Dominio.Entidad, List<Dominio.Entidad>> CrearConsultarCargosContactos()
+        public static Comando<Dominio.Entidad, List<String>> CrearConsultarCargosContactos()
         {
             return new Comandos.Modulo3.ComandoConsultarCargosContactos();
+        }
+        public static Comando<Dominio.Entidad, Dominio.Entidad> CrearConsultarContactosInvolucradosPorProyecto()
+        {
+            return new Comandos.Modulo3.ComandoConsultarContactosInvolucradosPorProyecto();
         }
         public static Comando<Dominio.Entidad, Boolean> CrearComandoConsultarContactoInvolucrados()
         {
             return new Comandos.Modulo3.ComandoAgregarContactosInvolucrados();
         }
-        public static Comando<Dominio.Entidad, List<Dominio.Entidad>> CrearComandoConsultarUsuariosInvolucrados()
+        public static Comando<Dominio.Entidad, Dominio.Entidad> CrearComandoConsultarUsuariosInvolucrados()
         {
 
             return new Comandos.Modulo3.ComandoConsultarUsuariosInvolucradosPorProyecto();
         }
-        public static Comando<Dominio.Entidad, Dominio.Entidad> CrearComandoDatosContactoID()
+        public static Comando<int, Dominio.Entidad> CrearComandoDatosContactoID()
         {
 
             return new Comandos.Modulo3.ComandoDatosContactoID();
         }
-        public static Comando<Dominio.Entidad, Dominio.Entidad> CrearComandoDatosUsuariosUsername()
+        public static Comando<String, Dominio.Entidad> CrearComandoDatosUsuariosUsername()
         {
 
             return new Comandos.Modulo3.ComandoDatosUsuarioUsername();
@@ -136,6 +141,10 @@ namespace Comandos.Fabrica
         #endregion
 
         #region Modulo 4
+        public static Comando<Dominio.Entidad, Boolean> CrearComandoAgregarProyecto()
+        {
+            return new ComandoAgregarProyecto();
+        }
         #endregion
 
         #region Modulo 5
@@ -207,6 +216,11 @@ namespace Comandos.Fabrica
         public static Comando <bool,List<String>> CrearComandoListarCargos()
         {
             return new ComandoListarCargos();
+        }
+
+        public static Comando<bool,List<Entidad>> CrearComandoListarUsuarios()
+        {
+            return new ComandoListarUsuarios();
         }
         #endregion
 

@@ -13,6 +13,9 @@ using System.Web.UI.WebControls;
 
 namespace Presentadores.Modulo7
 {
+    /// <summary>
+    /// Clase que represnta el presentador de la vista Agregar Usuario segun el patron MVP
+    /// </summary>
     public class PresentadorAgregarUsuario
     {
         //Variable que contiene la vista respectiva de este presentador a ser manipulada
@@ -30,7 +33,7 @@ namespace Presentadores.Modulo7
         /// <summary>
         /// Metodo que llena el Dropdown con los roles de un usuario
         /// </summary>
-        public void llenarCombos()
+        public void LlenarCombos()
         {
             //Llenamos el combo de los roles
             Dictionary<string, string> options = new Dictionary<string, string>();

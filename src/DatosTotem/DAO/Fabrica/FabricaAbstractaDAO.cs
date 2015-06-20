@@ -27,6 +27,7 @@ namespace DAO.Fabrica
             #endregion
 
             #region Modulo 4
+            public abstract IntefazDAO.Modulo4.IDaoProyecto ObtenerDAOProyecto();
             #endregion
 
             #region Modulo 5
