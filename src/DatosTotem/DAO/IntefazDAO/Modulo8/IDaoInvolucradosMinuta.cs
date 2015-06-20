@@ -10,7 +10,7 @@ namespace DAO.IntefazDAO.Modulo8
     interface IDaoInvolucradosMinuta
     {
 
-/*
+
         /// <summary>
         /// Firma del metodo para consultar los datos de Usuario
         /// </summary>
@@ -35,23 +35,32 @@ namespace DAO.IntefazDAO.Modulo8
         /// <param name="id">Es el id del Acuerdo o Minuta que se encuentra vinculado con los 
         /// Involucrados</param>
         /// <returns></returns>
-        public List<Entidad> ConsultarInvolucrado(string procedure, string atributoInvo, string parametro, string id);
+        List<int> ConsultarInvolucrado(string procedure, string atributoInvo, string parametro, string id);
         
         /// <summary>
         /// Firma del metodo para agregar un Usuario a la BD
         /// </summary>
-        /// <param name="listaUsuario">lista de Usuario a agregar</param>
+        /// <param name="usuario">Usuario a agregar</param>
         /// <param name="idAcuerdo">id de Acuerdo vinculado</param>
         /// <param name="idProyecto">id de Proyecto</param>
         /// <returns>Retorna un Boolean para saber si se realizo la operación con éxito</returns>
-        public Boolean AgregarUsuarioEnAcuerdo(Entidad usuario, string idProyecto);
-        
+        Boolean AgregarUsuarioEnAcuerdo(Entidad usuario, string idProyecto);
+
+
+        /// <summary>
+        /// Firma del metodo para agregar involucrado a la BD
+        /// </summary>
+        /// <param name="involucrado">involucrado a agregar</param>
+        /// <param name="idProyecto">id de Proyecto</param>
+        /// <param name="procedure">procedure a llamar</param>
+        /// <param name="parametro">parametro a utilizar</param>
+        /// <returns>Retorna un Boolean para saber si se realizo la operación con éxito</returns>
         bool AgregarInvolucradoEnMinuta(int involucrado, string idProyecto, string procedure, string parametro);
        
         /// <summary>
         /// Firma del metodo para Agregar un Contacto a un Acuerdo a la BD
         /// </summary>
-        /// <param name="listaContacto">lista de Contactos a agregar</param>
+        /// <param name="contacto">Contacto a agregar</param>
         /// <param name="idAcuerdo">id del Acuerdo vinculado</param>
         /// <param name="idProyecto">id de Proyecto</param>
         /// <returns>Retorna un Boolean para saber si se realizo la operación con éxito</returns>
@@ -60,7 +69,7 @@ namespace DAO.IntefazDAO.Modulo8
         /// <summary>
         /// Firma del metodo para eliminar un Usuario de un Acuerdo
         /// </summary>
-        /// <param name="listaUsuario">lista de Usuario que se desea eliminar</param>
+        /// <param name="usuario">Usuario que se desea eliminar</param>
         /// <param name="idAcuerdo">id de Acuerdo vinculado</param>
         /// <param name="idProyecto">id del Proyecto</param>
         /// <returns>Retorna un Boolean para saber si se realizo la operación con éxito</returns>
@@ -70,12 +79,13 @@ namespace DAO.IntefazDAO.Modulo8
         /// <summary>
         /// Firma del metodo para eliminar un Contacto de un Acuerdo
         /// </summary>
-        /// <param name="listaContacto">lista de Contactos a eliminar</param>
+        /// <param name="Contacto">Contacto a eliminar</param>
         /// <param name="idAcuerdo">id del acuerdo vinculado</param>
         /// <param name="idProyecto">id del proyecto</param>
         /// <returns>Retorna un Boolean para saber si se realizo con exito la operación</returns>
         bool EliminarContactoEnAcuerdo(Entidad contacto, int idAcuerdo, string idProyecto);
-        */
+
+
         /// <summary>
         /// Firma del metodo para eliminar involucrados de una minuta
         /// </summary>

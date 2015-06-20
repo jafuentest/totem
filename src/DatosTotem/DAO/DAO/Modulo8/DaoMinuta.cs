@@ -196,6 +196,11 @@ namespace DAO.DAO.Modulo8
         }
         #endregion
         #region Consultar Minutas de Proyecto
+        /// <summary>
+        /// Metodo que devuelve una lista de todas las minutas asociadas a un Proyecto
+        /// </summary>
+        /// <param name="idProyecto">id de proyecto que se desea buscar</param>
+        /// <returns>Retorna lista de minutas</returns>
         public List<Entidad> ConsultarMinutasProyecto(string idProyecto) 
         {
             
@@ -261,7 +266,77 @@ namespace DAO.DAO.Modulo8
         }
         #endregion
 
-         /// <summary>
+
+        /// <summary>
+        /// Método para consultar los datos de una minuta en la BD
+        /// </summary>
+        /// <param name="id">Se recibe el id de la minuta que se desea consultar</param>
+        /// <returns>Retrorna el objeto Minuta</returns>
+        public Entidad ConsultarMinutaBD(int id)
+        {
+            
+            FabricaEntidades laFabrica = new FabricaEntidades();
+            List<Entidad> laLista = new List<Entidad>();
+            DataTable resultado = new DataTable();
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametroStored = new Parametro(RecursosBDModulo8.ParametroIDMinuta,
+                SqlDbType.Int, id.ToString(), false);
+            parametros.Add(parametroStored);
+
+            Minuta laMinuta = (Minuta)laFabrica.ObtenerMinuta();
+            try
+            {
+                resultado = EjecutarStoredProcedureTuplas(RecursosBDModulo8.ProcedimientoConsultarMinuta, parametros);
+
+                foreach (DataRow row in resultado.Rows)
+                {
+
+
+                    laMinuta = (Minuta)laFabrica.ObtenerMinuta();
+                    laMinuta.Codigo = row[RecursosBDModulo8.AtributoIDMinuta].ToString();
+                    laMinuta.Fecha = DateTime.Parse(row[RecursosBDModulo8.AtributoFechaMinuta].ToString());
+                    laMinuta.Motivo = row[RecursosBDModulo8.AtributoMotivoMinuta].ToString();
+                    laMinuta.Observaciones = row[RecursosBDModulo8.AtributoObservacionesMinuta].ToString();
+                    laLista.Add(laMinuta);
+                }
+
+
+            }
+            catch (NullReferenceException ex)
+            {
+
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
+                    RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
+
+            }
+            
+            catch (SqlException ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
+                    RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
+
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
+                    RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
+                    RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
+            }
+            catch (Exception ex)
+            {
+                throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
+                   RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
+
+            }
+
+            return laMinuta;
+        }
+
+        /// <summary>
         /// Metodo para Eliminar una Minuta
         /// </summary>
         /// <param name="idMinuta">Id de la Minuta a eliminar</param>
@@ -269,8 +344,13 @@ namespace DAO.DAO.Modulo8
         public bool EliminarMinuta(int idMinuta)
         {
             List<Parametro> parametros = new List<Parametro>();
-            /* Parametro parametroStored = new Parametro(RecursosBDModulo8.ParametroIDMinuta, SqlDbType.Int, idMinuta.ToString(), false);
-             parametros.Add(parametroStored);*/
+           /*  Parametro parametroStored = new Parametro(RecursosBDModulo8.ParametroIDMinuta, SqlDbType.Int, idMinuta.ToString(), false);
+             parametros.Add(parametroStored); 
+            
+            
+            
+            Esto va a fallar Arreglar SP
+            */
 
             try
             {
