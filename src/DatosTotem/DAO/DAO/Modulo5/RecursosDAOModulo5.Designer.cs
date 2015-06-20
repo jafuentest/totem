@@ -331,6 +331,15 @@ namespace DAO.DAO.Modulo5 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to M5_AgregarRequerimiento.
+        /// </summary>
+        internal static string PROCEDIMIENTO_AGREGAR_REQUERIMIENTO {
+            get {
+                return ResourceManager.GetString("PROCEDIMIENTO_AGREGAR_REQUERIMIENTO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to M5_ConsultarRequerimiento.
         /// </summary>
         internal static string PROCEDIMIENTO_CONSULTAR_REQUERIMIENTO {
@@ -363,15 +372,6 @@ namespace DAO.DAO.Modulo5 {
         internal static string PROCEDIMIENTO_CONSULTAR_REQUERIMIENTOS_POR_TIPO_PRIORIDAD {
             get {
                 return ResourceManager.GetString("PROCEDIMIENTO_CONSULTAR_REQUERIMIENTOS_POR_TIPO_PRIORIDAD", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to M5_CrearRequerimiento.
-        /// </summary>
-        internal static string PROCEDIMIENTO_CREAR_REQUERIMIENTO {
-            get {
-                return ResourceManager.GetString("PROCEDIMIENTO_CREAR_REQUERIMIENTO", resourceCulture);
             }
         }
         
