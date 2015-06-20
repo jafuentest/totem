@@ -132,6 +132,15 @@
   <data name="CodigoMensajePresentadorNuloException" xml:space="preserve">
     <value>T_06_102</value>
   </data>
+  <data name="CodigoMensajePresentadorTipoDeDatoErroneo" xml:space="preserve">
+    <value>T_06_105</value>
+  </data>
+  <data name="CodigoMensajePresentadorTipoDeDatoErroneo1" xml:space="preserve">
+    <value>T_06_105</value>
+  </data>
+  <data name="MensajeActorExistente" xml:space="preserve">
+    <value>El actor ya se encuentra registrado en Base de Datos.</value>
+  </data>
   <data name="MensajeCodigoMaliciosoException" xml:space="preserve">
     <value>Ha ingresado un código malicioso, por favor ingrese carácteres correctos.</value>
   </data>
@@ -146,5 +155,8 @@
   </data>
   <data name="MensajePresentadorNuloException" xml:space="preserve">
     <value>Objeto con referencia nula u objeto vacío.</value>
+  </data>
+  <data name="MensajePresentadorTipoDeDatoErroneoException" xml:space="preserve">
+    <value>Error al convertir un tipo de dato en otro.</value>
   </data>
 </root>

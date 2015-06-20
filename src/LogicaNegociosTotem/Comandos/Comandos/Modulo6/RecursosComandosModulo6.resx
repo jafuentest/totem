@@ -120,6 +120,9 @@
   <data name="ClaseComandoAgregarActor" xml:space="preserve">
     <value>ComandoAgregarActor</value>
   </data>
+  <data name="ClaseComandoVerificarExistenciaActor" xml:space="preserve">
+    <value>ComandoVerificarExistenciaActor</value>
+  </data>
   <data name="CodigoExcepcionComandoAgregarActorBD" xml:space="preserve">
     <value>T_06_051</value>
   </data>
@@ -129,6 +132,9 @@
   <data name="CodigoExcepcionComandoAgregarActorNulo" xml:space="preserve">
     <value>T_06_052</value>
   </data>
+  <data name="CodigoExcepcionComandoTipoDeDatoErroneo" xml:space="preserve">
+    <value>T_06_053</value>
+  </data>
   <data name="MensajeExcepcionComandoAgregarActorBD" xml:space="preserve">
     <value>Error en la conexión a Base de Datos al agregar el actor.</value>
   </data>
@@ -137,5 +143,8 @@
   </data>
   <data name="MensajeExcepcionComandoAgregarActorNulo" xml:space="preserve">
     <value>El actor que intento agregar tiene datos vacíos.</value>
+  </data>
+  <data name="MensajeTipoDeDatoErroneoComandoExcepcion" xml:space="preserve">
+    <value>Error al convertir de un tipo de dato en otro.</value>
   </data>
 </root>

@@ -6,8 +6,8 @@ using Dominio;
 
 namespace DAO.IntefazDAO.Modulo6
 {
-   public interface IDaoActor: IDao<Entidad,bool,Entidad>
+    public interface IDaoActor : IDao<Entidad, bool, Entidad>
     {
-
+        bool VerificarExistenciaActor(string nombre);
     }
 }

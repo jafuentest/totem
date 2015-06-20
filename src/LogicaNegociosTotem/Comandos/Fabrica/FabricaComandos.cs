@@ -179,6 +179,11 @@ namespace Comandos.Fabrica
             return new ComandoAgregarActor(); 
         }
 
+        public static Comando<string, bool> CrearComandoVerificarActor()
+        {
+            return new ComandoVerificarExistenciaActor();
+        }
+
         #endregion
 
         #region Modulo 7

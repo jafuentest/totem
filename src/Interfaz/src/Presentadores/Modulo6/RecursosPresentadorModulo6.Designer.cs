@@ -106,6 +106,33 @@ namespace Presentadores.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a T_06_105.
+        /// </summary>
+        internal static string CodigoMensajePresentadorTipoDeDatoErroneo {
+            get {
+                return ResourceManager.GetString("CodigoMensajePresentadorTipoDeDatoErroneo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a T_06_105.
+        /// </summary>
+        internal static string CodigoMensajePresentadorTipoDeDatoErroneo1 {
+            get {
+                return ResourceManager.GetString("CodigoMensajePresentadorTipoDeDatoErroneo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El actor ya se encuentra registrado en Base de Datos..
+        /// </summary>
+        internal static string MensajeActorExistente {
+            get {
+                return ResourceManager.GetString("MensajeActorExistente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Ha ingresado un código malicioso, por favor ingrese carácteres correctos..
         /// </summary>
         internal static string MensajeCodigoMaliciosoException {
@@ -147,6 +174,15 @@ namespace Presentadores.Modulo6 {
         internal static string MensajePresentadorNuloException {
             get {
                 return ResourceManager.GetString("MensajePresentadorNuloException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error al convertir un tipo de dato en otro..
+        /// </summary>
+        internal static string MensajePresentadorTipoDeDatoErroneoException {
+            get {
+                return ResourceManager.GetString("MensajePresentadorTipoDeDatoErroneoException", resourceCulture);
             }
         }
     }

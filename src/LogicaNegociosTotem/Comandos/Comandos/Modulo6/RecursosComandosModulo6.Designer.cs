@@ -70,6 +70,15 @@ namespace Comandos.Comandos.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a ComandoVerificarExistenciaActor.
+        /// </summary>
+        internal static string ClaseComandoVerificarExistenciaActor {
+            get {
+                return ResourceManager.GetString("ClaseComandoVerificarExistenciaActor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a T_06_051.
         /// </summary>
         internal static string CodigoExcepcionComandoAgregarActorBD {
@@ -97,6 +106,15 @@ namespace Comandos.Comandos.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a T_06_053.
+        /// </summary>
+        internal static string CodigoExcepcionComandoTipoDeDatoErroneo {
+            get {
+                return ResourceManager.GetString("CodigoExcepcionComandoTipoDeDatoErroneo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error en la conexión a Base de Datos al agregar el actor..
         /// </summary>
         internal static string MensajeExcepcionComandoAgregarActorBD {
@@ -120,6 +138,15 @@ namespace Comandos.Comandos.Modulo6 {
         internal static string MensajeExcepcionComandoAgregarActorNulo {
             get {
                 return ResourceManager.GetString("MensajeExcepcionComandoAgregarActorNulo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error al convertir de un tipo de dato en otro..
+        /// </summary>
+        internal static string MensajeTipoDeDatoErroneoComandoExcepcion {
+            get {
+                return ResourceManager.GetString("MensajeTipoDeDatoErroneoComandoExcepcion", resourceCulture);
             }
         }
     }

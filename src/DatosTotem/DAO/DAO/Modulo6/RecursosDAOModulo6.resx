@@ -132,7 +132,20 @@
   <data name="CodigoExcepcionAgregarActorNulo" xml:space="preserve">
     <value>T_06_003</value>
   </data>
+  <data name="CodigoExcepcionTipoDeDatoErroneo" xml:space="preserve">
+    <value>T_06_005</value>
+  </data>
+  <data name="CodigoProyecto" xml:space="preserve">
+    <value>@codigoProyecto</value>
+  </data>
+  <data name="CodigoProyecto1" xml:space="preserve">
+    <value>@codigoProyecto</value>
+  </data>
   <data name="DESC_ACTOR" xml:space="preserve">
+    <value>@descripcion</value>
+    <comment>Atributo que identifica la descripcion del actor</comment>
+  </data>
+  <data name="DESC_ACTOR1" xml:space="preserve">
     <value>@descripcion</value>
     <comment>Atributo que identifica la descripcion del actor</comment>
   </data>
@@ -140,28 +153,60 @@
     <value>@idactor</value>
     <comment>Atributo que identifica el ID del actor en la Base de Datos</comment>
   </data>
+  <data name="ID_ACTOR1" xml:space="preserve">
+    <value>@idactor</value>
+    <comment>Atributo que identifica el ID del actor en la Base de Datos</comment>
+  </data>
   <data name="ID_CU" xml:space="preserve">
     <value>@idcasouso</value>
   </data>
+  <data name="ID_CU1" xml:space="preserve">
+    <value>@idcasouso</value>
+  </data>
   <data name="ID_PROY" xml:space="preserve">
+    <value>@idproyecto</value>
+  </data>
+  <data name="ID_PROY1" xml:space="preserve">
     <value>@idproyecto</value>
   </data>
   <data name="ID_PROY_ACTOR" xml:space="preserve">
     <value>@idproyecto</value>
     <comment>Atributo que identifica el proyecto al cual el actor estara asociado</comment>
   </data>
+  <data name="ID_PROY_ACTOR1" xml:space="preserve">
+    <value>@idproyecto</value>
+    <comment>Atributo que identifica el proyecto al cual el actor estara asociado</comment>
+  </data>
   <data name="MensajeExcepcionAgregarActorBD" xml:space="preserve">
+    <value>Error en la conexión a Base de Datos al agregar el actor.</value>
+  </data>
+  <data name="MensajeExcepcionAgregarActorBD1" xml:space="preserve">
     <value>Error en la conexión a Base de Datos al agregar el actor.</value>
   </data>
   <data name="MensajeExcepcionAgregarActorError" xml:space="preserve">
     <value>Error del sistema al agregar el actor. Por favor intente más tarde.</value>
   </data>
+  <data name="MensajeExcepcionAgregarActorError1" xml:space="preserve">
+    <value>Error del sistema al agregar el actor. Por favor intente más tarde.</value>
+  </data>
   <data name="MensajeExcepcionAgregarActorNulo" xml:space="preserve">
     <value>El actor que intento agregar tiene datos vacíos.</value>
+  </data>
+  <data name="MensajeExcepcionAgregarActorNulo1" xml:space="preserve">
+    <value>El actor que intento agregar tiene datos vacíos.</value>
+  </data>
+  <data name="MensajeTipoDeDatoErroneoException" xml:space="preserve">
+    <value>Se generó un error al tratar de convertir un dato en otro tipo.</value>
   </data>
   <data name="NOMBRE_ACTOR" xml:space="preserve">
     <value>@nombre</value>
     <comment>Atributo que identifica el nombre del actor</comment>
+  </data>
+  <data name="Output_Afectado" xml:space="preserve">
+    <value>@afectado</value>
+  </data>
+  <data name="Output_Existe" xml:space="preserve">
+    <value>@existe</value>
   </data>
   <data name="PROCEDURE_ELIMINAR_ACTOR" xml:space="preserve">
     <value>ELIMINAR_ACTOR</value>
@@ -201,5 +246,8 @@
   <data name="PROCEDURE_MODIFICAR_ACTOR" xml:space="preserve">
     <value>MODIFICAR_ACTOR</value>
     <comment>Procedure para modificar los datos de un actor en la Base de Datos</comment>
+  </data>
+  <data name="ValidarExistenciaActor" xml:space="preserve">
+    <value>ValidarExitenciaActor</value>
   </data>
 </root>

@@ -106,11 +106,47 @@ namespace DAO.DAO.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a T_06_005.
+        /// </summary>
+        internal static string CodigoExcepcionTipoDeDatoErroneo {
+            get {
+                return ResourceManager.GetString("CodigoExcepcionTipoDeDatoErroneo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a @codigoProyecto.
+        /// </summary>
+        internal static string CodigoProyecto {
+            get {
+                return ResourceManager.GetString("CodigoProyecto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a @codigoProyecto.
+        /// </summary>
+        internal static string CodigoProyecto1 {
+            get {
+                return ResourceManager.GetString("CodigoProyecto1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a @descripcion.
         /// </summary>
         internal static string DESC_ACTOR {
             get {
                 return ResourceManager.GetString("DESC_ACTOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a @descripcion.
+        /// </summary>
+        internal static string DESC_ACTOR1 {
+            get {
+                return ResourceManager.GetString("DESC_ACTOR1", resourceCulture);
             }
         }
         
@@ -124,11 +160,29 @@ namespace DAO.DAO.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a @idactor.
+        /// </summary>
+        internal static string ID_ACTOR1 {
+            get {
+                return ResourceManager.GetString("ID_ACTOR1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a @idcasouso.
         /// </summary>
         internal static string ID_CU {
             get {
                 return ResourceManager.GetString("ID_CU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a @idcasouso.
+        /// </summary>
+        internal static string ID_CU1 {
+            get {
+                return ResourceManager.GetString("ID_CU1", resourceCulture);
             }
         }
         
@@ -151,11 +205,38 @@ namespace DAO.DAO.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a @idproyecto.
+        /// </summary>
+        internal static string ID_PROY_ACTOR1 {
+            get {
+                return ResourceManager.GetString("ID_PROY_ACTOR1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a @idproyecto.
+        /// </summary>
+        internal static string ID_PROY1 {
+            get {
+                return ResourceManager.GetString("ID_PROY1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error en la conexión a Base de Datos al agregar el actor..
         /// </summary>
         internal static string MensajeExcepcionAgregarActorBD {
             get {
                 return ResourceManager.GetString("MensajeExcepcionAgregarActorBD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error en la conexión a Base de Datos al agregar el actor..
+        /// </summary>
+        internal static string MensajeExcepcionAgregarActorBD1 {
+            get {
+                return ResourceManager.GetString("MensajeExcepcionAgregarActorBD1", resourceCulture);
             }
         }
         
@@ -169,6 +250,15 @@ namespace DAO.DAO.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error del sistema al agregar el actor. Por favor intente más tarde..
+        /// </summary>
+        internal static string MensajeExcepcionAgregarActorError1 {
+            get {
+                return ResourceManager.GetString("MensajeExcepcionAgregarActorError1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a El actor que intento agregar tiene datos vacíos..
         /// </summary>
         internal static string MensajeExcepcionAgregarActorNulo {
@@ -178,11 +268,47 @@ namespace DAO.DAO.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a El actor que intento agregar tiene datos vacíos..
+        /// </summary>
+        internal static string MensajeExcepcionAgregarActorNulo1 {
+            get {
+                return ResourceManager.GetString("MensajeExcepcionAgregarActorNulo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Se generó un error al tratar de convertir un dato en otro tipo..
+        /// </summary>
+        internal static string MensajeTipoDeDatoErroneoException {
+            get {
+                return ResourceManager.GetString("MensajeTipoDeDatoErroneoException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a @nombre.
         /// </summary>
         internal static string NOMBRE_ACTOR {
             get {
                 return ResourceManager.GetString("NOMBRE_ACTOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a @afectado.
+        /// </summary>
+        internal static string Output_Afectado {
+            get {
+                return ResourceManager.GetString("Output_Afectado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a @existe.
+        /// </summary>
+        internal static string Output_Existe {
+            get {
+                return ResourceManager.GetString("Output_Existe", resourceCulture);
             }
         }
         
@@ -282,6 +408,15 @@ namespace DAO.DAO.Modulo6 {
         internal static string PROCEDURE_MODIFICAR_ACTOR {
             get {
                 return ResourceManager.GetString("PROCEDURE_MODIFICAR_ACTOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ValidarExitenciaActor.
+        /// </summary>
+        internal static string ValidarExistenciaActor {
+            get {
+                return ResourceManager.GetString("ValidarExistenciaActor", resourceCulture);
             }
         }
     }

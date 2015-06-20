@@ -74,6 +74,7 @@
     <Compile Include="Comandos\Modulo5\ComandoEliminarRequerimiento.cs" />
     <Compile Include="Comandos\Modulo5\ComandoModificarRequerimiento.cs" />
     <Compile Include="Comandos\Modulo6\ComandoAgregarActor.cs" />
+    <Compile Include="Comandos\Modulo6\ComandoVerificarExistenciaActor.cs" />
     <Compile Include="Comandos\Modulo6\RecursosComandosModulo6.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
