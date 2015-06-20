@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using Dominio.Entidades.Modulo6; 
 using Dominio.Entidades;
+using Dominio.Entidades.Modulo4;
+using Dominio.Entidades.Modulo7;
+using Dominio.Entidades.Modulo2;
 
 namespace Dominio.Fabrica
 {
@@ -33,13 +36,79 @@ namespace Dominio.Fabrica
         {
             return new Entidades.Modulo2.Telefono();
         }
-        
+        public Entidad ObtenerDireccion(String pais, String estado, String ciudad, String direccion, String codigop)
+        {
+            return new Entidades.Modulo2.Direccion(pais, estado, ciudad, direccion, codigop);
+        }
+        public Entidad ObtenerTelefono(String elCodigo, String elNumero)
+        {
+            return new Entidades.Modulo2.Telefono(elCodigo, elNumero);
+        }
+        public Entidad ObtenerContacto(String cedula, String nombre, String apellido, String cargo, Entidad telefono)
+        {
+            return new Entidades.Modulo2.Contacto(cedula, nombre, apellido, cargo, telefono);
+        }
+        public Entidad ObtenerClienteJuridico(String nombre, List<Entidad> contactos, Entidad dir,
+         String elRif, String logo)
+        {
+            return new Entidades.Modulo2.ClienteJuridico(nombre, contactos, dir, elRif, logo);
+        }
+
+        public Entidad ObtenerClienteNatural(String nombre, String apellido, String correo, Entidad dir, Entidad telefono, String cedula)
+        {
+            return new Entidades.Modulo2.ClienteNatural(nombre, apellido, correo, dir, telefono, cedula);
+        }
+
+        public Entidad ObtenerClienteJuridico(int id)
+        {
+            return new Entidades.Modulo2.ClienteJuridico(id);
+        }
         #endregion
 
         #region Modulo 3
+        public static Entidad ObtenetListaInvolucradoContacto()
+        {
+            return new Entidades.Modulo3.ListaInvolucradoContacto();
+        }
+        public static Entidad ObtenetListaInvolucradoContacto(Proyecto p)
+        {
+            return new Entidades.Modulo3.ListaInvolucradoContacto(p);
+        }
+        public static Entidad ObtenetListaInvolucradoContacto(List<Contacto> laLista, Proyecto p)
+        {
+            return new Entidades.Modulo3.ListaInvolucradoContacto(laLista, p);
+        }
+        public static Entidad ObtenetListaInvolucradoUsuario()
+        {
+            return new Entidades.Modulo3.ListaInvolucradoUsuario();
+        }
+        public static Entidad ObtenetListaInvolucradoUsuario(Proyecto p)
+        {
+            return new Entidades.Modulo3.ListaInvolucradoUsuario(p);
+        }
+        public static Entidad ObtenetListaInvolucradoUsuario(List<Usuario> laLista, Proyecto p)
+        {
+            return new Entidades.Modulo3.ListaInvolucradoUsuario(laLista, p);
+        } 
         #endregion
 
         #region Modulo 4
+	   public static Entidad ObtenerProyecto()
+	   {
+		  return new Entidades.Modulo4.Proyecto();
+	   }
+	   public static Entidad ObtenerProyecto(String codigo, String nombre, bool estado,
+		  String descripcion, String moneda, int costo)
+	   {
+		  return new Entidades.Modulo4.Proyecto(codigo, nombre, estado, descripcion,
+			 moneda, costo);
+	   }
+	   public static Entidad ObtenerProyecto(int id, String codigo, String nombre, bool estado,
+		  String descripcion, String moneda, int costo)
+	   {
+		  return new Entidades.Modulo4.Proyecto(id, codigo, nombre, estado, descripcion,
+			 moneda, costo);
+	   }
         #endregion
 
         #region Modulo 5
@@ -56,26 +125,36 @@ namespace Dominio.Fabrica
                 codigo, descripcion, tipo, prioridad, estatus);
         }
 
+        public static Entidad
+            ObtenerRequerimiento(string codigo, string descripcion, string tipo,
+            string prioridad, string estatus, string codigoProyecto)
+        {
+            return new Entidades.Modulo5.Requerimiento(
+                codigo, descripcion, tipo, prioridad, estatus, codigoProyecto);
+        }
         #endregion
 
         #region Modulo 6
 
-        
+        public static Entidad ObtenerActor() 
+        {
+            return new Actor(); 
+        }
+
         public static Entidad ObtenerCasoDeUso() 
         {
             return new CasoDeUso(); 
         }
 
-        public Entidad ObtenerActor()
+        public static Entidad ObtenerExtension() 
         {
-            return new Entidades.Modulo6.Actor();
+            return new Extension(); 
         }
 
-
-       
-
-
-
+        public static Entidad ObtenerPaso() 
+        {
+            return new Paso(); 
+        }
 
         #endregion
 
@@ -84,13 +163,59 @@ namespace Dominio.Fabrica
         /// Metodo que permite instanciar a la clase Usuario con sus atributos vacios
         /// </summary>
         /// <returns>el Usuario con sus atributos vacios</returns>
-        public Entidad ObtenerUsuario ()
+        public static Entidad ObtenerUsuario()
         {
             return new Entidades.Modulo7.Usuario();
+        }
+
+        /// <summary>
+        /// Metodo que permite instanciar a la clase usuario sin el ID de la base de Datos
+        /// </summary>
+        /// <param name="username">Username del usuario</param>
+        /// <param name="clave">Clave del usuario</param>
+        /// <param name="nombre">Nombre del usuario</param>
+        /// <param name="apellido">Apellido del usuario</param>
+        /// <param name="rol">Rol que ocupa</param>
+        /// <param name="correo">Correo del Usuario</param>
+        /// <param name="preguntaSeguridad">Pregunta de seguridad si olvida su clave</param>
+        /// <param name="respuestaSeguridad">Respuesta a la pregunta de seguridad</param>
+        /// <param name="cargo">Cargo que ocupa</param>
+        /// <returns>El usuario completo sin su ID de Base de Datos</returns>
+        public static Entidad ObtenerUsuario(String username, String clave, String nombre, String apellido, 
+            String rol, String correo, String preguntaSeguridad, String respuestaSeguridad, String cargo )
+        {
+            return new Entidades.Modulo7.Usuario(username, clave, nombre, apellido, rol, correo, preguntaSeguridad, 
+                respuestaSeguridad, cargo);
+        }
+
+        /// <summary>
+        /// Metodo que instancia el Usuario con sus datos basicos
+        /// </summary>
+        /// <param name="username">Username del usuario</param>
+        /// <param name="nombre">Nombre del usuario</param>
+        /// <param name="apellido">Apellido del usuario</param>
+        /// <param name="cargo">Cargo que ocupa</param>
+        /// <returns>El usuario con sus datos basicos</returns>
+        public static Entidad ObtenerUsuario(String username, String nombre, String apellido, String cargo)
+        {
+            return new Entidades.Modulo7.Usuario(username, nombre, apellido, cargo);
         }
         #endregion
 
         #region Modulo 8
+
+        public Entidad ObtenerMinuta()
+        {
+            return new Entidades.Modulo8.Minuta();
+        }
+        public Entidad ObtenerAcuerdo()
+        {
+            return new Entidades.Modulo8.Acuerdo();
+        }
+        public Entidad ObtenerPunto()
+        {
+            return new Entidades.Modulo8.Punto();
+        }
         #endregion
     }
 }
