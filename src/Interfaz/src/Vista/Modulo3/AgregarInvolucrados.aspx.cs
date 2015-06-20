@@ -24,37 +24,48 @@ namespace Vista.Modulo3
         }
 
         #region contrato
-        string Contratos.Modulo3.IContratoAgregarInvolucrado.comboTipoEmpresa
+        DropDownList Contratos.Modulo3.IContratoAgregarInvolucrado.comboTipoEmpresa
         {
             get
             {
-                return comboTipoEmpresa.SelectedValue;
+                return comboTipoEmpresa;
             }
             set
             {
-                comboTipoEmpresa.SelectedValue= value;
+                comboTipoEmpresa= value;
             }
         }
-        string Contratos.Modulo3.IContratoAgregarInvolucrado.comboPersonal
+        DropDownList Contratos.Modulo3.IContratoAgregarInvolucrado.comboPersonal
         {
             get
             {
-                return comboPersonal.SelectedValue;
+                return comboPersonal;
             }
             set
             {
-                comboPersonal.SelectedValue = value;
+                comboPersonal = value;
             }
         }
-          string Contratos.Modulo3.IContratoAgregarInvolucrado.comboCargo
+        DropDownList Contratos.Modulo3.IContratoAgregarInvolucrado.comboCargo
         {
             get
             {
-                    return comboCargo.SelectedValue;
+                    return comboCargo;
             }
             set
             {
-                comboCargo.SelectedValue = value;
+                comboCargo = value;
+            }
+        }
+        string Contratos.Modulo3.IContratoAgregarInvolucrado.laTabla
+        {
+            get
+            {
+                return laTabla.Text;
+            }
+            set
+            {
+                laTabla.Text = value;
             }
         }
          
