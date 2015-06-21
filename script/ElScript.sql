@@ -2127,13 +2127,13 @@ GO
 
 CREATE PROCEDURE M5_EliminarRequerimiento
 
-	@req_id				[int]
+  @req_codigo       [varchar] (15)
 
 AS
-	BEGIN
-		DELETE FROM REQUERIMIENTO
-		WHERE req_id = @req_id;
-	END
+  BEGIN
+    DELETE FROM REQUERIMIENTO
+    WHERE req_codigo = @req_codigo;
+  END
 GO
 
 -- ========================================================================= --
