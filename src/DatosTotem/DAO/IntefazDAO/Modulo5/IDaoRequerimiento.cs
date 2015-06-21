@@ -33,7 +33,7 @@ namespace DAO.IntefazDAO.Modulo5
         /// <param name="requerimiento">Requerimiento a eliminar</param>
         /// <param name="idProyecto">string con el id del proyecto</param>
         /// <returns>retorna true si se logro eliminar</returns>
-        bool EliminarRequerimiento(Dominio.Entidad requerimiento, int idProyecto);
+        bool EliminarRequerimiento(Dominio.Entidad requerimiento);
 
         /// <summary>
         /// Firma de Método para verificar si un requerimiento existe en la base de
@@ -47,6 +47,13 @@ namespace DAO.IntefazDAO.Modulo5
         /// false si ocurre lo contrario
         /// </returns>
         bool ExisteRequerimiento(string codigoRequerimiento);
+
+        /// <summary>
+        /// Metodo que retorna todos los requerimientos asociados a un proyecto
+        /// </summary>
+        /// <param name="codigoProyecto">Codigo del proyecto</param>
+        /// <returns>Lista de requerimientos</returns>
+        List<Dominio.Entidad> ConsultarRequerimientoDeProyecto(string codigoProyecto);
      
         #endregion
     }

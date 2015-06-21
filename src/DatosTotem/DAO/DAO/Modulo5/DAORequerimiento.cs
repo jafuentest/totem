@@ -94,9 +94,8 @@ namespace DAO.DAO.Modulo5
         /// Metodo que elimina un requerimiento asociado a un proyecto
         /// </summary>
         /// <param name="requerimiento">Requerimiento a eliminar</param>
-        /// <param name="idProyecto">id del proyecto</param>
         /// <returns>true si lo logro eliminar</returns>
-        public bool EliminarRequerimiento(Dominio.Entidad requerimiento, int idProyecto)
+        public bool EliminarRequerimiento(Dominio.Entidad requerimiento)
         {
             throw new NotImplementedException();
         }
@@ -108,7 +107,83 @@ namespace DAO.DAO.Modulo5
         /// <returns>Lista de requerimientos</returns>
         public List<Dominio.Entidad> ConsultarRequerimientoDeProyecto(string codigoProyecto)
         {
-            throw new NotImplementedException();
+            List<Parametro> parametros = new List<Parametro>();
+
+            List<Dominio.Entidad> listaRequerimientos =
+               new List<Dominio.Entidad>();
+
+            int idProyecto = BuscarIdProyecto(codigoProyecto);
+            Parametro parametro = new Parametro(
+               RecursosDAOModulo5.PARAMETRO_PRO_ID,
+               SqlDbType.Int, idProyecto.ToString(), false);
+            parametros.Add(parametro);
+
+            try
+            {
+                DataTable dataTableRequerimientos =
+                   EjecutarStoredProcedureTuplas(
+                   RecursosDAOModulo5.
+                   PROCEDIMIENTO_CONSULTAR_REQUERIMIENTOS_POR_PROYECTO,
+                   parametros);
+                if (dataTableRequerimientos != null)
+                {
+                    foreach (DataRow fila in dataTableRequerimientos.Rows)
+                    {
+                        listaRequerimientos.Add(
+                            new Dominio.Entidades.Modulo5.Requerimiento(
+                               fila[RecursosDAOModulo5.ATRIBUTO_REQ_ID].ToString(),
+                               fila[RecursosDAOModulo5.ATRIBUTO_REQ_CODIGO].ToString(),
+                               fila[RecursosDAOModulo5.ATRIBUTO_REQ_DESCRIPCION].ToString(),
+                               fila[RecursosDAOModulo5.ATRIBUTO_REQ_TIPO].ToString(),
+                               fila[RecursosDAOModulo5.ATRIBUTO_REQ_PRIORIDAD].ToString(),
+                               fila[RecursosDAOModulo5.ATRIBUTO_REQ_ESTATUS].ToString()
+                            )
+                        );
+                    }
+                    return listaRequerimientos;
+                }
+
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    new ExcepcionesTotem.ExceptionTotemConexionBD());
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    new ExcepcionesTotem.ExceptionTotemConexionBD());
+            }
+            #region Capturar Excepciones
+            catch (ExcepcionesTotem.Modulo5.RequerimientoInvalidoException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
+            }
+            catch (SqlException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
+            }
+            #endregion
         }
 
         /// <summary>
@@ -162,9 +237,10 @@ namespace DAO.DAO.Modulo5
 
         #region IDAO
         /// <summary>
-        /// Metodo no implementado
+        /// Metodo que agrega un requerimiento en la base de datos
         /// </summary>
-        /// <returns></returns>
+        /// <param name="parametro">Requerimiento a agregar</param>
+        /// <returns>true si se logro agregar</returns>
         public bool Agregar(Dominio.Entidad parametro)
         {
             try
