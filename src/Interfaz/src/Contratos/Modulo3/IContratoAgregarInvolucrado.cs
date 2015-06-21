@@ -11,7 +11,7 @@ namespace Contratos.Modulo3
         DropDownList comboTipoEmpresa { get; set; }
         DropDownList comboCargo { get; set; }
         DropDownList comboPersonal { get; set; }
-        string laTabla { get; set; }
+        Literal laTabla { get; set; }
 
        
 

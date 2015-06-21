@@ -21,7 +21,7 @@
                                     <asp:DropDownList ID="comboTipoEmpresa"  class="btn btn-default dropdown-toggle" runat="server" OnSelectedIndexChanged="actualizarComboCargos" AutoPostBack="true">
                                     </asp:DropDownList>
                                 </div>    
-                            </div>
+                            </div>  
                             </br>
                         </div>
                        <div class="form-group">
@@ -45,9 +45,9 @@
                                     <asp:DropDownList ID="comboPersonal"  class="btn btn-default dropdown-toggle" runat="server" OnSelectedIndexChanged ="AgregarInvolucrados_Click" AutoPostBack="true">
                                     </asp:DropDownList>
                                 </div>        
-                            </div>    
+                            </div>   
+                          <br /> 
                         </div>
-                       <br />
                        <div class="col-sm-12 col-md-12 col-lg-12">
                        <div  id="table-responsive">
                            <table id="laTabla" class=" table table-striped table-hover display">

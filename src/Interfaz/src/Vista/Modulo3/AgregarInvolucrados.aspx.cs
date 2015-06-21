@@ -20,11 +20,12 @@ namespace Vista.Modulo3
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.Master.idModulo = "3";
-            this.Master.presentador.CargarMenuLateral();
+
             if (!IsPostBack)
             {
-               presentador.LlenarComboEmpresa();
+                this.Master.idModulo = "3";
+                this.Master.presentador.CargarMenuLateral();
+                presentador.LlenarComboEmpresa();
             }
         }
 
@@ -62,15 +63,15 @@ namespace Vista.Modulo3
                 comboCargo = value;
             }
         }
-        string Contratos.Modulo3.IContratoAgregarInvolucrado.laTabla
+        Literal Contratos.Modulo3.IContratoAgregarInvolucrado.laTabla
         {
             get
             {
-                return laTabla.Text;
+                return laTabla;
             }
             set
             {
-                laTabla.Text = value;
+                laTabla = value;
             }
         }
          
@@ -84,11 +85,11 @@ namespace Vista.Modulo3
           }
           protected void actualizarComboPersonal(object sender, EventArgs e)
           {
-              
+              presentador.ListarUsuarioSegunCargo();
           }
           protected void AgregarInvolucrados_Click(object sender, EventArgs e)
           {
-             
+              presentador.SeleccionarUsuario();
           }
           protected void btn_enviar_Click(object sender, EventArgs e)
           {

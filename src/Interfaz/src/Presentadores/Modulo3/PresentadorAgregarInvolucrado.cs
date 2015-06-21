@@ -3,6 +3,7 @@ using Comandos.Fabrica;
 using Contratos.Modulo3;
 using Dominio;
 using Dominio.Entidades.Modulo2;
+using Dominio.Entidades.Modulo7;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,16 +60,39 @@ namespace Presentadores.Modulo3
             vista.comboCargo.DataBind();
         }
 
-        public void ListarUsuarioSegunCargo() { 
-        
+        public void ListarUsuarioSegunCargo() {
+            vista.comboPersonal.Enabled = true;
+            String cargoSelecionado = vista.comboCargo.SelectedValue;
+            Dictionary<String, string> options = new Dictionary<string, string>();
+            Comando<String, List<Entidad>> comando = FabricaComandos.CrearComandoListarUsuariosPorCargo();
+            List<Entidad> listUsuario = comando.Ejecutar(cargoSelecionado);
+            foreach (Entidad usuario in listUsuario)
+            {
+                options.Add(((Usuario)usuario).Username, ((Usuario)usuario).Nombre + " " + ((Usuario)usuario).Apellido);
+            }
+            vista.comboPersonal.DataSource = options;
+            vista.comboPersonal.DataTextField = "value";
+            vista.comboPersonal.DataValueField = "key";
+            vista.comboPersonal.DataBind();
         }
 
         public void QuitarUsuarioSeleccionado() { 
         
         }
 
-        public void SeleccionarUsuario() { 
-        
+        public void SeleccionarUsuario() {
+            String userName = vista.comboPersonal.SelectedValue;
+            Comando<String, Entidad> comando = FabricaComandos.CrearComandoDatosUsuariosUsername();
+            Usuario user = (Usuario)comando.Ejecutar(userName);
+            vista.laTabla.Text += "<tr id=\"" + user.Username + "\" >";
+            vista.laTabla.Text += "<td>" + user.Nombre + "</td>";
+            vista.laTabla.Text += "<td>" + user.Apellido + "</td>";
+            vista.laTabla.Text += "<td>" + user.Cargo + "</td>";
+            vista.laTabla.Text += "<td>"+vista.comboTipoEmpresa.SelectedItem.Text+"</td>";
+            vista.laTabla.Text += "<td>";
+            vista.laTabla.Text += "<a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" href=\"AgregarInvolucrado.aspx?usuarioaeliminar=" + user.Username + "\"></a>";
+            vista.laTabla.Text += "</td>";
+            vista.laTabla.Text += "</tr>";
         }
     }
 
