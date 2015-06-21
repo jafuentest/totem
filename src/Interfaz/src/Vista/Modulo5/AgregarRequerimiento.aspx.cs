@@ -93,11 +93,6 @@ namespace Vista.Modulo5
         {
             presentador.AgregarRequerimiento();
         }
-
-        protected void Application_Error(object sender, EventArgs e)
-        {
-            
-        }
         
     }
 }
