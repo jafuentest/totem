@@ -123,13 +123,13 @@
   <data name="ClaseDAOCasoDeUso" xml:space="preserve">
     <value>DAOCasoDeUso</value>
   </data>
-  <data name="CodigoExcepcionAgregarActorBD" xml:space="preserve">
+  <data name="CodigoExcepcionBDDAO" xml:space="preserve">
     <value>T_06_002</value>
   </data>
-  <data name="CodigoExcepcionAgregarActorError" xml:space="preserve">
+  <data name="CodigoExcepcionErrorDAO" xml:space="preserve">
     <value>T_06_001</value>
   </data>
-  <data name="CodigoExcepcionAgregarActorNulo" xml:space="preserve">
+  <data name="CodigoExcepcionObjetoNuloDAO" xml:space="preserve">
     <value>T_06_003</value>
   </data>
   <data name="CodigoExcepcionTipoDeDatoErroneo" xml:space="preserve">
@@ -208,6 +208,9 @@
   <data name="Output_Existe" xml:space="preserve">
     <value>@existe</value>
   </data>
+  <data name="ProcedureLlenarComboActores" xml:space="preserve">
+    <value>LlenarComboActores</value>
+  </data>
   <data name="PROCEDURE_ELIMINAR_ACTOR" xml:space="preserve">
     <value>ELIMINAR_ACTOR</value>
     <comment>Procedure para eliminar un actor en la Base de Datos</comment>
@@ -249,5 +252,11 @@
   </data>
   <data name="ValidarExistenciaActor" xml:space="preserve">
     <value>ValidarExitenciaActor</value>
+  </data>
+  <data name="AliasIDActor" xml:space="preserve">
+    <value>idActor</value>
+  </data>
+  <data name="AliasNombreActor" xml:space="preserve">
+    <value>nombreActor</value>
   </data>
 </root>

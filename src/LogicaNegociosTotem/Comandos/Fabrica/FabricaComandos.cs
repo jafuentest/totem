@@ -184,6 +184,11 @@ namespace Comandos.Fabrica
             return new ComandoVerificarExistenciaActor();
         }
 
+        public static Comando<string, List<Entidad>> CrearComandoConsultarActoresCB() 
+        {
+            return new ComandoConsultarActoresCombo();
+        }
+
         #endregion
 
         #region Modulo 7

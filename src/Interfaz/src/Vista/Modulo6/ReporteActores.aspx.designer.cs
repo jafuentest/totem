@@ -13,13 +13,22 @@ namespace Vista.Modulo6 {
     public partial class ReporteActores {
         
         /// <summary>
-        /// Control alert.
+        /// Control labelMensajeExito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alert;
+        protected global::System.Web.UI.WebControls.Label labelMensajeExito;
+        
+        /// <summary>
+        /// Control labelMensajeError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelMensajeError;
         
         /// <summary>
         /// Control reporte_actor.
@@ -47,6 +56,33 @@ namespace Vista.Modulo6 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList comboActores;
+        
+        /// <summary>
+        /// Control cuerpo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cuerpo;
+        
+        /// <summary>
+        /// Control tabla.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal tabla;
+        
+        /// <summary>
+        /// Control boton.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton boton;
         
         /// <summary>
         /// Propiedad Master.

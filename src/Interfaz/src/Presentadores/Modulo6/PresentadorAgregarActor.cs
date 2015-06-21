@@ -81,8 +81,8 @@ namespace Presentadores.Modulo6
 
                 catch (ComandoBDException e)
                 {
-                    AgregarActorBDPresentadorException exAgregarActorPresentador =
-                            new AgregarActorBDPresentadorException(
+                    PresentadorException exAgregarActorPresentador =
+                            new PresentadorException(
                                 RecursosPresentadorModulo6.CodigoMensajePresentadorBDException,
                                 RecursosPresentadorModulo6.MensajePresentadorBDException,
                                 e);
@@ -94,8 +94,8 @@ namespace Presentadores.Modulo6
 
                 catch (ComandoNullException e)
                 {
-                    AgregarActorNuloPresentadorException exAgregarActorPresentador =
-                            new AgregarActorNuloPresentadorException(
+                    ObjetoNuloPresentadorException exAgregarActorPresentador =
+                            new ObjetoNuloPresentadorException(
                                 RecursosPresentadorModulo6.CodigoMensajePresentadorNuloException,
                                 RecursosPresentadorModulo6.MensajePresentadorNuloException,
                                 e);
@@ -157,8 +157,8 @@ namespace Presentadores.Modulo6
 
             catch (ComandoBDException e)
             {
-                AgregarActorBDPresentadorException exAgregarActorPresentador =
-                        new AgregarActorBDPresentadorException(
+                PresentadorException exAgregarActorPresentador =
+                        new PresentadorException(
                             RecursosPresentadorModulo6.CodigoMensajePresentadorBDException,
                             RecursosPresentadorModulo6.MensajePresentadorBDException,
                             e);
@@ -170,8 +170,8 @@ namespace Presentadores.Modulo6
 
             catch (ComandoNullException e)
             {
-                AgregarActorNuloPresentadorException exAgregarActorPresentador =
-                        new AgregarActorNuloPresentadorException(
+                ObjetoNuloPresentadorException exAgregarActorPresentador =
+                        new ObjetoNuloPresentadorException(
                             RecursosPresentadorModulo6.CodigoMensajePresentadorNuloException,
                             RecursosPresentadorModulo6.MensajePresentadorNuloException,
                             e);

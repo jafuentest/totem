@@ -2317,6 +2317,18 @@ AS
 	SELECT @existe=count(*) from actor where act_nombre =@nombre;
 GO
 
+CREATE PROCEDURE LlenarComboActores
+@codigoProyecto  varchar(30)
+AS
+select	a.act_id as idActor,
+		a.act_nombre as nombreActor
+from actor a, 
+	 proyecto p 
+where p.pro_id = a.PROYECTO_pro_id
+and p.pro_codigo =@codigoProyecto;
+
+GO
+
 /*==========================================================================================================================*/
 
 /*======================================Procedimientos de la tabla Caso de Uso==============================================*/

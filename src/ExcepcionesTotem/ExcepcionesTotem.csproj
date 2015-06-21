@@ -98,8 +98,8 @@
     <Compile Include="Modulo6\ExcepcionesDAO\ErrorDesconocidoDAOException.cs" />
     <Compile Include="Modulo6\ExcepcionesDAO\ObjetoNuloDAOException.cs" />
     <Compile Include="Modulo6\ExcepcionesDAO\TipoDeDatoErroneoDAOException.cs" />
-    <Compile Include="Modulo6\ExcepcionesPresentador\AgregarActorBDPresentadorException.cs" />
-    <Compile Include="Modulo6\ExcepcionesPresentador\AgregarActorNuloPresentadorException.cs" />
+    <Compile Include="Modulo6\ExcepcionesPresentador\PresentadorException.cs" />
+    <Compile Include="Modulo6\ExcepcionesPresentador\ObjetoNuloPresentadorException.cs" />
     <Compile Include="Modulo6\ExcepcionesPresentador\AgregarActorPresentadorException.cs" />
     <Compile Include="Modulo6\ExcepcionesPresentador\CaracteresMaliciososException.cs" />
     <Compile Include="Modulo6\ExcepcionesPresentador\TipoDeDatoErroneoPresentadorException.cs" />
