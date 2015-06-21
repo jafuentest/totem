@@ -149,6 +149,10 @@
     <value>El Requerimiento se agrego exitosamente</value>
     <comment>Mensaje de exito de requerimiento agregado</comment>
   </data>
+  <data name="Alerta_Mensaje_Requerimiento_Eliminado" xml:space="preserve">
+    <value>El Requerimiento se elimino exitosamente</value>
+    <comment>Mensaje de exito de requerimiento eliminado</comment>
+  </data>
   <data name="Alerta_Mensaje_Requerimiento_Invalido" xml:space="preserve">
     <value>Hubo un error con el requerimiento ingresado, intente nuevamente</value>
     <comment>Mensaje de error si el requerimiento es invalido</comment>
@@ -161,8 +165,12 @@
     <value>T_05_005</value>
     <comment>Codigo de la excepcion de un requerimiento errado</comment>
   </data>
-  <data name="Codigo_Exito" xml:space="preserve">
+  <data name="Codigo_Exito_Agregar" xml:space="preserve">
     <value>?success=agregar</value>
+    <comment>Codigo de exito para el redireccionamiento</comment>
+  </data>
+  <data name="Codigo_Exito_Eliminar" xml:space="preserve">
+    <value>?success=eliminar</value>
     <comment>Codigo de exito para el redireccionamiento</comment>
   </data>
   <data name="Mensaje_Error_Requerimiento_Errado" xml:space="preserve">

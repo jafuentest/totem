@@ -114,7 +114,7 @@ namespace Presentadores.Modulo5
                     {
                         HttpContext.Current.Response.Redirect(
                             RecursosPresentadorModulo5.Ventana_Listar_Requerimiento +
-                            RecursosPresentadorModulo5.Codigo_Exito);
+                            RecursosPresentadorModulo5.Codigo_Exito_Agregar);
                     }
 
                     throw new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException(

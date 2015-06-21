@@ -48,6 +48,20 @@ namespace Presentadores.Modulo5
                     RecursosPresentadorModulo5.Alerta_Mensaje_Requerimiento_Agregado +
                     RecursosPresentadorModulo5.Alerta_Html_Final;
             }
+            if (variable != null && variable.Equals("eliminar"))
+            {
+                vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Exito;
+                vista.alertaRol = RecursosPresentadorModulo5.Alerta_Rol;
+                vista.alerta = RecursosPresentadorModulo5.Alerta_Html +
+                    RecursosPresentadorModulo5.Alerta_Mensaje_Requerimiento_Eliminado +
+                    RecursosPresentadorModulo5.Alerta_Html_Final;
+            }
+            variable = null;
+            variable = HttpContext.Current.Request.QueryString["eliminar"];
+            if (variable != null)
+            {
+                EliminarRequerimiento(variable);
+            }
         }
         /// <summary>
         /// Metodo encargado de listar los requerimientos de un proyecto
@@ -132,8 +146,67 @@ namespace Presentadores.Modulo5
         /// <summary>
         /// Metodo encargado de eliminar un requerimiento particular
         /// </summary>
-        public void EliminarRequerimiento() {
-            throw new NotImplementedException();
+        public void EliminarRequerimiento(string codigo) {
+            try
+            {
+                Dominio.Entidad requerimiento =
+                    Dominio.Fabrica.FabricaEntidades.ObtenerRequerimiento(codigo);
+                Comandos.Comando<Dominio.Entidad, bool> comandoEliminar;
+                comandoEliminar = Comandos.Fabrica.FabricaComandos.CrearComandoEliminarRequerimiento();
+                if (comandoEliminar.Ejecutar(requerimiento))
+                {
+                    HttpContext.Current.Response.Redirect(
+                                RecursosPresentadorModulo5.Ventana_Listar_Requerimiento +
+                                RecursosPresentadorModulo5.Codigo_Exito_Eliminar);
+                }
+
+                throw new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException(
+                        RecursosPresentadorModulo5.Codigo_Error_Requerimiento_Errado,
+                        RecursosPresentadorModulo5.Mensaje_Error_Requerimiento_Errado,
+                        new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
+            }
+            #region Capturar Excepcion
+            catch (ExcepcionesTotem.Modulo5.CamposInvalidosException ex)
+            {
+                vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Error;
+                vista.alertaRol = RecursosPresentadorModulo5.Alerta_Rol;
+                vista.alerta = RecursosPresentadorModulo5.Alerta_Html +
+                    RecursosGeneralPresentadores.Mensaje_Error_InputInvalido +
+                    RecursosPresentadorModulo5.Alerta_Html_Final;
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Error;
+                vista.alertaRol = RecursosPresentadorModulo5.Alerta_Rol;
+                vista.alerta = RecursosPresentadorModulo5.Alerta_Html +
+                    RecursosGeneralPresentadores.Mensaje_Error_BaseDatos +
+                    RecursosPresentadorModulo5.Alerta_Html_Final;
+            }
+            catch (ExcepcionesTotem.Modulo5.RequerimientoInvalidoException ex)
+            {
+                vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Error;
+                vista.alertaRol = RecursosPresentadorModulo5.Alerta_Rol;
+                vista.alerta = RecursosPresentadorModulo5.Alerta_Html +
+                    RecursosPresentadorModulo5.Alerta_Mensaje_Requerimiento_Invalido +
+                    RecursosPresentadorModulo5.Alerta_Html_Final;
+            }
+            catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
+            {
+                vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Error;
+                vista.alertaRol = RecursosPresentadorModulo5.Alerta_Rol;
+                vista.alerta = RecursosPresentadorModulo5.Alerta_Html +
+                    RecursosPresentadorModulo5.Alerta_Mensaje_Error_General +
+                    RecursosPresentadorModulo5.Alerta_Html_Final;
+            }
+            catch (Exception e)
+            {
+                vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Error;
+                vista.alertaRol = RecursosPresentadorModulo5.Alerta_Rol;
+                vista.alerta = RecursosPresentadorModulo5.Alerta_Html +
+                    RecursosPresentadorModulo5.Alerta_Mensaje_Error_General +
+                    RecursosPresentadorModulo5.Alerta_Html_Final;
+            }
+            #endregion
         }
     }
 }

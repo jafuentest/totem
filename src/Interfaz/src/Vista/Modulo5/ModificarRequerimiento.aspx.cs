@@ -149,7 +149,7 @@ namespace Vista.Modulo5
 
         protected void EliminarRequerimiento_Click(object sender, EventArgs e)
         {
-
+            presentador.EliminarRequerimiento();           
         }
         #endregion
 

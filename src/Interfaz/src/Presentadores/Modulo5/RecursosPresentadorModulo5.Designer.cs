@@ -133,6 +133,15 @@ namespace Presentadores.Modulo5 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to El Requerimiento se elimino exitosamente.
+        /// </summary>
+        internal static string Alerta_Mensaje_Requerimiento_Eliminado {
+            get {
+                return ResourceManager.GetString("Alerta_Mensaje_Requerimiento_Eliminado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hubo un error con el requerimiento ingresado, intente nuevamente.
         /// </summary>
         internal static string Alerta_Mensaje_Requerimiento_Invalido {
@@ -162,9 +171,18 @@ namespace Presentadores.Modulo5 {
         /// <summary>
         ///   Looks up a localized string similar to ?success=agregar.
         /// </summary>
-        internal static string Codigo_Exito {
+        internal static string Codigo_Exito_Agregar {
             get {
-                return ResourceManager.GetString("Codigo_Exito", resourceCulture);
+                return ResourceManager.GetString("Codigo_Exito_Agregar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ?success=eliminar.
+        /// </summary>
+        internal static string Codigo_Exito_Eliminar {
+            get {
+                return ResourceManager.GetString("Codigo_Exito_Eliminar", resourceCulture);
             }
         }
         
