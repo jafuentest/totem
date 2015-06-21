@@ -15,7 +15,34 @@ namespace Comandos.Comandos.Modulo5
         /// <returns>Lista de requerimientos asociadas al proyecto</returns>
         public override List<Dominio.Entidad> Ejecutar(string parametro)
         {
-            throw new NotImplementedException();
+            DAO.Fabrica.FabricaAbstractaDAO fabricaDAO;
+            DAO.IntefazDAO.Modulo5.IDaoRequerimiento daoRequerimiento;
+
+            fabricaDAO = DAO.Fabrica.FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+            daoRequerimiento = fabricaDAO.ObtenerDAORequerimiento();
+
+            try
+            {
+                return daoRequerimiento.ConsultarRequerimientoDeProyecto(parametro);
+            }
+
+            #region Capturar Excepciones
+            catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
+            {
+
+                throw ex;
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+
+                throw ex;
+            }
+            catch (ExcepcionesTotem.Modulo5.RequerimientoInvalidoException ex)
+            {
+
+                throw ex;
+            }
+            #endregion
         }
     }
 }
