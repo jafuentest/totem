@@ -2231,11 +2231,18 @@ CREATE PROCEDURE M5_RetornarIdPorCodigoRequerimiento
 -- ========================================================================= --
 CREATE PROCEDURE M5_ConsultarRequerimientosPorCodigo
 
-  @req_codigo       [varchar] (25)
+  @req_codigo       [varchar] (25),
+  @req_id   int OUTPUT,
+  @req_codigo_out varchar(25) OUTPUT,
+  @req_descripcion  varchar(500)  OUTPUT,
+  @req_tipo varchar(25) OUTPUT,
+  @req_prioridad  varchar(10) OUTPUT,
+  @req_estatus  varchar(50) OUTPUT
 AS
   BEGIN
-    SELECT  req_id, req_codigo, req_descripcion,
-        req_tipo, req_prioridad, req_estatus
+    SELECT  @req_id = req_id, @req_codigo_out = req_codigo, 
+    @req_descripcion = req_descripcion, @req_tipo = req_tipo, 
+    @req_prioridad = req_prioridad, @req_estatus = req_estatus
     FROM  REQUERIMIENTO R
     WHERE req_codigo = @req_codigo
   END
