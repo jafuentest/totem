@@ -70,7 +70,7 @@ namespace Presentadores.Modulo5 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;div&gt;&lt;button type=\&quot;button\&quot; class=\&quot;close\&quot; data-dismiss=\&quot;alert\&quot; aria-label=\&quot;Close\&quot;&gt;&lt;span aria-hidden=\&quot;true\&quot;&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;.
+        ///   Looks up a localized string similar to &lt;div&gt;&lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot; aria-label=&quot;Close&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;.
         /// </summary>
         internal static string Alerta_Html {
             get {
@@ -88,11 +88,20 @@ namespace Presentadores.Modulo5 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hay un error con los campos ingresados, intente nuevamente.
+        ///   Looks up a localized string similar to Ocurrio un error interno del sistema, intente nuevamente.
         /// </summary>
-        internal static string Alerta_Mensaje_Campos_Invalidos {
+        internal static string Alerta_Mensaje_Error_General {
             get {
-                return ResourceManager.GetString("Alerta_Mensaje_Campos_Invalidos", resourceCulture);
+                return ResourceManager.GetString("Alerta_Mensaje_Error_General", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hubo un error con el requerimiento ingresado, intente nuevamente.
+        /// </summary>
+        internal static string Alerta_Mensaje_Requerimiento_Invalido {
+            get {
+                return ResourceManager.GetString("Alerta_Mensaje_Requerimiento_Invalido", resourceCulture);
             }
         }
         
@@ -102,6 +111,42 @@ namespace Presentadores.Modulo5 {
         internal static string Alerta_Rol {
             get {
                 return ResourceManager.GetString("Alerta_Rol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_05_005.
+        /// </summary>
+        internal static string Codigo_Error_Requerimiento_Errado {
+            get {
+                return ResourceManager.GetString("Codigo_Error_Requerimiento_Errado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ?success=agregar.
+        /// </summary>
+        internal static string Codigo_Exito {
+            get {
+                return ResourceManager.GetString("Codigo_Exito", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El requerimiento tiene unos datos errados.
+        /// </summary>
+        internal static string Mensaje_Error_Requerimiento_Errado {
+            get {
+                return ResourceManager.GetString("Mensaje_Error_Requerimiento_Errado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /ListarRequerimiento.aspx.
+        /// </summary>
+        internal static string Ventana_Listar_Requerimiento {
+            get {
+                return ResourceManager.GetString("Ventana_Listar_Requerimiento", resourceCulture);
             }
         }
     }

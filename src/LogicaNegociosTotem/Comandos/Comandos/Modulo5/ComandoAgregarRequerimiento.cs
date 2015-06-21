@@ -28,23 +28,17 @@ namespace Comandos.Comandos.Modulo5
 
             #region Capturar Excepciones
             catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
-            {
-                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
-                    ex);
+            {              
 
                 throw ex;
             }
             catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
             {
-                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
-                    ex);
 
                 throw ex;
             }
             catch (ExcepcionesTotem.Modulo5.RequerimientoInvalidoException ex)
             {
-                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
-                    ex);
 
                 throw ex;
             }

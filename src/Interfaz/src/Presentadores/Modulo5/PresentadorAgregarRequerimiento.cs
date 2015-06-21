@@ -71,6 +71,9 @@ namespace Presentadores.Modulo5
                 new ExcepcionesTotem.Modulo5.CamposInvalidosException());
         }
 
+        /// <summary>
+        /// Metodo que agrega un requerimiento en la base de datos
+        /// </summary>
         public void AgregarRequerimiento()
         {
             try
@@ -91,22 +94,63 @@ namespace Presentadores.Modulo5
                      Para Cuando funcione el cookie del proyecto*/
 
                     comandoAgregar = Comandos.Fabrica.FabricaComandos.CrearComandoAgregarRequerimiento();
-                    comandoAgregar.Ejecutar(requerimiento);
+                    if (comandoAgregar.Ejecutar(requerimiento))
+                    {
+                        HttpContext.Current.Response.Redirect(
+                            RecursosPresentadorModulo5.Ventana_Listar_Requerimiento +
+                            RecursosPresentadorModulo5.Codigo_Exito);
+                    }
+
+                    throw new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException(
+                        RecursosPresentadorModulo5.Codigo_Error_Requerimiento_Errado,
+                        RecursosPresentadorModulo5.Mensaje_Error_Requerimiento_Errado,
+                        new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
 
                 }
             }
+
+            #region Capturar Excepcion
             catch (ExcepcionesTotem.Modulo5.CamposInvalidosException ex)
             {
                 vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Error;
                 vista.alertaRol = RecursosPresentadorModulo5.Alerta_Rol;
                 vista.alerta = RecursosPresentadorModulo5.Alerta_Html +
-                    RecursosPresentadorModulo5.Alerta_Mensaje_Campos_Invalidos +
+                    RecursosGeneralPresentadores.Mensaje_Error_InputInvalido +
+                    RecursosPresentadorModulo5.Alerta_Html_Final;
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Error;
+                vista.alertaRol = RecursosPresentadorModulo5.Alerta_Rol;
+                vista.alerta = RecursosPresentadorModulo5.Alerta_Html +
+                    RecursosGeneralPresentadores.Mensaje_Error_BaseDatos +
+                    RecursosPresentadorModulo5.Alerta_Html_Final;
+            }
+            catch (ExcepcionesTotem.Modulo5.RequerimientoInvalidoException ex)
+            {
+                vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Error;
+                vista.alertaRol = RecursosPresentadorModulo5.Alerta_Rol;
+                vista.alerta = RecursosPresentadorModulo5.Alerta_Html +
+                    RecursosPresentadorModulo5.Alerta_Mensaje_Requerimiento_Invalido +
+                    RecursosPresentadorModulo5.Alerta_Html_Final;
+            }
+            catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
+            {
+                vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Error;
+                vista.alertaRol = RecursosPresentadorModulo5.Alerta_Rol;
+                vista.alerta = RecursosPresentadorModulo5.Alerta_Html +
+                    RecursosPresentadorModulo5.Alerta_Mensaje_Error_General +
                     RecursosPresentadorModulo5.Alerta_Html_Final;
             }
             catch (Exception e)
             {
-                throw e;
+                vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Error;
+                vista.alertaRol = RecursosPresentadorModulo5.Alerta_Rol;
+                vista.alerta = RecursosPresentadorModulo5.Alerta_Html +
+                    RecursosPresentadorModulo5.Alerta_Mensaje_Error_General +
+                    RecursosPresentadorModulo5.Alerta_Html_Final;
             }
+            #endregion
         }
 
     }

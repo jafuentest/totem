@@ -122,19 +122,39 @@
     <comment>Clase de Error para la alerta de la interfaz</comment>
   </data>
   <data name="Alerta_Html" xml:space="preserve">
-    <value>&lt;div&gt;&lt;button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"&gt;&lt;span aria-hidden=\"true\"&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;</value>
+    <value>&lt;div&gt;&lt;button type="button" class="close" data-dismiss="alert" aria-label="Close"&gt;&lt;span aria-hidden="true"&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;</value>
     <comment>Html necesario para la muestra de la alerta</comment>
   </data>
   <data name="Alerta_Html_Final" xml:space="preserve">
     <value>&lt;/div&gt;</value>
     <comment>Final del html</comment>
   </data>
-  <data name="Alerta_Mensaje_Campos_Invalidos" xml:space="preserve">
-    <value>Hay un error con los campos ingresados, intente nuevamente</value>
-    <comment>Mensaje de error de campos invalidos</comment>
+  <data name="Alerta_Mensaje_Error_General" xml:space="preserve">
+    <value>Ocurrio un error interno del sistema, intente nuevamente</value>
+    <comment>Mensaje de error de errores generales</comment>
+  </data>
+  <data name="Alerta_Mensaje_Requerimiento_Invalido" xml:space="preserve">
+    <value>Hubo un error con el requerimiento ingresado, intente nuevamente</value>
+    <comment>Mensaje de error si el requerimiento es invalido</comment>
   </data>
   <data name="Alerta_Rol" xml:space="preserve">
     <value>alert</value>
     <comment>Rol que hace la alerta</comment>
+  </data>
+  <data name="Codigo_Error_Requerimiento_Errado" xml:space="preserve">
+    <value>T_05_005</value>
+    <comment>Codigo de la excepcion de un requerimiento errado</comment>
+  </data>
+  <data name="Codigo_Exito" xml:space="preserve">
+    <value>?success=agregar</value>
+    <comment>Codigo de exito para el redireccionamiento</comment>
+  </data>
+  <data name="Mensaje_Error_Requerimiento_Errado" xml:space="preserve">
+    <value>El requerimiento tiene unos datos errados</value>
+    <comment>Mensaje de error de la excepcion de un requerimiento errado</comment>
+  </data>
+  <data name="Ventana_Listar_Requerimiento" xml:space="preserve">
+    <value>/ListarRequerimiento.aspx</value>
+    <comment>Ventana de listar requerimiento</comment>
   </data>
 </root>

@@ -79,9 +79,12 @@ namespace Vista.Modulo5
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.Master.idModulo = "5";
-            this.Master.presentador.CargarMenuLateral();
-            presentador.ObtenerUsuarioLogeado();
+            if (!IsPostBack)
+            {
+                this.Master.idModulo = "5";
+                this.Master.presentador.CargarMenuLateral();
+                presentador.ObtenerUsuarioLogeado();
+            }
 
         }
 
@@ -90,7 +93,10 @@ namespace Vista.Modulo5
             presentador.AgregarRequerimiento();
         }
 
-
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            
+        }
         
     }
 }
