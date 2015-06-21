@@ -5,24 +5,23 @@ using Presentadores.Modulo1;
 
 namespace Vista.Modulo1
 {
-    public partial class PreguntaSeguridad : Page, IContratoPregunta
+    public partial class RecuperacionClave : Page, IContratoClave
     {
-        private PresentadorPregunta presentadorPregunta;
+        private PresentadorClave presentadorClave;
 
-        public PreguntaSeguridad()
+        public RecuperacionClave()
         {
-            presentadorPregunta = new PresentadorPregunta(this);
+            presentadorClave = new PresentadorClave(this);
         }
 
-        public string Pregunta
+        public string Password
         {
-            set { label_pregunta.InnerText = value; }
+            get { return input_clave.Value; }
         }
 
-        public string Respuesta
+        public string PasswordConfirmar
         {
-            get { return input_respuesta.Value; }
-
+            get { return input_clave_confs.Value; }
         }
 
         public void setMensaje(bool esError, string mensaje)
@@ -41,14 +40,12 @@ namespace Vista.Modulo1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            presentadorPregunta.CargarPregunta(Request);
+
         }
 
-        protected void Validar_Pregunta_Click(object sender, EventArgs e)
+        protected void btn_Confirmar_ServerClick(object sender, EventArgs e)
         {
-            presentadorPregunta.ManejarEventoPregunta_Click(Request, Response);
+            presentadorClave.ManejarEventoPassword_Click(Request);
         }
-
-
     }
 }

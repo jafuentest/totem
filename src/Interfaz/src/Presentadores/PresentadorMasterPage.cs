@@ -71,8 +71,8 @@ namespace Presentadores
             {
                 if ((!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/Login.aspx")) &&
                    (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/IntroducirCorreo.aspx")) &&
-                   (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/M1_PreguntaSeguridad.aspx")) &&
-                   (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/M1_RecuperacionClave.aspx")))
+                   (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/PreguntaSeguridad.aspx")) &&
+                   (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/RecuperacionClave.aspx")))
                 {
                     HttpContext.Current.Response.Redirect("../Modulo1/Login.aspx");
                 }

@@ -103,6 +103,7 @@
     <Content Include="Modulo1\IntroducirCorreo.aspx" />
     <Content Include="Modulo1\Login.aspx" />
     <Content Include="Modulo1\PreguntaSeguridad.aspx" />
+    <Content Include="Modulo1\RecuperacionClave.aspx" />
     <Content Include="Modulo2\AgregarCliente.aspx" />
     <Content Include="Modulo2\AgregarEmpresa.aspx" />
     <Content Include="Modulo2\DetallarCliente.aspx" />
@@ -183,6 +184,13 @@
     </Compile>
     <Compile Include="Modulo1\PreguntaSeguridad.aspx.designer.cs">
       <DependentUpon>PreguntaSeguridad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo1\RecuperacionClave.aspx.cs">
+      <DependentUpon>RecuperacionClave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo1\RecuperacionClave.aspx.designer.cs">
+      <DependentUpon>RecuperacionClave.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulo2\AgregarCliente.aspx.cs">
       <DependentUpon>AgregarCliente.aspx</DependentUpon>

@@ -4,6 +4,6 @@
     {
         string Pregunta { set; }
         string Respuesta { get; }
-        string Mensaje { set; } 
+        void setMensaje(bool esError, string mensaje);
     }
 }

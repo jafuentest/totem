@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IContratoMasterPage.cs" />
+    <Compile Include="Modulo1\IContratoClave.cs" />
     <Compile Include="Modulo1\IContratoCorreo.cs" />
     <Compile Include="Modulo1\IContratoLogin.cs" />
     <Compile Include="Modulo1\IContratoPregunta.cs" />

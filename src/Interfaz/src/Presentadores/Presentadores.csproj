@@ -40,9 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modulo1\PresentadorClave.cs" />
     <Compile Include="Modulo1\PresentadorCorreo.cs" />
     <Compile Include="Modulo1\PresentadorLogin.cs" />
     <Compile Include="Modulo1\PresentadorPregunta.cs" />
+    <Compile Include="Modulo1\RecursosM1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosM1.resx</DependentUpon>
+    </Compile>
     <Compile Include="Modulo2\PresentadorAgregarCliente.cs" />
     <Compile Include="Modulo2\PresentadorAgregarEmpresa.cs" />
     <Compile Include="Modulo2\PresentadorDetallarCliente.cs" />
@@ -89,6 +95,10 @@
     <Folder Include="Modulo4\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Modulo1\RecursosM1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosM1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulo2\RecursoInterfazM2.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursoInterfazM2.Designer.cs</LastGenOutput>

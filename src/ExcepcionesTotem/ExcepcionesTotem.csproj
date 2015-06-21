@@ -59,6 +59,7 @@
     <Compile Include="LogExtensions.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="LoggerException.cs" />
+    <Compile Include="Modulo1\ErrorParametroHttpRequest.cs" />
     <Compile Include="Modulo1\IntentosFallidosException.cs" />
     <Compile Include="Modulo1\ParametroInvalidoException.cs" />
     <Compile Include="Modulo1\UsuarioVacioException.cs" />
