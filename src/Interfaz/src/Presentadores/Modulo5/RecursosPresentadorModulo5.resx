@@ -154,7 +154,7 @@
     <comment>Mensaje de error de la excepcion de un requerimiento errado</comment>
   </data>
   <data name="Ventana_Listar_Requerimiento" xml:space="preserve">
-    <value>/ListarRequerimiento.aspx</value>
+    <value>/Modulo5/ListarRequerimientos.aspx</value>
     <comment>Ventana de listar requerimiento</comment>
   </data>
 </root>

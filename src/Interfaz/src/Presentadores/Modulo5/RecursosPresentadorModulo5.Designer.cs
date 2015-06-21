@@ -142,7 +142,7 @@ namespace Presentadores.Modulo5 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /ListarRequerimiento.aspx.
+        ///   Looks up a localized string similar to /Modulo5/ListarRequerimientos.aspx.
         /// </summary>
         internal static string Ventana_Listar_Requerimiento {
             get {

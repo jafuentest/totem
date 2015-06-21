@@ -33,6 +33,22 @@ namespace Presentadores.Modulo5
         }
 
         /// <summary>
+        /// Metodo que valida y obtiene las variables de URL
+        /// </summary>
+        public void ObtenerVariablesURL()
+        {
+            string error = HttpContext.Current.Request.QueryString["error"];
+            if (error != null && error.Equals("input_malicioso"))
+            {
+                vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Error;
+                vista.alertaRol = RecursosPresentadorModulo5.Alerta_Rol;
+                vista.alerta = RecursosPresentadorModulo5.Alerta_Html +
+                    RecursosGeneralPresentadores.Mensaje_Error_InputInvalido +
+                    RecursosPresentadorModulo5.Alerta_Html_Final;
+            }
+
+        }
+        /// <summary>
         /// Metodo que agrega todos los campos en una lista de String
         /// </summary>
         /// <returns>Lista de String con todos los campos</returns>

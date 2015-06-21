@@ -205,10 +205,7 @@ namespace DAO.DAO.Modulo5
                     List<Resultado> resultados =
                         EjecutarStoredProcedure(RecursosDAOModulo5.PROCEDIMIENTO_AGREGAR_REQUERIMIENTO,
                         parametros);
-                    if (resultados.Count > 0)
-                    {
-                        return true;
-                    }
+                    return true;
                 }
                 ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
                     new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
