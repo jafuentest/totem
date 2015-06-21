@@ -414,7 +414,117 @@ namespace DAO.DAO.Modulo5
         /// <returns>Requerimiento con todos los datos</returns>
         public Dominio.Entidad ConsultarXId(Dominio.Entidad parametro)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Dominio.Entidades.Modulo5.Requerimiento requerimiento =
+                    (Dominio.Entidades.Modulo5.Requerimiento)parametro;
+
+                #region Asignacion Parametros de BD
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro parametroBD = new Parametro(
+                    RecursosDAOModulo5.PARAMETRO_REQ_CODIGO,
+                    SqlDbType.VarChar, requerimiento.Codigo, false);
+                parametros.Add(parametroBD);
+                parametroBD = new Parametro(
+                    RecursosDAOModulo5.PARAMETRO_REQ_ID,
+                    SqlDbType.Int, true);
+                parametros.Add(parametroBD);
+                parametroBD = new Parametro(
+                    RecursosDAOModulo5.PARAMETRO_REQ_CODIGO,
+                    SqlDbType.VarChar, true);
+                parametros.Add(parametroBD);
+                parametroBD = new Parametro(
+                    RecursosDAOModulo5.PARAMETRO_REQ_DESCRIPCION,
+                    SqlDbType.VarChar, true);
+                parametros.Add(parametroBD);
+                parametroBD = new Parametro(
+                    RecursosDAOModulo5.PARAMETRO_REQ_TIPO,
+                    SqlDbType.VarChar, true);
+                parametros.Add(parametroBD);
+                parametroBD = new Parametro(
+                    RecursosDAOModulo5.PARAMETRO_REQ_PRIORIDAD,
+                    SqlDbType.VarChar, true);
+                parametros.Add(parametroBD);
+                parametroBD = new Parametro(
+                    RecursosDAOModulo5.PARAMETRO_REQ_ESTATUS,
+                    SqlDbType.VarChar, true);
+                parametros.Add(parametroBD);
+                #endregion
+
+                List<Resultado> resultados = EjecutarStoredProcedure(
+                    RecursosDAOModulo5.PROCEDIMIENTO_RETORNAR_REQUERIMIENTO_POR_CODIGO,
+                    parametros);
+
+                if (resultados != null && resultados.Count > 0)
+                {
+                    #region Desglosado de resultado
+                    foreach (Resultado resultado in resultados)
+                    {
+                        if (resultado.etiqueta.Equals(RecursosDAOModulo5.PARAMETRO_PRO_CODIGO))
+                        {
+                            requerimiento.Codigo = resultado.valor;
+                        }
+                        if (resultado.etiqueta.Equals(RecursosDAOModulo5.PARAMETRO_REQ_DESCRIPCION))
+                        {
+                            requerimiento.Descripcion = resultado.valor;
+                        }
+                        if (resultado.etiqueta.Equals(RecursosDAOModulo5.PARAMETRO_REQ_TIPO))
+                        {
+                            requerimiento.Tipo = resultado.valor;
+                        }
+                        if (resultado.etiqueta.Equals(RecursosDAOModulo5.PARAMETRO_REQ_PRIORIDAD))
+                        {
+                            requerimiento.Prioridad = resultado.valor;
+                        }
+                        if (resultado.etiqueta.Equals(RecursosDAOModulo5.PARAMETRO_REQ_ESTATUS))
+                        {
+                            requerimiento.Estatus = resultado.valor;
+                        }
+                    }
+                    #endregion
+                    return requerimiento;
+                }
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                        new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
+
+                throw new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException(
+                            RecursosDAOModulo5.CODIGO_EXCEPCION_REQUERIMIENTO_ERRADO,
+                            RecursosDAOModulo5.MENSAJE_EXCEPCION_REQUERIMIENTO_ERRADO,
+                            new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
+            }
+            #region Capturar Excepciones
+            catch (ExcepcionesTotem.Modulo5.RequerimientoInvalidoException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw ex;
+            }
+            catch (SqlException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw ex;
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw ex;
+            }
+            #endregion
         }
 
         /// <summary>

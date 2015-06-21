@@ -281,4 +281,8 @@
     <value>M5_RetornarIdPorCodigoRequerimiento</value>
     <comment>Procedimiento utilizado para retornar el identificador único de un requerimiento dado su código</comment>
   </data>
+  <data name="PROCEDIMIENTO_RETORNAR_REQUERIMIENTO_POR_CODIGO" xml:space="preserve">
+    <value>M5_ConsultarRequerimientosPorCodigo</value>
+    <comment>Procedimiento utilizado para retornar un requerimiento dado su codigo</comment>
+  </data>
 </root>

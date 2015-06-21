@@ -428,5 +428,14 @@ namespace DAO.DAO.Modulo5 {
                 return ResourceManager.GetString("PROCEDIMIENTO_RETORNAR_ID_POR_CODIGO_REQUERIMIENTO", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M5_ConsultarRequerimientosPorCodigo.
+        /// </summary>
+        internal static string PROCEDIMIENTO_RETORNAR_REQUERIMIENTO_POR_CODIGO {
+            get {
+                return ResourceManager.GetString("PROCEDIMIENTO_RETORNAR_REQUERIMIENTO_POR_CODIGO", resourceCulture);
+            }
+        }
     }
 }
