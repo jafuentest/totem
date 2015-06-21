@@ -200,8 +200,7 @@ namespace DAO.DAO.Modulo6
         {
             List<Entidad> listadoActores = new List<Entidad>();
             DataTable resultado = new DataTable();
-            Actor actor; 
-            Entidad laEntidad = FabricaEntidades.ObtenerActor();
+          
             List<Parametro> parametros = new List<Parametro>();
             Parametro parametro = new Parametro(RecursosDAOModulo6.CodigoProyecto, SqlDbType.VarChar,codigoProyecto, false);
             parametros.Add(parametro); 
@@ -213,8 +212,9 @@ namespace DAO.DAO.Modulo6
 
                  foreach (DataRow row in resultado.Rows) 
                  {
+                     Entidad laEntidad = FabricaEntidades.ObtenerActor();
+                     Actor actor = (Actor)laEntidad;
                      laEntidad.Id = Convert.ToInt32(row[RecursosDAOModulo6.AliasIDActor].ToString());
-                     actor = (Actor)laEntidad; 
                      actor.NombreActor = row[RecursosDAOModulo6.AliasNombreActor].ToString();
                      listadoActores.Add(actor); 
                  }
