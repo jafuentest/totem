@@ -61,6 +61,24 @@ namespace DAO.DAO.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a idActor.
+        /// </summary>
+        internal static string AliasIDActor {
+            get {
+                return ResourceManager.GetString("AliasIDActor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a nombreActor.
+        /// </summary>
+        internal static string AliasNombreActor {
+            get {
+                return ResourceManager.GetString("AliasNombreActor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a DAOActor.
         /// </summary>
         internal static string ClaseDAOActor {
@@ -81,27 +99,27 @@ namespace DAO.DAO.Modulo6 {
         /// <summary>
         ///   Busca una cadena traducida similar a T_06_002.
         /// </summary>
-        internal static string CodigoExcepcionAgregarActorBD {
+        internal static string CodigoExcepcionBDDAO {
             get {
-                return ResourceManager.GetString("CodigoExcepcionAgregarActorBD", resourceCulture);
+                return ResourceManager.GetString("CodigoExcepcionBDDAO", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a T_06_001.
         /// </summary>
-        internal static string CodigoExcepcionAgregarActorError {
+        internal static string CodigoExcepcionErrorDAO {
             get {
-                return ResourceManager.GetString("CodigoExcepcionAgregarActorError", resourceCulture);
+                return ResourceManager.GetString("CodigoExcepcionErrorDAO", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a T_06_003.
         /// </summary>
-        internal static string CodigoExcepcionAgregarActorNulo {
+        internal static string CodigoExcepcionObjetoNuloDAO {
             get {
-                return ResourceManager.GetString("CodigoExcepcionAgregarActorNulo", resourceCulture);
+                return ResourceManager.GetString("CodigoExcepcionObjetoNuloDAO", resourceCulture);
             }
         }
         
@@ -408,6 +426,15 @@ namespace DAO.DAO.Modulo6 {
         internal static string PROCEDURE_MODIFICAR_ACTOR {
             get {
                 return ResourceManager.GetString("PROCEDURE_MODIFICAR_ACTOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a LlenarComboActores.
+        /// </summary>
+        internal static string ProcedureLlenarComboActores {
+            get {
+                return ResourceManager.GetString("ProcedureLlenarComboActores", resourceCulture);
             }
         }
         

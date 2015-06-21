@@ -11,9 +11,10 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" runat="server">
 <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-		<div id="alertlocal"></div>
-		<div id="alert" runat="server"></div>
-		
+		 <asp:Label ID="labelMensajeExito" Visible="false"  class="alert alert-sucess" runat="server"></asp:Label>
+    <asp:Label ID="labelMensajeError" Visible="false"  class="alert alert-danger alert-dismissible" runat="server"></asp:Label>
+    <br />
+    <br />		
      <form id="reporte_actor" class="form-horizontal" action="#" method="post" runat="Server">
 		 <div class="form-group">
                             <div id="div_actor" class="col-sm-15 col-md-15 col-lg-15">
@@ -33,8 +34,8 @@
 										<th style="text-align:right;">Acciones</th>
 									</tr>
 								</thead>
-								<tbody>
-									
+								<tbody runat="server" id="cuerpo">
+									<asp:Literal runat="server" ID="tabla"></asp:Literal>
 								</tbody>
 							</table>
 						</div>
@@ -42,7 +43,7 @@
 		
 			
 			<div style="text-align:right;">
-				<br /><button id="btn-imprimir" class="btn btn-success">Generar Documento</button>
+				<br /><button id="boton" runat="server" class="btn btn-success">Generar Documento</button>
 			</div>
 		</form>
 		</div>
