@@ -97,7 +97,75 @@ namespace DAO.DAO.Modulo5
         /// <returns>true si lo logro eliminar</returns>
         public bool EliminarRequerimiento(Dominio.Entidad requerimiento)
         {
-            throw new NotImplementedException();
+            bool requerimientoEliminado = false;
+
+            Dominio.Entidades.Modulo5.Requerimiento requerimientoAEliminar =
+                (Dominio.Entidades.Modulo5.Requerimiento)requerimiento;
+
+            List<Parametro> parametros = new List<Parametro>();
+            
+            Parametro parametro = new Parametro(RecursosDAOModulo5.
+               PARAMETRO_REQ_CODIGO, SqlDbType.VarChar, requerimientoAEliminar.Codigo,
+               false);
+            parametros.Add(parametro);
+
+            try
+            {
+
+                List<Resultado> resultados = EjecutarStoredProcedure(
+                   RecursosDAOModulo5.PROCEDIMIENTO_ELIMINAR_REQUERIMIENTO,
+                   parametros);
+
+                if (resultados != null)
+                {
+                    requerimientoEliminado = true;
+                }
+                else
+                {
+                    ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
+
+                    throw new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException(
+                                RecursosDAOModulo5.CODIGO_EXCEPCION_REQUERIMIENTO_ERRADO,
+                                RecursosDAOModulo5.MENSAJE_EXCEPCION_REQUERIMIENTO_ERRADO,
+                                new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
+                }
+            }
+            #region Capturar Excepciones
+            catch (ExcepcionesTotem.Modulo5.RequerimientoInvalidoException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
+            }
+            catch (SqlException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
+            }
+            #endregion
+
+            return requerimientoEliminado;
         }
 
         /// <summary>
