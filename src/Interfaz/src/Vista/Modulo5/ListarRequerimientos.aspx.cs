@@ -34,6 +34,11 @@ namespace Vista.Modulo5
         {
             set { infostatus.Text = value; }
         }
+        public Repeater RepeaterRequerimiento
+        {
+            get { return RRequerimientos; }
+            set { RRequerimientos = value; }
+        }
         #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -41,6 +46,7 @@ namespace Vista.Modulo5
             {
                 this.Master.idModulo = "5";
                 this.Master.presentador.CargarMenuLateral();
+                presentador.ListarRequerimientosPorProyecto();
             }
         }
     }
