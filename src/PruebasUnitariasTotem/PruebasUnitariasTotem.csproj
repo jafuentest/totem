@@ -78,7 +78,10 @@
     <Compile Include="Modulo8\PruebaBDInvolucrados.cs" />
     <Compile Include="Modulo8\PruebaBDMinuta.cs" />
     <Compile Include="Modulo8\PruebaBDPunto.cs" />
+    <Compile Include="Modulo8\PruebaDaoAcuerdo.cs" />
+    <Compile Include="Modulo8\PruebaDaoInvolucradosMinuta.cs" />
     <Compile Include="Modulo8\PruebaDaoMinuta.cs" />
+    <Compile Include="Modulo8\PruebaDaoPunto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

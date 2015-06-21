@@ -18,18 +18,35 @@ namespace DAO.DAO.Modulo8
     public class DaoPunto : DAO, IntefazDAO.Modulo8.IDaoPunto
     {
 
+        public bool Agregar(Entidad parametro)
+        {
+            throw new NotImplementedException();
+        }
+        public bool Modificar(Entidad parametro)
+        {
+            throw new NotImplementedException();
+        }
+        public Entidad ConsultarXId(Entidad parametro)
+        {
+            throw new NotImplementedException();
+        }
+        public List<Entidad> ConsultarTodos()
+        {
+             throw new NotImplementedException();
+        }
+
+
         /// <summary>
         /// Metodo para Agregar un punto en especifico de cualquier Minuta
         /// </summary>
-        /// <param name="punto">Objeto Minuta</param>
+        /// <param name="punto">Objeto Minuta, con todos los valores a modificar</param>
         /// <param name="idMinuta">Id de la Minuta relcionada</param>
-        /// <returns>Retorna un boolean para saber si se realizo con éxito la operación</returns>
-        public bool Agregar(Entidad parametro)
+        /// <returns>retorna el id del punto insertado en caso contrario retorna 0</returns>
+        public int AgregarPunto(Entidad punto, int idMinuta)
         {
-           
-            Punto elPunto = (Punto)parametro;
+            Punto elPunto = (Punto)punto;
 
-          
+
             List<Parametro> parametros = new List<Parametro>();
             Parametro elParametro = new Parametro(RecursosBDModulo8.ParametroTituloPunto, SqlDbType.VarChar,
                 elPunto.Titulo, false);
@@ -37,13 +54,27 @@ namespace DAO.DAO.Modulo8
             elParametro = new Parametro(RecursosBDModulo8.ParametroDesarrolloPunto, SqlDbType.VarChar,
                 elPunto.Desarrollo, false);
             parametros.Add(elParametro);
-            
+            elParametro = new Parametro(RecursosBDModulo8.ParametroIDMinuta, SqlDbType.Int,
+                idMinuta.ToString(), false);
+            parametros.Add(elParametro);
 
+
+            DataTable resultado = new DataTable();
+            int idMinutaInsert;
             try
             {
-                List<Resultado> tmp = EjecutarStoredProcedure(RecursosBDModulo8.ProcedimientoAgregarPunto, parametros);
-                return (tmp.ToArray().Length > 0);
+                resultado = EjecutarStoredProcedureTuplas(RecursosBDModulo8.ProcedimientoAgregarPunto, parametros);
+
+                foreach (DataRow row in resultado.Rows)
+                {
+
+                    idMinutaInsert = int.Parse(row[RecursosBDModulo8.AtributoIDPunto].ToString());
+
+                    return idMinutaInsert;
+
+                }
             }
+
             catch (NullReferenceException ex)
             {
 
@@ -73,24 +104,9 @@ namespace DAO.DAO.Modulo8
                    RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
             }
-
-
+            return 0;
 
         }
-        public bool Modificar(Entidad parametro)
-        {
-            throw new NotImplementedException();
-        }
-        public Entidad ConsultarXId(Entidad parametro)
-        {
-            throw new NotImplementedException();
-        }
-        public List<Entidad> ConsultarTodos()
-        {
-             throw new NotImplementedException();
-        }
-
-
         /// <summary>
         /// Metodo para Modificar un punto en especifico de cualquier Minuta
         /// </summary>
@@ -108,7 +124,7 @@ namespace DAO.DAO.Modulo8
                 idMinuta.ToString(), false);
             parametros.Add(elParametro);
             elParametro = new Parametro(RecursosBDModulo8.ParametroIDPunto, SqlDbType.Int,
-                 elPunto.Codigo.ToString(), false);
+                 elPunto.Id.ToString(), false);
             parametros.Add(elParametro);
             elParametro = new Parametro(RecursosBDModulo8.ParametroTituloPunto, SqlDbType.VarChar,
                 elPunto.Titulo, false);
@@ -121,7 +137,15 @@ namespace DAO.DAO.Modulo8
             {
                 List<Resultado> tmp = EjecutarStoredProcedure(RecursosBDModulo8.ProcedimientoModificarPunto,
                     parametros);
-                return (tmp.ToArray().Length > 0);  
+                if (tmp != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+
+                }
             }
             catch (NullReferenceException ex)
             {
@@ -174,14 +198,14 @@ namespace DAO.DAO.Modulo8
             Punto elPunto;
             try
             {
-                resultado = EjecutarStoredProcedureTuplas(RecursosBDModulo8.ProcedimientoConsultarListaMinutas, parametros);
+                resultado = EjecutarStoredProcedureTuplas(RecursosBDModulo8.ProcedimientoConsultarPuntos, parametros);
 
                 foreach (DataRow row in resultado.Rows)
                 {
 
 
-                    elPunto = (Punto)laFabrica.ObtenerMinuta();
-                    elPunto.Codigo =int.Parse( row[RecursosBDModulo8.AtributoIDPunto].ToString());
+                    elPunto = (Punto)laFabrica.ObtenerPunto();
+                    elPunto.Id =int.Parse( row[RecursosBDModulo8.AtributoIDPunto].ToString());
                     elPunto.Titulo = row[RecursosBDModulo8.AtributoTituloPunto].ToString();
                     elPunto.Desarrollo = row[RecursosBDModulo8.AtributoDesarrolloPunto].ToString();
                     laLista.Add(elPunto);
@@ -236,13 +260,21 @@ namespace DAO.DAO.Modulo8
             List<Parametro> parametros = new List<Parametro>();
             Parametro parametroStored = new Parametro(RecursosBDModulo8.ParametroIDMinuta, SqlDbType.Int, idMinuta.ToString(), false);
             parametros.Add(parametroStored);
-            parametroStored = new Parametro(RecursosBDModulo8.ParametroIDPunto, SqlDbType.Int, elPunto.Codigo.ToString(), false);
+            parametroStored = new Parametro(RecursosBDModulo8.ParametroIDPunto, SqlDbType.Int, elPunto.Id.ToString(), false);
             parametros.Add(parametroStored);
 
             try
             {
                 List<Resultado> tmp = EjecutarStoredProcedure(RecursosBDModulo8.ProcedimientoEliminarPunto, parametros);
-                return (tmp.ToArray().Length > 0);             
+                if (tmp != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+
+                }            
             }
             catch (NullReferenceException ex)
             {

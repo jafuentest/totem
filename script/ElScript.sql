@@ -3013,11 +3013,13 @@ GO
 CREATE PROCEDURE Procedure_AgregarPunto
 		 
 		@pun_titulo   [varchar] (100),
-		@pun_desarrollo  [varchar] (400)
+		@pun_desarrollo  [varchar] (400),
+		@min_id [int]	
+		
 AS 
 BEGIN
-		INSERT INTO PUNTO(pun_titulo, pun_desarrollo, MINUTA_min_id)
-	    VALUES(@pun_titulo ,@pun_desarrollo ,(SELECT MAX(min_id) FROM MINUTA))
+		INSERT INTO PUNTO(pun_titulo, pun_desarrollo, MINUTA_min_id) Output Inserted.pun_id
+	    VALUES(@pun_titulo ,@pun_desarrollo ,@min_id)
 END;
 GO
 
@@ -3027,12 +3029,13 @@ CREATE PROCEDURE Procedure_AgregarAcuerdo
 		 
 		 
 		@acu_fecha   [date],
-		@acu_desarrollo  [varchar] (300)
+		@acu_desarrollo  [varchar] (300),
+		@min_id [int]	
 AS 
 BEGIN
 
-		INSERT INTO ACUERDO(acu_fecha, acu_desarrollo, MINUTA_min_id)
-	    VALUES(@acu_fecha, @acu_desarrollo,	(SELECT MAX(min_id) FROM MINUTA));
+		INSERT INTO ACUERDO(acu_fecha, acu_desarrollo, MINUTA_min_id) Output Inserted.acu_id
+	    VALUES(@acu_fecha, @acu_desarrollo,	@min_id);
 
 END;
 GO
@@ -3041,24 +3044,26 @@ GO
 CREATE PROCEDURE Procedure_AgregarResponsablesUsuarioDeAcuerdos
 
 		@usu_id   [int],
-		@pro_id   [varchar](6)
+		@pro_id   [varchar](6),
+		@acu_id   [int]
 AS 
 BEGIN
 
 		INSERT INTO ACU_INV(ACUERDO_acu_id,INVOLUCRADOS_USUARIOS_USUARIO_usu_id,INVOLUCRADOS_USUARIOS_PROYECTO_pro_id)
-	    VALUES((SELECT MAX(acu_id) FROM ACUERDO), @usu_id, (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id))
+	    VALUES(@acu_id, @usu_id, (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id))
 END;
 GO
 
 CREATE PROCEDURE Procedure_AgregarResponsablesContactoDeAcuerdos
 		
 		@con_id   [int],
-		@pro_id   [varchar](6)
+		@pro_id   [varchar](6),
+		@acu_id   [int]
 AS 
 BEGIN
 
 		INSERT INTO ACU_INV(ACUERDO_acu_id,INVOLUCRADOS_CLIENTES_CONTACTO_con_id,INVOLUCRADOS_CLIENTES_PROYECTO_pro_id)
-	    VALUES((SELECT MAX(acu_id) FROM ACUERDO), @con_id, (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id));
+	    VALUES(@acu_id, @con_id, (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id));
 END;
 GO
 -------------------Procedimiento para Agregar un Involucrado Cliente ----------------------
@@ -3066,13 +3071,14 @@ GO
 CREATE PROCEDURE Procedure_AgregarInvolucradoCliente
 		 
 		@con_id          [int],
-		@pro_id          [varchar](6)
+		@pro_id          [varchar](6),
+		@min_id [int]	
 		
 AS 
 BEGIN
 		INSERT INTO MIN_INV(MINUTA_min_id, INVOLUCRADOS_CLIENTES_CONTACTO_con_id, 
 				    INVOLUCRADOS_CLIENTES_PROYECTO_pro_id)
-	    VALUES((SELECT MAX(min_id) FROM MINUTA), @con_id, (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id))
+	    VALUES(@min_id, @con_id, (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id))
 END;
 GO
 
@@ -3081,13 +3087,14 @@ GO
 CREATE PROCEDURE Procedure_AgregarInvolucradoUsuario
 		 
 		@usu_id          [int],
-		@pro_id          [varchar](6)
+		@pro_id          [varchar](6),
+		@min_id [int]	
 		
 AS 
 BEGIN
 		INSERT INTO MIN_INV(MINUTA_min_id, INVOLUCRADOS_USUARIOS_USUARIO_usu_id, 
 		            INVOLUCRADOS_USUARIOS_PROYECTO_pro_id)
-	    VALUES((SELECT MAX(min_id) FROM MINUTA), @usu_id, (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id))
+	    VALUES(@min_id, @usu_id, (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @pro_id))
 END;
 GO
 ------------------ Procedimientos para consultar------------------------------
@@ -3100,10 +3107,12 @@ CREATE PROCEDURE Procedure_ConsultarMinutasProyecto
 	   
 AS
  BEGIN
-	
 	SELECT Distinct(M.min_id) as min_id, M.min_fecha, M.min_motivo, M.min_observaciones
 	FROM MINUTA M, MIN_INV MI
-	WHERE (MI.INVOLUCRADOS_USUARIOS_PROYECTO_pro_id= (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @min_inv_proy) or MI.INVOLUCRADOS_CLIENTES_PROYECTO_pro_id =(SELECT pro_id FROM PROYECTO WHERE pro_codigo= @min_inv_proy))
+	WHERE ((MI.INVOLUCRADOS_USUARIOS_PROYECTO_pro_id= (SELECT pro_id FROM PROYECTO WHERE pro_codigo= @min_inv_proy) or MI.INVOLUCRADOS_CLIENTES_PROYECTO_pro_id =(SELECT pro_id FROM PROYECTO WHERE pro_codigo=  @min_inv_proy) )
+	and MI.MINUTA_min_id=M.min_id )
+
+
  END
 GO
 
@@ -3334,7 +3343,7 @@ CREATE PROCEDURE Procedure_EliminarPunto
 AS 
 BEGIN
    DELETE FROM PUNTO
-	   	WHERE MINUTA_min_id = @min_id and pun_id= @min_id
+	   	WHERE MINUTA_min_id = @min_id and pun_id= @pun_id
  
 END
 GO

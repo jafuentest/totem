@@ -12,7 +12,6 @@ namespace Dominio.Entidades.Modulo8
     {
         #region Atributos
 
-        private int codigo;
         private string titulo;
         private string desarrollo;
 
@@ -26,7 +25,7 @@ namespace Dominio.Entidades.Modulo8
 
         public Punto(int codigo, string titulo, string desarrollo)
         {
-            this.codigo = codigo;
+            this.Id = codigo;
             this.titulo = titulo;
             this.desarrollo = desarrollo;
         }
@@ -34,12 +33,6 @@ namespace Dominio.Entidades.Modulo8
         #endregion
 
         #region Propiedades
-
-        public int Codigo
-        {
-            get { return this.codigo; }
-            set { this.codigo = value; }
-        }
 
         public string Titulo
         {

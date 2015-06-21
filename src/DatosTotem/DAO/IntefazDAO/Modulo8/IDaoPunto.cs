@@ -8,7 +8,13 @@ namespace DAO.IntefazDAO.Modulo8
 {
     public interface IDaoPunto : IDao<Entidad, bool, Entidad>
     {
-
+        /// <summary>
+        /// Metodo para Agregar un punto en especifico de cualquier Minuta
+        /// </summary>
+        /// <param name="punto">Objeto Minuta, con todos los valores a modificar</param>
+        /// <param name="idMinuta">Id de la Minuta relcionada</param>
+        /// <returns>retorna el id del punto insertado en caso contrario retorna 0</returns>
+        int AgregarPunto(Entidad punto, int idMinuta);
         /// <summary>
         /// Firma de metodo para para consultar los puntos de una minuta
         /// </summary>
