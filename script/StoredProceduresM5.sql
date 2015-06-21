@@ -165,3 +165,18 @@ CREATE PROCEDURE M5_RetornarIdPorCodigoRequerimiento
       WHERE req_codigo = @req_codigo
     END
   GO
+
+-- ========================================================================= --
+-- Obtener el requerimiento dado su codigo
+-- ========================================================================= --
+CREATE PROCEDURE M5_ConsultarRequerimientosPorCodigo
+
+	@req_codigo				[varchar] (25)
+AS
+	BEGIN
+		SELECT	req_id, req_codigo, req_descripcion,
+				req_tipo, req_prioridad, req_estatus
+		FROM  REQUERIMIENTO R
+		WHERE req_codigo = @req_codigo
+	END
+GO

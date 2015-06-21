@@ -118,6 +118,12 @@ namespace Dominio.Fabrica
         }
 
         public static Entidad
+            ObtenerRequerimiento(string codigo)
+        {
+            return new Entidades.Modulo5.Requerimiento(codigo);
+        }
+
+        public static Entidad
             ObtenerRequerimiento(string codigo, string descripcion, string tipo,
             string prioridad, string estatus)
         {

@@ -29,6 +29,12 @@ namespace Dominio.Entidades.Modulo5
 
        }
 
+       public Requerimiento(string codigo)
+           : base(0)
+       {
+           Codigo = codigo;
+       }
+
        public Requerimiento(string codigo, string descripcion, string tipo, string prioridad, string estatus)
 	    :base(0)
        {
