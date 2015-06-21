@@ -297,6 +297,11 @@ namespace Comandos.Fabrica
             return new Comandos.Modulo8.ComandoListaMinuta();
         }
 
+        public static Comando<String, Dominio.Entidad> CrearComandoComandoDetalleMinuta()
+        {
+            return new Comandos.Modulo8.ComandoDetalleMinuta();
+        }
+
         #endregion
     }
 }
