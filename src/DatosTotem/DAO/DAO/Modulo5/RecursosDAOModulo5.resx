@@ -213,6 +213,10 @@
     <value>@req_codigo</value>
     <comment>Parámetro utilizado para definir el código relacionado a un requerimiento particular</comment>
   </data>
+  <data name="PARAMETRO_REQ_CODIGO_OUTPUT" xml:space="preserve">
+    <value>@req_codigo_out</value>
+    <comment>Parámetro utilizado para definir el código relacionado a un requerimiento particular</comment>
+  </data>
   <data name="PARAMETRO_REQ_DESCRIPCION" xml:space="preserve">
     <value>@req_descripcion</value>
     <comment>Parámetro utilizado para definir la descripción del requerimiento</comment>

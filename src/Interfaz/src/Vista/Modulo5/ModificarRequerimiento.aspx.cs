@@ -41,14 +41,32 @@ namespace Vista.Modulo5
             }
         }
 
-        public bool funcional
+        public string funcional
         {
-            get { return (this.inputNoFuncional.Checked); }
+            get
+            {
+                if (inputFuncional.Checked)
+                    return "Funcional";
+                else
+                    return "No Funcional";
+            }
+            set
+            {
+                if (value.Equals("Funcional", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    inputFuncional.Checked = true;
+                }
+                else
+                {
+                    inputNoFuncional.Checked = true;
+                }
+            }
         }
 
         public string requerimiento
         {
-            get { return this.inputIdRequerimiento.Value; }
+            get { return inputRequerimiento.Value; }
+            set { inputRequerimiento.Value = value; }
         }
 
         public string prioridad
@@ -66,11 +84,60 @@ namespace Vista.Modulo5
                 return "Media";
 
             }
+            set
+            {
+                if (value.Equals("Alta", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    inputPrioridadAlta.Checked = true;
+                }
+                if (value.Equals("Media", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    inputPrioridadMedia.Checked = true;
+                }
+                if (value.Equals("Baja", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    inputPrioridadBaja.Checked = true;
+                }
+            }
         }
 
-        public bool finalizado
+        public string finalizado
         {
-            get { return (this.inputStatusFinalizado.Checked); }
+            get
+            {
+                if (inputStatusFinalizado.Checked)
+                {
+                    return "Finalizado";
+                }
+                return "No Finalizado";
+            }
+            set
+            {
+                if (value.Equals("Finalizado", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    inputStatusNoFinalizado.Checked = false;
+                    inputStatusFinalizado.Checked = true;
+                }
+                else
+                {
+                    inputStatusNoFinalizado.Checked = true;
+                    inputStatusFinalizado.Checked = false;
+                }
+            }
+        }
+        public string alertaClase
+        {
+            set { alert.Attributes["class"] = value; }
+        }
+
+        public string alertaRol
+        {
+            set { alert.Attributes["role"] = value; }
+        }
+
+        public string alerta
+        {
+            set { alert.InnerHtml = value; }
         }
         #endregion
         

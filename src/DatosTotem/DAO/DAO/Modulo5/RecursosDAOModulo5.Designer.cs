@@ -277,6 +277,15 @@ namespace DAO.DAO.Modulo5 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to @req_codigo_out.
+        /// </summary>
+        internal static string PARAMETRO_REQ_CODIGO_OUTPUT {
+            get {
+                return ResourceManager.GetString("PARAMETRO_REQ_CODIGO_OUTPUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @req_descripcion.
         /// </summary>
         internal static string PARAMETRO_REQ_DESCRIPCION {

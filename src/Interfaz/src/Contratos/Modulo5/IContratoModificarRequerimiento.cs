@@ -8,10 +8,13 @@ namespace Contratos.Modulo5
    public interface IContratoModificarRequerimiento
     {
         string idRequerimiento { get; set; }
-        bool funcional { get; }
-        string requerimiento { get; }
-        string prioridad { get; }
-        bool finalizado { get; }
+        string funcional { get; set; }
+        string requerimiento { get; set; }
+        string prioridad { get; set; }
+        string finalizado { get; set; }
+        string alertaClase { set; }
+        string alertaRol { set; }
+        string alerta { set; }
     
     }
 }

@@ -6,6 +6,8 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Modificar Requerimiento</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     <div id="formularioAgregar" class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">      
+        <div id="alert" runat="server">
+                </div>
         <form id="agregar_requerimientos" class="form-horizontal" method="post" runat="server">
             <div class="form-group">
 				<div id="div-id" class="col-sm-5 col-md-5 col-lg-5">

@@ -430,7 +430,7 @@ namespace DAO.DAO.Modulo5
                     SqlDbType.Int, true);
                 parametros.Add(parametroBD);
                 parametroBD = new Parametro(
-                    RecursosDAOModulo5.PARAMETRO_REQ_CODIGO,
+                    RecursosDAOModulo5.PARAMETRO_REQ_CODIGO_OUTPUT,
                     SqlDbType.VarChar, true);
                 parametros.Add(parametroBD);
                 parametroBD = new Parametro(
@@ -460,7 +460,7 @@ namespace DAO.DAO.Modulo5
                     #region Desglosado de resultado
                     foreach (Resultado resultado in resultados)
                     {
-                        if (resultado.etiqueta.Equals(RecursosDAOModulo5.PARAMETRO_PRO_CODIGO))
+                        if (resultado.etiqueta.Equals(RecursosDAOModulo5.PARAMETRO_REQ_CODIGO_OUTPUT))
                         {
                             requerimiento.Codigo = resultado.valor;
                         }
