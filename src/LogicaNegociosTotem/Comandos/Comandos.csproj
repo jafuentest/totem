@@ -87,12 +87,12 @@
     <Compile Include="Comandos\Modulo7\ComandoListarUsuariosPorCargo.cs" />
     <Compile Include="Comandos\Modulo7\ComandoValidarCorreoUnico.cs" />
     <Compile Include="Comandos\Modulo7\ComandoValidarUsernameUnico.cs" />
+    <Compile Include="Comandos\Modulo8\ComandoListaMinuta.cs" />
     <Compile Include="Fabrica\FabricaComandos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Comandos\Modulo1\" />
-    <Folder Include="Comandos\Modulo8\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\DatosTotem\DAO\DAO.csproj">
