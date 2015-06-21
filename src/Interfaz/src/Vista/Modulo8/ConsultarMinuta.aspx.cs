@@ -20,6 +20,7 @@ namespace Vista.Modulo8
         {
             this.Master.idModulo = "8";
             this.Master.presentador.CargarMenuLateral();
+            presentador.consultarMinutas();
             String success = Request.QueryString["success"];
             if (success != null)
             {

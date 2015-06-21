@@ -22,31 +22,24 @@ namespace Presentadores.Modulo8
         {
             try
             {
-                Comando<bool, List<Entidad>> comandoListarClientes =
-                    FabricaComandos.CrearComandoConsultarTodosClienteNatural();
+                Comando<String, List<Entidad>> comandoListarMinutas =  FabricaComandos.CrearComandoComandoListaMinuta();
 
-                List<Entidad> laLista = comandoListarClientes.Ejecutar(true);
+                List<Entidad> laLista = comandoListarMinutas.Ejecutar("Tot");
 
-                /*foreach (ClienteNatural elCliente in laLista)
+                foreach (Minuta minuta in laLista)
                 {
-                    vista.laTabla += RecursoInterfazM2.AbrirEtiqueta_tr;
-                    vista.laTabla += RecursoInterfazM2.AbrirEtiqueta_td + elCliente.Nat_Cedula
-                        + RecursoInterfazM2.CerrarEtiqueta_td;
-                    vista.laTabla += RecursoInterfazM2.AbrirEtiqueta_td + elCliente.Nat_Nombre
-                        + RecursoInterfazM2.CerrarEtiqueta_td;
-                    vista.laTabla += RecursoInterfazM2.AbrirEtiqueta_td + elCliente.Nat_Apellido
-                       + RecursoInterfazM2.CerrarEtiqueta_td;
-
-                    vista.laTabla += RecursoInterfazM2.AbrirEtiqueta_td;
-                    vista.laTabla += RecursoInterfazM2.AbrirBotonDetalleCliente + elCliente.Id +
-                        RecursoInterfazM2.CerrarBoton;
-                    vista.laTabla += RecursoInterfazM2.AbrirBotonModificarCliente + elCliente.Id +
-                        RecursoInterfazM2.CerrarBoton;
-                    vista.laTabla += RecursoInterfazM2.AbrirBotonEliminarCliente + elCliente.Id +
-                        RecursoInterfazM2.CerrarBoton;
-                    vista.laTabla += RecursoInterfazM2.CerrarEtiqueta_td;
-                    vista.laTabla += RecursoInterfazM2.CerrarEtiqueta_tr;
-                }*/
+                    Console.WriteLine(minuta.Id);
+                    vista.laTabla += RecursosInterfazModulo8.AbrirEtiquetaTr;
+                    vista.laTabla += RecursosInterfazModulo8.AbrirEtiquetaTd + minuta.Id + RecursosInterfazModulo8.CerrarEtiquetaTd;
+                    vista.laTabla += RecursosInterfazModulo8.AbrirEtiquetaTd + minuta.Fecha + RecursosInterfazModulo8.CerrarEtiquetaTd;
+                    vista.laTabla += RecursosInterfazModulo8.AbrirEtiquetaTd + minuta.Motivo+ RecursosInterfazModulo8.CerrarEtiquetaTd;
+                    vista.laTabla += RecursosInterfazModulo8.AbrirEtiquetaTd;
+                    vista.laTabla += RecursosInterfazModulo8.BotonDetalle;
+                    vista.laTabla += RecursosInterfazModulo8.BotonModificar;
+                    vista.laTabla += RecursosInterfazModulo8.BotonImprimir;
+                    vista.laTabla += RecursosInterfazModulo8.CerrarEtiquetaTd;
+                    vista.laTabla += RecursosInterfazModulo8.CerrarEtiquetaTr;
+                }
 
 
             }
