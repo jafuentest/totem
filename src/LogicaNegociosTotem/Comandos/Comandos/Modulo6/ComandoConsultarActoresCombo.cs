@@ -26,7 +26,7 @@ namespace Comandos.Comandos.Modulo6
                DAO.Fabrica.FabricaAbstractaDAO fabricaDaoSqlServer = DAO.Fabrica.FabricaAbstractaDAO.ObtenerFabricaSqlServer();
 
                DAOActor daoActor = (DAOActor)fabricaDaoSqlServer.ObtenerDAOActor();
-               List<Entidad> resultado = daoActor.consultarActoresCombo(parametro);
+               List<Entidad> resultado = daoActor.ConsultarActoresCombo(parametro);
                return resultado;
            }
 
@@ -34,11 +34,11 @@ namespace Comandos.Comandos.Modulo6
            {
 
                ComandoBDException exComandoAgregarActor = new ComandoBDException(
-                    RecursosComandosModulo6.CodigoExcepcionComandoAgregarActorBD,
+                    RecursosComandosModulo6.CodigoExcepcionComandoBD,
                     RecursosComandosModulo6.MensajeExcepcionComandoBD,
                     ex);
 
-               Logger.EscribirError(RecursosComandosModulo6.ClaseComandoVerificarExistenciaActor,
+               Logger.EscribirError(RecursosComandosModulo6.ClaseComandoConsultarActoresCombo,
                    exComandoAgregarActor);
 
                throw exComandoAgregarActor;
@@ -51,7 +51,7 @@ namespace Comandos.Comandos.Modulo6
                     RecursosComandosModulo6.MensajeTipoDeDatoErroneoComandoExcepcion,
                     ex);
 
-               Logger.EscribirError(RecursosComandosModulo6.ClaseComandoVerificarExistenciaActor,
+               Logger.EscribirError(RecursosComandosModulo6.ClaseComandoConsultarActoresCombo,
                    exComandoAgregarActor);
 
                throw exComandoAgregarActor;
@@ -60,11 +60,11 @@ namespace Comandos.Comandos.Modulo6
            catch (ObjetoNuloDAOException ex)
            {
                ComandoNullException exComandoAgregarActor = new ComandoNullException(
-                   RecursosComandosModulo6.CodigoExcepcionComandoAgregarActorNulo,
+                   RecursosComandosModulo6.CodigoExcepcionComandoObjetoNulo,
                    RecursosComandosModulo6.MensajeExcepcionComandoObjetoNulo,
                    ex);
 
-               Logger.EscribirError(RecursosComandosModulo6.ClaseComandoVerificarExistenciaActor,
+               Logger.EscribirError(RecursosComandosModulo6.ClaseComandoConsultarActoresCombo,
                  exComandoAgregarActor);
 
                throw exComandoAgregarActor;
@@ -74,11 +74,11 @@ namespace Comandos.Comandos.Modulo6
            catch (ErrorDesconocidoDAOException ex)
            {
                ComandoException exComandoAgregarActor = new ComandoException(
-                    RecursosComandosModulo6.CodigoExcepcionComandoAgregarActorError,
+                    RecursosComandosModulo6.CodigoExcepcionComandoError,
                     RecursosComandosModulo6.MensajeExcepcionComandoError,
                     ex);
 
-               Logger.EscribirError(RecursosComandosModulo6.ClaseComandoVerificarExistenciaActor,
+               Logger.EscribirError(RecursosComandosModulo6.ClaseComandoConsultarActoresCombo,
                   exComandoAgregarActor);
 
                throw exComandoAgregarActor;

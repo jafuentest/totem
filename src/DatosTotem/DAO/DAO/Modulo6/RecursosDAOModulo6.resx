@@ -259,4 +259,22 @@
   <data name="AliasNombreActor" xml:space="preserve">
     <value>nombreActor</value>
   </data>
+  <data name="CasoDeUsosPorActor" xml:space="preserve">
+    <value>LEER_CU_POR_ACTOR</value>
+  </data>
+  <data name="AliasCondicionExito" xml:space="preserve">
+    <value>condicionExito</value>
+  </data>
+  <data name="AliasCondicionFallo" xml:space="preserve">
+    <value>condicionFallo</value>
+  </data>
+  <data name="AliasDisparadorCU" xml:space="preserve">
+    <value>disparadorCU</value>
+  </data>
+  <data name="AliasIdentificadorCasoDeUso" xml:space="preserve">
+    <value>identificadorCU</value>
+  </data>
+  <data name="AliasTituloCasoDeUso" xml:space="preserve">
+    <value>tituloCU</value>
+  </data>
 </root>

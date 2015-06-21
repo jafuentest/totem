@@ -218,6 +218,11 @@ namespace Comandos.Fabrica
             return new ComandoConsultarActoresCombo();
         }
 
+        public static Comando<Entidad, List<Entidad>> CrearComandoConsultarCasosDeUsoXActor() 
+        {
+            return new ComandoConsultarCasosDeUsoPorActor(); 
+        }
+
         #endregion
 
         #region Modulo 7

@@ -196,7 +196,7 @@ namespace DAO.DAO.Modulo6
         /// </summary>
         /// <param name="codigoProyecto">Código de proyecto</param>
         /// <returns>Lista de actores asociados al proyecto</returns>
-        public List<Entidad> consultarActoresCombo(string codigoProyecto) 
+        public List<Entidad> ConsultarActoresCombo(string codigoProyecto) 
         {
             List<Entidad> listadoActores = new List<Entidad>();
             DataTable resultado = new DataTable();

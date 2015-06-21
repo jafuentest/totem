@@ -37,7 +37,7 @@ namespace Comandos.Comandos.Modulo6
            {
 
               ComandoBDException exComandoAgregarActor = new ComandoBDException(
-                   RecursosComandosModulo6.CodigoExcepcionComandoAgregarActorBD,
+                   RecursosComandosModulo6.CodigoExcepcionComandoBD,
                    RecursosComandosModulo6.MensajeExcepcionComandoBD,
                    ex);
 
@@ -52,7 +52,7 @@ namespace Comandos.Comandos.Modulo6
            catch (ObjetoNuloDAOException ex) 
            {
                ComandoNullException exComandoAgregarActor = new ComandoNullException(
-                   RecursosComandosModulo6.CodigoExcepcionComandoAgregarActorNulo,
+                   RecursosComandosModulo6.CodigoExcepcionComandoObjetoNulo,
                    RecursosComandosModulo6.MensajeExcepcionComandoObjetoNulo,
                    ex);
 
@@ -66,7 +66,7 @@ namespace Comandos.Comandos.Modulo6
            catch (ErrorDesconocidoDAOException ex)
            {
               ComandoException exComandoAgregarActor =  new ComandoException(
-                   RecursosComandosModulo6.CodigoExcepcionComandoAgregarActorError,
+                   RecursosComandosModulo6.CodigoExcepcionComandoError,
                    RecursosComandosModulo6.MensajeExcepcionComandoError,
                    ex);
 

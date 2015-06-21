@@ -7,7 +7,15 @@ using Dominio.Entidades.Modulo6;
 using DAO.IntefazDAO.Modulo6;
 using Dominio;
 using System.Data.SqlClient;
-using System.Data; 
+using System.Data;
+using Dominio;
+using Dominio.Fabrica;
+
+using System.Data;
+using System.Data.Sql;
+using System.Data.SqlClient;
+using ExcepcionesTotem.Modulo6.ExcepcionesDAO;
+using ExcepcionesTotem; 
 
 namespace DAO.DAO.Modulo6
 {
@@ -60,5 +68,99 @@ namespace DAO.DAO.Modulo6
         {
             return new List<Entidad>();
         }
+
+       /// <summary>
+       /// Método que accede a la base de Datos
+       /// para consultar un listado de Casos de Uso dado un Actor
+       /// </summary>
+       /// <param name="actor">Actor asociado con los casos de uso</param>
+       /// <returns>Listas de Casos de Uso asociado al actor</returns>
+        public List<Entidad> ConsultarCasosDeUsoPorActor(Entidad actor) 
+        {
+            List<Entidad> listadoCasosDeUso = new List<Entidad>();
+            DataTable resultado = new DataTable();
+            Actor elActor = (Actor) actor; 
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursosDAOModulo6.NOMBRE_ACTOR, SqlDbType.VarChar,elActor.NombreActor, false);
+            parametros.Add(parametro);
+            parametro = new Parametro(RecursosDAOModulo6.CodigoProyecto, SqlDbType.VarChar, elActor.ProyectoAsociado.Codigo, false);
+            parametros.Add(parametro);
+
+            try
+            {
+                resultado = EjecutarStoredProcedureTuplas(RecursosDAOModulo6.CasoDeUsosPorActor,parametros); 
+       
+
+                foreach (DataRow row in resultado.Rows)
+                {
+                    Entidad laEntidad = FabricaEntidades.ObtenerCasoDeUso();
+                    CasoDeUso casoUso = (CasoDeUso)laEntidad;
+                    casoUso.IdentificadorCasoUso = row[RecursosDAOModulo6.AliasIdentificadorCasoDeUso].ToString();
+                    casoUso.TituloCasoUso = row[RecursosDAOModulo6.AliasTituloCasoDeUso].ToString();
+                    casoUso.CondicionExito = row[RecursosDAOModulo6.AliasCondicionExito].ToString();
+                    casoUso.CondicionFallo = row[RecursosDAOModulo6.AliasCondicionFallo].ToString();
+                    casoUso.DisparadorCasoUso = row[RecursosDAOModulo6.AliasDisparadorCU].ToString();
+                    listadoCasosDeUso.Add(casoUso); 
+                   
+                }
+
+            }
+            catch (SqlException e)
+            {
+
+
+                BDDAOException exDaoCasoUso = new BDDAOException(
+                 RecursosDAOModulo6.CodigoExcepcionBDDAO,
+                 RecursosDAOModulo6.MensajeExcepcionBD,
+                 e);
+
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOCasoDeUso,
+                    exDaoCasoUso);
+
+                throw exDaoCasoUso;
+
+            }
+            catch (NullReferenceException e)
+            {
+                ObjetoNuloDAOException exDaoCasoUso = new ObjetoNuloDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionObjetoNuloDAO,
+                    RecursosDAOModulo6.MensajeExcepcionObjetoNulo,
+                    e);
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOCasoDeUso,
+                       exDaoCasoUso);
+
+                throw exDaoCasoUso;
+
+            }
+
+            catch (FormatException e)
+            {
+                TipoDeDatoErroneoDAOException exDaoCasoUso = new TipoDeDatoErroneoDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionTipoDeDatoErroneo,
+                    RecursosDAOModulo6.MensajeTipoDeDatoErroneoException,
+                    e);
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOCasoDeUso,
+                       exDaoCasoUso);
+
+                throw exDaoCasoUso;
+
+            }
+            catch (Exception e)
+            {
+                ErrorDesconocidoDAOException exDaoCasoUso = new ErrorDesconocidoDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionErrorDAO,
+                    RecursosDAOModulo6.MensajeExcepcionErrorDesconocido,
+                    e);
+
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOCasoDeUso,
+                      exDaoCasoUso);
+
+                throw exDaoCasoUso;
+            }
+            return listadoCasosDeUso; 
+
+        }
+
+
     }
 }

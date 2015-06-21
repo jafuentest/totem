@@ -70,6 +70,24 @@ namespace Comandos.Comandos.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a ComandoConsultarActoresCombo.
+        /// </summary>
+        internal static string ClaseComandoConsultarActoresCombo {
+            get {
+                return ResourceManager.GetString("ClaseComandoConsultarActoresCombo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ComandoConsultarCasosDeUsoPorActor.
+        /// </summary>
+        internal static string ClaseComandoConsultarCasosDeUsoPorActor {
+            get {
+                return ResourceManager.GetString("ClaseComandoConsultarCasosDeUsoPorActor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a ComandoVerificarExistenciaActor.
         /// </summary>
         internal static string ClaseComandoVerificarExistenciaActor {
@@ -81,27 +99,27 @@ namespace Comandos.Comandos.Modulo6 {
         /// <summary>
         ///   Busca una cadena traducida similar a T_06_051.
         /// </summary>
-        internal static string CodigoExcepcionComandoAgregarActorBD {
+        internal static string CodigoExcepcionComandoBD {
             get {
-                return ResourceManager.GetString("CodigoExcepcionComandoAgregarActorBD", resourceCulture);
+                return ResourceManager.GetString("CodigoExcepcionComandoBD", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a T_06_050.
         /// </summary>
-        internal static string CodigoExcepcionComandoAgregarActorError {
+        internal static string CodigoExcepcionComandoError {
             get {
-                return ResourceManager.GetString("CodigoExcepcionComandoAgregarActorError", resourceCulture);
+                return ResourceManager.GetString("CodigoExcepcionComandoError", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a T_06_052.
         /// </summary>
-        internal static string CodigoExcepcionComandoAgregarActorNulo {
+        internal static string CodigoExcepcionComandoObjetoNulo {
             get {
-                return ResourceManager.GetString("CodigoExcepcionComandoAgregarActorNulo", resourceCulture);
+                return ResourceManager.GetString("CodigoExcepcionComandoObjetoNulo", resourceCulture);
             }
         }
         
@@ -124,7 +142,7 @@ namespace Comandos.Comandos.Modulo6 {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Error del sistema al agregar el actor. Por favor intente más tarde..
+        ///   Busca una cadena traducida similar a Error del sistema. Por favor intente más tarde..
         /// </summary>
         internal static string MensajeExcepcionComandoError {
             get {

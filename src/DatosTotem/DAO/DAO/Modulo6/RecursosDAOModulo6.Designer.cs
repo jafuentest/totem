@@ -61,6 +61,33 @@ namespace DAO.DAO.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a condicionExito.
+        /// </summary>
+        internal static string AliasCondicionExito {
+            get {
+                return ResourceManager.GetString("AliasCondicionExito", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a condicionFallo.
+        /// </summary>
+        internal static string AliasCondicionFallo {
+            get {
+                return ResourceManager.GetString("AliasCondicionFallo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a disparadorCU.
+        /// </summary>
+        internal static string AliasDisparadorCU {
+            get {
+                return ResourceManager.GetString("AliasDisparadorCU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a idActor.
         /// </summary>
         internal static string AliasIDActor {
@@ -70,11 +97,38 @@ namespace DAO.DAO.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a identificadorCU.
+        /// </summary>
+        internal static string AliasIdentificadorCasoDeUso {
+            get {
+                return ResourceManager.GetString("AliasIdentificadorCasoDeUso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a nombreActor.
         /// </summary>
         internal static string AliasNombreActor {
             get {
                 return ResourceManager.GetString("AliasNombreActor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a tituloCU.
+        /// </summary>
+        internal static string AliasTituloCasoDeUso {
+            get {
+                return ResourceManager.GetString("AliasTituloCasoDeUso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a LEER_CU_POR_ACTOR.
+        /// </summary>
+        internal static string CasoDeUsosPorActor {
+            get {
+                return ResourceManager.GetString("CasoDeUsosPorActor", resourceCulture);
             }
         }
         

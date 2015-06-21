@@ -120,16 +120,22 @@
   <data name="ClaseComandoAgregarActor" xml:space="preserve">
     <value>ComandoAgregarActor</value>
   </data>
+  <data name="ClaseComandoConsultarActoresCombo" xml:space="preserve">
+    <value>ComandoConsultarActoresCombo</value>
+  </data>
+  <data name="ClaseComandoConsultarCasosDeUsoPorActor" xml:space="preserve">
+    <value>ComandoConsultarCasosDeUsoPorActor</value>
+  </data>
   <data name="ClaseComandoVerificarExistenciaActor" xml:space="preserve">
     <value>ComandoVerificarExistenciaActor</value>
   </data>
-  <data name="CodigoExcepcionComandoAgregarActorBD" xml:space="preserve">
+  <data name="CodigoExcepcionComandoBD" xml:space="preserve">
     <value>T_06_051</value>
   </data>
-  <data name="CodigoExcepcionComandoAgregarActorError" xml:space="preserve">
+  <data name="CodigoExcepcionComandoError" xml:space="preserve">
     <value>T_06_050</value>
   </data>
-  <data name="CodigoExcepcionComandoAgregarActorNulo" xml:space="preserve">
+  <data name="CodigoExcepcionComandoObjetoNulo" xml:space="preserve">
     <value>T_06_052</value>
   </data>
   <data name="CodigoExcepcionComandoTipoDeDatoErroneo" xml:space="preserve">
@@ -139,7 +145,7 @@
     <value>Error en la conexión a Base de Datos.</value>
   </data>
   <data name="MensajeExcepcionComandoError" xml:space="preserve">
-    <value>Error del sistema al agregar el actor. Por favor intente más tarde.</value>
+    <value>Error del sistema. Por favor intente más tarde.</value>
   </data>
   <data name="MensajeExcepcionComandoObjetoNulo" xml:space="preserve">
     <value>Objeto con referencia nula.</value>
