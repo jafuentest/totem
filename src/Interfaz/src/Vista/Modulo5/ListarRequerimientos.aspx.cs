@@ -15,6 +15,7 @@ namespace Vista.Modulo5
         {
             presentador = new Presentadores.Modulo5.PresentadorListarRequerimientos(this);
         }
+
         #region Contrato
         public string IdProyecto
         {
@@ -39,13 +40,29 @@ namespace Vista.Modulo5
             get { return RRequerimientos; }
             set { RRequerimientos = value; }
         }
+        public string alertaClase
+        {
+            set { alert.Attributes["class"] = value; }
+        }
+
+        public string alertaRol
+        {
+            set { alert.Attributes["role"] = value; }
+        }
+
+        public string alerta
+        {
+            set { alert.InnerHtml = value; }
+        }
         #endregion
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 this.Master.idModulo = "5";
                 this.Master.presentador.CargarMenuLateral();
+                presentador.ObtenerVariablesURL();
                 presentador.ListarRequerimientosPorProyecto();
             }
         }

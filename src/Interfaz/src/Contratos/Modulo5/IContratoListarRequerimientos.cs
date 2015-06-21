@@ -17,5 +17,8 @@ namespace Contratos.Modulo5
         string EmpresaCliente { set; }
         string Estatus { set; }
         Repeater RepeaterRequerimiento { get; set; }
+        string alertaClase { set; }
+        string alertaRol { set; }
+        string alerta { set; }
     }
 }

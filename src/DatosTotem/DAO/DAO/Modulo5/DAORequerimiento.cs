@@ -131,7 +131,6 @@ namespace DAO.DAO.Modulo5
                     {
                         listaRequerimientos.Add(
                             new Dominio.Entidades.Modulo5.Requerimiento(
-                               fila[RecursosDAOModulo5.ATRIBUTO_REQ_ID].ToString(),
                                fila[RecursosDAOModulo5.ATRIBUTO_REQ_CODIGO].ToString(),
                                fila[RecursosDAOModulo5.ATRIBUTO_REQ_DESCRIPCION].ToString(),
                                fila[RecursosDAOModulo5.ATRIBUTO_REQ_TIPO].ToString(),

@@ -70,6 +70,15 @@ namespace Presentadores.Modulo5 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to alert alert-success alert-dismissible.
+        /// </summary>
+        internal static string Alerta_Clase_Exito {
+            get {
+                return ResourceManager.GetString("Alerta_Clase_Exito", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;div&gt;&lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot; aria-label=&quot;Close&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;.
         /// </summary>
         internal static string Alerta_Html {
@@ -93,6 +102,15 @@ namespace Presentadores.Modulo5 {
         internal static string Alerta_Mensaje_Error_General {
             get {
                 return ResourceManager.GetString("Alerta_Mensaje_Error_General", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El Requerimiento se agrego exitosamente.
+        /// </summary>
+        internal static string Alerta_Mensaje_Requerimiento_Agregado {
+            get {
+                return ResourceManager.GetString("Alerta_Mensaje_Requerimiento_Agregado", resourceCulture);
             }
         }
         

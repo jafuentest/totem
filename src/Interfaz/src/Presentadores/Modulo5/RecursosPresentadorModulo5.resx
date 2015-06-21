@@ -121,6 +121,10 @@
     <value>alert alert-danger alert-dismissible</value>
     <comment>Clase de Error para la alerta de la interfaz</comment>
   </data>
+  <data name="Alerta_Clase_Exito" xml:space="preserve">
+    <value>alert alert-success alert-dismissible</value>
+    <comment>Clase de Exito para la alerta de la interfaz</comment>
+  </data>
   <data name="Alerta_Html" xml:space="preserve">
     <value>&lt;div&gt;&lt;button type="button" class="close" data-dismiss="alert" aria-label="Close"&gt;&lt;span aria-hidden="true"&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;</value>
     <comment>Html necesario para la muestra de la alerta</comment>
@@ -132,6 +136,10 @@
   <data name="Alerta_Mensaje_Error_General" xml:space="preserve">
     <value>Ocurrio un error interno del sistema, intente nuevamente</value>
     <comment>Mensaje de error de errores generales</comment>
+  </data>
+  <data name="Alerta_Mensaje_Requerimiento_Agregado" xml:space="preserve">
+    <value>El Requerimiento se agrego exitosamente</value>
+    <comment>Mensaje de exito de requerimiento agregado</comment>
   </data>
   <data name="Alerta_Mensaje_Requerimiento_Invalido" xml:space="preserve">
     <value>Hubo un error con el requerimiento ingresado, intente nuevamente</value>
