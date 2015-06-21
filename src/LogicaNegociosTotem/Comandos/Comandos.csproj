@@ -40,6 +40,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comando.cs" />
+    <Compile Include="Comandos\Modulo1\ComandoCambioDeClave.cs" />
+    <Compile Include="Comandos\Modulo1\ComandoDesencriptar.cs" />
+    <Compile Include="Comandos\Modulo1\ComandoEncriptar.cs" />
+    <Compile Include="Comandos\Modulo1\ComandoIniciarSesion.cs" />
+    <Compile Include="Comandos\Modulo1\ComandoObtenerPreguntaSeguridad.cs" />
+    <Compile Include="Comandos\Modulo1\ComandoValidarRespuestaSecreta.cs" />
+    <Compile Include="Comandos\Modulo1\RecursosComandoModulo1.Designer.cs" />
     <Compile Include="Comandos\Modulo2\ComandoAgregarClienteJuridico.cs" />
     <Compile Include="Comandos\Modulo2\ComandoAgregarClienteNatural.cs" />
     <Compile Include="Comandos\Modulo2\ComandoConsultarCiudadPorEstado.cs" />
@@ -92,9 +99,7 @@
     <Compile Include="Fabrica\FabricaComandos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Comandos\Modulo1\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\DatosTotem\DAO\DAO.csproj">
       <Project>{d9ace21a-77b5-4e5a-bb70-c77bc5a39a6c}</Project>
@@ -110,6 +115,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Comandos\Modulo1\RecursosComandoModulo1.resx" />
     <EmbeddedResource Include="Comandos\Modulo6\RecursosComandosModulo6.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosComandosModulo6.Designer.cs</LastGenOutput>

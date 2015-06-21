@@ -8,6 +8,10 @@ namespace DAO.Fabrica
     public class FabricaDAOSqlServer :FabricaAbstractaDAO
     {
         #region Modulo 1
+        public override IntefazDAO.Modulo1.IDaoLogin ObtenerDaoLogin()
+        {
+            return new DAO.Modulo1.DaoLogin();
+        }
         #endregion
 
         #region Modulo 2

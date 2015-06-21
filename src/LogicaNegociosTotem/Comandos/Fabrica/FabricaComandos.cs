@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Dominio;
+using Comandos.Comandos.Modulo1;
 using Comandos.Comandos.Modulo2;
 using Comandos.Comandos.Modulo4;
 using Comandos.Comandos.Modulo6;
@@ -13,6 +14,34 @@ namespace Comandos.Fabrica
     public class FabricaComandos
     {
         #region Modulo 1
+        public static Comando<Entidad, bool> CrearComandoCambioDeClave()
+        {
+            return new ComandoCambioDeClave();
+        }
+
+        public static Comando<List<string>, string> CrearComandoDesencriptar()
+        {
+            return new ComandoDesencriptar();
+        }
+
+        public static Comando<List<string>, string> CrearComandoEncriptar()
+        {
+            return new ComandoEncriptar();
+        }
+
+        public static Comando<List<string>, Entidad> CrearComandoIniciarSesion()
+        {
+            return new ComandoIniciarSesion();
+        }
+        public static Comando<Entidad, Entidad> CrearComandoObtenerPreguntaSeguridad()
+        {
+            return new ComandoObtenerPreguntaSeguridad();
+        }
+
+        public static Comando<Entidad, bool> CrearComandoValidarRespuestaSecreta()
+        {
+            return new ComandoValidarRespuestaSecreta();
+        }
         #endregion
 
         #region Modulo 2

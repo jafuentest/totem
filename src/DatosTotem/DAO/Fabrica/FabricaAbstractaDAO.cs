@@ -15,6 +15,7 @@ namespace DAO.Fabrica
         #region Metodos Abstractos
 
             #region Modulo 1
+            public abstract IntefazDAO.Modulo1.IDaoLogin ObtenerDaoLogin();
             #endregion
 
             #region Modulo 2
