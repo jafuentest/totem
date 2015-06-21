@@ -65,10 +65,22 @@ namespace Presentadores.Modulo5
                 comandoListarRequerimientos =
                     Comandos.Fabrica.FabricaComandos.CrearComandoConsultarRequerimientosProyecto();
                 List<Dominio.Entidad> listaRequerimientos = comandoListarRequerimientos.Ejecutar(codigoProyecto);
-                vista.RepeaterRequerimiento.DataSource = listaRequerimientos;
-                vista.RepeaterRequerimiento.DataBind();
+                if (listaRequerimientos != null && listaRequerimientos.Count > 0)
+                {
+                    vista.RepeaterRequerimiento.DataSource = listaRequerimientos;
+                    vista.RepeaterRequerimiento.DataBind();
+                }
+                else
+                {
+                    vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Info;
+                    vista.alertaRol = RecursosPresentadorModulo5.Alerta_Rol;
+                    vista.alerta = RecursosPresentadorModulo5.Alerta_Html +
+                    RecursosPresentadorModulo5.Alerta_Mensaje_Info_No_Hay_Requerimientos +
+                    RecursosPresentadorModulo5.Alerta_Html_Final;
+                }
                 EstatusDelProyecto(listaRequerimientos);
             }
+            #region Mensajes de Error
             catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
             {
                 vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Error;
@@ -85,6 +97,7 @@ namespace Presentadores.Modulo5
                     RecursosPresentadorModulo5.Alerta_Mensaje_Error_General +
                     RecursosPresentadorModulo5.Alerta_Html_Final;
             }
+            #endregion
         }
 
         /// <summary>
@@ -93,35 +106,34 @@ namespace Presentadores.Modulo5
         /// <param name="requerimientos">Lista de requirimentos del proyecto</param>
         public void EstatusDelProyecto(List<Dominio.Entidad> requerimientos)
         {
-            int requerimientosFinalizados = 0;
-            foreach (Dominio.Entidad entidad in requerimientos)
+            if (requerimientos.Count > 0)
             {
-                Dominio.Entidades.Modulo5.Requerimiento requerimiento =
-                    (Dominio.Entidades.Modulo5.Requerimiento)entidad;
-                if (requerimiento.Estatus.Equals("finalizado", 
-                    StringComparison.InvariantCultureIgnoreCase))
+                int requerimientosFinalizados = 0;
+                foreach (Dominio.Entidad entidad in requerimientos)
                 {
-                    requerimientosFinalizados++;
+                    Dominio.Entidades.Modulo5.Requerimiento requerimiento =
+                        (Dominio.Entidades.Modulo5.Requerimiento)entidad;
+                    if (requerimiento.Estatus.Equals("finalizado",
+                        StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        requerimientosFinalizados++;
+                    }
                 }
+                vista.Estatus = RecursosPresentadorModulo5.Porcentaje_Realizado +
+                    ((int)Math.Round((double)(100 * requerimientosFinalizados) / requerimientos.Count)).ToString()
+                    + RecursosPresentadorModulo5.Simbolo_Porcentaje;
             }
-            vista.Estatus = "Porcentaje Finalizado: " + 
-                ((int)Math.Round((double)(100 * requerimientosFinalizados) / requerimientos.Count)).ToString()
-                + "%";
+            else
+            {
+                vista.Estatus = RecursosPresentadorModulo5.Porcentaje_Realizado + 
+                RecursosPresentadorModulo5.Porcentaje_Cero; 
+            }
         }
         /// <summary>
         /// Metodo encargado de eliminar un requerimiento particular
         /// </summary>
         public void EliminarRequerimiento() {
             throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Metodo encargado de modificar un requerimiento particular
-        /// </summary>
-        public void ModificarRequerimiento() {
-
-            throw new NotImplementedException();
-        
         }
     }
 }

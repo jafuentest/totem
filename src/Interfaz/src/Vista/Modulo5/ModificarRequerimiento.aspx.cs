@@ -12,30 +12,23 @@ namespace Vista.Modulo5
         private Presentadores.Modulo5.PresentadorModificarRequerimiento presentador;
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.Master.idModulo = "5";
-            this.Master.presentador.CargarMenuLateral();
+            if (!IsPostBack)
+            {
+                this.Master.idModulo = "5";
+                this.Master.presentador.CargarMenuLateral();
+                presentador.CargarDatos();
+            }
+
         }
 
-        #region contrustor
+        #region Constructor
         public ModificarRequerimiento()
         {
             this.presentador = new Presentadores.Modulo5.PresentadorModificarRequerimiento(this);
         }
         #endregion
 
-        
-        #region Metodos
-        protected void Eliminar() {
-            throw new NotImplementedException();
-        }
-
-        protected void Actualizar() {
-            throw new NotImplementedException();
-        }
-
-        #endregion
-
-
+        #region Contrato
         public string idRequerimiento
         {
             get
@@ -44,7 +37,7 @@ namespace Vista.Modulo5
             }
             set
             {
-                this.inputIdRequerimiento.Value=value;
+                this.inputIdRequerimiento.Value = value;
             }
         }
 
@@ -60,14 +53,18 @@ namespace Vista.Modulo5
 
         public string prioridad
         {
-            get { if (this.inputPrioridadAlta.Checked) {
+            get
+            {
+                if (this.inputPrioridadAlta.Checked)
+                {
                     return "Alta";
-                    }
-            else if(this.inputPrioridadBaja.Checked){
-                return "Baja";
-            }
-            return "Media";
-            
+                }
+                else if (this.inputPrioridadBaja.Checked)
+                {
+                    return "Baja";
+                }
+                return "Media";
+
             }
         }
 
@@ -75,5 +72,20 @@ namespace Vista.Modulo5
         {
             get { return (this.inputStatusFinalizado.Checked); }
         }
+        #endregion
+        
+        #region Metodos
+        protected void ModificarRequerimiento_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void EliminarRequerimiento_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        
     }
 }

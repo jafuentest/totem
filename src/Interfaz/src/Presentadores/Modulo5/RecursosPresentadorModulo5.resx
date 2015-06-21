@@ -125,6 +125,10 @@
     <value>alert alert-success alert-dismissible</value>
     <comment>Clase de Exito para la alerta de la interfaz</comment>
   </data>
+  <data name="Alerta_Clase_Info" xml:space="preserve">
+    <value>alert alert-info alert-dismissible</value>
+    <comment>Clase de Info para la alerta de la interfaz</comment>
+  </data>
   <data name="Alerta_Html" xml:space="preserve">
     <value>&lt;div&gt;&lt;button type="button" class="close" data-dismiss="alert" aria-label="Close"&gt;&lt;span aria-hidden="true"&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;</value>
     <comment>Html necesario para la muestra de la alerta</comment>
@@ -136,6 +140,10 @@
   <data name="Alerta_Mensaje_Error_General" xml:space="preserve">
     <value>Ocurrio un error interno del sistema, intente nuevamente</value>
     <comment>Mensaje de error de errores generales</comment>
+  </data>
+  <data name="Alerta_Mensaje_Info_No_Hay_Requerimientos" xml:space="preserve">
+    <value>El proyecto no tiene requerimientos asociados a el todavia</value>
+    <comment>Mensaje de informacion cuando no se consiguen requerimientos asociados a un proyecto</comment>
   </data>
   <data name="Alerta_Mensaje_Requerimiento_Agregado" xml:space="preserve">
     <value>El Requerimiento se agrego exitosamente</value>
@@ -160,6 +168,18 @@
   <data name="Mensaje_Error_Requerimiento_Errado" xml:space="preserve">
     <value>El requerimiento tiene unos datos errados</value>
     <comment>Mensaje de error de la excepcion de un requerimiento errado</comment>
+  </data>
+  <data name="Porcentaje_Cero" xml:space="preserve">
+    <value>0%</value>
+    <comment>Mensaje de porcentaje cuando no hay requerimientos en el proyecto</comment>
+  </data>
+  <data name="Porcentaje_Realizado" xml:space="preserve">
+    <value>Porcentaje Realizado: </value>
+    <comment>Mensaje de interfaz</comment>
+  </data>
+  <data name="Simbolo_Porcentaje" xml:space="preserve">
+    <value>%</value>
+    <comment>Simbolo de procentaje</comment>
   </data>
   <data name="Ventana_Listar_Requerimiento" xml:space="preserve">
     <value>/Modulo5/ListarRequerimientos.aspx</value>

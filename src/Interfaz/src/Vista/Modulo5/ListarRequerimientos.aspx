@@ -68,11 +68,10 @@
 				    <td><%# Eval("Prioridad") %></td>
 				    <td>
 					   <a class="btn btn-default glyphicon glyphicon-pencil"
-					   data-toggle="modal" data-target="#modal-update"
-					   href="ListarRequerimientos.aspx?id=<%# Eval("Id") %>"></a>
+					   href="ModificarRequerimiento.aspx?id=<%# Eval("Codigo") %>"></a>
 					   <a class="btn btn-danger glyphicon glyphicon-remove-sign"
 					   data-toggle="modal" data-target="#modal-delete"
-					   href="ListarRequerimientos.aspx?id=<%# Eval("Id") %>"></a>
+					   href="ListarRequerimientos.aspx?id=<%# Eval("Codigo") %>"></a>
 				    </td>
 				</tr>
 		  </ItemTemplate>

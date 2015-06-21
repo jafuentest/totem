@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Requerimientos</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Agregar Requerimiento</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Modificar Requerimiento</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     <div id="formularioAgregar" class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">      
         <form id="agregar_requerimientos" class="form-horizontal" method="post" runat="server">
@@ -67,12 +67,13 @@
             <br />
             <div class="form-group">
                 <div class="col-sm-5 col-md-5 col-lg-5">
-                    <button id="btn-agregarReq" class="btn btn-primary" 
-                        type="submit" onclick="return checkform();">Agregar</button>
+                    <button id="btn_modRequerimiento" class="btn btn-primary" 
+                        type="submit" runat="server" onserverclick="ModificarRequerimiento_Click">
+                        Modificar</button>
                     <a class="btn btn-default" href="ListarRequerimientos.aspx">Cancelar</a>
                     <div class="pull-right">
-                    <button id="EliminarReq" class="btn btn-danger" runat="server"
-                         onclick="Eliminar">Eliminar</button>
+                    <button id="btn_eliminarReq" class="btn btn-danger" runat="server"
+                         onserverclick="EliminarRequerimiento_Click">Eliminar</button>
                     </div>
                 </div>
             </div>

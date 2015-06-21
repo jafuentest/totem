@@ -9,9 +9,9 @@ namespace Presentadores.Modulo5
     {
         private Contratos.Modulo5.IContratoModificarRequerimiento vista;
 
-        public PresentadorModificarRequerimiento(Contratos.Modulo5.IContratoModificarRequerimiento mVista)
+        public PresentadorModificarRequerimiento(Contratos.Modulo5.IContratoModificarRequerimiento vista)
         {
-            this.vista = mVista;
+            this.vista = vista;
         }
 
 
@@ -33,5 +33,12 @@ namespace Presentadores.Modulo5
 
         }
 
+        /// <summary>
+        /// Metodo que carga los datos en la interfaz de modificar
+        /// </summary>
+        public void CargarDatos()
+        {
+
+        }
     }
 }

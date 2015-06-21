@@ -79,6 +79,15 @@ namespace Presentadores.Modulo5 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to alert alert-info alert-dismissible.
+        /// </summary>
+        internal static string Alerta_Clase_Info {
+            get {
+                return ResourceManager.GetString("Alerta_Clase_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;div&gt;&lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot; aria-label=&quot;Close&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;.
         /// </summary>
         internal static string Alerta_Html {
@@ -102,6 +111,15 @@ namespace Presentadores.Modulo5 {
         internal static string Alerta_Mensaje_Error_General {
             get {
                 return ResourceManager.GetString("Alerta_Mensaje_Error_General", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El proyecto no tiene requerimientos asociados a el todavia.
+        /// </summary>
+        internal static string Alerta_Mensaje_Info_No_Hay_Requerimientos {
+            get {
+                return ResourceManager.GetString("Alerta_Mensaje_Info_No_Hay_Requerimientos", resourceCulture);
             }
         }
         
@@ -156,6 +174,33 @@ namespace Presentadores.Modulo5 {
         internal static string Mensaje_Error_Requerimiento_Errado {
             get {
                 return ResourceManager.GetString("Mensaje_Error_Requerimiento_Errado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 0%.
+        /// </summary>
+        internal static string Porcentaje_Cero {
+            get {
+                return ResourceManager.GetString("Porcentaje_Cero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Porcentaje Realizado: .
+        /// </summary>
+        internal static string Porcentaje_Realizado {
+            get {
+                return ResourceManager.GetString("Porcentaje_Realizado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to %.
+        /// </summary>
+        internal static string Simbolo_Porcentaje {
+            get {
+                return ResourceManager.GetString("Simbolo_Porcentaje", resourceCulture);
             }
         }
         
