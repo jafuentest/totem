@@ -2064,32 +2064,34 @@ GO
 -- ========================================================================= --
 CREATE PROCEDURE M5_AgregarRequerimiento
 
-	@req_codigo			[varchar] (15),
-	@req_descripcion	[varchar] (500),
-	@req_tipo			[varchar] (25),
-	@req_prioridad		[varchar] (10),
-	@req_estatus		[varchar] (50),
-	@PROYECTO_pro_id	[int]
+  @req_codigo     [varchar] (15),
+  @req_descripcion  [varchar] (500),
+  @req_tipo     [varchar] (25),
+  @req_prioridad    [varchar] (10),
+  @req_estatus    [varchar] (50),
+  @PROYECTO_pro_id  [int]
 
 AS 
-	BEGIN
-		INSERT INTO REQUERIMIENTO(
-			req_codigo,
-			req_descripcion,
-			req_tipo,
-			req_prioridad,
-			req_estatus,
-			PROYECTO_pro_id
-		)
-		VALUES(
-			@req_codigo,
-			@req_descripcion,
-			@req_tipo,
-			@req_prioridad,
-			@req_estatus,
-			@PROYECTO_pro_id
-		)
-	END
+  BEGIN
+    INSERT INTO REQUERIMIENTO(
+      req_id,
+      req_codigo,
+      req_descripcion,
+      req_tipo,
+      req_prioridad,
+      req_estatus,
+      PROYECTO_pro_id
+    )
+    VALUES(
+      NEXT VALUE FOR secuenciaRequerimiento,
+      @req_codigo,
+      @req_descripcion,
+      @req_tipo,
+      @req_prioridad,
+      @req_estatus,
+      @PROYECTO_pro_id
+    )
+  END
 GO
 
 -- ========================================================================= --
@@ -2313,6 +2315,18 @@ CREATE PROCEDURE ValidarExitenciaActor
 AS
 	SET NOCOUNT OFF;
 	SELECT @existe=count(*) from actor where act_nombre =@nombre;
+GO
+
+CREATE PROCEDURE LlenarComboActores
+@codigoProyecto  varchar(30)
+AS
+select	a.act_id as idActor,
+		a.act_nombre as nombreActor
+from actor a, 
+	 proyecto p 
+where p.pro_id = a.PROYECTO_pro_id
+and p.pro_codigo =@codigoProyecto;
+
 GO
 
 /*==========================================================================================================================*/
@@ -2968,7 +2982,14 @@ AS
 	INCREMENT BY 1;
  
 go
-
+-------SECUENCIA Requerimiento-------
+CREATE SEQUENCE secuenciaRequerimiento
+AS 
+  int
+  START WITH 1
+  INCREMENT BY 1;
+ 
+go
 ------------------ Procedimientos del Módulo 8 ------------------------
 ------------------ Procedimientos para Agregar -----------------------
 
@@ -2978,9 +2999,10 @@ CREATE PROCEDURE Procedure_AgregarMinuta
 		@min_fecha   [datetime],
 		@min_motivo  [varchar] (200),
 		@min_observaciones 	[varchar] (500)
+	   
 AS 
 BEGIN
-		INSERT INTO MINUTA(min_fecha, min_motivo, min_observaciones)
+		INSERT INTO MINUTA(min_fecha, min_motivo, min_observaciones) Output Inserted.min_id
 	    VALUES(@min_fecha ,@min_motivo ,@min_observaciones)
 
 END;
@@ -3391,6 +3413,24 @@ BEGIN
 END
 GO
 
+--------------- Procedimiento para Eliminar una minuta 
+CREATE PROCEDURE Procedure_EliminarMinuta
+
+     @min_id [int]
+
+AS
+BEGIN
+   DELETE FROM MINUTA 
+   WHERE min_id =  @min_id
+END
+GO
+--------------- Procedimiento para buscar la ultima una minuta 
+CREATE PROCEDURE Procedure_BuscarUltimaMinuta
+AS
+BEGIN
+   SELECT MAX(min_id)AS min_id FROM MINUTA
+END
+GO
 
 --End SP8
 
@@ -3593,42 +3633,42 @@ INSERT INTO [dbo].[INVOLUCRADOS_CLIENTES] ([CONTACTO_con_id], [PROYECTO_pro_id])
 
 
 INSERT INTO dbo.REQUERIMIENTO(req_id,req_codigo,req_descripcion,req_tipo,req_prioridad,req_estatus,PROYECTO_pro_id) VALUES
-(1,'TOT_RF_1','Descripcion Requerimiento Funcional 1 Totem','Funcional','Alta','Finalizado',1);
+(NEXT VALUE FOR secuenciaRequerimiento,'TOT_RF_1','Descripcion Requerimiento Funcional 1 Totem','funcional','alta','finalizado',1);
 
 INSERT INTO dbo.REQUERIMIENTO(req_id,req_codigo,req_descripcion,req_tipo,req_prioridad,req_estatus,PROYECTO_pro_id) VALUES
-(2,'TOT_RF_2','Descripcion Requerimiento Funcional 2 Totem','Funcional','Media','No Finalizado',1);
+(NEXT VALUE FOR secuenciaRequerimiento,'TOT_RF_2','Descripcion Requerimiento Funcional 2 Totem','funcional','Media','no finalizado',1);
 
 INSERT INTO dbo.REQUERIMIENTO(req_id,req_codigo,req_descripcion,req_tipo,req_prioridad,req_estatus,PROYECTO_pro_id) VALUES
-(3,'TOT_RF_3','Descripcion Requerimiento Funcional 3 Totem','Funcional','Baja','No Finalizado',1);
+(NEXT VALUE FOR secuenciaRequerimiento,'TOT_RF_3','Descripcion Requerimiento Funcional 3 Totem','funcional','baja','no finalizado',1);
 
 INSERT INTO dbo.REQUERIMIENTO(req_id,req_codigo,req_descripcion,req_tipo,req_prioridad,req_estatus,PROYECTO_pro_id) VALUES
-(4,'TOT_RNF_1','Descripcion Requerimiento No Funcional 1 Totem','No Funcional','Alta','No Finalizado',1);
-
-
-INSERT INTO dbo.REQUERIMIENTO(req_id,req_codigo,req_descripcion,req_tipo,req_prioridad,req_estatus,PROYECTO_pro_id) VALUES
-(5,'FB_RF_1','Descripcion Requerimiento Funcional 1 Facebook','Funcional','Alta','Finalizado',2);
-
-INSERT INTO dbo.REQUERIMIENTO(req_id,req_codigo,req_descripcion,req_tipo,req_prioridad,req_estatus,PROYECTO_pro_id) VALUES
-(6,'FB_RF_2','Descripcion Requerimiento Funcional 2 Facebook','Funcional','Media','No Finalizado',2);
-
-INSERT INTO dbo.REQUERIMIENTO(req_id,req_codigo,req_descripcion,req_tipo,req_prioridad,req_estatus,PROYECTO_pro_id) VALUES
-(7,'FB_RF_3','Descripcion Requerimiento Funcional 3 Facebook','Funcional','Baja','No Finalizado',2);
-
-INSERT INTO dbo.REQUERIMIENTO(req_id,req_codigo,req_descripcion,req_tipo,req_prioridad,req_estatus,PROYECTO_pro_id) VALUES
-(8,'FB_RNF_1','Descripcion Requerimiento No Funcional 1 Facebook','No Funcional','Alta','No Finalizado',2);
+(NEXT VALUE FOR secuenciaRequerimiento,'TOT_RNF_1','Descripcion Requerimiento No Funcional 1 Totem','no funcional','alta','no finalizado',1);
 
 
 INSERT INTO dbo.REQUERIMIENTO(req_id,req_codigo,req_descripcion,req_tipo,req_prioridad,req_estatus,PROYECTO_pro_id) VALUES
-(9,'TW_RF_1','Descripcion Requerimiento Funcional 1 Twitter','Funcional','Alta','Finalizado',3);
+(NEXT VALUE FOR secuenciaRequerimiento,'FB_RF_1','Descripcion Requerimiento Funcional 1 Facebook','funcional','alta','finalizado',2);
 
 INSERT INTO dbo.REQUERIMIENTO(req_id,req_codigo,req_descripcion,req_tipo,req_prioridad,req_estatus,PROYECTO_pro_id) VALUES
-(10,'TW_RF_2','Descripcion Requerimiento Funcional 2 Twitter','Funcional','Medio','No Finalizado',3);
+(NEXT VALUE FOR secuenciaRequerimiento,'FB_RF_2','Descripcion Requerimiento Funcional 2 Facebook','funcional','Media','no finalizado',2);
 
 INSERT INTO dbo.REQUERIMIENTO(req_id,req_codigo,req_descripcion,req_tipo,req_prioridad,req_estatus,PROYECTO_pro_id) VALUES
-(11,'TW_RF_3','Descripcion Requerimiento Funcional 3 Twitter','Funcional','Baja','No Finalizado',3);
+(NEXT VALUE FOR secuenciaRequerimiento,'FB_RF_3','Descripcion Requerimiento Funcional 3 Facebook','funcional','baja','no finalizado',2);
 
 INSERT INTO dbo.REQUERIMIENTO(req_id,req_codigo,req_descripcion,req_tipo,req_prioridad,req_estatus,PROYECTO_pro_id) VALUES
-(12,'TW_RNF_1','Descripcion Requerimiento No Funcional 1 Twitter','No Funcional','Alta','No Finalizado',3);
+(NEXT VALUE FOR secuenciaRequerimiento,'FB_RNF_1','Descripcion Requerimiento No Funcional 1 Facebook','no funcional','alta','no finalizado',2);
+
+
+INSERT INTO dbo.REQUERIMIENTO(req_id,req_codigo,req_descripcion,req_tipo,req_prioridad,req_estatus,PROYECTO_pro_id) VALUES
+(NEXT VALUE FOR secuenciaRequerimiento,'TW_RF_1','Descripcion Requerimiento Funcional 1 Twitter','funcional','alta','finalizado',3);
+
+INSERT INTO dbo.REQUERIMIENTO(req_id,req_codigo,req_descripcion,req_tipo,req_prioridad,req_estatus,PROYECTO_pro_id) VALUES
+(NEXT VALUE FOR secuenciaRequerimiento,'TW_RF_2','Descripcion Requerimiento Funcional 2 Twitter','funcional','medio','no finalizado',3);
+
+INSERT INTO dbo.REQUERIMIENTO(req_id,req_codigo,req_descripcion,req_tipo,req_prioridad,req_estatus,PROYECTO_pro_id) VALUES
+(NEXT VALUE FOR secuenciaRequerimiento,'TW_RF_3','Descripcion Requerimiento Funcional 3 Twitter','funcional','baja','no finalizado',3);
+
+INSERT INTO dbo.REQUERIMIENTO(req_id,req_codigo,req_descripcion,req_tipo,req_prioridad,req_estatus,PROYECTO_pro_id) VALUES
+(NEXT VALUE FOR secuenciaRequerimiento,'TW_RNF_1','Descripcion Requerimiento No Funcional 1 Twitter','no funcional','alta','no finalizado',3);
 
 
 --END Inserts 5

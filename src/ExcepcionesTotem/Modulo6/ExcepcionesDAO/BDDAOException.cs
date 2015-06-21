@@ -6,23 +6,23 @@ using ExcepcionesTotem;
 
 namespace ExcepcionesTotem.Modulo6.ExcepcionesDAO
 {
-   public class AgregarActorBDDAOException:DAOException
+   public class BDDAOException:DAOException
     {
-       public AgregarActorBDDAOException()
+       public BDDAOException()
             : base()
         { }
 
-        public AgregarActorBDDAOException(string message)
+        public BDDAOException(string message)
             : base(message)
         {
         }
 
-        public AgregarActorBDDAOException(string message, Exception inner)
+        public BDDAOException(string message, Exception inner)
             : base(message, inner)
         {
         }
 
-        public AgregarActorBDDAOException(string codigo, string message, Exception inner)
+        public BDDAOException(string codigo, string message, Exception inner)
             : base(codigo, message, inner)
         {
         }

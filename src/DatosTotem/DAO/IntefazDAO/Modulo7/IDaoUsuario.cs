@@ -44,6 +44,19 @@ namespace DAO.IntefazDAO.Modulo7
         /// </summary>
         /// <returns>Lista con todos los usuarios de la Base de Datos</returns>
         List<Entidad> ListarUsuarios();
+
+        /// <summary>
+        /// Firma de metodo que implementara la logica de Listar los Usuarios en base a los cargos que tengan de la BD
+        /// </summary>
+        /// <param name="cargo">Cargo por el cual se desean listar los usuarios</param>
+        /// <returns>Los usuarios que tengan ese cargo</returns>
+        List<Entidad> ListarUsuariosPorCargo(String cargo);
+
+        /// <summary>
+        /// Firma de metodo que implementara la logica de Listar los cargos si y solo si ese cargo lo tiene por lo menos un usuario
+        /// </summary>
+        /// <returns>Lista con todos los cargos de la Base de Datos</returns>
+        List<String> LeerCargosUsuarios();
         
     }
 }

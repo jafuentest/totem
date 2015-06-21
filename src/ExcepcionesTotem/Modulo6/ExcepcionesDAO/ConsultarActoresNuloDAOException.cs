@@ -5,23 +5,24 @@ using System.Text;
 
 namespace ExcepcionesTotem.Modulo6.ExcepcionesDAO
 {
-   public class AgregarActorDAOException:DAOException
+    public class ConsultarActoresNuloDAOException : DAOException
     {
-        public AgregarActorDAOException()
+
+        public ConsultarActoresNuloDAOException()
             : base()
         { }
 
-        public AgregarActorDAOException(string message)
+        public ConsultarActoresNuloDAOException(string message)
             : base(message)
         {
         }
 
-        public AgregarActorDAOException(string message, Exception inner)
+        public ConsultarActoresNuloDAOException(string message, Exception inner)
             : base(message, inner)
         {
         }
 
-        public AgregarActorDAOException(string codigo, string message, Exception inner)
+        public ConsultarActoresNuloDAOException(string codigo, string message, Exception inner)
             : base(codigo, message, inner)
         {
         }

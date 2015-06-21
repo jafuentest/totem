@@ -74,6 +74,7 @@
     <Compile Include="Comandos\Modulo5\ComandoEliminarRequerimiento.cs" />
     <Compile Include="Comandos\Modulo5\ComandoModificarRequerimiento.cs" />
     <Compile Include="Comandos\Modulo6\ComandoAgregarActor.cs" />
+    <Compile Include="Comandos\Modulo6\ComandoConsultarActoresCombo.cs" />
     <Compile Include="Comandos\Modulo6\ComandoVerificarExistenciaActor.cs" />
     <Compile Include="Comandos\Modulo6\RecursosComandosModulo6.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -81,16 +82,18 @@
       <DependentUpon>RecursosComandosModulo6.resx</DependentUpon>
     </Compile>
     <Compile Include="Comandos\Modulo7\ComandoAgregarUsuario.cs" />
+    <Compile Include="Comandos\Modulo7\ComandoLeerCargosUsuarios.cs" />
     <Compile Include="Comandos\Modulo7\ComandoListarCargos.cs" />
     <Compile Include="Comandos\Modulo7\ComandoListarUsuarios.cs" />
+    <Compile Include="Comandos\Modulo7\ComandoListarUsuariosPorCargo.cs" />
     <Compile Include="Comandos\Modulo7\ComandoValidarCorreoUnico.cs" />
     <Compile Include="Comandos\Modulo7\ComandoValidarUsernameUnico.cs" />
+    <Compile Include="Comandos\Modulo8\ComandoListaMinuta.cs" />
     <Compile Include="Fabrica\FabricaComandos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Comandos\Modulo1\" />
-    <Folder Include="Comandos\Modulo8\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\DatosTotem\DAO\DAO.csproj">

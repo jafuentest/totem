@@ -25,10 +25,24 @@ namespace Comandos.Comandos.Modulo5
             {
                 return daoRequerimiento.Agregar(parametro);
             }
-            catch(Exception ex)
-            {
+
+            #region Capturar Excepciones
+            catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
+            {              
+
                 throw ex;
             }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+
+                throw ex;
+            }
+            catch (ExcepcionesTotem.Modulo5.RequerimientoInvalidoException ex)
+            {
+
+                throw ex;
+            }
+            #endregion
         }
     }
 }

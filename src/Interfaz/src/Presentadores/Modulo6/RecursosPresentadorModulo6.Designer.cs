@@ -70,6 +70,15 @@ namespace Presentadores.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a PresentadorReporteActores.
+        /// </summary>
+        internal static string ClaseReporteActoresPresentador {
+            get {
+                return ResourceManager.GetString("ClaseReporteActoresPresentador", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a T_06_103.
         /// </summary>
         internal static string CodigoMensajePresentadorBDException {
@@ -111,15 +120,6 @@ namespace Presentadores.Modulo6 {
         internal static string CodigoMensajePresentadorTipoDeDatoErroneo {
             get {
                 return ResourceManager.GetString("CodigoMensajePresentadorTipoDeDatoErroneo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a T_06_105.
-        /// </summary>
-        internal static string CodigoMensajePresentadorTipoDeDatoErroneo1 {
-            get {
-                return ResourceManager.GetString("CodigoMensajePresentadorTipoDeDatoErroneo1", resourceCulture);
             }
         }
         

@@ -237,6 +237,10 @@
     <value>@resultado</value>
     <comment>Parámetro utilizado para recibir la respuesta sobre la existencia de un requerimiento</comment>
   </data>
+  <data name="PROCEDIMIENTO_AGREGAR_REQUERIMIENTO" xml:space="preserve">
+    <value>M5_AgregarRequerimiento</value>
+    <comment>Procedimiento utilizado para insertar un nuevo requerimiento.</comment>
+  </data>
   <data name="PROCEDIMIENTO_CONSULTAR_REQUERIMIENTO" xml:space="preserve">
     <value>M5_ConsultarRequerimiento</value>
     <comment>Procedimiento utilizado para retornar los atributos que conforman un requerimiento determinado dado su identificador único</comment>
@@ -252,10 +256,6 @@
   <data name="PROCEDIMIENTO_CONSULTAR_REQUERIMIENTOS_POR_TIPO_PRIORIDAD" xml:space="preserve">
     <value>M5_ConsultarRequerimientosPorTipoPrioridad</value>
     <comment>Procedimiento utilizado para retornar todos los requerimientos de un proyecto dado su tipo y su prioridad</comment>
-  </data>
-  <data name="PROCEDIMIENTO_CREAR_REQUERIMIENTO" xml:space="preserve">
-    <value>M5_CrearRequerimiento</value>
-    <comment>Procedimiento utilizado para insertar un nuevo requerimiento.</comment>
   </data>
   <data name="PROCEDIMIENTO_ELIMINAR_REQUERIMIENTO" xml:space="preserve">
     <value>M5_EliminarRequerimiento</value>

@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Codigo_Error_InputInvalido" xml:space="preserve">
+    <value>T_00_004</value>
+    <comment>Codigo de error si algun input es invalido</comment>
+  </data>
   <data name="Direccion_XML" xml:space="preserve">
     <value>~/Master/menuLateral.xml</value>
     <comment>Ubicacion del archivo XML con los datos del menu lateral</comment>

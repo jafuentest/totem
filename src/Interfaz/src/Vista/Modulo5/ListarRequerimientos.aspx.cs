@@ -13,37 +13,41 @@ namespace Vista.Modulo5
 
         public ListarRequerimientos()
         {
-            this.presentador = new Presentadores.Modulo5.PresentadorListarRequerimientos(this);
+            presentador = new Presentadores.Modulo5.PresentadorListarRequerimientos(this);
         }
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            this.Master.idModulo = "5";
-            this.Master.presentador.CargarMenuLateral();
-        }
-
-
+        #region Contrato
         public string IdProyecto
         {
             get
-            {
-                return this.infoproyect.Text;
-   
-            }
-            set
-            {
-                this.infoproyect.Text = value;
-            }
-        }
+            { return infoproyect.Text; }
 
+            set
+            { infoproyect.Text = value; }
+        }       
 
         public string EmpresaCliente
         {
-            set { this.infoclient.Text = value; }
+            set { infoclient.Text = value; }
         }
 
         public string Estatus
         {
-            set { this.infostatus.Text = value; }
+            set { infostatus.Text = value; }
+        }
+        public Repeater RepeaterRequerimiento
+        {
+            get { return RRequerimientos; }
+            set { RRequerimientos = value; }
+        }
+        #endregion
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                this.Master.idModulo = "5";
+                this.Master.presentador.CargarMenuLateral();
+                presentador.ListarRequerimientosPorProyecto();
+            }
         }
     }
 }

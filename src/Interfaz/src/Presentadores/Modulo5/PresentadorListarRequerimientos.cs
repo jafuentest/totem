@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Contratos.Modulo5;
+using System.Web;
 
 namespace Presentadores.Modulo5
 {
@@ -29,8 +30,16 @@ namespace Presentadores.Modulo5
         /// <param name="codigo">
         /// Codigo del proyecto al cual se quieren obtener los requerimientos
         /// </param>
-        public void ListarRequerimientosPorProyecto(String codigo) {
-            throw new NotImplementedException();
+        public void ListarRequerimientosPorProyecto() {
+            HttpCookie pcookie = HttpContext.Current.Request.Cookies.Get("selectedProjectCookie");
+            //string codigoProyecto =  pcookie.Values["projectCode"].ToString(); //De aqui se debe extraer el codigo del proyecto
+            string codigoProyecto = "TOT"; //Cableado
+            Comandos.Comando<String, List<Dominio.Entidad>> comandoListarRequerimientos;
+            comandoListarRequerimientos =
+                Comandos.Fabrica.FabricaComandos.CrearComandoConsultarRequerimientosProyecto();
+            vista.RepeaterRequerimiento.DataSource = 
+                comandoListarRequerimientos.Ejecutar(codigoProyecto);
+            vista.RepeaterRequerimiento.DataBind();
         }
 
         /// <summary>

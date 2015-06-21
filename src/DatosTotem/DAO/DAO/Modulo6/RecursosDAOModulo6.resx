@@ -123,13 +123,13 @@
   <data name="ClaseDAOCasoDeUso" xml:space="preserve">
     <value>DAOCasoDeUso</value>
   </data>
-  <data name="CodigoExcepcionAgregarActorBD" xml:space="preserve">
+  <data name="CodigoExcepcionBDDAO" xml:space="preserve">
     <value>T_06_002</value>
   </data>
-  <data name="CodigoExcepcionAgregarActorError" xml:space="preserve">
+  <data name="CodigoExcepcionErrorDAO" xml:space="preserve">
     <value>T_06_001</value>
   </data>
-  <data name="CodigoExcepcionAgregarActorNulo" xml:space="preserve">
+  <data name="CodigoExcepcionObjetoNuloDAO" xml:space="preserve">
     <value>T_06_003</value>
   </data>
   <data name="CodigoExcepcionTipoDeDatoErroneo" xml:space="preserve">
@@ -177,23 +177,23 @@
     <value>@idproyecto</value>
     <comment>Atributo que identifica el proyecto al cual el actor estara asociado</comment>
   </data>
-  <data name="MensajeExcepcionAgregarActorBD" xml:space="preserve">
-    <value>Error en la conexión a Base de Datos al agregar el actor.</value>
-  </data>
   <data name="MensajeExcepcionAgregarActorBD1" xml:space="preserve">
     <value>Error en la conexión a Base de Datos al agregar el actor.</value>
-  </data>
-  <data name="MensajeExcepcionAgregarActorError" xml:space="preserve">
-    <value>Error del sistema al agregar el actor. Por favor intente más tarde.</value>
   </data>
   <data name="MensajeExcepcionAgregarActorError1" xml:space="preserve">
     <value>Error del sistema al agregar el actor. Por favor intente más tarde.</value>
   </data>
-  <data name="MensajeExcepcionAgregarActorNulo" xml:space="preserve">
-    <value>El actor que intento agregar tiene datos vacíos.</value>
-  </data>
   <data name="MensajeExcepcionAgregarActorNulo1" xml:space="preserve">
     <value>El actor que intento agregar tiene datos vacíos.</value>
+  </data>
+  <data name="MensajeExcepcionBD" xml:space="preserve">
+    <value>Error en la conexión a Base de Datos.</value>
+  </data>
+  <data name="MensajeExcepcionErrorDesconocido" xml:space="preserve">
+    <value>Error en el sistema. Por favor intente más tarde.</value>
+  </data>
+  <data name="MensajeExcepcionObjetoNulo" xml:space="preserve">
+    <value>Referencia a objeto nula.</value>
   </data>
   <data name="MensajeTipoDeDatoErroneoException" xml:space="preserve">
     <value>Se generó un error al tratar de convertir un dato en otro tipo.</value>
@@ -207,6 +207,9 @@
   </data>
   <data name="Output_Existe" xml:space="preserve">
     <value>@existe</value>
+  </data>
+  <data name="ProcedureLlenarComboActores" xml:space="preserve">
+    <value>LlenarComboActores</value>
   </data>
   <data name="PROCEDURE_ELIMINAR_ACTOR" xml:space="preserve">
     <value>ELIMINAR_ACTOR</value>
@@ -249,5 +252,11 @@
   </data>
   <data name="ValidarExistenciaActor" xml:space="preserve">
     <value>ValidarExitenciaActor</value>
+  </data>
+  <data name="AliasIDActor" xml:space="preserve">
+    <value>idActor</value>
+  </data>
+  <data name="AliasNombreActor" xml:space="preserve">
+    <value>nombreActor</value>
   </data>
 </root>

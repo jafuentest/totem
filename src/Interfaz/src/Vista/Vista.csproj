@@ -61,6 +61,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\BaseDeDatosTotem.mdf" />
+    <Content Include="App_Data\BaseDeDatosTotem_log.ldf">
+      <DependentUpon>BaseDeDatosTotem.mdf</DependentUpon>
+    </Content>
     <Content Include="assets\bs\assets\css\docs.min.css" />
     <Content Include="assets\bs\assets\css\src\anchor.css" />
     <Content Include="assets\bs\assets\css\src\docs.css" />
@@ -117,6 +121,8 @@
     <Content Include="Modulo3\AgregarInvolucrados.aspx" />
     <Content Include="Modulo3\ListarPersonalInvolucrado.aspx" />
     <Content Include="Modulo5\AgregarRequerimiento.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Modulo5\js\Validacion.js" />
     <Content Include="Modulo5\ListarRequerimientos.aspx" />
     <Content Include="Modulo5\ModificarRequerimiento.aspx" />
     <Content Include="Modulo5\ReporteRequerimientos.aspx" />
@@ -283,6 +289,9 @@
     <Compile Include="Modulo5\AgregarRequerimiento.aspx.designer.cs">
       <DependentUpon>AgregarRequerimiento.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Modulo5\ListarRequerimientos.aspx.cs">
       <DependentUpon>ListarRequerimientos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -400,6 +409,8 @@
     <Content Include="img\Icons\.DS_Store" />
     <Content Include="Master\MasterPage.Master" />
     <Content Include="packages.config" />
+    <Content Include="Modulo5\docs\RequerimientosFuncionales.pdf" />
+    <Content Include="Modulo5\docs\RequerimientosNoFuncionales.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -408,7 +419,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Modulo4\" />
     <Folder Include="Modulo8\docs\" />
   </ItemGroup>

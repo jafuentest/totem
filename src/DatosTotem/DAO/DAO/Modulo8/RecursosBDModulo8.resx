@@ -355,4 +355,10 @@
   <data name="ProcedureUsuarioProyecto" xml:space="preserve">
     <value>Procedure_ConsultarInvolucradosUsuarioProyecto</value>
   </data>
+  <data name="ProcedimientoBuscarUltimaMinuta" xml:space="preserve">
+    <value>Procedure_BuscarUltimaMinuta</value>
+  </data>
+  <data name="ProcedimientoEliminarMinuta" xml:space="preserve">
+    <value>Procedure_EliminarMinuta</value>
+  </data>
 </root>

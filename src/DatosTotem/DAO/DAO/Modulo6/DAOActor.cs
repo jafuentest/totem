@@ -54,9 +54,9 @@ namespace DAO.DAO.Modulo6
             {
 
 
-                AgregarActorBDDAOException exDaoActor = new AgregarActorBDDAOException(
-                 RecursosDAOModulo6.CodigoExcepcionAgregarActorBD,
-                 RecursosDAOModulo6.MensajeExcepcionAgregarActorBD,
+                BDDAOException exDaoActor = new BDDAOException(
+                 RecursosDAOModulo6.CodigoExcepcionBDDAO,
+                 RecursosDAOModulo6.MensajeExcepcionBD,
                  e);
 
                 Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
@@ -67,9 +67,9 @@ namespace DAO.DAO.Modulo6
             }
             catch (NullReferenceException e)
             {
-                AgregarActorNuloDAOException exDaoActor = new AgregarActorNuloDAOException(
-                    RecursosDAOModulo6.CodigoExcepcionAgregarActorNulo,
-                    RecursosDAOModulo6.MensajeExcepcionAgregarActorNulo,
+                ObjetoNuloDAOException exDaoActor = new ObjetoNuloDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionObjetoNuloDAO,
+                    RecursosDAOModulo6.MensajeExcepcionObjetoNulo,
                     e);
                 Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
                        exDaoActor);
@@ -79,9 +79,9 @@ namespace DAO.DAO.Modulo6
             }
             catch (Exception e)
             {
-                AgregarActorDAOException exDaoActor = new AgregarActorDAOException(
-                    RecursosDAOModulo6.CodigoExcepcionAgregarActorError,
-                    RecursosDAOModulo6.MensajeExcepcionAgregarActorError,
+                ErrorDesconocidoDAOException exDaoActor = new ErrorDesconocidoDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionErrorDAO,
+                    RecursosDAOModulo6.MensajeExcepcionErrorDesconocido,
                     e);
 
                 Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
@@ -131,9 +131,9 @@ namespace DAO.DAO.Modulo6
             {
 
 
-                AgregarActorBDDAOException exDaoActor = new AgregarActorBDDAOException(
-                 RecursosDAOModulo6.CodigoExcepcionAgregarActorBD,
-                 RecursosDAOModulo6.MensajeExcepcionAgregarActorBD,
+                BDDAOException exDaoActor = new BDDAOException(
+                 RecursosDAOModulo6.CodigoExcepcionBDDAO,
+                 RecursosDAOModulo6.MensajeExcepcionBD,
                  e);
 
                 Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
@@ -144,9 +144,9 @@ namespace DAO.DAO.Modulo6
             }
             catch (NullReferenceException e)
             {
-                AgregarActorNuloDAOException exDaoActor = new AgregarActorNuloDAOException(
-                    RecursosDAOModulo6.CodigoExcepcionAgregarActorNulo,
-                    RecursosDAOModulo6.MensajeExcepcionAgregarActorNulo,
+                ObjetoNuloDAOException exDaoActor = new ObjetoNuloDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionObjetoNuloDAO,
+                    RecursosDAOModulo6.MensajeExcepcionObjetoNulo,
                     e);
                 Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
                        exDaoActor);
@@ -169,9 +169,9 @@ namespace DAO.DAO.Modulo6
             }
             catch (Exception e)
             {
-                AgregarActorDAOException exDaoActor = new AgregarActorDAOException(
-                    RecursosDAOModulo6.CodigoExcepcionAgregarActorError,
-                    RecursosDAOModulo6.MensajeExcepcionAgregarActorError,
+                ErrorDesconocidoDAOException exDaoActor = new ErrorDesconocidoDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionErrorDAO,
+                    RecursosDAOModulo6.MensajeExcepcionErrorDesconocido,
                     e);
 
                 Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
@@ -186,6 +186,99 @@ namespace DAO.DAO.Modulo6
 
 
         #endregion
+
+
+        #region Métodos para Reporte Actores
+
+        /// <summary>
+        /// Método que accede a base de Datos para consultar los actores
+        /// para ser cargados en el combo de Reporte Actores
+        /// </summary>
+        /// <param name="codigoProyecto">Código de proyecto</param>
+        /// <returns>Lista de actores asociados al proyecto</returns>
+        public List<Entidad> consultarActoresCombo(string codigoProyecto) 
+        {
+            List<Entidad> listadoActores = new List<Entidad>();
+            DataTable resultado = new DataTable();
+            Actor actor; 
+            Entidad laEntidad = FabricaEntidades.ObtenerActor();
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursosDAOModulo6.CodigoProyecto, SqlDbType.VarChar,codigoProyecto, false);
+            parametros.Add(parametro); 
+
+            try 
+            {
+                 resultado = EjecutarStoredProcedureTuplas(RecursosDAOModulo6.ProcedureLlenarComboActores,
+                    parametros);
+
+                 foreach (DataRow row in resultado.Rows) 
+                 {
+                     laEntidad.Id = Convert.ToInt32(row[RecursosDAOModulo6.AliasIDActor].ToString());
+                     actor = (Actor)laEntidad; 
+                     actor.NombreActor = row[RecursosDAOModulo6.AliasNombreActor].ToString();
+                     listadoActores.Add(actor); 
+                 }
+
+            }
+            catch (SqlException e)
+            {
+
+
+                BDDAOException exDaoActor = new BDDAOException(
+                 RecursosDAOModulo6.CodigoExcepcionBDDAO,
+                 RecursosDAOModulo6.MensajeExcepcionBD,
+                 e);
+
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
+                    exDaoActor);
+
+                throw exDaoActor;
+
+            }
+            catch (NullReferenceException e)
+            {
+                ObjetoNuloDAOException exDaoActor = new ObjetoNuloDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionObjetoNuloDAO,
+                    RecursosDAOModulo6.MensajeExcepcionObjetoNulo,
+                    e);
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
+                       exDaoActor);
+
+                throw exDaoActor;
+
+            }
+
+            catch (FormatException e)
+            {
+                TipoDeDatoErroneoDAOException exDaoActor = new TipoDeDatoErroneoDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionTipoDeDatoErroneo,
+                    RecursosDAOModulo6.MensajeTipoDeDatoErroneoException,
+                    e);
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
+                       exDaoActor);
+
+                throw exDaoActor;
+
+            }
+            catch (Exception e)
+            {
+                ErrorDesconocidoDAOException exDaoActor = new ErrorDesconocidoDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionErrorDAO,
+                    RecursosDAOModulo6.MensajeExcepcionErrorDesconocido,
+                    e);
+
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
+                      exDaoActor);
+
+                throw exDaoActor;
+            }
+
+            return listadoActores; 
+        }
+
+        #endregion
+
+
         /// <summary>
         /// Método de DAO que accede a la Base de Datos 
         /// para actualizar los datos de un actor
@@ -206,9 +299,7 @@ namespace DAO.DAO.Modulo6
         /// <returns>Los datos específicos del Actor</returns>
         public Entidad ConsultarXId(Entidad parametro)
         {
-            Entidad laEntidad;
-            laEntidad = FabricaEntidades.ObtenerActor();
-            return laEntidad;
+            throw new NotImplementedException();
         }
 
         /// <summary>

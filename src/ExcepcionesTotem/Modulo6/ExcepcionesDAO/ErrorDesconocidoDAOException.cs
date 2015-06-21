@@ -2,28 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ExcepcionesTotem; 
 
 namespace ExcepcionesTotem.Modulo6.ExcepcionesDAO
 {
-    public class LeerCasoUsoBDDAOException:DAOException
+   public class ErrorDesconocidoDAOException:DAOException
     {
-        
-       public LeerCasoUsoBDDAOException()
+        public ErrorDesconocidoDAOException()
             : base()
         { }
 
-        public LeerCasoUsoBDDAOException(string message)
+        public ErrorDesconocidoDAOException(string message)
             : base(message)
         {
         }
 
-        public LeerCasoUsoBDDAOException(string message, Exception inner)
+        public ErrorDesconocidoDAOException(string message, Exception inner)
             : base(message, inner)
         {
         }
 
-        public LeerCasoUsoBDDAOException(string codigo, string message, Exception inner)
+        public ErrorDesconocidoDAOException(string codigo, string message, Exception inner)
             : base(codigo, message, inner)
         {
         }

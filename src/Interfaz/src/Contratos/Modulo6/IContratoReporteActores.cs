@@ -11,13 +11,13 @@ namespace Contratos.Modulo6
 {
    public interface IContratoReporteActores
     {
-       List<Actor> actores {get; set;}
-
-       List<CasoDeUso> casosDeUso {get; set;}
+       string tabla { get; set;  }       
 
        Label mensajeExito { get; set; }
 
        Label mensajeError { get; set; }
+
+       DropDownList comboActores { get; set; }
 
        HtmlButton boton { get; set; }
 

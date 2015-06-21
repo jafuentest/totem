@@ -14,15 +14,13 @@ namespace Comandos.Comandos.Modulo7
     public class ComandoListarCargos: Comando<bool,List<String>>
     {
         /// <summary>
-        /// Este metodo se utiliza para crear un nuevo usuario
+        /// Este metodo se utiliza para Listar todos los cargos
         /// </summary>
         /// <param name="parametro"></param>
         /// <returns>Lista de strings que tienen el nombre del cargo</returns>
         public override List<string> Ejecutar(bool parametro)
         {
- 	        //throw new NotImplementedException();
-
-            //Respuesta de la consulta;
+ 	        //Respuesta de la consulta;
             List<String> listaCargos = new List<String>();
 
             //Instanciamos la fabrica concreta SQLServer

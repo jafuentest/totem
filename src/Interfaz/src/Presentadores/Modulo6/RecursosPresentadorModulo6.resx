@@ -120,6 +120,9 @@
   <data name="ClaseAgregarActorPresentador" xml:space="preserve">
     <value>PresentadorAgregarActor</value>
   </data>
+  <data name="ClaseReporteActoresPresentador" xml:space="preserve">
+    <value>PresentadorReporteActores</value>
+  </data>
   <data name="CodigoMensajePresentadorBDException" xml:space="preserve">
     <value>T_06_103</value>
   </data>
@@ -133,9 +136,6 @@
     <value>T_06_102</value>
   </data>
   <data name="CodigoMensajePresentadorTipoDeDatoErroneo" xml:space="preserve">
-    <value>T_06_105</value>
-  </data>
-  <data name="CodigoMensajePresentadorTipoDeDatoErroneo1" xml:space="preserve">
     <value>T_06_105</value>
   </data>
   <data name="MensajeActorExistente" xml:space="preserve">

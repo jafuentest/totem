@@ -14,20 +14,21 @@ namespace DAO.DAO.Modulo5
         /// Metodo que busca el ID de un proyecto en la base de datos
         /// usando el codigo del proyecto
         /// </summary>
-        /// <param name="codigo">codigo del requerimiento</param>
+        /// <param name="codigo">codigo del proyecto</param>
         /// <returns>integer con el id del proyecto</returns>
         public int BuscarIdProyecto(string codigo)
         {
             try
             {
                 List<Parametro> parametros = new List<Parametro>();
-                Parametro parametro = new Parametro(RecursosDAOModulo5.PARAMETRO_REQ_CODIGO,
+                Parametro parametro = new Parametro(RecursosDAOModulo5.PARAMETRO_PRO_CODIGO,
                     SqlDbType.VarChar, codigo, false);
                 parametros.Add(parametro);
                 parametro = new Parametro(RecursosDAOModulo5.PARAMETRO_PRO_ID,
                     SqlDbType.Int, true);
+                parametros.Add(parametro);
                 List<Resultado> resultados = EjecutarStoredProcedure(
-                    RecursosDAOModulo5.PROCEDIMIENTO_RETORNAR_ID_POR_CODIGO_REQUERIMIENTO, parametros);
+                    RecursosDAOModulo5.PROCEDIMIENTO_RETORNAR_ID_POR_CODIGO_PROYECTO, parametros);
                 foreach (Resultado resultado in resultados)
                 {
                     if (resultado != null && resultado.valor != "")
@@ -43,6 +44,8 @@ namespace DAO.DAO.Modulo5
                             RecursosDAOModulo5.MENSAJE_EXCEPCION_REQUERIMIENTO_ERRADO,
                             new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
             }
+
+            #region Capturar Excepciones
             catch (ExcepcionesTotem.Modulo5.RequerimientoInvalidoException ex)
             {
                 ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
@@ -74,7 +77,7 @@ namespace DAO.DAO.Modulo5
 
                 throw ex;
             }
-            
+            #endregion
         }
 
         /// <summary>
@@ -91,9 +94,8 @@ namespace DAO.DAO.Modulo5
         /// Metodo que elimina un requerimiento asociado a un proyecto
         /// </summary>
         /// <param name="requerimiento">Requerimiento a eliminar</param>
-        /// <param name="idProyecto">id del proyecto</param>
         /// <returns>true si lo logro eliminar</returns>
-        public bool EliminarRequerimiento(Dominio.Entidad requerimiento, int idProyecto)
+        public bool EliminarRequerimiento(Dominio.Entidad requerimiento)
         {
             throw new NotImplementedException();
         }
@@ -105,7 +107,83 @@ namespace DAO.DAO.Modulo5
         /// <returns>Lista de requerimientos</returns>
         public List<Dominio.Entidad> ConsultarRequerimientoDeProyecto(string codigoProyecto)
         {
-            throw new NotImplementedException();
+            List<Parametro> parametros = new List<Parametro>();
+
+            List<Dominio.Entidad> listaRequerimientos =
+               new List<Dominio.Entidad>();
+
+            int idProyecto = BuscarIdProyecto(codigoProyecto);
+            Parametro parametro = new Parametro(
+               RecursosDAOModulo5.PARAMETRO_PRO_ID,
+               SqlDbType.Int, idProyecto.ToString(), false);
+            parametros.Add(parametro);
+
+            try
+            {
+                DataTable dataTableRequerimientos =
+                   EjecutarStoredProcedureTuplas(
+                   RecursosDAOModulo5.
+                   PROCEDIMIENTO_CONSULTAR_REQUERIMIENTOS_POR_PROYECTO,
+                   parametros);
+                if (dataTableRequerimientos != null)
+                {
+                    foreach (DataRow fila in dataTableRequerimientos.Rows)
+                    {
+                        listaRequerimientos.Add(
+                            new Dominio.Entidades.Modulo5.Requerimiento(
+                               fila[RecursosDAOModulo5.ATRIBUTO_REQ_ID].ToString(),
+                               fila[RecursosDAOModulo5.ATRIBUTO_REQ_CODIGO].ToString(),
+                               fila[RecursosDAOModulo5.ATRIBUTO_REQ_DESCRIPCION].ToString(),
+                               fila[RecursosDAOModulo5.ATRIBUTO_REQ_TIPO].ToString(),
+                               fila[RecursosDAOModulo5.ATRIBUTO_REQ_PRIORIDAD].ToString(),
+                               fila[RecursosDAOModulo5.ATRIBUTO_REQ_ESTATUS].ToString()
+                            )
+                        );
+                    }
+                    return listaRequerimientos;
+                }
+
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    new ExcepcionesTotem.ExceptionTotemConexionBD());
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    new ExcepcionesTotem.ExceptionTotemConexionBD());
+            }
+            #region Capturar Excepciones
+            catch (ExcepcionesTotem.Modulo5.RequerimientoInvalidoException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
+            }
+            catch (SqlException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
+            }
+            #endregion
         }
 
         /// <summary>
@@ -159,22 +237,23 @@ namespace DAO.DAO.Modulo5
 
         #region IDAO
         /// <summary>
-        /// Metodo no implementado
+        /// Metodo que agrega un requerimiento en la base de datos
         /// </summary>
-        /// <returns></returns>
+        /// <param name="parametro">Requerimiento a agregar</param>
+        /// <returns>true si se logro agregar</returns>
         public bool Agregar(Dominio.Entidad parametro)
         {
             try
             {
                 Dominio.Entidades.Modulo5.Requerimiento requerimiento =
                     (Dominio.Entidades.Modulo5.Requerimiento)parametro;
-                int idProyecto = BuscarIdProyecto(requerimiento.Codigo);
-                if (idProyecto != null)
+                int idProyecto = BuscarIdProyecto(requerimiento.CodigoProyecto);
+                if (idProyecto > 0)
                 {
                     #region Asignacion de Parametros
                     List<Parametro> parametros = new List<Parametro>();
                     Parametro parametroBD = new Parametro(
-                        RecursosDAOModulo5.PARAMETRO_REQ_CODIGO, SqlDbType.VarChar, 
+                        RecursosDAOModulo5.PARAMETRO_REQ_CODIGO, SqlDbType.VarChar,
                         requerimiento.Codigo, false);
                     parametros.Add(parametroBD);
                     parametroBD = new Parametro(
@@ -182,7 +261,7 @@ namespace DAO.DAO.Modulo5
                         requerimiento.Descripcion, false);
                     parametros.Add(parametroBD);
                     parametroBD = new Parametro(
-                        RecursosDAOModulo5.PARAMETRO_REQ_TIPO, SqlDbType.VarChar, 
+                        RecursosDAOModulo5.PARAMETRO_REQ_TIPO, SqlDbType.VarChar,
                         requerimiento.Tipo, false);
                     parametros.Add(parametroBD);
                     parametroBD = new Parametro(
@@ -199,16 +278,12 @@ namespace DAO.DAO.Modulo5
                     parametros.Add(parametroBD);
                     #endregion
 
-                    List<Resultado> resultados = 
-                        EjecutarStoredProcedure(RecursosDAOModulo5.PROCEDIMIENTO_CREAR_REQUERIMIENTO,
+                    List<Resultado> resultados =
+                        EjecutarStoredProcedure(RecursosDAOModulo5.PROCEDIMIENTO_AGREGAR_REQUERIMIENTO,
                         parametros);
-                    if (resultados.Count > 0)
-                    {
-                        return true;
-                    }
+                    return true;
                 }
-     
-                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
                     new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
 
                 throw new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException(
@@ -219,14 +294,14 @@ namespace DAO.DAO.Modulo5
             #region Capturar Excepciones
             catch (ExcepcionesTotem.Modulo5.RequerimientoInvalidoException ex)
             {
-                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
                     ex);
 
                 throw ex;
             }
             catch (SqlException ex)
             {
-                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
                     ex);
 
                 throw new ExcepcionesTotem.ExceptionTotemConexionBD(
@@ -236,14 +311,14 @@ namespace DAO.DAO.Modulo5
             }
             catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
             {
-                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
                     ex);
 
                 throw ex;
             }
             catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
             {
-                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
                     ex);
 
                 throw ex;

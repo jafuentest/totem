@@ -70,7 +70,13 @@
     <Compile Include="Modulo5\PresentadorListarRequerimientos.cs" />
     <Compile Include="Modulo5\PresentadorModificarRequerimiento.cs" />
     <Compile Include="Modulo5\PresentadorReporteRequerimientos.cs" />
+    <Compile Include="Modulo5\RecursosPresentadorModulo5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosPresentadorModulo5.resx</DependentUpon>
+    </Compile>
     <Compile Include="Modulo6\PresentadorAgregarActor.cs" />
+    <Compile Include="Modulo6\PresentadorReporteActores.cs" />
     <Compile Include="Modulo6\RecursosPresentadorModulo6.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -102,6 +108,10 @@
     <EmbeddedResource Include="Modulo2\RecursoInterfazM2.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursoInterfazM2.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo5\RecursosPresentadorModulo5.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosPresentadorModulo5.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo6\RecursosPresentadorModulo6.resx">
       <Generator>ResXFileCodeGenerator</Generator>

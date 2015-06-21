@@ -79,10 +79,10 @@ namespace Presentadores.Modulo6
                     }
                 }
 
-                catch (AgregarActorComandoBDException e)
+                catch (ComandoBDException e)
                 {
-                    AgregarActorBDPresentadorException exAgregarActorPresentador =
-                            new AgregarActorBDPresentadorException(
+                    PresentadorException exAgregarActorPresentador =
+                            new PresentadorException(
                                 RecursosPresentadorModulo6.CodigoMensajePresentadorBDException,
                                 RecursosPresentadorModulo6.MensajePresentadorBDException,
                                 e);
@@ -92,10 +92,10 @@ namespace Presentadores.Modulo6
                     MostrarMensajeError(exAgregarActorPresentador.Mensaje);
                 }
 
-                catch (AgregarActorComandoNullException e)
+                catch (ComandoNullException e)
                 {
-                    AgregarActorNuloPresentadorException exAgregarActorPresentador =
-                            new AgregarActorNuloPresentadorException(
+                    ObjetoNuloPresentadorException exAgregarActorPresentador =
+                            new ObjetoNuloPresentadorException(
                                 RecursosPresentadorModulo6.CodigoMensajePresentadorNuloException,
                                 RecursosPresentadorModulo6.MensajePresentadorNuloException,
                                 e);
@@ -118,7 +118,7 @@ namespace Presentadores.Modulo6
                     MostrarMensajeError(exAgregarActorPresentador.Mensaje);
 
                 }
-                catch (AgregarActorComandoException e)
+                catch (ComandoException e)
                 {
                     AgregarActorPresentadorException exAgregarActorPresentador =
                              new AgregarActorPresentadorException(
@@ -155,10 +155,10 @@ namespace Presentadores.Modulo6
                 }
             }
 
-            catch (AgregarActorComandoBDException e)
+            catch (ComandoBDException e)
             {
-                AgregarActorBDPresentadorException exAgregarActorPresentador =
-                        new AgregarActorBDPresentadorException(
+                PresentadorException exAgregarActorPresentador =
+                        new PresentadorException(
                             RecursosPresentadorModulo6.CodigoMensajePresentadorBDException,
                             RecursosPresentadorModulo6.MensajePresentadorBDException,
                             e);
@@ -168,10 +168,10 @@ namespace Presentadores.Modulo6
                 MostrarMensajeError(exAgregarActorPresentador.Mensaje);
             }
 
-            catch (AgregarActorComandoNullException e)
+            catch (ComandoNullException e)
             {
-                AgregarActorNuloPresentadorException exAgregarActorPresentador =
-                        new AgregarActorNuloPresentadorException(
+                ObjetoNuloPresentadorException exAgregarActorPresentador =
+                        new ObjetoNuloPresentadorException(
                             RecursosPresentadorModulo6.CodigoMensajePresentadorNuloException,
                             RecursosPresentadorModulo6.MensajePresentadorNuloException,
                             e);
@@ -209,7 +209,7 @@ namespace Presentadores.Modulo6
 
             }
 
-            catch (AgregarActorComandoException e)
+            catch (ComandoException e)
             {
                 AgregarActorPresentadorException exAgregarActorPresentador =
                          new AgregarActorPresentadorException(

@@ -5,7 +5,11 @@ using System.Text;
 
 namespace Contratos.Modulo8
 {
-    interface IContratoConsultarMinuta
+    public interface IContratoConsultarMinuta
     {
+        string laTabla { get; set; }
+        string nombreProyecto { get; set; }
+        string nombreEmpresa { get; set; }
+        string estadoProyecto { get; set; }
     }
 }
