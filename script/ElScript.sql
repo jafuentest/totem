@@ -2124,13 +2124,20 @@ GO
 -- ========================================================================= --
 -- Eliminar requerimiento
 -- ========================================================================= --
-
 CREATE PROCEDURE M5_EliminarRequerimiento
 
   @req_codigo       [varchar] (15)
 
 AS
   BEGIN
+    DECLARE idrequerimiento [int];
+    SELECT idrequerimiento = req_id
+    FROM REQUERIMIENTO 
+    WHERE req_codigo = @req_codigo;
+
+    DELETE FROM CU_REQUERIMIENTO
+    WHERE REQUERIMIENTO_req_id = idrequerimiento;
+
     DELETE FROM REQUERIMIENTO
     WHERE req_codigo = @req_codigo;
   END
