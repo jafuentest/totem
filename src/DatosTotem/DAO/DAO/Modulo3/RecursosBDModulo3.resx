@@ -339,4 +339,8 @@
     <value>ListarCargosPorEmpresa</value>
     <comment>Nombre del Stored Procedure para listar los cargos por empresas</comment>
   </data>
+  <data name="StoredConsultarContactoPorEmpresa" xml:space="preserve">
+    <value>ListarContactoPorEmpresa</value>
+    <comment>Nombre del Stored Procedure para listar los cargos por empresa</comment>
+  </data>
 </root>

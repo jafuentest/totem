@@ -74,6 +74,7 @@
     <Compile Include="Comandos\Modulo3\ComandoEliminarContactoDeIvolucradosEnProyecto.cs" />
     <Compile Include="Comandos\Modulo3\ComandoEliminarUsuariosDeIvolucradosEnProyecto.cs" />
     <Compile Include="Comandos\Modulo3\ComandoListarContactosPorCargoEmpresa.cs" />
+    <Compile Include="Comandos\Modulo3\ComandoListarContactosPorEmpresa.cs" />
     <Compile Include="Comandos\Modulo4\ComandoAgregarProyecto.cs" />
     <Compile Include="Comandos\Modulo5\ComandoAgregarRequerimiento.cs" />
     <Compile Include="Comandos\Modulo5\ComandoConsultarRequerimiento.cs" />

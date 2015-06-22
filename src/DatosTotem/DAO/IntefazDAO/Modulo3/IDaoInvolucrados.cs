@@ -21,6 +21,7 @@ namespace DAO.IntefazDAO.Modulo3
         List<String> ConsultarCargosContactos(Entidad parametro);
         Entidad DatosUsuarioUsername(String user);
         Entidad DatosContactoID(int idCon);
+        List<Entidad> ListarContactosPorEmpresa(Entidad parametro);
         List<Entidad> ListarContactosPorCargoEmpresa(Entidad parametro, String cargo);
         bool Agregar(Dominio.Entidad parametro);
         bool Modificar(Dominio.Entidad parametro);

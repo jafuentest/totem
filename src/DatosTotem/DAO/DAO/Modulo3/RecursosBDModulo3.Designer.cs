@@ -493,6 +493,15 @@ namespace DAO.DAO.Modulo3 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a ListarContactoPorEmpresa.
+        /// </summary>
+        internal static string StoredConsultarContactoPorEmpresa {
+            get {
+                return ResourceManager.GetString("StoredConsultarContactoPorEmpresa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Procedure_consultarDatosContactoID.
         /// </summary>
         internal static string StoredConsultarDatosContacto {

@@ -568,7 +568,45 @@ namespace DAO.DAO.Modulo3
             }
             return elContacto;
         }
-        public List<Entidad> ListarContactosPorCargoEmpresa(Entidad parametro, String cargo)
+        public List<Entidad> ListarContactosPorEmpresa(Entidad parametro)
+        {
+            FabricaEntidades laFabrica = new FabricaEntidades();
+            List<Entidad> laListaDeContactos = new List<Entidad>();
+            ClienteJuridico laEmpresa = (ClienteJuridico)parametro;
+            List<Parametro> parametros;
+
+            Parametro rifClienteJ, nombre_cargo;
+
+            try
+            {
+
+                parametros = new List<Parametro>();
+
+                rifClienteJ = new Parametro(RecursosBDModulo3.ParamRif, SqlDbType.Int, laEmpresa.Id.ToString(), false);
+                parametros.Add(rifClienteJ);
+
+                DataTable dt = EjecutarStoredProcedureTuplas(
+                               RecursosBDModulo3.StoredConsultarContactoPorEmpresa, parametros);
+                foreach (DataRow row in dt.Rows)
+                {
+                    Contacto c = (Contacto)laFabrica.ObtenerContacto();
+
+                    c.Con_Nombre = row[RecursosBDModulo3.ColumnaNombreContacto].ToString();
+                    c.Con_Apellido = row[RecursosBDModulo3.ColumnaApellidoContacto].ToString();
+                    c.ConCargo = row[RecursosBDModulo3.ColumnaCargoContacto].ToString();
+                    c.Id = int.Parse(row[RecursosBDModulo3.ColumnaIdContacto].ToString());
+
+                    laListaDeContactos.Add(c);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new ExcepcionesTotem.ExceptionTotem();
+            }
+
+            return laListaDeContactos;
+        }
+        public List<Entidad> ListarContactosPorCargoEmpresa(Entidad parametro,String cargo)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
             List<Entidad> laListaDeContactos = new List<Entidad>();

@@ -13,20 +13,28 @@ namespace Vista.Modulo3
 {
     public partial class AgregarInvolucrados : System.Web.UI.Page, Contratos.Modulo3.IContratoAgregarInvolucrado
     {
+        
         private PresentadorAgregarInvolucrado presentador;
         public AgregarInvolucrados()
         {
+          
             presentador = new PresentadorAgregarInvolucrado(this);
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
             if (!IsPostBack)
             {
-                this.Master.idModulo = "3";
-                this.Master.presentador.CargarMenuLateral();
+                Master.idModulo = "3";
+                Master.presentador.CargarMenuLateral();
                 presentador.LlenarComboEmpresa();
+                upModal.Visible = true;
             }
+            if(presentador.eliminarcontacto() != null || presentador.eliminarusuario() != null){
+                 presentador.modaleliminar();
+                 ScriptManager.RegisterStartupScript(Page, Page.GetType(), "modal_delete", "$('#modal_delete').modal();", true);
+                 upModal.Visible = true;
+             }
         }
 
         #region contrato
@@ -34,48 +42,90 @@ namespace Vista.Modulo3
         {
             get
             {
-                return comboTipoEmpresa;
+                return this.comboTipoEmpresa;
             }
             set
             {
-                comboTipoEmpresa= value;
+                this.comboTipoEmpresa = value;
             }
         }
         DropDownList Contratos.Modulo3.IContratoAgregarInvolucrado.comboPersonal
         {
             get
             {
-                return comboPersonal;
+                return this.comboPersonal;
             }
             set
             {
-                comboPersonal = value;
+                this.comboPersonal = value;
             }
         }
         DropDownList Contratos.Modulo3.IContratoAgregarInvolucrado.comboCargo
         {
             get
             {
-                    return comboCargo;
+                    return this.comboCargo;
             }
             set
             {
-                comboCargo = value;
+                this.comboCargo = value;
             }
         }
         Literal Contratos.Modulo3.IContratoAgregarInvolucrado.laTabla
         {
             get
             {
-                return laTabla;
+                return this.laTabla;
             }
             set
             {
-                laTabla = value;
+                this.laTabla = value;
             }
         }
-         
-
+        String Contratos.Modulo3.IContratoAgregarInvolucrado.user_name
+        {
+            get
+            {
+                return this.user_name.InnerText;
+            }
+            set
+            {
+                this.user_name.InnerText = value;
+            }
+        }
+        String Contratos.Modulo3.IContratoAgregarInvolucrado.contacto_id
+        {
+            get
+            {
+                return this.contacto_id.InnerText;
+            }
+            set
+            {
+                this.contacto_id.InnerText = value;
+            }
+        }
+        String Contratos.Modulo3.IContratoAgregarInvolucrado.eliminacionUsuario
+        {
+            get
+            {
+                return Request.QueryString["usuarioaeliminar"];
+            }
+            set
+            {
+                this.contacto_id.InnerText = Request.QueryString["usuarioaeliminar"]; ;
+            }
+        }
+        String Contratos.Modulo3.IContratoAgregarInvolucrado.eliminacionContacto
+        {
+            get
+            {
+                return Request.QueryString["contactoaeliminar"];
+            }
+            set
+            {
+                this.contacto_id.InnerText = Request.QueryString["contactoaeliminar"]; ;
+            }
+        }
         #endregion contrato
 
 
@@ -93,11 +143,15 @@ namespace Vista.Modulo3
           }
           protected void btn_enviar_Click(object sender, EventArgs e)
           {
-       
+              presentador.GuardarInvolucrados();
           }
           protected void evento_eliminar(object sender, EventArgs e)
           {
       
+          }
+          protected void evento_modal(object sender, EventArgs e)
+          {
+              throw new Exception();
           }
        
     }

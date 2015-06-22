@@ -167,6 +167,11 @@ namespace Comandos.Fabrica
 
             return new Comandos.Modulo3.ComandoListarContactosPorCargoEmpresa();
         }
+        public static Comando<Entidad, List<Dominio.Entidad>> CrearComandoListarContactosPorEmpresa()
+        {
+
+            return new Comandos.Modulo3.ComandoListarContactosPorEmpresa();
+        }
         #endregion
 
         #region Modulo 4
