@@ -87,6 +87,7 @@
     <Compile Include="Modulo4\RequerimientosInexistentesException.cs" />
     <Compile Include="Modulo5\CamposInvalidosException.cs" />
     <Compile Include="Modulo5\ProyectoNoEncontradoException.cs" />
+    <Compile Include="Modulo5\RequerimientoNoExisteException.cs" />
     <Compile Include="Modulo5\RequerimientoInvalidoException.cs" />
     <Compile Include="Modulo5\RequerimientoNoCreadoException.cs" />
     <Compile Include="Modulo5\RequerimientoNoEliminadoException.cs" />

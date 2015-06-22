@@ -144,7 +144,7 @@ namespace Vista.Modulo5
         #region Metodos
         protected void ModificarRequerimiento_Click(object sender, EventArgs e)
         {
-
+            presentador.ModificarRequerimiento();
         }
 
         protected void EliminarRequerimiento_Click(object sender, EventArgs e)

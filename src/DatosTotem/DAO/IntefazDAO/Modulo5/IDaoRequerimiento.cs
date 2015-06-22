@@ -35,18 +35,6 @@ namespace DAO.IntefazDAO.Modulo5
         /// <returns>retorna true si se logro eliminar</returns>
         bool EliminarRequerimiento(Dominio.Entidad requerimiento);
 
-        /// <summary>
-        /// Firma de Método para verificar si un requerimiento existe en la base de
-        /// datos
-        /// </summary>
-        /// <param name="codigoRequerimiento">
-        /// Código de requerimiento a buscar en la base de datos
-        /// </param>
-        /// <returns>
-        /// Retrorna true si existe el código de requerimiento buscado, y
-        /// false si ocurre lo contrario
-        /// </returns>
-        bool ExisteRequerimiento(string codigoRequerimiento);
 
         /// <summary>
         /// Metodo que retorna todos los requerimientos asociados a un proyecto

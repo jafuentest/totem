@@ -266,7 +266,7 @@
     <comment>Procedimiento utilizado para poder eliminar un requerimiento específico</comment>
   </data>
   <data name="PROCEDIMIENTO_EXISTE_REQUERIMIENTO" xml:space="preserve">
-    <value>M5_ExisteRequerimiento</value>
+    <value>M5_ConsultarRequerimientosPorCodigo</value>
     <comment>Procedimiento utilizado para verificar la existencia de un requerimiento dado su código</comment>
   </data>
   <data name="PROCEDIMIENTO_MODIFICAR_REQUERIMIENTO" xml:space="preserve">

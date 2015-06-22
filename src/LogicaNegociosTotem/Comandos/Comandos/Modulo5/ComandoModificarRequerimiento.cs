@@ -23,10 +23,23 @@ namespace Comandos.Comandos.Modulo5
                 bool resultado = daoRequerimiento.Modificar(parametro);
                 return resultado;
             }
-            catch (Exception ex)
+            #region Capturar Excepciones
+            catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
             {
+
                 throw ex;
             }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+
+                throw ex;
+            }
+            catch (ExcepcionesTotem.Modulo5.RequerimientoInvalidoException ex)
+            {
+
+                throw ex;
+            }
+            #endregion
 
         }
     }

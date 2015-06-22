@@ -157,6 +157,10 @@
     <value>Hubo un error con el requerimiento ingresado, intente nuevamente</value>
     <comment>Mensaje de error si el requerimiento es invalido</comment>
   </data>
+  <data name="Alerta_Mensaje_Requerimiento_Modificado" xml:space="preserve">
+    <value>El Requerimiento se modifico exitosamente</value>
+    <comment>Mensaje de exito de requerimiento modificado</comment>
+  </data>
   <data name="Alerta_Rol" xml:space="preserve">
     <value>alert</value>
     <comment>Rol que hace la alerta</comment>
@@ -171,6 +175,10 @@
   </data>
   <data name="Codigo_Exito_Eliminar" xml:space="preserve">
     <value>?success=eliminar</value>
+    <comment>Codigo de exito para el redireccionamiento</comment>
+  </data>
+  <data name="Codigo_Exito_Modificar" xml:space="preserve">
+    <value>?success=modificar</value>
     <comment>Codigo de exito para el redireccionamiento</comment>
   </data>
   <data name="Mensaje_Error_Requerimiento_Errado" xml:space="preserve">

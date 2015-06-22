@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExcepcionesTotem.Modulo5;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -87,7 +88,70 @@ namespace DAO.DAO.Modulo5
         /// <returns>true si existe el requerimiento</returns>
         public bool VerificarRequerimiento(Dominio.Entidad requerimiento)
         {
-            throw new NotImplementedException();
+
+            bool existeRequerimiento = false;
+            Dominio.Entidades.Modulo5.Requerimiento requerimientoBD = (Dominio.Entidades.Modulo5.Requerimiento)requerimiento;
+            List<Parametro> parametros = new List<Parametro>();
+
+            Parametro parametro = new Parametro(RecursosDAOModulo5.
+               PARAMETRO_REQ_CODIGO, SqlDbType.VarChar, requerimientoBD.Codigo,
+               false);
+            parametros.Add(parametro);
+
+            parametro = new Parametro(RecursosDAOModulo5.
+               PARAMETRO_RESULTADO, SqlDbType.Int, true);
+            parametros.Add(parametro);
+
+            try
+            {
+
+
+                List<Resultado> resultados = base.EjecutarStoredProcedure(
+                 RecursosDAOModulo5.PROCEDIMIENTO_RETORNAR_REQUERIMIENTO_POR_CODIGO,
+                 parametros);
+
+                if (int.Parse(resultados[0].valor) == 1)
+                    existeRequerimiento = true;
+                else
+                {
+                    existeRequerimiento = false;
+                    throw new RequerimientoNoExisteException();
+                }
+            }
+            #region Capturar Excepciones
+            catch (ExcepcionesTotem.Modulo5.RequerimientoInvalidoException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
+            }
+            catch (SqlException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
+            }
+            #endregion
+            return existeRequerimiento;
         }
 
         /// <summary>
@@ -253,54 +317,8 @@ namespace DAO.DAO.Modulo5
             #endregion
         }
 
-        /// <summary>
-        /// Método para verificar si un requerimiento existe en la base de
-        /// datos
-        /// </summary>
-        /// <param name="codigoRequerimiento">
-        /// Código de requerimiento a buscar en la base de datos
-        /// </param>
-        /// <returns>
-        /// Retrorna true si existe el código de requerimiento buscado, y
-        /// false si ocurre lo contrario
-        /// </returns>
-        public bool ExisteRequerimiento(string codigoRequerimiento)
-        {
-            bool existeRequerimiento = false;
-
-            List<Parametro> parametros = new List<Parametro>();
-
-            Parametro parametro = new Parametro(RecursosDAOModulo5.
-               PARAMETRO_REQ_CODIGO, SqlDbType.VarChar, codigoRequerimiento,
-               false);
-            parametros.Add(parametro);
-
-            parametro = new Parametro(RecursosDAOModulo5.
-               PARAMETRO_RESULTADO, SqlDbType.Int, true);
-            parametros.Add(parametro);
-
-            try
-            {
-
-
-                List<Resultado> resultados = base.EjecutarStoredProcedure(
-                 RecursosDAOModulo5.PROCEDIMIENTO_EXISTE_REQUERIMIENTO,
-                 parametros);
-
-                if (int.Parse(resultados[0].valor) == 1)
-                    existeRequerimiento = true;
-                else
-                    existeRequerimiento = false;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-
-            return existeRequerimiento;
-        }
-
         #endregion
+
 
         #region IDAO
         /// <summary>
@@ -402,12 +420,17 @@ namespace DAO.DAO.Modulo5
         {
             try
             {
-                bool respuestaResultado = true;
+               
                 Dominio.Entidades.Modulo5.Requerimiento requerimiento = (Dominio.Entidades.Modulo5.Requerimiento)parametro;
                 bool requerimientoModificado = false;
 
-                if (true )
-                {
+             // if (VerificarRequerimiento(requerimiento)){
+                
+                    if (requerimiento != null || requerimiento.Id != null || requerimiento.Descripcion != ""
+                        || requerimiento.Estatus != ""  ||
+                        requerimiento.Codigo != "" || requerimiento.Prioridad != "" || requerimiento.Tipo != ""
+                        ){
+                    #region Asignacion de Parametros bd
                     List<Parametro> parametros = new List<Parametro>();
 
                     Parametro parametroBD = new Parametro(RecursosDAOModulo5.
@@ -439,9 +462,9 @@ namespace DAO.DAO.Modulo5
                        PARAMETRO_REQ_ESTATUS, SqlDbType.VarChar,
                        requerimiento.Estatus, false);
                     parametros.Add(parametroBD);
+                    #endregion 
 
-
-                        List<Resultado> resultados = base.EjecutarStoredProcedure(RecursosDAOModulo5.
+                    List<Resultado> resultados = base.EjecutarStoredProcedure(RecursosDAOModulo5.
                             PROCEDIMIENTO_MODIFICAR_REQUERIMIENTO, parametros);
 
                         if (resultados != null)
@@ -450,30 +473,58 @@ namespace DAO.DAO.Modulo5
                         }
                         else
                         {
-                           // throw new ExcepcionesTotem.Modulo5.
-                             //  RequerimientoNoModificadoException(
-                              // RecursosDAOModulo5.EXCEPCION_REQ_NO_MOD_CODIGO,
-                               //RecursosDAOModulo5.EXCEPCION_REQ_NO_MOD_MENSAJE,
-                            throw new Exception();
-                           // );
+                            requerimientoModificado = false;
+                    ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                   new ExcepcionesTotem.Modulo5.RequerimientoNoModificadoException());
+                           throw new ExcepcionesTotem.Modulo5.
+                              RequerimientoNoModificadoException(
+                               RecursosDAOModulo5.EXCEPCION_REQ_NO_MOD_CODIGO,
+                               RecursosDAOModulo5.EXCEPCION_REQ_NO_MOD_MENSAJE, 
+                            new ExcepcionesTotem.Modulo5.RequerimientoNoModificadoException());
                         }
-                   
-                }
-                else
+                    
+                    }
+                    else {
+                     ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
+
+                throw new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException(
+                            RecursosDAOModulo5.CODIGO_EXCEPCION_REQUERIMIENTO_ERRADO,
+                            RecursosDAOModulo5.MENSAJE_EXCEPCION_REQUERIMIENTO_ERRADO,
+                            new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
+                    }
+              // }
+               /* else
                 {
-                    requerimientoModificado = false;
-                }
+                 
+
+                    ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
+
+                throw new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException(
+                            RecursosDAOModulo5.CODIGO_EXCEPCION_REQUERIMIENTO_ERRADO,
+                            RecursosDAOModulo5.MENSAJE_EXCEPCION_REQUERIMIENTO_ERRADO,
+                            new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
+               }*/
 
                 return requerimientoModificado;
 
             }
-
+            #region Capturar Excepciones
+            catch (ExcepcionesTotem.Modulo5.RequerimientoNoExisteException re)
+            {
+                throw re;
+            }
             catch (ExcepcionesTotem.ExceptionTotem e)
             {
 
                 throw e;
             }
+            #endregion
+
         }
+
+
 
         /// <summary>
         /// Metodo que busca a un requerimiento por su codigo

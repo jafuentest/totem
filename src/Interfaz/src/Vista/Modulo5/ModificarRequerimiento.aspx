@@ -59,10 +59,10 @@
                 <div class="col-sm-10 col-md-10 col-lg-10">
                     <p><b>Status:</b></p>
                     <label class="radio-inline">
-                    <input type="radio" name="radioStatus" disabled="disabled" runat="server"
+                    <input type="radio" name="radioStatus" runat="server"
                           id="inputStatusNoFinalizado"/>No Finalizado</label>
                     <label class="radio-inline">
-                    <input type="radio" name="radioStatus" disabled="disabled"
+                    <input type="radio" name="radioStatus" 
                          id="inputStatusFinalizado" runat="server"/>Finalizado</label>
                 </div>
             </div>

@@ -48,6 +48,14 @@ namespace Presentadores.Modulo5
                     RecursosPresentadorModulo5.Alerta_Mensaje_Requerimiento_Agregado +
                     RecursosPresentadorModulo5.Alerta_Html_Final;
             }
+            if (variable != null && variable.Equals("modificar"))
+            {
+                vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Exito;
+                vista.alertaRol = RecursosPresentadorModulo5.Alerta_Rol;
+                vista.alerta = RecursosPresentadorModulo5.Alerta_Html +
+                    RecursosPresentadorModulo5.Alerta_Mensaje_Requerimiento_Modificado +
+                    RecursosPresentadorModulo5.Alerta_Html_Final;
+            }
             if (variable != null && variable.Equals("eliminar"))
             {
                 vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Exito;
