@@ -6,6 +6,8 @@ using System.Text;
 using DAO.Fabrica;
 using DAO.DAO.Modulo2;
 using DAO.IntefazDAO.Modulo2;
+using System.Data.SqlClient;
+using ExcepcionesTotem;
 
 namespace Comandos.Comandos.Modulo2
 {
@@ -21,10 +23,22 @@ namespace Comandos.Comandos.Modulo2
 
                 return daoClienteNat.ConsultarTodos();
             }
-            catch (Exception Exception)
+            #region catches
+            catch (ExceptionTotemConexionBD ex)
             {
-                throw new Exception();
+                Logger.EscribirWarning(Convert.ToString(this.GetType()), ex.Message,
+                    System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                throw ex;
             }
+            catch (ExceptionTotem ex)
+            {
+                Logger.EscribirWarning(Convert.ToString(this.GetType()), ex.Message,
+                    System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                throw ex;
+            }
+            #endregion
         }
     }
 }
