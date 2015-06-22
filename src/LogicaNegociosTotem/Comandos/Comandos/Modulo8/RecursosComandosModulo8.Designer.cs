@@ -61,11 +61,101 @@ namespace Comandos.Comandos.Modulo8 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to idContacto.
+        /// </summary>
+        internal static string AtributoAcuerdoContacto {
+            get {
+                return ResourceManager.GetString("AtributoAcuerdoContacto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to idUsuario.
+        /// </summary>
+        internal static string AtributoAcuerdoUsuario {
+            get {
+                return ResourceManager.GetString("AtributoAcuerdoUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to con_id.
+        /// </summary>
+        internal static string AtributoContacto {
+            get {
+                return ResourceManager.GetString("AtributoContacto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to usu_id.
+        /// </summary>
+        internal static string AtributoUsuario {
+            get {
+                return ResourceManager.GetString("AtributoUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BaseMinuta.tex.
         /// </summary>
         internal static string BaseMinuta {
             get {
                 return ResourceManager.GetString("BaseMinuta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_00_001.
+        /// </summary>
+        internal static string Codigo {
+            get {
+                return ResourceManager.GetString("Codigo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_08_05.
+        /// </summary>
+        internal static string Codigo_ExcepcionAtributo {
+            get {
+                return ResourceManager.GetString("Codigo_ExcepcionAtributo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_08_03.
+        /// </summary>
+        internal static string Codigo_ExcepcionGeneral {
+            get {
+                return ResourceManager.GetString("Codigo_ExcepcionGeneral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_08_01.
+        /// </summary>
+        internal static string Codigo_ExcepcionNullReference {
+            get {
+                return ResourceManager.GetString("Codigo_ExcepcionNullReference", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_08_04.
+        /// </summary>
+        internal static string Codigo_ExcepcionParametro {
+            get {
+                return ResourceManager.GetString("Codigo_ExcepcionParametro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_08_02.
+        /// </summary>
+        internal static string Codigo_ExcepcionSql {
+            get {
+                return ResourceManager.GetString("Codigo_ExcepcionSql", resourceCulture);
             }
         }
         
@@ -88,6 +178,60 @@ namespace Comandos.Comandos.Modulo8 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error con la Conexion en la BaseDeDatosTotem, no se pudo abrir la conexion.
+        /// </summary>
+        internal static string Mensaje {
+            get {
+                return ResourceManager.GetString("Mensaje", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error uno de los parametros no existe en el procedimiento ejecutado.
+        /// </summary>
+        internal static string Mensaje__ExcepcionParametro {
+            get {
+                return ResourceManager.GetString("Mensaje__ExcepcionParametro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error uno de los atributos no existe en el procedimiento ejecutado.
+        /// </summary>
+        internal static string Mensaje_ExcepcionAtributo {
+            get {
+                return ResourceManager.GetString("Mensaje_ExcepcionAtributo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error se ha producido una excepcion.
+        /// </summary>
+        internal static string Mensaje_ExcepcionGeneral {
+            get {
+                return ResourceManager.GetString("Mensaje_ExcepcionGeneral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error existe una referencia nula.
+        /// </summary>
+        internal static string Mensaje_ExcepcionNullReference {
+            get {
+                return ResourceManager.GetString("Mensaje_ExcepcionNullReference", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error existe un conflicto con la conexión a la base de datos.
+        /// </summary>
+        internal static string Mensaje_ExcepcionSql {
+            get {
+                return ResourceManager.GetString("Mensaje_ExcepcionSql", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Minuta.tex.
         /// </summary>
         internal static string Minuta {
@@ -97,11 +241,128 @@ namespace Comandos.Comandos.Modulo8 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to @acu_id.
+        /// </summary>
+        internal static string ParametroIDAcuerdo {
+            get {
+                return ResourceManager.GetString("ParametroIDAcuerdo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @con_id.
+        /// </summary>
+        internal static string ParametroIdContacto {
+            get {
+                return ResourceManager.GetString("ParametroIdContacto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @min_id.
+        /// </summary>
+        internal static string ParametroIDMinuta {
+            get {
+                return ResourceManager.GetString("ParametroIDMinuta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @pro_id.
+        /// </summary>
+        internal static string ParametroIdProyecto {
+            get {
+                return ResourceManager.GetString("ParametroIdProyecto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @usu_id.
+        /// </summary>
+        internal static string ParametroIdUsuario {
+            get {
+                return ResourceManager.GetString("ParametroIdUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to -output-directory .
         /// </summary>
         internal static string ParametroLatex {
             get {
                 return ResourceManager.GetString("ParametroLatex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procedure_AgregarInvolucradoCliente.
+        /// </summary>
+        internal static string ProcedureAgregarContactoMinuta {
+            get {
+                return ResourceManager.GetString("ProcedureAgregarContactoMinuta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procedure_AgregarInvolucradoUsuario.
+        /// </summary>
+        internal static string ProcedureAgregarUsuarioMinuta {
+            get {
+                return ResourceManager.GetString("ProcedureAgregarUsuarioMinuta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procedure_ConsultarAcuerdoResponsablesContactoMinuta.
+        /// </summary>
+        internal static string ProcedureConsultarContactoAcuerdo {
+            get {
+                return ResourceManager.GetString("ProcedureConsultarContactoAcuerdo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procedure_ConsultarAsistenteContactoMinuta.
+        /// </summary>
+        internal static string ProcedureConsultarContactoMinuta {
+            get {
+                return ResourceManager.GetString("ProcedureConsultarContactoMinuta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procedure_ConsultarAcuerdoResponsablesUsuarioMinuta.
+        /// </summary>
+        internal static string ProcedureConsultarUsuarioAcuerdo {
+            get {
+                return ResourceManager.GetString("ProcedureConsultarUsuarioAcuerdo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procedure_ConsultarAsistenteUsuarioMinuta.
+        /// </summary>
+        internal static string ProcedureConsultarUsuarioMinuta {
+            get {
+                return ResourceManager.GetString("ProcedureConsultarUsuarioMinuta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procedure_ConsultarInvolucradosContactoProyecto.
+        /// </summary>
+        internal static string ProcedureContactoProyecto {
+            get {
+                return ResourceManager.GetString("ProcedureContactoProyecto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procedure_ConsultarInvolucradosUsuarioProyecto.
+        /// </summary>
+        internal static string ProcedureUsuarioProyecto {
+            get {
+                return ResourceManager.GetString("ProcedureUsuarioProyecto", resourceCulture);
             }
         }
     }
