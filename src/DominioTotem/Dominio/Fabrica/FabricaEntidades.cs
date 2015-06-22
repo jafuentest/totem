@@ -209,15 +209,26 @@ namespace Dominio.Fabrica
         #endregion
 
         #region Modulo 8
-
+        /// <summary>
+        /// Metodo que permite instanciar Minuta 
+        /// </summary>
+        /// <returns>La minuta vacia</returns>
         public Entidad ObtenerMinuta()
         {
             return new Entidades.Modulo8.Minuta();
         }
+        /// <summary>
+        /// Metodo que permite instanciar Acuerdo 
+        /// </summary>
+        /// <returns>El acuerdo vacio</returns>
         public Entidad ObtenerAcuerdo()
         {
             return new Entidades.Modulo8.Acuerdo();
         }
+        /// <summary>
+        /// Metodo que permite instanciar Punto 
+        /// </summary>
+        /// <returns>El punto vacio</returns>
         public Entidad ObtenerPunto()
         {
             return new Entidades.Modulo8.Punto();
