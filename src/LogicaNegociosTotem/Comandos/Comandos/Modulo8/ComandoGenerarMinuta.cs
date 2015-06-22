@@ -25,9 +25,7 @@ namespace Comandos.Comandos.Modulo8
                 {
                     switch (linea)
                     {
-                        case ("titulo"):
-                            minuta.WriteLine("Minuta");
-                            break;
+
                         case "fecha":
                             minuta.WriteLine(laMinuta.Fecha);
                             break;
@@ -35,55 +33,47 @@ namespace Comandos.Comandos.Modulo8
                             minuta.WriteLine(laMinuta.Fecha);
                             break;
 
-                        /*case "codigo":
-                            ers.WriteLine(proyecto.Codigo);
+                        case "motivo":
+                            minuta.WriteLine(laMinuta.Motivo);
                             break;
 
-                        case "nombre":
-                            ers.WriteLine(proyecto.Nombre);
+                        case "puntos":
+                            minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.InicioTabularPuntos);
+                            minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.hline);
+                            minuta.WriteLine(RecursosComandosModulo8.Barras + 
+                                RecursosComandosModulo8.Titulo +" "+
+                                RecursosComandosModulo8.Ampersan+ 
+                                RecursosComandosModulo8.Barras + 
+                                RecursosComandosModulo8.Desarrollo+" "+ 
+                                RecursosComandosModulo8.Barras + 
+                                RecursosComandosModulo8.Barras);
+                            minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.hline);
+                            foreach (Punto punto in laMinuta.ListaPunto)
+                            {
+                                minuta.WriteLine(punto.Titulo + RecursosComandosModulo8.Ampersan + punto.Desarrollo + " " + 
+                                    RecursosComandosModulo8.Barras + RecursosComandosModulo8.Barras);
+                                minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.hline);
+                            }
+                            minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.FinTabular);
                             break;
 
-                        case "descripcion":
-                            ers.WriteLine(proyecto.Descripcion);
+                        case "observaciones":
+                            minuta.WriteLine(laMinuta.Observaciones);
                             break;
 
-                        case "precio":
-                            ers.WriteLine(proyecto.Costo);
-                            break;
-                        case "empresa":
-                            ers.WriteLine("Modulo 2 Falta");
-                            Console.WriteLine("\\" + "item");
-                            break;
-                        case "\\" + "item" + " " + "involucrados":
-                            Console.WriteLine(linea);
-                            foreach (Usuario u in involucrados)
+                        /*case "compromisos":
+
+                            /*minuta.WriteLine("\\" + "begin{tabular}{| p{7cm} | p{7cm} |}");
+                            minuta.WriteLine("\\" + "hline");
+                            minuta.WriteLine("\\" + "bf Titulo & " + "\\" + "bf Desarrollo " + " \\" + "\\");
+                            minuta.WriteLine("\\" + "hline");
+                            foreach (Acuerdo a in laMinuta.ListaAcuerdo)
                             {
-                                ers.WriteLine("\\" + "item" + " " + "Nombre:" + " " + u.nombre + " " + "Cargo:" + " " + u.cargo);
+                                a.
+                                minuta.WriteLine(punto.Titulo + "&" + punto.Desarrollo + " " + "\\" + "\\");
+                                minuta.WriteLine("\\" + "hline");
                             }
-                            break;
-                        case "Rf":
-                            ers.WriteLine("\\" + "begin{tabular}{| l | p{7cm} | r |}");
-                            ers.WriteLine("\\" + "hline");
-                            ers.WriteLine("\\" + "bf ID & " + "\\" + "bf Requerimiento &" + " \\" + "bf Prioridad " + "\\" + "\\");
-                            ers.WriteLine("\\" + "hline");
-                            foreach (Requerimiento rf in reqFuncionales)
-                            {
-                                ers.WriteLine("ModuloWolf" + "&" + rf.Descripcion + "&" + rf.Prioridad + " " + "\\" + "\\");
-                                ers.WriteLine("\\" + "hline");
-                            }
-                            ers.WriteLine("\\" + "end{tabular}");
-                            break;
-                        case "Rnf":
-                            ers.WriteLine("\\" + "begin{tabular}{| l | p{7cm} | r |}");
-                            ers.WriteLine("\\" + "hline");
-                            ers.WriteLine("\\" + "bf ID & " + "\\" + "bf Requerimiento &" + " \\" + "bf Prioridad " + "\\" + "\\");
-                            ers.WriteLine("\\" + "hline");
-                            foreach (Requerimiento rnf in reqNoFuncionales)
-                            {
-                                ers.WriteLine("ModuloWolf" + "&" + rnf.Descripcion + "&" + rnf.Prioridad + " " + "\\" + "\\");
-                                ers.WriteLine("\\" + "hline");
-                            }
-                            ers.WriteLine("\\" + "end{tabular}");
+                            minuta.WriteLine("\\" + "end{tabular}");
                             break;*/
                        
                         default:

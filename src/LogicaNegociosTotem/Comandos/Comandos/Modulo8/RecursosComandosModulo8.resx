@@ -228,4 +228,40 @@
   <data name="ProcedureUsuarioProyecto" xml:space="preserve">
     <value>Procedure_ConsultarInvolucradosUsuarioProyecto</value>
   </data>
+  <data name="Ampersan" xml:space="preserve">
+    <value>&amp;</value>
+  </data>
+  <data name="Barras" xml:space="preserve">
+    <value>\\</value>
+  </data>
+  <data name="Desarrollo" xml:space="preserve">
+    <value>bf Desarrollo</value>
+  </data>
+  <data name="FinTabular" xml:space="preserve">
+    <value>end{tabular}</value>
+  </data>
+  <data name="hline" xml:space="preserve">
+    <value>hline</value>
+  </data>
+  <data name="InicioTabularPuntos" xml:space="preserve">
+    <value>begin{tabular}{| p{7cm} | p{7cm} |}</value>
+  </data>
+  <data name="ParametroFecha" xml:space="preserve">
+    <value>fecha</value>
+  </data>
+  <data name="ParametroHora" xml:space="preserve">
+    <value>hora</value>
+  </data>
+  <data name="ParametroMotivo" xml:space="preserve">
+    <value>motivo</value>
+  </data>
+  <data name="ParametroPuntos" xml:space="preserve">
+    <value>puntos</value>
+  </data>
+  <data name="ParametroTitulo" xml:space="preserve">
+    <value>titulo</value>
+  </data>
+  <data name="Titulo" xml:space="preserve">
+    <value>bf Titulo</value>
+  </data>
 </root>

@@ -61,6 +61,15 @@ namespace Comandos.Comandos.Modulo8 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;.
+        /// </summary>
+        internal static string Ampersan {
+            get {
+                return ResourceManager.GetString("Ampersan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to idContacto.
         /// </summary>
         internal static string AtributoAcuerdoContacto {
@@ -93,6 +102,15 @@ namespace Comandos.Comandos.Modulo8 {
         internal static string AtributoUsuario {
             get {
                 return ResourceManager.GetString("AtributoUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to \\.
+        /// </summary>
+        internal static string Barras {
+            get {
+                return ResourceManager.GetString("Barras", resourceCulture);
             }
         }
         
@@ -169,11 +187,47 @@ namespace Comandos.Comandos.Modulo8 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to bf Desarrollo.
+        /// </summary>
+        internal static string Desarrollo {
+            get {
+                return ResourceManager.GetString("Desarrollo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ../Interfaz/Vista/Modulo8/docs .
         /// </summary>
         internal static string Directorio {
             get {
                 return ResourceManager.GetString("Directorio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to end{tabular}.
+        /// </summary>
+        internal static string FinTabular {
+            get {
+                return ResourceManager.GetString("FinTabular", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to hline.
+        /// </summary>
+        internal static string hline {
+            get {
+                return ResourceManager.GetString("hline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to begin{tabular}{| p{7cm} | p{7cm} |}.
+        /// </summary>
+        internal static string InicioTabularPuntos {
+            get {
+                return ResourceManager.GetString("InicioTabularPuntos", resourceCulture);
             }
         }
         
@@ -241,6 +295,24 @@ namespace Comandos.Comandos.Modulo8 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to fecha.
+        /// </summary>
+        internal static string ParametroFecha {
+            get {
+                return ResourceManager.GetString("ParametroFecha", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to hora.
+        /// </summary>
+        internal static string ParametroHora {
+            get {
+                return ResourceManager.GetString("ParametroHora", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @acu_id.
         /// </summary>
         internal static string ParametroIDAcuerdo {
@@ -291,6 +363,33 @@ namespace Comandos.Comandos.Modulo8 {
         internal static string ParametroLatex {
             get {
                 return ResourceManager.GetString("ParametroLatex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to motivo.
+        /// </summary>
+        internal static string ParametroMotivo {
+            get {
+                return ResourceManager.GetString("ParametroMotivo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to puntos.
+        /// </summary>
+        internal static string ParametroPuntos {
+            get {
+                return ResourceManager.GetString("ParametroPuntos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to titulo.
+        /// </summary>
+        internal static string ParametroTitulo {
+            get {
+                return ResourceManager.GetString("ParametroTitulo", resourceCulture);
             }
         }
         
@@ -363,6 +462,15 @@ namespace Comandos.Comandos.Modulo8 {
         internal static string ProcedureUsuarioProyecto {
             get {
                 return ResourceManager.GetString("ProcedureUsuarioProyecto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to bf Titulo.
+        /// </summary>
+        internal static string Titulo {
+            get {
+                return ResourceManager.GetString("Titulo", resourceCulture);
             }
         }
     }
