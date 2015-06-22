@@ -51,9 +51,22 @@ namespace DAO.Fabrica
             #endregion
 
             #region Modulo 8
-                public abstract IntefazDAO.Modulo8.IDaoAcuerdo ObtenerDAOAcuerto();
-                public abstract IntefazDAO.Modulo8.IDaoMinuta ObtenerDAOMinuta();
-                public abstract IntefazDAO.Modulo8.IDaoPunto ObtenerDAOPunto();
+            /// Metodo para crear un DaoAcuerdo
+            /// </summary>
+            /// <returns>La instancia del DaoAcuerdo </returns>
+            public abstract IntefazDAO.Modulo8.IDaoAcuerdo ObtenerDAOAcuerdo();
+            /// Metodo para crear un DaoMinuta
+            /// </summary>
+            /// <returns>La instancia del DaoMinuta </returns>
+            public abstract IntefazDAO.Modulo8.IDaoMinuta ObtenerDAOMinuta();
+            /// Metodo para crear un DaoPunto
+            /// </summary>
+            /// <returns>La instancia del DaoPunto </returns>
+            public abstract IntefazDAO.Modulo8.IDaoPunto ObtenerDAOPunto();
+            /// Metodo para crear un DaoInvolucradosMinuta
+            /// </summary>
+            /// <returns>La instancia del DaoInvolucradosMinuta </returns>
+            public abstract IntefazDAO.Modulo8.IDaoInvolucradosMinuta ObtenerDAOInvolucradosMinuta();
             #endregion
 
         #endregion

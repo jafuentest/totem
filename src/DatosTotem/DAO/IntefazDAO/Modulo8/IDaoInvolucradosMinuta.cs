@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DAO.IntefazDAO.Modulo8
 {
-    interface IDaoInvolucradosMinuta
+    public interface IDaoInvolucradosMinuta
     {
 
 
