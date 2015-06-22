@@ -133,6 +133,7 @@
     <Content Include="Modulo6\Modificar.aspx" />
     <Content Include="Modulo6\ReporteActores.aspx" />
     <Content Include="Modulo7\AgregarUsuario.aspx" />
+    <Content Include="Modulo7\DetalleUsuario.aspx" />
     <Content Include="Modulo7\ListarUsuarios.aspx" />
     <Content Include="Modulo8\ConsultarMinuta.aspx" />
     <Content Include="Modulo8\CrearMinuta.aspx" />
@@ -361,6 +362,13 @@
     </Compile>
     <Compile Include="Modulo7\AgregarUsuario.aspx.designer.cs">
       <DependentUpon>AgregarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo7\DetalleUsuario.aspx.cs">
+      <DependentUpon>DetalleUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo7\DetalleUsuario.aspx.designer.cs">
+      <DependentUpon>DetalleUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulo7\ListarUsuarios.aspx.cs">
       <DependentUpon>ListarUsuarios.aspx</DependentUpon>
