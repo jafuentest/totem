@@ -150,6 +150,20 @@ namespace Vista.Modulo2
                 contacto_nombreyap.InnerText = value;
             }
         }
+        public string alertaClase
+        {
+            set { alert.Attributes["class"] = value; }
+        }
+
+        public string alertaRol
+        {
+            set { alert.Attributes["role"] = value; }
+        }
+
+        public string alerta
+        {
+            set { alert.InnerHtml = value; }
+        }
         #endregion
 
         protected void comboPais_SelectedIndexChanged(object sender, EventArgs e)

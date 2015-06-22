@@ -94,6 +94,20 @@ namespace Vista.Modulo2
                 telefonoCliente.Value = value;
             }
         }
+        public string alertaClase
+        {
+            set { alert.Attributes["class"] = value; }
+        }
+
+        public string alertaRol
+        {
+            set { alert.Attributes["role"] = value; }
+        }
+
+        public string alerta
+        {
+            set { alert.InnerHtml = value; }
+        }
         #endregion
     }
 }

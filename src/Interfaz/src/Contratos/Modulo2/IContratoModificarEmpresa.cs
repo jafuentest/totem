@@ -19,5 +19,8 @@ namespace Contratos.Modulo2
         string laTabla { get; set; }
         string contacto_id { get; set; }
         string contacto_nombreyap { get; set; }
+        string alertaClase { set; }
+        string alertaRol { set; }
+        string alerta { set; }
     }
 }

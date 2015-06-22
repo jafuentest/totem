@@ -20,7 +20,10 @@ namespace Vista.Modulo2
             this.Master.idModulo = "2";
             this.Master.presentador.CargarMenuLateral();
             if (!IsPostBack) 
+            { 
                 presentador.consultarClientes();
+                presentador.ObtenerVariablesURL();
+            }
            
         }
         #region Contrato
@@ -35,7 +38,20 @@ namespace Vista.Modulo2
                 laTabla.Text = value;
             }
         }
+        public string alertaClase
+        {
+            set { alert.Attributes["class"] = value; }
+        }
 
+        public string alertaRol
+        {
+            set { alert.Attributes["role"] = value; }
+        }
+
+        public string alerta
+        {
+            set { alert.InnerHtml = value; }
+        }
         #endregion
     }
 }

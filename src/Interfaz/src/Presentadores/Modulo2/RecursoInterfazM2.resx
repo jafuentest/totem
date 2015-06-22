@@ -141,6 +141,45 @@
   <data name="AbrirEtiqueta_tr" xml:space="preserve">
     <value>&lt;tr&gt;</value>
   </data>
+  <data name="Alerta_Clase_Error" xml:space="preserve">
+    <value>alert alert-danger alert-dismissible</value>
+    <comment>Clase de Error para la alerta de la interfaz</comment>
+  </data>
+  <data name="Alerta_Clase_Exito" xml:space="preserve">
+    <value>alert alert-success alert-dismissible</value>
+    <comment>Clase de Exito para la alerta de la interfaz</comment>
+  </data>
+  <data name="Alerta_Clase_Info" xml:space="preserve">
+    <value>alert alert-info alert-dismissible</value>
+    <comment>Clase de Info para la alerta de la interfaz</comment>
+  </data>
+  <data name="Alerta_Cliente_Agregado" xml:space="preserve">
+    <value>Cliente agregado exitosamente</value>
+  </data>
+  <data name="Alerta_Error_Alfabeticos" xml:space="preserve">
+    <value>Error en campos que solo admiten letras</value>
+  </data>
+  <data name="Alerta_Error_CamposVacios" xml:space="preserve">
+    <value>Todos los campos son obligatorios</value>
+  </data>
+  <data name="Alerta_Error_Correo" xml:space="preserve">
+    <value>Error en el correo electrónico</value>
+  </data>
+  <data name="Alerta_Error_Numericos" xml:space="preserve">
+    <value>Error en los campos numéricos</value>
+  </data>
+  <data name="Alerta_Html" xml:space="preserve">
+    <value>&lt;div&gt;&lt;button type="button" class="close" data-dismiss="alert" aria-label="Close"&gt;&lt;span aria-hidden="true"&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;</value>
+    <comment>Html necesario para la muestra de la alerta</comment>
+  </data>
+  <data name="Alerta_Html_Final" xml:space="preserve">
+    <value>&lt;/div&gt;</value>
+    <comment>Final del html</comment>
+  </data>
+  <data name="Alerta_Rol" xml:space="preserve">
+    <value>alert</value>
+    <comment>Rol que hace la alerta</comment>
+  </data>
   <data name="CerrarBoton" xml:space="preserve">
     <value>"&gt;&lt;/a&gt;</value>
   </data>
@@ -149,5 +188,12 @@
   </data>
   <data name="CerrarEtiqueta_tr" xml:space="preserve">
     <value>&lt;/tr&gt;</value>
+  </data>
+  <data name="Codigo_Exito_Agregar" xml:space="preserve">
+    <value>?success=agregar</value>
+    <comment>Codigo de exito para el redireccionamiento</comment>
+  </data>
+  <data name="ListarClientes" xml:space="preserve">
+    <value>/Modulo2/ListarClientes.aspx</value>
   </data>
 </root>

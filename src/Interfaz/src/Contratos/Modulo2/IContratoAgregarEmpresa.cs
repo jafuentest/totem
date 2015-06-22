@@ -22,6 +22,8 @@ namespace Contratos.Modulo2
         DropDownList comboCargo { get; set; }
         string codTelefono { get; set; }
         string telefonoCliente { get; set; }
-
+        string alertaClase { set; }
+        string alertaRol { set; }
+        string alerta { set; }
     }
 }

@@ -20,5 +20,8 @@ namespace Contratos.Modulo2
         string codTelefono{ get; set; }
         
         string telefonoContacto{ get; set; }
+        string alertaClase { set; }
+        string alertaRol { set; }
+        string alerta { set; }
    } 
 }

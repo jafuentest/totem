@@ -133,6 +133,105 @@ namespace Presentadores.Modulo2 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to alert alert-danger alert-dismissible.
+        /// </summary>
+        public static string Alerta_Clase_Error {
+            get {
+                return ResourceManager.GetString("Alerta_Clase_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to alert alert-success alert-dismissible.
+        /// </summary>
+        public static string Alerta_Clase_Exito {
+            get {
+                return ResourceManager.GetString("Alerta_Clase_Exito", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to alert alert-info alert-dismissible.
+        /// </summary>
+        public static string Alerta_Clase_Info {
+            get {
+                return ResourceManager.GetString("Alerta_Clase_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cliente agregado exitosamente.
+        /// </summary>
+        public static string Alerta_Cliente_Agregado {
+            get {
+                return ResourceManager.GetString("Alerta_Cliente_Agregado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error en campos que solo admiten letras.
+        /// </summary>
+        public static string Alerta_Error_Alfabeticos {
+            get {
+                return ResourceManager.GetString("Alerta_Error_Alfabeticos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Todos los campos son obligatorios.
+        /// </summary>
+        public static string Alerta_Error_CamposVacios {
+            get {
+                return ResourceManager.GetString("Alerta_Error_CamposVacios", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error en el correo electrónico.
+        /// </summary>
+        public static string Alerta_Error_Correo {
+            get {
+                return ResourceManager.GetString("Alerta_Error_Correo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error en los campos numéricos.
+        /// </summary>
+        public static string Alerta_Error_Numericos {
+            get {
+                return ResourceManager.GetString("Alerta_Error_Numericos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;div&gt;&lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot; aria-label=&quot;Close&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;.
+        /// </summary>
+        public static string Alerta_Html {
+            get {
+                return ResourceManager.GetString("Alerta_Html", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;/div&gt;.
+        /// </summary>
+        public static string Alerta_Html_Final {
+            get {
+                return ResourceManager.GetString("Alerta_Html_Final", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to alert.
+        /// </summary>
+        public static string Alerta_Rol {
+            get {
+                return ResourceManager.GetString("Alerta_Rol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &quot;&gt;&lt;/a&gt;.
         /// </summary>
         public static string CerrarBoton {
@@ -156,6 +255,24 @@ namespace Presentadores.Modulo2 {
         public static string CerrarEtiqueta_tr {
             get {
                 return ResourceManager.GetString("CerrarEtiqueta_tr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ?success=agregar.
+        /// </summary>
+        public static string Codigo_Exito_Agregar {
+            get {
+                return ResourceManager.GetString("Codigo_Exito_Agregar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /Modulo2/ListarClientes.aspx.
+        /// </summary>
+        public static string ListarClientes {
+            get {
+                return ResourceManager.GetString("ListarClientes", resourceCulture);
             }
         }
     }

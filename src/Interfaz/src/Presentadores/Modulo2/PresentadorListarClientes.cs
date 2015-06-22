@@ -8,6 +8,7 @@ using Comandos;
 using Comandos.Fabrica;
 using Dominio.Entidades.Modulo2;
 using Dominio.Fabrica;
+using System.Web;
 
 namespace Presentadores.Modulo2
 {
@@ -50,6 +51,28 @@ namespace Presentadores.Modulo2
             catch (Exception ex)
             {
 
+            }
+        }
+
+        public void ObtenerVariablesURL()
+        {
+            String variable = HttpContext.Current.Request.QueryString["error"];
+            if (variable != null && variable.Equals("input_malicioso"))
+            {
+                vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Error;
+                vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                vista.alerta = RecursoInterfazM2.Alerta_Html +
+                    RecursosGeneralPresentadores.Mensaje_Error_InputInvalido +
+                    RecursoInterfazM2.Alerta_Html_Final;
+            }
+            variable = HttpContext.Current.Request.QueryString["success"];
+            if (variable != null && variable.Equals("agregar"))
+            {
+                vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Exito;
+                vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                vista.alerta = RecursoInterfazM2.Alerta_Html +
+                    RecursoInterfazM2.Alerta_Cliente_Agregado +
+                    RecursoInterfazM2.Alerta_Html_Final;
             }
         }
     }
