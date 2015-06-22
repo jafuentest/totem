@@ -19,7 +19,16 @@ namespace Vista.Modulo2
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Master.idModulo = "2";
-            this.Master.presentador.CargarMenuLateral();
+            String edicionEmpresa = Request.QueryString["id"];
+
+            if (!IsPostBack)
+            {
+                this.Master.presentador.CargarMenuLateral();
+                presentador.cargarDatosEmpresa(edicionEmpresa);
+                presentador.llenarComboPais();
+            }
+
+
         }
         #region Contrato
         string Contratos.Modulo2.IContratoModificarEmpresa.rifEmpresa
@@ -54,7 +63,7 @@ namespace Vista.Modulo2
             }
             set
             {
-                comboPais= value;
+                comboPais = value;
             }
         }
 
@@ -142,5 +151,22 @@ namespace Vista.Modulo2
             }
         }
         #endregion
+
+        protected void comboPais_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            presentador.llenarComboEstadosXPais(comboPais.SelectedValue);
+        }
+
+        protected void comboEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            presentador.llenarComboCiudadXEstado(comboEstado.SelectedValue);
+        }
+        protected void EditarEmpresa_Click(object sender, EventArgs e)
+        {
+            String edicionEmpresa = Request.QueryString["id"];
+            if (presentador.modificarEmpresa(edicionEmpresa))
+                Response.Redirect("../Modulo2/ListarEmpresas.aspx?success-eliminacion=true");
+
+        }
     }
 }

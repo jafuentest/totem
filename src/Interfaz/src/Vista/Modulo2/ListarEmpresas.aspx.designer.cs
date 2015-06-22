@@ -13,6 +13,15 @@ namespace Vista.Modulo2 {
     public partial class ListarEmpresas {
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
         /// alert control.
         /// </summary>
         /// <remarks>
@@ -38,24 +47,6 @@ namespace Vista.Modulo2 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal laTabla;
-        
-        /// <summary>
-        /// empresa_rif control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl empresa_rif;
-        
-        /// <summary>
-        /// empresa_nombre control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl empresa_nombre;
         
         /// <summary>
         /// Master property.

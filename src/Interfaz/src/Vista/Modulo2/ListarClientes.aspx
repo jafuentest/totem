@@ -44,29 +44,7 @@
                     <asp:Literal runat="server" ID="laTabla"></asp:Literal>
                 </tbody>
             </table>
-            <div id="modal-delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" >Eliminación de cliente</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <p>Seguro que desea eliminar al cliente natutal con Identificador # </p>
-                                    <p id="cliente_cedula" runat="server"></p>
-                                    <p id="cliente_nombreyap" runat="server"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                            <button id="btnEliminar" runat="server" type="button" class="btn btn-primary" onserverclick = "EliminarClienteNat">Eliminar</button>
-                        </div>
-                    </div> <!-- /.modal-content -->
-                </div> <!-- /.modal-dialog -->
-            </div> <!-- /.modal -->
+            
         </div> <!-- /.table-responsive -->
     </div> <!-- /.col-10 -->
         </form>

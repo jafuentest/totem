@@ -55,20 +55,20 @@
                 <div class="form-group">
                             <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="dropdown" runat="server" id="contenedorComboPais">
-                                <asp:DropDownList ID="comboPais"  class="btn btn-default dropdown-toggle" runat="server"  AutoPostBack="true"></asp:DropDownList>
+                                <asp:DropDownList ID="comboPais"  class="btn btn-default dropdown-toggle" runat="server"  AutoPostBack="true" OnSelectedIndexChanged="comboPais_SelectedIndexChanged"></asp:DropDownList>
                                 </div>
                             </div>
 
                             <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="dropdown" runat="server" id="contenedorComboEstado">
-                                <asp:DropDownList ID="comboEstado"  class="btn btn-default dropdown-toggle" runat="server" AutoPostBack="true"></asp:DropDownList>
+                                <asp:DropDownList ID="comboEstado"  class="btn btn-default dropdown-toggle" runat="server" AutoPostBack="true" OnSelectedIndexChanged="comboEstado_SelectedIndexChanged"></asp:DropDownList>
                                 </div>
                             </div>
                      </div>
                      <div class="form-group">
                             <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
                                 <div class="dropdown" runat="server" id="Div1">
-                                <asp:DropDownList ID="comboCiudad"  class="btn btn-default dropdown-toggle" runat="server"  AutoPostBack="true"></asp:DropDownList>
+                                <asp:DropDownList ID="comboCiudad"  class="btn btn-default dropdown-toggle" runat="server"></asp:DropDownList>
                                 </div>
                             </div>
                      </div>
@@ -79,7 +79,7 @@
                 </div>
                 <div class="form-group">
                     <div id="div_cpostal" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="codigopostalEmpresa" runat="server" name="codigopostal" type="text" class="form-control" placeholder="Código postal" maxlength="4" readonly="true" />
+                        <input id="codigopostalEmpresa" runat="server" name="codigopostal" type="text" class="form-control" placeholder="Código postal" maxlength="4" />
                     </div>
                 </div>
                 <h2>Contactos</h2>
@@ -124,15 +124,13 @@
             </div> <!-- /.modal -->
         </div> <!-- /.table-responsive -->
     
-
-
-
                 <!--Botones-->
                 <div class="form-group">
                     <div id="div_botones" class="col-sm-12 col-md-12 col-lg-12">
-                        <button id="botonEditar" runat="server" class="btn btn-primary" onserverclick="EditarEmpresa_Click" >Editar</button>
+                        <asp:Button id="botonEditar" runat="server" class="btn btn-primary" onclick="EditarEmpresa_Click" Text="Editar" type="submit"></asp:Button>
                         <a class="btn btn-default" href="ListarEmpresas.aspx">Cancelar</a>
                     </div>
+                </div>
                 </div>
             </form>
             </div>

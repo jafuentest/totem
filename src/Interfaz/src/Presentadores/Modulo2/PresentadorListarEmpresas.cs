@@ -8,6 +8,7 @@ using Comandos.Fabrica;
 using Comandos.Comandos.Modulo2;
 using Dominio;
 using Dominio.Entidades.Modulo2;
+using Dominio.Fabrica;
 
 namespace Presentadores.Modulo2
 {
@@ -38,8 +39,6 @@ namespace Presentadores.Modulo2
                     vista.laTabla += RecursoInterfazM2.AbrirBotonDetalleEmpresa + elCliente.Id +
                         RecursoInterfazM2.CerrarBoton;
                     vista.laTabla += RecursoInterfazM2.AbrirBotonModificarEmpresa + elCliente.Id +
-                        RecursoInterfazM2.CerrarBoton;
-                    vista.laTabla += RecursoInterfazM2.AbrirBotonEliminarCliente + elCliente.Id +
                         RecursoInterfazM2.CerrarBoton;
                     vista.laTabla += RecursoInterfazM2.CerrarEtiqueta_td;
                     vista.laTabla += RecursoInterfazM2.CerrarEtiqueta_tr;

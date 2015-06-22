@@ -35,16 +35,16 @@ namespace Presentadores.Modulo2
             vista.cedulaCliente = elCliente.Nat_Cedula;
             vista.nombreCliente = elCliente.Nat_Nombre;
             vista.apellidoCliente = elCliente.Nat_Apellido;
-            vista.codigoPostalCliente = elCliente.Nat_Direccion.CodigoPostal;
             vista.codTelefono = elCliente.Nat_Telefono.Codigo;
             vista.telefonoCliente = elCliente.Nat_Telefono.Numero;
             vista.correoCliente = elCliente.Nat_Correo;
-            vista.direccionCliente = elCliente.Nat_Direccion.LaDireccion;
             vista.comboPais.SelectedValue = elCliente.Nat_Direccion.ElPais;
             llenarComboEstadosXPais(elCliente.Nat_Direccion.ElPais);
             vista.comboEstado.SelectedValue = elCliente.Nat_Direccion.ElEstado;
             llenarComboCiudadXEstado(elCliente.Nat_Direccion.ElEstado);
             vista.comboCiudad.SelectedValue = elCliente.Nat_Direccion.LaCiudad;
+            vista.direccionCliente = elCliente.Nat_Direccion.LaDireccion;
+            vista.codigoPostalCliente = elCliente.Nat_Direccion.CodigoPostal;
         }
 
         public void llenarComboPais()
@@ -96,6 +96,17 @@ namespace Presentadores.Modulo2
             vista.comboEstado.DataValueField = "key";
             vista.comboEstado.DataBind();
             vista.comboEstado.Enabled = true;
+
+            options = new Dictionary<string, string>();
+            options.Add("-1", "Selecciona una ciudad");
+
+            vista.comboCiudad.DataSource = options;
+            vista.comboCiudad.DataTextField = "value";
+            vista.comboCiudad.DataValueField = "key";
+            vista.comboCiudad.DataBind();
+
+            vista.direccionCliente = "";
+            vista.codigoPostalCliente = "";
         }
 
         public void llenarComboCiudadXEstado(String elEstado)
@@ -121,6 +132,10 @@ namespace Presentadores.Modulo2
             vista.comboCiudad.DataValueField = "key";
             vista.comboCiudad.DataBind();
             vista.comboCiudad.Enabled = true;
+
+            vista.direccionCliente = "";
+            vista.codigoPostalCliente = "";
+
         }
 
         public bool modificarCliente(String elID)

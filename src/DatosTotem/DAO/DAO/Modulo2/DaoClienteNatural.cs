@@ -91,7 +91,10 @@ namespace DAO.DAO.Modulo2
             elParametro = new Parametro(RecursoBDModulo2.ParamNumeroTelef, SqlDbType.VarChar,
                 elCliente.Nat_Telefono.Numero, false);
             parametros.Add(elParametro);
-            
+
+            elParametro = new Parametro(RecursoBDModulo2.ParamCiudad, SqlDbType.VarChar,
+                elCliente.Nat_Direccion.LaCiudad, false);
+            parametros.Add(elParametro);
             elParametro = new Parametro(RecursoBDModulo2.ParamDireccion, SqlDbType.VarChar,
                 elCliente.Nat_Direccion.LaDireccion, false);
             parametros.Add(elParametro);

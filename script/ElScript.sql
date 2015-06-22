@@ -1289,32 +1289,47 @@ GO
 ------------------------PROCEDURE MODIFICAR CLIENTE_JURIDICO----------------------- 
 CREATE PROCEDURE M2_ModificarClienteJur	 
 	--Datos de la empresa
-	@cj_id		  [int], 
+	@idClienteJur [int], 
 	@cj_rif       [VARCHAR] (20),
     @cj_nombre    [VARCHAR] (60),
     @cj_logo      [VARCHAR] (60),
 	--Direccion de la empresa
+	@ciudad         [VARCHAR] (100),
 	@direccion    [VARCHAR] (100),
-	@codigo_post  [int]
+	@codigo_postal  [int]
 AS 
 BEGIN
+	
+	declare @laDireccion as varchar;
+	declare @elCodigoPost as varchar;
 
-	if (@direccion != (select lug_nombre from LUGAR where lug_id = (select LUGAR_lug_id from CLIENTE_JURIDICO where cj_id = @cj_id)))
-		UPDATE LUGAR
-		SET
-			lug_nombre       = @direccion,
-			lug_codigopostal = @codigo_post
-		WHERE
-			lug_id = (select LUGAR_lug_id from CLIENTE_JURIDICO where cj_id = @cj_id);
+	select @laDireccion = lug_nombre, @elCodigoPost = lug_codigopostal
+	from LUGAR
+	where 
+		lug_id = (select LUGAR_lug_id 
+				  from CLIENTE_JURIDICO 
+				  where cj_id = @idClienteJur)
+
+	if (@direccion != @laDireccion or @codigo_postal != @elCodigoPost)
+	UPDATE LUGAR
+	SET
+		lug_nombre = @direccion,
+		lug_codigopostal = @codigo_postal,
+		LUGAR_lug_id = (select lug_id from LUGAR where lug_nombre = @ciudad)
+	WHERE
+		lug_id = (select LUGAR_lug_id 
+				from CLIENTE_JURIDICO 
+				where cj_id = @idClienteJur)
+
 
 	UPDATE CLIENTE_JURIDICO
 	SET 
 		cj_nombre = @cj_nombre,
 		cj_logo   = @cj_logo,
-		cj_rif    = @cj_logo,
+		cj_rif    = @cj_rif,
 		LUGAR_lug_id = (select lug_id from LUGAR where lug_nombre = @direccion)
 	WHERE
-		cj_id = @cj_id;
+		cj_id = @idClienteJur;
 END;
 GO
 ------------------------PROCEDURE SELECCIONAR LISTA DE CLIENTE_JURIDICO----------------------- 
@@ -1469,13 +1484,14 @@ as
 	end;
 go
 --------------------PROCEDURE MODIFICAR CLIENTE_NATURAL--------------
-create procedure M2_ModificarClienteNat
+CREATE procedure M2_ModificarClienteNat
 	@idClienteNat		  [int],
     @cn_cedula    [VARCHAR] (20),
     @cn_nombre    [VARCHAR] (60),
     @cn_apellido  [VARCHAR] (60),
     @cn_correo    [VARCHAR] (60),
 	---direccion del cliente natural
+	@ciudad       [VARCHAR] (60),
     @direccion	  [VARCHAR] (100),
 	@codigo_postal	  [int],
 	---telefono del cliente natural
@@ -1483,28 +1499,41 @@ create procedure M2_ModificarClienteNat
 	@numero_tel [VARCHAR] (20)
 as
 	begin
+	
+		declare @laDireccion as varchar;
+		declare @elCodigoPost as varchar;
 
-		declare @num_direccion as int;
-		select @num_direccion = count(*)
-		from LUGAR where lug_nombre = @direccion and lug_tipo = 'Direccion';
+		select @laDireccion = lug_nombre, @elCodigoPost = lug_codigopostal
+		from LUGAR
+		where 
+			lug_id = (select LUGAR_lug_id 
+						from CLIENTE_NATURAL 
+						where cn_id = @idClienteNat)
 
-		update LUGAR
-		set lug_nombre = @direccion,
-			lug_codigopostal = @codigo_postal
-		where lug_id = (select LUGAR_lug_id from CLIENTE_NATURAL where cn_id = @idClienteNat);
+		if (@direccion != @laDireccion or @codigo_postal != @elCodigoPost)
+		UPDATE LUGAR
+		SET
+			lug_nombre = @direccion,
+			lug_codigopostal = @codigo_postal,
+			LUGAR_lug_id = (select lug_id from LUGAR where lug_nombre = @ciudad)
+		WHERE
+			lug_id = (select LUGAR_lug_id 
+					from CLIENTE_NATURAL 
+					where cn_id = @idClienteNat)
 
 		update CLIENTE_NATURAL
 		set cn_cedula = @cn_cedula,
 			cn_nombre = @cn_nombre,
 			cn_apellido = @cn_apellido,
-			cn_correo = @cn_correo
+			cn_correo = @cn_correo,
+			LUGAR_lug_id = (select lug_id from LUGAR where lug_nombre = @direccion)
 		where cn_id = @idClienteNat;
 
 		update CONTACTO
 		set con_cedula = @cn_cedula,
 			con_nombre = @cn_nombre,
 			con_apellido = @cn_apellido
-		where con_id = @idClienteNat;
+		where CLIENTE_NATURAL_cn_id = @idClienteNat;
 		
 		update TELEFONO
 		set tel_codigo = @codigo_tel,

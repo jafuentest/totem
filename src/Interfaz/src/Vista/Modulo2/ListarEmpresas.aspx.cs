@@ -19,8 +19,11 @@ namespace Vista.Modulo2
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Master.idModulo = "2";
-            this.Master.presentador.CargarMenuLateral();
-            presentador.consultarEmpresas();
+            if (!IsPostBack)
+            {
+                this.Master.presentador.CargarMenuLateral();
+                presentador.consultarEmpresas();
+            }
         }
         #region Contrato
         string Contratos.Modulo2.IContratoListarEmpresas.laTabla
@@ -35,29 +38,6 @@ namespace Vista.Modulo2
             }
         }
 
-        string Contratos.Modulo2.IContratoListarEmpresas.empresa_rif
-        {
-            get
-            {
-                return empresa_rif.InnerText;
-            }
-            set
-            {
-                empresa_rif.InnerText = value;
-            }
-        }
-
-        string Contratos.Modulo2.IContratoListarEmpresas.empresa_nombre
-        {
-            get
-            {
-                return empresa_nombre.InnerText;
-            }
-            set
-            {
-                empresa_nombre.InnerText = value;
-            }
-        }
-        #endregion
+        #endregion+
     }
 }

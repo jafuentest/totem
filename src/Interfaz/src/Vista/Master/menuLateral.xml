@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <menuLateral>
 	<!-- Opciones del menú lateral del Módulo 2 -->
-	<opcion nombre="Listar Clientes Naturales" link="~/Modulo2/ListarClientes.aspx">
+	<opcion nombre="Listar Clientes Naturales" link="/Modulo2/ListarClientes.aspx">
 		<modulo id="2"></modulo>
 	</opcion>
-	<opcion nombre="Agregar Clientes Naturales" link="~/Modulo2/AgregarCliente.aspx">
+	<opcion nombre="Agregar Clientes Naturales" link="/Modulo2/AgregarCliente.aspx">
 		<modulo id="2"></modulo>
 	</opcion>
-	<opcion nombre="Listar Clientes Juridicos" link="~/Modulo2/ListarEmpresas.aspx">
+	<opcion nombre="Listar Clientes Juridicos" link="/Modulo2/ListarEmpresas.aspx">
 		<modulo id="2"></modulo>
 	</opcion>
-	<opcion nombre="Agregar Clientes Juridicos" link="~/Modulo2/AgregarEmpresa.aspx">
+	<opcion nombre="Agregar Clientes Juridicos" link="/Modulo2/AgregarEmpresa.aspx">
 		<modulo id="2"></modulo>
 	</opcion>
 

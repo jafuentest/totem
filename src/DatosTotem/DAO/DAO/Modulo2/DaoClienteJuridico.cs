@@ -78,7 +78,7 @@ namespace DAO.DAO.Modulo2
             ClienteJuridico elCliente = (ClienteJuridico)parametro;
             #region Llenado de parametros
             List<Parametro> parametros = new List<Parametro>();
-            Parametro elParametro = new Parametro(RecursoBDModulo2.ParamJurRif, SqlDbType.VarChar,
+            Parametro elParametro = new Parametro(RecursoBDModulo2.ParamIDClienteJur, SqlDbType.Int,
                 elCliente.Id.ToString(), false);
             parametros.Add(elParametro);
             elParametro = new Parametro(RecursoBDModulo2.ParamJurRif, SqlDbType.VarChar,
@@ -93,6 +93,10 @@ namespace DAO.DAO.Modulo2
             elParametro = new Parametro(RecursoBDModulo2.ParamDireccion, SqlDbType.VarChar,
                 elCliente.Jur_Direccion.LaDireccion, false);
             parametros.Add(elParametro);
+            elParametro = new Parametro(RecursoBDModulo2.ParamCiudad, SqlDbType.VarChar,
+                elCliente.Jur_Direccion.LaCiudad, false);
+            parametros.Add(elParametro);
+
             elParametro = new Parametro(RecursoBDModulo2.ParamCodigoPostal, SqlDbType.Int,
                 elCliente.Jur_Direccion.CodigoPostal, false);
             parametros.Add(elParametro);
