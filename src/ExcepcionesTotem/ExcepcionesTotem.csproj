@@ -67,11 +67,15 @@
     <Compile Include="Modulo1\EmailErradoException.cs" />
     <Compile Include="Modulo1\LoginErradoException.cs" />
     <Compile Include="Modulo1\ErrorEnvioDeCorreoException.cs" />
-    <Compile Include="Modulo2\ClienteInexistenteException.cs" />
+    <Compile Include="Modulo2\CIClienteNatExistenteException.cs" />
     <Compile Include="Modulo2\ClienteDatosException.cs" />
+    <Compile Include="Modulo2\ClienteInexistenteException.cs" />
     <Compile Include="Modulo2\ClienteLogicaException.cs" />
+    <Compile Include="Modulo2\ContactoInexistenteException.cs" />
     <Compile Include="Modulo2\FormatoIncorrectoException.cs" />
+    <Compile Include="Modulo2\IdentificadorExistenteException.cs" />
     <Compile Include="Modulo2\OperacionInvalidaException.cs" />
+    <Compile Include="Modulo2\RifClienteJuridicoExistenteException.cs" />
     <Compile Include="Modulo3\ContactoSinIDException.cs" />
     <Compile Include="Modulo3\InvolucradoRepetidoException.cs" />
     <Compile Include="Modulo3\ListaSinInvolucradosException.cs" />
@@ -128,6 +132,7 @@
       <LastGenOutput>ExcepcionesTotemRecursosGenerales.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

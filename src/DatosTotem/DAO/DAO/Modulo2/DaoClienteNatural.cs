@@ -7,111 +7,242 @@ using Dominio;
 using Dominio.Fabrica;
 using Dominio.Entidades.Modulo2;
 using System.Data;
+using System.Data.SqlClient;
+using ExcepcionesTotem;
+using ExcepcionesTotem.Modulo2;
 
 
 namespace DAO.DAO.Modulo2
 {
     public class DaoClienteNatural : DAO, IntefazDAO.Modulo2.IDaoClienteNatural
     {
-        public bool Agregar(Entidad parametro)
-        {
-            ClienteNatural elCliente = (ClienteNatural)parametro;
-            #region Llenado de arreglo de parametros
-            List<Parametro> parametros = new List<Parametro>();
-            Parametro elParametro = new Parametro(RecursoBDModulo2.ParamCedulaClienteNat, SqlDbType.VarChar,
-                elCliente.Nat_Cedula, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamNombreClienteNat, SqlDbType.VarChar,
-                elCliente.Nat_Nombre, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamApellidoClienteNat, SqlDbType.VarChar,
-                elCliente.Nat_Apellido, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamCorreoClienteNat, SqlDbType.VarChar,
-                elCliente.Nat_Correo, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamCodigoTelef, SqlDbType.VarChar,
-                elCliente.Nat_Telefono.Codigo, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamNumeroTelef, SqlDbType.VarChar,
-                elCliente.Nat_Telefono.Numero, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamPais, SqlDbType.VarChar,
-                elCliente.Nat_Direccion.ElPais, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamEstado, SqlDbType.VarChar,
-                elCliente.Nat_Direccion.ElEstado, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamCiudad, SqlDbType.VarChar,
-                elCliente.Nat_Direccion.LaCiudad, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamDireccion, SqlDbType.VarChar,
-                elCliente.Nat_Direccion.LaDireccion, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamCodigoPostal, SqlDbType.Int,
-                elCliente.Nat_Direccion.CodigoPostal, false);
-            parametros.Add(elParametro);
-            #endregion
 
+        public bool BuscarCIClienteNatural(String laCI)
+        {
+            bool retorno = false;
             try
             {
-                List<Resultado> tmp = EjecutarStoredProcedure(RecursoBDModulo2.AgregarClienteNat, parametros);
-                return (tmp.ToArray().Length > 0);
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro elParametro = new Parametro(RecursoBDModulo2.ParamCedulaClienteNat,
+                    SqlDbType.VarChar, laCI, false);
+                parametros.Add(elParametro);
+                elParametro = new Parametro(RecursoBDModulo2.ParamSalida, SqlDbType.Int, true);
+                parametros.Add(elParametro);
+                List<Resultado> resultados = EjecutarStoredProcedure(RecursoBDModulo2.BuscarCIClienteNatural,
+                                                parametros);
+                foreach (Resultado resultado in resultados)
+                {
+                    if ((resultado.etiqueta == RecursoBDModulo2.ParamSalida) && (int.Parse(resultado.valor) == 0))
+                        return true;
+
+                }
+                return retorno;
+
+            }
+            #region catches
+            catch (SqlException ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
+                throw ex;
             }
             catch (Exception ex)
             {
+                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
+
+                throw new ExceptionTotem(RecursoBDModulo2.CodigoExcepcionGeneral,
+                                         RecursoBDModulo2.MensajeExcepcionGeneral,
+                                         ex);
+            }
+            #endregion
+        }
+
+
+        public bool Agregar(Entidad parametro)
+        {
+            try
+            {
+                ClienteNatural elCliente = (ClienteNatural)parametro;
+                if (BuscarCIClienteNatural(elCliente.Nat_Cedula))
+                {
+                    #region Llenado de arreglo de parametros
+                    List<Parametro> parametros = new List<Parametro>();
+                    Parametro elParametro = new Parametro(RecursoBDModulo2.ParamCedulaClienteNat, SqlDbType.VarChar,
+                        elCliente.Nat_Cedula, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamNombreClienteNat, SqlDbType.VarChar,
+                        elCliente.Nat_Nombre, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamApellidoClienteNat, SqlDbType.VarChar,
+                        elCliente.Nat_Apellido, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamCorreoClienteNat, SqlDbType.VarChar,
+                        elCliente.Nat_Correo, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamCodigoTelef, SqlDbType.VarChar,
+                        elCliente.Nat_Telefono.Codigo, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamNumeroTelef, SqlDbType.VarChar,
+                        elCliente.Nat_Telefono.Numero, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamPais, SqlDbType.VarChar,
+                        elCliente.Nat_Direccion.ElPais, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamEstado, SqlDbType.VarChar,
+                        elCliente.Nat_Direccion.ElEstado, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamCiudad, SqlDbType.VarChar,
+                        elCliente.Nat_Direccion.LaCiudad, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamDireccion, SqlDbType.VarChar,
+                        elCliente.Nat_Direccion.LaDireccion, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamCodigoPostal, SqlDbType.Int,
+                        elCliente.Nat_Direccion.CodigoPostal, false);
+                    parametros.Add(elParametro);
+                    #endregion
+
+                    List<Resultado> tmp = EjecutarStoredProcedure(RecursoBDModulo2.AgregarClienteNat,
+                                            parametros);
+                    return true;
+                }
+                else
+                {
+                    Logger.EscribirError(Convert.ToString(this.GetType()),
+                                            new CIClienteNatExistenteException());
+                    throw new CIClienteNatExistenteException(RecursoBDModulo2.CodigoCIExistenteException,
+                                                        RecursoBDModulo2.MensajeCIExistenteException,
+                                                        new CIClienteNatExistenteException());
+
+                }
+
+
+            }
+            #region catches
+            catch (SqlException ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (CIClienteNatExistenteException ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
                 throw ex;
             }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
+
+                throw new ExceptionTotem(RecursoBDModulo2.CodigoExcepcionGeneral,
+                                         RecursoBDModulo2.MensajeExcepcionGeneral,
+                                         ex);
+            }
+            #endregion
+
         }
 
         public bool Modificar(Entidad parametro)
         {
             ClienteNatural elCliente = (ClienteNatural)parametro;
 
-            #region Llenado de arreglo de parametros
-            List<Parametro> parametros = new List<Parametro>();
-            Parametro elParametro = new Parametro(RecursoBDModulo2.ParamIDClienteNat, SqlDbType.Int,
-                elCliente.Id.ToString(), false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamCedulaClienteNat, SqlDbType.VarChar,
-                elCliente.Nat_Cedula, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamNombreClienteNat, SqlDbType.VarChar,
-                elCliente.Nat_Nombre, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamApellidoClienteNat, SqlDbType.VarChar,
-                elCliente.Nat_Apellido, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamCorreoClienteNat, SqlDbType.VarChar,
-                elCliente.Nat_Correo, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamCodigoTelef, SqlDbType.VarChar,
-                elCliente.Nat_Telefono.Codigo, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamNumeroTelef, SqlDbType.VarChar,
-                elCliente.Nat_Telefono.Numero, false);
-            parametros.Add(elParametro);
-
-            elParametro = new Parametro(RecursoBDModulo2.ParamCiudad, SqlDbType.VarChar,
-                elCliente.Nat_Direccion.LaCiudad, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamDireccion, SqlDbType.VarChar,
-                elCliente.Nat_Direccion.LaDireccion, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamCodigoPostal, SqlDbType.Int,
-                elCliente.Nat_Direccion.CodigoPostal, false);
-            parametros.Add(elParametro);
-            #endregion
             try
             {
-                List<Resultado> tmp = EjecutarStoredProcedure(RecursoBDModulo2.ModificarClienteNat,
-                    parametros);
-                return (tmp.ToArray().Length > 0);
+                if (BuscarCIClienteNatural(elCliente.Nat_Cedula))
+                {
+
+                    #region Llenado de arreglo de parametros
+                    List<Parametro> parametros = new List<Parametro>();
+                    Parametro elParametro = new Parametro(RecursoBDModulo2.ParamIDClienteNat, SqlDbType.Int,
+                        elCliente.Id.ToString(), false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamCedulaClienteNat, SqlDbType.VarChar,
+                        elCliente.Nat_Cedula, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamNombreClienteNat, SqlDbType.VarChar,
+                        elCliente.Nat_Nombre, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamApellidoClienteNat, SqlDbType.VarChar,
+                        elCliente.Nat_Apellido, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamCorreoClienteNat, SqlDbType.VarChar,
+                        elCliente.Nat_Correo, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamCodigoTelef, SqlDbType.VarChar,
+                        elCliente.Nat_Telefono.Codigo, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamNumeroTelef, SqlDbType.VarChar,
+                        elCliente.Nat_Telefono.Numero, false);
+                    parametros.Add(elParametro);
+
+                    elParametro = new Parametro(RecursoBDModulo2.ParamCiudad, SqlDbType.VarChar,
+                        elCliente.Nat_Direccion.LaCiudad, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamDireccion, SqlDbType.VarChar,
+                        elCliente.Nat_Direccion.LaDireccion, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamCodigoPostal, SqlDbType.Int,
+                        elCliente.Nat_Direccion.CodigoPostal, false);
+                    parametros.Add(elParametro);
+                    #endregion
+                    List<Resultado> tmp = EjecutarStoredProcedure(RecursoBDModulo2.ModificarClienteNat,
+                        parametros);
+                    return (tmp.ToArray().Length > 0);
+                }
+                else
+                {
+                    Logger.EscribirError(Convert.ToString(this.GetType()),
+                                           new CIClienteNatExistenteException());
+                    throw new CIClienteNatExistenteException(RecursoBDModulo2.CodigoCIExistenteException,
+                                                        RecursoBDModulo2.MensajeCIExistenteException,
+                                                        new CIClienteNatExistenteException());
+                }
+            }
+            #region catches
+            catch (SqlException ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (CIClienteNatExistenteException ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
+                throw ex;
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
+                throw ex;
             }
             catch (Exception ex)
             {
-                throw new Exception();
+                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
+
+                throw new ExceptionTotem(RecursoBDModulo2.CodigoExcepcionGeneral,
+                                         RecursoBDModulo2.MensajeExcepcionGeneral,
+                                         ex);
             }
+            #endregion
         }
 
         public Entidad ConsultarXId(Entidad parametro)
@@ -119,18 +250,27 @@ namespace DAO.DAO.Modulo2
             FabricaEntidades laFabrica = new FabricaEntidades();
             DataTable resultado = new DataTable();
             List<Parametro> parametros = new List<Parametro>();
-            ClienteNatural elCliente = (ClienteNatural)laFabrica.ObtenerClienteNatural();
             Parametro elParametro;
             Direccion laDireccion;
             Telefono elTelefono;
 
-            elParametro = new Parametro(RecursoBDModulo2.ParamIDClienteNat,
-                SqlDbType.Int, parametro.Id.ToString(), false);
-            parametros.Add(elParametro);
             try
             {
+                ClienteNatural elCliente = (ClienteNatural)laFabrica.ObtenerClienteNatural();
+                elParametro = new Parametro(RecursoBDModulo2.ParamIDClienteNat,
+                SqlDbType.Int, parametro.Id.ToString(), false);
+                parametros.Add(elParametro);
                 resultado = EjecutarStoredProcedureTuplas(RecursoBDModulo2.ConsultarDatosClienteNat,
                                                                      parametros);
+                if (resultado == null)
+                {
+                    Logger.EscribirError(Convert.ToString(this.GetType()),
+                                           new ClienteInexistenteException());
+                    throw new ClienteInexistenteException(RecursoBDModulo2.CodigoClienteInexistente,
+                                                          RecursoBDModulo2.MensajeClienteInexistente,
+                                                          new ClienteInexistenteException());
+                }
+
                 foreach (DataRow row in resultado.Rows)
                 {
                     laDireccion = (Direccion)laFabrica.ObtenerDireccion();
@@ -156,10 +296,36 @@ namespace DAO.DAO.Modulo2
                 return elCliente;
 
             }
+            #region catches
+            catch (SqlException ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (ClienteInexistenteException ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
+                throw ex;
+
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
+                throw ex;
+            }
             catch (Exception ex)
             {
-                throw new Exception();
+                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
+
+                throw new ExceptionTotem(RecursoBDModulo2.CodigoExcepcionGeneral,
+                                         RecursoBDModulo2.MensajeExcepcionGeneral,
+                                         ex);
             }
+            #endregion
         }
 
         public List<Entidad> ConsultarTodos()
@@ -201,11 +367,30 @@ namespace DAO.DAO.Modulo2
                 return laLista;
 
             }
+            #region catches
+            catch (SqlException ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
+                throw ex;
+            }
             catch (Exception ex)
             {
-                //arreglar excepciones
-                throw new Exception();
+                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
+
+                throw new ExceptionTotem(RecursoBDModulo2.CodigoExcepcionGeneral,
+                                         RecursoBDModulo2.MensajeExcepcionGeneral,
+                                         ex);
             }
+            #endregion
         }
 
         public bool eliminarClienteNatural(Entidad parametro)

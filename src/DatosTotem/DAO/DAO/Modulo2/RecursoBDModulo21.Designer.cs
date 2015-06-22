@@ -322,6 +322,69 @@ namespace DAO.DAO.Modulo2 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to M2_BuscarCIClienteNatural.
+        /// </summary>
+        public static string BuscarCIClienteNatural {
+            get {
+                return ResourceManager.GetString("BuscarCIClienteNatural", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M2_BuscarRIFClienteJuridico.
+        /// </summary>
+        public static string BuscarRifClienteJur {
+            get {
+                return ResourceManager.GetString("BuscarRifClienteJur", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_02_002.
+        /// </summary>
+        public static string CodigoCIExistenteException {
+            get {
+                return ResourceManager.GetString("CodigoCIExistenteException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_02_003.
+        /// </summary>
+        public static string CodigoClienteInexistente {
+            get {
+                return ResourceManager.GetString("CodigoClienteInexistente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_02_005.
+        /// </summary>
+        public static string CodigoContactoInexistente {
+            get {
+                return ResourceManager.GetString("CodigoContactoInexistente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_02_100.
+        /// </summary>
+        public static string CodigoExcepcionGeneral {
+            get {
+                return ResourceManager.GetString("CodigoExcepcionGeneral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_02_001.
+        /// </summary>
+        public static string CodigoRIFExistenteException {
+            get {
+                return ResourceManager.GetString("CodigoRIFExistenteException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to M2_ConsultarCiudadesPorEstado.
         /// </summary>
         public static string ConsultarCiudadesPorEstado {
@@ -444,6 +507,51 @@ namespace DAO.DAO.Modulo2 {
         public static string EliminarContacto {
             get {
                 return ResourceManager.GetString("EliminarContacto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ya existe un cliente registrado con esa ID.
+        /// </summary>
+        public static string MensajeCIExistenteException {
+            get {
+                return ResourceManager.GetString("MensajeCIExistenteException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El cliente que se consulto no existe en base de datos.
+        /// </summary>
+        public static string MensajeClienteInexistente {
+            get {
+                return ResourceManager.GetString("MensajeClienteInexistente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El contacto que se consulto no existe en base de datos.
+        /// </summary>
+        public static string MensajeContactoInexistente {
+            get {
+                return ResourceManager.GetString("MensajeContactoInexistente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ha ocurrido un error.
+        /// </summary>
+        public static string MensajeExcepcionGeneral {
+            get {
+                return ResourceManager.GetString("MensajeExcepcionGeneral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ya existe una empresa registrada con ese identificador.
+        /// </summary>
+        public static string MensajeRIFExistenteException {
+            get {
+                return ResourceManager.GetString("MensajeRIFExistenteException", resourceCulture);
             }
         }
         
@@ -678,6 +786,15 @@ namespace DAO.DAO.Modulo2 {
         public static string ParamPais {
             get {
                 return ResourceManager.GetString("ParamPais", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @salida.
+        /// </summary>
+        public static string ParamSalida {
+            get {
+                return ResourceManager.GetString("ParamSalida", resourceCulture);
             }
         }
     }

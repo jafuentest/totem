@@ -1483,6 +1483,30 @@ as
 
 	end;
 go
+------------------------PROCEDURE BUSCAR RIF CLIENTE JUR----------------------- 
+CREATE PROCEDURE M2_BuscarRIFClienteJuridico
+	@cj_rif [VARCHAR] (60),
+	@salida [int] output
+AS
+BEGIN
+	select @salida = count(*)
+	from CLIENTE_JURIDICO
+	where
+		@cj_rif = cj_rif
+END;
+GO
+--------------------PROCEDURE BUSCAR CI CLIENTE_NATURAL--------------
+create procedure M2_BuscarCIClienteNatural
+
+    @cn_cedula    [VARCHAR] (20),
+ @salida int OUTPUT
+as
+begin
+ select @salida = count(*)
+ from CLIENTE_NATURAL
+ where cn_cedula = @cn_cedula;
+end;
+go
 --------------------PROCEDURE MODIFICAR CLIENTE_NATURAL--------------
 CREATE procedure M2_ModificarClienteNat
 	@idClienteNat		  [int],

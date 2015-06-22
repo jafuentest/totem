@@ -324,4 +324,43 @@
   <data name="ConsultarListaCargos" xml:space="preserve">
     <value>M2_ConsultarListaCargos</value>
   </data>
+  <data name="BuscarRifClienteJur" xml:space="preserve">
+    <value>M2_BuscarRIFClienteJuridico</value>
+  </data>
+  <data name="ParamSalida" xml:space="preserve">
+    <value>@salida</value>
+  </data>
+  <data name="BuscarCIClienteNatural" xml:space="preserve">
+    <value>M2_BuscarCIClienteNatural</value>
+  </data>
+  <data name="CodigoClienteInexistente" xml:space="preserve">
+    <value>T_02_003</value>
+  </data>
+  <data name="CodigoContactoInexistente" xml:space="preserve">
+    <value>T_02_005</value>
+  </data>
+  <data name="CodigoExcepcionGeneral" xml:space="preserve">
+    <value>T_02_100</value>
+  </data>
+  <data name="CodigoRIFExistenteException" xml:space="preserve">
+    <value>T_02_001</value>
+  </data>
+  <data name="MensajeClienteInexistente" xml:space="preserve">
+    <value>El cliente que se consulto no existe en base de datos</value>
+  </data>
+  <data name="MensajeContactoInexistente" xml:space="preserve">
+    <value>El contacto que se consulto no existe en base de datos</value>
+  </data>
+  <data name="MensajeExcepcionGeneral" xml:space="preserve">
+    <value>Ha ocurrido un error</value>
+  </data>
+  <data name="MensajeRIFExistenteException" xml:space="preserve">
+    <value>Ya existe una empresa registrada con ese identificador</value>
+  </data>
+  <data name="CodigoCIExistenteException" xml:space="preserve">
+    <value>T_02_002</value>
+  </data>
+  <data name="MensajeCIExistenteException" xml:space="preserve">
+    <value>Ya existe un cliente registrado con esa ID</value>
+  </data>
 </root>

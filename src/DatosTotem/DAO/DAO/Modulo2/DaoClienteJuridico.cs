@@ -7,125 +7,271 @@ using Dominio;
 using Dominio.Fabrica;
 using Dominio.Entidades.Modulo2;
 using System.Data;
+using System.Data.SqlClient;
+using ExcepcionesTotem;
+using ExcepcionesTotem.Modulo2;
 
 namespace DAO.DAO.Modulo2
 {
     public class DaoClienteJuridico : DAO, IntefazDAO.Modulo2.IDaoClienteJuridico
     {
-        public bool Agregar(Entidad parametro)
+        public bool BuscarRifClienteJuridico(String elRif)
         {
-            ClienteJuridico elCliente = (ClienteJuridico)parametro;
-
-            #region Llenado de arreglo de parametros
-            List<Parametro> parametros = new List<Parametro>();
-            Parametro elParametro = new Parametro(RecursoBDModulo2.ParamJurRif, SqlDbType.VarChar,
-                elCliente.Jur_Rif, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamJurNombre, SqlDbType.VarChar,
-                elCliente.Jur_Nombre, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamJurLogo, SqlDbType.VarChar,
-                elCliente.Jur_Logo, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamPais, SqlDbType.VarChar,
-                elCliente.Jur_Direccion.ElPais, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamEstado, SqlDbType.VarChar,
-                elCliente.Jur_Direccion.ElEstado, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamCiudad, SqlDbType.VarChar,
-                elCliente.Jur_Direccion.LaCiudad, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamDireccion, SqlDbType.VarChar,
-                elCliente.Jur_Direccion.LaDireccion, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamCodigoPostal, SqlDbType.Int,
-                elCliente.Jur_Direccion.CodigoPostal, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamContactoCedula, SqlDbType.VarChar,
-                elCliente.Jur_Contactos[0].ConCedula, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamContactoNombre, SqlDbType.VarChar,
-                elCliente.Jur_Contactos[0].Con_Nombre, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamContactoApellido, SqlDbType.VarChar,
-                elCliente.Jur_Contactos[0].Con_Apellido, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamContactoCargo, SqlDbType.VarChar,
-                elCliente.Jur_Contactos[0].ConCargo, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamContactoCodTel, SqlDbType.VarChar,
-                elCliente.Jur_Contactos[0].Con_Telefono.Codigo, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamContactoNumTel, SqlDbType.VarChar,
-                elCliente.Jur_Contactos[0].Con_Telefono.Numero, false);
-            parametros.Add(elParametro);
-            #endregion
-
+            bool retorno = false;
             try
             {
-                List<Resultado> tmp = EjecutarStoredProcedure(RecursoBDModulo2.AgregarClienteJur, parametros);
-                return (tmp.ToArray().Length > 0);
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro elParametro = new Parametro(RecursoBDModulo2.ParamJurRif, SqlDbType.VarChar,
+                    elRif, false);
+                parametros.Add(elParametro);
+                elParametro = new Parametro(RecursoBDModulo2.ParamSalida, SqlDbType.Int, true);
+                parametros.Add(elParametro);
+                List<Resultado> resultados = EjecutarStoredProcedure(RecursoBDModulo2.BuscarRifClienteJur,
+                    parametros);
+                foreach (Resultado resultado in resultados)
+                {
+                    if ((resultado.etiqueta == RecursoBDModulo2.ParamSalida) &&
+                        (int.Parse(resultado.valor) == 0))
+                        retorno = true;
+                }
+                return retorno;
+            }
+            #region Catches
+            catch (SqlException ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw ex;
             }
             catch (Exception ex)
             {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExceptionTotem(RecursoBDModulo2.CodigoExcepcionGeneral,
+                    RecursoBDModulo2.MensajeExcepcionGeneral,
+                    ex);
+            }
+            #endregion
+        }
+        public bool Agregar(Entidad parametro)
+        {
+            try 
+            {
+                ClienteJuridico elCliente = (ClienteJuridico)parametro;
+
+                if (BuscarRifClienteJuridico(elCliente.Jur_Rif))
+                {
+                    #region Llenado de arreglo de parametros
+
+                    List<Parametro> parametros = new List<Parametro>();
+                    Parametro elParametro = new Parametro(RecursoBDModulo2.ParamJurRif, SqlDbType.VarChar,
+                        elCliente.Jur_Rif, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamJurNombre, SqlDbType.VarChar,
+                        elCliente.Jur_Nombre, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamJurLogo, SqlDbType.VarChar,
+                        elCliente.Jur_Logo, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamPais, SqlDbType.VarChar,
+                        elCliente.Jur_Direccion.ElPais, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamEstado, SqlDbType.VarChar,
+                        elCliente.Jur_Direccion.ElEstado, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamCiudad, SqlDbType.VarChar,
+                        elCliente.Jur_Direccion.LaCiudad, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamDireccion, SqlDbType.VarChar,
+                        elCliente.Jur_Direccion.LaDireccion, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamCodigoPostal, SqlDbType.Int,
+                        elCliente.Jur_Direccion.CodigoPostal, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamContactoCedula, SqlDbType.VarChar,
+                        elCliente.Jur_Contactos[0].ConCedula, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamContactoNombre, SqlDbType.VarChar,
+                        elCliente.Jur_Contactos[0].Con_Nombre, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamContactoApellido, SqlDbType.VarChar,
+                        elCliente.Jur_Contactos[0].Con_Apellido, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamContactoCargo, SqlDbType.VarChar,
+                        elCliente.Jur_Contactos[0].ConCargo, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamContactoCodTel, SqlDbType.VarChar,
+                        elCliente.Jur_Contactos[0].Con_Telefono.Codigo, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamContactoNumTel, SqlDbType.VarChar,
+                        elCliente.Jur_Contactos[0].Con_Telefono.Numero, false);
+                    parametros.Add(elParametro);
+                    #endregion
+                    List<Resultado> tmp = EjecutarStoredProcedure(RecursoBDModulo2.AgregarClienteJur, parametros);
+                    return true;
+                }
+                else
+                {
+                    Logger.EscribirError(Convert.ToString(this.GetType()), 
+                        new RifClienteJuridicoExistenteException());
+
+                    throw new RifClienteJuridicoExistenteException(RecursoBDModulo2.CodigoRIFExistenteException,
+                        RecursoBDModulo2.MensajeRIFExistenteException,
+                        new RifClienteJuridicoExistenteException());
+                }
+            }
+            #region Catches
+            catch (SqlException ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch(RifClienteJuridicoExistenteException ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
                 throw ex;
             }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
 
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExceptionTotem(RecursoBDModulo2.CodigoExcepcionGeneral,
+                    RecursoBDModulo2.MensajeExcepcionGeneral,
+                    ex);
+            }
+            #endregion
         }
         public bool Modificar(Entidad parametro)
         {
-            ClienteJuridico elCliente = (ClienteJuridico)parametro;
-            #region Llenado de parametros
-            List<Parametro> parametros = new List<Parametro>();
-            Parametro elParametro = new Parametro(RecursoBDModulo2.ParamIDClienteJur, SqlDbType.Int,
-                elCliente.Id.ToString(), false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamJurRif, SqlDbType.VarChar,
-                 elCliente.Jur_Rif, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamJurNombre, SqlDbType.VarChar,
-                elCliente.Jur_Nombre, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamJurLogo, SqlDbType.VarChar,
-                elCliente.Jur_Logo, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamDireccion, SqlDbType.VarChar,
-                elCliente.Jur_Direccion.LaDireccion, false);
-            parametros.Add(elParametro);
-            elParametro = new Parametro(RecursoBDModulo2.ParamCiudad, SqlDbType.VarChar,
-                elCliente.Jur_Direccion.LaCiudad, false);
-            parametros.Add(elParametro);
-
-            elParametro = new Parametro(RecursoBDModulo2.ParamCodigoPostal, SqlDbType.Int,
-                elCliente.Jur_Direccion.CodigoPostal, false);
-            parametros.Add(elParametro);
-            #endregion
             try
             {
-                List<Resultado> tmp = EjecutarStoredProcedure(RecursoBDModulo2.ModificarClienteJur,
-                    parametros);
-                return (tmp.ToArray().Length > 0);
+                ClienteJuridico elCliente = (ClienteJuridico)parametro;
+                if (BuscarRifClienteJuridico(elCliente.Jur_Rif))
+                {
+                    #region Llenado de parametros
+                    List<Parametro> parametros = new List<Parametro>();
+                    Parametro elParametro = new Parametro(RecursoBDModulo2.ParamIDClienteJur, SqlDbType.Int,
+                        elCliente.Id.ToString(), false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamJurRif, SqlDbType.VarChar,
+                         elCliente.Jur_Rif, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamJurNombre, SqlDbType.VarChar,
+                        elCliente.Jur_Nombre, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamJurLogo, SqlDbType.VarChar,
+                        elCliente.Jur_Logo, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamDireccion, SqlDbType.VarChar,
+                        elCliente.Jur_Direccion.LaDireccion, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamCiudad, SqlDbType.VarChar,
+                        elCliente.Jur_Direccion.LaCiudad, false);
+                    parametros.Add(elParametro);
+                    elParametro = new Parametro(RecursoBDModulo2.ParamCodigoPostal, SqlDbType.Int,
+                        elCliente.Jur_Direccion.CodigoPostal, false);
+                    parametros.Add(elParametro);
+                    #endregion
+                    List<Resultado> tmp = EjecutarStoredProcedure(RecursoBDModulo2.ModificarClienteJur,
+                        parametros);
+                    return true;
+                }
+                else
+                {
+                    Logger.EscribirError(Convert.ToString(this.GetType()),
+                        new RifClienteJuridicoExistenteException());
+
+                    throw new RifClienteJuridicoExistenteException(RecursoBDModulo2.CodigoRIFExistenteException,
+                        RecursoBDModulo2.MensajeRIFExistenteException,
+                        new RifClienteJuridicoExistenteException());
+                }
+            }
+            #region Catches
+            catch (SqlException ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (RifClienteJuridicoExistenteException ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw ex;
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw ex;
             }
             catch (Exception ex)
             {
-                throw new Exception();
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExceptionTotem(RecursoBDModulo2.CodigoExcepcionGeneral,
+                    RecursoBDModulo2.MensajeExcepcionGeneral,
+                    ex);
             }
+            #endregion
         }
         public Entidad ConsultarXId(Entidad parametro)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
             DataTable resultado = new DataTable();
             List<Parametro> parametros = new List<Parametro>();
-            Parametro parametroStored = new Parametro(RecursoBDModulo2.ParamIDClienteJur,
-                SqlDbType.Int, parametro.Id.ToString(), false);
             ClienteJuridico elCliente;
             Direccion laDireccion;
-            parametros.Add(parametroStored);
-            elCliente = (ClienteJuridico)laFabrica.ObtenerClienteJuridico();
             try
             {
+                elCliente = (ClienteJuridico)laFabrica.ObtenerClienteJuridico();
+                Parametro parametroStored = new Parametro(RecursoBDModulo2.ParamIDClienteJur,
+                    SqlDbType.Int, parametro.Id.ToString(), false);
+                parametros.Add(parametroStored);
                 resultado = EjecutarStoredProcedureTuplas(RecursoBDModulo2.ConsultarDatosClienteJur, parametros);
+
+                if (resultado == null)
+                {
+                    Logger.EscribirError(Convert.ToString(this.GetType()),
+                        new ClienteInexistenteException());
+
+                    throw new ClienteInexistenteException(RecursoBDModulo2.CodigoClienteInexistente,
+                        RecursoBDModulo2.MensajeClienteInexistente, new ClienteInexistenteException());
+                }
 
                 foreach (DataRow row in resultado.Rows)
                 {
@@ -145,10 +291,41 @@ namespace DAO.DAO.Modulo2
                 }
                 return elCliente;
             }
+            #region Catches
+            catch (ClienteInexistenteException ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw ex;
+            }
+            catch (SqlException ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw ex;
+            }
             catch (Exception ex)
             {
-                throw new Exception();
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExceptionTotem(RecursoBDModulo2.CodigoExcepcionGeneral,
+                    RecursoBDModulo2.MensajeExcepcionGeneral,
+                    ex);
             }
+            #endregion
         }
         public List<Entidad> ConsultarTodos()
         {
@@ -161,7 +338,7 @@ namespace DAO.DAO.Modulo2
             try
             {
                 resultado = EjecutarStoredProcedureTuplas(RecursoBDModulo2.ConsultarListaClientesJur, parametros);
-
+                
                 foreach (DataRow row in resultado.Rows)
                 {
                     laDireccion = (Direccion)laFabrica.ObtenerDireccion();
@@ -183,42 +360,75 @@ namespace DAO.DAO.Modulo2
                 return laLista;
 
             }
+            #region Catches
+            catch (SqlException ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw ex;
+            }
             catch (Exception ex)
             {
-                //arreglar excepciones
-                throw new Exception();
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExceptionTotem(RecursoBDModulo2.CodigoExcepcionGeneral,
+                    RecursoBDModulo2.MensajeExcepcionGeneral,
+                    ex);
             }
+            #endregion
         }
         public Entidad consultarDatosContactoID(Entidad parametro)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
-            #region Llenado de parametros
-            List<Parametro> parametros = new List<Parametro>();
-            Parametro parametroStored = new Parametro(RecursoBDModulo2.ParamIDContacto,
-                SqlDbType.Int, parametro.Id.ToString(), false);
-            parametros.Add(parametroStored);
-            parametroStored = new Parametro(RecursoBDModulo2.ParamContactoNombre,
-                SqlDbType.VarChar, true);
-            parametros.Add(parametroStored);
-            parametroStored = new Parametro(RecursoBDModulo2.ParamContactoApellido,
-                SqlDbType.VarChar, true);
-            parametros.Add(parametroStored);
-            parametroStored = new Parametro(RecursoBDModulo2.ParamContactoCargo,
-                SqlDbType.VarChar, true);
-            parametros.Add(parametroStored);
-            parametroStored = new Parametro(RecursoBDModulo2.ParamContactoCodTel,
-                SqlDbType.VarChar, true);
-            parametros.Add(parametroStored);
-            parametroStored = new Parametro(RecursoBDModulo2.ParamContactoNumTel,
-                SqlDbType.VarChar, true);
-            parametros.Add(parametroStored);
-            #endregion
-
-            Contacto elContacto = (Contacto)laFabrica.ObtenerContacto();
-
             try
             {
-                List<Resultado> resultados = EjecutarStoredProcedure(RecursoBDModulo2.ConsultarDatosContacto, parametros);
+                #region Llenado de parametros
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro parametroStored = new Parametro(RecursoBDModulo2.ParamIDContacto,
+                    SqlDbType.Int, parametro.Id.ToString(), false);
+                parametros.Add(parametroStored);
+                parametroStored = new Parametro(RecursoBDModulo2.ParamContactoNombre,
+                    SqlDbType.VarChar, true);
+                parametros.Add(parametroStored);
+                parametroStored = new Parametro(RecursoBDModulo2.ParamContactoApellido,
+                    SqlDbType.VarChar, true);
+                parametros.Add(parametroStored);
+                parametroStored = new Parametro(RecursoBDModulo2.ParamContactoCargo,
+                    SqlDbType.VarChar, true);
+                parametros.Add(parametroStored);
+                parametroStored = new Parametro(RecursoBDModulo2.ParamContactoCodTel,
+                    SqlDbType.VarChar, true);
+                parametros.Add(parametroStored);
+                parametroStored = new Parametro(RecursoBDModulo2.ParamContactoNumTel,
+                    SqlDbType.VarChar, true);
+                parametros.Add(parametroStored);
+                #endregion
+
+                Contacto elContacto = (Contacto)laFabrica.ObtenerContacto();
+
+                List<Resultado> resultados = EjecutarStoredProcedure(RecursoBDModulo2.ConsultarDatosContacto, 
+                    parametros);
+                
+                if (resultados == null)
+                {
+                    Logger.EscribirError(Convert.ToString(this.GetType()),
+                        new ContactoInexistenteException());
+
+                    throw new ContactoInexistenteException(RecursoBDModulo2.CodigoClienteInexistente,
+                        RecursoBDModulo2.MensajeClienteInexistente, new ClienteInexistenteException());
+                }
 
                 foreach (Resultado resultado in resultados)
                 {
@@ -245,12 +455,41 @@ namespace DAO.DAO.Modulo2
                 }
                 return elContacto;
             }
+            #region Catches
+            catch (ContactoInexistenteException ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
 
+                throw ex;
+            }
+            catch (SqlException ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw ex;
+            }
             catch (Exception ex)
             {
-                throw new Exception();
-            }
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
 
+                throw new ExceptionTotem(RecursoBDModulo2.CodigoExcepcionGeneral,
+                    RecursoBDModulo2.MensajeExcepcionGeneral,
+                    ex);
+            }
+            #endregion
         }
         public List<Entidad> consultarListaDeContactosJuridico(Entidad parametro)
         {
@@ -259,12 +498,12 @@ namespace DAO.DAO.Modulo2
             Contacto elContacto;
             Telefono elTelefono;
             List<Parametro> parametros = new List<Parametro>();
-            Parametro parametroStored = new Parametro(RecursoBDModulo2.ParamIDClienteJur, SqlDbType.Int, 
-                parametro.Id.ToString(), false);
-            parametros.Add(parametroStored);
 
             try
             {
+                Parametro parametroStored = new Parametro(RecursoBDModulo2.ParamIDClienteJur, SqlDbType.Int, 
+                    parametro.Id.ToString(), false);
+                parametros.Add(parametroStored);
                 DataTable resultado = EjecutarStoredProcedureTuplas(RecursoBDModulo2.ConsultarListaContactosJurID, 
                     parametros);
 
@@ -284,13 +523,34 @@ namespace DAO.DAO.Modulo2
                 }
                 return laLista;
             }
+            #region Catches
+            catch (SqlException ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw ex;
+            }
             catch (Exception ex)
             {
-                throw new Exception();
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExceptionTotem(RecursoBDModulo2.CodigoExcepcionGeneral,
+                    RecursoBDModulo2.MensajeExcepcionGeneral,
+                    ex);
             }
-
-
-
+            #endregion
         }
         public bool eliminarClienteJuridico(Entidad parametro)
         {
@@ -312,19 +572,42 @@ namespace DAO.DAO.Modulo2
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
             List<Parametro> parametros = new List<Parametro>();
-            Parametro parametroStored = new Parametro(RecursoBDModulo2.EliminarContacto, SqlDbType.Int,
-               parametro.Id.ToString(), false);
-            parametros.Add(parametroStored);
             try
             {
+                Parametro parametroStored = new Parametro(RecursoBDModulo2.EliminarContacto, SqlDbType.Int,
+                   parametro.Id.ToString(), false);
+                parametros.Add(parametroStored);
                 List<Resultado> tmp = EjecutarStoredProcedure(RecursoBDModulo2.EliminarContacto, parametros);
-                return (tmp.ToArray().Length > 0);    
+                return true;
+            }
+            #region Catches
+            catch (SqlException ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw ex;
             }
             catch (Exception ex)
             {
-                //arreglar excepciones
-                throw new Exception();
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExceptionTotem(RecursoBDModulo2.CodigoExcepcionGeneral,
+                    RecursoBDModulo2.MensajeExcepcionGeneral,
+                    ex);
             }
+            #endregion
         }
         /// <summary>
         /// Metodo para consultar en BD toda la lista de paises
@@ -343,10 +626,34 @@ namespace DAO.DAO.Modulo2
                 }
                 return laLista;
             }
-            catch (Exception ex)
+            #region Catches
+            catch (SqlException ex)
             {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
                 throw ex;
             }
+            catch (Exception ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExceptionTotem(RecursoBDModulo2.CodigoExcepcionGeneral,
+                    RecursoBDModulo2.MensajeExcepcionGeneral,
+                    ex);
+            }
+            #endregion
         }
         /// <summary>
         /// Metodo para consultar todos los estados de un pais en especifico
@@ -370,10 +677,34 @@ namespace DAO.DAO.Modulo2
                 }
                 return laLista;
             }
-            catch (Exception ex)
+            #region Catches
+            catch (SqlException ex)
             {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
                 throw ex;
             }
+            catch (Exception ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExceptionTotem(RecursoBDModulo2.CodigoExcepcionGeneral,
+                    RecursoBDModulo2.MensajeExcepcionGeneral,
+                    ex);
+            }
+            #endregion
         }
         /// <summary>
         /// Metodo para consultar las ciudades de un estado en especifico
@@ -397,10 +728,34 @@ namespace DAO.DAO.Modulo2
                 }
                 return laLista;
             }
-            catch (Exception ex)
+            #region Catches
+            catch (SqlException ex)
             {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
                 throw ex;
             }
+            catch (Exception ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExceptionTotem(RecursoBDModulo2.CodigoExcepcionGeneral,
+                    RecursoBDModulo2.MensajeExcepcionGeneral,
+                    ex);
+            }
+            #endregion
         }
         public List<String> consultarListaCargos()
         {
@@ -415,10 +770,34 @@ namespace DAO.DAO.Modulo2
                 }
                 return laLista;
             }
-            catch (Exception ex)
+            #region Catches
+            catch (SqlException ex)
             {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
                 throw ex;
             }
+            catch (Exception ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExceptionTotem(RecursoBDModulo2.CodigoExcepcionGeneral,
+                    RecursoBDModulo2.MensajeExcepcionGeneral,
+                    ex);
+            }
+            #endregion
         }
     }
 }

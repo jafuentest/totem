@@ -8,6 +8,7 @@ namespace DAO.IntefazDAO.Modulo2
 {
     public interface IDaoClienteJuridico : IDao<Entidad, bool, Entidad>
     {
+        bool BuscarRifClienteJuridico(String elRif);
         Entidad consultarDatosContactoID(Entidad parametro);
         List<Entidad> consultarListaDeContactosJuridico(Entidad parametro);
         bool eliminarClienteJuridico(Entidad parametro);
