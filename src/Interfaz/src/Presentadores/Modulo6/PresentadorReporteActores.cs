@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI.WebControls;
 using Contratos.Modulo6;
 using Dominio.Entidades.Modulo6;
+using Dominio.Entidades.Modulo5;
 using Dominio.Entidades.Modulo4;
 using Dominio.Fabrica;
 using Dominio;
@@ -64,6 +65,184 @@ namespace Presentadores.Modulo6
        {
            vista.mensajeError.Visible = true;
            vista.mensajeError.Text = mensaje;
+       }
+
+       /// <summary>
+       /// Método que se encarga de cargar la tabla de casos de uso,
+       /// al seleccionar un actor
+       /// </summary>
+       public void CargarTablaCasosDeUso() 
+       {
+           int idActor = Convert.ToInt32(vista.comboActores.SelectedValue);
+           Entidad entidadAct = FabricaEntidades.ObtenerActor();
+           Entidad entidadProy = FabricaEntidades.ObtenerProyecto();
+
+           Actor actor = (Actor)entidadAct;
+           
+           Proyecto proy = (Proyecto)entidadProy;
+           proy.Codigo = "TOT";
+           string codigoProy = proy.Codigo;
+           actor.Id = idActor;
+
+           actor.ProyectoAsociado = proy;
+           actor.ProyectoAsociado.Codigo = codigoProy; 
+
+           try
+           {
+               Comando<Entidad, List<Entidad>> comandoCasosUsoPorActor =
+                        FabricaComandos.CrearComandoConsultarCasosDeUsoXActor();
+
+               List<Entidad> laLista = comandoCasosUsoPorActor.Ejecutar(actor);
+
+               
+
+               foreach (CasoDeUso caso in laLista)
+               {
+                   vista.tabla += RecursosPresentadorModulo6.AbrirEtiquetaTr;
+                   vista.tabla += RecursosPresentadorModulo6.AbrirEtiquetaTd + caso.IdentificadorCasoUso
+                                + RecursosPresentadorModulo6.CerrarEtiquetaTd;
+                   vista.tabla += RecursosPresentadorModulo6.AbrirEtiquetaTd + caso.TituloCasoUso
+                               + RecursosPresentadorModulo6.CerrarEtiquetaTd;
+                   vista.tabla += RecursosPresentadorModulo6.CerrarEtiquetaTd;
+                   vista.tabla += RecursosPresentadorModulo6.AbrirEtiquetaTd;
+
+                   foreach (Requerimiento req in ListadoDeRequerimientos(caso.Id)) 
+                   {
+                       vista.tabla += req.Descripcion + "\n"; 
+                   }
+                   vista.tabla += RecursosPresentadorModulo6.CerrarEtiquetaTd;
+                   vista.tabla += RecursosPresentadorModulo6.AbrirEtiquetaTd;
+                   vista.tabla += RecursosPresentadorModulo6.AbrirBotonModificarCasoUso;
+                   vista.tabla += RecursosPresentadorModulo6.CerrarBoton;
+                   vista.tabla += RecursosPresentadorModulo6.AbrirBotonEliminarCasoUso;
+                   vista.tabla += RecursosPresentadorModulo6.CerrarBoton;
+                   vista.tabla += RecursosPresentadorModulo6.CerrarEtiquetaTd; 
+                   vista.tabla += RecursosPresentadorModulo6.CerrarEtiquetaTr;
+               }
+           }
+           catch (ComandoBDException e)
+           {
+               PresentadorException exReporteActoresPresentador =
+                       new PresentadorException(
+                           RecursosPresentadorModulo6.CodigoMensajePresentadorBDException,
+                           RecursosPresentadorModulo6.MensajePresentadorBDException,
+                           e);
+               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                   , e);
+
+               MostrarMensajeError(exReporteActoresPresentador.Mensaje);
+           }
+
+           catch (ComandoNullException e)
+           {
+               ObjetoNuloPresentadorException exReporteActoresPresentador =
+                       new ObjetoNuloPresentadorException(
+                           RecursosPresentadorModulo6.CodigoMensajePresentadorNuloException,
+                           RecursosPresentadorModulo6.MensajePresentadorNuloException,
+                           e);
+               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                   , e);
+
+               MostrarMensajeError(exReporteActoresPresentador.Mensaje);
+           }
+
+           catch (TipoDeDatoErroneoComandoException e)
+           {
+               TipoDeDatoErroneoPresentadorException exReporteActoresPresentador =
+                      new TipoDeDatoErroneoPresentadorException(
+                          RecursosPresentadorModulo6.CodigoMensajePresentadorTipoDeDatoErroneo,
+                          RecursosPresentadorModulo6.MensajePresentadorTipoDeDatoErroneoException,
+                          e);
+               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                   , e);
+
+               MostrarMensajeError(exReporteActoresPresentador.Mensaje);
+
+           }
+
+           catch (ComandoException e)
+           {
+               AgregarActorPresentadorException exReporteActoresPresentador =
+                        new AgregarActorPresentadorException(
+                            RecursosPresentadorModulo6.CodigoMensajePresentadorException,
+                            RecursosPresentadorModulo6.MensajePresentadorException,
+                            e);
+               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                   , e);
+
+               MostrarMensajeError(exReporteActoresPresentador.Mensaje);
+           }
+       }
+
+       /// <summary>
+       /// Método que llama a Comando para traer la lista de requerimientos
+       /// por caso de uso
+       /// </summary>
+       /// <param name="id">Id del Caso de Uso</param>
+       /// <returns>Lista de Requerimientos</returns>
+       public List<Entidad> ListadoDeRequerimientos(int id) 
+       {
+           List<Entidad> listaReqs = new List<Entidad>(); ;
+           try
+           {
+               Comando<int, List<Entidad>> comandoListarReqsCasoUso =
+                   FabricaComandos.CrearComandoConsultarRequerimientosXCasoDeUso();
+               listaReqs = comandoListarReqsCasoUso.Ejecutar(id);
+           }
+           catch (ComandoBDException e)
+           {
+               PresentadorException exReporteActoresPresentador =
+                       new PresentadorException(
+                           RecursosPresentadorModulo6.CodigoMensajePresentadorBDException,
+                           RecursosPresentadorModulo6.MensajePresentadorBDException,
+                           e);
+               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                   , e);
+
+               MostrarMensajeError(exReporteActoresPresentador.Mensaje);
+           }
+
+           catch (ComandoNullException e)
+           {
+               ObjetoNuloPresentadorException exReporteActoresPresentador =
+                       new ObjetoNuloPresentadorException(
+                           RecursosPresentadorModulo6.CodigoMensajePresentadorNuloException,
+                           RecursosPresentadorModulo6.MensajePresentadorNuloException,
+                           e);
+               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                   , e);
+
+               MostrarMensajeError(exReporteActoresPresentador.Mensaje);
+           }
+
+           catch (TipoDeDatoErroneoComandoException e)
+           {
+               TipoDeDatoErroneoPresentadorException exReporteActoresPresentador =
+                      new TipoDeDatoErroneoPresentadorException(
+                          RecursosPresentadorModulo6.CodigoMensajePresentadorTipoDeDatoErroneo,
+                          RecursosPresentadorModulo6.MensajePresentadorTipoDeDatoErroneoException,
+                          e);
+               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                   , e);
+
+               MostrarMensajeError(exReporteActoresPresentador.Mensaje);
+
+           }
+
+           catch (ComandoException e)
+           {
+               AgregarActorPresentadorException exReporteActoresPresentador =
+                        new AgregarActorPresentadorException(
+                            RecursosPresentadorModulo6.CodigoMensajePresentadorException,
+                            RecursosPresentadorModulo6.MensajePresentadorException,
+                            e);
+               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                   , e);
+
+               MostrarMensajeError(exReporteActoresPresentador.Mensaje);
+           }
+           return listaReqs; 
+
        }
 
 

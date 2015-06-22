@@ -97,6 +97,15 @@ namespace DAO.DAO.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a idCasoUso.
+        /// </summary>
+        internal static string AliasIdCasoDeUso {
+            get {
+                return ResourceManager.GetString("AliasIdCasoDeUso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a identificadorCU.
         /// </summary>
         internal static string AliasIdentificadorCasoDeUso {
@@ -111,6 +120,15 @@ namespace DAO.DAO.Modulo6 {
         internal static string AliasNombreActor {
             get {
                 return ResourceManager.GetString("AliasNombreActor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a requerimiento.
+        /// </summary>
+        internal static string AliasRequerimiento {
+            get {
+                return ResourceManager.GetString("AliasRequerimiento", resourceCulture);
             }
         }
         

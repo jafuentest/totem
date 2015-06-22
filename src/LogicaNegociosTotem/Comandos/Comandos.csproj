@@ -83,6 +83,7 @@
     <Compile Include="Comandos\Modulo6\ComandoAgregarActor.cs" />
     <Compile Include="Comandos\Modulo6\ComandoConsultarActoresCombo.cs" />
     <Compile Include="Comandos\Modulo6\ComandoConsultarCasosDeUsoPorActor.cs" />
+    <Compile Include="Comandos\Modulo6\ComandoConsultarRequerimientosXCasoDeUso.cs" />
     <Compile Include="Comandos\Modulo6\ComandoVerificarExistenciaActor.cs" />
     <Compile Include="Comandos\Modulo6\RecursosComandosModulo6.Designer.cs">
       <AutoGen>True</AutoGen>

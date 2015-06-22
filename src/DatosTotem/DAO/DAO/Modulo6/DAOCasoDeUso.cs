@@ -8,12 +8,9 @@ using DAO.IntefazDAO.Modulo6;
 using Dominio;
 using System.Data.SqlClient;
 using System.Data;
-using Dominio;
-using Dominio.Fabrica;
-
-using System.Data;
+using Dominio.Entidades.Modulo5; 
 using System.Data.Sql;
-using System.Data.SqlClient;
+
 using ExcepcionesTotem.Modulo6.ExcepcionesDAO;
 using ExcepcionesTotem; 
 
@@ -69,7 +66,9 @@ namespace DAO.DAO.Modulo6
             return new List<Entidad>();
         }
 
-       /// <summary>
+
+        #region Casos de Uso por Actor
+        /// <summary>
        /// Método que accede a la base de Datos
        /// para consultar un listado de Casos de Uso dado un Actor
        /// </summary>
@@ -79,9 +78,10 @@ namespace DAO.DAO.Modulo6
         {
             List<Entidad> listadoCasosDeUso = new List<Entidad>();
             DataTable resultado = new DataTable();
-            Actor elActor = (Actor) actor; 
+            Actor elActor = (Actor) actor;
+            
             List<Parametro> parametros = new List<Parametro>();
-            Parametro parametro = new Parametro(RecursosDAOModulo6.NOMBRE_ACTOR, SqlDbType.VarChar,elActor.NombreActor, false);
+            Parametro parametro = new Parametro(RecursosDAOModulo6.ID_ACTOR, SqlDbType.Int,elActor.Id.ToString(), false);
             parametros.Add(parametro);
             parametro = new Parametro(RecursosDAOModulo6.CodigoProyecto, SqlDbType.VarChar, elActor.ProyectoAsociado.Codigo, false);
             parametros.Add(parametro);
@@ -95,6 +95,7 @@ namespace DAO.DAO.Modulo6
                 {
                     Entidad laEntidad = FabricaEntidades.ObtenerCasoDeUso();
                     CasoDeUso casoUso = (CasoDeUso)laEntidad;
+                    casoUso.Id = Convert.ToInt32(row[RecursosDAOModulo6.AliasIdCasoDeUso].ToString());
                     casoUso.IdentificadorCasoUso = row[RecursosDAOModulo6.AliasIdentificadorCasoDeUso].ToString();
                     casoUso.TituloCasoUso = row[RecursosDAOModulo6.AliasTituloCasoDeUso].ToString();
                     casoUso.CondicionExito = row[RecursosDAOModulo6.AliasCondicionExito].ToString();
@@ -157,10 +158,95 @@ namespace DAO.DAO.Modulo6
 
                 throw exDaoCasoUso;
             }
-            return listadoCasosDeUso; 
+            return listadoCasosDeUso;
+
+        }
+
+       /// <summary>
+       /// Método que accede a Base de Datos para consultar la lista
+       /// de requerimientos asociados con un caso de uso
+       /// </summary>
+       /// <param name="idCasoDeUso">Id del Caso de Uso</param>
+       /// <returns>Lista de Requerimientos asociados al caso de uso</returns>
+        public List<Entidad> ConsultarRequerimientosXCasoDeUso(int idCasoDeUso) 
+        {
+            List<Entidad> listaRequerimientos = new List<Entidad>();
+            DataTable resultado = new DataTable();
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursosDAOModulo6.ID_CU, SqlDbType.Int, idCasoDeUso.ToString(), false);
+            parametros.Add(parametro);
+            
+            try
+            {
+                resultado = EjecutarStoredProcedureTuplas(RecursosDAOModulo6.PROCEDURE_LEER_REQUERIMIENTO_DEL_CU,parametros); 
+       
+
+                foreach (DataRow row in resultado.Rows)
+                {
+                    Entidad laEntidad = FabricaEntidades.ObtenerRequerimiento();
+                    Requerimiento req = (Requerimiento)laEntidad;                   
+                    req.Descripcion = row[RecursosDAOModulo6.AliasRequerimiento].ToString();
+                    listaRequerimientos.Add(req);                    
+                }
+            }
+            catch (SqlException e)
+            {
+
+
+                BDDAOException exDaoCasoUso = new BDDAOException(
+                 RecursosDAOModulo6.CodigoExcepcionBDDAO,
+                 RecursosDAOModulo6.MensajeExcepcionBD,
+                 e);
+
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOCasoDeUso,
+                    exDaoCasoUso);
+
+                throw exDaoCasoUso;
+
+            }
+            catch (NullReferenceException e)
+            {
+                ObjetoNuloDAOException exDaoCasoUso = new ObjetoNuloDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionObjetoNuloDAO,
+                    RecursosDAOModulo6.MensajeExcepcionObjetoNulo,
+                    e);
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOCasoDeUso,
+                       exDaoCasoUso);
+
+                throw exDaoCasoUso;
+
+            }
+
+            catch (FormatException e)
+            {
+                TipoDeDatoErroneoDAOException exDaoCasoUso = new TipoDeDatoErroneoDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionTipoDeDatoErroneo,
+                    RecursosDAOModulo6.MensajeTipoDeDatoErroneoException,
+                    e);
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOCasoDeUso,
+                       exDaoCasoUso);
+
+                throw exDaoCasoUso;
+
+            }
+            catch (Exception e)
+            {
+                ErrorDesconocidoDAOException exDaoCasoUso = new ErrorDesconocidoDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionErrorDAO,
+                    RecursosDAOModulo6.MensajeExcepcionErrorDesconocido,
+                    e);
+
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOCasoDeUso,
+                      exDaoCasoUso);
+
+                throw exDaoCasoUso;
+            }
+            return listaRequerimientos;
+
 
         }
 
 
+        #endregion
     }
 }

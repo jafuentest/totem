@@ -61,6 +61,69 @@ namespace Presentadores.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a &lt;a class=&quot;btn btn-danger glyphicon glyphicon-remove-sign&quot;&gt;.
+        /// </summary>
+        internal static string AbrirBotonEliminarCasoUso {
+            get {
+                return ResourceManager.GetString("AbrirBotonEliminarCasoUso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;a class=&quot;btn btn-default glyphicon glyphicon-pencil&quot;&gt;.
+        /// </summary>
+        internal static string AbrirBotonModificarCasoUso {
+            get {
+                return ResourceManager.GetString("AbrirBotonModificarCasoUso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;td&gt;.
+        /// </summary>
+        internal static string AbrirEtiquetaTd {
+            get {
+                return ResourceManager.GetString("AbrirEtiquetaTd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;tr&gt;.
+        /// </summary>
+        internal static string AbrirEtiquetaTr {
+            get {
+                return ResourceManager.GetString("AbrirEtiquetaTr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;/a&gt;.
+        /// </summary>
+        internal static string CerrarBoton {
+            get {
+                return ResourceManager.GetString("CerrarBoton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;/td&gt;.
+        /// </summary>
+        internal static string CerrarEtiquetaTd {
+            get {
+                return ResourceManager.GetString("CerrarEtiquetaTd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;/tr&gt;.
+        /// </summary>
+        internal static string CerrarEtiquetaTr {
+            get {
+                return ResourceManager.GetString("CerrarEtiquetaTr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a PresentadorAgregarActor.
         /// </summary>
         internal static string ClaseAgregarActorPresentador {

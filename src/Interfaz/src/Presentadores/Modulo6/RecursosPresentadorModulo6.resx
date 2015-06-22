@@ -117,6 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AbrirBotonEliminarCasoUso" xml:space="preserve">
+    <value>&lt;a class="btn btn-danger glyphicon glyphicon-remove-sign"&gt;</value>
+  </data>
+  <data name="AbrirBotonModificarCasoUso" xml:space="preserve">
+    <value>&lt;a class="btn btn-default glyphicon glyphicon-pencil"&gt;</value>
+  </data>
+  <data name="AbrirEtiquetaTd" xml:space="preserve">
+    <value>&lt;td&gt;</value>
+  </data>
+  <data name="AbrirEtiquetaTr" xml:space="preserve">
+    <value>&lt;tr&gt;</value>
+  </data>
+  <data name="CerrarBoton" xml:space="preserve">
+    <value>&lt;/a&gt;</value>
+  </data>
+  <data name="CerrarEtiquetaTd" xml:space="preserve">
+    <value>&lt;/td&gt;</value>
+  </data>
+  <data name="CerrarEtiquetaTr" xml:space="preserve">
+    <value>&lt;/tr&gt;</value>
+  </data>
   <data name="ClaseAgregarActorPresentador" xml:space="preserve">
     <value>PresentadorAgregarActor</value>
   </data>

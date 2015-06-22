@@ -61,5 +61,17 @@ namespace Vista.Modulo6
                 this.presentador.CargarActores(); 
             }
         }
+
+        /// <summary>
+        /// Evento que se dispara al seleccionar alguna de las 
+        /// opciones del combo de actores, y carga los casos de uso
+        /// asociados al actor.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void CargarTablaCasosDeUso(object sender, EventArgs e) 
+        {
+            this.presentador.CargarTablaCasosDeUso(); 
+        }
     }
 }
