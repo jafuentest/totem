@@ -51,7 +51,8 @@ namespace DAO.DAO.Modulo6
         public Entidad ConsultarXId(Entidad parametro)
         {
             Entidad laEntidad;
-            laEntidad = FabricaEntidades.ObtenerCasoDeUso();
+            FabricaEntidades fabrica = new FabricaEntidades();
+            laEntidad = fabrica.ObtenerCasoDeUso();
             return laEntidad;
         }
 
@@ -93,7 +94,8 @@ namespace DAO.DAO.Modulo6
 
                 foreach (DataRow row in resultado.Rows)
                 {
-                    Entidad laEntidad = FabricaEntidades.ObtenerCasoDeUso();
+                    FabricaEntidades fabrica = new FabricaEntidades();
+                    Entidad laEntidad = fabrica.ObtenerCasoDeUso();
                     CasoDeUso casoUso = (CasoDeUso)laEntidad;
                     casoUso.Id = Convert.ToInt32(row[RecursosDAOModulo6.AliasIdCasoDeUso].ToString());
                     casoUso.IdentificadorCasoUso = row[RecursosDAOModulo6.AliasIdentificadorCasoDeUso].ToString();

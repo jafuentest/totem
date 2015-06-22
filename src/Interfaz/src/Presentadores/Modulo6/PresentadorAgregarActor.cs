@@ -47,8 +47,8 @@ namespace Presentadores.Modulo6
         /// </summary>
         public void AgregarActor_Click()
         {
-
-            Entidad entidad = FabricaEntidades.ObtenerActor();
+            FabricaEntidades fabrica = new FabricaEntidades();
+            Entidad entidad = fabrica.ObtenerActor();
             Entidad entidadProy = FabricaEntidades.ObtenerProyecto();
             elActor = entidad as Actor;
             elActor.NombreActor = vista.nombreActor;

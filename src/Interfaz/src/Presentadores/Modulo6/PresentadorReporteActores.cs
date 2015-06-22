@@ -74,7 +74,8 @@ namespace Presentadores.Modulo6
        public void CargarTablaCasosDeUso() 
        {
            int idActor = Convert.ToInt32(vista.comboActores.SelectedValue);
-           Entidad entidadAct = FabricaEntidades.ObtenerActor();
+           FabricaEntidades fabrica = new FabricaEntidades();
+           Entidad entidadAct = fabrica.ObtenerActor();
            Entidad entidadProy = FabricaEntidades.ObtenerProyecto();
 
            Actor actor = (Actor)entidadAct;

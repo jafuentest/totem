@@ -212,7 +212,8 @@ namespace DAO.DAO.Modulo6
 
                  foreach (DataRow row in resultado.Rows) 
                  {
-                     Entidad laEntidad = FabricaEntidades.ObtenerActor();
+                     FabricaEntidades fabrica = new FabricaEntidades(); 
+                     Entidad laEntidad = fabrica.ObtenerActor();
                      Actor actor = (Actor)laEntidad;
                      laEntidad.Id = Convert.ToInt32(row[RecursosDAOModulo6.AliasIDActor].ToString());
                      actor.NombreActor = row[RecursosDAOModulo6.AliasNombreActor].ToString();

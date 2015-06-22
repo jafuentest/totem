@@ -142,22 +142,22 @@ namespace Dominio.Fabrica
 
         #region Modulo 6
 
-        public static Entidad ObtenerActor() 
+        public  Entidad ObtenerActor() 
         {
             return new Actor(); 
         }
 
-        public static Entidad ObtenerCasoDeUso() 
+        public  Entidad ObtenerCasoDeUso() 
         {
             return new CasoDeUso(); 
         }
 
-        public static Entidad ObtenerExtension() 
+        public  Entidad ObtenerExtension() 
         {
             return new Extension(); 
         }
 
-        public static Entidad ObtenerPaso() 
+        public  Entidad ObtenerPaso() 
         {
             return new Paso(); 
         }
