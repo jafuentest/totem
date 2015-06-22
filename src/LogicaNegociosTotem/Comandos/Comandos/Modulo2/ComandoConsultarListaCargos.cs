@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.SqlClient;
+using ExcepcionesTotem;
 
 namespace Comandos.Comandos.Modulo2
 {
@@ -21,10 +23,22 @@ namespace Comandos.Comandos.Modulo2
 
                 return daoClienteJur.consultarListaCargos();
             }
-            catch (Exception ex)
+            #region Catches
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
             {
+                Logger.EscribirWarning(Convert.ToString(this.GetType()), ex.Message,
+                    System.Reflection.MethodBase.GetCurrentMethod().Name);
+
                 throw ex;
             }
+            catch (ExceptionTotem ex)
+            {
+                Logger.EscribirWarning(Convert.ToString(this.GetType()), ex.Message,
+                    System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                throw ex;
+            }
+            #endregion
         }
     }
 }

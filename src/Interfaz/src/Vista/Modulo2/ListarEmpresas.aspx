@@ -28,8 +28,6 @@
     <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
         <div id="alert" runat="server">
         </div>
-        <div id="alertlocal" >
-        </div>
         <div class="table-responsive">
             <table id="table-users" class="table table-striped table-hover">
                 <thead>

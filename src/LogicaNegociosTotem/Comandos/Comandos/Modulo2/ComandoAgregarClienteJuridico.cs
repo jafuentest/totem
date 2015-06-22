@@ -7,6 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ExcepcionesTotem;
+using ExcepcionesTotem.Modulo2;
+using System.Data.SqlClient;
 
 namespace Comandos.Comandos.Modulo2
 {
@@ -21,10 +24,29 @@ namespace Comandos.Comandos.Modulo2
 
                 return daoClienteJur.Agregar(parametro);
             }
-            catch (Exception ex)
+            #region Catches
+            catch (ExceptionTotemConexionBD ex)
             {
+                Logger.EscribirWarning(Convert.ToString(this.GetType()), ex.Message,
+                    System.Reflection.MethodBase.GetCurrentMethod().Name);
+
                 throw ex;
             }
+            catch (RifClienteJuridicoExistenteException ex)
+            {
+                Logger.EscribirWarning(Convert.ToString(this.GetType()), ex.Message,
+                    System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                throw ex;
+            }
+            catch (ExceptionTotem ex)
+            {
+                Logger.EscribirWarning(Convert.ToString(this.GetType()), ex.Message,
+                    System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                throw ex;
+            }
+            #endregion
         }
     }
 }

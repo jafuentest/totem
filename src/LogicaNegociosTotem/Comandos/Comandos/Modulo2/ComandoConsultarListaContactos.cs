@@ -1,8 +1,10 @@
 ﻿using DAO.Fabrica;
 using DAO.IntefazDAO.Modulo2;
 using Dominio;
+using ExcepcionesTotem;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
@@ -19,10 +21,22 @@ namespace Comandos.Comandos.Modulo2
 
                 return daoClienteJur.consultarListaDeContactosJuridico(parametro);
             }
-            catch (Exception ex)
+            #region Catches
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
             {
+                Logger.EscribirWarning(Convert.ToString(this.GetType()), ex.Message,
+                    System.Reflection.MethodBase.GetCurrentMethod().Name);
+
                 throw ex;
-            }        
+            }
+            catch (ExceptionTotem ex)
+            {
+                Logger.EscribirWarning(Convert.ToString(this.GetType()), ex.Message,
+                    System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                throw ex;
+            }
+            #endregion    
         }
     }
 }
