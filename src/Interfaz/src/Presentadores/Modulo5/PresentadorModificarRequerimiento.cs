@@ -23,8 +23,10 @@ namespace Presentadores.Modulo5
         {
             try
             {
+                Dominio.Fabrica.FabricaEntidades fabricaEntidades =
+                    new Dominio.Fabrica.FabricaEntidades();
                 Dominio.Entidad requerimiento =
-                    Dominio.Fabrica.FabricaEntidades.ObtenerRequerimiento(vista.idRequerimiento);
+                   fabricaEntidades.ObtenerRequerimiento(vista.idRequerimiento);
                 Comandos.Comando<Dominio.Entidad, bool> comandoEliminar;
                 comandoEliminar = Comandos.Fabrica.FabricaComandos.CrearComandoEliminarRequerimiento();
                 if (comandoEliminar.Ejecutar(requerimiento))
@@ -97,7 +99,9 @@ namespace Presentadores.Modulo5
                     //elProy.Codigo =  pcookie.Values["projectCode"].ToString(); //De aqui se debe extraer el codigo del proyecto
                     Comandos.Comando<Dominio.Entidad, Boolean> comandoModificar;
                     Dominio.Entidad requerimiento;
-                    requerimiento = Dominio.Fabrica.FabricaEntidades.ObtenerRequerimiento(
+                    Dominio.Fabrica.FabricaEntidades fabricaEntidades =
+                        new Dominio.Fabrica.FabricaEntidades();
+                    requerimiento = fabricaEntidades.ObtenerRequerimiento(
                         vista.idRequerimiento, vista.requerimiento, vista.funcional,
                         vista.prioridad, vista.finalizado, "TOT"); //Cableado
                     /*Dominio.Entidad requerimiento;
@@ -176,7 +180,9 @@ namespace Presentadores.Modulo5
             {
                 string codigo = HttpContext.Current.Request.QueryString["id"];
                 Dominio.Entidad parametro;
-                parametro = Dominio.Fabrica.FabricaEntidades.ObtenerRequerimiento(codigo);
+                Dominio.Fabrica.FabricaEntidades fabricaEntidades =
+                    new Dominio.Fabrica.FabricaEntidades();
+                parametro = fabricaEntidades.ObtenerRequerimiento(codigo);
                 Comandos.Comando<Dominio.Entidad, Dominio.Entidad> comandoConsultar;
                 comandoConsultar =
                     Comandos.Fabrica.FabricaComandos.CrearComandoConsultarRequerimiento();

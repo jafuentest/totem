@@ -178,12 +178,14 @@ namespace DAO.DAO.Modulo6
             
             try
             {
-                resultado = EjecutarStoredProcedureTuplas(RecursosDAOModulo6.PROCEDURE_LEER_REQUERIMIENTO_DEL_CU,parametros); 
-       
+                resultado = EjecutarStoredProcedureTuplas(RecursosDAOModulo6.PROCEDURE_LEER_REQUERIMIENTO_DEL_CU,parametros);
+                FabricaEntidades fabricaEntidades =
+                                new FabricaEntidades();
 
                 foreach (DataRow row in resultado.Rows)
                 {
-                    Entidad laEntidad = FabricaEntidades.ObtenerRequerimiento();
+                   
+                    Entidad laEntidad = fabricaEntidades.ObtenerRequerimiento();
                     Requerimiento req = (Requerimiento)laEntidad;                   
                     req.Descripcion = row[RecursosDAOModulo6.AliasRequerimiento].ToString();
                     listaRequerimientos.Add(req);                    

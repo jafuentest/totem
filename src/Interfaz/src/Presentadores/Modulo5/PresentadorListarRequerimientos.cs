@@ -157,8 +157,10 @@ namespace Presentadores.Modulo5
         public void EliminarRequerimiento(string codigo) {
             try
             {
+                Dominio.Fabrica.FabricaEntidades fabricaEntidades =
+                    new Dominio.Fabrica.FabricaEntidades();
                 Dominio.Entidad requerimiento =
-                    Dominio.Fabrica.FabricaEntidades.ObtenerRequerimiento(codigo);
+                    fabricaEntidades.ObtenerRequerimiento(codigo);
                 Comandos.Comando<Dominio.Entidad, bool> comandoEliminar;
                 comandoEliminar = Comandos.Fabrica.FabricaComandos.CrearComandoEliminarRequerimiento();
                 if (comandoEliminar.Ejecutar(requerimiento))

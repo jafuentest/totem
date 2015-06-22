@@ -100,7 +100,9 @@ namespace Presentadores.Modulo5
                     //elProy.Codigo =  pcookie.Values["projectCode"].ToString(); //De aqui se debe extraer el codigo del proyecto
                     Comandos.Comando<Dominio.Entidad, Boolean> comandoAgregar;
                     Dominio.Entidad requerimiento;
-                    requerimiento = Dominio.Fabrica.FabricaEntidades.ObtenerRequerimiento(
+                    Dominio.Fabrica.FabricaEntidades fabricaEntidades =
+                        new Dominio.Fabrica.FabricaEntidades();
+                    requerimiento = fabricaEntidades.ObtenerRequerimiento(
                         vista.idRequerimiento, vista.requerimiento, vista.funcional,
                         vista.prioridad, vista.finalizado, "TOT"); //Cableado
                     /*Dominio.Entidad requerimiento;
