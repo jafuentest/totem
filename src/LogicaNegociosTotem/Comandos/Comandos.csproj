@@ -97,8 +97,14 @@
     <Compile Include="Comandos\Modulo7\ComandoListarUsuariosPorCargo.cs" />
     <Compile Include="Comandos\Modulo7\ComandoValidarCorreoUnico.cs" />
     <Compile Include="Comandos\Modulo7\ComandoValidarUsernameUnico.cs" />
+    <Compile Include="Comandos\Modulo8\ComandoCompilarLatex.cs" />
     <Compile Include="Comandos\Modulo8\ComandoDetalleMinuta.cs" />
     <Compile Include="Comandos\Modulo8\ComandoListaMinuta.cs" />
+    <Compile Include="Comandos\Modulo8\RecursosComandosModulo8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosComandosModulo8.resx</DependentUpon>
+    </Compile>
     <Compile Include="Fabrica\FabricaComandos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -122,6 +128,10 @@
     <EmbeddedResource Include="Comandos\Modulo6\RecursosComandosModulo6.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosComandosModulo6.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comandos\Modulo8\RecursosComandosModulo8.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosComandosModulo8.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
