@@ -223,6 +223,11 @@ namespace Comandos.Fabrica
             return new ComandoConsultarCasosDeUsoPorActor(); 
         }
 
+        public static Comando<int, List<Entidad>> CrearComandoConsultarRequerimientosXCasoDeUso() 
+        {
+            return new ComandoConsultarRequerimientosXCasoDeUso(); 
+        }
+
         #endregion
 
         #region Modulo 7

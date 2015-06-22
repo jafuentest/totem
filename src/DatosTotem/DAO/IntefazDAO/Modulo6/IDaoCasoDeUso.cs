@@ -10,5 +10,6 @@ namespace DAO.IntefazDAO.Modulo6
    public interface IDaoCasoDeUso:IDao<Entidad,bool,Entidad>
     {
        List<Entidad> ConsultarCasosDeUsoPorActor(Entidad actor);
+       List<Entidad> ConsultarRequerimientosXCasoDeUso(int idCasoDeUso); 
     }
 }

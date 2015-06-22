@@ -19,11 +19,13 @@
 		 <div class="form-group">
                             <div id="div_actor" class="col-sm-15 col-md-15 col-lg-15">
                                 <div class="dropdown " runat="server" id="Div1">
-                                <asp:DropDownList ID="comboActores"  class="btn btn-default dropdown-toggle col-sm-10 col-md-10 col-lg-10" runat="server"></asp:DropDownList>
+                                <asp:DropDownList ID="comboActores"  class="btn btn-default dropdown-toggle col-sm-10 col-md-10 col-lg-10" runat="server" AutoPostBack="true" OnSelectedIndexChanged="CargarTablaCasosDeUso"></asp:DropDownList>
                                 </div>
                             </div>
                      </div>
-		
+		            <br />
+                    <br />
+                <h2>Casos de Uso</h2>
 						<div class="table-responsive">
 							<table class="table table-striped table-hover">
 								<thead>

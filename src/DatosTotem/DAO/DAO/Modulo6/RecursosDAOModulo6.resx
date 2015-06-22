@@ -277,4 +277,10 @@
   <data name="AliasTituloCasoDeUso" xml:space="preserve">
     <value>tituloCU</value>
   </data>
+  <data name="AliasIdCasoDeUso" xml:space="preserve">
+    <value>idCasoUso</value>
+  </data>
+  <data name="AliasRequerimiento" xml:space="preserve">
+    <value>requerimiento</value>
+  </data>
 </root>

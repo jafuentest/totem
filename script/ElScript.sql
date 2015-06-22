@@ -2325,11 +2325,12 @@ GO
 
 /* Leer casos de uso por actor */
 CREATE PROCEDURE LEER_CU_POR_ACTOR 
-	@nombreActor [varchar] (100),
+	@idactor int,
 	@codigoProyecto varchar (6)
 AS
 	BEGIN
 		SELECT 
+		C.cu_id as idCasoUso,
 		C.cu_identificador as identificadorCU ,
 		C.cu_titulo as tituloCU, 
 		C.cu_condexito as condicionExito,
@@ -2338,7 +2339,7 @@ AS
 
 FROM CASO_USO C, CU_ACTOR R, ACTOR A, Proyecto p 
 
-		WHERE (A.act_nombre=@nombreActor ) 
+		WHERE (A.act_id=@idactor ) 
 		AND (R.CASO_USO_cu_id=C.cu_id AND R.ACTOR_act_id=A.act_id)
 		AND p.pro_id = a.PROYECTO_pro_id
 		and p.pro_codigo = @codigoProyecto;
@@ -2617,7 +2618,7 @@ CREATE PROCEDURE LEER_REQUERIMIENTO_DEL_CU
 	@idcasouso int
 AS
 	BEGIN
-		SELECT R.req_descripcion DESCRIPCION 
+		SELECT R.req_descripcion as requerimiento
 		FROM REQUERIMIENTO R, CU_REQUERIMIENTO O, CASO_USO C 
 		WHERE (C.cu_id=@idcasouso) AND (C.cu_id=O.CASO_USO_cu_id) AND (R.req_id=O.REQUERIMIENTO_req_id);
 	END
