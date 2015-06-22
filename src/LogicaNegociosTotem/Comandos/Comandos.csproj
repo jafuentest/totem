@@ -99,6 +99,7 @@
     <Compile Include="Comandos\Modulo7\ComandoValidarUsernameUnico.cs" />
     <Compile Include="Comandos\Modulo8\ComandoCompilarLatex.cs" />
     <Compile Include="Comandos\Modulo8\ComandoDetalleMinuta.cs" />
+    <Compile Include="Comandos\Modulo8\ComandoGenerarMinuta.cs" />
     <Compile Include="Comandos\Modulo8\ComandoListaMinuta.cs" />
     <Compile Include="Comandos\Modulo8\RecursosComandosModulo8.Designer.cs">
       <AutoGen>True</AutoGen>
