@@ -126,8 +126,12 @@
     <comment>compilador de latex</comment>
   </data>
   <data name="Directorio" xml:space="preserve">
-    <value>../src/Interfaz/src/Vista/Modulo8/docs </value>
+    <value>../Interfaz/Vista/Modulo8/docs </value>
     <comment>direccion del directorio de salida</comment>
+  </data>
+  <data name="Minuta" xml:space="preserve">
+    <value>Minuta.tex</value>
+    <comment>la minuta</comment>
   </data>
   <data name="ParametroLatex" xml:space="preserve">
     <value>-output-directory </value>

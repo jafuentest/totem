@@ -79,11 +79,20 @@ namespace Comandos.Comandos.Modulo8 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ../src/Interfaz/src/Vista/Modulo8/docs .
+        ///   Looks up a localized string similar to ../Interfaz/Vista/Modulo8/docs .
         /// </summary>
         internal static string Directorio {
             get {
                 return ResourceManager.GetString("Directorio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minuta.tex.
+        /// </summary>
+        internal static string Minuta {
+            get {
+                return ResourceManager.GetString("Minuta", resourceCulture);
             }
         }
         
