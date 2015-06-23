@@ -36,41 +36,6 @@ namespace PruebasUnitariasTotem.Modulo8
         }
 
         /// <summary>
-        /// Metodo que prueba el metodo para consultar los datos de Usuario
-        /// </summary>
-        [Test]
-        public void PruebaConsultarUsuarioMinutas()
-        {
-           
-            usuario =(Usuario) daoInvolucradosMinuta.ConsultarUsuarioMinutas(2);
-            Assert.AreEqual(usuario.Nombre, "Argenis");
-            Assert.AreEqual(usuario.Apellido, "Rodriguez");
-            Assert.AreEqual(usuario.Cargo,"Administrador");
-        }
-        
-        /// <summary>
-        /// Metodo que prueba el metodo para consultar los datos de contacto
-        /// </summary>
-        [Test]
-        public void PruebaConsultarContactoMinutas()
-        {
-           
-            contacto =(Contacto) daoInvolucradosMinuta.ConsultarContactoMinutas(1);
-            Assert.AreEqual(contacto.Con_Nombre,"Reinaldo");
-            Assert.AreEqual(contacto.Con_Apellido,"Cortes");
-        }
-
-        /// <summary>
-        /// Metodo que prueba el metodo para la consulta de todos los involucrados en una Minuta o los responsables de un Acuerdo
-        /// </summary>
-        [Test]
-        public void PruebaConsultarInvolucrado()
-        {
-
-            Assert.IsTrue(daoInvolucradosMinuta.ConsultarInvolucrado("Procedure_ConsultarAsistenteContactoMinuta", "idContacto", "@min_id", "1").Count >= 1);
-            
-        }
-        /// <summary>
         /// Metodo que prueba el metodo para agregar un usuario en acuerdo
         /// </summary>
         [Test]
@@ -141,8 +106,10 @@ namespace PruebasUnitariasTotem.Modulo8
         [Test]
         public void PruebaEliminarInvolucradoEnMinuta()
         {
-            daoInvolucradosMinuta.AgregarInvolucradoEnMinuta(9, "TOT", "Procedure_AgregarInvolucradoUsuario", "@usu_id", 1);
            Assert.IsTrue(daoInvolucradosMinuta.EliminarInvolucradoEnMinuta(1));
+           daoInvolucradosMinuta.AgregarInvolucradoEnMinuta(1, "TOT", "Procedure_AgregarInvolucradoUsuario", "@usu_id", 1);
+           daoInvolucradosMinuta.AgregarInvolucradoEnMinuta(2, "TOT", "Procedure_AgregarInvolucradoUsuario", "@usu_id", 1);
+          
             
         }
         /// <summary>
