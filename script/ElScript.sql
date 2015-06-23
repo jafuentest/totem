@@ -2578,12 +2578,18 @@ GO
 
 /*=====================================Procesos para leer la información de los Casos de Uso===============================*/
 
-CREATE PROCEDURE LISTAR_CU 
+CREATE PROCEDURE LISTAR_CU
+@codigoProyecto varchar(6) 
 AS
     BEGIN
-        --Leo todos los datos de los casos de uso
-        SELECT C.cu_id, C.cu_identificador ,C.cu_titulo, C.cu_condexito, C.cu_condfallo, C.cu_disparador 
-        FROM CASO_USO C
+        --Leo todos los datos de los casos de uso asociados a un proyecto---
+        
+SELECT C.cu_id as idCasoUso, 
+	   C.cu_identificador as identificadorCU,
+	   C.cu_titulo as tituloCU
+FROM CASO_USO C, Proyecto p 
+WHERE C.PROYECTO_pro_id = p.pro_id
+		and  p.pro_codigo =@codigoProyecto;
     END
 GO
 

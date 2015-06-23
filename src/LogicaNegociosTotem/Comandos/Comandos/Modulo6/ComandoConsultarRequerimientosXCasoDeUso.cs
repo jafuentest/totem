@@ -38,7 +38,7 @@ namespace Comandos.Comandos.Modulo6
                      RecursosComandosModulo6.MensajeExcepcionComandoBD,
                      ex);
 
-                Logger.EscribirError(RecursosComandosModulo6.ClaseComandoConsultarCasosDeUsoPorActor,
+                Logger.EscribirError(RecursosComandosModulo6.ClaseComandoConsultarRequerimientosPorCasoDeUso,
                     exComandoCasosDeUsoXActor);
 
                 throw exComandoCasosDeUsoXActor;
@@ -51,7 +51,7 @@ namespace Comandos.Comandos.Modulo6
                      RecursosComandosModulo6.MensajeTipoDeDatoErroneoComandoExcepcion,
                      ex);
 
-                Logger.EscribirError(RecursosComandosModulo6.ClaseComandoConsultarCasosDeUsoPorActor,
+                Logger.EscribirError(RecursosComandosModulo6.ClaseComandoConsultarRequerimientosPorCasoDeUso,
                     exComandoCasosDeUsoXActor);
 
                 throw exComandoCasosDeUsoXActor;
@@ -64,7 +64,7 @@ namespace Comandos.Comandos.Modulo6
                     RecursosComandosModulo6.MensajeExcepcionComandoObjetoNulo,
                     ex);
 
-                Logger.EscribirError(RecursosComandosModulo6.ClaseComandoConsultarCasosDeUsoPorActor,
+                Logger.EscribirError(RecursosComandosModulo6.ClaseComandoConsultarRequerimientosPorCasoDeUso,
                   exComandoCasosDeUsoXActor);
 
                 throw exComandoCasosDeUsoXActor;
@@ -78,7 +78,7 @@ namespace Comandos.Comandos.Modulo6
                      RecursosComandosModulo6.MensajeExcepcionComandoError,
                      ex);
 
-                Logger.EscribirError(RecursosComandosModulo6.ClaseComandoConsultarCasosDeUsoPorActor,
+                Logger.EscribirError(RecursosComandosModulo6.ClaseComandoConsultarRequerimientosPorCasoDeUso,
                    exComandoCasosDeUsoXActor);
 
                 throw exComandoCasosDeUsoXActor;

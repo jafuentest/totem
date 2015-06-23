@@ -104,7 +104,7 @@ namespace Presentadores.Modulo6
                                 + RecursosPresentadorModulo6.CerrarEtiquetaTd;
                    vista.tabla += RecursosPresentadorModulo6.AbrirEtiquetaTd + caso.TituloCasoUso
                                + RecursosPresentadorModulo6.CerrarEtiquetaTd;
-                   vista.tabla += RecursosPresentadorModulo6.CerrarEtiquetaTd;
+                   
                    vista.tabla += RecursosPresentadorModulo6.AbrirEtiquetaTd;
 
                    foreach (Requerimiento req in ListadoDeRequerimientos(caso.Id)) 

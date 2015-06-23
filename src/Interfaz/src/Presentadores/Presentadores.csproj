@@ -76,6 +76,7 @@
       <DependentUpon>RecursosPresentadorModulo5.resx</DependentUpon>
     </Compile>
     <Compile Include="Modulo6\PresentadorAgregarActor.cs" />
+    <Compile Include="Modulo6\PresentadorListar.cs" />
     <Compile Include="Modulo6\PresentadorReporteActores.cs" />
     <Compile Include="Modulo6\RecursosPresentadorModulo6.Designer.cs">
       <AutoGen>True</AutoGen>

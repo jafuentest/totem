@@ -79,11 +79,38 @@ namespace Comandos.Comandos.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a ComandoConsultarActoresXCasoDeUso.
+        /// </summary>
+        internal static string ClaseComandoConsultarActoresXCasoDeUso {
+            get {
+                return ResourceManager.GetString("ClaseComandoConsultarActoresXCasoDeUso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a ComandoConsultarCasosDeUsoPorActor.
         /// </summary>
         internal static string ClaseComandoConsultarCasosDeUsoPorActor {
             get {
                 return ResourceManager.GetString("ClaseComandoConsultarCasosDeUsoPorActor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ComandoConsultarRequerimientosXCasoDeUso.
+        /// </summary>
+        internal static string ClaseComandoConsultarRequerimientosPorCasoDeUso {
+            get {
+                return ResourceManager.GetString("ClaseComandoConsultarRequerimientosPorCasoDeUso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ComandoListarCU.
+        /// </summary>
+        internal static string ClaseComandoListarCU {
+            get {
+                return ResourceManager.GetString("ClaseComandoListarCU", resourceCulture);
             }
         }
         

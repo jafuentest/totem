@@ -123,8 +123,17 @@
   <data name="ClaseComandoConsultarActoresCombo" xml:space="preserve">
     <value>ComandoConsultarActoresCombo</value>
   </data>
+  <data name="ClaseComandoConsultarActoresXCasoDeUso" xml:space="preserve">
+    <value>ComandoConsultarActoresXCasoDeUso</value>
+  </data>
   <data name="ClaseComandoConsultarCasosDeUsoPorActor" xml:space="preserve">
     <value>ComandoConsultarCasosDeUsoPorActor</value>
+  </data>
+  <data name="ClaseComandoConsultarRequerimientosPorCasoDeUso" xml:space="preserve">
+    <value>ComandoConsultarRequerimientosXCasoDeUso</value>
+  </data>
+  <data name="ClaseComandoListarCU" xml:space="preserve">
+    <value>ComandoListarCU</value>
   </data>
   <data name="ClaseComandoVerificarExistenciaActor" xml:space="preserve">
     <value>ComandoVerificarExistenciaActor</value>
