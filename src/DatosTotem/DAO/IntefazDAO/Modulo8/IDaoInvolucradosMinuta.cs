@@ -46,7 +46,6 @@ namespace DAO.IntefazDAO.Modulo8
         /// <returns>Retorna un Boolean para saber si se realizo la operación con éxito</returns>
         Boolean AgregarUsuarioEnAcuerdo(Entidad usuario,string idAcuerdo,  string idProyecto);
 
-
         /// <summary>
         /// Firma del metodo para agregar involucrado a la BD
         /// </summary>
@@ -54,8 +53,9 @@ namespace DAO.IntefazDAO.Modulo8
         /// <param name="idProyecto">id de Proyecto</param>
         /// <param name="procedure">procedure a llamar</param>
         /// <param name="parametro">parametro a utilizar</param>
+        /// <param name="idMinuta">id de la minuta</param>
         /// <returns>Retorna un Boolean para saber si se realizo la operación con éxito</returns>
-        bool AgregarInvolucradoEnMinuta(int involucrado, string idProyecto, string procedure, string parametro);
+        bool AgregarInvolucradoEnMinuta(int involucrado, string idProyecto, string procedure, string parametro,int idMinuta);
        
         /// <summary>
         /// Firma del metodo para Agregar un Contacto a un Acuerdo a la BD

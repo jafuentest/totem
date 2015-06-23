@@ -42,9 +42,9 @@ namespace PruebasUnitariasTotem.Modulo8
         public void PruebaConsultarUsuarioMinutas()
         {
            
-            usuario =(Usuario) daoInvolucradosMinuta.ConsultarUsuarioMinutas(1);
-            Assert.AreEqual(usuario.Nombre,"Albeto");
-            Assert.AreEqual(usuario.Apellido,"Da Silva");
+            usuario =(Usuario) daoInvolucradosMinuta.ConsultarUsuarioMinutas(2);
+            Assert.AreEqual(usuario.Nombre, "Argenis");
+            Assert.AreEqual(usuario.Apellido, "Rodriguez");
             Assert.AreEqual(usuario.Cargo,"Administrador");
         }
         
@@ -67,7 +67,7 @@ namespace PruebasUnitariasTotem.Modulo8
         public void PruebaConsultarInvolucrado()
         {
 
-            Assert.IsTrue(daoInvolucradosMinuta.ConsultarInvolucrado("Procedure_ConsultarAsistenteContactoMinuta", "idContacto", "@min_id", "1").Count > 1);
+            Assert.IsTrue(daoInvolucradosMinuta.ConsultarInvolucrado("Procedure_ConsultarAsistenteContactoMinuta", "idContacto", "@min_id", "1").Count >= 1);
             
         }
         /// <summary>
@@ -77,7 +77,7 @@ namespace PruebasUnitariasTotem.Modulo8
         public void PruebaAgregarUsuarioEnAcuerdo()
         {
            
-           usuario =(Usuario) daoInvolucradosMinuta.ConsultarUsuarioMinutas(5);
+           usuario =(Usuario) daoInvolucradosMinuta.ConsultarUsuarioMinutas(9);
            Assert.IsTrue(daoInvolucradosMinuta.AgregarUsuarioEnAcuerdo(usuario,"1","TOT"));
            daoInvolucradosMinuta.EliminarUsuarioEnAcuerdo(usuario,1,"TOT");
             
@@ -89,7 +89,7 @@ namespace PruebasUnitariasTotem.Modulo8
         public void PruebaEliminarUsuarioEnAcuerdo()
         {
            
-           usuario =(Usuario) daoInvolucradosMinuta.ConsultarUsuarioMinutas(5);
+           usuario =(Usuario) daoInvolucradosMinuta.ConsultarUsuarioMinutas(9);
            daoInvolucradosMinuta.AgregarUsuarioEnAcuerdo(usuario,"1","TOT");
            Assert.IsTrue(daoInvolucradosMinuta.EliminarUsuarioEnAcuerdo(usuario,1,"TOT"));
             
@@ -102,8 +102,8 @@ namespace PruebasUnitariasTotem.Modulo8
         public void PruebaAgregarInvolucradoEnMinuta()
         {
            
-           Assert.IsTrue(daoInvolucradosMinuta.AgregarInvolucradoEnMinuta(5,"TOT","Procedure_AgregarInvolucradoUsuario","@usu_id"));
-            
+           Assert.IsTrue(daoInvolucradosMinuta.AgregarInvolucradoEnMinuta(9,"TOT","Procedure_AgregarInvolucradoUsuario","@usu_id",1));
+           daoInvolucradosMinuta.EliminarInvolucradoEnMinuta(1); 
         }
         
         /// <summary>
@@ -113,8 +113,9 @@ namespace PruebasUnitariasTotem.Modulo8
         public void PruebaAgregarContactoEnAcuerdo()
         {
            
-           contacto =(Contacto) daoInvolucradosMinuta.ConsultarContactoMinutas(5);
-           Assert.IsTrue(daoInvolucradosMinuta.AgregarContactoEnAcuerdo(contacto,"1","TOT"));
+           contacto =(Contacto) daoInvolucradosMinuta.ConsultarContactoMinutas(1);
+           Assert.IsTrue(daoInvolucradosMinuta.AgregarContactoEnAcuerdo(contacto, "1", "TOT"));
+           daoInvolucradosMinuta.EliminarContactoEnAcuerdo(contacto, 1, "TOT");
             
         }
         
@@ -127,6 +128,7 @@ namespace PruebasUnitariasTotem.Modulo8
         {
            
            contacto =(Contacto) daoInvolucradosMinuta.ConsultarContactoMinutas(1);
+           daoInvolucradosMinuta.AgregarContactoEnAcuerdo(contacto, "1", "TOT");
            Assert.IsTrue(daoInvolucradosMinuta.EliminarContactoEnAcuerdo(contacto,1,"TOT"));
             
         }
@@ -139,8 +141,7 @@ namespace PruebasUnitariasTotem.Modulo8
         [Test]
         public void PruebaEliminarInvolucradoEnMinuta()
         {
-           
-           contacto =(Contacto) daoInvolucradosMinuta.ConsultarContactoMinutas(1);
+            daoInvolucradosMinuta.AgregarInvolucradoEnMinuta(9, "TOT", "Procedure_AgregarInvolucradoUsuario", "@usu_id", 1);
            Assert.IsTrue(daoInvolucradosMinuta.EliminarInvolucradoEnMinuta(1));
             
         }

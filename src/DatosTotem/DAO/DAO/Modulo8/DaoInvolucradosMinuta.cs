@@ -316,8 +316,9 @@ namespace DAO.DAO.Modulo8
         /// <param name="idProyecto">id de Proyecto</param>
         /// <param name="procedure">procedure a llamar</param>
         /// <param name="parametro">parametro a utilizar</param>
+        /// <param name="idMinuta">id de la minuta</param>
         /// <returns>Retorna un Boolean para saber si se realizo la operación con éxito</returns>
-        public Boolean AgregarInvolucradoEnMinuta(int involucrado, string idProyecto, string procedure, string parametro)
+        public Boolean AgregarInvolucradoEnMinuta(int involucrado, string idProyecto, string procedure, string parametro,int idMinuta)
         {
            
             List<Parametro> parametros = new List<Parametro>();
@@ -325,7 +326,10 @@ namespace DAO.DAO.Modulo8
                 involucrado.ToString(), false);
             parametros.Add(parametroStored);
             parametroStored = new Parametro(RecursosBDModulo8.ParametroIDProyecto, SqlDbType.VarChar,
-                idProyecto.ToString(), false);
+                idProyecto, false);
+            parametros.Add(parametroStored);
+            parametroStored = new Parametro(RecursosBDModulo8.ParametroIDMinuta, SqlDbType.Int,
+                idMinuta.ToString(), false);
             parametros.Add(parametroStored);
 
 
