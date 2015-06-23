@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using Dominio.Entidades.Modulo8;
 using DAO.DAO.Modulo8;
+using DAO.Fabrica;
+using Dominio.Fabrica;
 
 
 namespace PruebasUnitariasTotem.Modulo8
@@ -17,8 +19,11 @@ namespace PruebasUnitariasTotem.Modulo8
     class PruebaDaoMinuta
     {
         Minuta minuta;
-        DaoMinuta daominuta;
+        DAO.IntefazDAO.Modulo8.IDaoMinuta daominuta;
         List<Minuta> listaMinuta;
+        FabricaAbstractaDAO fabricaDAO = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+        FabricaEntidades fabricaEntidades = new FabricaEntidades();
+       
 
         /// <summary>
         /// Metodo donde se inicializan todas las variables que se utilizan en la clase
@@ -27,8 +32,8 @@ namespace PruebasUnitariasTotem.Modulo8
         public void init()
         {
             listaMinuta = new List<Minuta>();
-            minuta = new Minuta();
-            daominuta = new DaoMinuta();
+            minuta = (Minuta)fabricaEntidades.ObtenerMinuta();
+            daominuta = fabricaDAO.ObtenerDAOMinuta();
         }
 
         /// <summary>

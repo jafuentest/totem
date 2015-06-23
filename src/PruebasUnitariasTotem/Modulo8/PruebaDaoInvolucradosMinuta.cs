@@ -8,6 +8,8 @@ using Dominio.Entidades.Modulo2;
 using Dominio.Entidades.Modulo7;
 using Dominio.Entidades.Modulo8;
 using DAO.DAO.Modulo8;
+using DAO.Fabrica;
+using Dominio.Fabrica;
 
 namespace PruebasUnitariasTotem.Modulo8
 {
@@ -19,10 +21,13 @@ namespace PruebasUnitariasTotem.Modulo8
     {
 
         Minuta minuta;
-        DaoInvolucradosMinuta daoInvolucradosMinuta;
+        DAO.IntefazDAO.Modulo8.IDaoInvolucradosMinuta daoInvolucradosMinuta;
         List<Minuta> listaMinuta;
         Usuario usuario;
         Contacto contacto;
+        FabricaAbstractaDAO fabricaDAO = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+        FabricaEntidades fabricaEntidades = new FabricaEntidades();
+       
 
         /// <summary>
         /// Metodo donde se inicializan todas las variables que se utilizan en la clase
@@ -32,7 +37,9 @@ namespace PruebasUnitariasTotem.Modulo8
         {
             listaMinuta = new List<Minuta>();
             minuta = new Minuta();
-            daoInvolucradosMinuta = new DaoInvolucradosMinuta();
+            daoInvolucradosMinuta = fabricaDAO.ObtenerDAOInvolucradosMinuta();
+            usuario=(Usuario)FabricaEntidades.ObtenerUsuario();
+            contacto = (Contacto)fabricaEntidades.ObtenerContacto();
         }
 
         /// <summary>
@@ -120,7 +127,8 @@ namespace PruebasUnitariasTotem.Modulo8
         {
             minuta = null;
             listaMinuta = null;
-            usuario=null;
+            usuario=null; 
+            contacto=null;
         }
     }
 }

@@ -62,12 +62,13 @@ namespace Comandos.Comandos.Modulo8
                 }
                 minuta.ListaPunto = daoPunto.ConsultarPuntoBD(minuta.Id).Cast<Punto>().ToList();
 
-                /*    
-                    listaAcuerdos = daoAcuerdo.ConsultarAcuerdo(minuta.Id).Cast<Acuerdo>().ToList();
+
+                /*PACHECOOOOOO
+                 * listaAcuerdos = daoAcuerdo.ConsultarAcuerdo(minuta.Id).Cast<Acuerdo>().ToList();
                           foreach (Acuerdo acu in listaAcuerdos)
                               {
-                                    invoAcuerdo = involucrados.ConsultarInvolucrado(RecursosLogicaModulo8.ProcedureConsultarUsuarioAcuerdo
-                                          , RecursosLogicaModulo8.AtributoAcuerdoUsuario, RecursosLogicaModulo8.ParametroIDAcuerdo, acu.Codigo.ToString());
+                                    invoAcuerdo = daoInvolucradosMinuta.ConsultarInvolucrado(RecursosComandosModulo8.ProcedureConsultarUsuarioAcuerdo
+                                          , RecursosComandosModulo8.AtributoAcuerdoUsuario, RecursosComandosModulo8.ParametroIDAcuerdo, acu.Codigo.ToString());
                                     if (invoAcuerdo != null)
                                       {
                                           foreach (int a in invoAcuerdo)
