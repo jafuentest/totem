@@ -103,7 +103,10 @@
     <Compile Include="Comandos\Modulo8\ComandoCompilarLatex.cs" />
     <Compile Include="Comandos\Modulo8\ComandoDetalleMinuta.cs" />
     <Compile Include="Comandos\Modulo8\ComandoGenerarMinuta.cs" />
+    <Compile Include="Comandos\Modulo8\ComandoGuardarMinuta.cs" />
+    <Compile Include="Comandos\Modulo8\ComandoListaContacto.cs" />
     <Compile Include="Comandos\Modulo8\ComandoListaMinuta.cs" />
+    <Compile Include="Comandos\Modulo8\ComandoListaUsuario.cs" />
     <Compile Include="Comandos\Modulo8\RecursosComandosModulo8.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
