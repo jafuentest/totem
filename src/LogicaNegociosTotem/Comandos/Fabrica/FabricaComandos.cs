@@ -322,6 +322,32 @@ namespace Comandos.Fabrica
             return new Comandos.Modulo8.ComandoDetalleMinuta();
         }
 
+        public static Comando<string, string> CrearComandoGuardarMinuta()
+        {
+            return new Comandos.Modulo8.ComandoGuardarMinuta();
+        }
+
+        public static Comando<String, bool> CrearComandoCompilarLatex()
+        {
+            return new Comandos.Modulo8.ComandoCompilarLatex();
+        }
+
+        public static Comando<Entidad, bool> CrearComandoGenerarMinuta()
+        {
+            return new Comandos.Modulo8.ComandoGenerarMinuta();
+        }
+
+        public static Comando<Dominio.Entidad, List<Dominio.Entidad>> CrearComandoListaContacto()
+        {
+            return new Comandos.Modulo8.ComandoListaContacto();
+        }
+
+        public static Comando<Dominio.Entidad, List<Dominio.Entidad>> CrearComandoListaUsuario()
+        { 
+            return new Comandos.Modulo8.ComandoListaUsuario();
+        }
+        
+
         #endregion
     }
 }
