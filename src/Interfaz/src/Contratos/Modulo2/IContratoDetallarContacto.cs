@@ -16,6 +16,9 @@ namespace Contratos.Modulo2
         string cargoContacto { get; set; }
 
         string telefono { get; set; }
+        string alertaClase { set; }
+        string alertaRol { set; }
+        string alerta { set; }
 
     }
 }

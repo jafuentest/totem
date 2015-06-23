@@ -17,11 +17,10 @@ namespace Vista.Modulo2
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            presentador.ObtenerVariablesURL();
             this.Master.idModulo = "2";
-            this.Master.presentador.CargarMenuLateral();
-            String detalleCliente = Request.QueryString["detalle"];
-            presentador.cargarDatos(detalleCliente);
-
+            if(!IsPostBack)
+                this.Master.presentador.CargarMenuLateral();
         }
 
         #region Contratos
@@ -29,11 +28,11 @@ namespace Vista.Modulo2
         {
             get
             {
-                return nombreCliente.Text;
+                return nombreCliente.InnerText;
             }
             set
             {
-                nombreCliente.Text = value;
+                nombreCliente.InnerText += value;
             }
         }
 
@@ -41,11 +40,11 @@ namespace Vista.Modulo2
         {
             get
             {
-                return apellidoCliente.Text;
+                return apellidoCliente.InnerText;
             }
             set
             {
-                apellidoCliente.Text = value;
+                apellidoCliente.InnerText += value;
             }
         }
 
@@ -53,11 +52,11 @@ namespace Vista.Modulo2
         {
             get
             {
-                return cedulaCliente.Text;
+                return cedulaCliente.InnerText;
             }
             set
             {
-                cedulaCliente.Text = value;
+                cedulaCliente.InnerText += value;
             }
         }
 
@@ -65,11 +64,11 @@ namespace Vista.Modulo2
         {
             get
             {
-                return pais.Text;
+                return pais.InnerText;
             }
             set
             {
-                pais.Text = value;
+                pais.InnerText += value;
             }
         }
 
@@ -77,11 +76,11 @@ namespace Vista.Modulo2
         {
             get
             {
-                return estado.Text;
+                return estado.InnerText;
             }
             set
             {
-                estado.Text = value;
+                estado.InnerText += value;
             }
         }
 
@@ -89,11 +88,11 @@ namespace Vista.Modulo2
         {
             get
             {
-                return ciudad.Text;
+                return ciudad.InnerText;
             }
             set
             {
-                ciudad.Text = value;
+                ciudad.InnerText += value;
             }
         }
 
@@ -101,11 +100,11 @@ namespace Vista.Modulo2
         {
             get
             {
-                return direccion.Text;
+                return direccion.InnerText;
             }
             set
             {
-                direccion.Text = value;
+                direccion.InnerText += value;
             }
         }
 
@@ -113,11 +112,11 @@ namespace Vista.Modulo2
         {
             get
             {
-                return codpostal.Text;
+                return codpostal.InnerText;
             }
             set
             {
-                codpostal.Text = value;
+                codpostal.InnerText += value;
             }
         }
 
@@ -125,11 +124,11 @@ namespace Vista.Modulo2
         {
             get
             {
-                return correocliente.Text;
+                return correocliente.InnerText;
             }
             set
             {
-                correocliente.Text = value;
+                correocliente.InnerText += value;
             }
         }
 
@@ -137,14 +136,27 @@ namespace Vista.Modulo2
         {
             get
             {
-                return telefono.Text;
+                return telefono.InnerText;
             }
             set
             {
-                telefono.Text = value;
+                telefono.InnerText += value;
             }
         }
-        #endregion
+        public string alertaClase
+        {
+            set { alert.Attributes["class"] = value; }
+        }
 
+        public string alertaRol
+        {
+            set { alert.Attributes["role"] = value; }
+        }
+
+        public string alerta
+        {
+            set { alert.InnerHtml = value; }
+        }
+        #endregion
     }
 }

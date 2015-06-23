@@ -10,6 +10,7 @@ using Dominio;
 using Comandos.Comandos.Modulo2;
 using Dominio.Entidades.Modulo2;
 using Dominio.Fabrica;
+using System.Web;
 
 namespace Presentadores.Modulo2
 {
@@ -134,6 +135,19 @@ namespace Presentadores.Modulo2
             vista.comboCargo.DataBind();
             vista.comboCargo.Enabled = true;
         }
+        public void ObtenerVariablesURL()
+        {
+            String error = HttpContext.Current.Request.QueryString["error"];
+            if (error != null && error.Equals("input_malicioso"))
+            {
+                vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Error;
+                vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                vista.alerta = RecursoInterfazM2.Alerta_Html +
+                    RecursosGeneralPresentadores.Mensaje_Error_InputInvalido +
+                    RecursoInterfazM2.Alerta_Html_Final;
+            }
+
+        }
         public bool agregarEmpresa()
         {
             List<String> alfabeticos = new List<String>();
@@ -156,34 +170,66 @@ namespace Presentadores.Modulo2
                 {
                         if (Validaciones.ValidarExpresionRegular(numericos,expresion))
                         {
-                            FabricaEntidades fabrica = new FabricaEntidades();
-                            Entidad direccion = fabrica.ObtenerDireccion(vista.comboPais.SelectedValue,
-                                vista.comboEstado.SelectedValue, vista.comboCiudad.SelectedValue,
-                                vista.direccionEmpresa, vista.codigoPostalEmpresa);
-                            Entidad telefono = fabrica.ObtenerTelefono(vista.codTelefono, vista.telefonoCliente);
-                            Entidad contacto = fabrica.ObtenerContacto(vista.cedulaContacto, vista.nombreContacto,
-                                vista.apellidoContacto, vista.comboCargo.SelectedValue, telefono);
-                            List<Entidad> contactos = new List<Entidad>();
-                            contactos.Add(contacto);
-                            Entidad clientej = fabrica.ObtenerClienteJuridico(vista.nombreEmpresa, contactos, direccion, vista.rifEmpresa, "aquivaellogo");
+                                FabricaEntidades fabrica = new FabricaEntidades();
+                                List<Entidad> contactos = new List<Entidad>();
                             try
                             {
+                                Entidad direccion = fabrica.ObtenerDireccion(vista.comboPais.SelectedValue,
+                                    vista.comboEstado.SelectedValue, vista.comboCiudad.SelectedValue,
+                                    vista.direccionEmpresa, vista.codigoPostalEmpresa);
+                                Entidad telefono = fabrica.ObtenerTelefono(vista.codTelefono, vista.telefonoCliente);
+                                Entidad contacto = fabrica.ObtenerContacto(vista.cedulaContacto, vista.nombreContacto,
+                                    vista.apellidoContacto, vista.comboCargo.SelectedValue, telefono);
+                                contactos.Add(contacto);
+                                Entidad clientej = fabrica.ObtenerClienteJuridico(vista.nombreEmpresa, contactos, direccion, vista.rifEmpresa, "aquivaellogo");
                                 Comando<Entidad, bool> comando = FabricaComandos.CrearComandoAgregarClienteJuridico();
-                                return comando.Ejecutar(clientej);
+                                if (comando.Ejecutar(clientej))
+                                    HttpContext.Current.Response.Redirect(RecursoInterfazM2.ListarEmpresas +
+                                        RecursoInterfazM2.Codigo_Exito_Agregar);
+                                return true;
                             }
                             catch (Exception ex)
                             {
-                                throw ex;
+                                vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Error;
+                                vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                                vista.alerta = RecursoInterfazM2.Alerta_Html +
+                                    ex.Message +
+                                    RecursoInterfazM2.Alerta_Html_Final;
+                                return false;
                             }
                         }
-                    else
-                        return false;
+                        else
+                        {
+                            vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Error;
+                            vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                            vista.alerta = RecursoInterfazM2.Alerta_Html +
+                                RecursoInterfazM2.Alerta_Error_Numericos +
+                            RecursoInterfazM2.Alerta_Html_Final;
+                            return false;
+
+                        }
                 }
                 else
+                {
+                    vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Error;
+                    vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                    vista.alerta = RecursoInterfazM2.Alerta_Html +
+                        RecursoInterfazM2.Alerta_Error_Alfabeticos +
+                    RecursoInterfazM2.Alerta_Html_Final;
                     return false;
+
+                }
             }
             else
+            {
+                vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Error;
+                vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                vista.alerta = RecursoInterfazM2.Alerta_Html +
+                    RecursoInterfazM2.Alerta_Error_CamposVacios +
+                RecursoInterfazM2.Alerta_Html_Final;
                 return false;
+
+            }
         }
     }
 }

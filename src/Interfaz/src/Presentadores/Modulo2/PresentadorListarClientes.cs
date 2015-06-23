@@ -74,6 +74,15 @@ namespace Presentadores.Modulo2
                     RecursoInterfazM2.Alerta_Cliente_Agregado +
                     RecursoInterfazM2.Alerta_Html_Final;
             }
+            else
+                if (variable != null && variable.Equals("modificar"))
+                {
+                    vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Exito;
+                    vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                    vista.alerta = RecursoInterfazM2.Alerta_Html +
+                        RecursoInterfazM2.Alerta_Cliente_Modificado +
+                        RecursoInterfazM2.Alerta_Html_Final;
+                }
         }
     }
 }

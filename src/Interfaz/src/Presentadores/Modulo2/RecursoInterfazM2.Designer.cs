@@ -169,6 +169,15 @@ namespace Presentadores.Modulo2 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cliente modificado exitosamente.
+        /// </summary>
+        public static string Alerta_Cliente_Modificado {
+            get {
+                return ResourceManager.GetString("Alerta_Cliente_Modificado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error en campos que solo admiten letras.
         /// </summary>
         public static string Alerta_Error_Alfabeticos {
@@ -192,6 +201,15 @@ namespace Presentadores.Modulo2 {
         public static string Alerta_Error_Correo {
             get {
                 return ResourceManager.GetString("Alerta_Error_Correo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El cliente no se encuentra almacenado en el sistema.
+        /// </summary>
+        public static string Alerta_Error_NullPointer {
+            get {
+                return ResourceManager.GetString("Alerta_Error_NullPointer", resourceCulture);
             }
         }
         
@@ -268,11 +286,29 @@ namespace Presentadores.Modulo2 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ?success=modificar.
+        /// </summary>
+        public static string Codigo_Exito_Modificar {
+            get {
+                return ResourceManager.GetString("Codigo_Exito_Modificar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to /Modulo2/ListarClientes.aspx.
         /// </summary>
         public static string ListarClientes {
             get {
                 return ResourceManager.GetString("ListarClientes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /Modulo2/ListarEmpresas.aspx.
+        /// </summary>
+        public static string ListarEmpresas {
+            get {
+                return ResourceManager.GetString("ListarEmpresas", resourceCulture);
             }
         }
     }

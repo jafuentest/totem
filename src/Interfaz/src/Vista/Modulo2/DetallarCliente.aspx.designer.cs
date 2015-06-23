@@ -37,7 +37,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label nombreCliente;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl nombreCliente;
         
         /// <summary>
         /// apellidoCliente control.
@@ -46,7 +46,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label apellidoCliente;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl apellidoCliente;
         
         /// <summary>
         /// cedulaCliente control.
@@ -55,7 +55,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label cedulaCliente;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cedulaCliente;
         
         /// <summary>
         /// contenedorComboPais control.
@@ -73,7 +73,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label pais;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pais;
         
         /// <summary>
         /// contenedorComboEstado control.
@@ -91,7 +91,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label estado;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl estado;
         
         /// <summary>
         /// Div1 control.
@@ -109,7 +109,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ciudad;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ciudad;
         
         /// <summary>
         /// direccion control.
@@ -118,7 +118,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label direccion;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl direccion;
         
         /// <summary>
         /// codpostal control.
@@ -127,7 +127,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label codpostal;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl codpostal;
         
         /// <summary>
         /// correocliente control.
@@ -136,7 +136,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label correocliente;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl correocliente;
         
         /// <summary>
         /// telefono control.
@@ -145,7 +145,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label telefono;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl telefono;
         
         /// <summary>
         /// Master property.

@@ -9,6 +9,7 @@ using Dominio;
 using Dominio.Fabrica;
 using Dominio.Entidades.Modulo2;
 using System.Text.RegularExpressions;
+using System.Web;
 
 
 namespace Presentadores.Modulo2
@@ -25,26 +26,44 @@ namespace Presentadores.Modulo2
         {
             FabricaEntidades fabrica = new FabricaEntidades();
             Entidad entidadCliente = fabrica.ObtenerClienteNatural();
+            try
+            {
+                entidadCliente.Id = int.Parse(idCliente);
 
-            entidadCliente.Id = int.Parse(idCliente);
+                Comando<Entidad, Entidad> comando = FabricaComandos.CrearComandoConsultarXIDClienteNatural();
 
-            Comando<Entidad, Entidad> comando = FabricaComandos.CrearComandoConsultarXIDClienteNatural();
+                ClienteNatural elCliente = (ClienteNatural)comando.Ejecutar(entidadCliente);
 
-            ClienteNatural elCliente = (ClienteNatural)comando.Ejecutar(entidadCliente);
-
-            vista.cedulaCliente = elCliente.Nat_Cedula;
-            vista.nombreCliente = elCliente.Nat_Nombre;
-            vista.apellidoCliente = elCliente.Nat_Apellido;
-            vista.codTelefono = elCliente.Nat_Telefono.Codigo;
-            vista.telefonoCliente = elCliente.Nat_Telefono.Numero;
-            vista.correoCliente = elCliente.Nat_Correo;
-            vista.comboPais.SelectedValue = elCliente.Nat_Direccion.ElPais;
-            llenarComboEstadosXPais(elCliente.Nat_Direccion.ElPais);
-            vista.comboEstado.SelectedValue = elCliente.Nat_Direccion.ElEstado;
-            llenarComboCiudadXEstado(elCliente.Nat_Direccion.ElEstado);
-            vista.comboCiudad.SelectedValue = elCliente.Nat_Direccion.LaCiudad;
-            vista.direccionCliente = elCliente.Nat_Direccion.LaDireccion;
-            vista.codigoPostalCliente = elCliente.Nat_Direccion.CodigoPostal;
+                vista.cedulaCliente = elCliente.Nat_Cedula;
+                vista.nombreCliente = elCliente.Nat_Nombre;
+                vista.apellidoCliente = elCliente.Nat_Apellido;
+                vista.codTelefono = elCliente.Nat_Telefono.Codigo;
+                vista.telefonoCliente = elCliente.Nat_Telefono.Numero;
+                vista.correoCliente = elCliente.Nat_Correo;
+                vista.comboPais.SelectedValue = elCliente.Nat_Direccion.ElPais;
+                llenarComboEstadosXPais(elCliente.Nat_Direccion.ElPais);
+                vista.comboEstado.SelectedValue = elCliente.Nat_Direccion.ElEstado;
+                llenarComboCiudadXEstado(elCliente.Nat_Direccion.ElEstado);
+                vista.comboCiudad.SelectedValue = elCliente.Nat_Direccion.LaCiudad;
+                vista.direccionCliente = elCliente.Nat_Direccion.LaDireccion;
+                vista.codigoPostalCliente = elCliente.Nat_Direccion.CodigoPostal;
+            }
+            catch (NullReferenceException ex)
+            {
+                vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Error;
+                vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                vista.alerta = RecursoInterfazM2.Alerta_Html +
+                    RecursoInterfazM2.Alerta_Error_NullPointer +
+                    RecursoInterfazM2.Alerta_Html_Final;
+            }
+            catch (Exception ex)
+            {
+                vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Error;
+                vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                vista.alerta = RecursoInterfazM2.Alerta_Html +
+                    ex.Message +
+                    RecursoInterfazM2.Alerta_Html_Final;
+            }
         }
 
         public void llenarComboPais()
@@ -64,6 +83,11 @@ namespace Presentadores.Modulo2
             }
             catch (Exception ex)
             {
+                vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Error;
+                vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                vista.alerta = RecursoInterfazM2.Alerta_Html +
+                    ex.Message +
+                    RecursoInterfazM2.Alerta_Html_Final;
 
             }
             vista.comboPais.DataSource = options;
@@ -89,6 +113,11 @@ namespace Presentadores.Modulo2
             }
             catch (Exception ex)
             {
+                vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Error;
+                vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                vista.alerta = RecursoInterfazM2.Alerta_Html +
+                    ex.Message +
+                    RecursoInterfazM2.Alerta_Html_Final;
 
             }
             vista.comboEstado.DataSource = options;
@@ -125,7 +154,11 @@ namespace Presentadores.Modulo2
             }
             catch (Exception ex)
             {
-
+                vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Error;
+                vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                vista.alerta = RecursoInterfazM2.Alerta_Html +
+                    ex.Message +
+                    RecursoInterfazM2.Alerta_Html_Final;
             }
             vista.comboCiudad.DataSource = options;
             vista.comboCiudad.DataTextField = "value";
@@ -136,6 +169,21 @@ namespace Presentadores.Modulo2
             vista.direccionCliente = "";
             vista.codigoPostalCliente = "";
 
+        }
+        public void ObtenerVariablesURL()
+        {
+            String error = HttpContext.Current.Request.QueryString["error"];
+            if (error != null && error.Equals("input_malicioso"))
+            {
+                vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Error;
+                vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                vista.alerta = RecursoInterfazM2.Alerta_Html +
+                    RecursosGeneralPresentadores.Mensaje_Error_InputInvalido +
+                    RecursoInterfazM2.Alerta_Html_Final;
+            }
+            String edicionCliente = HttpContext.Current.Request.QueryString["id"];
+            if (edicionCliente != null)
+                cargarCliente(edicionCliente);
         }
 
         public bool modificarCliente(String elID)
@@ -162,13 +210,15 @@ namespace Presentadores.Modulo2
                 Validaciones.ValidarCamposVacios(numericos) && Validaciones.ValidarCamposVacios(correo))
             {
                 if (Validaciones.ValidarCaracteresAlfabeticos(alfabeticos))
+                {
+                    if (Validaciones.ValidarExpresionRegular(numericos, expresion))
                     {
-                        if (Validaciones.ValidarExpresionRegular(numericos, expresion))
+                        if (Validaciones.ValidarExpresionRegular(correo, expresion3))
                         {
-                            if (Validaciones.ValidarExpresionRegular(correo, expresion3))
-                            {
-                                FabricaEntidades fabrica = new FabricaEntidades();
+                            FabricaEntidades fabrica = new FabricaEntidades();
 
+                            try
+                            {
                                 Entidad laDireccion = fabrica.ObtenerDireccion(vista.comboPais.SelectedValue,
                                     vista.comboEstado.SelectedValue, vista.comboCiudad.SelectedValue,
                                     vista.direccionCliente, vista.codigoPostalCliente);
@@ -177,28 +227,63 @@ namespace Presentadores.Modulo2
                                     vista.apellidoCliente, vista.correoCliente, laDireccion, elTelefono, vista.cedulaCliente);
                                 elCliente.Id = int.Parse(elID);
 
-                                try
-                                {
-                                    Comando<Entidad, bool> comando = FabricaComandos.CrearComandoModificarClienteNatural();
-                                    return comando.Ejecutar(elCliente);
-                                }
-                                catch (Exception ex)
-                                {
-                                    throw ex;
-                                }
+                                Comando<Entidad, bool> comando = FabricaComandos.CrearComandoModificarClienteNatural();
+                                if (comando.Ejecutar(elCliente))
+                                    HttpContext.Current.Response.Redirect(RecursoInterfazM2.ListarClientes +
+                                        RecursoInterfazM2.Codigo_Exito_Modificar);
+                                return true;
                             }
-                            else
+                            catch (Exception ex)
+                            {
+                                vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Error;
+                                vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                                vista.alerta = RecursoInterfazM2.Alerta_Html +
+                                    ex.Message +
+                                    RecursoInterfazM2.Alerta_Html_Final;
                                 return false;
+                            }
+                        }
+                        else
+                        {
+                            vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Error;
+                            vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                            vista.alerta = RecursoInterfazM2.Alerta_Html +
+                                RecursoInterfazM2.Alerta_Error_Correo +
+                            RecursoInterfazM2.Alerta_Html_Final;
+                            return false;
+
+                        }
                     }
                     else
+                    {
+                        vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Error;
+                        vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                        vista.alerta = RecursoInterfazM2.Alerta_Html +
+                            RecursoInterfazM2.Alerta_Error_Numericos +
+                        RecursoInterfazM2.Alerta_Html_Final;
                         return false;
+                    }
                 }
                 else
+                {
+                    vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Error;
+                    vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                    vista.alerta = RecursoInterfazM2.Alerta_Html +
+                        RecursoInterfazM2.Alerta_Error_Alfabeticos +
+                    RecursoInterfazM2.Alerta_Html_Final;
                     return false;
+                }
             }
             else
+            {
+                vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Error;
+                vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                vista.alerta = RecursoInterfazM2.Alerta_Html +
+                    RecursoInterfazM2.Alerta_Error_CamposVacios +
+                RecursoInterfazM2.Alerta_Html_Final;
                 return false;
 
+            }
         }
     }
 }

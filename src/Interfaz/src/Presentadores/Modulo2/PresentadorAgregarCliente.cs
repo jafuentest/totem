@@ -127,6 +127,19 @@ namespace Presentadores.Modulo2
             vista.comboCiudad.DataBind();
             vista.comboCiudad.Enabled = true;
         }
+        public void ObtenerVariablesURL()
+        {
+            String error = HttpContext.Current.Request.QueryString["error"];
+            if (error != null && error.Equals("input_malicioso"))
+            {
+                vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Error;
+                vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                vista.alerta = RecursoInterfazM2.Alerta_Html +
+                    RecursosGeneralPresentadores.Mensaje_Error_InputInvalido +
+                    RecursoInterfazM2.Alerta_Html_Final;
+            }
+
+        }
         public bool agregarCliente()
         {
 
@@ -161,16 +174,15 @@ namespace Presentadores.Modulo2
                         {
                             FabricaEntidades fabrica = new FabricaEntidades();
 
-                            Entidad laDireccion = fabrica.ObtenerDireccion(vista.comboPais.SelectedValue,
-                                vista.comboEstado.SelectedValue, vista.comboCiudad.SelectedValue,
-                                vista.direccionCliente, vista.codigoPostalCliente);
-                            Entidad elTelefono = fabrica.ObtenerTelefono(vista.codTelefono, vista.telefonoCliente);
-                            Entidad elCliente = fabrica.ObtenerClienteNatural(vista.nombreNatural,
-                                vista.apellidoNatural, vista.correoCliente, laDireccion, elTelefono, 
-                                vista.cedulaNatural);
-
                             try
                             {
+                                Entidad laDireccion = fabrica.ObtenerDireccion(vista.comboPais.SelectedValue,
+                                    vista.comboEstado.SelectedValue, vista.comboCiudad.SelectedValue,
+                                    vista.direccionCliente, vista.codigoPostalCliente);
+                                Entidad elTelefono = fabrica.ObtenerTelefono(vista.codTelefono, vista.telefonoCliente);
+                                Entidad elCliente = fabrica.ObtenerClienteNatural(vista.nombreNatural,
+                                    vista.apellidoNatural, vista.correoCliente, laDireccion, elTelefono,
+                                    vista.cedulaNatural);
                                 Comando<Entidad, bool> comando = FabricaComandos.CrearComandoAgregarClienteNatural();
                                 if (comando.Ejecutar(elCliente))
                                     HttpContext.Current.Response.Redirect(RecursoInterfazM2.ListarClientes + 

@@ -15,5 +15,8 @@ namespace Contratos.Modulo2
         string direccionEmpresa { get; set; }
         string codigoPostal { get; set; }
         string laTabla { get; set; }
+        string alertaClase { set; }
+        string alertaRol { set; }
+        string alerta { set; }
     }
 }

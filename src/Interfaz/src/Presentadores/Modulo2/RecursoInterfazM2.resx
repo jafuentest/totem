@@ -156,6 +156,9 @@
   <data name="Alerta_Cliente_Agregado" xml:space="preserve">
     <value>Cliente agregado exitosamente</value>
   </data>
+  <data name="Alerta_Cliente_Modificado" xml:space="preserve">
+    <value>Cliente modificado exitosamente</value>
+  </data>
   <data name="Alerta_Error_Alfabeticos" xml:space="preserve">
     <value>Error en campos que solo admiten letras</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="Alerta_Error_Correo" xml:space="preserve">
     <value>Error en el correo electrónico</value>
+  </data>
+  <data name="Alerta_Error_NullPointer" xml:space="preserve">
+    <value>El cliente no se encuentra almacenado en el sistema</value>
   </data>
   <data name="Alerta_Error_Numericos" xml:space="preserve">
     <value>Error en los campos numéricos</value>
@@ -193,7 +199,13 @@
     <value>?success=agregar</value>
     <comment>Codigo de exito para el redireccionamiento</comment>
   </data>
+  <data name="Codigo_Exito_Modificar" xml:space="preserve">
+    <value>?success=modificar</value>
+  </data>
   <data name="ListarClientes" xml:space="preserve">
     <value>/Modulo2/ListarClientes.aspx</value>
+  </data>
+  <data name="ListarEmpresas" xml:space="preserve">
+    <value>/Modulo2/ListarEmpresas.aspx</value>
   </data>
 </root>

@@ -21,9 +21,6 @@ namespace Vista.Modulo2
             {
                 this.Master.idModulo = "2";
                 this.Master.presentador.CargarMenuLateral();
-                String edicionCliente = Request.QueryString["id"];
-
-                presentador.cargarCliente(edicionCliente);
                 presentador.llenarComboPais();
             }
 

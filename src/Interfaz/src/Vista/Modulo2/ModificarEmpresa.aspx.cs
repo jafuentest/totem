@@ -19,15 +19,12 @@ namespace Vista.Modulo2
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Master.idModulo = "2";
-            String edicionEmpresa = Request.QueryString["id"];
-
+            presentador.ObtenerVariablesURL();
             if (!IsPostBack)
             {
                 this.Master.presentador.CargarMenuLateral();
-                presentador.cargarDatosEmpresa(edicionEmpresa);
                 presentador.llenarComboPais();
             }
-
 
         }
         #region Contrato

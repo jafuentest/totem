@@ -22,7 +22,8 @@
     Detallar Empresa
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
-
+    
+     <div id="alert" runat ="server"> </div>
     <div class="col-sm-8 col-md-8 col-lg-8 col-md-offset-2">
         <form id="agregar_empresa" class="form-horizontal" action="#" method="post" Runat="Server">
 

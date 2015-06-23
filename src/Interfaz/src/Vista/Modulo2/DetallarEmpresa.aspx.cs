@@ -19,10 +19,10 @@ namespace Vista.Modulo2
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            presentador.ObtenerVariablesURL();
             this.Master.idModulo = "2";
-            this.Master.presentador.CargarMenuLateral();
-            String detalleEmpresa = Request.QueryString["detalle"];
-            presentador.cargarDatos(detalleEmpresa);
+            if(!IsPostBack)
+                this.Master.presentador.CargarMenuLateral();
         }
         #region Contrato
         string Contratos.Modulo2.IContratoDetallarEmpresa.rifEmpresa
@@ -119,6 +119,21 @@ namespace Vista.Modulo2
             {
                 laTabla.Text = value;
             }
+        }
+
+        public string alertaClase
+        {
+            set { alert.Attributes["class"] = value; }
+        }
+
+        public string alertaRol
+        {
+            set { alert.Attributes["role"] = value; }
+        }
+
+        public string alerta
+        {
+            set { alert.InnerHtml = value; }
         }
         #endregion
     }
