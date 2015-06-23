@@ -122,7 +122,6 @@
     <Content Include="Modulo3\ListarPersonalInvolucrado.aspx" />
     <Content Include="Modulo5\AgregarRequerimiento.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Modulo5\js\Validacion.js" />
     <Content Include="Modulo5\ListarRequerimientos.aspx" />
     <Content Include="Modulo5\ModificarRequerimiento.aspx" />
     <Content Include="Modulo5\ReporteRequerimientos.aspx" />
