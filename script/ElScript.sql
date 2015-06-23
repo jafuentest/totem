@@ -2145,28 +2145,27 @@ GO
 -- ========================================================================= --
 -- Modificar requerimiento
 -- ========================================================================= --
-
 CREATE PROCEDURE M5_ModificarRequerimiento
 
-	@req_id				[int],
-	@req_codigo			[varchar] (15),
-	@req_descripcion	[varchar] (500),
-	@req_tipo			[varchar] (25),
-	@req_prioridad		[varchar] (10),
-	@req_estatus		[varchar] (50)
+  @req_id       [int],
+  @req_codigo     [varchar] (15),
+  @req_descripcion  [varchar] (500),
+  @req_tipo     [varchar] (25),
+  @req_prioridad    [varchar] (10),
+  @req_estatus    [varchar] (50)
 
 AS 
-	BEGIN
-		UPDATE REQUERIMIENTO
-		SET
-			req_codigo		=	@req_codigo,
-			req_descripcion	=	@req_descripcion,
-			req_tipo		=	@req_tipo,
-			req_prioridad	=	@req_prioridad,
-			req_estatus		=	@req_estatus
-		WHERE
-			req_id			=	@req_id;
-	END
+  BEGIN
+    UPDATE REQUERIMIENTO
+    SET
+      req_codigo    = @req_codigo,
+      req_descripcion = @req_descripcion,
+      req_tipo    = @req_tipo,
+      req_prioridad = @req_prioridad,
+      req_estatus   = @req_estatus
+    WHERE
+      req_codigo = @req_codigo;
+  END
 GO
 
 -- ========================================================================= --
