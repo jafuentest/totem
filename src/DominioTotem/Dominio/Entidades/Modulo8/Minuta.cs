@@ -14,7 +14,7 @@ namespace Dominio.Entidades.Modulo8
     {
         #region Atributos
 
-     
+        private string codigo;
         private DateTime fecha;
         private string motivo;
         private string observaciones;
@@ -47,6 +47,12 @@ namespace Dominio.Entidades.Modulo8
         #endregion
 
         #region Propiedades
+
+        public string Codigo
+        {
+            get { return this.codigo; }
+            set { this.codigo = value; }
+        }
         public DateTime Fecha
         {
             get { return this.fecha; }

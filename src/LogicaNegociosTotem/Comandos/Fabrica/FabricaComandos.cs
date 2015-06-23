@@ -233,6 +233,16 @@ namespace Comandos.Fabrica
             return new ComandoConsultarRequerimientosXCasoDeUso(); 
         }
 
+        public static Comando<string, List<Entidad>> CrearComandoListarCU() 
+        {
+            return new ComandoListarCU(); 
+        }
+
+        public static Comando<int, List<string>> CrearComandoConsultarActoresXCasoDeUso() 
+        {
+            return new ComandoConsultarActoresXCasoDeUso(); 
+        }
+
         #endregion
 
         #region Modulo 7

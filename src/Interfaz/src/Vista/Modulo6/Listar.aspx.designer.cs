@@ -13,67 +13,49 @@ namespace Vista.Modulo6 {
     public partial class Listar {
         
         /// <summary>
-        /// Control alert.
+        /// Control labelMensajeExito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alert;
+        protected global::System.Web.UI.WebControls.Label labelMensajeExito;
         
         /// <summary>
-        /// Control table_example.
+        /// Control labelMensajeError.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table table_example;
+        protected global::System.Web.UI.WebControls.Label labelMensajeError;
         
         /// <summary>
-        /// Control precondiciones.
+        /// Control cuerpo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.BulletedList precondiciones;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cuerpo;
         
         /// <summary>
-        /// Control exito.
+        /// Control tabla.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl exito;
+        protected global::System.Web.UI.WebControls.Literal tabla;
         
         /// <summary>
-        /// Control fallo.
+        /// Control boton.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl fallo;
-        
-        /// <summary>
-        /// Control disparador.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl disparador;
-        
-        /// <summary>
-        /// Control escenarioPrincipal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl escenarioPrincipal;
+        protected global::System.Web.UI.HtmlControls.HtmlButton boton;
         
         /// <summary>
         /// Propiedad Master.

@@ -435,3 +435,44 @@ ClientConnectionId:a75d62ff-df73-461a-a902-4ecffd485fa6
    --- Fin del seguimiento de la pila de la excepción interna ---
    en DAO.DAO.Modulo6.DAOActor.Agregar(Entidad parametro) en c:\totem\totem\src\DatosTotem\DAO\DAO\Modulo6\DAOActor.cs:línea 58
    en Comandos.Comandos.Modulo6.ComandoAgregarActor.Ejecutar(Entidad parametro) en c:\totem\totem\src\LogicaNegociosTotem\Comandos\Comandos\Modulo6\ComandoAgregarActor.cs:línea 32
+2015-06-23 01:54:09,384 ERROR DAOActor - *******************************************************
+2015-06-23 01:54:09,448 ERROR DAOActor - Mensaje: Error en la conexión a Base de Datos.
+2015-06-23 01:54:09,448 ERROR DAOActor - Origen: 
+2015-06-23 01:54:09,448 ERROR DAOActor - Metodo: 
+2015-06-23 01:54:09,448 ERROR DAOActor - StackTrace: 
+2015-06-23 01:54:09,572 ERROR DAOActor - InnerException: System.Data.SqlClient.SqlException (0x80131904): Valor de tiempo de espera caducado. El periodo de tiempo de espera se agotó al intentar consumir la confirmación del protocolo de enlace previo al inicio de sesión. El motivo podría ser que se produjo un error en el protocolo de enlace o que el servidor no pudo responder a tiempo.  El tiempo invertido al intentar conectarse a este servidor fue: [Previo al inicio de sesión] inicialización=16522; protocolo de enlace=536;  ---> System.ComponentModel.Win32Exception (0x80004005): Tiempo de espera de la operación de espera agotado
+   en DAO.DAO.DAO.EjecutarStoredProcedureTuplas(String query, List`1 parametros) en c:\totem\totem\src\DatosTotem\DAO\DAO\DAO.cs:línea 221
+   en DAO.DAO.Modulo6.DAOActor.ConsultarActoresCombo(String codigoProyecto) en c:\totem\totem\src\DatosTotem\DAO\DAO\Modulo6\DAOActor.cs:línea 210
+ClientConnectionId:23bed5ad-70c7-4455-a429-c7c857db6acf
+2015-06-23 01:54:09,669 ERROR ComandoConsultarActoresCombo - *******************************************************
+2015-06-23 01:54:09,670 ERROR ComandoConsultarActoresCombo - Mensaje: Error en la conexión a Base de Datos.
+2015-06-23 01:54:09,670 ERROR ComandoConsultarActoresCombo - Origen: 
+2015-06-23 01:54:09,670 ERROR ComandoConsultarActoresCombo - Metodo: 
+2015-06-23 01:54:09,670 ERROR ComandoConsultarActoresCombo - StackTrace: 
+2015-06-23 01:54:09,675 ERROR ComandoConsultarActoresCombo - InnerException: ExcepcionesTotem.Modulo6.ExcepcionesDAO.BDDAOException: Error en la conexión a Base de Datos. ---> System.Data.SqlClient.SqlException: Valor de tiempo de espera caducado. El periodo de tiempo de espera se agotó al intentar consumir la confirmación del protocolo de enlace previo al inicio de sesión. El motivo podría ser que se produjo un error en el protocolo de enlace o que el servidor no pudo responder a tiempo.  El tiempo invertido al intentar conectarse a este servidor fue: [Previo al inicio de sesión] inicialización=16522; protocolo de enlace=536;  ---> System.ComponentModel.Win32Exception: Tiempo de espera de la operación de espera agotado
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en DAO.DAO.DAO.EjecutarStoredProcedureTuplas(String query, List`1 parametros) en c:\totem\totem\src\DatosTotem\DAO\DAO\DAO.cs:línea 221
+   en DAO.DAO.Modulo6.DAOActor.ConsultarActoresCombo(String codigoProyecto) en c:\totem\totem\src\DatosTotem\DAO\DAO\Modulo6\DAOActor.cs:línea 210
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en DAO.DAO.Modulo6.DAOActor.ConsultarActoresCombo(String codigoProyecto) en c:\totem\totem\src\DatosTotem\DAO\DAO\Modulo6\DAOActor.cs:línea 236
+   en Comandos.Comandos.Modulo6.ComandoConsultarActoresCombo.Ejecutar(String parametro) en c:\totem\totem\src\LogicaNegociosTotem\Comandos\Comandos\Modulo6\ComandoConsultarActoresCombo.cs:línea 29
+2015-06-23 01:54:09,711 ERROR PresentadorAgregarActor - *******************************************************
+2015-06-23 01:54:09,712 ERROR PresentadorAgregarActor - Mensaje: Error en la conexión a Base de Datos.
+2015-06-23 01:54:09,713 ERROR PresentadorAgregarActor - Origen: Comandos
+2015-06-23 01:54:09,713 ERROR PresentadorAgregarActor - Metodo: System.Collections.Generic.List`1[Dominio.Entidad] Ejecutar(System.String)
+2015-06-23 01:54:09,713 ERROR PresentadorAgregarActor - StackTrace:    en Comandos.Comandos.Modulo6.ComandoConsultarActoresCombo.Ejecutar(String parametro) en c:\totem\totem\src\LogicaNegociosTotem\Comandos\Comandos\Modulo6\ComandoConsultarActoresCombo.cs:línea 44
+   en Presentadores.Modulo6.PresentadorReporteActores.CBActor(String parametro) en c:\totem\totem\src\Interfaz\src\Presentadores\Modulo6\PresentadorReporteActores.cs:línea 343
+2015-06-23 01:54:09,713 ERROR PresentadorAgregarActor - InnerException: ExcepcionesTotem.Modulo6.ExcepcionesDAO.BDDAOException: Error en la conexión a Base de Datos. ---> System.Data.SqlClient.SqlException: Valor de tiempo de espera caducado. El periodo de tiempo de espera se agotó al intentar consumir la confirmación del protocolo de enlace previo al inicio de sesión. El motivo podría ser que se produjo un error en el protocolo de enlace o que el servidor no pudo responder a tiempo.  El tiempo invertido al intentar conectarse a este servidor fue: [Previo al inicio de sesión] inicialización=16522; protocolo de enlace=536;  ---> System.ComponentModel.Win32Exception: Tiempo de espera de la operación de espera agotado
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en DAO.DAO.DAO.EjecutarStoredProcedureTuplas(String query, List`1 parametros) en c:\totem\totem\src\DatosTotem\DAO\DAO\DAO.cs:línea 221
+   en DAO.DAO.Modulo6.DAOActor.ConsultarActoresCombo(String codigoProyecto) en c:\totem\totem\src\DatosTotem\DAO\DAO\Modulo6\DAOActor.cs:línea 210
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en DAO.DAO.Modulo6.DAOActor.ConsultarActoresCombo(String codigoProyecto) en c:\totem\totem\src\DatosTotem\DAO\DAO\Modulo6\DAOActor.cs:línea 236
+   en Comandos.Comandos.Modulo6.ComandoConsultarActoresCombo.Ejecutar(String parametro) en c:\totem\totem\src\LogicaNegociosTotem\Comandos\Comandos\Modulo6\ComandoConsultarActoresCombo.cs:línea 29
+2015-06-23 01:54:09,732 ERROR PresentadorReporteActores - *******************************************************
+2015-06-23 01:54:09,732 ERROR PresentadorReporteActores - Mensaje: Objeto con referencia nula u objeto vacío.
+2015-06-23 01:54:09,732 ERROR PresentadorReporteActores - Origen: 
+2015-06-23 01:54:09,732 ERROR PresentadorReporteActores - Metodo: 
+2015-06-23 01:54:09,732 ERROR PresentadorReporteActores - StackTrace: 
+2015-06-23 01:54:09,732 ERROR PresentadorReporteActores - InnerException: System.NullReferenceException: Referencia a objeto no establecida como instancia de un objeto.
+   en Presentadores.Modulo6.PresentadorReporteActores.ConvertirListaActores(List`1 lista) en c:\totem\totem\src\Interfaz\src\Presentadores\Modulo6\PresentadorReporteActores.cs:línea 415

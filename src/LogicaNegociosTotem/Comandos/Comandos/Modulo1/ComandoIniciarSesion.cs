@@ -16,10 +16,10 @@ namespace Comandos.Comandos.Modulo1
     /// </summary>
     public class ComandoIniciarSesion : Comando<List<string>, Entidad>
     {
+        private bool captchaActivo = false;
+        private int intentos = 0;
         public override Entidad Ejecutar(List<string> parametro)
         {
-            bool captchaActivo= false;
-            int intentos= 0;
             try
             {
                 if (!captchaActivo)
@@ -35,7 +35,20 @@ namespace Comandos.Comandos.Modulo1
                 usuario = idaoLogin.ValidarUsuarioLogin(((Usuario)usuario));
                 intentos = 0;
                 captchaActivo = false;
-                return usuario;
+                if (usuario != null && ((Usuario)usuario).Nombre != null && ((Usuario)usuario).Nombre != "")
+                {
+                    return usuario;
+                }
+                else
+                {
+                    ExcepcionesTotem.Modulo1.LoginErradoException excep = new ExcepcionesTotem.Modulo1.LoginErradoException(
+                           RecursosComandoModulo1.Codigo_Login_Errado,
+                           RecursosComandoModulo1.Mensaje_Login_Errado, new Exception());
+                    ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    excep);
+
+                    throw excep;
+                }
 
             }
             catch (ExcepcionesTotem.Modulo1.LoginErradoException ex)

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/MasterPage.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs.aspx.cs" Inherits="Vista.Modulo1.Login" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/MasterPage.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Vista.Modulo1.Login" %>
 <%@ MasterType  virtualPath="~/Master/MasterPage.master"%> 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 

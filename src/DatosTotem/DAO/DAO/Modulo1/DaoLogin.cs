@@ -22,31 +22,35 @@ namespace DAO.DAO.Modulo1
         public Entidad ValidarUsuarioLogin(Entidad parametro)
         {
             Usuario usuario = (Usuario)parametro;
-
+            SqlConnection conect = Conectar();
             if (usuario.Username != null && usuario.Clave != null && usuario.Username != "" && usuario.Clave != "")
             {
                 try
                 {
-                    SqlCommand sqlcom = new SqlCommand(RecursosDaoModulo1.Query_ValidarLogin, Conectar());
+                    
+                    SqlCommand sqlcom = new SqlCommand(RecursosDaoModulo1.Query_ValidarLogin, conect);
                     sqlcom.CommandType = CommandType.StoredProcedure;
                     sqlcom.Parameters.Add(new SqlParameter(RecursosDaoModulo1.Parametro_Input_Username, usuario.Username));
                     sqlcom.Parameters.Add(new SqlParameter(RecursosDaoModulo1.Parametro_Input_Clave, usuario.Clave));
 
                     SqlDataReader leer;
-                    Conectar().Open();
+                    conect.Open();
 
                     leer = sqlcom.ExecuteReader();
                     if (leer != null)
                     {
-                        _usuario = FabricaEntidades.ObtenerUsuario(usuario.Username, usuario.Clave,
-                            leer[RecursosDaoModulo1.Parametro_Output_Usu_nombre].ToString(),
-                            leer[RecursosDaoModulo1.Parametro_Output_Usu_apellido].ToString(),
-                            leer[RecursosDaoModulo1.Parametro_Output_Usu_rol].ToString(),
-                            leer[RecursosDaoModulo1.Parametro_Output_Usu_correo].ToString(),
-                            null, null,
-                            leer[RecursosDaoModulo1.Parametro_Output_Usu_cargo].ToString());
+                        while (leer.Read())
+                        {
+                            usuario.Nombre = leer[RecursosDaoModulo1.Parametro_Output_Usu_nombre].ToString();
+                            usuario.Apellido = leer[RecursosDaoModulo1.Parametro_Output_Usu_apellido].ToString();
+                            usuario.Rol = leer[RecursosDaoModulo1.Parametro_Output_Usu_rol].ToString();
+                            usuario.Correo = leer[RecursosDaoModulo1.Parametro_Output_Usu_correo].ToString();
+                            usuario.Cargo = leer[RecursosDaoModulo1.Parametro_Output_Usu_cargo].ToString();
 
-                        return _usuario;
+                            return usuario;
+                        }
+
+                        return null;
                     }
                     else
                     {
@@ -84,7 +88,7 @@ namespace DAO.DAO.Modulo1
                 }
                 finally
                 {
-                    Desconectar();
+                    Desconectar(conect);
                 }
             }
             else
@@ -100,14 +104,14 @@ namespace DAO.DAO.Modulo1
         public Entidad ObtenerPreguntaSeguridad(Entidad parametro)
         {
             Usuario usuario = (Usuario)parametro;
+            SqlConnection conect = Conectar();
             if (usuario != null && usuario.Correo != null && usuario.Correo != "")
             {
                 try
                 {
-                    SqlCommand sqlcom = new SqlCommand(RecursosDaoModulo1.Query_Obtener_Pregunta_Seguridad, Conectar());
+                    SqlCommand sqlcom = new SqlCommand(RecursosDaoModulo1.Query_Obtener_Pregunta_Seguridad, conect);
                     sqlcom.CommandType = CommandType.StoredProcedure;
                     sqlcom.Parameters.Add(new SqlParameter(RecursosDaoModulo1.Parametro_Input_Correo, usuario.Correo));
-                    sqlcom.Parameters.Add(new SqlParameter(RecursosDaoModulo1.Parametro_Output_PreguntaSeguridad, SqlDbType.VarChar));
 
                     SqlDataReader leer;
                     Conectar().Open();
@@ -121,7 +125,8 @@ namespace DAO.DAO.Modulo1
                 }
                 catch (SqlException ex)
                 {
-                    ExcepcionesTotem.ExceptionTotemConexionBD excep = new ExcepcionesTotem.ExceptionTotemConexionBD(RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    ExcepcionesTotem.ExceptionTotemConexionBD excep = new ExcepcionesTotem.ExceptionTotemConexionBD(
+                        RecursoGeneralDAO.Codigo_Error_BaseDatos,
                         RecursoGeneralDAO.Mensaje_Error_BaseDatos, ex);
                     ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()), excep);
                     throw excep;
@@ -147,6 +152,10 @@ namespace DAO.DAO.Modulo1
                     ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()), excep);
                     throw excep;
                 }
+                finally
+                {
+                    Desconectar(conect);
+                }
             }
             else
             {
@@ -161,12 +170,160 @@ namespace DAO.DAO.Modulo1
 
         public bool ValidarRespuestaSeguridad(Entidad parametro)
         {
-            throw new NotImplementedException();
+            SqlConnection conect = Conectar();
+            try
+            {
+                SqlCommand sqlcom = new SqlCommand(RecursosDaoModulo1.Query_Validar_Pregunta_Seguridad, conect);
+                sqlcom.CommandType = CommandType.StoredProcedure;
+                sqlcom.Parameters.Add(new SqlParameter(RecursosDaoModulo1.Parametro_Input_Correo, ((Usuario)parametro).Correo));
+                sqlcom.Parameters.Add(new SqlParameter(RecursosDaoModulo1.Parametro_Output_RespuestaSeguridad,
+                    ((Usuario)parametro).RespuestaSeguridad));
+
+                SqlDataReader leer;
+                Conectar().Open();
+
+                leer = sqlcom.ExecuteReader();
+                if (leer != null)
+                {
+                    if (leer[RecursosDaoModulo1.Parametro_Output_RespuestaSeguridad].ToString() == null ||
+                        leer[RecursosDaoModulo1.Parametro_Output_RespuestaSeguridad].ToString() == "")
+                    {
+                        EmailErradoException excep = new EmailErradoException(RecursosDaoModulo1.Codigo_Email_Errado,
+                                    RecursosDaoModulo1.Mensaje_Email_errado,
+                                    new EmailErradoException());
+                        ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()), excep);
+                        throw excep;
+                    }
+
+                    if (leer[RecursosDaoModulo1.Parametro_Output_RespuestaSeguridad].ToString().Equals(
+                        ((Usuario)parametro).RespuestaSeguridad))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        RespuestaErradoException excep = new RespuestaErradoException(RecursosDaoModulo1.Codigo_Respuesta_Errada,
+                            RecursosDaoModulo1.Mensaje_Respuesta_Errada,
+                            new RespuestaErradoException());
+                        ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()), excep);
+                        throw excep;
+                    }
+                }
+                else
+                {
+                    EmailErradoException excep = new EmailErradoException(RecursosDaoModulo1.Codigo_Email_Errado,
+                        RecursosDaoModulo1.Mensaje_Email_errado,
+                        new EmailErradoException());
+                    ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()), excep);
+                    throw excep;
+                }
+            }
+            catch (SqlException ex)
+            {
+                ExcepcionesTotem.ExceptionTotemConexionBD excep= new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos, ex);
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()), excep);
+                throw excep;
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                ExcepcionesTotem.ExceptionTotemConexionBD excep= new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    ex.Codigo, ex.Mensaje, ex);
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()), excep);
+                throw excep;
+            }
+            catch (EmailErradoException ex)
+            {
+                EmailErradoException excep = new EmailErradoException(ex.Codigo, ex.Mensaje, ex);
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()), excep);
+                throw excep;
+
+            }
+            catch (ParametroInvalidoException ex)
+            {
+                ParametroInvalidoException excep = new ParametroInvalidoException(RecursoGeneralDAO.Codigo_Parametro_Errado,
+                    RecursoGeneralDAO.Mensaje_Parametro_Errado, ex);
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()), excep);
+                throw excep;
+            }
+            finally
+            {
+                Desconectar(conect);
+            }
         }
 
         public bool ValidarCorreoExistente(string correo)
         {
-            throw new NotImplementedException();
+            SqlConnection conect = Conectar();
+            try
+                {
+                    SqlCommand sqlcom = new SqlCommand(RecursosDaoModulo1.Query_ValidarCorreo, conect);
+                    sqlcom.CommandType = CommandType.StoredProcedure;
+                    sqlcom.Parameters.Add(new SqlParameter(RecursosDaoModulo1.Parametro_Input_Correo, correo));
+
+                    SqlDataReader leer;
+                    Conectar().Open();
+
+                    leer = sqlcom.ExecuteReader();
+                    if (leer != null)
+                    {
+                        if (leer[RecursosDaoModulo1.Parametro_Input_Correo].ToString().Equals(correo))
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            EmailErradoException excep= new EmailErradoException(
+                                  RecursosDaoModulo1.Codigo_Email_Errado,
+                                  RecursosDaoModulo1.Mensaje_Email_errado,
+                                  new EmailErradoException());
+                            ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()), excep);
+                            throw excep;
+                        }
+                    }
+                    else
+                    {
+                        EmailErradoException excep = new EmailErradoException(
+                            RecursosDaoModulo1.Codigo_Email_Errado,
+                            RecursosDaoModulo1.Mensaje_Email_errado,
+                            new EmailErradoException());
+                        ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()), excep);
+                        throw excep;
+                    }
+                }
+            catch (SqlException ex)
+            {
+                ExcepcionesTotem.ExceptionTotemConexionBD excep= new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos, ex);
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()), excep);
+                throw excep;
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                ExcepcionesTotem.ExceptionTotemConexionBD excep = new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    ex.Codigo, ex.Mensaje, ex);
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()), excep);
+                throw excep;
+            }
+            catch (EmailErradoException ex)
+            {
+                EmailErradoException excep = new EmailErradoException(ex.Codigo, ex.Mensaje, ex);
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()), excep);
+                throw excep;
+            }
+            catch (ParametroInvalidoException ex)
+            {
+                ParametroInvalidoException excep = new ParametroInvalidoException(RecursoGeneralDAO.Codigo_Parametro_Errado,
+                    RecursoGeneralDAO.Mensaje_Parametro_Errado, ex);
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()), excep);
+                throw excep;
+            }
+            finally
+            {
+                Desconectar(conect);
+            }
         }
         #endregion
 
@@ -175,14 +332,14 @@ namespace DAO.DAO.Modulo1
         public bool Modificar(Entidad parametro)
         {
             Usuario usuario = (Usuario)parametro;
-
+            SqlConnection conect = Conectar();
             try
             {
                 if (usuario.Username != null && usuario.Clave != null && usuario.Username 
                     != "" && usuario.Clave != "" && usuario.Correo != "")
                 {
 
-                    SqlCommand sqlcom = new SqlCommand(RecursosDaoModulo1.Query_Cambiar_Clave, Conectar());
+                    SqlCommand sqlcom = new SqlCommand(RecursosDaoModulo1.Query_Cambiar_Clave, conect);
                     sqlcom.CommandType = CommandType.StoredProcedure;
                     sqlcom.Parameters.Add(new SqlParameter(RecursosDaoModulo1.Parametro_Input_Correo,
                         SqlDbType.VarChar));
@@ -240,7 +397,7 @@ namespace DAO.DAO.Modulo1
             }
             finally
             {
-                Desconectar();
+                Desconectar(conect);
             }
         }
 

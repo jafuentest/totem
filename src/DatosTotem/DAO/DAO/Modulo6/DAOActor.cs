@@ -279,6 +279,94 @@ namespace DAO.DAO.Modulo6
 
         #endregion
 
+        #region Método para Listar Casos de Uso 
+        /// <summary>
+        /// Método que consulta un listado de actores según el 
+        /// id del caso de uso
+        /// </summary>
+        /// <param name="idCasoUso">Id del Caso de Uso</param>
+        /// <returns>Lista de Actores según el caso de uso</returns>
+        public List<string> ConsultarActoresXCasoDeUso(int idCasoUso) 
+        {
+            List<string> listadoActores = new List<string>();
+            DataTable resultado = new DataTable();
+
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursosDAOModulo6.ID_CU, SqlDbType.Int, idCasoUso.ToString(), false);
+            parametros.Add(parametro);
+
+            try
+            {
+                resultado = EjecutarStoredProcedureTuplas(RecursosDAOModulo6.PROCEDURE_LEER_ACTOR_DEL_CU,
+                   parametros);
+
+                foreach (DataRow row in resultado.Rows)
+                {
+                    FabricaEntidades fabrica = new FabricaEntidades();
+                    Entidad laEntidad = fabrica.ObtenerActor();
+                    Actor actor = (Actor)laEntidad;
+                    actor.NombreActor = row[RecursosDAOModulo6.AliasNombreActor].ToString();
+                    listadoActores.Add(actor.NombreActor);
+                }
+
+            }
+            catch (SqlException e)
+            {
+
+
+                BDDAOException exDaoActor = new BDDAOException(
+                 RecursosDAOModulo6.CodigoExcepcionBDDAO,
+                 RecursosDAOModulo6.MensajeExcepcionBD,
+                 e);
+
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
+                    exDaoActor);
+
+                throw exDaoActor;
+
+            }
+            catch (NullReferenceException e)
+            {
+                ObjetoNuloDAOException exDaoActor = new ObjetoNuloDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionObjetoNuloDAO,
+                    RecursosDAOModulo6.MensajeExcepcionObjetoNulo,
+                    e);
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
+                       exDaoActor);
+
+                throw exDaoActor;
+
+            }
+
+            catch (FormatException e)
+            {
+                TipoDeDatoErroneoDAOException exDaoActor = new TipoDeDatoErroneoDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionTipoDeDatoErroneo,
+                    RecursosDAOModulo6.MensajeTipoDeDatoErroneoException,
+                    e);
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
+                       exDaoActor);
+
+                throw exDaoActor;
+
+            }
+            catch (Exception e)
+            {
+                ErrorDesconocidoDAOException exDaoActor = new ErrorDesconocidoDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionErrorDAO,
+                    RecursosDAOModulo6.MensajeExcepcionErrorDesconocido,
+                    e);
+
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
+                      exDaoActor);
+
+                throw exDaoActor;
+            }
+
+            return listadoActores;
+        }
+        #endregion
+
 
         /// <summary>
         /// Método de DAO que accede a la Base de Datos 
