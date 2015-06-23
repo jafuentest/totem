@@ -46,28 +46,16 @@ namespace DAO.DAO.Modulo8
         public Entidad ConsultarUsuarioMinutas(int idUsuario)
         {
 
-            Usuario elUsuario=new Usuario();
+            Usuario elUsuario;
             FabricaEntidades laFabrica = new FabricaEntidades();
             DataTable resultado = new DataTable();
             List<Parametro> parametros = new List<Parametro>();
             Parametro parametroStored = new Parametro(RecursosBDModulo8.ParametroIDUsuario,
                 SqlDbType.Int, idUsuario.ToString(), false);
             parametros.Add(parametroStored);
-            
-      //      Usuario elUsuario = (Usuario)laFabrica.ObtenerUsuario();;************************************************************
-        /*    *************************************
-                *************************************
-                *************************************
-                *************************************
-                *************************************
-                *************************************                 Modulo 7
-                *************************************
-                *************************************
-                *************************************
-                *************************************
-                *************************************
-                *************************************
-            */
+
+            elUsuario = (Usuario)FabricaEntidades.ObtenerUsuario();
+
             try
             {
                 resultado = EjecutarStoredProcedureTuplas(RecursosBDModulo8.ProcedimientoConsultarUsuarios, parametros);
@@ -205,7 +193,6 @@ namespace DAO.DAO.Modulo8
                 SqlDbType.Int, id.ToString(), false);
             parametros.Add(parametroStored);
 
-            Punto elPunto;
             try
             {
                 resultado = EjecutarStoredProcedureTuplas(procedure, parametros);
@@ -259,7 +246,7 @@ namespace DAO.DAO.Modulo8
         /// <param name="idAcuerdo">id de Acuerdo vinculado</param>
         /// <param name="idProyecto">id de Proyecto</param>
         /// <returns>Retorna un Boolean para saber si se realizo la operación con éxito</returns>
-        public Boolean AgregarUsuarioEnAcuerdo(Entidad usuario, string idProyecto)
+        public Boolean AgregarUsuarioEnAcuerdo(Entidad usuario,string idAcuerdo, string idProyecto)
         {
             
             Usuario elUsuario = (Usuario)usuario;
@@ -272,12 +259,23 @@ namespace DAO.DAO.Modulo8
             parametroStored = new Parametro(RecursosBDModulo8.ParametroIDProyecto, SqlDbType.VarChar,
                 idProyecto.ToString(), false);
             parametros.Add(parametroStored);
+            parametroStored = new Parametro(RecursosBDModulo8.ParametroIDAcuerdo, SqlDbType.Int,
+                idAcuerdo, false);
+            parametros.Add(parametroStored);
 
 
             try
             {
                 List<Resultado> tmp = EjecutarStoredProcedure(RecursosBDModulo8.ProcedimientoAgregarUsuarioAcuerdo, parametros);
-                return (tmp.ToArray().Length > 0);
+                if (tmp != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+
+                }
             }
             catch (NullReferenceException ex)
             {
@@ -334,7 +332,15 @@ namespace DAO.DAO.Modulo8
             try
             {
                 List<Resultado> tmp = EjecutarStoredProcedure(procedure, parametros);
-                return (tmp.ToArray().Length > 0);
+                if (tmp != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+
+                }
             }
             catch (NullReferenceException ex)
             {
@@ -377,7 +383,7 @@ namespace DAO.DAO.Modulo8
         /// <param name="idAcuerdo">id del Acuerdo vinculado</param>
         /// <param name="idProyecto">id de Proyecto</param>
         /// <returns>Retorna un Boolean para saber si se realizo la operación con éxito</returns>
-        public Boolean AgregarContactoEnAcuerdo(Entidad contacto, string idProyecto)
+        public Boolean AgregarContactoEnAcuerdo(Entidad contacto,string idAcuerdo, string idProyecto)
         {
             
 
@@ -385,18 +391,29 @@ namespace DAO.DAO.Modulo8
 
 
             List<Parametro> parametros = new List<Parametro>();
-            Parametro parametroStored = new Parametro(RecursosBDModulo8.ParametroTituloPunto, SqlDbType.Int,
+            Parametro parametroStored = new Parametro(RecursosBDModulo8.ParametroIDContacto, SqlDbType.Int,
                 elContacto.Id.ToString(), false);
             parametros.Add(parametroStored);
+            parametroStored = new Parametro(RecursosBDModulo8.ParametroIDAcuerdo, SqlDbType.VarChar,
+                idAcuerdo, false);
+            parametros.Add(parametroStored);
             parametroStored = new Parametro(RecursosBDModulo8.ParametroDesarrolloPunto, SqlDbType.VarChar,
-                idProyecto.ToString(), false);
+                idProyecto, false);
             parametros.Add(parametroStored);
 
 
             try
             {
                 List<Resultado> tmp = EjecutarStoredProcedure(RecursosBDModulo8.ProcedimientoAgregarContactoAcuerdo, parametros);
-                return (tmp.ToArray().Length > 0);
+                if (tmp != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+
+                }
             }
             catch (NullReferenceException ex)
             {
@@ -448,7 +465,15 @@ namespace DAO.DAO.Modulo8
             try
             {
                 List<Resultado> tmp = EjecutarStoredProcedure(RecursosBDModulo8.ProcedimientosEliminarAcuerdoUsuario, parametros);
-                return (tmp.ToArray().Length > 0);
+                if (tmp != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+
+                }
             }
             catch (NullReferenceException ex)
             {
@@ -503,7 +528,15 @@ namespace DAO.DAO.Modulo8
             try
             {
                 List<Resultado> tmp = EjecutarStoredProcedure(RecursosBDModulo8.ProcedimientoEliminarAcuerdoContacto, parametros);
-                return (tmp.ToArray().Length > 0);
+                if (tmp != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+
+                }
             }
             catch (NullReferenceException ex)
             {
@@ -554,7 +587,15 @@ namespace DAO.DAO.Modulo8
             try
             {
                 List<Resultado> tmp = EjecutarStoredProcedure(RecursosBDModulo8.ProcedureEliminarInvolucradoMinuta, parametros);
-                return (tmp.ToArray().Length > 0);
+                if (tmp != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+
+                }
             }
             catch (NullReferenceException ex)
             {

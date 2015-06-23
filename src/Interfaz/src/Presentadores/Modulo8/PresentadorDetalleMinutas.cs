@@ -8,10 +8,13 @@ using Comandos;
 using Comandos.Fabrica;
 using Dominio.Entidades.Modulo8;
 using Dominio.Fabrica;
+using ExcepcionesTotem;
+using ExcepcionesTotem.Modulo8.ExcepcionesDeDatos;
+using System.Data.SqlClient;
 
 namespace Presentadores.Modulo8
 {
-    class PresentadorDetalleMinuta
+    public class PresentadorDetalleMinuta
     {
 
         private IContratoDetalleMinutas vista;
@@ -19,16 +22,14 @@ namespace Presentadores.Modulo8
         {
             vista = laVista;
         }
-        public void DetalleMinutas()
+        public void DetalleMinuta(String idminuta)
         {
-            /*try
+            try
             {
-                Comando<String, List<Entidad>> comandoListarMinutas =  FabricaComandos.CrearComandoComandoListaMinuta();
+                Comando<String,Entidad> comandoDetalleMinuta =  FabricaComandos.CrearComandoComandoDetalleMinuta();
 
-                List<Entidad> laLista = comandoListarMinutas.Ejecutar("Tot");
-
-                foreach (Minuta minuta in laLista)
-                {
+                Entidad laMinuta = comandoDetalleMinuta.Ejecutar(idminuta);
+                /* inyectat HTML 
                     Console.WriteLine(minuta.Id);
                     vista.laTabla += RecursosInterfazModulo8.AbrirEtiquetaTr;
                     vista.laTabla += RecursosInterfazModulo8.AbrirEtiquetaTd + minuta.Id + RecursosInterfazModulo8.CerrarEtiquetaTd;
@@ -40,14 +41,33 @@ namespace Presentadores.Modulo8
                     vista.laTabla += RecursosInterfazModulo8.BotonImprimir;
                     vista.laTabla += RecursosInterfazModulo8.CerrarEtiquetaTd;
                     vista.laTabla += RecursosInterfazModulo8.CerrarEtiquetaTr;
-                }
+              */
 
-
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                throw ex;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw ex;
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
-
-            }*/
+                throw ex;
+            }
         }
     }
     

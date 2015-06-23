@@ -63,7 +63,7 @@ namespace PruebasUnitariasTotem.Modulo8
         /// Metodo que prueba que se modifica un punto de una minuta  correctamente
         /// </summary>
         [Test]
-        public void PruebaModificarMinutaBD()
+        public void PruebaModificarPuntoBD()
         {
             punto.Titulo = "Titulo Prueba";
             punto.Desarrollo = "Desarrollo Prueba";

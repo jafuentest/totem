@@ -44,7 +44,7 @@ namespace DAO.IntefazDAO.Modulo8
         /// <param name="idAcuerdo">id de Acuerdo vinculado</param>
         /// <param name="idProyecto">id de Proyecto</param>
         /// <returns>Retorna un Boolean para saber si se realizo la operación con éxito</returns>
-        Boolean AgregarUsuarioEnAcuerdo(Entidad usuario, string idProyecto);
+        Boolean AgregarUsuarioEnAcuerdo(Entidad usuario,string idAcuerdo,  string idProyecto);
 
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace DAO.IntefazDAO.Modulo8
         /// <param name="idAcuerdo">id del Acuerdo vinculado</param>
         /// <param name="idProyecto">id de Proyecto</param>
         /// <returns>Retorna un Boolean para saber si se realizo la operación con éxito</returns>
-        bool AgregarContactoEnAcuerdo(Entidad contacto, string idProyecto);
+        bool AgregarContactoEnAcuerdo(Entidad contacto, string idAcuerdo, string idProyecto);
 
         /// <summary>
         /// Firma del metodo para eliminar un Usuario de un Acuerdo
