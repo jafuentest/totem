@@ -42,6 +42,10 @@ namespace Comandos.Fabrica
         {
             return new ComandoValidarRespuestaSecreta();
         }
+        public static Comando<string, bool> CrearComandoValidarCorreoExistente()
+        {
+            return new ComandoValidarCorreoExistente();
+        }
         #endregion
 
         #region Modulo 2
