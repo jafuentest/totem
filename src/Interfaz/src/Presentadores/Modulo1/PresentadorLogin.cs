@@ -1,9 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Web;
 using Contratos.Modulo1;
 using Dominio;
 using Dominio.Entidades.Modulo7;
 using Dominio.Fabrica;
+using Comandos;
+using Comandos.Fabrica;
+using Comandos.Comandos.Modulo1;
 
 namespace Presentadores.Modulo1
 {
@@ -31,21 +37,22 @@ namespace Presentadores.Modulo1
         {
             try
             {
-                string usuario = vista.Usuario;
-                string clave = vista.Clave;
-                
-                if (string.IsNullOrEmpty(usuario))
+                List<string> usuarioLogin = new List<string>();
+                usuarioLogin.Add(vista.Usuario);
+                usuarioLogin.Add(vista.Clave);
+
+                if (string.IsNullOrEmpty(vista.Usuario))
                 {
                     throw new Exception("Debe Ingresar un Username");
                 }
 
-                if (string.IsNullOrEmpty(clave))
+                if (string.IsNullOrEmpty(vista.Clave))
                 {
                     throw new Exception("Debe Ingresar una Contraseña");
                 }
-
-                Entidad credenciales = (Usuario)FabricaEntidades.ObtenerUsuario("albertods", "123456", "Alberto", "APELLIDO",
-                    "Administrador", "correo", null, null, null);
+                Entidad credenciales = FabricaEntidades.ObtenerUsuario();
+                Comando<List<string>, Entidad> comando = FabricaComandos.CrearComandoIniciarSesion();
+                credenciales = comando.Ejecutar(usuarioLogin);
                 HttpContext.Current.Session["Credenciales"] = credenciales;
                 HttpContext.Current.Response.Redirect("Default.aspx");
 

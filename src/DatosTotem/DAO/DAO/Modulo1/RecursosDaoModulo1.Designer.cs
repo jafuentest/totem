@@ -178,7 +178,7 @@ namespace DAO.DAO.Modulo1 {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a @Usu_apellido.
+        ///   Busca una cadena traducida similar a Usu_apellido.
         /// </summary>
         internal static string Parametro_Output_Usu_apellido {
             get {
@@ -187,7 +187,7 @@ namespace DAO.DAO.Modulo1 {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a @Usu_cargo.
+        ///   Busca una cadena traducida similar a car_nombre.
         /// </summary>
         internal static string Parametro_Output_Usu_cargo {
             get {
@@ -196,7 +196,7 @@ namespace DAO.DAO.Modulo1 {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a @Usu_correo.
+        ///   Busca una cadena traducida similar a Usu_correo.
         /// </summary>
         internal static string Parametro_Output_Usu_correo {
             get {
@@ -205,7 +205,7 @@ namespace DAO.DAO.Modulo1 {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a @Usu_nombre.
+        ///   Busca una cadena traducida similar a Usu_nombre.
         /// </summary>
         internal static string Parametro_Output_Usu_nombre {
             get {
@@ -214,7 +214,7 @@ namespace DAO.DAO.Modulo1 {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a @Usu_rol.
+        ///   Busca una cadena traducida similar a Usu_rol.
         /// </summary>
         internal static string Parametro_Output_Usu_rol {
             get {
