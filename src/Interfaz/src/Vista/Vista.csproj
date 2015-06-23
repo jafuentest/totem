@@ -416,8 +416,6 @@
     <Content Include="img\Icons\.DS_Store" />
     <Content Include="Master\MasterPage.Master" />
     <Content Include="packages.config" />
-    <Content Include="Modulo5\docs\RequerimientosFuncionales.pdf" />
-    <Content Include="Modulo5\docs\RequerimientosNoFuncionales.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
