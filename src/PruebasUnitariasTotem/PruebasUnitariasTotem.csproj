@@ -74,6 +74,7 @@
     <Compile Include="Modulo7\PruebaComandoListarCargos.cs" />
     <Compile Include="Modulo7\PruebaLogicaUsuario.cs" />
     <Compile Include="Modulo7\PruebaManejadorUsuario.cs" />
+    <Compile Include="Modulo8\PruebaComandos.cs" />
     <Compile Include="Modulo8\PruebaDaoAcuerdo.cs" />
     <Compile Include="Modulo8\PruebaDaoInvolucradosMinuta.cs" />
     <Compile Include="Modulo8\PruebaDaoMinuta.cs" />

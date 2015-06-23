@@ -16,7 +16,7 @@ using System.Data.SqlClient;
 
 namespace Comandos.Comandos.Modulo8
 {
-    class ComandoDetalleMinuta : Comando<String,Dominio.Entidad>
+    public class ComandoDetalleMinuta : Comando<String,Dominio.Entidad>
     {
 
         public override Entidad Ejecutar(String parametro)
@@ -63,7 +63,7 @@ namespace Comandos.Comandos.Modulo8
                 minuta.ListaPunto = daoPunto.ConsultarPuntoBD(minuta.Id).Cast<Punto>().ToList();
 
 
-                /*PACHECOOOOOO
+                /*PACHECOOooooooooooooooooooo
                  * listaAcuerdos = daoAcuerdo.ConsultarAcuerdo(minuta.Id).Cast<Acuerdo>().ToList();
                           foreach (Acuerdo acu in listaAcuerdos)
                               {
