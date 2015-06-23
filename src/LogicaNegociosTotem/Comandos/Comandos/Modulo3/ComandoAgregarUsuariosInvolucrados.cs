@@ -1,5 +1,6 @@
 ﻿using DAO.Fabrica;
 using DAO.IntefazDAO.Modulo3;
+using ExcepcionesTotem.Modulo3;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,14 +17,22 @@ namespace Comandos.Comandos.Modulo3
         /// <returns>true si se puede eliminar</returns>
         public override bool Ejecutar(Dominio.Entidad parametro)
         {
+            bool exito = false;
             try
             {
                 FabricaAbstractaDAO laFabrica = FabricaDAOSqlServer.ObtenerFabricaSqlServer();
                 IDaoInvolucrados daoInvolucrados = laFabrica.ObtenerDaoInvolucrados();
-                return daoInvolucrados.AgregarUsuariosInvolucrados(parametro);
-            }catch(Exception ex){
-                throw ex;
+                exito = daoInvolucrados.AgregarUsuariosInvolucrados(parametro);
             }
+            catch (ListaSinInvolucradosException)
+            {
+                exito = false;
+            }
+            catch (ListaSinProyectoException)
+            {
+                exito = false;
+            }
+            return exito;
         }
     }
 

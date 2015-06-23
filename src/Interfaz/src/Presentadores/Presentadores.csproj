@@ -66,6 +66,11 @@
     </Compile>
     <Compile Include="Modulo3\PresentadorAgregarInvolucrado.cs" />
     <Compile Include="Modulo3\PresentadorListarInvolucrado.cs" />
+    <Compile Include="Modulo3\RecursosInterfazM3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosInterfazM3.resx</DependentUpon>
+    </Compile>
     <Compile Include="Modulo5\PresentadorAgregarRequerimiento.cs" />
     <Compile Include="Modulo5\PresentadorListarRequerimientos.cs" />
     <Compile Include="Modulo5\PresentadorModificarRequerimiento.cs" />
@@ -114,6 +119,10 @@
     <EmbeddedResource Include="Modulo2\RecursoInterfazM2.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursoInterfazM2.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo3\RecursosInterfazM3.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosInterfazM3.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo5\RecursosPresentadorModulo5.resx">
       <Generator>ResXFileCodeGenerator</Generator>

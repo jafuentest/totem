@@ -7,7 +7,13 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
 
               <div class="col-sm-12 col-md-12 col-lg-12" runat ="server">
-              	  <form id="agregarpersonal" runat="server">             
+              	   <div id="alert" runat="server">
+                   </div>
+                   <div id="alertContacto" runat="server">
+                       </div>
+                   <div id="alertUsuario" runat="server">
+                   </div>
+                   <form id="agregarpersonal" runat="server">             
                         <asp:ScriptManager ID="ScriptManager1" runat="server">
                         </asp:ScriptManager>
                        <div class="form-group">                 

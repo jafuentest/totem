@@ -45,7 +45,8 @@ namespace Presentadores.Modulo3
             vista.comboTipoEmpresa.DataBind();
         }
 
-        public void ListarCargo() {
+        public void ListarCargo(string SelectedValue)
+        {
             vista.comboCargo.Enabled = true;
             Dictionary<string, string> options = new Dictionary<string, string>();
             options.Add("-1", "Seleccionar Cargo");
@@ -87,7 +88,8 @@ namespace Presentadores.Modulo3
             else
                 vista.contacto_id = vista.eliminacionContacto;
         }
-        public void ListarUsuarioSegunCargo() {
+        public void ListarUsuarioSegunCargo(string SelectedValue)
+        {
             vista.comboPersonal.Enabled = true;
             String cargoSelecionado = vista.comboCargo.SelectedValue;
             Dictionary<String, string> options = new Dictionary<string, string>();
@@ -163,12 +165,37 @@ namespace Presentadores.Modulo3
         }
         public void GuardarInvolucrados()
         {
+            bool exitoContacto = false;
+            bool exitoUsuario = false;
             Comando<Entidad,bool> comando_contacto = FabricaComandos.CrearComandoAgregarContactosInvolucrados();
             Comando<Entidad, bool> comando_usuario = FabricaComandos.CrearComandoAgregarUsuarioInvolucrados();
 
-            comando_contacto.Ejecutar(listaContacto);
-            comando_usuario.Ejecutar(listaUsuario);
+             exitoContacto = comando_contacto.Ejecutar(listaContacto);
+             exitoUsuario = comando_usuario.Ejecutar(listaUsuario);
+             if (exitoContacto == false)
+             {
+                 vista.Alerta_AgregarContacto_Fracaso = RecursosInterfazM3.Alerta_Html +
+                 RecursosInterfazM3.Alerta_AgregarContacto_Fracaso +
+                 RecursosInterfazM3.Alerta_Html_Final;
+             }
+             else
+             {
+                 vista.Alerta_AgregarContacto_Fracaso = RecursosInterfazM3.Alerta_Html +
+                 RecursosInterfazM3.Alerta_Contacto_Agregado +
+                 RecursosInterfazM3.Alerta_Html_Final;
+             }
+            if(exitoUsuario == false){
+                vista.Alerta_AgregarUsuario_Fracaso = RecursosInterfazM3.Alerta_Html +
+                RecursosInterfazM3.Alerta_Usuario_Agregado +
+                RecursosInterfazM3.Alerta_Html_Final;
+            }else{
 
+                vista.Alerta_AgregarUsuario_Fracaso= RecursosInterfazM3.Alerta_Html +
+                 RecursosInterfazM3.Alerta_Usuario_Agregado +
+                 RecursosInterfazM3.Alerta_Html_Final;
+
+            }
+           
         }
     }
 

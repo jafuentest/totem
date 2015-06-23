@@ -79,6 +79,69 @@ namespace Presentadores.Modulo3 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a alert alert-danger alert-dismissible.
+        /// </summary>
+        internal static string Alerta_AgregarContacto_Fracaso {
+            get {
+                return ResourceManager.GetString("Alerta_AgregarContacto_Fracaso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a alert alert-danger alert-dismissible.
+        /// </summary>
+        internal static string Alerta_AgregarUsuario_Fracaso {
+            get {
+                return ResourceManager.GetString("Alerta_AgregarUsuario_Fracaso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Contacto agregado exitosamente.
+        /// </summary>
+        internal static string Alerta_Contacto_Agregado {
+            get {
+                return ResourceManager.GetString("Alerta_Contacto_Agregado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error en Agregar Involucrado.
+        /// </summary>
+        internal static string Alerta_Error_AgregarInvolucrado {
+            get {
+                return ResourceManager.GetString("Alerta_Error_AgregarInvolucrado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;div&gt;&lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot; aria-label=&quot;Close&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;.
+        /// </summary>
+        internal static string Alerta_Html {
+            get {
+                return ResourceManager.GetString("Alerta_Html", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;/div&gt;.
+        /// </summary>
+        internal static string Alerta_Html_Final {
+            get {
+                return ResourceManager.GetString("Alerta_Html_Final", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Usuario agregado exitosamente.
+        /// </summary>
+        internal static string Alerta_Usuario_Agregado {
+            get {
+                return ResourceManager.GetString("Alerta_Usuario_Agregado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a &quot;&gt;&lt;/a&gt;.
         /// </summary>
         internal static string CerrarBoton {

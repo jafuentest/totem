@@ -126,16 +126,38 @@ namespace Vista.Modulo3
                 this.contacto_id.InnerText = Request.QueryString["contactoaeliminar"]; ;
             }
         }
+        String Contratos.Modulo3.IContratoAgregarInvolucrado.alert
+        {
+            set
+            {
+                alert.InnerHtml = value; ;
+            }
+        }
+        String Contratos.Modulo3.IContratoAgregarInvolucrado.Alerta_AgregarContacto_Fracaso
+
+        {
+            set
+            {
+                alertContacto.InnerHtml = value; ;
+            }
+        }
+        String Contratos.Modulo3.IContratoAgregarInvolucrado.Alerta_AgregarUsuario_Fracaso
+        {
+            set
+            {
+                alertUsuario.InnerHtml = value; ;
+            }
+        }
         #endregion contrato
 
 
           protected void actualizarComboCargos(object sender, EventArgs e)
           {
-              presentador.ListarCargo();
+              presentador.ListarCargo(comboCargo.SelectedValue);
           }
           protected void actualizarComboPersonal(object sender, EventArgs e)
           {
-              presentador.ListarUsuarioSegunCargo();
+              presentador.ListarUsuarioSegunCargo(comboPersonal.SelectedValue);
           }
           protected void AgregarInvolucrados_Click(object sender, EventArgs e)
           {
