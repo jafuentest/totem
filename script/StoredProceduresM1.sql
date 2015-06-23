@@ -34,12 +34,11 @@ CREATE PROCEDURE validar_pregunta_seguridad
 	RETURN
 	GO
 
-CREATE PROCEDURE validar_correo
-	@Correo varchar(60),
-	@usu_correo varchar(60) OUTPUT
+CREATE PROCEDURE VALIDAR_CORREO
+	@Correo varchar(60)
 	AS
 
-	Select @Usu_correo = usu_correo
+	Select usu_correo
 	from Usuario
 	where usu_correo = @Correo
 

@@ -1023,11 +1023,10 @@ CREATE PROCEDURE VALIDAR_PREGUNTA_SEGURIDAD
 	GO
 
 CREATE PROCEDURE VALIDAR_CORREO
-	@Correo varchar(60),
-	@usu_correo varchar(60) OUTPUT
+	@Correo varchar(60)
 	AS
 
-	Select @Usu_correo = usu_correo
+	Select usu_correo
 	from Usuario
 	where usu_correo = @Correo
 
