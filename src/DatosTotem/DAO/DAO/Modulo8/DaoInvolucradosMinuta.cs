@@ -397,7 +397,7 @@ namespace DAO.DAO.Modulo8
             parametroStored = new Parametro(RecursosBDModulo8.ParametroIDAcuerdo, SqlDbType.VarChar,
                 idAcuerdo, false);
             parametros.Add(parametroStored);
-            parametroStored = new Parametro(RecursosBDModulo8.ParametroDesarrolloPunto, SqlDbType.VarChar,
+            parametroStored = new Parametro(RecursosBDModulo8.ParametroIDProyecto, SqlDbType.VarChar,
                 idProyecto, false);
             parametros.Add(parametroStored);
 
