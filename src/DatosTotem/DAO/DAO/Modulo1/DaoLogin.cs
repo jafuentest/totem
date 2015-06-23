@@ -263,34 +263,38 @@ namespace DAO.DAO.Modulo1
                     sqlcom.Parameters.Add(new SqlParameter(RecursosDaoModulo1.Parametro_Input_Correo, correo));
 
                     SqlDataReader leer;
-                    Conectar().Open();
+                    conect.Open();
 
                     leer = sqlcom.ExecuteReader();
-                    if (leer != null)
+                    while (leer.Read())
                     {
-                        if (leer[RecursosDaoModulo1.Parametro_Input_Correo].ToString().Equals(correo))
+                        if (leer != null)
                         {
-                            return true;
+                            if (leer[RecursosDaoModulo1.Parametro_Output_Usu_correo1].ToString()==correo)
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                EmailErradoException excep = new EmailErradoException(
+                                      RecursosDaoModulo1.Codigo_Email_Errado,
+                                      RecursosDaoModulo1.Mensaje_Email_errado,
+                                      new EmailErradoException());
+                                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()), excep);
+                                throw excep;
+                            }
                         }
                         else
                         {
-                            EmailErradoException excep= new EmailErradoException(
-                                  RecursosDaoModulo1.Codigo_Email_Errado,
-                                  RecursosDaoModulo1.Mensaje_Email_errado,
-                                  new EmailErradoException());
+                            EmailErradoException excep = new EmailErradoException(
+                                RecursosDaoModulo1.Codigo_Email_Errado,
+                                RecursosDaoModulo1.Mensaje_Email_errado,
+                                new EmailErradoException());
                             ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()), excep);
                             throw excep;
                         }
                     }
-                    else
-                    {
-                        EmailErradoException excep = new EmailErradoException(
-                            RecursosDaoModulo1.Codigo_Email_Errado,
-                            RecursosDaoModulo1.Mensaje_Email_errado,
-                            new EmailErradoException());
-                        ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()), excep);
-                        throw excep;
-                    }
+                    return false;
                 }
             catch (SqlException ex)
             {

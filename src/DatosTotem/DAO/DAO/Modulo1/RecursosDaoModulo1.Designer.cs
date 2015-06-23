@@ -205,6 +205,15 @@ namespace DAO.DAO.Modulo1 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a usu_correo.
+        /// </summary>
+        internal static string Parametro_Output_Usu_correo1 {
+            get {
+                return ResourceManager.GetString("Parametro_Output_Usu_correo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Usu_nombre.
         /// </summary>
         internal static string Parametro_Output_Usu_nombre {

@@ -2,6 +2,12 @@
 using Contratos.Modulo1;
 using Dominio;
 using Dominio.Fabrica;
+using Dominio.Fabrica;
+using Dominio.Entidades.Modulo7;
+using System.Text.RegularExpressions;
+using Comandos;
+using Comandos.Fabrica;
+using Comandos.Comandos.Modulo1;
 
 namespace Presentadores.Modulo1
 {
@@ -27,8 +33,39 @@ namespace Presentadores.Modulo1
             {
                 try
                 {
-                    Entidad usuario = FabricaEntidades.ObtenerUsuario(null, null, null, null, null, correo, null, null, null);
-                    vista.Mensaje = "Se ha mandado un mensaje de confirmación al correo";
+                    Entidad usuario = FabricaEntidades.ObtenerUsuario();
+                    ((Usuario)usuario).Correo = correo;
+                    bool esCorreo = Regex.IsMatch(correo,
+                        RecursosM1.Expresion_Regular_Correo,
+                        RegexOptions.IgnoreCase);
+                    if (esCorreo)
+                    {
+                        Comando<string, bool> comando = FabricaComandos.CrearComandoValidarCorreoExistente();
+                        esCorreo = comando.Ejecutar(correo);
+                        if (esCorreo)
+                        {
+                            vista.Mensaje = "Se ha mandado un mensaje de confirmación al correo";
+                        }
+                        else
+                        {
+                            ExcepcionesTotem.Modulo1.EmailErradoException excep = new ExcepcionesTotem.Modulo1.EmailErradoException(
+                            RecursosM1.Codigo_Email_Errado,
+                            RecursosM1.Mensaje_Email_errado,
+                            new ExcepcionesTotem.Modulo1.EmailErradoException());
+                            ExcepcionesTotem.Logger.EscribirError(this.GetType().Name, excep);
+                            throw excep;
+                        }
+                    }
+                    else
+                    {
+                        ExcepcionesTotem.Modulo1.EmailErradoException excep = new ExcepcionesTotem.Modulo1.EmailErradoException(
+                            RecursosM1.Codigo_Email_Errado,
+                            RecursosM1.Mensaje_Email_errado,
+                            new ExcepcionesTotem.Modulo1.EmailErradoException());
+                        ExcepcionesTotem.Logger.EscribirError(this.GetType().Name, excep);
+                        throw excep;
+                    }
+                    
 
                 }
                 catch (Exception)

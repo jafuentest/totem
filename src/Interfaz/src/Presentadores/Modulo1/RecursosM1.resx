@@ -117,8 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Codigo_Email_Errado" xml:space="preserve">
+    <value>T_01_004</value>
+    <comment>Codigo de Error de correo errado</comment>
+  </data>
+  <data name="Expresion_Regular_Correo" xml:space="preserve">
+    <value>\A(?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z</value>
+    <comment>Expresion regular para validar correos</comment>
+  </data>
   <data name="Mensaje_campoVacio" xml:space="preserve">
     <value>Debe llenar los campos Vacios</value>
+  </data>
+  <data name="Mensaje_Email_errado" xml:space="preserve">
+    <value>No se pudo obtener la pregunta de seguridad, el email es invalido</value>
+    <comment>Mensaje de error para cuando el email es errado</comment>
   </data>
   <data name="Mensaje_errorCargaPagina" xml:space="preserve">
     <value>Error en la Carga de la Página</value>
@@ -131,5 +143,9 @@
   </data>
   <data name="Mensaje_respuestaIncorrecta" xml:space="preserve">
     <value>La Respuesta es Incorrecta</value>
+  </data>
+  <data name="Passphrase" xml:space="preserve">
+    <value>.1*;M;3z+M~8k*+~LZU6B!Q|.!k+;=*m</value>
+    <comment>Passphrase para encriptar e desencriptar</comment>
   </data>
 </root>

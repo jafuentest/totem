@@ -181,6 +181,10 @@
     <value>Usu_correo</value>
     <comment>Parametro de output para los stored procedure con el correo del usuario</comment>
   </data>
+  <data name="Parametro_Output_Usu_correo1" xml:space="preserve">
+    <value>usu_correo</value>
+    <comment>Parametro de output para los stored procedure con el correo del usuario</comment>
+  </data>
   <data name="Parametro_Output_Usu_nombre" xml:space="preserve">
     <value>Usu_nombre</value>
     <comment>Parametro de output para los stored procedure con el nombre del usuario</comment>
