@@ -45,6 +45,7 @@
     <Compile Include="Comandos\Modulo1\ComandoEncriptar.cs" />
     <Compile Include="Comandos\Modulo1\ComandoIniciarSesion.cs" />
     <Compile Include="Comandos\Modulo1\ComandoObtenerPreguntaSeguridad.cs" />
+    <Compile Include="Comandos\Modulo1\ComandoValidarCorreoExistente.cs" />
     <Compile Include="Comandos\Modulo1\ComandoValidarRespuestaSecreta.cs" />
     <Compile Include="Comandos\Modulo1\RecursosComandoModulo1.Designer.cs" />
     <Compile Include="Comandos\Modulo2\ComandoAgregarClienteJuridico.cs" />

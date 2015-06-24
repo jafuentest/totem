@@ -19,7 +19,6 @@ namespace Comandos.Comandos.Modulo1
                 FabricaAbstractaDAO fabricaDao = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
                 IDaoLogin idaoLogin = fabricaDao.ObtenerDaoLogin();
                 return idaoLogin.ValidarCorreoExistente(parametro);
-
         }
     }
 }
