@@ -72,6 +72,7 @@
       <DependentUpon>RecursosInterfazM3.resx</DependentUpon>
     </Compile>
     <Compile Include="Modulo4\PresentadorAgregarProyecto.cs" />
+    <Compile Include="Modulo4\PresentadorListarProyectos.cs" />
     <Compile Include="Modulo5\PresentadorAgregarRequerimiento.cs" />
     <Compile Include="Modulo5\PresentadorListarRequerimientos.cs" />
     <Compile Include="Modulo5\PresentadorModificarRequerimiento.cs" />
