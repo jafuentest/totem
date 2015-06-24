@@ -7,7 +7,6 @@ using Dominio.Fabrica;
 using ExcepcionesTotem.Modulo1;
 using Comandos;
 using Comandos.Fabrica;
-using Comandos.Comandos.Modulo1;
 using System.Collections.Generic;
 
 namespace Presentadores.Modulo1
@@ -70,7 +69,8 @@ namespace Presentadores.Modulo1
                 try
                 {
                     var correo = request.QueryString["usuario"];
-                    var credenciales = (Usuario)FabricaEntidades.ObtenerUsuario(null, null, "Alberto", "APELLIDO",
+                    FabricaEntidades fabricaEntidades = new FabricaEntidades();
+                    var credenciales = (Usuario)fabricaEntidades.ObtenerUsuario(null, null, "Alberto", "APELLIDO",
                     "Administrador", "correo", "¿Cómo se llamaba tu primera mascota?", "fifi", null);
                     if (respuesta.Equals(credenciales.RespuestaSeguridad))
                     {

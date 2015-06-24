@@ -5,11 +5,9 @@ using System.Text;
 using System.Web;
 using Contratos.Modulo1;
 using Dominio;
-using Dominio.Entidades.Modulo7;
 using Dominio.Fabrica;
 using Comandos;
 using Comandos.Fabrica;
-using Comandos.Comandos.Modulo1;
 
 namespace Presentadores.Modulo1
 {
@@ -50,7 +48,8 @@ namespace Presentadores.Modulo1
                 {
                     throw new Exception("Debe Ingresar una Contraseña");
                 }
-                Entidad credenciales = FabricaEntidades.ObtenerUsuario();
+                FabricaEntidades fabricaEntidades = new FabricaEntidades();
+                Entidad credenciales = fabricaEntidades.ObtenerUsuario();
                 Comando<List<string>, Entidad> comando = FabricaComandos.CrearComandoIniciarSesion();
                 credenciales = comando.Ejecutar(usuarioLogin);
                 HttpContext.Current.Session["Credenciales"] = credenciales;

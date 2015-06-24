@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Dominio;
 using Dominio.Fabrica;
 using Dominio.Entidades.Modulo7;
-using DAO.DAO;
 using DAO.IntefazDAO.Modulo1;
 using DAO.Fabrica;
 
@@ -26,7 +23,8 @@ namespace Comandos.Comandos.Modulo1
                 {
                     intentos++;
                 }
-                Entidad usuario = FabricaEntidades.ObtenerUsuario();
+                FabricaEntidades fabricaEntidades = new FabricaEntidades();
+                Entidad usuario = fabricaEntidades.ObtenerUsuario();
                 ((Usuario)usuario).Username = parametro[0];
                 ((Usuario)usuario).Clave= parametro[1];
                 ((Usuario)usuario).CalcularHash();

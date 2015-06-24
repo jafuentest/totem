@@ -7,6 +7,6 @@
     {
         string Usuario { get; }
         string Clave { get; }
-        void SetMesaje(bool tipo, string Mensaje);
+        void SetMesaje(bool esError, string mensaje);
     }
 }

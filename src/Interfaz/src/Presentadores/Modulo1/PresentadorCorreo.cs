@@ -2,12 +2,11 @@
 using Contratos.Modulo1;
 using Dominio;
 using Dominio.Fabrica;
-using Dominio.Fabrica;
 using Dominio.Entidades.Modulo7;
 using System.Text.RegularExpressions;
 using Comandos;
 using Comandos.Fabrica;
-using Comandos.Comandos.Modulo1;
+
 
 namespace Presentadores.Modulo1
 {
@@ -33,7 +32,8 @@ namespace Presentadores.Modulo1
             {
                 try
                 {
-                    Entidad usuario = FabricaEntidades.ObtenerUsuario();
+                    FabricaEntidades fabricaEntidades = new FabricaEntidades();
+                    Entidad usuario = fabricaEntidades.ObtenerUsuario();
                     ((Usuario)usuario).Correo = correo;
                     bool esCorreo = Regex.IsMatch(correo,
                         RecursosM1.Expresion_Regular_Correo,
