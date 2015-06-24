@@ -10,7 +10,7 @@ using System.Web;
 
 namespace Presentadores.Modulo4
 {
-    class PresentadorAgregarProyecto
+    public class PresentadorAgregarProyecto
     {
         private IContratoAgregarProyecto vista;
         private Dominio.Entidades.Modulo7.Usuario usuario;

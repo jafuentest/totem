@@ -45,8 +45,13 @@
     <Compile Include="Comandos\Modulo1\ComandoEncriptar.cs" />
     <Compile Include="Comandos\Modulo1\ComandoIniciarSesion.cs" />
     <Compile Include="Comandos\Modulo1\ComandoObtenerPreguntaSeguridad.cs" />
+    <Compile Include="Comandos\Modulo1\ComandoValidarCorreoExistente.cs" />
     <Compile Include="Comandos\Modulo1\ComandoValidarRespuestaSecreta.cs" />
-    <Compile Include="Comandos\Modulo1\RecursosComandoModulo1.Designer.cs" />
+    <Compile Include="Comandos\Modulo1\RecursosComandoModulo1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosComandoModulo1.resx</DependentUpon>
+    </Compile>
     <Compile Include="Comandos\Modulo2\ComandoAgregarClienteJuridico.cs" />
     <Compile Include="Comandos\Modulo2\ComandoAgregarClienteNatural.cs" />
     <Compile Include="Comandos\Modulo2\ComandoConsultarCiudadPorEstado.cs" />
@@ -139,7 +144,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Comandos\Modulo1\RecursosComandoModulo1.resx" />
+    <EmbeddedResource Include="Comandos\Modulo1\RecursosComandoModulo1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosComandoModulo1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Comandos\Modulo5\RecursosMod5Comando.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosMod5Comando.Designer.cs</LastGenOutput>

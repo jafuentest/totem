@@ -86,5 +86,32 @@ namespace Comandos.Comandos.Modulo5 {
                 return ResourceManager.GetString("ArchivoFinalPdf", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a pdflatex.exe.
+        /// </summary>
+        internal static string CompiladorLatex {
+            get {
+                return ResourceManager.GetString("CompiladorLatex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Q:\totem\src\Interfaz\src\Vista\Modulo5\docs.
+        /// </summary>
+        internal static string Directorio {
+            get {
+                return ResourceManager.GetString("Directorio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a -output-directory.
+        /// </summary>
+        internal static string ParametroLatex {
+            get {
+                return ResourceManager.GetString("ParametroLatex", resourceCulture);
+            }
+        }
     }
 }

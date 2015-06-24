@@ -12,7 +12,7 @@ using ExcepcionesTotem;
 using System.Data.SqlClient;
 using Dominio.Entidades.Modulo8;
 using Dominio.Entidades.Modulo7;
-
+using DAO.Fabrica;
 namespace DAO.DAO.Modulo8
 {
     /// <summary>
@@ -43,28 +43,33 @@ namespace DAO.DAO.Modulo8
             List<Parametro> parametros = new List<Parametro>();
             Parametro elParametro = new Parametro(RecursosBDModulo8.ParametroFechaAcuerdo, SqlDbType.DateTime,
                 elAcuerdo.Fecha.ToShortDateString(), false);
+            parametros.Add(elParametro);
             elParametro = new Parametro(RecursosBDModulo8.ParametroDesarrolloAcuerdo, SqlDbType.VarChar,
                 elAcuerdo.Compromiso, false);
+            parametros.Add(elParametro);
             elParametro = new Parametro(RecursosBDModulo8.ParametroIDMinuta, SqlDbType.Int,
                 idMinuta.ToString(), false);
+            parametros.Add(elParametro);
 
+            DataTable resultado = new DataTable();
             try
             {
-                List<Resultado> tmp = EjecutarStoredProcedure(RecursosBDModulo8.ProcedimientoAgregarAcuerdo, parametros);
-                if (tmp.ToArray().Length > 0)
+                resultado = EjecutarStoredProcedureTuplas(RecursosBDModulo8.ProcedimientoAgregarAcuerdo, parametros);
+
+                foreach (DataRow row in resultado.Rows)
                 {
+
                     foreach (Contacto contacto in elAcuerdo.ListaContacto)
                     {
-                        bool contactoBool = DAOInvolucradosMinuta.AgregarContactoEnAcuerdo(contacto,tmp[0].valor,idProyecto);
+                        bool contactoBool = DAOInvolucradosMinuta.AgregarContactoEnAcuerdo(contacto, row[RecursosBDModulo8.AtributoIDAcuerdo].ToString(), idProyecto);
                     }
                     foreach (Usuario usuario in elAcuerdo.ListaUsuario)
                     {
-                        bool usuarioBool = DAOInvolucradosMinuta.AgregarUsuarioEnAcuerdo(usuario, tmp[0].valor, idProyecto);
+                        bool usuarioBool = DAOInvolucradosMinuta.AgregarUsuarioEnAcuerdo(usuario, row[RecursosBDModulo8.AtributoIDAcuerdo].ToString(), idProyecto);
                     }
                     success = true;
                 }
             }
-
             catch (NullReferenceException ex)
             {
                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
@@ -213,11 +218,11 @@ namespace DAO.DAO.Modulo8
                     foreach (DataRow row in resultado.Rows)
                     {
                         elAcuerdo = (Acuerdo)laFabrica.ObtenerAcuerdo();
-                        elAcuerdo.Id = int.Parse(row[RecursosBDModulo8.AtributoIDPunto].ToString());
-                        elAcuerdo.Fecha = DateTime.Parse(row[RecursosBDModulo8.AtributoTituloPunto].ToString());
-                        elAcuerdo.Compromiso = row[RecursosBDModulo8.AtributoDesarrolloPunto].ToString();
-                        elAcuerdo.ListaContacto = ObtenerContactoAcuerdo(elAcuerdo.Id).Cast<Contacto>().ToList();
-                        elAcuerdo.ListaUsuario = ObtenerUsuarioAcuerdo(elAcuerdo.Id).Cast<Usuario>().ToList();
+                        elAcuerdo.Id = int.Parse(row[RecursosBDModulo8.AtributoIDAcuerdo].ToString());
+                        elAcuerdo.Fecha = DateTime.Parse(row[RecursosBDModulo8.AtributoFechaAcuerdo].ToString());
+                        elAcuerdo.Compromiso = row[RecursosBDModulo8.AtributoDesarrolloAcuerdo].ToString();
+                       /* elAcuerdo.ListaContacto = ObtenerContactoAcuerdo(elAcuerdo.Id).Cast<Contacto>().ToList();*/
+                       /* elAcuerdo.ListaUsuario = ObtenerUsuarioAcuerdo(elAcuerdo.Id).Cast<Usuario>().ToList();*/
                         laLista.Add(elAcuerdo);
                     }
                 }
@@ -277,9 +282,7 @@ namespace DAO.DAO.Modulo8
                 IdAcuerdo.ToString(), false);
             parametros.Add(elParametro);
 
-            Usuario elUsuario;
-            List<Parametro> parametros2 = new List<Parametro>();
-            Parametro elParametro2;
+         
             try
             {
                 idUsuarios = EjecutarStoredProcedureTuplas(RecursosBDModulo8.ProcedimientoUsuarioAcuerdo, parametros);
@@ -287,20 +290,12 @@ namespace DAO.DAO.Modulo8
                 {
                     foreach (DataRow row in idUsuarios.Rows)
                     {
-                        parametros2 = new List<Parametro>();
-                        elParametro2 = new Parametro(RecursosBDModulo8.ParametroIDUsuario, SqlDbType.Int, 
-                            row[RecursosBDModulo8.ParametroIDUsuario].ToString(), false);
-                        parametros2.Add(elParametro2);
-
-                        usuario = EjecutarStoredProcedure(RecursosBDModulo8.ProcedimientoConsultarUsuarios, parametros2);
-
-                        elUsuario = (Usuario)laFabrica.ObtenerUsuario();
-                        elUsuario.Id = int.Parse(usuario[0].valor);
-                        elUsuario.Nombre = usuario[1].valor;
-                        elUsuario.Apellido = usuario[2].valor;
-                        elUsuario.Rol = usuario[3].valor;
-
-                        laLista.Add(elUsuario);
+                     
+                        DaoInvolucradosMinuta daoInvolucradosMinuta;
+                           
+                        FabricaAbstractaDAO fabricaDAO = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+                        daoInvolucradosMinuta = (DaoInvolucradosMinuta)fabricaDAO.ObtenerDAOInvolucradosMinuta();
+                        laLista.Add(daoInvolucradosMinuta.ConsultarUsuarioMinutas(int.Parse(row[RecursosBDModulo8.AtributoAcuerdoUsuario].ToString())));
                     }
                 }
                 else
@@ -360,30 +355,20 @@ namespace DAO.DAO.Modulo8
                 IdAcuerdo.ToString(), false);
             parametros.Add(elParametro);
 
-            Contacto elContacto;
-            List<Parametro> parametros2;
-            Parametro elParametro2;
             try
             {
-                idContactos = EjecutarStoredProcedureTuplas(RecursosBDModulo8.ProcedimientoUsuarioAcuerdo, parametros);
+                idContactos = EjecutarStoredProcedureTuplas(RecursosBDModulo8.ProcedimientoContactoAcuerdo, parametros);
                 if (idContactos.Rows.Count > 0)
                 {
                     foreach (DataRow row in idContactos.Rows)
                     {
-                        parametros2 = new List<Parametro>();
-                        elParametro2 = new Parametro(RecursosBDModulo8.ParametroIDUsuario, SqlDbType.Int,
-                            row[RecursosBDModulo8.ParametroIDUsuario].ToString(), false);
-                        parametros2.Add(elParametro2);
-
-                        contacto = EjecutarStoredProcedure(RecursosBDModulo8.ProcedimientoConsultarUsuarios, parametros2);
-
-                        elContacto = (Contacto)laFabrica.ObtenerContacto();
-                        elContacto.Id = int.Parse(contacto[0].valor);
-                        elContacto.Con_Nombre = contacto[1].valor;
-                        elContacto.Con_Apellido = contacto[2].valor;
-                        elContacto.ConCargo = contacto[3].valor;
-
-                        laLista.Add(elContacto);
+                     
+                        DaoInvolucradosMinuta daoInvolucradosMinuta;
+                           
+                        FabricaAbstractaDAO fabricaDAO = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+                        daoInvolucradosMinuta = (DaoInvolucradosMinuta)fabricaDAO.ObtenerDAOInvolucradosMinuta();
+                        laLista.Add(daoInvolucradosMinuta.ConsultarContactoMinutas(int.Parse(row[RecursosBDModulo8.AtributoAcuerdoContacto].ToString())));
+                    
                     }
                 }
                 else
@@ -447,6 +432,7 @@ namespace DAO.DAO.Modulo8
             List<Parametro> parametros = new List<Parametro>();
             Parametro elParametro = new Parametro(RecursosBDModulo8.ParametroIDAcuerdo, SqlDbType.Int,
                 acuerdo.Id.ToString(), false);
+            parametros.Add(elParametro);
 
             try
             {

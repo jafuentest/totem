@@ -10,24 +10,21 @@ CREATE PROCEDURE validarlogin
 	RETURN
 	GO
 
-CREATE PROCEDURE obtener_pregunta_seguridad
-	@Correo varchar(60),
-	@Usu_pregseguridad varchar(60) OUTPUT
+CREATE PROCEDURE VALIDAR_PREGUNTA_SEGURIDAD
+	@Correo varchar(60)
 	AS
 
-	Select @Usu_pregseguridad =  Usu_pregseguridad
+	Select Usu_respseguridad
 	from Usuario
 	where usu_correo = @Correo
 
 	RETURN
 	GO
 
-CREATE PROCEDURE validar_pregunta_seguridad
-	@Correo varchar(60),
-	@Usu_respseguridad varchar(100) OUTPUT
+CREATE PROCEDURE OBTENER_PREGUNTA_SEGURIDAD
+	@Correo varchar(60)
 	AS
-
-	Select @Usu_respseguridad = Usu_respseguridad
+	Select Usu_pregseguridad
 	from Usuario
 	where usu_correo = @Correo
 
@@ -45,7 +42,7 @@ CREATE PROCEDURE VALIDAR_CORREO
 	RETURN
 	GO
 
-CREATE PROCEDURE cambiar_clave
+CREATE PROCEDURE CAMBIAR_CLAVE
 	@Correo varchar(60),
 	@Clave varchar(MAX)
 	AS

@@ -45,7 +45,7 @@ namespace Comandos.Fabrica
 
         public static Comando<String, bool> CrearComandoValidarCorreoExistente()
         {
-           return new ComandoValidarCorreoUnico();
+            return new ComandoValidarCorreoExistente();
         }
 
         #endregion
@@ -210,6 +210,11 @@ namespace Comandos.Fabrica
         {
             return new Comandos.Modulo5.ComandoModificarRequerimiento();
         }
+        public static Comando<String, Boolean> CrearComandoGenerarArchivoLatex()
+        {
+            return new Comandos.Modulo5.ComandoGenerarArchivoLatex();
+        }
+
         #endregion
 
         #region Modulo 6

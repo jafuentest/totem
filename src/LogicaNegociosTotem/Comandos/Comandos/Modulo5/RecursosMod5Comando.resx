@@ -126,4 +126,13 @@
   <data name="ArchivoFinalPdf" xml:space="preserve">
     <value>Q:\totem\src\LogicaNegociosTotem\Comandos\Comandos\Modulo5\Requerimientos.pdf</value>
   </data>
+  <data name="CompiladorLatex" xml:space="preserve">
+    <value>pdflatex.exe</value>
+  </data>
+  <data name="Directorio" xml:space="preserve">
+    <value>Q:\totem\src\Interfaz\src\Vista\Modulo5\docs</value>
+  </data>
+  <data name="ParametroLatex" xml:space="preserve">
+    <value>-output-directory</value>
+  </data>
 </root>

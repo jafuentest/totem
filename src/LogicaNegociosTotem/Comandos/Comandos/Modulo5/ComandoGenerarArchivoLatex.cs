@@ -121,8 +121,9 @@ namespace Comandos.Comandos.Modulo5
             try
             {
                 Process p = new Process();
-                p.StartInfo.FileName = "pdflatex.exe";
-                p.StartInfo.Arguments = RecursosMod5Comando.ArchivoFinal;
+                p.StartInfo.FileName = RecursosMod5Comando.CompiladorLatex;
+                string argumento = RecursosMod5Comando.ParametroLatex + " " + RecursosMod5Comando.Directorio;
+                p.StartInfo.Arguments = argumento + " " + RecursosMod5Comando.ArchivoFinal;
                 p.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
                 p.StartInfo.RedirectStandardOutput = false;
                 p.StartInfo.UseShellExecute = false;
