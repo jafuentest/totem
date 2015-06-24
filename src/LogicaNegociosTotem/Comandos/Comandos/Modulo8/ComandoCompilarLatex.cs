@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Comandos.Comandos.Modulo8
 {
-    class ComandoCompilarLatex : Comando<String, bool>
+    public class ComandoCompilarLatex : Comando<String, bool>
     {
         /// <summary>
         /// Metodo que compila un archivo .tex
@@ -20,7 +20,8 @@ namespace Comandos.Comandos.Modulo8
             {
                 Process p1 = new Process();
                 p1.StartInfo.FileName = RecursosComandosModulo8.CompiladorLatex;
-                p1.StartInfo.Arguments = RecursosComandosModulo8.ParametroLatex+ RecursosComandosModulo8.Directorio+parametro;
+                string argumento = RecursosComandosModulo8.ParametroLatex + " " + RecursosComandosModulo8.Directorio;
+                p1.StartInfo.Arguments = argumento+" "+parametro;
                 p1.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
                 p1.StartInfo.RedirectStandardOutput = true;
                 p1.StartInfo.UseShellExecute = false;

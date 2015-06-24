@@ -157,7 +157,7 @@
     <comment>compilador de latex</comment>
   </data>
   <data name="Directorio" xml:space="preserve">
-    <value>../Interfaz/Vista/Modulo8/docs </value>
+    <value>C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\Vista\Modulo8\docs</value>
     <comment>direccion del directorio de salida</comment>
   </data>
   <data name="Mensaje" xml:space="preserve">

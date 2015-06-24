@@ -17,7 +17,7 @@ using Dominio.Entidades;
 
 namespace Comandos.Comandos.Modulo8
 {
-    class ComandoModificarMinuta : Comando<string, string>
+    class ComandoModificarMinuta : Comando<List<Entidad>, string>
     {
         public override string Ejecutar(List<Entidad> parametro)
         {

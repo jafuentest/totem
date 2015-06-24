@@ -8,6 +8,7 @@ using Dominio.Entidades.Modulo8;
 using Dominio.Fabrica;
 using Comandos.Fabrica;
 using Comandos.Comandos.Modulo8;
+using System.IO;
 
 namespace PruebasUnitariasTotem.Modulo8
 {
@@ -47,6 +48,15 @@ namespace PruebasUnitariasTotem.Modulo8
 
 
             
+        }
+
+        [Test]
+
+        public void PruebaCompilarLatex()
+        {
+            ComandoCompilarLatex comandoCompilarLatex = (ComandoCompilarLatex)FabricaComandos.CrearComandoCompilarLatex();
+            bool auxiliar = comandoCompilarLatex.Ejecutar(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\Vista\Modulo8\docs\BaseMinuta.tex");
+            Assert.IsTrue(File.Exists(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\Vista\Modulo8\docs\BaseMinuta.pdf"));
         }
         /*
         [TearDown]
