@@ -15,10 +15,10 @@
 	</opcion>
 
 	<!-- Opciones del menú lateral del Módulo 3-->
-	<opcion nombre="Agregar Involucrados" link="~/Modulo3/AgregarInvolucrado.aspx">
+	<opcion nombre="Agregar Involucrados" link="/Modulo3/AgregarInvolucrados.aspx">
 		<modulo id="3"></modulo>
 	</opcion>
-	<opcion nombre="Listar Involucrados" link="~/Modulo3/ListarPersonalInvolucrado.aspx">
+	<opcion nombre="Listar Involucrados" link="/Modulo3/ListarPersonalInvolucrado.aspx">
 		<modulo id="3"></modulo>
 	</opcion>
 

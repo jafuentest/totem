@@ -21,8 +21,12 @@ namespace Vista.Modulo3
         protected void Page_Load(object sender, EventArgs e)
         {
             //presentador.ObtenerVariablesURL();
-            this.Master.idModulo = "3";
-            this.Master.presentador.CargarMenuLateral();
+            String  result= Request.QueryString["success"];
+            presentador.MostrarModal(result);
+            if(!IsPostBack){
+               this.Master.idModulo = "3";
+               this.Master.presentador.CargarMenuLateral();
+            }
             
         }
 
@@ -37,6 +41,18 @@ namespace Vista.Modulo3
             {
                 laTabla.Text = value;
             }
+        }
+        String Contratos.Modulo3.IContratoListarInvolucrado.alertClase
+        {
+            set{ alert.Attributes["class"] = value; }
+        }
+        String Contratos.Modulo3.IContratoListarInvolucrado.alertRol
+        {
+            set { alert.Attributes["role"] = value; }
+        }
+        String Contratos.Modulo3.IContratoListarInvolucrado.alert
+        {
+            set {alert.InnerHtml = value; }
         }
         #endregion contrato
 
