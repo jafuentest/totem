@@ -1354,6 +1354,7 @@ BEGIN
 	from CONTACTO con, CLIENTE_JURIDICO cli, TELEFONO tel, CARGO car
 	where
 		con.CLIENTE_JURIDICO_cj_id = cli.cj_id and tel.CONTACTO_con_id = con_id and car.car_id = con.CARGO_car_id
+		and con.CLIENTE_JURIDICO_cj_id = @idClienteJur
 END;
 GO
 -------------------PROCEDURE SELECCIONAR DATOS DE CONTACTO POR ID------------------ 

@@ -29,11 +29,11 @@ namespace Vista.Modulo2
         {
             get
             {
-                return rifEmpresa.Text;
+                return rifEmpresa.InnerText;
             }
             set
             {
-                rifEmpresa.Text = value;
+                rifEmpresa.InnerText += value;
             }
         }
 
@@ -41,11 +41,11 @@ namespace Vista.Modulo2
         {
             get
             {
-                return nombreEmpresa.Text;
+                return nombreEmpresa.InnerText;
             }
             set
             {
-                nombreEmpresa.Text = value;
+                nombreEmpresa.InnerText += value;
             }
         }
 
@@ -53,11 +53,11 @@ namespace Vista.Modulo2
         {
             get
             {
-                return paisEmpresa.Text;
+                return paisEmpresa.InnerText;
             }
             set
             {
-                paisEmpresa.Text = value;
+                paisEmpresa.InnerText += value;
             }
         }
 
@@ -65,11 +65,11 @@ namespace Vista.Modulo2
         {
             get
             {
-                return estadoEmpresa.Text;
+                return estadoEmpresa.InnerText;
             }
             set
             {
-                estadoEmpresa.Text = value;
+                estadoEmpresa.InnerText += value;
             }
         }
 
@@ -77,11 +77,11 @@ namespace Vista.Modulo2
         {
             get
             {
-                return ciudadEmpresa.Text; 
+                return ciudadEmpresa.InnerText; 
             }
             set
             {
-                ciudadEmpresa.Text = value;
+                ciudadEmpresa.InnerText += value;
             }
         }
 
@@ -89,11 +89,11 @@ namespace Vista.Modulo2
         {
             get
             {
-                return direccionEmpresa.Text;
+                return direccionEmpresa.InnerText;
             }
             set
             {
-                direccionEmpresa.Text = value;
+                direccionEmpresa.InnerText += value;
             }
         }
 
@@ -101,11 +101,11 @@ namespace Vista.Modulo2
         {
             get
             {
-                return codigoPostal.Text;
+                return codigoPostal.InnerText;
             }
             set
             {
-                codigoPostal.Text = value;
+                codigoPostal.InnerText += value;
             }
         }
 
@@ -123,17 +123,17 @@ namespace Vista.Modulo2
 
         public string alertaClase
         {
-            set { alert.Attributes["class"] = value; }
+            set { alert.Attributes["class"] += value; }
         }
 
         public string alertaRol
         {
-            set { alert.Attributes["role"] = value; }
+            set { alert.Attributes["role"] += value; }
         }
 
         public string alerta
         {
-            set { alert.InnerHtml = value; }
+            set { alert.InnerHtml += value; }
         }
         #endregion
     }
