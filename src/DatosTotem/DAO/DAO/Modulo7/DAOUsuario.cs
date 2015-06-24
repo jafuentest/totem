@@ -291,13 +291,16 @@ namespace DAO.DAO.Modulo7
                 //Ejecutamos la consulta y traemos las filas que fueron obtenidas
                 respuesta = instruccion.ExecuteReader();
 
+                //Instanciamos la fabrica concreta de Entidades
+                FabricaEntidades fabrica = new FabricaEntidades();
+
                 //Si se encontraron Usuarios se comienzan a agregar a la variable lista, sino, se devolvera vacia
                 if (respuesta.HasRows)
                     //Recorremos cada fila devuelta de la consulta
                     while (respuesta.Read())
                     {
                         //Creamos el Usuario y lo anexamos a la lista
-                        Entidad aux = FabricaEntidades.ObtenerUsuario(respuesta.GetString(0), respuesta.GetString(1),
+                        Entidad aux = fabrica.ObtenerUsuario(respuesta.GetString(0), respuesta.GetString(1),
                             respuesta.GetString(2), respuesta.GetString(3));
                         usuarios.Add(aux);
 
@@ -343,13 +346,16 @@ namespace DAO.DAO.Modulo7
                 //Ejecutamos la consulta y traemos las filas que fueron obtenidas
                 respuesta = instruccion.ExecuteReader();
 
+                //Instanciamos la fabrica concreta de Entidades
+                FabricaEntidades fabrica = new FabricaEntidades();
+
                 //Si se encontraron Usuarios se comienzan a agregar a la variable lista, sino, se devolvera vacia
                 if (respuesta.HasRows)
                     //Recorremos cada fila devuelta de la consulta
                     while (respuesta.Read())
                     {
                         //Creamos el Usuario y lo anexamos a la lista
-                        Entidad aux = FabricaEntidades.ObtenerUsuario(respuesta.GetString(3),respuesta.GetString(1),
+                        Entidad aux = fabrica.ObtenerUsuario(respuesta.GetString(3),respuesta.GetString(1),
                             respuesta.GetString(2),respuesta.GetString(4));
                         aux.Id = respuesta.GetInt32(0);
                         usuarios.Add(aux);

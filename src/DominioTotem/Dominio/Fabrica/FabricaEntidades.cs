@@ -169,7 +169,7 @@ namespace Dominio.Fabrica
         /// Metodo que permite instanciar a la clase Usuario con sus atributos vacios
         /// </summary>
         /// <returns>el Usuario con sus atributos vacios</returns>
-        public static Entidad ObtenerUsuario()
+        public Entidad ObtenerUsuario()
         {
             return new Entidades.Modulo7.Usuario();
         }
@@ -187,7 +187,7 @@ namespace Dominio.Fabrica
         /// <param name="respuestaSeguridad">Respuesta a la pregunta de seguridad</param>
         /// <param name="cargo">Cargo que ocupa</param>
         /// <returns>El usuario completo sin su ID de Base de Datos</returns>
-        public static Entidad ObtenerUsuario(String username, String clave, String nombre, String apellido, 
+        public Entidad ObtenerUsuario(String username, String clave, String nombre, String apellido, 
             String rol, String correo, String preguntaSeguridad, String respuestaSeguridad, String cargo )
         {
             return new Entidades.Modulo7.Usuario(username, clave, nombre, apellido, rol, correo, preguntaSeguridad, 
@@ -202,7 +202,7 @@ namespace Dominio.Fabrica
         /// <param name="apellido">Apellido del usuario</param>
         /// <param name="cargo">Cargo que ocupa</param>
         /// <returns>El usuario con sus datos basicos</returns>
-        public static Entidad ObtenerUsuario(String username, String nombre, String apellido, String cargo)
+        public Entidad ObtenerUsuario(String username, String nombre, String apellido, String cargo)
         {
             return new Entidades.Modulo7.Usuario(username, nombre, apellido, cargo);
         }
