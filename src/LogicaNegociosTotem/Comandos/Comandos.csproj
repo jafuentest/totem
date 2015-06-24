@@ -80,7 +80,13 @@
     <Compile Include="Comandos\Modulo5\ComandoConsultarRequerimiento.cs" />
     <Compile Include="Comandos\Modulo5\ComandoConsultarRequerimientosProyecto.cs" />
     <Compile Include="Comandos\Modulo5\ComandoEliminarRequerimiento.cs" />
+    <Compile Include="Comandos\Modulo5\ComandoGenerarArchivoLatex.cs" />
     <Compile Include="Comandos\Modulo5\ComandoModificarRequerimiento.cs" />
+    <Compile Include="Comandos\Modulo5\RecursosMod5Comando.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosMod5Comando.resx</DependentUpon>
+    </Compile>
     <Compile Include="Comandos\Modulo6\ComandoAgregarActor.cs" />
     <Compile Include="Comandos\Modulo6\ComandoConsultarActoresCombo.cs" />
     <Compile Include="Comandos\Modulo6\ComandoConsultarActoresXCasoDeUso.cs" />
@@ -134,6 +140,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Comandos\Modulo1\RecursosComandoModulo1.resx" />
+    <EmbeddedResource Include="Comandos\Modulo5\RecursosMod5Comando.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosMod5Comando.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Comandos\Modulo6\RecursosComandosModulo6.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosComandosModulo6.Designer.cs</LastGenOutput>
