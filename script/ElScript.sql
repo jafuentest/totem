@@ -2659,7 +2659,7 @@ CREATE PROCEDURE LEER_ACTOR_DEL_CU
 	@idcasouso int
 AS
 	BEGIN
-		SELECT A.act_nombre NOMBRE, A.act_descripcion DESCRIPCION 
+		SELECT A.act_nombre as nombreActor 
 		FROM ACTOR A, CU_ACTOR R, CASO_USO C 
 		WHERE (C.cu_id=@idcasouso) AND (C.cu_id=R.CASO_USO_cu_id) AND (R.ACTOR_act_id=A.act_id);
 	END
@@ -3788,7 +3788,19 @@ INSERT INTO PASO VALUES (1,'A.','El administrador selecciona Leer Actor',2);
 INSERT INTO EXTENSION VALUES (1,'El Administrador Selecciona Cancelar',1,2);
 INSERT INTO PASO_EXTENSION VALUES (1,'Fin del Caso de Uso',1,1,2);
 
+INSERT INTO CU_ACTOR VALUES (1,1);
+INSERT INTO CU_ACTOR VALUES (1,2);
 INSERT INTO CU_ACTOR VALUES (2,1);
+INSERT INTO CU_ACTOR VALUES (2,2);
+INSERT INTO CU_ACTOR VALUES (3,1);
+INSERT INTO CU_ACTOR VALUES (3,2);
+INSERT INTO CU_ACTOR VALUES (4,1);
+
+INSERT INTO CU_ACTOR VALUES (10,3);
+INSERT INTO CU_ACTOR VALUES (11,3);
+INSERT INTO CU_ACTOR VALUES (12,3);
+
+
 INSERT INTO CU_REQUERIMIENTO VALUES (1,1);
 INSERT INTO CU_REQUERIMIENTO VALUES (2,2);
 INSERT INTO CU_REQUERIMIENTO VALUES (3,3);
@@ -3825,12 +3837,14 @@ INSERT INTO CASO_USO (cu_identificador,cu_titulo,cu_condexito,cu_condfallo,cu_di
 INSERT INTO CASO_USO (cu_identificador,cu_titulo,cu_condexito,cu_condfallo,cu_disparador, PROYECTO_pro_id) VALUES ('TW-CU','Eliminar Tweet','Tweet Eliminado','Tweet no Eliminado','Menu principal -> Eliminar Tweet',3);
 
 INSERT INTO ACTOR (act_nombre,act_descripcion,PROYECTO_pro_id) VALUES ('Administrador','El que revisa los tweets que se pueden',3);
+
+INSERT INTO ACTOR (act_nombre,act_descripcion,PROYECTO_pro_id) VALUES ('Usuario de Twitter','El que realiza los tweets',3);
 INSERT INTO PRECONDICION VALUES (1,'Tweet Creado',10);
 INSERT INTO PASO VALUES (1,'A.','El administrador selecciona Leer Tweet',10);
 INSERT INTO EXTENSION VALUES (1,'El Administrador Selecciona Cancelar',1,10);
 INSERT INTO PASO_EXTENSION VALUES (1,'Fin del Caso de Uso',1,1,10);
 
-INSERT INTO CU_ACTOR VALUES (10,3);
+
 INSERT INTO CU_REQUERIMIENTO VALUES (9,9);
 INSERT INTO CU_REQUERIMIENTO VALUES (10,10);
 INSERT INTO CU_REQUERIMIENTO VALUES (11,11);
