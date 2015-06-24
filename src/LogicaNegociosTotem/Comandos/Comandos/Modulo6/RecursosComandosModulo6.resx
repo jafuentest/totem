@@ -132,6 +132,9 @@
   <data name="ClaseComandoConsultarRequerimientosPorCasoDeUso" xml:space="preserve">
     <value>ComandoConsultarRequerimientosXCasoDeUso</value>
   </data>
+  <data name="ClaseComandoEliminarCU" xml:space="preserve">
+    <value>ComandoEliminarCU</value>
+  </data>
   <data name="ClaseComandoListarCU" xml:space="preserve">
     <value>ComandoListarCU</value>
   </data>

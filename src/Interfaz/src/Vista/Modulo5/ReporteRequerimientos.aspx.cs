@@ -14,11 +14,20 @@ namespace Vista.Modulo5
         public ReporteRequerimientos()
         {
             this.presentador = new Presentadores.Modulo5.PresentadorReporteRequerimientos(this);
+            
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Master.idModulo = "5";
-            this.Master.presentador.CargarMenuLateral();      
+            this.Master.presentador.CargarMenuLateral();
+            HttpContext.Current.Session["Credenciales"] = new object();
+           
+        
+        }
+
+        protected void GenerarDoc_Click(object sender, EventArgs e)
+        {
+            this.presentador.GenerarDoc("TOT");
         }
     }
 }

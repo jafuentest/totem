@@ -8,6 +8,7 @@ using Dominio.Entidades.Modulo8;
 using Dominio.Fabrica;
 using Comandos.Fabrica;
 using Comandos.Comandos.Modulo8;
+using System.IO;
 
 namespace PruebasUnitariasTotem.Modulo8
 {
@@ -38,7 +39,7 @@ namespace PruebasUnitariasTotem.Modulo8
             ComandoDetalleMinuta comandoDetalleMinuta = (ComandoDetalleMinuta)FabricaComandos.CrearComandoComandoDetalleMinuta();
             Minuta minuta = (Minuta)comandoDetalleMinuta.Ejecutar("1");
             Assert.IsNotNull(minuta);
-            System.Console.Out.WriteLine("Minuta id: " + minuta.Codigo);
+            System.Console.Out.WriteLine("Minuta id: " + minuta.Id);
             System.Console.Out.WriteLine("Minuta fecha: " + minuta.Fecha);
             System.Console.Out.WriteLine("Minuta Motivo: " + minuta.Motivo);
             System.Console.Out.WriteLine("Minuta Observaciones: " + minuta.Observaciones);
@@ -47,6 +48,35 @@ namespace PruebasUnitariasTotem.Modulo8
 
 
             
+        }
+
+        [Test]
+
+        public void PruebaCompilarLatex()
+        {
+            ComandoCompilarLatex comandoCompilarLatex = (ComandoCompilarLatex)FabricaComandos.CrearComandoCompilarLatex();
+            bool auxiliar = comandoCompilarLatex.Ejecutar(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\Vista\Modulo8\docs\BaseMinuta.tex");
+            Assert.IsTrue(File.Exists(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\Vista\Modulo8\docs\BaseMinuta.pdf"));
+        }
+
+        [Test]
+        public void PruebaComandoGenerarMinuta()
+        {
+            FabricaEntidades laFabrica = new FabricaEntidades();
+            ComandoGenerarMinuta comandoGenerarMinuta = (ComandoGenerarMinuta)FabricaComandos.CrearComandoGenerarMinuta();
+            Minuta laMinuta = (Minuta)laFabrica.ObtenerMinuta();
+            laMinuta.Id = 1;
+            laMinuta.Fecha = DateTime.Parse("2015-04-25 18:00:00.000");
+            laMinuta.Motivo = "Prueba";
+            laMinuta.Observaciones = "Probando Generar la Minuta";
+            bool aux = comandoGenerarMinuta.Ejecutar(laMinuta);
+            System.IO.StreamReader archivo = new System.IO.StreamReader(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\Vista\Modulo8\docs\Minuta.tex");
+            string linea;
+            while ((linea = archivo.ReadLine()) != null)
+            {
+                Assert.IsTrue(linea != "motivo");
+            }
+
         }
         /*
         [TearDown]

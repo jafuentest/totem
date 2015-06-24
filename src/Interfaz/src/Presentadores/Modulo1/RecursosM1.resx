@@ -148,4 +148,8 @@
     <value>.1*;M;3z+M~8k*+~LZU6B!Q|.!k+;=*m</value>
     <comment>Passphrase para encriptar e desencriptar</comment>
   </data>
+  <data name="Link_Recuperacion_Clave" xml:space="preserve">
+    <value>../Modulo1/PreguntaSeguridad.aspx?usuario=</value>
+    <comment>Link de recuperacion de clave</comment>
+  </data>
 </root>

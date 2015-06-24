@@ -283,4 +283,7 @@
   <data name="AliasRequerimiento" xml:space="preserve">
     <value>requerimiento</value>
   </data>
+  <data name="ProcedureEliminarCU" xml:space="preserve">
+    <value>ELIMINAR_CU</value>
+  </data>
 </root>

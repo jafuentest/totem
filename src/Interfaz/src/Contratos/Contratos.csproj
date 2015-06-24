@@ -57,6 +57,8 @@
     <Compile Include="Modulo2\IContratoModificarEmpresa.cs" />
     <Compile Include="Modulo3\IContratoAgregarInvolucrado.cs" />
     <Compile Include="Modulo3\IContratoListarInvolucrado.cs" />
+    <Compile Include="Modulo4\IContratoAgregarProyecto.cs" />
+    <Compile Include="Modulo4\IContratoListarProyectos.cs" />
     <Compile Include="Modulo5\IContratoAgregarRequerimiento.cs" />
     <Compile Include="Modulo5\IContratoListarRequerimientos.cs" />
     <Compile Include="Modulo5\IContratoReporteRequerimientos.cs" />
@@ -73,9 +75,7 @@
     <Compile Include="Modulo8\IContratoModificarMinuta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modulo4\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\..\DominioTotem\Dominio\Dominio.csproj">
       <Project>{41dd6620-eb5e-4529-b66d-d29a27fa2e5a}</Project>

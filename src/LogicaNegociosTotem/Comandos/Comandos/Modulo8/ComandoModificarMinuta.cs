@@ -17,7 +17,7 @@ using Dominio.Entidades;
 
 namespace Comandos.Comandos.Modulo8
 {
-    class ComandoModificarMinuta : Comando<string, string>
+    class ComandoModificarMinuta : Comando<List<Entidad>, string>
     {
         public override string Ejecutar(List<Entidad> parametro)
         {
@@ -42,7 +42,7 @@ namespace Comandos.Comandos.Modulo8
                 Minuta laMinuta=(Minuta)parametro[2];
 
                 
-                daoInvolucradosMinuta.EliminarInvolucradoEnMinuta(int.Parse(laMinuta.Codigo));
+                daoInvolucradosMinuta.EliminarInvolucradoEnMinuta(laMinuta.Id);
                 foreach (Acuerdo acu in laMinuta.ListaAcuerdo)
                 {
                     if (acu.ListaUsuario != null)
@@ -65,10 +65,10 @@ namespace Comandos.Comandos.Modulo8
 
                 foreach (Punto pun in laMinuta.ListaPunto)
                 {
-                    daoPunto.EliminarPuntoBD(pun, int.Parse(laMinuta.Codigo));
+                    daoPunto.EliminarPuntoBD(pun, laMinuta.Id);
                 }
 
-                daoMinutas.EliminarMinuta(int.Parse(laMinuta.Codigo));
+                daoMinutas.EliminarMinuta(laMinuta.Id);
                 List<Entidad>parametroGuardar=new List<Entidad>();
                 parametroGuardar.Add(elProyecto);
                 parametroGuardar.Add(nueva);

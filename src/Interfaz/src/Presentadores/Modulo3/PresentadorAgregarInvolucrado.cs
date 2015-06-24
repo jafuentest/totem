@@ -4,12 +4,15 @@ using Contratos.Modulo3;
 using Dominio;
 using Dominio.Entidades.Modulo2;
 using Dominio.Entidades.Modulo3;
+using Dominio.Entidades.Modulo4;
 using Dominio.Entidades.Modulo7;
 using Dominio.Fabrica;
+using ExcepcionesTotem.Modulo3;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
@@ -19,14 +22,19 @@ namespace Presentadores.Modulo3
     public class PresentadorAgregarInvolucrado
     {
         private IContratoAgregarInvolucrado vista;
-        private ListaInvolucradoContacto listaContacto;
-        private ListaInvolucradoUsuario listaUsuario;
+        private static ListaInvolucradoContacto listaContacto;
+        private static ListaInvolucradoUsuario listaUsuario;
         public PresentadorAgregarInvolucrado(IContratoAgregarInvolucrado laVista)
         {
-            vista = laVista;
-            listaContacto = (ListaInvolucradoContacto)FabricaEntidades
+               
+               vista = laVista;
+        }
+        public void iniciarlista()
+        {
+            FabricaEntidades laFabrica = new FabricaEntidades();
+            listaContacto = (ListaInvolucradoContacto)laFabrica
                                                  .ObtenetListaInvolucradoContacto();
-            listaUsuario = (ListaInvolucradoUsuario)FabricaEntidades
+            listaUsuario = (ListaInvolucradoUsuario)laFabrica
                                                  .ObtenetListaInvolucradoUsuario();
         }
 
@@ -169,34 +177,45 @@ namespace Presentadores.Modulo3
             bool exitoUsuario = false;
             Comando<Entidad,bool> comando_contacto = FabricaComandos.CrearComandoAgregarContactosInvolucrados();
             Comando<Entidad, bool> comando_usuario = FabricaComandos.CrearComandoAgregarUsuarioInvolucrados();
+            Proyecto elProyecto = (Proyecto)FabricaEntidades.ObtenerProyecto();
+            elProyecto.Codigo = "TOT";
+            listaContacto.Proyecto = elProyecto;
+            listaUsuario.Proyecto = elProyecto;
 
-             exitoContacto = comando_contacto.Ejecutar(listaContacto);
-             exitoUsuario = comando_usuario.Ejecutar(listaUsuario);
-             if (exitoContacto == false)
-             {
-                 vista.Alerta_AgregarContacto_Fracaso = RecursosInterfazM3.Alerta_Html +
-                 RecursosInterfazM3.Alerta_AgregarContacto_Fracaso +
-                 RecursosInterfazM3.Alerta_Html_Final;
-             }
-             else
-             {
-                 vista.Alerta_AgregarContacto_Fracaso = RecursosInterfazM3.Alerta_Html +
-                 RecursosInterfazM3.Alerta_Contacto_Agregado +
-                 RecursosInterfazM3.Alerta_Html_Final;
-             }
-            if(exitoUsuario == false){
-                vista.Alerta_AgregarUsuario_Fracaso = RecursosInterfazM3.Alerta_Html +
-                RecursosInterfazM3.Alerta_Usuario_Agregado +
-                RecursosInterfazM3.Alerta_Html_Final;
-            }else{
+                 if (!(listaUsuario.Lista.Count == 0 && listaContacto.Lista.Count == 0))
+                 {
 
-                vista.Alerta_AgregarUsuario_Fracaso= RecursosInterfazM3.Alerta_Html +
-                 RecursosInterfazM3.Alerta_Usuario_Agregado +
-                 RecursosInterfazM3.Alerta_Html_Final;
+                     exitoContacto = comando_contacto.Ejecutar(listaContacto);
+                     exitoUsuario = comando_usuario.Ejecutar(listaUsuario);
 
-            }
+                     HttpContext.Current.Response.Redirect(RecursosInterfazM3.ListarInvolucrados +
+     RecursosInterfazM3.Codigo_Exito_Agregar);
+
+                 }
+                 else
+                 {
+                     vista.alertaUsuarioClase = RecursosInterfazM3.Alerta_Clase_Error;
+                     vista.alertaUsuarioRol = RecursosInterfazM3.Alerta_Rol;
+                     vista.Alerta_AgregarUsuario_Fracaso = RecursosInterfazM3.Alerta_Html +
+                      RecursosInterfazM3.Alerta_Seleccion_vacia +
+                      RecursosInterfazM3.Alerta_Html_Final;
+                 }
            
         }
+   /*     public void ObtenerVariablesURL()
+        {
+            String error = HttpContext.Current.Request.QueryString["error"];
+            if (error != null && error.Equals("input_malicioso"))
+            {
+                vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Error;
+                vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                vista.alerta = RecursoInterfazM2.Alerta_Html +
+                    RecursosGeneralPresentadores.Mensaje_Error_InputInvalido +
+                    RecursoInterfazM2.Alerta_Html_Final;
+            }
+
+        }
+    **/
     }
 
 }

@@ -81,7 +81,6 @@ namespace DAO.DAO.Modulo3
                     exito = true;
                 else
                     exito = false;
-                return exito;
             }
             catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
             {
@@ -93,6 +92,9 @@ namespace DAO.DAO.Modulo3
             {
                 throw new ExcepcionesTotem.ExceptionTotem("No se pudo completar la operacion", new Exception());
             }
+
+            return exito;
+
         }
         /// <summary>
         /// Metodo que agrega la lista de contactos involucrados a un proyecto
@@ -185,7 +187,6 @@ namespace DAO.DAO.Modulo3
             Proyecto p = (Proyecto)parametro;
             List<Parametro> parametros;
             Parametro codigoProyecto;
-
             List<Usuario> lUsuarios = new List<Usuario>();
             try
             {
@@ -204,7 +205,7 @@ namespace DAO.DAO.Modulo3
                     parametros);
                 foreach (DataRow row in dt.Rows)
                 {
-                    Usuario u = (Usuario)FabricaEntidades.ObtenerUsuario();
+                    Usuario u = (Usuario)laFabrica.ObtenerUsuario();
                     u.IdUsuario = int.Parse(row[RecursosBDModulo3.aliasUsuarioID].ToString());
                     u.Nombre = row[RecursosBDModulo3.aliasUsuarioNombre].ToString();
                     u.Apellido = row[RecursosBDModulo3.aliasUsuarioApellido].ToString();
@@ -212,7 +213,7 @@ namespace DAO.DAO.Modulo3
                     u.Username = row[RecursosBDModulo3.aliasUsuarioUsername].ToString();
                     lUsuarios.Add(u);
                 }
-                laListaDeUsuarios = (ListaInvolucradoUsuario)FabricaEntidades.
+                laListaDeUsuarios = (ListaInvolucradoUsuario)laFabrica.
                                     ObtenetListaInvolucradoUsuario(lUsuarios, p);
             }
             catch (SqlException ex)
@@ -234,7 +235,7 @@ namespace DAO.DAO.Modulo3
         public Entidad ConsultarContactosInvolucradosPorProyecto(Entidad parametro)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
-            ListaInvolucradoContacto laListaDeContactos = (ListaInvolucradoContacto)FabricaEntidades.
+            ListaInvolucradoContacto laListaDeContactos = (ListaInvolucradoContacto)laFabrica.
                                                           ObtenetListaInvolucradoContacto();
             Proyecto p = (Proyecto)parametro;
             List<Parametro> parametros;
@@ -280,7 +281,7 @@ namespace DAO.DAO.Modulo3
 
                     lContactos.Add(c);
                 }
-                laListaDeContactos = (ListaInvolucradoContacto)FabricaEntidades.
+                laListaDeContactos = (ListaInvolucradoContacto)laFabrica.
                                         ObtenetListaInvolucradoContacto(lContactos, p);
             }
             catch (SqlException ex)
@@ -473,7 +474,8 @@ namespace DAO.DAO.Modulo3
         }
         public Entidad DatosUsuarioUsername(String user)
         {
-            Usuario retorno = (Usuario)FabricaEntidades.ObtenerUsuario();
+            FabricaEntidades laFabrica = new FabricaEntidades();
+            Usuario retorno = (Usuario)laFabrica.ObtenerUsuario();
             retorno.Username = user;
             List<Parametro> parametros = new List<Parametro>();
             Parametro parametro = new Parametro(RecursosBDModulo3.ParamUser,
@@ -582,7 +584,7 @@ namespace DAO.DAO.Modulo3
 
                 parametros = new List<Parametro>();
 
-                rifClienteJ = new Parametro(RecursosBDModulo3.ParamRif, SqlDbType.Int, laEmpresa.Id.ToString(), false);
+                rifClienteJ = new Parametro(RecursosBDModulo3.ClienteidJur, SqlDbType.Int, laEmpresa.Id.ToString(), false);
                 parametros.Add(rifClienteJ);
 
                 DataTable dt = EjecutarStoredProcedureTuplas(
@@ -591,10 +593,10 @@ namespace DAO.DAO.Modulo3
                 {
                     Contacto c = (Contacto)laFabrica.ObtenerContacto();
 
-                    c.Con_Nombre = row[RecursosBDModulo3.ColumnaNombreContacto].ToString();
-                    c.Con_Apellido = row[RecursosBDModulo3.ColumnaApellidoContacto].ToString();
-                    c.ConCargo = row[RecursosBDModulo3.ColumnaCargoContacto].ToString();
-                    c.Id = int.Parse(row[RecursosBDModulo3.ColumnaIdContacto].ToString());
+                    c.Con_Nombre = row[RecursosBDModulo3.aliasContactoNombre].ToString();
+                    c.Con_Apellido = row[RecursosBDModulo3.aliasContactoApellido].ToString();
+                    c.ConCargo = row[RecursosBDModulo3.aliasContactoCargo].ToString();
+                    c.Id = int.Parse(row[RecursosBDModulo3.aliasContactoID].ToString());
 
                     laListaDeContactos.Add(c);
                 }

@@ -17,18 +17,17 @@ namespace Vista.Modulo3
         private PresentadorAgregarInvolucrado presentador;
         public AgregarInvolucrados()
         {
-          
-            presentador = new PresentadorAgregarInvolucrado(this);
+               presentador = new PresentadorAgregarInvolucrado(this);
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            
             if (!IsPostBack)
             {
                 Master.idModulo = "3";
                 Master.presentador.CargarMenuLateral();
                 presentador.LlenarComboEmpresa();
                 upModal.Visible = true;
+                presentador.iniciarlista();
             }
             if(presentador.eliminarcontacto() != null || presentador.eliminarusuario() != null){
                  presentador.modaleliminar();
@@ -126,13 +125,33 @@ namespace Vista.Modulo3
                 this.contacto_id.InnerText = Request.QueryString["contactoaeliminar"]; ;
             }
         }
+        public string alertaContactoClase
+        {
+            set { alertContacto.Attributes["class"] = value; }
+        }
+
+        public string alertaContactoRol
+        {
+            set { alertContacto.Attributes["role"] = value; }
+        }
+
+        public string alertaUsuarioClase
+        {
+            set { alertUsuario.Attributes["class"] = value; }
+        }
+
+        public string alertaUsuarioRol
+        {
+            set { alertUsuario.Attributes["role"] = value; }
+        }
         String Contratos.Modulo3.IContratoAgregarInvolucrado.alert
         {
             set
             {
-                alert.InnerHtml = value; ;
+                alertContacto.InnerHtml = value; ;
             }
         }
+
         String Contratos.Modulo3.IContratoAgregarInvolucrado.Alerta_AgregarContacto_Fracaso
 
         {

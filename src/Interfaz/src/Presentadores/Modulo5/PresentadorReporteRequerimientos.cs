@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Contratos.Modulo5;
+using System.Web;
 
 namespace Presentadores.Modulo5
 {
@@ -23,7 +24,14 @@ namespace Presentadores.Modulo5
         {
             this.vista = vista;
         }
-         
+
+        public void GenerarDoc(String parametro) {
+            Comandos.Comando<String, Boolean> Comando;
+            Comando = Comandos.Fabrica.FabricaComandos.CrearComandoGenerarArchivoLatex();
+            Comando.Ejecutar(parametro);
+            HttpContext.Current.Response.Redirect("/Modulo5/docs/Requerimientos.pdf");
+        
+        }
 
     }
 }

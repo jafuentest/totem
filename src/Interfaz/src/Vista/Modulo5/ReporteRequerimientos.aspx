@@ -135,9 +135,12 @@
 			</tbody>
 		</table>
         <br />
-        <div class="col-lg-offset-10"\>
-            &nbsp;&nbsp;&nbsp;<button id="btn-imprimir" class="btn btn-success" disabled="disabled" onclick="window.location.href='#'">Generar Documento</button>
-        </div>
+        <form runat="server" method="post">
+                <div class="col-lg-offset-10"\>
+                    &nbsp;&nbsp;&nbsp;
+                    <asp:Button id="GenerarDoc" class="btn btn-success" runat="server" OnClick="GenerarDoc_Click" Text="Generar Documento"></asp:Button>
+                </div>
+        </form>
         <div id="modal-delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">

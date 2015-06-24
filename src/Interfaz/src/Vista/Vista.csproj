@@ -120,6 +120,7 @@
     <Content Include="Modulo2\ModificarEmpresa.aspx" />
     <Content Include="Modulo3\AgregarInvolucrados.aspx" />
     <Content Include="Modulo3\ListarPersonalInvolucrado.aspx" />
+    <Content Include="Modulo4\ListarProyectos.aspx" />
     <Content Include="Modulo5\AgregarRequerimiento.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Modulo5\ListarRequerimientos.aspx" />
@@ -282,6 +283,13 @@
     <Compile Include="Modulo3\ListarPersonalInvolucrado.aspx.designer.cs">
       <DependentUpon>ListarPersonalInvolucrado.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modulo4\ListarProyectos.aspx.cs">
+      <DependentUpon>ListarProyectos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo4\ListarProyectos.aspx.designer.cs">
+      <DependentUpon>ListarProyectos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modulo5\AgregarRequerimiento.aspx.cs">
       <DependentUpon>AgregarRequerimiento.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -424,7 +432,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Modulo4\" />
     <Folder Include="Modulo8\docs\" />
   </ItemGroup>
   <ItemGroup>

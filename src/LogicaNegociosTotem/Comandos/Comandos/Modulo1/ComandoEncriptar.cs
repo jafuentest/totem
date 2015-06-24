@@ -19,8 +19,7 @@ namespace Comandos.Comandos.Modulo1
             byte[] textoEnBytes = Encoding.UTF8.GetBytes(parametro[0]);
             using (PasswordDeriveBytes password = new PasswordDeriveBytes(parametro[1], null))
             {
-                byte[] bytesDeClave = password.GetBytes(
-                    Convert.ToInt32(RecursosComandoModulo1.Tamano_Clave) / 8);
+                byte[] bytesDeClave = password.GetBytes(256 / 8);
                 using (RijndaelManaged claveSimetrica = new RijndaelManaged())
                 {
                     claveSimetrica.Mode = CipherMode.CBC;

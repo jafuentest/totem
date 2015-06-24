@@ -1,98 +1,104 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <menuLateral>
-	<!-- Opciones del menú lateral del Módulo 2 -->
-	<opcion nombre="Listar Clientes Naturales" link="/Modulo2/ListarClientes.aspx">
-		<modulo id="2"></modulo>
-	</opcion>
-	<opcion nombre="Agregar Clientes Naturales" link="/Modulo2/AgregarCliente.aspx">
-		<modulo id="2"></modulo>
-	</opcion>
-	<opcion nombre="Listar Clientes Juridicos" link="/Modulo2/ListarEmpresas.aspx">
-		<modulo id="2"></modulo>
-	</opcion>
-	<opcion nombre="Agregar Clientes Juridicos" link="/Modulo2/AgregarEmpresa.aspx">
-		<modulo id="2"></modulo>
-	</opcion>
+    <!-- Opciones del menú lateral del Módulo 2 -->
+    <opcion nombre="Listar Clientes Naturales" link="/Modulo2/ListarClientes.aspx">
+	   <modulo id="2"></modulo>
+    </opcion>
+    <opcion nombre="Agregar Clientes Naturales" link="/Modulo2/AgregarCliente.aspx">
+	   <modulo id="2"></modulo>
+    </opcion>
+    <opcion nombre="Listar Clientes Juridicos" link="/Modulo2/ListarEmpresas.aspx">
+	   <modulo id="2"></modulo>
+    </opcion>
+    <opcion nombre="Agregar Clientes Juridicos" link="/Modulo2/AgregarEmpresa.aspx">
+	   <modulo id="2"></modulo>
+    </opcion>
 
 	<!-- Opciones del menú lateral del Módulo 3-->
-	<opcion nombre="Agregar Involucrados" link="~/Modulo3/AgregarInvolucrado.aspx">
+	<opcion nombre="Agregar Involucrados" link="/Modulo3/AgregarInvolucrados.aspx">
 		<modulo id="3"></modulo>
 	</opcion>
-	<opcion nombre="Listar Involucrados" link="~/Modulo3/ListarPersonalInvolucrado.aspx">
+	<opcion nombre="Listar Involucrados" link="/Modulo3/ListarPersonalInvolucrado.aspx">
 		<modulo id="3"></modulo>
 	</opcion>
+    <!-- Opciones del menú lateral del Módulo 3-->
+    <opcion nombre="Agregar Involucrados" link="~/Modulo3/AgregarInvolucrado.aspx">
+	   <modulo id="3"></modulo>
+    </opcion>
+    <opcion nombre="Listar Involucrados" link="~/Modulo3/ListarPersonalInvolucrado.aspx">
+	   <modulo id="3"></modulo>
+    </opcion>
+  
+    <!-- Opciones del menú lateral del Módulo 4-->
+    <opcion nombre="Listar proyectos" link="ListarProyectos.aspx">
+	   <modulo id="4"></modulo>
+    </opcion>
+    <opcion nombre="Perfil del proyecto" link="PerfilProyecto.aspx">
+	   <modulo id="4"></modulo>
+    </opcion>
+    <opcion nombre="Crear nuevo proyecto" link="CrearProyecto.aspx">
+	   <modulo id="4"></modulo>
+    </opcion>
 
-	<!-- Opciones del menú lateral del Módulo 4-->
-	<opcion nombre="Lista de Proyectos" link="~/Modulo1/Default.aspx">
-		<modulo id="4"></modulo>
-	</opcion>
-	<opcion nombre="Perfil Proyecto" link="~/Modulo4/PerfilProyecto.aspx">
-		<modulo id="4"></modulo>
-	</opcion>
-	<opcion nombre="Crear Proyecto" link="~/Modulo4/CrearProyecto.aspx">
-		<modulo id="4"></modulo>
-	</opcion>
-	<opcion nombre="Mis Proyectos" link="~/Modulo4/ListaProyectos.aspx">
-		<modulo id="4"></modulo>
-	</opcion>
+    <!-- Opciones del menú lateral del Módulo 5-->
+    <opcion nombre="Agregar requerimientos" link="/Modulo5/AgregarRequerimiento.aspx">
+	   <modulo id="5"></modulo>
+    </opcion>
+    <opcion nombre="Listar requerimientos" link="/Modulo5/ListarRequerimientos.aspx">
+	   <modulo id="5"></modulo>
+    </opcion>
+    <opcion nombre="Reportes" link="/Modulo5/Reportes.aspx">
+	   <modulo id="5"></modulo>
+    </opcion>
+  
+    <!-- Opciones del menú lateral del Módulo 6-->
+    <opcion nombre="Agregar Caso de Uso" link="Crear.aspx">
+	   <modulo id="6"/>
+	   <rol nombre="usuario"/>
+	   <rol nombre="administrador"/>
+    </opcion>
+    <opcion nombre="Listar Casos de Uso" link="Listar.aspx">
+	   <modulo id="6"></modulo>
+	   <rol nombre="usuario"/>
+	   <rol nombre="administrador"/>
+    </opcion>
+    <opcion nombre="Casos de Uso por Actor" link="ReporteActores.aspx">
+	   <modulo id="6"></modulo>
+	   <rol nombre="usuario"/>
+	   <rol nombre="administrador"/>
+    </opcion>
+    <opcion nombre="Agregar Actor" link="CrearActor.aspx">
+	   <modulo id="6"></modulo>
+	   <rol nombre="usuario"/>
+	   <rol nombre="administrador"/>
+    </opcion>
+    <opcion nombre="Listar Actores" link="ListarActores.aspx">
+	   <modulo id="6"></modulo>
+	   <rol nombre="usuario"/>
+	   <rol nombre="administrador"/>
+    </opcion>
 
-	<!-- Opciones del menú lateral del Módulo 5-->
-	<opcion nombre="Agregar requerimientos" link="/Modulo5/AgregarRequerimiento.aspx">
-		<modulo id="5"></modulo>
-	</opcion>
-	<opcion nombre="Listar requerimientos" link="/Modulo5/ListarRequerimientos.aspx">
-		<modulo id="5"></modulo>
-	</opcion>
-	<opcion nombre="Reportes" link="/Modulo5/Reportes.aspx">
-		<modulo id="5"></modulo>
-	</opcion>
-	<!-- Opciones del menú lateral del Módulo 6-->
-	<opcion nombre="Agregar Caso de Uso" link="Crear.aspx">
-		<modulo id="6"/>
-		<rol nombre="usuario"/>
-		<rol nombre="administrador"/>
-	</opcion>
-	<opcion nombre="Listar Casos de Uso" link="Listar.aspx">
-		<modulo id="6"></modulo>
-		<rol nombre="usuario"/>
-		<rol nombre="administrador"/>
-	</opcion>
-	<opcion nombre="Casos de Uso por Actor" link="ReporteActores.aspx">
-		<modulo id="6"></modulo>
-		<rol nombre="usuario"/>
-		<rol nombre="administrador"/>
-	</opcion>
-	<opcion nombre="Agregar Actor" link="CrearActor.aspx">
-		<modulo id="6"></modulo>
-		<rol nombre="usuario"/>
-		<rol nombre="administrador"/>
-	</opcion>
-	<opcion nombre="Listar Actores" link="ListarActores.aspx">
-		<modulo id="6"></modulo>
-		<rol nombre="usuario"/>
-		<rol nombre="administrador"/>
-	</opcion>
+    <!-- Opciones del menú lateral del Módulo 7-->
+    <opcion nombre="Listar Usuarios" link="/Modulo7/ListarUsuarios.aspx">
+	   <modulo id="7"></modulo>
+    </opcion>
+    <opcion nombre="Agregar Usuario" link="/Modulo7/AgregarUsuario.aspx">
+	   <modulo id="7"></modulo>
+    </opcion>
 
-	<!-- Opciones del menú lateral del Módulo 7-->
-	<opcion nombre="Listar Usuarios" link="/Modulo7/ListarUsuarios.aspx">
-		<modulo id="7"></modulo>
-	</opcion>
-	<opcion nombre="Agregar Usuario" link="/Modulo7/AgregarUsuario.aspx">
-		<modulo id="7"></modulo>
-	</opcion>
-
-	<!-- Opciones del menú lateral del Módulo 8-->
-	<opcion nombre="Listar Minutas" link="~/Modulo8/ConsultarMinuta.aspx">
-		<modulo id="8"></modulo>
-	</opcion>
-	<opcion nombre="Crear Minuta" link="~/Modulo8/CrearMinuta.aspx">
-		<modulo id="8"></modulo>
-	</opcion>
-  <!-- Opciones del menú lateral del Login-->
-  <opcion nombre="Link Prueba" link="~/Modulo1/Default.aspx" imagen="~/img/Icons/modulo2.png">
-    <modulo id="9"></modulo>
-  </opcion>
-  <opcion nombre="Crear Minuta" link="~/Modulo8/CrearMinuta.aspx">
-    <modulo id="9"></modulo>
-  </opcion>
+    <!-- Opciones del menú lateral del Módulo 8-->
+    <opcion nombre="Listar Minutas" link="~/Modulo8/ConsultarMinuta.aspx">
+	   <modulo id="8"></modulo>
+    </opcion>
+    <opcion nombre="Crear Minuta" link="~/Modulo8/CrearMinuta.aspx">
+	   <modulo id="8"></modulo>
+    </opcion>
+  
+    <!-- Opciones del menú lateral del Login-->
+    <opcion nombre="Link Prueba" link="~/Modulo1/Default.aspx" imagen="~/img/Icons/modulo2.png">
+	   <modulo id="9"></modulo>
+    </opcion>
+    <opcion nombre="Crear Minuta" link="~/Modulo8/CrearMinuta.aspx">
+	   <modulo id="9"></modulo>
+    </opcion>
 </menuLateral>

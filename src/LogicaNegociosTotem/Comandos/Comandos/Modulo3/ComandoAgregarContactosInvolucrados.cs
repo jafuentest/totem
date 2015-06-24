@@ -26,7 +26,7 @@ namespace Comandos.Comandos.Modulo3
             }
             catch (ListaSinInvolucradosException)
             {
-                exito = false;
+                exito = true;
             }
             catch (ListaSinProyectoException)
             {

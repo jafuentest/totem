@@ -998,24 +998,21 @@ CREATE PROCEDURE validarlogin
 	RETURN
 	GO
 
-CREATE PROCEDURE OBTENER_PREGUNTA_SEGURIDAD
-	@Correo varchar(60),
-	@Usu_pregseguridad varchar(60) OUTPUT
+CREATE PROCEDURE VALIDAR_PREGUNTA_SEGURIDAD
+	@Correo varchar(60)
 	AS
 
-	Select @Usu_pregseguridad =  Usu_pregseguridad
+	Select Usu_respseguridad
 	from Usuario
 	where usu_correo = @Correo
 
 	RETURN
 	GO
 
-CREATE PROCEDURE VALIDAR_PREGUNTA_SEGURIDAD
-	@Correo varchar(60),
-	@Usu_respseguridad varchar(100) OUTPUT
+CREATE PROCEDURE OBTENER_PREGUNTA_SEGURIDAD
+	@Correo varchar(60)
 	AS
-
-	Select @Usu_respseguridad = Usu_respseguridad
+	Select Usu_pregseguridad
 	from Usuario
 	where usu_correo = @Correo
 
@@ -1354,6 +1351,7 @@ BEGIN
 	from CONTACTO con, CLIENTE_JURIDICO cli, TELEFONO tel, CARGO car
 	where
 		con.CLIENTE_JURIDICO_cj_id = cli.cj_id and tel.CONTACTO_con_id = con_id and car.car_id = con.CARGO_car_id
+		and con.CLIENTE_JURIDICO_cj_id = @idClienteJur
 END;
 GO
 -------------------PROCEDURE SELECCIONAR DATOS DE CONTACTO POR ID------------------ 
@@ -2388,6 +2386,7 @@ FROM CASO_USO C, CU_ACTOR R, ACTOR A, Proyecto p
 		WHERE (A.act_id=@idactor ) 
 		AND (R.CASO_USO_cu_id=C.cu_id AND R.ACTOR_act_id=A.act_id)
 		AND p.pro_id = a.PROYECTO_pro_id
+		and p.pro_id = c.PROYECTO_pro_id
 		and p.pro_codigo = @codigoProyecto;
 	END
 GO
@@ -2413,6 +2412,9 @@ where p.pro_id = a.PROYECTO_pro_id
 and p.pro_codigo =@codigoProyecto;
 
 GO
+
+
+
 
 /*==========================================================================================================================*/
 
@@ -2811,11 +2813,31 @@ GO
 
 /*Eliminar Caso de Uso*/
 CREATE PROCEDURE ELIMINAR_CU 
-	@idcasouso int
+@idcasouso int 
 AS
-	BEGIN
-		DELETE FROM CASO_USO WHERE (cu_id=@idcasouso);
-	END
+BEGIN
+
+	delete from PASO_EXTENSION
+	where EXTENSION_PASO_CASO_USO_cu_id = (select cu_id from CASO_USO where cu_id=@idcasouso);
+
+	delete from EXTENSION 
+	where PASO_CASO_USO_cu_id = (select cu_id from CASO_USO where cu_id=@idcasouso);
+
+	delete from PASO
+	where CASO_USO_cu_id = (select cu_id from CASO_USO where cu_id=@idcasouso);
+
+	delete from PRECONDICION
+	where CASO_USO_cu_id = (select cu_id from CASO_USO where cu_id=@idcasouso);
+
+	delete from CU_REQUERIMIENTO
+	where CASO_USO_cu_id = (select cu_id from CASO_USO where cu_id=@idcasouso);
+
+	delete from CU_ACTOR
+	where CASO_USO_cu_id = (select cu_id from CASO_USO where cu_id=@idcasouso);
+
+	delete from CASO_USO
+	where cu_id=@idcasouso;
+END
 GO
 
 /*==========================================================================================================================*/

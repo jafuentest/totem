@@ -80,6 +80,7 @@ namespace Presentadores.Modulo7
         public bool AgregarUsuario()
         {
             bool exito = false;
+            FabricaEntidades laFabrica = new FabricaEntidades();
             /*Verificamos que el nombre, apellido, username, correo, pregunta y respuesta secreta, clave y 
             confirmacion de clave no esten vacios, ademas el cargo y rol deben tener seleccionados valores permitidos*/
             if (!vista.nombreUsuario.Equals("") && !vista.apellidoUsuario.Equals("") && !vista.username.Equals("")
@@ -89,7 +90,7 @@ namespace Presentadores.Modulo7
             {
 
                 // Instanciamos la entidad Usuario a traves de su fabrica
-                Entidad Usuario = FabricaEntidades.ObtenerUsuario(vista.username, vista.clave, vista.nombreUsuario,
+                Entidad Usuario = laFabrica.ObtenerUsuario(vista.username, vista.clave, vista.nombreUsuario,
                     vista.apellidoUsuario, vista.comboTipoRol.SelectedValue, vista.correoUsuario, vista.preguntaUsuario,
                     vista.respuestaUsuario, vista.comboTipoCargo.SelectedValue);
 

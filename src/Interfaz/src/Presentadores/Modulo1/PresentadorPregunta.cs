@@ -24,11 +24,9 @@ namespace Presentadores.Modulo1
         {
             try
             {
-                //var correo = request.QueryString["usuario"];
-                //if (string.IsNullOrEmpty(correo))
-                //    throw new ErrorParametroHttpRequest("Error en el Parámetro Http");
-                Entidad usuario =HttpContext.Current.Session["Credenciales"] as Entidad;
-                var correo = request.QueryString["usuario"];
+                FabricaEntidades fabricaEntidades = new FabricaEntidades();
+                Entidad usuario = fabricaEntidades.ObtenerUsuario();
+                string correo = request.QueryString["usuario"];
                 if (string.IsNullOrEmpty(correo))
                     throw new ErrorParametroHttpRequest("Error en el Parámetro Http");
                 else
@@ -37,11 +35,9 @@ namespace Presentadores.Modulo1
                     List<string> lista = new List<string>();
                     lista.Add(correo);
                     lista.Add(RecursosM1.Passphrase);
-                    comandoDesencriptar.Ejecutar(lista);
                     ((Usuario)usuario).Correo = comandoDesencriptar.Ejecutar(lista);
                     Comando<Entidad, Entidad> comandoPreg = FabricaComandos.CrearComandoObtenerPreguntaSeguridad();
                     usuario = comandoPreg.Ejecutar(usuario);
-
                     var pregunta = ((Usuario)usuario).PreguntaSeguridad;
                     if (string.IsNullOrEmpty(pregunta))
                         throw new ParametroInvalidoException("Error en la Carga de la Pregunta Secreta");
@@ -68,11 +64,17 @@ namespace Presentadores.Modulo1
             {
                 try
                 {
-                    var correo = request.QueryString["usuario"];
+                    string correo = request.QueryString["usuario"];
                     FabricaEntidades fabricaEntidades = new FabricaEntidades();
-                    var credenciales = (Usuario)fabricaEntidades.ObtenerUsuario(null, null, "Alberto", "APELLIDO",
-                    "Administrador", "correo", "¿Cómo se llamaba tu primera mascota?", "fifi", null);
-                    if (respuesta.Equals(credenciales.RespuestaSeguridad))
+                    Entidad usuario = fabricaEntidades.ObtenerUsuario();
+                    Comando<List<string>, string> comandoDesencriptar = FabricaComandos.CrearComandoDesencriptar();
+                    List<string> lista = new List<string>();
+                    lista.Add(correo);
+                    lista.Add(RecursosM1.Passphrase);
+                    ((Usuario)usuario).Correo = comandoDesencriptar.Ejecutar(lista);
+                    ((Usuario)usuario).RespuestaSeguridad = respuesta;
+                    Comando<Entidad, bool> comandoValidar = FabricaComandos.CrearComandoValidarRespuestaSecreta();
+                    if (comandoValidar.Ejecutar(usuario))
                     {
                         HttpCookie aCookie = new HttpCookie("userInfo");
                         aCookie.Values["usuario"] = correo;

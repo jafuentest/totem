@@ -196,7 +196,7 @@ namespace Comandos.Comandos.Modulo8 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ../Interfaz/Vista/Modulo8/docs .
+        ///   Looks up a localized string similar to C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\Vista\Modulo8\docs.
         /// </summary>
         internal static string Directorio {
             get {

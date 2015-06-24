@@ -106,6 +106,15 @@ namespace Comandos.Comandos.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a ComandoEliminarCU.
+        /// </summary>
+        internal static string ClaseComandoEliminarCU {
+            get {
+                return ResourceManager.GetString("ClaseComandoEliminarCU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a ComandoListarCU.
         /// </summary>
         internal static string ClaseComandoListarCU {
