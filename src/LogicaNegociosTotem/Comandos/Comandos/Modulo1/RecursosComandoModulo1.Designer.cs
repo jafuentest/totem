@@ -277,6 +277,15 @@ namespace Comandos.Comandos.Modulo1 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a prueba.
+        /// </summary>
+        internal static string prueba {
+            get {
+                return ResourceManager.GetString("prueba", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a zAo1OVejS5aWbnXwVVTr+g==.
         /// </summary>
         internal static string Pswd_Correo_Totem {
