@@ -58,6 +58,26 @@ namespace PruebasUnitariasTotem.Modulo8
             bool auxiliar = comandoCompilarLatex.Ejecutar(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\Vista\Modulo8\docs\BaseMinuta.tex");
             Assert.IsTrue(File.Exists(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\Vista\Modulo8\docs\BaseMinuta.pdf"));
         }
+
+        [Test]
+        public void PruebaComandoGenerarMinuta()
+        {
+            FabricaEntidades laFabrica = new FabricaEntidades();
+            ComandoGenerarMinuta comandoGenerarMinuta = (ComandoGenerarMinuta)FabricaComandos.CrearComandoGenerarMinuta();
+            Minuta laMinuta = (Minuta)laFabrica.ObtenerMinuta();
+            laMinuta.Id = 1;
+            laMinuta.Fecha = DateTime.Parse("2015-04-25 18:00:00.000");
+            laMinuta.Motivo = "Prueba";
+            laMinuta.Observaciones = "Probando Generar la Minuta";
+            bool aux = comandoGenerarMinuta.Ejecutar(laMinuta);
+            System.IO.StreamReader archivo = new System.IO.StreamReader(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\Vista\Modulo8\docs\Minuta.tex");
+            string linea;
+            while ((linea = archivo.ReadLine()) != null)
+            {
+                Assert.IsTrue(linea != "motivo");
+            }
+
+        }
         /*
         [TearDown]
         public void close()
