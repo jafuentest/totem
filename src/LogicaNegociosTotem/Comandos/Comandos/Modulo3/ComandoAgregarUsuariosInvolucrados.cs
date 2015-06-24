@@ -1,5 +1,6 @@
 ﻿using DAO.Fabrica;
 using DAO.IntefazDAO.Modulo3;
+using Dominio.Entidades.Modulo3;
 using ExcepcionesTotem.Modulo3;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace Comandos.Comandos.Modulo3
             }
             catch (ListaSinInvolucradosException)
             {
-                exito = false;
+                exito = true;
             }
             catch (ListaSinProyectoException)
             {

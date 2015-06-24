@@ -340,7 +340,16 @@
     <comment>Nombre del Stored Procedure para listar los cargos por empresas</comment>
   </data>
   <data name="StoredConsultarContactoPorEmpresa" xml:space="preserve">
-    <value>ListarContactoPorEmpresa</value>
+    <value>M2_ConsultarListaContactosJurID</value>
     <comment>Nombre del Stored Procedure para listar los cargos por empresa</comment>
+  </data>
+  <data name="aliasContactoCargo" xml:space="preserve">
+    <value>contactoCargo</value>
+  </data>
+  <data name="aliasContactoCedula" xml:space="preserve">
+    <value>contactoCedula</value>
+  </data>
+  <data name="ClienteidJur" xml:space="preserve">
+    <value>@idClienteJur</value>
   </data>
 </root>

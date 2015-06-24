@@ -45,7 +45,7 @@ namespace Comandos.Fabrica
 
         public static Comando<String, bool> CrearComandoValidarCorreoExistente()
         {
-           return new ComandoValidarCorreoUnico();
+            return new ComandoValidarCorreoExistente();
         }
 
         #endregion

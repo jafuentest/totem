@@ -6,6 +6,8 @@ using Dominio.Entidades.Modulo7;
 using System.Text.RegularExpressions;
 using Comandos;
 using Comandos.Fabrica;
+using System.Collections.Generic;
+using System.Web;
 
 
 namespace Presentadores.Modulo1
@@ -44,7 +46,13 @@ namespace Presentadores.Modulo1
                         esCorreo = comando.Ejecutar(correo);
                         if (esCorreo)
                         {
-                            vista.Mensaje = "Se ha mandado un mensaje de confirmación al correo";
+                            List<string> lista = new List<string>();
+                            lista.Add(((Usuario)usuario).Correo);
+                            lista.Add(RecursosM1.Passphrase);
+                            Comando<List<string>, string> comandoEncrip = FabricaComandos.CrearComandoEncriptar();
+                            string link = RecursosM1.Link_Recuperacion_Clave;
+                            link = link + comandoEncrip.Ejecutar(lista);
+                            HttpContext.Current.Response.Redirect(link);
                         }
                         else
                         {
