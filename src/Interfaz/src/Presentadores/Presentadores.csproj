@@ -72,6 +72,11 @@
       <DependentUpon>RecursosInterfazM3.resx</DependentUpon>
     </Compile>
     <Compile Include="Modulo4\PresentadorAgregarProyecto.cs" />
+    <Compile Include="Modulo4\RecursosPresentadorModulo4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosPresentadorModulo4.resx</DependentUpon>
+    </Compile>
     <Compile Include="Modulo5\PresentadorAgregarRequerimiento.cs" />
     <Compile Include="Modulo5\PresentadorListarRequerimientos.cs" />
     <Compile Include="Modulo5\PresentadorModificarRequerimiento.cs" />
@@ -122,6 +127,10 @@
     <EmbeddedResource Include="Modulo3\RecursosInterfazM3.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosInterfazM3.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo4\RecursosPresentadorModulo4.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosPresentadorModulo4.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo5\RecursosPresentadorModulo5.resx">
       <Generator>ResXFileCodeGenerator</Generator>

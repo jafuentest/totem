@@ -7,7 +7,7 @@ namespace Contratos.Modulo4
 {
     public interface IContratoAgregarProyecto
     {
-	   String codigoProyecto { get; }
+        String codigoProyecto { get; set; }
 	   String nombreProyecto { get; }
 	   String descripcionProyecto { get; }
 	   String monedaProyecto { get; }

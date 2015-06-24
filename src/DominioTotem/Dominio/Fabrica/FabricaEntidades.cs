@@ -93,22 +93,27 @@ namespace Dominio.Fabrica
         #endregion
 
         #region Modulo 4
-	   public static Entidad ObtenerProyecto()
-	   {
-		  return new Entidades.Modulo4.Proyecto();
-	   }
-	   public static Entidad ObtenerProyecto(String codigo, String nombre, bool estado,
-		  String descripcion, String moneda, int costo)
-	   {
-		  return new Entidades.Modulo4.Proyecto(codigo, nombre, estado, descripcion,
-			 moneda, costo);
-	   }
-	   public static Entidad ObtenerProyecto(int id, String codigo, String nombre, bool estado,
-		  String descripcion, String moneda, int costo)
-	   {
-		  return new Entidades.Modulo4.Proyecto(id, codigo, nombre, estado, descripcion,
-			 moneda, costo);
-	   }
+        public static Entidad ObtenerProyecto()
+        {
+	        return new Entidades.Modulo4.Proyecto();
+        }
+        public static Entidad ObtenerProyecto(String codigo, String nombre, bool estado,
+	        String descripcion, String moneda, int costo)
+        {
+	        return new Entidades.Modulo4.Proyecto(codigo, nombre, estado, descripcion,
+		        moneda, costo);
+        }
+        public static Entidad ObtenerProyecto(int id, String codigo, String nombre, bool estado,
+	        String descripcion, String moneda, int costo)
+        {
+	        return new Entidades.Modulo4.Proyecto(id, codigo, nombre, estado, descripcion,
+		        moneda, costo);
+        }
+        public static Entidad ObtenerProyecto(String codigo, String nombre,
+            String descripcion, String moneda)
+        {
+            return new Entidades.Modulo4.Proyecto(codigo, nombre, descripcion, moneda);
+        }
         #endregion
 
         #region Modulo 5
