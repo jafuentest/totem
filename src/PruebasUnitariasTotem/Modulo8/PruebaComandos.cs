@@ -39,7 +39,7 @@ namespace PruebasUnitariasTotem.Modulo8
             ComandoDetalleMinuta comandoDetalleMinuta = (ComandoDetalleMinuta)FabricaComandos.CrearComandoComandoDetalleMinuta();
             Minuta minuta = (Minuta)comandoDetalleMinuta.Ejecutar("1");
             Assert.IsNotNull(minuta);
-            System.Console.Out.WriteLine("Minuta id: " + minuta.Codigo);
+            System.Console.Out.WriteLine("Minuta id: " + minuta.Id);
             System.Console.Out.WriteLine("Minuta fecha: " + minuta.Fecha);
             System.Console.Out.WriteLine("Minuta Motivo: " + minuta.Motivo);
             System.Console.Out.WriteLine("Minuta Observaciones: " + minuta.Observaciones);

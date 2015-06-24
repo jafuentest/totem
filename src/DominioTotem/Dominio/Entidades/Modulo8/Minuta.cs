@@ -14,7 +14,6 @@ namespace Dominio.Entidades.Modulo8
     {
         #region Atributos
 
-        private string codigo;
         private DateTime fecha;
         private string motivo;
         private string observaciones;
@@ -31,11 +30,11 @@ namespace Dominio.Entidades.Modulo8
             
         }
 
-        public Minuta(string codigo, DateTime fecha, string motivo, string observaciones, List<Usuario> usuario,
+        public Minuta(int codigo, DateTime fecha, string motivo, string observaciones, List<Usuario> usuario,
             List<Contacto> contacto, List<Punto> punto, List<Acuerdo> acuerdo)
         {
             this.contacto = contacto;
-            this.Id = int.Parse(codigo);
+            this.Id = codigo;
             this.fecha = fecha;
             this.motivo = motivo;
             this.observaciones = observaciones;
@@ -48,11 +47,6 @@ namespace Dominio.Entidades.Modulo8
 
         #region Propiedades
 
-        public string Codigo
-        {
-            get { return this.codigo; }
-            set { this.codigo = value; }
-        }
         public DateTime Fecha
         {
             get { return this.fecha; }

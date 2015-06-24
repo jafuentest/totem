@@ -14,7 +14,6 @@ namespace Dominio.Entidades.Modulo8
     {
         #region Atributos
 
-        private int codigo;
         private DateTime fecha;
         private string compromiso;
         private List<Contacto> listaContacto;
@@ -29,9 +28,9 @@ namespace Dominio.Entidades.Modulo8
 
         }
 
-        public Acuerdo(int codigo, DateTime fecha, string compromiso, List<Contacto> listaContacto, List<Usuario> listaUsuario)
+        public Acuerdo(int id, DateTime fecha, string compromiso, List<Contacto> listaContacto, List<Usuario> listaUsuario)
         {
-            this.codigo = codigo;
+            this.Id = id;
             this.fecha = fecha;
             this.compromiso = compromiso;
             this.listaContacto = listaContacto;
@@ -40,12 +39,6 @@ namespace Dominio.Entidades.Modulo8
         #endregion
 
         #region Propiedades
-
-        public int Codigo
-        {
-            get { return this.codigo; }
-            set { this.codigo = value; }
-        }
 
         public DateTime Fecha
         {
