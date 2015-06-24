@@ -66,27 +66,27 @@ namespace Dominio.Fabrica
         #endregion
 
         #region Modulo 3
-        public static Entidad ObtenetListaInvolucradoContacto()
+        public Entidad ObtenetListaInvolucradoContacto()
         {
             return new Entidades.Modulo3.ListaInvolucradoContacto();
         }
-        public static Entidad ObtenetListaInvolucradoContacto(Proyecto p)
+        public Entidad ObtenetListaInvolucradoContacto(Proyecto p)
         {
             return new Entidades.Modulo3.ListaInvolucradoContacto(p);
         }
-        public static Entidad ObtenetListaInvolucradoContacto(List<Contacto> laLista, Proyecto p)
+        public Entidad ObtenetListaInvolucradoContacto(List<Contacto> laLista, Proyecto p)
         {
             return new Entidades.Modulo3.ListaInvolucradoContacto(laLista, p);
         }
-        public static Entidad ObtenetListaInvolucradoUsuario()
+        public Entidad ObtenetListaInvolucradoUsuario()
         {
             return new Entidades.Modulo3.ListaInvolucradoUsuario();
         }
-        public static Entidad ObtenetListaInvolucradoUsuario(Proyecto p)
+        public Entidad ObtenetListaInvolucradoUsuario(Proyecto p)
         {
             return new Entidades.Modulo3.ListaInvolucradoUsuario(p);
         }
-        public static Entidad ObtenetListaInvolucradoUsuario(List<Usuario> laLista, Proyecto p)
+        public Entidad ObtenetListaInvolucradoUsuario(List<Usuario> laLista, Proyecto p)
         {
             return new Entidades.Modulo3.ListaInvolucradoUsuario(laLista, p);
         } 

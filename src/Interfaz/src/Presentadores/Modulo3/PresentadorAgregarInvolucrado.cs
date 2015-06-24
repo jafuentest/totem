@@ -23,10 +23,11 @@ namespace Presentadores.Modulo3
         private ListaInvolucradoUsuario listaUsuario;
         public PresentadorAgregarInvolucrado(IContratoAgregarInvolucrado laVista)
         {
+            FabricaEntidades laFabrica = new FabricaEntidades();
             vista = laVista;
-            listaContacto = (ListaInvolucradoContacto)FabricaEntidades
+            listaContacto = (ListaInvolucradoContacto)laFabrica
                                                  .ObtenetListaInvolucradoContacto();
-            listaUsuario = (ListaInvolucradoUsuario)FabricaEntidades
+            listaUsuario = (ListaInvolucradoUsuario)laFabrica
                                                  .ObtenetListaInvolucradoUsuario();
         }
 

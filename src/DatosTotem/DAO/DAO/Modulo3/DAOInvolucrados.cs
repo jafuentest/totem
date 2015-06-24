@@ -185,7 +185,6 @@ namespace DAO.DAO.Modulo3
             Proyecto p = (Proyecto)parametro;
             List<Parametro> parametros;
             Parametro codigoProyecto;
-
             List<Usuario> lUsuarios = new List<Usuario>();
             try
             {
@@ -204,7 +203,7 @@ namespace DAO.DAO.Modulo3
                     parametros);
                 foreach (DataRow row in dt.Rows)
                 {
-                    Usuario u = (Usuario)FabricaEntidades.ObtenerUsuario();
+                    Usuario u = (Usuario)laFabrica.ObtenerUsuario();
                     u.IdUsuario = int.Parse(row[RecursosBDModulo3.aliasUsuarioID].ToString());
                     u.Nombre = row[RecursosBDModulo3.aliasUsuarioNombre].ToString();
                     u.Apellido = row[RecursosBDModulo3.aliasUsuarioApellido].ToString();
@@ -212,7 +211,7 @@ namespace DAO.DAO.Modulo3
                     u.Username = row[RecursosBDModulo3.aliasUsuarioUsername].ToString();
                     lUsuarios.Add(u);
                 }
-                laListaDeUsuarios = (ListaInvolucradoUsuario)FabricaEntidades.
+                laListaDeUsuarios = (ListaInvolucradoUsuario)laFabrica.
                                     ObtenetListaInvolucradoUsuario(lUsuarios, p);
             }
             catch (SqlException ex)
@@ -234,7 +233,7 @@ namespace DAO.DAO.Modulo3
         public Entidad ConsultarContactosInvolucradosPorProyecto(Entidad parametro)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
-            ListaInvolucradoContacto laListaDeContactos = (ListaInvolucradoContacto)FabricaEntidades.
+            ListaInvolucradoContacto laListaDeContactos = (ListaInvolucradoContacto)laFabrica.
                                                           ObtenetListaInvolucradoContacto();
             Proyecto p = (Proyecto)parametro;
             List<Parametro> parametros;
@@ -280,7 +279,7 @@ namespace DAO.DAO.Modulo3
 
                     lContactos.Add(c);
                 }
-                laListaDeContactos = (ListaInvolucradoContacto)FabricaEntidades.
+                laListaDeContactos = (ListaInvolucradoContacto)laFabrica.
                                         ObtenetListaInvolucradoContacto(lContactos, p);
             }
             catch (SqlException ex)
@@ -473,7 +472,8 @@ namespace DAO.DAO.Modulo3
         }
         public Entidad DatosUsuarioUsername(String user)
         {
-            Usuario retorno = (Usuario)FabricaEntidades.ObtenerUsuario();
+            FabricaEntidades laFabrica = new FabricaEntidades();
+            Usuario retorno = (Usuario)laFabrica.ObtenerUsuario();
             retorno.Username = user;
             List<Parametro> parametros = new List<Parametro>();
             Parametro parametro = new Parametro(RecursosBDModulo3.ParamUser,
