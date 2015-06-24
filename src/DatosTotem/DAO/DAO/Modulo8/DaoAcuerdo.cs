@@ -43,10 +43,13 @@ namespace DAO.DAO.Modulo8
             List<Parametro> parametros = new List<Parametro>();
             Parametro elParametro = new Parametro(RecursosBDModulo8.ParametroFechaAcuerdo, SqlDbType.DateTime,
                 elAcuerdo.Fecha.ToShortDateString(), false);
+            parametros.Add(elParametro);
             elParametro = new Parametro(RecursosBDModulo8.ParametroDesarrolloAcuerdo, SqlDbType.VarChar,
                 elAcuerdo.Compromiso, false);
+            parametros.Add(elParametro);
             elParametro = new Parametro(RecursosBDModulo8.ParametroIDMinuta, SqlDbType.Int,
                 idMinuta.ToString(), false);
+            parametros.Add(elParametro);
 
             try
             {
@@ -447,6 +450,7 @@ namespace DAO.DAO.Modulo8
             List<Parametro> parametros = new List<Parametro>();
             Parametro elParametro = new Parametro(RecursosBDModulo8.ParametroIDAcuerdo, SqlDbType.Int,
                 acuerdo.Id.ToString(), false);
+            parametros.Add(elParametro);
 
             try
             {
