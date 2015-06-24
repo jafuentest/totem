@@ -90,6 +90,7 @@
     <Compile Include="Modulo4\CrearArchivoException.cs" />
     <Compile Include="Modulo4\InvolucradosInexistentesException.cs" />
     <Compile Include="Modulo4\ProyectoNoAgregadoException.cs" />
+    <Compile Include="Modulo4\ProyectoNoModificadoException.cs" />
     <Compile Include="Modulo4\RequerimientosInexistentesException.cs" />
     <Compile Include="Modulo5\CamposInvalidosException.cs" />
     <Compile Include="Modulo5\ProyectoNoEncontradoException.cs" />

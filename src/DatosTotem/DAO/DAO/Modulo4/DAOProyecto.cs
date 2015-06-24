@@ -78,9 +78,82 @@ namespace DAO.DAO.Modulo4
 				RecursosDAOModulo4.MensajeCodigoProyectoExiste, new Exception());
 		  }
         }
-        public Boolean Modificar(Dominio.Entidad parametro)
+        public bool Modificar(Dominio.Entidad parametro)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Dominio.Entidades.Modulo4.Proyecto proyecto = (Dominio.Entidades.Modulo4.Proyecto)parametro;
+                bool proyectoModificado = false;
+
+                if (proyecto != null || proyecto.Id != null || proyecto.Codigo != ""
+                         || proyecto.Nombre != "" || proyecto.Estado != null ||
+                         proyecto.Descripcion != "" || proyecto.Costo != null || proyecto.Moneda != ""
+                         )
+                {
+                    #region Asignacion de Parametros bd
+                    List<Parametro> parametros = new List<Parametro>();
+
+                    Parametro parametroBD = new Parametro(RecursosDAOModulo4.ParametroCodigoProyecto, SqlDbType.VarChar,
+                       proyecto.Codigo, false);
+                    parametros.Add(parametroBD);
+
+                    parametroBD = new Parametro(RecursosDAOModulo4.ParametroNombreProyecto
+                       , SqlDbType.VarChar,
+                       proyecto.Nombre, false);
+                    parametros.Add(parametroBD);
+
+                    parametroBD = new Parametro(RecursosDAOModulo4.ParametroEstadoProyecto
+                       , SqlDbType.Bit,
+                       proyecto.Estado.ToString(), false);
+                    parametros.Add(parametroBD);
+
+                    parametroBD = new Parametro(RecursosDAOModulo4.ParametroDescripcionProyecto
+                       , SqlDbType.VarChar,
+                       proyecto.Descripcion, false);
+                    parametros.Add(parametroBD);
+
+                    parametroBD = new Parametro(RecursosDAOModulo4.ParametroCostoProyecto
+                       , SqlDbType.Int,
+                       proyecto.Costo.ToString(), false);
+                    parametros.Add(parametroBD);
+
+                    parametroBD = new Parametro(RecursosDAOModulo4.ParametroMonedaProyecto
+                       , SqlDbType.VarChar,
+                       proyecto.Moneda, false);
+                    parametros.Add(parametroBD);
+                    #endregion
+
+                    List<Resultado> resultados = base.EjecutarStoredProcedure(RecursosDAOModulo4.ProcedimientoModificarProyecto
+                             , parametros);
+
+                    if (resultados != null)
+                    {
+                        proyectoModificado = true;
+                    }
+                    else
+                    {
+                        proyectoModificado = false;
+                        //agregar las excepciones
+                        throw new ExcepcionesTotem.Modulo4.ProyectoNoModificadoException(
+                       RecursosDAOModulo4.CodigoProyectoNoModificado,
+                       RecursosDAOModulo4.MensajeProyectoNoModificado, new Exception());
+                    }
+
+
+                }
+
+
+
+
+                return proyectoModificado;
+
+            }
+            //falta otro catch para capturar+execpeciones
+            catch (ExcepcionesTotem.ExceptionTotem e)
+            {
+
+                throw e;
+            }
         }
         public Dominio.Entidad ConsultarXId(Dominio.Entidad parametro)
         {

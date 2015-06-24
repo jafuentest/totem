@@ -369,4 +369,12 @@
     <value>El nuevo proyecto no pudo ser agregado</value>
     <comment>Mensaje de error generado al no poder ser agregado un proyecto</comment>
   </data>
+  <data name="CodigoProyectoNoModificado" xml:space="preserve">
+    <value>T_04_009</value>
+    <comment>Còdigo de error generado al no poder ser modificado un  proyecto</comment>
+  </data>
+  <data name="MensajeProyectoNoModificado" xml:space="preserve">
+    <value>El proyecto no pudo ser modificado</value>
+    <comment>Mensaje de error al no poder modificarse el proyecto</comment>
+  </data>
 </root>
