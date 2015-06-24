@@ -346,5 +346,88 @@ namespace DAO.DAO.Modulo6
         #endregion
 
 
+        #region Eliminar CU
+        /// <summary>
+        /// Método encargado de acceder a la base de Datos
+        /// para eliminar un caso de uso dado su id y eliminar
+        /// sus registros asociados
+        /// </summary>
+        /// <param name="id">Id del Caso de Uso</param>
+        /// <returns>True si lo pudo realizar, false en caso contrario</returns>
+        public bool EliminarCasoDeUso(int id)
+        {
+            bool exito = false;
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro elParametro = new Parametro(RecursosDAOModulo6.ID_CU, SqlDbType.Int, id.ToString(), false);
+            parametros.Add(elParametro);
+            try
+            {
+                List<Resultado> resultados = EjecutarStoredProcedure(
+                      RecursosDAOModulo6.ProcedureEliminarCU,
+                      parametros);
+                if (resultados != null)
+                {
+                    exito = true;
+                }
+            }
+
+            catch (SqlException e)
+            {
+
+
+                BDDAOException exDaoCasoUso = new BDDAOException(
+                 RecursosDAOModulo6.CodigoExcepcionBDDAO,
+                 RecursosDAOModulo6.MensajeExcepcionBD,
+                 e);
+
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOCasoDeUso,
+                    exDaoCasoUso);
+
+                throw exDaoCasoUso;
+
+            }
+            catch (NullReferenceException e)
+            {
+                ObjetoNuloDAOException exDaoCasoUso = new ObjetoNuloDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionObjetoNuloDAO,
+                    RecursosDAOModulo6.MensajeExcepcionObjetoNulo,
+                    e);
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOCasoDeUso,
+                       exDaoCasoUso);
+
+                throw exDaoCasoUso;
+
+            }
+
+            catch (FormatException e)
+            {
+                TipoDeDatoErroneoDAOException exDaoCasoUso = new TipoDeDatoErroneoDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionTipoDeDatoErroneo,
+                    RecursosDAOModulo6.MensajeTipoDeDatoErroneoException,
+                    e);
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOCasoDeUso,
+                       exDaoCasoUso);
+
+                throw exDaoCasoUso;
+
+            }
+            catch (Exception e)
+            {
+                ErrorDesconocidoDAOException exDaoCasoUso = new ErrorDesconocidoDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionErrorDAO,
+                    RecursosDAOModulo6.MensajeExcepcionErrorDesconocido,
+                    e);
+
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOCasoDeUso,
+                      exDaoCasoUso);
+
+                throw exDaoCasoUso;
+            }
+            return exito;
+
+        }
+        #endregion
+
+
     }
 }

@@ -249,6 +249,11 @@ namespace Comandos.Fabrica
             return new ComandoConsultarActoresXCasoDeUso(); 
         }
 
+        public static Comando<int, bool> CrearComandoEliminarCU() 
+        {
+            return new ComandoEliminarCU(); 
+        }
+
         #endregion
 
         #region Modulo 7
