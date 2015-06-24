@@ -78,6 +78,20 @@ namespace Dominio.Entidades.Modulo4
 		  this.moneda = moneda;
 		  this.costo = costo;
 	   }
+
+       public Proyecto(String codigo, String nombre, String descripcion,
+String moneda)
+           : base(0)
+       {
+
+           this.codigo = codigo;
+           this.nombre = nombre;
+           this.estado = true;
+           this.descripcion = descripcion;
+           this.moneda = moneda;
+           this.costo = 0;
+       }
+        
 	   #endregion
 
 	   #region Propiedades
