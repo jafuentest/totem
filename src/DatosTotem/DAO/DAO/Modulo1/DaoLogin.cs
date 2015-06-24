@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using Dominio;
-using Dominio.Entidades;
 using Dominio.Entidades.Modulo7;
 using Dominio.Fabrica;
 using ExcepcionesTotem.Modulo1;
@@ -16,7 +13,8 @@ namespace DAO.DAO.Modulo1
 {
     public class DaoLogin : DAO,IDaoLogin
     {
-        private Entidad _usuario = FabricaEntidades.ObtenerUsuario();
+        private FabricaEntidades fabricaEntidades = new FabricaEntidades();
+        private Entidad _usuario;
 
         #region Metodos IDAOLogin
         public Entidad ValidarUsuarioLogin(Entidad parametro)
