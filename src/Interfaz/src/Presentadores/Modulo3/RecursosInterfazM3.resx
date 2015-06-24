@@ -130,6 +130,12 @@
   <data name="Alerta_AgregarUsuario_Fracaso" xml:space="preserve">
     <value>alert alert-danger alert-dismissible</value>
   </data>
+  <data name="Alerta_Clase_Error" xml:space="preserve">
+    <value>alert alert-danger alert-dismissible</value>
+  </data>
+  <data name="Alerta_Clase_Exito" xml:space="preserve">
+    <value>alert alert-success alert-dismissible</value>
+  </data>
   <data name="Alerta_Contacto_Agregado" xml:space="preserve">
     <value>Contacto agregado exitosamente</value>
   </data>
@@ -143,8 +149,17 @@
     <value>&lt;/div&gt;</value>
     <comment>Final del html</comment>
   </data>
+  <data name="Alerta_Rol" xml:space="preserve">
+    <value>alert</value>
+  </data>
+  <data name="Alerta_Seleccion_vacia" xml:space="preserve">
+    <value>No has seleccionano a ningun usuario o contacto</value>
+  </data>
   <data name="Alerta_Usuario_Agregado" xml:space="preserve">
     <value>Usuario agregado exitosamente</value>
+  </data>
+  <data name="Alert_Involucrado_Fracaso" xml:space="preserve">
+    <value>Involucrados no agregados</value>
   </data>
   <data name="CerrarBoton" xml:space="preserve">
     <value>"&gt;&lt;/a&gt;</value>
@@ -154,5 +169,11 @@
   </data>
   <data name="CerrarEtiqueta_tr" xml:space="preserve">
     <value>&lt;/tr&gt;</value>
+  </data>
+  <data name="Codigo_Exito_Agregar" xml:space="preserve">
+    <value>?success=true</value>
+  </data>
+  <data name="ListarInvolucrados" xml:space="preserve">
+    <value>/Modulo3/ListarPersonalInvolucrado.aspx</value>
   </data>
 </root>

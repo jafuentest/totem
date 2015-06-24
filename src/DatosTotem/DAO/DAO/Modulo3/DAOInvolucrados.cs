@@ -81,7 +81,6 @@ namespace DAO.DAO.Modulo3
                     exito = true;
                 else
                     exito = false;
-                return exito;
             }
             catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
             {
@@ -93,6 +92,9 @@ namespace DAO.DAO.Modulo3
             {
                 throw new ExcepcionesTotem.ExceptionTotem("No se pudo completar la operacion", new Exception());
             }
+
+            return exito;
+
         }
         /// <summary>
         /// Metodo que agrega la lista de contactos involucrados a un proyecto
@@ -582,7 +584,7 @@ namespace DAO.DAO.Modulo3
 
                 parametros = new List<Parametro>();
 
-                rifClienteJ = new Parametro(RecursosBDModulo3.ParamRif, SqlDbType.Int, laEmpresa.Id.ToString(), false);
+                rifClienteJ = new Parametro(RecursosBDModulo3.ClienteidJur, SqlDbType.Int, laEmpresa.Id.ToString(), false);
                 parametros.Add(rifClienteJ);
 
                 DataTable dt = EjecutarStoredProcedureTuplas(
@@ -591,10 +593,10 @@ namespace DAO.DAO.Modulo3
                 {
                     Contacto c = (Contacto)laFabrica.ObtenerContacto();
 
-                    c.Con_Nombre = row[RecursosBDModulo3.ColumnaNombreContacto].ToString();
-                    c.Con_Apellido = row[RecursosBDModulo3.ColumnaApellidoContacto].ToString();
-                    c.ConCargo = row[RecursosBDModulo3.ColumnaCargoContacto].ToString();
-                    c.Id = int.Parse(row[RecursosBDModulo3.ColumnaIdContacto].ToString());
+                    c.Con_Nombre = row[RecursosBDModulo3.aliasContactoNombre].ToString();
+                    c.Con_Apellido = row[RecursosBDModulo3.aliasContactoApellido].ToString();
+                    c.ConCargo = row[RecursosBDModulo3.aliasContactoCargo].ToString();
+                    c.Id = int.Parse(row[RecursosBDModulo3.aliasContactoID].ToString());
 
                     laListaDeContactos.Add(c);
                 }

@@ -20,6 +20,7 @@ namespace Vista.Modulo3
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //presentador.ObtenerVariablesURL();
             this.Master.idModulo = "3";
             this.Master.presentador.CargarMenuLateral();
             

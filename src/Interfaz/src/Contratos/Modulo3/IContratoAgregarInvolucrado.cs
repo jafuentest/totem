@@ -19,6 +19,10 @@ namespace Contratos.Modulo3
         String eliminacionUsuario { get; set; }
         String eliminacionContacto { get; set; }
         String alert { set; }
+        String alertaContactoClase { set; }
+        String alertaUsuarioClase { set; }
+        String alertaUsuarioRol { set; }
+        String alertaContactoRol { set; }
         String Alerta_AgregarContacto_Fracaso  { set; }
         String Alerta_AgregarUsuario_Fracaso  { set; }
     }
