@@ -52,7 +52,8 @@ namespace DAO.DAO.Modulo4
 				    (parametro as Proyecto).Moneda, false);
                     parametros.Add(parametroLista);
 
-                    List<Resultado> resultados = EjecutarStoredProcedure(RecursosDAOModulo4.ProcedimientoAgregarProyecto, parametros);
+                    List<Resultado> resultados = EjecutarStoredProcedure(RecursosDAOModulo4.
+				    ProcedimientoAgregarProyecto, parametros);
 
                     // Si la creación es correcta retorna true
 
@@ -78,9 +79,82 @@ namespace DAO.DAO.Modulo4
 				RecursosDAOModulo4.MensajeCodigoProyectoExiste, new Exception());
 		  }
         }
-        public Boolean Modificar(Dominio.Entidad parametro)
+        public bool Modificar(Dominio.Entidad parametro)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Dominio.Entidades.Modulo4.Proyecto proyecto = (Dominio.Entidades.Modulo4.Proyecto)parametro;
+                bool proyectoModificado = false;
+
+                if (proyecto != null || proyecto.Id != null || proyecto.Codigo != ""
+                         || proyecto.Nombre != "" || proyecto.Estado != null ||
+                         proyecto.Descripcion != "" || proyecto.Costo != null || proyecto.Moneda != ""
+                         )
+                {
+                    #region Asignacion de Parametros bd
+                    List<Parametro> parametros = new List<Parametro>();
+
+                    Parametro parametroBD = new Parametro(RecursosDAOModulo4.ParametroCodigoProyecto, SqlDbType.VarChar,
+                       proyecto.Codigo, false);
+                    parametros.Add(parametroBD);
+
+                    parametroBD = new Parametro(RecursosDAOModulo4.ParametroNombreProyecto
+                       , SqlDbType.VarChar,
+                       proyecto.Nombre, false);
+                    parametros.Add(parametroBD);
+
+                    parametroBD = new Parametro(RecursosDAOModulo4.ParametroEstadoProyecto
+                       , SqlDbType.Bit,
+                       proyecto.Estado.ToString(), false);
+                    parametros.Add(parametroBD);
+
+                    parametroBD = new Parametro(RecursosDAOModulo4.ParametroDescripcionProyecto
+                       , SqlDbType.VarChar,
+                       proyecto.Descripcion, false);
+                    parametros.Add(parametroBD);
+
+                    parametroBD = new Parametro(RecursosDAOModulo4.ParametroCostoProyecto
+                       , SqlDbType.Int,
+                       proyecto.Costo.ToString(), false);
+                    parametros.Add(parametroBD);
+
+                    parametroBD = new Parametro(RecursosDAOModulo4.ParametroMonedaProyecto
+                       , SqlDbType.VarChar,
+                       proyecto.Moneda, false);
+                    parametros.Add(parametroBD);
+                    #endregion
+
+                    List<Resultado> resultados = base.EjecutarStoredProcedure(RecursosDAOModulo4.ProcedimientoModificarProyecto
+                             , parametros);
+
+                    if (resultados != null)
+                    {
+                        proyectoModificado = true;
+                    }
+                    else
+                    {
+                        proyectoModificado = false;
+                        //agregar las excepciones
+                        throw new ExcepcionesTotem.Modulo4.ProyectoNoModificadoException(
+                       RecursosDAOModulo4.CodigoProyectoNoModificado,
+                       RecursosDAOModulo4.MensajeProyectoNoModificado, new Exception());
+                    }
+
+
+                }
+
+
+
+
+                return proyectoModificado;
+
+            }
+            //falta otro catch para capturar+execpeciones
+            catch (ExcepcionesTotem.ExceptionTotem e)
+            {
+
+                throw e;
+            }
         }
         public Dominio.Entidad ConsultarXId(Dominio.Entidad parametro)
         {
@@ -95,80 +169,18 @@ namespace DAO.DAO.Modulo4
 
         #region Metodos IDaoProyecto
 
-        # region agregarProyecto
-        /// <summary>
-        /// Metodo que
-        /// agrega un proyecto a la base de datos
-        /// </summary>
-        /// <param name="proyecto"> Entidad con los datos del proyecto 
-        /// a agregar</param>
-        /// <returns>True si el proyecto es creado exitosamente</returns>
-
-        public bool agregarProyecto(Dominio.Entidad proyecto)
-        {
-            // Si no existe el proyecto se agrega
-            if ( !existeProyecto( (proyecto as Proyecto).Codigo ) )
-            {
-                try
-                {
-                    // Parámetros para insertar un proyecto
-                    List<Parametro> parametros = new List<Parametro>();
-                    Parametro parametro = new Parametro(RecursosDAOModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, (proyecto as Proyecto).Codigo, false);
-                    parametros.Add(parametro);
-                    parametro = new Parametro(RecursosDAOModulo4.ParametroNombreProyecto, SqlDbType.VarChar, (proyecto as Proyecto).Nombre, false);
-                    parametros.Add(parametro);
-                    parametro = new Parametro(RecursosDAOModulo4.ParametroEstadoProyecto, SqlDbType.Bit, (proyecto as Proyecto).Estado.ToString(), false);
-                    parametros.Add(parametro);
-                    parametro = new Parametro(RecursosDAOModulo4.ParametroDescripcionProyecto, SqlDbType.VarChar, (proyecto as Proyecto).Descripcion, false);
-                    parametros.Add(parametro);
-                    parametro = new Parametro(RecursosDAOModulo4.ParametroCostoProyecto, SqlDbType.Int, (proyecto as Proyecto).Costo.ToString(), false);
-                    parametros.Add(parametro);
-                    parametro = new Parametro(RecursosDAOModulo4.ParametroMonedaProyecto, SqlDbType.VarChar, (proyecto as Proyecto).Moneda, false);
-                    parametros.Add(parametro);
-
-                    List<Resultado> resultados = EjecutarStoredProcedure(RecursosDAOModulo4.ProcedimientoAgregarProyecto, parametros);
-
-                    // Si la creación es correcta retorna true
-
-                    if (resultados != null)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        throw new NotImplementedException();
-                    }
-
-                }
-                catch (NotImplementedException ex)
-                {
-                    throw ex;
-                }
-            }
-            else
-                // El código existe por lo tanto no se crea el proyecto
-                throw new ExcepcionesTotem.Modulo4.CodigoRepetidoException(
-                    RecursosDAOModulo4.CodigoProyectoExiste,
-                    RecursosDAOModulo4.MensajeCodigoProyectoExiste, new Exception());
-        }
-        # endregion
-
-        # region modificarProyecto
-        /// <summary>
-        /// Metodo que
-        /// modifica un proyecto en la base de datos
-        /// </summary>
-        /// <param name="proyecto">Entidad con los datos del proyecto 
-        /// modificado</param>
-        /// <param name="codigoAnterior">codigo con los datos del proyecto 
-        /// a modificar</param>
-        /// <returns>True si el proyecto es modificado exitosamente</returns>
-        
-        public bool modificarProyecto(Dominio.Entidad proyecto, String codigoAnterior)
-        {
-            throw new NotImplementedException();
-        }
-        # endregion
+	   #region consultarProyectosPorUsuario
+	   /// <summary>
+	   /// Firma del método que permite consultar todos los proyectos asociados a un
+	   /// usuario particular
+	   /// </summary>
+	   /// <param name="nombreUsuario">Nombre del usuario a consultar</param>
+	   /// <returns>Lista con los proyectos asociados a un usuario</returns>
+	   public List<Dominio.Entidad> consultarProyectosPorUsuario(string nombreUsuario)
+	   {
+		  throw new NotImplementedException();
+	   }
+	   #endregion
 
         # region consultarProyecto
         /// <summary>
