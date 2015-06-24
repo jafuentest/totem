@@ -79,6 +79,15 @@ namespace Presentadores.Modulo1 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a ../Modulo1/PreguntaSeguridad.aspx?usuario=.
+        /// </summary>
+        internal static string Link_Recuperacion_Clave {
+            get {
+                return ResourceManager.GetString("Link_Recuperacion_Clave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Debe llenar los campos Vacios.
         /// </summary>
         internal static string Mensaje_campoVacio {

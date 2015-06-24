@@ -160,7 +160,7 @@ namespace DAO.DAO.Modulo1 {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a @Usu_pregseguridad.
+        ///   Busca una cadena traducida similar a Usu_pregseguridad.
         /// </summary>
         internal static string Parametro_Output_PreguntaSeguridad {
             get {
@@ -169,7 +169,7 @@ namespace DAO.DAO.Modulo1 {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a @Usu_respseguridad.
+        ///   Busca una cadena traducida similar a Usu_respseguridad.
         /// </summary>
         internal static string Parametro_Output_RespuestaSeguridad {
             get {

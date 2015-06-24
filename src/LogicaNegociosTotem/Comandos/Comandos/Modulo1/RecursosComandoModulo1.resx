@@ -213,6 +213,9 @@
     <value>.1*;M;3z+M~8k*+~LZU6B!Q|.!k+;=*m</value>
     <comment>Passphrase para encriptar e desencriptar</comment>
   </data>
+  <data name="prueba" xml:space="preserve">
+    <value>prueba</value>
+  </data>
   <data name="Pswd_Correo_Totem" xml:space="preserve">
     <value>zAo1OVejS5aWbnXwVVTr+g==</value>
     <comment>La contrasena encriptada para acceder a la cuenta de correo</comment>

@@ -162,11 +162,11 @@
     <comment>Parametro de input para los stored procedure con el nombre de usuario</comment>
   </data>
   <data name="Parametro_Output_PreguntaSeguridad" xml:space="preserve">
-    <value>@Usu_pregseguridad</value>
+    <value>Usu_pregseguridad</value>
     <comment>Parametro de output para los stored procedure con la pregunta de seguridad del usuario</comment>
   </data>
   <data name="Parametro_Output_RespuestaSeguridad" xml:space="preserve">
-    <value>@Usu_respseguridad</value>
+    <value>Usu_respseguridad</value>
     <comment>Parametro de output para los stored procedure con la respuesta de la pregunta de seguridad de los usuarios</comment>
   </data>
   <data name="Parametro_Output_Usu_apellido" xml:space="preserve">
