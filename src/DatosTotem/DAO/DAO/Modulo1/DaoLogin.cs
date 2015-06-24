@@ -171,9 +171,16 @@ namespace DAO.DAO.Modulo1
             SqlConnection conect = Conectar();
             try
             {
+                Usuario usuario = (Usuario)parametro;
+                var correo = usuario.Correo;
+                if (string.IsNullOrEmpty(usuario.Correo))
+                {
+                    throw new UsuarioVacioException();
+                }
+                
                 SqlCommand sqlcom = new SqlCommand(RecursosDaoModulo1.Query_Validar_Pregunta_Seguridad, conect);
                 sqlcom.CommandType = CommandType.StoredProcedure;
-                sqlcom.Parameters.Add(new SqlParameter(RecursosDaoModulo1.Parametro_Input_Correo, ((Usuario)parametro).Correo));
+                sqlcom.Parameters.Add(new SqlParameter(RecursosDaoModulo1.Parametro_Input_Correo, correo));
 
                 SqlDataReader leer;
                 conect.Open();

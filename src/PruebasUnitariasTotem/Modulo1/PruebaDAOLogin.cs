@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Dominio;
 using Dominio.Fabrica;
 using Dominio.Entidades.Modulo7;
 using ExcepcionesTotem.Modulo1;
 using DAO.DAO.Modulo1;
-using ExcepcionesTotem;
-using System.Data.SqlClient;
 
 namespace PruebasUnitariasTotem.Modulo1
 {
@@ -58,7 +52,7 @@ namespace PruebasUnitariasTotem.Modulo1
         /// la Entidad no puede tener valores Nulos
         /// </summary>
         [Test, ExpectedException(typeof(UsuarioVacioException))]
-        public void validarParametrosNulosLogin()
+        public void ValidarParametrosNulosLogin()
         {
             Usuario usuarioPrueba = (Usuario)fabricaEntidades.ObtenerUsuario();
             Entidad salida = daoLogin.ValidarUsuarioLogin(usuarioPrueba);
@@ -68,7 +62,7 @@ namespace PruebasUnitariasTotem.Modulo1
         /// Método para verificar que se devuelva NULL cuando un Login fue errado
         /// </summary>
         [Test]
-        public void loginErrado()
+        public void LoginErrado()
         {
             Usuario usuarioPrueba = (Usuario)fabricaEntidades.ObtenerUsuario();
             usuarioPrueba.Username = RecursosPUMod1.UsuarioFallido;
@@ -82,7 +76,7 @@ namespace PruebasUnitariasTotem.Modulo1
         /// Método para verificar que funcione correctamente
         /// </summary>
         [Test]
-        public void validarDatosUsuarioCorrectoLogin()
+        public void ValidarDatosUsuarioCorrectoLogin()
         {
             Usuario salida = (Usuario)daoLogin.ValidarUsuarioLogin(usuario);
             Assert.AreEqual(RecursosPUMod1.CorreoExitoso, salida.Correo);
@@ -96,7 +90,7 @@ namespace PruebasUnitariasTotem.Modulo1
         /// la Entidad no puede tener valores Nulos
         /// </summary>
         [Test, ExpectedException(typeof(UsuarioVacioException))]
-        public void validarParametrosNulosObPreguntaSeguridad()
+        public void ValidarParametrosNulosObPreguntaSeguridad()
         {
             Usuario usuarioPrueba = (Usuario)fabricaEntidades.ObtenerUsuario();
             Entidad salida = daoLogin.ObtenerPreguntaSeguridad(usuarioPrueba);
@@ -107,7 +101,7 @@ namespace PruebasUnitariasTotem.Modulo1
         /// que no existe solicite su pregunta de seguridad
         /// </summary>
         [Test]
-        public void usuarioNoExistePreguntaSeguridad()
+        public void UsuarioNoExistePreguntaSeguridad()
         {
             Usuario usuarioPrueba = (Usuario)fabricaEntidades.ObtenerUsuario();
             usuarioPrueba.Username = RecursosPUMod1.UsuarioFallido;
@@ -120,7 +114,7 @@ namespace PruebasUnitariasTotem.Modulo1
         /// Método para verificar que la pregunta de seguridad sea la correcta
         /// </summary>
         [Test]
-        public void preguntaCorrectaPreguntaSeguridad()
+        public void PreguntaCorrectaPreguntaSeguridad()
         {
             usuario.Correo = RecursosPUMod1.CorreoExitoso;
             Usuario salida = (Usuario)daoLogin.ObtenerPreguntaSeguridad(usuario);
@@ -136,24 +130,9 @@ namespace PruebasUnitariasTotem.Modulo1
         /// no reciba un parámetro null
         /// </summary>
         [Test, ExpectedException(typeof(UsuarioVacioException))]
-        public void validarParametrosNulosRespuestaSeguridad()
+        public void ValidarParametrosNulosRespuestaSeguridad()
         {
             Usuario usuarioPrueba = (Usuario)fabricaEntidades.ObtenerUsuario();
-            bool salida = daoLogin.ValidarRespuestaSeguridad(usuarioPrueba);
-        }
-
-        /// <summary>
-        /// Método para verificar que cuando no exista el correo en la BD
-        /// Retorne la Excepción 
-        /// no reciba un parámetro null
-        /// </summary>
-        [Test, ExpectedException(typeof(EmailErradoException))]
-        public void validarCorreoRespuestaSeguridad()
-        {
-            Usuario usuarioPrueba = (Usuario)fabricaEntidades.ObtenerUsuario();
-            usuarioPrueba.Username = RecursosPUMod1.UsuarioFallido;
-            usuarioPrueba.Correo = RecursosPUMod1.CorreoFallido;
-            usuarioPrueba.RespuestaSeguridad = RecursosPUMod1.RespuestaDeSeguridadFallida;
             bool salida = daoLogin.ValidarRespuestaSeguridad(usuarioPrueba);
         }
 
@@ -161,7 +140,7 @@ namespace PruebasUnitariasTotem.Modulo1
         /// Método para verificar el comportamiento sea el correcto cuando la respuesta es incorrecta
         /// </summary>
         [Test, ExpectedException(typeof(RespuestaErradoException))]
-        public void respuestaIncorrectaRespuestaSeguridad()
+        public void RespuestaIncorrectaRespuestaSeguridad()
         {
             Usuario usuarioPrueba = (Usuario)fabricaEntidades.ObtenerUsuario();
             usuarioPrueba.Username = RecursosPUMod1.UsuarioExitoso;
@@ -174,7 +153,7 @@ namespace PruebasUnitariasTotem.Modulo1
         /// Método para verificar que la respuesta de seguridad es la correcta
         /// </summary>
         [Test]
-        public void respuestaCorrectaRespuestaSeguridad()
+        public void RespuestaCorrectaRespuestaSeguridad()
         {
             usuario.Correo = RecursosPUMod1.CorreoExitoso;
             usuario.RespuestaSeguridad = RecursosPUMod1.RespuestaDeSeguridadExitosa;
@@ -190,7 +169,7 @@ namespace PruebasUnitariasTotem.Modulo1
         /// no reciba un parámetro null
         /// </summary>
         [Test]
-        public void validarCorreoIncorrecto()
+        public void ValidarCorreoIncorrecto()
         {
             string correo = RecursosPUMod1.CorreoFallido;
             bool salida = daoLogin.ValidarCorreoExistente(correo);
@@ -203,7 +182,7 @@ namespace PruebasUnitariasTotem.Modulo1
         /// no reciba un parámetro null
         /// </summary>
         [Test]
-        public void validarCorreoCorrecto()
+        public void ValidarCorreoCorrecto()
         {
             string correo = RecursosPUMod1.CorreoExitoso;
             bool salida = daoLogin.ValidarCorreoExistente(correo);
@@ -218,7 +197,7 @@ namespace PruebasUnitariasTotem.Modulo1
         /// no reciba parámetros Nulos
         /// </summary>
         [Test, ExpectedException(typeof(UsuarioVacioException))]
-        public void validarParametrosNulosModificar()
+        public void ValidarParametrosNulosModificar()
         {
             Usuario usuarioPrueba = (Usuario)fabricaEntidades.ObtenerUsuario();
             bool salida = daoLogin.Modificar(usuarioPrueba);
@@ -228,7 +207,7 @@ namespace PruebasUnitariasTotem.Modulo1
         /// Método para verificar que el Método Modificar retorna True cuando se realizó correctamente
         /// </summary>
         [Test]
-        public void validarModificar()
+        public void ValidarModificar()
         {
             usuario.Correo = RecursosPUMod1.CorreoExitoso;
             bool salida = daoLogin.Modificar(usuario);
