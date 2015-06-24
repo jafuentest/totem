@@ -42,9 +42,8 @@ namespace PruebasUnitariasTotem.Modulo8
             System.Console.Out.WriteLine("Minuta fecha: " + minuta.Fecha);
             System.Console.Out.WriteLine("Minuta Motivo: " + minuta.Motivo);
             System.Console.Out.WriteLine("Minuta Observaciones: " + minuta.Observaciones);
-            System.Console.Out.WriteLine("Minuta ListaUsuario: " + minuta.ListaUsuario);
-            System.Console.Out.WriteLine("Minuta ListaPunto: " + minuta.ListaPunto);
-         //   System.Console.Out.WriteLine("Minuta ListaAcuerdo: " + minuta.ListaAcuerdo.Count);
+            System.Console.Out.WriteLine("Minuta ListaUsuario: " + minuta.ListaUsuario.Count);
+            System.Console.Out.WriteLine("Minuta ListaPunto: " + minuta.ListaPunto.Count);
 
 
             
