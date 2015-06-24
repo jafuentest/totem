@@ -12,6 +12,8 @@ namespace DAO.IntefazDAO.Modulo6
        List<Entidad> ConsultarCasosDeUsoPorActor(Entidad actor);
        List<Entidad> ConsultarRequerimientosXCasoDeUso(int idCasoDeUso);
 
-       List<Entidad> ListarCasosDeUso(string codigoProyecto); 
+       List<Entidad> ListarCasosDeUso(string codigoProyecto);
+
+       bool EliminarCasoDeUso(int id); 
     }
 }

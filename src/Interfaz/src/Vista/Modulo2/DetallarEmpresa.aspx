@@ -29,51 +29,52 @@
 
             <div class="row col-sm-12 col-md-12 col-lg-12">
                 <h2>Datos Básicos</h2>
-                <div class="form-group">
-                    
+                <div id="clienteInfoBasica" class="panel panel-default panel-infoBasica">
+                <div class="form-group"> 
                     <div id="div_rif" class="col-sm-12 col-md-12 col-lg-12">
-                       <asp:Label ID="rifEmpresa" runat="server" name="rifEmpresa" class="form-control" ></asp:Label>
+                       <h4 id="rifEmpresa" runat="server" name="rifEmpresa">&nbsp;Identificador: </h4>
                     </div>
                 </div>
                 <div class="form-group">
                     <div id="div_nombre" class="col-sm-12 col-md-12 col-lg-12">
-                        <asp:Label ID="nombreEmpresa" runat="server" name="nombreEmpresa" class="form-control" ></asp:Label>
+                        <h4 id="nombreEmpresa" runat="server" name="nombreEmpresa">&nbsp;Nombre:</h4>
                     </div>
                 </div>
                 </div>
-               
+
                 <h2>Datos de localización</h2>
-                    
+                <div id="clienteInfoLocal" class="panel panel-default panel-infoLocal">
                 <div class="form-group">
                             <div id="div_pais" class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="dropdown" runat="server" id="contenedorComboPais">
-                                <asp:Label ID="paisEmpresa" runat="server" name="paisEmpresa" class="form-control" ></asp:Label>
+                                <h4 id="paisEmpresa" runat="server" name="paisEmpresa">&nbsp;Pais: </h4>
                                 </div>
                             </div>
 
                             <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="dropdown" runat="server" id="contenedorComboEstado">
-                                <asp:Label ID="estadoEmpresa" runat="server" name="estadoEmpresa" class="form-control" ></asp:Label>
+                                <h4 id="estadoEmpresa" runat="server" name="estadoEmpresa">&nbsp;Estado:</h4>
                                 </div>
                             </div>
                      </div>
                      <div class="form-group">
                             <div id="div_ciudad" class="col-sm-12 col-md-12 col-lg-12">
                                 <div class="dropdown" runat="server" id="Div1">
-                                <asp:Label ID="ciudadEmpresa" runat="server" name="ciudadEmpresa" class="form-control" ></asp:Label>
+                                <h4 id="ciudadEmpresa" runat="server" name="ciudadEmpresa" >&nbsp;Ciudad:</h4>
                                 </div>
                             </div>
                      </div>
                 <div class="form-group">
                     <div id="div_direccion" class="col-sm-12 col-md-12 col-lg-12">
-                        <asp:Label ID="direccionEmpresa" runat="server" name="direccionEmpresa" class="form-control" ></asp:Label>
+                        <h4 id="direccionEmpresa" runat="server" name="direccionEmpresa" >&nbsp;Direccion:</h4>
                     </div>
                 </div>
                 <div class="form-group">
                     <div id="div_cpostal" class="col-sm-12 col-md-12 col-lg-12">
-                        <asp:Label ID="codigoPostal" runat="server" name="codigoPostal" class="form-control" ></asp:Label>
+                        <h4 id="codigoPostal" runat="server" name="codigoPostal">&nbsp;Codigo postal:</h4>
                     </div>
                 </div>
+                    </div>
                 <h2>Contactos</h2>
 
                 <!--Contactos-->
@@ -87,7 +88,7 @@
                                     </tr>
                                 </thead>
                                 <tbody runat ="server" id="cuerpo">
-                                    <asp:Literal runat="server" ID="laTabla"></asp:Literal>
+                                    <asp:Literal runat="server" id="laTabla"></asp:Literal>
                                 </tbody>
                             </table>
                         </div> <!-- /.table-responsive -->

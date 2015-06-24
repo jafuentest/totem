@@ -502,6 +502,15 @@ namespace DAO.DAO.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a ELIMINAR_CU.
+        /// </summary>
+        internal static string ProcedureEliminarCU {
+            get {
+                return ResourceManager.GetString("ProcedureEliminarCU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a LlenarComboActores.
         /// </summary>
         internal static string ProcedureLlenarComboActores {

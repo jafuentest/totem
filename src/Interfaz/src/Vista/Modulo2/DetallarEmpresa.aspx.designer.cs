@@ -37,7 +37,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label rifEmpresa;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl rifEmpresa;
         
         /// <summary>
         /// nombreEmpresa control.
@@ -46,7 +46,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label nombreEmpresa;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl nombreEmpresa;
         
         /// <summary>
         /// contenedorComboPais control.
@@ -64,7 +64,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label paisEmpresa;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl paisEmpresa;
         
         /// <summary>
         /// contenedorComboEstado control.
@@ -82,7 +82,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label estadoEmpresa;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl estadoEmpresa;
         
         /// <summary>
         /// Div1 control.
@@ -100,7 +100,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ciudadEmpresa;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ciudadEmpresa;
         
         /// <summary>
         /// direccionEmpresa control.
@@ -109,7 +109,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label direccionEmpresa;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl direccionEmpresa;
         
         /// <summary>
         /// codigoPostal control.
@@ -118,7 +118,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label codigoPostal;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl codigoPostal;
         
         /// <summary>
         /// cuerpo control.
