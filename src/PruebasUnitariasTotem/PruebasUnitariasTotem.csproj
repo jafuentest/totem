@@ -63,7 +63,9 @@
     <Compile Include="Modulo4\PruebaLogicaProyecto.cs" />
     <Compile Include="Modulo4\PruebaProyecto.cs" />
     <Compile Include="Modulo5\PruebaBDRequerimiento.cs" />
+    <Compile Include="Modulo5\PruebaComandoGenerarArchivoLatex.cs" />
     <Compile Include="Modulo5\PruebaLogicaRequerimiento.cs" />
+    <Compile Include="Modulo5\PruebaReportesPresentador.cs" />
     <Compile Include="Modulo5\PruebaRequerimiento.cs" />
     <Compile Include="Modulo6\PruebaActor.cs" />
     <Compile Include="Modulo6\PruebaBDActor.cs" />
