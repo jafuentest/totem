@@ -135,7 +135,7 @@
 			</tbody>
 		</table>
         <br />
-        <form runat="server">
+        <form runat="server" method="post">
                 <div class="col-lg-offset-10"\>
                     &nbsp;&nbsp;&nbsp;
                     <asp:Button id="GenerarDoc" class="btn btn-success" runat="server" OnClick="GenerarDoc_Click" Text="Generar Documento"></asp:Button>

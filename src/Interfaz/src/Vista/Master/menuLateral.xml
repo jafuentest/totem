@@ -14,7 +14,6 @@
 	   <modulo id="2"></modulo>
     </opcion>
 
-<<<<<<< HEAD
 	<!-- Opciones del menú lateral del Módulo 3-->
 	<opcion nombre="Agregar Involucrados" link="/Modulo3/AgregarInvolucrados.aspx">
 		<modulo id="3"></modulo>
@@ -22,7 +21,6 @@
 	<opcion nombre="Listar Involucrados" link="/Modulo3/ListarPersonalInvolucrado.aspx">
 		<modulo id="3"></modulo>
 	</opcion>
-=======
     <!-- Opciones del menú lateral del Módulo 3-->
     <opcion nombre="Agregar Involucrados" link="~/Modulo3/AgregarInvolucrado.aspx">
 	   <modulo id="3"></modulo>
@@ -30,8 +28,7 @@
     <opcion nombre="Listar Involucrados" link="~/Modulo3/ListarPersonalInvolucrado.aspx">
 	   <modulo id="3"></modulo>
     </opcion>
->>>>>>> origin/master
-
+  
     <!-- Opciones del menú lateral del Módulo 4-->
     <opcion nombre="Listar proyectos" link="ListarProyectos.aspx">
 	   <modulo id="4"></modulo>

@@ -476,3 +476,97 @@ ClientConnectionId:23bed5ad-70c7-4455-a429-c7c857db6acf
 2015-06-23 01:54:09,732 ERROR PresentadorReporteActores - StackTrace: 
 2015-06-23 01:54:09,732 ERROR PresentadorReporteActores - InnerException: System.NullReferenceException: Referencia a objeto no establecida como instancia de un objeto.
    en Presentadores.Modulo6.PresentadorReporteActores.ConvertirListaActores(List`1 lista) en c:\totem\totem\src\Interfaz\src\Presentadores\Modulo6\PresentadorReporteActores.cs:línea 415
+2015-06-24 14:10:38,359 ERROR DAO.DAO.Modulo1.DaoLogin - *******************************************************
+2015-06-24 14:10:38,367 ERROR DAO.DAO.Modulo1.DaoLogin - Mensaje: Error con la Conexion en la BaseDeDatosTotem, no se pudo abrir la conexion
+2015-06-24 14:10:38,367 ERROR DAO.DAO.Modulo1.DaoLogin - Origen: 
+2015-06-24 14:10:38,367 ERROR DAO.DAO.Modulo1.DaoLogin - Metodo: 
+2015-06-24 14:10:38,367 ERROR DAO.DAO.Modulo1.DaoLogin - StackTrace: 
+2015-06-24 14:10:38,429 ERROR DAO.DAO.Modulo1.DaoLogin - InnerException: System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'validarlogin'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at DAO.DAO.Modulo1.DaoLogin.ValidarUsuarioLogin(Entidad parametro) in q:\totem\src\DatosTotem\DAO\DAO\Modulo1\DaoLogin.cs:line 37
+ClientConnectionId:fad62079-31a1-4130-b5ad-7e88f30630eb
+2015-06-24 14:10:38,453 ERROR ComandoIniciarSesion - *******************************************************
+2015-06-24 14:10:38,453 ERROR ComandoIniciarSesion - Mensaje: Error con la Conexion en la BaseDeDatosTotem, no se pudo abrir la conexion
+2015-06-24 14:10:38,453 ERROR ComandoIniciarSesion - Origen: DAO
+2015-06-24 14:10:38,453 ERROR ComandoIniciarSesion - Metodo: Dominio.Entidad ValidarUsuarioLogin(Dominio.Entidad)
+2015-06-24 14:10:38,453 ERROR ComandoIniciarSesion - StackTrace:    at DAO.DAO.Modulo1.DaoLogin.ValidarUsuarioLogin(Entidad parametro) in q:\totem\src\DatosTotem\DAO\DAO\Modulo1\DaoLogin.cs:line 77
+   at Comandos.Comandos.Modulo1.ComandoIniciarSesion.Ejecutar(List`1 parametro) in q:\totem\src\LogicaNegociosTotem\Comandos\Comandos\Modulo1\ComandoIniciarSesion.cs:line 33
+2015-06-24 14:10:38,453 ERROR ComandoIniciarSesion - InnerException: System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'validarlogin'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at DAO.DAO.Modulo1.DaoLogin.ValidarUsuarioLogin(Entidad parametro) in q:\totem\src\DatosTotem\DAO\DAO\Modulo1\DaoLogin.cs:line 37
+ClientConnectionId:fad62079-31a1-4130-b5ad-7e88f30630eb
+2015-06-24 14:12:27,121 ERROR DAO.DAO.Modulo1.DaoLogin - *******************************************************
+2015-06-24 14:12:27,125 ERROR DAO.DAO.Modulo1.DaoLogin - Mensaje: Error con la Conexion en la BaseDeDatosTotem, no se pudo abrir la conexion
+2015-06-24 14:12:27,125 ERROR DAO.DAO.Modulo1.DaoLogin - Origen: 
+2015-06-24 14:12:27,125 ERROR DAO.DAO.Modulo1.DaoLogin - Metodo: 
+2015-06-24 14:12:27,125 ERROR DAO.DAO.Modulo1.DaoLogin - StackTrace: 
+2015-06-24 14:12:27,129 ERROR DAO.DAO.Modulo1.DaoLogin - InnerException: System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'validarlogin'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at DAO.DAO.Modulo1.DaoLogin.ValidarUsuarioLogin(Entidad parametro) in q:\totem\src\DatosTotem\DAO\DAO\Modulo1\DaoLogin.cs:line 37
+ClientConnectionId:80463d25-eb2b-4293-a5d6-33ecad93c435
+2015-06-24 14:12:27,156 ERROR ComandoIniciarSesion - *******************************************************
+2015-06-24 14:12:27,156 ERROR ComandoIniciarSesion - Mensaje: Error con la Conexion en la BaseDeDatosTotem, no se pudo abrir la conexion
+2015-06-24 14:12:27,156 ERROR ComandoIniciarSesion - Origen: DAO
+2015-06-24 14:12:27,156 ERROR ComandoIniciarSesion - Metodo: Dominio.Entidad ValidarUsuarioLogin(Dominio.Entidad)
+2015-06-24 14:12:27,156 ERROR ComandoIniciarSesion - StackTrace:    at DAO.DAO.Modulo1.DaoLogin.ValidarUsuarioLogin(Entidad parametro) in q:\totem\src\DatosTotem\DAO\DAO\Modulo1\DaoLogin.cs:line 77
+   at Comandos.Comandos.Modulo1.ComandoIniciarSesion.Ejecutar(List`1 parametro) in q:\totem\src\LogicaNegociosTotem\Comandos\Comandos\Modulo1\ComandoIniciarSesion.cs:line 33
+2015-06-24 14:12:27,156 ERROR ComandoIniciarSesion - InnerException: System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'validarlogin'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at DAO.DAO.Modulo1.DaoLogin.ValidarUsuarioLogin(Entidad parametro) in q:\totem\src\DatosTotem\DAO\DAO\Modulo1\DaoLogin.cs:line 37
+ClientConnectionId:80463d25-eb2b-4293-a5d6-33ecad93c435
+2015-06-24 14:13:39,761 ERROR ComandoIniciarSesion - *******************************************************
+2015-06-24 14:13:39,761 ERROR ComandoIniciarSesion - Mensaje: No se pudo iniciar sesion, datos erroneos
+2015-06-24 14:13:39,761 ERROR ComandoIniciarSesion - Origen: 
+2015-06-24 14:13:39,761 ERROR ComandoIniciarSesion - Metodo: 
+2015-06-24 14:13:39,761 ERROR ComandoIniciarSesion - StackTrace: 
+2015-06-24 14:13:39,761 ERROR ComandoIniciarSesion - InnerException: System.Exception: Exception of type 'System.Exception' was thrown.
+2015-06-24 14:13:39,855 ERROR ComandoIniciarSesion - *******************************************************
+2015-06-24 14:13:39,855 ERROR ComandoIniciarSesion - Mensaje: No se pudo iniciar sesion, datos erroneos
+2015-06-24 14:13:39,855 ERROR ComandoIniciarSesion - Origen: Comandos
+2015-06-24 14:13:39,855 ERROR ComandoIniciarSesion - Metodo: Dominio.Entidad Ejecutar(System.Collections.Generic.List`1[System.String])
+2015-06-24 14:13:39,855 ERROR ComandoIniciarSesion - StackTrace:    at Comandos.Comandos.Modulo1.ComandoIniciarSesion.Ejecutar(List`1 parametro) in q:\totem\src\LogicaNegociosTotem\Comandos\Comandos\Modulo1\ComandoIniciarSesion.cs:line 48
+2015-06-24 14:13:39,855 ERROR ComandoIniciarSesion - InnerException: System.Exception: Exception of type 'System.Exception' was thrown.

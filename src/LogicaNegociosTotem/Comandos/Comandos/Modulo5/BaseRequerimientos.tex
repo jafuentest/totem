@@ -1,6 +1,17 @@
 \documentclass{article}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
 
-\usepackage{graphicx}
+
+
+\lfoot{
+\href{http://localhost:18329/Modulo1/Default.aspx}{Generado usando totem, Desarrollado por Trascend Software}}
+\rfoot{\thepage}
+
+\fancyfoot[R]{\thepage}
+
 
 \title{Requerimientos Funcionales de Software}
 \date
@@ -10,6 +21,9 @@ fecha
 \author{
 Trascend Software
 }
+
+
+
 
 \begin{document}
 
@@ -26,17 +40,15 @@ Trascend Software
 \pagenumbering{arabic} % Turns on page numbering
 \
 \begin{center}
-	\section{Requerimientos}
-\end{center}
-
-\subsection{Requerimientos Funcionales}
+	\section*{Requerimientos Funcionales}
 Funcionales
-
-\begin{center}
-	\section{Requerimientos No Funcionales}
 \end{center}
 
-\subsection{Requerimientos No Funcionales}
+\newpage
+\begin{center}
+	\section*{Requerimientos No Funcionales}
 NFuncionales
+\end{center}
+
 
 \end{document}

@@ -20,13 +20,13 @@ namespace Vista.Modulo5
         {
             this.Master.idModulo = "5";
             this.Master.presentador.CargarMenuLateral();
+            HttpContext.Current.Session["Credenciales"] = new object();
            
         
         }
 
         protected void GenerarDoc_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
             this.presentador.GenerarDoc("TOT");
         }
     }
