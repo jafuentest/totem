@@ -23,7 +23,13 @@ namespace Presentadores.Modulo5
         {
             this.vista = vista;
         }
-         
+
+        public void GenerarDoc(String parametro) {
+            Comandos.Comando<String, Boolean> Comando;
+            Comando = Comandos.Fabrica.FabricaComandos.CrearComandoGenerarArchivoLatex();
+            Comando.Ejecutar(parametro); 
+        
+        }
 
     }
 }
