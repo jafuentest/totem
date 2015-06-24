@@ -363,7 +363,7 @@
   </data>
   <data name="CodigoProyectoNoAgregado" xml:space="preserve">
     <value>T_04_008</value>
-    <comment>Còdigo de error generado al no poder ser agregado un nuevo proyecto</comment>
+    <comment>Código de error generado al no poder ser agregado un nuevo proyecto</comment>
   </data>
   <data name="MensajeProyectoNoAgregado" xml:space="preserve">
     <value>El nuevo proyecto no pudo ser agregado</value>

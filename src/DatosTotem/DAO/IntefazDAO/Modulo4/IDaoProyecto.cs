@@ -8,32 +8,16 @@ namespace DAO.IntefazDAO.Modulo4
     public interface IDaoProyecto : IDao<Dominio.Entidad, Boolean, Dominio.Entidad>
     {
         #region Firma de Metodos Proyecto
-        
-        # region Firma agregarProyecto
-        /// <summary>
-        /// Firma del metodo que
-        /// agrega un proyecto a la base de datos
-        /// </summary>
-        /// <param name="proyecto"> Entidad con los datos del proyecto 
-        /// a agregar</param>
-        /// <returns>True si el proyecto es creado exitosamente</returns>
 
-        bool agregarProyecto(Dominio.Entidad proyecto);
-        # endregion
-
-        # region Firma modificarProyecto
-        /// <summary>
-        /// Firma del metodo que
-        /// modifica un proyecto en la base de datos
-        /// </summary>
-        /// <param name="proyecto">Entidad con los datos del proyecto 
-        /// modificado</param>
-        /// <param name="codigoAnterior">codigo con los datos del proyecto 
-        /// a modificar</param>
-        /// <returns>True si el proyecto es modificado exitosamente</returns>
-
-        bool modificarProyecto(Dominio.Entidad proyecto, String codigoAnterior);
-        # endregion
+	   #region Firma consultarProyectosPorUsuario
+	   /// <summary>
+	   /// Firma del método que permite consultar todos los proyectos asociados a un
+	   /// usuario particular
+	   /// </summary>
+	   /// <param name="nombreUsuario">Nombre del usuario a consultar</param>
+	   /// <returns>Lista con los proyectos asociados a un usuario</returns>
+	   List<Dominio.Entidad> consultarProyectosPorUsuario(String nombreUsuario); 
+	   #endregion
 
         # region Firma consultarProyecto
         /// <summary>
@@ -42,7 +26,6 @@ namespace DAO.IntefazDAO.Modulo4
         /// </summary>
         /// <param name="codigo"> codigo del proyecto a consultar</param>
         /// <returns>Entidad con la informacion del proyecto consultado</returns>
-
         Dominio.Entidad consultarProyecto(String codigo);
         # endregion
 
@@ -108,8 +91,7 @@ namespace DAO.IntefazDAO.Modulo4
         /// </summary>
         /// <param name="busqueda">Cadena para la busqueda</param>
         /// <returns>Retrorna los proyectos de relacionado con el parametro</returns>
-        System.Data.DataTable buscarProyectos(String busqueda, String username);
-       
+        System.Data.DataTable buscarProyectos(String busqueda, String username);       
         # endregion
         
         # endregion
