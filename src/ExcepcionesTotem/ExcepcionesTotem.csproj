@@ -83,11 +83,13 @@
     <Compile Include="Modulo3\ProyectoSinCodigoException.cs" />
     <Compile Include="Modulo3\UsuarioSinUsernameException.cs" />
     <Compile Include="Modulo4\BorrarArchivoException.cs" />
+    <Compile Include="Modulo4\CamposInvalidosException.cs" />
     <Compile Include="Modulo4\CasosDeUsoInexistentesException.cs" />
     <Compile Include="Modulo4\CodigoRepetidoException.cs" />
     <Compile Include="Modulo4\CompilarTexException.cs" />
     <Compile Include="Modulo4\CrearArchivoException.cs" />
     <Compile Include="Modulo4\InvolucradosInexistentesException.cs" />
+    <Compile Include="Modulo4\ProyectoNoAgregadoException.cs" />
     <Compile Include="Modulo4\RequerimientosInexistentesException.cs" />
     <Compile Include="Modulo5\CamposInvalidosException.cs" />
     <Compile Include="Modulo5\ProyectoNoEncontradoException.cs" />

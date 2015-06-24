@@ -71,6 +71,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RecursosInterfazM3.resx</DependentUpon>
     </Compile>
+    <Compile Include="Modulo4\PresentadorAgregarProyecto.cs" />
     <Compile Include="Modulo5\PresentadorAgregarRequerimiento.cs" />
     <Compile Include="Modulo5\PresentadorListarRequerimientos.cs" />
     <Compile Include="Modulo5\PresentadorModificarRequerimiento.cs" />
@@ -108,9 +109,7 @@
     </Compile>
     <Compile Include="Validaciones.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modulo4\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Modulo1\RecursosM1.resx">
       <Generator>ResXFileCodeGenerator</Generator>

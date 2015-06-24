@@ -46,7 +46,7 @@ namespace Dominio.Entidades.Modulo4
 	   /// <param name="costo">Costo por desarrollo completo del proyecto</param>
 	   /// </summary>
 	   public Proyecto(String codigo, String nombre, bool estado, String descripcion,
-	   String moneda, int costo) : base(0)
+		  String moneda, int costo) : base(0)
 	   {
 		  this.codigo = codigo;
 		  this.nombre = nombre;
@@ -54,6 +54,27 @@ namespace Dominio.Entidades.Modulo4
 		  this.descripcion = descripcion;
 		  this.moneda = moneda;
 		  this.costo = costo;
+	   }
+
+	   /// <summary>
+	   /// Contructor público de la clase Proyecto (Sin identificador único)
+	   /// Por defecto, el proyecto se encontrará activo y su costo será 0
+	   /// <param name="codigo">Código único del proyecto</param>
+	   /// <param name="nombre">Nombre del proyecto</param>
+	   /// <param name="descripcion">Descripcion completa sobre el proyecto</param>
+	   /// <param name="moneda">Moneda base en la que se esta cobrando por la realización
+	   /// del proyecto</param>
+	   /// </summary>
+	   public Proyecto(String codigo, String nombre, String descripcion, String moneda)
+		  : base(0)
+	   {
+
+		  this.codigo = codigo;
+		  this.nombre = nombre;
+		  this.estado = true;
+		  this.descripcion = descripcion;
+		  this.moneda = moneda;
+		  this.costo = 0;
 	   }
 
 	   /// <summary>
@@ -68,7 +89,7 @@ namespace Dominio.Entidades.Modulo4
 	   /// <param name="costo">Costo por desarrollo completo del proyecto</param>
 	   /// </summary>
 	   public Proyecto(int id, String codigo, String nombre, bool estado, String descripcion,
-	   String moneda, int costo)
+		  String moneda, int costo)
 	   {
 		  base.Id = id;
 		  this.codigo = codigo;
@@ -77,21 +98,7 @@ namespace Dominio.Entidades.Modulo4
 		  this.descripcion = descripcion;
 		  this.moneda = moneda;
 		  this.costo = costo;
-	   }
-
-       public Proyecto(String codigo, String nombre, String descripcion,
-String moneda)
-           : base(0)
-       {
-
-           this.codigo = codigo;
-           this.nombre = nombre;
-           this.estado = true;
-           this.descripcion = descripcion;
-           this.moneda = moneda;
-           this.costo = 0;
-       }
-        
+	   }        
 	   #endregion
 
 	   #region Propiedades

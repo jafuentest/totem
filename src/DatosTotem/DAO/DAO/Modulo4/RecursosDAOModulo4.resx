@@ -361,4 +361,12 @@
     <value>Procedure_NombreClineteNatural</value>
     <comment>Procedimiento que retorna el nombre de un cliente natural dado el codigo de un proyecto</comment>
   </data>
+  <data name="CodigoProyectoNoAgregado" xml:space="preserve">
+    <value>T_04_008</value>
+    <comment>Còdigo de error generado al no poder ser agregado un nuevo proyecto</comment>
+  </data>
+  <data name="MensajeProyectoNoAgregado" xml:space="preserve">
+    <value>El nuevo proyecto no pudo ser agregado</value>
+    <comment>Mensaje de error generado al no poder ser agregado un proyecto</comment>
+  </data>
 </root>

@@ -14,49 +14,69 @@ namespace DAO.DAO.Modulo4
 
         public Boolean Agregar(Dominio.Entidad parametro)
         {
-            if (!existeProyecto((parametro as Proyecto).Codigo))
+            if ( !existeProyecto((parametro as Proyecto).Codigo) )
             {
                 try
                 {
                     // Parámetros para insertar un proyecto
+
                     List<Parametro> parametros = new List<Parametro>();
-                    Parametro parametroLista = new Parametro(RecursosDAOModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, (parametro as Proyecto).Codigo, false);
+
+                    Parametro parametroLista = new Parametro(RecursosDAOModulo4.
+				    ParametroCodigoProyecto, SqlDbType.VarChar,
+				    (parametro as Proyecto).Codigo, false);
                     parametros.Add(parametroLista);
-                    parametroLista = new Parametro(RecursosDAOModulo4.ParametroNombreProyecto, SqlDbType.VarChar, (parametro as Proyecto).Nombre, false);
+
+                    parametroLista = new Parametro(RecursosDAOModulo4.
+				    ParametroNombreProyecto, SqlDbType.VarChar,
+				    (parametro as Proyecto).Nombre, false);
                     parametros.Add(parametroLista);
-                    parametroLista = new Parametro(RecursosDAOModulo4.ParametroEstadoProyecto, SqlDbType.Bit, (parametro as Proyecto).Estado.ToString(), false);
+
+                    parametroLista = new Parametro(RecursosDAOModulo4.
+				    ParametroEstadoProyecto, SqlDbType.Bit,
+				    (parametro as Proyecto).Estado.ToString(), false);
                     parametros.Add(parametroLista);
-                    parametroLista = new Parametro(RecursosDAOModulo4.ParametroDescripcionProyecto, SqlDbType.VarChar, (parametro as Proyecto).Descripcion, false);
+
+                    parametroLista = new Parametro(RecursosDAOModulo4.
+				    ParametroDescripcionProyecto, SqlDbType.VarChar,
+				    (parametro as Proyecto).Descripcion, false);
                     parametros.Add(parametroLista);
-                    parametroLista = new Parametro(RecursosDAOModulo4.ParametroCostoProyecto, SqlDbType.Int, (parametro as Proyecto).Costo.ToString(), false);
+
+                    parametroLista = new Parametro(RecursosDAOModulo4.
+				    ParametroCostoProyecto, SqlDbType.Int,
+				    (parametro as Proyecto).Costo.ToString(), false);
                     parametros.Add(parametroLista);
-                    parametroLista = new Parametro(RecursosDAOModulo4.ParametroMonedaProyecto, SqlDbType.VarChar, (parametro as Proyecto).Moneda, false);
+
+                    parametroLista = new Parametro(RecursosDAOModulo4.
+				    ParametroMonedaProyecto, SqlDbType.VarChar,
+				    (parametro as Proyecto).Moneda, false);
                     parametros.Add(parametroLista);
 
                     List<Resultado> resultados = EjecutarStoredProcedure(RecursosDAOModulo4.ProcedimientoAgregarProyecto, parametros);
 
                     // Si la creación es correcta retorna true
 
-                    if (resultados != null)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        throw new NotImplementedException();
-                    }
-
+				if (resultados != null)
+				    return true;
+				else
+				    throw new ExcepcionesTotem.Modulo4.ProyectoNoAgregadoException(
+					   RecursosDAOModulo4.CodigoProyectoNoAgregado,
+					   RecursosDAOModulo4.MensajeProyectoNoAgregado, new Exception());
                 }
-                catch (NotImplementedException ex)
+                catch (ExcepcionesTotem.ExceptionTotem ex)
                 {
                     throw ex;
                 }
             }
             else
-                // El código existe por lo tanto no se crea el proyecto
-                throw new ExcepcionesTotem.Modulo4.CodigoRepetidoException(
-                    RecursosDAOModulo4.CodigoProyectoExiste,
-                    RecursosDAOModulo4.MensajeCodigoProyectoExiste, new Exception());
+		  {
+
+			 // El código existe, por lo tanto no se crea el proyecto
+
+			 throw new ExcepcionesTotem.Modulo4.CodigoRepetidoException(
+				RecursosDAOModulo4.CodigoProyectoExiste,
+				RecursosDAOModulo4.MensajeCodigoProyectoExiste, new Exception());
+		  }
         }
         public Boolean Modificar(Dominio.Entidad parametro)
         {
