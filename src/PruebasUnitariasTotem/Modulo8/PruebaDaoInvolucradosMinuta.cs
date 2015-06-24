@@ -38,7 +38,7 @@ namespace PruebasUnitariasTotem.Modulo8
             listaMinuta = new List<Minuta>();
             minuta = new Minuta();
             daoInvolucradosMinuta = fabricaDAO.ObtenerDAOInvolucradosMinuta();
-            usuario=(Usuario)FabricaEntidades.ObtenerUsuario();
+            usuario = (Usuario)fabricaEntidades.ObtenerUsuario();
             contacto = (Contacto)fabricaEntidades.ObtenerContacto();
         }
 

@@ -54,7 +54,7 @@ namespace DAO.DAO.Modulo8
                 SqlDbType.Int, idUsuario.ToString(), false);
             parametros.Add(parametroStored);
 
-            elUsuario = (Usuario)FabricaEntidades.ObtenerUsuario();
+            elUsuario = (Usuario)laFabrica.ObtenerUsuario();
 
             try
             {
