@@ -6,11 +6,11 @@ using Contratos.Modulo4;
 
 namespace Presentadores.Modulo4
 {
-    public class PresentadorAgregarProyecto
+    public class PresentadorListarProyectos
     {
-	   private IContratoAgregarProyecto vista;
+	   private IContratoListarProyectos vista;
 
-	   public PresentadorAgregarProyecto(IContratoAgregarProyecto laVista)
+	   public PresentadorListarProyectos(IContratoListarProyectos laVista)
 	   {
 		  this.vista = laVista;
 	   }

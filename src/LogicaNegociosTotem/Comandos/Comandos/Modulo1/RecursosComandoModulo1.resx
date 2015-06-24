@@ -1,101 +1,236 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
-		Microsoft ResX Schema
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
 
-		Version 1.3
-
-		The primary goals of this format is to allow a simple XML format 
-		that is mostly human readable. The generation and parsing of the 
-		various data types are done through the TypeConverter classes 
-		associated with the data types.
-
-		Example:
-
-		... ado.net/XML headers & schema ...
-		<resheader name="resmimetype">text/microsoft-resx</resheader>
-		<resheader name="version">1.3</resheader>
-		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-		<data name="Name1">this is my long string</data>
-		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-			[base64 mime encoded serialized .NET Framework object]
-		</data>
-		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-			[base64 mime encoded string representing a byte array form of the .NET Framework object]
-		</data>
-
-		There are any number of "resheader" rows that contain simple 
-		name/value pairs.
-
-		Each data row contains a name, and value. The row also contains a 
-		type or mimetype. Type corresponds to a .NET class that support 
-		text/value conversion through the TypeConverter architecture. 
-		Classes that don't support this are serialized and stored with the 
-		mimetype set.
-
-		The mimetype is used for serialized objects, and tells the 
-		ResXResourceReader how to depersist the object. This is currently not 
-		extensible. For a given mimetype the value must be set accordingly:
-
-		Note - application/x-microsoft.net.object.binary.base64 is the format 
-		that the ResXResourceWriter will generate, however the reader can 
-		read any of the formats listed below.
-
-		mimetype: application/x-microsoft.net.object.binary.base64
-		value   : The object must be serialized with 
-			: System.Serialization.Formatters.Binary.BinaryFormatter
-			: and then encoded with base64 encoding.
-
-		mimetype: application/x-microsoft.net.object.soap.base64
-		value   : The object must be serialized with 
-			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-			: and then encoded with base64 encoding.
-
-		mimetype: application/x-microsoft.net.object.bytearray.base64
-		value   : The object must be serialized into a byte array 
-			: using a System.ComponentModel.TypeConverter
-			: and then encoded with base64 encoding.
-	-->
-	
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>1.3</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Cantidad_Intentos_Permitidos" xml:space="preserve">
+    <value>3</value>
+    <comment>Cantidad de intentos que se permiten de inicio de sesion antes de comprobar que no sea un robot</comment>
+  </data>
+  <data name="Codigo_Email_Errado" xml:space="preserve">
+    <value>T_01_004</value>
+    <comment>Codigo de Error de correo errado</comment>
+  </data>
+  <data name="Codigo_Error_Conexion_BD" xml:space="preserve">
+    <value>T_00_001</value>
+    <comment>Codigo de error en la conexion con la BD</comment>
+  </data>
+  <data name="Codigo_Error_Envio_Correo" xml:space="preserve">
+    <value>T_01_006</value>
+    <comment>Codigo de error al intenar enviar correo</comment>
+  </data>
+  <data name="Codigo_Intentos_Fallidos" xml:space="preserve">
+    <value>T_01_005</value>
+    <comment>Codigo de error de intentos maximos de inicio de sesion excedidos</comment>
+  </data>
+  <data name="Codigo_Login_Errado" xml:space="preserve">
+    <value>T_01_002</value>
+    <comment>Error en el login por datos erroneos</comment>
+  </data>
+  <data name="Codigo_Parametro_Errado" xml:space="preserve">
+    <value>T_00_02</value>
+    <comment>Codigo de error cuando se coloca un parametro errado</comment>
+  </data>
+  <data name="Codigo_Respuesta_Errada" xml:space="preserve">
+    <value>T_01_003</value>
+    <comment>Error de respuesta ingresada erronea</comment>
+  </data>
+  <data name="Codigo_Usuario_Vacio" xml:space="preserve">
+    <value>T_01_001</value>
+    <comment>Error en login o recuperacion de clave por datos de usuario incompletos</comment>
+  </data>
+  <data name="Correo_Asunto_Recuperacion_Clave" xml:space="preserve">
+    <value>TOTEM: Recuperacion de Clave</value>
+    <comment>Asunto del correo para la recuperacion de clave</comment>
+  </data>
+  <data name="Correo_Mensaje_Ignorar" xml:space="preserve">
+    <value>Si usted no solicito una recuperacion de clave, ignore este mensaje</value>
+    <comment>Mensaje que se envia al final del correo</comment>
+  </data>
+  <data name="Correo_Mensaje_Recuperacion_Clave" xml:space="preserve">
+    <value>Se ha enviado una solicitud de recuperacion de clave. Para seguir con el proceso, porfavor ingrese al siguiente link: </value>
+    <comment>Cuerpo del correo de recuperacion de clave</comment>
+  </data>
+  <data name="Correo_Totem" xml:space="preserve">
+    <value>totemdesarrollo@gmail.com</value>
+    <comment>Cuenta de correo usada para el en</comment>
+  </data>
+  <data name="Expresion_Regular_Correo" xml:space="preserve">
+    <value>\A(?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z</value>
+    <comment>Expresion regular para validar correos</comment>
+  </data>
+  <data name="Link_Recuperacion_Clave" xml:space="preserve">
+    <value>http://localhost:22288/src/GUI/Modulo1/M1_PreguntaSeguridad.aspx?usuario=</value>
+    <comment>Link de recuperacion de clave</comment>
+  </data>
+  <data name="Mensaje_Email_errado" xml:space="preserve">
+    <value>No se pudo obtener la pregunta de seguridad, el email es invalido</value>
+    <comment>Mensaje de error para cuando el email es errado</comment>
+  </data>
+  <data name="Mensaje_Error_Conexion_BD" xml:space="preserve">
+    <value>Error con la Conexion en la BaseDeDatosTotem, no se pudo abrir la conexion</value>
+    <comment>Mensaje al dar error en la conexion con la BD</comment>
+  </data>
+  <data name="Mensaje_Error_Envio_Correo" xml:space="preserve">
+    <value>Error en el envio del correo</value>
+    <comment>Mensaje de error al intentar enviar el correo</comment>
+  </data>
+  <data name="Mensaje_Intentos_Fallidos" xml:space="preserve">
+    <value>Se fallo el inicio de sesion multiples veces, el usuario puede ser un bot</value>
+    <comment>Mensaje de error cuando el usuario falla el inicio de sesion multiples veces</comment>
+  </data>
+  <data name="Mensaje_Login_Errado" xml:space="preserve">
+    <value>No se pudo iniciar sesion, datos erroneos</value>
+    <comment>Mensaje cuando se presente el error de login errado</comment>
+  </data>
+  <data name="Mensaje_Parametro_Errado" xml:space="preserve">
+    <value>Error en un parametro del stored procedure</value>
+    <comment>Mensajer de error cuando se coloca un parametro errado</comment>
+  </data>
+  <data name="Mensaje_Respuesta_Errada" xml:space="preserve">
+    <value>No se pudo validar la pregunta, respuesta invalida</value>
+    <comment>Mensaje de error para la respuesta errada</comment>
+  </data>
+  <data name="Mensaje_Usuario_Vacio" xml:space="preserve">
+    <value>Datos de usuario incompletos</value>
+    <comment>Mensaje cuando se presente el error de usuario incompleto</comment>
+  </data>
+  <data name="Passphrase" xml:space="preserve">
+    <value>.1*;M;3z+M~8k*+~LZU6B!Q|.!k+;=*m</value>
+    <comment>Passphrase para encriptar e desencriptar</comment>
+  </data>
+  <data name="Pswd_Correo_Totem" xml:space="preserve">
+    <value>zAo1OVejS5aWbnXwVVTr+g==</value>
+    <comment>La contrasena encriptada para acceder a la cuenta de correo</comment>
+  </data>
+  <data name="Puerto_Smtp" xml:space="preserve">
+    <value>587</value>
+    <comment>Puerto para el envio de mensajes de correo smtp</comment>
+  </data>
+  <data name="Salt_Encriptado" xml:space="preserve">
+    <value>7V-tXj%HEY0.G37U</value>
+    <comment>Data usado como input adicional para una funcion de hash. Sirve para la defensa contra "ataques de diccionario".</comment>
+  </data>
+  <data name="Servidor_Smtp" xml:space="preserve">
+    <value>smtp.gmail.com</value>
+    <comment>Servidor smtp para el envio de correos</comment>
+  </data>
+  <data name="Tamano_Clave" xml:space="preserve">
+    <value>256</value>
+    <comment>Tamano de la clave para el encriptamiento</comment>
+  </data>
 </root>
