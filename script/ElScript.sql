@@ -2388,6 +2388,7 @@ FROM CASO_USO C, CU_ACTOR R, ACTOR A, Proyecto p
 		WHERE (A.act_id=@idactor ) 
 		AND (R.CASO_USO_cu_id=C.cu_id AND R.ACTOR_act_id=A.act_id)
 		AND p.pro_id = a.PROYECTO_pro_id
+		and p.pro_id = c.PROYECTO_pro_id
 		and p.pro_codigo = @codigoProyecto;
 	END
 GO
@@ -2413,6 +2414,9 @@ where p.pro_id = a.PROYECTO_pro_id
 and p.pro_codigo =@codigoProyecto;
 
 GO
+
+
+
 
 /*==========================================================================================================================*/
 
@@ -2811,11 +2815,31 @@ GO
 
 /*Eliminar Caso de Uso*/
 CREATE PROCEDURE ELIMINAR_CU 
-	@idcasouso int
+@idcasouso int 
 AS
-	BEGIN
-		DELETE FROM CASO_USO WHERE (cu_id=@idcasouso);
-	END
+BEGIN
+
+	delete from PASO_EXTENSION
+	where EXTENSION_PASO_CASO_USO_cu_id = (select cu_id from CASO_USO where cu_id=@idcasouso);
+
+	delete from EXTENSION 
+	where PASO_CASO_USO_cu_id = (select cu_id from CASO_USO where cu_id=@idcasouso);
+
+	delete from PASO
+	where CASO_USO_cu_id = (select cu_id from CASO_USO where cu_id=@idcasouso);
+
+	delete from PRECONDICION
+	where CASO_USO_cu_id = (select cu_id from CASO_USO where cu_id=@idcasouso);
+
+	delete from CU_REQUERIMIENTO
+	where CASO_USO_cu_id = (select cu_id from CASO_USO where cu_id=@idcasouso);
+
+	delete from CU_ACTOR
+	where CASO_USO_cu_id = (select cu_id from CASO_USO where cu_id=@idcasouso);
+
+	delete from CASO_USO
+	where cu_id=@idcasouso;
+END
 GO
 
 /*==========================================================================================================================*/
