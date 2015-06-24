@@ -1172,7 +1172,7 @@ CREATE PROCEDURE M2_AgregarClienteJur
 	
     @direccion    [VARCHAR] (100),
 	
-    @codigo_post  [int], 
+    @codigo_postal  [int], 
 	
 --Datos del contacto
 	
@@ -1246,7 +1246,7 @@ if @num_ciudades = 0
 	
 INSERT INTO LUGAR (lug_nombre, lug_tipo, lug_codigopostal, LUGAR_lug_id)
 	
-VALUES (@direccion, 'Direccion', @codigo_post, 
+VALUES (@direccion, 'Direccion', @codigo_postal, 
 	
 (SELECT l.lug_id FROM LUGAR l WHERE l.lug_nombre = @ciudad and l.lug_tipo = 'Ciudad'));
 
@@ -1433,7 +1433,7 @@ create procedure M2_AgregarClienteNat
 	@estado       [VARCHAR] (100),
 	@ciudad	      [VARCHAR] (100),
 	---codigo postal de la direccion
-	@codigo_post  [INT],
+	@codigo_postal  [INT],
 	---telefono del cliente natural
 	@codigo_tel [VARCHAR](5) ,
 	@numero_tel [VARCHAR] (20)
@@ -1463,7 +1463,7 @@ as
 			from LUGAR where lug_nombre = @estado and lug_tipo = 'Estado'));
 
 		insert into LUGAR (lug_nombre, lug_tipo, lug_codigopostal, LUGAR_lug_id)
-		values (@direccion, 'Direccion', @codigo_post, (select lug_id from LUGAR
+		values (@direccion, 'Direccion', @codigo_postal, (select lug_id from LUGAR
 		where lug_nombre = @ciudad and lug_tipo = 'Ciudad'));
 
 		insert into CLIENTE_NATURAL (cn_nombre, cn_apellido, cn_cedula, cn_correo, LUGAR_lug_id)
