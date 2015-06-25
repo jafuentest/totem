@@ -38,43 +38,47 @@ namespace Comandos.Comandos.Modulo8
 
 
                 Proyecto elProyecto = (Proyecto)parametro[0];
-                Minuta nueva=(Minuta)parametro[1];
-                Minuta laMinuta=(Minuta)parametro[2];
+                Minuta laMinuta = (Minuta)parametro[1];
+                Minuta nueva=(Minuta)parametro[2];
 
                 
                 daoInvolucradosMinuta.EliminarInvolucradoEnMinuta(laMinuta.Id);
-                foreach (Acuerdo acu in laMinuta.ListaAcuerdo)
+                if (laMinuta.ListaAcuerdo != null)
                 {
-                    if (acu.ListaUsuario != null)
+                    foreach (Acuerdo acu in laMinuta.ListaAcuerdo)
                     {
-                        foreach (Usuario usu in acu.ListaUsuario)
+                        if (acu.ListaUsuario != null)
                         {
-                            daoInvolucradosMinuta.EliminarUsuarioEnAcuerdo(usu, acu.Id, elProyecto.Codigo);
+                            foreach (Usuario usu in acu.ListaUsuario)
+                            {
+                                daoInvolucradosMinuta.EliminarUsuarioEnAcuerdo(usu, acu.Id, elProyecto.Codigo);
+                            }
                         }
-                    }
-                    if (acu.ListaContacto != null)
-                    {
-                        foreach (Contacto con in acu.ListaContacto)
+                        if (acu.ListaContacto != null)
                         {
-                            daoInvolucradosMinuta.EliminarContactoEnAcuerdo(con, acu.Id, elProyecto.Codigo);
+                            foreach (Contacto con in acu.ListaContacto)
+                            {
+                                daoInvolucradosMinuta.EliminarContactoEnAcuerdo(con, acu.Id, elProyecto.Codigo);
+                            }
                         }
-                    }
-                  // PACHECOoooooooooo
-                   // daoAcuerdo.EliminarAcuerdoBD(acu.Codigo);
-                }
 
-                foreach (Punto pun in laMinuta.ListaPunto)
+                        daoAcuerdo.Eliminar(acu, elProyecto.Codigo);
+                    }
+                }
+                if (laMinuta.ListaPunto != null)
                 {
-                    daoPunto.EliminarPuntoBD(pun, laMinuta.Id);
+                    foreach (Punto pun in laMinuta.ListaPunto)
+                    {
+                        daoPunto.EliminarPuntoBD(pun, laMinuta.Id);
+                    }
                 }
-
                 daoMinutas.EliminarMinuta(laMinuta.Id);
                 List<Entidad>parametroGuardar=new List<Entidad>();
                 parametroGuardar.Add(elProyecto);
                 parametroGuardar.Add(nueva);
 
                 ComandoGuardarMinuta c=(ComandoGuardarMinuta)FabricaComandos.CrearComandoGuardarMinuta();
-             //   c.Ejecutar(parametroGuardar);
+                c.Ejecutar(parametroGuardar);
 
                 
 

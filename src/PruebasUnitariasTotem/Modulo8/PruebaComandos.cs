@@ -22,15 +22,22 @@ namespace PruebasUnitariasTotem.Modulo8
     {
         FabricaComandos fabricaComandos=new FabricaComandos();
         FabricaEntidades fabricaEntidades=new FabricaEntidades();
-/*
+
+        List<Entidad> parametroComando = new List<Entidad>();
+        Proyecto proyecto;
+            
         /// <summary>
         /// Metodo donde se inicializan todas las variables que se utilizan en la clase
         /// </summary>
         [SetUp]
         public void init()
         {
-           
-        }*/
+
+            parametroComando = new List<Entidad>();
+            proyecto = (Proyecto)FabricaEntidades.ObtenerProyecto();
+            proyecto.Codigo = "TOT";
+            proyecto.Nombre = "Totem";
+        }
 
         /// <summary>
         /// Metodo que prueba el comando detalle de una minuta 
@@ -59,15 +66,12 @@ namespace PruebasUnitariasTotem.Modulo8
             minuta.Fecha = DateTime.Parse("2015-04-25 18:00:00.000");
             minuta.Motivo = "Prueba";
             minuta.Observaciones = "";
-            Proyecto proyecto = (Proyecto)FabricaEntidades.ObtenerProyecto();
-            proyecto.Codigo = "TOT";
-            proyecto.Nombre = "Totem";
-            List<Entidad> parametroComando= new List<Entidad>();
+           
             parametroComando.Add(proyecto);
             parametroComando.Add(minuta);
 
             ComandoGuardarMinuta comandoGuardarMinuta = (ComandoGuardarMinuta)FabricaComandos.CrearComandoGuardarMinuta();
-            Assert.AreEqual(comandoGuardarMinuta.Ejecutar(parametroComando), "Completado");
+            Assert.IsTrue(int.Parse(comandoGuardarMinuta.Ejecutar(parametroComando))>0);
         }
         /// <summary>
         /// Metodo que prueba el comando lista de contacto de una minuta
@@ -75,9 +79,8 @@ namespace PruebasUnitariasTotem.Modulo8
         [Test]
         public void PruebaComandoListaContacto()
         {
-            ComandoDetalleMinuta comandoDetalleMinuta = (ComandoDetalleMinuta)FabricaComandos.CrearComandoComandoDetalleMinuta();
-            Minuta minuta = (Minuta)comandoDetalleMinuta.Ejecutar("1");
-            Assert.IsNotNull(minuta);
+            ComandoListaContacto comandoListaContacto = (ComandoListaContacto)FabricaComandos.CrearComandoListaContacto();  
+            Assert.IsNotNull(comandoListaContacto.Ejecutar(proyecto));
         }
         /// <summary>
         /// Metodo que prueba el comando lista minutas de un proyecto
@@ -85,9 +88,10 @@ namespace PruebasUnitariasTotem.Modulo8
         [Test]
         public void PruebaComandoListaMinuta()
         {
-            ComandoDetalleMinuta comandoDetalleMinuta = (ComandoDetalleMinuta)FabricaComandos.CrearComandoComandoDetalleMinuta();
-            Minuta minuta = (Minuta)comandoDetalleMinuta.Ejecutar("1");
-            Assert.IsNotNull(minuta);
+            ComandoListaMinuta comandoListaMinuta = (ComandoListaMinuta)FabricaComandos.CrearComandoComandoListaMinuta();
+           
+            Assert.IsNotNull(comandoListaMinuta.Ejecutar("TOT"));
+
 
         }
         /// <summary>
@@ -96,9 +100,8 @@ namespace PruebasUnitariasTotem.Modulo8
         [Test]
         public void PruebaComandoListaUsuario()
         {
-            ComandoDetalleMinuta comandoDetalleMinuta = (ComandoDetalleMinuta)FabricaComandos.CrearComandoComandoDetalleMinuta();
-            Minuta minuta = (Minuta)comandoDetalleMinuta.Ejecutar("1");
-            Assert.IsNotNull(minuta);
+            ComandoListaUsuario comandoListaUsuario = (ComandoListaUsuario)FabricaComandos.CrearComandoListaUsuario();
+            Assert.IsNotNull(comandoListaUsuario.Ejecutar("TOT"));
 
         }
         /// <summary>
@@ -107,9 +110,32 @@ namespace PruebasUnitariasTotem.Modulo8
         [Test]
         public void PruebaComandoModificarMinuta()
         {
-            ComandoDetalleMinuta comandoDetalleMinuta = (ComandoDetalleMinuta)FabricaComandos.CrearComandoComandoDetalleMinuta();
-            Minuta minuta = (Minuta)comandoDetalleMinuta.Ejecutar("1");
-            Assert.IsNotNull(minuta);
+            Minuta minuta = (Minuta)fabricaEntidades.ObtenerMinuta();
+            minuta.Fecha = DateTime.Parse("2015-04-25 18:00:00.000");
+            minuta.Motivo = "Prueba";
+            minuta.Observaciones = "";
+
+            parametroComando.Add(proyecto);
+            parametroComando.Add(minuta);
+
+            ComandoGuardarMinuta comandoGuardarMinuta = (ComandoGuardarMinuta)FabricaComandos.CrearComandoGuardarMinuta();
+            minuta.Id = int.Parse(comandoGuardarMinuta.Ejecutar(parametroComando));
+             
+            parametroComando = new List<Entidad>();
+
+
+            parametroComando.Add(proyecto);
+            parametroComando.Add(minuta);
+
+            Minuta minuta2 = (Minuta)fabricaEntidades.ObtenerMinuta();
+            minuta2.Fecha = DateTime.Parse("2015-04-25 18:00:00.000");
+            minuta2.Motivo = "Prueba Modificada";
+            minuta2.Observaciones = "Modificada";
+            minuta.Motivo = "Prueba Modificada";
+            parametroComando.Add(minuta2);
+
+            ComandoModificarMinuta comandoModificarMinuta = (ComandoModificarMinuta)FabricaComandos.CrearComandoModificarMinuta();
+            Assert.AreEqual(comandoModificarMinuta.Ejecutar(parametroComando), "Completado");
 
         }
         /// <summary>
@@ -144,12 +170,11 @@ namespace PruebasUnitariasTotem.Modulo8
             }
 
         }
-        /*
+       
         [TearDown]
         public void close()
         {
-            punto = null;
-            listaPunto = null;
-        }*/
+            parametroComando = null;
+        }
     }
 }

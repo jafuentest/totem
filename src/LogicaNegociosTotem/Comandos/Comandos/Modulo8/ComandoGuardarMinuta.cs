@@ -86,7 +86,7 @@ namespace Comandos.Comandos.Modulo8
                         }*/
                     }
                 }
-                return "Completado";
+                return idMinuta.ToString();
             }
 
             #region catch

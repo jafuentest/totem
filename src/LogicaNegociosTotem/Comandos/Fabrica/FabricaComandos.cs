@@ -346,7 +346,10 @@ namespace Comandos.Fabrica
         {
             return new Comandos.Modulo8.ComandoGuardarMinuta();
         }
-
+        public static Comando<List<Entidad>, string> CrearComandoModificarMinuta()
+        {
+            return new Comandos.Modulo8.ComandoModificarMinuta();
+        }
         public static Comando<String, bool> CrearComandoCompilarLatex()
         {
             return new Comandos.Modulo8.ComandoCompilarLatex();
