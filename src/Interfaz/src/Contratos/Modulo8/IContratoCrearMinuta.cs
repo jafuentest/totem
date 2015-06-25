@@ -7,5 +7,9 @@ namespace Contratos.Modulo8
 {
     public interface IContratoCrearMinuta
     {
+        string FechaMinuta { get; set; }
+        string MotivoMinuta { get; set; }
+        string Observaciones { get; set; }
+        string ListaInvolucrado { get; set; }
     }
 }
