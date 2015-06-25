@@ -74,8 +74,12 @@
     <Compile Include="Modulo7\PruebaBDUsuario.cs" />
     <Compile Include="Modulo7\PruebaComandoAgregarUsuario.cs" />
     <Compile Include="Modulo7\PruebaComandoListarCargos.cs" />
+    <Compile Include="Modulo7\PruebaComandoListarUsuarios.cs" />
+    <Compile Include="Modulo7\PruebaComandoValidarCorreoUnico.cs" />
+    <Compile Include="Modulo7\PruebaComandoValidarUsernameUnico.cs" />
     <Compile Include="Modulo7\PruebaLogicaUsuario.cs" />
     <Compile Include="Modulo7\PruebaManejadorUsuario.cs" />
+    <Compile Include="Modulo7\PruebaUsuario.cs" />
     <Compile Include="Modulo8\PruebaComandos.cs" />
     <Compile Include="Modulo8\PruebaDaoAcuerdo.cs" />
     <Compile Include="Modulo8\PruebaDaoInvolucradosMinuta.cs" />
