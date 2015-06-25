@@ -190,7 +190,7 @@ namespace DAO.DAO.Modulo8
             DataTable resultado = new DataTable();
             List<Parametro> parametros = new List<Parametro>();
             Parametro parametroStored = new Parametro(parametro,
-                SqlDbType.Int, id.ToString(), false);
+                SqlDbType.VarChar, id, false);
             parametros.Add(parametroStored);
 
             try
