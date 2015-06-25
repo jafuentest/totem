@@ -14,7 +14,6 @@ namespace DAO.DAO.Modulo1
     public class DaoLogin : DAO,IDaoLogin
     {
         private FabricaEntidades fabricaEntidades = new FabricaEntidades();
-        private Entidad _usuario;
 
         #region Metodos IDAOLogin
         public Entidad ValidarUsuarioLogin(Entidad parametro)
