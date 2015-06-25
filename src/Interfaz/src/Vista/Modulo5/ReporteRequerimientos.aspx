@@ -55,9 +55,9 @@
 				    <td><%# Eval("Prioridad") %></td>
 				    <td>
 					   <a class="btn btn-default glyphicon glyphicon-pencil"
-					   href="ModificarRequerimiento.aspx?id=<%# Eval("Codigo") %>"></a>
+					   href="ModificarRequerimiento.aspx?id=<%# Eval("Codigo") %>&list=false"></a>
 					   <a class="btn btn-danger glyphicon glyphicon-remove-sign"
-					   href="ListarRequerimientos.aspx?eliminar=<%# Eval("Codigo") %>"></a>
+					   href="ReporteRequerimientos.aspx?eliminar=<%# Eval("Codigo") %>&list=false"></a>
 				    </td>
 				</tr>
 		  </ItemTemplate>
@@ -98,7 +98,7 @@
 
     $('#funcionales').click(function () {/*metodo para filtrar la tabla de requerimientos para que solo aparezcan los funcionales y
                                            activa el boton de generar documento*/
-        busqueda = 'funcional';
+        busqueda = 'Funcional';
         table.draw();
     });
     $("#tipo-dd li a").click(function () {//agrega el texto del elemento del dropdown al titulo del mismo
@@ -108,7 +108,7 @@
     });
     $('#nofuncionales').click(function () {/*metodo para filtrar la tabla de requerimientos para que solo aparezcan los no funcionales 
                                                  y activa el boton de generar documento*/
-        busqueda = 'no funcional';
+        busqueda = 'No Funcional';
         table.draw();
     });
 

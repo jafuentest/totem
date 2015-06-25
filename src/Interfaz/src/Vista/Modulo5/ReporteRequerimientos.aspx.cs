@@ -18,13 +18,18 @@ namespace Vista.Modulo5
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.Master.idModulo = "5";
-            this.Master.presentador.CargarMenuLateral();
-            HttpContext.Current.Session["Credenciales"] = new object();
 
-            presentador.ListarRequerimientosPorProyecto();
-           
+
+            if (!IsPostBack)
+            {
+                this.Master.idModulo = "5";
+                this.Master.presentador.CargarMenuLateral();
+                presentador.ObtenerVariablesURL();
+                presentador.ListarRequerimientosPorProyecto();
+                HttpContext.Current.Session["Credenciales"] = new object();
+            }  
         
+
         }
 
         protected void GenerarDoc_Click(object sender, EventArgs e)

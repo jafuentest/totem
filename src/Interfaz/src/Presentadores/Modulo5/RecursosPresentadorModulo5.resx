@@ -137,6 +137,10 @@
     <value>&lt;/div&gt;</value>
     <comment>Final del html</comment>
   </data>
+  <data name="Alerta_Mensaje_Archivo_Latext_NoGenerado" xml:space="preserve">
+    <value>Archivo de requerimientos no pude ser generado, revise el Log File para mas informacion</value>
+    <comment>Mensaj de error cuando el archivo latex no pudo ser compilado</comment>
+  </data>
   <data name="Alerta_Mensaje_Error_General" xml:space="preserve">
     <value>Ocurrio un error interno del sistema, intente nuevamente</value>
     <comment>Mensaje de error de errores generales</comment>
@@ -200,5 +204,9 @@
   <data name="Ventana_Listar_Requerimiento" xml:space="preserve">
     <value>/Modulo5/ListarRequerimientos.aspx</value>
     <comment>Ventana de listar requerimiento</comment>
+  </data>
+  <data name="Ventana_Reporte_Requerimiento" xml:space="preserve">
+    <value>/Modulo5/ReporteRequerimientos.aspx</value>
+    <comment>Ventana de reportes de requerimientos</comment>
   </data>
 </root>
