@@ -2177,6 +2177,26 @@ AS
 GO
 
 -- ========================================================================= --
+-- Retornar último cdigo de requerimiento por proyecto
+-- ========================================================================= --
+
+CREATE PROCEDURE M5_RetornarCodigoDeRequerimiento
+
+  @pro_id       [int] ,
+  @req_tipo     [varchar] (25) ,
+  @req_codigo     [varchar] (15)  OUTPUT
+
+AS
+  BEGIN
+    SELECT @req_codigo = req_codigo
+    FROM REQUERIMIENTO R
+    WHERE ( R.PROYECTO_pro_id = @pro_id
+        AND LOWER(R.req_tipo) = LOWER(@req_tipo) )
+    ORDER BY req_codigo;
+  END
+GO
+
+-- ========================================================================= --
 -- Eliminar requerimiento
 -- ========================================================================= --
 CREATE PROCEDURE M5_EliminarRequerimiento
