@@ -23,7 +23,7 @@ namespace Contratos.Modulo3
         String alertaUsuarioClase { set; }
         String alertaUsuarioRol { set; }
         String alertaContactoRol { set; }
-        String Alerta_AgregarContacto_Fracaso  { set; }
-        String Alerta_AgregarUsuario_Fracaso  { set; }
+        String AlertaContacto  { set; }
+        String AlertaUsuario  { set; }
     }
 }

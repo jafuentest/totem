@@ -25,7 +25,7 @@ namespace Comandos.Comandos.Modulo3
                 IDaoInvolucrados daoInvolucrados = laFabrica.ObtenerDaoInvolucrados();
                 lista = (ListaInvolucradoUsuario)daoInvolucrados.ConsultarUsuariosInvolucradosPorProyecto(parametro);
             }catch(Exception ex){
-                lista = null;
+                throw ex;
             }
             return lista;
         }
