@@ -18,8 +18,13 @@ namespace Vista.Modulo2
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.Master.idModulo = "2";
-            this.Master.presentador.CargarMenuLateral();
+            presentador.ObtenerVariablesURL();
+            if (!IsPostBack)
+            {
+                this.Master.idModulo = "2";
+                this.Master.presentador.CargarMenuLateral();
+                presentador.llenarComboCargos();
+            }
         }
 
         #region Contrato
@@ -109,5 +114,10 @@ namespace Vista.Modulo2
             set { alert.InnerHtml = value; }
         }
         #endregion
+
+        protected void botonEditar_Click(object sender, EventArgs e)
+        {
+            presentador.modificarContacto();
+        }
     }
 }

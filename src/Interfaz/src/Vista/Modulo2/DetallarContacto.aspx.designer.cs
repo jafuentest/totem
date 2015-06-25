@@ -31,22 +31,13 @@ namespace Vista.Modulo2 {
         protected global::System.Web.UI.HtmlControls.HtmlForm agregar_empresa;
         
         /// <summary>
-        /// contactoEmpresa control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl contactoEmpresa;
-        
-        /// <summary>
         /// contactoNombre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label contactoNombre;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl contactoNombre;
         
         /// <summary>
         /// apellidoContacto control.
@@ -55,7 +46,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label apellidoContacto;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl apellidoContacto;
         
         /// <summary>
         /// cedulaContacto control.
@@ -64,7 +55,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label cedulaContacto;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cedulaContacto;
         
         /// <summary>
         /// contenedorCargo control.
@@ -82,7 +73,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label cargoContacto;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cargoContacto;
         
         /// <summary>
         /// telefono control.
@@ -91,7 +82,7 @@ namespace Vista.Modulo2 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label telefono;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl telefono;
         
         /// <summary>
         /// div_botones control.

@@ -70,6 +70,15 @@ namespace Presentadores.Modulo2 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;a class=&quot;btn btn-primary glyphicon glyphicon-info-sign&quot; href=&quot;DetallarContacto.aspx?detalle=.
+        /// </summary>
+        public static string AbrirBotonDetalleContacto {
+            get {
+                return ResourceManager.GetString("AbrirBotonDetalleContacto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;a class=&quot;btn btn-primary glyphicon glyphicon-info-sign&quot; href=&quot;DetallarEmpresa.aspx?detalle=.
         /// </summary>
         public static string AbrirBotonDetalleEmpresa {
@@ -88,6 +97,24 @@ namespace Presentadores.Modulo2 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;a class=&quot;btn btn-danger glyphicon glyphicon-remove-sign&quot; href=&quot;DetallarEmpresa.aspx?detalle=.
+        /// </summary>
+        public static string AbrirBotonEliminarContactoDesdeDetalle {
+            get {
+                return ResourceManager.GetString("AbrirBotonEliminarContactoDesdeDetalle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;a class=&quot;btn btn-danger glyphicon glyphicon-remove-sign&quot; href=&quot;ModificarEmpresa.aspx?id=.
+        /// </summary>
+        public static string AbrirBotonEliminarContactoDesdeModificar {
+            get {
+                return ResourceManager.GetString("AbrirBotonEliminarContactoDesdeModificar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;a class=&quot;btn btn-danger glyphicon glyphicon-remove-sign&quot; href=&quot;ListarEmpresas.aspx?empresaaeliminar=.
         /// </summary>
         public static string AbrirBotonEliminarEmpresa {
@@ -102,6 +129,15 @@ namespace Presentadores.Modulo2 {
         public static string AbrirBotonModificarCliente {
             get {
                 return ResourceManager.GetString("AbrirBotonModificarCliente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;a class=&quot;btn btn-default glyphicon glyphicon-pencil&quot; href=&quot;ModificarContacto.aspx?id=.
+        /// </summary>
+        public static string AbrirBotonModificarContacto {
+            get {
+                return ResourceManager.GetString("AbrirBotonModificarContacto", resourceCulture);
             }
         }
         
@@ -241,6 +277,24 @@ namespace Presentadores.Modulo2 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contacto modificado exitosamente.
+        /// </summary>
+        public static string Alerta_Mensaje_Contacto_Modificado {
+            get {
+                return ResourceManager.GetString("Alerta_Mensaje_Contacto_Modificado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El contacto ha sido eliminado exitosamente.
+        /// </summary>
+        public static string Alerta_Mensaje_Eliminacion_Contacto {
+            get {
+                return ResourceManager.GetString("Alerta_Mensaje_Eliminacion_Contacto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to alert.
         /// </summary>
         public static string Alerta_Rol {
@@ -286,11 +340,38 @@ namespace Presentadores.Modulo2 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ?success=eliminar.
+        /// </summary>
+        public static string Codigo_Exito_Eliminar {
+            get {
+                return ResourceManager.GetString("Codigo_Exito_Eliminar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;success=modificar.
+        /// </summary>
+        public static string Codigo_Exito_ModficiarContacto {
+            get {
+                return ResourceManager.GetString("Codigo_Exito_ModficiarContacto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ?success=modificar.
         /// </summary>
         public static string Codigo_Exito_Modificar {
             get {
                 return ResourceManager.GetString("Codigo_Exito_Modificar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;contactoaeliminar=.
+        /// </summary>
+        public static string EliminarContactoQueryString {
+            get {
+                return ResourceManager.GetString("EliminarContactoQueryString", resourceCulture);
             }
         }
         
@@ -309,6 +390,33 @@ namespace Presentadores.Modulo2 {
         public static string ListarEmpresas {
             get {
                 return ResourceManager.GetString("ListarEmpresas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /Modulo2/ModificarEmpresa.aspx.
+        /// </summary>
+        public static string ModificarEmpresa {
+            get {
+                return ResourceManager.GetString("ModificarEmpresa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ?id=.
+        /// </summary>
+        public static string RedireccionID {
+            get {
+                return ResourceManager.GetString("RedireccionID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;pag=.
+        /// </summary>
+        public static string RedireccionPag {
+            get {
+                return ResourceManager.GetString("RedireccionPag", resourceCulture);
             }
         }
     }

@@ -23,8 +23,19 @@ namespace Presentadores.Modulo2
         public void ObtenerVariablesURL()
         {
             String detalleEmpresa = HttpContext.Current.Request.QueryString["detalle"];
+            String success = HttpContext.Current.Request.QueryString["success"];
             if (detalleEmpresa != null)
+            {
                 cargarDatos(detalleEmpresa);
+                if (success != null && success.Equals("modificar"))
+                {
+                    vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Exito;
+                    vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                    vista.alerta = RecursoInterfazM2.Alerta_Html +
+                        RecursoInterfazM2.Alerta_Mensaje_Contacto_Modificado +
+                        RecursoInterfazM2.Alerta_Html_Final;
+                }
+            }
         }
         public void cargarDatos(String idEmpresa)
         {
@@ -54,9 +65,18 @@ namespace Presentadores.Modulo2
                 {
                     vista.laTabla += RecursoInterfazM2.AbrirEtiqueta_tr;
                     vista.laTabla += RecursoInterfazM2.AbrirEtiqueta_td + elContacto.Con_Nombre + " "
-                        + elContacto.Con_Apellido + RecursoInterfazM2.CerrarEtiqueta_td; 
+                        + elContacto.Con_Apellido + RecursoInterfazM2.CerrarEtiqueta_td;
                     vista.laTabla += RecursoInterfazM2.AbrirEtiqueta_td + elContacto.ConCargo
                         + RecursoInterfazM2.CerrarEtiqueta_td;
+                    vista.laTabla += RecursoInterfazM2.AbrirEtiqueta_td + elContacto.Con_Telefono.Codigo
+                        + "-" + elContacto.Con_Telefono.Numero + RecursoInterfazM2.CerrarEtiqueta_td;
+                    vista.laTabla += RecursoInterfazM2.AbrirEtiqueta_td;
+                    vista.laTabla += RecursoInterfazM2.AbrirBotonDetalleContacto + elContacto.Id +
+                        RecursoInterfazM2.CerrarBoton;
+                    vista.laTabla += RecursoInterfazM2.AbrirBotonModificarContacto + elContacto.Id +
+                        RecursoInterfazM2.RedireccionPag + HttpContext.Current.Request.Url.LocalPath +
+                        RecursoInterfazM2.RedireccionID + elCliente.Id + RecursoInterfazM2.CerrarBoton;
+                    vista.laTabla += RecursoInterfazM2.CerrarEtiqueta_td;
                     vista.laTabla += RecursoInterfazM2.CerrarEtiqueta_tr;
                 }
             }
