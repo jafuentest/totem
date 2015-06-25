@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Contratos.Modulo8
 {
-    interface IContratoCrearMinuta
+    public interface IContratoCrearMinuta
     {
     }
 }

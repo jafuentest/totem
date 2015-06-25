@@ -6,14 +6,17 @@ using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Presentadores.Modulo8;
 
 namespace Vista.Modulo8
 {
     public partial class CrearMinuta : System.Web.UI.Page
     {
+        public PresentadorCrearMinuta presentador;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            this.Master.idModulo = "8";
+            this.Master.presentador.CargarMenuLateral();
         }
 
         [WebMethod]
@@ -26,6 +29,7 @@ namespace Vista.Modulo8
             });
             var output = JsonConvert.SerializeObject(listaUsuario);
             return output;*/
+            //List<Dominio.Entidad> listaUsuario = presentador.
             throw new NotImplementedException();
         }
 
