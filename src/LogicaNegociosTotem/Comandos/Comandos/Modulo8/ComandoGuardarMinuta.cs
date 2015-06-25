@@ -11,21 +11,20 @@ using ExcepcionesTotem.Modulo8.ExcepcionesDeDatos;
 using ExcepcionesTotem;
 using System.Data.SqlClient;
 using Dominio.Entidades.Modulo4;
+using Dominio;
 
 namespace Comandos.Comandos.Modulo8
 {
-    class ComandoGuardarMinuta : Comando<string, string>
+    public class ComandoGuardarMinuta : Comando<List<Entidad>, string>
     {
-        public override string Ejecutar(string parametro)
+        public override string Ejecutar(List<Entidad> parametro)
         {
             try
             {
 
-                string[] parametros = parametro.Split(';');
 
-                int idMinuta = int.Parse(parametros[0]);
-                string codigoProyecto = parametros[1];
-
+                Proyecto elProyecto = (Proyecto)parametro[0];
+                Minuta laMinuta = (Minuta)parametro[1];
                 FabricaAbstractaDAO fabricaDAO = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
                 DAO.IntefazDAO.Modulo8.IDaoInvolucradosMinuta daoInvMinutas = fabricaDAO.ObtenerDAOInvolucradosMinuta();
 
@@ -33,20 +32,18 @@ namespace Comandos.Comandos.Modulo8
                 List<Dominio.Entidad> contactos = new List<Dominio.Entidad>();
 
                 DAO.IntefazDAO.Modulo8.IDaoMinuta daoMinutas = fabricaDAO.ObtenerDAOMinuta();
-
+                DAO.IntefazDAO.Modulo8.IDaoAcuerdo daoAcuerdos = fabricaDAO.ObtenerDAOAcuerdo();
+                DAO.IntefazDAO.Modulo8.IDaoInvolucradosMinuta daoInvolucradosMinuta = fabricaDAO.ObtenerDAOInvolucradosMinuta();
                 DAO.IntefazDAO.Modulo4.IDaoProyecto daoProyectos = fabricaDAO.ObtenerDAOProyecto();
-                Dominio.Entidad auxiliarProyecto = daoProyectos.consultarProyecto(codigoProyecto);
-                Dominio.Entidad auxiliarMinuta = daoMinutas.ConsultarMinutaBD(idMinuta);
-                Proyecto elProyecto = (Proyecto)auxiliarProyecto; 
-                Minuta laMinuta = (Minuta)auxiliarMinuta;
-                daoMinutas.AgregarMinuta(laMinuta);
+
+                int idMinuta = daoMinutas.AgregarMinuta(laMinuta);
                 DAO.IntefazDAO.Modulo8.IDaoPunto daoPuntos = fabricaDAO.ObtenerDAOPunto();
 
                 if (laMinuta.ListaPunto != null)
                 {
                     foreach (Punto pun in laMinuta.ListaPunto)
                     {
-                        int auxiliar = daoPuntos.AgregarPunto(pun,laMinuta.Id);
+                        int auxiliar = daoPuntos.AgregarPunto(pun, laMinuta.Id);
                     }
                 }
 
@@ -55,7 +52,7 @@ namespace Comandos.Comandos.Modulo8
                     foreach (Usuario usu in laMinuta.ListaUsuario)
                     {
                         bool aux = daoInvMinutas.AgregarInvolucradoEnMinuta(usu.Id, elProyecto.Codigo,
-                            RecursosComandosModulo8.ProcedureAgregarUsuarioMinuta, RecursosComandosModulo8.ParametroIdUsuario,laMinuta.Id);
+                            RecursosComandosModulo8.ProcedureAgregarUsuarioMinuta, RecursosComandosModulo8.ParametroIdUsuario, laMinuta.Id);
                     }
                 }
 
@@ -66,17 +63,17 @@ namespace Comandos.Comandos.Modulo8
                         bool aux2 = daoInvMinutas.AgregarInvolucradoEnMinuta(con.Id, elProyecto.Codigo, RecursosComandosModulo8.ParametroIdContacto, RecursosComandosModulo8.ProcedureAgregarUsuarioMinuta, laMinuta.Id);
                     }
                 }
-                /*if (laMinuta.ListaAcuerdo != null)
+                if (laMinuta.ListaAcuerdo != null)
                 {
                     foreach (Acuerdo acu in laMinuta.ListaAcuerdo)
                     {
-                        acuerdos.AgregarAcuerdosBD(acu, elProyecto.Codigo);
-                        usuarios = acu.ListaUsuario;
+                        daoAcuerdos.AgregarAcuerdo(acu, idMinuta, elProyecto.Codigo);
+                        /*usuarios = acu.ListaUsuario;
                         if (usuarios != null)
                         {
                             foreach (Usuario usu in usuarios)
                             {
-                                involucrados.AgregarUsuarioEnAcuerdo(usu, elProyecto.Codigo);
+                                daoInvolucradosMinuta.AgregarUsuarioEnAcuerdo(usu, elProyecto.Codigo);
                             }
                         }
                         contactos = acu.ListaContacto;
@@ -84,12 +81,12 @@ namespace Comandos.Comandos.Modulo8
                         {
                             foreach (Contacto con in contactos)
                             {
-                                involucrados.AgregarContactoEnAcuerdo(con, elProyecto.Codigo);
+                                daoInvolucradosMinuta.AgregarContactoEnAcuerdo(con, elProyecto.Codigo);
                             }
-                        }
+                        }*/
                     }
-                }*/
-                return "Completado";
+                }
+                return idMinuta.ToString();
             }
 
             #region catch

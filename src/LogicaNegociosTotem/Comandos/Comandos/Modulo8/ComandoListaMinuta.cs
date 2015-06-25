@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace Comandos.Comandos.Modulo8
 {
-    class ComandoListaMinuta : Comando<String,List<Dominio.Entidad>>
+    public class ComandoListaMinuta : Comando<String,List<Dominio.Entidad>>
     {
 
         public override List<Dominio.Entidad> Ejecutar(String parametro)
