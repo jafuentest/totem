@@ -20,9 +20,9 @@ namespace Vista.Modulo7
         /// <summary>
         /// Constructor de la clase que inicializa su respectivo presentador enviandole esta clase
         /// </summary>
-        public AgregarUsuario ()
+        public AgregarUsuario()
         {
-           presentador = new PresentadorAgregarUsuario(this);
+            presentador = new PresentadorAgregarUsuario(this);
         }
 
         #region Contratos
@@ -35,7 +35,7 @@ namespace Vista.Modulo7
             {
                 return this.id_username.Value;
             }
-           
+
         }
 
         public string clave
@@ -44,7 +44,7 @@ namespace Vista.Modulo7
             {
                 return this.password.Value;
             }
-           
+
         }
 
         public string confirmarClave
@@ -62,7 +62,7 @@ namespace Vista.Modulo7
             {
                 return this.id_nombre.Value;
             }
-            
+
         }
 
         public string apellidoUsuario
@@ -71,7 +71,7 @@ namespace Vista.Modulo7
             {
                 return this.id_apellido.Value;
             }
-            
+
         }
 
         public string correoUsuario
@@ -80,7 +80,7 @@ namespace Vista.Modulo7
             {
                 return this.id_correo.Value;
             }
-                  
+
         }
 
         public string preguntaUsuario
@@ -89,7 +89,7 @@ namespace Vista.Modulo7
             {
                 return this.id_pregunta.Value;
             }
-           
+
         }
 
         public string respuestaUsuario
@@ -98,12 +98,12 @@ namespace Vista.Modulo7
             {
                 return this.id_respuesta.Value;
             }
-            
+
         }
 
         public DropDownList comboTipoRol
         {
-            get 
+            get
             {
                 return this.ComboTipoRol;
             }
@@ -136,13 +136,13 @@ namespace Vista.Modulo7
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Master.idModulo = "7";
-            
-            if(!IsPostBack)
+
+            if (!IsPostBack)
             {
                 this.Master.presentador.CargarMenuLateral();
                 presentador.LlenarCombos();
             }
-                
+
         }
 
         /// <summary>
@@ -152,7 +152,16 @@ namespace Vista.Modulo7
         /// <param name="e">Clase Base de clases que con tienen la informacion del evento</param>
         protected void Agregar_Usuario(object sender, EventArgs e)
         {
+            //Obtenemos la respuesta del agregar
             bool exito = presentador.AgregarUsuario();
+
+            //Analizamos las condiciones
+            if (exito)
+                //Si se pudo Agregar
+                HttpContext.Current.Response.Redirect("ListarUsuarios.aspx?success=1&exito=1");
+            else
+                //Sino se pudo agregar
+                HttpContext.Current.Response.Redirect("ListarUsuarios.aspx?success=1&exito=0");
         }
     }
 }

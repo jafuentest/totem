@@ -87,7 +87,7 @@
         <div class="form-group">
 		    <div class="col-sm-5 col-md-5 col-lg-5">
 				<button runat="server" class="btn btn-primary" type="submit" onserverclick="Agregar_Usuario">Registrar</button>
-                <a class="btn btn-default" href="AgregarUsuario.aspx">Cancelar</a>
+                <a class="btn btn-default" href="ListarUsuarios.aspx">Cancelar</a>
 			</div>
 	    </div>
     </form>
