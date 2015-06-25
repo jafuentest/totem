@@ -143,7 +143,7 @@ namespace Comandos.Fabrica
         {
             return new Comandos.Modulo3.ComandoAgregarContactosInvolucrados();
         }
-        public static Comando<Dominio.Entidad, Dominio.Entidad> CrearComandoConsultarUsuariosInvolucrados()
+        public static Comando<Dominio.Entidad, Dominio.Entidad> CrearComandoConsultarUsuariosInvolucradosPorProyecto()
         {
 
             return new Comandos.Modulo3.ComandoConsultarUsuariosInvolucradosPorProyecto();
@@ -163,6 +163,7 @@ namespace Comandos.Fabrica
 
             return new Comandos.Modulo3.ComandoEliminarContactoDeIvolucradosEnProyecto();
         }
+
         public static Comando<Dominio.Entidad, Boolean> CrearComandoEliminarUsuariosDeInvolucradosEnProyecto()
         {
 
