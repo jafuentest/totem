@@ -118,7 +118,7 @@ namespace Vista.Modulo8
                 };
 
                 Presentadores.Modulo8.PresentadorCrearMinuta presentador = new Presentadores.Modulo8.PresentadorCrearMinuta();
-             //   mensaje = presentador.crearMinuta(minuta,codigoProyecto);
+              mensaje = presentador.crearMinuta(minuta,codigoProyecto);
             }
             catch (NullReferenceException ex)
             {

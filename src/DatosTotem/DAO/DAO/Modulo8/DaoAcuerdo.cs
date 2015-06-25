@@ -42,7 +42,7 @@ namespace DAO.DAO.Modulo8
             
             List<Parametro> parametros = new List<Parametro>();
             Parametro elParametro = new Parametro(RecursosBDModulo8.ParametroFechaAcuerdo, SqlDbType.DateTime,
-                elAcuerdo.Fecha.ToShortDateString(), false);
+                elAcuerdo.Fecha.ToString("yyyy-MM-dd HH':'mm':'ss"), false);
             parametros.Add(elParametro);
             elParametro = new Parametro(RecursosBDModulo8.ParametroDesarrolloAcuerdo, SqlDbType.VarChar,
                 elAcuerdo.Compromiso, false);
