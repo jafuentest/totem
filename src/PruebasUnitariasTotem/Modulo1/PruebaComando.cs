@@ -41,7 +41,7 @@ namespace PruebasUnitariasTotem.Modulo1
             usuario = null;
             fabricaEntidades = null;
         }
-        #endregion 
+        #endregion
 
         #region Pruebas Unitarias ComandoCambioDeClave
         [Test, ExpectedException(typeof(UsuarioVacioException))]
