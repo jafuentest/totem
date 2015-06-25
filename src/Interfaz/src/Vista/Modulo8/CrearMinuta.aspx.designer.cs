@@ -14,13 +14,94 @@ namespace Vista.Modulo8
     public partial class CrearMinuta
     {
 
+
         /// <summary>
-        /// form1 control.
+        /// fechaReunion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText fechaReunion;
+
+        /// <summary>
+        /// motivo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea motivo;
+
+        /// <summary>
+        /// listaInvolucrado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl listaInvolucrado;
+
+        /// <summary>
+        /// puntosMinuta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl puntosMinuta;
+
+        /// <summary>
+        /// BotonAgregarPunto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton BotonAgregarPunto;
+
+        /// <summary>
+        /// acuerdosMinuta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl acuerdosMinuta;
+
+        /// <summary>
+        /// BotonAgregarAcuerdo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton BotonAgregarAcuerdo;
+
+        /// <summary>
+        /// observaciones control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea observaciones;
+
+        /// <summary>
+        /// BotonAgregarMinuta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton BotonAgregarMinuta;
+
+        public new Vista.Master.MasterPage Master
+        {
+            get
+            {
+                return ((Vista.Master.MasterPage)(base.Master));
+            }
+        }
     }
 }

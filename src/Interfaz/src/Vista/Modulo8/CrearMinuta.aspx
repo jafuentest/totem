@@ -77,7 +77,7 @@
         
            <div class="form-group">
                <div class="col-xs-12 col-md-9 botones" style="position:absolute; left:120px">
-				    <button type="button"  class="btn btn-primary" onclick="validar();">Agregar</button>
+				    <button type="button" id="BotonAgregarMinuta" class="btn btn-primary" onclick="validar();">Agregar</button>
                     <a type="button"  class="btn btn-default" href="ConsultarMinuta.aspx" >Cancelar</a>
                </div>    
 	       </div>
@@ -101,10 +101,6 @@
     </div>
 
 
-<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
-<script type="text/javascript" src="js/moment-with-locales.min.js"></script>
-<script type="text/javascript" src="js/bootstrap-datetimepicker.js"></script>
-<script type="text/javascript" src="js/crearMinuta.js"></script>
-<script type="text/javascript" src="js/validacionesCrearMinuta.js"></script>
+
 </asp:Content>
 

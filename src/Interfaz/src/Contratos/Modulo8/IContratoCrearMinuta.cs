@@ -5,7 +5,11 @@ using System.Text;
 
 namespace Contratos.Modulo8
 {
-    interface IContratoCrearMinuta
+    public interface IContratoCrearMinuta
     {
+        string FechaMinuta { get; set; }
+        string MotivoMinuta { get; set; }
+        string Observaciones { get; set; }
+        string ListaInvolucrado { get; set; }
     }
 }
