@@ -124,13 +124,19 @@
     <value>&lt;tr&gt;</value>
   </data>
   <data name="BotonDetalle" xml:space="preserve">
-    <value>&lt;a id='{0}' class='btn btn-primary glyphicon glyphicon-info-sign' href='DetalleMinutas.aspx?idMinuta={0}'&gt;&lt;/a&gt;</value>
+    <value>}' class='btn btn-primary glyphicon glyphicon-info-sign' href='DetalleMinutas.aspx?idMinuta={</value>
+  </data>
+  <data name="BotonDetalleCerrar" xml:space="preserve">
+    <value>}'&gt;&lt;/a&gt;</value>
+  </data>
+  <data name="BotonDetalleIniciar" xml:space="preserve">
+    <value>&lt;a id='{</value>
   </data>
   <data name="BotonImprimir" xml:space="preserve">
-    <value>&lt;a id='{0}' class='btn btn-success glyphicon glyphicon-print' href='DetalleMinutas.aspx?idMinuta={0}'&gt;&lt;/a&gt;</value>
+    <value>}' class='btn btn-success glyphicon glyphicon-print' href='DetalleMinutas.aspx?idMinuta={</value>
   </data>
   <data name="BotonModificar" xml:space="preserve">
-    <value>&lt;a id='{0}' class='btn btn-default glyphicon glyphicon-pencil' href='ModificarMinuta.aspx?idMinuta={0}'&gt;&lt;/a&gt;</value>
+    <value>}' class='btn btn-default glyphicon glyphicon-pencil' href='ModificarMinuta.aspx?idMinuta={</value>
   </data>
   <data name="CerrarEtiquetaTd" xml:space="preserve">
     <value>&lt;/td&gt;</value>

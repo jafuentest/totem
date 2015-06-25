@@ -58,14 +58,14 @@ namespace DAO.DAO.Modulo8
 
                 foreach (DataRow row in resultado.Rows)
                 {
-                    if (elAcuerdo.ListaContacto.Count > 0)
+                    if (elAcuerdo.ListaContacto != null)
                     {
                         foreach (Contacto contacto in elAcuerdo.ListaContacto)
                         {
                             bool contactoBool = DAOInvolucradosMinuta.AgregarContactoEnAcuerdo(contacto, row[RecursosBDModulo8.AtributoIDAcuerdo].ToString(), idProyecto);
                         }
                     }
-                    if (elAcuerdo.ListaUsuario.Count > 0)
+                    if (elAcuerdo.ListaUsuario != null)
                     {
                         foreach (Usuario usuario in elAcuerdo.ListaUsuario)
                         {

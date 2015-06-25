@@ -36,5 +36,56 @@
     
 
 <script type="text/javascript" src="js/consultarMinuta.js"></script>
+
+	<script type="text/javascript">
+	    $(document).ready(function () {
+	        $('#table-example').DataTable();
+	        var table = $('#table-example').DataTable();
+	        var req;
+	        var tr;
+
+	        $('#table-example tbody').on('click', 'a', function () {
+	            if ($(this).parent().hasClass('selected')) {
+	                req = $(this).parent().prev().prev().prev().prev().text();
+	                tr = $(this).parents('tr');//se guarda la fila seleccionada
+	                $(this).parent().removeClass('selected');
+
+	            }
+	            else {
+	                req = $(this).parent().prev().prev().prev().prev().text();
+	                tr = $(this).parents('tr');//se guarda la fila seleccionada
+	                table.$('tr.selected').removeClass('selected');
+	                $(this).parent().addClass('selected');
+	            }
+	        });
+	        $('#modal-delete').on('show.bs.modal', function (event) {
+	            var modal = $(this)
+	            modal.find('.modal-title').text('Eliminar requerimiento:  ' + req)
+	            modal.find('#req').text(req)
+	        })
+	        $('#btn-eliminar').on('click', function () {
+	            table.row(tr).remove().draw();//se elimina la fila de la tabla
+	            $('#modal-delete').modal('hide');//se esconde el modal
+	        });
+	        $('#modal-update').on('show.bs.modal', function (event) {
+	            var modal = $(this)
+	            modal.find('.modal-title').text('Modificar requerimiento')
+	        });
+	    });
+	</script>
+    <script>
+        function fillCodigoTextField() {
+            var idTextField = document.getElementById("idreq_input");
+            var funcionalRadio = document.getElementById("input_tipo_funcional");
+            var nofuncionalRadio = document.getElementById("input_tipo_nofuncional");
+
+            if (funcionalRadio.checked) {
+                idTextField.value = "TOT_RF_5_1";
+            } else
+                if (nofuncionalRadio.checked) {
+                    idTextField.value = "TOT_RNF_5_1";
+                }
+        }
+    </script>
 </asp:Content>
 
