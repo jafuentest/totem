@@ -26,7 +26,7 @@ namespace Vista.Modulo8
                 this.Master.presentador.CargarMenuLateral();
                 presentador.ObtenerUsuarioLogeado();
             }
-            codigoProyecto = Server.HtmlEncode(Request.Cookies["selectedProjectCookie"]["projectCode"]);
+            //codigoProyecto = Server.HtmlEncode(Request.Cookies["selectedProjectCookie"]["projectCode"]);
 
 
         }
@@ -63,6 +63,7 @@ namespace Vista.Modulo8
             string mensaje = "Minuta";
             try
             {
+                codigoProyecto = "TOT";
                 dynamic minutaDinamica = laMinuta;
                 List<Usuario> listaUsuario = new List<Usuario>();
                 for (int i = 0; i < minutaDinamica["involucrado"].Length; i++)
@@ -117,7 +118,7 @@ namespace Vista.Modulo8
                 };
 
                 Presentadores.Modulo8.PresentadorCrearMinuta presentador = new Presentadores.Modulo8.PresentadorCrearMinuta();
-                mensaje = presentador.crearMinuta(minuta);
+             //   mensaje = presentador.crearMinuta(minuta,codigoProyecto);
             }
             catch (NullReferenceException ex)
             {

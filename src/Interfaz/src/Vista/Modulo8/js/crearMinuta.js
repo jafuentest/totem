@@ -192,8 +192,6 @@ $(function ()
             var cargoUsuario = json[i]["Cargo"];
             var divUsuario = codigoUsuario + "_par";
             var checkUsuario = codigoUsuario + "_par_check";
-            document.write('texto');
-            window.alert(5 + 6);
 
             $('#listaInvolucrado').append(
                "<div id='" + divUsuario + "' class='panel panel-default panel-participante col-xs-12 col-sm-6' onclick='seleccionado(this)'>"
