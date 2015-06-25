@@ -21,7 +21,7 @@ namespace Comandos.Comandos.Modulo1
             try
             {
                 ((Usuario)parametro).CalcularHash();
-                FabricaAbstractaDAO fabricaDao = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+                FabricaDAOSqlServer fabricaDao = new FabricaDAOSqlServer();
                 IDaoLogin idaoLogin = fabricaDao.ObtenerDaoLogin();
                 return  idaoLogin.Modificar(((Usuario)parametro));
             }

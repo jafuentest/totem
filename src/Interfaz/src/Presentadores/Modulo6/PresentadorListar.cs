@@ -144,8 +144,8 @@ namespace Presentadores.Modulo6
             }
             catch (ComandoException e)
             {
-                AgregarActorPresentadorException exAgregarActorPresentador =
-                         new AgregarActorPresentadorException(
+                ErrorGeneralPresentadorException exAgregarActorPresentador =
+                         new ErrorGeneralPresentadorException(
                              RecursosPresentadorModulo6.CodigoMensajePresentadorException,
                              RecursosPresentadorModulo6.MensajePresentadorException,
                              e);
@@ -216,8 +216,8 @@ namespace Presentadores.Modulo6
 
             catch (ComandoException e)
             {
-                AgregarActorPresentadorException exReporteActoresPresentador =
-                         new AgregarActorPresentadorException(
+                ErrorGeneralPresentadorException exReporteActoresPresentador =
+                         new ErrorGeneralPresentadorException(
                              RecursosPresentadorModulo6.CodigoMensajePresentadorException,
                              RecursosPresentadorModulo6.MensajePresentadorException,
                              e);
@@ -287,8 +287,8 @@ namespace Presentadores.Modulo6
 
             catch (ComandoException e)
             {
-                AgregarActorPresentadorException exReporteActoresPresentador =
-                         new AgregarActorPresentadorException(
+                ErrorGeneralPresentadorException exReporteActoresPresentador =
+                         new ErrorGeneralPresentadorException(
                              RecursosPresentadorModulo6.CodigoMensajePresentadorException,
                              RecursosPresentadorModulo6.MensajePresentadorException,
                              e);

@@ -26,7 +26,7 @@ namespace Comandos.Comandos.Modulo6
        {
            try
            {
-               DAO.Fabrica.FabricaAbstractaDAO fabricaDaoSqlServer = DAO.Fabrica.FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+               DAO.Fabrica.FabricaDAOSqlServer fabricaDaoSqlServer = new DAO.Fabrica.FabricaDAOSqlServer(); 
 
                DAO.DAO.Modulo6.DAOActor daoActor = (DAO.DAO.Modulo6.DAOActor)fabricaDaoSqlServer.ObtenerDAOActor();
                bool resultado = daoActor.Agregar(parametro);

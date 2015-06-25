@@ -28,7 +28,7 @@ namespace Comandos.Comandos.Modulo1
                 ((Usuario)usuario).Username = parametro[0];
                 ((Usuario)usuario).Clave= parametro[1];
                 ((Usuario)usuario).CalcularHash();
-                FabricaAbstractaDAO fabricaDao = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+                FabricaDAOSqlServer fabricaDao = new FabricaDAOSqlServer();
                 IDaoLogin idaoLogin= fabricaDao.ObtenerDaoLogin();
                 usuario = idaoLogin.ValidarUsuarioLogin(((Usuario)usuario));
                 intentos = 0;

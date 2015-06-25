@@ -29,9 +29,86 @@ namespace Presentadores.Modulo5
         {
             usuario = 
                 HttpContext.Current.Session["Credenciales"] as Dominio.Entidades.Modulo7.Usuario;
-            vista.idRequerimiento = "TOT_213";
         }
 
+        /// <summary>
+        /// Metodo que obtiene el codigo del requerimiento
+        /// </summary>
+        public void ObtenerCodigoRequerimiento()
+        {
+            try
+            {
+                HttpCookie pcookie = HttpContext.Current.Request.Cookies.Get("selectedProjectCookie");
+                Comandos.Comando<String, List<String>> comandoBuscar;
+                List<String> codigos = new List<string>();
+                comandoBuscar = Comandos.Fabrica.FabricaComandos.CrearComandoBuscarCodigoRequerimiento();
+                //comandoBuscar.Ejecutar(pcookie.Values["projectCode"].ToString());
+                codigos = comandoBuscar.Ejecutar("TOT");
+                if (vista.funcional.Equals("funcional", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    vista.idRequerimiento = DesglosarCodigo(codigos[0]);
+                }
+                else
+                {
+                    vista.idRequerimiento = DesglosarCodigo(codigos[1]);
+                }
+            }
+            #region Capturar Excepcion
+            catch (ExcepcionesTotem.Modulo5.CamposInvalidosException ex)
+            {
+                vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Error;
+                vista.alertaRol = RecursosPresentadorModulo5.Alerta_Rol;
+                vista.alerta = RecursosPresentadorModulo5.Alerta_Html +
+                    RecursosGeneralPresentadores.Mensaje_Error_InputInvalido +
+                    RecursosPresentadorModulo5.Alerta_Html_Final;
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Error;
+                vista.alertaRol = RecursosPresentadorModulo5.Alerta_Rol;
+                vista.alerta = RecursosPresentadorModulo5.Alerta_Html +
+                    RecursosGeneralPresentadores.Mensaje_Error_BaseDatos +
+                    RecursosPresentadorModulo5.Alerta_Html_Final;
+            }
+            catch (ExcepcionesTotem.Modulo5.RequerimientoInvalidoException ex)
+            {
+                vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Error;
+                vista.alertaRol = RecursosPresentadorModulo5.Alerta_Rol;
+                vista.alerta = RecursosPresentadorModulo5.Alerta_Html +
+                    RecursosPresentadorModulo5.Alerta_Mensaje_Requerimiento_Invalido +
+                    RecursosPresentadorModulo5.Alerta_Html_Final;
+            }
+            catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
+            {
+                vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Error;
+                vista.alertaRol = RecursosPresentadorModulo5.Alerta_Rol;
+                vista.alerta = RecursosPresentadorModulo5.Alerta_Html +
+                    RecursosPresentadorModulo5.Alerta_Mensaje_Error_General +
+                    RecursosPresentadorModulo5.Alerta_Html_Final;
+            }
+            catch (Exception e)
+            {
+                vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Error;
+                vista.alertaRol = RecursosPresentadorModulo5.Alerta_Rol;
+                vista.alerta = RecursosPresentadorModulo5.Alerta_Html +
+                    RecursosPresentadorModulo5.Alerta_Mensaje_Error_General +
+                    RecursosPresentadorModulo5.Alerta_Html_Final;
+            }
+            #endregion
+        }
+
+        /// <summary>
+        /// Metodo para desglosar el codigo del requerimiento 
+        /// y sumar en uno
+        /// </summary>
+        /// <param name="codigo">codigo del requerimiento</param>
+        public String DesglosarCodigo(String codigo)
+        {
+            int ultimo = (int)Char.GetNumericValue(codigo[codigo.Length - 1]);
+            codigo = codigo.Remove(codigo.Length - 1);
+            return codigo = codigo + Convert.ToString(ultimo + 1);
+
+        }
         /// <summary>
         /// Metodo que valida y obtiene las variables de URL
         /// </summary>
