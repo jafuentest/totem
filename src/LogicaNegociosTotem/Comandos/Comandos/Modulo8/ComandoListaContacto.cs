@@ -14,7 +14,7 @@ using Dominio.Entidades.Modulo4;
 
 namespace Comandos.Comandos.Modulo8
 {
-    class ComandoListaContacto : Comando<Dominio.Entidad, List<Dominio.Entidad>>
+    public class ComandoListaContacto : Comando<Dominio.Entidad, List<Dominio.Entidad>>
     {
         public override List<Dominio.Entidad> Ejecutar(Dominio.Entidad elProyecto)
         {

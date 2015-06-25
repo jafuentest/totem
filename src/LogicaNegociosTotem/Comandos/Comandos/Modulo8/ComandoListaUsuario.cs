@@ -15,7 +15,7 @@ using Dominio.Entidades.Modulo4;
 namespace Comandos.Comandos.Modulo8
 {
    
-    class ComandoListaUsuario :Comando<Dominio.Entidad, List<Dominio.Entidad>>
+    public class ComandoListaUsuario :Comando<Dominio.Entidad, List<Dominio.Entidad>>
     {
         /// <summary>
         /// Comando que obtiene el listado de los involucrados de un proyecto
