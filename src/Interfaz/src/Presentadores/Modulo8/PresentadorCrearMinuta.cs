@@ -28,7 +28,7 @@ namespace Presentadores.Modulo8
 
             foreach (Usuario usuario in listaUsuario) 
             {
-                int codigoUsuario = usuario.IdUsuario;
+                int codigoUsuario = usuario.Id;
                 string nombreCompletoUsuario = usuario.Nombre+ " " +usuario.Apellido;
                 var cargoUsuario = usuario.Cargo;
                 var divUsuario = codigoUsuario + "_par";
