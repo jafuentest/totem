@@ -21,6 +21,8 @@ namespace Vista.Modulo5
             this.Master.idModulo = "5";
             this.Master.presentador.CargarMenuLateral();
             HttpContext.Current.Session["Credenciales"] = new object();
+
+            presentador.ListarRequerimientosPorProyecto();
            
         
         }
@@ -28,6 +30,35 @@ namespace Vista.Modulo5
         protected void GenerarDoc_Click(object sender, EventArgs e)
         {
             this.presentador.GenerarDoc("TOT");
+            
+        }
+
+        Repeater Contratos.Modulo5.IContratoReporteRequerimientos.RepeaterRequerimiento
+        {
+            get
+            {
+                return this.RRequerimientos;
+            }
+            set
+            {
+                this.RRequerimientos = value;
+            }
+        }
+
+
+        public string alertaClase
+        {
+            set { alert.Attributes["class"] = value; }
+        }
+
+        public string alertaRol
+        {
+            set { alert.Attributes["role"] = value; }
+        }
+
+        public string alerta
+        {
+            set { alert.InnerHtml = value; }
         }
     }
 }

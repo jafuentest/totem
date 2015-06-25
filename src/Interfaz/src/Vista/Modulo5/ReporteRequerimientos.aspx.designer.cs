@@ -22,6 +22,15 @@ namespace Vista.Modulo5 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl alert;
         
         /// <summary>
+        /// Control RRequerimientos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RRequerimientos;
+        
+        /// <summary>
         /// Control GenerarDoc.
         /// </summary>
         /// <remarks>
