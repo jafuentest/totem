@@ -90,24 +90,6 @@ namespace Presentadores.Modulo3 {
         /// <summary>
         ///   Busca una cadena traducida similar a alert alert-danger alert-dismissible.
         /// </summary>
-        internal static string Alerta_AgregarContacto_Fracaso {
-            get {
-                return ResourceManager.GetString("Alerta_AgregarContacto_Fracaso", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a alert alert-danger alert-dismissible.
-        /// </summary>
-        internal static string Alerta_AgregarUsuario_Fracaso {
-            get {
-                return ResourceManager.GetString("Alerta_AgregarUsuario_Fracaso", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a alert alert-danger alert-dismissible.
-        /// </summary>
         internal static string Alerta_Clase_Error {
             get {
                 return ResourceManager.GetString("Alerta_Clase_Error", resourceCulture);
@@ -120,6 +102,15 @@ namespace Presentadores.Modulo3 {
         internal static string Alerta_Clase_Exito {
             get {
                 return ResourceManager.GetString("Alerta_Clase_Exito", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No hay conexion con la base de datos.
+        /// </summary>
+        internal static string Alerta_Conexion_Error {
+            get {
+                return ResourceManager.GetString("Alerta_Conexion_Error", resourceCulture);
             }
         }
         
@@ -178,11 +169,38 @@ namespace Presentadores.Modulo3 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error en Totem.
+        /// </summary>
+        internal static string Alerta_Totem_Error {
+            get {
+                return ResourceManager.GetString("Alerta_Totem_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Usuario agregado exitosamente.
         /// </summary>
         internal static string Alerta_Usuario_Agregado {
             get {
                 return ResourceManager.GetString("Alerta_Usuario_Agregado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a alert alert-danger alert-dismissible.
+        /// </summary>
+        internal static string AlertaContacto {
+            get {
+                return ResourceManager.GetString("AlertaContacto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a alert alert-danger alert-dismissible.
+        /// </summary>
+        internal static string AlertaUsuario {
+            get {
+                return ResourceManager.GetString("AlertaUsuario", resourceCulture);
             }
         }
         

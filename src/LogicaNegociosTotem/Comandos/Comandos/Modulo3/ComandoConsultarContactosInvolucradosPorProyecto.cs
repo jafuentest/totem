@@ -26,7 +26,7 @@ namespace Comandos.Comandos.Modulo3
             }
             catch (Exception ex)
             {
-                listContacto = null;                 
+                throw ex;                 
             }
             return listContacto;
         }

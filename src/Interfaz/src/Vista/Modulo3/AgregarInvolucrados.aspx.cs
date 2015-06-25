@@ -152,7 +152,7 @@ namespace Vista.Modulo3
             }
         }
 
-        String Contratos.Modulo3.IContratoAgregarInvolucrado.Alerta_AgregarContacto_Fracaso
+        String Contratos.Modulo3.IContratoAgregarInvolucrado.AlertaContacto
 
         {
             set
@@ -160,7 +160,7 @@ namespace Vista.Modulo3
                 alertContacto.InnerHtml = value; ;
             }
         }
-        String Contratos.Modulo3.IContratoAgregarInvolucrado.Alerta_AgregarUsuario_Fracaso
+        String Contratos.Modulo3.IContratoAgregarInvolucrado.AlertaUsuario
         {
             set
             {

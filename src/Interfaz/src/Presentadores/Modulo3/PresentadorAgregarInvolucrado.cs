@@ -7,6 +7,7 @@ using Dominio.Entidades.Modulo3;
 using Dominio.Entidades.Modulo4;
 using Dominio.Entidades.Modulo7;
 using Dominio.Fabrica;
+using ExcepcionesTotem;
 using ExcepcionesTotem.Modulo3;
 using System;
 using System.Collections.Generic;
@@ -58,24 +59,43 @@ namespace Presentadores.Modulo3
             vista.comboCargo.Enabled = true;
             Dictionary<string, string> options = new Dictionary<string, string>();
             options.Add("-1", "Seleccionar Cargo");
-            if (this.vista.comboCargo.SelectedIndex == 1)
+            try
             {
-                Comando<bool, List<String>> comando_juridico = FabricaComandos.CrearComandoConsultarListaCargos();
-      
-                List<String> listCago = comando_juridico.Ejecutar(true);
-                foreach (String cargo in listCago)
+                if (this.vista.comboCargo.SelectedIndex == 1)
                 {
-                    options.Add(cargo, cargo);
+                    Comando<bool, List<String>> comando_juridico = FabricaComandos.CrearComandoConsultarListaCargos();
+
+                    List<String> listCago = comando_juridico.Ejecutar(true);
+                    foreach (String cargo in listCago)
+                    {
+                        options.Add(cargo, cargo);
+                    }
                 }
-            }
-            else {
-                Comando<bool, List<String>> comando_usuario = FabricaComandos.CrearComandoLeerCargosUsuarios();
-                List<String> listCago = comando_usuario.Ejecutar(true);
-                foreach (String cargo in listCago)
+                else
                 {
-                    options.Add(cargo,cargo);
+                    Comando<bool, List<String>> comando_usuario = FabricaComandos.CrearComandoLeerCargosUsuarios();
+                    List<String> listCago = comando_usuario.Ejecutar(true);
+                    foreach (String cargo in listCago)
+                    {
+                        options.Add(cargo, cargo);
+                    }
                 }
+            } catch (ExceptionTotemConexionBD){
+                vista.alertaUsuarioClase = RecursosInterfazM3.Alerta_Clase_Error;
+                vista.alertaUsuarioRol = RecursosInterfazM3.Alerta_Rol;
+                vista.AlertaUsuario = RecursosInterfazM3.Alerta_Html +
+                 RecursosInterfazM3.Alerta_Conexion_Error +
+                 RecursosInterfazM3.Alerta_Html_Final;
             }
+            catch (ExceptionTotem)
+            {
+                vista.alertaUsuarioClase = RecursosInterfazM3.Alerta_Clase_Error;
+                vista.alertaUsuarioRol = RecursosInterfazM3.Alerta_Rol;
+                vista.AlertaUsuario = RecursosInterfazM3.Alerta_Html +
+                 RecursosInterfazM3.Alerta_Totem_Error +
+                 RecursosInterfazM3.Alerta_Html_Final;
+            }
+
             vista.comboCargo.DataSource = options;
             vista.comboCargo.DataTextField = "value";
             vista.comboCargo.DataValueField = "key";
@@ -102,21 +122,31 @@ namespace Presentadores.Modulo3
             String cargoSelecionado = vista.comboCargo.SelectedValue;
             Dictionary<String, string> options = new Dictionary<string, string>();
             options.Add("-1","Seleccionar Personal");
-            if (vista.comboTipoEmpresa.SelectedValue == "1")
+            try
             {
-                Comando<Entidad, List<Entidad>> comando = FabricaComandos.CrearComandoListarContactosPorEmpresa();
-                ClienteJuridico client = new ClienteJuridico();
-                client.Id = 1;
-               List<Entidad> listContacto = comando.Ejecutar(client);
-                foreach (Entidad contacto in listContacto)
-                    if(((Contacto)contacto).ConCargo == cargoSelecionado)
-                        options.Add(((Contacto)contacto).Id.ToString(), ((Contacto)contacto).Con_Nombre + " " + ((Contacto)contacto).Con_Apellido);
-            }
-            if(vista.comboTipoEmpresa.SelectedValue == "2"){
-                Comando<String, List<Entidad>> comando = FabricaComandos.CrearComandoListarUsuariosPorCargo();
-                List<Entidad> listUsuario = comando.Ejecutar(cargoSelecionado);
-               foreach (Entidad usuario in listUsuario)
-                  options.Add(((Usuario)usuario).Username, ((Usuario)usuario).Nombre + " " + ((Usuario)usuario).Apellido);
+                if (vista.comboTipoEmpresa.SelectedValue == "1")
+                {
+                    Comando<Entidad, List<Entidad>> comando = FabricaComandos.CrearComandoListarContactosPorEmpresa();
+                    ClienteJuridico client = new ClienteJuridico();
+                    client.Id = 1;
+                    List<Entidad> listContacto = comando.Ejecutar(client);
+                    foreach (Entidad contacto in listContacto)
+                        if (((Contacto)contacto).ConCargo == cargoSelecionado)
+                            options.Add(((Contacto)contacto).Id.ToString(), ((Contacto)contacto).Con_Nombre + " " + ((Contacto)contacto).Con_Apellido);
+                }
+                if (vista.comboTipoEmpresa.SelectedValue == "2")
+                {
+                    Comando<String, List<Entidad>> comando = FabricaComandos.CrearComandoListarUsuariosPorCargo();
+                    List<Entidad> listUsuario = comando.Ejecutar(cargoSelecionado);
+                    foreach (Entidad usuario in listUsuario)
+                        options.Add(((Usuario)usuario).Username, ((Usuario)usuario).Nombre + " " + ((Usuario)usuario).Apellido);
+                }
+            }catch(Exception){
+                vista.alertaUsuarioClase = RecursosInterfazM3.Alerta_Clase_Error;
+                vista.alertaUsuarioRol = RecursosInterfazM3.Alerta_Rol;
+                vista.AlertaUsuario = RecursosInterfazM3.Alerta_Html +
+                 RecursosInterfazM3.Alerta_Totem_Error +
+                 RecursosInterfazM3.Alerta_Html_Final;
             }
             vista.comboPersonal.DataSource = options;
             vista.comboPersonal.DataTextField = "value";
@@ -196,7 +226,7 @@ namespace Presentadores.Modulo3
                  {
                      vista.alertaUsuarioClase = RecursosInterfazM3.Alerta_Clase_Error;
                      vista.alertaUsuarioRol = RecursosInterfazM3.Alerta_Rol;
-                     vista.Alerta_AgregarUsuario_Fracaso = RecursosInterfazM3.Alerta_Html +
+                     vista.AlertaUsuario = RecursosInterfazM3.Alerta_Html +
                       RecursosInterfazM3.Alerta_Seleccion_vacia +
                       RecursosInterfazM3.Alerta_Html_Final;
                  }

@@ -16,16 +16,18 @@ namespace Comandos.Comandos.Modulo3
         /// <returns>true si se puede eliminar</returns>
         public override List<String> Ejecutar(Dominio.Entidad parametro)
         {
+            List<String> listCargo;
             try
             {
                 FabricaAbstractaDAO laFabrica = FabricaDAOSqlServer.ObtenerFabricaSqlServer();
                 IDaoInvolucrados daoInvolucrados = laFabrica.ObtenerDaoInvolucrados();
-                return daoInvolucrados.ConsultarCargosContactos(parametro);
+                listCargo = daoInvolucrados.ConsultarCargosContactos(parametro); 
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+            return listCargo;
         }
     }
 
