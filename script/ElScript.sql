@@ -1782,6 +1782,17 @@ BEGIN
 END
 go
 
+----------Procedimiento para listar Cargos Contactos---------------------
+CREATE PROCEDURE M3_ConsultarListaCargos
+AS
+BEGIN
+	SELECT DISTINCT CAR_NOMBRE  as nombreCargo
+	FROM CARGO 
+	WHERE CAR_NOMBRE NOT IN (SELECT DISTINCT CAR_NOMBRE as nombreCargo 
+							 FROM CARGO, CONTACTO WHERE CARGO_car_id=car_id)
+END;
+go
+
 --End SP3
 
 --Begin SP4

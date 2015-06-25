@@ -26,6 +26,8 @@ namespace Vista.Modulo3
             if(!IsPostBack){
                this.Master.idModulo = "3";
                this.Master.presentador.CargarMenuLateral();
+               presentador.iniciarlista();
+               presentador.CargarInvolucrados();
             }
             
         }

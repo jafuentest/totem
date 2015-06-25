@@ -16,13 +16,11 @@ namespace DAO.DAO.Modulo8
 {
     public class DaoMinuta : DAO, IntefazDAO.Modulo8.IDaoMinuta
     {
-        #region Agregar
+       
         public bool Agregar(Entidad parametro)
         {
             throw new NotImplementedException();
         }
-        #endregion
-        #region Modificar
         public bool Modificar(Entidad parametro)
         {
             
@@ -59,37 +57,44 @@ namespace DAO.DAO.Modulo8
             }
             catch (NullReferenceException ex)
             {
-
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                   ex);
                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
                     RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
 
             }
             catch (SqlException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
                     RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
 
             }
             catch (ParametroIncorrectoException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
                     RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
             }
             catch (AtributoIncorrectoException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
                     RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
             }
             catch (Exception ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
                    RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
             }
 
         }
-        #endregion
-        #region ConsultarXId
         public Entidad ConsultarXId(Entidad parametro)
         {
             
@@ -119,44 +124,43 @@ namespace DAO.DAO.Modulo8
             }
             catch (NullReferenceException ex)
             {
-
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                   ex);
                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
                     RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
 
             }
             catch (SqlException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
                     RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
 
             }
             catch (ParametroIncorrectoException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
                     RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
             }
             catch (AtributoIncorrectoException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
                     RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
             }
             catch (Exception ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
                    RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
             }
         }
-        #endregion
-        #region ConsultarTodos
-        
-        public List<Entidad> ConsultarTodos()
-        {
-            throw new NotImplementedException();
-
-        }
-        #endregion
-        #region Consultar Minutas de Proyecto
         /// <summary>
         /// Metodo que devuelve una lista de todas las minutas asociadas a un Proyecto
         /// </summary>
@@ -196,37 +200,44 @@ namespace DAO.DAO.Modulo8
             }
             catch (NullReferenceException ex)
             {
-
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                   ex);
                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
                     RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
 
             }
-            
             catch (SqlException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
                     RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
 
             }
             catch (ParametroIncorrectoException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
                     RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
             }
             catch (AtributoIncorrectoException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
                     RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
             }
             catch (Exception ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
                    RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
             }
-        }
-        #endregion
 
+        }
 
         /// <summary>
         /// Método para consultar los datos de una minuta en la BD
@@ -266,30 +277,38 @@ namespace DAO.DAO.Modulo8
             }
             catch (NullReferenceException ex)
             {
-
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                   ex);
                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
                     RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
 
             }
-            
             catch (SqlException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
                     RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
 
             }
             catch (ParametroIncorrectoException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
                     RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
             }
             catch (AtributoIncorrectoException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
                     RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
             }
             catch (Exception ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
                    RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
@@ -324,33 +343,41 @@ namespace DAO.DAO.Modulo8
                 }
             }
 
-               
+
             catch (NullReferenceException ex)
             {
-
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                   ex);
                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
                     RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
 
             }
-
             catch (SqlException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
                     RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
 
             }
             catch (ParametroIncorrectoException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
                     RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
             }
             catch (AtributoIncorrectoException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
                     RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
             }
             catch (Exception ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
                    RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
@@ -384,30 +411,38 @@ namespace DAO.DAO.Modulo8
             }
             catch (NullReferenceException ex)
             {
-
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                   ex);
                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
                     RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
 
             }
-
             catch (SqlException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
                     RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
 
             }
             catch (ParametroIncorrectoException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
                     RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
             }
             catch (AtributoIncorrectoException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
                     RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
             }
             catch (Exception ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
                    RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
@@ -454,29 +489,38 @@ namespace DAO.DAO.Modulo8
 
             catch (NullReferenceException ex)
             {
-
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                   ex);
                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionNullReference,
                     RecursosBDModulo8.Mensaje_ExcepcionNullReference, ex);
 
             }
             catch (SqlException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionSql,
                     RecursosBDModulo8.Mensaje_ExcepcionSql, ex);
 
             }
             catch (ParametroIncorrectoException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new ParametroIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionParametro,
                     RecursosBDModulo8.Mensaje__ExcepcionParametro, ex);
             }
             catch (AtributoIncorrectoException ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new AtributoIncorrectoException(RecursosBDModulo8.Codigo_ExcepcionAtributo,
                     RecursosBDModulo8.Mensaje_ExcepcionAtributo, ex);
             }
             catch (Exception ex)
             {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                      ex);
                 throw new BDMinutaException(RecursosBDModulo8.Codigo_ExcepcionGeneral,
                    RecursosBDModulo8.Mensaje_ExcepcionGeneral, ex);
 
