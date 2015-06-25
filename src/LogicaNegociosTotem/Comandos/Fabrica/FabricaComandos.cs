@@ -216,6 +216,10 @@ namespace Comandos.Fabrica
             return new Comandos.Modulo5.ComandoGenerarArchivoLatex();
         }
 
+        public static Comando<Dominio.Entidad, List<String>> CrearComandoBuscarCodigoRequerimiento()
+        {
+            return new Comandos.Modulo5.ComandoBuscarCodigoRequerimiento();
+        }
         #endregion
 
         #region Modulo 6
