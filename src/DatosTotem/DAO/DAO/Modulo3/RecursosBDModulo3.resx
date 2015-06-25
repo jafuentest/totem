@@ -336,7 +336,7 @@
     <comment>Nombre del Stored Procedure para consultar los cargos de los empleados</comment>
   </data>
   <data name="StoredListarCargos" xml:space="preserve">
-    <value>ListarCargosPorEmpresa</value>
+    <value>M3_ConsultarListaCargos</value>
     <comment>Nombre del Stored Procedure para listar los cargos por empresas</comment>
   </data>
   <data name="StoredConsultarContactoPorEmpresa" xml:space="preserve">

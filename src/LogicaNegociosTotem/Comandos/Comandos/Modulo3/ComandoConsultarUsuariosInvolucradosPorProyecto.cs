@@ -1,5 +1,7 @@
 ﻿using DAO.Fabrica;
 using DAO.IntefazDAO.Modulo3;
+using Dominio;
+using Dominio.Entidades.Modulo3;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,16 +18,16 @@ namespace Comandos.Comandos.Modulo3
         /// <returns>true si se puede eliminar</returns>
         public override Dominio.Entidad Ejecutar(Dominio.Entidad parametro)
         {
+            ListaInvolucradoUsuario lista = null;
             try
             {
                 FabricaAbstractaDAO laFabrica = FabricaDAOSqlServer.ObtenerFabricaSqlServer();
                 IDaoInvolucrados daoInvolucrados = laFabrica.ObtenerDaoInvolucrados();
-                return daoInvolucrados.ConsultarUsuariosInvolucradosPorProyecto(parametro);
+                lista = (ListaInvolucradoUsuario)daoInvolucrados.ConsultarUsuariosInvolucradosPorProyecto(parametro);
             }catch(Exception ex){
-                throw ex;
+                lista = null;
             }
-
-            throw new NotImplementedException();
+            return lista;
         }
     }
 

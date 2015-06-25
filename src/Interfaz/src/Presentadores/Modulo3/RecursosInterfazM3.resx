@@ -176,4 +176,10 @@
   <data name="ListarInvolucrados" xml:space="preserve">
     <value>/Modulo3/ListarPersonalInvolucrado.aspx</value>
   </data>
+  <data name="Cliente_juridico" xml:space="preserve">
+    <value>Cliente juridico</value>
+  </data>
+  <data name="Desarrollo_del_software" xml:space="preserve">
+    <value>Desarrollo del software</value>
+  </data>
 </root>
