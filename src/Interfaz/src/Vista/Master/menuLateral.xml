@@ -80,10 +80,10 @@
     </opcion>
 
     <!-- Opciones del menú lateral del Módulo 8-->
-    <opcion nombre="Listar Minutas" link="~/Modulo8/ConsultarMinuta.aspx">
+    <opcion nombre="Listar Minutas" link="/Modulo8/ConsultarMinuta.aspx">
 	   <modulo id="8"></modulo>
     </opcion>
-    <opcion nombre="Crear Minuta" link="~/Modulo8/CrearMinuta.aspx">
+    <opcion nombre="Crear Minuta" link="/Modulo8/CrearMinuta.aspx">
 	   <modulo id="8"></modulo>
     </opcion>
   

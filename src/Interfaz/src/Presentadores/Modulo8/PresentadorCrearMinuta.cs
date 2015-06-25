@@ -7,17 +7,19 @@ using System.Linq;
 using System.Text;
 using Dominio.Entidades.Modulo7;
 using Dominio.Entidades.Modulo4;
+using System.Web.UI;
+using System.Web;
 
 
 namespace Presentadores.Modulo8
 {
     public class PresentadorCrearMinuta
     {
-        private IContratoCrearMinuta vista;
+        //private IContratoCrearMinuta vista;
 
-        public PresentadorCrearMinuta(IContratoCrearMinuta laVista)
+        public PresentadorCrearMinuta()//IContratoCrearMinuta laVista)
         {
-            vista = laVista;
+            //vista = laVista;
         }
 
 
@@ -145,6 +147,11 @@ namespace Presentadores.Modulo8
 
         }*/
             throw new NotImplementedException();
+        }
+
+        public void ObtenerUsuarioLogeado()
+        {
+            Usuario usuario = HttpContext.Current.Session["Credenciales"] as Dominio.Entidades.Modulo7.Usuario;
         }
     }
 }
