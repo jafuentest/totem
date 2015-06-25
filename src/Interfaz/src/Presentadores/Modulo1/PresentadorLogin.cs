@@ -8,6 +8,7 @@ using Dominio;
 using Dominio.Fabrica;
 using Comandos;
 using Comandos.Fabrica;
+using Dominio.Entidades.Modulo7;
 
 namespace Presentadores.Modulo1
 {
@@ -41,21 +42,41 @@ namespace Presentadores.Modulo1
 
                 if (string.IsNullOrEmpty(vista.Usuario))
                 {
-                    throw new Exception("Debe Ingresar un Username");
+                    throw new Exception(RecursosM1.Mensaje_AlertaUsername);
                 }
 
                 if (string.IsNullOrEmpty(vista.Clave))
                 {
-                    throw new Exception("Debe Ingresar una Contraseña");
+                    throw new Exception(RecursosM1.Mensaje_AlertaClave);
                 }
                 FabricaEntidades fabricaEntidades = new FabricaEntidades();
                 Entidad credenciales = fabricaEntidades.ObtenerUsuario();
                 Comando<List<string>, Entidad> comando = FabricaComandos.CrearComandoIniciarSesion();
                 credenciales = comando.Ejecutar(usuarioLogin);
-                HttpContext.Current.Session["Credenciales"] = credenciales;
-                HttpContext.Current.Response.Redirect("Default.aspx");
+                if (((Usuario)credenciales).Correo != "" && ((Usuario)credenciales).Correo != null)
+                {
+                    HttpContext.Current.Session[RecursosM1.Parametro_Credencial] = credenciales;
+                    HttpContext.Current.Response.Redirect(RecursosM1.Ventana_Default);
+                }
+                else
+                {
+                    vista.SetMesaje(true,RecursosM1.Mensaje_ErrorLogin);
+                }
 
             }
+            catch (ExcepcionesTotem.Modulo1.IntentosFallidosException e)
+            {
+                vista.SetMesaje(true, e.Message);
+            }
+            catch (ExcepcionesTotem.Modulo1.LoginErradoException e)
+            {
+                vista.SetMesaje(true, e.Message);
+
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD e)
+            {
+                vista.SetMesaje(true, e.Message);
+            } 
             catch (Exception e)
             {
                 vista.SetMesaje(true, e.Message);

@@ -88,11 +88,56 @@ namespace Presentadores.Modulo1 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Debe Ingresar una Contraseña.
+        /// </summary>
+        internal static string Mensaje_AlertaClave {
+            get {
+                return ResourceManager.GetString("Mensaje_AlertaClave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Debe Ingresar un Correo.
+        /// </summary>
+        internal static string Mensaje_AlertaCorreo {
+            get {
+                return ResourceManager.GetString("Mensaje_AlertaCorreo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Debe Ingresar una Respuesta.
+        /// </summary>
+        internal static string Mensaje_AlertaRespuesta {
+            get {
+                return ResourceManager.GetString("Mensaje_AlertaRespuesta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Debe Ingresar un Username.
+        /// </summary>
+        internal static string Mensaje_AlertaUsername {
+            get {
+                return ResourceManager.GetString("Mensaje_AlertaUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Debe llenar los campos Vacios.
         /// </summary>
         internal static string Mensaje_campoVacio {
             get {
                 return ResourceManager.GetString("Mensaje_campoVacio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Correcto.
+        /// </summary>
+        internal static string Mensaje_Correcto {
+            get {
+                return ResourceManager.GetString("Mensaje_Correcto", resourceCulture);
             }
         }
         
@@ -106,11 +151,74 @@ namespace Presentadores.Modulo1 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Hubo un error interno de la aplicacion... Por favor intente nuevamente.
+        /// </summary>
+        internal static string Mensaje_ErrorAplicacion {
+            get {
+                return ResourceManager.GetString("Mensaje_ErrorAplicacion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error no se pudo cambiar su clave... Intentelo más tarde..
+        /// </summary>
+        internal static string Mensaje_ErrorCambioClave {
+            get {
+                return ResourceManager.GetString("Mensaje_ErrorCambioClave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error en la Carga de la Página.
         /// </summary>
         internal static string Mensaje_errorCargaPagina {
             get {
                 return ResourceManager.GetString("Mensaje_errorCargaPagina", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Hubo un error con la conexion al servidor...Por favor intentelo nuevamente.
+        /// </summary>
+        internal static string Mensaje_ErrorConexion {
+            get {
+                return ResourceManager.GetString("Mensaje_ErrorConexion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Hubo un error con el correo del usuario, intente nuevamente.
+        /// </summary>
+        internal static string Mensaje_ErrorCorreo {
+            get {
+                return ResourceManager.GetString("Mensaje_ErrorCorreo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Login Invalido... Intentelo de nuevo.
+        /// </summary>
+        internal static string Mensaje_ErrorLogin {
+            get {
+                return ResourceManager.GetString("Mensaje_ErrorLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error en la Carga de la Pregunta Secreta.
+        /// </summary>
+        internal static string Mensaje_ErrorPregunta {
+            get {
+                return ResourceManager.GetString("Mensaje_ErrorPregunta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La Respuesta es Incorrecta.
+        /// </summary>
+        internal static string Mensaje_ErrorRespuesta {
+            get {
+                return ResourceManager.GetString("Mensaje_ErrorRespuesta", resourceCulture);
             }
         }
         
@@ -142,11 +250,74 @@ namespace Presentadores.Modulo1 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error con la informacion del usuario, verifique que tenga los cookies activados e intente nuevamente.
+        /// </summary>
+        internal static string Mensake_ErrorUsuario {
+            get {
+                return ResourceManager.GetString("Mensake_ErrorUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Credenciales.
+        /// </summary>
+        internal static string Parametro_Credencial {
+            get {
+                return ResourceManager.GetString("Parametro_Credencial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a userInfo.
+        /// </summary>
+        internal static string Parametro_userInfo {
+            get {
+                return ResourceManager.GetString("Parametro_userInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a usuario.
+        /// </summary>
+        internal static string Parametro_usuario {
+            get {
+                return ResourceManager.GetString("Parametro_usuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a .1*;M;3z+M~8k*+~LZU6B!Q|.!k+;=*m.
         /// </summary>
         internal static string Passphrase {
             get {
                 return ResourceManager.GetString("Passphrase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Default.aspx.
+        /// </summary>
+        internal static string Ventana_Default {
+            get {
+                return ResourceManager.GetString("Ventana_Default", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ../Modulo1/Login.aspx.
+        /// </summary>
+        internal static string Ventana_Login {
+            get {
+                return ResourceManager.GetString("Ventana_Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a RecuperacionClave.aspx.
+        /// </summary>
+        internal static string Ventana_RecuperacionClave {
+            get {
+                return ResourceManager.GetString("Ventana_RecuperacionClave", resourceCulture);
             }
         }
     }

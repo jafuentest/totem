@@ -152,4 +152,61 @@
     <value>../Modulo1/PreguntaSeguridad.aspx?usuario=</value>
     <comment>Link de recuperacion de clave</comment>
   </data>
+  <data name="Mensaje_AlertaClave" xml:space="preserve">
+    <value>Debe Ingresar una Contraseña</value>
+  </data>
+  <data name="Mensaje_AlertaCorreo" xml:space="preserve">
+    <value>Debe Ingresar un Correo</value>
+  </data>
+  <data name="Mensaje_AlertaRespuesta" xml:space="preserve">
+    <value>Debe Ingresar una Respuesta</value>
+  </data>
+  <data name="Mensaje_AlertaUsername" xml:space="preserve">
+    <value>Debe Ingresar un Username</value>
+  </data>
+  <data name="Mensaje_Correcto" xml:space="preserve">
+    <value>Correcto</value>
+  </data>
+  <data name="Mensaje_ErrorAplicacion" xml:space="preserve">
+    <value>Hubo un error interno de la aplicacion... Por favor intente nuevamente</value>
+  </data>
+  <data name="Mensaje_ErrorCambioClave" xml:space="preserve">
+    <value>Error no se pudo cambiar su clave... Intentelo más tarde.</value>
+  </data>
+  <data name="Mensaje_ErrorConexion" xml:space="preserve">
+    <value>Hubo un error con la conexion al servidor...Por favor intentelo nuevamente</value>
+  </data>
+  <data name="Mensaje_ErrorCorreo" xml:space="preserve">
+    <value>Hubo un error con el correo del usuario, intente nuevamente</value>
+  </data>
+  <data name="Mensaje_ErrorLogin" xml:space="preserve">
+    <value>Login Invalido... Intentelo de nuevo</value>
+  </data>
+  <data name="Mensaje_ErrorPregunta" xml:space="preserve">
+    <value>Error en la Carga de la Pregunta Secreta</value>
+  </data>
+  <data name="Mensaje_ErrorRespuesta" xml:space="preserve">
+    <value>La Respuesta es Incorrecta</value>
+  </data>
+  <data name="Mensake_ErrorUsuario" xml:space="preserve">
+    <value>Error con la informacion del usuario, verifique que tenga los cookies activados e intente nuevamente</value>
+  </data>
+  <data name="Parametro_Credencial" xml:space="preserve">
+    <value>Credenciales</value>
+  </data>
+  <data name="Parametro_userInfo" xml:space="preserve">
+    <value>userInfo</value>
+  </data>
+  <data name="Parametro_usuario" xml:space="preserve">
+    <value>usuario</value>
+  </data>
+  <data name="Ventana_Default" xml:space="preserve">
+    <value>Default.aspx</value>
+  </data>
+  <data name="Ventana_Login" xml:space="preserve">
+    <value>../Modulo1/Login.aspx</value>
+  </data>
+  <data name="Ventana_RecuperacionClave" xml:space="preserve">
+    <value>RecuperacionClave.aspx</value>
+  </data>
 </root>

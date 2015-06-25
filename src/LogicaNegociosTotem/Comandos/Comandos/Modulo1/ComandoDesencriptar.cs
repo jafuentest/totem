@@ -14,6 +14,12 @@ namespace Comandos.Comandos.Modulo1
     /// </summary>
     public class ComandoDesencriptar: Comando<List<string>, string>
     {
+        /// <summary>
+        /// Metodo que desencripta el correo del usuario
+        /// </summary>
+        /// <param name="parametro">lista de string que contiene el correo a desencriptar
+        /// y la frase a utilizar</param>
+        /// <returns>Retorna el correo desencriptado</returns>
         public override string Ejecutar(List<string> parametro)
         {
             try
@@ -53,6 +59,13 @@ namespace Comandos.Comandos.Modulo1
                 }
             }
             catch (FormatException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
+            }
+            catch (Exception ex)
             {
                 ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
                     ex);
