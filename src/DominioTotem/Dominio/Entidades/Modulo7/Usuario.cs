@@ -108,12 +108,12 @@ namespace Dominio.Entidades.Modulo7
 
         #region Propiedades
         /// <summary>
-        /// Retorna el ID del usuario y tambien permite asignarle un ID nuevo
+        /// Retorna el ID del usuario y también permite asignarle uno nuevo
         /// </summary>
-        public int IdUsuario 
+        public int IdUsuario
         {
             get { return this.idUsuario; }
-            set { this.idUsuario = value; } 
+            set { this.idUsuario = value; }
         }
 
         /// <summary>

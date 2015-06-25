@@ -5,30 +5,37 @@ using System.Text;
 using NUnit.Framework;
 using Comandos.Comandos.Modulo7;
 using Dominio.Entidades.Modulo7;
+using Comandos;
+using Comandos.Fabrica;
+using Dominio;
+using Dominio.Fabrica;
 
 
 namespace PruebasUnitariasTotem.Modulo7
 {
+    /// <summary>
+    /// Prueba unitaria que trabaja sobre el comando de AgregarUsuario
+    /// </summary>
     [TestFixture]
     public class PruebaComandoAgregarUsuario
     {
-        private ComandoAgregarUsuario agregar;
-        private Usuario usuarioRegistrar;
+        //Atributos que utilizaremos para las pruebas
+        private Comando<Entidad, bool> comandoAgregar;
+        private Entidad usuarioRegistrar;
 
+        /// <summary>
+        /// Inicializa los valores que necesitaremos
+        /// </summary>
         [SetUp]
         public void Init()
         {
-            agregar = new ComandoAgregarUsuario();
-            usuarioRegistrar = new Usuario("prueba","prueba","prueba","prueba","prueba","prueba","prueba","prueba","Gerente");
-        }
+            //Instanciamos el comando de agregar Usuario
+            comandoAgregar = FabricaComandos.CrearComandoAgregarUsuario();
 
-        /// <summary>
-        /// Prueba que verifica que los objetos no apunten a vacio
-        /// </summary>
-        [Test]
-        public void PruebaVacio()
-        {
-            Assert.IsNotNull(usuarioRegistrar);
+            //Creamos la entidad de Usuario
+            FabricaEntidades entidades = new FabricaEntidades();
+            usuarioRegistrar = entidades.ObtenerUsuario("prueba", "prueba", "prueba", "prueba", "prueba", "prueba", "prueba",
+                "prueba", "Gerente");
         }
 
         /// <summary>
@@ -37,7 +44,7 @@ namespace PruebasUnitariasTotem.Modulo7
         [Test]
         public void PruebaAgregarUsuario()
         {
-            Assert.IsTrue(agregar.Ejecutar(usuarioRegistrar));
+            Assert.IsTrue(comandoAgregar.Ejecutar(usuarioRegistrar));
             
         }
 
@@ -47,7 +54,7 @@ namespace PruebasUnitariasTotem.Modulo7
         public void Limpiar()
         {
             usuarioRegistrar = null;
-            agregar = null;
+            comandoAgregar = null;
         }
     }
 }

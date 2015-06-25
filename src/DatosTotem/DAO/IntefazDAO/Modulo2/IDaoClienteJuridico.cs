@@ -17,5 +17,6 @@ namespace DAO.IntefazDAO.Modulo2
         List<String> consultarEstadosPorPais(String elPais);
         List<String> consultarCiudadesPorEstado(String elEstado);
         List<String> consultarListaCargos();
+        bool modificarContacto(Entidad parametro);
     }
 }

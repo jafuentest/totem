@@ -51,6 +51,10 @@ namespace Comandos.Fabrica
         #endregion
 
         #region Modulo 2
+        public static Comando<Entidad, bool> CrearComandoModificarContacto()
+        {
+            return new ComandoModificarContacto();
+        }
         public static Comando<Entidad, bool> CrearComandoAgregarClienteJuridico()
         {
             return new ComandoAgregarClienteJuridico();
@@ -338,11 +342,14 @@ namespace Comandos.Fabrica
             return new Comandos.Modulo8.ComandoDetalleMinuta();
         }
 
-        public static Comando<string, string> CrearComandoGuardarMinuta()
+        public static Comando<List<Entidad>, string> CrearComandoGuardarMinuta()
         {
             return new Comandos.Modulo8.ComandoGuardarMinuta();
         }
-
+        public static Comando<List<Entidad>, string> CrearComandoModificarMinuta()
+        {
+            return new Comandos.Modulo8.ComandoModificarMinuta();
+        }
         public static Comando<String, bool> CrearComandoCompilarLatex()
         {
             return new Comandos.Modulo8.ComandoCompilarLatex();
@@ -358,7 +365,7 @@ namespace Comandos.Fabrica
             return new Comandos.Modulo8.ComandoListaContacto();
         }
 
-        public static Comando<Dominio.Entidad, List<Dominio.Entidad>> CrearComandoListaUsuario()
+        public static Comando<string, List<Dominio.Entidad>> CrearComandoListaUsuario()
         { 
             return new Comandos.Modulo8.ComandoListaUsuario();
         }

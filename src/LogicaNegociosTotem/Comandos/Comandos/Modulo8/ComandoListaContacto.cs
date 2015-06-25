@@ -14,19 +14,19 @@ using Dominio.Entidades.Modulo4;
 
 namespace Comandos.Comandos.Modulo8
 {
-    class ComandoListaContacto : Comando<Dominio.Entidad, List<Dominio.Entidad>>
+    public class ComandoListaContacto : Comando<Dominio.Entidad, List<Dominio.Entidad>>
     {
-        public override List<Dominio.Entidad> Ejecutar(Dominio.Entidad elProyecto)
+        public override List<Dominio.Entidad> Ejecutar(Dominio.Entidad parametro)
         {
             try
             {
                 List<int> numInvolucrados = new List<int>();
                 List<Dominio.Entidad> contactos = new List<Dominio.Entidad>();
-                elProyecto = FabricaEntidades.ObtenerProyecto();
+                Proyecto elProyecto = (Proyecto)parametro;
                 FabricaAbstractaDAO fabricaDAO = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
                 DAO.IntefazDAO.Modulo8.IDaoInvolucradosMinuta daoInvMinutas = fabricaDAO.ObtenerDAOInvolucradosMinuta();
                 numInvolucrados = daoInvMinutas.ConsultarInvolucrado(RecursosComandosModulo8.ProcedureContactoProyecto, RecursosComandosModulo8.AtributoContacto,
-                    RecursosComandosModulo8.ParametroIdProyecto, elProyecto.Id.ToString());
+                    RecursosComandosModulo8.ParametroIdProyecto,elProyecto.Id.ToString());
                 if (numInvolucrados != null)
                 {
                     foreach (int i in numInvolucrados)

@@ -10,6 +10,7 @@ using Comandos.Fabrica;
 using Dominio.Entidades.Modulo2;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Web.UI;
 
 namespace Presentadores.Modulo2
 {
@@ -55,6 +56,15 @@ namespace Presentadores.Modulo2
                         + elContacto.Con_Apellido + RecursoInterfazM2.CerrarEtiqueta_td;
                     vista.laTabla += RecursoInterfazM2.AbrirEtiqueta_td + elContacto.ConCargo
                         + RecursoInterfazM2.CerrarEtiqueta_td;
+                    vista.laTabla += RecursoInterfazM2.AbrirEtiqueta_td + elContacto.Con_Telefono.Codigo
+                        + "-" + elContacto.Con_Telefono.Numero + RecursoInterfazM2.CerrarEtiqueta_td; 
+                    vista.laTabla += RecursoInterfazM2.AbrirEtiqueta_td;
+                    vista.laTabla += RecursoInterfazM2.AbrirBotonDetalleContacto + elContacto.Id +
+                        RecursoInterfazM2.CerrarBoton;
+                    vista.laTabla += RecursoInterfazM2.AbrirBotonModificarContacto + elContacto.Id + 
+                        RecursoInterfazM2.RedireccionPag + HttpContext.Current.Request.Url.LocalPath + 
+                        RecursoInterfazM2.RedireccionID + elCliente.Id + RecursoInterfazM2.CerrarBoton;
+                    vista.laTabla += RecursoInterfazM2.CerrarEtiqueta_td;
                     vista.laTabla += RecursoInterfazM2.CerrarEtiqueta_tr;
                 }
             }
@@ -192,13 +202,63 @@ namespace Presentadores.Modulo2
                     RecursoInterfazM2.Alerta_Html_Final;
             }
             String edicionEmpresa = HttpContext.Current.Request.QueryString["id"];
-            if (edicionEmpresa != null)
+            String success = HttpContext.Current.Request.QueryString["success"];
+            if (edicionEmpresa != null )
             {
                 cargarDatosEmpresa(edicionEmpresa);
+                if (success != null && success.Equals("modificar"))
+                {
+                    vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Exito;
+                    vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                    vista.alerta = RecursoInterfazM2.Alerta_Html +
+                        RecursoInterfazM2.Alerta_Mensaje_Contacto_Modificado +
+                        RecursoInterfazM2.Alerta_Html_Final;
+
+                }
             }
-
+           
         }
+        public bool desplegarModal()
+        {
 
+            String eliminacionContacto = HttpContext.Current.Request.QueryString["contactoaeliminar"];
+            if (eliminacionContacto != null)
+            {
+                FabricaEntidades laFabrica = new FabricaEntidades();
+                Entidad entidad = laFabrica.ObtenerContacto();
+                try
+                {
+                    entidad.Id = int.Parse(eliminacionContacto);
+                    Comando<Entidad,Entidad> elComando = FabricaComandos.CrearComandoConsultarDatosContactoID();
+                    Contacto elContacto = (Contacto)elComando.Ejecutar(entidad);
+                    vista.contacto_nombreyap = elContacto.Con_Nombre + " " + elContacto.Con_Apellido;
+                    return true;
+                }
+                catch (NullReferenceException ex)
+                {
+                    vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Error;
+                    vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                    vista.alerta = RecursoInterfazM2.Alerta_Html +
+                        RecursoInterfazM2.Alerta_Error_NullPointer +
+                        RecursoInterfazM2.Alerta_Html_Final;
+                    return false;
+                }
+                catch (Exception ex)
+                {
+                    vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Error;
+                    vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                    vista.alerta = RecursoInterfazM2.Alerta_Html +
+                        ex.Message +
+                        RecursoInterfazM2.Alerta_Html_Final;
+                    return false;
+                }
+
+            }
+            else
+            {
+                return false;
+            }
+        }
         public bool modificarEmpresa(String elID)
         {
             List<String> alfabeticos = new List<String>();
@@ -213,7 +273,7 @@ namespace Presentadores.Modulo2
 
             Regex expresion = new Regex(@"[0-9]{1,9}(\.[0-9]{0,2})?$");
            
-            if (Validaciones.ValidarCamposVacios(alfabeticos) && Validaciones.ValidarCamposVacios(alfabeticos) &&
+            if (Validaciones.ValidarCamposVacios(alfabeticos) && Validaciones.ValidarCamposVacios(alfanumericos) &&
                 Validaciones.ValidarCamposVacios(numericos))
             {
                 if (Validaciones.ValidarCaracteresAlfabeticos(alfabeticos))
@@ -284,5 +344,6 @@ namespace Presentadores.Modulo2
                 return false;
             }
         }
+
     }
 }

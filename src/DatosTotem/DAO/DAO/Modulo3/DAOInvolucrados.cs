@@ -206,7 +206,7 @@ namespace DAO.DAO.Modulo3
                 foreach (DataRow row in dt.Rows)
                 {
                     Usuario u = (Usuario)laFabrica.ObtenerUsuario();
-                    u.IdUsuario = int.Parse(row[RecursosBDModulo3.aliasUsuarioID].ToString());
+                    u.Id = int.Parse(row[RecursosBDModulo3.aliasUsuarioID].ToString());
                     u.Nombre = row[RecursosBDModulo3.aliasUsuarioNombre].ToString();
                     u.Apellido = row[RecursosBDModulo3.aliasUsuarioApellido].ToString();
                     u.Cargo = row[RecursosBDModulo3.aliasCargoNombre].ToString();
