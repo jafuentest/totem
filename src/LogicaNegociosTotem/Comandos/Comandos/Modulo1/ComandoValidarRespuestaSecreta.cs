@@ -13,7 +13,7 @@ namespace Comandos.Comandos.Modulo1
         {
             try
             {
-                FabricaAbstractaDAO fabricaDao = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+                FabricaDAOSqlServer fabricaDao = new FabricaDAOSqlServer();
                 IDaoLogin idaoLogin = fabricaDao.ObtenerDaoLogin();
                 if (idaoLogin.ValidarRespuestaSeguridad(parametro))
                 {

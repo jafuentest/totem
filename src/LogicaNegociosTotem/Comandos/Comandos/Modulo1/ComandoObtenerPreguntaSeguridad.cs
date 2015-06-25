@@ -18,7 +18,7 @@ namespace Comandos.Comandos.Modulo1
             {
                 FabricaEntidades fabricaEntidades = new FabricaEntidades();
                 Entidad usuario = fabricaEntidades.ObtenerUsuario();
-                FabricaAbstractaDAO fabricaDao = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+                FabricaDAOSqlServer fabricaDao = new FabricaDAOSqlServer();
                 IDaoLogin idaoLogin = fabricaDao.ObtenerDaoLogin();
                 usuario =idaoLogin.ObtenerPreguntaSeguridad(parametro);
                 if (((Usuario)usuario).PreguntaSeguridad!= null && ((Usuario)usuario).PreguntaSeguridad!="")
