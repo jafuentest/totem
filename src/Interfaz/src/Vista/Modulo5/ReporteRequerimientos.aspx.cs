@@ -26,7 +26,6 @@ namespace Vista.Modulo5
                 this.Master.presentador.CargarMenuLateral();
                 presentador.ObtenerVariablesURL();
                 presentador.ListarRequerimientosPorProyecto();
-                HttpContext.Current.Session["Credenciales"] = new object();
             }  
         
 

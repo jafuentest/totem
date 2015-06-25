@@ -88,7 +88,7 @@
 
     $.fn.dataTable.ext.search.push(
     function (settings, data, dataIndex) {
-        return (data[2] == busqueda)|| (busqueda == "init");
+        return (data[2].toUpperCase() == busqueda)|| (busqueda == "init");
     });
 
     $(document).ready(function () {
@@ -98,7 +98,7 @@
 
     $('#funcionales').click(function () {/*metodo para filtrar la tabla de requerimientos para que solo aparezcan los funcionales y
                                            activa el boton de generar documento*/
-        busqueda = 'Funcional';
+        busqueda = 'Funcional'.toUpperCase();
         table.draw();
     });
     $("#tipo-dd li a").click(function () {//agrega el texto del elemento del dropdown al titulo del mismo
@@ -108,25 +108,11 @@
     });
     $('#nofuncionales').click(function () {/*metodo para filtrar la tabla de requerimientos para que solo aparezcan los no funcionales 
                                                  y activa el boton de generar documento*/
-        busqueda = 'No Funcional';
+        busqueda = 'No Funcional'.toUpperCase();
         table.draw();
     });
 
 	</script>
-    <script src="js/Validacion.js"></script>
-    <script>
-        function fillCodigoTextField() {
-            var idTextField = document.getElementById("idreq_input");
-            var funcionalRadio = document.getElementById("input_tipo_funcional");
-            var nofuncionalRadio = document.getElementById("input_tipo_nofuncional");
-
-            if (funcionalRadio.checked) {
-                idTextField.value = "TOT_RF_5_1";
-            } else
-                if (nofuncionalRadio.checked) {
-                    idTextField.value = "TOT_RNF_5_1";
-                }
-        }
-    </script>
+    
 </asp:Content>
 
