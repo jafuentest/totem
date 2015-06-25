@@ -239,6 +239,11 @@ namespace DAO.DAO.Modulo8
 
         }
 
+        public List<Entidad> ConsultarTodos()
+        {
+            throw new NotImplementedException();
+
+        }
         /// <summary>
         /// Método para consultar los datos de una minuta en la BD
         /// </summary>
