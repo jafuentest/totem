@@ -58,14 +58,19 @@ namespace DAO.DAO.Modulo8
 
                 foreach (DataRow row in resultado.Rows)
                 {
-
-                    foreach (Contacto contacto in elAcuerdo.ListaContacto)
+                    if (elAcuerdo.ListaContacto.Count > 0)
                     {
-                        bool contactoBool = DAOInvolucradosMinuta.AgregarContactoEnAcuerdo(contacto, row[RecursosBDModulo8.AtributoIDAcuerdo].ToString(), idProyecto);
+                        foreach (Contacto contacto in elAcuerdo.ListaContacto)
+                        {
+                            bool contactoBool = DAOInvolucradosMinuta.AgregarContactoEnAcuerdo(contacto, row[RecursosBDModulo8.AtributoIDAcuerdo].ToString(), idProyecto);
+                        }
                     }
-                    foreach (Usuario usuario in elAcuerdo.ListaUsuario)
+                    if (elAcuerdo.ListaUsuario.Count > 0)
                     {
-                        bool usuarioBool = DAOInvolucradosMinuta.AgregarUsuarioEnAcuerdo(usuario, row[RecursosBDModulo8.AtributoIDAcuerdo].ToString(), idProyecto);
+                        foreach (Usuario usuario in elAcuerdo.ListaUsuario)
+                        {
+                            bool usuarioBool = DAOInvolucradosMinuta.AgregarUsuarioEnAcuerdo(usuario, row[RecursosBDModulo8.AtributoIDAcuerdo].ToString(), idProyecto);
+                        }
                     }
                     success = true;
                 }
