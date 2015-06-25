@@ -50,7 +50,7 @@ namespace DAO.IntefazDAO.Modulo5
         /// y el tipo</param>
         /// <returns>Lista de String con los dos posibles valor a tomar, si es 
         /// funcional o no funcional</returns>
-        List<String> ObtenerCodigoRequerimiento(Dominio.Entidad requerimiento);
+        List<String> ObtenerCodigoRequerimiento(String requerimiento);
 
         /// <summary>
         /// Metodo que retorna el codigo del requerimiento funcional

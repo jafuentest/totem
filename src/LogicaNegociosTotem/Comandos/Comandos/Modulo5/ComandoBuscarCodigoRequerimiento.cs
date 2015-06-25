@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Comandos.Comandos.Modulo5
 {
-    public class ComandoBuscarCodigoRequerimiento : Comando<Dominio.Entidad, List<String>>
+    public class ComandoBuscarCodigoRequerimiento : Comando<String, List<String>>
     {
         /// <summary>
         /// Metodo que consigue el posible codigo del requerimiento
@@ -13,7 +13,7 @@ namespace Comandos.Comandos.Modulo5
         /// <param name="parametro">Requerimiento con el codigo del proyecto</param>
         /// <returns>Posibles codigos, considerando que puede ser funcional o no 
         /// funcional</returns>
-        public override List<string> Ejecutar(Dominio.Entidad parametro)
+        public override List<string> Ejecutar(String parametro)
         {
             DAO.IntefazDAO.Modulo5.IDaoRequerimiento daoRequerimiento;
             DAO.Fabrica.FabricaDAOSqlServer fabricaDao = new DAO.Fabrica.FabricaDAOSqlServer();

@@ -324,14 +324,12 @@ namespace DAO.DAO.Modulo5
         /// y el tipo</param>
         /// <returns>Lista de String con los dos posibles valor a tomar, si es 
         /// funcional o no funcional</returns>
-        public List<string> ObtenerCodigoRequerimiento(Dominio.Entidad requerimiento)
+        public List<string> ObtenerCodigoRequerimiento(string codigoProyecto)
         {
             try
             {
                 List<String> codigosRequerimiento = new List<String>();
-                Dominio.Entidades.Modulo5.Requerimiento reqNuevo =
-                    (Dominio.Entidades.Modulo5.Requerimiento)requerimiento;
-                int idProyecto = BuscarIdProyecto(reqNuevo.CodigoProyecto);
+                int idProyecto = BuscarIdProyecto(codigoProyecto);
        
                 codigosRequerimiento.Add(ObtenerCodigoRequerimientoFuncional(idProyecto));
                 codigosRequerimiento.Add(ObtenerCodigoRequerimientoNoFuncional(idProyecto));

@@ -216,7 +216,7 @@ namespace Comandos.Fabrica
             return new Comandos.Modulo5.ComandoGenerarArchivoLatex();
         }
 
-        public static Comando<Dominio.Entidad, List<String>> CrearComandoBuscarCodigoRequerimiento()
+        public static Comando<String, List<String>> CrearComandoBuscarCodigoRequerimiento()
         {
             return new Comandos.Modulo5.ComandoBuscarCodigoRequerimiento();
         }
