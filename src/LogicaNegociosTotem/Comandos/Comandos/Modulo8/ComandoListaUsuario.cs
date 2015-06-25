@@ -15,14 +15,14 @@ using Dominio.Entidades.Modulo4;
 namespace Comandos.Comandos.Modulo8
 {
    
-    class ComandoListaUsuario :Comando<Dominio.Entidad, List<Dominio.Entidad>>
+    public class ComandoListaUsuario :Comando<string, List<Dominio.Entidad>>
     {
         /// <summary>
         /// Comando que obtiene el listado de los involucrados de un proyecto
         /// </summary>
         /// <param name="elProyecto">el objeto Proyecto</param>
         /// <returns>retorna un lista de Usuarios</returns>
-        public override List<Dominio.Entidad> Ejecutar(Dominio.Entidad elProyecto)
+        public override List<Dominio.Entidad> Ejecutar(string elProyecto)
         {
             try
             {
@@ -30,12 +30,11 @@ namespace Comandos.Comandos.Modulo8
                 List<Dominio.Entidad> usuarios = new List<Dominio.Entidad>();
                 FabricaEntidades laFabrica = new FabricaEntidades();
                 Minuta laMinuta = (Minuta)laFabrica.ObtenerMinuta();
-                elProyecto = FabricaEntidades.ObtenerProyecto();
                 FabricaAbstractaDAO fabricaDAO = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
                 DAO.IntefazDAO.Modulo8.IDaoInvolucradosMinuta daoInvMinutas = fabricaDAO.ObtenerDAOInvolucradosMinuta();
                 numInvolucrados = daoInvMinutas.ConsultarInvolucrado(RecursosComandosModulo8.ProcedureUsuarioProyecto,
                     RecursosComandosModulo8.AtributoUsuario,
-                    RecursosComandosModulo8.ParametroIdProyecto, elProyecto.Id.ToString());
+                    RecursosComandosModulo8.ParametroIdProyecto, elProyecto);
                 if (numInvolucrados != null)
                 {
                     foreach (int i in numInvolucrados)
