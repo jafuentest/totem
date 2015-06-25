@@ -41,6 +41,14 @@ namespace Vista.Modulo8
         {
             Presentadores.Modulo8.PresentadorCrearMinuta presentador = new Presentadores.Modulo8.PresentadorCrearMinuta();
             List<Usuario> listaUsuario = presentador.ListaInvolucrado("TOT").Cast<Usuario>().ToList();
+            foreach( Usuario usu in listaUsuario)
+            {
+                System.Console.Out.WriteLine(usu.Nombre);
+                System.Console.Out.WriteLine(usu.Apellido);
+                System.Console.Out.WriteLine(usu.Rol);
+
+
+            }
             var output = JsonConvert.SerializeObject(listaUsuario);
             return output;
         }
