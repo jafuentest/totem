@@ -68,6 +68,7 @@
     <Compile Include="Modulo1\LoginErradoException.cs" />
     <Compile Include="Modulo1\ErrorEnvioDeCorreoException.cs" />
     <Compile Include="Modulo2\CIClienteNatExistenteException.cs" />
+    <Compile Include="Modulo2\CIContactoExistenteException.cs" />
     <Compile Include="Modulo2\ClienteDatosException.cs" />
     <Compile Include="Modulo2\ClienteInexistenteException.cs" />
     <Compile Include="Modulo2\ClienteLogicaException.cs" />

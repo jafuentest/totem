@@ -31,6 +31,15 @@ namespace Vista.Modulo2 {
         protected global::System.Web.UI.HtmlControls.HtmlForm agregar_empresa;
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
         /// rifEmpresa control.
         /// </summary>
         /// <remarks>
@@ -139,15 +148,6 @@ namespace Vista.Modulo2 {
         protected global::System.Web.UI.WebControls.Literal laTabla;
         
         /// <summary>
-        /// contacto_id control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl contacto_id;
-        
-        /// <summary>
         /// contacto_nombreyap control.
         /// </summary>
         /// <remarks>
@@ -157,13 +157,22 @@ namespace Vista.Modulo2 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl contacto_nombreyap;
         
         /// <summary>
+        /// contacto_id control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl contacto_id;
+        
+        /// <summary>
         /// btn_eliminar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btn_eliminar;
+        protected global::System.Web.UI.WebControls.Button btn_eliminar;
         
         /// <summary>
         /// botonEditar control.
