@@ -17,9 +17,9 @@ namespace Comandos.Comandos.Modulo5
         {
             try
             {
-                DAO.Fabrica.FabricaAbstractaDAO fabricaDaoSqlServer = DAO.Fabrica.FabricaAbstractaDAO.ObtenerFabricaSqlServer();
-
-                DAO.DAO.Modulo5.DAORequerimiento daoRequerimiento = (DAO.DAO.Modulo5.DAORequerimiento)fabricaDaoSqlServer.ObtenerDAORequerimiento();
+                DAO.IntefazDAO.Modulo5.IDaoRequerimiento daoRequerimiento;
+                DAO.Fabrica.FabricaDAOSqlServer fabricaDao = new DAO.Fabrica.FabricaDAOSqlServer();
+                daoRequerimiento = fabricaDao.ObtenerDAORequerimiento();
                 bool resultado = daoRequerimiento.Modificar(parametro);
                 return resultado;
             }
