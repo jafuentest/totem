@@ -22,10 +22,9 @@ namespace Comandos.Comandos.Modulo5
 
             try
             {
-                DAO.Fabrica.FabricaAbstractaDAO fabricaDAO;
                 DAO.IntefazDAO.Modulo5.IDaoRequerimiento daoRequerimiento;
-                fabricaDAO = DAO.Fabrica.FabricaAbstractaDAO.ObtenerFabricaSqlServer();
-                daoRequerimiento = fabricaDAO.ObtenerDAORequerimiento();
+                DAO.Fabrica.FabricaDAOSqlServer fabricaDao = new DAO.Fabrica.FabricaDAOSqlServer();
+                daoRequerimiento = fabricaDao.ObtenerDAORequerimiento();
                 List<Dominio.Entidad> requerimientos;
                 requerimientos = daoRequerimiento.ConsultarRequerimientoDeProyecto(parametro);
                 this.GenerarDocumentoFuncional(requerimientos);
