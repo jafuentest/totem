@@ -123,11 +123,11 @@
   <data name="AbrirEtiqueta_tr" xml:space="preserve">
     <value>&lt;tr&gt;</value>
   </data>
-  <data name="Alerta_AgregarContacto_Fracaso" xml:space="preserve">
+  <data name="AlertaContacto" xml:space="preserve">
     <value>alert alert-danger alert-dismissible</value>
     <comment>Clase de Error para la alerta de la interfaz</comment>
   </data>
-  <data name="Alerta_AgregarUsuario_Fracaso" xml:space="preserve">
+  <data name="AlertaUsuario" xml:space="preserve">
     <value>alert alert-danger alert-dismissible</value>
   </data>
   <data name="Alerta_Clase_Error" xml:space="preserve">
@@ -181,5 +181,11 @@
   </data>
   <data name="Desarrollo_del_software" xml:space="preserve">
     <value>Desarrollo del software</value>
+  </data>
+  <data name="Alerta_Conexion_Error" xml:space="preserve">
+    <value>No hay conexion con la base de datos</value>
+  </data>
+  <data name="Alerta_Totem_Error" xml:space="preserve">
+    <value>Error en Totem</value>
   </data>
 </root>
