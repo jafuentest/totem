@@ -361,7 +361,7 @@ namespace Comandos.Fabrica
             return new Comandos.Modulo8.ComandoGenerarMinuta();
         }
 
-        public static Comando<Dominio.Entidad, List<Dominio.Entidad>> CrearComandoListaContacto()
+        public static Comando<String, List<Dominio.Entidad>> CrearComandoListaContacto()
         {
             return new Comandos.Modulo8.ComandoListaContacto();
         }
