@@ -150,8 +150,8 @@ function agregarAcuerdo() {
 
     //Carga de Usuarios en el ComboBox
     for (j = 0; j < listaUsuario.length; j++) {
-        var codigoUsuario = listaUsuario[j]["idUsuario"];
-        var nombreCompletoUsuario = listaUsuario[j]["nombre"] + " " + listaUsuario[j]["apellido"];
+        var codigoUsuario = listaUsuario[j]["Id"];
+        var nombreCompletoUsuario = listaUsuario[j]["Nombre"] + " " + listaUsuario[j]["Apellido"];
         $('#' + codigoAcuerdoSelect).append("<option value = " + codigoUsuario + ">" + nombreCompletoUsuario + "</option>");
     }
     nroAcuerdos++;
@@ -187,11 +187,13 @@ $(function ()
 
         //Carga de los Involucrados en DIV con ID listaInvolucrado
         for (i = 0; i < json.length; i++) {
-            var codigoUsuario = json[i]["idUsuario"];
-            var nombreCompletoUsuario = json[i]["nombre"] + " " + json[i]["apellido"];
-            var cargoUsuario = json[i]["cargo"];
+            var codigoUsuario = json[i]["Id"];
+            var nombreCompletoUsuario = json[i]["Nombre"] + " " + json[i]["Apellido"];
+            var cargoUsuario = json[i]["Cargo"];
             var divUsuario = codigoUsuario + "_par";
             var checkUsuario = codigoUsuario + "_par_check";
+            document.write('texto');
+            window.alert(5 + 6);
 
             $('#listaInvolucrado').append(
                "<div id='" + divUsuario + "' class='panel panel-default panel-participante col-xs-12 col-sm-6' onclick='seleccionado(this)'>"
