@@ -358,7 +358,7 @@ namespace Comandos.Fabrica
             return new Comandos.Modulo8.ComandoListaContacto();
         }
 
-        public static Comando<Dominio.Entidad, List<Dominio.Entidad>> CrearComandoListaUsuario()
+        public static Comando<string, List<Dominio.Entidad>> CrearComandoListaUsuario()
         { 
             return new Comandos.Modulo8.ComandoListaUsuario();
         }
