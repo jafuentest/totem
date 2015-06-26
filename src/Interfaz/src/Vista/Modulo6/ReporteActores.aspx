@@ -17,6 +17,7 @@
     <br />		
      <form id="reporte_actor" class="form-horizontal" action="#" method="post" runat="Server">
 		 <div class="form-group">
+             <h4>Seleccione el actor para mostrar sus casos de uso asociados:</h4>
                             <div id="div_actor" class="col-sm-15 col-md-15 col-lg-15">
                                 <div class="dropdown " runat="server" id="Div1">
                                 <asp:DropDownList ID="comboActores"  class="btn btn-default dropdown-toggle col-sm-10 col-md-10 col-lg-10" runat="server" AutoPostBack="true" OnSelectedIndexChanged="CargarTablaCasosDeUso"></asp:DropDownList>

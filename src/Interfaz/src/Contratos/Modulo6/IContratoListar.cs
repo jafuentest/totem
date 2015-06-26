@@ -21,6 +21,6 @@ namespace Contratos.Modulo6
 
 
 
-        HtmlButton boton { get; set; }
+        
     }
 }
