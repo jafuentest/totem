@@ -149,7 +149,7 @@
     <comment>Passphrase para encriptar e desencriptar</comment>
   </data>
   <data name="Link_Recuperacion_Clave" xml:space="preserve">
-    <value>../Modulo1/PreguntaSeguridad.aspx?usuario=</value>
+    <value>http://localhost:18329/Modulo1/PreguntaSeguridad.aspx?usuario=</value>
     <comment>Link de recuperacion de clave</comment>
   </data>
   <data name="Mensaje_AlertaClave" xml:space="preserve">
@@ -208,5 +208,15 @@
   </data>
   <data name="Ventana_RecuperacionClave" xml:space="preserve">
     <value>RecuperacionClave.aspx</value>
+  </data>
+  <data name="Pswd_Correo_Totem" xml:space="preserve">
+    <value>zAo1OVejS5aWbnXwVVTr+g==</value>
+    <comment>La contrasena encriptada para acceder a la cuenta de correo</comment>
+  </data>
+  <data name="Parametro_exito" xml:space="preserve">
+    <value>?exito=1</value>
+  </data>
+  <data name="Parametro_CorreoEnviado" xml:space="preserve">
+    <value>Se envio un mensaje a su correo... Confirme y siga los pasos</value>
   </data>
 </root>

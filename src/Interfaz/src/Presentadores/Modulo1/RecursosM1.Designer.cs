@@ -79,7 +79,7 @@ namespace Presentadores.Modulo1 {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a ../Modulo1/PreguntaSeguridad.aspx?usuario=.
+        ///   Busca una cadena traducida similar a http://localhost:18329/Modulo1/PreguntaSeguridad.aspx?usuario=.
         /// </summary>
         internal static string Link_Recuperacion_Clave {
             get {
@@ -259,11 +259,29 @@ namespace Presentadores.Modulo1 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Se envio un mensaje a su correo... Confirme y siga los pasos.
+        /// </summary>
+        internal static string Parametro_CorreoEnviado {
+            get {
+                return ResourceManager.GetString("Parametro_CorreoEnviado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Credenciales.
         /// </summary>
         internal static string Parametro_Credencial {
             get {
                 return ResourceManager.GetString("Parametro_Credencial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ?exito=1.
+        /// </summary>
+        internal static string Parametro_exito {
+            get {
+                return ResourceManager.GetString("Parametro_exito", resourceCulture);
             }
         }
         
@@ -291,6 +309,15 @@ namespace Presentadores.Modulo1 {
         internal static string Passphrase {
             get {
                 return ResourceManager.GetString("Passphrase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a zAo1OVejS5aWbnXwVVTr+g==.
+        /// </summary>
+        internal static string Pswd_Correo_Totem {
+            get {
+                return ResourceManager.GetString("Pswd_Correo_Totem", resourceCulture);
             }
         }
         

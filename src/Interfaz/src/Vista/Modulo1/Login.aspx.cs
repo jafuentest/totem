@@ -11,13 +11,30 @@ namespace Vista.Modulo1
         private PresentadorLogin presentador;
         private bool captchaActivo = false;
         private int intentos = 0;
-
+        private string exito = "0";
         /// <summary>
         /// Constructor de la Clase PresentadorLogin
         /// </summary>
         public Login()
         {
-            presentador = new PresentadorLogin(this);
+            try
+            {
+                string exito = Request.QueryString["exito"];
+                if (exito == "1")
+                {
+                    alert.Attributes["class"] = "alert alert-success alert-dismissible";
+                    alert.Attributes["role"] = "alert";
+                    alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Se envio un mensaje a su correo... Confirme y siga los pasos</div>";
+                }
+            }
+            catch (Exception)
+            {
+                exito = "0";
+            }
+            finally
+            {
+                presentador = new PresentadorLogin(this);
+            }
         }
 
         /// <summary>

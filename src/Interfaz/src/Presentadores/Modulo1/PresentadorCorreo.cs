@@ -55,12 +55,21 @@ namespace Presentadores.Modulo1
                         if (esCorreo)
                         {
                             List<string> lista = new List<string>();
+                            List<string> listaDesen = new List<string>();
                             lista.Add(((Usuario)usuario).Correo);
                             lista.Add(RecursosM1.Passphrase);
                             Comando<List<string>, string> comandoEncrip = FabricaComandos.CrearComandoEncriptar();
                             string link = RecursosM1.Link_Recuperacion_Clave;
                             link = link + comandoEncrip.Ejecutar(lista);
-                            HttpContext.Current.Response.Redirect(link);
+                            Comando<List<string>, string> comandoDesen = FabricaComandos.CrearComandoDesencriptar();
+                            listaDesen.Add(RecursosM1.Pswd_Correo_Totem);
+                            listaDesen.Add(RecursosM1.Passphrase);
+                            string network = comandoDesen.Ejecutar(listaDesen);
+                            lista.Add(link);
+                            lista.Add(network);
+                            Comando<List<String>, bool> comandoEnviar = FabricaComandos.CrearComandoEnviarEmail();
+                            comandoEnviar.Ejecutar(lista);
+                            vista.Mensaje = RecursosM1.Parametro_CorreoEnviado;
                         }
                         else
                         {
