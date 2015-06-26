@@ -53,7 +53,7 @@
                             
                             <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="dropdown" runat="server" id="contenedorComboEstado">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <asp:DropDownList ID="comboEstado"  class="btn btn-default dropdown-toggle" runat="server" AutoPostBack="true" OnSelectedIndexChanged="comboEstado_SelectedIndexChanged"></asp:DropDownList>
                                 </div>
                             </div>

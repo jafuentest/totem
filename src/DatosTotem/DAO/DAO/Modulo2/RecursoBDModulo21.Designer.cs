@@ -331,6 +331,15 @@ namespace DAO.DAO.Modulo2 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to M2_BuscarCIContacto.
+        /// </summary>
+        public static string BuscarCIContacto {
+            get {
+                return ResourceManager.GetString("BuscarCIContacto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to M2_BuscarRIFClienteJuridico.
         /// </summary>
         public static string BuscarRifClienteJur {
@@ -345,6 +354,15 @@ namespace DAO.DAO.Modulo2 {
         public static string CodigoCIExistenteException {
             get {
                 return ResourceManager.GetString("CodigoCIExistenteException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_02_006.
+        /// </summary>
+        public static string CodigoCIExistenteExceptionContacto {
+            get {
+                return ResourceManager.GetString("CodigoCIExistenteExceptionContacto", resourceCulture);
             }
         }
         
@@ -511,6 +529,15 @@ namespace DAO.DAO.Modulo2 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ya existe un contacto con ese identificador.
+        /// </summary>
+        public static string MensajeCIContactoExistente {
+            get {
+                return ResourceManager.GetString("MensajeCIContactoExistente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ya existe un cliente registrado con esa ID.
         /// </summary>
         public static string MensajeCIExistenteException {
@@ -570,6 +597,15 @@ namespace DAO.DAO.Modulo2 {
         public static string ModificarClienteNat {
             get {
                 return ResourceManager.GetString("ModificarClienteNat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M2_ModificarContacto.
+        /// </summary>
+        public static string ModificarContacto {
+            get {
+                return ResourceManager.GetString("ModificarContacto", resourceCulture);
             }
         }
         

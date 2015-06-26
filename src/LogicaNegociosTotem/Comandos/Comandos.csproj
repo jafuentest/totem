@@ -69,6 +69,7 @@
     <Compile Include="Comandos\Modulo2\ComandoModificarClienteJuridico.cs" />
     <Compile Include="Comandos\Modulo2\ComandoModificarClienteNatural.cs" />
     <Compile Include="Comandos\Modulo2\ComandoEliminarClienteNatural.cs" />
+    <Compile Include="Comandos\Modulo2\ComandoModificarContacto.cs" />
     <Compile Include="Comandos\Modulo3\ComandoAgregarContactosInvolucrados.cs" />
     <Compile Include="Comandos\Modulo3\ComandoAgregarUsuariosInvolucrados.cs" />
     <Compile Include="Comandos\Modulo3\ComandoConsultarCargosContactos.cs" />

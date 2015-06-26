@@ -363,4 +363,16 @@
   <data name="MensajeCIExistenteException" xml:space="preserve">
     <value>Ya existe un cliente registrado con esa ID</value>
   </data>
+  <data name="BuscarCIContacto" xml:space="preserve">
+    <value>M2_BuscarCIContacto</value>
+  </data>
+  <data name="ModificarContacto" xml:space="preserve">
+    <value>M2_ModificarContacto</value>
+  </data>
+  <data name="CodigoCIExistenteExceptionContacto" xml:space="preserve">
+    <value>T_02_006</value>
+  </data>
+  <data name="MensajeCIContactoExistente" xml:space="preserve">
+    <value>Ya existe un contacto con ese identificador</value>
+  </data>
 </root>

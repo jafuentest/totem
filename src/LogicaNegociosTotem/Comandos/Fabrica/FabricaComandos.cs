@@ -51,6 +51,10 @@ namespace Comandos.Fabrica
         #endregion
 
         #region Modulo 2
+        public static Comando<Entidad, bool> CrearComandoModificarContacto()
+        {
+            return new ComandoModificarContacto();
+        } 
         public static Comando<Entidad, bool> CrearComandoAgregarClienteJuridico()
         {
             return new ComandoAgregarClienteJuridico();
@@ -268,12 +272,6 @@ namespace Comandos.Fabrica
         {
             return new ComandoConsultarActores();
         }
-
-        public static Comando<string, List<Entidad>> CrearComandoListarActores()
-        {
-            return new ComandoConsultarActores();
-        }
-
         #endregion
 
         #region Modulo 7

@@ -120,17 +120,29 @@
   <data name="AbrirBotonDetalleCliente" xml:space="preserve">
     <value>&lt;a class="btn btn-primary glyphicon glyphicon-info-sign" href="DetallarCliente.aspx?detalle=</value>
   </data>
+  <data name="AbrirBotonDetalleContacto" xml:space="preserve">
+    <value>&lt;a class="btn btn-primary glyphicon glyphicon-info-sign" href="DetallarContacto.aspx?detalle=</value>
+  </data>
   <data name="AbrirBotonDetalleEmpresa" xml:space="preserve">
     <value>&lt;a class="btn btn-primary glyphicon glyphicon-info-sign" href="DetallarEmpresa.aspx?detalle=</value>
   </data>
   <data name="AbrirBotonEliminarCliente" xml:space="preserve">
     <value>&lt;a class="btn btn-danger glyphicon glyphicon-remove-sign" href="ListarClientes.aspx?clienteaeliminar=</value>
   </data>
+  <data name="AbrirBotonEliminarContactoDesdeDetalle" xml:space="preserve">
+    <value>&lt;a class="btn btn-danger glyphicon glyphicon-remove-sign" href="DetallarEmpresa.aspx?detalle=</value>
+  </data>
+  <data name="AbrirBotonEliminarContactoDesdeModificar" xml:space="preserve">
+    <value>&lt;a class="btn btn-danger glyphicon glyphicon-remove-sign" href="ModificarEmpresa.aspx?id=</value>
+  </data>
   <data name="AbrirBotonEliminarEmpresa" xml:space="preserve">
     <value>&lt;a class="btn btn-danger glyphicon glyphicon-remove-sign" href="ListarEmpresas.aspx?empresaaeliminar=</value>
   </data>
   <data name="AbrirBotonModificarCliente" xml:space="preserve">
     <value>&lt;a class="btn btn-default glyphicon glyphicon-pencil" href="ModificarCliente.aspx?id=</value>
+  </data>
+  <data name="AbrirBotonModificarContacto" xml:space="preserve">
+    <value>&lt;a class="btn btn-default glyphicon glyphicon-pencil" href="ModificarContacto.aspx?id=</value>
   </data>
   <data name="AbrirBotonModificarEmpresa" xml:space="preserve">
     <value>&lt;a class="btn btn-default glyphicon glyphicon-pencil" href="ModificarEmpresa.aspx?id=</value>
@@ -182,6 +194,12 @@
     <value>&lt;/div&gt;</value>
     <comment>Final del html</comment>
   </data>
+  <data name="Alerta_Mensaje_Contacto_Modificado" xml:space="preserve">
+    <value>Contacto modificado exitosamente</value>
+  </data>
+  <data name="Alerta_Mensaje_Eliminacion_Contacto" xml:space="preserve">
+    <value>El contacto ha sido eliminado exitosamente</value>
+  </data>
   <data name="Alerta_Rol" xml:space="preserve">
     <value>alert</value>
     <comment>Rol que hace la alerta</comment>
@@ -199,13 +217,31 @@
     <value>?success=agregar</value>
     <comment>Codigo de exito para el redireccionamiento</comment>
   </data>
+  <data name="Codigo_Exito_Eliminar" xml:space="preserve">
+    <value>?success=eliminar</value>
+  </data>
+  <data name="Codigo_Exito_ModficiarContacto" xml:space="preserve">
+    <value>&amp;success=modificar</value>
+  </data>
   <data name="Codigo_Exito_Modificar" xml:space="preserve">
     <value>?success=modificar</value>
+  </data>
+  <data name="EliminarContactoQueryString" xml:space="preserve">
+    <value>&amp;contactoaeliminar=</value>
   </data>
   <data name="ListarClientes" xml:space="preserve">
     <value>/Modulo2/ListarClientes.aspx</value>
   </data>
   <data name="ListarEmpresas" xml:space="preserve">
     <value>/Modulo2/ListarEmpresas.aspx</value>
+  </data>
+  <data name="ModificarEmpresa" xml:space="preserve">
+    <value>/Modulo2/ModificarEmpresa.aspx</value>
+  </data>
+  <data name="RedireccionID" xml:space="preserve">
+    <value>?id=</value>
+  </data>
+  <data name="RedireccionPag" xml:space="preserve">
+    <value>&amp;pag=</value>
   </data>
 </root>
