@@ -472,8 +472,6 @@ namespace DAO.DAO.Modulo8
         /// <returns>Retorna un Boolean para saber si se realizo con exito o no la operacion</returns>
         public bool Eliminar(Entidad parametro, String codigoProyecto)
         {
-            bool contactoBool = false;
-            bool usuarioBool = false;
             bool success = false;
             Acuerdo acuerdo = (Acuerdo)parametro;
             Fabrica.FabricaAbstractaDAO laFabrica = Fabrica.FabricaAbstractaDAO.ObtenerFabricaSqlServer();
@@ -484,25 +482,22 @@ namespace DAO.DAO.Modulo8
                 acuerdo.Id.ToString(), false);
             parametros.Add(elParametro);
 
+
             try
             {
-                foreach (Contacto contacto in acuerdo.ListaContacto)
+                List<Resultado> tmp = EjecutarStoredProcedure(RecursosBDModulo8.ProcedimientoEliminarAcuerdo, parametros);
+
+                if (tmp != null)
                 {
-                    contactoBool = DAOInvolucradosMinuta.EliminarContactoEnAcuerdo(contacto, acuerdo.Id, codigoProyecto);
+                    return true;
                 }
-                foreach (Usuario usuario in acuerdo.ListaUsuario)
+                else
                 {
-                    usuarioBool = DAOInvolucradosMinuta.EliminarUsuarioEnAcuerdo(usuario, acuerdo.Id, codigoProyecto);
-                }
-                if ((contactoBool == true) && (usuarioBool == true))
-                {
-                    List<Resultado> tmp = EjecutarStoredProcedure(RecursosBDModulo8.ProcedimientoEliminarAcuerdo, parametros);
-                    if (tmp.ToArray().Length > 0)
-                    {
-                        success = true;
-                    }
+                    return false;
+
                 }
             }
+            
 
             catch (NullReferenceException ex)
             {

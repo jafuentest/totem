@@ -11,17 +11,18 @@ namespace Comandos.Comandos.Modulo3
     class ComandoAgregarContactosInvolucrados: Comando<Dominio.Entidad, Boolean>
     {
         /// <summary>
-        /// Comando que elimina un requerimiento
+        /// Comando para agregar un contacto como involucrado
         /// </summary>
-        /// <param name="parametro">Requerimiento a eliminar</param>
-        /// <returns>true si se puede eliminar</returns>
+        /// <param name="parametro">Contacto a agregar</param>
+        /// <returns>true si se agrego correctamente</returns>
         public override bool Ejecutar(Dominio.Entidad parametro)
         {
             bool exito = false;
             try
             {
-                FabricaAbstractaDAO laFabrica = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
-                IDaoInvolucrados daoInvolucrado = laFabrica.ObtenerDaoInvolucrados();
+                DAO.IntefazDAO.Modulo3.IDaoInvolucrados daoInvolucrado;
+                DAO.Fabrica.FabricaDAOSqlServer fabricaDAO = new DAO.Fabrica.FabricaDAOSqlServer();
+                daoInvolucrado = fabricaDAO.ObtenerDaoInvolucrados();
                 exito = daoInvolucrado.AgregarContactosInvolucrados(parametro);
             }
             catch (ListaSinInvolucradosException)

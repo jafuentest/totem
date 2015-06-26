@@ -70,7 +70,6 @@ namespace Presentadores.Modulo1
 				    Comando<String, List<Dominio.Entidad>> listaProyectos;
 				    listaProyectos = Comandos.Fabrica.FabricaComandos.
 					   CrearComandoConsultarProyectosPorUsuario();
-
 				    try
 				    {
 					   List<Dominio.Entidad> proyectos = 
@@ -84,13 +83,17 @@ namespace Presentadores.Modulo1
 					   HttpContext.Current.Session[RecursosM1.LProyectoCodigo] = "Ninguno";
 				    }
 
+                        HttpContext.Current.Session[RecursosM1.Parametro_Credencial] = (Usuario)credenciales;
+
                         HttpContext.Current.Response.Redirect(RecursosM1.Ventana_Default);
                     }
                     else
                     {
                         vista.SetMesaje(true, RecursosM1.Mensaje_ErrorLogin);
                     }
+
                     intentos++;
+
                 }
 
             }
@@ -106,7 +109,7 @@ namespace Presentadores.Modulo1
             catch (ExcepcionesTotem.ExceptionTotemConexionBD e)
             {
                 vista.SetMesaje(true, e.Message);
-            } 
+            }
             catch (Exception e)
             {
                 vista.SetMesaje(true, e.Message);

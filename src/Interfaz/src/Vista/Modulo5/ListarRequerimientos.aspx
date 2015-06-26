@@ -68,7 +68,7 @@
 				    <td><%# Eval("Prioridad") %></td>
 				    <td>
 					   <a class="btn btn-default glyphicon glyphicon-pencil"
-					   href="ModificarRequerimiento.aspx?id=<%# Eval("Codigo") %>"></a>
+					   href="ModificarRequerimiento.aspx?id=<%# Eval("Codigo") %>&list=true"></a>
 					   <a class="btn btn-danger glyphicon glyphicon-remove-sign"
 					   href="ListarRequerimientos.aspx?eliminar=<%# Eval("Codigo") %>&list=true"></a>
 				    </td>

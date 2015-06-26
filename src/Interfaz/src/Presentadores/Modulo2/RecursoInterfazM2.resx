@@ -220,6 +220,9 @@
     <value>&lt;/tr&gt;</value>
   </data>
   <data name="Codigo_Exito_Agregar" xml:space="preserve">
+    <value>?success=agregar</value>
+  </data>
+  <data name="Codigo_Exito_AgregarContacto" xml:space="preserve">
     <value>&amp;success=agregar</value>
     <comment>Codigo de exito para el redireccionamiento</comment>
   </data>

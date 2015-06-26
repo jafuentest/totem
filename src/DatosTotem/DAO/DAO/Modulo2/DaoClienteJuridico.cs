@@ -65,14 +65,15 @@ namespace DAO.DAO.Modulo2
             }
             #endregion
         }
-        public bool BuscarRifClienteJuridico(String elRif)
+        public bool BuscarRifClienteJuridico(Entidad parametro)
         {
+            ClienteJuridico elCliente = (ClienteJuridico)parametro;
             bool retorno = false;
             try
             {
                 List<Parametro> parametros = new List<Parametro>();
                 Parametro elParametro = new Parametro(RecursoBDModulo2.ParamJurRif, SqlDbType.VarChar,
-                    elRif, false);
+                    elCliente.Jur_Rif, false);
                 parametros.Add(elParametro);
                 elParametro = new Parametro(RecursoBDModulo2.ParamSalida, SqlDbType.Int, true);
                 parametros.Add(elParametro);
@@ -80,9 +81,12 @@ namespace DAO.DAO.Modulo2
                     parametros);
                 foreach (Resultado resultado in resultados)
                 {
-                    if ((resultado.etiqueta == RecursoBDModulo2.ParamSalida) &&
-                        (int.Parse(resultado.valor) == 0))
-                        retorno = true;
+                    if (resultado.etiqueta == RecursoBDModulo2.ParamSalida)
+                        if (elCliente.Id == 0)
+                            retorno = true;
+                        else
+                            if (int.Parse(resultado.valor) == elCliente.Id)
+                                retorno = true;
                 }
                 return retorno;
             }
@@ -121,7 +125,7 @@ namespace DAO.DAO.Modulo2
             {
                 ClienteJuridico elCliente = (ClienteJuridico)parametro;
 
-                if (BuscarRifClienteJuridico(elCliente.Jur_Rif))
+                if (BuscarRifClienteJuridico(elCliente))
                 {
                     #region Llenado de arreglo de parametros
 
@@ -223,7 +227,7 @@ namespace DAO.DAO.Modulo2
             try
             {
                 ClienteJuridico elCliente = (ClienteJuridico)parametro;
-                if (BuscarRifClienteJuridico(elCliente.Jur_Rif))
+                if (BuscarRifClienteJuridico(elCliente))
                 {
                     #region Llenado de parametros
                     List<Parametro> parametros = new List<Parametro>();

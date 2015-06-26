@@ -19,10 +19,10 @@ namespace Vista.Modulo2
         {
             this.Master.idModulo = "2";
             this.Master.presentador.CargarMenuLateral();
+            presentador.ObtenerVariablesURL();
             if (!IsPostBack) 
             { 
                 presentador.consultarClientes();
-                presentador.ObtenerVariablesURL();
             }
            
         }

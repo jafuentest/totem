@@ -8,6 +8,9 @@ using DatosTotem.Modulo3;
 
 namespace LogicaNegociosTotem.Modulo3
 {
+    /// <summary>
+    /// Clase que maneja la lógica de los involucrados en un proyecto
+    /// </summary>
     public class LogicaInvolucrados
     {
         #region Atributos
@@ -54,7 +57,7 @@ namespace LogicaNegociosTotem.Modulo3
             return contactosInvolucrados.agregarContactoAProyecto(elContacto);
         }
         /// <summary>
-        /// Metodo que agrega contacto a lista de contactos involucrados a un proyecto
+        /// Metodo que agrega contacto a lista de usuarios involucrados a un proyecto
         /// </summary>
         /// <param name="elUsuario">usuario a agregar</param>
         /// <returns>Valor booleano que refleja exito o fallo de la operacion</returns>
@@ -67,6 +70,7 @@ namespace LogicaNegociosTotem.Modulo3
         /// </summary>
         /// <param name="elContacto">contacto a eliminar</param>
         /// <returns>Valor booleano que refleja exito o fallo de la operacion</returns>
+        /// 
         public bool eliminarContacto(DominioTotem.Contacto elContacto)
         {
             throw new NotImplementedException();
@@ -131,7 +135,7 @@ namespace LogicaNegociosTotem.Modulo3
             return retorno;
         }
         /// <summary>
-        /// Metodo que agrega una lista de contactos involucrados a la base de datos
+        /// Metodo que agrega una lista de usuarios involucrados a la base de datos
         /// </summary>
         /// <param name="laListaUsu">lista de usuarios a ingresar</param>
         /// <returns>Valor booleano que refleja exito o fallo de la operacion</returns>
@@ -241,20 +245,35 @@ namespace LogicaNegociosTotem.Modulo3
             catch (ExcepcionesTotem.ExceptionTotem ex)
             {
                 return null;
-                //throw new ExcepcionesTotem.ExceptionTotem("No se pudo completar la operacion", ex);
             }
         }
+        /// <summary>
+        /// Metodo que carga la lista de cargos de los contactos
+        /// </summary>
+        /// <param name="elProyecto">l</param>
+        /// <returns>lista de los cargos de los contactos involucrados</returns>
         public List<String> ListarCargosEmpleados(DominioTotem.ClienteJuridico cli)
         {
             List<String> listaCargos = new List<String>();
 
             return DatosTotem.Modulo3.BDInvolucrados.consultarCargosContactos(cli);
         }
+
+        /// <summary>
+        /// Metodo que obtine los datos del usuario 
+        /// </summary>
+        /// <param name="elProyecto">username</param>
+        /// <returns>usuario</returns>
         public DominioTotem.Usuario obtenerDatosUsuarioUsername(String username)
         {
             return BDInvolucrados.datosUsuarioUsername(username);
         }
 
+        /// <summary>
+        /// Metodo que carga los contactos por cargo
+        /// </summary>
+        /// <param name="elProyecto">cliente juridico y cargo</param>
+        /// <returns>lista de contactos</returns>
         public List<DominioTotem.Contacto> ListarContactoCargoEmpresa(DominioTotem.ClienteJuridico jur, String cargo)
         {
             try
@@ -266,7 +285,11 @@ namespace LogicaNegociosTotem.Modulo3
                 throw new ExcepcionesTotem.ExceptionTotem();
             }
         }
-
+        /// <summary>
+        /// Metodo que carga los datos de un contacto
+        /// </summary>
+        /// <param name="elProyecto">id del contacto</param>
+        /// <returns>datos del contacto</returns>
         public DominioTotem.Contacto obtenerDatosContactoID(int id)
         {
             try
@@ -278,7 +301,11 @@ namespace LogicaNegociosTotem.Modulo3
                 throw new ExcepcionesTotem.ExceptionTotem();
             }
         }
-
+        /// <summary>
+        /// Metodo que carga los datos de un contacto
+        /// </summary>
+        /// <param name="elProyecto">usuario y lista de usuarios involucrados</param>
+        /// <returns>datos del usuario</returns>
         public bool eliminarUsuarioDeBD(DominioTotem.Usuario u, DominioTotem.ListaInvolucradoUsuario lista)
         {
             try
@@ -290,6 +317,12 @@ namespace LogicaNegociosTotem.Modulo3
                 return false;
             }
         }
+
+        /// <summary>
+        /// Metodo que elimina un cotacto involucrado 
+        /// </summary>
+        /// <param name="elProyecto">el contacto y la lista de contactos involucrados</param>
+        /// <returns>datos del contacto</returns>
         public bool eliminarContactoDeBD(DominioTotem.Contacto c, DominioTotem.ListaInvolucradoContacto lista)
         {
             try

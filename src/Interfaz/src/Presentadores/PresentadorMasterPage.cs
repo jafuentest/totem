@@ -62,7 +62,7 @@ namespace Presentadores
         /// </summary>
         public void RevisarSession()
         {
-            if (HttpContext.Current.Session["LUsuario"] != null)
+            if (HttpContext.Current.Session["Credenciales"] != null)
             {
                 vista.ulNav = true;
             }

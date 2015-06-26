@@ -323,17 +323,20 @@ $(function ()
            //------------------------------Asignar Acuerdos y Compromisos------------------------------------------------
            for (i = 0; i < json["ListaAcuerdo"].length; i++)
            {
-               var codigoAcuerdo = "acuerdo" + json["ListaAcuerdo"][i]["Codigo"];
+               var codigoAcuerdo = "acuerdo" + json["ListaAcuerdo"][i]["Id"];
                var compromisoAcuerdo = json["ListaAcuerdo"][i]["Compromiso"];
                var fechaCompletaAcuerdo = new Date(json["ListaAcuerdo"][i]["Fecha"]);
                var mes = fechaCompletaAcuerdo.getMonth() + 1;
                var fechaAcuerdo = fechaCompletaAcuerdo.getDate() + "/" + mes + "/" + fechaCompletaAcuerdo.getFullYear();
-               codigoAcuerdoDIV = "acuerdo" + i + "_div";
-               codigoAcuerdoBTN = "acuerdo" + i + "_btn";
-               codigoAcuerdoSelect = "acuerdo" + i + "_select";
-               codigoAcuerdoFecha = "acuerdo" + i + "_fecha";
-               codigoAcuerdoCompromiso = "acuerdo" + i + "_compromiso";
-               codigoAcuerdoSelectDIV = "acuerdo" + i + "_selectDIV";
+
+               window.alert(codigoAcuerdo);
+
+               codigoAcuerdoDIV = "acuerdo" + json["ListaAcuerdo"][i]["Id"] + "_div";
+               codigoAcuerdoBTN = "acuerdo" + json["ListaAcuerdo"][i]["Id"] + "_btn";
+               codigoAcuerdoSelect = "acuerdo" + json["ListaAcuerdo"][i]["Id"] + "_select";
+               codigoAcuerdoFecha = "acuerdo" + json["ListaAcuerdo"][i]["Id"] + "_fecha";
+               codigoAcuerdoCompromiso = "acuerdo" + json["ListaAcuerdo"][i]["Id"] + "_compromiso";
+               codigoAcuerdoSelectDIV = "acuerdo" + json["ListaAcuerdo"][i]["Id"] + "_selectDIV";
                $('#acuerdosMinuta').append(
                    "<div id=" + codigoAcuerdoDIV + " class='panel panel-default panel-punto codigoAcuerdo'>"
                    + " <div class='panel-body panel-minuta'>"

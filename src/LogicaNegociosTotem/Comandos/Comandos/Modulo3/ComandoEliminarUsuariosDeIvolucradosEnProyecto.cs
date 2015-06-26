@@ -10,9 +10,9 @@ namespace Comandos.Comandos.Modulo3
     class ComandoEliminarUsuariosDeIvolucradosEnProyecto : Comando<Dominio.Entidad, Boolean>
     {
         /// <summary>
-        /// Comando que elimina un requerimiento
+        /// Comando que elimina un usuario involucrado en un proyecto
         /// </summary>
-        /// <param name="parametro1">Requerimiento a eliminar</param>
+        /// <param name="parametro1">usuario a eliminar</param>
         /// <returns>true si se puede eliminar</returns>
         public override bool Ejecutar(Dominio.Entidad parametro1)
         {

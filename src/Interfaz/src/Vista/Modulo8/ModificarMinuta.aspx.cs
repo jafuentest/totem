@@ -110,8 +110,10 @@ namespace Vista.Modulo8
 
             for (int i = 0; i < minutaDinamica["acuerdo"].Length; i++)
             {
+                System.Console.Out.WriteLine(minutaDinamica["acuerdo"]);
                 Acuerdo acuerdo = new Acuerdo();
                 List<Usuario> listaUsuarioAcuerdo = new List<Usuario>();
+                acuerdo.Id = minutaDinamica["acuerdo"][i]["codigo"]; 
                 string fechaAcuerdo = minutaDinamica["acuerdo"][i]["fecha"];
                 DateTime fechaAcue = DateTime.ParseExact(fechaAcuerdo, "dd-MM-yyyy", null);
                 acuerdo.Fecha = fechaAcue;
