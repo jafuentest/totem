@@ -496,7 +496,7 @@ namespace Presentadores.Modulo6
                    RecursosPresentadorModulo6.CodigoCasoDeUsoInvalidoException,
                    RecursosPresentadorModulo6.MensajeCasoDeUsoInvalido,
                    new CasoDeUsoInvalidoException());
-               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+               Logger.EscribirError(this.GetType().Name
                    , exCasoDeUso);
 
                MostrarMensajeError(exCasoDeUso.Mensaje);
@@ -509,7 +509,7 @@ namespace Presentadores.Modulo6
                            RecursosPresentadorModulo6.CodigoMensajePresentadorBDException,
                            RecursosPresentadorModulo6.MensajePresentadorBDException,
                            e);
-               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+               Logger.EscribirError(this.GetType().Name
                    , e);
 
                MostrarMensajeError(exReporteActoresPresentador.Mensaje);
@@ -535,7 +535,7 @@ namespace Presentadores.Modulo6
                           RecursosPresentadorModulo6.CodigoMensajePresentadorTipoDeDatoErroneo,
                           RecursosPresentadorModulo6.MensajePresentadorTipoDeDatoErroneoException,
                           e);
-               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+               Logger.EscribirError(this.GetType().Name
                    , e);
 
                MostrarMensajeError(exReporteActoresPresentador.Mensaje);
@@ -549,7 +549,7 @@ namespace Presentadores.Modulo6
                             RecursosPresentadorModulo6.CodigoMensajePresentadorException,
                             RecursosPresentadorModulo6.MensajePresentadorException,
                             e);
-               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+               Logger.EscribirError(this.GetType().Name
                    , e);
 
                MostrarMensajeError(exReporteActoresPresentador.Mensaje);
