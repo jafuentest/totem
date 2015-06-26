@@ -2430,10 +2430,10 @@ GO
 CREATE PROCEDURE Consultar_Actor_Por_ID
 @idactor int
 AS
-Select act_nombre as nombreActor,
+Select act_id as  idActor,
+	   act_nombre as nombreActor,
 	   act_descripcion as descripcionActor
 FROM actor where act_id=@idactor
-END
 GO
 
 

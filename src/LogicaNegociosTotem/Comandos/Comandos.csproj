@@ -99,6 +99,7 @@
     <Compile Include="Comandos\Modulo6\ComandoConsultarActores.cs" />
     <Compile Include="Comandos\Modulo6\ComandoConsultarActoresCombo.cs" />
     <Compile Include="Comandos\Modulo6\ComandoConsultarActoresXCasoDeUso.cs" />
+    <Compile Include="Comandos\Modulo6\ComandoConsultarActorXId.cs" />
     <Compile Include="Comandos\Modulo6\ComandoConsultarCasosDeUsoPorActor.cs" />
     <Compile Include="Comandos\Modulo6\ComandoConsultarRequerimientosXCasoDeUso.cs" />
     <Compile Include="Comandos\Modulo6\ComandoEliminarCU.cs" />

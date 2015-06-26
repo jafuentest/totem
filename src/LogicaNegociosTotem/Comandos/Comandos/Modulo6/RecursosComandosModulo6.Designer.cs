@@ -88,6 +88,15 @@ namespace Comandos.Comandos.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a ComandoConsultarActorXId.
+        /// </summary>
+        internal static string ClaseComandoConsultarActorXId {
+            get {
+                return ResourceManager.GetString("ClaseComandoConsultarActorXId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a ComandoConsultarCasosDeUsoPorActor.
         /// </summary>
         internal static string ClaseComandoConsultarCasosDeUsoPorActor {
@@ -133,6 +142,15 @@ namespace Comandos.Comandos.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a T_06_054.
+        /// </summary>
+        internal static string CodigoComandoActorInexistente {
+            get {
+                return ResourceManager.GetString("CodigoComandoActorInexistente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a T_06_051.
         /// </summary>
         internal static string CodigoExcepcionComandoBD {
@@ -165,6 +183,15 @@ namespace Comandos.Comandos.Modulo6 {
         internal static string CodigoExcepcionComandoTipoDeDatoErroneo {
             get {
                 return ResourceManager.GetString("CodigoExcepcionComandoTipoDeDatoErroneo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El actor no se encuentra registrado en la Base de Datos..
+        /// </summary>
+        internal static string MensajeComandoActorInexistente {
+            get {
+                return ResourceManager.GetString("MensajeComandoActorInexistente", resourceCulture);
             }
         }
         
