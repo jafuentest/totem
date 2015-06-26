@@ -108,6 +108,7 @@
       <DependentUpon>RecursosComandosModulo6.resx</DependentUpon>
     </Compile>
     <Compile Include="Comandos\Modulo7\ComandoAgregarUsuario.cs" />
+    <Compile Include="Comandos\Modulo7\ComandoEliminarUsuario.cs" />
     <Compile Include="Comandos\Modulo7\ComandoLeerCargosUsuarios.cs" />
     <Compile Include="Comandos\Modulo7\ComandoListarCargos.cs" />
     <Compile Include="Comandos\Modulo7\ComandoListarUsuarios.cs" />

@@ -339,6 +339,15 @@ namespace Comandos.Fabrica
         {
             return new ComandoLeerCargosUsuarios();
         }
+
+        /// <summary>
+        /// Metodo que instancia el comando de eliminar un usuario
+        /// </summary>
+        /// <returns>Verdadero si se pudo eliminar, falso sino se pudo</returns>
+        public static Comando<String, bool> CrearComandoEliminarUsuarios()
+        {
+            return new ComandoEliminarUsuario();
+        }
         #endregion
 
         #region Modulo 8
