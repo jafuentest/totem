@@ -10,7 +10,7 @@
 namespace Vista.Modulo6 {
     
     
-    public partial class Listar {
+    public partial class MiLista {
         
         /// <summary>
         /// Control labelMensajeExito.
@@ -31,22 +31,40 @@ namespace Vista.Modulo6 {
         protected global::System.Web.UI.WebControls.Label labelMensajeError;
         
         /// <summary>
-        /// Control cuerpo.
+        /// Control infoproyect.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cuerpo;
+        protected global::System.Web.UI.WebControls.Label infoproyect;
         
         /// <summary>
-        /// Control tabla.
+        /// Control infoclient.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal tabla;
+        protected global::System.Web.UI.WebControls.Label infoclient;
+        
+        /// <summary>
+        /// Control infostatus.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label infostatus;
+        
+        /// <summary>
+        /// Control RCasosDeUso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RCasosDeUso;
         
         /// <summary>
         /// Control boton.

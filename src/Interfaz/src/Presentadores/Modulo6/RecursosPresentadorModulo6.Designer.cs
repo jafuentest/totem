@@ -142,6 +142,24 @@ namespace Presentadores.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a ?success=eliminar.
+        /// </summary>
+        internal static string Codigo_Exito_Eliminar {
+            get {
+                return ResourceManager.GetString("Codigo_Exito_Eliminar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a T_06_106.
+        /// </summary>
+        internal static string CodigoCasoDeUsoInvalidoException {
+            get {
+                return ResourceManager.GetString("CodigoCasoDeUsoInvalidoException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a T_06_103.
         /// </summary>
         internal static string CodigoMensajePresentadorBDException {
@@ -196,6 +214,24 @@ namespace Presentadores.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a El caso de uso se ha eliminado exitosamente..
+        /// </summary>
+        internal static string MensajeCasoDeUsoEliminado {
+            get {
+                return ResourceManager.GetString("MensajeCasoDeUsoEliminado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El caso de uso contiene datos erroneos..
+        /// </summary>
+        internal static string MensajeCasoDeUsoInvalido {
+            get {
+                return ResourceManager.GetString("MensajeCasoDeUsoInvalido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Ha ingresado un código malicioso, por favor ingrese carácteres correctos..
         /// </summary>
         internal static string MensajeCodigoMaliciosoException {
@@ -246,6 +282,15 @@ namespace Presentadores.Modulo6 {
         internal static string MensajePresentadorTipoDeDatoErroneoException {
             get {
                 return ResourceManager.GetString("MensajePresentadorTipoDeDatoErroneoException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a /Modulo6/Listar.aspx.
+        /// </summary>
+        internal static string VentanaListarCasosDeUso {
+            get {
+                return ResourceManager.GetString("VentanaListarCasosDeUso", resourceCulture);
             }
         }
     }
