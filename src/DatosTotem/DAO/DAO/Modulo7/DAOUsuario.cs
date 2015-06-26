@@ -63,57 +63,60 @@ namespace DAO.DAO.Modulo7
             elUsuario.CalcularHash();
 
              //Indicaremos si la insercion fue exitosa o fallida
-            bool exito = false;
+            bool exito;
+
             try
             {
-                //Variable que cambiara su valor si las filas de la Base de Datos fueron alteradas (se inserto)
-                Int32 filasAfectadas = 0;
 
-                //Indicamos que es un stored procedure, cual utilizar y ademas la conexion que necesita
-                this.instruccion = new SqlCommand(RecursosBaseDeDatosModulo7.ProcedimientoInsertarUsuario, this.conexion);
-                this.instruccion.CommandType = CommandType.StoredProcedure;
+            /*Creamos una lista de parametros y le agregamos los valores correspondientes 
+            a las variables de stored procedure*/
+            List<Parametro> listaParametros = new List<Parametro>();
+            Parametro parametroConsulta;
+            parametroConsulta = new Parametro(RecursosBaseDeDatosModulo7.UsernameUsuario,SqlDbType.VarChar
+                ,elUsuario.Username,false);
+            listaParametros.Add(parametroConsulta);
+            parametroConsulta = new Parametro(RecursosBaseDeDatosModulo7.ClaveUsuario, SqlDbType.VarChar
+               , elUsuario.Clave, false);
+            listaParametros.Add(parametroConsulta);
+            parametroConsulta = new Parametro(RecursosBaseDeDatosModulo7.NombreUsuario, SqlDbType.VarChar
+               , elUsuario.Nombre, false);
+            listaParametros.Add(parametroConsulta);
+            parametroConsulta = new Parametro(RecursosBaseDeDatosModulo7.ApellidoUsuario, SqlDbType.VarChar
+               , elUsuario.Apellido, false);
+            listaParametros.Add(parametroConsulta);
+            parametroConsulta = new Parametro(RecursosBaseDeDatosModulo7.RolUsuario, SqlDbType.VarChar
+               , elUsuario.Rol, false);
+            listaParametros.Add(parametroConsulta);
+            parametroConsulta = new Parametro(RecursosBaseDeDatosModulo7.CorreoUsuario, SqlDbType.VarChar
+               , elUsuario.Correo, false);
+            listaParametros.Add(parametroConsulta);
+            parametroConsulta = new Parametro(RecursosBaseDeDatosModulo7.PreguntaUsuario, SqlDbType.VarChar
+               , elUsuario.PreguntaSeguridad, false);
+            listaParametros.Add(parametroConsulta);
+            parametroConsulta = new Parametro(RecursosBaseDeDatosModulo7.RespuestaUsuario, SqlDbType.VarChar
+               , elUsuario.RespuestaSeguridad, false);
+            listaParametros.Add(parametroConsulta);
+            parametroConsulta = new Parametro(RecursosBaseDeDatosModulo7.CargoUsuario, SqlDbType.VarChar
+               , elUsuario.Cargo, false);
+            listaParametros.Add(parametroConsulta);
+            
+            //Obtenemos las filas alteradas de la insercion
+            int resultado = EjecutarStoredProcedureAlteraFilas(RecursosBaseDeDatosModulo7.ProcedimientoInsertarUsuario,
+                listaParametros);
+            
+            //Si el resultado da mayor a cero significa que se agrego un usuario
+            if (resultado > 0)
+                exito = true;
+            else
+                exito = false;
 
-                //Le agregamos los valores correspondientes a las variables de stored procedure
-                this.instruccion.Parameters.AddWithValue(RecursosBaseDeDatosModulo7.UsernameUsuario,
-                    elUsuario.Username);
-                this.instruccion.Parameters.AddWithValue(RecursosBaseDeDatosModulo7.ClaveUsuario,
-                    elUsuario.Clave);
-                this.instruccion.Parameters.AddWithValue(RecursosBaseDeDatosModulo7.NombreUsuario,
-                    elUsuario.Nombre);
-                this.instruccion.Parameters.AddWithValue(RecursosBaseDeDatosModulo7.ApellidoUsuario,
-                    elUsuario.Apellido);
-                this.instruccion.Parameters.AddWithValue(RecursosBaseDeDatosModulo7.RolUsuario,
-                    elUsuario.Rol);
-                this.instruccion.Parameters.AddWithValue(RecursosBaseDeDatosModulo7.CorreoUsuario,
-                    elUsuario.Correo);
-                this.instruccion.Parameters.AddWithValue(RecursosBaseDeDatosModulo7.PreguntaUsuario,
-                    elUsuario.PreguntaSeguridad);
-                this.instruccion.Parameters.AddWithValue(RecursosBaseDeDatosModulo7.RespuestaUsuario,
-                    elUsuario.RespuestaSeguridad);
-                this.instruccion.Parameters.AddWithValue(RecursosBaseDeDatosModulo7.CargoUsuario,
-                    elUsuario.Cargo);
-
-
-                //Se abre conexion contra la Base de Datos
-                this.conexion.Open();
-
-                //Ejecutamos la consulta y traemos las filas que fueron altearadas (agregadas en este caso)
-                filasAfectadas = this.instruccion.ExecuteNonQuery();
-
-                //Cerramos conexion
-                this.conexion.Close();
-
-                //Si la respuesta es mayor que uno entonces se agrego exitosamente
-                if (filasAfectadas > 0)
-                    exito = true;
-            }
-            catch (Exception error)
-            {
-                throw new Exception("Ha ocurrido un error inesperado al agregar", error);
-            }
-
-
+            //Retornamos el exito o fallo de la insercion
             return exito;
+            }
+            catch(SqlException e)
+            {
+                throw new Exception();
+            }
         }
 
         /// <summary>
@@ -457,51 +460,14 @@ namespace DAO.DAO.Modulo7
                 else
                     exito = false;
 
+                //Retornamos la respuesta
                 return exito;
             }
             catch (Exception ex)
             {
                 throw new Exception();
             }
-
-            /*
-            //Indicaremos si la insercion fue exitosa o fallida
-            bool exito = false;
-            try
-            {
-                //Variable que cambiara su valor si las filas de la Base de Datos fueron alteradas (se inserto)
-                Int32 filasAfectadas = 0;
-
-                //Indicamos que es un stored procedure, cual utilizar y ademas la conexion que necesita
-                this.instruccion = new SqlCommand(RecursosBaseDeDatosModulo7.ProcedimientoEliminarUsuario,
-                    this.conexion);
-                this.instruccion.CommandType = CommandType.StoredProcedure;
-
-                //Le agregamos los valores correspondientes a las variables de stored procedure
-                this.instruccion.Parameters.AddWithValue(RecursosBaseDeDatosModulo7.UsernameUsuario,
-                    username);
-                
-                //Se abre conexion contra la Base de Datos
-                this.conexion.Open();
-
-                //Ejecutamos la consulta y traemos las filas que fueron altearadas (agregadas en este caso)
-                filasAfectadas = this.instruccion.ExecuteNonQuery();
-
-                //Cerramos conexion
-                this.conexion.Close();
-
-                //Si la respuesta es mayor que uno entonces se agrego exitosamente
-                if (filasAfectadas > 0)
-                    exito = true;
-            }
-            catch (Exception error)
-            {
-                throw new Exception("Ha ocurrido un error inesperado al eliminar", error);
-            }
-
-
-            return exito;*/
-		}
+    	}
 		#endregion
 
 		#region Juan
