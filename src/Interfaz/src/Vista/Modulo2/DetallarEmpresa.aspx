@@ -86,6 +86,7 @@
                                         <th>Nombres y Apellidos</th>
                                         <th>Cargo</th>
                                         <th>Telefono</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody runat ="server" id="cuerpo">

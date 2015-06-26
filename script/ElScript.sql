@@ -1072,7 +1072,7 @@ create procedure M2_BuscarCIContacto
  @salida int OUTPUT
 as
 begin
- select @salida = count(*)
+ select @salida = con_id
  from CONTACTO
  where con_cedula = @con_cedula;
 end;
@@ -1548,7 +1548,7 @@ CREATE PROCEDURE M2_BuscarRIFClienteJuridico
 	@salida [int] output
 AS
 BEGIN
-	select @salida = count(*)
+	select @salida = cj_id
 	from CLIENTE_JURIDICO
 	where
 		@cj_rif = cj_rif
@@ -1561,7 +1561,7 @@ create procedure M2_BuscarCIClienteNatural
  @salida int OUTPUT
 as
 begin
- select @salida = count(*)
+ select @salida = cn_id
  from CLIENTE_NATURAL
  where cn_cedula = @cn_cedula;
 end;
