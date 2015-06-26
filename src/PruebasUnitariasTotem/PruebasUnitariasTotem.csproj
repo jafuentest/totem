@@ -54,6 +54,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RecursosPUMod1.resx</DependentUpon>
     </Compile>
+    <Compile Include="Modulo2\PruebasDaoContacto.cs" />
     <Compile Include="Modulo3\PruebaBDInvolucrados.cs" />
     <Compile Include="Modulo3\PruebaComando.cs" />
     <Compile Include="Modulo3\PruebaDAOInvolucrados.cs" />
@@ -88,9 +89,7 @@
     <Compile Include="Modulo8\PruebaDaoPunto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modulo2\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DatosTotem\DAO\DAO.csproj">
       <Project>{d9ace21a-77b5-4e5a-bb70-c77bc5a39a6c}</Project>

@@ -30,7 +30,7 @@
                             </div>                            
                             <div class="form-group" Runat="Server">
                                 <div class="col-xs-12" Runat="Server">
-                                    <input runat="server" id="cedulaContacto" class="form-control" placeholder="Cedula del Contacto" type="text" />
+                                    <input runat="server" id="cedulaContacto" class="form-control" placeholder="Cedula del Contacto" type="text" maxlength ="10" />
                                 </div>
 
                             </div>
