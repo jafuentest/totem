@@ -264,6 +264,16 @@ namespace Comandos.Fabrica
             return new ComandoEliminarCU(); 
         }
 
+        public static Comando<string, List<Entidad>> CrearComandoListarActores()
+        {
+            return new ComandoConsultarActores();
+        }
+
+        public static Comando<string, List<Entidad>> CrearComandoListarActores()
+        {
+            return new ComandoConsultarActores();
+        }
+
         #endregion
 
         #region Modulo 7
