@@ -12,10 +12,10 @@ namespace Comandos.Comandos.Modulo3
     class ComandoAgregarUsuariosInvolucrados : Comando<Dominio.Entidad, Boolean>
     {
         /// <summary>
-        /// Comando que elimina un requerimiento
+        /// Comando para agregar un usuario como involucrados
         /// </summary>
-        /// <param name="parametro">Requerimiento a eliminar</param>
-        /// <returns>true si se puede eliminar</returns>
+        /// <param name="parametro">Usuario aagregar</param>
+        /// <returns>true si se puedo agergar correctamente</returns>
         public override bool Ejecutar(Dominio.Entidad parametro)
         {
             bool exito = false;

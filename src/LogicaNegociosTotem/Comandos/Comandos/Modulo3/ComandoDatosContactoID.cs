@@ -11,10 +11,10 @@ namespace Comandos.Comandos.Modulo3
     class ComandoDatosContactoID : Comando<int, Dominio.Entidad>
     {
         /// <summary>
-        /// Comando que elimina un requerimiento
+        /// Comando para obtener los datos de un contacto
         /// </summary>
-        /// <param name="parametro">Requerimiento a eliminar</param>
-        /// <returns>true si se puede eliminar</returns>
+        /// <param name="parametro">ID del contacto</param>
+        /// <returns>el contacto solicitado</returns>
         public override Dominio.Entidad Ejecutar(int parametro)
         {
             Contacto contactoID;

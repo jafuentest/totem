@@ -12,10 +12,10 @@ namespace Comandos.Comandos.Modulo3
     class ComandoListarContactosPorEmpresa : Comando<Dominio.Entidad,List<Dominio.Entidad> >
     {
         /// <summary>
-        /// Comando que elimina un requerimiento
+        /// Comando que lista lo contactos de una empresa
         /// </summary>
-        /// <param name="parametro">Requerimiento a eliminar</param>
-        /// <returns>true si se puede eliminar</returns>
+        /// <param name="parametro">cliente juridico</param>
+        /// <returns>lista de contactos</returns>
         public override List<Dominio.Entidad> Ejecutar(Dominio.Entidad parametro)
         {
             List<Entidad> listContacto;

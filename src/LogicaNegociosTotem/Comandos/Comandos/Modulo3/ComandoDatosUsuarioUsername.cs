@@ -11,10 +11,10 @@ namespace Comandos.Comandos.Modulo3
     class ComandoDatosUsuarioUsername : Comando<String, Dominio.Entidad>
     {
         /// <summary>
-        /// Comando que elimina un requerimiento
+        /// Comando para obtener los datos de un usuario 
         /// </summary>
-        /// <param name="parametro">Requerimiento a eliminar</param>
-        /// <returns>true si se puede eliminar</returns>
+        /// <param name="parametro">el username del usuario</param>
+        /// <returns>el usuario solicitado</returns>
         public override Dominio.Entidad Ejecutar(String parametro)
         {
             Usuario usuario;
