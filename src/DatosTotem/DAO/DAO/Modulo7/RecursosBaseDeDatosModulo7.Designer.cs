@@ -88,6 +88,15 @@ namespace DAO.DAO.Modulo7 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CargoNombre.
+        /// </summary>
+        internal static string CargoNombre {
+            get {
+                return ResourceManager.GetString("CargoNombre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT DISTINCT CAR_NOMBRE FROM CARGO, USUARIO WHERE CARGO_car_id=car_id.
         /// </summary>
         internal static string CargosUsuarios {

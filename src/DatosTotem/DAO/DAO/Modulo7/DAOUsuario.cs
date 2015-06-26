@@ -265,6 +265,7 @@ namespace DAO.DAO.Modulo7
             }
             catch (Exception e)
             {
+                //Si existe un error inesperado escribimos en el logger y lanzamos la excepcion
                 Logger.EscribirError(this.GetType().Name, new ExceptionTotem());
                 throw new ExceptionTotem(RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_CODIGO,
                     RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_MENSAJE,e);
@@ -281,45 +282,45 @@ namespace DAO.DAO.Modulo7
             //Lista que sera la respuesta de la consulta;
             List<Entidad> usuarios = new List<Entidad>();
 
+            //Instanciamos la fabrica concreta de Entidades
+            FabricaEntidades fabrica = new FabricaEntidades();
+
+            //Parametros que tendra
+            List<Parametro> parametros = new List<Parametro>();
+
             try
             {
-                //Respuesta de la consulta hecha a la Base de Datos
-                SqlDataReader respuesta;
+                //Recibimos la respuesta de la consulta
+                DataTable dt = EjecutarStoredProcedureTuplas(RecursosBaseDeDatosModulo7.ProcedimientoListarUsuario,
+                    parametros);
 
-                //Indicamos que es un Stored Procedure, cual utilizar y ademas la conexion que necesita
-                this.instruccion = new SqlCommand(RecursosBaseDeDatosModulo7.ProcedimientoListarUsuario, this.conexion);
-                this.instruccion.CommandType = CommandType.StoredProcedure;
+                //Recorremos el data table, crearmos el usuario con sus datos y asignamos cada usuario a la lista
+                foreach (DataRow fila in dt.Rows)
+                 {
+                     Entidad aux = fabrica.ObtenerUsuario(fila[RecursosBaseDeDatosModulo7.UsernameNombre].ToString(),
+                         fila[RecursosBaseDeDatosModulo7.NombreUsu].ToString(),
+                         fila[RecursosBaseDeDatosModulo7.ApellidoUsu].ToString(),
+                         fila[RecursosBaseDeDatosModulo7.CargoNombre].ToString());
+                     usuarios.Add(aux);
+                 }
 
-                //Se abre conexion contra la Base de Datos
-                this.conexion.Open();
-
-                //Ejecutamos la consulta y traemos las filas que fueron obtenidas
-                respuesta = instruccion.ExecuteReader();
-
-                //Instanciamos la fabrica concreta de Entidades
-                FabricaEntidades fabrica = new FabricaEntidades();
-
-                //Si se encontraron Usuarios se comienzan a agregar a la variable lista, sino, se devolvera vacia
-                if (respuesta.HasRows)
-                    //Recorremos cada fila devuelta de la consulta
-                    while (respuesta.Read())
-                    {
-                        //Creamos el Usuario y lo anexamos a la lista
-                        Entidad aux = fabrica.ObtenerUsuario(respuesta.GetString(0), respuesta.GetString(1),
-                            respuesta.GetString(2), respuesta.GetString(3));
-                        usuarios.Add(aux);
-
-                    }
-
-                //Cerramos conexion
-                this.conexion.Close();
             }
-            catch (Exception error)
+            catch (SqlException e)
             {
-                throw new Exception("Ha ocurrido un error inesperado al Listar", error);
+                //Si hay error en la Base de Datos escribimos en el logger y lanzamos la excepcion
+                Logger.EscribirError(this.GetType().Name, new ExceptionTotemConexionBD());
+                throw new ExceptionTotemConexionBD(RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos, e);
             }
-
-            //Retornamos la respuesta
+            catch (Exception e)
+            {
+                //Si existe un error inesperado escribimos en el logger y lanzamos la excepcion
+                Logger.EscribirError(this.GetType().Name, new ExceptionTotem());
+                throw new ExceptionTotem(RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_CODIGO,
+                    RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_MENSAJE, e);
+            }
+            
+            //Retornamos la lista con los usuarios
             return usuarios;
         }
 

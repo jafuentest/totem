@@ -274,4 +274,8 @@
     <value>Ha ocurrido un error inesperado en el DAOUsuario al realizar esta operacion</value>
     <comment>Mensaje que se produce cuando no se sabe que error ocurrio especificamente</comment>
   </data>
+  <data name="CargoNombre" xml:space="preserve">
+    <value>CargoNombre</value>
+    <comment>Nombre del cargo para un usuario</comment>
+  </data>
 </root>
