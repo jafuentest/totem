@@ -1054,6 +1054,7 @@ begin
  from CONTACTO
  where con_cedula = @con_cedula;
 end;
+go
 --------------------PROCEDURE MODIFICAR CONTACTO--------------
 CREATE procedure M2_ModificarContacto
 (
@@ -1071,7 +1072,7 @@ begin
 		set tel_codigo = @con_cod_tel,
 			tel_numero = @con_num_tel
 		where
-			CONTACTO_con_id = @con_id;
+			CONTACTO_con_id = @idContacto;
 
 	update CONTACTO
 		set con_cedula = @con_cedula,
@@ -1079,8 +1080,9 @@ begin
 			con_apellido = @con_apellido,
 			CARGO_car_id = (select car_id from CARGO where car_nombre = @con_cargo)
 		where
-			con_id = @con_id;
+			con_id = @idContacto;
 end;
+go
 ------------------------PROCEDURE SELECCIONAR CLIENTE_JURIDICO POR ID----------------------- 
 CREATE PROCEDURE M2_ConsultarDatosClienteJur
 	@idClienteJur [int]
