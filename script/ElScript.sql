@@ -2399,13 +2399,17 @@ DECLARE @idProyecto int = 0
 	
 GO
 
+
 /*Leer actor(es)*/
 CREATE PROCEDURE LEER_ACTOR 
-	@idproyecto int
+	@codigoProyecto varchar(6)
 AS
 	BEGIN
 		--Leo todos los Actores asociados al proyecto
-		SELECT A.act_nombre NOMBRE, A.act_descripcion DESCRIPCION, A.act_id ID FROM ACTOR A WHERE A.PROYECTO_pro_id=@idproyecto; 
+		SELECT A.act_nombre  as nombreActor,  A.act_id  as idActor,A.act_descripcion as descripcionActor
+		FROM ACTOR A, PROYECTO P
+		 WHERE p.pro_id = a.PROYECTO_pro_id
+		 and p.pro_codigo = @codigoProyecto;
 	END
 GO
 
