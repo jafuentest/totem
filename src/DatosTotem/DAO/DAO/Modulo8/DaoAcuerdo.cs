@@ -36,7 +36,7 @@ namespace DAO.DAO.Modulo8
         public bool AgregarAcuerdo(Entidad parametro, int idMinuta, string idProyecto)
         {
             Acuerdo elAcuerdo = (Acuerdo)parametro;
-            Fabrica.FabricaAbstractaDAO laFabrica = Fabrica.FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+            Fabrica.FabricaDAOSqlServer laFabrica = new FabricaDAOSqlServer();
             IntefazDAO.Modulo8.IDaoInvolucradosMinuta DAOInvolucradosMinuta = laFabrica.ObtenerDAOInvolucradosMinuta();
             bool success = false;
             
@@ -242,8 +242,8 @@ namespace DAO.DAO.Modulo8
                         elAcuerdo.Id = int.Parse(row[RecursosBDModulo8.AtributoIDAcuerdo].ToString());
                         elAcuerdo.Fecha = DateTime.Parse(row[RecursosBDModulo8.AtributoFechaAcuerdo].ToString());
                         elAcuerdo.Compromiso = row[RecursosBDModulo8.AtributoDesarrolloAcuerdo].ToString();
-                      /*  elAcuerdo.ListaContacto = ObtenerContactoAcuerdo(elAcuerdo.Id).Cast<Contacto>().ToList();
-                        elAcuerdo.ListaUsuario = ObtenerUsuarioAcuerdo(elAcuerdo.Id).Cast<Usuario>().ToList();*/
+                        //elAcuerdo.ListaContacto = ObtenerContactoAcuerdo(elAcuerdo.Id).Cast<Contacto>().ToList();
+                        elAcuerdo.ListaUsuario = ObtenerUsuarioAcuerdo(elAcuerdo.Id).Cast<Usuario>().ToList();
                         laLista.Add(elAcuerdo);
                     }
                 }
@@ -317,13 +317,12 @@ namespace DAO.DAO.Modulo8
                 idUsuarios = EjecutarStoredProcedureTuplas(RecursosBDModulo8.ProcedimientoUsuarioAcuerdo, parametros);
                 if (idUsuarios.Rows.Count > 0)
                 {
+                    FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
+                    DaoInvolucradosMinuta daoInvolucradosMinuta = new DaoInvolucradosMinuta();
+
                     foreach (DataRow row in idUsuarios.Rows)
                     {
-                     
-                        DaoInvolucradosMinuta daoInvolucradosMinuta;
-                           
-                        FabricaAbstractaDAO fabricaDAO = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
-                        daoInvolucradosMinuta = (DaoInvolucradosMinuta)fabricaDAO.ObtenerDAOInvolucradosMinuta();
+                        //daoInvolucradosMinuta = (DaoInvolucradosMinuta)fabricaDAO.ObtenerDAOInvolucradosMinuta();
                         Usuario usuarioR = (Usuario)daoInvolucradosMinuta.ConsultarUsuarioMinutas(int.Parse(row[RecursosBDModulo8.AtributoAcuerdoUsuario].ToString()));
                         if (usuarioR != null)
                         {
@@ -402,15 +401,16 @@ namespace DAO.DAO.Modulo8
                 idContactos = EjecutarStoredProcedureTuplas(RecursosBDModulo8.ProcedimientoContactoAcuerdo, parametros);
                 if (idContactos.Rows.Count > 0)
                 {
+                    FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
+                    DaoInvolucradosMinuta daoInvolucradosMinuta = new DaoInvolucradosMinuta();
                     foreach (DataRow row in idContactos.Rows)
                     {
-                     
-                        DaoInvolucradosMinuta daoInvolucradosMinuta;
-                           
-                        FabricaAbstractaDAO fabricaDAO = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
-                        daoInvolucradosMinuta = (DaoInvolucradosMinuta)fabricaDAO.ObtenerDAOInvolucradosMinuta();
-                        laLista.Add(daoInvolucradosMinuta.ConsultarContactoMinutas(int.Parse(row[RecursosBDModulo8.AtributoAcuerdoContacto].ToString())));
-                    
+
+                        Contacto contactoR = (Contacto)daoInvolucradosMinuta.ConsultarContactoMinutas(int.Parse(row[RecursosBDModulo8.AtributoAcuerdoContacto].ToString()));
+                        if (contactoR != null)
+                        {
+                            laLista.Add(contactoR);
+                        }
                     }
                 }
                 else
@@ -476,7 +476,7 @@ namespace DAO.DAO.Modulo8
             bool usuarioBool = false;
             bool success = false;
             Acuerdo acuerdo = (Acuerdo)parametro;
-            Fabrica.FabricaAbstractaDAO laFabrica = Fabrica.FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+            FabricaDAOSqlServer laFabrica = new FabricaDAOSqlServer();
             IntefazDAO.Modulo8.IDaoInvolucradosMinuta DAOInvolucradosMinuta = laFabrica.ObtenerDAOInvolucradosMinuta();
 
             List<Parametro> parametros = new List<Parametro>();

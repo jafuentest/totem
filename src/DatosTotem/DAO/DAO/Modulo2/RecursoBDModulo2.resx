@@ -375,4 +375,7 @@
   <data name="MensajeCIContactoExistente" xml:space="preserve">
     <value>Ya existe un contacto con ese identificador</value>
   </data>
+  <data name="AgregarContacto" xml:space="preserve">
+    <value>M2_AgregarContacto</value>
+  </data>
 </root>

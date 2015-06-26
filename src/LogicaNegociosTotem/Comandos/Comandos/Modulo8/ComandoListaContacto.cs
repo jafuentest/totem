@@ -22,7 +22,7 @@ namespace Comandos.Comandos.Modulo8
             {
                 List<int> numInvolucrados = new List<int>();
                 List<Dominio.Entidad> contactos = new List<Dominio.Entidad>();
-                FabricaAbstractaDAO fabricaDAO = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+                FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
                 DAO.IntefazDAO.Modulo8.IDaoInvolucradosMinuta daoInvMinutas = fabricaDAO.ObtenerDAOInvolucradosMinuta();
                 numInvolucrados = daoInvMinutas.ConsultarInvolucrado(RecursosComandosModulo8.ProcedureContactoProyecto, RecursosComandosModulo8.AtributoContacto,
                     RecursosComandosModulo8.ParametroIdProyecto, parametro);

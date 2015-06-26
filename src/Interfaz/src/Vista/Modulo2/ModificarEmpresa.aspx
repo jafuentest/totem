@@ -78,7 +78,7 @@
 
                 <!--Contactos-->
 
-                     <div class="table-responsive">
+                     <div class="table-responsive" style=" text-align:center;">
             <table id="table-users" class="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -91,6 +91,8 @@
                     <asp:Literal runat="server" ID="laTabla"></asp:Literal>
                 </tbody>
             </table>
+                         <asp:Button ID="btnAgregarNuevoContacto" class="btn btn-primary" runat="server" Text = "Agregar contacto nuevo" OnClick="btnAgregarNuevoContacto_Click"></asp:Button>
+                        
             <div id="modal-delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">

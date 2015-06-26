@@ -17,7 +17,7 @@ namespace Comandos.Comandos.Modulo2
         {
             try
             {
-                FabricaAbstractaDAO laFabrica = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+                FabricaDAOSqlServer laFabrica = new FabricaDAOSqlServer();
                 IDaoClienteJuridico daoClienteJur = laFabrica.ObtenerDaoClienteJuridico();
 
                 return daoClienteJur.consultarDatosContactoID(parametro);

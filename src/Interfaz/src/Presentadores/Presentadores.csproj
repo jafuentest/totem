@@ -50,6 +50,7 @@
       <DependentUpon>RecursosM1.resx</DependentUpon>
     </Compile>
     <Compile Include="Modulo2\PresentadorAgregarCliente.cs" />
+    <Compile Include="Modulo2\PresentadorAgregarContacto.cs" />
     <Compile Include="Modulo2\PresentadorAgregarEmpresa.cs" />
     <Compile Include="Modulo2\PresentadorDetallarCliente.cs" />
     <Compile Include="Modulo2\PresentadorDetallarContacto.cs" />

@@ -15,7 +15,7 @@ namespace Comandos.Comandos.Modulo2
         {
             try
             {
-                FabricaAbstractaDAO laFabrica = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+                FabricaDAOSqlServer laFabrica = new FabricaDAOSqlServer();
                 IDaoClienteNatural daoClienteNat = laFabrica.ObtenerDaoClienteNatural();
 
                 return daoClienteNat.eliminarClienteNatural(parametro);

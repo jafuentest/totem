@@ -49,6 +49,15 @@ namespace Vista.Modulo1 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl captchaContainer;
         
         /// <summary>
+        /// Control recaptcha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Recaptcha.RecaptchaControl recaptcha;
+        
+        /// <summary>
         /// Control ChangeContainer.
         /// </summary>
         /// <remarks>

@@ -46,6 +46,7 @@
     <Compile Include="Modulo1\IContratoLogin.cs" />
     <Compile Include="Modulo1\IContratoPregunta.cs" />
     <Compile Include="Modulo2\IContratoAgregarCliente.cs" />
+    <Compile Include="Modulo2\IContratoAgregarContacto.cs" />
     <Compile Include="Modulo2\IContratoAgregarEmpresa.cs" />
     <Compile Include="Modulo2\IContratoDetallarCliente.cs" />
     <Compile Include="Modulo2\IContratoDetallarContacto.cs" />

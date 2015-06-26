@@ -1,27 +1,29 @@
-﻿using DAO.Fabrica;
+﻿using Dominio;
+using DAO;
 using DAO.IntefazDAO.Modulo2;
-using Dominio;
-using ExcepcionesTotem;
-using ExcepcionesTotem.Modulo2;
+using DAO.Fabrica;
+using DAO.DAO.Modulo2;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ExcepcionesTotem;
+using ExcepcionesTotem.Modulo2;
+using System.Data.SqlClient;
 
 namespace Comandos.Comandos.Modulo2
 {
-    public class ComandoModificarContacto : Comando<Entidad, bool>
+    class ComandoAgregarContacto: Comando<Entidad, bool>
     {
         public override bool Ejecutar(Entidad parametro)
         {
             try
             {
                 FabricaDAOSqlServer laFabrica = new FabricaDAOSqlServer();
-                IDaoClienteJuridico daoClienteJur = laFabrica.ObtenerDaoClienteJuridico();
+                IDaoContacto daoContacto = laFabrica.ObtenerDaoContacto();
 
-                return daoClienteJur.modificarContacto(parametro);
-
-            }
+                return daoContacto.Agregar(parametro);
+            } 
             #region Catches
             catch (CIContactoExistenteException ex)
             {

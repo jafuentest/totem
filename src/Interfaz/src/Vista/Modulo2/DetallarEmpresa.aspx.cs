@@ -136,5 +136,10 @@ namespace Vista.Modulo2
             set { alert.InnerHtml += value; }
         }
         #endregion
+
+        protected void btnAgregarNuevoContacto_Click(object sender, EventArgs e)
+        {
+            presentador.redirAgregarContacto();
+        }
     }
 }

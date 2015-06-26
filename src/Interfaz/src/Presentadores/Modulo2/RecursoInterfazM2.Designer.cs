@@ -79,7 +79,7 @@ namespace Presentadores.Modulo2 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;a class=&quot;btn btn-primary glyphicon glyphicon-info-sign&quot; href=&quot;DetallarEmpresa.aspx?detalle=.
+        ///   Looks up a localized string similar to &lt;a class=&quot;btn btn-primary glyphicon glyphicon-info-sign&quot; href=&quot;DetallarEmpresa.aspx?id=.
         /// </summary>
         public static string AbrirBotonDetalleEmpresa {
             get {
@@ -165,6 +165,15 @@ namespace Presentadores.Modulo2 {
         public static string AbrirEtiqueta_tr {
             get {
                 return ResourceManager.GetString("AbrirEtiqueta_tr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /Modulo2/AgregarContacto.aspx?empresa=.
+        /// </summary>
+        public static string AgregarContacto {
+            get {
+                return ResourceManager.GetString("AgregarContacto", resourceCulture);
             }
         }
         
@@ -277,6 +286,15 @@ namespace Presentadores.Modulo2 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contacto agregado exitosamente.
+        /// </summary>
+        public static string Alerta_Mensaje_Contacto_Agregado {
+            get {
+                return ResourceManager.GetString("Alerta_Mensaje_Contacto_Agregado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contacto modificado exitosamente.
         /// </summary>
         public static string Alerta_Mensaje_Contacto_Modificado {
@@ -331,7 +349,7 @@ namespace Presentadores.Modulo2 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ?success=agregar.
+        ///   Looks up a localized string similar to &amp;success=agregar.
         /// </summary>
         public static string Codigo_Exito_Agregar {
             get {

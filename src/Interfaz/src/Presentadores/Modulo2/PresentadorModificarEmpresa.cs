@@ -213,8 +213,16 @@ namespace Presentadores.Modulo2
                     vista.alerta = RecursoInterfazM2.Alerta_Html +
                         RecursoInterfazM2.Alerta_Mensaje_Contacto_Modificado +
                         RecursoInterfazM2.Alerta_Html_Final;
-
                 }
+                else
+                    if (success != null && success.Equals("agregar"))
+                    {
+                        vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Exito;
+                        vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                        vista.alerta = RecursoInterfazM2.Alerta_Html +
+                            RecursoInterfazM2.Alerta_Mensaje_Contacto_Agregado +
+                            RecursoInterfazM2.Alerta_Html_Final;
+                    }
             }
            
         }
@@ -344,6 +352,13 @@ namespace Presentadores.Modulo2
                 return false;
             }
         }
-
+        public void redirAgregarContacto()
+        {
+            String detalleEmpresa = HttpContext.Current.Request.QueryString["id"];
+            if (detalleEmpresa != null)
+                HttpContext.Current.Response.Redirect(RecursoInterfazM2.AgregarContacto + detalleEmpresa
+                    + RecursoInterfazM2.RedireccionPag + HttpContext.Current.Request.Url.LocalPath +
+                    RecursoInterfazM2.RedireccionID + detalleEmpresa);
+        }
     }
 }
