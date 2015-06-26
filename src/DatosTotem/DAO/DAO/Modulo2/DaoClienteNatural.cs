@@ -17,24 +17,28 @@ namespace DAO.DAO.Modulo2
     public class DaoClienteNatural : DAO, IntefazDAO.Modulo2.IDaoClienteNatural
     {
 
-        public bool BuscarCIClienteNatural(String laCI)
+        public bool BuscarCIClienteNatural(Entidad parametro)
         {
+            ClienteNatural elCliente = (ClienteNatural)parametro;
             bool retorno = false;
             try
             {
                 List<Parametro> parametros = new List<Parametro>();
                 Parametro elParametro = new Parametro(RecursoBDModulo2.ParamCedulaClienteNat,
-                    SqlDbType.VarChar, laCI, false);
+                    SqlDbType.VarChar, elCliente.Nat_Cedula, false);
                 parametros.Add(elParametro);
                 elParametro = new Parametro(RecursoBDModulo2.ParamSalida, SqlDbType.Int, true);
                 parametros.Add(elParametro);
                 List<Resultado> resultados = EjecutarStoredProcedure(RecursoBDModulo2.BuscarCIClienteNatural,
-                                                parametros);
+                    parametros);
                 foreach (Resultado resultado in resultados)
                 {
-                    if ((resultado.etiqueta == RecursoBDModulo2.ParamSalida) && (int.Parse(resultado.valor) == 0))
-                        return true;
-
+                    if (resultado.etiqueta == RecursoBDModulo2.ParamSalida)
+                        if (elCliente.Id == 0)
+                            retorno = true;
+                        else
+                            if (int.Parse(resultado.valor) == elCliente.Id)
+                                retorno = true;
                 }
                 return retorno;
 
@@ -71,7 +75,7 @@ namespace DAO.DAO.Modulo2
             try
             {
                 ClienteNatural elCliente = (ClienteNatural)parametro;
-                if (BuscarCIClienteNatural(elCliente.Nat_Cedula))
+                if (BuscarCIClienteNatural(elCliente))
                 {
                     #region Llenado de arreglo de parametros
                     List<Parametro> parametros = new List<Parametro>();
@@ -164,7 +168,7 @@ namespace DAO.DAO.Modulo2
 
             try
             {
-                if (BuscarCIClienteNatural(elCliente.Nat_Cedula))
+                if (BuscarCIClienteNatural(elCliente))
                 {
 
                     #region Llenado de arreglo de parametros

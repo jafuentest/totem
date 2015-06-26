@@ -10,6 +10,7 @@ using Dominio.Fabrica;
 using Dominio.Entidades.Modulo2;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Web.UI;
 
 
 namespace Presentadores.Modulo2
@@ -182,7 +183,7 @@ namespace Presentadores.Modulo2
                     RecursoInterfazM2.Alerta_Html_Final;
             }
             String edicionCliente = HttpContext.Current.Request.QueryString["id"];
-            if (edicionCliente != null)
+            if (edicionCliente != null && !(HttpContext.Current.Handler as Page).IsPostBack)
                 cargarCliente(edicionCliente);
         }
 
@@ -226,7 +227,6 @@ namespace Presentadores.Modulo2
                                 Entidad elCliente = fabrica.ObtenerClienteNatural(vista.nombreCliente,
                                     vista.apellidoCliente, vista.correoCliente, laDireccion, elTelefono, vista.cedulaCliente);
                                 elCliente.Id = int.Parse(elID);
-
                                 Comando<Entidad, bool> comando = FabricaComandos.CrearComandoModificarClienteNatural();
                                 if (comando.Ejecutar(elCliente))
                                     HttpContext.Current.Response.Redirect(RecursoInterfazM2.ListarClientes +

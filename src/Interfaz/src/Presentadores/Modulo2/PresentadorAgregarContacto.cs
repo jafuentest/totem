@@ -80,7 +80,7 @@ namespace Presentadores.Modulo2
                             Comando<Entidad, bool> elComando = FabricaComandos.CrearComandoAgregarContacto();
                                 if (elComando.Ejecutar(elContacto))
                                     HttpContext.Current.Response.Redirect(paginaRedirect +
-                                        RecursoInterfazM2.Codigo_Exito_Agregar);
+                                        RecursoInterfazM2.Codigo_Exito_AgregarContacto);
                             
                         }
                         catch (Exception ex)

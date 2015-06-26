@@ -1,4 +1,5 @@
-﻿using Dominio.Entidades.Modulo2;
+﻿using Dominio;
+using Dominio.Entidades.Modulo2;
 using Dominio.Fabrica;
 using ExcepcionesTotem;
 using ExcepcionesTotem.Modulo2;
@@ -18,7 +19,7 @@ namespace DAO.DAO.Modulo2
             try
             {
                 Contacto elContacto = (Contacto)parametro;
-                if (BuscarCIContacto(elContacto.ConCedula))
+                if (BuscarCIContacto(elContacto))
                 {
                     #region Llenado de parametros
                     List<Parametro> parametros = new List<Parametro>();
@@ -99,7 +100,7 @@ namespace DAO.DAO.Modulo2
             try
             {
                 Contacto elContacto = (Contacto)parametro;
-                if (BuscarCIContacto(elContacto.ConCedula))
+                if (BuscarCIContacto(elContacto))
                 {
                     #region Llenado de parametros
                     List<Parametro> parametros = new List<Parametro>();
@@ -288,14 +289,15 @@ namespace DAO.DAO.Modulo2
         {
             throw new NotImplementedException();
         }
-        public bool BuscarCIContacto(String cedulaCon)
+        public bool BuscarCIContacto(Entidad parametro)
         {
+            Contacto elContacto = (Contacto)parametro;
             bool retorno = false;
             try
             {
                 List<Parametro> parametros = new List<Parametro>();
                 Parametro elParametro = new Parametro(RecursoBDModulo2.ParamContactoCedula, SqlDbType.VarChar,
-                    cedulaCon, false);
+                    elContacto.ConCedula, false);
                 parametros.Add(elParametro);
                 elParametro = new Parametro(RecursoBDModulo2.ParamSalida, SqlDbType.Int, true);
                 parametros.Add(elParametro);
@@ -303,9 +305,12 @@ namespace DAO.DAO.Modulo2
                     parametros);
                 foreach (Resultado resultado in resultados)
                 {
-                    if ((resultado.etiqueta == RecursoBDModulo2.ParamSalida) &&
-                        (int.Parse(resultado.valor) == 0))
-                        retorno = true;
+                    if (resultado.etiqueta == RecursoBDModulo2.ParamSalida)
+                        if (elContacto.Id == 0)
+                            retorno = true;
+                        else
+                            if (int.Parse(resultado.valor) == elContacto.Id)
+                                retorno = true;
                 }
                 return retorno;
             }

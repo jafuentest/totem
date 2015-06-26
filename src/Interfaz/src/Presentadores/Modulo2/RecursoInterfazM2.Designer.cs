@@ -349,11 +349,20 @@ namespace Presentadores.Modulo2 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;success=agregar.
+        ///   Looks up a localized string similar to ?success=agregar.
         /// </summary>
         public static string Codigo_Exito_Agregar {
             get {
                 return ResourceManager.GetString("Codigo_Exito_Agregar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;success=agregar.
+        /// </summary>
+        public static string Codigo_Exito_AgregarContacto {
+            get {
+                return ResourceManager.GetString("Codigo_Exito_AgregarContacto", resourceCulture);
             }
         }
         

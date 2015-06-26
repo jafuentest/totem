@@ -28,7 +28,7 @@
                 
                 <div class="form-group">
                     <div id="div_nombre" class="col-sm-12 col-md-12 col-lg-12">
-                        <input id="nombreCliente"  runat="server" name="nombre" type="text" class="form-control" placeholder="Nombre" />
+                        <input id="nombreCliente"  runat="server" name="nombre" class="form-control" placeholder="Nombre" />
                     </div>
                 </div>
                 <div class="form-group">
