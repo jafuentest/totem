@@ -3,21 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using Comandos.Comandos.Modulo7;
-using Dominio.Entidades.Modulo7;
 using Comandos;
 using Dominio;
 using Comandos.Fabrica;
 using Dominio.Fabrica;
 
-
 namespace PruebasUnitariasTotem.Modulo7
 {
-    /// <summary>
-    /// Prueba unitaria que trabaja sobre el comando de AgregarUsuario
+    // <summary>
+    /// Prueba unitaria que trabaja sobre el comando de EliminarUsuario
     /// </summary>
     [TestFixture]
-    public class PruebaComandoAgregarUsuario
+    public class PruebaComandoEliminarUsuario
     {
         //Atributos que utilizaremos para las pruebas
         private Comando<Entidad, bool> comandoAgregar;
@@ -47,17 +44,19 @@ namespace PruebasUnitariasTotem.Modulo7
         /// Prueba que verifica que se pueda registar un usuario
         /// </summary>
         [Test]
-        public void PruebaAgregarUsuario()
+        public void PruebaEliminarUsuario()
         {
+            //Tratamos de eliminar un usuario que no existe
+            Assert.IsTrue(!eliminarUsuario.Ejecutar("prueba"));
+
             //Lo registramos
-            Assert.IsTrue(comandoAgregar.Ejecutar(usuarioRegistrar));
+            comandoAgregar.Ejecutar(usuarioRegistrar);
 
-            //Intentamos registrarlo de nuevo
-            Assert.IsTrue(!comandoAgregar.Ejecutar(usuarioRegistrar));
+            //Lo eliminamos
+            Assert.IsTrue(eliminarUsuario.Ejecutar("prueba"));
 
-            //Limpiamos el usuario de prueba
-            eliminarUsuario.Ejecutar("prueba");
-                  
+            
+
         }
 
         /// <summary>

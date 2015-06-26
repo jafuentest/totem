@@ -73,6 +73,7 @@
     <Compile Include="Modulo6\PruebaBDActorExcepciones.cs" />
     <Compile Include="Modulo6\PruebaLogicaActor.cs" />
     <Compile Include="Modulo7\PruebaComandoAgregarUsuario.cs" />
+    <Compile Include="Modulo7\PruebaComandoEliminarUsuario.cs" />
     <Compile Include="Modulo7\PruebaComandoListarCargos.cs" />
     <Compile Include="Modulo7\PruebaComandoListarUsuarios.cs" />
     <Compile Include="Modulo7\PruebaComandoValidarUsernameUnico.cs" />
