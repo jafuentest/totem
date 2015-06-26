@@ -174,4 +174,10 @@
   <data name="MensajeTipoDeDatoErroneoComandoExcepcion" xml:space="preserve">
     <value>Error al convertir de un tipo de dato en otro.</value>
   </data>
+  <data name="CodigoActorNoModificado" xml:space="preserve">
+    <value>T_06_055</value>
+  </data>
+  <data name="MensajeActorNoModificado" xml:space="preserve">
+    <value>El actor no se pudo modificar.</value>
+  </data>
 </root>

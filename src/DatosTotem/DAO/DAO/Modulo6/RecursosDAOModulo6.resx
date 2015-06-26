@@ -298,4 +298,10 @@
   <data name="ProcedureConsultarActorXID" xml:space="preserve">
     <value>Consultar_Actor_Por_ID</value>
   </data>
+  <data name="CodigoActorNoModificado" xml:space="preserve">
+    <value>T_06_007</value>
+  </data>
+  <data name="MensajeActorNoModificadoBD" xml:space="preserve">
+    <value>El actor no se pudo modificar en la Base de Datos.</value>
+  </data>
 </root>

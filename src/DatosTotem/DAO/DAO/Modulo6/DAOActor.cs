@@ -378,8 +378,118 @@ namespace DAO.DAO.Modulo6
         /// caso contrario</returns>
         public bool Modificar(Entidad parametro)
         {
-            return false;
+            bool actorModificado = false;
+            Actor actorAModificar = (Actor)parametro;
+            Parametro elParametro;
+            List<Parametro> parametros = new List<Parametro>();
+
+            #region Llenado de Parámetros
+            elParametro = new Parametro(RecursosDAOModulo6.
+               NOMBRE_ACTOR, SqlDbType.VarChar, actorAModificar.NombreActor,
+               false);
+            parametros.Add(elParametro);
+
+            elParametro = new Parametro(RecursosDAOModulo6.
+               DESC_ACTOR, SqlDbType.VarChar, actorAModificar.DescripcionActor,
+               false);
+            parametros.Add(elParametro);
+
+             elParametro = new Parametro(RecursosDAOModulo6.
+               ID_ACTOR, SqlDbType.Int, actorAModificar.Id.ToString(),
+               false);
+            parametros.Add(elParametro);
+
+#endregion
+            try
+            {
+                List<Resultado> resultados = EjecutarStoredProcedure(
+                       RecursosDAOModulo6.PROCEDURE_MODIFICAR_ACTOR,
+                       parametros);
+
+                if (resultados != null)
+                {
+                    actorModificado = true;
+                }
+                else 
+                {
+                    Logger.EscribirError(this.GetType().Name,
+                   new ActorNoModificadoBDException());
+
+                    throw new ActorNoModificadoBDException(
+                                RecursosDAOModulo6.CodigoActorNoModificado,
+                                RecursosDAOModulo6.MensajeActorNoModificadoBD,
+                                new ActorNoModificadoBDException());
+                }
+
+            }
+            catch (ActorNoModificadoBDException e)
+            {
+                Logger.EscribirError(this.GetType().Name,
+                    e);
+
+                throw e;
+            }
+             catch (SqlException e)
+            {
+
+
+                BDDAOException exDaoActor = new BDDAOException(
+                 RecursosDAOModulo6.CodigoExcepcionBDDAO,
+                 RecursosDAOModulo6.MensajeExcepcionBD,
+                 e);
+
+                Logger.EscribirError(this.GetType().Name,
+                    exDaoActor);
+
+                throw exDaoActor;
+
+            }
+            catch (NullReferenceException e)
+            {
+                ObjetoNuloDAOException exDaoActor = new ObjetoNuloDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionObjetoNuloDAO,
+                    RecursosDAOModulo6.MensajeExcepcionObjetoNulo,
+                    e);
+                Logger.EscribirError(this.GetType().Name,
+                       exDaoActor);
+
+                throw exDaoActor;
+
+            }
+
+            catch (FormatException e)
+            {
+                TipoDeDatoErroneoDAOException exDaoActor = new TipoDeDatoErroneoDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionTipoDeDatoErroneo,
+                    RecursosDAOModulo6.MensajeTipoDeDatoErroneoException,
+                    e);
+                Logger.EscribirError(this.GetType().Name,
+                       exDaoActor);
+
+                throw exDaoActor;
+
+            }
+            catch (Exception e)
+            {
+                ErrorDesconocidoDAOException exDaoActor = new ErrorDesconocidoDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionErrorDAO,
+                    RecursosDAOModulo6.MensajeExcepcionErrorDesconocido,
+                    e);
+
+                Logger.EscribirError(this.GetType().Name,
+                      exDaoActor);
+
+                throw exDaoActor;
+            }
+
+            return actorModificado; 
         }
+
+
+
+
+
+        
 
         /// <summary>
         /// Método que accede a Base de Datos para

@@ -142,6 +142,15 @@ namespace Comandos.Comandos.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a T_06_055.
+        /// </summary>
+        internal static string CodigoActorNoModificado {
+            get {
+                return ResourceManager.GetString("CodigoActorNoModificado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a T_06_054.
         /// </summary>
         internal static string CodigoComandoActorInexistente {
@@ -183,6 +192,15 @@ namespace Comandos.Comandos.Modulo6 {
         internal static string CodigoExcepcionComandoTipoDeDatoErroneo {
             get {
                 return ResourceManager.GetString("CodigoExcepcionComandoTipoDeDatoErroneo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El actor no se pudo modificar..
+        /// </summary>
+        internal static string MensajeActorNoModificado {
+            get {
+                return ResourceManager.GetString("MensajeActorNoModificado", resourceCulture);
             }
         }
         

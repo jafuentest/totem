@@ -187,6 +187,15 @@ namespace DAO.DAO.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a T_06_007.
+        /// </summary>
+        internal static string CodigoActorNoModificado {
+            get {
+                return ResourceManager.GetString("CodigoActorNoModificado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a T_06_002.
         /// </summary>
         internal static string CodigoExcepcionBDDAO {
@@ -336,6 +345,15 @@ namespace DAO.DAO.Modulo6 {
         internal static string MensajeActorInexistente {
             get {
                 return ResourceManager.GetString("MensajeActorInexistente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El actor no se pudo modificar en la Base de Datos..
+        /// </summary>
+        internal static string MensajeActorNoModificadoBD {
+            get {
+                return ResourceManager.GetString("MensajeActorNoModificadoBD", resourceCulture);
             }
         }
         

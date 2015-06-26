@@ -276,6 +276,16 @@ namespace Comandos.Fabrica
         {
             return new ComandoConsultarActores();
         }
+
+        public static Comando<Entidad, Entidad> CrearComandoConsultarActorXID() 
+        {
+            return new ComandoConsultarActorXId();
+        }
+
+        public static Comando<Entidad, bool> CrearComandoModificarActor() 
+        {
+            return new ComandoModificarActor(); 
+        }
         #endregion
 
         #region Modulo 7

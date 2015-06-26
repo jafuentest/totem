@@ -103,11 +103,13 @@
     <Compile Include="Modulo5\RequerimientoNoEliminadoException.cs" />
     <Compile Include="Modulo5\RequerimientoNoModificadoException.cs" />
     <Compile Include="Modulo6\ExcepcionesComando\ActorInexistenteComandoException.cs" />
+    <Compile Include="Modulo6\ExcepcionesComando\ActorNoModificadoComandoException.cs" />
     <Compile Include="Modulo6\ExcepcionesComando\ComandoBDException.cs" />
     <Compile Include="Modulo6\ExcepcionesComando\ComandoException.cs" />
     <Compile Include="Modulo6\ExcepcionesComando\ComandoNullException.cs" />
     <Compile Include="Modulo6\ExcepcionesComando\TipoDeDatoErroneoComandoException.cs" />
     <Compile Include="Modulo6\ExcepcionesDAO\ActorInexistenteBDException.cs" />
+    <Compile Include="Modulo6\ExcepcionesDAO\ActorNoModificadoBDException.cs" />
     <Compile Include="Modulo6\ExcepcionesDAO\BDDAOException.cs" />
     <Compile Include="Modulo6\ExcepcionesDAO\ErrorDesconocidoDAOException.cs" />
     <Compile Include="Modulo6\ExcepcionesDAO\ObjetoNuloDAOException.cs" />
