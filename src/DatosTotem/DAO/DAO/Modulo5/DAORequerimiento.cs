@@ -640,10 +640,8 @@ namespace DAO.DAO.Modulo5
                
                 Dominio.Entidades.Modulo5.Requerimiento requerimiento = (Dominio.Entidades.Modulo5.Requerimiento)parametro;
                 bool requerimientoModificado = false;
-
-             // if (VerificarRequerimiento(requerimiento)){
                 
-                    if (requerimiento != null || requerimiento.Id != null || requerimiento.Descripcion != ""
+                    if (requerimiento != null || requerimiento.Descripcion != ""
                         || requerimiento.Estatus != ""  ||
                         requerimiento.Codigo != "" || requerimiento.Prioridad != "" || requerimiento.Tipo != ""
                         ){
@@ -710,32 +708,41 @@ namespace DAO.DAO.Modulo5
                             RecursosDAOModulo5.MENSAJE_EXCEPCION_REQUERIMIENTO_ERRADO,
                             new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
                     }
-              // }
-               /* else
-                {
-                 
-
-                    ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
-                    new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
-
-                throw new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException(
-                            RecursosDAOModulo5.CODIGO_EXCEPCION_REQUERIMIENTO_ERRADO,
-                            RecursosDAOModulo5.MENSAJE_EXCEPCION_REQUERIMIENTO_ERRADO,
-                            new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
-               }*/
-
+             
                 return requerimientoModificado;
 
             }
             #region Capturar Excepciones
-            catch (ExcepcionesTotem.Modulo5.RequerimientoNoExisteException re)
+            catch (ExcepcionesTotem.Modulo5.RequerimientoInvalidoException ex)
             {
-                throw re;
-            }
-            catch (ExcepcionesTotem.ExceptionTotem e)
-            {
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
 
-                throw e;
+                throw ex;
+            }
+            catch (SqlException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw ex;
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                    ex);
+
+                throw ex;
             }
             #endregion
 

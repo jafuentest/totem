@@ -39,6 +39,11 @@ namespace Comandos.Comandos.Modulo5
 
                 throw ex;
             }
+            catch (ExcepcionesTotem.Modulo5.RequerimientoNoModificadoException ex)
+            {
+
+                throw ex;
+            }
             #endregion
 
         }
