@@ -71,12 +71,74 @@ namespace Presentadores.Modulo6
                     vista.nombreActor = actorADesplegar.NombreActor;
                     vista.descActor = actorADesplegar.DescripcionActor; 
                 }
-                
+
             }
-            catch(Exception e)
+            #region Captura de Excepciones
+            catch (ComandoBDException e)
             {
-                throw e; 
+                PresentadorException exAgregarActorPresentador =
+                        new PresentadorException(
+                            RecursosPresentadorModulo6.CodigoMensajePresentadorBDException,
+                            RecursosPresentadorModulo6.MensajePresentadorBDException,
+                            e);
+                Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                    , e);
+
+                MostrarMensajeError(exAgregarActorPresentador.Mensaje);
             }
+
+            catch (ComandoNullException e)
+            {
+                ObjetoNuloPresentadorException exAgregarActorPresentador =
+                        new ObjetoNuloPresentadorException(
+                            RecursosPresentadorModulo6.CodigoMensajePresentadorNuloException,
+                            RecursosPresentadorModulo6.MensajePresentadorNuloException,
+                            e);
+                Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                    , e);
+
+                MostrarMensajeError(exAgregarActorPresentador.Mensaje);
+            }
+
+            catch (HttpRequestValidationException e)
+            {
+                CaracteresMaliciososException exAgregarActorPresentador =
+                        new CaracteresMaliciososException(
+                            RecursosPresentadorModulo6.CodigoMensajePresentadorMalicioso,
+                            RecursosPresentadorModulo6.MensajeCodigoMaliciosoException,
+                            e);
+                Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                    , e);
+
+                MostrarMensajeError(exAgregarActorPresentador.Mensaje);
+
+            }
+            catch (ComandoException e)
+            {
+                ErrorGeneralPresentadorException exAgregarActorPresentador =
+                         new ErrorGeneralPresentadorException(
+                             RecursosPresentadorModulo6.CodigoMensajePresentadorException,
+                             RecursosPresentadorModulo6.MensajePresentadorException,
+                             e);
+                Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                    , e);
+
+                MostrarMensajeError(exAgregarActorPresentador.Mensaje);
+            }
+
+            catch (Exception e)
+            {
+                ErrorGeneralPresentadorException exAgregarActorPresentador =
+                         new ErrorGeneralPresentadorException(
+                             RecursosPresentadorModulo6.CodigoMensajePresentadorException,
+                             RecursosPresentadorModulo6.MensajePresentadorException,
+                             e);
+                Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                    , e);
+
+                MostrarMensajeError(exAgregarActorPresentador.Mensaje);
+            }
+#endregion
 
         }
 
@@ -85,7 +147,7 @@ namespace Presentadores.Modulo6
             FabricaEntidades fabrica = new FabricaEntidades();
             Entidad laEnti = fabrica.ObtenerActor();
             Actor elActor = (Actor)laEnti;
-            elActor.Id = 1;
+            elActor.Id = 1; // falta pasarle el id por la variable de sesión proveniente de lista actores
             elActor.NombreActor = vista.nombreActor;
             elActor.DescripcionActor = vista.descActor;
             try
@@ -98,6 +160,72 @@ namespace Presentadores.Modulo6
                     MostrarMensajeExito(RecursosPresentadorModulo6.MensajeExitoModificarActor);
                 }
             }
+            #region Captura de Excepciones
+            catch (ActorNoModificadoComandoException e)
+            {
+                ActorNoModificadoPresentadorException exAgregarActorPresentador =
+                        new ActorNoModificadoPresentadorException(
+                            RecursosPresentadorModulo6.CodigoActorNoModificado,
+                            RecursosPresentadorModulo6.MensajeActorNoModificado,
+                            e);
+                Logger.EscribirError(this.GetType().Name
+                    , e);
+
+                MostrarMensajeError(exAgregarActorPresentador.Mensaje);
+            }
+
+            catch (ComandoBDException e)
+            {
+                PresentadorException exAgregarActorPresentador =
+                        new PresentadorException(
+                            RecursosPresentadorModulo6.CodigoMensajePresentadorBDException,
+                            RecursosPresentadorModulo6.MensajePresentadorBDException,
+                            e);
+                Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                    , e);
+
+                MostrarMensajeError(exAgregarActorPresentador.Mensaje);
+            }
+
+            catch (ComandoNullException e)
+            {
+                ObjetoNuloPresentadorException exAgregarActorPresentador =
+                        new ObjetoNuloPresentadorException(
+                            RecursosPresentadorModulo6.CodigoMensajePresentadorNuloException,
+                            RecursosPresentadorModulo6.MensajePresentadorNuloException,
+                            e);
+                Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                    , e);
+
+                MostrarMensajeError(exAgregarActorPresentador.Mensaje);
+            }
+
+            catch (HttpRequestValidationException e)
+            {
+                CaracteresMaliciososException exAgregarActorPresentador =
+                        new CaracteresMaliciososException(
+                            RecursosPresentadorModulo6.CodigoMensajePresentadorMalicioso,
+                            RecursosPresentadorModulo6.MensajeCodigoMaliciosoException,
+                            e);
+                Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                    , e);
+
+                MostrarMensajeError(exAgregarActorPresentador.Mensaje);
+
+            }
+            catch (ComandoException e)
+            {
+                ErrorGeneralPresentadorException exAgregarActorPresentador =
+                         new ErrorGeneralPresentadorException(
+                             RecursosPresentadorModulo6.CodigoMensajePresentadorException,
+                             RecursosPresentadorModulo6.MensajePresentadorException,
+                             e);
+                Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                    , e);
+
+                MostrarMensajeError(exAgregarActorPresentador.Mensaje);
+            }
+
             catch (Exception e) 
             {
                 ErrorGeneralPresentadorException exAgregarActorPresentador =
@@ -110,7 +238,10 @@ namespace Presentadores.Modulo6
 
                 MostrarMensajeError(exAgregarActorPresentador.Mensaje);
             }
+            #endregion
         }
+
+
 
     }
 }

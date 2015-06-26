@@ -144,6 +144,9 @@
   <data name="ClaseReporteActoresPresentador" xml:space="preserve">
     <value>PresentadorReporteActores</value>
   </data>
+  <data name="CodigoActorNoModificado" xml:space="preserve">
+    <value>T_06_106</value>
+  </data>
   <data name="CodigoCasoDeUsoInvalidoException" xml:space="preserve">
     <value>T_06_106</value>
   </data>
@@ -168,6 +171,9 @@
   </data>
   <data name="MensajeActorExistente" xml:space="preserve">
     <value>El actor ya se encuentra registrado en Base de Datos.</value>
+  </data>
+  <data name="MensajeActorNoModificado" xml:space="preserve">
+    <value>El actor no se ha podido modificar en la Base de Datos.</value>
   </data>
   <data name="MensajeCasoDeUsoEliminado" xml:space="preserve">
     <value>El caso de uso se ha eliminado exitosamente.</value>

@@ -153,6 +153,15 @@ namespace Presentadores.Modulo6 {
         /// <summary>
         ///   Busca una cadena traducida similar a T_06_106.
         /// </summary>
+        internal static string CodigoActorNoModificado {
+            get {
+                return ResourceManager.GetString("CodigoActorNoModificado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a T_06_106.
+        /// </summary>
         internal static string CodigoCasoDeUsoInvalidoException {
             get {
                 return ResourceManager.GetString("CodigoCasoDeUsoInvalidoException", resourceCulture);
@@ -210,6 +219,15 @@ namespace Presentadores.Modulo6 {
         internal static string MensajeActorExistente {
             get {
                 return ResourceManager.GetString("MensajeActorExistente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El actor no se ha podido modificar en la Base de Datos..
+        /// </summary>
+        internal static string MensajeActorNoModificado {
+            get {
+                return ResourceManager.GetString("MensajeActorNoModificado", resourceCulture);
             }
         }
         

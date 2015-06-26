@@ -115,6 +115,7 @@
     <Compile Include="Modulo6\ExcepcionesDAO\ErrorDesconocidoDAOException.cs" />
     <Compile Include="Modulo6\ExcepcionesDAO\ObjetoNuloDAOException.cs" />
     <Compile Include="Modulo6\ExcepcionesDAO\TipoDeDatoErroneoDAOException.cs" />
+    <Compile Include="Modulo6\ExcepcionesPresentador\ActorNoModificadoPresentadorException.cs" />
     <Compile Include="Modulo6\ExcepcionesPresentador\CasoDeUsoInvalidoException.cs" />
     <Compile Include="Modulo6\ExcepcionesPresentador\PresentadorException.cs" />
     <Compile Include="Modulo6\ExcepcionesPresentador\ObjetoNuloPresentadorException.cs" />
