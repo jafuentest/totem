@@ -111,7 +111,7 @@
     <Compile Include="Modulo6\ExcepcionesDAO\TipoDeDatoErroneoDAOException.cs" />
     <Compile Include="Modulo6\ExcepcionesPresentador\PresentadorException.cs" />
     <Compile Include="Modulo6\ExcepcionesPresentador\ObjetoNuloPresentadorException.cs" />
-    <Compile Include="Modulo6\ExcepcionesPresentador\AgregarActorPresentadorException.cs" />
+    <Compile Include="Modulo6\ExcepcionesPresentador\ErrorGeneralPresentadorException.cs" />
     <Compile Include="Modulo6\ExcepcionesPresentador\CaracteresMaliciososException.cs" />
     <Compile Include="Modulo6\ExcepcionesPresentador\TipoDeDatoErroneoPresentadorException.cs" />
     <Compile Include="Modulo7\ClaveNoValidaException.cs" />

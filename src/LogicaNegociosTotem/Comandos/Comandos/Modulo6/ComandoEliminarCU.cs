@@ -23,8 +23,8 @@ namespace Comandos.Comandos.Modulo6
 
 
 
-            DAO.Fabrica.FabricaAbstractaDAO fabricaDAO = DAO.Fabrica.FabricaAbstractaDAO.ObtenerFabricaSqlServer();
-            DAO.IntefazDAO.Modulo6.IDaoCasoDeUso daoCasoUso = fabricaDAO.ObtenerDAOCasoDeUso();
+            DAO.Fabrica.FabricaDAOSqlServer fabricaDaoSqlServer = new DAO.Fabrica.FabricaDAOSqlServer();
+            DAO.IntefazDAO.Modulo6.IDaoCasoDeUso daoCasoUso = fabricaDaoSqlServer.ObtenerDAOCasoDeUso(); 
 
             try
             {

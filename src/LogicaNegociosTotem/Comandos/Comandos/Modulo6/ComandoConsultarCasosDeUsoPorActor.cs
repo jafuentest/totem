@@ -23,7 +23,7 @@ namespace Comandos.Comandos.Modulo6
         {
             try
             {
-                DAO.Fabrica.FabricaAbstractaDAO fabricaDaoSqlServer = DAO.Fabrica.FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+                DAO.Fabrica.FabricaDAOSqlServer fabricaDaoSqlServer = new DAO.Fabrica.FabricaDAOSqlServer(); 
 
                 DAOCasoDeUso daoCasoDeUso = (DAOCasoDeUso)fabricaDaoSqlServer.ObtenerDAOCasoDeUso();
                 List<Entidad> resultado = daoCasoDeUso.ConsultarCasosDeUsoPorActor(parametro);

@@ -21,7 +21,7 @@ namespace Comandos.Comandos.Modulo6
         {
             try
             {
-                DAO.Fabrica.FabricaAbstractaDAO fabricaDaoSqlServer = DAO.Fabrica.FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+                DAO.Fabrica.FabricaDAOSqlServer fabricaDaoSqlServer = new DAO.Fabrica.FabricaDAOSqlServer(); 
 
                 DAOActor daoActor = (DAOActor)fabricaDaoSqlServer.ObtenerDAOActor();
                 List<string> resultado = daoActor.ConsultarActoresXCasoDeUso(parametro);
