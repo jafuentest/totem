@@ -126,6 +126,7 @@
     <Compile Include="Modulo7\ClaveNoValidaException.cs" />
     <Compile Include="Modulo7\ComandoBDDAOUsuarioException.cs" />
     <Compile Include="Modulo7\ComandoErrorInesperadoException.cs" />
+    <Compile Include="Modulo7\ComandoUsernameVacioException.cs" />
     <Compile Include="Modulo7\CorreoInvalidoException.cs" />
     <Compile Include="Modulo7\CorreoRepeticoException.cs" />
     <Compile Include="Modulo7\CorreoVacioException.cs" />

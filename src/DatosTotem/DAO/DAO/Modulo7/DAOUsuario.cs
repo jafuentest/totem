@@ -296,16 +296,21 @@ namespace DAO.DAO.Modulo7
             catch (SqlException e)
             {
                 //Si hay error en la Base de Datos escribimos en el logger y lanzamos la excepcion
-                Logger.EscribirError(this.GetType().Name, new ExceptionTotemConexionBD());
-                throw new ExceptionTotemConexionBD(RecursoGeneralDAO.Codigo_Error_BaseDatos,
-                    RecursoGeneralDAO.Mensaje_Error_BaseDatos, e);
+                BDDAOUsuarioException daoSqlException = new BDDAOUsuarioException(
+                    RecursosBaseDeDatosModulo7.EXCEPTION_BDDAOUSUARIO_CODIGO,
+                    RecursosBaseDeDatosModulo7.EXCEPTION_BDDAOUSUARIO_MENSAJE, e);
+                Logger.EscribirError(this.GetType().Name, daoSqlException);
+                throw daoSqlException;
             }
             catch (Exception e)
             {
                 //Si existe un error inesperado escribimos en el logger y lanzamos la excepcion
-                Logger.EscribirError(this.GetType().Name, new ExceptionTotem());
-                throw new ExceptionTotem(RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_CODIGO,
-                    RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_MENSAJE, e);
+                ErrorInesperadoDAOUsuarioException errorInesperado = new ErrorInesperadoDAOUsuarioException(
+                RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_CODIGO,
+                RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_MENSAJE, e);
+                Logger.EscribirError(this.GetType().Name, errorInesperado);
+                throw errorInesperado;
+
             }
         }
 

@@ -38,6 +38,15 @@ namespace Comandos.Comandos.Modulo7
                 //Retornamos la respuesta
                 return exito;
             }
+            catch (UsernameVacioException e)
+            {
+                //Escribimos en el logger y lanzamos la exception
+                ComandoUsernameVacioException usernameVacio = new ComandoUsernameVacioException(
+                    RecursosComandoModulo7.EXCEPTION_USERNAME_VACIO_CODIGO,
+                    RecursosComandoModulo7.EXCEPTION_USERNAME_VACIO_MENSAJE,e);
+                Logger.EscribirError(this.GetType().Name, usernameVacio);
+                throw usernameVacio;
+            }
             catch(BDDAOUsuarioException e)
             {
                 //Escribimos en el logger y lanzamos la exception
