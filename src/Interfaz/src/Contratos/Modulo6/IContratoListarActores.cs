@@ -9,9 +9,9 @@ namespace Contratos.Modulo6
 {
     public interface IContratoListarActores
     {
-        string laTabla { get; set; }
         Label mensajeExito { get; set; }
         Label mensajeError { get; set; }
+        Repeater RActor { get; set; }
 
 
 

@@ -40,22 +40,13 @@ namespace Vista.Modulo6 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl proyectoPanel;
         
         /// <summary>
-        /// Control cuerpo.
+        /// Control RActor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cuerpo;
-        
-        /// <summary>
-        /// Control laTabla.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal laTabla;
+        protected global::System.Web.UI.WebControls.Repeater RActor;
         
         /// <summary>
         /// Propiedad Master.

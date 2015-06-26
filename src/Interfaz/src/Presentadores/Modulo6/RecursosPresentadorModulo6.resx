@@ -150,6 +150,9 @@
   <data name="CodigoCasoDeUsoInvalidoException" xml:space="preserve">
     <value>T_06_106</value>
   </data>
+  <data name="CodigoExitoEliminarActor" xml:space="preserve">
+    <value>?success=eliminarActor</value>
+  </data>
   <data name="CodigoMensajePresentadorBDException" xml:space="preserve">
     <value>T_06_103</value>
   </data>
@@ -187,6 +190,9 @@
   <data name="MensajeExitoAgregarActor" xml:space="preserve">
     <value>Actor agregado éxitosamente</value>
   </data>
+  <data name="MensajeExitoEliminarActor" xml:space="preserve">
+    <value>El actor se ha eliminado éxitosamente.</value>
+  </data>
   <data name="MensajeExitoModificarActor" xml:space="preserve">
     <value>El actor se ha modificado exitosamente.</value>
   </data>
@@ -201,6 +207,9 @@
   </data>
   <data name="MensajePresentadorTipoDeDatoErroneoException" xml:space="preserve">
     <value>Error al convertir un tipo de dato en otro.</value>
+  </data>
+  <data name="VentanaListarActores" xml:space="preserve">
+    <value>/Modulo6/ListarActores.aspx</value>
   </data>
   <data name="VentanaListarCasosDeUso" xml:space="preserve">
     <value>/Modulo6/Listar.aspx</value>

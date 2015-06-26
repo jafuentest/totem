@@ -556,6 +556,15 @@ namespace DAO.DAO.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a ELIMINAR_ACTOR.
+        /// </summary>
+        internal static string ProcedureEliminarActor {
+            get {
+                return ResourceManager.GetString("ProcedureEliminarActor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a ELIMINAR_CU.
         /// </summary>
         internal static string ProcedureEliminarCU {

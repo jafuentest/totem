@@ -12,6 +12,7 @@ namespace DAO.IntefazDAO.Modulo6
         List<Entidad> ConsultarActoresCombo(string codigoProyecto);
 
         List<string> ConsultarActoresXCasoDeUso(int idCasoUso);
-        List<Entidad> ConsultarListarActores(string codigoProy); 
+        List<Entidad> ConsultarListarActores(string codigoProy);
+        bool EliminarActor(int id); 
     }
 }

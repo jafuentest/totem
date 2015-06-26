@@ -2471,11 +2471,11 @@ GO
 
 /*Eliminar Actor*/
 CREATE PROCEDURE ELIMINAR_ACTOR 
-	@idactor int,
-	@idproyecto int
+	@idactor int
 AS
 	BEGIN
-		DELETE FROM ACTOR WHERE PROYECTO_pro_id= @idproyecto AND act_id=@idactor;
+		DELETE FROM CU_ACTOR WHERE ACTOR_act_id =@idactor;
+		DELETE FROM ACTOR WHERE act_id = @idactor;
 	END
 
 GO
