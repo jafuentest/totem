@@ -21,7 +21,7 @@ namespace Comandos.Comandos.Modulo7
         public override bool Ejecutar(String parametro)
         {
             //Instanciamos la fabrica concreta SQLServer
-            FabricaAbstractaDAO correoValido = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+            FabricaDAOSqlServer correoValido = new FabricaDAOSqlServer();
 
             //Instanciamos el DAOUsuario
             IDaoUsuario daoUsuario = correoValido.ObtenerDAOUsuario();

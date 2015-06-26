@@ -23,7 +23,7 @@ namespace Comandos.Comandos.Modulo7
             List<String> listaCargos = new List<String>();
 
             //Instanciamos la fabrica concreta SQLServer
-            FabricaAbstractaDAO fabrica = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+            FabricaDAOSqlServer fabrica = new FabricaDAOSqlServer();
 
             //Obtenemos el DAO del usuario
             IDaoUsuario daoUsuario = fabrica.ObtenerDAOUsuario();

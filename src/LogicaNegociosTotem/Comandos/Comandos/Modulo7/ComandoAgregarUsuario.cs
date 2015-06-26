@@ -37,7 +37,7 @@ namespace Comandos.Comandos.Modulo7
                 Console.WriteLine("ENTRE EN EL IF");
                 //elUsuario.CalcularHash();
                 //    manejador.RegistrarUsuario(parametro);
-                FabricaAbstractaDAO fabrica = FabricaDAOSqlServer.ObtenerFabricaSqlServer();
+                FabricaDAOSqlServer fabrica = new FabricaDAOSqlServer();
                 IDaoUsuario daoUsuario = fabrica.ObtenerDAOUsuario();
                 exito = daoUsuario.AgregarUsuario(parametro);
 
