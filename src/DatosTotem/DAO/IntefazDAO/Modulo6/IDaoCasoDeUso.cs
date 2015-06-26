@@ -14,6 +14,8 @@ namespace DAO.IntefazDAO.Modulo6
 
        List<Entidad> ListarCasosDeUso(string codigoProyecto);
 
-       bool EliminarCasoDeUso(int id); 
+       bool EliminarCasoDeUso(int id);
+
+       bool DesasociarCUDelActor(); 
     }
 }

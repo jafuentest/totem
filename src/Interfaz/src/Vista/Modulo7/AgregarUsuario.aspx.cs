@@ -137,11 +137,11 @@ namespace Vista.Modulo7
         {
             this.Master.idModulo = "7";
 
-            if (!IsPostBack)
-            {
-                this.Master.presentador.CargarMenuLateral();
-                presentador.LlenarCombos();
-            }
+			//if (!IsPostBack)
+			//{
+			//	this.Master.presentador.CargarMenuLateral();
+			//	presentador.LlenarCombos();
+			//}
 
         }
 

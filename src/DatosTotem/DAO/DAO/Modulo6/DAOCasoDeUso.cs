@@ -429,5 +429,7 @@ namespace DAO.DAO.Modulo6
         #endregion
 
 
+        public bool DesasociarCUDelActor() { return true; }
+
     }
 }

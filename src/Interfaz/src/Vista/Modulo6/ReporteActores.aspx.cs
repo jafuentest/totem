@@ -58,6 +58,7 @@ namespace Vista.Modulo6
             if (!IsPostBack)
             {
                 this.Master.presentador.CargarMenuLateral();
+                this.presentador.LimpiarPagina(); 
                 this.presentador.CargarActores(); 
             }
         }

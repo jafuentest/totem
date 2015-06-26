@@ -125,6 +125,7 @@
     <Compile Include="Modulo7\CargosNoExistentesException.cs" />
     <Compile Include="Modulo7\ClaveNoValidaException.cs" />
     <Compile Include="Modulo7\ComandoBDDAOUsuarioException.cs" />
+    <Compile Include="Modulo7\ComandoCargosNoExistentesException.cs" />
     <Compile Include="Modulo7\ComandoErrorInesperadoException.cs" />
     <Compile Include="Modulo7\ComandoUsernameVacioException.cs" />
     <Compile Include="Modulo7\CorreoInvalidoException.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Modulo7\RegistroUsuarioFallidoException.cs" />
     <Compile Include="Modulo7\UserNameRepetidoException.cs" />
     <Compile Include="Modulo7\UsernameVacioException.cs" />
+    <Compile Include="Modulo7\UsuarioInvalidoException.cs" />
     <Compile Include="Modulo8\ExcepcionesDeDatos\AtributoIncorrectoException.cs" />
     <Compile Include="Modulo8\ExcepcionesDeDatos\BDMinutaException.cs" />
     <Compile Include="Modulo8\ExcepcionesDeDatos\ParametroIncorrectoException.cs" />

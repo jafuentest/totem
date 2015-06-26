@@ -79,6 +79,24 @@ namespace Comandos.Comandos.Modulo7 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to T_07_023.
+        /// </summary>
+        internal static string EXCEPTION_CARGOS_NO_EXISTENTES_CODIGO {
+            get {
+                return ResourceManager.GetString("EXCEPTION_CARGOS_NO_EXISTENTES_CODIGO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error, no se ha encontrado ningun cargo.
+        /// </summary>
+        internal static string EXCEPTION_CARGOS_NO_EXISTENTES_MENSAJE {
+            get {
+                return ResourceManager.GetString("EXCEPTION_CARGOS_NO_EXISTENTES_MENSAJE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to T_07_021.
         /// </summary>
         internal static string EXCEPTION_ERROR_COMANDO_INESPERADO_CODIGO {

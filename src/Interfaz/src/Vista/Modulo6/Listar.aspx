@@ -79,9 +79,7 @@
 	   </asp:Repeater>
 
         </div>
-        <div style="text-align:right;">
-            <br /><button id="boton" runat="server" class="btn btn-success">Generar Documento</button>
-        </div>  	<script type="text/javascript">
+          	<script type="text/javascript">
 	    $(document).ready(function () {
 	        $('#tablaCasosUso').DataTable();
 	        var table = $('#tablaCasosUso').DataTable();

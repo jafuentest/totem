@@ -58,7 +58,6 @@ namespace Comandos.Comandos.Modulo7
                 Logger.EscribirError(this.GetType().Name, errorInesperado);
                 throw errorInesperado;
             }
-
         }
     }
 }

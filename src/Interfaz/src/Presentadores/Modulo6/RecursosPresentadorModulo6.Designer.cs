@@ -178,6 +178,15 @@ namespace Presentadores.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a ?sucess=modificar.
+        /// </summary>
+        internal static string CodigoExitoModificar {
+            get {
+                return ResourceManager.GetString("CodigoExitoModificar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a T_06_103.
         /// </summary>
         internal static string CodigoMensajePresentadorBDException {

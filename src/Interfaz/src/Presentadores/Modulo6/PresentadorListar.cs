@@ -76,42 +76,7 @@ namespace Presentadores.Modulo6
                     vista.RCasosDeUso.DataSource = laLista;
                     vista.RCasosDeUso.DataBind();
                 }
-
-
-
-                /*+= RecursosPresentadorModulo6.AbrirEtiquetaTr;
-            vista.tabla += RecursosPresentadorModulo6.AbrirEtiquetaTd + caso.IdentificadorCasoUso
-                         + RecursosPresentadorModulo6.CerrarEtiquetaTd;
-            vista.tabla += RecursosPresentadorModulo6.AbrirEtiquetaTd + caso.TituloCasoUso
-                        + RecursosPresentadorModulo6.CerrarEtiquetaTd;
-                   
-            vista.tabla += RecursosPresentadorModulo6.AbrirEtiquetaTd;*/
-                /*
-                foreach (string actor in ListadoActores(caso.Id)) 
-                {
-                    vista.tabla += actor + "\n"; 
-                }
-                vista.tabla += RecursosPresentadorModulo6.CerrarEtiquetaTd;
-
-                vista.tabla += RecursosPresentadorModulo6.AbrirEtiquetaTd;
-
-                foreach (Requerimiento req in ListadoDeRequerimientos(caso.Id))
-                {
-                    vista.tabla += req.Descripcion + "\n";
-                }
-                vista.tabla += RecursosPresentadorModulo6.CerrarEtiquetaTd;
-
-                vista.tabla += RecursosPresentadorModulo6.AbrirEtiquetaTd;
-                vista.tabla += RecursosPresentadorModulo6.AbrirBotonModificarCasoUso;
-                vista.tabla += RecursosPresentadorModulo6.CerrarBotonModificar;
-                vista.tabla += RecursosPresentadorModulo6.AbrirBotonEliminarCasoUso;
-                    
-                   
-                    
-                vista.tabla += RecursosPresentadorModulo6.CerrarBotonEliminar;
-                vista.tabla += RecursosPresentadorModulo6.CerrarEtiquetaTd;
-                vista.tabla += RecursosPresentadorModulo6.CerrarEtiquetaTr;*/
-
+                             
             }
 
             catch (ComandoBDException e)

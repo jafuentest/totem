@@ -307,4 +307,7 @@
   <data name="ProcedureEliminarActor" xml:space="preserve">
     <value>ELIMINAR_ACTOR</value>
   </data>
+  <data name="DesasociarCUAlActor" xml:space="preserve">
+    <value>Desasociar_CU_del_Actor</value>
+  </data>
 </root>

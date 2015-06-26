@@ -124,6 +124,15 @@ namespace Presentadores.Modulo7 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to success=4.
+        /// </summary>
+        internal static string Codigo_Error_UsuarioInvalido {
+            get {
+                return ResourceManager.GetString("Codigo_Error_UsuarioInvalido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exito.
         /// </summary>
         internal static string Codigo_Exito {
@@ -165,6 +174,24 @@ namespace Presentadores.Modulo7 {
         internal static string Codigo_Info {
             get {
                 return ResourceManager.GetString("Codigo_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ^[A-z0-9_-]+$.
+        /// </summary>
+        internal static string ExpReg_Username {
+            get {
+                return ResourceManager.GetString("ExpReg_Username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ../Modulo7/ListarUsuarios.aspx?.
+        /// </summary>
+        internal static string URL_ListarUsuarios {
+            get {
+                return ResourceManager.GetString("URL_ListarUsuarios", resourceCulture);
             }
         }
     }
