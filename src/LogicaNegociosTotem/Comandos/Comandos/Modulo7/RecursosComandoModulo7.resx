@@ -133,4 +133,12 @@
     <value>Ha ocurrido un error inesperado en el comando</value>
     <comment>Mensaje cuando se produce un error no esperado en el Comando</comment>
   </data>
+  <data name="EXCEPTION_USERNAME_VACIO_CODIGO" xml:space="preserve">
+    <value>T_07_022</value>
+    <comment>Codigo de error cuando DAOUsuario recibio un username vacio</comment>
+  </data>
+  <data name="EXCEPTION_USERNAME_VACIO_MENSAJE" xml:space="preserve">
+    <value>Se ha enviado un username que es nulo</value>
+    <comment>Mensaje cuando se envia al DAOUsuario un username nulo</comment>
+  </data>
 </root>

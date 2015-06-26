@@ -95,5 +95,23 @@ namespace Comandos.Comandos.Modulo7 {
                 return ResourceManager.GetString("EXCEPTION_ERROR_COMANDO_INESPERADO_MENSAJE", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_07_022.
+        /// </summary>
+        internal static string EXCEPTION_USERNAME_VACIO_CODIGO {
+            get {
+                return ResourceManager.GetString("EXCEPTION_USERNAME_VACIO_CODIGO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha enviado un username que es nulo.
+        /// </summary>
+        internal static string EXCEPTION_USERNAME_VACIO_MENSAJE {
+            get {
+                return ResourceManager.GetString("EXCEPTION_USERNAME_VACIO_MENSAJE", resourceCulture);
+            }
+        }
     }
 }
