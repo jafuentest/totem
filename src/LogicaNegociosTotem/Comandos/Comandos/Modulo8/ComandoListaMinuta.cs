@@ -18,7 +18,7 @@ namespace Comandos.Comandos.Modulo8
         {
             try
             {
-                FabricaAbstractaDAO fabricaDAO = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+                FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
                 DAO.IntefazDAO.Modulo8.IDaoMinuta daoMinuta = fabricaDAO.ObtenerDAOMinuta();
                 return daoMinuta.ConsultarMinutasProyecto(parametro);
             }
