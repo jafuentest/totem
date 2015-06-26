@@ -70,18 +70,7 @@ namespace Presentadores.Modulo6
                 List<Entidad> laLista = comandoListarCU.Ejecutar(codigo);
 
 
-                List<Requerimiento> listaRequ = new List<Requerimiento>();
-                foreach (CasoDeUso caso in laLista)
-                {
-                    foreach (Requerimiento req in ListadoDeRequerimientos(caso.Id))
-                    {
-                        listaRequ.Add(req);
-                    }
-                    caso.RequerimientosAsociados = listaRequ;
-                }
-
-
-
+               
                 if (laLista != null && laLista.Count > 0)
                 {
                     vista.RCasosDeUso.DataSource = laLista;

@@ -11,7 +11,7 @@ namespace Contratos.Modulo6
 {
    public interface IContratoReporteActores
     {
-       string tabla { get; set;  }       
+       Repeater RCasosDeUso { get; set; }       
 
        Label mensajeExito { get; set; }
 
