@@ -1,10 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/MasterPage.Master" AutoEventWireup="true" CodeBehind="ListarActores.aspx.cs" Inherits="Vista.Modulo6.ListarActores" %>
 <%@ MasterType  virtualPath="~/Master/MasterPage.master"%> 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+	   #actores td
+	   {
+		  vertical-align: middle;
+	   }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="server">
+     Gestión de Actores
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
+    Listar Actores
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" runat="server">
 <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
@@ -18,71 +26,89 @@
 				
 			</div>
 		</div>
+
 		<div class="table-responsive">
-			<table id="actores" class="table table-striped table-hover">
+				<% //if ( ListaRequerimientos != null )
+	  //{
+		 %>
+	   <asp:Repeater ID="RActor" runat="server">
+		  <HeaderTemplate>
+			 <table id="actores"
+				class="table table-striped table-hover">
 				<thead>
-					<tr>
-						<th>Nombre</th>
-						<th>Descripción</th>
-						<th>Acciones</th>
-					</tr>
+				    <tr>
+					   <th>Nombre</th>
+					   <th style="width: 50px">Descripcion</th>
+
+					   <th>Acciones</th>
+				    </tr>
 				</thead>
-				<tbody runat ="server" id="cuerpo">
-					<asp:Literal runat="server" ID="laTabla"></asp:Literal>
+				<tbody>
+		  </HeaderTemplate>
+		  <ItemTemplate>
+				<%
+				   /*
+				    * Evaluación de las propiedades pertenecientes
+				    * a la clase Caso de Uso
+				    */
+				%>
+				<tr>
+				    <td><%# Eval("NombreActor") %></td>
+				    <td><%# Eval("DescripcionActor") %></td>
+                    
+
+                     
+				    
+				    <td>
+					   <a class="btn btn-default glyphicon glyphicon-pencil"
+					   href="Modificar.aspx?id=<%# Eval("Id") %>"></a>
+					   <a class="btn btn-danger glyphicon glyphicon-remove-sign"
+					   href="ListarActores.aspx?eliminarActor=<%# Eval("Id") %>"></a>
+				    </td>
+				</tr>
+		  </ItemTemplate>
+		  <FooterTemplate>
 				</tbody>
-			</table>
-			<div id="modal-delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title">Eliminación de Actor</h4>
-						</div>
-						<div class="modal-body">
-							<div class="container-fluid">
-								<div class="row">
-									<p>Seguro que desea eliminar el actor:</p>
-									<p id="caso_de_uso"></p>
-								</div>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<a id="btn-eliminar" type="button" class="btn btn-primary">Eliminar</a>
-							<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div id="modal-update" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title">Modificación de Caso de Uso</h4>
-						</div>
-						<form name="form_actor" id="form_actor" class="form-horizontal" action="ListarActores.aspx?success=2" method="post">
-							<div class="modal-body">
-								<div class="container-fluid">
-									<div class="form-group">
-										<div id="div-nombre" class="col-sm-10 col-md-10 col-lg-10">
-											<input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control"/>
-										</div>
-									</div>
-									<div class="form-group">
-										<div id="div-descripcion" class="col-sm-10 col-md-10 col-lg-10">
-											<input type="text" name="descripcion" id="descripcion" placeholder="Descripcion" class="form-control"/>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button id="btn-modificarCU" class="btn btn-primary" type="submit" onclick="return checkform();">Modificar</button>
-								<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-							</div>
-						</form>
-					</div><!-- /.modal-content -->
-				</div><!-- /.modal-dialog -->
-			</div><!-- /.modal -->
-		</div>
+			 </table>
+		  </FooterTemplate>
+	   </asp:Repeater>        </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#actores').DataTable();
+            var table = $('#actores').DataTable();
+            var req;
+            var tr;
+
+            $('#actores tbody').on('click', 'a', function () {
+                if ($(this).parent().hasClass('selected')) {
+                    req = $(this).parent().prev().prev().prev().prev().text();
+                    tr = $(this).parents('tr');//se guarda la fila seleccionada
+                    $(this).parent().removeClass('selected');
+
+                }
+                else {
+                    req = $(this).parent().prev().prev().prev().prev().text();
+                    tr = $(this).parents('tr');//se guarda la fila seleccionada
+                    table.$('tr.selected').removeClass('selected');
+                    $(this).parent().addClass('selected');
+                }
+            });
+            $('#modal-delete').on('show.bs.modal', function (event) {
+                var modal = $(this)
+                modal.find('.modal-title').text('Eliminar actor:  ' + req)
+                modal.find('#actor').text(req)
+            })
+            $('#btn-eliminar').on('click', function () {
+                table.row(tr).remove().draw();//se elimina la fila de la tabla
+                $('#modal-delete').modal('hide');//se esconde el modal
+            });
+            $('#modal-update').on('show.bs.modal', function (event) {
+                var modal = $(this)
+                modal.find('.modal-title').text('Modificar actor')
+            });
+        });
+	</script> 
+
 	</div>
 </asp:Content>

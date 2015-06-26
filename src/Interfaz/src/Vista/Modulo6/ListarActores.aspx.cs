@@ -25,36 +25,17 @@ namespace Vista.Modulo6
             if (!IsPostBack)
             {
                 this.Master.presentador.CargarMenuLateral();
+                presentador.ObtenerVariablesURL();
                 presentador.consultarActores();
-
             }
-            /* String exitoEliminacion = Request.QueryString["success-eliminacion"];
-            String eliminarActor = Request.QueryString["clienteaeliminar"];
-            if (eliminarActor != null)
-                if (presentador.desplegarModal(eliminarActor))
-                    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "modal-delete", "$('#modal-delete').modal();", true);
-
-            if (eliminarActor == "true")
-            {
-                this.alert.Attributes["class"] = "alert alert-success alert-dismissible";
-                this.alert.Attributes["role"] = "alert";
-                this.alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Se elimino correctamente</div>";
-                this.alert.Visible = true;
-            }*/
-            //
 
         }
         #region Contrato
-        string Contratos.Modulo6.IContratoListarActores.laTabla
+
+        Repeater Contratos.Modulo6.IContratoListarActores.RActor
         {
-            get
-            {
-                return laTabla.Text;
-            }
-            set
-            {
-                laTabla.Text = value;
-            }
+            get { return RActor; }
+            set { RActor = value; }
         }
 
         Label Contratos.Modulo6.IContratoListarActores.mensajeError
@@ -82,16 +63,7 @@ namespace Vista.Modulo6
         }
 
 
-
-
         #endregion
-
-
-
-
-
-
-
 
     }
 

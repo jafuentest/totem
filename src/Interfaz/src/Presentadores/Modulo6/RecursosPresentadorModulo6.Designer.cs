@@ -169,6 +169,15 @@ namespace Presentadores.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a ?success=eliminarActor.
+        /// </summary>
+        internal static string CodigoExitoEliminarActor {
+            get {
+                return ResourceManager.GetString("CodigoExitoEliminarActor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a T_06_103.
         /// </summary>
         internal static string CodigoMensajePresentadorBDException {
@@ -268,6 +277,15 @@ namespace Presentadores.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a El actor se ha eliminado éxitosamente..
+        /// </summary>
+        internal static string MensajeExitoEliminarActor {
+            get {
+                return ResourceManager.GetString("MensajeExitoEliminarActor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a El actor se ha modificado exitosamente..
         /// </summary>
         internal static string MensajeExitoModificarActor {
@@ -309,6 +327,15 @@ namespace Presentadores.Modulo6 {
         internal static string MensajePresentadorTipoDeDatoErroneoException {
             get {
                 return ResourceManager.GetString("MensajePresentadorTipoDeDatoErroneoException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a /Modulo6/ListarActores.aspx.
+        /// </summary>
+        internal static string VentanaListarActores {
+            get {
+                return ResourceManager.GetString("VentanaListarActores", resourceCulture);
             }
         }
         
