@@ -94,7 +94,6 @@ namespace DAO.DAO.Modulo2
             }
             #endregion
         }
-
         public bool Modificar(Dominio.Entidad parametro)
         {
             try
@@ -176,7 +175,6 @@ namespace DAO.DAO.Modulo2
             }
             #endregion
         }
-
         public Dominio.Entidad ConsultarXId(Dominio.Entidad parametro)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
@@ -286,7 +284,6 @@ namespace DAO.DAO.Modulo2
             }
             #endregion
         }
-
         public List<Dominio.Entidad> ConsultarTodos()
         {
             throw new NotImplementedException();

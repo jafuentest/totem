@@ -17,9 +17,9 @@ namespace Comandos.Comandos.Modulo2
             try
             {
                 FabricaDAOSqlServer laFabrica = new FabricaDAOSqlServer();
-                IDaoClienteJuridico daoClienteJur = laFabrica.ObtenerDaoClienteJuridico();
+                IDaoContacto daoContacto = laFabrica.ObtenerDaoContacto();
 
-                return daoClienteJur.modificarContacto(parametro);
+                return daoContacto.Modificar(parametro);
 
             }
             #region Catches

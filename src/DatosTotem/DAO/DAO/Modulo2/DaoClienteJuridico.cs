@@ -856,7 +856,6 @@ namespace DAO.DAO.Modulo2
             }
             #endregion
         }
-
         public bool modificarContacto(Entidad parametro)
         {
             try
