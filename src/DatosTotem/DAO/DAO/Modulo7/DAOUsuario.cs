@@ -434,6 +434,37 @@ namespace DAO.DAO.Modulo7
         /// <returns>Verdadero si se pude eliminar, falso sino se pudo</returns>
         public bool EliminarUsuario(String username)
         {
+            //Exito o fallo de la eliminacion
+            bool exito;
+
+            //Lista de los parametros del query
+            List<Parametro> listaParametros = new List<Parametro>();
+
+            //Creamos un nuevo parametro y lo agregamos a la lista
+            Parametro aux  = new Parametro(RecursosBaseDeDatosModulo7.UsernameUsuario, SqlDbType.VarChar, username ,
+                false);
+            listaParametros.Add(aux);
+
+            try
+            {
+                //Ejecutamos la consulta
+                int  resultadoQuery = EjecutarStoredProcedureAlteraFilas(
+                    RecursosBaseDeDatosModulo7.ProcedimientoEliminarUsuario, listaParametros);
+
+                //Si el resultado da mayor a cero significa que se elimino un usuario
+                if (resultadoQuery > 0)
+                    exito = true;
+                else
+                    exito = false;
+
+                return exito;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+
+            /*
             //Indicaremos si la insercion fue exitosa o fallida
             bool exito = false;
             try
@@ -469,7 +500,7 @@ namespace DAO.DAO.Modulo7
             }
 
 
-            return exito;
+            return exito;*/
 		}
 		#endregion
 

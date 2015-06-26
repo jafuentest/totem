@@ -231,5 +231,56 @@ namespace DAO.DAO
         }
         #endregion
 
+        #region Ejecutar Stored Procedure Altera Filas
+        /// <summary>
+        /// Metodo para ejecutar un stored procedure de la base de datos usando parametros y verificar si hubo cambios
+        /// </summary>
+        /// <param name="query">El stored procedure a ejecutar</param>
+        /// <param name="parametros">lista de los parametros a usar</param>
+        /// <returns>Las filas alteradas de la consulta hecha</returns>
+        public int EjecutarStoredProcedureAlteraFilas(string query, List<Parametro> parametros)
+        {
+            //Variable que nos indicara si se alteraron filas en la BD
+            int filasAfectadas;
+            try
+            {
+                //nos conectamos con la Base de Datos
+                Conectar();
+                using (conexion)
+                {
+                    //Indicamos que es un stored procedure, cual utilizar y ademas la conexion que necesita
+                    comando = new SqlCommand(query, conexion);
+                    comando.CommandType = CommandType.StoredProcedure;
+
+                    //Asignamos los parametros que tendra la consulta
+                    AsignarParametros(parametros);
+
+                    //Abrimos la conexion
+                    conexion.Open();
+
+                    //Ejecutamos la consulta y nos traemos las filas afectadas
+                    filasAfectadas = comando.ExecuteNonQuery();
+
+                    //retornamos la respuesta
+                    return filasAfectadas;
+                }
+
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                //Desconectamos si hubo algun error
+                Desconectar();
+            }
+        }
+        #endregion
     }
 }
