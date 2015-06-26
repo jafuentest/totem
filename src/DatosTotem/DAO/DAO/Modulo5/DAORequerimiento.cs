@@ -823,6 +823,10 @@ namespace DAO.DAO.Modulo5
                         {
                             requerimiento.Estatus = resultado.valor;
                         }
+                        if (resultado.etiqueta.Equals(RecursosDAOModulo5.PARAMETRO_REQ_ID))
+                        {
+                            requerimiento.Id =  int.Parse(resultado.valor);
+                        }
                     }
                     #endregion
                     return requerimiento;

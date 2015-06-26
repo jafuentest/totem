@@ -2241,7 +2241,7 @@ AS
       req_prioridad = @req_prioridad,
       req_estatus   = @req_estatus
     WHERE
-      req_codigo = @req_codigo;
+       req_id = @req_id ;
   END
 GO
 
