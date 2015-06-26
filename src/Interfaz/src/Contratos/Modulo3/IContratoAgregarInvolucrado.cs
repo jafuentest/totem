@@ -8,6 +8,10 @@ using System.Web.UI.WebControls;
 
 namespace Contratos.Modulo3
 {
+
+    /// <summary>
+    /// Contrato asociado a la vista Agregar involucrado
+    /// </summary>
     public interface IContratoAgregarInvolucrado
     {
         DropDownList comboTipoEmpresa { get; set; }
