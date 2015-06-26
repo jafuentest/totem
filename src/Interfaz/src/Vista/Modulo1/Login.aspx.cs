@@ -65,6 +65,7 @@ namespace Vista.Modulo1
                 captchaActivo = true;
                 captchaContainer.Visible = true;
             }
+
         }
 
         /// <summary>

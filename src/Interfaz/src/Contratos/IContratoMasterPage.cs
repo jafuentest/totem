@@ -19,5 +19,7 @@ namespace Contratos
         String selectedProject { set; }
 
         String perfilProyecto { set; }
+
+	   String proyectoActual { get; set; }
     }
 }

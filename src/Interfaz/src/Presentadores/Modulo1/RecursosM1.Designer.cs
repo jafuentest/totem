@@ -88,6 +88,24 @@ namespace Presentadores.Modulo1 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to LProyectoCodigo.
+        /// </summary>
+        internal static string LProyectoCodigo {
+            get {
+                return ResourceManager.GetString("LProyectoCodigo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LProyectoNombre.
+        /// </summary>
+        internal static string LProyectoNombre {
+            get {
+                return ResourceManager.GetString("LProyectoNombre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LUsuario.
         /// </summary>
         internal static string LUsuario {

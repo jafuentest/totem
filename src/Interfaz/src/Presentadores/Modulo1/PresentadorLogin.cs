@@ -60,12 +60,29 @@ namespace Presentadores.Modulo1
                     Comando<List<string>, Entidad> comando = FabricaComandos.CrearComandoIniciarSesion();
 
                     credenciales = comando.Ejecutar(usuarioLogin);
-                    if (((Usuario)credenciales).Correo != "" && ((Usuario)credenciales).Correo != null)
+                    if ( ((Usuario)credenciales).Correo != "" && ((Usuario)credenciales).Correo != null )
                     {
                         HttpContext.Current.Session[RecursosM1.LUsuario] =
 					   (credenciales as Usuario).Username;
 				    HttpContext.Current.Session[RecursosM1.LUsuarioRol] =
 					   (credenciales as Usuario).Rol;
+
+				    Comando<String, List<Dominio.Entidad>> listaProyectos;
+				    listaProyectos = Comandos.Fabrica.FabricaComandos.
+					   CrearComandoConsultarProyectosPorUsuario();
+
+				    try
+				    {
+					   List<Dominio.Entidad> proyectos = 
+						  listaProyectos.Ejecutar((credenciales as Usuario).Username.ToString());
+
+					   HttpContext.Current.Session[RecursosM1.LProyectoCodigo] = (proyectos[0] as Dominio.Entidades.Modulo4.Proyecto).Codigo;
+					   HttpContext.Current.Session[RecursosM1.LProyectoNombre] = (proyectos[0] as Dominio.Entidades.Modulo4.Proyecto).Nombre;
+				    }
+				    catch (ExcepcionesTotem.Modulo4.UsuarioSinProyectosException)
+				    {
+					   HttpContext.Current.Session[RecursosM1.LProyectoCodigo] = "Ninguno";
+				    }
 
                         HttpContext.Current.Response.Redirect(RecursosM1.Ventana_Default);
                     }

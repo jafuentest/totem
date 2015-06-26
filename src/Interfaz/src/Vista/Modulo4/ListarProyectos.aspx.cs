@@ -24,7 +24,7 @@ namespace Vista.Modulo4
 		  {
 			 Master.idModulo = "4";
 			 Master.presentador.CargarMenuLateral();
-			 presentador.ObtenerUsuario(Master.UsuarioActual().Username + Master.UsuarioActual().Rol);
+			 presentador.ObtenerUsuario(Master.UsuarioActual().Username + Master.UsuarioActual().Rol + Master.CodigoProyectoActual());
 		  }
 	   }
 

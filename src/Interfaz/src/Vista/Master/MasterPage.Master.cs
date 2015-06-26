@@ -13,6 +13,7 @@ namespace Vista.Master
     {
         public PresentadorMasterPage presentador { get; set; }
         public String idModulo { get; set; }
+	   public String proyectoActual;
 
         public MasterPage()
         {
@@ -51,13 +52,19 @@ namespace Vista.Master
         {
             set { perfilProyecto.Text = value; }
         }
+	   String IContratoMasterPage.proyectoActual
+	   {
+		  get { return proyectoActual; }
+		  set { proyectoActual = value; }
+	   }
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //presentador.RevisarCookies();
+            // presentador.RevisarCookies();
             ulNav.Visible = false;
             presentador.RevisarSession();
+		  proyectoActual = NombreProyectoActual();
         }
 
         protected void Salir_Click(object sender, EventArgs e)
@@ -70,6 +77,16 @@ namespace Vista.Master
 		  return new Dominio.Entidades.Modulo7.Usuario(
 			 (String)HttpContext.Current.Session["LUsuario"],
 			 (String)HttpContext.Current.Session["LUsuarioRol"]);
+	   }
+
+	   public String CodigoProyectoActual()
+	   {
+		  return (String)HttpContext.Current.Session["LProyectoCodigo"];
+	   }
+
+	   public String NombreProyectoActual()
+	   {
+		  return (String)HttpContext.Current.Session["LProyectoNombre"];
 	   }
 
     }
