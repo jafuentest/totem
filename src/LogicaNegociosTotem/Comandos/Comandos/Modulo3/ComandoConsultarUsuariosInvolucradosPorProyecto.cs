@@ -12,10 +12,10 @@ namespace Comandos.Comandos.Modulo3
     class ComandoConsultarUsuariosInvolucradosPorProyecto : Comando<Dominio.Entidad, Dominio.Entidad>
     {
         /// <summary>
-        /// Comando que elimina un requerimiento
+        /// Comando permite consultar los usuarios involucrados de un proyecto
         /// </summary>
-        /// <param name="parametro">Requerimiento a eliminar</param>
-        /// <returns>true si se puede eliminar</returns>
+        /// <param name="parametro">proyecto</param>
+        /// <returns>lista de usuarios involucrados</returns>
         public override Dominio.Entidad Ejecutar(Dominio.Entidad parametro)
         {
             ListaInvolucradoUsuario lista = null;

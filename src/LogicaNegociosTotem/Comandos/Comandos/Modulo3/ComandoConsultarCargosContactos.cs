@@ -10,10 +10,10 @@ namespace Comandos.Comandos.Modulo3
     class ComandoConsultarCargosContactos : Comando<Dominio.Entidad,List<String>>
     {
         /// <summary>
-        /// Comando que elimina un requerimiento
+        /// Comando para consultar los cargos de un contacto
         /// </summary>
-        /// <param name="parametro">Requerimiento a eliminar</param>
-        /// <returns>true si se puede eliminar</returns>
+        /// <param name="parametro"> contactos</param>
+        /// <returns>la lista con los cargos de los contactos</returns>
         public override List<String> Ejecutar(Dominio.Entidad parametro)
         {
             List<String> listCargo;
