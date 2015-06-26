@@ -92,7 +92,7 @@ namespace Vista.Modulo7
                          alert.Attributes["role"] = "alert";
                          alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\""+
                              " aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>"+
-                             "Usuario ya existe</div>";
+                             "No se puede agregar al usuario</div>";
                      }
                      break;
 

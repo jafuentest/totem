@@ -6,14 +6,14 @@ using System.Text;
 namespace ExcepcionesTotem.Modulo7
 {
     /// <summary>
-    /// Exception personalizada que se ejecuta cuando se pasa un username vacio en DAOUsuario
+    /// Exception personalizada que se ejecuta cuando se pasa un username vacio en comando
     /// </summary>
-    public class UsernameVacioException : DAOException
+    public class ComandoUsernameVacioException : ExceptionTotem
     {
         /// <summary>
         /// Constructor vacio
         /// </summary>
-        public UsernameVacioException():base()
+        public ComandoUsernameVacioException():base()
         {
 
         }
@@ -22,7 +22,7 @@ namespace ExcepcionesTotem.Modulo7
         /// Constructor que trabaja con el mensaje que se quiera dar
         /// </summary>
         /// <param name="mensaje">El mensaje personalizado</param>
-        public UsernameVacioException(String mensaje):base(mensaje)
+        public ComandoUsernameVacioException(String mensaje):base(mensaje)
         {
 
         }
@@ -32,7 +32,7 @@ namespace ExcepcionesTotem.Modulo7
         /// </summary>
         /// <param name="mensaje">El mensaje personalizado</param>
         /// <param name="inner">La excepcion que se recibe</param>
-        public UsernameVacioException(String mensaje, Exception inner):base(mensaje,inner)
+        public ComandoUsernameVacioException(String mensaje, Exception inner):base(mensaje,inner)
         {
 
         }
@@ -43,7 +43,8 @@ namespace ExcepcionesTotem.Modulo7
         /// <param name="codigo">El codigo del error</param>
         /// <param name="mensaje">el mensaje personalizado</param>
         /// <param name="inner">Excepcion recibida</param>
-        public UsernameVacioException(String codigo, String mensaje, Exception inner):base(codigo,mensaje,inner)
+        public ComandoUsernameVacioException(String codigo, String mensaje, Exception inner)
+            : base(codigo, mensaje, inner)
         {
 
         }

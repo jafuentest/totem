@@ -299,11 +299,27 @@
   <data name="ProcedimientoConsultarUsername" xml:space="preserve">
     <value>ConsultarUsuarioPorUsername</value>
   </data>
-  <data name="EXCEPTION_USUARIO_VACIO_CODIGO" xml:space="preserve">
+  <data name="EXCEPTION_BDDAOUSUARIO_CODIGO" xml:space="preserve">
+    <value>T_07_005</value>
+    <comment>Codigo de error cuando se genera error en la BD en DAOUsuario</comment>
+  </data>
+  <data name="EXCEPTION_BDDAOUSUARIO_MENSAJE" xml:space="preserve">
+    <value>Ha ocurrido un error de la BD SQL SERVER en DAOUsuario</value>
+    <comment>Mensaje que se produce cuando se origina un error de BD en DAOUsuario</comment>
+  </data>
+  <data name="EXCEPTION_CORREO_VACIO_CODIGO" xml:space="preserve">
+    <value>T_07_004</value>
+    <comment>Codigo de error cuando el correo apunta a null</comment>
+  </data>
+  <data name="EXCEPTION_CORREO_VACIO_MENSAJE" xml:space="preserve">
+    <value>No existe nigun correo a consultar</value>
+    <comment>Mensaje que se produce cuando el correo es null</comment>
+  </data>
+  <data name="EXCEPTION_USERNAME_VACIO_CODIGO" xml:space="preserve">
     <value>T_07_003</value>
     <comment>Codigo de error cuando el username apunta a null</comment>
   </data>
-  <data name="EXCEPTION_USUARIO_VACIO_MENSAJE" xml:space="preserve">
+  <data name="EXCEPTION_USERNAME_VACIO_MENSAJE" xml:space="preserve">
     <value>No existe ningun username a consultar</value>
     <comment>Mensaje que se produce cuando el username es null</comment>
   </data>

@@ -27,22 +27,7 @@ namespace DAO.DAO.Modulo7
         /// </summary>
         public DAOUsuario()
         {
-            try
-            {
-               //Sino existe conexion se hace una nueva indicando la ruta donde esta la BD con el Configuration Manager
-                if (this.conexion == null)
-                    this.conexion = new SqlConnection(ConfigurationManager.
-                    ConnectionStrings[RecursoGeneralDAO.Nombre_Base_Datos].ConnectionString);
-            }
-            catch (SqlException e)
-            {
-                throw e;
-            }
-            catch (ConfigurationErrorsException m)
-            {
-                throw new ConfigurationErrorsException("Error en la Configuracion de la BD", m);
-            }
-            
+                        
         }
 
         /// <summary>
@@ -165,19 +150,29 @@ namespace DAO.DAO.Modulo7
         {
             //Indicaremos si se encontro o no el correo en la BD
             bool valido;
-
-            try
+                       
+            /*Creamos una lista de parametros y le agregamos los valores correspondientes 
+            a las variables de stored procedure*/
+            List<Parametro> listaParametros = new List<Parametro>();
+            Parametro parametroConsulta;
+            if(correo != null)
             {
-                /*Creamos una lista de parametros y le agregamos los valores correspondientes 
-                a las variables de stored procedure*/
-                List<Parametro> listaParametros = new List<Parametro>();
-                Parametro parametroConsulta;
                 parametroConsulta = new Parametro(RecursosBaseDeDatosModulo7.CorreoUsuario, SqlDbType.VarChar,
-                    correo, false);
+                correo, false);
                 listaParametros.Add(parametroConsulta);
                 parametroConsulta = new Parametro(RecursosBaseDeDatosModulo7.Resultadorepetido, SqlDbType.VarChar, true);
                 listaParametros.Add(parametroConsulta);
+            }
+            else
+            {
+                //Sino existe un correo a evaluar se escribe en el logger y se lanza la exception
+                Logger.EscribirError(this.GetType().Name,new CorreoVacioException());
+                throw new CorreoVacioException(RecursosBaseDeDatosModulo7.EXCEPTION_CORREO_VACIO_CODIGO, 
+                    RecursosBaseDeDatosModulo7.EXCEPTION_CORREO_VACIO_MENSAJE, new CorreoVacioException());
+            }
 
+            try
+            {
                 //Ejecutamos el stored procedure y obtenemos el output
                 List<Resultado> resultado = EjecutarStoredProcedure(RecursosBaseDeDatosModulo7.ProcedimientoCorreoUnico,
                     listaParametros);
@@ -191,9 +186,19 @@ namespace DAO.DAO.Modulo7
                 return valido;
 
             }
+            catch (SqlException e)
+            {
+                //Si hay error en la Base de Datos escribimos en el logger y lanzamos la excepcion
+                Logger.EscribirError(this.GetType().Name, new ExceptionTotemConexionBD());
+                throw new ExceptionTotemConexionBD(RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos, e);
+            }
             catch (Exception e)
             {
-                throw new Exception();
+                //Si existe un error inesperado escribimos en el logger y lanzamos la excepcion
+                Logger.EscribirError(this.GetType().Name, new ExceptionTotem());
+                throw new ExceptionTotem(RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_CODIGO,
+                    RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_MENSAJE, e);
             }
         }
 
@@ -254,7 +259,7 @@ namespace DAO.DAO.Modulo7
         public List<Entidad> ListarUsuarios()
         {
             //Lista que sera la respuesta de la consulta;
-            List<Entidad> usuarios = new List<Entidad>();
+            List<Entidad> usuarios;
 
             //Instanciamos la fabrica concreta de Entidades
             FabricaEntidades fabrica = new FabricaEntidades();
@@ -268,6 +273,9 @@ namespace DAO.DAO.Modulo7
                 DataTable dt = EjecutarStoredProcedureTuplas(RecursosBaseDeDatosModulo7.ProcedimientoListarUsuario,
                     parametros);
 
+                //Instanciamos la lista
+                usuarios = new List<Entidad>();
+
                 //Recorremos el data table, crearmos el usuario con sus datos y asignamos cada usuario a la lista
                 foreach (DataRow fila in dt.Rows)
                  {
@@ -278,24 +286,28 @@ namespace DAO.DAO.Modulo7
                      usuarios.Add(aux);
                  }
 
+                //Retornamos la lista con los usuarios
+                return usuarios;
             }
             catch (SqlException e)
             {
                 //Si hay error en la Base de Datos escribimos en el logger y lanzamos la excepcion
-                Logger.EscribirError(this.GetType().Name, new ExceptionTotemConexionBD());
-                throw new ExceptionTotemConexionBD(RecursoGeneralDAO.Codigo_Error_BaseDatos,
-                    RecursoGeneralDAO.Mensaje_Error_BaseDatos, e);
+                BDDAOUsuarioException daoSqlException = new BDDAOUsuarioException(
+                    RecursosBaseDeDatosModulo7.EXCEPTION_BDDAOUSUARIO_CODIGO,
+                    RecursosBaseDeDatosModulo7.EXCEPTION_BDDAOUSUARIO_MENSAJE, e);
+                Logger.EscribirError(this.GetType().Name, daoSqlException);
+                throw daoSqlException;
             }
             catch (Exception e)
             {
                 //Si existe un error inesperado escribimos en el logger y lanzamos la excepcion
-                Logger.EscribirError(this.GetType().Name, new ExceptionTotem());
-                throw new ExceptionTotem(RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_CODIGO,
-                    RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_MENSAJE, e);
+                ErrorInesperadoDAOUsuarioException errorInesperado = new ErrorInesperadoDAOUsuarioException(
+                RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_CODIGO,
+                RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_MENSAJE, e);
+                Logger.EscribirError(this.GetType().Name, errorInesperado);
+                throw errorInesperado;
+
             }
-            
-            //Retornamos la lista con los usuarios
-            return usuarios;
         }
 
         /// <summary>
@@ -311,7 +323,7 @@ namespace DAO.DAO.Modulo7
             //Lista de los parametros del query
             List<Parametro> listaParametros = new List<Parametro>();
 
-            //Si el username tiene un valor valido
+            //Si el username tiene un valor valido creamos el parametro con su valor, sino, lanzamos la exception
             if(username != null)
             {
                 //Creamos un nuevo parametro y lo agregamos a la lista
@@ -322,9 +334,11 @@ namespace DAO.DAO.Modulo7
             else
             {
                 //Escribimos el error y Lanzamos la excepcion
-                Logger.EscribirError(this.GetType().Name,new UsernameVacioException());
-                throw new UsernameVacioException(RecursosBaseDeDatosModulo7.EXCEPTION_USUARIO_VACIO_CODIGO,
-                    RecursosBaseDeDatosModulo7.EXCEPTION_USUARIO_VACIO_MENSAJE,new UsernameVacioException());
+                UsernameVacioException usernameVacio = new UsernameVacioException(
+                    RecursosBaseDeDatosModulo7.EXCEPTION_USERNAME_VACIO_CODIGO,
+                    RecursosBaseDeDatosModulo7.EXCEPTION_USERNAME_VACIO_MENSAJE, new UsernameVacioException());
+                Logger.EscribirError(this.GetType().Name,usernameVacio);
+                throw usernameVacio;
             }
                 
             try
@@ -345,16 +359,21 @@ namespace DAO.DAO.Modulo7
             catch (SqlException e)
             {
                 //Si hay error en la Base de Datos escribimos en el logger y lanzamos la excepcion
-                Logger.EscribirError(this.GetType().Name, new ExceptionTotemConexionBD());
-                throw new ExceptionTotemConexionBD(RecursoGeneralDAO.Codigo_Error_BaseDatos,
-                    RecursoGeneralDAO.Mensaje_Error_BaseDatos, e);
+                BDDAOUsuarioException daoSqlException = new BDDAOUsuarioException(
+                    RecursosBaseDeDatosModulo7.EXCEPTION_BDDAOUSUARIO_CODIGO,
+                    RecursosBaseDeDatosModulo7.EXCEPTION_BDDAOUSUARIO_MENSAJE,e);
+                Logger.EscribirError(this.GetType().Name, daoSqlException);
+                throw daoSqlException;
             }
             catch (Exception e)
             {
                 //Si existe un error inesperado escribimos en el logger y lanzamos la excepcion
-                Logger.EscribirError(this.GetType().Name, new ExceptionTotem());
-                throw new ExceptionTotem(RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_CODIGO,
-                    RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_MENSAJE,e);
+                ErrorInesperadoDAOUsuarioException errorInesperado = new ErrorInesperadoDAOUsuarioException(
+                RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_CODIGO,
+                RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_MENSAJE, e);
+                Logger.EscribirError(this.GetType().Name, errorInesperado);
+                throw errorInesperado;
+                
             }
         }
 
@@ -461,45 +480,6 @@ namespace DAO.DAO.Modulo7
                 throw new ExceptionTotem(RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_CODIGO,
                     RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_MENSAJE, e);
             }
-
-            
-
-            /*
-            try
-            {
-                //Respuesta de la consulta hecha a la Base de Datos
-                SqlDataReader respuesta;
-
-                //Indicamos que es un Stored Procedure, cual utilizar y ademas la conexion que necesita
-                this.instruccion = new SqlCommand("seleccionarCargosUsuarios", this.conexion);
-                this.instruccion.CommandType = CommandType.StoredProcedure;
-
-                //Se abre conexion contra la Base de Datos
-                this.conexion.Open();
-
-                //Ejecutamos la consulta y traemos las filas que fueron obtenidas
-                respuesta = instruccion.ExecuteReader();
-
-                //Si se encontraron cargos se comienzan a agregar a la variable lista, sino, se devolvera vacia
-                if (respuesta.HasRows)
-                    //Recorremos cada fila devuelta de la consulta
-                    while (respuesta.Read())
-                    {
-                        //Llenamos la lista
-                        cargos.Add(respuesta.GetString(0));
-
-                    }
-
-                //Cerramos conexion
-                this.conexion.Close();
-            }
-            catch (Exception error)
-            {
-                throw new Exception("Ha ocurrido un error inesperado al Listar", error);
-            }
-
-            //Retornamos la respuesta
-            return cargos;*/
         }
 		#endregion
 		#endregion

@@ -29,7 +29,6 @@ namespace Presentadores.Modulo1
             vista = laVista;
         }
 
-
         /// <summary>
         /// Método que maneja que se activa cuando el usario le da click a Iniciar Sesión
         /// 1° Valida si los campos estan correctamente llenos
