@@ -170,8 +170,8 @@ function agregarAcuerdo()
 
     //Carga de Usuarios en el ComboBox
     for (j = 0; j < listaUsuario.length; j++) {
-        var codigoUsuario = listaUsuario[j]["idUsuario"];
-        var nombreCompletoUsuario = listaUsuario[j]["nombre"] + " " + listaUsuario[j]["apellido"];
+        var codigoUsuario = listaUsuario[j]["Id"];
+        var nombreCompletoUsuario = listaUsuario[j]["Nombre"] + " " + listaUsuario[j]["Apellido"];
         $('#' + codigoAcuerdoSelect).append("<option value = " + codigoUsuario + ">" + nombreCompletoUsuario + "</option>");
     }
     nroAcuerdos++;
