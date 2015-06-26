@@ -7,6 +7,8 @@ using Dominio.Entidades.Modulo7;
 using Comandos;
 using Comandos.Fabrica;
 using Dominio;
+using ExcepcionesTotem.Modulo7;
+using ExcepcionesTotem;
 
 namespace Presentadores.Modulo7
 {
@@ -77,12 +79,26 @@ namespace Presentadores.Modulo7
 
             //Instanciamos el comando ListarUsuarios con la fabrica
             Comando<String, bool> comandoUsuarios = FabricaComandos.CrearComandoEliminarUsuarios();
+            try
+            {
+                //Retornamos la respuesta
+                exito = comandoUsuarios.Ejecutar(username);
 
-            //Retornamos la respuesta
-            exito = comandoUsuarios.Ejecutar(username);
-
-            //Devolvemos la respuesta
-            return exito; 
+                //Devolvemos la respuesta
+                return exito;
+            }
+            catch(ComandoBDDAOUsuarioException e)
+            {
+                Logger.EscribirError(this.GetType().Name, e);
+                exito = false;
+            }
+            catch(ComandoErrorInesperadoException e)
+            {
+                Logger.EscribirError(this.GetType().Name, e);
+                exito = false;
+            }
+            return exito;
+             
         }
     }
 }

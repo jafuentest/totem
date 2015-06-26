@@ -187,6 +187,24 @@ namespace DAO.DAO.Modulo7 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to T_07_005.
+        /// </summary>
+        internal static string EXCEPTION_BDDAOUSUARIO_CODIGO {
+            get {
+                return ResourceManager.GetString("EXCEPTION_BDDAOUSUARIO_CODIGO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ha ocurrido un error de la BD SQL SERVER en DAOUsuario.
+        /// </summary>
+        internal static string EXCEPTION_BDDAOUSUARIO_MENSAJE {
+            get {
+                return ResourceManager.GetString("EXCEPTION_BDDAOUSUARIO_MENSAJE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to T_07_002.
         /// </summary>
         internal static string EXCEPTION_CARGOS_INEXISTENTES_CODIGO {
@@ -201,6 +219,24 @@ namespace DAO.DAO.Modulo7 {
         internal static string EXCEPTION_CARGOS_INEXISTENTES_MENSAJE {
             get {
                 return ResourceManager.GetString("EXCEPTION_CARGOS_INEXISTENTES_MENSAJE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_07_004.
+        /// </summary>
+        internal static string EXCEPTION_CORREO_VACIO_CODIGO {
+            get {
+                return ResourceManager.GetString("EXCEPTION_CORREO_VACIO_CODIGO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No existe nigun correo a consultar.
+        /// </summary>
+        internal static string EXCEPTION_CORREO_VACIO_MENSAJE {
+            get {
+                return ResourceManager.GetString("EXCEPTION_CORREO_VACIO_MENSAJE", resourceCulture);
             }
         }
         
@@ -225,18 +261,18 @@ namespace DAO.DAO.Modulo7 {
         /// <summary>
         ///   Looks up a localized string similar to T_07_003.
         /// </summary>
-        internal static string EXCEPTION_USUARIO_VACIO_CODIGO {
+        internal static string EXCEPTION_USERNAME_VACIO_CODIGO {
             get {
-                return ResourceManager.GetString("EXCEPTION_USUARIO_VACIO_CODIGO", resourceCulture);
+                return ResourceManager.GetString("EXCEPTION_USERNAME_VACIO_CODIGO", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to No existe ningun username a consultar.
         /// </summary>
-        internal static string EXCEPTION_USUARIO_VACIO_MENSAJE {
+        internal static string EXCEPTION_USERNAME_VACIO_MENSAJE {
             get {
-                return ResourceManager.GetString("EXCEPTION_USUARIO_VACIO_MENSAJE", resourceCulture);
+                return ResourceManager.GetString("EXCEPTION_USERNAME_VACIO_MENSAJE", resourceCulture);
             }
         }
         
