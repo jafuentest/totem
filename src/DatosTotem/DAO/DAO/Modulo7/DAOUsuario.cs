@@ -445,7 +445,7 @@ namespace DAO.DAO.Modulo7
                //Recorremos el data table y asignamos cada cargo a la lista
                foreach (DataRow fila in dt.Rows)
                {
-                    cargos.Add(fila[RecursosBaseDeDatosModulo7.CARGO_NOMBRE].ToString());
+                   cargos.Add(fila["nombreCargo"].ToString());
                }
 
                //Devolvemos la lista con los cargos
