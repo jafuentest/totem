@@ -328,9 +328,6 @@ $(function ()
                var fechaCompletaAcuerdo = new Date(json["ListaAcuerdo"][i]["Fecha"]);
                var mes = fechaCompletaAcuerdo.getMonth() + 1;
                var fechaAcuerdo = fechaCompletaAcuerdo.getDate() + "/" + mes + "/" + fechaCompletaAcuerdo.getFullYear();
-
-               window.alert(codigoAcuerdo);
-
                codigoAcuerdoDIV = "acuerdo" + json["ListaAcuerdo"][i]["Id"] + "_div";
                codigoAcuerdoBTN = "acuerdo" + json["ListaAcuerdo"][i]["Id"] + "_btn";
                codigoAcuerdoSelect = "acuerdo" + json["ListaAcuerdo"][i]["Id"] + "_select";
