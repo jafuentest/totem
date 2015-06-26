@@ -101,6 +101,7 @@
     <Compile Include="Modulo7\PresentadorAgregarUsuario.cs" />
     <Compile Include="Modulo7\PresentadorDetalleUsuario.cs" />
     <Compile Include="Modulo7\PresentadorListarUsuarios.cs" />
+    <Compile Include="Modulo7\PresentadorModificarUsuario.cs" />
     <Compile Include="Modulo7\RecursosPresentadorModulo7.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
