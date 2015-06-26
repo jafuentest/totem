@@ -8,7 +8,7 @@ namespace Contratos
 {
     public interface IContratoMasterPage
     {
-        bool menuLateral { set; }
+        bool MenuLateral { set; }
 
         bool ulNav { set; }
 

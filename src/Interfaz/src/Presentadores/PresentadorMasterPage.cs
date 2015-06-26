@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Xml;
+using Dominio.Entidades.Modulo7;
+using Dominio.Fabrica;
 
 namespace Presentadores
 {
@@ -65,15 +67,26 @@ namespace Presentadores
             if (HttpContext.Current.Session["Credenciales"] != null)
             {
                 vista.ulNav = true;
-            }
 
+                string rol = (string) HttpContext.Current.Session["LUsuarioRol"];
+
+                if (rol != "")
+                {
+
+                    if (rol == "Administrador")
+                        vista.MenuLateral = true;
+                    else
+                        vista.MenuLateral = false;
+                }
+
+            }
             else
             {
                 vista.ulNav = false;
                 if ((!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/Login.aspx")) &&
-                   (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/IntroducirCorreo.aspx")) &&
-                   (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/PreguntaSeguridad.aspx")) &&
-                   (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/RecuperacionClave.aspx")))
+                    (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/IntroducirCorreo.aspx")) &&
+                    (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/PreguntaSeguridad.aspx")) &&
+                    (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/RecuperacionClave.aspx")))
                 {
                     HttpContext.Current.Response.Redirect("../Modulo1/Login.aspx");
                 }

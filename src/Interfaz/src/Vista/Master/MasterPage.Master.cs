@@ -15,16 +15,27 @@ namespace Vista.Master
         public String idModulo { get; set; }
 	   public String proyectoActual;
 
+        public bool MenuLateral
+        {
+            set
+            {
+                if (value)
+                {
+                    menuLateral.Visible = true;
+                }
+                else
+                {
+                    menuLateral.Visible = false;
+                }
+            }
+        }
+
         public MasterPage()
         {
             presentador = new PresentadorMasterPage(this);
         }
 
         #region Contrato
-        bool IContratoMasterPage.menuLateral
-        {
-            set { menuLateral.Visible = value; }
-        }
 
         bool IContratoMasterPage.ulNav
         {

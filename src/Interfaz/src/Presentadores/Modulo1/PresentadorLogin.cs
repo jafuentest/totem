@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Web;
 using Contratos.Modulo1;
 using Dominio;
@@ -9,7 +7,6 @@ using Dominio.Fabrica;
 using Comandos;
 using Comandos.Fabrica;
 using Dominio.Entidades.Modulo7;
-using System.Web.UI;
 
 namespace Presentadores.Modulo1
 {
@@ -58,13 +55,11 @@ namespace Presentadores.Modulo1
                     }
                     Comando<List<string>, Entidad> comando = FabricaComandos.CrearComandoIniciarSesion();
 
-                    credenciales = comando.Ejecutar(usuarioLogin);
-                    if ( ((Usuario)credenciales).Correo != "" && ((Usuario)credenciales).Correo != null )
+                    credenciales = (Usuario)comando.Ejecutar(usuarioLogin);
+                    if ( !string.IsNullOrEmpty(((Usuario)credenciales).Correo) )
                     {
-                        HttpContext.Current.Session[RecursosM1.LUsuario] =
-					   (credenciales as Usuario).Username;
-				    HttpContext.Current.Session[RecursosM1.LUsuarioRol] =
-					   (credenciales as Usuario).Rol;
+                        HttpContext.Current.Session[RecursosM1.LUsuario] =((Usuario) credenciales).Username;
+				        HttpContext.Current.Session[RecursosM1.LUsuarioRol] =((Usuario) credenciales).Rol;
 
 				    Comando<String, List<Dominio.Entidad>> listaProyectos;
 				    listaProyectos = Comandos.Fabrica.FabricaComandos.
