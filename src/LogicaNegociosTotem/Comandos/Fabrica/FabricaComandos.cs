@@ -51,6 +51,10 @@ namespace Comandos.Fabrica
         #endregion
 
         #region Modulo 2
+        public static Comando<Entidad, bool> CrearComandoAgregarContacto()
+        {
+            return new ComandoAgregarContacto();
+        }
         public static Comando<Entidad, bool> CrearComandoModificarContacto()
         {
             return new ComandoModificarContacto();

@@ -79,7 +79,7 @@
 
                 <!--Contactos-->
 
-                     <div class="table-responsive">
+                     <div class="table-responsive" style=" text-align:center;">
                             <table id="table-users" class="table table-striped table-hover">
                                 <thead>
                                     <tr>
@@ -91,10 +91,11 @@
                                 <tbody runat ="server" id="cuerpo">
                                     <asp:Literal runat="server" id="laTabla"></asp:Literal>
                                 </tbody>
+                                <tfoot>
+                                </tfoot>
                             </table>
+                         <asp:Button ID="btnAgregarNuevoContacto" class="btn btn-primary" runat="server" Text = "Agregar contacto nuevo" OnClick="btnAgregarNuevoContacto_Click"></asp:Button>
                         </div> <!-- /.table-responsive -->
-    
-
                 <!--Botones-->
                 <div class="form-group">
                     <div id="div_botones" class="col-sm-12 col-md-12 col-lg-12">

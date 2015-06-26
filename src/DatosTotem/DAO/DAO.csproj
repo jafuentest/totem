@@ -49,6 +49,7 @@
     </Compile>
     <Compile Include="DAO\Modulo2\DaoClienteJuridico.cs" />
     <Compile Include="DAO\Modulo2\DaoClienteNatural.cs" />
+    <Compile Include="DAO\Modulo2\DaoContacto.cs" />
     <Compile Include="DAO\Modulo2\RecursoBDModulo21.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -107,6 +108,7 @@
     <Compile Include="IntefazDAO\Modulo1\IDaoLogin.cs" />
     <Compile Include="IntefazDAO\Modulo2\IDaoClienteJuridico.cs" />
     <Compile Include="IntefazDAO\Modulo2\IDaoClienteNatural.cs" />
+    <Compile Include="IntefazDAO\Modulo2\IDaoContacto.cs" />
     <Compile Include="IntefazDAO\Modulo3\IDaoInvolucrados.cs" />
     <Compile Include="IntefazDAO\Modulo4\IDaoProyecto.cs" />
     <Compile Include="IntefazDAO\Modulo5\IDaoRequerimiento.cs" />

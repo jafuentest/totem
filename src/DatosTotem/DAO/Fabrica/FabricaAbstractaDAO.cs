@@ -21,6 +21,7 @@ namespace DAO.Fabrica
             #region Modulo 2
             public abstract IntefazDAO.Modulo2.IDaoClienteJuridico ObtenerDaoClienteJuridico();
             public abstract IntefazDAO.Modulo2.IDaoClienteNatural ObtenerDaoClienteNatural();
+            public abstract IntefazDAO.Modulo2.IDaoContacto ObtenerDaoContacto();
             #endregion
 
             #region Modulo 3
