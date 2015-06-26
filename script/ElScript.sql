@@ -1044,6 +1044,28 @@ go
 --End SP1
 
 --Begin SP2
+
+--------------------PROCEDURE AGREGAR CONTACTO--------------
+CREATE procedure M2_AgregarContacto
+(
+    @con_cedula   [VARCHAR] (20),
+    @con_nombre   [VARCHAR] (100),
+    @con_apellido [VARCHAR] (50),
+    @con_cargo    [VARCHAR] (60),
+    @con_cod_tel  [VARCHAR] (5),
+    @con_num_tel  [VARCHAR] (20),
+	@idClienteJur [int]
+)
+as
+begin
+	insert into CONTACTO (con_nombre, con_apellido, con_cedula, CARGO_car_id, CLIENTE_JURIDICO_cj_id)
+	values (@con_nombre, @con_apellido, @con_cedula, (select car_id from CARGO where car_nombre = @con_cargo), @idClienteJur);
+
+	insert into TELEFONO (tel_codigo, tel_numero, CONTACTO_con_id)
+	values (@con_cod_tel, @con_num_tel, (select max(con_id) from CONTACTO));
+
+end;
+go
 --------------------PROCEDURE BUSCAR CI CONTACTO--------------
 create procedure M2_BuscarCIContacto
  @con_cedula    [VARCHAR] (20),
@@ -1396,13 +1418,19 @@ GO
 -------------------PROCEDURE SELECCIONAR DATOS DE CONTACTO POR ID------------------ 
 CREATE PROCEDURE M2_ConsultarDatosContacto
 (
-	@idContacto [int]
+	@idContacto [int],    
+	@con_cedula   [VARCHAR] (20) OUTPUT,
+    @con_nombre   [VARCHAR] (100) OUTPUT,
+    @con_apellido [VARCHAR] (50) OUTPUT,
+    @con_cargo    [VARCHAR] (60) OUTPUT,
+    @con_cod_tel  [VARCHAR] (5) OUTPUT,
+    @con_num_tel  [VARCHAR] (20) OUTPUT
 )
 AS
 BEGIN
-	select con.con_id as contactoID, con.con_cedula as contactoCedula, con.con_nombre as contactoNombre,
-		   con.con_apellido as contactoApellido, tel.tel_codigo as COD_TELEFONO, tel.tel_numero NUM_TELEFONO,
-		   car.car_nombre as contactoCargo
+	select @con_cedula = con.con_cedula, @con_nombre = con.con_nombre,
+		   @con_apellido = con.con_apellido,@con_cod_tel = tel.tel_codigo, @con_num_tel = tel.tel_numero,
+		   @con_cargo = car.car_nombre
 	from CONTACTO con, CLIENTE_JURIDICO cli, TELEFONO tel, CARGO car
 	where
 		con.con_id = @idContacto and con.CLIENTE_JURIDICO_cj_id = cli.cj_id and 
