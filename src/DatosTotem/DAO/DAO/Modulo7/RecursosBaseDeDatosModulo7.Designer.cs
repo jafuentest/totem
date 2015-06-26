@@ -133,7 +133,7 @@ namespace DAO.DAO.Modulo7 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT DISTINCT CAR_NOMBRE FROM CARGO, USUARIO WHERE CARGO_car_id=car_id.
+        ///   Looks up a localized string similar to @cargo.
         /// </summary>
         internal static string CargosUsuarios {
             get {
@@ -268,11 +268,29 @@ namespace DAO.DAO.Modulo7 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to seleccionarCargosUsuarios.
+        /// </summary>
+        internal static string PROCEDIMIENTO_CARGOS_USUARIOS {
+            get {
+                return ResourceManager.GetString("PROCEDIMIENTO_CARGOS_USUARIOS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to seleccionarCargos.
         /// </summary>
         internal static string PROCEDIMIENTO_SELECCIONAR_CARGOS {
             get {
                 return ResourceManager.GetString("PROCEDIMIENTO_SELECCIONAR_CARGOS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ListarUsuariosPorCargo.
+        /// </summary>
+        internal static string PROCEDIMIENTO_USUARIOS_POR_CARGO {
+            get {
+                return ResourceManager.GetString("PROCEDIMIENTO_USUARIOS_POR_CARGO", resourceCulture);
             }
         }
         

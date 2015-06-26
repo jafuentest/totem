@@ -125,17 +125,17 @@
     <value>@usu_apellido</value>
     <comment>Atributo apellido usuario</comment>
   </data>
-	<data name="CARGO_NOMBRE" xml:space="preserve">
+  <data name="CARGO_NOMBRE" xml:space="preserve">
     <value>CAR_NOMBRE</value>
     <comment>atributo car_nombre de la entidad CARGO de la BD</comment>
-	</data>
+  </data>
   <data name="CargoNombre" xml:space="preserve">
     <value>CargoNombre</value>
-    <comment>cargo del usuario</comment>
+    <comment>Nombre del cargo para un usuario</comment>
   </data>
   <data name="CargosUsuarios" xml:space="preserve">
-    <value>SELECT DISTINCT CAR_NOMBRE FROM CARGO, USUARIO WHERE CARGO_car_id=car_id</value>
-    <comment>Permite consultar todoslos cargos de los usuarios</comment>
+    <value>@cargo</value>
+    <comment>Atributo cargo</comment>
   </data>
   <data name="CargoUsuario" xml:space="preserve">
     <value>@usu_car_nombre</value>
@@ -278,10 +278,6 @@
     <value>Ha ocurrido un error inesperado en el DAOUsuario al realizar esta operacion</value>
     <comment>Mensaje que se produce cuando no se sabe que error ocurrio especificamente</comment>
   </data>
-  <data name="CargoNombre" xml:space="preserve">
-    <value>CargoNombre</value>
-    <comment>Nombre del cargo para un usuario</comment>
-  </data>
   <data name="AtributoApellido" xml:space="preserve">
     <value>usu_apellido</value>
   </data>
@@ -302,5 +298,13 @@
   </data>
   <data name="ProcedimientoConsultarUsername" xml:space="preserve">
     <value>ConsultarUsuarioPorUsername</value>
+  </data>
+  <data name="PROCEDIMIENTO_CARGOS_USUARIOS" xml:space="preserve">
+    <value>seleccionarCargosUsuarios</value>
+    <comment>Stored Procedure facilitado para M3 que lista todos los cargos que esten en al menos un usuario</comment>
+  </data>
+  <data name="PROCEDIMIENTO_USUARIOS_POR_CARGO" xml:space="preserve">
+    <value>ListarUsuariosPorCargo</value>
+    <comment>Stored Procedure facilitado para M3 que lista todos los usuarios segun el cargo</comment>
   </data>
 </root>

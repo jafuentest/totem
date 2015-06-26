@@ -303,6 +303,46 @@ namespace DAO.DAO.Modulo7
         }
 
         /// <summary>
+        /// Metodo que ejecuta la consulta para eliminar un usuario de la Base de Datos
+        /// </summary>
+        /// <param name="username">El usuario que se desea eliminar</param>
+        /// <returns>Verdadero si se pude eliminar, falso sino se pudo</returns>
+        public bool EliminarUsuario(String username)
+        {
+            //Exito o fallo de la eliminacion
+            bool exito;
+
+            //Lista de los parametros del query
+            List<Parametro> listaParametros = new List<Parametro>();
+
+            //Creamos un nuevo parametro y lo agregamos a la lista
+            Parametro aux = new Parametro(RecursosBaseDeDatosModulo7.UsernameUsuario, SqlDbType.VarChar, username,
+                false);
+            listaParametros.Add(aux);
+
+            try
+            {
+                //Ejecutamos la consulta
+                int resultadoQuery = EjecutarStoredProcedureAlteraFilas(
+                    RecursosBaseDeDatosModulo7.ProcedimientoEliminarUsuario, listaParametros);
+
+                //Si el resultado da mayor a cero significa que se elimino un usuario
+                if (resultadoQuery > 0)
+                    exito = true;
+                else
+                    exito = false;
+
+                //Retornamos la respuesta
+                return exito;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+        }
+
+        #region Metodos que usan M3
+        /// <summary>
         /// Metodo que se conecta con la Base de Datos para traer todos los Usuarios segun un cargo en especifico
         /// </summary>
         /// <param name="cargo">El cargo del que se desea obtener los usuarios</param>
@@ -312,6 +352,57 @@ namespace DAO.DAO.Modulo7
             //Lista que sera la respuesta de la consulta;
             List<Entidad> usuarios = new List<Entidad>();
 
+            //Instanciamos la fabrica concreta de Entidades
+            FabricaEntidades fabrica = new FabricaEntidades();
+
+            //Parametros que tendra
+            List<Parametro> listaParametros = new List<Parametro>();
+
+            //El parametro como tal
+            Parametro parametroConsulta;
+
+            try
+            {
+                //Le agregamos el parametro de la consulta y lo agregamos a la lista
+                parametroConsulta = new Parametro(RecursosBaseDeDatosModulo7.CargosUsuarios,SqlDbType.VarChar,cargo,
+                    false);
+                listaParametros.Add(parametroConsulta);
+
+                //Recibimos la respuesta de la consulta
+              DataTable dt = EjecutarStoredProcedureTuplas(RecursosBaseDeDatosModulo7.PROCEDIMIENTO_USUARIOS_POR_CARGO,
+                    listaParametros);
+
+                //Recorremos el data table, crearmos el usuario con sus datos y asignamos cada usuario a la lista
+                foreach (DataRow fila in dt.Rows)
+                {
+                    Entidad aux = fabrica.ObtenerUsuario(fila["usuarioUsername"].ToString(),
+                        fila["usuarioNombre"].ToString(),
+                        fila["usuarioApellido"].ToString(),
+                        fila["cargoNombre"].ToString());
+                    aux.Id = int.Parse(fila["usuarioID"].ToString());
+                    usuarios.Add(aux);
+                }
+
+                //Retornamos la lista con los usuarios
+                return usuarios;
+
+            }
+            catch (SqlException e)
+            {
+                //Si hay error en la Base de Datos escribimos en el logger y lanzamos la excepcion
+                Logger.EscribirError(this.GetType().Name, new ExceptionTotemConexionBD());
+                throw new ExceptionTotemConexionBD(RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos, e);
+            }
+            catch (Exception e)
+            {
+                //Si existe un error inesperado escribimos en el logger y lanzamos la excepcion
+                Logger.EscribirError(this.GetType().Name, new ExceptionTotem());
+                throw new ExceptionTotem(RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_CODIGO,
+                    RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_MENSAJE, e);
+            }
+
+            /*
             try
             {
                 //Respuesta de la consulta hecha a la Base de Datos
@@ -353,10 +444,8 @@ namespace DAO.DAO.Modulo7
             {
                 throw new Exception("Ha ocurrido un error inesperado al Listar", error);
             }
-
-            //Retornamos la respuesta
-            return usuarios;
-        }
+            */
+       }
 
         /// <summary>
         /// Metodo que ejecuta la consulta de leer todos los cargos de la BD si y solo si ese cargo lo tiene al menos un usuario
@@ -367,6 +456,42 @@ namespace DAO.DAO.Modulo7
             //Lista que sera la respuesta de la consulta;
             List<String> cargos = new List<String>();
 
+            //Parametros que tendra
+            List<Parametro> parametros = new List<Parametro>();
+/*
+            try
+            {
+                //Recibimos la respuesta de la consulta
+                DataTable dt = EjecutarStoredProcedureTuplas(RecursosBaseDeDatosModulo7.PROCEDIMIENTO_CARGOS_USUARIOS,
+                    parametros);
+
+               //Recorremos el data table y asignamos cada cargo a la lista
+               foreach (DataRow fila in dt.Rows)
+               {
+                    cargos.Add(fila[RecursosBaseDeDatosModulo7.CARGO_NOMBRE].ToString());
+               }
+
+               //Devolvemos la lista con los cargos
+               return cargos;
+            }
+            catch (SqlException e)
+            {
+                //Si hay error en la Base de Datos escribimos en el logger y lanzamos la excepcion
+                Logger.EscribirError(this.GetType().Name, new ExceptionTotemConexionBD());
+                throw new ExceptionTotemConexionBD(RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos, e);
+            }
+            catch (Exception e)
+            {
+                //Si existe un error inesperado escribimos en el logger y lanzamos la excepcion
+                Logger.EscribirError(this.GetType().Name, new ExceptionTotem());
+                throw new ExceptionTotem(RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_CODIGO,
+                    RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_MENSAJE, e);
+            }
+
+            */
+
+            
             try
             {
                 //Respuesta de la consulta hecha a la Base de Datos
@@ -403,46 +528,8 @@ namespace DAO.DAO.Modulo7
             //Retornamos la respuesta
             return cargos;
         }
-
-        /// <summary>
-        /// Metodo que ejecuta la consulta para eliminar un usuario de la Base de Datos
-        /// </summary>
-        /// <param name="username">El usuario que se desea eliminar</param>
-        /// <returns>Verdadero si se pude eliminar, falso sino se pudo</returns>
-        public bool EliminarUsuario(String username)
-        {
-            //Exito o fallo de la eliminacion
-            bool exito;
-
-            //Lista de los parametros del query
-            List<Parametro> listaParametros = new List<Parametro>();
-
-            //Creamos un nuevo parametro y lo agregamos a la lista
-            Parametro aux  = new Parametro(RecursosBaseDeDatosModulo7.UsernameUsuario, SqlDbType.VarChar, username ,
-                false);
-            listaParametros.Add(aux);
-
-            try
-            {
-                //Ejecutamos la consulta
-                int  resultadoQuery = EjecutarStoredProcedureAlteraFilas(
-                    RecursosBaseDeDatosModulo7.ProcedimientoEliminarUsuario, listaParametros);
-
-                //Si el resultado da mayor a cero significa que se elimino un usuario
-                if (resultadoQuery > 0)
-                    exito = true;
-                else
-                    exito = false;
-
-                //Retornamos la respuesta
-                return exito;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception();
-            }
-    	}
-		#endregion
+       #endregion
+       #endregion
 
 		#region Juan
 		public bool Modificar(Entidad parametro)
