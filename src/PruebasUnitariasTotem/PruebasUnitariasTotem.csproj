@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modulo1\PruebaComando.cs" />
     <Compile Include="Modulo1\PruebaDAOLogin.cs" />
     <Compile Include="Modulo1\PruebaExcepciones.cs" />
     <Compile Include="Modulo1\PruebaBDLogin.cs" />

@@ -80,7 +80,7 @@ namespace PruebasUnitariasTotem.Modulo8
         public void PruebaComandoListaContacto()
         {
             ComandoListaContacto comandoListaContacto = (ComandoListaContacto)FabricaComandos.CrearComandoListaContacto();
-            Assert.IsNotNull(comandoListaContacto.Ejecutar(proyecto));
+            Assert.IsNotNull(comandoListaContacto.Ejecutar("TOT"));
         }
         /// <summary>
         /// Metodo que prueba el comando lista minutas de un proyecto

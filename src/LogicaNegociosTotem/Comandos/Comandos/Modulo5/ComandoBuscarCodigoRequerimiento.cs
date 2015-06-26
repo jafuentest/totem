@@ -5,15 +5,15 @@ using System.Text;
 
 namespace Comandos.Comandos.Modulo5
 {
-    public class ComandoConsultarRequerimiento : Comando<Dominio.Entidad, Dominio.Entidad>
+    public class ComandoBuscarCodigoRequerimiento : Comando<String, List<String>>
     {
         /// <summary>
-        /// Comando para consultar un requerimiento
+        /// Metodo que consigue el posible codigo del requerimiento
         /// </summary>
-        /// <param name="parametro">Requerimiento con su codigo
-        /// para buscar la informacion en la base de datos</param>
-        /// <returns>Requerimiento con los datos cargados</returns>
-        public override Dominio.Entidad Ejecutar(Dominio.Entidad parametro)
+        /// <param name="parametro">Requerimiento con el codigo del proyecto</param>
+        /// <returns>Posibles codigos, considerando que puede ser funcional o no 
+        /// funcional</returns>
+        public override List<string> Ejecutar(String parametro)
         {
             DAO.IntefazDAO.Modulo5.IDaoRequerimiento daoRequerimiento;
             DAO.Fabrica.FabricaDAOSqlServer fabricaDao = new DAO.Fabrica.FabricaDAOSqlServer();
@@ -21,7 +21,7 @@ namespace Comandos.Comandos.Modulo5
 
             try
             {
-                return daoRequerimiento.ConsultarXId(parametro);
+                return daoRequerimiento.ObtenerCodigoRequerimiento(parametro);
             }
 
             #region Capturar Excepciones

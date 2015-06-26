@@ -5,6 +5,7 @@ using System.Text;
 using Dominio;
 using Dominio.Fabrica;
 using Dominio.Entidades.Modulo6;
+using Dominio.Entidades.Modulo4;
 using DAO.IntefazDAO.Modulo6;
 using System.Data;
 using System.Data.Sql;
@@ -400,6 +401,103 @@ namespace DAO.DAO.Modulo6
         public List<Entidad> ConsultarTodos()
         {
             return new List<Entidad>();
+        }
+
+        /// <summary>
+        /// Método de DAO que accede a la Base de Datos
+        /// para traer una lista de todos los actores registrados
+        /// en Base de Datos.
+        /// </summary>
+        /// <returns>Lista de todos los actores</returns>
+        public List<Entidad> ConsultarListarActores(string codigoProy)
+        {
+
+
+            FabricaEntidades laFabrica = new FabricaEntidades();
+            List<Entidad> laLista = new List<Entidad>();
+            DataTable resultado = new DataTable();
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursosDAOModulo6.CodigoProyecto, SqlDbType.VarChar, codigoProy, false);
+            parametros.Add(parametro);
+            Actor elActor;
+            Proyecto elProyecto;
+            try
+            {
+                resultado = EjecutarStoredProcedureTuplas(RecursosDAOModulo6.PROCEDURE_LEER_ACTOR, parametros);
+
+                foreach (DataRow row in resultado.Rows)
+                {
+
+                    //FALTA EL ID DEL PROYECTO
+
+
+                    elProyecto = (Proyecto)FabricaEntidades.ObtenerProyecto();
+                    elActor = (Actor)laFabrica.ObtenerActor(); ;
+                    // Atributos de la tabla Actor
+                    elActor.Id = int.Parse(row[RecursosDAOModulo6.AliasIDActor].ToString());
+                    elActor.NombreActor = row[RecursosDAOModulo6.AliasNombreActor].ToString();
+                    elActor.DescripcionActor = row[RecursosDAOModulo6.AliasDescripcionActor].ToString();
+                    elProyecto.Codigo = codigoProy;
+                    elActor.ProyectoAsociado = elProyecto;
+
+                    // proy_act. = elProyecto;
+                    laLista.Add(elActor);
+                }
+            }
+            catch (SqlException e)
+            {
+
+
+                BDDAOException exDaoActor = new BDDAOException(
+                 RecursosDAOModulo6.CodigoExcepcionBDDAO,
+                 RecursosDAOModulo6.MensajeExcepcionBD,
+                 e);
+
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
+                    exDaoActor);
+
+                throw exDaoActor;
+
+            }
+            catch (NullReferenceException e)
+            {
+                ObjetoNuloDAOException exDaoActor = new ObjetoNuloDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionObjetoNuloDAO,
+                    RecursosDAOModulo6.MensajeExcepcionObjetoNulo,
+                    e);
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
+                       exDaoActor);
+
+                throw exDaoActor;
+
+            }
+
+            catch (FormatException e)
+            {
+                TipoDeDatoErroneoDAOException exDaoActor = new TipoDeDatoErroneoDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionTipoDeDatoErroneo,
+                    RecursosDAOModulo6.MensajeTipoDeDatoErroneoException,
+                    e);
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
+                       exDaoActor);
+
+                throw exDaoActor;
+
+            }
+            catch (Exception e)
+            {
+                ErrorDesconocidoDAOException exDaoActor = new ErrorDesconocidoDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionErrorDAO,
+                    RecursosDAOModulo6.MensajeExcepcionErrorDesconocido,
+                    e);
+
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
+                      exDaoActor);
+
+                throw exDaoActor;
+            }
+
+            return laLista;
         }
 
     }

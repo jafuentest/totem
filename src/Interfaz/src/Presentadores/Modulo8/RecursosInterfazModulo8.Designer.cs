@@ -79,7 +79,7 @@ namespace Presentadores.Modulo8 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;a id=&apos;{0}&apos; class=&apos;btn btn-primary glyphicon glyphicon-info-sign&apos; href=&apos;DetalleMinutas.aspx?idMinuta={0}&apos;&gt;&lt;/a&gt;.
+        ///   Looks up a localized string similar to }&apos; class=&apos;btn btn-primary glyphicon glyphicon-info-sign&apos; href=&apos;DetalleMinutas.aspx?idMinuta={.
         /// </summary>
         internal static string BotonDetalle {
             get {
@@ -88,7 +88,25 @@ namespace Presentadores.Modulo8 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;a id=&apos;{0}&apos; class=&apos;btn btn-success glyphicon glyphicon-print&apos; href=&apos;DetalleMinutas.aspx?idMinuta={0}&apos;&gt;&lt;/a&gt;.
+        ///   Looks up a localized string similar to }&apos;&gt;&lt;/a&gt;.
+        /// </summary>
+        internal static string BotonDetalleCerrar {
+            get {
+                return ResourceManager.GetString("BotonDetalleCerrar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;a id=&apos;{.
+        /// </summary>
+        internal static string BotonDetalleIniciar {
+            get {
+                return ResourceManager.GetString("BotonDetalleIniciar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to }&apos; class=&apos;btn btn-success glyphicon glyphicon-print&apos; href=&apos;DetalleMinutas.aspx?idMinuta={.
         /// </summary>
         internal static string BotonImprimir {
             get {
@@ -97,7 +115,7 @@ namespace Presentadores.Modulo8 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;a id=&apos;{0}&apos; class=&apos;btn btn-default glyphicon glyphicon-pencil&apos; href=&apos;ModificarMinuta.aspx?idMinuta={0}&apos;&gt;&lt;/a&gt;.
+        ///   Looks up a localized string similar to }&apos; class=&apos;btn btn-default glyphicon glyphicon-pencil&apos; href=&apos;ModificarMinuta.aspx?idMinuta={.
         /// </summary>
         internal static string BotonModificar {
             get {

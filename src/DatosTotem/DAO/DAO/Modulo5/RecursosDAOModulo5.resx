@@ -289,4 +289,12 @@
     <value>M5_ConsultarRequerimientosPorCodigo</value>
     <comment>Procedimiento utilizado para retornar un requerimiento dado su codigo</comment>
   </data>
+  <data name="TIPO_FUNCIONAL" xml:space="preserve">
+    <value>funcional</value>
+    <comment>Tipo de requerimiento funcional</comment>
+  </data>
+  <data name="TIPO_NO_FUNCIONAL" xml:space="preserve">
+    <value>no funcional</value>
+    <comment>Tipo de requerimiento no funcional</comment>
+  </data>
 </root>

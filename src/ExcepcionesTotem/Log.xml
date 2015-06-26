@@ -570,3 +570,17 @@ ClientConnectionId:80463d25-eb2b-4293-a5d6-33ecad93c435
 2015-06-24 14:13:39,855 ERROR ComandoIniciarSesion - Metodo: Dominio.Entidad Ejecutar(System.Collections.Generic.List`1[System.String])
 2015-06-24 14:13:39,855 ERROR ComandoIniciarSesion - StackTrace:    at Comandos.Comandos.Modulo1.ComandoIniciarSesion.Ejecutar(List`1 parametro) in q:\totem\src\LogicaNegociosTotem\Comandos\Comandos\Modulo1\ComandoIniciarSesion.cs:line 48
 2015-06-24 14:13:39,855 ERROR ComandoIniciarSesion - InnerException: System.Exception: Exception of type 'System.Exception' was thrown.
+2015-06-25 12:12:15,651 ERROR DaoPunto - *******************************************************
+2015-06-25 12:12:15,657 ERROR DaoPunto - Mensaje: The INSERT statement conflicted with the FOREIGN KEY constraint "PUNTO_MINUTA_FK". The conflict occurred in database "C:\USERS\MIGUELANGEL\DOCUMENTS\GITHUB\TOTEM\SRC\INTERFAZ\SRC\VISTA\APP_DATA\BASEDEDATOSTOTEM.MDF", table "dbo.MINUTA", column 'min_id'.
+2015-06-25 12:12:15,668 ERROR DaoPunto - Origen: .Net SqlClient Data Provider
+2015-06-25 12:12:15,668 ERROR DaoPunto - Metodo: System.Data.DataTable EjecutarStoredProcedureTuplas(System.String, System.Collections.Generic.List`1[DAO.Parametro])
+2015-06-25 12:12:15,669 ERROR DaoPunto - StackTrace:    en DAO.DAO.DAO.EjecutarStoredProcedureTuplas(String query, List`1 parametros) en c:\Users\MiguelAngel\Documents\GitHub\totem\src\DatosTotem\DAO\DAO\DAO.cs:línea 221
+   en DAO.DAO.Modulo8.DaoPunto.AgregarPunto(Entidad punto, Int32 idMinuta) en c:\Users\MiguelAngel\Documents\GitHub\totem\src\DatosTotem\DAO\DAO\Modulo8\DaoPunto.cs:línea 66
+2015-06-25 12:12:15,669 ERROR DaoPunto - InnerException: 
+2015-06-25 12:12:59,431 ERROR DaoPunto - *******************************************************
+2015-06-25 12:12:59,431 ERROR DaoPunto - Mensaje: The INSERT statement conflicted with the FOREIGN KEY constraint "PUNTO_MINUTA_FK". The conflict occurred in database "C:\USERS\MIGUELANGEL\DOCUMENTS\GITHUB\TOTEM\SRC\INTERFAZ\SRC\VISTA\APP_DATA\BASEDEDATOSTOTEM.MDF", table "dbo.MINUTA", column 'min_id'.
+2015-06-25 12:12:59,431 ERROR DaoPunto - Origen: .Net SqlClient Data Provider
+2015-06-25 12:12:59,431 ERROR DaoPunto - Metodo: System.Data.DataTable EjecutarStoredProcedureTuplas(System.String, System.Collections.Generic.List`1[DAO.Parametro])
+2015-06-25 12:12:59,431 ERROR DaoPunto - StackTrace:    en DAO.DAO.DAO.EjecutarStoredProcedureTuplas(String query, List`1 parametros) en c:\Users\MiguelAngel\Documents\GitHub\totem\src\DatosTotem\DAO\DAO\DAO.cs:línea 221
+   en DAO.DAO.Modulo8.DaoPunto.AgregarPunto(Entidad punto, Int32 idMinuta) en c:\Users\MiguelAngel\Documents\GitHub\totem\src\DatosTotem\DAO\DAO\Modulo8\DaoPunto.cs:línea 66
+2015-06-25 12:12:59,431 ERROR DaoPunto - InnerException: 

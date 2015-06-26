@@ -10,6 +10,6 @@ namespace Contratos.Modulo8
         string FechaMinuta { get; set; }
         string MotivoMinuta { get; set; }
         string Observaciones { get; set; }
-        string ListaInvolucrado { get; set; }
+        string Involucrados { get; set; }
     }
 }

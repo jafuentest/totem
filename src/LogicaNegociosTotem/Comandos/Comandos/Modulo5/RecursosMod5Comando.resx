@@ -126,11 +126,23 @@
   <data name="ArchivoFinalPdf" xml:space="preserve">
     <value>Q:\totem\src\LogicaNegociosTotem\Comandos\Comandos\Modulo5\Requerimientos.pdf</value>
   </data>
+  <data name="codigo_excepcion_archivo_latex_no_compilado" xml:space="preserve">
+    <value>T_05_006</value>
+  </data>
+  <data name="codigo_excepcion_archivo_no_encontrado" xml:space="preserve">
+    <value>T_05_007</value>
+  </data>
   <data name="CompiladorLatex" xml:space="preserve">
     <value>pdflatex.exe</value>
   </data>
   <data name="Directorio" xml:space="preserve">
     <value>Q:\totem\src\Interfaz\src\Vista\Modulo5\docs</value>
+  </data>
+  <data name="Mensaje_Error_Archivo_Inexistente" xml:space="preserve">
+    <value>El archivo base no se encuentra en el directorio o el archivo de salida no pudo ser abierto</value>
+  </data>
+  <data name="Mensaje_Error_Archivo_NoCompilado" xml:space="preserve">
+    <value>El archivo latex no pudo ser compilado, asegurese que el compilador de LaTex este instalado correctamente</value>
   </data>
   <data name="ParametroLatex" xml:space="preserve">
     <value>-output-directory</value>

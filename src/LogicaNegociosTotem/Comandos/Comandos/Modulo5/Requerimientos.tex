@@ -1,6 +1,19 @@
 \documentclass{article}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
 
-\usepackage{graphicx}
+
+
+\lfoot{
+\href{http://localhost:18329/Modulo1/Default.aspx}{Generado usando TOTEM, herramienta creadora de documentos}
+\newline
+}
+\rfoot{\thepage}
+
+\fancyfoot[R]{\thepage}
+
 
 \title{Requerimientos Funcionales de Software}
 \date
@@ -10,6 +23,9 @@
 \author{
 Trascend Software
 }
+
+
+
 
 \begin{document}
 
@@ -26,10 +42,7 @@ Trascend Software
 \pagenumbering{arabic} % Turns on page numbering
 \
 \begin{center}
-	\section{Requerimientos}
-\end{center}
-
-\subsection{Requerimientos Funcionales}
+	\section*{Requerimientos Funcionales}
 \begin{tabular}{| l | p{7cm} | r |}
 \hline
 \bf ID & \bf Requerimiento & \bf Prioridad \\
@@ -41,12 +54,11 @@ TOT-RF-2&Descripcion Requerimiento Funcional 2 Totem&Media \\
 TOT-RF-3&Descripcion Requerimiento Funcional 3 Totem&baja \\
 \hline
 \end{tabular}
-
-\begin{center}
-	\section{Requerimientos No Funcionales}
 \end{center}
 
-\subsection{Requerimientos No Funcionales}
+\newpage
+\begin{center}
+	\section*{Requerimientos No Funcionales}
 \begin{tabular}{| l | p{7cm} | r |}
 \hline
 \bf ID & \bf Requerimiento & \bf Prioridad \\
@@ -54,5 +66,7 @@ TOT-RF-3&Descripcion Requerimiento Funcional 3 Totem&baja \\
 TOT-RNF-1&Descripcion Requerimiento No Funcional 1 Totem&alta \\
 \hline
 \end{tabular}
+\end{center}
+
 
 \end{document}

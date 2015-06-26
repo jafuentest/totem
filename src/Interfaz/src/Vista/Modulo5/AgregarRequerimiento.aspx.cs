@@ -85,6 +85,7 @@ namespace Vista.Modulo5
                 this.Master.idModulo = "5";
                 this.Master.presentador.CargarMenuLateral();
                 presentador.ObtenerUsuarioLogeado();
+                presentador.ObtenerCodigoRequerimiento();
             }
 
         }

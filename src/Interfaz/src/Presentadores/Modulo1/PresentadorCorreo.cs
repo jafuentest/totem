@@ -17,18 +17,26 @@ namespace Presentadores.Modulo1
     {
         private IContratoCorreo vista;
 
+        /// <summary>
+        /// Constructor de PresentadorCorreo
+        /// </summary>
+        /// <param name="laVista">Contrato que se utiliza para tener acceso a algunos componentes
+        /// de la interfaz</param>
         public PresentadorCorreo(IContratoCorreo laVista)
         {
             vista = laVista;
         }
 
+        /// <summary>
+        /// Metodo que maneja el evento manejar Correo
+        /// </summary>
         public void ManejarEventoCorreo_Click()
         {
             string correo = vista.Correo;
 
             if (correo.Equals(""))
             {
-                vista.Mensaje = "Debe Ingresar un Correo";
+                vista.Mensaje = RecursosM1.Mensaje_AlertaCorreo;
             }
             else
             {
@@ -56,29 +64,46 @@ namespace Presentadores.Modulo1
                         }
                         else
                         {
-                            ExcepcionesTotem.Modulo1.EmailErradoException excep = new ExcepcionesTotem.Modulo1.EmailErradoException(
+                            ExcepcionesTotem.Modulo1.EmailErradoException ex = new ExcepcionesTotem.Modulo1.EmailErradoException(
                             RecursosM1.Codigo_Email_Errado,
                             RecursosM1.Mensaje_Email_errado,
                             new ExcepcionesTotem.Modulo1.EmailErradoException());
-                            ExcepcionesTotem.Logger.EscribirError(this.GetType().Name, excep);
-                            throw excep;
+                            vista.Mensaje = ex.Message;
                         }
                     }
                     else
                     {
-                        ExcepcionesTotem.Modulo1.EmailErradoException excep = new ExcepcionesTotem.Modulo1.EmailErradoException(
+                        ExcepcionesTotem.Modulo1.EmailErradoException ex = new ExcepcionesTotem.Modulo1.EmailErradoException(
                             RecursosM1.Codigo_Email_Errado,
                             RecursosM1.Mensaje_Email_errado,
                             new ExcepcionesTotem.Modulo1.EmailErradoException());
-                        ExcepcionesTotem.Logger.EscribirError(this.GetType().Name, excep);
-                        throw excep;
+                        vista.Mensaje = ex.Message;
                     }
                     
-
                 }
-                catch (Exception)
+                catch (ExcepcionesTotem.Modulo1.EmailErradoException ex)
                 {
-                    vista.Mensaje = "El correo suministrado es erroneo o no se encuentra registrado";
+                    vista.Mensaje = ex.Message;
+                }
+                catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
+                {
+                    vista.Mensaje = ex.Message;
+                }
+                catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+                {
+                    vista.Mensaje = ex.Message;
+                }
+                catch (ExcepcionesTotem.Modulo1.UsuarioVacioException ex)
+                {
+                    vista.Mensaje = ex.Message;
+                }
+                catch (ExcepcionesTotem.Modulo1.ErrorEnvioDeCorreoException ex)
+                {
+                    vista.Mensaje = ex.Message;
+                }
+                catch (Exception ex)
+                {
+                    vista.Mensaje = ex.Message;
                 }
 
             }

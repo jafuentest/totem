@@ -43,7 +43,7 @@ namespace Comandos.Comandos.Modulo8
                 {
                     foreach (Punto pun in laMinuta.ListaPunto)
                     {
-                        int auxiliar = daoPuntos.AgregarPunto(pun, laMinuta.Id);
+                        int auxiliar = daoPuntos.AgregarPunto(pun, idMinuta);
                     }
                 }
 
@@ -52,7 +52,7 @@ namespace Comandos.Comandos.Modulo8
                     foreach (Usuario usu in laMinuta.ListaUsuario)
                     {
                         bool aux = daoInvMinutas.AgregarInvolucradoEnMinuta(usu.Id, elProyecto.Codigo,
-                            RecursosComandosModulo8.ProcedureAgregarUsuarioMinuta, RecursosComandosModulo8.ParametroIdUsuario, laMinuta.Id);
+                            RecursosComandosModulo8.ProcedureAgregarUsuarioMinuta, RecursosComandosModulo8.ParametroIdUsuario, idMinuta);
                     }
                 }
 
@@ -60,7 +60,7 @@ namespace Comandos.Comandos.Modulo8
                 {
                     foreach (Contacto con in laMinuta.ListaContacto)
                     {
-                        bool aux2 = daoInvMinutas.AgregarInvolucradoEnMinuta(con.Id, elProyecto.Codigo, RecursosComandosModulo8.ParametroIdContacto, RecursosComandosModulo8.ProcedureAgregarUsuarioMinuta, laMinuta.Id);
+                        bool aux2 = daoInvMinutas.AgregarInvolucradoEnMinuta(con.Id, elProyecto.Codigo, RecursosComandosModulo8.ParametroIdContacto, RecursosComandosModulo8.ProcedureAgregarUsuarioMinuta, idMinuta);
                     }
                 }
                 if (laMinuta.ListaAcuerdo != null)

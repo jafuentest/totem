@@ -1782,6 +1782,17 @@ BEGIN
 END
 go
 
+----------Procedimiento para listar Cargos Contactos---------------------
+CREATE PROCEDURE M3_ConsultarListaCargos
+AS
+BEGIN
+	SELECT DISTINCT CAR_NOMBRE  as nombreCargo
+	FROM CARGO 
+	WHERE CAR_NOMBRE NOT IN (SELECT DISTINCT CAR_NOMBRE as nombreCargo 
+							 FROM CARGO, CONTACTO WHERE CARGO_car_id=car_id)
+END;
+go
+
 --End SP3
 
 --Begin SP4
@@ -2162,6 +2173,26 @@ AS
       req_estatus   = @req_estatus
     WHERE
       req_codigo = @req_codigo;
+  END
+GO
+
+-- ========================================================================= --
+-- Retornar último cdigo de requerimiento por proyecto
+-- ========================================================================= --
+
+CREATE PROCEDURE M5_RetornarCodigoDeRequerimiento
+
+  @pro_id       [int] ,
+  @req_tipo     [varchar] (25) ,
+  @req_codigo     [varchar] (15)  OUTPUT
+
+AS
+  BEGIN
+    SELECT @req_codigo = req_codigo
+    FROM REQUERIMIENTO R
+    WHERE ( R.PROYECTO_pro_id = @pro_id
+        AND LOWER(R.req_tipo) = LOWER(@req_tipo) )
+    ORDER BY req_codigo;
   END
 GO
 

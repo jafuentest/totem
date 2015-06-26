@@ -28,9 +28,9 @@ $(document).ready(function() {
         //Carga de Participantes
         for (i = 0; i < json["ListaUsuario"].length; i++)
         {
-            var codigoUsuario = "user" + json["ListaUsuario"][i]["idUsuario"];
-            var nombreCompletoUsuario = json["ListaUsuario"][i]["nombre"] + " " + json["ListaUsuario"][i]["apellido"];
-            var cargoUsuario = json["ListaUsuario"][i]["cargo"];
+            var codigoUsuario = "user" + json["ListaUsuario"][i]["Id"];
+            var nombreCompletoUsuario = json["ListaUsuario"][i]["Nombre"] + " " + json["ListaUsuario"][i]["Apellido"];
+            var cargoUsuario = json["ListaUsuario"][i]["Cargo"];
 
             $('#listaParticipante').append(
                "<div id='" + codigoUsuario + "' class='panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3'>"
@@ -49,10 +49,10 @@ $(document).ready(function() {
         //Carga de Puntos
         for (i = 0; i < json["ListaPunto"].length; i++)
         {
-            var codigoPunto = "punto" + json["ListaPunto"][i]["Codigo"];
+            var codigoPunto = "punto" + json["ListaPunto"][i]["Id"];
             var tituloPunto = json["ListaPunto"][i]["Titulo"];
             var desarrolloPunto = json["ListaPunto"][i]["Desarrollo"];
-            var collapse = "collapse" + json["ListaPunto"][i]["Codigo"];
+            var collapse = "collapse" + json["ListaPunto"][i]["Id"];
             var nroPunto = i + 1;
             $('#listaPunto').append(
                 "<div class='panel panel-default' id='"+codigoPunto+"'>"
@@ -73,12 +73,12 @@ $(document).ready(function() {
         //Carga de Acuerdos
         for (i = 0; i < json["ListaAcuerdo"].length; i++)
         {
-            var codigoAcuerdo = "acuerdo" + json["ListaAcuerdo"][i]["Codigo"];
+            var codigoAcuerdo = "acuerdo" + json["ListaAcuerdo"][i]["Id"];
             var compromisoAcuerdo = json["ListaAcuerdo"][i]["Compromiso"];
             var fechaCompletaAcuerdo = new Date(json["ListaAcuerdo"][i]["Fecha"]);
             var mes = fechaCompletaAcuerdo.getMonth() + 1;
             var fechaAcuerdo = fechaCompletaAcuerdo.getDate() + "/" + mes + "/" + fechaCompletaAcuerdo.getFullYear();
-            var collapse = "collapseAcuerdo" + json["ListaAcuerdo"][i]["Codigo"];
+            var collapse = "collapseAcuerdo" + json["ListaAcuerdo"][i]["Id"];
 
             $('#listaAcuerdo').append(
                 "<div class='panel panel-default'>"
@@ -103,9 +103,9 @@ $(document).ready(function() {
             //Carga de los Usuarios de los Acuerdos
             for (j = 0; j < json["ListaAcuerdo"][i]["ListaUsuario"].length; j++)
             {
-                var codigoUsuarioAcuerdo = "userAcuerdo" + json["ListaAcuerdo"][i]["ListaUsuario"][j]["idUsuario"];
-                var nombreCompletoUsuarioAcuerdo = json["ListaAcuerdo"][i]["ListaUsuario"][j]["nombre"] + " " + json["ListaAcuerdo"][i]["ListaUsuario"][j]["apellido"];
-                var cargoUsuarioAcuerdo = json["ListaAcuerdo"][i]["ListaUsuario"][j]["cargo"];
+                var codigoUsuarioAcuerdo = "userAcuerdo" + json["ListaAcuerdo"][i]["ListaUsuario"][j]["Id"];
+                var nombreCompletoUsuarioAcuerdo = json["ListaAcuerdo"][i]["ListaUsuario"][j]["Nombre"] + " " + json["ListaAcuerdo"][i]["ListaUsuario"][j]["Apellido"];
+                var cargoUsuarioAcuerdo = json["ListaAcuerdo"][i]["ListaUsuario"][j]["Cargo"];
 
                 $('#'+codigoAcuerdo).append(
                     "<div id='" + codigoUsuarioAcuerdo + "' class='panel panel-default panel-participante col-xs-12 col-sm-6 col-lg-3'>"

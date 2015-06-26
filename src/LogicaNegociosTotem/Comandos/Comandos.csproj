@@ -82,6 +82,7 @@
     <Compile Include="Comandos\Modulo3\ComandoListarContactosPorEmpresa.cs" />
     <Compile Include="Comandos\Modulo4\ComandoAgregarProyecto.cs" />
     <Compile Include="Comandos\Modulo5\ComandoAgregarRequerimiento.cs" />
+    <Compile Include="Comandos\Modulo5\ComandoBuscarCodigoRequerimiento.cs" />
     <Compile Include="Comandos\Modulo5\ComandoConsultarRequerimiento.cs" />
     <Compile Include="Comandos\Modulo5\ComandoConsultarRequerimientosProyecto.cs" />
     <Compile Include="Comandos\Modulo5\ComandoEliminarRequerimiento.cs" />
@@ -93,6 +94,7 @@
       <DependentUpon>RecursosMod5Comando.resx</DependentUpon>
     </Compile>
     <Compile Include="Comandos\Modulo6\ComandoAgregarActor.cs" />
+    <Compile Include="Comandos\Modulo6\ComandoConsultarActores.cs" />
     <Compile Include="Comandos\Modulo6\ComandoConsultarActoresCombo.cs" />
     <Compile Include="Comandos\Modulo6\ComandoConsultarActoresXCasoDeUso.cs" />
     <Compile Include="Comandos\Modulo6\ComandoConsultarCasosDeUsoPorActor.cs" />

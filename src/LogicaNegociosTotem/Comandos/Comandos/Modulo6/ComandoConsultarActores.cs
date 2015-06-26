@@ -7,28 +7,24 @@ using ExcepcionesTotem.Modulo6.ExcepcionesComando;
 using ExcepcionesTotem.Modulo6.ExcepcionesDAO;
 using ExcepcionesTotem;
 using DAO.DAO.Modulo6;
-
+using DAO.Fabrica;
+using DAO.IntefazDAO.Modulo6;
 
 namespace Comandos.Comandos.Modulo6
 {
-    public class ComandoEliminarCU : Comando<int, bool>
+    public class ComandoConsultarActores : Comando<string, List<Entidad>>
     {
-        /// <summary>
-        /// Comando que elimina un Caso de Uso
-        /// </summary>
-        /// <param name="parametro">Id del Caso de uso a eliminar</param>
-        /// <returns>true si pudo eliminar</returns>
-        public override bool Ejecutar(int parametro)
+        public override List<Entidad> Ejecutar(string parametro)
         {
-
-
-
-            DAO.Fabrica.FabricaDAOSqlServer fabricaDaoSqlServer = new DAO.Fabrica.FabricaDAOSqlServer();
-            DAO.IntefazDAO.Modulo6.IDaoCasoDeUso daoCasoUso = fabricaDaoSqlServer.ObtenerDAOCasoDeUso(); 
-
             try
             {
-                return daoCasoUso.EliminarCasoDeUso(parametro);
+                FabricaDAOSqlServer laFabrica = new FabricaDAOSqlServer();
+                IDaoActor daoActor = laFabrica.ObtenerDAOActor();
+
+                return daoActor.ConsultarListarActores(parametro);
+
+
+
             }
             catch (BDDAOException ex)
             {
@@ -38,24 +34,13 @@ namespace Comandos.Comandos.Modulo6
                      RecursosComandosModulo6.MensajeExcepcionComandoBD,
                      ex);
 
-                Logger.EscribirError(RecursosComandosModulo6.ClaseComandoEliminarCU,
+                Logger.EscribirError(RecursosComandosModulo6.ClaseComandoAgregarActor,
                     exComandoAgregarActor);
 
                 throw exComandoAgregarActor;
 
             }
-            catch (TipoDeDatoErroneoDAOException ex)
-            {
-                TipoDeDatoErroneoComandoException exComandoAgregarActor = new TipoDeDatoErroneoComandoException(
-                     RecursosComandosModulo6.CodigoExcepcionComandoTipoDeDatoErroneo,
-                     RecursosComandosModulo6.MensajeTipoDeDatoErroneoComandoExcepcion,
-                     ex);
 
-                Logger.EscribirError(RecursosComandosModulo6.ClaseComandoEliminarCU,
-                    exComandoAgregarActor);
-
-                throw exComandoAgregarActor;
-            }
 
             catch (ObjetoNuloDAOException ex)
             {
@@ -64,7 +49,7 @@ namespace Comandos.Comandos.Modulo6
                     RecursosComandosModulo6.MensajeExcepcionComandoObjetoNulo,
                     ex);
 
-                Logger.EscribirError(RecursosComandosModulo6.ClaseComandoEliminarCU,
+                Logger.EscribirError(RecursosComandosModulo6.ClaseComandoAgregarActor,
                   exComandoAgregarActor);
 
                 throw exComandoAgregarActor;
@@ -78,14 +63,14 @@ namespace Comandos.Comandos.Modulo6
                      RecursosComandosModulo6.MensajeExcepcionComandoError,
                      ex);
 
-                Logger.EscribirError(RecursosComandosModulo6.ClaseComandoEliminarCU,
+                Logger.EscribirError(RecursosComandosModulo6.ClaseComandoAgregarActor,
                    exComandoAgregarActor);
 
                 throw exComandoAgregarActor;
 
             }
 
-
         }
+
     }
 }

@@ -16,33 +16,19 @@ namespace Presentadores.Modulo8
 {
     public class PresentadorDetalleMinuta
     {
-
-        private IContratoDetalleMinutas vista;
-        public PresentadorDetalleMinuta(IContratoDetalleMinutas laVista)
+        public PresentadorDetalleMinuta()
         {
-            vista = laVista;
+
         }
-        public void DetalleMinuta(String idminuta)
+        public Dominio.Entidad DetalleMinuta(String idminuta)
         {
             try
             {
                 Comando<String,Entidad> comandoDetalleMinuta =  FabricaComandos.CrearComandoComandoDetalleMinuta();
 
                 Entidad laMinuta = comandoDetalleMinuta.Ejecutar(idminuta);
-                /* inyectat HTML 
-                    Console.WriteLine(minuta.Id);
-                    vista.laTabla += RecursosInterfazModulo8.AbrirEtiquetaTr;
-                    vista.laTabla += RecursosInterfazModulo8.AbrirEtiquetaTd + minuta.Id + RecursosInterfazModulo8.CerrarEtiquetaTd;
-                    vista.laTabla += RecursosInterfazModulo8.AbrirEtiquetaTd + minuta.Fecha + RecursosInterfazModulo8.CerrarEtiquetaTd;
-                    vista.laTabla += RecursosInterfazModulo8.AbrirEtiquetaTd + minuta.Motivo+ RecursosInterfazModulo8.CerrarEtiquetaTd;
-                    vista.laTabla += RecursosInterfazModulo8.AbrirEtiquetaTd;
-                    vista.laTabla += RecursosInterfazModulo8.BotonDetalle;
-                    vista.laTabla += RecursosInterfazModulo8.BotonModificar;
-                    vista.laTabla += RecursosInterfazModulo8.BotonImprimir;
-                    vista.laTabla += RecursosInterfazModulo8.CerrarEtiquetaTd;
-                    vista.laTabla += RecursosInterfazModulo8.CerrarEtiquetaTr;
-              */
 
+                return laMinuta;
             }
             catch (NullReferenceException ex)
             {

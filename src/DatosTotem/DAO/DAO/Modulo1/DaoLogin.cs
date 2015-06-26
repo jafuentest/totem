@@ -17,6 +17,12 @@ namespace DAO.DAO.Modulo1
         private Entidad _usuario;
 
         #region Metodos IDAOLogin
+        /// <summary>
+        /// Metodo que se utiliza para validar el login de un usuario
+        /// </summary>
+        /// <param name="parametro">Entidad de tipo usuario que recibe el login del mismo</param>
+        /// <returns>Retorna el usuario con los datos completos.
+        /// En caso de que el login no sea correcto devuelve nulo</returns>
         public Entidad ValidarUsuarioLogin(Entidad parametro)
         {
             Usuario usuario = (Usuario)parametro;
@@ -99,6 +105,11 @@ namespace DAO.DAO.Modulo1
             }
         }
 
+        /// <summary>
+        /// Metodo que se utiliza para obtener la pregunta de seguridad de un usuario
+        /// </summary>
+        /// <param name="parametro">Entidad de tipo usuario que recibe el emai del usuario</param>
+        /// <returns>Retorna el usuario con la pregunta de segurida que le pertenece</returns>
         public Entidad ObtenerPreguntaSeguridad(Entidad parametro)
         {
             Usuario usuario = (Usuario)parametro;
@@ -166,6 +177,11 @@ namespace DAO.DAO.Modulo1
             
         }
 
+        /// <summary>
+        /// Metodo que valida la respuesta de un usuario dada una pregunta
+        /// </summary>
+        /// <param name="parametro">Entidad de tipo Usuario que recibe la respuesta dada por el usuario</param>
+        /// <returns>Retorna true, si la respuesta que dio el usuario es igual a la registrada en la BD</returns>
         public bool ValidarRespuestaSeguridad(Entidad parametro)
         {
             SqlConnection conect = Conectar();
@@ -190,15 +206,6 @@ namespace DAO.DAO.Modulo1
                 {
                     while (leer.Read())
                     {
-                        /*if (leer[RecursosDaoModulo1.Parametro_Output_RespuestaSeguridad].ToString() == null ||
-                            leer[RecursosDaoModulo1.Parametro_Output_RespuestaSeguridad].ToString() == "")
-                        {
-                            EmailErradoException excep = new EmailErradoException(RecursosDaoModulo1.Codigo_Email_Errado,
-                                        RecursosDaoModulo1.Mensaje_Email_errado,
-                                        new EmailErradoException());
-                            ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()), excep);
-                            throw excep;
-                        }*/
 
                         if (leer[RecursosDaoModulo1.Parametro_Output_RespuestaSeguridad].ToString() ==
                             ((Usuario)parametro).RespuestaSeguridad)
@@ -260,6 +267,11 @@ namespace DAO.DAO.Modulo1
             }
         }
 
+        /// <summary>
+        /// Metodo que se utiliza para validar si un correo dado está registrado en la BD
+        /// </summary>
+        /// <param name="correo">Correo que se requiere validar</param>
+        /// <returns>Retorna true si el correo existe y falso en caso contrario</returns>
         public bool ValidarCorreoExistente(string correo)
         {
             SqlConnection conect = Conectar();

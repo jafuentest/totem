@@ -143,7 +143,7 @@ namespace Comandos.Fabrica
         {
             return new Comandos.Modulo3.ComandoAgregarContactosInvolucrados();
         }
-        public static Comando<Dominio.Entidad, Dominio.Entidad> CrearComandoConsultarUsuariosInvolucrados()
+        public static Comando<Dominio.Entidad, Dominio.Entidad> CrearComandoConsultarUsuariosInvolucradosPorProyecto()
         {
 
             return new Comandos.Modulo3.ComandoConsultarUsuariosInvolucradosPorProyecto();
@@ -163,6 +163,7 @@ namespace Comandos.Fabrica
 
             return new Comandos.Modulo3.ComandoEliminarContactoDeIvolucradosEnProyecto();
         }
+
         public static Comando<Dominio.Entidad, Boolean> CrearComandoEliminarUsuariosDeInvolucradosEnProyecto()
         {
 
@@ -215,6 +216,10 @@ namespace Comandos.Fabrica
             return new Comandos.Modulo5.ComandoGenerarArchivoLatex();
         }
 
+        public static Comando<String, List<String>> CrearComandoBuscarCodigoRequerimiento()
+        {
+            return new Comandos.Modulo5.ComandoBuscarCodigoRequerimiento();
+        }
         #endregion
 
         #region Modulo 6
@@ -365,7 +370,7 @@ namespace Comandos.Fabrica
             return new Comandos.Modulo8.ComandoGenerarMinuta();
         }
 
-        public static Comando<Dominio.Entidad, List<Dominio.Entidad>> CrearComandoListaContacto()
+        public static Comando<String, List<Dominio.Entidad>> CrearComandoListaContacto()
         {
             return new Comandos.Modulo8.ComandoListaContacto();
         }

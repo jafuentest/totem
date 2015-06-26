@@ -14,34 +14,50 @@ namespace Comandos.Comandos.Modulo1
     /// </summary>
     public class ComandoEncriptar: Comando<List<string>, string>
     {
+        /// <summary>
+        /// Metodo que encripta el correo del usuario por seguridad
+        /// </summary>
+        /// <param name="parametro">lista de string que contiene el correo a desencriptar
+        /// y la frase a utilizar</param>
+        /// <returns>Retorna el correo del usuario encriptado</returns>
         public override string Ejecutar(List<string> parametro)
         {
-            byte[] textoEnBytes = Encoding.UTF8.GetBytes(parametro[0]);
-            using (PasswordDeriveBytes password = new PasswordDeriveBytes(parametro[1], null))
+            try
             {
-                byte[] bytesDeClave = password.GetBytes(256 / 8);
-                using (RijndaelManaged claveSimetrica = new RijndaelManaged())
+                byte[] textoEnBytes = Encoding.UTF8.GetBytes(parametro[0]);
+                using (PasswordDeriveBytes password = new PasswordDeriveBytes(parametro[1], null))
                 {
-                    claveSimetrica.Mode = CipherMode.CBC;
-                    byte[] salt =
-                        Encoding.ASCII.GetBytes(RecursosComandoModulo1.Salt_Encriptado);
-
-                    using (ICryptoTransform encriptor =
-                        claveSimetrica.CreateEncryptor(bytesDeClave, salt))
+                    byte[] bytesDeClave = password.GetBytes(256 / 8);
+                    using (RijndaelManaged claveSimetrica = new RijndaelManaged())
                     {
-                        using (MemoryStream memoryStream = new MemoryStream())
+                        claveSimetrica.Mode = CipherMode.CBC;
+                        byte[] salt =
+                            Encoding.ASCII.GetBytes(RecursosComandoModulo1.Salt_Encriptado);
+
+                        using (ICryptoTransform encriptor =
+                            claveSimetrica.CreateEncryptor(bytesDeClave, salt))
                         {
-                            using (CryptoStream cryptoStream =
-                                new CryptoStream(memoryStream, encriptor, CryptoStreamMode.Write))
+                            using (MemoryStream memoryStream = new MemoryStream())
                             {
-                                cryptoStream.Write(textoEnBytes, 0, textoEnBytes.Length);
-                                cryptoStream.FlushFinalBlock();
-                                byte[] textoCifradoEnBytes = memoryStream.ToArray();
-                                return Convert.ToBase64String(textoCifradoEnBytes);
+                                using (CryptoStream cryptoStream =
+                                    new CryptoStream(memoryStream, encriptor, CryptoStreamMode.Write))
+                                {
+                                    cryptoStream.Write(textoEnBytes, 0, textoEnBytes.Length);
+                                    cryptoStream.FlushFinalBlock();
+                                    byte[] textoCifradoEnBytes = memoryStream.ToArray();
+                                    return Convert.ToBase64String(textoCifradoEnBytes);
+                                }
                             }
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
             }
         }
     }

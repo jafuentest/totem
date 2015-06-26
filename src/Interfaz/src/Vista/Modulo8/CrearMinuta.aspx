@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/MasterPage.Master" AutoEventWireup="true" CodeFile="CrearMinuta.aspx.cs" Inherits="Vista.Modulo8.CrearMinuta" %>
-<%@ MasterType virtualPath="~/Master/MasterPage.master"%>
+<%@ MasterType virtualPath="/Master/MasterPage.master"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Minutas</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">  Agregar</asp:Content>
@@ -106,5 +106,8 @@
 <script type="text/javascript" src="js/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript" src="js/crearMinuta.js"></script>
 <script type="text/javascript" src="js/validacionesCrearMinuta.js"></script>
+<script>
+        window.alert(5 + 6);
+</script>
 </asp:Content>
 

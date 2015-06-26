@@ -11,6 +11,7 @@ namespace DAO.IntefazDAO.Modulo6
         bool VerificarExistenciaActor(string nombre);
         List<Entidad> ConsultarActoresCombo(string codigoProyecto);
 
-        List<string> ConsultarActoresXCasoDeUso(int idCasoUso); 
+        List<string> ConsultarActoresXCasoDeUso(int idCasoUso);
+        List<Entidad> ConsultarListarActores(string codigoProy); 
     }
 }
