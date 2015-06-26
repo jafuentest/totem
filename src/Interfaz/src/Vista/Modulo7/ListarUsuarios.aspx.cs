@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Contratos.Modulo7;
 using Presentadores.Modulo7;
+using System.Web.UI.HtmlControls;
 
 namespace Vista.Modulo7
 {
@@ -29,15 +30,15 @@ namespace Vista.Modulo7
         /// <summary>
         /// Implementacion de los metodos de la interfaz IContratoAgregarUsuario
         /// </summary>o
-         public Literal tablaUsuarios
+         public HtmlGenericControl tablaUsuarios
         {
             get
             {
-                return this.laTabla;
+                return this.tablebody;
             }
             set
             {
-                this.laTabla = value;
+                this.tablebody = value;
             }
         }
         #endregion
@@ -74,24 +75,30 @@ namespace Vista.Modulo7
                          //Si el agregar fue exitoso mostramos esta alerta
                          alert.Attributes["class"] = "alert alert-success alert-dismissible";
                          alert.Attributes["role"] = "alert";
-                         alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Usuario agregado exitosamente</div>";
+                         alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\""+
+                             " aria-la"+"bel=\"Close\"><span aria-hidden=\"true\">&times;</span></button>"+
+                             "Usuario agregado exitosamente</div>";
                      }
                      else
                      {
                          //Si el agregar fue fallido mostramos esta alerta
                          alert.Attributes["class"] = "alert alert-danger alert-dismissible";
                          alert.Attributes["role"] = "alert";
-                         alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Usuario ya existe</div>";
+                         alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\""+
+                             " aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>"+
+                             "Usuario ya existe</div>";
                      }
                      break;
 
                  //Si se viene de un eliminar se procedera a eliminar y mostrar la alerta correspondiente
-                 //case "3":
-                 /* //Casteamos explicitamente el ID del actor proveniente de un GET en la URL
-                  idActor=Int32.Parse(Request.QueryString["id"]);
+                 case "3":
+
+
+                 //Obtenemos el username del Usuario proveniente de un GET en la URL
+                  String username=Request.QueryString["username"];
 
                   //Obtenemos el exito o fallo del proceso
-                  bool exito = logica.EliminarActor(idActor, proyectoID);
+                  bool exito = presentador.EliminarUsuario(username);
 
                   //Evaluamos la condicion
                   if (exito)
@@ -99,16 +106,16 @@ namespace Vista.Modulo7
                       //Si la eliminacion fue exitosa mostramos esta alerta
                       alert.Attributes["class"] = "alert alert-success alert-dismissible";
                       alert.Attributes["role"] = "alert";
-                      alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Actor eliminado exitosamente</div>";
+                      alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Usuario eliminado exitosamente</div>";
                   }
                   else
                   {
                       //Si fue fallida mostramos esta alerta
                       alert.Attributes["class"] = "alert alert-danger alert-dismissible";
                       alert.Attributes["role"] = "alert";
-                      alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Eliminacion fallida del actor</div>";
-                  }*/
-                 //	break;
+                      alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Eliminacion fallida del usuario</div>";
+                  }
+                 	break;
              }
          }
 

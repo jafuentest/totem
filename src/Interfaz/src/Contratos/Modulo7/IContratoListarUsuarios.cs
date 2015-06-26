@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 
 namespace Contratos.Modulo7
 {
@@ -12,6 +13,6 @@ namespace Contratos.Modulo7
     public interface IContratoListarUsuarios
     {
         //Variables que se usaran en la interfaz
-        Literal tablaUsuarios { get; set; }
+        HtmlGenericControl tablaUsuarios { get; set; }
     }
 }

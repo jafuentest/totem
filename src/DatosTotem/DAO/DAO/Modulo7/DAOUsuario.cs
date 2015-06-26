@@ -419,5 +419,50 @@ namespace DAO.DAO.Modulo7
             //Retornamos la respuesta
             return cargos;
         }
+
+        /// <summary>
+        /// Metodo que ejecuta la consulta para eliminar un usuario de la Base de Datos
+        /// </summary>
+        /// <param name="username">El usuario que se desea eliminar</param>
+        /// <returns>Verdadero si se pude eliminar, falso sino se pudo</returns>
+        public bool EliminarUsuario(String username)
+        {
+            //Indicaremos si la insercion fue exitosa o fallida
+            bool exito = false;
+            try
+            {
+                //Variable que cambiara su valor si las filas de la Base de Datos fueron alteradas (se inserto)
+                Int32 filasAfectadas = 0;
+
+                //Indicamos que es un stored procedure, cual utilizar y ademas la conexion que necesita
+                this.instruccion = new SqlCommand(RecursosBaseDeDatosModulo7.ProcedimientoEliminarUsuario,
+                    this.conexion);
+                this.instruccion.CommandType = CommandType.StoredProcedure;
+
+                //Le agregamos los valores correspondientes a las variables de stored procedure
+                this.instruccion.Parameters.AddWithValue(RecursosBaseDeDatosModulo7.UsernameUsuario,
+                    username);
+                
+                //Se abre conexion contra la Base de Datos
+                this.conexion.Open();
+
+                //Ejecutamos la consulta y traemos las filas que fueron altearadas (agregadas en este caso)
+                filasAfectadas = this.instruccion.ExecuteNonQuery();
+
+                //Cerramos conexion
+                this.conexion.Close();
+
+                //Si la respuesta es mayor que uno entonces se agrego exitosamente
+                if (filasAfectadas > 0)
+                    exito = true;
+            }
+            catch (Exception error)
+            {
+                throw new Exception("Ha ocurrido un error inesperado al eliminar", error);
+            }
+
+
+            return exito;
+        }
     }
 }
