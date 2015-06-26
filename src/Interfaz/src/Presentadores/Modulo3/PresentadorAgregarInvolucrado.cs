@@ -25,11 +25,19 @@ namespace Presentadores.Modulo3
         private IContratoAgregarInvolucrado vista;
         private static ListaInvolucradoContacto listaContacto;
         private static ListaInvolucradoUsuario listaUsuario;
+
+        /// <summary>
+        /// Constructor del presentador agregar involucrado
+        /// </summary>
+        /// <param name="vista">Contrato que va a acceder el presentador agregar involucrado</param>
         public PresentadorAgregarInvolucrado(IContratoAgregarInvolucrado laVista)
         {
                
                vista = laVista;
         }
+        /// <summary>
+        /// Metodo que inicializa lista de contactos y usuarios 
+        /// </summary>
         public void iniciarlista()
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
@@ -38,7 +46,9 @@ namespace Presentadores.Modulo3
             listaUsuario = (ListaInvolucradoUsuario)laFabrica
                                                  .ObtenetListaInvolucradoUsuario();
         }
-
+        /// <summary>
+        /// Metodo que llena el comboBox del tipo de empresa 
+        /// </summary>
         public void LlenarComboEmpresa (){
             this.vista.comboTipoEmpresa.Enabled = true;
 
@@ -53,7 +63,10 @@ namespace Presentadores.Modulo3
             vista.comboTipoEmpresa.DataValueField = "key";
             vista.comboTipoEmpresa.DataBind();
         }
-
+        /// <summary>
+        /// Metodo que llena el comboBox con los cargos dependiendo del tipo de empresa
+        /// </summary>
+        /// <param name="codigo">valor seleccionado en el combo tipo empresa</param>
         public void ListarCargo(string SelectedValue)
         {
             vista.comboCargo.Enabled = true;
@@ -101,14 +114,23 @@ namespace Presentadores.Modulo3
             vista.comboCargo.DataValueField = "key";
             vista.comboCargo.DataBind();
         }
+        /// <summary>
+        /// Metodo para eliminar el usuario
+        /// </summary>
         public String eliminarusuario()
         {
             return vista.eliminacionUsuario;
         }
+        /// <summary>
+        /// Metodo para eliminar el contacto
+        /// </summary>
         public String eliminarcontacto()
         {
             return vista.eliminacionContacto;
         }
+        /// <summary>
+        /// Metodo para el modal eliminar
+        /// </summary>
         public void modaleliminar()
         {
             if (vista.eliminacionContacto == null)
@@ -116,6 +138,10 @@ namespace Presentadores.Modulo3
             else
                 vista.contacto_id = vista.eliminacionContacto;
         }
+        /// <summary>
+        /// Metodo para saber que usuarios ya estan involucrados al proyecto
+        /// </summary>
+        /// <param name="codigo">lista de usuarios, usuario por buscar</param>
         public bool UsuarioEstaEnProyecto(Entidad lista,string buscar)
         {
             bool exito = false;
@@ -126,6 +152,10 @@ namespace Presentadores.Modulo3
              }   
             return exito;
         }
+        /// <summary>
+        /// Metodo para saber que contactos ya estan involucrados al proyecto
+        /// </summary>
+        /// <param name="codigo">lista de contactos, contacto por buscar</param>
         public bool ContactoEstaEnProyecto(Entidad lista, string buscar)
         {
             bool exito = false;
@@ -137,6 +167,10 @@ namespace Presentadores.Modulo3
             }
             return exito;
         }
+        /// <summary>
+        /// Metodo para llenar el comboBox del personal segun el cargo seleccionado
+        /// </summary>
+        /// <param name="codigo">cargo seleccionado</param>
         public void ListarUsuarioSegunCargo(string SelectedValue)
         {
             vista.comboPersonal.Enabled = true;
@@ -186,16 +220,17 @@ namespace Presentadores.Modulo3
             vista.comboPersonal.DataBind();
         }
 
-        public void QuitarUsuarioSeleccionado() { 
-               
-        }
-
+        /// <summary>
+        /// Metodo que quita lo seleccioado del comboBox
+        /// </summary>
         public void removeropcion()
         {
            int index = vista.comboPersonal.SelectedIndex;
            vista.comboPersonal.Items.RemoveAt(index);
         }
-
+        /// <summary>
+        /// Metodo para seleccionar el involucrado
+        /// </summary>
         public void SeleccionarUsuario() {
             String seleccion = vista.comboPersonal.SelectedValue;
             Comando<String, Entidad> comando_usuario = FabricaComandos.CrearComandoDatosUsuariosUsername();
@@ -233,6 +268,9 @@ namespace Presentadores.Modulo3
            }
 
         }
+        /// <summary>
+        /// Metodo para almacenar los involucrados seleccionados
+        /// </summary>
         public void GuardarInvolucrados()
         {
             bool exitoContacto = false;
@@ -264,6 +302,9 @@ namespace Presentadores.Modulo3
                  }
            
         }
+        /// <summary>
+        /// Metodo que valida y obtiene las variables de URL
+        /// </summary>
      public void ObtenerVariablesURL()
         {
             String error = HttpContext.Current.Request.QueryString["error"];

@@ -121,8 +121,18 @@ namespace Vista.Modulo7
                 //Eliminaremos y luego listaremos
                   presentador.LlenarTabla();
                  	break;
-             }
-         }
+
+				#region Juan
+				case "4":
+					alert.Attributes["class"] = "alert alert-danger alert-dismissible";
+					alert.Attributes["role"] = "alert";
+					alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" " +
+						"aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span>" +
+						"</button>Usuario inválido</div>";
+					break;
+				#endregion
+			}
+		}
 
         protected void evento_eliminar(object sender, EventArgs e)
         {

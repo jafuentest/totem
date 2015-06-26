@@ -5,6 +5,10 @@ using System.Text;
 
 namespace Contratos.Modulo3
 {
+
+    /// <summary>
+    /// Contrato asociado a la vista listar involucrado
+    /// </summary>
     public interface IContratoListarInvolucrado
     {
         string laTabla { get; set; }

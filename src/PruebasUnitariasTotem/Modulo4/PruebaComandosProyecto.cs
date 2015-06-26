@@ -17,7 +17,7 @@ namespace PruebasUnitariasTotem.Modulo4
 		  consultarProyectos = Comandos.Fabrica.FabricaComandos.
 			 CrearComandoConsultarProyectosPorUsuario();
 
-		  consultarProyectos.Ejecutar("carlo12");
+		  consultarProyectos.Ejecutar("carlo125");
 	   }
     }
 }

@@ -186,10 +186,9 @@ namespace Vista.Modulo2
 
         protected void EditarCliente_Click(object sender, EventArgs e)
         {
-
             String edicionCliente = Request.QueryString["id"];
-            if (presentador.modificarCliente(edicionCliente))
-                Response.Redirect("../Modulo2/ListarClientes.aspx?success-eliminacion=true");
+            presentador.modificarCliente(edicionCliente);
+
         }
     }
 }

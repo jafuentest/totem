@@ -207,7 +207,7 @@ namespace DAO.DAO.Modulo2
                     #endregion
                     List<Resultado> tmp = EjecutarStoredProcedure(RecursoBDModulo2.ModificarClienteNat,
                         parametros);
-                    return (tmp.ToArray().Length > 0);
+                    return true;
                 }
                 else
                 {

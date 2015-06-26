@@ -23,11 +23,12 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     <form runat="server" class="form-horizontal" method="POST">
+        <div id="alert" runat="server">
+        </div>
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
     <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-        <div id="alert" runat="server">
-        </div>
+        
         <div class="table-responsive">
             <table id="table-users" class="table table-striped table-hover">
                 <thead>

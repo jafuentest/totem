@@ -22,6 +22,11 @@ namespace Presentadores.Modulo3
         private static ListaInvolucradoContacto listaContacto;
         private static ListaInvolucradoUsuario listaUsuario;
         private static Proyecto elProyecto;
+
+        /// <summary>
+        /// Constructor del presentador listar involucrado
+        /// </summary>
+        /// <param name="vista">Contrato que va a acceder el presentador listar involucrado</param>
         public PresentadorListarInvolucrado(IContratoListarInvolucrado laVista)
         {
             vista = laVista;
@@ -36,6 +41,10 @@ namespace Presentadores.Modulo3
                  RecursosInterfazM3.Alerta_Html_Final;
             }
         }
+
+        /// <summary>
+        /// Metodo para inicializar la lista de contactos y usuarios
+        /// </summary>
         public void iniciarlista()
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
@@ -46,6 +55,9 @@ namespace Presentadores.Modulo3
             listaUsuario = (ListaInvolucradoUsuario)laFabrica
                                                  .ObtenetListaInvolucradoUsuario();
         }
+        /// <summary>
+        /// Metodo para cargar los usuarios involucrados a la tabla
+        /// </summary>
         public void CargarUsuario()
         {
             Comando<Entidad, Entidad> comando = FabricaComandos.CrearComandoConsultarUsuariosInvolucradosPorProyecto();
@@ -63,6 +75,9 @@ namespace Presentadores.Modulo3
                 vista.laTabla += RecursosInterfazM3.CerrarEtiqueta_tr;
             }
         }
+        /// <summary>
+        /// Metododo para cargar los contactos involucrados a la tabla
+        /// </summary>
         public void CargarContacto()
         {
             Comando<Entidad, Entidad> comando = FabricaComandos.CrearComandoConsultarContactosInvolucradosPorProyecto();
@@ -80,11 +95,17 @@ namespace Presentadores.Modulo3
                vista.laTabla += RecursosInterfazM3.CerrarEtiqueta_tr;
             }
         }
+        /// <summary>
+        /// Metodo para cargar usuarios y contactos involucrados
+        /// </summary>
         public void CargarInvolucrados()
         {
             CargarUsuario();
             CargarContacto();
         }
+        /// <summary>
+        /// Metodo que valida y obtiene las variables de URL
+        /// </summary>
         public void ObtenerVariablesURL()
         {
             String error = HttpContext.Current.Request.QueryString["error"];

@@ -55,6 +55,9 @@
       <DependentUpon>RecursosPUMod1.resx</DependentUpon>
     </Compile>
     <Compile Include="Modulo3\PruebaBDInvolucrados.cs" />
+    <Compile Include="Modulo3\PruebaComando.cs" />
+    <Compile Include="Modulo3\PruebaDAOInvolucrados.cs" />
+    <Compile Include="Modulo3\PruebaExcepciones.cs" />
     <Compile Include="Modulo3\PruebaListaInvContacto.cs" />
     <Compile Include="Modulo3\PruebaListaInvUsuario.cs" />
     <Compile Include="Modulo3\PruebaLogicaInvolucrados.cs" />

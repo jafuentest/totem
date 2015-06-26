@@ -11,10 +11,10 @@ namespace Comandos.Comandos.Modulo3
     class ComandoConsultarContactosInvolucradosPorProyecto : Comando<Dominio.Entidad, Dominio.Entidad>
     {
         /// <summary>
-        /// Comando que elimina un requerimiento
+        /// Comando para obtener los contactos involucrados en un proyecto
         /// </summary>
-        /// <param name="parametro">Requerimiento a eliminar</param>
-        /// <returns>true si se puede eliminar</returns>
+        /// <param name="parametro">proyecto</param>
+        /// <returns>lista de contactos involucrados</returns>
         public override Dominio.Entidad Ejecutar(Dominio.Entidad parametro)
         {
             ListaInvolucradoContacto listContacto = null;

@@ -227,4 +227,12 @@
     <value>LUsuarioRol</value>
     <comment>Atributo HttpContext.Current.Session utilizado para definir el rol de usuario que ha ingresado</comment>
   </data>
+  <data name="LProyectoCodigo" xml:space="preserve">
+    <value>LProyectoCodigo</value>
+    <comment>Atributo HttpContext.Current.Session utilizado para definir el código del proyecto</comment>
+  </data>
+  <data name="LProyectoNombre" xml:space="preserve">
+    <value>LProyectoNombre</value>
+    <comment>Atributo HttpContext.Current.Session utilizado para definir el nombre del proyecto</comment>
+  </data>
 </root>

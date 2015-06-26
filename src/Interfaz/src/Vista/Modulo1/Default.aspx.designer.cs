@@ -13,6 +13,24 @@ namespace Vista.Modulo1 {
     public partial class Default {
         
         /// <summary>
+        /// alert_requerimiento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alert_requerimiento;
+        
+        /// <summary>
+        /// div_adminIcons control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_adminIcons;
+        
+        /// <summary>
         /// Master property.
         /// </summary>
         /// <remarks>

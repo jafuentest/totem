@@ -3032,7 +3032,7 @@ AS
     WHERE u.usu_username = @usu_username AND c.car_id = u.CARGO_car_id;
   END
 
-
+GO
 CREATE PROCEDURE ConsultarUsuario
      @usu_id [int]
 AS 

@@ -59,6 +59,7 @@ function aceptarConfirmacion()
         if ((compromisoAcuerdo != "") && (fechaAcuerdo!=""))
         {
             acuerdo = new Object();
+            acuerdo.codigo = codigoAcuerdo;
             acuerdo.fecha = fechaAcuerdo;
             acuerdo.compromiso = compromisoAcuerdo;
             acuerdo.involucrado = listaInvolucradoAcuerdo;

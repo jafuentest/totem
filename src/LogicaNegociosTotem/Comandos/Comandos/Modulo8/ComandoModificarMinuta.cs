@@ -38,8 +38,8 @@ namespace Comandos.Comandos.Modulo8
 
 
                 Proyecto elProyecto = (Proyecto)parametro[0];
-                Minuta laMinuta = (Minuta)parametro[1];
-                Minuta nueva = (Minuta)parametro[2];
+                Minuta nueva = (Minuta)parametro[1];
+                Minuta laMinuta = (Minuta)parametro[2];
 
 
                 daoInvolucradosMinuta.EliminarInvolucradoEnMinuta(laMinuta.Id);
