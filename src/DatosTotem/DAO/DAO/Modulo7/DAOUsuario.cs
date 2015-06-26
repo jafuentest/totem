@@ -375,10 +375,11 @@ namespace DAO.DAO.Modulo7
                 //Recorremos el data table, crearmos el usuario con sus datos y asignamos cada usuario a la lista
                 foreach (DataRow fila in dt.Rows)
                 {
-                    Entidad aux = fabrica.ObtenerUsuario(fila[RecursosBaseDeDatosModulo7.UsernameNombre].ToString(),
-                        fila[RecursosBaseDeDatosModulo7.NombreUsu].ToString(),
-                        fila[RecursosBaseDeDatosModulo7.ApellidoUsu].ToString(),
-                        fila[RecursosBaseDeDatosModulo7.CargoNombre].ToString());
+                    Entidad aux = fabrica.ObtenerUsuario(fila["usuarioUsername"].ToString(),
+                        fila["usuarioNombre"].ToString(),
+                        fila["usuarioApellido"].ToString(),
+                        fila["cargoNombre"].ToString());
+                    aux.Id = int.Parse(fila["usuarioID"].ToString());
                     usuarios.Add(aux);
                 }
 
@@ -455,6 +456,42 @@ namespace DAO.DAO.Modulo7
             //Lista que sera la respuesta de la consulta;
             List<String> cargos = new List<String>();
 
+            //Parametros que tendra
+            List<Parametro> parametros = new List<Parametro>();
+/*
+            try
+            {
+                //Recibimos la respuesta de la consulta
+                DataTable dt = EjecutarStoredProcedureTuplas(RecursosBaseDeDatosModulo7.PROCEDIMIENTO_CARGOS_USUARIOS,
+                    parametros);
+
+               //Recorremos el data table y asignamos cada cargo a la lista
+               foreach (DataRow fila in dt.Rows)
+               {
+                    cargos.Add(fila[RecursosBaseDeDatosModulo7.CARGO_NOMBRE].ToString());
+               }
+
+               //Devolvemos la lista con los cargos
+               return cargos;
+            }
+            catch (SqlException e)
+            {
+                //Si hay error en la Base de Datos escribimos en el logger y lanzamos la excepcion
+                Logger.EscribirError(this.GetType().Name, new ExceptionTotemConexionBD());
+                throw new ExceptionTotemConexionBD(RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos, e);
+            }
+            catch (Exception e)
+            {
+                //Si existe un error inesperado escribimos en el logger y lanzamos la excepcion
+                Logger.EscribirError(this.GetType().Name, new ExceptionTotem());
+                throw new ExceptionTotem(RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_CODIGO,
+                    RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_MENSAJE, e);
+            }
+
+            */
+
+            
             try
             {
                 //Respuesta de la consulta hecha a la Base de Datos
