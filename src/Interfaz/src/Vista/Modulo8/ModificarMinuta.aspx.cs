@@ -113,7 +113,16 @@ namespace Vista.Modulo8
                 System.Console.Out.WriteLine(minutaDinamica["acuerdo"]);
                 Acuerdo acuerdo = new Acuerdo();
                 List<Usuario> listaUsuarioAcuerdo = new List<Usuario>();
-                acuerdo.Id = minutaDinamica["acuerdo"][i]["codigo"]; 
+                string auxiliar = minutaDinamica["acuerdo"][i]["codigo"]; 
+                string idAcuerdo = "";
+                for (int l=0;l<=auxiliar.Length-1;l++)
+                {
+                    if ((auxiliar[l].ToString()!="a") && (auxiliar[l].ToString()!="c") && (auxiliar[l].ToString()!="u") && (auxiliar[l].ToString()!="e") &&(auxiliar[l].ToString()!="r") && (auxiliar[l].ToString()!="d") && (auxiliar[l].ToString()!="o"))
+                    {
+                        idAcuerdo = idAcuerdo+auxiliar[l];
+                    }
+                }
+                acuerdo.Id = int.Parse(idAcuerdo);
                 string fechaAcuerdo = minutaDinamica["acuerdo"][i]["fecha"];
                 DateTime fechaAcue = DateTime.ParseExact(fechaAcuerdo, "dd-MM-yyyy", null);
                 acuerdo.Fecha = fechaAcue;
