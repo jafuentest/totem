@@ -13,15 +13,16 @@ namespace Comandos.Comandos.Modulo1
     /// </summary>
     public class ComandoIniciarSesion : Comando<List<string>, Entidad>
     {
-        private bool captchaActivo = false;
+        public bool captchaActivo = false;
         private int intentos = 0;
+
         public override Entidad Ejecutar(List<string> parametro)
         {
             try
             {
                 if (!captchaActivo)
                 {
-                    intentos++;
+                   intentos++;
                 }
                 FabricaEntidades fabricaEntidades = new FabricaEntidades();
                 Entidad usuario = fabricaEntidades.ObtenerUsuario();
