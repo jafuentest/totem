@@ -299,6 +299,14 @@
   <data name="ProcedimientoConsultarUsername" xml:space="preserve">
     <value>ConsultarUsuarioPorUsername</value>
   </data>
+  <data name="EXCEPTION_USUARIO_VACIO_CODIGO" xml:space="preserve">
+    <value>T_07_003</value>
+    <comment>Codigo de error cuando el username apunta a null</comment>
+  </data>
+  <data name="EXCEPTION_USUARIO_VACIO_MENSAJE" xml:space="preserve">
+    <value>No existe ningun username a consultar</value>
+    <comment>Mensaje que se produce cuando el username es null</comment>
+  </data>
   <data name="PROCEDIMIENTO_CARGOS_USUARIOS" xml:space="preserve">
     <value>seleccionarCargosUsuarios</value>
     <comment>Stored Procedure facilitado para M3 que lista todos los cargos que esten en al menos un usuario</comment>

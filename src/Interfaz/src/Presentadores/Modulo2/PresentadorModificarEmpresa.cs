@@ -203,27 +203,27 @@ namespace Presentadores.Modulo2
             }
             String edicionEmpresa = HttpContext.Current.Request.QueryString["id"];
             String success = HttpContext.Current.Request.QueryString["success"];
-            if (edicionEmpresa != null )
+            if (edicionEmpresa != null && !(HttpContext.Current.Handler as Page).IsPostBack)
             {
                 cargarDatosEmpresa(edicionEmpresa);
-                if (success != null && success.Equals("modificar"))
+            }
+            if (success != null && success.Equals("modificar"))
+            {
+                vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Exito;
+                vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                vista.alerta = RecursoInterfazM2.Alerta_Html +
+                    RecursoInterfazM2.Alerta_Mensaje_Contacto_Modificado +
+                    RecursoInterfazM2.Alerta_Html_Final;
+            }
+            else
+                if (success != null && success.Equals("agregar"))
                 {
                     vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Exito;
                     vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
                     vista.alerta = RecursoInterfazM2.Alerta_Html +
-                        RecursoInterfazM2.Alerta_Mensaje_Contacto_Modificado +
+                        RecursoInterfazM2.Alerta_Mensaje_Contacto_Agregado +
                         RecursoInterfazM2.Alerta_Html_Final;
                 }
-                else
-                    if (success != null && success.Equals("agregar"))
-                    {
-                        vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Exito;
-                        vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
-                        vista.alerta = RecursoInterfazM2.Alerta_Html +
-                            RecursoInterfazM2.Alerta_Mensaje_Contacto_Agregado +
-                            RecursoInterfazM2.Alerta_Html_Final;
-                    }
-            }
            
         }
         public bool desplegarModal()

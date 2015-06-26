@@ -315,11 +315,22 @@ namespace DAO.DAO.Modulo7
             //Lista de los parametros del query
             List<Parametro> listaParametros = new List<Parametro>();
 
-            //Creamos un nuevo parametro y lo agregamos a la lista
-            Parametro aux = new Parametro(RecursosBaseDeDatosModulo7.UsernameUsuario, SqlDbType.VarChar, username,
-                false);
-            listaParametros.Add(aux);
-
+            //Si el username tiene un valor valido
+            if(username != null)
+            {
+                //Creamos un nuevo parametro y lo agregamos a la lista
+                Parametro aux = new Parametro(RecursosBaseDeDatosModulo7.UsernameUsuario, SqlDbType.VarChar, username,
+                    false);
+                listaParametros.Add(aux);
+            }
+            else
+            {
+                //Escribimos el error y Lanzamos la excepcion
+                Logger.EscribirError(this.GetType().Name,new UsernameVacioException());
+                throw new UsernameVacioException(RecursosBaseDeDatosModulo7.EXCEPTION_USUARIO_VACIO_CODIGO,
+                    RecursosBaseDeDatosModulo7.EXCEPTION_USUARIO_VACIO_MENSAJE,new UsernameVacioException());
+            }
+                
             try
             {
                 //Ejecutamos la consulta
@@ -335,9 +346,19 @@ namespace DAO.DAO.Modulo7
                 //Retornamos la respuesta
                 return exito;
             }
-            catch (Exception ex)
+            catch (SqlException e)
             {
-                throw new Exception();
+                //Si hay error en la Base de Datos escribimos en el logger y lanzamos la excepcion
+                Logger.EscribirError(this.GetType().Name, new ExceptionTotemConexionBD());
+                throw new ExceptionTotemConexionBD(RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos, e);
+            }
+            catch (Exception e)
+            {
+                //Si existe un error inesperado escribimos en el logger y lanzamos la excepcion
+                Logger.EscribirError(this.GetType().Name, new ExceptionTotem());
+                throw new ExceptionTotem(RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_CODIGO,
+                    RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_MENSAJE,e);
             }
         }
 
@@ -401,50 +422,6 @@ namespace DAO.DAO.Modulo7
                 throw new ExceptionTotem(RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_CODIGO,
                     RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_MENSAJE, e);
             }
-
-            /*
-            try
-            {
-                //Respuesta de la consulta hecha a la Base de Datos
-                SqlDataReader respuesta;
-
-                //Indicamos que es un Stored Procedure, cual utilizar y ademas la conexion que necesita
-                this.instruccion = new SqlCommand("ListarUsuariosPorCargo", this.conexion);
-                this.instruccion.CommandType = CommandType.StoredProcedure;
-
-                //Le agregamos los valores correspondientes a las variables de Stored Procedure
-                this.instruccion.Parameters.AddWithValue("@cargo", cargo);
-
-                //Se abre conexion contra la Base de Datos
-                this.conexion.Open();
-
-                //Ejecutamos la consulta y traemos las filas que fueron obtenidas
-                respuesta = instruccion.ExecuteReader();
-
-                //Instanciamos la fabrica concreta de Entidades
-                FabricaEntidades fabrica = new FabricaEntidades();
-
-                //Si se encontraron Usuarios se comienzan a agregar a la variable lista, sino, se devolvera vacia
-                if (respuesta.HasRows)
-                    //Recorremos cada fila devuelta de la consulta
-                    while (respuesta.Read())
-                    {
-                        //Creamos el Usuario y lo anexamos a la lista
-                        Entidad aux = fabrica.ObtenerUsuario(respuesta.GetString(3),respuesta.GetString(1),
-                            respuesta.GetString(2),respuesta.GetString(4));
-                        aux.Id = respuesta.GetInt32(0);
-                        usuarios.Add(aux);
-
-                    }
-
-                //Cerramos conexion
-                this.conexion.Close();
-            }
-            catch (Exception error)
-            {
-                throw new Exception("Ha ocurrido un error inesperado al Listar", error);
-            }
-            */
        }
 
         /// <summary>
@@ -458,7 +435,7 @@ namespace DAO.DAO.Modulo7
 
             //Parametros que tendra
             List<Parametro> parametros = new List<Parametro>();
-/*
+
             try
             {
                 //Recibimos la respuesta de la consulta
@@ -468,7 +445,7 @@ namespace DAO.DAO.Modulo7
                //Recorremos el data table y asignamos cada cargo a la lista
                foreach (DataRow fila in dt.Rows)
                {
-                    cargos.Add(fila[RecursosBaseDeDatosModulo7.CARGO_NOMBRE].ToString());
+                   cargos.Add(fila["nombreCargo"].ToString());
                }
 
                //Devolvemos la lista con los cargos
@@ -489,9 +466,9 @@ namespace DAO.DAO.Modulo7
                     RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_MENSAJE, e);
             }
 
-            */
-
             
+
+            /*
             try
             {
                 //Respuesta de la consulta hecha a la Base de Datos
@@ -526,7 +503,7 @@ namespace DAO.DAO.Modulo7
             }
 
             //Retornamos la respuesta
-            return cargos;
+            return cargos;*/
         }
        #endregion
        #endregion

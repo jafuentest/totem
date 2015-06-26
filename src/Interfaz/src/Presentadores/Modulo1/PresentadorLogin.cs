@@ -62,11 +62,7 @@ namespace Presentadores.Modulo1
                     credenciales = comando.Ejecutar(usuarioLogin);
                     if (((Usuario)credenciales).Correo != "" && ((Usuario)credenciales).Correo != null)
                     {
-                        HttpContext.Current.Session[RecursosM1.LUsuario] =
-					   (credenciales as Usuario).Username;
-				    HttpContext.Current.Session[RecursosM1.LUsuarioRol] =
-					   (credenciales as Usuario).Rol;
-
+                        HttpContext.Current.Session[RecursosM1.Parametro_Credencial] = (Usuario)credenciales;
                         HttpContext.Current.Response.Redirect(RecursosM1.Ventana_Default);
                     }
                     else
@@ -89,7 +85,7 @@ namespace Presentadores.Modulo1
             catch (ExcepcionesTotem.ExceptionTotemConexionBD e)
             {
                 vista.SetMesaje(true, e.Message);
-            } 
+            }
             catch (Exception e)
             {
                 vista.SetMesaje(true, e.Message);

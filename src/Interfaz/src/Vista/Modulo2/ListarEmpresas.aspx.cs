@@ -18,6 +18,7 @@ namespace Vista.Modulo2
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            presentador.ObtenerVariablesURL();
             this.Master.idModulo = "2";
             if (!IsPostBack)
             {

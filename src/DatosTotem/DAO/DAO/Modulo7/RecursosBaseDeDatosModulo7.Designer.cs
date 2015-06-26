@@ -223,6 +223,24 @@ namespace DAO.DAO.Modulo7 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to T_07_003.
+        /// </summary>
+        internal static string EXCEPTION_USUARIO_VACIO_CODIGO {
+            get {
+                return ResourceManager.GetString("EXCEPTION_USUARIO_VACIO_CODIGO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No existe ningun username a consultar.
+        /// </summary>
+        internal static string EXCEPTION_USUARIO_VACIO_MENSAJE {
+            get {
+                return ResourceManager.GetString("EXCEPTION_USUARIO_VACIO_MENSAJE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @CARGO_car_id.
         /// </summary>
         internal static string IdCargoUsuario {

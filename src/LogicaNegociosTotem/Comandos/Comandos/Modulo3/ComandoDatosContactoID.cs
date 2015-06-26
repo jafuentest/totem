@@ -11,18 +11,19 @@ namespace Comandos.Comandos.Modulo3
     class ComandoDatosContactoID : Comando<int, Dominio.Entidad>
     {
         /// <summary>
-        /// Comando que elimina un requerimiento
+        /// Comando para obtener los datos de un contacto
         /// </summary>
-        /// <param name="parametro">Requerimiento a eliminar</param>
-        /// <returns>true si se puede eliminar</returns>
+        /// <param name="parametro">ID del contacto</param>
+        /// <returns>el contacto solicitado</returns>
         public override Dominio.Entidad Ejecutar(int parametro)
         {
             Contacto contactoID;
             try
             {
-                FabricaAbstractaDAO laFabrica = FabricaDAOSqlServer.ObtenerFabricaSqlServer();
-                IDaoInvolucrados daoInvolucrados = laFabrica.ObtenerDaoInvolucrados();
-                contactoID= (Contacto)daoInvolucrados.DatosContactoID(parametro);
+                DAO.IntefazDAO.Modulo3.IDaoInvolucrados daoInvolucrado;
+                DAO.Fabrica.FabricaDAOSqlServer fabricaDAO = new DAO.Fabrica.FabricaDAOSqlServer();
+                daoInvolucrado = fabricaDAO.ObtenerDaoInvolucrados();
+                contactoID = (Contacto) daoInvolucrado.DatosContactoID(parametro);
             }
             catch (Exception ex)
             {
