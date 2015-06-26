@@ -67,11 +67,6 @@ namespace Vista.Master
 		  proyectoActual = NombreProyectoActual();
         }
 
-        protected void Salir_Click(object sender, EventArgs e)
-        {
-            presentador.ManejarEventoSalir_Click();
-        }
-
 	   public Dominio.Entidades.Modulo7.Usuario UsuarioActual()
 	   {
 		  return new Dominio.Entidades.Modulo7.Usuario(

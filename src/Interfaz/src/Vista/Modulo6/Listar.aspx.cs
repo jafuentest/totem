@@ -32,11 +32,7 @@ namespace Vista.Modulo6
 
 
 
-        HtmlButton Contratos.Modulo6.IContratoListar.boton
-        {
-            get { return boton; }
-            set { boton = value; }
-        }
+       
 
         Label Contratos.Modulo6.IContratoListar.mensajeExito
         {

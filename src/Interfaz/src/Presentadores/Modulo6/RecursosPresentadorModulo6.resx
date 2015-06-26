@@ -153,6 +153,9 @@
   <data name="CodigoExitoEliminarActor" xml:space="preserve">
     <value>?success=eliminarActor</value>
   </data>
+  <data name="CodigoExitoModificar" xml:space="preserve">
+    <value>?sucess=modificar</value>
+  </data>
   <data name="CodigoMensajePresentadorBDException" xml:space="preserve">
     <value>T_06_103</value>
   </data>

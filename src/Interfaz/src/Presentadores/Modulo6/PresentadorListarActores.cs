@@ -151,6 +151,13 @@ namespace Presentadores.Modulo6
                 MostrarMensajeExito(RecursosPresentadorModulo6.MensajeExitoEliminarActor);
             }
 
+            string modificado = (string)(HttpContext.Current.Session["modificar"]);
+
+            if (modificado!=null && modificado.Equals("modificado"))
+            {
+                MostrarMensajeExito(RecursosPresentadorModulo6.MensajeExitoModificarActor); 
+            }
+
             variable = null;
             variable = HttpContext.Current.Request.QueryString["eliminarActor"];
             if (variable != null)

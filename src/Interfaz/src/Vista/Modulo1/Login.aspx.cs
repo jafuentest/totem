@@ -17,6 +17,7 @@ namespace Vista.Modulo1
         /// </summary>
         public Login()
         {
+            
             try
             {
                 string exito = Request.QueryString["exito"];
@@ -26,6 +27,7 @@ namespace Vista.Modulo1
                     alert.Attributes["role"] = "alert";
                     alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Se envio un mensaje a su correo... Confirme y siga los pasos</div>";
                 }
+
             }
             catch (Exception)
             {
@@ -34,6 +36,7 @@ namespace Vista.Modulo1
             finally
             {
                 presentador = new PresentadorLogin(this);
+                
             }
         }
 
@@ -44,6 +47,13 @@ namespace Vista.Modulo1
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
        {
+            string exito = Request.QueryString["exito"];
+            if (exito == "2")
+            {
+                HttpContext.Current.Session.Abandon();
+                HttpContext.Current.Response.Redirect("Default.aspx");
+            }
+
             try
             {
                 intentos = Convert.ToInt32(Request.Cookies["Intento"]["inten"].ToString());

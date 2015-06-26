@@ -250,6 +250,15 @@ namespace DAO.DAO.Modulo6 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Desasociar_CU_del_Actor.
+        /// </summary>
+        internal static string DesasociarCUAlActor {
+            get {
+                return ResourceManager.GetString("DesasociarCUAlActor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a @descripcion.
         /// </summary>
         internal static string DESC_ACTOR {

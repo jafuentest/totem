@@ -61,9 +61,9 @@
 				    
 				    <td>
 					   <a class="btn btn-default glyphicon glyphicon-pencil"
-					   href="Modificar.aspx?id=<%# Eval("Id") %>"></a>
+					   href="ModificarActor.aspx?id=<%# Eval("Id") %>&list=true"></a>
 					   <a class="btn btn-danger glyphicon glyphicon-remove-sign"
-					   href="ListarActores.aspx?eliminarActor=<%# Eval("Id") %>"></a>
+					   href="ListarActores.aspx?eliminarActor=<%# Eval("Id") %>&list=true"></a>
 				    </td>
 				</tr>
 		  </ItemTemplate>

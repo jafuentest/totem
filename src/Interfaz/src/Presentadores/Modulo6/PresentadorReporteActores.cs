@@ -68,6 +68,14 @@ namespace Presentadores.Modulo6
        }
 
        /// <summary>
+       /// Método encargado de limpiar la página de datos anteriores
+       /// </summary>
+       public void LimpiarPagina() 
+       {
+           vista.RCasosDeUso = null; 
+       }
+
+       /// <summary>
        /// Método que se encarga de cargar la tabla de casos de uso,
        /// al seleccionar un actor
        /// </summary>
@@ -101,30 +109,7 @@ namespace Presentadores.Modulo6
                    vista.RCasosDeUso.DataBind();
                }
                
-/*
-               foreach (CasoDeUso caso in laLista)
-               {
-                   vista.tabla += RecursosPresentadorModulo6.AbrirEtiquetaTr;
-                   vista.tabla += RecursosPresentadorModulo6.AbrirEtiquetaTd + caso.IdentificadorCasoUso
-                                + RecursosPresentadorModulo6.CerrarEtiquetaTd;
-                   vista.tabla += RecursosPresentadorModulo6.AbrirEtiquetaTd + caso.TituloCasoUso
-                               + RecursosPresentadorModulo6.CerrarEtiquetaTd;
-                   
-                   vista.tabla += RecursosPresentadorModulo6.AbrirEtiquetaTd;
 
-                   foreach (Requerimiento req in ListadoDeRequerimientos(caso.Id)) 
-                   {
-                       vista.tabla += req.Descripcion + "\n"; 
-                   }
-                   vista.tabla += RecursosPresentadorModulo6.CerrarEtiquetaTd;
-                   vista.tabla += RecursosPresentadorModulo6.AbrirEtiquetaTd;
-                   vista.tabla += RecursosPresentadorModulo6.AbrirBotonModificarCasoUso;
-                   vista.tabla += RecursosPresentadorModulo6.CerrarBoton;
-                   vista.tabla += RecursosPresentadorModulo6.AbrirBotonEliminarCasoUso;
-                   vista.tabla += RecursosPresentadorModulo6.CerrarBoton;
-                   vista.tabla += RecursosPresentadorModulo6.CerrarEtiquetaTd; 
-                   vista.tabla += RecursosPresentadorModulo6.CerrarEtiquetaTr;
-               }*/
            }
            catch (ComandoBDException e)
            {
