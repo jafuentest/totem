@@ -88,6 +88,24 @@ namespace Comandos.Comandos.Modulo5 {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a T_05_006.
+        /// </summary>
+        internal static string codigo_excepcion_archivo_latex_no_compilado {
+            get {
+                return ResourceManager.GetString("codigo_excepcion_archivo_latex_no_compilado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a T_05_007.
+        /// </summary>
+        internal static string codigo_excepcion_archivo_no_encontrado {
+            get {
+                return ResourceManager.GetString("codigo_excepcion_archivo_no_encontrado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a pdflatex.exe.
         /// </summary>
         internal static string CompiladorLatex {
@@ -102,6 +120,24 @@ namespace Comandos.Comandos.Modulo5 {
         internal static string Directorio {
             get {
                 return ResourceManager.GetString("Directorio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El archivo base no se encuentra en el directorio o el archivo de salida no pudo ser abierto.
+        /// </summary>
+        internal static string Mensaje_Error_Archivo_Inexistente {
+            get {
+                return ResourceManager.GetString("Mensaje_Error_Archivo_Inexistente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El archivo latex no pudo ser compilado, asegurese que el compilador de LaTex este instalado correctamente.
+        /// </summary>
+        internal static string Mensaje_Error_Archivo_NoCompilado {
+            get {
+                return ResourceManager.GetString("Mensaje_Error_Archivo_NoCompilado", resourceCulture);
             }
         }
         

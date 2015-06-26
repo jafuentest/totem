@@ -15,11 +15,9 @@ namespace Comandos.Comandos.Modulo5
         /// <returns>true si se pudo realizar</returns>
         public override bool Ejecutar(Dominio.Entidad parametro)
         {
-            DAO.Fabrica.FabricaAbstractaDAO fabricaDAO;
             DAO.IntefazDAO.Modulo5.IDaoRequerimiento daoRequerimiento;
-            
-            fabricaDAO = DAO.Fabrica.FabricaAbstractaDAO.ObtenerFabricaSqlServer();
-            daoRequerimiento = fabricaDAO.ObtenerDAORequerimiento();
+            DAO.Fabrica.FabricaDAOSqlServer fabricaDao = new DAO.Fabrica.FabricaDAOSqlServer();
+            daoRequerimiento = fabricaDao.ObtenerDAORequerimiento();
 
             try
             {

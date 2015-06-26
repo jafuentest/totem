@@ -34,9 +34,20 @@ namespace Presentadores.Modulo8
                     vista.laTabla += RecursosInterfazModulo8.AbrirEtiquetaTd + minuta.Fecha + RecursosInterfazModulo8.CerrarEtiquetaTd;
                     vista.laTabla += RecursosInterfazModulo8.AbrirEtiquetaTd + minuta.Motivo+ RecursosInterfazModulo8.CerrarEtiquetaTd;
                     vista.laTabla += RecursosInterfazModulo8.AbrirEtiquetaTd;
+
+                    vista.laTabla += RecursosInterfazModulo8.BotonDetalleIniciar+minuta.Id;
                     vista.laTabla += RecursosInterfazModulo8.BotonDetalle;
+                    vista.laTabla += minuta.Id + RecursosInterfazModulo8.BotonDetalleCerrar;
+
+                    vista.laTabla += RecursosInterfazModulo8.BotonDetalleIniciar + minuta.Id;
                     vista.laTabla += RecursosInterfazModulo8.BotonModificar;
+                    vista.laTabla += minuta.Id + RecursosInterfazModulo8.BotonDetalleCerrar;
+
+                    vista.laTabla += RecursosInterfazModulo8.BotonDetalleIniciar + minuta.Id;
                     vista.laTabla += RecursosInterfazModulo8.BotonImprimir;
+                    vista.laTabla += minuta.Id + RecursosInterfazModulo8.BotonDetalleCerrar;
+
+
                     vista.laTabla += RecursosInterfazModulo8.CerrarEtiquetaTd;
                     vista.laTabla += RecursosInterfazModulo8.CerrarEtiquetaTr;
                 }

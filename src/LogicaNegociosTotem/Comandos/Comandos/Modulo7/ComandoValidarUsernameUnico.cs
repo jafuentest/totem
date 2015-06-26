@@ -23,7 +23,7 @@ namespace Comandos.Comandos.Modulo7
         public override bool Ejecutar(String parametro)
         {
             //Instanciamos la fabrica
-            FabricaAbstractaDAO usernameUnico = FabricaDAOSqlServer.ObtenerFabricaSqlServer();
+            FabricaDAOSqlServer usernameUnico = new FabricaDAOSqlServer();
 
             //Instanciamos el DAO
             IDaoUsuario daoUsuario = usernameUnico.ObtenerDAOUsuario();

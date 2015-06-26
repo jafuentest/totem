@@ -286,4 +286,7 @@
   <data name="ProcedureEliminarCU" xml:space="preserve">
     <value>ELIMINAR_CU</value>
   </data>
+  <data name="AliasDescripcionActor" xml:space="preserve">
+    <value>descripcionActor</value>
+  </data>
 </root>

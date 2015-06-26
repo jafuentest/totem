@@ -57,6 +57,13 @@ namespace DAO.IntefazDAO.Modulo7
         /// </summary>
         /// <returns>Lista con todos los cargos de la Base de Datos</returns>
         List<String> LeerCargosUsuarios();
+
+        /// <summary>
+        /// Firma de metodo que implementara la logica de eliminar un usuario de la base de datos
+        /// </summary>
+        /// <param name="username">El username que se desea eliminar</param>
+        /// <returns>Verdadero si se logro a eliminar, falso sino se logro eliminar</returns>
+        bool EliminarUsuario(String username);
         
     }
 }

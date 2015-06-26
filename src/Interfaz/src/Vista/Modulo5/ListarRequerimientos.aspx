@@ -70,7 +70,7 @@
 					   <a class="btn btn-default glyphicon glyphicon-pencil"
 					   href="ModificarRequerimiento.aspx?id=<%# Eval("Codigo") %>"></a>
 					   <a class="btn btn-danger glyphicon glyphicon-remove-sign"
-					   href="ListarRequerimientos.aspx?eliminar=<%# Eval("Codigo") %>"></a>
+					   href="ListarRequerimientos.aspx?eliminar=<%# Eval("Codigo") %>&list=true"></a>
 				    </td>
 				</tr>
 		  </ItemTemplate>

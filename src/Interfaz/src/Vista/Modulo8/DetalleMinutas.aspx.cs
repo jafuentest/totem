@@ -1,151 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Runtime.Versioning;
+using System.Web.Services;
+using Newtonsoft.Json;
+using Presentadores;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Presentadores.Modulo8;
+using Dominio.Entidades.Modulo7;
+using Dominio.Entidades.Modulo8;
 namespace Vista.Modulo8
 {
     public partial class DetalleMinutas : System.Web.UI.Page/*, Contratos.Modulo8.IContratoDetalleMinutas*/
     {
-        private PresentadorDetalleMinuta presentador;
-      /*  public DetalleMinuta()
-        {
-            presentador = new PresentadorDetalleMinuta(this);
-        }*/
+        private static string codigoProyecto;
+        private static string codigoMinuta = "";
+        private Presentadores.Modulo8.PresentadorCrearMinuta presentador = new Presentadores.Modulo8.PresentadorCrearMinuta();
         protected void Page_Load(object sender, EventArgs e)
         {
-          /*  string codigoMinuta = Request.QueryString["idMinuta"];
-            this.Master.idModulo = "8";
-            this.Master.presentador.CargarMenuLateral();
-            presentador.DetalleMinuta(codigoMinuta);
-            String success = Request.QueryString["success"];
-            if (success != null)
+            if (!IsPostBack)
             {
-                if (success.Equals("1"))
+                this.Master.idModulo = "8";
+                this.Master.presentador.CargarMenuLateral();
+                presentador.ObtenerUsuarioLogeado();
+            }
+            codigoMinuta = Request.QueryString["idMinuta"];
+            codigoProyecto = Server.HtmlEncode(Request.Cookies["selectedProjectCookie"]["projectCode"]);
+        }
+
+
+        /// <summary>
+        /// Método parar cargar los Detalles de la Minuta
+        /// </summary>
+        /// <returns>Retorna un String con JSON para poder cargar los Detalles de la Minuta</returns>
+        [WebMethod]
+        public static string detalleMinuta()
+        {
+            string aux = "";
+            for (int i = 0; i <= codigoMinuta.Length-1; i++)
+            { 
+                if ((codigoMinuta[i].ToString()!="{") && (codigoMinuta[i].ToString()!="}") )
                 {
-                    alert.Attributes["class"] = "alert alert-success alert-dismissible";
-                    alert.Attributes["role"] = "alert";
-                    alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>¡Correcto!</strong> - Se ha Creado la Minuta Correctamente</div>";
-
+                    aux = aux +codigoMinuta[i];
                 }
-                else
-                    if (success.Equals("2"))
-                    {
-                        alert.Attributes["class"] = "alert alert-success alert-dismissible";
-                        alert.Attributes["role"] = "alert";
-                        alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>¡Correcto!</strong> - Se ha Modificado la Minuta Correctamente</div>";
-
-                    }
-              
-            }*/
-
-            /*if (Request.Cookies["userInfo"] != null)
-            {
-                if (Server.HtmlEncode(Request.Cookies["userInfo"]["usuario"]) != "" &&
-                    Server.HtmlEncode(Request.Cookies["userInfo"]["clave"]) != "")
-                {
-                    Master.ShowDiv = true;
-                }
-                else
-                {
-                    Master.MostrarMenuLateral = false;
-                    Master.ShowDiv = false;
-                }
-
-            }*/
-            string codigoProyecto = Server.HtmlEncode(Request.Cookies["selectedProjectCookie"]["projectCode"]);
-
-        }/*
-        #region Contrato
-
-        string Contratos.Modulo8.IContratoDetalleMinutas.nombreProyecto
-        {
-            get
-            {
-                return infoproyect.Text;
             }
-            set
-            {
-                infoproyect.Text = value;
-            }
-        }
-        string Contratos.Modulo8.IContratoConsultarMinuta.fecha
-        {
-            get
-            {
-                return fecha.Text;
-                
-            }
-            set
-            {
-                fecha.Text = value;
-            }
+            string idminuta = aux;
+
+
+
+            Console.WriteLine(idminuta);
+            int codMinuta = Int32.Parse(idminuta);
+            Presentadores.Modulo8.PresentadorDetalleMinuta presentador = new Presentadores.Modulo8.PresentadorDetalleMinuta();
+            //Proyecto elProyecto = new Proyecto() { Codigo = codigoProyecto };
+            Minuta minuta = (Minuta)presentador.DetalleMinuta(codMinuta.ToString());
+            var output = JsonConvert.SerializeObject(minuta);
+            return output;
         }
 
-        string Contratos.Modulo8.IContratoConsultarMinuta.motivo
-        {
-            get
-            {
-                return motivo.Text;
-            }
-            set
-            {
-                motivo.Text = value;
-            }
-        }
-
-        string Contratos.Modulo8.IContratoConsultarMinuta.participantes
-        {
-            get
-            {
-                return participantes.Text;
-            }
-            set
-            {
-                participantes.Text = value;
-            }
-        }
-
-         string Contratos.Modulo8.IContratoConsultarMinuta.puntos
-        {
-            get
-            {
-                return puntos.Text;
-            }
-            set
-            {
-                puntos.Text = value;
-            }
-        }
-
-         string Contratos.Modulo8.IContratoConsultarMinuta.observaciones
-        {
-            get
-            {
-                return observaciones.Text;
-            }
-            set
-            {
-                observaciones.Text = value;
-            }
-        }
-        
-        string Contratos.Modulo8.IContratoConsultarMinuta.acuerdos
-        {
-            get
-            {
-                return acuerdos.Text;
-            }
-            set
-            {
-                acuerdos.Text = value;
-            }
-        }
-        #endregion*/
     }
-    
 }
 
 

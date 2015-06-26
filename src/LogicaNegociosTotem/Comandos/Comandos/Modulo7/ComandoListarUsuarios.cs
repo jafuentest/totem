@@ -25,7 +25,7 @@ namespace Comandos.Comandos.Modulo7
             List<Entidad> listaUsuarios;
 
             //Instanciamos la fabrica
-            FabricaAbstractaDAO fabrica = FabricaDAOSqlServer.ObtenerFabricaSqlServer();
+            FabricaDAOSqlServer fabrica = new FabricaDAOSqlServer();
 
             //Instanciamos el DAOUsuario
             IDaoUsuario daoUsuario = fabrica.ObtenerDAOUsuario();

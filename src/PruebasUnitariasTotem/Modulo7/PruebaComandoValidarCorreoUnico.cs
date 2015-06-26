@@ -5,6 +5,9 @@ using System.Text;
 using NUnit.Framework;
 using Comandos;
 using Comandos.Fabrica;
+using Dominio;
+using Dominio.Fabrica;
+
 
 namespace PruebasUnitariasTotem.Modulo7
 {
@@ -16,6 +19,9 @@ namespace PruebasUnitariasTotem.Modulo7
     {
         //Atributos que utilizaremos para las pruebas
         private Comando<String, bool> comandoValidarCorreo;
+        private Comando<String, bool> eliminarUsuario;
+        private Entidad usuarioRegistrar;
+        private Comando<Entidad, bool> comandoAgregar;
 
         /// <summary>
         /// Inicializa los valores que necesitaremos
@@ -23,6 +29,17 @@ namespace PruebasUnitariasTotem.Modulo7
         [SetUp]
         public void Init()
         {
+            //Instanciamos el comando de agregar Usuario
+            comandoAgregar = FabricaComandos.CrearComandoAgregarUsuario();
+
+            //Creamos la entidad de Usuario
+            FabricaEntidades entidades = new FabricaEntidades();
+            usuarioRegistrar = entidades.ObtenerUsuario("prueba", "prueba", "prueba", "prueba", "prueba", "prueba", "prueba",
+                "prueba", "Gerente");
+
+            //comando que eliminara al usuario de prueba
+            eliminarUsuario = FabricaComandos.CrearComandoEliminarUsuarios();
+
             //Instanciamos el comando de validar correo Unico
             comandoValidarCorreo = FabricaComandos.CrearComandoValidarCorreoUnico();
         }
@@ -33,7 +50,17 @@ namespace PruebasUnitariasTotem.Modulo7
         [Test]
         public void PruebaValidarCorreo()
         {
-            Assert.IsTrue(comandoValidarCorreo.Ejecutar("blabla"));
+            //Verificamos que el correo no existe aun
+            Assert.IsTrue(comandoValidarCorreo.Ejecutar("prueba"));
+
+            //Lo registraemos
+            comandoAgregar.Ejecutar(usuarioRegistrar);
+
+            //Verificamos que el correo ya existe
+            Assert.IsTrue(!comandoValidarCorreo.Ejecutar("prueba"));
+
+            //Limpiamos el usuario de prueba
+            eliminarUsuario.Ejecutar("prueba");
         }
 
         /// <summary>
@@ -43,6 +70,9 @@ namespace PruebasUnitariasTotem.Modulo7
         public void Limpiar()
         {
             comandoValidarCorreo = null;
+            eliminarUsuario = null;
+            usuarioRegistrar = null;
+            comandoAgregar = null;
         }
     }
 }

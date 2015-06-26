@@ -144,6 +144,9 @@
   <data name="ClaseReporteActoresPresentador" xml:space="preserve">
     <value>PresentadorReporteActores</value>
   </data>
+  <data name="CodigoCasoDeUsoInvalidoException" xml:space="preserve">
+    <value>T_06_106</value>
+  </data>
   <data name="CodigoMensajePresentadorBDException" xml:space="preserve">
     <value>T_06_103</value>
   </data>
@@ -159,8 +162,18 @@
   <data name="CodigoMensajePresentadorTipoDeDatoErroneo" xml:space="preserve">
     <value>T_06_105</value>
   </data>
+  <data name="Codigo_Exito_Eliminar" xml:space="preserve">
+    <value>?success=eliminar</value>
+    <comment>Codigo de exito para el redireccionamiento</comment>
+  </data>
   <data name="MensajeActorExistente" xml:space="preserve">
     <value>El actor ya se encuentra registrado en Base de Datos.</value>
+  </data>
+  <data name="MensajeCasoDeUsoEliminado" xml:space="preserve">
+    <value>El caso de uso se ha eliminado exitosamente.</value>
+  </data>
+  <data name="MensajeCasoDeUsoInvalido" xml:space="preserve">
+    <value>El caso de uso contiene datos erroneos.</value>
   </data>
   <data name="MensajeCodigoMaliciosoException" xml:space="preserve">
     <value>Ha ingresado un código malicioso, por favor ingrese carácteres correctos.</value>
@@ -179,5 +192,8 @@
   </data>
   <data name="MensajePresentadorTipoDeDatoErroneoException" xml:space="preserve">
     <value>Error al convertir un tipo de dato en otro.</value>
+  </data>
+  <data name="VentanaListarCasosDeUso" xml:space="preserve">
+    <value>/Modulo6/Listar.aspx</value>
   </data>
 </root>

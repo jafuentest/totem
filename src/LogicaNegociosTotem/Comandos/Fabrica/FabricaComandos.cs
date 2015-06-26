@@ -51,6 +51,10 @@ namespace Comandos.Fabrica
         #endregion
 
         #region Modulo 2
+        public static Comando<Entidad, bool> CrearComandoModificarContacto()
+        {
+            return new ComandoModificarContacto();
+        } 
         public static Comando<Entidad, bool> CrearComandoAgregarClienteJuridico()
         {
             return new ComandoAgregarClienteJuridico();
@@ -216,6 +220,10 @@ namespace Comandos.Fabrica
             return new Comandos.Modulo5.ComandoGenerarArchivoLatex();
         }
 
+        public static Comando<String, List<String>> CrearComandoBuscarCodigoRequerimiento()
+        {
+            return new Comandos.Modulo5.ComandoBuscarCodigoRequerimiento();
+        }
         #endregion
 
         #region Modulo 6
@@ -260,6 +268,10 @@ namespace Comandos.Fabrica
             return new ComandoEliminarCU(); 
         }
 
+        public static Comando<string, List<Entidad>> CrearComandoListarActores()
+        {
+            return new ComandoConsultarActores();
+        }
         #endregion
 
         #region Modulo 7
@@ -325,6 +337,15 @@ namespace Comandos.Fabrica
         {
             return new ComandoLeerCargosUsuarios();
         }
+
+        /// <summary>
+        /// Metodo que instancia el comando de eliminar un usuario
+        /// </summary>
+        /// <returns>Verdadero si se pudo eliminar, falso sino se pudo</returns>
+        public static Comando<String, bool> CrearComandoEliminarUsuarios()
+        {
+            return new ComandoEliminarUsuario();
+        }
         #endregion
 
         #region Modulo 8
@@ -357,7 +378,7 @@ namespace Comandos.Fabrica
             return new Comandos.Modulo8.ComandoGenerarMinuta();
         }
 
-        public static Comando<Dominio.Entidad, List<Dominio.Entidad>> CrearComandoListaContacto()
+        public static Comando<String, List<Dominio.Entidad>> CrearComandoListaContacto()
         {
             return new Comandos.Modulo8.ComandoListaContacto();
         }

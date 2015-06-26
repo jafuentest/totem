@@ -13,22 +13,23 @@ namespace Comandos.Comandos.Modulo1
     /// </summary>
     public class ComandoIniciarSesion : Comando<List<string>, Entidad>
     {
-        private bool captchaActivo = false;
+        public bool captchaActivo = false;
         private int intentos = 0;
+
         public override Entidad Ejecutar(List<string> parametro)
         {
             try
             {
                 if (!captchaActivo)
                 {
-                    intentos++;
+                   intentos++;
                 }
                 FabricaEntidades fabricaEntidades = new FabricaEntidades();
                 Entidad usuario = fabricaEntidades.ObtenerUsuario();
                 ((Usuario)usuario).Username = parametro[0];
                 ((Usuario)usuario).Clave= parametro[1];
                 ((Usuario)usuario).CalcularHash();
-                FabricaAbstractaDAO fabricaDao = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+                FabricaDAOSqlServer fabricaDao = new FabricaDAOSqlServer();
                 IDaoLogin idaoLogin= fabricaDao.ObtenerDaoLogin();
                 usuario = idaoLogin.ValidarUsuarioLogin(((Usuario)usuario));
                 intentos = 0;

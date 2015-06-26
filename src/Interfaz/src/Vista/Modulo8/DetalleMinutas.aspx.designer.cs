@@ -22,5 +22,12 @@ namespace Vista.Modulo8
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        public new Vista.Master.MasterPage Master
+        {
+            get
+            {
+                return ((Vista.Master.MasterPage)(base.Master));
+            }
+        }
     }
 }

@@ -165,9 +165,10 @@ namespace Presentadores.Modulo5
                 comandoEliminar = Comandos.Fabrica.FabricaComandos.CrearComandoEliminarRequerimiento();
                 if (comandoEliminar.Ejecutar(requerimiento))
                 {
-                    HttpContext.Current.Response.Redirect(
-                                RecursosPresentadorModulo5.Ventana_Listar_Requerimiento +
-                                RecursosPresentadorModulo5.Codigo_Exito_Eliminar);
+                        HttpContext.Current.Response.Redirect(
+                                    RecursosPresentadorModulo5.Ventana_Listar_Requerimiento +
+                                    RecursosPresentadorModulo5.Codigo_Exito_Eliminar);
+                    
                 }
 
                 throw new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException(

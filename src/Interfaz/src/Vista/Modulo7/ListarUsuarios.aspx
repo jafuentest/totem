@@ -25,7 +25,7 @@
 				</tr>
 			</thead>
 			<tbody id="tablebody" runat="server">
-            <asp:Literal runat="server" ID="laTabla"></asp:Literal>
+          
             </tbody>
 		</table>
      <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
@@ -56,40 +56,4 @@
     </asp:UpdatePanel>
 	</div>
 </form>
-	<!-- Data tables init -->
-	<script type="text/javascript">
-	    $(document).ready(function () {
-	        $('#table-users').DataTable();
-	        var table = $('#table-users').DataTable();
-	        var user;
-	        var tr;
-
-	        $('#table-users tbody').on('click', 'a', function () {
-	            if ($(this).parent().hasClass('selected')) {
-	                user = $(this).parent().prev().prev().prev().prev().text();
-	                tr = $(this).parents('tr');//se guarda la fila seleccionada
-	                $(this).parent().removeClass('selected');
-
-	            }
-	            else {
-	                user = $(this).parent().prev().prev().prev().prev().text();
-	                tr = $(this).parents('tr');//se guarda la fila seleccionada
-	                table.$('tr.selected').removeClass('selected');
-	                $(this).parent().addClass('selected');
-	            }
-	        });
-	        $('#modal-delete').on('show.bs.modal', function (event) {
-	            var modal = $(this)
-	            modal.find('.modal-title').text('Eliminar usuario:  ' + user)
-	            modal.find('#user-name').text(user)
-	        })
-            //para eliminar la fila
-	        $('#btn-eliminar').on('click', function () {
-	            table.row(tr).remove().draw();//se elimina la fila de la tabla
-	            $('#modal-delete').modal('hide');//se esconde el modal
-	            $('#alertlocal').addClass("alert alert-success alert-dismissible");
-	            $('#alertlocal').html("<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Se ha eliminado exitosamente</div>");
-	        });
-	    });
-	</script>
 </asp:Content>

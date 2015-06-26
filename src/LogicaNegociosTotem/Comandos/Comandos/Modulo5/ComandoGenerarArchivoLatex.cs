@@ -22,20 +22,33 @@ namespace Comandos.Comandos.Modulo5
 
             try
             {
-                DAO.Fabrica.FabricaAbstractaDAO fabricaDAO;
                 DAO.IntefazDAO.Modulo5.IDaoRequerimiento daoRequerimiento;
-                fabricaDAO = DAO.Fabrica.FabricaAbstractaDAO.ObtenerFabricaSqlServer();
-                daoRequerimiento = fabricaDAO.ObtenerDAORequerimiento();
+                DAO.Fabrica.FabricaDAOSqlServer fabricaDao = new DAO.Fabrica.FabricaDAOSqlServer();
+                daoRequerimiento = fabricaDao.ObtenerDAORequerimiento();
                 List<Dominio.Entidad> requerimientos;
                 requerimientos = daoRequerimiento.ConsultarRequerimientoDeProyecto(parametro);
                 this.GenerarDocumentoFuncional(requerimientos);
                 this.CompilarArchivo();
                 return true;
             }
-            catch (ExcepcionesTotem.ExceptionTotem e) {
-                throw e;
+            catch (ExcepcionesTotem.Modulo5.ArchivoLatexNoGeneradoException ex) {
+                throw ex;
             }
-        
+            catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
+            {
+
+                throw ex;
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+
+                throw ex;
+            }
+            catch (ExcepcionesTotem.Modulo5.RequerimientoInvalidoException ex)
+            {
+
+                throw ex;
+            }
         }
 
 
@@ -109,7 +122,19 @@ namespace Comandos.Comandos.Modulo5
                 reqdoc.Close();
             }
             catch (System.IO.DirectoryNotFoundException) {
-                throw new ExcepcionesTotem.ExceptionTotem();
+
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                    new ExcepcionesTotem.Modulo5.ArchivoInexistenteException());
+
+                throw new ExcepcionesTotem.Modulo5.ArchivoInexistenteException(
+                    RecursosMod5Comando.codigo_excepcion_archivo_no_encontrado,
+                            RecursosMod5Comando.Mensaje_Error_Archivo_Inexistente,
+                            new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
+
+            
+            }
+            catch(ExcepcionesTotem.ExceptionTotem err){
+                throw err;
             }
         
         
@@ -132,10 +157,25 @@ namespace Comandos.Comandos.Modulo5
                 p.Dispose();
             }
             catch (Win32Exception winerr) {
-                throw new ExcepcionesTotem.ExceptionTotem();
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                 new ExcepcionesTotem.Modulo5.ArchivoLatexNoGeneradoException());
+
+                throw new ExcepcionesTotem.Modulo5.ArchivoLatexNoGeneradoException(
+                    RecursosMod5Comando.codigo_excepcion_archivo_latex_no_compilado,
+                            RecursosMod5Comando.Mensaje_Error_Archivo_NoCompilado,
+                            new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
+
+
             }
             catch (SystemException syserr) {
-                throw new ExcepcionesTotem.ExceptionTotem();
+                ExcepcionesTotem.Logger.EscribirError(Convert.ToString(this.GetType()),
+                     new ExcepcionesTotem.Modulo5.ArchivoLatexNoGeneradoException());
+
+                throw new ExcepcionesTotem.Modulo5.ArchivoLatexNoGeneradoException(
+                    RecursosMod5Comando.codigo_excepcion_archivo_latex_no_compilado,
+                            RecursosMod5Comando.Mensaje_Error_Archivo_NoCompilado,
+                            new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
+
             }
 
 

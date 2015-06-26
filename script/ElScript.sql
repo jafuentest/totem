@@ -1044,6 +1044,45 @@ go
 --End SP1
 
 --Begin SP2
+--------------------PROCEDURE BUSCAR CI CONTACTO--------------
+create procedure M2_BuscarCIContacto
+ @con_cedula    [VARCHAR] (20),
+ @salida int OUTPUT
+as
+begin
+ select @salida = count(*)
+ from CONTACTO
+ where con_cedula = @con_cedula;
+end;
+go
+--------------------PROCEDURE MODIFICAR CONTACTO--------------
+CREATE procedure M2_ModificarContacto
+(
+    @idContacto	  [int],
+    @con_cedula   [VARCHAR] (20),
+    @con_nombre   [VARCHAR] (100),
+    @con_apellido [VARCHAR] (50),
+    @con_cargo    [VARCHAR] (60),
+    @con_cod_tel  [VARCHAR] (5),
+    @con_num_tel  [VARCHAR] (20)
+)
+as
+begin
+	update TELEFONO
+		set tel_codigo = @con_cod_tel,
+			tel_numero = @con_num_tel
+		where
+			CONTACTO_con_id = @idContacto;
+
+	update CONTACTO
+		set con_cedula = @con_cedula,
+			con_nombre = @con_nombre,
+			con_apellido = @con_apellido,
+			CARGO_car_id = (select car_id from CARGO where car_nombre = @con_cargo)
+		where
+			con_id = @idContacto;
+end;
+go
 ------------------------PROCEDURE SELECCIONAR CLIENTE_JURIDICO POR ID----------------------- 
 CREATE PROCEDURE M2_ConsultarDatosClienteJur
 	@idClienteJur [int]
@@ -2177,6 +2216,26 @@ AS
 GO
 
 -- ========================================================================= --
+-- Retornar último cdigo de requerimiento por proyecto
+-- ========================================================================= --
+
+CREATE PROCEDURE M5_RetornarCodigoDeRequerimiento
+
+  @pro_id       [int] ,
+  @req_tipo     [varchar] (25) ,
+  @req_codigo     [varchar] (15)  OUTPUT
+
+AS
+  BEGIN
+    SELECT @req_codigo = req_codigo
+    FROM REQUERIMIENTO R
+    WHERE ( R.PROYECTO_pro_id = @pro_id
+        AND LOWER(R.req_tipo) = LOWER(@req_tipo) )
+    ORDER BY req_codigo;
+  END
+GO
+
+-- ========================================================================= --
 -- Eliminar requerimiento
 -- ========================================================================= --
 CREATE PROCEDURE M5_EliminarRequerimiento
@@ -2340,13 +2399,17 @@ DECLARE @idProyecto int = 0
 	
 GO
 
+
 /*Leer actor(es)*/
 CREATE PROCEDURE LEER_ACTOR 
-	@idproyecto int
+	@codigoProyecto varchar(6)
 AS
 	BEGIN
 		--Leo todos los Actores asociados al proyecto
-		SELECT A.act_nombre NOMBRE, A.act_descripcion DESCRIPCION, A.act_id ID FROM ACTOR A WHERE A.PROYECTO_pro_id=@idproyecto; 
+		SELECT A.act_nombre  as nombreActor,  A.act_id  as idActor,A.act_descripcion as descripcionActor
+		FROM ACTOR A, PROYECTO P
+		 WHERE p.pro_id = a.PROYECTO_pro_id
+		 and p.pro_codigo = @codigoProyecto;
 	END
 GO
 
@@ -3688,15 +3751,15 @@ insert into Cargo (car_id,car_nombre) values (NEXT VALUE FOR secuenciaIdCargo,'S
 insert into Cargo (car_id,car_nombre) values (NEXT VALUE FOR secuenciaIdCargo,'Gerente de finanzas');
 insert into Cargo (car_id,car_nombre) values (NEXT VALUE FOR secuenciaIdCargo,'Recursos Humanos');
 /*--------------------CONTACTO CLIENTE_JURIDICO------------------------*/
-INSERT INTO CONTACTO VALUES(66666666,'Reinaldo','Cortes',1,1,null);
+INSERT INTO CONTACTO VALUES(66666666,'Reinaldo','Cortes',1,7,null);
 go
-INSERT INTO CONTACTO VALUES(77777777,'Mercedes','Amilibia',2,2,null);
+INSERT INTO CONTACTO VALUES(77777777,'Mercedes','Amilibia',2,8,null);
 go
-INSERT INTO CONTACTO VALUES(88888888,'Amaranta','Ruiz',3,3,null);
+INSERT INTO CONTACTO VALUES(88888888,'Amaranta','Ruiz',3,9,null);
 go
-INSERT INTO CONTACTO VALUES(99999999,'Sebastian','Perez',4,4,null);
+INSERT INTO CONTACTO VALUES(99999999,'Sebastian','Perez',4,10,null);
 go
-INSERT INTO CONTACTO VALUES(10101011,'Felipe','Mendes',5,5,null);
+INSERT INTO CONTACTO VALUES(10101011,'Felipe','Mendes',5,11,null);
 go
 
 /*--------------------CONTACTO CLIENTE_NATURAL------------------------*/

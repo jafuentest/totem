@@ -34,6 +34,15 @@ namespace Presentadores.Modulo8
             return listaUsuario;
         }
 
+        public List<Dominio.Entidad> ListaInvolucradoContacto(string codigoProyecto)
+        {
+            ComandoListaContacto comandoListaContacto = (ComandoListaContacto)FabricaComandos.CrearComandoListaContacto();
+            List<Dominio.Entidad> listaContacto = comandoListaContacto.Ejecutar(codigoProyecto);
+
+
+            return listaContacto;
+        }
+
         public string crearMinuta(Entidad laMinuta,string codigoProyecto)
         {
             ComandoGuardarMinuta comandoGuardarMinuta = (ComandoGuardarMinuta)FabricaComandos.CrearComandoGuardarMinuta();

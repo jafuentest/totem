@@ -16,9 +16,19 @@ namespace Comandos.Comandos.Modulo1
         public override bool Ejecutar(string parametro)
         {
 
-                FabricaAbstractaDAO fabricaDao = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+            try
+            {
+                FabricaDAOSqlServer fabricaDao = new FabricaDAOSqlServer();
                 IDaoLogin idaoLogin = fabricaDao.ObtenerDaoLogin();
                 return idaoLogin.ValidarCorreoExistente(parametro);
+            }
+            catch (Exception ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
+            }
         }
     }
 }

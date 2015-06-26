@@ -10,12 +10,18 @@ namespace Comandos.Comandos.Modulo1
     /// </summary>
     public class ComandoCambioDeClave : Comando<Entidad, bool>
     {
+        /// <summary>
+        /// Comando que ejecuta la logica del cambio de clave de un usuario
+        /// </summary>
+        /// <param name="parametro">Entidad de tipo Usuario</param>
+        /// <returns>retorna true si la clave se cambio satisfactoriamente,
+        /// de lo contrario devueleve false</returns>
         public override bool Ejecutar(Entidad parametro)
         {
             try
             {
                 ((Usuario)parametro).CalcularHash();
-                FabricaAbstractaDAO fabricaDao = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+                FabricaDAOSqlServer fabricaDao = new FabricaDAOSqlServer();
                 IDaoLogin idaoLogin = fabricaDao.ObtenerDaoLogin();
                 return  idaoLogin.Modificar(((Usuario)parametro));
             }

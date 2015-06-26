@@ -24,7 +24,7 @@ namespace Comandos.Comandos.Modulo6
         {
             try
             {
-                DAO.Fabrica.FabricaAbstractaDAO fabricaDaoSqlServer = DAO.Fabrica.FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+                DAO.Fabrica.FabricaDAOSqlServer fabricaDaoSqlServer = new DAO.Fabrica.FabricaDAOSqlServer(); 
 
                 DAOCasoDeUso daoCU = (DAOCasoDeUso)fabricaDaoSqlServer.ObtenerDAOCasoDeUso();
                 List<Entidad> resultado = daoCU.ListarCasosDeUso(parametro);

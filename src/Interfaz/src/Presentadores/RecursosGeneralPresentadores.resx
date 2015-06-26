@@ -125,6 +125,9 @@
     <value>~/Master/menuLateral.xml</value>
     <comment>Ubicacion del archivo XML con los datos del menu lateral</comment>
   </data>
+  <data name="EXCEPCION_ARCHIVO_LATEX_NO_GENERADO" xml:space="preserve">
+    <value />
+  </data>
   <data name="Expresion_Regular_Alfabeticos" xml:space="preserve">
     <value>^[A-Z a-z]*$</value>
     <comment>Expresion regular de caracteres alfabeticos</comment>

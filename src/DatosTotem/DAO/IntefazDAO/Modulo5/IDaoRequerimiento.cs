@@ -42,7 +42,29 @@ namespace DAO.IntefazDAO.Modulo5
         /// <param name="codigoProyecto">Codigo del proyecto</param>
         /// <returns>Lista de requerimientos</returns>
         List<Dominio.Entidad> ConsultarRequerimientoDeProyecto(string codigoProyecto);
-     
+
+        /// <summary>
+        /// Metodo que retorna los codigos de requerimiento
+        /// </summary>
+        /// <param name="requerimiento">Requerimiento con el codigo del proyecto
+        /// y el tipo</param>
+        /// <returns>Lista de String con los dos posibles valor a tomar, si es 
+        /// funcional o no funcional</returns>
+        List<String> ObtenerCodigoRequerimiento(String requerimiento);
+
+        /// <summary>
+        /// Metodo que retorna el codigo del requerimiento funcional
+        /// </summary>
+        /// <param name="idProyecto">int del id del proyecto</param>
+        /// <returns>String con el codigo</returns>
+        String ObtenerCodigoRequerimientoFuncional(int idProyecto);
+
+        /// <summary>
+        /// Metodo que retorna el codigo del requerimiento no funcional
+        /// </summary>
+        /// <param name="idProyecto">int del id del proyecto</param>
+        /// <returns>String con el codigo</returns>
+        String ObtenerCodigoRequerimientoNoFuncional(int idProyecto);
         #endregion
     }
 }

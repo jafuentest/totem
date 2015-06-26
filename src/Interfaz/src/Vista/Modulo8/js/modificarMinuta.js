@@ -208,9 +208,9 @@ $(function ()
        listaUsuario = json;  //Asignación para usarlo en la carga de ComboBoxes más adelante
        //Carga de Participantes
        for (i = 0; i < json.length; i++) {
-           var codigoUsuario = "user" + json[i]["idUsuario"];
-           var nombreCompletoUsuario = json[i]["nombre"] + " " + json[i]["apellido"];
-           var cargoUsuario = json[i]["cargo"];
+           var codigoUsuario = "user" + json[i]["Id"];
+           var nombreCompletoUsuario = json[i]["Nombre"] + " " + json[i]["Apellido"];
+           var cargoUsuario = json[i]["Cargo"];
            var codigoUsuarioDIV = codigoUsuario + "_par";
            var codigoUsuarioCheck = codigoUsuario + "_par_check";
 
@@ -273,7 +273,7 @@ $(function ()
            //------------------------------Asignar Participantes------------------------------------------------------------------
            for (i = 0; i < json["ListaUsuario"].length; i++)
            {
-               var codigoUsuarioSeleccionado = "user" + json["ListaUsuario"][i]["idUsuario"];
+               var codigoUsuarioSeleccionado = "user" + json["ListaUsuario"][i]["Id"];
                cargaSeleccionado(codigoUsuarioSeleccionado);
            }
 
@@ -357,15 +357,15 @@ $(function ()
                //Carga de Usuarios en el ComboBox
                for (j = 0; j < listaUsuario.length; j++)
                {
-                   var codigoUsuario = listaUsuario[j]["idUsuario"];
-                   var nombreCompletoUsuario = listaUsuario[j]["nombre"] + " " + listaUsuario[j]["apellido"];
+                   var codigoUsuario = listaUsuario[j]["Id"];
+                   var nombreCompletoUsuario = listaUsuario[j]["Nombre"] + " " + listaUsuario[j]["Apellido"];
                    $('#' + codigoAcuerdoSelect).append("<option value = " + codigoUsuario + ">" + nombreCompletoUsuario + "</option>");
                }
                
                //Selecciona Usuarios de la Minuta
                for (k = 0; k < json["ListaAcuerdo"][i]["ListaUsuario"].length; k++)
                {
-                   var codigoUsuarioAcuerdo = json["ListaAcuerdo"][i]["ListaUsuario"][k]["idUsuario"];
+                   var codigoUsuarioAcuerdo = json["ListaAcuerdo"][i]["ListaUsuario"][k]["Id"];
                    $('#' + codigoAcuerdoSelect + " option[value='" + codigoUsuarioAcuerdo + "']").prop("selected", true);
                }
 
@@ -399,8 +399,8 @@ $(function ()
 
            //Carga de Usuarios en el ComboBox
            for (j = 0; j < listaUsuario.length; j++) {
-               var codigoUsuario = listaUsuario[j]["idUsuario"];
-               var nombreCompletoUsuario = listaUsuario[j]["nombre"] + " " + listaUsuario[j]["apellido"];
+               var codigoUsuario = listaUsuario[j]["Id"];
+               var nombreCompletoUsuario = listaUsuario[j]["Nombre"] + " " + listaUsuario[j]["Apellido"];
                $('#' + codigoAcuerdoSelect).append("<option value = " + codigoUsuario + ">" + nombreCompletoUsuario + "</option>");
            }
            nroAcuerdos++;

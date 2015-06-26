@@ -317,6 +317,223 @@ namespace DAO.DAO.Modulo5
             #endregion
         }
 
+        /// <summary>
+        /// Metodo que retorna los codigos de requerimiento
+        /// </summary>
+        /// <param name="requerimiento">Requerimiento con el codigo del proyecto
+        /// y el tipo</param>
+        /// <returns>Lista de String con los dos posibles valor a tomar, si es 
+        /// funcional o no funcional</returns>
+        public List<string> ObtenerCodigoRequerimiento(string codigoProyecto)
+        {
+            try
+            {
+                List<String> codigosRequerimiento = new List<String>();
+                int idProyecto = BuscarIdProyecto(codigoProyecto);
+       
+                codigosRequerimiento.Add(ObtenerCodigoRequerimientoFuncional(idProyecto));
+                codigosRequerimiento.Add(ObtenerCodigoRequerimientoNoFuncional(idProyecto));
+
+                return codigosRequerimiento;
+            }
+            #region Capturar Excepciones
+            catch (ExcepcionesTotem.Modulo5.RequerimientoInvalidoException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
+            }
+            catch (SqlException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
+            }
+            #endregion
+        }
+
+        /// <summary>
+        /// Metodo que retorna los codigos de requerimiento
+        /// </summary>
+        /// <param name="requerimiento">Requerimiento con el codigo del proyecto
+        /// y el tipo</param>
+        /// <returns>Lista de String con los dos posibles valor a tomar, si es 
+        /// funcional o no funcional</returns>
+        public string ObtenerCodigoRequerimientoFuncional(int idProyecto)
+        {
+            try
+            {
+                #region Construccion Lista de Parametros
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro parametro = new Parametro(RecursosDAOModulo5.PARAMETRO_PRO_ID,
+                    SqlDbType.Int, Convert.ToString(idProyecto), false);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosDAOModulo5.PARAMETRO_REQ_TIPO,
+                    SqlDbType.VarChar, RecursosDAOModulo5.TIPO_FUNCIONAL,
+                    false);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosDAOModulo5.PARAMETRO_REQ_CODIGO,
+                    SqlDbType.VarChar, true);
+                parametros.Add(parametro);
+                #endregion
+
+                List<Resultado> resultados = EjecutarStoredProcedure(
+                    RecursosDAOModulo5.PROCEDIMIENTO_RETORNAR_CODIGO_DE_REQUERIMIENTO,
+                    parametros);
+                if (resultados != null)
+                {
+                    foreach (Resultado resultado in resultados)
+                    {
+                        if (resultado.etiqueta.Equals(RecursosDAOModulo5.PARAMETRO_REQ_CODIGO)
+                            && resultado.valor != "")
+                        {
+                            return resultado.valor;
+                        }
+                    }
+                }
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                        new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
+
+                throw new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException(
+                            RecursosDAOModulo5.CODIGO_EXCEPCION_REQUERIMIENTO_ERRADO,
+                            RecursosDAOModulo5.MENSAJE_EXCEPCION_REQUERIMIENTO_ERRADO,
+                            new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
+
+            }
+            #region Capturar Excepciones
+            catch (ExcepcionesTotem.Modulo5.RequerimientoInvalidoException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
+            }
+            catch (SqlException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
+            }
+            #endregion
+        }
+
+        /// <summary>
+        /// Metodo que retorna el codigo del requerimiento no funcional
+        /// </summary>
+        /// <param name="idProyecto">int del id del proyecto</param>
+        /// <returns>String con el codigo</returns>
+        public string ObtenerCodigoRequerimientoNoFuncional(int idProyecto)
+        {
+            try
+            {
+                #region Construccion Lista de Parametros
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro parametro = new Parametro(RecursosDAOModulo5.PARAMETRO_PRO_ID,
+                    SqlDbType.Int, Convert.ToString(idProyecto), false);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosDAOModulo5.PARAMETRO_REQ_TIPO,
+                    SqlDbType.VarChar, RecursosDAOModulo5.TIPO_NO_FUNCIONAL,
+                    false);
+                parametros.Add(parametro);
+                parametro = new Parametro(RecursosDAOModulo5.PARAMETRO_REQ_CODIGO,
+                    SqlDbType.VarChar, true);
+                parametros.Add(parametro);
+                #endregion
+
+                List<Resultado> resultados = EjecutarStoredProcedure(
+                    RecursosDAOModulo5.PROCEDIMIENTO_RETORNAR_CODIGO_DE_REQUERIMIENTO,
+                    parametros);
+                if (resultados != null)
+                {
+                    foreach (Resultado resultado in resultados)
+                    {
+                        if (resultado.etiqueta.Equals(RecursosDAOModulo5.PARAMETRO_REQ_CODIGO)
+                            && resultado.valor != "")
+                        {
+                            return resultado.valor;
+                        }
+                    }
+                }
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                        new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
+
+                throw new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException(
+                            RecursosDAOModulo5.CODIGO_EXCEPCION_REQUERIMIENTO_ERRADO,
+                            RecursosDAOModulo5.MENSAJE_EXCEPCION_REQUERIMIENTO_ERRADO,
+                            new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
+
+            }
+            #region Capturar Excepciones
+            catch (ExcepcionesTotem.Modulo5.RequerimientoInvalidoException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
+            }
+            catch (SqlException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (ExcepcionesTotem.Modulo1.ParametroInvalidoException ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
+                    ex);
+
+                throw ex;
+            }
+            #endregion
+        }
         #endregion
 
 
@@ -656,7 +873,5 @@ namespace DAO.DAO.Modulo5
         }
 
         #endregion
-
-    
     }
 }

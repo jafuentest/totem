@@ -113,9 +113,21 @@ namespace Presentadores.Modulo5
                     comandoModificar = Comandos.Fabrica.FabricaComandos.CrearComandoModificarRequerimiento();
                     if (comandoModificar.Ejecutar(requerimiento))
                     {
-                        HttpContext.Current.Response.Redirect(
-                            RecursosPresentadorModulo5.Ventana_Listar_Requerimiento +
-                            RecursosPresentadorModulo5.Codigo_Exito_Modificar);
+
+                       string paginaOrigen = HttpContext.Current.Request.QueryString["list"];
+                       if (paginaOrigen.Equals("true"))
+                       {
+                           HttpContext.Current.Response.Redirect(
+                               RecursosPresentadorModulo5.Ventana_Listar_Requerimiento +
+                               RecursosPresentadorModulo5.Codigo_Exito_Modificar);
+                       }
+                       else {
+                          HttpContext.Current.Response.Redirect(
+                          RecursosPresentadorModulo5.Ventana_Reporte_Requerimiento +
+                          RecursosPresentadorModulo5.Codigo_Exito_Modificar);
+                       
+                       
+                       }
                     }
 
                     throw new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException(

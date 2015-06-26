@@ -11,7 +11,10 @@ namespace Vista.Modulo1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            HttpCookie aCookie = new HttpCookie("Intento");
+            aCookie.Values["inten"] = "0";
+            aCookie.Expires = DateTime.Now.AddMinutes(15);
+            Response.Cookies.Add(aCookie);
         }
     }
 }
