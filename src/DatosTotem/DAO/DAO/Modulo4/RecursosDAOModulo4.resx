@@ -350,7 +350,7 @@
     <comment>Procedimiento para obtener el tipo de cliente de un proyecto</comment>
   </data>
   <data name="ProcedimientoProyectosDeUsuario" xml:space="preserve">
-    <value>Procedure_ProyectosDeUsuario</value>
+    <value>M4_ProyectosDeUsuario</value>
     <comment>Procedimiento que muestra los proyectos de un usuario </comment>
   </data>
   <data name="ProcedimientoNombreClineteJuridico" xml:space="preserve">
@@ -376,5 +376,13 @@
   <data name="MensajeProyectoNoModificado" xml:space="preserve">
     <value>El proyecto no pudo ser modificado</value>
     <comment>Mensaje de error al no poder modificarse el proyecto</comment>
+  </data>
+  <data name="CodigoUsuarioSinProyectos" xml:space="preserve">
+    <value>T_04_010</value>
+    <comment>Código de error para un usuario que no posee proyectos asociados</comment>
+  </data>
+  <data name="MensajeUsuarioSinProyectos" xml:space="preserve">
+    <value>El usuario no posee proyectos asociados</value>
+    <comment>Mensaje de error para un usuario que no posee proyectos asociados</comment>
   </data>
 </root>

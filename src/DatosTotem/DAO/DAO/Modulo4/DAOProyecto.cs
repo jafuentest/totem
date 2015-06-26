@@ -7,7 +7,7 @@ using Dominio.Entidades.Modulo4;
 
 namespace DAO.DAO.Modulo4
 {
-    class DAOProyecto : DAO, IntefazDAO.Modulo4.IDaoProyecto
+    public class DAOProyecto : DAO, IntefazDAO.Modulo4.IDaoProyecto
     {
 
         #region Metodos IDao
@@ -18,8 +18,6 @@ namespace DAO.DAO.Modulo4
             {
                 try
                 {
-                    // Parámetros para insertar un proyecto
-
                     List<Parametro> parametros = new List<Parametro>();
 
                     Parametro parametroLista = new Parametro(RecursosDAOModulo4.
@@ -55,8 +53,6 @@ namespace DAO.DAO.Modulo4
                     List<Resultado> resultados = EjecutarStoredProcedure(RecursosDAOModulo4.
 				    ProcedimientoAgregarProyecto, parametros);
 
-                    // Si la creación es correcta retorna true
-
 				if (resultados != null)
 				    return true;
 				else
@@ -71,9 +67,6 @@ namespace DAO.DAO.Modulo4
             }
             else
 		  {
-
-			 // El código existe, por lo tanto no se crea el proyecto
-
 			 throw new ExcepcionesTotem.Modulo4.CodigoRepetidoException(
 				RecursosDAOModulo4.CodigoProyectoExiste,
 				RecursosDAOModulo4.MensajeCodigoProyectoExiste, new Exception());
@@ -176,9 +169,51 @@ namespace DAO.DAO.Modulo4
 	   /// </summary>
 	   /// <param name="nombreUsuario">Nombre del usuario a consultar</param>
 	   /// <returns>Lista con los proyectos asociados a un usuario</returns>
-	   public List<Dominio.Entidad> consultarProyectosPorUsuario(string nombreUsuario)
+	   public List<Dominio.Entidad> consultarProyectosPorUsuario(String nombreUsuario)
 	   {
-		  throw new NotImplementedException();
+
+		  List<Dominio.Entidad> listaProyectos = null;
+
+		  try
+		  {
+			 List<Parametro> parametros = new List<Parametro>();
+
+			 Parametro parametroLista = new Parametro(RecursosDAOModulo4.ParametroUsuario,
+				SqlDbType.VarChar, nombreUsuario, false);
+			 parametros.Add(parametroLista);
+
+			 DataTable listaDTProyectos = EjecutarStoredProcedureTuplas(
+				RecursosDAOModulo4.ProcedimientoProyectosDeUsuario, parametros);
+
+			 if (listaDTProyectos != null)
+			 {
+				listaProyectos = new List<Dominio.Entidad>();
+
+				foreach (DataRow fila in listaDTProyectos.Rows)
+				{
+				    listaProyectos.Add(new Dominio.Entidades.Modulo4.Proyecto(
+					   fila[RecursosDAOModulo4.AtributoCodigoProyecto].ToString(),
+					   fila[RecursosDAOModulo4.AtributoNombreProyecto].ToString(),
+					   Boolean.Parse(fila[RecursosDAOModulo4.AtributoEstadoProyecto].ToString()),
+					   fila[RecursosDAOModulo4.AtributoDescripcionProyecto].ToString(),
+					   fila[RecursosDAOModulo4.AtributoMonedaProyecto].ToString(),
+					   Convert.ToInt32(fila[RecursosDAOModulo4.AtributoCostoProyecto].ToString())
+					   )
+				    );
+				}
+			 }
+		  }
+		  catch (ExcepcionesTotem.ExceptionTotem ex)
+		  {			 
+			 throw ex;
+		  }
+
+		  if( listaProyectos.Count == 0 )
+			 throw new ExcepcionesTotem.Modulo4.UsuarioSinProyectosException(
+				RecursosDAOModulo4.CodigoUsuarioSinProyectos,
+				RecursosDAOModulo4.MensajeUsuarioSinProyectos, new Exception());
+
+		  return listaProyectos;
 	   }
 	   #endregion
 

@@ -8,14 +8,14 @@ using DAO.IntefazDAO.Modulo4;
 
 namespace Comandos.Comandos.Modulo4
 {
-    class ComandoAgregarProyecto : Comando<Dominio.Entidad, Boolean>
+    public class ComandoAgregarProyecto : Comando<Dominio.Entidad, Boolean>
     {
         public override bool Ejecutar(Dominio.Entidad parametro)
         {
             bool resultado = false;
 
-            FabricaAbstractaDAO laFabrica = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
-            IDaoProyecto daoProyecto = laFabrica.ObtenerDAOProyecto();
+		  FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
+		  IDaoProyecto daoProyecto = fabricaDAO.ObtenerDAOProyecto();
 
             try
             {

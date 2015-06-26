@@ -1975,15 +1975,17 @@ GO
 
 -- Procedimiento para consultar los Proyectos asociados a un usuario----------------------
 
-CREATE PROCEDURE Procedure_ProyectosDeUsuario
- 
-	@usu_username[varchar] (60)
+CREATE PROCEDURE M4_ProyectosDeUsuario
+
+  @usu_username[varchar] (60)
+
 AS 
 BEGIN
-    SELECT pro_codigo as codigo, pro_nombre as nombre , pro_estado as estado, pro_descripcion as descripcion, pro_costo as costo, pro_moneda as moneda
-	 from USUARIO U , INVOLUCRADOS_USUARIOS IU,PROYECTO P 
-	 where usu_username=@usu_username AND U.usu_id=IU.USUARIO_usu_id AND P.pro_id=IU.PROYECTO_pro_id
-
+  SELECT pro_codigo, pro_nombre, pro_estado, pro_descripcion, pro_costo, pro_moneda
+  FROM USUARIO U, INVOLUCRADOS_USUARIOS IU, PROYECTO P 
+  WHERE usu_username = @usu_username
+    AND U.usu_id = IU.USUARIO_usu_id
+    AND P.pro_id = IU.PROYECTO_pro_id
 END
 GO
 

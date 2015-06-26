@@ -190,6 +190,11 @@ namespace Comandos.Fabrica
         {
             return new ComandoAgregarProyecto();
         }
+	   public static Comando<String, List<Dominio.Entidad>>
+		  CrearComandoConsultarProyectosPorUsuario()
+	   {
+		  return new ComandoConsultarProyectosPorUsuario();
+	   }
         #endregion
 
         #region Modulo 5

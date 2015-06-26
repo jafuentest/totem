@@ -60,6 +60,7 @@
     <Compile Include="Modulo3\PruebaListaInvContacto.cs" />
     <Compile Include="Modulo3\PruebaListaInvUsuario.cs" />
     <Compile Include="Modulo3\PruebaLogicaInvolucrados.cs" />
+    <Compile Include="Modulo4\PruebaComandosProyecto.cs" />
     <Compile Include="Modulo4\PruebaExcepciones.cs" />
     <Compile Include="Modulo4\PruebaLogicaProyecto.cs" />
     <Compile Include="Modulo4\PruebaProyecto.cs" />
