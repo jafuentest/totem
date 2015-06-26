@@ -167,43 +167,38 @@ namespace DAO.DAO.Modulo7
         /// <returns>Verdadero si es valido o falso si ya existe en la Base de Datos</returns>
         public bool ValidarCorreoUnico (String correo)
         {
-            //Indicaremos si se encontro o no el username en la BD
-            bool valido = false;
+            //Indicaremos si se encontro o no el correo en la BD
+            bool valido;
 
-            //  List<Parametro> parametros = new List<Parametro>();
             try
             {
-                //Indicamos que es un Stored Procedure, cual utilizar y ademas la conexion que necesita
-                this.instruccion = new SqlCommand(RecursosBaseDeDatosModulo7.ProcedimientoCorreoUnico, this.conexion);
-                this.instruccion.CommandType = CommandType.StoredProcedure;
+                /*Creamos una lista de parametros y le agregamos los valores correspondientes 
+                a las variables de stored procedure*/
+                List<Parametro> listaParametros = new List<Parametro>();
+                Parametro parametroConsulta;
+                parametroConsulta = new Parametro(RecursosBaseDeDatosModulo7.CorreoUsuario, SqlDbType.VarChar,
+                    correo, false);
+                listaParametros.Add(parametroConsulta);
+                parametroConsulta = new Parametro(RecursosBaseDeDatosModulo7.Resultadorepetido, SqlDbType.VarChar, true);
+                listaParametros.Add(parametroConsulta);
 
-                //Le agregamos los valores correspondientes a las variables de Stored Procedure y ademas el output
-                this.instruccion.Parameters.AddWithValue(RecursosBaseDeDatosModulo7.CorreoUsuario, correo);
-                this.instruccion.Parameters.Add(RecursosBaseDeDatosModulo7.Resultadorepetido,SqlDbType.VarChar,60);
-                this.instruccion.Parameters[RecursosBaseDeDatosModulo7.Resultadorepetido].Direction = ParameterDirection.Output;
+                //Ejecutamos el stored procedure y obtenemos el output
+                List<Resultado> resultado = EjecutarStoredProcedure(RecursosBaseDeDatosModulo7.ProcedimientoCorreoUnico,
+                    listaParametros);
 
-                //Se abre conexion contra la Base de Datos
-                this.conexion.Open();
-
-                //Ejecutamos la consulta y traemos si existe el username que se desea registrar
-                this.instruccion.ExecuteNonQuery();
-
-                //Si existe se indicara que es falso, caso contrario se indicara que es verdadero
-                if (this.instruccion.Parameters[RecursosBaseDeDatosModulo7.Resultadorepetido].Value.ToString() == "")
+                //Sino existe el username en la Base de Datos entonces es valido agregarlo
+                if (resultado[0].valor == "")
                     valido = true;
-                
-                //Cerramos conexion
-                this.conexion.Close();
+                else
+                    valido = false;
+
+                return valido;
 
             }
-            catch (SqlException e)
+            catch (Exception e)
             {
-                valido = false;
-
+                throw new Exception();
             }
-
-            //Retornamos la respuesta
-            return valido;
         }
 
         /// <summary>
