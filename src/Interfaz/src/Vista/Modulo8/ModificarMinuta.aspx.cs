@@ -110,6 +110,7 @@ namespace Vista.Modulo8
 
             for (int i = 0; i < minutaDinamica["acuerdo"].Length; i++)
             {
+                System.Console.Out.WriteLine(minutaDinamica["acuerdo"]);
                 Acuerdo acuerdo = new Acuerdo();
                 List<Usuario> listaUsuarioAcuerdo = new List<Usuario>();
                 acuerdo.Id = minutaDinamica["acuerdo"][i]["codigo"]; 
