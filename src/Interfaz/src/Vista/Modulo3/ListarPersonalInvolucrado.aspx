@@ -66,7 +66,7 @@
      <script type="text/javascript">
          //redirecciona al modulo 4
          function redireccion() {
-             window.location = "/GUI/Modulo4/ListaProyectos.aspx";
+             window.location = "/GUI/Modulo4/ListarProyectos.aspx";
          }
          $(document).ready(function () {
              var table = $('#tableusers').DataTable();

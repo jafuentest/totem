@@ -45,7 +45,7 @@
                     </div>
                      <div class='col-sm-4'>
                         <div>
-                            <a href='../Modulo4/ListaProyectos.aspx'>
+                            <a href='../Modulo4/ListarProyectos.aspx'>
                             <div class='col-sm-offset-5'>
                                 <img  src='../../../img/Icons/modulo4.png' />
                             </div>
