@@ -49,8 +49,6 @@
     <Compile Include="Modulo1\PruebaComando.cs" />
     <Compile Include="Modulo1\PruebaDAOLogin.cs" />
     <Compile Include="Modulo1\PruebaExcepciones.cs" />
-    <Compile Include="Modulo1\PruebaBDLogin.cs" />
-    <Compile Include="Modulo1\PruebaLogicaLogin.cs" />
     <Compile Include="Modulo1\RecursosPUMod1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

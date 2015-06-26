@@ -11,7 +11,7 @@ using DAO.Fabrica;
 
 namespace Comandos.Comandos.Modulo1
 {
-    class ComandoValidarCorreoExistente : Comando<string, bool>
+    public class ComandoValidarCorreoExistente : Comando<string, bool>
     {
         public override bool Ejecutar(string parametro)
         {
