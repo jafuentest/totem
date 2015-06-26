@@ -56,7 +56,7 @@ namespace Vista.Modulo8
                 }
 
             }*/
-            string codigoProyecto = Server.HtmlEncode(Request.Cookies["selectedProjectCookie"]["projectCode"]);
+            string codigoProyecto = "TOT";
 
         }
         #region Contrato

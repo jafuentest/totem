@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +14,7 @@ using System.Data.SqlClient;
 
 namespace Comandos.Comandos.Modulo8
 {
-    public class ComandoDetalleMinuta : Comando<String,Dominio.Entidad>
+    public class ComandoDetalleMinuta : Comando<String, Dominio.Entidad>
     {
 
         public override Entidad Ejecutar(String parametro)
@@ -31,12 +29,12 @@ namespace Comandos.Comandos.Modulo8
             Minuta minuta;
             try
             {
-                FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
+                FabricaAbstractaDAO fabricaDAO = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
                 DAO.IntefazDAO.Modulo8.IDaoMinuta daoMinuta = fabricaDAO.ObtenerDAOMinuta();
                 DAO.IntefazDAO.Modulo8.IDaoInvolucradosMinuta daoInvolucradosMinuta = fabricaDAO.ObtenerDAOInvolucradosMinuta();
                 DAO.IntefazDAO.Modulo8.IDaoPunto daoPunto = fabricaDAO.ObtenerDAOPunto();
                 DAO.IntefazDAO.Modulo8.IDaoAcuerdo daoAcuerdo = fabricaDAO.ObtenerDAOAcuerdo();
-               
+
                 minuta = (Minuta)daoMinuta.ConsultarMinutaBD(int.Parse(parametro));
                 usuarios.Clear();
                 invo = daoInvolucradosMinuta.ConsultarInvolucrado(RecursosComandosModulo8.ProcedureConsultarUsuarioMinuta
@@ -64,24 +62,24 @@ namespace Comandos.Comandos.Modulo8
 
 
                 listaAcuerdos = daoAcuerdo.ConsultarTodos(minuta.Id).Cast<Acuerdo>().ToList();
-                          foreach (Acuerdo acu in listaAcuerdos)
-                              {
-                                    invoAcuerdo = daoInvolucradosMinuta.ConsultarInvolucrado(RecursosComandosModulo8.ProcedureConsultarUsuarioAcuerdo
-                                          , RecursosComandosModulo8.AtributoAcuerdoUsuario, RecursosComandosModulo8.ParametroIDAcuerdo, acu.Id.ToString());
-                                    if (invoAcuerdo != null)
-                                      {
-                                          foreach (int a in invoAcuerdo)
-                                          {
-                                              usuariosAcuerdo.Add((Usuario)daoInvolucradosMinuta.ConsultarUsuarioMinutas(a));
-                                          }
-                                        acu.ListaUsuario = usuariosAcuerdo;
-                                      }
-                                    usuariosAcuerdo = null;
-                                    usuariosAcuerdo = new List<Usuario>();
-                                   invo.Clear();
+                foreach (Acuerdo acu in listaAcuerdos)
+                {
+                    invoAcuerdo = daoInvolucradosMinuta.ConsultarInvolucrado(RecursosComandosModulo8.ProcedureConsultarUsuarioAcuerdo
+                          , RecursosComandosModulo8.AtributoAcuerdoUsuario, RecursosComandosModulo8.ParametroIDAcuerdo, acu.Id.ToString());
+                    if (invoAcuerdo != null)
+                    {
+                        foreach (int a in invoAcuerdo)
+                        {
+                            usuariosAcuerdo.Add((Usuario)daoInvolucradosMinuta.ConsultarUsuarioMinutas(a));
+                        }
+                        acu.ListaUsuario = usuariosAcuerdo;
+                    }
+                    usuariosAcuerdo = null;
+                    usuariosAcuerdo = new List<Usuario>();
+                    invo.Clear();
 
-                              }
-                    minuta.ListaAcuerdo = listaAcuerdos;
+                }
+                minuta.ListaAcuerdo = listaAcuerdos;
                 return minuta;
 
 
