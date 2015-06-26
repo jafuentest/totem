@@ -48,6 +48,11 @@ namespace Comandos.Fabrica
             return new ComandoValidarCorreoExistente();
         }
 
+        public static Comando<List<String>, bool> CrearComandoEnviarEmail()
+        {
+            return new ComandoEnviarEmail();
+        }
+
         #endregion
 
         #region Modulo 2
