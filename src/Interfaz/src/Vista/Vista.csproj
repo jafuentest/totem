@@ -136,6 +136,7 @@
     <Content Include="Modulo6\Listar.aspx" />
     <Content Include="Modulo6\ListarActores.aspx" />
     <Content Include="Modulo6\Modificar.aspx" />
+    <Content Include="Modulo6\ModificarActor.aspx" />
     <Content Include="Modulo6\ReporteActores.aspx" />
     <Content Include="Modulo7\AgregarUsuario.aspx" />
     <Content Include="Modulo7\DetalleUsuario.aspx" />
@@ -367,6 +368,13 @@
     </Compile>
     <Compile Include="Modulo6\Modificar.aspx.designer.cs">
       <DependentUpon>Modificar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo6\ModificarActor.aspx.cs">
+      <DependentUpon>ModificarActor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo6\ModificarActor.aspx.designer.cs">
+      <DependentUpon>ModificarActor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulo6\ReporteActores.aspx.cs">
       <DependentUpon>ReporteActores.aspx</DependentUpon>
