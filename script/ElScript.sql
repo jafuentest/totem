@@ -2427,6 +2427,15 @@ DECLARE @idProyecto int = 0
 	
 GO
 
+CREATE PROCEDURE Consultar_Actor_Por_ID
+@idactor int
+AS
+Select act_nombre as nombreActor,
+	   act_descripcion as descripcionActor
+FROM actor where act_id=@idactor
+END
+GO
+
 
 /*Leer actor(es)*/
 CREATE PROCEDURE LEER_ACTOR 
@@ -2445,13 +2454,13 @@ GO
 CREATE PROCEDURE MODIFICAR_ACTOR 
 	@nombre [varchar] (100),
 	@descripcion [varchar] (500),
-	@idproyecto int,
+	
 	@idactor int
 AS
 	BEGIN
 		--Modifico los datos de un Actor en especifico del proyecto en especifico
 		UPDATE ACTOR SET act_nombre = @nombre, act_descripcion = @descripcion 
-		WHERE (PROYECTO_pro_id = @idproyecto) AND (act_id = @idactor);
+		WHERE (act_id = @idactor);
 		
 		
 	END
