@@ -20,8 +20,9 @@ namespace Comandos.Comandos.Modulo3
             bool exito = false;
             try
             {
-                FabricaAbstractaDAO laFabrica = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
-                IDaoInvolucrados daoInvolucrado = laFabrica.ObtenerDaoInvolucrados();
+                DAO.IntefazDAO.Modulo3.IDaoInvolucrados daoInvolucrado;
+                DAO.Fabrica.FabricaDAOSqlServer fabricaDAO = new DAO.Fabrica.FabricaDAOSqlServer();
+                daoInvolucrado = fabricaDAO.ObtenerDaoInvolucrados();
                 exito = daoInvolucrado.AgregarContactosInvolucrados(parametro);
             }
             catch (ListaSinInvolucradosException)

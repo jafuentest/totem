@@ -21,9 +21,10 @@ namespace Comandos.Comandos.Modulo3
             List<Entidad> listContacto;
             try
             {
-                FabricaAbstractaDAO laFabrica = FabricaDAOSqlServer.ObtenerFabricaSqlServer();
-                IDaoInvolucrados daoInvolucrados = laFabrica.ObtenerDaoInvolucrados();
-                listContacto =  daoInvolucrados.ListarContactosPorEmpresa(parametro);
+                DAO.IntefazDAO.Modulo3.IDaoInvolucrados daoInvolucrado;
+                DAO.Fabrica.FabricaDAOSqlServer fabricaDAO = new DAO.Fabrica.FabricaDAOSqlServer();
+                daoInvolucrado = fabricaDAO.ObtenerDaoInvolucrados();
+                listContacto = daoInvolucrado.ListarContactosPorEmpresa(parametro);
             }
             catch (Exception ex)
             {

@@ -20,9 +20,10 @@ namespace Comandos.Comandos.Modulo3
             Contacto contactoID;
             try
             {
-                FabricaAbstractaDAO laFabrica = FabricaDAOSqlServer.ObtenerFabricaSqlServer();
-                IDaoInvolucrados daoInvolucrados = laFabrica.ObtenerDaoInvolucrados();
-                contactoID= (Contacto)daoInvolucrados.DatosContactoID(parametro);
+                DAO.IntefazDAO.Modulo3.IDaoInvolucrados daoInvolucrado;
+                DAO.Fabrica.FabricaDAOSqlServer fabricaDAO = new DAO.Fabrica.FabricaDAOSqlServer();
+                daoInvolucrado = fabricaDAO.ObtenerDaoInvolucrados();
+                contactoID = (Contacto) daoInvolucrado.DatosContactoID(parametro);
             }
             catch (Exception ex)
             {

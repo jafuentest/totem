@@ -20,9 +20,10 @@ namespace Comandos.Comandos.Modulo3
             Usuario usuario;
             try
             {
-                FabricaAbstractaDAO laFabrica = FabricaDAOSqlServer.ObtenerFabricaSqlServer();
-                IDaoInvolucrados daoInvolucrados = laFabrica.ObtenerDaoInvolucrados();
-                usuario = (Usuario) daoInvolucrados.DatosUsuarioUsername(parametro);
+                DAO.IntefazDAO.Modulo3.IDaoInvolucrados daoInvolucrado;
+                DAO.Fabrica.FabricaDAOSqlServer fabricaDAO = new DAO.Fabrica.FabricaDAOSqlServer();
+                daoInvolucrado = fabricaDAO.ObtenerDaoInvolucrados();
+                usuario = (Usuario) daoInvolucrado.DatosUsuarioUsername(parametro);
             }catch(Exception ex){
                 throw ex;
             }
