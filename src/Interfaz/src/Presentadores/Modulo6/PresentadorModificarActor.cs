@@ -29,5 +29,88 @@ namespace Presentadores.Modulo6
             this.vista = vista;
         }
 
+
+        /// <summary>
+        /// Método que se ejecuta para desplegar un mensaje de 
+        /// éxito por pantalla
+        /// </summary>
+        /// <param name="mensaje"></param>
+        public void MostrarMensajeExito(string mensaje)
+        {
+            vista.mensajeExito.Visible = true;
+            vista.mensajeExito.Text = mensaje;
+        }
+
+
+        /// <summary>
+        /// Método que se ejecuta para desplegar un mensaje de error 
+        /// por pantalla. 
+        /// </summary>
+        /// <param name="mensaje"></param>
+        public void MostrarMensajeError(string mensaje)
+        {
+            vista.mensajeError.Visible = true;
+            vista.mensajeError.Text = mensaje;
+        }
+
+        public void CargarDatosActor() 
+        {
+            FabricaEntidades fabrica = new FabricaEntidades(); 
+            Entidad laEnti = fabrica.ObtenerActor(); 
+            Actor elActor = (Actor)laEnti; 
+            elActor.Id=1; 
+            try
+            {
+                Comandos.Comando<Entidad, Entidad> comandoConsultar =
+                    FabricaComandos.CrearComandoConsultarActorXID();
+                Entidad entidad = comandoConsultar.Ejecutar(elActor);
+
+                if (entidad != null) 
+                {
+                    Actor actorADesplegar = (Actor)entidad;
+                    vista.nombreActor = actorADesplegar.NombreActor;
+                    vista.descActor = actorADesplegar.DescripcionActor; 
+                }
+                
+            }
+            catch(Exception e)
+            {
+                throw e; 
+            }
+
+        }
+
+        public void ModificarDatos() 
+        {
+            FabricaEntidades fabrica = new FabricaEntidades();
+            Entidad laEnti = fabrica.ObtenerActor();
+            Actor elActor = (Actor)laEnti;
+            elActor.Id = 1;
+            elActor.NombreActor = vista.nombreActor;
+            elActor.DescripcionActor = vista.descActor;
+            try
+            {
+                Comandos.Comando<Entidad, bool> comandoModificar =
+                   FabricaComandos.CrearComandoModificarActor();
+                bool modifico = comandoModificar.Ejecutar(elActor);
+                if (modifico) 
+                {
+                    MostrarMensajeExito(RecursosPresentadorModulo6.MensajeExitoModificarActor);
+                }
+            }
+            catch (Exception e) 
+            {
+                ErrorGeneralPresentadorException exAgregarActorPresentador =
+                         new ErrorGeneralPresentadorException(
+                             RecursosPresentadorModulo6.CodigoMensajePresentadorException,
+                             RecursosPresentadorModulo6.MensajePresentadorException,
+                             e);
+                Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                    , e);
+
+                MostrarMensajeError(exAgregarActorPresentador.Mensaje);
+            }
+        }
+
     }
 }

@@ -66,7 +66,7 @@
 			<div class="form-group">
 				<div class="col-md-6">
                                       
-					<button runat="server" id="botonAgregar" class="btn btn-primary" onserverclick="AgregarActorClick">Agregar</button>
+					<button runat="server" id="botonAgregar" class="btn btn-primary" onserverclick="botonModificar_ServerClick">Modificar</button>
 					<a class="btn btn-default" href="ListarActores.aspx">Cancelar</a>
 				</div>
 			</div>

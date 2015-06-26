@@ -19,31 +19,31 @@ namespace Vista.Modulo6
         }
         #region Contrato
 
-        string Contratos.Modulo6.IContratoAgregarActor.nombreActor 
+        string Contratos.Modulo6.IContratoModificarActor.nombreActor 
         {
             get { return nombre_actor.Value; }
             set { nombre_actor.Value = value; }
         }
 
-        string Contratos.Modulo6.IContratoAgregarActor.descActor 
+        string Contratos.Modulo6.IContratoModificarActor.descActor 
         {
             get { return descripcion_actor.Value; }
             set { descripcion_actor.Value = value; }
         }
 
-        Label Contratos.Modulo6.IContratoAgregarActor.mensajeExito
+        Label Contratos.Modulo6.IContratoModificarActor.mensajeExito
         {
             get { return labelMensajeExito; }
             set { labelMensajeExito = value; }  
         }
 
-        Label Contratos.Modulo6.IContratoAgregarActor.mensajeError
+        Label Contratos.Modulo6.IContratoModificarActor.mensajeError
         {
             get { return labelMensajeError; }
             set { labelMensajeError = value; }
         }
 
-        HtmlButton Contratos.Modulo6.IContratoAgregarActor.botonAgregar 
+        HtmlButton Contratos.Modulo6.IContratoModificarActor.botonAgregar 
         {
             get { return botonAgregar; }
             set { botonAgregar = value; }
@@ -58,7 +58,13 @@ namespace Vista.Modulo6
             if (!IsPostBack)
             {
                 this.Master.presentador.CargarMenuLateral();
+                this.presentador.CargarDatosActor(); 
             }
+        }
+
+        protected void botonModificar_ServerClick(object sender, EventArgs e)
+        {
+            this.presentador.ModificarDatos(); 
         }
     }
 }

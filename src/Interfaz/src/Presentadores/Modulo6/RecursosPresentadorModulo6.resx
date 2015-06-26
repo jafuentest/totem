@@ -181,6 +181,9 @@
   <data name="MensajeExitoAgregarActor" xml:space="preserve">
     <value>Actor agregado éxitosamente</value>
   </data>
+  <data name="MensajeExitoModificarActor" xml:space="preserve">
+    <value>El actor se ha modificado exitosamente.</value>
+  </data>
   <data name="MensajePresentadorBDException" xml:space="preserve">
     <value>Error al conectar con la base de datos.</value>
   </data>
