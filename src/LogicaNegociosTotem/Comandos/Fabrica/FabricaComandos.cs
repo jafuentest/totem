@@ -296,6 +296,11 @@ namespace Comandos.Fabrica
         {
             return new ComandoModificarActor(); 
         }
+
+        public static Comando<int, bool> CrearComandoEliminarActor()
+        {
+            return new ComandoEliminarActor();
+        }
         #endregion
 
         #region Modulo 7

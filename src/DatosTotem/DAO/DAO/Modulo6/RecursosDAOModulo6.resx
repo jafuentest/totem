@@ -304,4 +304,7 @@
   <data name="MensajeActorNoModificadoBD" xml:space="preserve">
     <value>El actor no se pudo modificar en la Base de Datos.</value>
   </data>
+  <data name="ProcedureEliminarActor" xml:space="preserve">
+    <value>ELIMINAR_ACTOR</value>
+  </data>
 </root>
