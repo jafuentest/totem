@@ -51,9 +51,10 @@ namespace Presentadores.Modulo7
             options.Add("-1", "Selecciona cargo");
             Comando<bool, List<String>> comandoCargos = FabricaComandos.CrearComandoListarCargos();
             List<String> listaCargos = new List<String>();
-            listaCargos = comandoCargos.Ejecutar(true);
             try
             {
+                listaCargos = comandoCargos.Ejecutar(true);
+            
                 foreach (String cargo in listaCargos)
                 {
                      options.Add(cargo, cargo);

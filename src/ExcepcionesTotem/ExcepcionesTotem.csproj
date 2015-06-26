@@ -116,6 +116,7 @@
     <Compile Include="Modulo6\ExcepcionesPresentador\ErrorGeneralPresentadorException.cs" />
     <Compile Include="Modulo6\ExcepcionesPresentador\CaracteresMaliciososException.cs" />
     <Compile Include="Modulo6\ExcepcionesPresentador\TipoDeDatoErroneoPresentadorException.cs" />
+    <Compile Include="Modulo7\CargosNoExistentesException.cs" />
     <Compile Include="Modulo7\ClaveNoValidaException.cs" />
     <Compile Include="Modulo7\CorreoInvalidoException.cs" />
     <Compile Include="Modulo7\CorreoRepeticoException.cs" />

@@ -9,6 +9,7 @@ using Dominio.Entidades.Modulo2;
 using Comandos;
 using Comandos.Fabrica;
 using System.Web;
+using System.Web.UI;
 
 namespace Presentadores.Modulo2
 {
@@ -22,9 +23,9 @@ namespace Presentadores.Modulo2
         }
         public void ObtenerVariablesURL()
         {
-            String detalleEmpresa = HttpContext.Current.Request.QueryString["detalle"];
+            String detalleEmpresa = HttpContext.Current.Request.QueryString["id"];
             String success = HttpContext.Current.Request.QueryString["success"];
-            if (detalleEmpresa != null)
+            if (detalleEmpresa != null && !(HttpContext.Current.Handler as Page).IsPostBack)
             {
                 cargarDatos(detalleEmpresa);
                 if (success != null && success.Equals("modificar"))
@@ -35,6 +36,15 @@ namespace Presentadores.Modulo2
                         RecursoInterfazM2.Alerta_Mensaje_Contacto_Modificado +
                         RecursoInterfazM2.Alerta_Html_Final;
                 }
+                else
+                    if (success != null && success.Equals("agregar"))
+                    {
+                        vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Exito;
+                        vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
+                        vista.alerta = RecursoInterfazM2.Alerta_Html +
+                            RecursoInterfazM2.Alerta_Mensaje_Contacto_Agregado +
+                            RecursoInterfazM2.Alerta_Html_Final;
+                    }
             }
         }
         public void cargarDatos(String idEmpresa)
@@ -96,6 +106,15 @@ namespace Presentadores.Modulo2
                     ex.Message +
                     RecursoInterfazM2.Alerta_Html_Final;
             }
+        }
+
+        public void redirAgregarContacto()
+        {
+            String detalleEmpresa = HttpContext.Current.Request.QueryString["id"];
+            if (detalleEmpresa != null)
+                HttpContext.Current.Response.Redirect(RecursoInterfazM2.AgregarContacto + detalleEmpresa
+                    + RecursoInterfazM2.RedireccionPag + HttpContext.Current.Request.Url.LocalPath + 
+                    RecursoInterfazM2.RedireccionID + detalleEmpresa);
         }
     }
 }

@@ -125,9 +125,9 @@
     <value>@usu_apellido</value>
     <comment>Atributo apellido usuario</comment>
   </data>
-  <data name="CargoNombre" xml:space="preserve">
-    <value>CargoNombre</value>
-    <comment>cargo del usuario</comment>
+  <data name="CARGO_NOMBRE" xml:space="preserve">
+    <value>CAR_NOMBRE</value>
+    <comment>atributo car_nombre de la entidad CARGO de la BD</comment>
   </data>
   <data name="CargosUsuarios" xml:space="preserve">
     <value>SELECT DISTINCT CAR_NOMBRE FROM CARGO, USUARIO WHERE CARGO_car_id=car_id</value>
@@ -257,5 +257,21 @@
   <data name="PROCEDIMIENTO_SELECCIONAR_CARGOS" xml:space="preserve">
     <value>seleccionarCargos</value>
     <comment>Stored Procedure que consulta los cargos existentes</comment>
+  </data>
+  <data name="EXCEPTION_CARGOS_INEXISTENTES_CODIGO" xml:space="preserve">
+    <value>T_07_002</value>
+    <comment>Codigo de error cuando no existe ningun cargo en la base de datos</comment>
+  </data>
+  <data name="EXCEPTION_CARGOS_INEXISTENTES_MENSAJE" xml:space="preserve">
+    <value>No se ha podido encontrar ningun cargo en la Base de Datos</value>
+    <comment>Mensaje que se produce cuando no se obtiene ningun cargo</comment>
+  </data>
+  <data name="EXCEPTION_INESPERADO_CODIGO" xml:space="preserve">
+    <value>T_07_001</value>
+    <comment>Codigo de error sobre un error inesperado en el DAO</comment>
+  </data>
+  <data name="EXCEPTION_INESPERADO_MENSAJE" xml:space="preserve">
+    <value>Ha ocurrido un error inesperado en el DAOUsuario al realizar esta operacion</value>
+    <comment>Mensaje que se produce cuando no se sabe que error ocurrio especificamente</comment>
   </data>
 </root>

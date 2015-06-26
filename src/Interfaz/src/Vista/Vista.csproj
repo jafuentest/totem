@@ -44,6 +44,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Recaptcha">
+      <HintPath>..\..\Bin\Recaptcha.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -110,6 +113,7 @@
     <Content Include="Modulo1\PreguntaSeguridad.aspx" />
     <Content Include="Modulo1\RecuperacionClave.aspx" />
     <Content Include="Modulo2\AgregarCliente.aspx" />
+    <Content Include="Modulo2\AgregarContacto.aspx" />
     <Content Include="Modulo2\AgregarEmpresa.aspx" />
     <Content Include="Modulo2\DetallarCliente.aspx" />
     <Content Include="Modulo2\DetallarContacto.aspx" />
@@ -206,6 +210,13 @@
     </Compile>
     <Compile Include="Modulo2\AgregarCliente.aspx.designer.cs">
       <DependentUpon>AgregarCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo2\AgregarContacto.aspx.cs">
+      <DependentUpon>AgregarContacto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo2\AgregarContacto.aspx.designer.cs">
+      <DependentUpon>AgregarContacto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulo2\AgregarEmpresa.aspx.cs">
       <DependentUpon>AgregarEmpresa.aspx</DependentUpon>

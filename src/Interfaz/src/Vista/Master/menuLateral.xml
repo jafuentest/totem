@@ -40,7 +40,7 @@
     <opcion nombre="Listar requerimientos" link="/Modulo5/ListarRequerimientos.aspx">
 	   <modulo id="5"></modulo>
     </opcion>
-    <opcion nombre="Reportes" link="/Modulo5/Reportes.aspx">
+    <opcion nombre="Reportes" link="/Modulo5/ReporteRequerimientos.aspx">
 	   <modulo id="5"></modulo>
     </opcion>
   

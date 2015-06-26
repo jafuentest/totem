@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="Comandos\Modulo2\ComandoAgregarClienteJuridico.cs" />
     <Compile Include="Comandos\Modulo2\ComandoAgregarClienteNatural.cs" />
+    <Compile Include="Comandos\Modulo2\ComandoAgregarContacto.cs" />
     <Compile Include="Comandos\Modulo2\ComandoConsultarCiudadPorEstado.cs" />
     <Compile Include="Comandos\Modulo2\ComandoConsultarClienteJurXID.cs" />
     <Compile Include="Comandos\Modulo2\ComandoConsultarDatosContactoID.cs" />
