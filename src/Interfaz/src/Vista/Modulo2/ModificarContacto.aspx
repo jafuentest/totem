@@ -36,8 +36,6 @@
                                     <input id="contactoNombre" runat="server" class="form-control" placeholder="Nombres del Contacto" type="text" />
                                 </div>
                             </div>
-
-                            <div class="col-xs-12 form-group" Runat="Server"></div>
                             <div class="form-group" Runat="Server">
                                 <div class="col-xs-12" Runat="Server">
                                     <input runat="server" id="apellidoContacto" class="form-control" placeholder="Apellidos del Contacto" type="text" />
@@ -46,7 +44,7 @@
                             </div>                            
                             <div class="form-group" Runat="Server">
                                 <div class="col-xs-12" Runat="Server">
-                                    <input runat="server" id="cedulaContacto" class="form-control" placeholder="cedula del Contacto" type="text" />
+                                    <input runat="server" id="cedulaContacto" class="form-control" placeholder="Cedula del Contacto" type="text" />
                                 </div>
 
                             </div>
@@ -68,17 +66,10 @@
                                     <input id="telefonoCliente" runat="server" name="telefono" type="text" class="form-control" placeholder="Teléfono" maxlength="7" />
                                 </div>
                             </div>
-                     </div>
-
-
-
-                        
-
-
-                    <div class="form-group">
+                     </div><div class="form-group">
                         <div id="div_botones" class="col-sm-12 col-md-12 col-lg-12" Runat="Server">
-                            <a class="btn btn-primary" href="ListarEmpresas.aspx?success=regis" Runat="Server">Editar</a>
-                            <a class="btn btn-default" href="ListarEmpresas.aspx" Runat="Server">Cancelar</a>
+                            <asp:Button id="botonEditar" runat="server" class="btn btn-primary" Text="Editar" type="submit" OnClick="botonEditar_Click"></asp:Button>
+                            <a class="btn btn-default"  href="javascript:history.go(-1)"  Runat="Server">Cancelar</a>
                         </div>
                     </div>
 

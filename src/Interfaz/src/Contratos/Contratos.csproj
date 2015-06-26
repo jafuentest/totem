@@ -66,6 +66,7 @@
     <Compile Include="Modulo6\IContratoAgregarActor.cs" />
     <Compile Include="Modulo6\IContratoAgregarCasoDeUso.cs" />
     <Compile Include="Modulo6\IContratoListar.cs" />
+    <Compile Include="Modulo6\IContratoListarActores.cs" />
     <Compile Include="Modulo6\IContratoReporteActores.cs" />
     <Compile Include="Modulo7\IContratoAgregarUsuario.cs" />
     <Compile Include="Modulo7\IContratoListarUsuarios.cs" />

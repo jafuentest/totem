@@ -24,6 +24,7 @@ namespace Vista.Modulo2
             {
                 this.Master.presentador.CargarMenuLateral();
                 presentador.llenarComboPais();
+
             }
 
         }
@@ -175,8 +176,7 @@ namespace Vista.Modulo2
         protected void EditarEmpresa_Click(object sender, EventArgs e)
         {
             String edicionEmpresa = Request.QueryString["id"];
-            if (presentador.modificarEmpresa(edicionEmpresa))
-                Response.Redirect("../Modulo2/ListarEmpresas.aspx?success-eliminacion=true");
+            presentador.modificarEmpresa(edicionEmpresa);
 
         }
     }
