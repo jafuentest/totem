@@ -1,18 +1,16 @@
-﻿using System;
+﻿using Dominio;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Dominio.Entidades.Modulo7;
-using Dominio;
 
 namespace DAO.IntefazDAO.Modulo7
 {
     /// <summary>
     /// Interface a ser usada por la clase DAOUsuario
     /// </summary>
-    public interface IDaoUsuario
-    {
-        /// <summary>
+	public interface IDaoUsuario : IDao <Dominio.Entidad, Boolean, Dominio.Entidad>
+	{
+		#region Teddy
+		/// <summary>
         /// Firma de metodo que implementara la logica del agregar usuario a la Base de Datos
         /// </summary>
         /// <param name="usuario">El usuario a ser agregado</param>
@@ -64,6 +62,10 @@ namespace DAO.IntefazDAO.Modulo7
         /// <param name="username">El username que se desea eliminar</param>
         /// <returns>Verdadero si se logro a eliminar, falso sino se logro eliminar</returns>
         bool EliminarUsuario(String username);
-        
-    }
+		#endregion
+
+		#region Juan
+		Entidad ConsultarPorUsername(Entidad parametro);
+		#endregion
+	}
 }

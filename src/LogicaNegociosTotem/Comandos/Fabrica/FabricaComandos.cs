@@ -370,6 +370,11 @@ namespace Comandos.Fabrica
         {
             return new ComandoEliminarUsuario();
         }
+
+		public static Comando<Entidad, Entidad> CrearComandoDetalleUsuario()
+		{
+			return new ComandoDetalleUsuario();
+		}
         #endregion
 
         #region Modulo 8

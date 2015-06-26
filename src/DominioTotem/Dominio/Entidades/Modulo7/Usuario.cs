@@ -14,6 +14,7 @@ namespace Dominio.Entidades.Modulo7
         #region Atributos
         //Atributos de la Clase Usuario
         private int idUsuario;
+		private int idCargo;
         private string username;
         private string clave;
         private string nombre;
@@ -104,6 +105,46 @@ namespace Dominio.Entidades.Modulo7
             this.cargo = cargo;
             
         }
+
+		/// <summary>
+		/// Constructor de la clase Usuario que contiene el id de la Base de Datos y el id del cargo
+		/// </summary>
+		/// <param name="idUsuario">su ID en la Base de Datos</param>
+		/// <param name="idCargo">su ID en la Base de Datos</param>
+		/// <param name="username">Username del usuario</param>
+		/// <param name="clave">Clave del usuario</param>
+		/// <param name="nombre">Nombre del usuario</param>
+		/// <param name="apellido">Apellido del usuario</param>
+		/// <param name="rol">Rol que ocupa</param>
+		/// <param name="correo">Correo del Usuario</param>
+		/// <param name="preguntaSeguridad">Pregunta de seguridad si olvida su clave</param>
+		/// <param name="respuestaSeguridad">Respuesta a la pregunta de seguridad</param>
+		/// <param name="cargo">Cargo que ocupa</param>
+		public Usuario(int idUsuario, int idCargo, string username, string clave, string nombre, string apellido,
+			string rol, string correo, string preguntaSeguridad, string respuestaSeguridad, string cargo)
+			: base(idUsuario)
+		{
+			this.idCargo = idCargo;
+			this.idUsuario = idUsuario;
+			this.username = username;
+			this.clave = clave;
+			this.nombre = nombre;
+			this.apellido = apellido;
+			this.rol = rol;
+			this.correo = correo;
+			this.preguntaSeguridad = preguntaSeguridad;
+			this.respuestaSeguridad = respuestaSeguridad;
+			this.cargo = cargo;
+		}
+
+		/// <summary>
+		/// Constructor de la clase Usuario que contiene solo el username
+		/// </summary>
+		/// <param name="username"></param>
+		public Usuario(string username)
+		{
+			this.username = username;
+		}
         #endregion
 
         #region Propiedades
@@ -115,6 +156,15 @@ namespace Dominio.Entidades.Modulo7
             get { return this.idUsuario; }
             set { this.idUsuario = value; } 
         }
+
+		/// <summary>
+		/// Retorna el ID del cargo del usuario y tambien permite asignarle un ID nuevo
+		/// </summary>
+		public int IdCargo
+		{
+			get { return this.idCargo; }
+			set { this.idCargo = value; }
+		}
 
         /// <summary>
         /// Returna el username del usuario y tambien permite asignar un username nuevo

@@ -125,9 +125,13 @@
     <value>@usu_apellido</value>
     <comment>Atributo apellido usuario</comment>
   </data>
-  <data name="CARGO_NOMBRE" xml:space="preserve">
+	<data name="CARGO_NOMBRE" xml:space="preserve">
     <value>CAR_NOMBRE</value>
     <comment>atributo car_nombre de la entidad CARGO de la BD</comment>
+	</data>
+  <data name="CargoNombre" xml:space="preserve">
+    <value>CargoNombre</value>
+    <comment>cargo del usuario</comment>
   </data>
   <data name="CargosUsuarios" xml:space="preserve">
     <value>SELECT DISTINCT CAR_NOMBRE FROM CARGO, USUARIO WHERE CARGO_car_id=car_id</value>
@@ -277,5 +281,26 @@
   <data name="CargoNombre" xml:space="preserve">
     <value>CargoNombre</value>
     <comment>Nombre del cargo para un usuario</comment>
+  </data>
+  <data name="AtributoApellido" xml:space="preserve">
+    <value>usu_apellido</value>
+  </data>
+  <data name="AtributoCargo" xml:space="preserve">
+    <value>car_nombre</value>
+  </data>
+  <data name="AtributoNombre" xml:space="preserve">
+    <value>usu_nombre</value>
+  </data>
+  <data name="AtributoUsername" xml:space="preserve">
+    <value>usu_username</value>
+  </data>
+  <data name="IdCargoUsuario" xml:space="preserve">
+    <value>@CARGO_car_id</value>
+  </data>
+  <data name="IdUsuario" xml:space="preserve">
+    <value>@usu_id</value>
+  </data>
+  <data name="ProcedimientoConsultarUsername" xml:space="preserve">
+    <value>ConsultarUsuarioPorUsername</value>
   </data>
 </root>

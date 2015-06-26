@@ -16,6 +16,7 @@ using ExcepcionesTotem.Modulo7;
 
 namespace DAO.DAO.Modulo7
 {
+	#region Teddy
     /// <summary>
     /// Clase DAO que interactua con la BD y realiza las operaciones del Usuario
     /// </summary>
@@ -469,6 +470,187 @@ namespace DAO.DAO.Modulo7
 
 
             return exito;
-        }
-    }
+		}
+		#endregion
+
+		#region Juan
+		public bool Modificar(Entidad parametro)
+		{
+			bool modificado = false;
+			try
+			{
+				Usuario usuario = parametro as Usuario;
+				if (usuario != null)
+				{
+					List<Parametro> parametros = parametrosModificarUsuario(usuario);
+					List<Resultado> resultados = base.EjecutarStoredProcedure
+						(RecursosBaseDeDatosModulo7.ProcedimientoModificarUsuario, parametros);
+				}
+				else
+				{
+					throw new Exception("El objeto usado no es una instancia de la clase Usuario");
+				}
+			}
+			catch (ExceptionTotem e)
+			{
+				throw e;
+			}
+
+			return modificado;
+		}
+
+		public Entidad ConsultarPorUsername(Entidad parametro)
+		{
+			try
+			{
+				Usuario usuario = (Usuario) parametro;
+				List<Parametro> parametros = parametrosDetalleUsuario(usuario);
+				List<Resultado> resultados = EjecutarStoredProcedure(
+					RecursosBaseDeDatosModulo7.ProcedimientoConsultarUsername, parametros);
+
+				if (resultados == null)
+				{
+					throw new Exception("No se encontró el usuario");
+				}
+				else
+				{
+					foreach (Resultado resultado in resultados)
+					{
+						if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.NombreUsuario))
+							usuario.Nombre = resultado.valor;
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.ApellidoUsuario))
+							usuario.Apellido = resultado.valor;
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.CorreoUsuario))
+							usuario.Correo = resultado.valor;
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.RolUsuario))
+							usuario.Rol = resultado.valor;
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.UsernameUsuario))
+							usuario.Username = resultado.valor;
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.CargoUsuario))
+							usuario.Cargo = resultado.valor;
+					}
+				}
+
+				return usuario;
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		private List<Parametro> parametrosModificarUsuario(Usuario usuario)
+		{
+			List<Parametro> parametros = new List<Parametro>();
+
+			parametros.Add(new Parametro(
+				RecursosBaseDeDatosModulo7.IdUsuario, SqlDbType.Int, usuario.Id.ToString(), false
+			));
+
+			parametros.Add(new Parametro(
+				RecursosBaseDeDatosModulo7.UsernameUsuario, SqlDbType.VarChar, usuario.Username, false
+			));
+
+			parametros.Add(new Parametro(
+				RecursosBaseDeDatosModulo7.ClaveUsuario, SqlDbType.VarChar, usuario.Clave, false
+			));
+
+			parametros.Add(new Parametro(
+				RecursosBaseDeDatosModulo7.NombreUsuario, SqlDbType.VarChar, usuario.Nombre, false
+			));
+
+			parametros.Add(new Parametro(
+				RecursosBaseDeDatosModulo7.ApellidoUsuario, SqlDbType.VarChar, usuario.Apellido, false
+			));
+
+			parametros.Add(new Parametro(
+				RecursosBaseDeDatosModulo7.RolUsuario, SqlDbType.VarChar, usuario.Rol, false
+			));
+
+			parametros.Add(new Parametro(
+				RecursosBaseDeDatosModulo7.CorreoUsuario, SqlDbType.VarChar, usuario.Correo, false
+			));
+
+			parametros.Add(new Parametro(
+				RecursosBaseDeDatosModulo7.PreguntaUsuario, SqlDbType.VarChar, usuario.PreguntaSeguridad, false
+			));
+
+			parametros.Add(new Parametro(
+				RecursosBaseDeDatosModulo7.RespuestaUsuario, SqlDbType.VarChar, usuario.RespuestaSeguridad, false
+			));
+
+			parametros.Add(new Parametro(
+				RecursosBaseDeDatosModulo7.IdCargoUsuario, SqlDbType.Int, usuario.IdCargo.ToString(), false
+			));
+
+			return parametros;
+		}
+
+		private List<Parametro> parametrosDetalleUsuario(Usuario usuario)
+		{
+			List<Parametro> parametros = new List<Parametro>();
+
+			parametros.Add(new Parametro(
+				RecursosBaseDeDatosModulo7.UsernameUsuario, SqlDbType.VarChar, usuario.Username, false
+			)); 
+			
+			parametros.Add(new Parametro(
+				RecursosBaseDeDatosModulo7.IdUsuario, SqlDbType.Int, true
+			));
+
+			parametros.Add(new Parametro(
+				RecursosBaseDeDatosModulo7.ClaveUsuario, SqlDbType.VarChar, true
+			));
+
+			parametros.Add(new Parametro(
+				RecursosBaseDeDatosModulo7.NombreUsuario, SqlDbType.VarChar, true
+			));
+
+			parametros.Add(new Parametro(
+				RecursosBaseDeDatosModulo7.ApellidoUsuario, SqlDbType.VarChar, true
+			));
+
+			parametros.Add(new Parametro(
+				RecursosBaseDeDatosModulo7.RolUsuario, SqlDbType.VarChar, true
+			));
+
+			parametros.Add(new Parametro(
+				RecursosBaseDeDatosModulo7.CorreoUsuario, SqlDbType.VarChar, true
+			));
+
+			parametros.Add(new Parametro(
+				RecursosBaseDeDatosModulo7.PreguntaUsuario, SqlDbType.VarChar, true
+			));
+
+			parametros.Add(new Parametro(
+				RecursosBaseDeDatosModulo7.RespuestaUsuario, SqlDbType.VarChar, true
+			));
+
+			parametros.Add(new Parametro(
+				RecursosBaseDeDatosModulo7.CargoUsuario, SqlDbType.VarChar, true
+			));
+
+			parametros.Add(new Parametro(
+				RecursosBaseDeDatosModulo7.IdCargoUsuario, SqlDbType.Int, true
+			));
+
+			return parametros;
+		}
+
+		public bool Agregar(Entidad parametro)
+		{
+			throw new NotImplementedException();
+		}
+
+		public Entidad ConsultarXId(Entidad parametro)
+		{
+			throw new NotImplementedException();
+		}
+
+		public List<Entidad> ConsultarTodos()
+		{
+			throw new NotImplementedException();
+		}
+        #endregion
+	}
 }

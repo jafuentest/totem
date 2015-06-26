@@ -99,7 +99,13 @@
       <DependentUpon>RecursosPresentadorModulo6.resx</DependentUpon>
     </Compile>
     <Compile Include="Modulo7\PresentadorAgregarUsuario.cs" />
+    <Compile Include="Modulo7\PresentadorDetalleUsuario.cs" />
     <Compile Include="Modulo7\PresentadorListarUsuarios.cs" />
+    <Compile Include="Modulo7\RecursosPresentadorModulo7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosPresentadorModulo7.resx</DependentUpon>
+    </Compile>
     <Compile Include="Modulo8\PresentadorConsultarMinuta.cs" />
     <Compile Include="Modulo8\PresentadorCrearMinuta.cs" />
     <Compile Include="Modulo8\PresentadorDetalleMinutas.cs" />
@@ -143,6 +149,10 @@
     <EmbeddedResource Include="Modulo6\RecursosPresentadorModulo6.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosPresentadorModulo6.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo7\RecursosPresentadorModulo7.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosPresentadorModulo7.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo8\RecursosInterfazModulo8.resx">
       <Generator>ResXFileCodeGenerator</Generator>

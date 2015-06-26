@@ -3000,6 +3000,39 @@ AS
 RETURN
 go
 
+
+CREATE PROCEDURE ConsultarUsuarioPorUsername
+  @usu_username [varchar] (60),
+  @usu_id int OUTPUT,
+  @usu_clave varchar(MAX) OUTPUT,
+  @usu_nombre varchar(60) OUTPUT,
+  @usu_apellido varchar(60) OUTPUT,
+  @usu_rol varchar(60) OUTPUT,
+  @usu_correo varchar(60) OUTPUT,
+  @usupreguntaseguridad varchar(60) OUTPUT,
+  @usurespuestaseguridad varchar(60) OUTPUT,
+  @usu_car_nombre varchar(60) OUTPUT,
+  @CARGO_car_id int OUTPUT
+
+AS
+  BEGIN
+    SELECT @usu_username = u.usu_username,
+      @usu_id = u.usu_id,
+      @usu_clave = u.usu_clave,
+      @usu_nombre = u.usu_nombre,
+      @usu_apellido = u.usu_apellido,
+      @usu_rol = u.usu_rol,
+      @usu_correo = u.usu_correo,
+      @usupreguntaseguridad = u.usu_pregseguridad,
+      @usurespuestaseguridad = u.usu_respseguridad,
+      @usu_car_nombre = c.car_nombre,
+      @CARGO_car_id = u.CARGO_car_id
+
+    FROM USUARIO u, CARGO c
+    WHERE u.usu_username = @usu_username AND c.car_id = u.CARGO_car_id;
+  END
+
+
 CREATE PROCEDURE ConsultarUsuario
      @usu_id [int]
 AS 

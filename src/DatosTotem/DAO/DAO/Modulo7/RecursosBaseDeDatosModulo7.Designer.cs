@@ -79,6 +79,42 @@ namespace DAO.DAO.Modulo7 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to usu_apellido.
+        /// </summary>
+        internal static string AtributoApellido {
+            get {
+                return ResourceManager.GetString("AtributoApellido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to car_nombre.
+        /// </summary>
+        internal static string AtributoCargo {
+            get {
+                return ResourceManager.GetString("AtributoCargo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to usu_nombre.
+        /// </summary>
+        internal static string AtributoNombre {
+            get {
+                return ResourceManager.GetString("AtributoNombre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to usu_username.
+        /// </summary>
+        internal static string AtributoUsername {
+            get {
+                return ResourceManager.GetString("AtributoUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CAR_NOMBRE.
         /// </summary>
         internal static string CARGO_NOMBRE {
@@ -187,6 +223,24 @@ namespace DAO.DAO.Modulo7 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to @CARGO_car_id.
+        /// </summary>
+        internal static string IdCargoUsuario {
+            get {
+                return ResourceManager.GetString("IdCargoUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @usu_id.
+        /// </summary>
+        internal static string IdUsuario {
+            get {
+                return ResourceManager.GetString("IdUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nombre.
         /// </summary>
         internal static string NombreUsu {
@@ -219,6 +273,15 @@ namespace DAO.DAO.Modulo7 {
         internal static string PROCEDIMIENTO_SELECCIONAR_CARGOS {
             get {
                 return ResourceManager.GetString("PROCEDIMIENTO_SELECCIONAR_CARGOS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ConsultarUsuarioPorUsername.
+        /// </summary>
+        internal static string ProcedimientoConsultarUsername {
+            get {
+                return ResourceManager.GetString("ProcedimientoConsultarUsername", resourceCulture);
             }
         }
         

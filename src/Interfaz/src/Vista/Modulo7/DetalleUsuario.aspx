@@ -1,16 +1,36 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DetalleUsuario.aspx.cs" Inherits="Vista.Modulo7.DetalleUsuario" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-    
+﻿<%@ Page Language="C#" MasterPageFile="~/Master/MasterPage.Master" AutoEventWireup="true" CodeBehind="DetalleUsuario.aspx.cs" Inherits="Vista.Modulo7.DetalleUsuario" %>
+<%@ MasterType virtualPath="~/Master/MasterPage.master"%> 
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Usuarios</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">Detalle</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
+<div class="col-sm-8 col-md-8 col-lg-8 col-md-offset-2">
+    <div id="alert" runat="server"></div>
+    <div class="row col-sm-12 col-md-12 col-lg-12">
+        <div class="col-sm-12 col-md-12 col-lg-12" >
+            <h4 style="float: left">Nombre:&nbsp;</h4>
+            <h4 id="nombre" runat="server"></h4>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 style="float: left">Apellido:&nbsp;</h4>
+            <h4 id="apellido" runat="server"></h4>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 style="float: left">Correo:&nbsp;</h4>
+            <h4 id="correo" runat="server"></h4>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 style="float: left">Rol:&nbsp;</h4>
+            <h4 id="rol" runat="server"></h4>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 style="float: left">Nombre de Usuario:&nbsp;</h4>
+            <h4 id="username" runat="server"></h4>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 style="float: left">Cargo:&nbsp;</h4>
+            <h4 id="cargo" runat="server"></h4>
+        </div>
     </div>
-    </form>
-</body>
-</html>
+</div>
+</asp:Content>

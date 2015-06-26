@@ -211,6 +211,19 @@ namespace Dominio.Fabrica
         {
             return new Entidades.Modulo7.Usuario(username, nombre, apellido, cargo);
         }
+
+		public Entidad ObtenerUsuario(string username)
+		{
+			return new Usuario(username);
+		}
+
+		public Entidad ObtenerUsuario(int idUsuario, int idCargo, string username, string clave, string nombre,
+			string apellido, string rol, string correo, string preguntaSeguridad, string respuestaSeguridad,
+			string cargo)
+		{
+			return new Usuario(idUsuario, idCargo, username, clave, nombre, apellido, rol, correo, preguntaSeguridad,
+				respuestaSeguridad, cargo);
+		}
         #endregion
 
         #region Modulo 8
