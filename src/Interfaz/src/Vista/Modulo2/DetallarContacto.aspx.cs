@@ -18,19 +18,23 @@ namespace Vista.Modulo2
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.Master.idModulo = "2";
-            this.Master.presentador.CargarMenuLateral();
+            presentador.ObtenerVariablesURL();
+            if (!IsPostBack)
+            {
+                this.Master.idModulo = "2";
+                this.Master.presentador.CargarMenuLateral();
+            }
         }
 
         string Contratos.Modulo2.IContratoDetallarContacto.contactoNombre
         {
             get
             {
-                return contactoNombre.Text;
+                return contactoNombre.InnerText;
             }
             set
             {
-                contactoNombre.Text = value;
+                contactoNombre.InnerText += value;
             }
         }
 
@@ -38,11 +42,11 @@ namespace Vista.Modulo2
         {
             get
             {
-                return apellidoContacto.Text;
+                return apellidoContacto.InnerText;
             }
             set
             {
-                apellidoContacto.Text = value;
+                apellidoContacto.InnerText += value;
             }
         }
 
@@ -50,11 +54,11 @@ namespace Vista.Modulo2
         {
             get
             {
-                return cedulaContacto.Text;
+                return cedulaContacto.InnerText;
             }
             set
             {
-                cedulaContacto.Text = value;
+                cedulaContacto.InnerText += value;
             }
         }
 
@@ -62,11 +66,11 @@ namespace Vista.Modulo2
         {
             get
             {
-                return cargoContacto.Text;
+                return cargoContacto.InnerText;
             }
             set
             {
-                cargoContacto.Text = value;
+                cargoContacto.InnerText += value;
             }
         }
 
@@ -74,11 +78,11 @@ namespace Vista.Modulo2
         {
             get
             {
-                return telefono.Text;
+                return telefono.InnerText;
             }
             set
             {
-                telefono.Text = value;
+                telefono.InnerText += value;
             }
         }
 

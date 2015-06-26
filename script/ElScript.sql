@@ -1044,6 +1044,43 @@ go
 --End SP1
 
 --Begin SP2
+--------------------PROCEDURE BUSCAR CI CONTACTO--------------
+create procedure M2_BuscarCIContacto
+ @con_cedula    [VARCHAR] (20),
+ @salida int OUTPUT
+as
+begin
+ select @salida = count(*)
+ from CONTACTO
+ where con_cedula = @con_cedula;
+end;
+--------------------PROCEDURE MODIFICAR CONTACTO--------------
+CREATE procedure M2_ModificarContacto
+(
+    @idContacto	  [int],
+    @con_cedula   [VARCHAR] (20),
+    @con_nombre   [VARCHAR] (100),
+    @con_apellido [VARCHAR] (50),
+    @con_cargo    [VARCHAR] (60),
+    @con_cod_tel  [VARCHAR] (5),
+    @con_num_tel  [VARCHAR] (20)
+)
+as
+begin
+	update TELEFONO
+		set tel_codigo = @con_cod_tel,
+			tel_numero = @con_num_tel
+		where
+			CONTACTO_con_id = @con_id;
+
+	update CONTACTO
+		set con_cedula = @con_cedula,
+			con_nombre = @con_nombre,
+			con_apellido = @con_apellido,
+			CARGO_car_id = (select car_id from CARGO where car_nombre = @con_cargo)
+		where
+			con_id = @con_id;
+end;
 ------------------------PROCEDURE SELECCIONAR CLIENTE_JURIDICO POR ID----------------------- 
 CREATE PROCEDURE M2_ConsultarDatosClienteJur
 	@idClienteJur [int]
@@ -3708,15 +3745,15 @@ insert into Cargo (car_id,car_nombre) values (NEXT VALUE FOR secuenciaIdCargo,'S
 insert into Cargo (car_id,car_nombre) values (NEXT VALUE FOR secuenciaIdCargo,'Gerente de finanzas');
 insert into Cargo (car_id,car_nombre) values (NEXT VALUE FOR secuenciaIdCargo,'Recursos Humanos');
 /*--------------------CONTACTO CLIENTE_JURIDICO------------------------*/
-INSERT INTO CONTACTO VALUES(66666666,'Reinaldo','Cortes',1,1,null);
+INSERT INTO CONTACTO VALUES(66666666,'Reinaldo','Cortes',1,7,null);
 go
-INSERT INTO CONTACTO VALUES(77777777,'Mercedes','Amilibia',2,2,null);
+INSERT INTO CONTACTO VALUES(77777777,'Mercedes','Amilibia',2,8,null);
 go
-INSERT INTO CONTACTO VALUES(88888888,'Amaranta','Ruiz',3,3,null);
+INSERT INTO CONTACTO VALUES(88888888,'Amaranta','Ruiz',3,9,null);
 go
-INSERT INTO CONTACTO VALUES(99999999,'Sebastian','Perez',4,4,null);
+INSERT INTO CONTACTO VALUES(99999999,'Sebastian','Perez',4,10,null);
 go
-INSERT INTO CONTACTO VALUES(10101011,'Felipe','Mendes',5,5,null);
+INSERT INTO CONTACTO VALUES(10101011,'Felipe','Mendes',5,11,null);
 go
 
 /*--------------------CONTACTO CLIENTE_NATURAL------------------------*/

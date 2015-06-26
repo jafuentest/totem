@@ -21,12 +21,12 @@
     Modificar Empresa
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
-
     <div id="alert" runat="server">
     </div>
     <div class="col-sm-8 col-md-8 col-lg-8 col-md-offset-2">
         <form id="agregar_empresa" class="form-horizontal" action="#" method="post" Runat="Server">
-
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
             <div class="row col-sm-12 col-md-12 col-lg-12">
                 <h2>Datos Básicos</h2>
                 <div class="form-group">
@@ -52,6 +52,7 @@
 
                             <div id="div_estado" class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="dropdown" runat="server" id="contenedorComboEstado">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <asp:DropDownList ID="comboEstado"  class="btn btn-default dropdown-toggle" runat="server" AutoPostBack="true" OnSelectedIndexChanged="comboEstado_SelectedIndexChanged"></asp:DropDownList>
                                 </div>
                             </div>
@@ -83,7 +84,7 @@
                     <tr>
                         <th>Nombres y Apellidos</th>
                         <th>Cargo</th>
-                        
+                        <th>Telefono</th>
                     </tr>
                 </thead>
                 <tbody runat ="server" id="cuerpo">
@@ -101,14 +102,14 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <p>¿Está seguro que desea eliminar al contacto? </p>
-                                    <p id="contacto_id" runat="server"></p>
                                     <p id="contacto_nombreyap" runat="server"></p>
+                                    <p id="contacto_id" runat="server"></p>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button runat="server" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                            <button id="btn_eliminar" runat="server" type="button" class="btn btn-primary" onclick="EliminarUsuario()">Eliminar</button>
+                            <Asp:Button id="btn_eliminar" runat="server" class="btn btn-primary" Text="Eliminar"></Asp:Button>
                         </div>
                     </div> <!-- /.modal-content -->
                 </div> <!-- /.modal-dialog -->
