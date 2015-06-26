@@ -242,8 +242,8 @@ namespace DAO.DAO.Modulo8
                         elAcuerdo.Id = int.Parse(row[RecursosBDModulo8.AtributoIDAcuerdo].ToString());
                         elAcuerdo.Fecha = DateTime.Parse(row[RecursosBDModulo8.AtributoFechaAcuerdo].ToString());
                         elAcuerdo.Compromiso = row[RecursosBDModulo8.AtributoDesarrolloAcuerdo].ToString();
-                       /* elAcuerdo.ListaContacto = ObtenerContactoAcuerdo(elAcuerdo.Id).Cast<Contacto>().ToList();*/
-                       /* elAcuerdo.ListaUsuario = ObtenerUsuarioAcuerdo(elAcuerdo.Id).Cast<Usuario>().ToList();*/
+                      /*  elAcuerdo.ListaContacto = ObtenerContactoAcuerdo(elAcuerdo.Id).Cast<Contacto>().ToList();
+                        elAcuerdo.ListaUsuario = ObtenerUsuarioAcuerdo(elAcuerdo.Id).Cast<Usuario>().ToList();*/
                         laLista.Add(elAcuerdo);
                     }
                 }
@@ -324,12 +324,17 @@ namespace DAO.DAO.Modulo8
                            
                         FabricaAbstractaDAO fabricaDAO = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
                         daoInvolucradosMinuta = (DaoInvolucradosMinuta)fabricaDAO.ObtenerDAOInvolucradosMinuta();
-                        laLista.Add(daoInvolucradosMinuta.ConsultarUsuarioMinutas(int.Parse(row[RecursosBDModulo8.AtributoAcuerdoUsuario].ToString())));
+                        Usuario usuarioR = (Usuario)daoInvolucradosMinuta.ConsultarUsuarioMinutas(int.Parse(row[RecursosBDModulo8.AtributoAcuerdoUsuario].ToString()));
+                        if (usuarioR != null)
+                        {
+                            laLista.Add(usuarioR);
+                        }
                     }
                 }
                 else
                 {
                     idUsuarios = null;
+                    laLista = null;
                 }
 
             }
