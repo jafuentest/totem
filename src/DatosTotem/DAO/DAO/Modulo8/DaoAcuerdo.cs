@@ -242,7 +242,7 @@ namespace DAO.DAO.Modulo8
                         elAcuerdo.Id = int.Parse(row[RecursosBDModulo8.AtributoIDAcuerdo].ToString());
                         elAcuerdo.Fecha = DateTime.Parse(row[RecursosBDModulo8.AtributoFechaAcuerdo].ToString());
                         elAcuerdo.Compromiso = row[RecursosBDModulo8.AtributoDesarrolloAcuerdo].ToString();
-                        elAcuerdo.ListaContacto = ObtenerContactoAcuerdo(elAcuerdo.Id).Cast<Contacto>().ToList();
+                        //elAcuerdo.ListaContacto = ObtenerContactoAcuerdo(elAcuerdo.Id).Cast<Contacto>().ToList();
                         elAcuerdo.ListaUsuario = ObtenerUsuarioAcuerdo(elAcuerdo.Id).Cast<Usuario>().ToList();
                         laLista.Add(elAcuerdo);
                     }
