@@ -44,9 +44,7 @@
 				<thead>
 				    <tr>
 					   <th>ID</th>
-					   <th style="width: 50px">Nombre</th>
-					   <th>Condición Final de Éxito</th>
-					   <th style="width: 50px">Condición Final de Fallo</th>
+					   <th style="width: 250px">Nombre</th>					   
 					   <th>Acciones</th>
 				    </tr>
 				</thead>
@@ -62,8 +60,7 @@
 				<tr>
 				    <td><%# Eval("IdentificadorCasoUso") %></td>
 				    <td><%# Eval("TituloCasoUso") %></td>
-                    <td><%# Eval("CondicionExito") %></td>
-                    <td><%# Eval("CondicionFallo") %></td>
+                    
 
                      
 				    

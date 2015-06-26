@@ -95,8 +95,13 @@ namespace Presentadores.Modulo6
 
                List<Entidad> laLista = comandoCasosUsoPorActor.Ejecutar(actor);
 
+               if (laLista != null && laLista.Count > 0)
+               {
+                   vista.RCasosDeUso.DataSource = laLista;
+                   vista.RCasosDeUso.DataBind();
+               }
                
-
+/*
                foreach (CasoDeUso caso in laLista)
                {
                    vista.tabla += RecursosPresentadorModulo6.AbrirEtiquetaTr;
@@ -119,7 +124,7 @@ namespace Presentadores.Modulo6
                    vista.tabla += RecursosPresentadorModulo6.CerrarBoton;
                    vista.tabla += RecursosPresentadorModulo6.CerrarEtiquetaTd; 
                    vista.tabla += RecursosPresentadorModulo6.CerrarEtiquetaTr;
-               }
+               }*/
            }
            catch (ComandoBDException e)
            {
@@ -440,7 +445,116 @@ namespace Presentadores.Modulo6
            return listaActor;
        }
 
+       /// <summary>
+       /// Método que valida y obtiene las variables URL
+       /// </summary>
+       public void ObtenerVariablesURL()
+       {
+           string variable = HttpContext.Current.Request.QueryString["success"];
 
+           if (variable != null && variable.Equals("eliminar"))
+           {
+               MostrarMensajeExito(RecursosPresentadorModulo6.MensajeCasoDeUsoEliminado);
+           }
+
+           variable = null;
+           variable = HttpContext.Current.Request.QueryString["eliminar"];
+           if (variable != null)
+           {
+               EliminarCasoDeUso(variable);
+           }
+
+       }
+
+
+       /// <summary>
+       /// Método que elimina un caso de uso seleccionado
+       /// </summary>
+       /// <param name="id">Id del Caso de Uso</param>
+       public void EliminarCasoDeUso(string id)
+       {
+
+           try
+           {
+               FabricaEntidades fabricaEntidades =
+                       new FabricaEntidades();
+               Entidad casoDeUso =
+                   fabricaEntidades.ObtenerCasoDeUso();
+               casoDeUso.Id = Convert.ToInt32(id);
+               int idCaso = casoDeUso.Id;
+               Comandos.Comando<int, bool> comandoEliminar;
+               comandoEliminar = FabricaComandos.CrearComandoEliminarCU();
+
+               if (comandoEliminar.Ejecutar(idCaso))
+               {
+                   HttpContext.Current.Response.Redirect(
+                                  RecursosPresentadorModulo6.VentanaListarCasosDeUso +
+                                  RecursosPresentadorModulo6.Codigo_Exito_Eliminar);
+               }
+
+               CasoDeUsoInvalidoException exCasoDeUso = new CasoDeUsoInvalidoException(
+                   RecursosPresentadorModulo6.CodigoCasoDeUsoInvalidoException,
+                   RecursosPresentadorModulo6.MensajeCasoDeUsoInvalido,
+                   new CasoDeUsoInvalidoException());
+               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                   , exCasoDeUso);
+
+               MostrarMensajeError(exCasoDeUso.Mensaje);
+
+           }
+           catch (ComandoBDException e)
+           {
+               PresentadorException exReporteActoresPresentador =
+                       new PresentadorException(
+                           RecursosPresentadorModulo6.CodigoMensajePresentadorBDException,
+                           RecursosPresentadorModulo6.MensajePresentadorBDException,
+                           e);
+               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                   , e);
+
+               MostrarMensajeError(exReporteActoresPresentador.Mensaje);
+           }
+
+           catch (ComandoNullException e)
+           {
+               ObjetoNuloPresentadorException exReporteActoresPresentador =
+                       new ObjetoNuloPresentadorException(
+                           RecursosPresentadorModulo6.CodigoMensajePresentadorNuloException,
+                           RecursosPresentadorModulo6.MensajePresentadorNuloException,
+                           e);
+               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                   , e);
+
+               MostrarMensajeError(exReporteActoresPresentador.Mensaje);
+           }
+
+           catch (TipoDeDatoErroneoComandoException e)
+           {
+               TipoDeDatoErroneoPresentadorException exReporteActoresPresentador =
+                      new TipoDeDatoErroneoPresentadorException(
+                          RecursosPresentadorModulo6.CodigoMensajePresentadorTipoDeDatoErroneo,
+                          RecursosPresentadorModulo6.MensajePresentadorTipoDeDatoErroneoException,
+                          e);
+               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                   , e);
+
+               MostrarMensajeError(exReporteActoresPresentador.Mensaje);
+
+           }
+
+           catch (ComandoException e)
+           {
+               ErrorGeneralPresentadorException exReporteActoresPresentador =
+                        new ErrorGeneralPresentadorException(
+                            RecursosPresentadorModulo6.CodigoMensajePresentadorException,
+                            RecursosPresentadorModulo6.MensajePresentadorException,
+                            e);
+               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+                   , e);
+
+               MostrarMensajeError(exReporteActoresPresentador.Mensaje);
+           }
+       }
 
     }
 }
