@@ -10,13 +10,16 @@ using System.Configuration;
 using System.Data;
 using Dominio;
 using Dominio.Fabrica;
+using ExcepcionesTotem;
+using DAO;
+using ExcepcionesTotem.Modulo7;
 
 namespace DAO.DAO.Modulo7
 {
     /// <summary>
     /// Clase DAO que interactua con la BD y realiza las operaciones del Usuario
     /// </summary>
-    public class DAOUsuario : IDaoUsuario
+    public class DAOUsuario : DAO, IDaoUsuario
     {
         //Conexion hacia la base de Datos y la instruccion (Consulta) que se le hara
         private SqlConnection conexion;
@@ -229,42 +232,44 @@ namespace DAO.DAO.Modulo7
             //Lista que sera la respuesta de la consulta;
             List<String> cargos = new List<String>();
 
+            //Parametros que tendra
+            List<Parametro> parametros = new List<Parametro>();
+
             try
             {
-            //Respuesta de la consulta hecha a la Base de Datos
-            SqlDataReader respuesta;
+                //Recibimos la respuesta de la consulta
+                DataTable dt = EjecutarStoredProcedureTuplas(RecursosBaseDeDatosModulo7.PROCEDIMIENTO_SELECCIONAR_CARGOS,
+                    parametros);
 
-            //Indicamos que es un Stored Procedure, cual utilizar y ademas la conexion que necesita
-            this.instruccion = new SqlCommand(RecursosBaseDeDatosModulo7.PROCEDIMIENTO_SELECCIONAR_CARGOS,
-                this.conexion);
-            this.instruccion.CommandType = CommandType.StoredProcedure;
-
-            //Se abre conexion contra la Base de Datos
-            this.conexion.Open();
-
-            //Ejecutamos la consulta y traemos las filas que fueron obtenidas
-            respuesta = instruccion.ExecuteReader();
-
-            //Si se encontraron cargos se comienzan a agregar a la variable lista, sino, se devolvera vacia
-            if (respuesta.HasRows)
-                //Recorremos cada fila devuelta de la consulta
-                while (respuesta.Read())
+                if (dt.Rows.Count >= 1 )
                 {
-                    //Llenamos la lista
-                    cargos.Add(respuesta.GetString(0));
+                    //Recorremos el data table y asignamos cada cargo a la lista
+                    foreach (DataRow fila in dt.Rows)
+                    {
+                        cargos.Add(fila[RecursosBaseDeDatosModulo7.CARGO_NOMBRE].ToString());
+                    }
 
+                    //Devolvemos la lista con los cargos
+                    return cargos;
                 }
-
-            //Cerramos conexion
-            this.conexion.Close();
+                Logger.EscribirError(this.GetType().Name,new CargosNoExistentesException());
+                throw new CargosNoExistentesException(RecursosBaseDeDatosModulo7.EXCEPTION_CARGOS_INEXISTENTES_CODIGO, 
+                 RecursosBaseDeDatosModulo7.EXCEPTION_CARGOS_INEXISTENTES_MENSAJE, new CargosNoExistentesException());
             }
-            catch (Exception error)
+            catch (SqlException e)
             {
-                throw new Exception("Ha ocurrido un error inesperado al Listar", error);
+                //Si hay error en la Base de Datos escribimos en el logger y lanzamos la excepcion
+                Logger.EscribirError(this.GetType().Name, new ExceptionTotemConexionBD());
+                throw new ExceptionTotemConexionBD(RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos, e);
             }
-
-            //Retornamos la respuesta
-            return cargos;
+            catch (Exception e)
+            {
+                Logger.EscribirError(this.GetType().Name, new ExceptionTotem());
+                throw new ExceptionTotem(RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_CODIGO,
+                    RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_MENSAJE,e);
+            }
+            
         }
 
         /// <summary>
