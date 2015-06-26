@@ -5,6 +5,9 @@ using System.Text;
 using NUnit.Framework;
 using Comandos;
 using Comandos.Fabrica;
+using Dominio;
+using Dominio.Entidades;
+using Dominio.Fabrica;
 
 namespace PruebasUnitariasTotem.Modulo7
 {
@@ -16,6 +19,9 @@ namespace PruebasUnitariasTotem.Modulo7
     {
         //Atributos que utilizaremos para las pruebas
         Comando<String, bool> comandoValidarUsername;
+        private Comando<String, bool> eliminarUsuario;
+        private Entidad usuarioRegistrar;
+        private Comando<Entidad, bool> comandoAgregar;
 
         /// <summary>
         /// Inicializa los valores que necesitaremos
@@ -23,8 +29,19 @@ namespace PruebasUnitariasTotem.Modulo7
         [SetUp]
         public void Init()
         {
+            //Instanciamos el comando de agregar Usuario
+            comandoAgregar = FabricaComandos.CrearComandoAgregarUsuario();
+
+            //Creamos la entidad de Usuario
+            FabricaEntidades entidades = new FabricaEntidades();
+            usuarioRegistrar = entidades.ObtenerUsuario("prueba", "prueba", "prueba", "prueba", "prueba", "prueba", "prueba",
+                "prueba", "Gerente");
+
             //Instanciamos el comando de Validar Username Unico
             comandoValidarUsername = FabricaComandos.CrearComandoValidarUsernameUnico();
+
+            //comando que eliminara al usuario de prueba
+            eliminarUsuario = FabricaComandos.CrearComandoEliminarUsuarios();
 
         }
 
@@ -34,7 +51,17 @@ namespace PruebasUnitariasTotem.Modulo7
         [Test]
         public void PruebaValidarUsername()
         {
-            Assert.IsTrue(comandoValidarUsername.Ejecutar(""));
+            //Verificamos un usuario que no existe aun
+            Assert.IsTrue(comandoValidarUsername.Ejecutar("prueba"));
+
+            //Lo registraemos
+            comandoAgregar.Ejecutar(usuarioRegistrar);
+
+            //Verificamos de nuevo al usuario
+            Assert.IsTrue(!comandoValidarUsername.Ejecutar("prueba"));
+
+            //Limpiamos el usuario de prueba
+            eliminarUsuario.Ejecutar("prueba");
         }
 
         /// <summary>
@@ -44,6 +71,9 @@ namespace PruebasUnitariasTotem.Modulo7
         public void Limpiar()
         {
             comandoValidarUsername = null;
+            eliminarUsuario = null;
+            usuarioRegistrar = null;
+            comandoAgregar = null;
         }
 
     }

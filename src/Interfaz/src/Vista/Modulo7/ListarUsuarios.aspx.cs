@@ -52,10 +52,16 @@ namespace Vista.Modulo7
          {
              this.Master.idModulo = "7";
 
+             //Obtenemos el username del Usuario proveniente de un GET en la URL
+             String username = Request.QueryString["username"];
+
              if (!IsPostBack)
              {
                  this.Master.presentador.CargarMenuLateral();
-                 presentador.LlenarTabla();
+
+                 //Sino venimos de un eliminar listamos
+                 if (username == null)
+                    presentador.LlenarTabla();
              }
 
              //Nos indica si hubo alguna accion de agregar, modificar o eliminar
@@ -94,9 +100,6 @@ namespace Vista.Modulo7
                  case "3":
 
 
-                 //Obtenemos el username del Usuario proveniente de un GET en la URL
-                  String username=Request.QueryString["username"];
-
                   //Obtenemos el exito o fallo del proceso
                   bool exito = presentador.EliminarUsuario(username);
 
@@ -115,6 +118,8 @@ namespace Vista.Modulo7
                       alert.Attributes["role"] = "alert";
                       alert.InnerHtml = "<div><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Eliminacion fallida del usuario</div>";
                   }
+                //Eliminaremos y luego listaremos
+                  presentador.LlenarTabla();
                  	break;
              }
          }
