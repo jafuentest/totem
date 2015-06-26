@@ -69,6 +69,7 @@ namespace Presentadores
 
             else
             {
+                vista.ulNav = false;
                 if ((!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/Login.aspx")) &&
                    (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/IntroducirCorreo.aspx")) &&
                    (!HttpContext.Current.Request.Url.AbsolutePath.Equals("/Modulo1/PreguntaSeguridad.aspx")) &&
@@ -98,13 +99,6 @@ namespace Presentadores
                 vista.perfilProyecto = "";
                 vista.perfilProyecto = "<a runat='server' href='PerfilProyecto.aspx?'>Detalle de Proyecto</a>";
             }
-        }
-
-
-        public void ManejarEventoSalir_Click()
-        {
-            HttpContext.Current.Session.Abandon();
-            HttpContext.Current.Response.Redirect("../Modulo1/Login.aspx");
         }
 
     }
