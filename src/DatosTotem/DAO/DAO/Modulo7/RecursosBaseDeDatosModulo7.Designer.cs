@@ -79,6 +79,15 @@ namespace DAO.DAO.Modulo7 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CAR_NOMBRE.
+        /// </summary>
+        internal static string CARGO_NOMBRE {
+            get {
+                return ResourceManager.GetString("CARGO_NOMBRE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CargoNombre.
         /// </summary>
         internal static string CargoNombre {
@@ -138,6 +147,42 @@ namespace DAO.DAO.Modulo7 {
         internal static string CorreoUsuario {
             get {
                 return ResourceManager.GetString("CorreoUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_07_002.
+        /// </summary>
+        internal static string EXCEPTION_CARGOS_INEXISTENTES_CODIGO {
+            get {
+                return ResourceManager.GetString("EXCEPTION_CARGOS_INEXISTENTES_CODIGO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se ha podido encontrar ningun cargo en la Base de Datos.
+        /// </summary>
+        internal static string EXCEPTION_CARGOS_INEXISTENTES_MENSAJE {
+            get {
+                return ResourceManager.GetString("EXCEPTION_CARGOS_INEXISTENTES_MENSAJE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_07_001.
+        /// </summary>
+        internal static string EXCEPTION_INESPERADO_CODIGO {
+            get {
+                return ResourceManager.GetString("EXCEPTION_INESPERADO_CODIGO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ha ocurrido un error inesperado en el DAOUsuario al realizar esta operacion.
+        /// </summary>
+        internal static string EXCEPTION_INESPERADO_MENSAJE {
+            get {
+                return ResourceManager.GetString("EXCEPTION_INESPERADO_MENSAJE", resourceCulture);
             }
         }
         

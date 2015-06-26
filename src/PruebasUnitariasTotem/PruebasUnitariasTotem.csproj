@@ -49,8 +49,6 @@
     <Compile Include="Modulo1\PruebaComando.cs" />
     <Compile Include="Modulo1\PruebaDAOLogin.cs" />
     <Compile Include="Modulo1\PruebaExcepciones.cs" />
-    <Compile Include="Modulo1\PruebaBDLogin.cs" />
-    <Compile Include="Modulo1\PruebaLogicaLogin.cs" />
     <Compile Include="Modulo1\RecursosPUMod1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -74,6 +72,7 @@
     <Compile Include="Modulo6\PruebaBDActorExcepciones.cs" />
     <Compile Include="Modulo6\PruebaLogicaActor.cs" />
     <Compile Include="Modulo7\PruebaComandoAgregarUsuario.cs" />
+    <Compile Include="Modulo7\PruebaComandoEliminarUsuario.cs" />
     <Compile Include="Modulo7\PruebaComandoListarCargos.cs" />
     <Compile Include="Modulo7\PruebaComandoListarUsuarios.cs" />
     <Compile Include="Modulo7\PruebaComandoValidarUsernameUnico.cs" />

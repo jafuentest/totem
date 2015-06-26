@@ -30,7 +30,7 @@ namespace Comandos.Comandos.Modulo8
                 List<Dominio.Entidad> usuarios = new List<Dominio.Entidad>();
                 FabricaEntidades laFabrica = new FabricaEntidades();
                 Minuta laMinuta = (Minuta)laFabrica.ObtenerMinuta();
-                FabricaAbstractaDAO fabricaDAO = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+                FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
                 DAO.IntefazDAO.Modulo8.IDaoInvolucradosMinuta daoInvMinutas = fabricaDAO.ObtenerDAOInvolucradosMinuta();
                 numInvolucrados = daoInvMinutas.ConsultarInvolucrado(RecursosComandosModulo8.ProcedureUsuarioProyecto,
                     RecursosComandosModulo8.AtributoUsuario,

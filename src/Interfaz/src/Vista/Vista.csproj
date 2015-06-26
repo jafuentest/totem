@@ -44,6 +44,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Recaptcha">
+      <HintPath>..\..\..\..\..\..\..\Downloads\Recaptcha\Recaptcha.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -110,6 +113,7 @@
     <Content Include="Modulo1\PreguntaSeguridad.aspx" />
     <Content Include="Modulo1\RecuperacionClave.aspx" />
     <Content Include="Modulo2\AgregarCliente.aspx" />
+    <Content Include="Modulo2\AgregarContacto.aspx" />
     <Content Include="Modulo2\AgregarEmpresa.aspx" />
     <Content Include="Modulo2\DetallarCliente.aspx" />
     <Content Include="Modulo2\DetallarContacto.aspx" />
@@ -132,6 +136,7 @@
     <Content Include="Modulo6\Listar.aspx" />
     <Content Include="Modulo6\ListarActores.aspx" />
     <Content Include="Modulo6\Modificar.aspx" />
+    <Content Include="Modulo6\ModificarActor.aspx" />
     <Content Include="Modulo6\ReporteActores.aspx" />
     <Content Include="Modulo7\AgregarUsuario.aspx" />
     <Content Include="Modulo7\DetalleUsuario.aspx" />
@@ -206,6 +211,13 @@
     </Compile>
     <Compile Include="Modulo2\AgregarCliente.aspx.designer.cs">
       <DependentUpon>AgregarCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo2\AgregarContacto.aspx.cs">
+      <DependentUpon>AgregarContacto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo2\AgregarContacto.aspx.designer.cs">
+      <DependentUpon>AgregarContacto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulo2\AgregarEmpresa.aspx.cs">
       <DependentUpon>AgregarEmpresa.aspx</DependentUpon>
@@ -356,6 +368,13 @@
     </Compile>
     <Compile Include="Modulo6\Modificar.aspx.designer.cs">
       <DependentUpon>Modificar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo6\ModificarActor.aspx.cs">
+      <DependentUpon>ModificarActor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo6\ModificarActor.aspx.designer.cs">
+      <DependentUpon>ModificarActor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulo6\ReporteActores.aspx.cs">
       <DependentUpon>ReporteActores.aspx</DependentUpon>

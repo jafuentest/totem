@@ -48,9 +48,18 @@ namespace Comandos.Fabrica
             return new ComandoValidarCorreoExistente();
         }
 
+        public static Comando<List<String>, bool> CrearComandoEnviarEmail()
+        {
+            return new ComandoEnviarEmail();
+        }
+
         #endregion
 
         #region Modulo 2
+        public static Comando<Entidad, bool> CrearComandoAgregarContacto()
+        {
+            return new ComandoAgregarContacto();
+        }
         public static Comando<Entidad, bool> CrearComandoModificarContacto()
         {
             return new ComandoModificarContacto();
@@ -276,6 +285,16 @@ namespace Comandos.Fabrica
         public static Comando<string, List<Entidad>> CrearComandoListarActores()
         {
             return new ComandoConsultarActores();
+        }
+
+        public static Comando<Entidad, Entidad> CrearComandoConsultarActorXID() 
+        {
+            return new ComandoConsultarActorXId();
+        }
+
+        public static Comando<Entidad, bool> CrearComandoModificarActor() 
+        {
+            return new ComandoModificarActor(); 
         }
         #endregion
 

@@ -1044,6 +1044,28 @@ go
 --End SP1
 
 --Begin SP2
+
+--------------------PROCEDURE AGREGAR CONTACTO--------------
+CREATE procedure M2_AgregarContacto
+(
+    @con_cedula   [VARCHAR] (20),
+    @con_nombre   [VARCHAR] (100),
+    @con_apellido [VARCHAR] (50),
+    @con_cargo    [VARCHAR] (60),
+    @con_cod_tel  [VARCHAR] (5),
+    @con_num_tel  [VARCHAR] (20),
+	@idClienteJur [int]
+)
+as
+begin
+	insert into CONTACTO (con_nombre, con_apellido, con_cedula, CARGO_car_id, CLIENTE_JURIDICO_cj_id)
+	values (@con_nombre, @con_apellido, @con_cedula, (select car_id from CARGO where car_nombre = @con_cargo), @idClienteJur);
+
+	insert into TELEFONO (tel_codigo, tel_numero, CONTACTO_con_id)
+	values (@con_cod_tel, @con_num_tel, (select max(con_id) from CONTACTO));
+
+end;
+go
 --------------------PROCEDURE BUSCAR CI CONTACTO--------------
 create procedure M2_BuscarCIContacto
  @con_cedula    [VARCHAR] (20),
@@ -1396,13 +1418,19 @@ GO
 -------------------PROCEDURE SELECCIONAR DATOS DE CONTACTO POR ID------------------ 
 CREATE PROCEDURE M2_ConsultarDatosContacto
 (
-	@idContacto [int]
+	@idContacto [int],    
+	@con_cedula   [VARCHAR] (20) OUTPUT,
+    @con_nombre   [VARCHAR] (100) OUTPUT,
+    @con_apellido [VARCHAR] (50) OUTPUT,
+    @con_cargo    [VARCHAR] (60) OUTPUT,
+    @con_cod_tel  [VARCHAR] (5) OUTPUT,
+    @con_num_tel  [VARCHAR] (20) OUTPUT
 )
 AS
 BEGIN
-	select con.con_id as contactoID, con.con_cedula as contactoCedula, con.con_nombre as contactoNombre,
-		   con.con_apellido as contactoApellido, tel.tel_codigo as COD_TELEFONO, tel.tel_numero NUM_TELEFONO,
-		   car.car_nombre as contactoCargo
+	select @con_cedula = con.con_cedula, @con_nombre = con.con_nombre,
+		   @con_apellido = con.con_apellido,@con_cod_tel = tel.tel_codigo, @con_num_tel = tel.tel_numero,
+		   @con_cargo = car.car_nombre
 	from CONTACTO con, CLIENTE_JURIDICO cli, TELEFONO tel, CARGO car
 	where
 		con.con_id = @idContacto and con.CLIENTE_JURIDICO_cj_id = cli.cj_id and 
@@ -2401,13 +2429,26 @@ DECLARE @idProyecto int = 0
 	
 GO
 
+CREATE PROCEDURE Consultar_Actor_Por_ID
+@idactor int
+AS
+Select act_id as  idActor,
+	   act_nombre as nombreActor,
+	   act_descripcion as descripcionActor
+FROM actor where act_id=@idactor
+GO
+
+
 /*Leer actor(es)*/
 CREATE PROCEDURE LEER_ACTOR 
-	@idproyecto int
+	@codigoProyecto varchar(6)
 AS
 	BEGIN
 		--Leo todos los Actores asociados al proyecto
-		SELECT A.act_nombre NOMBRE, A.act_descripcion DESCRIPCION, A.act_id ID FROM ACTOR A WHERE A.PROYECTO_pro_id=@idproyecto; 
+		SELECT A.act_nombre  as nombreActor,  A.act_id  as idActor,A.act_descripcion as descripcionActor
+		FROM ACTOR A, PROYECTO P
+		 WHERE p.pro_id = a.PROYECTO_pro_id
+		 and p.pro_codigo = @codigoProyecto;
 	END
 GO
 
@@ -2415,13 +2456,13 @@ GO
 CREATE PROCEDURE MODIFICAR_ACTOR 
 	@nombre [varchar] (100),
 	@descripcion [varchar] (500),
-	@idproyecto int,
+	
 	@idactor int
 AS
 	BEGIN
 		--Modifico los datos de un Actor en especifico del proyecto en especifico
 		UPDATE ACTOR SET act_nombre = @nombre, act_descripcion = @descripcion 
-		WHERE (PROYECTO_pro_id = @idproyecto) AND (act_id = @idactor);
+		WHERE (act_id = @idactor);
 		
 		
 	END

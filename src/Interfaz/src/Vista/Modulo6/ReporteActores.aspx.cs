@@ -20,10 +20,10 @@ namespace Vista.Modulo6
 
         #region Contratos
 
-        string Contratos.Modulo6.IContratoReporteActores.tabla 
+        Repeater Contratos.Modulo6.IContratoReporteActores.RCasosDeUso 
         {
-            get { return tabla.Text;}
-            set { tabla.Text = value;}
+            get { return RCasosDeUso; }
+            set { RCasosDeUso = value; }
         }
 
         DropDownList Contratos.Modulo6.IContratoReporteActores.comboActores 

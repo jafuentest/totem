@@ -16,10 +16,10 @@ namespace Comandos.Comandos.Modulo2
         {
             try
             {
-                FabricaAbstractaDAO laFabrica = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
-                IDaoClienteJuridico daoClienteJur = laFabrica.ObtenerDaoClienteJuridico();
+                FabricaDAOSqlServer laFabrica = new FabricaDAOSqlServer();
+                IDaoContacto daoContacto = laFabrica.ObtenerDaoContacto();
 
-                return daoClienteJur.modificarContacto(parametro);
+                return daoContacto.Modificar(parametro);
 
             }
             #region Catches

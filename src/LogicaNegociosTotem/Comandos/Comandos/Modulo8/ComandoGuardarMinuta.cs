@@ -25,7 +25,7 @@ namespace Comandos.Comandos.Modulo8
 
                 Proyecto elProyecto = (Proyecto)parametro[0];
                 Minuta laMinuta = (Minuta)parametro[1];
-                FabricaAbstractaDAO fabricaDAO = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+                FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
                 DAO.IntefazDAO.Modulo8.IDaoInvolucradosMinuta daoInvMinutas = fabricaDAO.ObtenerDAOInvolucradosMinuta();
 
                 List<Dominio.Entidad> usuarios = new List<Dominio.Entidad>();

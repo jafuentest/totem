@@ -22,6 +22,7 @@ namespace PruebasUnitariasTotem.Modulo7
         //Atributos que utilizaremos para las pruebas
         private Comando<Entidad, bool> comandoAgregar;
         private Entidad usuarioRegistrar;
+        private Comando<String, bool> eliminarUsuario;
 
         /// <summary>
         /// Inicializa los valores que necesitaremos
@@ -31,10 +32,15 @@ namespace PruebasUnitariasTotem.Modulo7
         {
             //Instanciamos el comando de agregar Usuario
             comandoAgregar = FabricaComandos.CrearComandoAgregarUsuario();
+
             //Creamos la entidad de Usuario
             FabricaEntidades entidades = new FabricaEntidades();
             usuarioRegistrar = entidades.ObtenerUsuario("prueba", "prueba", "prueba", "prueba", "prueba", "prueba", "prueba",
                 "prueba", "Gerente");
+
+            //Comando que eliminara al usuario de prueba
+            eliminarUsuario = FabricaComandos.CrearComandoEliminarUsuarios();
+
         }
 
         /// <summary>
@@ -43,9 +49,15 @@ namespace PruebasUnitariasTotem.Modulo7
         [Test]
         public void PruebaAgregarUsuario()
         {
-
+            //Lo registramos
             Assert.IsTrue(comandoAgregar.Ejecutar(usuarioRegistrar));
-            
+
+            //Intentamos registrarlo de nuevo
+            Assert.IsTrue(!comandoAgregar.Ejecutar(usuarioRegistrar));
+
+            //Limpiamos el usuario de prueba
+            eliminarUsuario.Ejecutar("prueba");
+                  
         }
 
         /// <summary>
@@ -55,6 +67,8 @@ namespace PruebasUnitariasTotem.Modulo7
         {
             usuarioRegistrar = null;
             comandoAgregar = null;
+            eliminarUsuario = null;
+
         }
     }
 }

@@ -79,6 +79,15 @@ namespace DAO.DAO.Modulo2 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to M2_AgregarContacto.
+        /// </summary>
+        public static string AgregarContacto {
+            get {
+                return ResourceManager.GetString("AgregarContacto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to APELLIDO_CLIENTENATURAL.
         /// </summary>
         public static string AliasApellidoClienteNat {

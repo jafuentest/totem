@@ -17,10 +17,10 @@ namespace Comandos.Comandos.Modulo2
         {
             try
             {
-                FabricaAbstractaDAO laFabrica = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
-                IDaoClienteJuridico daoClienteJur = laFabrica.ObtenerDaoClienteJuridico();
+                FabricaDAOSqlServer laFabrica = new FabricaDAOSqlServer();
+                IDaoContacto daoContacto = laFabrica.ObtenerDaoContacto();
 
-                return daoClienteJur.consultarDatosContactoID(parametro);
+                return daoContacto.ConsultarXId(parametro);
             }
             #region Catches
             catch (ContactoInexistenteException ex)

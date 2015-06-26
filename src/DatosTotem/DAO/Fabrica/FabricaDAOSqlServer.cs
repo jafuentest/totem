@@ -23,6 +23,11 @@ namespace DAO.Fabrica
         {
             return new DAO.Modulo2.DaoClienteNatural();
         }
+        public override IntefazDAO.Modulo2.IDaoContacto ObtenerDaoContacto()
+        {
+            return new DAO.Modulo2.DaoContacto();
+        }
+
         #endregion
 
         #region Modulo 3

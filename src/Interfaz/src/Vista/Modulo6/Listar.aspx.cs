@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web; 
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
@@ -10,23 +10,25 @@ using Presentadores.Modulo6;
 
 namespace Vista.Modulo6
 {
-    public partial class Listar : System.Web.UI.Page, IContratoListar
+    public partial class MiLista : System.Web.UI.Page, IContratoListar
     {
 
         private PresentadorListar presentador;
 
-        public Listar() 
+        public MiLista()
         {
-            presentador = new PresentadorListar(this);         
+            presentador = new PresentadorListar(this);
         }
 
         #region Contratos
 
-        string Contratos.Modulo6.IContratoListar.tabla
+        Repeater Contratos.Modulo6.IContratoListar.RCasosDeUso
         {
-            get { return tabla.Text; }
-            set { tabla.Text = value; }
+            get { return RCasosDeUso; }
+            set { RCasosDeUso = value; }
         }
+
+
 
 
 
@@ -57,7 +59,8 @@ namespace Vista.Modulo6
             if (!IsPostBack)
             {
                 this.Master.presentador.CargarMenuLateral();
-                this.presentador.CargarListaCasosDeUso(); 
+                presentador.ObtenerVariablesURL();
+                this.presentador.CargarListaCasosDeUso();
             }
 
         }

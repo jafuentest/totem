@@ -179,5 +179,10 @@ namespace Vista.Modulo2
             presentador.modificarEmpresa(edicionEmpresa);
 
         }
+
+        protected void btnAgregarNuevoContacto_Click(object sender, EventArgs e)
+        {
+            presentador.redirAgregarContacto();
+        }
     }
 }

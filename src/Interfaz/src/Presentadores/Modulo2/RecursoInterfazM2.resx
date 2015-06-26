@@ -124,7 +124,7 @@
     <value>&lt;a class="btn btn-primary glyphicon glyphicon-info-sign" href="DetallarContacto.aspx?detalle=</value>
   </data>
   <data name="AbrirBotonDetalleEmpresa" xml:space="preserve">
-    <value>&lt;a class="btn btn-primary glyphicon glyphicon-info-sign" href="DetallarEmpresa.aspx?detalle=</value>
+    <value>&lt;a class="btn btn-primary glyphicon glyphicon-info-sign" href="DetallarEmpresa.aspx?id=</value>
   </data>
   <data name="AbrirBotonEliminarCliente" xml:space="preserve">
     <value>&lt;a class="btn btn-danger glyphicon glyphicon-remove-sign" href="ListarClientes.aspx?clienteaeliminar=</value>
@@ -152,6 +152,9 @@
   </data>
   <data name="AbrirEtiqueta_tr" xml:space="preserve">
     <value>&lt;tr&gt;</value>
+  </data>
+  <data name="AgregarContacto" xml:space="preserve">
+    <value>/Modulo2/AgregarContacto.aspx?empresa=</value>
   </data>
   <data name="Alerta_Clase_Error" xml:space="preserve">
     <value>alert alert-danger alert-dismissible</value>
@@ -194,6 +197,9 @@
     <value>&lt;/div&gt;</value>
     <comment>Final del html</comment>
   </data>
+  <data name="Alerta_Mensaje_Contacto_Agregado" xml:space="preserve">
+    <value>Contacto agregado exitosamente</value>
+  </data>
   <data name="Alerta_Mensaje_Contacto_Modificado" xml:space="preserve">
     <value>Contacto modificado exitosamente</value>
   </data>
@@ -214,7 +220,7 @@
     <value>&lt;/tr&gt;</value>
   </data>
   <data name="Codigo_Exito_Agregar" xml:space="preserve">
-    <value>?success=agregar</value>
+    <value>&amp;success=agregar</value>
     <comment>Codigo de exito para el redireccionamiento</comment>
   </data>
   <data name="Codigo_Exito_Eliminar" xml:space="preserve">
