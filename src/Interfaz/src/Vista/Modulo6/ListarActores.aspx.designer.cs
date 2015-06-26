@@ -13,13 +13,22 @@ namespace Vista.Modulo6 {
     public partial class ListarActores {
         
         /// <summary>
-        /// Control alert.
+        /// Control labelMensajeExito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alert;
+        protected global::System.Web.UI.WebControls.Label labelMensajeExito;
+        
+        /// <summary>
+        /// Control labelMensajeError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelMensajeError;
         
         /// <summary>
         /// Control proyectoPanel.
@@ -38,6 +47,15 @@ namespace Vista.Modulo6 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl cuerpo;
+        
+        /// <summary>
+        /// Control laTabla.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal laTabla;
         
         /// <summary>
         /// Propiedad Master.

@@ -8,8 +8,8 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" runat="server">
 <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
-		<div id="alert" runat="server"></div>
-		<div id="alertlocal"></div>
+		<asp:Label ID="labelMensajeExito" Visible="false"  class="alert alert-sucess" runat="server"></asp:Label>
+    <asp:Label ID="labelMensajeError" Visible="false"  class="alert alert-danger alert-dismissible" runat="server"></asp:Label>
 		<div class="panel panel-primary" style="width:auto">
 			<div class="panel-heading">
 				<h3 class="panel-title">Proyecto</h3>
@@ -28,7 +28,7 @@
 					</tr>
 				</thead>
 				<tbody runat ="server" id="cuerpo">
-					
+					<asp:Literal runat="server" ID="laTabla"></asp:Literal>
 				</tbody>
 			</table>
 			<div id="modal-delete" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
