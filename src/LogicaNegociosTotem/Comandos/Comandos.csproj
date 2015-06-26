@@ -94,6 +94,7 @@
       <DependentUpon>RecursosMod5Comando.resx</DependentUpon>
     </Compile>
     <Compile Include="Comandos\Modulo6\ComandoAgregarActor.cs" />
+    <Compile Include="Comandos\Modulo6\ComandoConsultarActores.cs" />
     <Compile Include="Comandos\Modulo6\ComandoConsultarActoresCombo.cs" />
     <Compile Include="Comandos\Modulo6\ComandoConsultarActoresXCasoDeUso.cs" />
     <Compile Include="Comandos\Modulo6\ComandoConsultarCasosDeUsoPorActor.cs" />
