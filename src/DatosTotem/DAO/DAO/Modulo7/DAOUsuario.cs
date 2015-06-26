@@ -127,59 +127,38 @@ namespace DAO.DAO.Modulo7
         public bool ValidarUsernameUnico (String username)
         {
             //Indicaremos si se encontro o no el username en la BD
-            bool valido = false;
+            bool valido;
 
-            //  List<Parametro> parametros = new List<Parametro>();
             try
             {
-                //Indicamos que es un Stored Procedure, cual utilizar y ademas la conexion que necesita
-                this.instruccion = new SqlCommand(RecursosBaseDeDatosModulo7.ProcedimientoUsuarioUnico, this.conexion);
-                this.instruccion.CommandType = CommandType.StoredProcedure;
+                /*Creamos una lista de parametros y le agregamos los valores correspondientes 
+                a las variables de stored procedure*/
+                List<Parametro> listaParametros = new List<Parametro>();
+                Parametro parametroConsulta;
+                parametroConsulta = new Parametro(RecursosBaseDeDatosModulo7.UsernameUsuario,SqlDbType.VarChar,
+                    username,false);
+                listaParametros.Add(parametroConsulta);
+                parametroConsulta = new Parametro(RecursosBaseDeDatosModulo7.Resultadorepetido, SqlDbType.VarChar, true);
+                listaParametros.Add(parametroConsulta);
 
-                //Le agregamos los valores correspondientes a las variables de Stored Procedure y ademas el output
-                this.instruccion.Parameters.AddWithValue(RecursosBaseDeDatosModulo7.UsernameUsuario, username);
-                this.instruccion.Parameters.Add(RecursosBaseDeDatosModulo7.Resultadorepetido,SqlDbType.VarChar,60);
-                this.instruccion.Parameters[RecursosBaseDeDatosModulo7.Resultadorepetido].Direction = ParameterDirection.Output;
+                //Ejecutamos el stored procedure y obtenemos el output
+                List<Resultado> resultado = EjecutarStoredProcedure(RecursosBaseDeDatosModulo7.ProcedimientoUsuarioUnico,
+                    listaParametros);
 
-                Console.WriteLine("Antes del Open");
-
-                //Se abre conexion contra la Base de Datos
-                this.conexion.Open();
-
-                //Ejecutamos la consulta y traemos si existe el username que se desea registrar
-                this.instruccion.ExecuteNonQuery();
-
-                Console.WriteLine("El query es: " + this.instruccion.Parameters[RecursosBaseDeDatosModulo7.Resultadorepetido].Value.ToString());
-
-                //Si existe se indicara que es falso, caso contrario se indicara que es verdadero
-                if (this.instruccion.Parameters[RecursosBaseDeDatosModulo7.Resultadorepetido].Value.ToString() == "")
+                //Sino existe el username en la Base de Datos entonces es valido agregarlo
+                if (resultado[0].valor == "")
                     valido = true;
-                
-                //Cerramos conexion
-                this.conexion.Close();
+                else
+                    valido = false;
 
-                /*Parametro parametro = new Parametro(RecursosBaseDeDatosModulo7.UsernameUsuario,
-                        SqlDbType.VarChar, userName, false);
-                parametros.Add(parametro);*/
-                
-        /*        parametro = new Parametro(RecursosBaseDeDatosModulo7.Resultadorepetido,
-                        SqlDbType.VarChar, true);
-                parametros.Add(parametro);*/
-              //  string query = RecursosBaseDeDatosModulo7.ProcedimientoUsuarioUnico;
-               // BDConexion conexionBD = new BDConexion();
-
-                //Lista donde obtendremos
-             //   List<Resultado> resultados = conexionBD.EjecutarStoredProcedure(query, parametros);
+                return valido;
                 
             }
-            catch (SqlException e)
+            catch(Exception e)
             {
-                valido = false;
-
+                throw new Exception();
             }
-            return valido;
-            
-        }
+       }
 
         /// <summary>
         /// Metodo que valida si el correo que se desea registrar ya existe o no en la Base de Datos
