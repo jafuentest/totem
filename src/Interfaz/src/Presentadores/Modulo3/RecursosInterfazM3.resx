@@ -188,4 +188,25 @@
   <data name="Alerta_Totem_Error" xml:space="preserve">
     <value>Error en Totem</value>
   </data>
+  <data name="AbrirEtiqueta_tr_id" xml:space="preserve">
+    <value>&lt;tr id=</value>
+  </data>
+  <data name="Cerrar_etiqueta" xml:space="preserve">
+    <value>&gt;</value>
+  </data>
+  <data name="Abrir_boton_eliminar" xml:space="preserve">
+    <value>&lt;a class="btn btn-danger glyphicon glyphicon-remove-sign" href="AgregarInvolucrados.aspx?usuarioaeliminar=</value>
+  </data>
+  <data name="Abrir_botondetalleContacto" xml:space="preserve">
+    <value>&lt;a class="btn btn-default glyphicon glyphicon-info-sign" href="/Modulo2/DetallarContacto.aspx?detalle=</value>
+  </data>
+  <data name="Abrir_botoneliminarinvcontact" xml:space="preserve">
+    <value>&lt;a class="btn btn-danger glyphicon glyphicon-remove-sign" href="ListarPersonalInvolucrado.aspx?deleteinvcontact=</value>
+  </data>
+  <data name="Abrir_botoneliminarinvusuario" xml:space="preserve">
+    <value>&lt;a class="btn btn-danger glyphicon glyphicon-remove-sign" href="ListarPersonalInvolucrado.aspx?deleteinvuser=</value>
+  </data>
+  <data name="Abrir_boton_detalleUsuario" xml:space="preserve">
+    <value>&lt;a class="btn btn-default glyphicon glyphicon-info-sign" href="/Modulo7/DetalleUsuario.aspx?username=</value>
+  </data>
 </root>

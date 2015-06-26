@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web;
 
 
 namespace Presentadores.Modulo3
@@ -50,15 +51,16 @@ namespace Presentadores.Modulo3
             Comando<Entidad, Entidad> comando = FabricaComandos.CrearComandoConsultarUsuariosInvolucradosPorProyecto();
             ListaInvolucradoUsuario listUsuario = (ListaInvolucradoUsuario)comando.Ejecutar(elProyecto);
             foreach(Usuario user in listUsuario.Lista){
-                vista.laTabla += "<tr id=\"" + user.Username + "\" >";
-                vista.laTabla += "<td>" + user.Nombre + "</td>";
-                vista.laTabla += "<td>" + user.Apellido + "</td>";
-                vista.laTabla += "<td>" + user.Cargo + "</td>";
-                vista.laTabla += "<td>" + "Desarrollo del software" + "</td>";
-                vista.laTabla += "<td>";
-                vista.laTabla += "<a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" href=\"AgregarInvolucrados.aspx?usuarioaeliminar=" + user.Username + "\"></a>";
-                vista.laTabla += "</td>";
-                vista.laTabla += "</tr>";
+                vista.laTabla += RecursosInterfazM3.AbrirEtiqueta_tr_id + user.Username + RecursosInterfazM3.Cerrar_etiqueta;
+                vista.laTabla += RecursosInterfazM3.AbrirEtiqueta_td + user.Nombre + RecursosInterfazM3.CerrarEtiqueta_td;
+                vista.laTabla += RecursosInterfazM3.AbrirEtiqueta_td + user.Apellido + RecursosInterfazM3.CerrarEtiqueta_td;
+                vista.laTabla += RecursosInterfazM3.AbrirEtiqueta_td + user.Cargo + RecursosInterfazM3.CerrarEtiqueta_td;
+                vista.laTabla += RecursosInterfazM3.AbrirEtiqueta_td + RecursosInterfazM3.Desarrollo_del_software + RecursosInterfazM3.CerrarEtiqueta_td;
+                vista.laTabla += RecursosInterfazM3.AbrirEtiqueta_td;
+                vista.laTabla += RecursosInterfazM3.Abrir_boton_detalleUsuario + user.Username + RecursosInterfazM3.CerrarBoton;
+                vista.laTabla += RecursosInterfazM3.Abrir_botoneliminarinvusuario + user.Username + RecursosInterfazM3.CerrarBoton;
+                vista.laTabla += RecursosInterfazM3.CerrarEtiqueta_td;
+                vista.laTabla += RecursosInterfazM3.CerrarEtiqueta_tr;
             }
         }
         public void CargarContacto()
@@ -66,21 +68,35 @@ namespace Presentadores.Modulo3
             Comando<Entidad, Entidad> comando = FabricaComandos.CrearComandoConsultarContactosInvolucradosPorProyecto();
             ListaInvolucradoContacto listContacto = (ListaInvolucradoContacto)comando.Ejecutar(elProyecto);
             foreach(Contacto contacto in listContacto.Lista){
-               vista.laTabla += "<tr id=\"" + contacto.Id + "\" >";
-               vista.laTabla += "<td>" + contacto.Con_Nombre + "</td>";
-               vista.laTabla += "<td>" + contacto.Con_Apellido + "</td>";
-               vista.laTabla += "<td>" + contacto.ConCargo + "</td>";
-               vista.laTabla += "<td>" + "Cliente Juridico" + "</td>";
-               vista.laTabla += "<td>";
-               vista.laTabla += "<a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" href=\"AgregarInvolucrados.aspx?usuarioaeliminar=" + contacto.Id + "\"></a>";
-               vista.laTabla += "</td>";
-               vista.laTabla += "</tr>";
+               vista.laTabla += RecursosInterfazM3.AbrirEtiqueta_tr_id + contacto.Id + RecursosInterfazM3.Cerrar_etiqueta;
+               vista.laTabla += RecursosInterfazM3.AbrirEtiqueta_td + contacto.Con_Nombre + RecursosInterfazM3.CerrarEtiqueta_td;
+               vista.laTabla += RecursosInterfazM3.AbrirEtiqueta_td + contacto.Con_Apellido + RecursosInterfazM3.CerrarEtiqueta_td;
+               vista.laTabla += RecursosInterfazM3.AbrirEtiqueta_td + contacto.ConCargo + RecursosInterfazM3.CerrarEtiqueta_td;
+               vista.laTabla += RecursosInterfazM3.AbrirEtiqueta_td + RecursosInterfazM3.Cliente_juridico + RecursosInterfazM3.CerrarEtiqueta_td;
+               vista.laTabla += RecursosInterfazM3.AbrirEtiqueta_td;
+               vista.laTabla += RecursosInterfazM3.Abrir_botondetalleContacto + contacto.Id + RecursosInterfazM3.CerrarBoton;
+               vista.laTabla += RecursosInterfazM3.Abrir_botoneliminarinvcontact + contacto.Id + RecursosInterfazM3.CerrarBoton;
+               vista.laTabla += RecursosInterfazM3.AbrirEtiqueta_td;
+               vista.laTabla += RecursosInterfazM3.CerrarEtiqueta_tr;
             }
         }
         public void CargarInvolucrados()
         {
             CargarUsuario();
             CargarContacto();
+        }
+        public void ObtenerVariablesURL()
+        {
+            String error = HttpContext.Current.Request.QueryString["error"];
+            if (error != null && error.Equals("input_malicioso"))
+            {
+                vista.alertClase = RecursosInterfazM3.Alerta_Clase_Error;
+                vista.alertRol = RecursosInterfazM3.Alerta_Rol;
+                vista.alert = RecursosInterfazM3.Alerta_Html +
+                    RecursosGeneralPresentadores.Mensaje_Error_InputInvalido +
+                    RecursosInterfazM3.Alerta_Html_Final;
+            }
+
         }
     }
     }
