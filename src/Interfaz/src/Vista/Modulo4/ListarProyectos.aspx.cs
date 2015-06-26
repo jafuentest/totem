@@ -22,14 +22,22 @@ namespace Vista.Modulo4
 	   {
 		  if ( !this.IsPostBack )
 		  {
-			 this.Master.idModulo = "4";
-			 this.Master.presentador.CargarMenuLateral();
+			 Master.idModulo = "4";
+			 Master.presentador.CargarMenuLateral();
+			 presentador.ObtenerUsuario(Master.UsuarioActual().Username + Master.UsuarioActual().Rol);
 		  }
 	   }
 
-	   public string codigoProyecto
+	   public string nombreUsuario
 	   {
-		  get { throw new NotImplementedException(); }
+		  get
+		  {
+			 return Label1.Text;
+		  }
+		  set
+		  {
+			 Label1.Text = value;
+		  }
 	   }
     }
 }

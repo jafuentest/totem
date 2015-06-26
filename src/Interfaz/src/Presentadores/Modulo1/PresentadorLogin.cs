@@ -62,7 +62,11 @@ namespace Presentadores.Modulo1
                     credenciales = comando.Ejecutar(usuarioLogin);
                     if (((Usuario)credenciales).Correo != "" && ((Usuario)credenciales).Correo != null)
                     {
-                        HttpContext.Current.Session[RecursosM1.Parametro_Credencial] = credenciales;
+                        HttpContext.Current.Session[RecursosM1.LUsuario] =
+					   (credenciales as Usuario).Username;
+				    HttpContext.Current.Session[RecursosM1.LUsuarioRol] =
+					   (credenciales as Usuario).Rol;
+
                         HttpContext.Current.Response.Redirect(RecursosM1.Ventana_Default);
                     }
                     else

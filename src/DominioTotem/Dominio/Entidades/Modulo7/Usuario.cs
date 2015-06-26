@@ -145,6 +145,17 @@ namespace Dominio.Entidades.Modulo7
 		{
 			this.username = username;
 		}
+
+		/// <summary>
+		/// Constructor de la clase Usuario que contiene solo el username y el rol
+		/// </summary>
+		/// <param name="username"></param>
+		/// <param name="rol"></param>
+		public Usuario(string username, string rol)
+		{
+		    this.username = username;
+		    this.rol = rol;
+		}
         #endregion
 
         #region Propiedades

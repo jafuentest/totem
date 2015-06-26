@@ -65,6 +65,13 @@ namespace Vista.Master
             presentador.ManejarEventoSalir_Click();
         }
 
+	   public Dominio.Entidades.Modulo7.Usuario UsuarioActual()
+	   {
+		  return new Dominio.Entidades.Modulo7.Usuario(
+			 (String)HttpContext.Current.Session["LUsuario"],
+			 (String)HttpContext.Current.Session["LUsuarioRol"]);
+	   }
+
     }
 
 }

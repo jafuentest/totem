@@ -43,6 +43,7 @@
     <Compile Include="Comandos\Modulo1\ComandoCambioDeClave.cs" />
     <Compile Include="Comandos\Modulo1\ComandoDesencriptar.cs" />
     <Compile Include="Comandos\Modulo1\ComandoEncriptar.cs" />
+    <Compile Include="Comandos\Modulo1\ComandoEnviarEmail.cs" />
     <Compile Include="Comandos\Modulo1\ComandoIniciarSesion.cs" />
     <Compile Include="Comandos\Modulo1\ComandoObtenerPreguntaSeguridad.cs" />
     <Compile Include="Comandos\Modulo1\ComandoValidarCorreoExistente.cs" />

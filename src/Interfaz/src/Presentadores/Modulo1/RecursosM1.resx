@@ -219,4 +219,12 @@
   <data name="Parametro_CorreoEnviado" xml:space="preserve">
     <value>Se envio un mensaje a su correo... Confirme y siga los pasos</value>
   </data>
+  <data name="LUsuario" xml:space="preserve">
+    <value>LUsuario</value>
+    <comment>Atributo HttpContext.Current.Session utilizado para definir el usuario que ha ingresado</comment>
+  </data>
+  <data name="LUsuarioRol" xml:space="preserve">
+    <value>LUsuarioRol</value>
+    <comment>Atributo HttpContext.Current.Session utilizado para definir el rol de usuario que ha ingresado</comment>
+  </data>
 </root>
