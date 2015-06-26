@@ -106,8 +106,6 @@
 <script type="text/javascript" src="js/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript" src="js/crearMinuta.js"></script>
 <script type="text/javascript" src="js/validacionesCrearMinuta.js"></script>
-<script>
-        window.alert(5 + 6);
-</script>
+
 </asp:Content>
 
