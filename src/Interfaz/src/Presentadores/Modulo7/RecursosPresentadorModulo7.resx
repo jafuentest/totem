@@ -138,6 +138,9 @@
   <data name="Codigo_Error" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="Codigo_Error_UsuarioInvalido" xml:space="preserve">
+    <value>success=4</value>
+  </data>
   <data name="Codigo_Exito" xml:space="preserve">
     <value>Exito</value>
   </data>
@@ -152,5 +155,11 @@
   </data>
   <data name="Codigo_Info" xml:space="preserve">
     <value>Info</value>
+  </data>
+  <data name="ExpReg_Username" xml:space="preserve">
+    <value>^[A-z0-9_-]+$</value>
+  </data>
+  <data name="URL_ListarUsuarios" xml:space="preserve">
+    <value>../Modulo7/ListarUsuarios.aspx?</value>
   </data>
 </root>

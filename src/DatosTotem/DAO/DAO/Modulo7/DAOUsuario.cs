@@ -1,28 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DAO.IntefazDAO.Modulo7;
-using Dominio.Entidades.Modulo7;
-using DAO.DAO.Modulo7;
-using System.Data.SqlClient;
-using System.Configuration;
-using System.Data;
+﻿using DAO.IntefazDAO.Modulo7;
 using Dominio;
+using Dominio.Entidades.Modulo7;
 using Dominio.Fabrica;
 using ExcepcionesTotem;
-using DAO;
 using ExcepcionesTotem.Modulo7;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace DAO.DAO.Modulo7
 {
-	#region Teddy
     /// <summary>
     /// Clase DAO que interactua con la BD y realiza las operaciones del Usuario
     /// </summary>
     public class DAOUsuario : DAO, IDaoUsuario
-    {
-        //Conexion hacia la base de Datos y la instruccion (Consulta) que se le hara
+	{
+		#region Teddy
+		//Conexion hacia la base de Datos y la instruccion (Consulta) que se le hara
         private SqlConnection conexion;
         private SqlCommand instruccion;
 
@@ -505,16 +501,121 @@ namespace DAO.DAO.Modulo7
             //Retornamos la respuesta
             return cargos;*/
         }
-       #endregion
-       #endregion
+		#endregion
+		#endregion
 
 		#region Juan
+		public bool Agregar(Entidad parametro)
+		{
+			return AgregarUsuario(parametro);
+		}
+
+		public Entidad ConsultarXId(Entidad parametro)
+		{
+			try
+			{
+				Usuario usuario = (Usuario) parametro;
+				List<Parametro> parametros = parametrosDetalleUsuario(usuario);
+				List<Resultado> resultados = EjecutarStoredProcedure(
+					RecursosBaseDeDatosModulo7.ProcedimientoConsultarUsername, parametros);
+
+				if (resultados == null)
+				{
+					throw new Exception("No se encontró el usuario");
+				}
+				else
+				{
+					foreach (Resultado resultado in resultados)
+					{
+						if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.UsernameUsuario))
+							usuario.Username = resultado.valor;
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.IdUsuario))
+							usuario.Id = int.Parse(resultado.valor);
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.ClaveUsuario))
+							usuario.Clave = resultado.valor;
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.NombreUsuario))
+							usuario.Nombre = resultado.valor;
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.ApellidoUsuario))
+							usuario.Apellido = resultado.valor;
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.RolUsuario))
+							usuario.Rol = resultado.valor;
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.CorreoUsuario))
+							usuario.Correo = resultado.valor;
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.PreguntaUsuario))
+							usuario.PreguntaSeguridad = resultado.valor;
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.RespuestaUsuario))
+							usuario.RespuestaSeguridad = resultado.valor;
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.CargoUsuario))
+							usuario.Cargo = resultado.valor;
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.IdCargoUsuario))
+							usuario.IdCargo = int.Parse(resultado.valor);
+					}
+				}
+
+				return usuario;
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public Entidad ConsultarPorUsername(Entidad parametro)
+		{
+			try
+			{
+				Usuario usuario = (Usuario) parametro;
+				List<Parametro> parametros = parametrosDetalleUsuario(usuario);
+				List<Resultado> resultados = EjecutarStoredProcedure(
+					RecursosBaseDeDatosModulo7.ProcedimientoConsultarUsername, parametros);
+
+				if (resultados == null)
+				{
+					throw new UsuarioInvalidoException();
+				}
+				else
+				{
+					foreach (Resultado resultado in resultados)
+					{
+						if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.UsernameUsuario))
+							usuario.Username = resultado.valor;
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.IdUsuario))
+							usuario.Id = int.Parse(resultado.valor);
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.ClaveUsuario))
+							usuario.Clave = resultado.valor;
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.NombreUsuario))
+							usuario.Nombre = resultado.valor;
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.ApellidoUsuario))
+							usuario.Apellido = resultado.valor;
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.RolUsuario))
+							usuario.Rol = resultado.valor;
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.CorreoUsuario))
+							usuario.Correo = resultado.valor;
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.PreguntaUsuario))
+							usuario.PreguntaSeguridad = resultado.valor;
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.RespuestaUsuario))
+							usuario.RespuestaSeguridad = resultado.valor;
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.CargoUsuario))
+							usuario.Cargo = resultado.valor;
+						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.IdCargoUsuario))
+							usuario.IdCargo = int.Parse(resultado.valor);
+					}
+				}
+
+				return usuario;
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
 		public bool Modificar(Entidad parametro)
 		{
 			bool modificado = false;
 			try
 			{
-				Usuario usuario = parametro as Usuario;
+				Usuario usuario = (Usuario) parametro;
 				if (usuario != null)
 				{
 					List<Parametro> parametros = parametrosModificarUsuario(usuario);
@@ -534,56 +635,21 @@ namespace DAO.DAO.Modulo7
 			return modificado;
 		}
 
-		public Entidad ConsultarPorUsername(Entidad parametro)
+		public List<Entidad> ConsultarTodos()
 		{
-			try
-			{
-				Usuario usuario = (Usuario) parametro;
-				List<Parametro> parametros = parametrosDetalleUsuario(usuario);
-				List<Resultado> resultados = EjecutarStoredProcedure(
-					RecursosBaseDeDatosModulo7.ProcedimientoConsultarUsername, parametros);
-
-				if (resultados == null)
-				{
-					throw new Exception("No se encontró el usuario");
-				}
-				else
-				{
-					foreach (Resultado resultado in resultados)
-					{
-						if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.NombreUsuario))
-							usuario.Nombre = resultado.valor;
-						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.ApellidoUsuario))
-							usuario.Apellido = resultado.valor;
-						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.CorreoUsuario))
-							usuario.Correo = resultado.valor;
-						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.RolUsuario))
-							usuario.Rol = resultado.valor;
-						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.UsernameUsuario))
-							usuario.Username = resultado.valor;
-						else if (resultado.etiqueta.Equals(RecursosBaseDeDatosModulo7.CargoUsuario))
-							usuario.Cargo = resultado.valor;
-					}
-				}
-
-				return usuario;
-			}
-			catch (Exception e)
-			{
-				throw e;
-			}
+			return ListarUsuarios();
 		}
-
+		
 		private List<Parametro> parametrosModificarUsuario(Usuario usuario)
 		{
 			List<Parametro> parametros = new List<Parametro>();
 
 			parametros.Add(new Parametro(
-				RecursosBaseDeDatosModulo7.IdUsuario, SqlDbType.Int, usuario.Id.ToString(), false
+				RecursosBaseDeDatosModulo7.UsernameUsuario, SqlDbType.VarChar, usuario.Username, false
 			));
 
 			parametros.Add(new Parametro(
-				RecursosBaseDeDatosModulo7.UsernameUsuario, SqlDbType.VarChar, usuario.Username, false
+				RecursosBaseDeDatosModulo7.IdUsuario, SqlDbType.Int, usuario.Id.ToString(), false
 			));
 
 			parametros.Add(new Parametro(
@@ -627,8 +693,8 @@ namespace DAO.DAO.Modulo7
 
 			parametros.Add(new Parametro(
 				RecursosBaseDeDatosModulo7.UsernameUsuario, SqlDbType.VarChar, usuario.Username, false
-			)); 
-			
+			));
+
 			parametros.Add(new Parametro(
 				RecursosBaseDeDatosModulo7.IdUsuario, SqlDbType.Int, true
 			));
@@ -670,21 +736,6 @@ namespace DAO.DAO.Modulo7
 			));
 
 			return parametros;
-		}
-
-		public bool Agregar(Entidad parametro)
-		{
-			throw new NotImplementedException();
-		}
-
-		public Entidad ConsultarXId(Entidad parametro)
-		{
-			throw new NotImplementedException();
-		}
-
-		public List<Entidad> ConsultarTodos()
-		{
-			throw new NotImplementedException();
 		}
         #endregion
 	}
