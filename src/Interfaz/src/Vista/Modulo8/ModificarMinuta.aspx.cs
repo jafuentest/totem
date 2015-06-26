@@ -8,16 +8,22 @@ using Presentadores;
 using System.Linq;
 using Dominio.Entidades.Modulo7;
 using Dominio.Entidades.Modulo8;
+using Dominio.Entidades.Modulo4;
+using Dominio.Entidades.Modulo2;
+using Dominio.Fabrica;
 
 namespace Vista.Modulo8
 {
     public partial class ModificarMinuta : System.Web.UI.Page
     {
         private static string codigoMinuta;
-        private static Minuta minuta = new Minuta();
+        private static FabricaEntidades laFabrica = new FabricaEntidades();
+        private static Minuta minuta = (Minuta)laFabrica.ObtenerMinuta();
 
         private static string codigoProyecto;
         private Presentadores.Modulo8.PresentadorCrearMinuta presentador = new Presentadores.Modulo8.PresentadorCrearMinuta();
+
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,12 +45,12 @@ namespace Vista.Modulo8
         [WebMethod]
         public static string ListaUsuario()
         {
-            /*LogicaMinuta logicaMinuta = new LogicaMinuta();
+            Presentadores.Modulo8.PresentadorCrearMinuta presentador = new Presentadores.Modulo8.PresentadorCrearMinuta();
             Proyecto elProyecto = new Proyecto() { Codigo = codigoProyecto };
-            List<Usuario> listaUsuario = logicaMinuta.ListaUsuario(elProyecto);
-            List<Contacto> listaContacto = logicaMinuta.ListaContacto(elProyecto);
+            List<Usuario> listaUsuario = presentador.ListaInvolucrado(elProyecto.Codigo).Cast<Usuario>().ToList();
+            List<Contacto> listaContacto = presentador.ListaInvolucradoContacto(elProyecto.Codigo).Cast<Contacto>().ToList();
             var output = JsonConvert.SerializeObject(listaUsuario);
-            return output;*/
+            return output;
             throw new NotImplementedException();
         }
 
@@ -55,13 +61,22 @@ namespace Vista.Modulo8
         [WebMethod]
         public static string detalleMinuta()
         {
-            /*int codMinuta = Int32.Parse(codigoMinuta);
-            LogicaMinuta logicaMinuta = new LogicaMinuta();
+            string aux = "";
+            for (int i = 0; i <= codigoMinuta.Length - 1; i++)
+            {
+                if ((codigoMinuta[i].ToString() != "{") && (codigoMinuta[i].ToString() != "}"))
+                {
+                    aux = aux + codigoMinuta[i];
+                }
+            }
+            string idminuta = aux;
+            int codMinuta = Int32.Parse(idminuta);
+            Presentadores.Modulo8.PresentadorDetalleMinuta presentador = new Presentadores.Modulo8.PresentadorDetalleMinuta();
             Proyecto elProyecto = new Proyecto() { Codigo = codigoProyecto };
-            minuta = logicaMinuta.obtenerMinuta(elProyecto, codMinuta);
+            minuta = (Minuta)presentador.DetalleMinuta(idminuta);
             var output = JsonConvert.SerializeObject(minuta);
-            return output;*/
-            throw new NotImplementedException();
+            return output;
+
         }
 
         /// <summary>
@@ -71,13 +86,13 @@ namespace Vista.Modulo8
         [WebMethod]
         public static string crearMinuta(object laMinuta)
         {
-            /*dynamic minutaDinamica = laMinuta;
+            dynamic minutaDinamica = laMinuta;
             List<Usuario> listaUsuario = new List<Usuario>();
             for (int i = 0; i < minutaDinamica["involucrado"].Length; i++)
             {
                 Usuario usuario = new Usuario
                 {
-                    idUsuario = Int32.Parse(minutaDinamica["involucrado"][i])
+                    Id = Int32.Parse(minutaDinamica["involucrado"][i])
                 };
                 listaUsuario.Add(usuario);
             }
@@ -105,7 +120,7 @@ namespace Vista.Modulo8
                 {
                     Usuario usuarioAcuerdo = new Usuario
                     {
-                        idUsuario = Int32.Parse(minutaDinamica["acuerdo"][i]["involucrado"][j])
+                        Id = Int32.Parse(minutaDinamica["acuerdo"][i]["involucrado"][j])
                     };
                     listaUsuarioAcuerdo.Add(usuarioAcuerdo);
                 }
@@ -118,7 +133,7 @@ namespace Vista.Modulo8
 
             Minuta minutaNueva = new Minuta
             {
-                Codigo = codigoMinuta,
+                Id = Int32.Parse(codigoMinuta),
                 Fecha = fechaMi,
                 Motivo = minutaDinamica["motivo"],
                 ListaUsuario = listaUsuario,
@@ -127,11 +142,11 @@ namespace Vista.Modulo8
                 Observaciones = minutaDinamica["observaciones"]
             };
 
-            LogicaMinuta logicaMinuta = new LogicaMinuta();
+            Presentadores.Modulo8.PresentadorModificarMinuta presentador = new Presentadores.Modulo8.PresentadorModificarMinuta();
+            
             Proyecto elProyecto = new Proyecto() { Codigo = codigoProyecto };
-            string mensaje = logicaMinuta.ModificarMinuta(elProyecto, minutaNueva, minuta);
-            return mensaje;*/
-            throw new NotImplementedException();
+            string mensaje = presentador.ModificarMinuta(elProyecto, minutaNueva, minuta);
+            return mensaje;
         }
     }
 }
