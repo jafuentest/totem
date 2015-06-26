@@ -125,6 +125,14 @@
     <value>Ha ocurrido un error de la Base de Datos en el DAO</value>
     <comment>Mensaje cuando se procude un error SQL proveniente de DAOUsuario</comment>
   </data>
+  <data name="EXCEPTION_CARGOS_NO_EXISTENTES_CODIGO" xml:space="preserve">
+    <value>T_07_023</value>
+    <comment>Codigo de error cuando la Base de Datos no arroja ningun cargo</comment>
+  </data>
+  <data name="EXCEPTION_CARGOS_NO_EXISTENTES_MENSAJE" xml:space="preserve">
+    <value>Error, no se ha encontrado ningun cargo</value>
+    <comment>Mensaje cuando la Base de Datos no arroja ningun cargo</comment>
+  </data>
   <data name="EXCEPTION_ERROR_COMANDO_INESPERADO_CODIGO" xml:space="preserve">
     <value>T_07_021</value>
     <comment>Codigo de error cuando ocurre un error Inesperado en los Comandos</comment>

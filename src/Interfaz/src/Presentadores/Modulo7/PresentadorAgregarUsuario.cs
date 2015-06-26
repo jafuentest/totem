@@ -10,6 +10,8 @@ using Dominio;
 using Comandos;
 using Dominio.Fabrica;
 using System.Web.UI.WebControls;
+using ExcepcionesTotem.Modulo7;
+using ExcepcionesTotem;
 
 namespace Presentadores.Modulo7
 {
@@ -49,29 +51,49 @@ namespace Presentadores.Modulo7
             //Llenamos el combo de los cargos
             options = new Dictionary<string,string>();
             options.Add("-1", "Selecciona cargo");
+
+            //Instanciamos la fabrica y la lista que contendra la respuesta
             Comando<bool, List<String>> comandoCargos = FabricaComandos.CrearComandoListarCargos();
             List<String> listaCargos = new List<String>();
             try
             {
+                //Obtenemos la respuesta del comando
                 listaCargos = comandoCargos.Ejecutar(true);
             
+                //Recorremos cada cargo obtenido y lo anexamos al diccioanrio
                 foreach (String cargo in listaCargos)
                 {
                      options.Add(cargo, cargo);
                      
                 }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+
+                //finalmente todos los cargos se insertan en el combo
                 vista.comboTipoCargo.DataSource = options;
                 vista.comboTipoCargo.DataTextField = "value";
                 vista.comboTipoCargo.DataValueField = "key";
                 vista.comboTipoCargo.DataBind();
-            
-
-            
+                
+            }
+            //Escribimos en el logger la exception correspondiente y si falla anexamos la primera opcion
+            catch (ComandoCargosNoExistentesException ex)
+            {
+                Logger.EscribirError(this.GetType().Name,ex);
+            }
+            catch (ComandoBDDAOUsuarioException ex)
+            {
+                Logger.EscribirError(this.GetType().Name, ex);
+            }
+            catch(ComandoErrorInesperadoException ex)
+            {
+                Logger.EscribirError(this.GetType().Name,ex);
+            }
+            finally
+            {
+                vista.comboTipoCargo.DataSource = options;
+                vista.comboTipoCargo.DataTextField = "value";
+                vista.comboTipoCargo.DataValueField = "key";
+                vista.comboTipoCargo.DataBind();
+            }
         }
 
         /// <summary>

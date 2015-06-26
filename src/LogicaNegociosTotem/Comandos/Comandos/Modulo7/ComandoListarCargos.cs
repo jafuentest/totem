@@ -5,6 +5,8 @@ using System.Text;
 using Comandos;
 using DAO.Fabrica;
 using DAO.IntefazDAO.Modulo7;
+using ExcepcionesTotem.Modulo7;
+using ExcepcionesTotem;
 
 namespace Comandos.Comandos.Modulo7
 {
@@ -29,12 +31,41 @@ namespace Comandos.Comandos.Modulo7
             //Obtenemos el DAO del usuario
             IDaoUsuario daoUsuario = fabrica.ObtenerDAOUsuario();
 
-            //Consultamos en la BD
-            listaCargos = daoUsuario.ListarCargos();
+            try
+            {
+                //Consultamos en la BD
+                listaCargos = daoUsuario.ListarCargos();
 
-            //Retornamos la respuesta
-            return listaCargos;
-            
+                //Retornamos la respuesta
+                return listaCargos;
+            }
+            catch(CargosNoExistentesException e)
+            {
+                //Escribimos en el logger y lanzamos la exception
+                ComandoCargosNoExistentesException cargosInexistentes = new ComandoCargosNoExistentesException(
+                    RecursosComandoModulo7.EXCEPTION_CARGOS_NO_EXISTENTES_CODIGO,
+                    RecursosComandoModulo7.EXCEPTION_CARGOS_NO_EXISTENTES_MENSAJE,e);
+                Logger.EscribirError(this.GetType().Name,cargosInexistentes);
+                throw cargosInexistentes;
+            }
+            catch (BDDAOUsuarioException e)
+            {
+                //Escribimos en el logger y lanzamos la exception
+                ComandoBDDAOUsuarioException daoException = new ComandoBDDAOUsuarioException(
+                    RecursosComandoModulo7.EXCEPTION_BDDAOUSUARIO_CODIGO,
+                    RecursosComandoModulo7.EXCEPTION_BDDAOUSUARIO_MENSAJE, e);
+                Logger.EscribirError(this.GetType().Name, daoException);
+                throw daoException;
+            }
+            catch (ErrorInesperadoDAOUsuarioException e)
+            {
+                //Escribimos en el logger y lanzamos la exception
+                ComandoErrorInesperadoException errorInesperado = new ComandoErrorInesperadoException(
+                    RecursosComandoModulo7.EXCEPTION_ERROR_COMANDO_INESPERADO_CODIGO,
+                    RecursosComandoModulo7.EXCEPTION_ERROR_COMANDO_INESPERADO_MENSAJE, e);
+                Logger.EscribirError(this.GetType().Name, errorInesperado);
+                throw errorInesperado;
+            }
         }
         
     }
