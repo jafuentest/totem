@@ -139,10 +139,17 @@ namespace Vista.Modulo3
         {
             set { alertUsuario.Attributes["class"] = value; }
         }
-
+        public string alertClase
+        {
+            set { alert.Attributes["class"] = value; }
+        }
         public string alertaUsuarioRol
         {
             set { alertUsuario.Attributes["role"] = value; }
+        }
+        public string alertRol
+        {
+            set { alert.Attributes["role"] = value; }
         }
         String Contratos.Modulo3.IContratoAgregarInvolucrado.alert
         {

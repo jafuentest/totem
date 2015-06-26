@@ -116,30 +116,62 @@ namespace Presentadores.Modulo3
             else
                 vista.contacto_id = vista.eliminacionContacto;
         }
+        public bool UsuarioEstaEnProyecto(Entidad lista,string buscar)
+        {
+            bool exito = false;
+            ListaInvolucradoUsuario Lalista = (ListaInvolucradoUsuario)lista;
+            foreach(Usuario usuario in Lalista.Lista){
+                 if (usuario.Username == buscar)
+                     exito = true;
+             }   
+            return exito;
+        }
+        public bool ContactoEstaEnProyecto(Entidad lista, string buscar)
+        {
+            bool exito = false;
+            ListaInvolucradoContacto laLista = (ListaInvolucradoContacto)lista;
+            foreach (Contacto contacto in laLista.Lista)
+            {
+                 if (contacto.Id.ToString() == buscar)
+                     exito = true;
+            }
+            return exito;
+        }
         public void ListarUsuarioSegunCargo(string SelectedValue)
         {
             vista.comboPersonal.Enabled = true;
             String cargoSelecionado = vista.comboCargo.SelectedValue;
             Dictionary<String, string> options = new Dictionary<string, string>();
+            Comando<Entidad, Entidad> comandoUsuario = FabricaComandos.CrearComandoConsultarUsuariosInvolucradosPorProyecto(); 
+            Comando<Entidad, Entidad> comandoContacto = FabricaComandos.CrearComandoConsultarContactosInvolucradosPorProyecto(); 
             options.Add("-1","Seleccionar Personal");
+            //inicio de l prueba
+            Proyecto elProyecto = new Proyecto();
+            elProyecto.Codigo = "TOT";
+            //fin de la prueba
             try
             {
                 if (vista.comboTipoEmpresa.SelectedValue == "1")
                 {
                     Comando<Entidad, List<Entidad>> comando = FabricaComandos.CrearComandoListarContactosPorEmpresa();
+                    //pruebas
                     ClienteJuridico client = new ClienteJuridico();
                     client.Id = 1;
+                    //fin de prueba
+                    Entidad contactoactual = comandoContacto.Ejecutar(elProyecto);
                     List<Entidad> listContacto = comando.Ejecutar(client);
                     foreach (Entidad contacto in listContacto)
-                        if (((Contacto)contacto).ConCargo == cargoSelecionado)
-                            options.Add(((Contacto)contacto).Id.ToString(), ((Contacto)contacto).Con_Nombre + " " + ((Contacto)contacto).Con_Apellido);
+                        if (((Contacto)contacto).ConCargo == cargoSelecionado && ContactoEstaEnProyecto(contactoactual,contacto.Id.ToString()) == false)
+                             options.Add(((Contacto)contacto).Id.ToString(), ((Contacto)contacto).Con_Nombre + " " + ((Contacto)contacto).Con_Apellido);
                 }
                 if (vista.comboTipoEmpresa.SelectedValue == "2")
                 {
                     Comando<String, List<Entidad>> comando = FabricaComandos.CrearComandoListarUsuariosPorCargo();
                     List<Entidad> listUsuario = comando.Ejecutar(cargoSelecionado);
+                    Entidad usuariosActuales = comandoUsuario.Ejecutar(elProyecto);
                     foreach (Entidad usuario in listUsuario)
-                        options.Add(((Usuario)usuario).Username, ((Usuario)usuario).Nombre + " " + ((Usuario)usuario).Apellido);
+                        if (((Usuario)usuario).Cargo == cargoSelecionado && UsuarioEstaEnProyecto(usuariosActuales, ((Usuario)usuario).Username) == false)
+                            options.Add(((Usuario)usuario).Username, ((Usuario)usuario).Nombre + " " + ((Usuario)usuario).Apellido);
                 }
             }catch(Exception){
                 vista.alertaUsuarioClase = RecursosInterfazM3.Alerta_Clase_Error;
@@ -174,29 +206,29 @@ namespace Presentadores.Modulo3
                {
                    Contacto contacto = (Contacto)comando_contacto.Ejecutar(Convert.ToInt32(seleccion));
                    listaContacto.Lista.Add(contacto);
-                   vista.laTabla.Text += "<tr id=\"" + contacto.Id + "\" >";
-                   vista.laTabla.Text += "<td>" + contacto.Con_Nombre + "</td>";
-                   vista.laTabla.Text += "<td>" + contacto.Con_Apellido + "</td>";
-                   vista.laTabla.Text += "<td>" + contacto.ConCargo + "</td>";
-                   vista.laTabla.Text += "<td>" + vista.comboTipoEmpresa.SelectedItem.Text + "</td>";
-                   vista.laTabla.Text += "<td>";
-                   vista.laTabla.Text += "<a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" href=\"AgregarInvolucrados.aspx?usuarioaeliminar=" + contacto.Id + "\"></a>";
-                   vista.laTabla.Text += "</td>";
-                   vista.laTabla.Text += "</tr>";
+                   vista.laTabla.Text += RecursosInterfazM3.AbrirEtiqueta_tr_id + contacto.Id + RecursosInterfazM3.Cerrar_etiqueta;
+                   vista.laTabla.Text += RecursosInterfazM3.AbrirEtiqueta_td + contacto.Con_Nombre + RecursosInterfazM3.CerrarEtiqueta_td;
+                   vista.laTabla.Text += RecursosInterfazM3.AbrirEtiqueta_td + contacto.Con_Apellido + RecursosInterfazM3.CerrarEtiqueta_td;
+                   vista.laTabla.Text += RecursosInterfazM3.AbrirEtiqueta_td + contacto.ConCargo + RecursosInterfazM3.CerrarEtiqueta_td;
+                   vista.laTabla.Text += RecursosInterfazM3.AbrirEtiqueta_td + vista.comboTipoEmpresa.SelectedItem.Text + RecursosInterfazM3.CerrarEtiqueta_td;
+                   vista.laTabla.Text += RecursosInterfazM3.AbrirEtiqueta_td;
+                   vista.laTabla.Text += RecursosInterfazM3.Abrir_boton_eliminar + contacto.Id + RecursosInterfazM3.CerrarBoton;
+                   vista.laTabla.Text += RecursosInterfazM3.CerrarEtiqueta_td;
+                   vista.laTabla.Text += RecursosInterfazM3.CerrarEtiqueta_tr;
                }
                if (vista.comboTipoEmpresa.SelectedValue == "2")
                {
                    Usuario user = (Usuario)comando_usuario.Ejecutar(seleccion);
                    listaUsuario.Lista.Add(user);
-                   vista.laTabla.Text += "<tr id=\"" + user.Username + "\" >";
-                   vista.laTabla.Text += "<td>" + user.Nombre + "</td>";
-                   vista.laTabla.Text += "<td>" + user.Apellido + "</td>";
-                   vista.laTabla.Text += "<td>" + user.Cargo + "</td>";
-                   vista.laTabla.Text += "<td>" + vista.comboTipoEmpresa.SelectedItem.Text + "</td>";
-                   vista.laTabla.Text += "<td>";
-                   vista.laTabla.Text += "<a class=\"btn btn-danger glyphicon glyphicon-remove-sign\" href=\"AgregarInvolucrados.aspx?usuarioaeliminar=" + user.Username + "\"></a>";
-                   vista.laTabla.Text += "</td>";
-                   vista.laTabla.Text += "</tr>";
+                   vista.laTabla.Text += RecursosInterfazM3.AbrirEtiqueta_tr_id + user.Username + RecursosInterfazM3.Cerrar_etiqueta;
+                   vista.laTabla.Text += RecursosInterfazM3.AbrirEtiqueta_td + user.Nombre + RecursosInterfazM3.CerrarEtiqueta_td;
+                   vista.laTabla.Text += RecursosInterfazM3.AbrirEtiqueta_td + user.Apellido + RecursosInterfazM3.CerrarEtiqueta_td;
+                   vista.laTabla.Text += RecursosInterfazM3.AbrirEtiqueta_td + user.Cargo + RecursosInterfazM3.CerrarEtiqueta_td;
+                   vista.laTabla.Text += RecursosInterfazM3.AbrirEtiqueta_td + vista.comboTipoEmpresa.SelectedItem.Text + RecursosInterfazM3.CerrarEtiqueta_td;
+                   vista.laTabla.Text += RecursosInterfazM3.AbrirEtiqueta_td;
+                   vista.laTabla.Text += RecursosInterfazM3.Abrir_boton_eliminar + user.Username + RecursosInterfazM3.CerrarBoton;
+                   vista.laTabla.Text += RecursosInterfazM3.CerrarEtiqueta_td;
+                   vista.laTabla.Text += RecursosInterfazM3.CerrarEtiqueta_tr;
                }
            }
 
@@ -232,20 +264,20 @@ namespace Presentadores.Modulo3
                  }
            
         }
-   /*     public void ObtenerVariablesURL()
+     public void ObtenerVariablesURL()
         {
             String error = HttpContext.Current.Request.QueryString["error"];
             if (error != null && error.Equals("input_malicioso"))
             {
-                vista.alertaClase = RecursoInterfazM2.Alerta_Clase_Error;
-                vista.alertaRol = RecursoInterfazM2.Alerta_Rol;
-                vista.alerta = RecursoInterfazM2.Alerta_Html +
+                vista.alertClase = RecursosInterfazM3.Alerta_Clase_Error;
+                vista.alertRol = RecursosInterfazM3.Alerta_Rol;
+                vista.alert = RecursosInterfazM3.Alerta_Html +
                     RecursosGeneralPresentadores.Mensaje_Error_InputInvalido +
-                    RecursoInterfazM2.Alerta_Html_Final;
+                    RecursosInterfazM3.Alerta_Html_Final;
             }
 
         }
-    **/
+    
     }
 
 }

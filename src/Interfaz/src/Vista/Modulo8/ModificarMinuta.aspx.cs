@@ -122,6 +122,8 @@ namespace Vista.Modulo8
                     {
                         Id = Int32.Parse(minutaDinamica["acuerdo"][i]["involucrado"][j])
                     };
+
+                    Console.WriteLine(minutaDinamica["acuerdo"][i]["involucrado"][j]);
                     listaUsuarioAcuerdo.Add(usuarioAcuerdo);
                 }
                 acuerdo.ListaUsuario = listaUsuarioAcuerdo;
@@ -129,11 +131,21 @@ namespace Vista.Modulo8
             }
 
             string fechaMinuta = minutaDinamica["fecha"];
+            string fechaMinuta2 = "holsgsgsds";
+            System.Console.Out.WriteLine(fechaMinuta + " " + fechaMinuta2);
             DateTime fechaMi = DateTime.ParseExact(fechaMinuta, "dd/MM/yyyy HH:mm", null);
-
+            string aux = "";
+            for (int i = 0; i <= codigoMinuta.Length - 1; i++)
+            {
+                if ((codigoMinuta[i].ToString() != "{") && (codigoMinuta[i].ToString() != "}"))
+                {
+                    aux = aux + codigoMinuta[i];
+                }
+            }
+            string idminuta = aux;
             Minuta minutaNueva = new Minuta
             {
-                Id = Int32.Parse(codigoMinuta),
+                Id = Int32.Parse(idminuta),
                 Fecha = fechaMi,
                 Motivo = minutaDinamica["motivo"],
                 ListaUsuario = listaUsuario,
