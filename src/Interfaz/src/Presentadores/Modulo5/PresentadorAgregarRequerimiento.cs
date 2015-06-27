@@ -58,7 +58,7 @@ namespace Presentadores.Modulo5
             {
                 String proy =  HttpContext.Current.Session[RecursosPresentadorModulo5.LProyectoCodigo].ToString();
                 vista.idRequerimiento = DesglosarCodigo(proy + "_RF_0");
-
+                 
             }
 
             catch (ExcepcionesTotem.Modulo5.ProyectoSinRequerimientoNoFuncional)
