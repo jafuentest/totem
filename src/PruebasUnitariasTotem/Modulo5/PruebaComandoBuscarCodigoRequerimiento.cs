@@ -6,10 +6,15 @@ using NUnit.Framework;
 
 namespace PruebasUnitariasTotem.Modulo5
 {
-
+    /// <summary>
+    /// Clase encargada de validar el comando BuscarCodigoRequerimiento
+    /// </summary>
     [TestFixture]
     class PruebaComandoBuscarCodigoRequerimiento
     {
+        /// <summary>
+        /// Atributo
+        /// </summary>
         private Comandos.Comando<String, List<String>> comando;
         
 
@@ -22,8 +27,9 @@ namespace PruebasUnitariasTotem.Modulo5
             comando = Comandos.Fabrica.FabricaComandos.CrearComandoBuscarCodigoRequerimiento();
         }
 
+
         /// <summary>
-        /// 
+        /// Prueba ejucutar comando
         /// </summary>
         [Test]
         public void PruebaEjecutar()

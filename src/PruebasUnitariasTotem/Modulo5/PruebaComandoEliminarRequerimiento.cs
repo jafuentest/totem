@@ -6,7 +6,10 @@ using NUnit.Framework;
 
 namespace PruebasUnitariasTotem.Modulo5{
 
-    
+
+    /// <summary>
+    /// Clase encargada de probar el comando Eliminar Requerimiento
+    /// </summary>
     [TestFixture]
     class PruebaComandoEliminarRequerimiento
     {
@@ -26,7 +29,7 @@ namespace PruebasUnitariasTotem.Modulo5{
         }
 
         /// <summary>
-        /// 
+        /// Metodo encargado de ejecutar el comando
         /// </summary>
         [Test]
         public void PruebaEjecutar()

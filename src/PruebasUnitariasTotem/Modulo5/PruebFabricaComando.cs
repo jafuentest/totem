@@ -6,11 +6,12 @@ using NUnit.Framework;
 
 namespace PruebasUnitariasTotem.Modulo5
 {
+    /// <summary>
+    /// Prueba de la fabrica de comandos
+    /// </summary>
     [TestFixture]
-
-    class PruebFabricaDao
-    {
-        [Test]
+    class PruebFabricaComando
+    {   [Test]
         public void PruebaFabricaComando() {
 
             Assert.IsNotNull(Comandos.Fabrica.FabricaComandos.CrearComandoGenerarArchivoLatex());

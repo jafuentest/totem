@@ -1170,7 +1170,7 @@ AS
 BEGIN
 	DECLARE @nombresarray TABLE(nombres VARCHAR(100));
 	DECLARE @i int;
-	set @i = 0;
+	set @i = 1;
 	insert into @nombresarray 
 	values ('Aruba'),('Afghanistan'),('Angola'),('Anguilla'),('Albania'),('Andorra'),('Netherlands Antilles'),('United Arab Emirates'),
 	('Argentina'),('Armenia'),('American Samoa'),('Antarctica'),('French Southern territories'),('Antigua and Barbuda'),('Australia'),

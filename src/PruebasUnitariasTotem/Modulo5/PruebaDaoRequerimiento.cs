@@ -6,13 +6,22 @@ using NUnit.Framework;
 
 namespace PruebasUnitariasTotem.Modulo5
 {
+    /// <summary>
+    /// Clase encargada de probar la clase DAO
+    /// </summary>
     [TestFixture]
     class PruebaDaoRequerimiento
     {
+        /// <summary>
+        /// Atributos
+        /// </summary>
         Datos.Fabrica.FabricaDAOSqlServer fab;
         Datos.DAO.Modulo5.DAORequerimiento DAO;
         private Dominio.Entidades.Modulo5.Requerimiento requerimiento;
-
+        
+        /// <summary>
+        ///Inicializacion de los atributos 
+        /// </summary>
         [SetUp]
         public void init() {
 
@@ -28,7 +37,10 @@ namespace PruebasUnitariasTotem.Modulo5
             this.requerimiento.CodigoProyecto = "1";
             this.requerimiento.Estatus = "Finalizado";
         }
-
+        
+        /// <summary>
+        /// Prueba de BuscarIdProyecto
+        /// </summary>
         [Test]
         public void PruebaBuscarIdProyecto() {
             try
@@ -45,6 +57,10 @@ namespace PruebasUnitariasTotem.Modulo5
 
         }
 
+
+        /// <summary>
+        /// Prueba de VerificarRequerimiento
+        /// </summary>
         [Test]
         public void PruebaVerificarRequerimiento() {
             try {
@@ -55,6 +71,9 @@ namespace PruebasUnitariasTotem.Modulo5
             catch(ExcepcionesTotem.Modulo1.ParametroInvalidoException){}
         }
 
+        /// <summary>
+        /// Prueba de EliminarRequerimiento
+        /// </summary>
         [Test]
         public void PruebaEliminarRequerimiento() {
 
@@ -73,6 +92,9 @@ namespace PruebasUnitariasTotem.Modulo5
 
         }
 
+        /// <summary>
+        /// Prueba de ConsultarRequerimientoDeProyecto 
+        /// </summary>
         [Test]
         public void PruebaConsultarRequerimiento() {
             try {
@@ -91,6 +113,9 @@ namespace PruebasUnitariasTotem.Modulo5
         
         }
 
+        /// <summary>
+        ///Prueba de ObtenerCodigoRequerimiento
+        /// </summary>
         [Test]
         public void PruebaObtenerCodigoRequerimiento() {
             try {
@@ -108,6 +133,9 @@ namespace PruebasUnitariasTotem.Modulo5
 
         }
 
+        /// <summary>
+        /// Prueba de ObtenerCodigoRequerimientoFuncional
+        /// </summary>
         [Test]
         public void PruebaCodigoRequerimientoFuncional() {
             try
@@ -126,6 +154,9 @@ namespace PruebasUnitariasTotem.Modulo5
 
         }
 
+        /// <summary>
+        /// Prueba de ObtenerCodigoRequerimientoFuncional
+        /// </summary>
         [Test]
         public void PruebaCodigoRequerimientoNoFuncional()
         {
@@ -145,6 +176,9 @@ namespace PruebasUnitariasTotem.Modulo5
 
         }
 
+        /// <summary>
+        /// Prueba de Agregar 
+        /// </summary>
         [Test]
         public void PruebaAgregar() {
             try
@@ -164,6 +198,9 @@ namespace PruebasUnitariasTotem.Modulo5
 
         }
 
+        /// <summary>
+        /// Prueba de Modificar  
+        /// </summary>
         [Test]
         public void PruebaModificar()
         {
@@ -185,6 +222,9 @@ namespace PruebasUnitariasTotem.Modulo5
 
         }
 
+        /// <summary>
+        /// Prueba de ConsultarXId
+        /// </summary>
         [Test]
         public void PruebaConsultar()
         {
@@ -206,6 +246,9 @@ namespace PruebasUnitariasTotem.Modulo5
 
         }
 
+        /// <summary>
+        /// Prueba de ConsultarTodos
+        /// </summary>
         [Test]
         public void PruebaConsultarTodos() {
 
