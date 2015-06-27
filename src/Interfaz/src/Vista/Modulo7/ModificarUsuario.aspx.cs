@@ -1,6 +1,7 @@
 ﻿using Contratos.Modulo7;
 using Presentadores.Modulo7;
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace Vista.Modulo7
@@ -87,27 +88,23 @@ namespace Vista.Modulo7
 			set { this.respuesta.Value = value; }
 		}
 
-		public DataSet Roles
+		public List<string> Roles
 		{
-			get { return (DataSet)rol.DataSource; }
 			set
 			{
-				this.rol.DataSource = value;
-				this.rol.DataTextField = "nombre";
-				this.rol.DataValueField = "id";
-				this.rol.DataBind();
+				rol.Items.Clear();
+				foreach (string s in value)
+					rol.Items.Add(s);
 			}
 		}
 
-		public DataSet Cargos
+		public List<string> Cargos
 		{
-			get { return (DataSet)cargo.DataSource; }
 			set
 			{
-				this.cargo.DataSource = value;
-				this.cargo.DataTextField = "nombre";
-				this.cargo.DataValueField = "id";
-				this.cargo.DataBind();
+				cargo.Items.Clear();
+				foreach(string s in value)
+					cargo.Items.Add(s);
 			}
 		}
 		#endregion

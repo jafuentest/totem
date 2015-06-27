@@ -5,7 +5,7 @@ using Dominio;
 using Dominio.Entidades.Modulo7;
 using Dominio.Fabrica;
 using System;
-using System.Data;
+using System.Collections.Generic;
 
 namespace Presentadores.Modulo7
 {
@@ -62,8 +62,19 @@ namespace Presentadores.Modulo7
 		/// </summary>
 		public void ObtenerCargos()
 		{
-			Comando<object, DataSet> comandoCargos = new FabricaComandos().CrearComandoConsultarCargosConId();
-			DataSet ds = comandoCargos.Ejecutar(null);
+			//vista.Cargos = 
+			//Comando<object, DataSet> comandoCargos = new FabricaComandos().CrearComandoConsultarCargosConId();
+			//DataSet ds = comandoCargos.Ejecutar(null);
+		}
+
+		/// <summary>
+		/// Método para llenar el drop down con los cargos disponibles
+		/// </summary>
+		public void ObtenerRoles()
+		{
+			List<string> strings = new List<string>();
+			strings.AddRange(RecursosPresentadorModulo7.Roles.Split(','));
+			vista.Roles = strings;
 		}
 	}
 }

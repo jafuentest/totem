@@ -167,6 +167,9 @@
     <value>username</value>
     <comment>String username</comment>
   </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Usuario,Administrador</value>
+  </data>
   <data name="URL_ListarUsuarios" xml:space="preserve">
     <value>../Modulo7/ListarUsuarios.aspx?</value>
   </data>
