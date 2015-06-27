@@ -9,8 +9,16 @@ using System.Text;
 
 namespace Comandos.Comandos.Modulo2
 {
+    /// <summary>
+    /// Comando para consultar todas las ciudades que posee un estado
+    /// </summary>
     public class ComandoConsultarCiudadPorEstado : Comando<String,List<String>>
     {
+        /// <summary>
+        /// Metodo que ejecuta el comando
+        /// </summary>
+        /// <param name="parametro">estado del que se desean conocer sus ciudades</param>
+        /// <returns>lista de ciudades</returns>
         public override List<string> Ejecutar(string parametro)
         {
             try

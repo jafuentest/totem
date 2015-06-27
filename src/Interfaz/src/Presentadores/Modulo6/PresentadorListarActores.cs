@@ -63,9 +63,9 @@ namespace Presentadores.Modulo6
 
         }
 
-        public void consultarActores()
+        public void consultarActores(string elCodigo)
         {
-            string codigo = "TOT";
+            string codigo = elCodigo;
             try
             {
 

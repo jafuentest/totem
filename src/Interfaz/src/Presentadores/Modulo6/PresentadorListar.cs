@@ -58,9 +58,9 @@ namespace Presentadores.Modulo6
         /// Método encargado de desplegar la lista de Casos de Uso
         /// según el proyecto seleccionado
         /// </summary>
-        public void CargarListaCasosDeUso()
+        public void CargarListaCasosDeUso(string elCodigo)
         {
-            string codigo = "TOT";
+            string codigo = elCodigo;
 
             try
             {

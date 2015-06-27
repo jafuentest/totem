@@ -11,9 +11,16 @@ using System.Text;
 
 namespace Comandos.Comandos.Modulo2
 {
+    /// <summary>
+    /// Comando para consultar lista de paises
+    /// </summary>
     public class ComandoConsultarListaPaises : Comando<Boolean,List<String>>
     {
-
+        /// <summary>
+        /// metodo que ejecuta el comando
+        /// </summary>
+        /// <param name="parametro">true</param>
+        /// <returns>lista de paises</returns>
         public override List<string> Ejecutar(bool parametro)
         {
             try

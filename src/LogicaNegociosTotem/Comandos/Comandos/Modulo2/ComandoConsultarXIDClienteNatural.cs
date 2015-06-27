@@ -11,8 +11,17 @@ using ExcepcionesTotem;
 using ExcepcionesTotem.Modulo2;
 namespace Comandos.Comandos.Modulo2
 {
+    /// <summary>
+    /// Comando para consultar datos de cliente natural por id
+    /// </summary>
     public class ComandoConsultarXIDClienteNatural : Comando<Entidad, Entidad>
     {
+        /// <summary>
+        /// Metodo que ejecuta el comando
+        /// </summary>
+        /// <param name="parametro">entidad que contiene el id del que 
+        /// se desean saber todos sus datos</param>
+        /// <returns>Cliente natural con todos sus datos</returns>
         public override Entidad Ejecutar(Entidad parametro)
         {
             try

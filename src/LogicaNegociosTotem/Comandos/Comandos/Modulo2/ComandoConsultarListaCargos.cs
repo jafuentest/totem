@@ -12,8 +12,16 @@ using ExcepcionesTotem;
 
 namespace Comandos.Comandos.Modulo2
 {
+    /// <summary>
+    /// Comando para consultar la lista de cargos
+    /// </summary>
     public class ComandoConsultarListaCargos : Comando<bool, List<String>>
     {
+        /// <summary>
+        /// Metodo que ejecuta el comando
+        /// </summary>
+        /// <param name="parametro">true</param>
+        /// <returns>lista de cargos</returns>
         public override List<string> Ejecutar(bool parametro)
         {
             try

@@ -10,8 +10,16 @@ using System.Text;
 
 namespace Comandos.Comandos.Modulo2
 {
+    /// <summary>
+    /// Comando para eliminar un contacto
+    /// </summary>
     public class ComandoEliminarContacto : Comando<Entidad,bool>
     {
+        /// <summary>
+        /// Metodo que ejecuta el comando
+        /// </summary>
+        /// <param name="parametro">Contacto a eliminar</param>
+        /// <returns>booleano que refleja el exito de la operacion</returns>
         public override bool Ejecutar(Entidad parametro)
         {
             try

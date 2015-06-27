@@ -116,15 +116,32 @@ namespace DAO.DAO.Modulo7
                 a las variables de stored procedure*/
                 List<Parametro> listaParametros = new List<Parametro>();
                 Parametro parametroConsulta;
-                parametroConsulta = new Parametro(RecursosBaseDeDatosModulo7.UsernameUsuario,SqlDbType.VarChar,
-                    username,false);
-                listaParametros.Add(parametroConsulta);
-                parametroConsulta = new Parametro(RecursosBaseDeDatosModulo7.Resultadorepetido, SqlDbType.VarChar, true);
-                listaParametros.Add(parametroConsulta);
 
-                //Ejecutamos el stored procedure y obtenemos el output
-                List<Resultado> resultado = EjecutarStoredProcedure(RecursosBaseDeDatosModulo7.ProcedimientoUsuarioUnico,
-                    listaParametros);
+                //Aqui se almacenara lo consultado de la BD
+                List<Resultado> resultado;
+
+                //Si se esta mandando un username que no es nulo
+                if(username != null)
+                {
+                    parametroConsulta = new Parametro(RecursosBaseDeDatosModulo7.UsernameUsuario,SqlDbType.VarChar,
+                        username,false);
+                    listaParametros.Add(parametroConsulta);
+                    parametroConsulta = new Parametro(RecursosBaseDeDatosModulo7.Resultadorepetido, SqlDbType.VarChar, true);
+                    listaParametros.Add(parametroConsulta);
+
+                    //Ejecutamos el stored procedure y obtenemos el output
+                    resultado = EjecutarStoredProcedure(RecursosBaseDeDatosModulo7.ProcedimientoUsuarioUnico,
+                        listaParametros);
+                }
+                else
+                {
+                    //Escribimos el error y Lanzamos la excepcion
+                    UsernameVacioException usernameVacio = new UsernameVacioException(
+                        RecursosBaseDeDatosModulo7.EXCEPTION_USERNAME_VACIO_CODIGO,
+                        RecursosBaseDeDatosModulo7.EXCEPTION_USERNAME_VACIO_MENSAJE, new UsernameVacioException());
+                    Logger.EscribirError(this.GetType().Name, usernameVacio);
+                    throw usernameVacio;
+                }
 
                 //Sino existe el username en la Base de Datos entonces es valido agregarlo
                 if (resultado[0].valor == "")
@@ -135,9 +152,23 @@ namespace DAO.DAO.Modulo7
                 return valido;
                 
             }
-            catch(Exception e)
+            catch (SqlException e)
             {
-                throw new Exception();
+                //Si hay error en la Base de Datos escribimos en el logger y lanzamos la excepcion
+                BDDAOUsuarioException daoSqlException = new BDDAOUsuarioException(
+                    RecursosBaseDeDatosModulo7.EXCEPTION_BDDAOUSUARIO_CODIGO,
+                    RecursosBaseDeDatosModulo7.EXCEPTION_BDDAOUSUARIO_MENSAJE, e);
+                Logger.EscribirError(this.GetType().Name, daoSqlException);
+                throw daoSqlException;
+            }
+            catch (Exception e)
+            {
+                //Si existe un error inesperado escribimos en el logger y lanzamos la excepcion
+                ErrorInesperadoDAOUsuarioException errorInesperado = new ErrorInesperadoDAOUsuarioException(
+                RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_CODIGO,
+                RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_MENSAJE, e);
+                Logger.EscribirError(this.GetType().Name, errorInesperado);
+                throw errorInesperado;
             }
        }
 
@@ -189,16 +220,20 @@ namespace DAO.DAO.Modulo7
             catch (SqlException e)
             {
                 //Si hay error en la Base de Datos escribimos en el logger y lanzamos la excepcion
-                Logger.EscribirError(this.GetType().Name, new ExceptionTotemConexionBD());
-                throw new ExceptionTotemConexionBD(RecursoGeneralDAO.Codigo_Error_BaseDatos,
-                    RecursoGeneralDAO.Mensaje_Error_BaseDatos, e);
+                BDDAOUsuarioException daoSqlException = new BDDAOUsuarioException(
+                    RecursosBaseDeDatosModulo7.EXCEPTION_BDDAOUSUARIO_CODIGO,
+                    RecursosBaseDeDatosModulo7.EXCEPTION_BDDAOUSUARIO_MENSAJE, e);
+                Logger.EscribirError(this.GetType().Name, daoSqlException);
+                throw daoSqlException;
             }
             catch (Exception e)
             {
                 //Si existe un error inesperado escribimos en el logger y lanzamos la excepcion
-                Logger.EscribirError(this.GetType().Name, new ExceptionTotem());
-                throw new ExceptionTotem(RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_CODIGO,
-                    RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_MENSAJE, e);
+                ErrorInesperadoDAOUsuarioException errorInesperado = new ErrorInesperadoDAOUsuarioException(
+                RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_CODIGO,
+                RecursosBaseDeDatosModulo7.EXCEPTION_INESPERADO_MENSAJE, e);
+                Logger.EscribirError(this.GetType().Name, errorInesperado);
+                throw errorInesperado;
             }
         }
 

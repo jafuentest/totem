@@ -33,7 +33,8 @@ namespace Vista.Modulo5
 
         protected void GenerarDoc_Click(object sender, EventArgs e)
         {
-            this.presentador.GenerarDoc("TOT");
+
+            this.presentador.GenerarDoc(this.Master.proyectoActual);
             
         }
 

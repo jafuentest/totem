@@ -82,8 +82,8 @@ namespace Vista.Modulo6
         /// <param name="e"></param>
         protected void AgregarActorClick(object sender, EventArgs e)
         {
-            
-           this.presentador.AgregarActor_Click();
+            string codigo = this.Master.CodigoProyectoActual(); 
+           this.presentador.AgregarActor_Click(codigo);
 
         }
     }

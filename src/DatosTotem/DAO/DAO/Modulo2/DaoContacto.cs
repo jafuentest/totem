@@ -14,6 +14,12 @@ namespace DAO.DAO.Modulo2
 {
     public class DaoContacto : DAO, IntefazDAO.Modulo2.IDaoContacto
     {
+        #region IDAO
+        /// <summary>
+        /// metodo para agregar un contacto en bd
+        /// </summary>
+        /// <param name="parametro">contacto a agregar en bd</param>
+        /// <returns>booleano que refleja el exito de la operacion</returns>
         public bool Agregar(Dominio.Entidad parametro)
         {
             try
@@ -95,6 +101,11 @@ namespace DAO.DAO.Modulo2
             }
             #endregion
         }
+        /// <summary>
+        /// metodo para modificar un contacto
+        /// </summary>
+        /// <param name="parametro">contacto a modificar</param>
+        /// <returns>booleano que refleja el exito de la operacion</returns>
         public bool Modificar(Dominio.Entidad parametro)
         {
             try
@@ -176,6 +187,11 @@ namespace DAO.DAO.Modulo2
             }
             #endregion
         }
+        /// <summary>
+        /// metodo para consultar todos los datos de un contacto dado su id
+        /// </summary>
+        /// <param name="parametro">parametro q posee el id del que se desean saber sus datos</param>
+        /// <returns>el contacto con todos sus datos</returns>
         public Dominio.Entidad ConsultarXId(Dominio.Entidad parametro)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
@@ -289,6 +305,14 @@ namespace DAO.DAO.Modulo2
         {
             throw new NotImplementedException();
         }
+        #endregion
+        #region IDaoContacto
+        /// <summary>
+        /// Metodo para consultar que la cedula sea unica
+        /// </summary>
+        /// <param name="parametro">Contacto para verificar si la cedula ya existe</param>
+        /// <returns>true si la cedula no esta asociada a algun contacto, 
+        /// false si ya existe esa cedula en bd</returns>
         public bool BuscarCIContacto(Entidad parametro)
         {
             Contacto elContacto = (Contacto)parametro;
@@ -343,5 +367,6 @@ namespace DAO.DAO.Modulo2
             }
             #endregion
         }
+        #endregion
     }
 }

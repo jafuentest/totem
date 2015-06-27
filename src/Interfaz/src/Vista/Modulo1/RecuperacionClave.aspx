@@ -17,12 +17,12 @@
                      
                     <div runat="server" id="pswd_nuevo" class="form-group">
                         <label>Nueva Contraseña:</label>
-                        <input type="password" class="form-control" value="" placeholder="Introduzca nueva clave" id="input_clave" runat="server" name="claveNueva" />
+                        <input type="password" class="form-control" value="" maxlength="50" placeholder="Introduzca nueva clave" id="input_clave" runat="server" name="claveNueva" />
                     </div>
 
                     <div runat="server" id="pswd_confirmacion" class="form-group">
                         <label>Confirme Nueva Contraseña:</label>
-                        <input type="password" class="form-control" value="" placeholder="Confirme la nueva clave" id="input_clave_confs" runat="server" name="confirmaClaveNueva" />
+                        <input type="password" class="form-control" value="" maxlength="50" placeholder="Confirme la nueva clave" id="input_clave_confs" runat="server" name="confirmaClaveNueva" />
                     </div>
 
                     <div class="form-group">
