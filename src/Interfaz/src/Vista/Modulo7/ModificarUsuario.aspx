@@ -17,7 +17,7 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-10 col-md-10 col-lg-10">
-                    <input type="text" name="username" id="username" runat="server" placeholder="Nombre de Usuario" class="form-control" />
+                    <input type="text" name="username" id="username" runat="server" disabled="disabled" class="form-control" />
                 </div>
             </div>
             <div class="form-group">

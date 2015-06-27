@@ -529,6 +529,7 @@ namespace Datos.DAO.Modulo7
 		{
 			return AgregarUsuario(parametro);
 		}
+
         /// <summary>
         /// Consultar usuario por el ID obtenido del objeto Entidad
         /// </summary>
@@ -583,7 +584,8 @@ namespace Datos.DAO.Modulo7
 				throw e;
 			}
 		}
-        /// <summary>
+        
+		/// <summary>
         /// Obtiene la informacion del usuario particular a partir del username obtenido del objeto parametro
         /// </summary>
         /// <param name="parametro"></param>
@@ -637,6 +639,7 @@ namespace Datos.DAO.Modulo7
                 throw new UsuarioInvalidoException(e.Message);
 			}
 		}
+
         /// <summary>
         /// 
         /// </summary>
@@ -653,6 +656,9 @@ namespace Datos.DAO.Modulo7
 					List<Parametro> parametros = parametrosModificarUsuario(usuario);
 					List<Resultado> resultados = base.EjecutarStoredProcedure
 						(RecursosBaseDeDatosModulo7.ProcedimientoModificarUsuario, parametros);
+
+					if (resultados != null)
+						modificado = true;
 				}
 				else
 				{
@@ -666,6 +672,7 @@ namespace Datos.DAO.Modulo7
 
 			return modificado;
 		}
+
         /// <summary>
         /// 
         /// </summary>
@@ -675,6 +682,10 @@ namespace Datos.DAO.Modulo7
 			return ListarUsuarios();
 		}
 		
+		/// <summary>
+		/// Metodo para consultar la tabla de cargos en un dataset
+		/// </summary>
+		/// <returns>El dataset con los cargos y sus ids</returns>
 		public DataSet ConsultarCargosConId()
 		{
 			try
@@ -690,7 +701,6 @@ namespace Datos.DAO.Modulo7
 
 			}
 			return new DataSet();
-
 		}
 
 		/// <summary>
@@ -704,10 +714,6 @@ namespace Datos.DAO.Modulo7
 
 			parametros.Add(new Parametro(
 				RecursosBaseDeDatosModulo7.UsernameUsuario, SqlDbType.VarChar, usuario.Username, false
-			));
-
-			parametros.Add(new Parametro(
-				RecursosBaseDeDatosModulo7.IdUsuario, SqlDbType.Int, usuario.Id.ToString(), false
 			));
 
 			parametros.Add(new Parametro(
@@ -739,12 +745,13 @@ namespace Datos.DAO.Modulo7
 			));
 
 			parametros.Add(new Parametro(
-				RecursosBaseDeDatosModulo7.IdCargoUsuario, SqlDbType.Int, usuario.IdCargo.ToString(), false
+				RecursosBaseDeDatosModulo7.CargoUsuario, SqlDbType.VarChar, usuario.Cargo, false
 			));
 
 			return parametros;
 		}
-        /// <summary>
+        
+		/// <summary>
         /// 
         /// </summary>
         /// <param name="usuario"></param>

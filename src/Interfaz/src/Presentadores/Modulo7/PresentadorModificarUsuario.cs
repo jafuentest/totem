@@ -1,13 +1,14 @@
 ﻿using Comandos;
-using System.Web;
 using Comandos.Fabrica;
 using Contratos.Modulo7;
 using Dominio;
 using Dominio.Entidades.Modulo7;
 using Dominio.Fabrica;
+using ExcepcionesTotem.Modulo7;
 using System;
 using System.Collections.Generic;
-using ExcepcionesTotem.Modulo7;
+using System.Text.RegularExpressions;
+using System.Web;
 
 namespace Presentadores.Modulo7
 {
@@ -35,7 +36,16 @@ namespace Presentadores.Modulo7
 		{
 			try
 			{
-				username = "johan7850";// HttpContext.Current.Request.QueryString["username"];
+				username = "albertods";// HttpContext.Current.Request.QueryString["username"];
+
+				string urlListarUsuarios = RecursosPresentadorModulo7.URL_ListarUsuarios + RecursosPresentadorModulo7.Codigo_Error_UsuarioInvalido;
+				bool usuarioNull = username == null;
+				bool usuarioVacio = username.Equals(string.Empty);
+				bool usuarioInvalido = !Regex.IsMatch(username, RecursosPresentadorModulo7.ExpReg_Username,
+										RegexOptions.IgnoreCase);
+				if (usuarioNull || usuarioVacio || usuarioInvalido)
+					HttpContext.Current.Response.Redirect(urlListarUsuarios);
+
 				Entidad parametro =  new FabricaEntidades().ObtenerUsuario(username);
 
 				Comando<Entidad, Entidad> comandoConsultar = FabricaComandos.CrearComandoDetalleUsuario();

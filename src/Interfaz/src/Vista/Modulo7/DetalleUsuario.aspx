@@ -31,6 +31,12 @@
 				<h4 style="float: left">Cargo:&nbsp;</h4>
 				<h4 id="cargo" runat="server"></h4>
 			</div>
+			<div class="form-group">
+                <div class="col-sm-10 col-md-10 col-lg-10">
+                    <button id="btn_modUsuario" class="btn btn-primary" type="submit" runat="server" onserverclick="btn_modUsuario_ServerClick">Modificar</button>
+                    <a class="btn btn-default" href="ListarUsuarios.aspx">Volver a la lista</a>
+                </div>
+            </div>
 		</div>
 	</div>
 </asp:Content>

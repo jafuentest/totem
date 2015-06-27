@@ -20,28 +20,46 @@ namespace Vista.Modulo7
 			this.presentador.DetalleDeUsuario();
 		}
 
+		#region contrato
 		public string Username
-		{ set { this.username.InnerText = value; } }
+		{
+			set { this.username.InnerText = value; }
+		}
 
 		public string Nombre
-		{ set { this.nombre.InnerText = value; } }
+		{
+			set { this.nombre.InnerText = value; }
+		}
 
 		public string Apellido
-		{ set { this.apellido.InnerText = value; } }
+		{
+			set { this.apellido.InnerText = value; }
+		}
 
 		public string Rol
-		{ set { this.rol.InnerText = value; } }
+		{
+			set { this.rol.InnerText = value; }
+		}
 
 		public string Correo
-		{ set { this.correo.InnerText = value; } }
+		{
+			set { this.correo.InnerText = value; }
+		}
 
 		public string Cargo
-		{ set { this.cargo.InnerText = value; } }
+		{
+			set { this.cargo.InnerText = value; }
+		}
 
 		public string MensajeAlerta
-		{ set { this.alert.InnerText = value; } }
+		{
+			set { this.alert.InnerText = value; }
+		}
 
 		public string TipoAlerta
-		{ set { this.alert.Attributes.Add(RecursosVistaModulo7.RecursoClass, value); } }
+		{
+			set { this.alert.Attributes.Add(RecursosVistaModulo7.RecursoClass, value); }
+		}
+		#endregion
 	}
 }
