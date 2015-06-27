@@ -205,6 +205,10 @@
     <value>/Modulo5/ListarRequerimientos.aspx</value>
     <comment>Ventana de listar requerimiento</comment>
   </data>
+  <data name="Ventana_Reporte_PDF" xml:space="preserve">
+    <value>/Modulo5/docs/Requerimientos.pdf</value>
+    <comment>Ventana de pdf de los requerimientos</comment>
+  </data>
   <data name="Ventana_Reporte_Requerimiento" xml:space="preserve">
     <value>/Modulo5/ReporteRequerimientos.aspx</value>
     <comment>Ventana de reportes de requerimientos</comment>

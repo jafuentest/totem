@@ -31,7 +31,7 @@ namespace Presentadores.Modulo5
                 Comandos.Comando<String, Boolean> Comando;
                 Comando = Comandos.Fabrica.FabricaComandos.CrearComandoGenerarArchivoLatex();
                 Comando.Ejecutar(parametro);
-                HttpContext.Current.Response.Redirect("/Modulo5/docs/Requerimientos.pdf");
+                HttpContext.Current.Response.Redirect(RecursosPresentadorModulo5.Ventana_Reporte_PDF);
             }
             catch (ExcepcionesTotem.Modulo5.ArchivoLatexNoGeneradoException err) {
                 vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Error;
@@ -94,8 +94,7 @@ namespace Presentadores.Modulo5
             try
             {
                 HttpCookie pcookie = HttpContext.Current.Request.Cookies.Get("selectedProjectCookie");
-                //string codigoProyecto =  pcookie.Values["projectCode"].ToString(); //De aqui se debe extraer el codigo del proyecto
-                string codigoProyecto = "TOT"; //Cableado
+                string codigoProyecto = pcookie.Values["projectCode"].ToString();
                 Comandos.Comando<String, List<Dominio.Entidad>> comandoListarRequerimientos;
                 comandoListarRequerimientos =
                     Comandos.Fabrica.FabricaComandos.CrearComandoConsultarRequerimientosProyecto();

@@ -42,8 +42,7 @@ namespace Presentadores.Modulo5
                 Comandos.Comando<String, List<String>> comandoBuscar;
                 List<String> codigos = new List<string>();
                 comandoBuscar = Comandos.Fabrica.FabricaComandos.CrearComandoBuscarCodigoRequerimiento();
-                //comandoBuscar.Ejecutar(pcookie.Values["projectCode"].ToString());
-                codigos = comandoBuscar.Ejecutar("TOT");
+                codigos = comandoBuscar.Ejecutar(pcookie.Values["projectCode"].ToString());
                 if (vista.funcional.Equals("funcional", StringComparison.CurrentCultureIgnoreCase))
                 {
                     vista.idRequerimiento = DesglosarCodigo(codigos[0]);
@@ -174,19 +173,14 @@ namespace Presentadores.Modulo5
                 if (ValidarCampos())
                 {
                     HttpCookie pcookie = HttpContext.Current.Request.Cookies.Get("selectedProjectCookie");
-                    //elProy.Codigo =  pcookie.Values["projectCode"].ToString(); //De aqui se debe extraer el codigo del proyecto
                     Comandos.Comando<Dominio.Entidad, Boolean> comandoAgregar;
                     Dominio.Entidad requerimiento;
                     Dominio.Fabrica.FabricaEntidades fabricaEntidades =
                         new Dominio.Fabrica.FabricaEntidades();
                     requerimiento = fabricaEntidades.ObtenerRequerimiento(
                         vista.idRequerimiento, vista.requerimiento, vista.funcional,
-                        vista.prioridad, vista.finalizado, "TOT"); //Cableado
-                    /*Dominio.Entidad requerimiento;
-                    requerimiento = Dominio.Fabrica.FabricaEntidades.ObtenerRequerimiento(
-                        vista.idRequerimiento, vista.requerimiento, vista.funcional,
-                        vista.prioridad, vista.finalizado,pcookie.Values["projectCode"].ToString());
-                     Para Cuando funcione el cookie del proyecto*/
+                        vista.prioridad, vista.finalizado, 
+                        pcookie.Values["projectCode"].ToString());
 
                     comandoAgregar = Comandos.Fabrica.FabricaComandos.CrearComandoAgregarRequerimiento();
                     if (comandoAgregar.Ejecutar(requerimiento))
