@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Web;
 using Contratos.Modulo1;
 using Dominio;
@@ -43,6 +44,17 @@ namespace Presentadores.Modulo1
                     List<string> usuarioLogin = new List<string>();
                     usuarioLogin.Add(vista.Usuario);
                     usuarioLogin.Add(vista.Clave);
+
+                    Regex reg1 = new Regex(RecursosM1.Expresion_SQL);
+                    Regex reg2 = new Regex(RecursosM1.Expresion_Comilla);
+                    if ((reg1.IsMatch(vista.Usuario))||(reg2.IsMatch(vista.Usuario)))
+                    {
+                        throw new Exception(RecursosM1.Mensaje_Sospecha);
+                    }
+                    if ((reg1.IsMatch(vista.Clave)) || (reg2.IsMatch(vista.Clave)))
+                    {
+                        throw new Exception(RecursosM1.Mensaje_Sospecha);
+                    }
 
                     if (string.IsNullOrEmpty(vista.Usuario))
                     {

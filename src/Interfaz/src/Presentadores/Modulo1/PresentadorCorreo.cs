@@ -42,6 +42,14 @@ namespace Presentadores.Modulo1
             {
                 try
                 {
+                    Regex reg1 = new Regex(RecursosM1.Expresion_SQL);
+                    Regex reg2 = new Regex(RecursosM1.Expresion_Comilla);
+                    if ((reg1.IsMatch(correo)) || (reg2.IsMatch(correo)))
+                    {
+                        throw new Exception(RecursosM1.Mensaje_Sospecha);
+                    }
+
+
                     FabricaEntidades fabricaEntidades = new FabricaEntidades();
                     Entidad usuario = fabricaEntidades.ObtenerUsuario();
                     ((Usuario)usuario).Correo = correo;
