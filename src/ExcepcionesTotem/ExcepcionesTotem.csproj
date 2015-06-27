@@ -98,6 +98,8 @@
     <Compile Include="Modulo5\ArchivoLatexNoGeneradoException.cs" />
     <Compile Include="Modulo5\CamposInvalidosException.cs" />
     <Compile Include="Modulo5\ProyectoNoEncontradoException.cs" />
+    <Compile Include="Modulo5\ProyectoSinRequerimientoFuncional.cs" />
+    <Compile Include="Modulo5\ProyectoSinRequerimientoNoFuncional.cs" />
     <Compile Include="Modulo5\RequerimientoNoExisteException.cs" />
     <Compile Include="Modulo5\RequerimientoInvalidoException.cs" />
     <Compile Include="Modulo5\RequerimientoNoCreadoException.cs" />

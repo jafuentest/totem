@@ -411,12 +411,12 @@ namespace DAO.DAO.Modulo5
                     }
                 }
                 ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
-                        new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
+                       new ExcepcionesTotem.Modulo5.ProyectoSinRequerimientoFuncional());
 
-                throw new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException(
-                            RecursosDAOModulo5.CODIGO_EXCEPCION_REQUERIMIENTO_ERRADO,
-                            RecursosDAOModulo5.MENSAJE_EXCEPCION_REQUERIMIENTO_ERRADO,
-                            new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
+                throw new ExcepcionesTotem.Modulo5.ProyectoSinRequerimientoFuncional(
+                            RecursosDAOModulo5.CODIGO_EXCEPCION_PROYECTO_SIN_REQ_FUN,
+                            RecursosDAOModulo5.MENSAJE_EXCEPCION_PROYECTO_SIN_REQ_FUN,
+                            new ExcepcionesTotem.Modulo5.ProyectoSinRequerimientoFuncional());
 
             }
             #region Capturar Excepciones
@@ -492,12 +492,13 @@ namespace DAO.DAO.Modulo5
                     }
                 }
                 ExcepcionesTotem.Logger.EscribirError(this.GetType().Name,
-                        new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
+                      new ExcepcionesTotem.Modulo5.ProyectoSinRequerimientoNoFuncional());
 
-                throw new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException(
-                            RecursosDAOModulo5.CODIGO_EXCEPCION_REQUERIMIENTO_ERRADO,
-                            RecursosDAOModulo5.MENSAJE_EXCEPCION_REQUERIMIENTO_ERRADO,
-                            new ExcepcionesTotem.Modulo5.RequerimientoInvalidoException());
+                throw new ExcepcionesTotem.Modulo5.ProyectoSinRequerimientoNoFuncional(
+                            RecursosDAOModulo5.CODIGO_EXCEPCION_PROYECTO_SIN_REQ_NOF,
+                            RecursosDAOModulo5.MENSAJE_EXCEPCION_PROYECTO_SIN_REQ_NOF,
+                            new ExcepcionesTotem.Modulo5.ProyectoSinRequerimientoNoFuncional());
+
 
             }
             #region Capturar Excepciones
