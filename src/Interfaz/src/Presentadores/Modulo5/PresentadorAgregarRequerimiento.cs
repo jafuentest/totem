@@ -53,6 +53,21 @@ namespace Presentadores.Modulo5
                 }
             }
             #region Capturar Excepcion
+
+            catch (ExcepcionesTotem.Modulo5.ProyectoSinRequerimientoFuncional)
+            {
+                String proy =  HttpContext.Current.Session[RecursosPresentadorModulo5.LProyectoCodigo].ToString();
+                vista.idRequerimiento = DesglosarCodigo(proy + "_RF_0");
+
+            }
+
+            catch (ExcepcionesTotem.Modulo5.ProyectoSinRequerimientoNoFuncional)
+            {
+
+                String proy = HttpContext.Current.Session[RecursosPresentadorModulo5.LProyectoCodigo].ToString();
+                vista.idRequerimiento = DesglosarCodigo(proy + "_RNF_0");
+
+            }
             catch (ExcepcionesTotem.Modulo5.CamposInvalidosException ex)
             {
                 vista.alertaClase = RecursosPresentadorModulo5.Alerta_Clase_Error;
