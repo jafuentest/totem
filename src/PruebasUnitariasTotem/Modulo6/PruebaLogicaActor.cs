@@ -2,7 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using NUnit.Framework;
+using Dominio.Entidades.Modulo6;
+using Dominio.Entidades.Modulo4;
+using Dominio.Fabrica;
+using Comandos.Fabrica;
+using Comandos;
+using Comandos.Comandos.Modulo6;
+using System.IO;
+using Dominio.Entidades.Modulo5;
+using Dominio;
 
 namespace PruebasUnitariasTotem.Modulo6
 {
@@ -11,9 +21,8 @@ namespace PruebasUnitariasTotem.Modulo6
     /// </summary>
     [TestFixture]
     public class PruebaLogicaActor
-    {/*
-        //Atributo para probar clase LogicaActor
-        LogicaActor logica;
+    {
+        List<Entidad> _prueba;
 
         /// <summary>
         /// Inicializa la clase que probaremos
@@ -21,100 +30,188 @@ namespace PruebasUnitariasTotem.Modulo6
         [SetUp]
         public void Init()
         {
-            logica = new LogicaActor();
+
+
+            List<Entidad> _prueba = new List<Entidad>();
+
+
+
+        }
+
+
+        /// <summary>
+        /// Metodo que prueba el comando detalle de una minuta 
+        /// </summary>
+        [Test]
+        public void PruebaComandoDetalleActoresCombo()
+        {
+
+            Actor actor1 = new Actor();
+
+
+            actor1.NombreActor = "Administrador";
+            actor1.DescripcionActor = "El que mantiene la pagina";
+
+
+            List<Entidad> actores = FabricaComandos.CrearComandoConsultarActoresCB().Ejecutar("TOT");
+
+            Assert.IsNotNull(actores);
+
+        }
+
+
+
+        /// <summary>
+        /// Metodo que prueba el comando detalle de una minuta 
+        /// </summary>
+        [Test]
+        public void PruebaVerificarExistenciaActor()
+        {
+
+            FabricaEntidades fabrica = new FabricaEntidades();
+
+            Entidad entidadActor = fabrica.ObtenerActor();
+            Entidad entidadCasoUso = fabrica.ObtenerCasoDeUso();
+
+
+            CasoDeUso casoUso = entidadCasoUso as CasoDeUso;
+
+
+
+            Comando<string, bool> comandoVerificarActor =
+                        FabricaComandos.CrearComandoVerificarActor();
+
+            bool laLista = comandoVerificarActor.Ejecutar("Administrador");
+
+
+            Assert.IsNotNull(laLista);
+
         }
 
         /// <summary>
-        /// Se prueba que la clase creada apunte a vacio
+        /// Metodo que prueba el comando detalle de una minuta 
         /// </summary>
         [Test]
-        public void PruebaVacio()
+        public void PruebaComandoConsultarTodosLosActores()
         {
-            Assert.IsNotNull(logica);
+            Actor actor1 = new Actor();
+
+
+            actor1.NombreActor = "Administrador";
+            actor1.DescripcionActor = "El que mantiene la pagina";
+
+
+            List<Entidad> actores = FabricaComandos.CrearComandoListarActores().Ejecutar("TOT");
+
+
+            Assert.IsNotNull(actores);
+
+
         }
+
+        /// <summary>
+        /// Metodo que prueba el comando detalle de una minuta 
+        /// </summary>
+        [Test]
+        public void PruebaComandoConsultarActoresXCasoDeUso()
+        {
+            Actor actor1 = new Actor();
+
+
+            actor1.NombreActor = "Administrador";
+            actor1.DescripcionActor = "El que mantiene la pagina";
+
+
+            List<string> actores = FabricaComandos.CrearComandoConsultarActoresXCasoDeUso().Ejecutar(1);
+
+
+            Assert.IsNotNull(actores);
+
+
+        }
+
+
+        /// <summary>
+        /// Metodo que prueba el comando detalle de una minuta 
+        /// </summary>
+        [Test]
+        public void PruebaComandoConsultarCasoDeUsoPorActor()
+        {
+
+            FabricaEntidades fabrica = new FabricaEntidades();
+            Entidad entidadAct = fabrica.ObtenerActor();
+            Entidad entidadProy = FabricaEntidades.ObtenerProyecto();
+
+            Actor actor = entidadAct as Actor;
+            actor.NombreActor = "Administrador";
+
+            Proyecto proyecto = entidadProy as Proyecto;
+            proyecto.Codigo = "TOT";
+            actor.ProyectoAsociado = proyecto;
+
+
+
+
+            Comando<Entidad, List<Entidad>> comandoCasosUsoPorActor =
+                        FabricaComandos.CrearComandoConsultarCasosDeUsoXActor();
+
+            List<Entidad> laLista = comandoCasosUsoPorActor.Ejecutar(actor);
+
+
+            Assert.IsNotNull(laLista);
+
+
+        }
+
+
+
+
+
+
+
+
+
+
 
         /// <summary>
         /// Se prueba que la clase pueda agregar actores
         /// </summary>
         [Test]
-        public void PruebaAgregar()
+        public void PruebaComandoAgregar()
         {
-            Assert.IsTrue(logica.AgregarActor("prueba", "prueba", 1));
+            FabricaEntidades fabrica = new FabricaEntidades();
+            Entidad entidad = fabrica.ObtenerActor();
+            Entidad entidadProy = FabricaEntidades.ObtenerProyecto();
+            entidad.Id = 4;
+            Actor actor = entidad as Actor;
+            actor.NombreActor = "Sandra";
+            actor.DescripcionActor = "es buena estudiante";
+            Proyecto proyecto = entidadProy as Proyecto;
+            proyecto.Codigo = "TOT";
+            actor.ProyectoAsociado = proyecto;
+
+
+            Assert.IsTrue(FabricaComandos.CrearComandoAgregarActor().Ejecutar(entidad));
+
+
         }
 
-        /// <summary>
-        /// Se prueba que la clase pueda modificar actores
-        /// </summary>
-        [Test]
-        public void PruebaLeer()
-        {
-            //Insertamos un valor de prueba
-            logica.AgregarActor("prueba", "prueba", 1);
 
-            //Leemos los actores
-            List<Actor> listaActores = logica.ListarActor(1);
-
-            /*Probamos que la lista devuelta no es nula y a su vez
-            que nos devuelva un actor de predeterminado de prueba
-            Assert.IsNotNull(listaActores);
-            Assert.AreEqual(listaActores[listaActores.Count - 1].NombreActor, "prueba");
-            Assert.AreEqual(listaActores[listaActores.Count - 1].DescripcionActor, "prueba");
-        }
-
-        /// <summary>
-        /// Se prueba que la clase pueda modificar actores
-        /// </summary>
-        [Test]
-        public void PruebaModificar()
-        {
-            //Insertamos un valor de prueba
-            logica.AgregarActor("prueba", "prueba", 1);
-
-            //Obtenemos ese valor de prueba
-            List<Actor> listaActores = logica.ListarActor(1);
-
-            //Obtenemos el ID del Actor insertado de prueba
-            int Identificacion = listaActores[listaActores.Count - 1].IdentificacionActor;
-
-            //Lo modificamos
-            Assert.IsTrue(logica.ModificarActor(Identificacion, "prueba", "prueba", 1));
-        }
 
         /// <summary>
         /// Se prueba que la clase pueda eliminiar actores
         /// </summary>
         [Test]
-        public void PruebaEliminar()
+        public void PruebaComandoEliminarActor()
         {
-            //Insertamos un valor de prueba
-            logica.AgregarActor("prueba", "prueba", 1);
 
-            //Leemos los actores
-            List<Actor> listaActores = logica.ListarActor(1);
-
-            //Eliminamos el valor de prueba insertado
-            Assert.IsTrue(logica.EliminarActor(listaActores[listaActores.Count - 1].IdentificacionActor, 1));
+            int id = 1;
+            Assert.IsTrue(FabricaComandos.CrearComandoEliminarCU().Ejecutar(id));
         }
 
-        /// <summary>
-        /// Se prueba que la clase pueda agregar un actor siempre y cuando ya no exista en ese proyecto
-        /// </summary>
-        [Test]
-        public void PruebaAgregarListar()
-        {
-            ///Creo unos valores aleatorios para simular un actor
-            Random aleatorio = new Random();
-            String valorPrueba = aleatorio.Next().ToString();
 
-            //Insertamos un valor de prueba
-            logica.AgregarActor("prueba", "prueba", 1);
 
-            //Si ese usuario ya existe en la Base de Datos me debe retornar falso
-            Assert.IsTrue(!logica.AgregarListarActor("prueba", "prueba", 1));
 
-            //Si no existe debe retornarme verdadero indicando que la insercion fue exitosa
-            Assert.IsTrue(logica.AgregarListarActor(valorPrueba, valorPrueba, 1));
-        }
 
         /// <summary>
         /// Se deja en vacio el atributo creado para ser limpiado por el Garbage Collector
@@ -122,7 +219,9 @@ namespace PruebasUnitariasTotem.Modulo6
         [TearDown]
         public void Limpiar()
         {
-            logica = null;
-        }*/
+            _prueba = null;
+        }
+
     }
 }
+

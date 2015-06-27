@@ -80,10 +80,10 @@
     <Compile Include="Modulo5\PruebaReportesPresentador.cs" />
     <Compile Include="Modulo5\PruebaFrabricaRequerimiento.cs" />
     <Compile Include="Modulo5\PruebFabricaDao.cs" />
-    <Compile Include="Modulo6\PruebaActor.cs" />
-    <Compile Include="Modulo6\PruebaBDActor.cs" />
-    <Compile Include="Modulo6\PruebaBDActorExcepciones.cs" />
+    <Compile Include="Modulo6\PruebaDaoActor.cs" />
+    <Compile Include="Modulo6\PruebaExcepcionesModulo6.cs" />
     <Compile Include="Modulo6\PruebaLogicaActor.cs" />
+    <Compile Include="Modulo6\PruebaLogicaCasoDeUso.cs" />
     <Compile Include="Modulo7\PruebaComandoAgregarUsuario.cs" />
     <Compile Include="Modulo7\PruebaComandoEliminarUsuario.cs" />
     <Compile Include="Modulo7\PruebaComandoListarCargos.cs" />
