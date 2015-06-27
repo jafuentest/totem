@@ -76,7 +76,6 @@ namespace Dominio.Entidades.Modulo3
         {
             return lista.Remove(u);
             
-            //throw new NotImplementedException();
         }
         /// <summary>
         /// Metodo que agrega un usuario al proyecto
@@ -92,20 +91,6 @@ namespace Dominio.Entidades.Modulo3
             else
                 return false;
         }
-        public bool eliminarUsuarioDeListaPorUsername(Usuario u, ListaInvolucradoUsuario lista)
-        {
-            bool retorno = false;
-            foreach (Usuario elUsuario in lista.Lista)
-            {
-                if (elUsuario.Username == u.Username)
-                {
-                    lista.eliminarUsuarioDeProyecto(elUsuario);
-                    retorno = true;
-                }
-                else
-                    retorno = false;
-            }
-            return retorno;
-        }
+  
     }
 }
