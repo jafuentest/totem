@@ -96,7 +96,6 @@ namespace Presentadores.Modulo5
             {
                 if (ValidarCampos())
                 {
-                    HttpCookie pcookie = HttpContext.Current.Request.Cookies.Get("selectedProjectCookie");
                    Comandos.Comando<Dominio.Entidad, Boolean> comandoModificar;
                     Dominio.Entidad requerimiento;
                     Dominio.Fabrica.FabricaEntidades fabricaEntidades =
@@ -104,7 +103,7 @@ namespace Presentadores.Modulo5
                     requerimiento = fabricaEntidades.ObtenerRequerimiento(vista.idRequerimientoBD,
                         vista.idRequerimiento, vista.requerimiento, vista.funcional,
                         vista.prioridad, vista.finalizado,
-                        pcookie.Values["projectCode"].ToString()); 
+                        HttpContext.Current.Session[RecursosPresentadorModulo5.LProyectoCodigo].ToString()); 
 
                     comandoModificar = Comandos.Fabrica.FabricaComandos.CrearComandoModificarRequerimiento();
                     if (comandoModificar.Ejecutar(requerimiento))
@@ -296,11 +295,11 @@ namespace Presentadores.Modulo5
         {
             try
             {
-                HttpCookie pcookie = HttpContext.Current.Request.Cookies.Get("selectedProjectCookie");
                 Comandos.Comando<String, List<String>> comandoBuscar;
                 List<String> codigos = new List<string>();
                 comandoBuscar = Comandos.Fabrica.FabricaComandos.CrearComandoBuscarCodigoRequerimiento();
-                codigos = comandoBuscar.Ejecutar(pcookie.Values["projectCode"].ToString());
+                codigos = comandoBuscar.Ejecutar(
+                    HttpContext.Current.Session[RecursosPresentadorModulo5.LProyectoCodigo].ToString());
                 if (vista.funcional.Equals("funcional", StringComparison.CurrentCultureIgnoreCase))
                 {
                     vista.idRequerimiento = DesglosarCodigo(codigos[0]);

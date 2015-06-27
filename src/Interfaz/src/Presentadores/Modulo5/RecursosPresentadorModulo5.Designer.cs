@@ -214,6 +214,15 @@ namespace Presentadores.Modulo5 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to LProyectoCodigo.
+        /// </summary>
+        internal static string LProyectoCodigo {
+            get {
+                return ResourceManager.GetString("LProyectoCodigo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El requerimiento tiene unos datos errados.
         /// </summary>
         internal static string Mensaje_Error_Requerimiento_Errado {

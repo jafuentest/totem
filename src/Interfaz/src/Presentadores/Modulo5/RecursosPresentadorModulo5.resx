@@ -185,6 +185,10 @@
     <value>?success=modificar</value>
     <comment>Codigo de exito para el redireccionamiento</comment>
   </data>
+  <data name="LProyectoCodigo" xml:space="preserve">
+    <value>LProyectoCodigo</value>
+    <comment>Codigo del proyecto</comment>
+  </data>
   <data name="Mensaje_Error_Requerimiento_Errado" xml:space="preserve">
     <value>El requerimiento tiene unos datos errados</value>
     <comment>Mensaje de error de la excepcion de un requerimiento errado</comment>

@@ -93,8 +93,8 @@ namespace Presentadores.Modulo5
         {
             try
             {
-                HttpCookie pcookie = HttpContext.Current.Request.Cookies.Get("selectedProjectCookie");
-                string codigoProyecto = pcookie.Values["projectCode"].ToString();
+                string codigoProyecto = 
+                    HttpContext.Current.Session[RecursosPresentadorModulo5.LProyectoCodigo].ToString();
                 Comandos.Comando<String, List<Dominio.Entidad>> comandoListarRequerimientos;
                 comandoListarRequerimientos =
                     Comandos.Fabrica.FabricaComandos.CrearComandoConsultarRequerimientosProyecto();
