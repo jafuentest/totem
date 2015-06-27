@@ -36,7 +36,7 @@ namespace DAO.DAO.Modulo8
         public bool AgregarAcuerdo(Entidad parametro, int idMinuta, string idProyecto)
         {
             Acuerdo elAcuerdo = (Acuerdo)parametro;
-            Fabrica.FabricaAbstractaDAO laFabrica = Fabrica.FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+            Fabrica.FabricaDAOSqlServer laFabrica = new FabricaDAOSqlServer();
             IntefazDAO.Modulo8.IDaoInvolucradosMinuta DAOInvolucradosMinuta = laFabrica.ObtenerDAOInvolucradosMinuta();
             bool success = false;
 
@@ -322,7 +322,7 @@ namespace DAO.DAO.Modulo8
 
                         DaoInvolucradosMinuta daoInvolucradosMinuta;
 
-                        FabricaAbstractaDAO fabricaDAO = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+                        FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
                         daoInvolucradosMinuta = (DaoInvolucradosMinuta)fabricaDAO.ObtenerDAOInvolucradosMinuta();
                         Usuario usuarioR = (Usuario)daoInvolucradosMinuta.ConsultarUsuarioMinutas(int.Parse(row[RecursosBDModulo8.AtributoAcuerdoUsuario].ToString()));
                         if (usuarioR != null)
@@ -407,7 +407,7 @@ namespace DAO.DAO.Modulo8
 
                         DaoInvolucradosMinuta daoInvolucradosMinuta;
 
-                        FabricaAbstractaDAO fabricaDAO = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+                        FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
                         daoInvolucradosMinuta = (DaoInvolucradosMinuta)fabricaDAO.ObtenerDAOInvolucradosMinuta();
                         laLista.Add(daoInvolucradosMinuta.ConsultarContactoMinutas(int.Parse(row[RecursosBDModulo8.AtributoAcuerdoContacto].ToString())));
 
@@ -474,7 +474,7 @@ namespace DAO.DAO.Modulo8
         {
             bool success = false;
             Acuerdo acuerdo = (Acuerdo)parametro;
-            Fabrica.FabricaAbstractaDAO laFabrica = Fabrica.FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+            Fabrica.FabricaDAOSqlServer laFabrica = new FabricaDAOSqlServer();
             IntefazDAO.Modulo8.IDaoInvolucradosMinuta DAOInvolucradosMinuta = laFabrica.ObtenerDAOInvolucradosMinuta();
 
             List<Parametro> parametros = new List<Parametro>();

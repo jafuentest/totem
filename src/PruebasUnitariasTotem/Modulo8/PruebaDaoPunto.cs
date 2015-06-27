@@ -20,7 +20,7 @@ namespace PruebasUnitariasTotem.Modulo8
         Punto punto;
         DAO.IntefazDAO.Modulo8.IDaoPunto daopunto;
         List<Punto> listaPunto;
-        FabricaAbstractaDAO fabricaDAO = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+        FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
         FabricaEntidades fabricaEntidades = new FabricaEntidades();
 
         /// <summary>
