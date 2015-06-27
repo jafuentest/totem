@@ -29,6 +29,20 @@ namespace Vista.Modulo5
         #endregion
 
         #region Contrato
+
+        public int id
+        {
+            get
+            {
+                return this.id;
+            }
+            set
+            {
+                this.id = value;
+            }
+        }
+
+        
         public string idRequerimiento
         {
             get
@@ -150,6 +164,10 @@ namespace Vista.Modulo5
         protected void EliminarRequerimiento_Click(object sender, EventArgs e)
         {
             presentador.EliminarRequerimiento();           
+        }
+        protected void AsignarCodigoFuncional(object sender, EventArgs e)
+        {
+            presentador.ObtenerCodigoRequerimiento();
         }
         #endregion
 

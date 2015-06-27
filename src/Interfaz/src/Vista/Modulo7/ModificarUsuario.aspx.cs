@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Contratos.Modulo7;
+﻿using Contratos.Modulo7;
 using Presentadores.Modulo7;
+using System;
 using System.Data;
 
 namespace Vista.Modulo7
@@ -26,6 +21,8 @@ namespace Vista.Modulo7
 				this.Master.idModulo = "7";
 				this.Master.presentador.CargarMenuLateral();
 				presentador.CargarDatos();
+				//presentador.ObtenerCargos();
+				//presentador.ObtenerRoles();
 			}
 		}
 
@@ -89,23 +86,29 @@ namespace Vista.Modulo7
 			get { return respuesta.Value; }
 			set { this.respuesta.Value = value; }
 		}
-		#endregion
 
-		#region LlenarCombos
-		private void LlenarCargos(DataSet ds)
+		public DataSet Roles
 		{
-			this.rol.DataSource = ds;
-			this.rol.DataTextField = "nombre";
-			this.rol.DataValueField = "id";
-			this.rol.DataBind();
+			get { return (DataSet)rol.DataSource; }
+			set
+			{
+				this.rol.DataSource = value;
+				this.rol.DataTextField = "nombre";
+				this.rol.DataValueField = "id";
+				this.rol.DataBind();
+			}
 		}
 
-		private void LlenarRoles(DataSet ds)
+		public DataSet Cargos
 		{
-			this.rol.DataSource = ds;
-			this.rol.DataTextField = "nombre";
-			this.rol.DataValueField = "id";
-			this.rol.DataBind();
+			get { return (DataSet)cargo.DataSource; }
+			set
+			{
+				this.cargo.DataSource = value;
+				this.cargo.DataTextField = "nombre";
+				this.cargo.DataValueField = "id";
+				this.cargo.DataBind();
+			}
 		}
 		#endregion
 	}

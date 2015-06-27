@@ -21,9 +21,9 @@
 
                     <label class="radio-inline">
                     <input type="radio" name="radioTipo" 
-                        id="inputFuncional" runat="server" />Funcional</label>
+                        id="inputFuncional" onserverchange="AsignarCodigoFuncional" runat="server" />Funcional</label>
                     <label class="radio-inline">
-                    <input type="radio" name="radioTipo" id="inputNoFuncional"  
+                    <input type="radio" name="radioTipo" id="inputNoFuncional"  onserverchange="AsignarCodigoFuncional"
                         runat="server"/>No Funcional</label>
                 </div>
             </div>
