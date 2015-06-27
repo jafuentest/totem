@@ -104,20 +104,34 @@ namespace Comandos.Comandos.Modulo8
                             minuta.WriteLine(laMinuta.Observaciones);
                             break;
 
-                        /*case "compromisos":
+                        case "compromisos":
 
-                            /*minuta.WriteLine("\\" + "begin{tabular}{| p{7cm} | p{7cm} |}");
-                            minuta.WriteLine("\\" + "hline");
-                            minuta.WriteLine("\\" + "bf Titulo & " + "\\" + "bf Desarrollo " + " \\" + "\\");
-                            minuta.WriteLine("\\" + "hline");
-                            foreach (Acuerdo a in laMinuta.ListaAcuerdo)
+                             if (laMinuta.ListaAcuerdo != null)
                             {
-                                a.
-                                minuta.WriteLine(punto.Titulo + "&" + punto.Desarrollo + " " + "\\" + "\\");
-                                minuta.WriteLine("\\" + "hline");
+                                minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.InicioTabularPuntos);
+                                minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.hline);
+                                minuta.WriteLine(RecursosComandosModulo8.Barras +
+                                    RecursosComandosModulo8.Titulo + " " +
+                                    RecursosComandosModulo8.Ampersan +
+                                    RecursosComandosModulo8.Barras +
+                                    RecursosComandosModulo8.Desarrollo + " " +
+                                    RecursosComandosModulo8.Barras +
+                                    RecursosComandosModulo8.Barras);
+                                minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.hline);
+                                foreach (Acuerdo acuerdo in laMinuta.ListaAcuerdo)
+                                {
+                                    minuta.WriteLine(acuerdo.Fecha + RecursosComandosModulo8.Ampersan + acuerdo.Compromiso + " " +
+                                        RecursosComandosModulo8.Barras + RecursosComandosModulo8.Barras);
+                                    minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.hline);
+                                }
+                                minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.FinTabular);
                             }
-                            minuta.WriteLine("\\" + "end{tabular}");
-                            break;*/
+                            else
+                            {
+                                minuta.WriteLine("Minuta no posee Acuerdos");
+
+                            }
+                            break;
 
                         default:
                             minuta.WriteLine(linea);
