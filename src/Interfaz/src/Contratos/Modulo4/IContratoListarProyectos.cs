@@ -8,5 +8,6 @@ namespace Contratos.Modulo4
     public interface IContratoListarProyectos
     {
 	   String nombreUsuario { get; set; }
+	   String jumbotronProyecto { get; set; }	   
     }
 }

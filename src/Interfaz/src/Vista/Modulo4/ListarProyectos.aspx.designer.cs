@@ -22,6 +22,15 @@ namespace Vista.Modulo4 {
         protected global::System.Web.UI.WebControls.Label LEstado;
         
         /// <summary>
+        /// jumbotronProyecto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal jumbotronProyecto;
+        
+        /// <summary>
         /// Master property.
         /// </summary>
         /// <remarks>

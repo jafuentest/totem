@@ -11,5 +11,18 @@
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" runat="server">
-    <asp:Label ID="LEstado" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="LEstado" runat="server" Text=""></asp:Label>
+    <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
+        <asp:Literal runat="server" ID="jumbotronProyecto"></asp:Literal>
+    </div>
+    <script type="text/javascript">
+        $("#dpmoneda li a").click(function () {
+
+            $("#id-moneda").html($(this).text() + ' <span class="caret"></span>');
+
+        });
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </asp:Content>
