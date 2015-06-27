@@ -142,6 +142,7 @@
     <Compile Include="Modulo7\UserNameRepetidoException.cs" />
     <Compile Include="Modulo7\UsernameVacioException.cs" />
     <Compile Include="Modulo7\UsuarioInvalidoException.cs" />
+    <Compile Include="Modulo7\UsuarioNoModificadoException.cs" />
     <Compile Include="Modulo8\ExcepcionesDeDatos\AtributoIncorrectoException.cs" />
     <Compile Include="Modulo8\ExcepcionesDeDatos\BDMinutaException.cs" />
     <Compile Include="Modulo8\ExcepcionesDeDatos\ParametroIncorrectoException.cs" />
