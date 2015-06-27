@@ -6,14 +6,14 @@ using System.Text;
 namespace ExcepcionesTotem.Modulo7
 {
     /// <summary>
-    /// Exception personalizada que se ejecuta cuando se pasa un correo vacio al DAOUsuario
+    /// Exception personalizada que se ejecuta en comando cuando se pasa un correo vacio al DAOUsuario
     /// </summary>
-    public class CorreoVacioException: DAOException
+    public class ComandoCorreoVacioException:ExceptionTotem
     {
         /// <summary>
         /// Constructor vacio
         /// </summary>
-        public CorreoVacioException():base()
+        public ComandoCorreoVacioException():base()
         {
 
         }
@@ -22,7 +22,7 @@ namespace ExcepcionesTotem.Modulo7
         /// Constructor que trabaja con el mensaje que se quiera dar
         /// </summary>
         /// <param name="mensaje">El mensaje personalizado</param>
-        public CorreoVacioException(String mensaje):base(mensaje)
+        public ComandoCorreoVacioException(String mensaje):base(mensaje)
         { 
         
         }
@@ -32,7 +32,7 @@ namespace ExcepcionesTotem.Modulo7
         /// </summary>
         /// <param name="mensaje">El mensaje personalizado</param>
         /// <param name="inner">La excepcion que se recibe</param>
-        public CorreoVacioException(String mensaje, Exception inner):base(mensaje,inner)
+        public ComandoCorreoVacioException(String mensaje, Exception inner):base(mensaje,inner)
         {
 
         }
@@ -43,7 +43,7 @@ namespace ExcepcionesTotem.Modulo7
         /// <param name="codigo">El codigo del error</param>
         /// <param name="mensaje">el mensaje personalizado</param>
         /// <param name="inner">Excepcion recibida</param>
-        public CorreoVacioException(String codigo, String mensaje, Exception inner):base(codigo,mensaje,inner)
+        public ComandoCorreoVacioException(String codigo, String mensaje, Exception inner):base(codigo,mensaje,inner)
         {
 
         }

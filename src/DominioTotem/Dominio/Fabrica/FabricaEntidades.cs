@@ -143,6 +143,13 @@ namespace Dominio.Fabrica
             return new Entidades.Modulo5.Requerimiento(
                 codigo, descripcion, tipo, prioridad, estatus, codigoProyecto);
         }
+        public Entidad
+            ObtenerRequerimiento(int id, string codigo, string descripcion, string tipo,
+            string prioridad, string estatus, string codigoProyecto)
+        {
+            return new Entidades.Modulo5.Requerimiento(
+                id, codigo, descripcion, tipo, prioridad, estatus, codigoProyecto);
+        }
         #endregion
 
         #region Modulo 6

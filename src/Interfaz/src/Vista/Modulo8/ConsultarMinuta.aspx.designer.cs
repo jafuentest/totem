@@ -43,7 +43,7 @@ namespace Vista.Modulo8
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label infoproyect;
+        protected global::System.Web.UI.WebControls.Label nombreProyecto;
 
         /// <summary>
         /// Control infoclient.
@@ -52,16 +52,7 @@ namespace Vista.Modulo8
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label infoclient;
-
-        /// <summary>
-        /// Control infostatus.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label infostatus;
+        protected global::System.Web.UI.WebControls.Label codigoProyecto;
 
         /// <summary>
         /// Control RRequerimientos.

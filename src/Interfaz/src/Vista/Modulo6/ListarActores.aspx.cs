@@ -20,13 +20,14 @@ namespace Vista.Modulo6
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            string codigo = this.Master.CodigoProyectoActual();
             this.Master.idModulo = "6";
 
             if (!IsPostBack)
             {
                 this.Master.presentador.CargarMenuLateral();
                 presentador.ObtenerVariablesURL();
-                presentador.consultarActores();
+                presentador.consultarActores(codigo);
             }
 
         }

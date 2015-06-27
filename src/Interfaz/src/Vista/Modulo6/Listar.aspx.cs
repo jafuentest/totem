@@ -52,11 +52,12 @@ namespace Vista.Modulo6
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Master.idModulo = "6";
+            string codigo=this.Master.CodigoProyectoActual();
             if (!IsPostBack)
             {
                 this.Master.presentador.CargarMenuLateral();
                 presentador.ObtenerVariablesURL();
-                this.presentador.CargarListaCasosDeUso();
+                this.presentador.CargarListaCasosDeUso(codigo);
             }
 
         }

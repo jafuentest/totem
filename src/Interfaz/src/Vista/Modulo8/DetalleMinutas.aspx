@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/MasterPage.master" AutoEventWireup="true" CodeFile="DetalleMinutas.aspx.cs" Inherits="Vista.Modulo8.DetalleMinutas" %>
-<%@ MasterType virtualPath="/Master/MasterPage.master"%>
+<%@ MasterType virtualPath="~/Master/MasterPage.master"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server"><link rel="stylesheet" type="text/css" href="css/Minutas.css"/></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" Runat="Server">Gestión de Minutas</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" Runat="Server">  Detalle</asp:Content>
@@ -58,6 +58,10 @@
             <div class="col-xs-12">             
                 
              </div>
+
+            <div class="col-xs-12">
+                <button class="btn btn-default" runat="server" onserverclick="ImprimirMinuta">Imprimir</button>
+            </div>
        </div>                                    
     </div>
                

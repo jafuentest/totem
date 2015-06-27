@@ -55,6 +55,20 @@ namespace Dominio.Entidades.Modulo5
            Estatus = estatus;
            CodigoProyecto = codigoProyecto;
        }
+
+       public Requerimiento(int id,string codigo, string descripcion, string tipo, string prioridad, string estatus,
+          string codigoProyecto)
+           : base(0)
+       {
+           base.Id = id;
+           Codigo = codigo;
+           Descripcion = descripcion;
+           Tipo = tipo;
+           Prioridad = prioridad;
+           Estatus = estatus;
+           CodigoProyecto = codigoProyecto;
+       }
+	   
 	   
 	   #endregion
 

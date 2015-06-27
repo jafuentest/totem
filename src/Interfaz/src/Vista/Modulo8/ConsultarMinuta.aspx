@@ -12,9 +12,8 @@
 				<h3 class="panel-title">Proyecto</h3>
 			</div>
 			<div class="panel-body" style="width:auto">
-                <asp:Label ID="infoproyect" runat="server">Nombre del proyecto:</asp:Label> <br />
-		        <asp:Label ID="infoclient" runat="server">Empresa cliente:</asp:Label> <br />
-		        <asp:Label ID="infostatus" runat="server">Estatus del proyecto:</asp:Label> <br />
+                <asp:Label ID="nombreProyecto" runat="server" value=""></asp:Label> <br />
+		        <asp:Label ID="codigoProyecto" runat="server" value=""></asp:Label> <br />
 			</div>
 		</div>
         <div class="table-responsive">

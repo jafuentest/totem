@@ -12,6 +12,9 @@ using System.Web.UI;
 using System.Web;
 using Dominio;
 using Dominio.Fabrica;
+using System.Data.SqlClient;
+using ExcepcionesTotem;
+using ExcepcionesTotem.Modulo8.ExcepcionesDeDatos;
 
 namespace Presentadores.Modulo8
 {
@@ -25,14 +28,42 @@ namespace Presentadores.Modulo8
 
         public String ModificarMinuta(Entidad proyecto, Entidad minutaVieja, Entidad minutaNueva)
         {
-            ComandoModificarMinuta comandoModificarMinuta = (ComandoModificarMinuta)FabricaComandos.CrearComandoModificarMinuta();
-            List<Entidad> parametroModificar = new List<Entidad>();
+            try
+            {
+                ComandoModificarMinuta comandoModificarMinuta = (ComandoModificarMinuta)FabricaComandos.CrearComandoModificarMinuta();
+                List<Entidad> parametroModificar = new List<Entidad>();
 
-            parametroModificar.Add(proyecto);
-            parametroModificar.Add(minutaVieja);
-            parametroModificar.Add(minutaNueva);
+                parametroModificar.Add(proyecto);
+                parametroModificar.Add(minutaVieja);
+                parametroModificar.Add(minutaNueva);
 
-            return comandoModificarMinuta.Ejecutar(parametroModificar);
+                return comandoModificarMinuta.Ejecutar(parametroModificar);
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                throw ex;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw ex;
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
 
