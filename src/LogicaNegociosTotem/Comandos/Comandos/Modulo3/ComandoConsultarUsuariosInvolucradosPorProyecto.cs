@@ -1,5 +1,5 @@
-﻿using DAO.Fabrica;
-using DAO.IntefazDAO.Modulo3;
+﻿using Datos.Fabrica;
+using Datos.IntefazDAO.Modulo3;
 using Dominio;
 using Dominio.Entidades.Modulo3;
 using System;
@@ -21,8 +21,8 @@ namespace Comandos.Comandos.Modulo3
             ListaInvolucradoUsuario lista = null;
             try
             {
-                DAO.IntefazDAO.Modulo3.IDaoInvolucrados daoInvolucrado;
-                DAO.Fabrica.FabricaDAOSqlServer fabricaDAO = new DAO.Fabrica.FabricaDAOSqlServer();
+                Datos.IntefazDAO.Modulo3.IDaoInvolucrados daoInvolucrado;
+                Datos.Fabrica.FabricaDAOSqlServer fabricaDAO = new Datos.Fabrica.FabricaDAOSqlServer();
                 daoInvolucrado = fabricaDAO.ObtenerDaoInvolucrados();
                 lista = (ListaInvolucradoUsuario) daoInvolucrado.ConsultarUsuariosInvolucradosPorProyecto(parametro);
             }catch(Exception ex){

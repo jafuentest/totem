@@ -1,4 +1,4 @@
-﻿using DAO.IntefazDAO.Modulo3;
+﻿using Datos.IntefazDAO.Modulo3;
 using Dominio;
 using Dominio.Entidades.Modulo2;
 using Dominio.Entidades.Modulo3;
@@ -12,9 +12,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
-namespace DAO.DAO.Modulo3
+namespace Datos.DAO.Modulo3
 {
-    class DAOInvolucrados: DAO,IDaoInvolucrados
+    class DAOInvolucrados: DAOGeneral,IDaoInvolucrados
     {
         /// <summary>
         /// Metodo que agrega la lista de usuarios involucrados a un proyecto

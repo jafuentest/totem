@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 
-namespace DAO.IntefazDAO.Modulo8
+namespace Datos.IntefazDAO.Modulo8
 {
     public interface IDaoAcuerdo : IDao<Entidad, bool, Entidad>
     {

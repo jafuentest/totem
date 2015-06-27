@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DAO.DAO
+namespace Datos.DAO
 {
     /// <summary>
     /// Clase para el manejo de los resultados de los queries de base de datos

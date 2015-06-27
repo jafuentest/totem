@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using DAO.Fabrica;
-using DAO.DAO.Modulo7;
-using DAO.IntefazDAO.Modulo7;
+using Datos.Fabrica;
+using Datos.DAO.Modulo7;
+using Datos.IntefazDAO.Modulo7;
 using ExcepcionesTotem.Modulo7;
 using ExcepcionesTotem;
 

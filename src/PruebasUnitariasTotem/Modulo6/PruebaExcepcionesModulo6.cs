@@ -15,8 +15,8 @@ using Dominio.Entidades.Modulo5;
 using Dominio;
 using ExcepcionesTotem.Modulo6;
 using ExcepcionesTotem.Modulo6.ExcepcionesComando;
-using DAO.DAO.Modulo6;
-using DAO.Fabrica;
+using Datos.DAO.Modulo6;
+using Datos.Fabrica;
 
 
 namespace PruebasUnitariasTotem.Modulo6
@@ -110,7 +110,7 @@ namespace PruebasUnitariasTotem.Modulo6
             proyecto.Codigo = "TOT";
             actor.ProyectoAsociado = proyecto;
             FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
-            DAO.IntefazDAO.Modulo6.IDaoActor daoActor = fabricaDAO.ObtenerDAOActor();
+            Datos.IntefazDAO.Modulo6.IDaoActor daoActor = fabricaDAO.ObtenerDAOActor();
 
             Assert.AreEqual(cero, daoActor.Agregar(actor));
 

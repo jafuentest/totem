@@ -3,7 +3,7 @@ using Dominio;
 using Dominio.Fabrica;
 using Dominio.Entidades.Modulo7;
 using ExcepcionesTotem.Modulo1;
-using DAO.DAO.Modulo1;
+using Datos.DAO.Modulo1;
 
 namespace PruebasUnitariasTotem.Modulo1
 {

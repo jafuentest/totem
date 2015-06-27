@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using DAO.IntefazDAO;
+using Datos.IntefazDAO;
 using Dominio;
 using Dominio.Fabrica;
 using Dominio.Entidades.Modulo2;
@@ -12,12 +12,12 @@ using ExcepcionesTotem;
 using ExcepcionesTotem.Modulo2;
 
 
-namespace DAO.DAO.Modulo2
+namespace Datos.DAO.Modulo2
 {
     /// <summary>
     /// Data Access Object para Cliente Natural
     /// </summary>
-    public class DaoClienteNatural : DAO, IntefazDAO.Modulo2.IDaoClienteNatural
+    public class DaoClienteNatural : DAOGeneral, IntefazDAO.Modulo2.IDaoClienteNatural
     {
         #region IDAO
         /// <summary>

@@ -6,7 +6,7 @@ using Dominio;
 using ExcepcionesTotem.Modulo6.ExcepcionesComando;
 using ExcepcionesTotem.Modulo6.ExcepcionesDAO;
 using ExcepcionesTotem;
-using DAO.DAO.Modulo6;
+using Datos.DAO.Modulo6;
 
 
 namespace Comandos.Comandos.Modulo6
@@ -23,8 +23,8 @@ namespace Comandos.Comandos.Modulo6
 
 
 
-            DAO.Fabrica.FabricaDAOSqlServer fabricaDaoSqlServer = new DAO.Fabrica.FabricaDAOSqlServer();
-            DAO.IntefazDAO.Modulo6.IDaoCasoDeUso daoCasoUso = fabricaDaoSqlServer.ObtenerDAOCasoDeUso(); 
+            Datos.Fabrica.FabricaDAOSqlServer fabricaDaoSqlServer = new Datos.Fabrica.FabricaDAOSqlServer();
+            Datos.IntefazDAO.Modulo6.IDaoCasoDeUso daoCasoUso = fabricaDaoSqlServer.ObtenerDAOCasoDeUso(); 
 
             try
             {

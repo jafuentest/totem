@@ -102,13 +102,13 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\DatosTotem\DAO\DAO.csproj">
+    <ProjectReference Include="..\DatosTotem\DAO\Datos.csproj">
       <Project>{d9ace21a-77b5-4e5a-bb70-c77bc5a39a6c}</Project>
-      <Name>DAO</Name>
+      <Name>Datos %28Datos\Datos%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\DominioTotem\Dominio\Dominio.csproj">
       <Project>{41dd6620-eb5e-4529-b66d-d29a27fa2e5a}</Project>
-      <Name>Dominio</Name>
+      <Name>Dominio %28Dominio\Dominio%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\ExcepcionesTotem\ExcepcionesTotem.csproj">
       <Project>{aaa3900a-9ced-4f07-9cee-d86208c39437}</Project>

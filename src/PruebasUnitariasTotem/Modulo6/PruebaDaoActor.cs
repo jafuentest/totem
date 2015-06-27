@@ -7,8 +7,8 @@ using Dominio;
 using Dominio.Fabrica;
 using Dominio.Entidades.Modulo6;
 using Dominio.Entidades.Modulo4;
-using DAO.DAO.Modulo6;
-using DAO.Fabrica;
+using Datos.DAO.Modulo6;
+using Datos.Fabrica;
 
 namespace PruebasUnitariasTotem.Modulo6
 {  /// <summary>
@@ -35,7 +35,7 @@ namespace PruebasUnitariasTotem.Modulo6
             proyecto.Codigo = "TOT";
             actor.ProyectoAsociado = proyecto;
             FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
-            DAO.IntefazDAO.Modulo6.IDaoActor daoActor = fabricaDAO.ObtenerDAOActor();
+            Datos.IntefazDAO.Modulo6.IDaoActor daoActor = fabricaDAO.ObtenerDAOActor();
             Assert.IsTrue(daoActor.Agregar(actor));
            
         }
@@ -54,7 +54,7 @@ namespace PruebasUnitariasTotem.Modulo6
             Actor actor = entidad as Actor;
             actor.NombreActor = "Usuario";
             FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
-            DAO.IntefazDAO.Modulo6.IDaoActor daoActor = fabricaDAO.ObtenerDAOActor();
+            Datos.IntefazDAO.Modulo6.IDaoActor daoActor = fabricaDAO.ObtenerDAOActor();
             Assert.IsTrue(daoActor.VerificarExistenciaActor(actor.NombreActor));
 
         }
@@ -74,7 +74,7 @@ namespace PruebasUnitariasTotem.Modulo6
             proyecto.Codigo = "TOT";
             
             FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
-            DAO.IntefazDAO.Modulo6.IDaoActor daoActor = fabricaDAO.ObtenerDAOActor();
+            Datos.IntefazDAO.Modulo6.IDaoActor daoActor = fabricaDAO.ObtenerDAOActor();
             Assert.IsNotNull(daoActor.ConsultarActoresCombo(proyecto.Codigo));
 
         }
@@ -92,7 +92,7 @@ namespace PruebasUnitariasTotem.Modulo6
             CasoDeUso Cuso = entidad as CasoDeUso;       
             Cuso.Id= 6;
             FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
-            DAO.IntefazDAO.Modulo6.IDaoActor daoActor = fabricaDAO.ObtenerDAOActor();
+            Datos.IntefazDAO.Modulo6.IDaoActor daoActor = fabricaDAO.ObtenerDAOActor();
             Assert.IsNotNull(daoActor.ConsultarActoresXCasoDeUso(Cuso.Id));
 
         }
@@ -113,7 +113,7 @@ namespace PruebasUnitariasTotem.Modulo6
             actor.NombreActor = "Estudiante";
             actor.DescripcionActor = "Presentar";
             FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
-            DAO.IntefazDAO.Modulo6.IDaoActor daoActor = fabricaDAO.ObtenerDAOActor();
+            Datos.IntefazDAO.Modulo6.IDaoActor daoActor = fabricaDAO.ObtenerDAOActor();
             Assert.IsTrue(daoActor.Modificar(actor));
 
         }
@@ -131,7 +131,7 @@ namespace PruebasUnitariasTotem.Modulo6
             Actor actor = entidad as Actor;
             actor.Id = 2;
             FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
-            DAO.IntefazDAO.Modulo6.IDaoActor daoActor = fabricaDAO.ObtenerDAOActor();
+            Datos.IntefazDAO.Modulo6.IDaoActor daoActor = fabricaDAO.ObtenerDAOActor();
             Assert.IsNotNull(daoActor.ConsultarXId(actor));
         }
         #endregion
@@ -150,7 +150,7 @@ namespace PruebasUnitariasTotem.Modulo6
             Proyecto proyecto = entidadProy as Proyecto;
             proyecto.Codigo = "TOT";
             FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
-            DAO.IntefazDAO.Modulo6.IDaoActor daoActor = fabricaDAO.ObtenerDAOActor();
+            Datos.IntefazDAO.Modulo6.IDaoActor daoActor = fabricaDAO.ObtenerDAOActor();
             Assert.IsNotNull(daoActor.ConsultarListarActores(proyecto.Codigo));
 
         }
@@ -167,7 +167,7 @@ namespace PruebasUnitariasTotem.Modulo6
             Entidad entidad = fabrica.ObtenerActor();
             entidad.Id = 6;
             FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
-            DAO.IntefazDAO.Modulo6.IDaoActor daoActor = fabricaDAO.ObtenerDAOActor();
+            Datos.IntefazDAO.Modulo6.IDaoActor daoActor = fabricaDAO.ObtenerDAOActor();
             Assert.IsTrue(daoActor.EliminarActor(entidad.Id));
 
         }

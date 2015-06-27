@@ -1,4 +1,4 @@
-﻿using DAO.IntefazDAO.Modulo7;
+﻿using Datos.IntefazDAO.Modulo7;
 using Dominio;
 using Dominio.Entidades.Modulo7;
 using Dominio.Fabrica;
@@ -10,12 +10,12 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace DAO.DAO.Modulo7
+namespace Datos.DAO.Modulo7
 {
     /// <summary>
     /// Clase DAO que interactua con la BD y realiza las operaciones del Usuario
     /// </summary>
-    public class DAOUsuario : DAO, IDaoUsuario
+    public class DAOUsuario : DAOGeneral, IDaoUsuario
 	{//Conexion hacia la base de Datos y la instruccion (Consulta) que se le hara
         private SqlConnection conexion;
         private SqlCommand instruccion;

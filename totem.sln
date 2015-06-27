@@ -27,7 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comandos", "src\LogicaNegoc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "src\DominioTotem\Dominio\Dominio.csproj", "{41DD6620-EB5E-4529-B66D-D29A27FA2E5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAO", "src\DatosTotem\DAO\DAO.csproj", "{D9ACE21A-77B5-4E5A-BB70-C77BC5A39A6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "src\DatosTotem\DAO\Datos.csproj", "{D9ACE21A-77B5-4E5A-BB70-C77BC5A39A6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

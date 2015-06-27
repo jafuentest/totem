@@ -8,11 +8,11 @@ namespace PruebasUnitariasTotem.Modulo5
     [TestFixture]
     public class PruebaFabricaDAO
     {
-        private DAO.Fabrica.FabricaDAOSqlServer fab;
+        private Datos.Fabrica.FabricaDAOSqlServer fab;
 
         [SetUp]
         public void init() {
-            this.fab = new DAO.Fabrica.FabricaDAOSqlServer();
+            this.fab = new Datos.Fabrica.FabricaDAOSqlServer();
         }
 
         [Test]

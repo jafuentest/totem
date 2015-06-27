@@ -1,5 +1,5 @@
-﻿using DAO.Fabrica;
-using DAO.IntefazDAO.Modulo2;
+﻿using Datos.Fabrica;
+using Datos.IntefazDAO.Modulo2;
 using ExcepcionesTotem;
 using System;
 using System.Collections.Generic;

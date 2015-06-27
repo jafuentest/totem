@@ -1,4 +1,4 @@
-﻿namespace DAO.IntefazDAO.Modulo1
+﻿namespace Datos.IntefazDAO.Modulo1
 {
     public interface IDaoLogin : IDao<Dominio.Entidad, bool, Dominio.Entidad>
     {

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using Comandos;
 using Dominio;
-using DAO.Fabrica;
-using DAO.IntefazDAO.Modulo7;
+using Datos.Fabrica;
+using Datos.IntefazDAO.Modulo7;
 
 namespace Comandos.Comandos.Modulo7
 {

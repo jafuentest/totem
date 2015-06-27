@@ -1,5 +1,5 @@
-﻿using DAO.Fabrica;
-using DAO.IntefazDAO.Modulo7;
+﻿using Datos.Fabrica;
+using Datos.IntefazDAO.Modulo7;
 using Dominio;
 using ExcepcionesTotem.Modulo7;
 using System;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using DAO.IntefazDAO;
+using Datos.IntefazDAO;
 using Dominio;
 using Dominio.Fabrica;
 using Dominio.Entidades.Modulo2;
@@ -12,14 +12,14 @@ using ExcepcionesTotem;
 using System.Data.SqlClient;
 using Dominio.Entidades.Modulo8;
 using Dominio.Entidades.Modulo7;
-using DAO.Fabrica;
-namespace DAO.DAO.Modulo8
+using Datos.Fabrica;
+namespace Datos.DAO.Modulo8
 {
     /// <summary>
     /// Clase para el gestionamiento en BD de los acuerdos establecidos y tratados en las Minutas
     /// de los proyectos
     /// </summary>
-    public class DaoAcuerdo : DAO, IntefazDAO.Modulo8.IDaoAcuerdo
+    public class DaoAcuerdo : DAOGeneral, IntefazDAO.Modulo8.IDaoAcuerdo
     {
         #region Agregar
 

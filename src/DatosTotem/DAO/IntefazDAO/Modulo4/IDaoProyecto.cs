@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DAO.IntefazDAO.Modulo4
+namespace Datos.IntefazDAO.Modulo4
 {
     public interface IDaoProyecto : IDao<Dominio.Entidad, Boolean, Dominio.Entidad>
     {

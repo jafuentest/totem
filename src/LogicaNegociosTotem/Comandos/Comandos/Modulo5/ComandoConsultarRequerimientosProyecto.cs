@@ -15,8 +15,8 @@ namespace Comandos.Comandos.Modulo5
         /// <returns>Lista de requerimientos asociadas al proyecto</returns>
         public override List<Dominio.Entidad> Ejecutar(string parametro)
         {
-            DAO.IntefazDAO.Modulo5.IDaoRequerimiento daoRequerimiento;
-            DAO.Fabrica.FabricaDAOSqlServer fabricaDao = new DAO.Fabrica.FabricaDAOSqlServer();
+            Datos.IntefazDAO.Modulo5.IDaoRequerimiento daoRequerimiento;
+            Datos.Fabrica.FabricaDAOSqlServer fabricaDao = new Datos.Fabrica.FabricaDAOSqlServer();
             daoRequerimiento = fabricaDao.ObtenerDAORequerimiento();
 
             try

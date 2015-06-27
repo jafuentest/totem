@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Dominio; 
 
-namespace DAO.IntefazDAO.Modulo6
+namespace Datos.IntefazDAO.Modulo6
 {
     public interface IDaoActor : IDao<Entidad, bool, Entidad>
     {

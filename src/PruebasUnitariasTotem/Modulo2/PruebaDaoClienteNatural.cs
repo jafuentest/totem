@@ -5,9 +5,9 @@ using System.Text;
 using NUnit.Framework;
 using Dominio.Entidades.Modulo2;
 using Dominio.Fabrica;
-using DAO.DAO;
-using DAO.Fabrica;
-using DAO.IntefazDAO.Modulo2;
+using Datos.DAO;
+using Datos.Fabrica;
+using Datos.IntefazDAO.Modulo2;
 using Dominio;
 
 namespace PruebasUnitariasTotem.Modulo2

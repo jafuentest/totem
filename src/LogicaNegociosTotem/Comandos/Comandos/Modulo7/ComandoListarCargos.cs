@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Comandos;
-using DAO.Fabrica;
-using DAO.IntefazDAO.Modulo7;
+using Datos.Fabrica;
+using Datos.IntefazDAO.Modulo7;
 using ExcepcionesTotem.Modulo7;
 using ExcepcionesTotem;
 

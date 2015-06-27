@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using DAO.Fabrica;
-using DAO.DAO.Modulo2;
-using DAO.IntefazDAO.Modulo2;
+using Datos.Fabrica;
+using Datos.DAO.Modulo2;
+using Datos.IntefazDAO.Modulo2;
 using System.Data.SqlClient;
 using ExcepcionesTotem;
 

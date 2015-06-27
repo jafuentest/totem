@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using Dominio.Entidades.Modulo4;
 
-namespace DAO.DAO.Modulo4
+namespace Datos.DAO.Modulo4
 {
-    public class DAOProyecto : DAO, IntefazDAO.Modulo4.IDaoProyecto
+    public class DAOProyecto : DAOGeneral, IntefazDAO.Modulo4.IDaoProyecto
     {
 
         #region Metodos IDao

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using DAO;
+using Datos;
 
 namespace Comandos.Comandos.Modulo5
 {
@@ -17,8 +17,8 @@ namespace Comandos.Comandos.Modulo5
         {
             try
             {
-                DAO.IntefazDAO.Modulo5.IDaoRequerimiento daoRequerimiento;
-                DAO.Fabrica.FabricaDAOSqlServer fabricaDao = new DAO.Fabrica.FabricaDAOSqlServer();
+                Datos.IntefazDAO.Modulo5.IDaoRequerimiento daoRequerimiento;
+                Datos.Fabrica.FabricaDAOSqlServer fabricaDao = new Datos.Fabrica.FabricaDAOSqlServer();
                 daoRequerimiento = fabricaDao.ObtenerDAORequerimiento();
                 bool resultado = daoRequerimiento.Modificar(parametro);
                 return resultado;

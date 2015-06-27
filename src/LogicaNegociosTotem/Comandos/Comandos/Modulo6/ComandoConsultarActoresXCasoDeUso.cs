@@ -6,7 +6,7 @@ using Dominio;
 using ExcepcionesTotem.Modulo6.ExcepcionesComando;
 using ExcepcionesTotem.Modulo6.ExcepcionesDAO;
 using ExcepcionesTotem;
-using DAO.DAO.Modulo6;
+using Datos.DAO.Modulo6;
 
 namespace Comandos.Comandos.Modulo6
 {
@@ -21,7 +21,7 @@ namespace Comandos.Comandos.Modulo6
         {
             try
             {
-                DAO.Fabrica.FabricaDAOSqlServer fabricaDaoSqlServer = new DAO.Fabrica.FabricaDAOSqlServer(); 
+                Datos.Fabrica.FabricaDAOSqlServer fabricaDaoSqlServer = new Datos.Fabrica.FabricaDAOSqlServer(); 
 
                 DAOActor daoActor = (DAOActor)fabricaDaoSqlServer.ObtenerDAOActor();
                 List<string> resultado = daoActor.ConsultarActoresXCasoDeUso(parametro);

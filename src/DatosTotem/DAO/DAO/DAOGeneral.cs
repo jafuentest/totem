@@ -6,11 +6,11 @@ using System.Data.Sql;
 using System.Configuration;
 using System.Linq;
 using System.Text;
-using DAO;
+using Datos;
 
-namespace DAO.DAO
+namespace Datos.DAO
 {
-    public abstract class DAO
+    public abstract class DAOGeneral
     {
         private SqlConnection conexion;
         private string strConexion;

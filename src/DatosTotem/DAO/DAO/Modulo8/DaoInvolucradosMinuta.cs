@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using DAO.IntefazDAO;
+using Datos.IntefazDAO;
 using Dominio;
 using Dominio.Fabrica;
 using Dominio.Entidades.Modulo2;
@@ -15,9 +15,9 @@ using ExcepcionesTotem.Modulo8;
 using ExcepcionesTotem.Modulo8.ExcepcionesDeDatos;
 using System.Data.SqlClient;
 
-namespace DAO.DAO.Modulo8
+namespace Datos.DAO.Modulo8
 {
-    public class DaoInvolucradosMinuta : DAO, IntefazDAO.Modulo8.IDaoInvolucradosMinuta
+    public class DaoInvolucradosMinuta : DAOGeneral, IntefazDAO.Modulo8.IDaoInvolucradosMinuta
     {
 
         public bool Agregar(Entidad parametro)

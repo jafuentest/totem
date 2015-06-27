@@ -6,9 +6,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
-namespace DAO.DAO.Modulo5
+namespace Datos.DAO.Modulo5
 {
-    public class DAORequerimiento : DAO, IntefazDAO.Modulo5.IDaoRequerimiento
+    public class DAORequerimiento : DAOGeneral, IntefazDAO.Modulo5.IDaoRequerimiento
     {
         #region IDAORequerimiento
         /// <summary>

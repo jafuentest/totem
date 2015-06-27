@@ -480,7 +480,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\DominioTotem\Dominio\Dominio.csproj">
       <Project>{41dd6620-eb5e-4529-b66d-d29a27fa2e5a}</Project>
-      <Name>Dominio</Name>
+      <Name>Dominio %28Dominio\Dominio%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\Contratos\Contratos.csproj">
       <Project>{c295ff71-0b9b-40d4-b76f-0efbaf1c3ce6}</Project>

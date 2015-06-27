@@ -5,9 +5,9 @@ using System.Text;
 using Dominio;
 using Dominio.Entidades.Modulo7;
 using Comandos.Fabrica;
-using DAO.DAO.Modulo7;
-using DAO.Fabrica;
-using DAO.IntefazDAO.Modulo7;
+using Datos.DAO.Modulo7;
+using Datos.Fabrica;
+using Datos.IntefazDAO.Modulo7;
 
 namespace Comandos.Comandos.Modulo7
 {

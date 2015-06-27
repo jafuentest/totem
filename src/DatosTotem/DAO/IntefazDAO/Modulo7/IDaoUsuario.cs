@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 
-namespace DAO.IntefazDAO.Modulo7
+namespace Datos.IntefazDAO.Modulo7
 {
     /// <summary>
     /// Interface a ser usada por la clase DAOUsuario

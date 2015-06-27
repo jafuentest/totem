@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 
-namespace DAO
+namespace Datos
 {
     /// <summary>
     /// Clase para el manejo de parametros de la base de datos

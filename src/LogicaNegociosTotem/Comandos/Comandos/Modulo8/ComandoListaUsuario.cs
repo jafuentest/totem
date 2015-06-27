@@ -5,7 +5,7 @@ using System.Text;
 using Dominio.Entidades.Modulo2;
 using Dominio.Entidades.Modulo7;
 using Dominio.Entidades.Modulo8;
-using DAO.Fabrica;
+using Datos.Fabrica;
 using Dominio.Fabrica;
 using ExcepcionesTotem.Modulo8.ExcepcionesDeDatos;
 using ExcepcionesTotem;
@@ -31,7 +31,7 @@ namespace Comandos.Comandos.Modulo8
                 FabricaEntidades laFabrica = new FabricaEntidades();
                 Minuta laMinuta = (Minuta)laFabrica.ObtenerMinuta();
                 FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
-                DAO.IntefazDAO.Modulo8.IDaoInvolucradosMinuta daoInvMinutas = fabricaDAO.ObtenerDAOInvolucradosMinuta();
+                Datos.IntefazDAO.Modulo8.IDaoInvolucradosMinuta daoInvMinutas = fabricaDAO.ObtenerDAOInvolucradosMinuta();
                 numInvolucrados = daoInvMinutas.ConsultarInvolucrado(RecursosComandosModulo8.ProcedureUsuarioProyecto,
                     RecursosComandosModulo8.AtributoUsuario,
                     RecursosComandosModulo8.ParametroIdProyecto, elProyecto);

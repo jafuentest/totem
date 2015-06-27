@@ -6,12 +6,12 @@ using Dominio;
 using Dominio.Entidades.Modulo7;
 using Dominio.Fabrica;
 using ExcepcionesTotem.Modulo1;
-using DAO.IntefazDAO.Modulo1;
+using Datos.IntefazDAO.Modulo1;
 
 
-namespace DAO.DAO.Modulo1
+namespace Datos.DAO.Modulo1
 {
-    public class DaoLogin : DAO,IDaoLogin
+    public class DaoLogin : DAOGeneral,IDaoLogin
     {
         private FabricaEntidades fabricaEntidades = new FabricaEntidades();
         private Entidad _usuario;

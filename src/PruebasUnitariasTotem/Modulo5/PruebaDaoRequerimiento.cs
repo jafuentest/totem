@@ -9,15 +9,15 @@ namespace PruebasUnitariasTotem.Modulo5
     [TestFixture]
     class PruebaDaoRequerimiento
     {
-        DAO.Fabrica.FabricaDAOSqlServer fab;
-        DAO.DAO.Modulo5.DAORequerimiento DAO;
+        Datos.Fabrica.FabricaDAOSqlServer fab;
+        Datos.DAO.Modulo5.DAORequerimiento DAO;
         private Dominio.Entidades.Modulo5.Requerimiento requerimiento;
 
         [SetUp]
         public void init() {
 
-            this.fab = new DAO.Fabrica.FabricaDAOSqlServer();
-            this.DAO=fab.ObtenerDAORequerimiento() as DAO.DAO.Modulo5.DAORequerimiento;
+            this.fab = new Datos.Fabrica.FabricaDAOSqlServer();
+            this.DAO=fab.ObtenerDAORequerimiento() as Datos.DAO.Modulo5.DAORequerimiento;
             Dominio.Fabrica.FabricaEntidades fabrica = new Dominio.Fabrica.FabricaEntidades();
             this.requerimiento = fabrica.ObtenerRequerimiento() as Dominio.Entidades.Modulo5.Requerimiento;
             this.requerimiento.Id = 4;

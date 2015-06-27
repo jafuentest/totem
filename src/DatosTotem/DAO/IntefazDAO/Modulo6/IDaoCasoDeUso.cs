@@ -5,7 +5,7 @@ using System.Text;
 using Dominio;
 using Dominio.Entidades.Modulo6;
 
-namespace DAO.IntefazDAO.Modulo6
+namespace Datos.IntefazDAO.Modulo6
 {
    public interface IDaoCasoDeUso:IDao<Entidad,bool,Entidad>
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DAO.IntefazDAO
+namespace Datos.IntefazDAO
 {
     public interface IDao<Parametro, Resultado1, Resultado2>
     {

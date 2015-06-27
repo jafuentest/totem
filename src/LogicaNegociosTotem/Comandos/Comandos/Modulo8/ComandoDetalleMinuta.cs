@@ -6,8 +6,8 @@ using Dominio;
 using Dominio.Entidades.Modulo2;
 using Dominio.Entidades.Modulo7;
 using Dominio.Entidades.Modulo8;
-using DAO.Fabrica;
-using DAO.DAO.Modulo8;
+using Datos.Fabrica;
+using Datos.DAO.Modulo8;
 using System.Data.SqlClient;
 using ExcepcionesTotem;
 using ExcepcionesTotem.Modulo8.ExcepcionesDeDatos;
@@ -30,10 +30,10 @@ namespace Comandos.Comandos.Modulo8
             try
             {
                 FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
-                DAO.IntefazDAO.Modulo8.IDaoMinuta daoMinuta = fabricaDAO.ObtenerDAOMinuta();
-                DAO.IntefazDAO.Modulo8.IDaoInvolucradosMinuta daoInvolucradosMinuta = fabricaDAO.ObtenerDAOInvolucradosMinuta();
-                DAO.IntefazDAO.Modulo8.IDaoPunto daoPunto = fabricaDAO.ObtenerDAOPunto();
-                DAO.IntefazDAO.Modulo8.IDaoAcuerdo daoAcuerdo = fabricaDAO.ObtenerDAOAcuerdo();
+                Datos.IntefazDAO.Modulo8.IDaoMinuta daoMinuta = fabricaDAO.ObtenerDAOMinuta();
+                Datos.IntefazDAO.Modulo8.IDaoInvolucradosMinuta daoInvolucradosMinuta = fabricaDAO.ObtenerDAOInvolucradosMinuta();
+                Datos.IntefazDAO.Modulo8.IDaoPunto daoPunto = fabricaDAO.ObtenerDAOPunto();
+                Datos.IntefazDAO.Modulo8.IDaoAcuerdo daoAcuerdo = fabricaDAO.ObtenerDAOAcuerdo();
 
                 minuta = (Minuta)daoMinuta.ConsultarMinutaBD(int.Parse(parametro));
                 usuarios.Clear();

@@ -6,9 +6,9 @@ using Dominio;
 using ExcepcionesTotem.Modulo6.ExcepcionesComando;
 using ExcepcionesTotem.Modulo6.ExcepcionesDAO;
 using ExcepcionesTotem;
-using DAO.DAO.Modulo6;
-using DAO.Fabrica;
-using DAO.IntefazDAO.Modulo6;
+using Datos.DAO.Modulo6;
+using Datos.Fabrica;
+using Datos.IntefazDAO.Modulo6;
 
 namespace Comandos.Comandos.Modulo6
 {

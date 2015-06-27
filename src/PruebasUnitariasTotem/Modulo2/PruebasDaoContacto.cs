@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using DAO.DAO.Modulo2;
-using DAO.Fabrica;
+using Datos.DAO.Modulo2;
+using Datos.Fabrica;
 using Dominio.Fabrica;
-using DAO.IntefazDAO.Modulo2;
+using Datos.IntefazDAO.Modulo2;
 using Dominio;
 using Dominio.Entidades.Modulo2;
 

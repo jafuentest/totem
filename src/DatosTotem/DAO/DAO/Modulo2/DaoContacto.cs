@@ -10,9 +10,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
-namespace DAO.DAO.Modulo2
+namespace Datos.DAO.Modulo2
 {
-    public class DaoContacto : DAO, IntefazDAO.Modulo2.IDaoContacto
+    public class DaoContacto : DAOGeneral, IntefazDAO.Modulo2.IDaoContacto
     {
         #region IDAO
         /// <summary>

@@ -5,8 +5,8 @@ using System.Text;
 using ExcepcionesTotem;
 using ExcepcionesTotem.Modulo8.ExcepcionesDeDatos;
 using Dominio;
-using DAO.Fabrica;
-using DAO.DAO.Modulo8;
+using Datos.Fabrica;
+using Datos.DAO.Modulo8;
 using System.Data.SqlClient;
 
 namespace Comandos.Comandos.Modulo8
@@ -19,7 +19,7 @@ namespace Comandos.Comandos.Modulo8
             try
             {
                 FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
-                DAO.IntefazDAO.Modulo8.IDaoMinuta daoMinuta = fabricaDAO.ObtenerDAOMinuta();
+                Datos.IntefazDAO.Modulo8.IDaoMinuta daoMinuta = fabricaDAO.ObtenerDAOMinuta();
                 return daoMinuta.ConsultarMinutasProyecto(parametro);
             }
             catch (NullReferenceException ex)

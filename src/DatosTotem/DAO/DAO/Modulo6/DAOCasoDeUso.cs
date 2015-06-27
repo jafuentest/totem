@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Dominio.Fabrica;
 using Dominio.Entidades.Modulo6;
-using DAO.IntefazDAO.Modulo6;
+using Datos.IntefazDAO.Modulo6;
 using Dominio;
 using System.Data.SqlClient;
 using System.Data;
@@ -14,9 +14,9 @@ using System.Data.Sql;
 using ExcepcionesTotem.Modulo6.ExcepcionesDAO;
 using ExcepcionesTotem;
 
-namespace DAO.DAO.Modulo6
+namespace Datos.DAO.Modulo6
 {
-    public class DAOCasoDeUso : DAO, IDaoCasoDeUso
+    public class DAOCasoDeUso : DAOGeneral, IDaoCasoDeUso
     {
         /// <summary>
         /// Método de Dao que se conecta a Base de Datos

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using DAO.DAO.Modulo7;
+using Datos.DAO.Modulo7;
 using Comandos;
 using Comandos.Fabrica;
 

@@ -5,7 +5,7 @@ using System.Text;
 using Dominio.Entidades.Modulo2;
 using Dominio.Entidades.Modulo7;
 using Dominio.Entidades.Modulo8;
-using DAO.Fabrica;
+using Datos.Fabrica;
 using Dominio.Fabrica;
 using ExcepcionesTotem.Modulo8.ExcepcionesDeDatos;
 using ExcepcionesTotem;
@@ -25,16 +25,16 @@ namespace Comandos.Comandos.Modulo8
             {
 
                 FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
-                DAO.IntefazDAO.Modulo8.IDaoInvolucradosMinuta daoInvMinutas = fabricaDAO.ObtenerDAOInvolucradosMinuta();
+                Datos.IntefazDAO.Modulo8.IDaoInvolucradosMinuta daoInvMinutas = fabricaDAO.ObtenerDAOInvolucradosMinuta();
 
                 List<Dominio.Entidad> usuarios = new List<Dominio.Entidad>();
                 List<Dominio.Entidad> contactos = new List<Dominio.Entidad>();
 
-                DAO.IntefazDAO.Modulo8.IDaoMinuta daoMinutas = fabricaDAO.ObtenerDAOMinuta();
-                DAO.IntefazDAO.Modulo8.IDaoInvolucradosMinuta daoInvolucradosMinuta = fabricaDAO.ObtenerDAOInvolucradosMinuta();
-                DAO.IntefazDAO.Modulo8.IDaoAcuerdo daoAcuerdo = fabricaDAO.ObtenerDAOAcuerdo();
-                DAO.IntefazDAO.Modulo8.IDaoPunto daoPunto = fabricaDAO.ObtenerDAOPunto();
-                DAO.IntefazDAO.Modulo4.IDaoProyecto daoProyectos = fabricaDAO.ObtenerDAOProyecto();
+                Datos.IntefazDAO.Modulo8.IDaoMinuta daoMinutas = fabricaDAO.ObtenerDAOMinuta();
+                Datos.IntefazDAO.Modulo8.IDaoInvolucradosMinuta daoInvolucradosMinuta = fabricaDAO.ObtenerDAOInvolucradosMinuta();
+                Datos.IntefazDAO.Modulo8.IDaoAcuerdo daoAcuerdo = fabricaDAO.ObtenerDAOAcuerdo();
+                Datos.IntefazDAO.Modulo8.IDaoPunto daoPunto = fabricaDAO.ObtenerDAOPunto();
+                Datos.IntefazDAO.Modulo4.IDaoProyecto daoProyectos = fabricaDAO.ObtenerDAOProyecto();
 
 
                 Proyecto elProyecto = (Proyecto)parametro[0];

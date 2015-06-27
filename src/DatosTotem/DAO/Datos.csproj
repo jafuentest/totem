@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAO\DAO.cs" />
+    <Compile Include="DAO\DAOGeneral.cs" />
     <Compile Include="DAO\Modulo1\DaoLogin.cs" />
     <Compile Include="DAO\Modulo1\RecursosDaoModulo1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -161,7 +161,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\DominioTotem\Dominio\Dominio.csproj">
       <Project>{41dd6620-eb5e-4529-b66d-d29a27fa2e5a}</Project>
-      <Name>Dominio</Name>
+      <Name>Dominio %28Dominio\Dominio%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\ExcepcionesTotem\ExcepcionesTotem.csproj">
       <Project>{aaa3900a-9ced-4f07-9cee-d86208c39437}</Project>

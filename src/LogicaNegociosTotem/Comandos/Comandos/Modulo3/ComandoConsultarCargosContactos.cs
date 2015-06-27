@@ -1,5 +1,5 @@
-﻿using DAO.Fabrica;
-using DAO.IntefazDAO.Modulo3;
+﻿using Datos.Fabrica;
+using Datos.IntefazDAO.Modulo3;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,8 +19,8 @@ namespace Comandos.Comandos.Modulo3
             List<String> listCargo;
             try
             {
-                DAO.IntefazDAO.Modulo3.IDaoInvolucrados daoInvolucrado;
-                DAO.Fabrica.FabricaDAOSqlServer fabricaDAO = new DAO.Fabrica.FabricaDAOSqlServer();
+                Datos.IntefazDAO.Modulo3.IDaoInvolucrados daoInvolucrado;
+                Datos.Fabrica.FabricaDAOSqlServer fabricaDAO = new Datos.Fabrica.FabricaDAOSqlServer();
                 daoInvolucrado = fabricaDAO.ObtenerDaoInvolucrados();
                 listCargo = daoInvolucrado.ConsultarCargosContactos(parametro); 
             }

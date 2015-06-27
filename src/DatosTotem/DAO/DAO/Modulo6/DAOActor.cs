@@ -6,16 +6,16 @@ using Dominio;
 using Dominio.Fabrica;
 using Dominio.Entidades.Modulo6;
 using Dominio.Entidades.Modulo4;
-using DAO.IntefazDAO.Modulo6;
+using Datos.IntefazDAO.Modulo6;
 using System.Data;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using ExcepcionesTotem.Modulo6.ExcepcionesDAO;
 using ExcepcionesTotem;
 
-namespace DAO.DAO.Modulo6
+namespace Datos.DAO.Modulo6
 {
-    public class DAOActor : DAO, IDaoActor
+    public class DAOActor : DAOGeneral, IDaoActor
     {
 
         #region Métodos para Agregar Actor

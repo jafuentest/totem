@@ -1,8 +1,8 @@
 ﻿using Dominio;
-using DAO;
-using DAO.IntefazDAO.Modulo2;
-using DAO.Fabrica;
-using DAO.DAO.Modulo2;
+using Datos;
+using Datos.IntefazDAO.Modulo2;
+using Datos.Fabrica;
+using Datos.DAO.Modulo2;
 using System;
 using System.Collections.Generic;
 using System.Linq;

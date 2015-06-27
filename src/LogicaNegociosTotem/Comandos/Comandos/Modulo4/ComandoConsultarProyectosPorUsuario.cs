@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using DAO.Fabrica;
-using DAO.DAO.Modulo4;
-using DAO.IntefazDAO.Modulo4;
+using Datos.Fabrica;
+using Datos.DAO.Modulo4;
+using Datos.IntefazDAO.Modulo4;
 
 namespace Comandos.Comandos.Modulo4
 {

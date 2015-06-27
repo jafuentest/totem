@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DAO.IntefazDAO.Modulo3
+namespace Datos.IntefazDAO.Modulo3
 {
     public interface IDaoInvolucrados: IDao<Entidad, bool, Entidad>
     {

@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using Dominio.Entidades.Modulo8;
-using DAO.DAO.Modulo8;
-using DAO.Fabrica;
+using Datos.DAO.Modulo8;
+using Datos.Fabrica;
 using Dominio.Fabrica;
 
 namespace PruebasUnitariasTotem.Modulo8
@@ -18,7 +18,7 @@ namespace PruebasUnitariasTotem.Modulo8
     class PruebaDaoPunto
     {
         Punto punto;
-        DAO.IntefazDAO.Modulo8.IDaoPunto daopunto;
+        Datos.IntefazDAO.Modulo8.IDaoPunto daopunto;
         List<Punto> listaPunto;
         FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
         FabricaEntidades fabricaEntidades = new FabricaEntidades();
