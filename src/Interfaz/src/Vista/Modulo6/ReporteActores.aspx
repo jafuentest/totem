@@ -39,7 +39,7 @@
 				    <tr>
 					   <th>ID</th>
 					   <th style="width: 250px">Nombre</th>					   
-					   <th>Acciones</th>
+					   
 				    </tr>
 				</thead>
 				<tbody>
@@ -58,12 +58,7 @@
 
                      
 				    
-				    <td>
-					   <a class="btn btn-default glyphicon glyphicon-pencil"
-					   href="Modificar.aspx?id=<%# Eval("Id") %>"></a>
-					   <a class="btn btn-danger glyphicon glyphicon-remove-sign"
-					   href="Listar.aspx?eliminar=<%# Eval("Id") %>"></a>
-				    </td>
+				    
 				</tr>
 		  </ItemTemplate>
 		  <FooterTemplate>
