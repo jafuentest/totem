@@ -125,6 +125,7 @@
     <Content Include="Modulo2\ModificarEmpresa.aspx" />
     <Content Include="Modulo3\AgregarInvolucrados.aspx" />
     <Content Include="Modulo3\ListarPersonalInvolucrado.aspx" />
+    <Content Include="Modulo4\AgregarProyecto.aspx" />
     <Content Include="Modulo4\ListarProyectos.aspx" />
     <Content Include="Modulo5\AgregarRequerimiento.aspx" />
     <Content Include="Global.asax" />
@@ -298,6 +299,13 @@
     </Compile>
     <Compile Include="Modulo3\ListarPersonalInvolucrado.aspx.designer.cs">
       <DependentUpon>ListarPersonalInvolucrado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo4\AgregarProyecto.aspx.cs">
+      <DependentUpon>AgregarProyecto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo4\AgregarProyecto.aspx.designer.cs">
+      <DependentUpon>AgregarProyecto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulo4\ListarProyectos.aspx.cs">
       <DependentUpon>ListarProyectos.aspx</DependentUpon>

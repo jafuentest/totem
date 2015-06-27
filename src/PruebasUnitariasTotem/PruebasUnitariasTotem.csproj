@@ -65,6 +65,7 @@
     <Compile Include="Modulo4\PruebaExcepciones.cs" />
     <Compile Include="Modulo4\PruebaLogicaProyecto.cs" />
     <Compile Include="Modulo4\PruebaProyecto.cs" />
+    <Compile Include="Modulo4\pruebasDAOProyecto.cs" />
     <Compile Include="Modulo5\PruebaComandoAgregarRequerimiento.cs" />
     <Compile Include="Modulo5\PruebaBDRequerimiento.cs" />
     <Compile Include="Modulo5\PruebaComandoBuscarCodigoRequerimiento.cs" />

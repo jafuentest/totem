@@ -254,9 +254,25 @@ namespace DAO.DAO.Modulo4
 
         public bool existeProyecto(String codigo)
         {
-            throw new NotImplementedException();
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro parametro = new Parametro(RecursosDAOModulo4.ParametroCodigoProyecto, SqlDbType.VarChar, codigo, false);
+            parametros.Add(parametro);
+
+            parametro = new Parametro(RecursosDAOModulo4.ParametroResultado, SqlDbType.Int, true);
+            parametros.Add(parametro);
+
+
+            List<Resultado> resultados = EjecutarStoredProcedure(RecursosDAOModulo4.ProcedimientoExisteProyecto, parametros);
+
+
+            //if (int.Parse(resultados[0].valor) == 1)
+            if (resultados != null)
+            {
+                return true;
+            }
+            else
+                return false;
         }
-        # endregion
 
         # region contarRequerimientos
         /// <summary>
