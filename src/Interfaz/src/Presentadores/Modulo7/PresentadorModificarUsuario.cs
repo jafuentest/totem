@@ -36,7 +36,7 @@ namespace Presentadores.Modulo7
 		{
 			try
 			{
-				username = "albertods";// HttpContext.Current.Request.QueryString["username"];
+				username = HttpContext.Current.Request.QueryString["username"];
 
 				string urlListarUsuarios = RecursosPresentadorModulo7.URL_ListarUsuarios + RecursosPresentadorModulo7.Codigo_Error_UsuarioInvalido;
 				bool usuarioNull = username == null;

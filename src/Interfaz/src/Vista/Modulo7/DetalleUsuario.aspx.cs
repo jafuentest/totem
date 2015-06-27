@@ -61,5 +61,10 @@ namespace Vista.Modulo7
 			set { this.alert.Attributes.Add(RecursosVistaModulo7.RecursoClass, value); }
 		}
 		#endregion
+
+		protected void btn_modUsuario_ServerClick(object sender, EventArgs e)
+		{
+			presentador.ModificarUsuario(this.username.InnerText);
+		}
 	}
 }

@@ -163,7 +163,7 @@
     <value>^[A-z0-9_-]+$</value>
   </data>
   <data name="Param_Username" xml:space="preserve">
-    <value>?username=</value>
+    <value>username=</value>
   </data>
   <data name="RecursoCredenciales" xml:space="preserve">
     <value>Credenciales</value>
@@ -181,5 +181,8 @@
   </data>
   <data name="URL_ListarUsuarios" xml:space="preserve">
     <value>../Modulo7/ListarUsuarios.aspx?</value>
+  </data>
+  <data name="URL_ModificarUsuario" xml:space="preserve">
+    <value>../Modulo7/ModificarUsuario.aspx?</value>
   </data>
 </root>

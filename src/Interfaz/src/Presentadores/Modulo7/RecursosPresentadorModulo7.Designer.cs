@@ -196,7 +196,7 @@ namespace Presentadores.Modulo7 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ?username=.
+        ///   Looks up a localized string similar to username=.
         /// </summary>
         internal static string Param_Username {
             get {
@@ -246,6 +246,15 @@ namespace Presentadores.Modulo7 {
         internal static string URL_ListarUsuarios {
             get {
                 return ResourceManager.GetString("URL_ListarUsuarios", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ../Modulo7/ModificarUsuario.aspx?.
+        /// </summary>
+        internal static string URL_ModificarUsuario {
+            get {
+                return ResourceManager.GetString("URL_ModificarUsuario", resourceCulture);
             }
         }
     }

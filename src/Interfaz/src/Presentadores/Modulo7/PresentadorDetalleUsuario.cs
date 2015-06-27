@@ -53,9 +53,14 @@ namespace Presentadores.Modulo7
 			string username = HttpContext.Current.Request.QueryString[RecursosPresentadorModulo7.RecursoUsername];
 			string urlListarUsuarios = RecursosPresentadorModulo7.URL_ListarUsuarios + RecursosPresentadorModulo7.Codigo_Error_UsuarioInvalido;
 			bool usuarioNull = username == null;
-			bool usuarioVacio = username.Equals(string.Empty);
-			bool usuarioInvalido = !Regex.IsMatch(username, RecursosPresentadorModulo7.ExpReg_Username, 
-                                    RegexOptions.IgnoreCase);
+			bool usuarioVacio = true;
+			bool usuarioInvalido = true;
+			if (!usuarioNull)
+			{
+				usuarioVacio = username.Equals(string.Empty);
+				usuarioInvalido = !Regex.IsMatch(username, RecursosPresentadorModulo7.ExpReg_Username,
+										RegexOptions.IgnoreCase);
+			}
 			if (usuarioNull || usuarioVacio || usuarioInvalido)
 				HttpContext.Current.Response.Redirect(urlListarUsuarios);
 			FabricaEntidades fabricaEntidades = new FabricaEntidades();
@@ -82,6 +87,14 @@ namespace Presentadores.Modulo7
                 Logger.EscribirError(this.GetType().Name, e);
                 HttpContext.Current.Response.Redirect(urlListarUsuarios);
             }
+		}
+
+		public void ModificarUsuario(string username)
+		{
+			HttpContext.Current.Response.Redirect(
+				RecursosPresentadorModulo7.URL_ModificarUsuario +
+				RecursosPresentadorModulo7.Param_Username +
+				username);
 		}
 	}
 }
