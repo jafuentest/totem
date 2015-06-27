@@ -295,6 +295,15 @@ namespace Comandos.Comandos.Modulo8 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\Vista\Modulo8\docs\Minuta.pdf.
+        /// </summary>
+        internal static string Parametro {
+            get {
+                return ResourceManager.GetString("Parametro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to fecha.
         /// </summary>
         internal static string ParametroFecha {
