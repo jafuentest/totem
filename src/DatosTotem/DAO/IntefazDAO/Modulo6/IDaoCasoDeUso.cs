@@ -16,6 +16,6 @@ namespace DAO.IntefazDAO.Modulo6
 
        bool EliminarCasoDeUso(int id);
 
-       bool DesasociarCUDelActor(); 
+       bool DesasociarCUDelActor(Entidad parametro); 
     }
 }
