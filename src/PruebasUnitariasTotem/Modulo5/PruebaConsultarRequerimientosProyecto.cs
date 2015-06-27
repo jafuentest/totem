@@ -7,6 +7,10 @@ using NUnit.Framework;
 namespace PruebasUnitariasTotem.Modulo5
 {
 
+
+    /// <summary>
+    /// Clase encargada de probar el comando Consultar Requerimientos Proyecto
+    /// </summary>
     [TestFixture]
     class PruebaConsultarRequerimientosProyecto
     {
@@ -23,7 +27,7 @@ namespace PruebasUnitariasTotem.Modulo5
         }
 
         /// <summary>
-        /// 
+        /// Prueba de la ejecucion del comando
         /// </summary>
         [Test]
         public void PruebaEjecutar()

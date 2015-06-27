@@ -7,8 +7,9 @@ using NUnit.Framework;
 namespace PruebasUnitariasTotem.Modulo5
 {
 
+
     /// <summary>
-    /// 
+    /// Clase encargada de probar el comando Generar Archivo Latex
     /// </summary>
     [TestFixture]
     class PruebaComandoGenerarArchivoLatex
@@ -36,16 +37,9 @@ namespace PruebasUnitariasTotem.Modulo5
             this.listaRequerimientos.Add(this.requerimiento);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        [TearDown]
-        public void finish() { 
         
-        }
-
         /// <summary>
-        /// 
+        /// Metodo encargado de probar El metodo generar documento
         /// </summary>
         [Test]
         public void PruebaGenerarDocumento() {
@@ -77,7 +71,7 @@ namespace PruebasUnitariasTotem.Modulo5
             }
 
         /// <summary>
-        /// 
+        /// Metodo encargado de probar el metodo compilar achivo
         /// </summary>
         [Test]
         public void PruebaCompilarArchivo() {
@@ -89,8 +83,9 @@ namespace PruebasUnitariasTotem.Modulo5
             
             }
         }
+    
         /// <summary>
-        /// 
+        /// metodo encargado de probar la generacion del documento final
         /// </summary>
         [Test]
         public void PruebaGenerarDocumentoFinal() {

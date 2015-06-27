@@ -53,8 +53,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RecursosPUMod1.resx</DependentUpon>
     </Compile>
-    <Compile Include="Modulo2\PruebaDaoClienteJuridico.cs" />
-    <Compile Include="Modulo2\PruebaDaoClienteNatural.cs" />
     <Compile Include="Modulo2\PruebasDaoContacto.cs" />
     <Compile Include="Modulo3\PruebaBDInvolucrados.cs" />
     <Compile Include="Modulo3\PruebaComando.cs" />
@@ -69,7 +67,6 @@
     <Compile Include="Modulo4\PruebaProyecto.cs" />
     <Compile Include="Modulo4\pruebasDAOProyecto.cs" />
     <Compile Include="Modulo5\PruebaComandoAgregarRequerimiento.cs" />
-    <Compile Include="Modulo5\PruebaBDRequerimiento.cs" />
     <Compile Include="Modulo5\PruebaComandoBuscarCodigoRequerimiento.cs" />
     <Compile Include="Modulo5\PruebaComandoConsultarRequerimiento.cs" />
     <Compile Include="Modulo5\PruebaComandoEliminarRequerimiento.cs" />
@@ -78,14 +75,13 @@
     <Compile Include="Modulo5\PruebaConsultarRequerimientosProyecto.cs" />
     <Compile Include="Modulo5\PruebaDaoRequerimiento.cs" />
     <Compile Include="Modulo5\PruebaFabricaDAO.cs" />
-    <Compile Include="Modulo5\PruebaLogicaRequerimiento.cs" />
     <Compile Include="Modulo5\PruebaReportesPresentador.cs" />
     <Compile Include="Modulo5\PruebaFrabricaRequerimiento.cs" />
-    <Compile Include="Modulo5\PruebFabricaDao.cs" />
-    <Compile Include="Modulo6\PruebaDaoActor.cs" />
-    <Compile Include="Modulo6\PruebaExcepcionesModulo6.cs" />
+    <Compile Include="Modulo5\PruebFabricaComando.cs" />
+    <Compile Include="Modulo6\PruebaActor.cs" />
+    <Compile Include="Modulo6\PruebaBDActor.cs" />
+    <Compile Include="Modulo6\PruebaBDActorExcepciones.cs" />
     <Compile Include="Modulo6\PruebaLogicaActor.cs" />
-    <Compile Include="Modulo6\PruebaLogicaCasoDeUso.cs" />
     <Compile Include="Modulo7\PruebaComandoAgregarUsuario.cs" />
     <Compile Include="Modulo7\PruebaComandoEliminarUsuario.cs" />
     <Compile Include="Modulo7\PruebaComandoListarCargos.cs" />
@@ -104,11 +100,11 @@
   <ItemGroup>
     <ProjectReference Include="..\DatosTotem\DAO\Datos.csproj">
       <Project>{d9ace21a-77b5-4e5a-bb70-c77bc5a39a6c}</Project>
-      <Name>Datos %28Datos\Datos%29</Name>
+      <Name>DAO</Name>
     </ProjectReference>
     <ProjectReference Include="..\DominioTotem\Dominio\Dominio.csproj">
       <Project>{41dd6620-eb5e-4529-b66d-d29a27fa2e5a}</Project>
-      <Name>Dominio %28Dominio\Dominio%29</Name>
+      <Name>Dominio</Name>
     </ProjectReference>
     <ProjectReference Include="..\ExcepcionesTotem\ExcepcionesTotem.csproj">
       <Project>{aaa3900a-9ced-4f07-9cee-d86208c39437}</Project>
