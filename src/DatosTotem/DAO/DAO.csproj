@@ -102,7 +102,6 @@
       <DependentUpon>RecursoGeneralDAO.resx</DependentUpon>
     </Compile>
     <Compile Include="DAO\Resultado.cs" />
-    <Compile Include="Fabrica\FabricaAbstractaDAO.cs" />
     <Compile Include="Fabrica\FabricaDAOSqlServer.cs" />
     <Compile Include="IntefazDAO\IDao.cs" />
     <Compile Include="IntefazDAO\Modulo1\IDaoLogin.cs" />

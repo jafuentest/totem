@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using DominioTotem;
 
 namespace PruebasUnitariasTotem.Modulo3
 {
@@ -13,7 +12,7 @@ namespace PruebasUnitariasTotem.Modulo3
     /// </summary>
     [TestFixture]
     public class PruebaListaInvUsuario
-    {
+    {/*
         private ListaInvolucradoUsuario laLista;
         private Proyecto elProyecto;
         private List<Usuario> laListaUsuarios;
@@ -96,7 +95,7 @@ namespace PruebasUnitariasTotem.Modulo3
 
             Assert.AreEqual(0, laLista.Lista.ToArray().Length);
             System.Console.WriteLine("Tamaño de lista: " + laLista.Lista.ToArray().Length);
-        }
+        }*/
 
 
     }

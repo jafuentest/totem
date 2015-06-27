@@ -101,14 +101,6 @@
       <Project>{d9ace21a-77b5-4e5a-bb70-c77bc5a39a6c}</Project>
       <Name>DAO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DatosTotem\DatosTotem.csproj">
-      <Project>{b4b3079e-15ec-4575-89cd-5ff052c22bda}</Project>
-      <Name>DatosTotem</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DominioTotem\DominioTotem.csproj">
-      <Project>{71398660-3b9b-4bed-91b3-b968a4ebf02e}</Project>
-      <Name>DominioTotem</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DominioTotem\Dominio\Dominio.csproj">
       <Project>{41dd6620-eb5e-4529-b66d-d29a27fa2e5a}</Project>
       <Name>Dominio</Name>
@@ -120,10 +112,6 @@
     <ProjectReference Include="..\LogicaNegociosTotem\Comandos\Comandos.csproj">
       <Project>{599466e8-e67a-4b93-ba44-a45079957c95}</Project>
       <Name>Comandos</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LogicaNegociosTotem\LogicaNegociosTotem.csproj">
-      <Project>{70c79b2e-094d-49ba-bc84-d7cd7443abff}</Project>
-      <Name>LogicaNegociosTotem</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

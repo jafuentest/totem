@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using DatosTotem.Modulo6;
 
 namespace PruebasUnitariasTotem.Modulo6
 {
@@ -13,7 +12,7 @@ namespace PruebasUnitariasTotem.Modulo6
     [TestFixture]
     class PruebaBDActorExcepciones
     {
-        //Atributo para probar la clase
+        /*//Atributo para probar la clase
         private BDActor bdActor;
 
         /// <summary>
@@ -63,6 +62,6 @@ namespace PruebasUnitariasTotem.Modulo6
         public void Limpiar()
         {
             bdActor = null;
-        }
+        }*/
     }
 }

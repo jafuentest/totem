@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using DominioTotem;
-using LogicaNegociosTotem.Modulo6;
 
 namespace PruebasUnitariasTotem.Modulo6
 {
@@ -13,7 +11,7 @@ namespace PruebasUnitariasTotem.Modulo6
     /// </summary>
     [TestFixture]
     public class PruebaLogicaActor
-    {
+    {/*
         //Atributo para probar clase LogicaActor
         LogicaActor logica;
 
@@ -57,7 +55,7 @@ namespace PruebasUnitariasTotem.Modulo6
             List<Actor> listaActores = logica.ListarActor(1);
 
             /*Probamos que la lista devuelta no es nula y a su vez
-            que nos devuelva un actor de predeterminado de prueba*/
+            que nos devuelva un actor de predeterminado de prueba
             Assert.IsNotNull(listaActores);
             Assert.AreEqual(listaActores[listaActores.Count - 1].NombreActor, "prueba");
             Assert.AreEqual(listaActores[listaActores.Count - 1].DescripcionActor, "prueba");
@@ -125,6 +123,6 @@ namespace PruebasUnitariasTotem.Modulo6
         public void Limpiar()
         {
             logica = null;
-        }
+        }*/
     }
 }

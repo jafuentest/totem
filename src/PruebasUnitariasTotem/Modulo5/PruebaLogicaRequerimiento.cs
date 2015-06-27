@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using DominioTotem;
-using LogicaNegociosTotem.Modulo5;
 
 namespace PruebasUnitariasTotem.Modulo5
 {
     [TestFixture]
     class PruebaLogicaRequerimiento
-    {
+    {/*
 	   #region Atributos
 	   private int elId;
 	   private string elCodigo;
@@ -61,5 +59,6 @@ namespace PruebasUnitariasTotem.Modulo5
 			 listaRequerimientos[0].Estatus.ToString());
 	   }
 	   #endregion
+      * */
     }
 }

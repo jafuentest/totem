@@ -478,10 +478,6 @@
     <Folder Include="Modulo8\docs\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\DominioTotem\DominioTotem.csproj">
-      <Project>{71398660-3b9b-4bed-91b3-b968a4ebf02e}</Project>
-      <Name>DominioTotem</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\DominioTotem\Dominio\Dominio.csproj">
       <Project>{41dd6620-eb5e-4529-b66d-d29a27fa2e5a}</Project>
       <Name>Dominio</Name>
