@@ -25,7 +25,7 @@ namespace Comandos.Comandos.Modulo7
         {
  	        //Lista que contendra todos los usuarios
             List<Entidad> listaUsuarios;
-
+			return new List<Entidad>();
             //Instanciamos la fabrica
             FabricaDAOSqlServer fabrica = new FabricaDAOSqlServer();
 

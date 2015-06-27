@@ -35,8 +35,7 @@ namespace Presentadores.Modulo7
 				string username = "albertods";// HttpContext.Current.Request.QueryString["username"];
 				Entidad parametro =  new FabricaEntidades().ObtenerUsuario(username);
 
-				Comando<Dominio.Entidad, Dominio.Entidad> comandoConsultar =
-					FabricaComandos.CrearComandoDetalleUsuario();
+				Comando<Entidad, Entidad> comandoConsultar = FabricaComandos.CrearComandoDetalleUsuario();
 
 				parametro = comandoConsultar.Ejecutar(parametro);
 
@@ -63,15 +62,8 @@ namespace Presentadores.Modulo7
 		/// </summary>
 		public void ObtenerCargos()
 		{
-			vista.Roles = new DataSet();
-		}
-
-		/// <summary>
-		/// Método para llenar el drop down con los roles disponibles
-		/// </summary>
-		public void ObtenerRoles()
-		{
-			throw new NotImplementedException();
+			Comando<object, DataSet> comandoCargos = new FabricaComandos().CrearComandoConsultarCargosConId();
+			DataSet ds = comandoCargos.Ejecutar(null);
 		}
 	}
 }

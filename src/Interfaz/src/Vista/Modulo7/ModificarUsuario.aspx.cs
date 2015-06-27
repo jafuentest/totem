@@ -21,7 +21,7 @@ namespace Vista.Modulo7
 				this.Master.idModulo = "7";
 				this.Master.presentador.CargarMenuLateral();
 				presentador.CargarDatos();
-				//presentador.ObtenerCargos();
+				presentador.ObtenerCargos();
 				//presentador.ObtenerRoles();
 			}
 		}
