@@ -1,4 +1,4 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
 
 namespace Contratos.Modulo7
 {
@@ -17,7 +17,7 @@ namespace Contratos.Modulo7
 		string Cargo { get; set; }
 		string Pregunta { get; set; }
 		string Respuesta { get; set; }
-		DataSet Roles { get; set; }
-		DataSet Cargos { get; set; }
+		List<string> Roles { set; }
+		List<string> Cargos { set; }
 	}
 }

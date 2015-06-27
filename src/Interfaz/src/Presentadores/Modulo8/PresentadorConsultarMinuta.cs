@@ -65,5 +65,7 @@ namespace Presentadores.Modulo8
             vista.codigoProyecto = codigoProy;
             vista.nombreProyecto = nombreProy;
         }
+
+        
     }
 }

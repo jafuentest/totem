@@ -106,7 +106,7 @@ namespace Comandos.Comandos.Modulo8 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to \\.
+        ///   Looks up a localized string similar to \.
         /// </summary>
         internal static string Barras {
             get {

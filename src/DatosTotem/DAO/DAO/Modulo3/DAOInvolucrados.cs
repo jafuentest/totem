@@ -440,6 +440,11 @@ namespace DAO.DAO.Modulo3
             }
             return exito;
         }
+        /// <summary>
+        /// Metodo que consulta los cargos de los contactos
+        /// </summary>
+        /// <param name="c">empresa</param>
+        /// <returns>Lista de cargos</returns>
         public List<String> ConsultarCargosContactos(Entidad parametro)
         {
             List<String> laListaDeCargos = new List<String>();
@@ -472,6 +477,11 @@ namespace DAO.DAO.Modulo3
 
             return laListaDeCargos;
         }
+        /// <summary>
+        /// Metodo que obtiene los datos de un usuario
+        /// </summary>
+        /// <param name="lista">username</param>
+        /// <returns>el usuario solicitado</returns>
         public Entidad DatosUsuarioUsername(String user)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
@@ -516,6 +526,11 @@ namespace DAO.DAO.Modulo3
             }
             return retorno;
         }
+        /// <summary>
+        /// Metodo que obtiene los datos de un contacto
+        /// </summary>
+        /// <param name="lista">id del usuario</param>
+        /// <returns>contacto solicitado</returns>
         public Entidad DatosContactoID(int idCon)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
@@ -570,6 +585,11 @@ namespace DAO.DAO.Modulo3
             }
             return elContacto;
         }
+        /// <summary>
+        /// Metodo que obtiene la lista de los contactos de una empresa
+        /// </summary>
+        /// <param name="lista">lista de usuarios a insertar</param>
+        /// <returns>lista de contactos</returns>
         public List<Entidad> ListarContactosPorEmpresa(Entidad parametro)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
@@ -608,6 +628,11 @@ namespace DAO.DAO.Modulo3
 
             return laListaDeContactos;
         }
+        /// <summary>
+        /// Metodo que obtiene la lista de los contactos segun un cargo
+        /// </summary>
+        /// <param name="lista">empresa y cargo</param>
+        /// <returns>lista de contactos</returns>
         public List<Entidad> ListarContactosPorCargoEmpresa(Entidad parametro,String cargo)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
@@ -669,6 +694,6 @@ namespace DAO.DAO.Modulo3
         public List<Dominio.Entidad> ConsultarTodos()
         {
             throw new NotImplementedException();
-        }
+        } 
     }
 }

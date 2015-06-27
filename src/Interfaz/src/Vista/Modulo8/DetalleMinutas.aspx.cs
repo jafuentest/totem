@@ -56,6 +56,32 @@ namespace Vista.Modulo8
             return output;
         }
 
+        protected void ImprimirMinuta(object sender, EventArgs e)
+        {
+            string aux = "";
+            for (int i = 0; i <= codigoMinuta.Length - 1; i++)
+            {
+                if ((codigoMinuta[i].ToString() != "{") && (codigoMinuta[i].ToString() != "}"))
+                {
+                    aux = aux + codigoMinuta[i];
+                }
+            }
+            string idminuta = aux;
+            Presentadores.Modulo8.PresentadorDetalleMinuta presentador = new Presentadores.Modulo8.PresentadorDetalleMinuta();
+            presentador.GenerarMinuta(idminuta);
+            Response.ClearContent();
+            Response.ClearHeaders();
+            Response.ContentType = "application/pdf";
+            Response.AddHeader("Content-Disposition", "attachment; filename=" + "minuta.pdf");
+            Response.TransmitFile(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\Vista\Modulo8\docs\Minuta.pdf");
+            Response.End();
+            //Response.WriteFile(strS);
+            Response.Flush();
+            Response.Clear();
+
+        }
+
+
     }
 }
 

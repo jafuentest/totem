@@ -171,17 +171,6 @@ namespace Comandos.Fabrica
 
             return new Comandos.Modulo3.ComandoDatosUsuarioUsername();
         }
-        public static Comando<Dominio.Entidad, Boolean> CrearComandoEliminarContactoDeInvolucradosEnProyecto()
-        {
-
-            return new Comandos.Modulo3.ComandoEliminarContactoDeIvolucradosEnProyecto();
-        }
-
-        public static Comando<Dominio.Entidad, Boolean> CrearComandoEliminarUsuariosDeInvolucradosEnProyecto()
-        {
-
-            return new Comandos.Modulo3.ComandoEliminarUsuariosDeIvolucradosEnProyecto();
-        }
         public static Comando<Entidad, List<Dominio.Entidad>> CrearComandoListarContactosPorCargoEmpresa()
         {
 
@@ -301,6 +290,11 @@ namespace Comandos.Fabrica
         {
             return new ComandoEliminarActor();
         }
+
+        public static Comando<Entidad, bool> CrearComandoDesasociarActor() 
+        {
+            return new ComandoDesasociarActor(); 
+        }
         #endregion
 
         #region Modulo 7
@@ -375,7 +369,10 @@ namespace Comandos.Fabrica
         {
             return new ComandoEliminarUsuario();
         }
-
+        /// <summary>
+        /// Metodo que instancia el comando de detalle de informacion de usuario
+        /// </summary>
+        /// <returns></returns>
 		public static Comando<Entidad, Entidad> CrearComandoDetalleUsuario()
 		{
 			return new ComandoDetalleUsuario();

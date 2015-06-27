@@ -349,6 +349,15 @@ namespace DAO.DAO.Modulo7 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ConsultarCargosConId.
+        /// </summary>
+        internal static string ProcedimientoConsultarCargosConId {
+            get {
+                return ResourceManager.GetString("ProcedimientoConsultarCargosConId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ConsultarUsuarioPorUsername.
         /// </summary>
         internal static string ProcedimientoConsultarUsername {
@@ -509,6 +518,15 @@ namespace DAO.DAO.Modulo7 {
         internal static string queryObtenerUsuario {
             get {
                 return ResourceManager.GetString("queryObtenerUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error, el usuario recibido fue nulo.
+        /// </summary>
+        internal static string RecursoUsuarioNulo {
+            get {
+                return ResourceManager.GetString("RecursoUsuarioNulo", resourceCulture);
             }
         }
         

@@ -633,7 +633,7 @@ namespace DAO.DAO.Modulo6
                 foreach (DataRow row in resultado.Rows)
                 {
 
-                    //FALTA EL ID DEL PROYECTO
+                    
 
 
                     elProyecto = (Proyecto)FabricaEntidades.ObtenerProyecto();
@@ -645,7 +645,7 @@ namespace DAO.DAO.Modulo6
                     elProyecto.Codigo = codigoProy;
                     elActor.ProyectoAsociado = elProyecto;
 
-                    // proy_act. = elProyecto;
+                   
                     laLista.Add(elActor);
                 }
             }
@@ -727,7 +727,7 @@ namespace DAO.DAO.Modulo6
                     exito = true;
                 }
             }
-
+            #region Captura de Excepciones 
             catch (SqlException e)
             {
 
@@ -737,7 +737,7 @@ namespace DAO.DAO.Modulo6
                  RecursosDAOModulo6.MensajeExcepcionBD,
                  e);
 
-                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOCasoDeUso, exDaoCasoUso);
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor, exDaoCasoUso);
 
                 throw exDaoCasoUso;
 
@@ -748,7 +748,7 @@ namespace DAO.DAO.Modulo6
                     RecursosDAOModulo6.CodigoExcepcionObjetoNuloDAO,
                     RecursosDAOModulo6.MensajeExcepcionObjetoNulo,
                     e);
-                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOCasoDeUso,
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
                        exDaoCasoUso);
 
                 throw exDaoCasoUso;
@@ -761,7 +761,7 @@ namespace DAO.DAO.Modulo6
                     RecursosDAOModulo6.CodigoExcepcionTipoDeDatoErroneo,
                     RecursosDAOModulo6.MensajeTipoDeDatoErroneoException,
                     e);
-                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOCasoDeUso,
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
                        exDaoCasoUso);
 
                 throw exDaoCasoUso;
@@ -774,11 +774,12 @@ namespace DAO.DAO.Modulo6
                     RecursosDAOModulo6.MensajeExcepcionErrorDesconocido,
                     e);
 
-                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOCasoDeUso,
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOActor,
                       exDaoCasoUso);
 
                 throw exDaoCasoUso;
             }
+            #endregion
             return exito;
 
         }

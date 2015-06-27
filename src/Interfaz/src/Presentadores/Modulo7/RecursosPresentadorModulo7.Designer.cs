@@ -187,6 +187,33 @@ namespace Presentadores.Modulo7 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Credenciales.
+        /// </summary>
+        internal static string RecursoCredenciales {
+            get {
+                return ResourceManager.GetString("RecursoCredenciales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to username.
+        /// </summary>
+        internal static string RecursoUsername {
+            get {
+                return ResourceManager.GetString("RecursoUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usuario,Administrador.
+        /// </summary>
+        internal static string Roles {
+            get {
+                return ResourceManager.GetString("Roles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ../Modulo7/ListarUsuarios.aspx?.
         /// </summary>
         internal static string URL_ListarUsuarios {

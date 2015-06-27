@@ -12,11 +12,11 @@ using Dominio.Entidades.Modulo5;
 using System.Data.Sql;
 
 using ExcepcionesTotem.Modulo6.ExcepcionesDAO;
-using ExcepcionesTotem; 
+using ExcepcionesTotem;
 
 namespace DAO.DAO.Modulo6
 {
-   public class DAOCasoDeUso: DAO, IDaoCasoDeUso
+    public class DAOCasoDeUso : DAO, IDaoCasoDeUso
     {
         /// <summary>
         /// Método de Dao que se conecta a Base de Datos
@@ -27,7 +27,7 @@ namespace DAO.DAO.Modulo6
         /// <returns>True si lo agregó, false en caso contrario</returns>
         public bool Agregar(Entidad parametro)
         {
-            throw new NotImplementedException(); 
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -70,27 +70,27 @@ namespace DAO.DAO.Modulo6
 
         #region Casos de Uso por Actor
         /// <summary>
-       /// Método que accede a la base de Datos
-       /// para consultar un listado de Casos de Uso dado un Actor
-       /// </summary>
-       /// <param name="actor">Actor asociado con los casos de uso</param>
-       /// <returns>Listas de Casos de Uso asociado al actor</returns>
-        public List<Entidad> ConsultarCasosDeUsoPorActor(Entidad actor) 
+        /// Método que accede a la base de Datos
+        /// para consultar un listado de Casos de Uso dado un Actor
+        /// </summary>
+        /// <param name="actor">Actor asociado con los casos de uso</param>
+        /// <returns>Listas de Casos de Uso asociado al actor</returns>
+        public List<Entidad> ConsultarCasosDeUsoPorActor(Entidad actor)
         {
             List<Entidad> listadoCasosDeUso = new List<Entidad>();
             DataTable resultado = new DataTable();
-            Actor elActor = (Actor) actor;
-            
+            Actor elActor = (Actor)actor;
+
             List<Parametro> parametros = new List<Parametro>();
-            Parametro parametro = new Parametro(RecursosDAOModulo6.ID_ACTOR, SqlDbType.Int,elActor.Id.ToString(), false);
+            Parametro parametro = new Parametro(RecursosDAOModulo6.ID_ACTOR, SqlDbType.Int, elActor.Id.ToString(), false);
             parametros.Add(parametro);
             parametro = new Parametro(RecursosDAOModulo6.CodigoProyecto, SqlDbType.VarChar, elActor.ProyectoAsociado.Codigo, false);
             parametros.Add(parametro);
 
             try
             {
-                resultado = EjecutarStoredProcedureTuplas(RecursosDAOModulo6.CasoDeUsosPorActor,parametros); 
-       
+                resultado = EjecutarStoredProcedureTuplas(RecursosDAOModulo6.CasoDeUsosPorActor, parametros);
+
 
                 foreach (DataRow row in resultado.Rows)
                 {
@@ -103,11 +103,12 @@ namespace DAO.DAO.Modulo6
                     casoUso.CondicionExito = row[RecursosDAOModulo6.AliasCondicionExito].ToString();
                     casoUso.CondicionFallo = row[RecursosDAOModulo6.AliasCondicionFallo].ToString();
                     casoUso.DisparadorCasoUso = row[RecursosDAOModulo6.AliasDisparadorCU].ToString();
-                    listadoCasosDeUso.Add(casoUso); 
-                   
+                    listadoCasosDeUso.Add(casoUso);
+
                 }
 
             }
+            #region Captura de Excepciones
             catch (SqlException e)
             {
 
@@ -160,40 +161,42 @@ namespace DAO.DAO.Modulo6
 
                 throw exDaoCasoUso;
             }
+            #endregion
             return listadoCasosDeUso;
 
         }
         #endregion
 
         /// <summary>
-       /// Método que accede a Base de Datos para consultar la lista
-       /// de requerimientos asociados con un caso de uso
-       /// </summary>
-       /// <param name="idCasoDeUso">Id del Caso de Uso</param>
-       /// <returns>Lista de Requerimientos asociados al caso de uso</returns>
-        public List<Entidad> ConsultarRequerimientosXCasoDeUso(int idCasoDeUso) 
+        /// Método que accede a Base de Datos para consultar la lista
+        /// de requerimientos asociados con un caso de uso
+        /// </summary>
+        /// <param name="idCasoDeUso">Id del Caso de Uso</param>
+        /// <returns>Lista de Requerimientos asociados al caso de uso</returns>
+        public List<Entidad> ConsultarRequerimientosXCasoDeUso(int idCasoDeUso)
         {
             List<Entidad> listaRequerimientos = new List<Entidad>();
             DataTable resultado = new DataTable();
             List<Parametro> parametros = new List<Parametro>();
             Parametro parametro = new Parametro(RecursosDAOModulo6.ID_CU, SqlDbType.Int, idCasoDeUso.ToString(), false);
             parametros.Add(parametro);
-            
+
             try
             {
-                resultado = EjecutarStoredProcedureTuplas(RecursosDAOModulo6.PROCEDURE_LEER_REQUERIMIENTO_DEL_CU,parametros);
+                resultado = EjecutarStoredProcedureTuplas(RecursosDAOModulo6.PROCEDURE_LEER_REQUERIMIENTO_DEL_CU, parametros);
                 FabricaEntidades fabricaEntidades =
                                 new FabricaEntidades();
 
                 foreach (DataRow row in resultado.Rows)
                 {
-                   
+
                     Entidad laEntidad = fabricaEntidades.ObtenerRequerimiento();
-                    Requerimiento req = (Requerimiento)laEntidad;                   
+                    Requerimiento req = (Requerimiento)laEntidad;
                     req.Descripcion = row[RecursosDAOModulo6.AliasRequerimiento].ToString();
-                    listaRequerimientos.Add(req);                    
+                    listaRequerimientos.Add(req);
                 }
             }
+            #region Captura de Excepciones
             catch (SqlException e)
             {
 
@@ -246,6 +249,7 @@ namespace DAO.DAO.Modulo6
 
                 throw exDaoCasoUso;
             }
+            #endregion
             return listaRequerimientos;
 
 
@@ -253,21 +257,21 @@ namespace DAO.DAO.Modulo6
 
         #region Listar CU
 
-       /// <summary>
-       /// Método que obtiene la lista de casos de uso de un proyecto
-       /// </summary>
-       /// <param name="codigoProyecto">Código del proyecto</param>
-       /// <returns>Lista de Casos de Uso según el código del proyecto dado</returns>
-        public List<Entidad> ListarCasosDeUso(string codigoProyecto) 
+        /// <summary>
+        /// Método que obtiene la lista de casos de uso de un proyecto
+        /// </summary>
+        /// <param name="codigoProyecto">Código del proyecto</param>
+        /// <returns>Lista de Casos de Uso según el código del proyecto dado</returns>
+        public List<Entidad> ListarCasosDeUso(string codigoProyecto)
         {
             List<Entidad> listadoCasosDeUso = new List<Entidad>();
             DataTable resultado = new DataTable();
-            
+
 
             List<Parametro> parametros = new List<Parametro>();
             Parametro parametro = new Parametro(RecursosDAOModulo6.CodigoProyecto, SqlDbType.VarChar, codigoProyecto, false);
             parametros.Add(parametro);
-           
+
 
             try
             {
@@ -288,6 +292,7 @@ namespace DAO.DAO.Modulo6
                 }
 
             }
+            #region Captura de Excepciones
             catch (SqlException e)
             {
 
@@ -340,10 +345,11 @@ namespace DAO.DAO.Modulo6
 
                 throw exDaoCasoUso;
             }
+            #endregion
             return listadoCasosDeUso;
         }
-
         #endregion
+
 
 
         #region Eliminar CU
@@ -370,6 +376,7 @@ namespace DAO.DAO.Modulo6
                     exito = true;
                 }
             }
+            #region Captura de Excepciones
 
             catch (SqlException e)
             {
@@ -423,13 +430,103 @@ namespace DAO.DAO.Modulo6
 
                 throw exDaoCasoUso;
             }
+            #endregion
             return exito;
 
         }
         #endregion
 
+        /// <summary>
+        /// Método que accede a la base de datos para realizar la desvinculación 
+        /// del caso de uso con el actor
+        /// </summary>
+        /// <param name="parametro"></param>
+        /// <returns>Si desasocio el actor con el caso de uso</returns>
+        public bool DesasociarCUDelActor(Entidad parametro) 
+        {
+            bool desvinculado = false; 
+            CasoDeUso casoDeuso = parametro as CasoDeUso;
+            FabricaEntidades fabrica = new FabricaEntidades();
+            Entidad entidadAct = fabrica.ObtenerActor();
+            Actor actor = (Actor)entidadAct;
 
-        public bool DesasociarCUDelActor() { return true; }
+            foreach (Actor elActor in casoDeuso.Actores)
+            {
+                actor = elActor; 
+            }
+            List<Parametro> parametros = new List<Parametro>();
+            Parametro elParametro = new Parametro(RecursosDAOModulo6.ID_ACTOR,
+                SqlDbType.Int,actor.Id.ToString(), false);
+            parametros.Add(elParametro);
+            elParametro = new Parametro(RecursosDAOModulo6.ID_CU, SqlDbType.Int,
+                casoDeuso.Id.ToString(), false);
+            parametros.Add(elParametro);
+            try
+            {
+                List<Resultado> resultados = EjecutarStoredProcedure(RecursosDAOModulo6.DesasociarCUAlActor, parametros);
+                if (resultados != null)
+                {
+                    desvinculado = true;
+                }
+            }
+            #region Captura de Excepciones
+            catch (SqlException e)
+            {
 
+
+                BDDAOException exDaoCasoUso = new BDDAOException(
+                 RecursosDAOModulo6.CodigoExcepcionBDDAO,
+                 RecursosDAOModulo6.MensajeExcepcionBD,
+                 e);
+
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOCasoDeUso, exDaoCasoUso);
+
+                throw exDaoCasoUso;
+
+            }
+            catch (NullReferenceException e)
+            {
+                ObjetoNuloDAOException exDaoCasoUso = new ObjetoNuloDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionObjetoNuloDAO,
+                    RecursosDAOModulo6.MensajeExcepcionObjetoNulo,
+                    e);
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOCasoDeUso,
+                       exDaoCasoUso);
+
+                throw exDaoCasoUso;
+
+            }
+
+            catch (FormatException e)
+            {
+                TipoDeDatoErroneoDAOException exDaoCasoUso = new TipoDeDatoErroneoDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionTipoDeDatoErroneo,
+                    RecursosDAOModulo6.MensajeTipoDeDatoErroneoException,
+                    e);
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOCasoDeUso,
+                       exDaoCasoUso);
+
+                throw exDaoCasoUso;
+
+            }
+            catch (Exception e)
+            {
+                ErrorDesconocidoDAOException exDaoCasoUso = new ErrorDesconocidoDAOException(
+                    RecursosDAOModulo6.CodigoExcepcionErrorDAO,
+                    RecursosDAOModulo6.MensajeExcepcionErrorDesconocido,
+                    e);
+
+                Logger.EscribirError(RecursosDAOModulo6.ClaseDAOCasoDeUso,
+                      exDaoCasoUso);
+
+                throw exDaoCasoUso;
+            }
+#endregion
+            return desvinculado; 
+        } 
     }
 }
+
+        
+
+   

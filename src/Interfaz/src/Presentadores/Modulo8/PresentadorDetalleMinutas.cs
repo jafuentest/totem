@@ -11,6 +11,7 @@ using Dominio.Fabrica;
 using ExcepcionesTotem;
 using ExcepcionesTotem.Modulo8.ExcepcionesDeDatos;
 using System.Data.SqlClient;
+using Comandos.Comandos.Modulo8;
 
 namespace Presentadores.Modulo8
 {
@@ -54,6 +55,22 @@ namespace Presentadores.Modulo8
             {
                 throw ex;
             }
+        }
+
+        public void GenerarMinuta(String idMinuta)
+        {
+            int idMinuta2 = int.Parse(idMinuta);
+            Comando<String, Entidad> comandoDetalleMinuta = FabricaComandos.CrearComandoComandoDetalleMinuta();
+
+            Entidad laMinuta = comandoDetalleMinuta.Ejecutar(idMinuta);
+
+            ComandoGenerarMinuta comandoGenerarMinuta = (ComandoGenerarMinuta)FabricaComandos.CrearComandoGenerarMinuta();
+            bool aux = comandoGenerarMinuta.Ejecutar(laMinuta);
+
+            ComandoCompilarLatex comandoCompilarLatex = (ComandoCompilarLatex)FabricaComandos.CrearComandoCompilarLatex();
+            bool aux2 = comandoCompilarLatex.Ejecutar(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\Vista\Modulo8\docs\Minuta.tex");
+
+
         }
 
 

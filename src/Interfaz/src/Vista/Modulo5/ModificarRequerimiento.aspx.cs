@@ -16,7 +16,7 @@ namespace Vista.Modulo5
             {
                 this.Master.idModulo = "5";
                 this.Master.presentador.CargarMenuLateral();
-                presentador.CargarDatos();
+                presentador.CargarDatos(); //aqui tiene asignado id 
             }
 
         }
@@ -29,19 +29,6 @@ namespace Vista.Modulo5
         #endregion
 
         #region Contrato
-
-        public int id
-        {
-            get
-            {
-                return this.id;
-            }
-            set
-            {
-                this.id = value;
-            }
-        }
-
         
         public string idRequerimiento
         {
@@ -158,7 +145,7 @@ namespace Vista.Modulo5
         #region Metodos
         protected void ModificarRequerimiento_Click(object sender, EventArgs e)
         {
-            presentador.ModificarRequerimiento();
+            presentador.ModificarRequerimiento(); //aqui se le borra el id
         }
 
         protected void EliminarRequerimiento_Click(object sender, EventArgs e)
