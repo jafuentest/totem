@@ -36,9 +36,9 @@ namespace Presentadores.Modulo6
        /// a ser seleccionados para luego mostrarse en una tabla con 
        /// la información de los casos de uso en el que participa. 
        /// </summary>
-       public void CargarActores() 
+       public void CargarActores(string elCodigo) 
        {
-           string codigo = "TOT";
+           string codigo = elCodigo;
            llenadoComboBoxActor(codigo);
           
        }
