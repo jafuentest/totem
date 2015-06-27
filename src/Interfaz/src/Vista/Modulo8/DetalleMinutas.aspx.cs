@@ -57,9 +57,18 @@ namespace Vista.Modulo8
         }
 
         protected void ImprimirMinuta(object sender, EventArgs e)
-
         {
-            throw new NotImplementedException();
+            string aux = "";
+            for (int i = 0; i <= codigoMinuta.Length - 1; i++)
+            {
+                if ((codigoMinuta[i].ToString() != "{") && (codigoMinuta[i].ToString() != "}"))
+                {
+                    aux = aux + codigoMinuta[i];
+                }
+            }
+            string idminuta = aux;
+            Presentadores.Modulo8.PresentadorDetalleMinuta presentador = new Presentadores.Modulo8.PresentadorDetalleMinuta();
+            presentador.GenerarMinuta(idminuta);
         }
 
 

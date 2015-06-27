@@ -399,7 +399,7 @@ namespace Comandos.Fabrica
             return new Comandos.Modulo8.ComandoCompilarLatex();
         }
 
-        public static Comando<int, bool> CrearComandoGenerarMinuta()
+        public static Comando<Entidad, bool> CrearComandoGenerarMinuta()
         {
             return new Comandos.Modulo8.ComandoGenerarMinuta();
         }

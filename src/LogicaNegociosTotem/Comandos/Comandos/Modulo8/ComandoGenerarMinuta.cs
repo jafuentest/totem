@@ -4,26 +4,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Dominio;
+using System.Data.SqlClient;
+using ExcepcionesTotem.Modulo8.ExcepcionesDeDatos;
+using Dominio.Entidades.Modulo7;
 namespace Comandos.Comandos.Modulo8
 {
-    public class ComandoGenerarMinuta : Comando<int, bool>
+    public class ComandoGenerarMinuta : Comando<Entidad, bool>
     {
         /// <summary>
         /// Metodo que compila un archivo .tex
         /// </summary>
         /// <param name="parametro">nombre del archivo a compilar</param>
         /// <returns>retorna verdadero luego de compilar el archivo</returns>
-        public override bool Ejecutar(int parametro)
+        public override bool Ejecutar(Entidad parametro)
         {
             try
             {
-                DAO.Fabrica.FabricaDAOSqlServer laFabrica = new DAO.Fabrica.FabricaDAOSqlServer();
-                DAO.IntefazDAO.Modulo8.IDaoMinuta daoMinuta = laFabrica.ObtenerDAOMinuta();
 
-                Minuta laMinuta = (Minuta)daoMinuta.ConsultarMinutaBD(parametro);
+
+                Minuta laMinuta = (Minuta)parametro;
                 string linea;
-                System.IO.StreamReader archivoBase = new System.IO.StreamReader(RecursosComandosModulo8.Directorio+"\\"+RecursosComandosModulo8.BaseMinuta);
-                System.IO.StreamWriter minuta = new System.IO.StreamWriter(RecursosComandosModulo8.Directorio+"\\"+RecursosComandosModulo8.Minuta);
+                System.IO.StreamReader archivoBase = new System.IO.StreamReader(RecursosComandosModulo8.Directorio + "\\" + RecursosComandosModulo8.BaseMinuta);
+                System.IO.StreamWriter minuta = new System.IO.StreamWriter(RecursosComandosModulo8.Directorio + "\\" + RecursosComandosModulo8.Minuta);
                 while ((linea = archivoBase.ReadLine()) != null)
                 {
                     switch (linea)
@@ -40,24 +42,62 @@ namespace Comandos.Comandos.Modulo8
                             minuta.WriteLine(laMinuta.Motivo);
                             break;
 
-                        case "puntos":
-                            minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.InicioTabularPuntos);
-                            minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.hline);
-                            minuta.WriteLine(RecursosComandosModulo8.Barras + 
-                                RecursosComandosModulo8.Titulo +" "+
-                                RecursosComandosModulo8.Ampersan+ 
-                                RecursosComandosModulo8.Barras + 
-                                RecursosComandosModulo8.Desarrollo+" "+ 
-                                RecursosComandosModulo8.Barras + 
-                                RecursosComandosModulo8.Barras);
-                            minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.hline);
-                            foreach (Punto punto in laMinuta.ListaPunto)
-                            {
-                                minuta.WriteLine(punto.Titulo + RecursosComandosModulo8.Ampersan + punto.Desarrollo + " " + 
-                                    RecursosComandosModulo8.Barras + RecursosComandosModulo8.Barras);
+                        case "participantes":
+                            if (laMinuta.ListaUsuario!=null)
+                            { 
+                                minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.InicioTabularPuntos);
                                 minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.hline);
+                                minuta.WriteLine(RecursosComandosModulo8.Barras +
+                                    RecursosComandosModulo8.Titulo + " " +
+                                    RecursosComandosModulo8.Ampersan +
+                                    RecursosComandosModulo8.Barras +
+                                    RecursosComandosModulo8.Desarrollo + " " +
+                                    RecursosComandosModulo8.Barras +
+                                    RecursosComandosModulo8.Barras);
+                                minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.hline);
+                                foreach (Usuario usuario in laMinuta.ListaUsuario)
+                                {
+                                    minuta.WriteLine(usuario.Nombre + RecursosComandosModulo8.Ampersan + usuario.Cargo + " " +
+                                        RecursosComandosModulo8.Barras + RecursosComandosModulo8.Barras);
+                                    minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.hline);
+                                }
+                                minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.FinTabular);
+                            
                             }
-                            minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.FinTabular);
+                            else 
+                            {
+                                minuta.WriteLine("Minuta no posee Participantes");
+                            
+                            }
+                            
+                            break;
+
+                        case "puntos":
+                            if (laMinuta.ListaPunto != null)
+                            {
+                                minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.InicioTabularPuntos);
+                                minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.hline);
+                                minuta.WriteLine(RecursosComandosModulo8.Barras +
+                                    RecursosComandosModulo8.Titulo + " " +
+                                    RecursosComandosModulo8.Ampersan +
+                                    RecursosComandosModulo8.Barras +
+                                    RecursosComandosModulo8.Desarrollo + " " +
+                                    RecursosComandosModulo8.Barras +
+                                    RecursosComandosModulo8.Barras);
+                                minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.hline);
+                                foreach (Punto punto in laMinuta.ListaPunto)
+                                {
+                                    minuta.WriteLine(punto.Titulo + RecursosComandosModulo8.Ampersan + punto.Desarrollo + " " +
+                                        RecursosComandosModulo8.Barras + RecursosComandosModulo8.Barras);
+                                    minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.hline);
+                                }
+                                minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.FinTabular);
+                            }
+                            else
+                            {
+                                minuta.WriteLine("Minuta no posee Puntos");
+
+                            }
                             break;
 
                         case "observaciones":
@@ -78,7 +118,7 @@ namespace Comandos.Comandos.Modulo8
                             }
                             minuta.WriteLine("\\" + "end{tabular}");
                             break;*/
-                       
+
                         default:
                             minuta.WriteLine(linea);
                             break;
@@ -91,9 +131,30 @@ namespace Comandos.Comandos.Modulo8
 
 
             }
-            catch (Exception e)
+
+            catch (NullReferenceException ex)
             {
-                throw e;
+                throw ex;
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                throw ex;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (ParametroIncorrectoException ex)
+            {
+                throw ex;
+            }
+            catch (AtributoIncorrectoException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
     }
