@@ -86,7 +86,8 @@ namespace Presentadores.Modulo1
 				    }
 				    catch (ExcepcionesTotem.Modulo4.UsuarioSinProyectosException)
 				    {
-					   HttpContext.Current.Session[RecursosM1.LProyectoCodigo] = "Ninguno";
+					   HttpContext.Current.Session[RecursosM1.LProyectoCodigo] = string.Empty;
+					   HttpContext.Current.Session[RecursosM1.LProyectoNombre] = "Ninguno";
 				    }
 
                         HttpContext.Current.Session[RecursosM1.Parametro_Credencial] = (Usuario)credenciales;
