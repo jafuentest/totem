@@ -19,6 +19,8 @@ namespace PruebasUnitariasTotem.Modulo2
     class PruebasDaoContacto
     {
         Contacto elContacto;
+        Contacto elContactoAuxiliar;
+        Contacto elContacto2;
         Telefono elTelefono;
         Direccion laDireccion;
         ClienteJuridico elCliente;
@@ -37,10 +39,13 @@ namespace PruebasUnitariasTotem.Modulo2
             fabricaDAOContacto = new FabricaDAOSqlServer();
             entidadContacto = new FabricaEntidades();
             elContacto = (Contacto)entidadContacto.ObtenerContacto();
+            elContacto2 = (Contacto)entidadContacto.ObtenerContacto();
+            elContactoAuxiliar = (Contacto)entidadContacto.ObtenerContacto();
             elCliente = (ClienteJuridico)entidadContacto.ObtenerClienteJuridico();
             elTelefono = (Telefono)entidadContacto.ObtenerTelefono();
             laDireccion = (Direccion)entidadContacto.ObtenerDireccion();
             laListaDeContactos =new List<Contacto>();
+
             elTelefono.Numero = "5555555";
             elTelefono.Codigo = "0414";
             laDireccion.CodigoPostal = null;
@@ -57,7 +62,7 @@ namespace PruebasUnitariasTotem.Modulo2
             elContacto.Con_Telefono = elTelefono;
             elContacto.ConClienteJurid = elCliente;
             elContacto.ConClienteNat = null;
-
+          
             elCliente.Id = 1;
             elCliente.Jur_Rif = "J-11111111-1";
             elCliente.Jur_Nombre = "Locatel";
@@ -65,8 +70,13 @@ namespace PruebasUnitariasTotem.Modulo2
             elCliente.Jur_Contactos = laListaDeContactos;
             elCliente.Jur_Direccion = laDireccion;
             elCliente.Jur_Logo = null;
+            
         }
 
+
+        /// <summary>
+        /// Metodo prueba de agregar contacto
+        /// </summary>
         [Test]
         public void pruebaAgregarContacto()
         {
@@ -74,7 +84,43 @@ namespace PruebasUnitariasTotem.Modulo2
             Assert.IsTrue(daocontacto.Agregar(elContacto));
 
         }
+
+        /// <summary>
+        /// Metodo prueba de modificar un contacto
+        /// </summary>
+        [Test]
+        public void pruebaModificarContacto()
+        {
+            daocontacto = fabricaDAOContacto.ObtenerDaoContacto();
+            Assert.IsTrue(daocontacto.Modificar(elContacto));
         
+        }
+
+        /// <summary>
+        /// Metodo prueba de buscar un contacto por cedula
+        /// </summary>
+        [Test]
+        public void pruebaBuscarContactoXCI()
+        {
+            daocontacto = fabricaDAOContacto.ObtenerDaoContacto();
+            Assert.IsTrue(daocontacto.BuscarCIContacto(elContacto));
+        }
+
+        /// <summary>
+        /// Metodo pueba de consultar un contacto por id
+        /// </summary>
+        [Test]
+        public void pruebaConsultarContactoPorID()
+        {
+            daocontacto = fabricaDAOContacto.ObtenerDaoContacto();
+            elContactoAuxiliar.Id = 1;
+
+            elContacto2 = (Contacto)daocontacto.ConsultarXId(elContactoAuxiliar);
+            Assert.AreEqual(elContacto2.ConCedula, "66666666");
+            Assert.AreEqual(elContacto2.Con_Nombre, "Reinaldo");
+            Assert.AreEqual(elContacto2.Con_Apellido, "Cortes");
+            
+        }
 
     }
 }

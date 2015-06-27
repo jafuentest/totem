@@ -53,6 +53,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RecursosPUMod1.resx</DependentUpon>
     </Compile>
+    <Compile Include="Modulo2\PruebaDaoClienteJuridico.cs" />
+    <Compile Include="Modulo2\PruebaDaoClienteNatural.cs" />
     <Compile Include="Modulo2\PruebasDaoContacto.cs" />
     <Compile Include="Modulo3\PruebaBDInvolucrados.cs" />
     <Compile Include="Modulo3\PruebaComando.cs" />
