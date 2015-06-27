@@ -67,6 +67,10 @@ namespace Presentadores.Modulo8
             ComandoGenerarMinuta comandoGenerarMinuta = (ComandoGenerarMinuta)FabricaComandos.CrearComandoGenerarMinuta();
             bool aux = comandoGenerarMinuta.Ejecutar(laMinuta);
 
+            ComandoCompilarLatex comandoCompilarLatex = (ComandoCompilarLatex)FabricaComandos.CrearComandoGenerarArchivoLatex();
+
+
+
         }
 
 
