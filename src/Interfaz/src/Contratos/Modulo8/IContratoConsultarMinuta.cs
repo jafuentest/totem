@@ -9,7 +9,6 @@ namespace Contratos.Modulo8
     {
         string laTabla { get; set; }
         string nombreProyecto { get; set; }
-        string nombreEmpresa { get; set; }
-        string estadoProyecto { get; set; }
+        string codigoProyecto { get; set; }
     }
 }

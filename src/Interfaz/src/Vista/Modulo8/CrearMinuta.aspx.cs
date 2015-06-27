@@ -26,7 +26,7 @@ namespace Vista.Modulo8
                 this.Master.presentador.CargarMenuLateral();
                 presentador.ObtenerUsuarioLogeado();
             }
-            //codigoProyecto = Server.HtmlEncode(Request.Cookies["selectedProjectCookie"]["projectCode"]);
+            codigoProyecto = this.Master.CodigoProyectoActual();
 
 
         }
