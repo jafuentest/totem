@@ -133,6 +133,14 @@
     <value>Error, no se ha encontrado ningun cargo</value>
     <comment>Mensaje cuando la Base de Datos no arroja ningun cargo</comment>
   </data>
+  <data name="EXCEPTION_CORREO_VACIO_CODIGO" xml:space="preserve">
+    <value>T_07_024</value>
+    <comment>Codigo de error cuando DAOUsuario recibio un correo vacio</comment>
+  </data>
+  <data name="EXCEPTION_CORREO_VACIO_MENSAJE" xml:space="preserve">
+    <value>Se ha enviado un username que es nulo</value>
+    <comment>Mensaje cuando se envia al DAOUsuario un correo nulo</comment>
+  </data>
   <data name="EXCEPTION_ERROR_COMANDO_INESPERADO_CODIGO" xml:space="preserve">
     <value>T_07_021</value>
     <comment>Codigo de error cuando ocurre un error Inesperado en los Comandos</comment>
