@@ -20,18 +20,7 @@
     <asp:Label ID="labelMensajeError" Visible="false"  class="alert alert-danger alert-dismissible" runat="server"></asp:Label>
     <br />
     <br />	
-        <div class="panel panel-primary" style="width: auto">
-	   <div class="panel-heading">
-		  <h3 class="panel-title" style="align-content: center">
-			 Proyecto seleccionado
-		  </h3>
-	   </div>
-	   <div class="panel-body" style="width: auto" id="infor">
-		  <asp:Label ID="infoproyect" runat="server">Nombre del proyecto:</asp:Label> <br />
-		  <asp:Label ID="infoclient" runat="server">Empresa cliente:</asp:Label> <br />
-		  <asp:Label ID="infostatus" runat="server">Estatus del proyecto:</asp:Label> <br />
-	   </div>
-    </div>
+       
        <h2>Casos de Uso</h2>
 						<div class="table-responsive">
 							<% //if ( ListaRequerimientos != null )

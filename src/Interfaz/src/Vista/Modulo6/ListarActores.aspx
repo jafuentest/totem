@@ -18,14 +18,7 @@
 <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
 		<asp:Label ID="labelMensajeExito" Visible="false"  class="alert alert-sucess" runat="server"></asp:Label>
     <asp:Label ID="labelMensajeError" Visible="false"  class="alert alert-danger alert-dismissible" runat="server"></asp:Label>
-		<div class="panel panel-primary" style="width:auto">
-			<div class="panel-heading">
-				<h3 class="panel-title">Proyecto</h3>
-			</div>
-			<div id="proyectoPanel" runat="server"  class="panel-body" style="width:auto">
-				
-			</div>
-		</div>
+		
 
 		<div class="table-responsive">
 				<% //if ( ListaRequerimientos != null )

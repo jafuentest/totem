@@ -31,15 +31,6 @@ namespace Vista.Modulo6 {
         protected global::System.Web.UI.WebControls.Label labelMensajeError;
         
         /// <summary>
-        /// Control proyectoPanel.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl proyectoPanel;
-        
-        /// <summary>
         /// Control RActor.
         /// </summary>
         /// <remarks>
