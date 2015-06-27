@@ -66,10 +66,6 @@ namespace Presentadores.Modulo8
             vista.nombreProyecto = nombreProy;
         }
 
-        public void GenerarMinuta(String idMinuta)
-        {
-            int idMinuta2 = int.Parse(idMinuta);
-
-        }
+        
     }
 }

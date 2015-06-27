@@ -161,7 +161,7 @@ namespace PruebasUnitariasTotem.Modulo8
             laMinuta.Fecha = DateTime.Parse("2015-04-25 18:00:00.000");
             laMinuta.Motivo = "Prueba";
             laMinuta.Observaciones = "Probando Generar la Minuta";
-            bool aux = comandoGenerarMinuta.Ejecutar(laMinuta.Id);
+            bool aux = comandoGenerarMinuta.Ejecutar(laMinuta);
             System.IO.StreamReader archivo = new System.IO.StreamReader(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\Vista\Modulo8\docs\Minuta.tex");
             string linea;
             while ((linea = archivo.ReadLine()) != null)
