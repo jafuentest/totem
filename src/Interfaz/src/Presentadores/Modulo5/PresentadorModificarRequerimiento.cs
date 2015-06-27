@@ -8,7 +8,7 @@ namespace Presentadores.Modulo5
 {
     public class PresentadorModificarRequerimiento
     {
-        private int id;
+     
         private Contratos.Modulo5.IContratoModificarRequerimiento vista;
 
         public PresentadorModificarRequerimiento(Contratos.Modulo5.IContratoModificarRequerimiento vista)
@@ -103,7 +103,7 @@ namespace Presentadores.Modulo5
                     Dominio.Fabrica.FabricaEntidades fabricaEntidades =
                         new Dominio.Fabrica.FabricaEntidades();
                     //aqui el id se borra
-                    requerimiento = fabricaEntidades.ObtenerRequerimiento(this.id,
+                    requerimiento = fabricaEntidades.ObtenerRequerimiento(vista.idRequerimientoBD,
                         vista.idRequerimiento, vista.requerimiento, vista.funcional,
                         vista.prioridad, vista.finalizado, "TOT"); //Cableado
                     /*Dominio.Entidad requerimiento;
@@ -208,7 +208,7 @@ namespace Presentadores.Modulo5
                 vista.prioridad = requerimiento.Prioridad;
                 vista.requerimiento = requerimiento.Descripcion;
                 vista.finalizado = requerimiento.Estatus;
-                this.id = requerimiento.Id; //aqui se asigna bien
+                vista.idRequerimientoBD = requerimiento.Id; //aqui se asigna bien
             }
             #region Capturar Excepcion
             catch (ExcepcionesTotem.Modulo5.CamposInvalidosException ex)

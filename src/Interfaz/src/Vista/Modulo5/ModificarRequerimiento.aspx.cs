@@ -9,6 +9,7 @@ namespace Vista.Modulo5
 {
     public partial class ModificarRequerimiento : System.Web.UI.Page,Contratos.Modulo5.IContratoModificarRequerimiento
     {
+   
         private Presentadores.Modulo5.PresentadorModificarRequerimiento presentador;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -41,6 +42,19 @@ namespace Vista.Modulo5
                 this.inputIdRequerimiento.Value = value;
             }
         }
+
+        public int idRequerimientoBD
+        {
+            get
+            {
+                return int.Parse(this.hiddenid.InnerText);
+            }
+            set
+            {
+                this.hiddenid.InnerText = value.ToString();
+            }
+        }
+
 
         public string funcional
         {

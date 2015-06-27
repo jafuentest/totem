@@ -76,6 +76,7 @@
                     <div class="pull-right">
                     <button id="btn_eliminarReq" class="btn btn-danger" runat="server"
                          onserverclick="EliminarRequerimiento_Click">Eliminar</button>
+                    <p id="hiddenid" style="visibility:hidden" runat="server" > </p>
                     </div>
                 </div>
             </div>

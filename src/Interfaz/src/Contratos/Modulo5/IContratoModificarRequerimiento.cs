@@ -15,6 +15,9 @@ namespace Contratos.Modulo5
         string alertaClase { set; }
         string alertaRol { set; }
         string alerta { set; }
+
+        int idRequerimientoBD { get; set; }
+       
     
     }
 }
