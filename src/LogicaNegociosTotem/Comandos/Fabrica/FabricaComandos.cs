@@ -193,6 +193,11 @@ namespace Comandos.Fabrica
 	   {
 		  return new ComandoConsultarProyectosPorUsuario();
 	   }
+
+       public static Comando<Dominio.Entidad, Boolean> CrearComandoModificarProyecto()
+       {
+           return new Comandos.Modulo4.ComandoModificarProyecto();
+       }
         #endregion
 
         #region Modulo 5

@@ -60,6 +60,7 @@
     <Compile Include="Modulo3\IContratoListarInvolucrado.cs" />
     <Compile Include="Modulo4\IContratoAgregarProyecto.cs" />
     <Compile Include="Modulo4\IContratoListarProyectos.cs" />
+    <Compile Include="Modulo4\IContratoModificarProyecto.cs" />
     <Compile Include="Modulo5\IContratoAgregarRequerimiento.cs" />
     <Compile Include="Modulo5\IContratoListarRequerimientos.cs" />
     <Compile Include="Modulo5\IContratoReporteRequerimientos.cs" />

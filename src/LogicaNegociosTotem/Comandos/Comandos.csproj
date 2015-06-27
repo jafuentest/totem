@@ -83,6 +83,7 @@
     <Compile Include="Comandos\Modulo3\ComandoListarContactosPorEmpresa.cs" />
     <Compile Include="Comandos\Modulo4\ComandoAgregarProyecto.cs" />
     <Compile Include="Comandos\Modulo4\ComandoConsultarProyectosPorUsuario.cs" />
+    <Compile Include="Comandos\Modulo4\ComandoModificarProyecto.cs" />
     <Compile Include="Comandos\Modulo5\ComandoAgregarRequerimiento.cs" />
     <Compile Include="Comandos\Modulo5\ComandoBuscarCodigoRequerimiento.cs" />
     <Compile Include="Comandos\Modulo5\ComandoConsultarRequerimiento.cs" />
