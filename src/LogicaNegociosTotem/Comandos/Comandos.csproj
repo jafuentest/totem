@@ -102,6 +102,7 @@
     <Compile Include="Comandos\Modulo6\ComandoConsultarActorXId.cs" />
     <Compile Include="Comandos\Modulo6\ComandoConsultarCasosDeUsoPorActor.cs" />
     <Compile Include="Comandos\Modulo6\ComandoConsultarRequerimientosXCasoDeUso.cs" />
+    <Compile Include="Comandos\Modulo6\ComandoDesasociarActor.cs" />
     <Compile Include="Comandos\Modulo6\ComandoEliminarActor.cs" />
     <Compile Include="Comandos\Modulo6\ComandoEliminarCU.cs" />
     <Compile Include="Comandos\Modulo6\ComandoListarCU.cs" />
