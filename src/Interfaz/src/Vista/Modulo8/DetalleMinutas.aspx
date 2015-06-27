@@ -6,63 +6,63 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" Runat="Server">
     
     <div class="col-xs-12">   
-        
-        
-        <div class="form-group">
-            <label for="nombreProyecto" class="col-xs-3 col-md-1 control-label">Proyecto:</label>             
-            <label id="nombreProyecto" class="col-xs-9 col-md-4 control-label label-control">TOTEM</label>   
+        <form runat="server" class="form-horizontal" method="POST">
+            <div class="form-group">
+                <label for="nombreProyecto" class="col-xs-3 col-md-1 control-label">Proyecto:</label>             
+                <label id="nombreProyecto" class="col-xs-9 col-md-4 control-label label-control">TOTEM</label>   
 
-            <div class="col-xs-12 visible-sm visible-xs form-group"></div>
+                <div class="col-xs-12 visible-sm visible-xs form-group"></div>
 
-            <label for="fechaReunion" class="col-xs-3 col-md-1 control-label">Fecha:</label> 
-            <label id="fechaReunion" name="fechaReunion" class="col-xs-9 col-md-4 control-label label-control">10-05-2013</label>
+                <label for="fechaReunion" class="col-xs-3 col-md-1 control-label">Fecha:</label> 
+                <label id="fechaReunion" name="fechaReunion" class="col-xs-9 col-md-4 control-label label-control">10-05-2013</label>
 
-            <div class="col-xs-12 visible-sm visible-xs form-group"></div>
+                <div class="col-xs-12 visible-sm visible-xs form-group"></div>
 
-            <label for="horaReunion" class="col-xs-3 col-md-1 control-label">Hora:</label> 
-            <label id="horaReunion" class="col-xs-9 col-md-1 control-label label-control">15:03</label> 
+                <label for="horaReunion" class="col-xs-3 col-md-1 control-label">Hora:</label> 
+                <label id="horaReunion" class="col-xs-9 col-md-1 control-label label-control">15:03</label> 
 
-            <div class="col-xs-12 form-group"></div>
+                <div class="col-xs-12 form-group"></div>
 
-            <label class="col-xs-12 control-label">Motivo de la Reunión:</label> 
-            <p id="motivo"class="col-xs-12">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint voluptate vitae asperiores harum eaque id quisquam tempore suscipit deleniti! Eum, impedit debitis autem tempora quaerat unde voluptatem molestias possimus delectus eius sapiente dolorem minima blanditiis aspernatur veniam, porro illo nam vel pariatur. Nesciunt delectus, labore quasi neque corporis nostrum recusandae numquam non, enim dolore porro, illo quia! Quasi, tenetur, excepturi!
-            </p>
+                <label class="col-xs-12 control-label">Motivo de la Reunión:</label> 
+                <p id="motivo"class="col-xs-12">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint voluptate vitae asperiores harum eaque id quisquam tempore suscipit deleniti! Eum, impedit debitis autem tempora quaerat unde voluptatem molestias possimus delectus eius sapiente dolorem minima blanditiis aspernatur veniam, porro illo nam vel pariatur. Nesciunt delectus, labore quasi neque corporis nostrum recusandae numquam non, enim dolore porro, illo quia! Quasi, tenetur, excepturi!
+                </p>
 
-            <div class="col-xs-12 form-group"></div>
+                <div class="col-xs-12 form-group"></div>
 
-            <label class="col-xs-12 col-md-2 control-label">Participantes:</label>            
-            <div id="listaParticipante" class="list-group col-xs-12 col-md-12">
+                <label class="col-xs-12 col-md-2 control-label">Participantes:</label>            
+                <div id="listaParticipante" class="list-group col-xs-12 col-md-12">
                 
-            </div>
+                </div>
             
-            <label class="col-xs-12 control-label">Puntos Tratados:</label>
+                <label class="col-xs-12 control-label">Puntos Tratados:</label>
             
-            <div class="col-xs-12">                   
-                <div class="panel-group" id="listaPunto">
+                <div class="col-xs-12">                   
+                    <div class="panel-group" id="listaPunto">
                     
-                </div>
-            </div>  
+                    </div>
+                </div>  
             
-            <label class="col-xs-12 control-label">Observaciones:</label> 
-            <p id="observaciones" class="col-xs-12">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint voluptate vitae asperiores harum eaque id quisquam tempore suscipit deleniti! Eum, impedit debitis autem tempora quaerat unde voluptatem molestias possimus delectus eius sapiente dolorem minima blanditiis aspernatur veniam, porro illo nam vel pariatur. Nesciunt delectus, labore quasi neque corporis nostrum recusandae numquam non, enim dolore porro, illo quia! Quasi, tenetur, excepturi!
-            </p>
+                <label class="col-xs-12 control-label">Observaciones:</label> 
+                <p id="observaciones" class="col-xs-12">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint voluptate vitae asperiores harum eaque id quisquam tempore suscipit deleniti! Eum, impedit debitis autem tempora quaerat unde voluptatem molestias possimus delectus eius sapiente dolorem minima blanditiis aspernatur veniam, porro illo nam vel pariatur. Nesciunt delectus, labore quasi neque corporis nostrum recusandae numquam non, enim dolore porro, illo quia! Quasi, tenetur, excepturi!
+                </p>
             
-            <label class="col-xs-12 control-label">Acuerdos y Compromisos:</label> 
+                <label class="col-xs-12 control-label">Acuerdos y Compromisos:</label> 
 
-            <div class="col-xs-12"> 
-                <div class="panel-group" id="listaAcuerdo">               
-                </div>
-             </div>
-            <div class="col-xs-12">             
+                <div class="col-xs-12"> 
+                    <div class="panel-group" id="listaAcuerdo">               
+                    </div>
+                 </div>
+                <div class="col-xs-12">             
                 
-             </div>
+                 </div>
 
-            <div class="col-xs-12">
-                <button class="btn btn-default" runat="server" onserverclick="ImprimirMinuta">Imprimir</button>
-            </div>
-       </div>                                    
+                <div class="col-xs-12">
+                    <button class="btn btn-default" runat="server" onserverclick="ImprimirMinuta">Imprimir</button>
+                </div>
+           </div>      
+        </form>                              
     </div>
                
     <div id="modalPersona" class="modal fade modalPersona">
