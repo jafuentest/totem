@@ -375,7 +375,10 @@ namespace Comandos.Fabrica
         {
             return new ComandoEliminarUsuario();
         }
-
+        /// <summary>
+        /// Metodo que instancia el comando de detalle de informacion de usuario
+        /// </summary>
+        /// <returns></returns>
 		public static Comando<Entidad, Entidad> CrearComandoDetalleUsuario()
 		{
 			return new ComandoDetalleUsuario();

@@ -414,6 +414,11 @@
     <Compile Include="Modulo7\ModificarUsuario.aspx.designer.cs">
       <DependentUpon>ModificarUsuario.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modulo7\RecursosVistaModulo7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosVistaModulo7.resx</DependentUpon>
+    </Compile>
     <Compile Include="Modulo8\ConsultarMinuta.aspx.cs">
       <DependentUpon>ConsultarMinuta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -481,6 +486,12 @@
       <Project>{621aba92-2a73-4b4c-a3fa-7ebbdd89aa9b}</Project>
       <Name>Presentadores</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modulo7\RecursosVistaModulo7.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosVistaModulo7.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

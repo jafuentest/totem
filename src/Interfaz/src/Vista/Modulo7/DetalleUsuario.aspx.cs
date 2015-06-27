@@ -20,9 +20,9 @@ namespace Vista.Modulo7
 		
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			this.Master.idModulo = "7";
+			this.Master.idModulo = RecursosVistaModulo7.IdModuloSiete;
 			this.Master.presentador.CargarMenuLateral();
-			presentador.DetalleDeUsuario();
+			this.presentador.DetalleDeUsuario();
 		}
 
 		public string Username
@@ -47,6 +47,6 @@ namespace Vista.Modulo7
 		{ set { this.alert.InnerText = value; } }
 
 		public string TipoAlerta
-		{ set { this.alert.Attributes.Add("class", value); } }
+		{ set { this.alert.Attributes.Add(RecursosVistaModulo7.RecursoClass, value); } }
 	}
 }

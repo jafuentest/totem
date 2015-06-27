@@ -16,9 +16,7 @@ namespace DAO.DAO.Modulo7
     /// Clase DAO que interactua con la BD y realiza las operaciones del Usuario
     /// </summary>
     public class DAOUsuario : DAO, IDaoUsuario
-	{
-		#region Teddy
-		//Conexion hacia la base de Datos y la instruccion (Consulta) que se le hara
+	{//Conexion hacia la base de Datos y la instruccion (Consulta) que se le hara
         private SqlConnection conexion;
         private SqlCommand instruccion;
 
@@ -29,7 +27,7 @@ namespace DAO.DAO.Modulo7
         {
                         
         }
-
+		#region Teddy
         /// <summary>
         /// Metodo que agrega un Usuario nuevo a la Base de Datos
         /// </summary>
@@ -487,11 +485,20 @@ namespace DAO.DAO.Modulo7
 		#endregion
 
 		#region Juan
+        /// <summary>
+        /// Encapsulamiento del metodo agregarUsuario 
+        /// </summary>
+        /// <param name="parametro"></param>
+        /// <returns></returns>
 		public bool Agregar(Entidad parametro)
 		{
 			return AgregarUsuario(parametro);
 		}
-
+        /// <summary>
+        /// Consultar usuario por el ID obtenido del objeto Entidad
+        /// </summary>
+        /// <param name="parametro"></param>
+        /// <returns></returns>
 		public Entidad ConsultarXId(Entidad parametro)
 		{
 			try
@@ -541,7 +548,11 @@ namespace DAO.DAO.Modulo7
 				throw e;
 			}
 		}
-
+        /// <summary>
+        /// Obtiene la informacion del usuario particular a partir del username obtenido del objeto parametro
+        /// </summary>
+        /// <param name="parametro"></param>
+        /// <returns></returns>
 		public Entidad ConsultarPorUsername(Entidad parametro)
 		{
 			try
@@ -550,10 +561,9 @@ namespace DAO.DAO.Modulo7
 				List<Parametro> parametros = parametrosDetalleUsuario(usuario);
 				List<Resultado> resultados = EjecutarStoredProcedure(
 					RecursosBaseDeDatosModulo7.ProcedimientoConsultarUsername, parametros);
-
 				if (resultados == null)
 				{
-					throw new UsuarioInvalidoException();
+					throw new UsuarioInvalidoException(RecursosBaseDeDatosModulo7.RecursoUsuarioNulo);
 				}
 				else
 				{
@@ -583,15 +593,20 @@ namespace DAO.DAO.Modulo7
 							usuario.IdCargo = int.Parse(resultado.valor);
 					}
 				}
-
-				return usuario;
+                parametro = usuario as Entidad;
+				return parametro;
 			}
 			catch (Exception e)
 			{
-				throw e;
+                Logger.EscribirError(this.GetType().Name, e);
+                throw new UsuarioInvalidoException(e.Message);
 			}
 		}
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parametro"></param>
+        /// <returns></returns>
 		public bool Modificar(Entidad parametro)
 		{
 			bool modificado = false;
@@ -616,12 +631,19 @@ namespace DAO.DAO.Modulo7
 
 			return modificado;
 		}
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
 		public List<Entidad> ConsultarTodos()
 		{
 			return ListarUsuarios();
 		}
-		
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="usuario"></param>
+		/// <returns></returns>
 		private List<Parametro> parametrosModificarUsuario(Usuario usuario)
 		{
 			List<Parametro> parametros = new List<Parametro>();
@@ -668,7 +690,11 @@ namespace DAO.DAO.Modulo7
 
 			return parametros;
 		}
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
 		private List<Parametro> parametrosDetalleUsuario(Usuario usuario)
 		{
 			List<Parametro> parametros = new List<Parametro>();

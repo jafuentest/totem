@@ -117,57 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Alerta_Mensaje_Error_General" xml:space="preserve">
-    <value>Ocurrio un error interno del sistema, intente nuevamente</value>
+  <data name="IdModuloSiete" xml:space="preserve">
+    <value>7</value>
+    <comment>Id del modulo para enviarla a la master page</comment>
   </data>
-  <data name="Alerta_Mensaje_Info_Agregado" xml:space="preserve">
-    <value>Usuario agregado con éxito</value>
-  </data>
-  <data name="Alerta_Mensaje_Info_Eliminado" xml:space="preserve">
-    <value>Usuario eliminado con éxito</value>
-  </data>
-  <data name="Alerta_Mensaje_Info_Invalido" xml:space="preserve">
-    <value>Usuario inválido</value>
-  </data>
-  <data name="Alerta_Mensaje_Info_Modificado" xml:space="preserve">
-    <value>Usuario modificado con éxito</value>
-  </data>
-  <data name="Alerta_Mensaje_Info_NoHayUsuarios" xml:space="preserve">
-    <value>No hay usuarios registrados en el sistema</value>
-  </data>
-  <data name="Codigo_Error" xml:space="preserve">
-    <value>Error</value>
-  </data>
-  <data name="Codigo_Error_UsuarioInvalido" xml:space="preserve">
-    <value>success=4</value>
-  </data>
-  <data name="Codigo_Exito" xml:space="preserve">
-    <value>Exito</value>
-  </data>
-  <data name="Codigo_Exito_Agregar" xml:space="preserve">
-    <value>?success=agregar</value>
-  </data>
-  <data name="Codigo_Exito_Eliminar" xml:space="preserve">
-    <value>?success=eliminar</value>
-  </data>
-  <data name="Codigo_Exito_Modificar" xml:space="preserve">
-    <value>?success=modificar</value>
-  </data>
-  <data name="Codigo_Info" xml:space="preserve">
-    <value>Info</value>
-  </data>
-  <data name="ExpReg_Username" xml:space="preserve">
-    <value>^[A-z0-9_-]+$</value>
-  </data>
-  <data name="RecursoCredenciales" xml:space="preserve">
-    <value>Credenciales</value>
-    <comment>String Credenciales</comment>
-  </data>
-  <data name="RecursoUsername" xml:space="preserve">
-    <value>username</value>
-    <comment>String username</comment>
-  </data>
-  <data name="URL_ListarUsuarios" xml:space="preserve">
-    <value>../Modulo7/ListarUsuarios.aspx?</value>
+  <data name="RecursoClass" xml:space="preserve">
+    <value>class</value>
+    <comment>string class</comment>
   </data>
 </root>

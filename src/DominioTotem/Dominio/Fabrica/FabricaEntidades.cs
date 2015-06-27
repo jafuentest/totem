@@ -211,12 +211,30 @@ namespace Dominio.Fabrica
         {
             return new Entidades.Modulo7.Usuario(username, nombre, apellido, cargo);
         }
-
+        /// <summary>
+        /// Metodo que instancia el Usuario 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
 		public Entidad ObtenerUsuario(string username)
 		{
 			return new Usuario(username);
 		}
-
+        /// <summary>
+        /// Metodo que instancia el Usuario con sus datos completos
+        /// </summary>
+        /// <param name="idUsuario"></param>
+        /// <param name="idCargo"></param>
+        /// <param name="username"></param>
+        /// <param name="clave"></param>
+        /// <param name="nombre"></param>
+        /// <param name="apellido"></param>
+        /// <param name="rol"></param>
+        /// <param name="correo"></param>
+        /// <param name="preguntaSeguridad"></param>
+        /// <param name="respuestaSeguridad"></param>
+        /// <param name="cargo"></param>
+        /// <returns></returns>
 		public Entidad ObtenerUsuario(int idUsuario, int idCargo, string username, string clave, string nombre,
 			string apellido, string rol, string correo, string preguntaSeguridad, string respuestaSeguridad,
 			string cargo)

@@ -331,4 +331,7 @@
     <value>ListarUsuariosPorCargo</value>
     <comment>Stored Procedure facilitado para M3 que lista todos los usuarios segun el cargo</comment>
   </data>
+  <data name="RecursoUsuarioNulo" xml:space="preserve">
+    <value>Error, el usuario recibido fue nulo</value>
+  </data>
 </root>

@@ -1,10 +1,12 @@
 ﻿using DAO.Fabrica;
 using DAO.IntefazDAO.Modulo7;
 using Dominio;
+using ExcepcionesTotem.Modulo7;
+using System;
 
 namespace Comandos.Comandos.Modulo7
 {
-	public class ComandoDetalleUsuario : Comando<Dominio.Entidad, Dominio.Entidad>
+	public class ComandoDetalleUsuario : Comando<Entidad, Entidad>
 	{
 		/// <summary>
         /// Comando para consultar un requerimiento
@@ -17,14 +19,14 @@ namespace Comandos.Comandos.Modulo7
             IDaoUsuario daoUsuario;
 			daoUsuario = new FabricaDAOSqlServer().ObtenerDAOUsuario();
 
-			//try
-			//{
+			try
+			{
 				return daoUsuario.ConsultarPorUsername(parametro);
-			//}
-			//catch (Exception e)
-			//{
-			//	throw e;
-			//}
+            }
+            catch (Exception e)
+            {
+                throw new UsuarioInvalidoException(e.Message);
+            }
 		}
 	}
 }
