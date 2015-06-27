@@ -3,6 +3,7 @@ using Presentadores.Modulo7;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Web.UI.WebControls;
 
 namespace Vista.Modulo7
 {
@@ -21,9 +22,9 @@ namespace Vista.Modulo7
 			{
 				this.Master.idModulo = "7";
 				this.Master.presentador.CargarMenuLateral();
-				presentador.CargarDatos();
 				presentador.ObtenerCargos();
 				presentador.ObtenerRoles();
+				presentador.CargarDatos();
 			}
 		}
 
@@ -67,13 +68,33 @@ namespace Vista.Modulo7
 		public string Rol
 		{
 			get { return rol.Value; }
-			set { this.rol.Value = value; }
+			set
+			{
+				int i = 0;
+				foreach (ListItem item in rol.Items)
+				{
+					if (item.Value.Equals(value))
+						break;
+					i++;
+				}
+				this.rol.SelectedIndex = i;
+			}
 		}
 
 		public string Cargo
 		{
 			get { return cargo.Value; }
-			set { this.cargo.Value = value; }
+			set
+			{
+				int i = 0;
+				foreach (ListItem item in cargo.Items)
+				{
+					if (item.Value.Equals(value))
+						break;
+					i++;
+				}
+				this.cargo.SelectedIndex = i;
+			}
 		}
 
 		public string Pregunta
@@ -108,5 +129,15 @@ namespace Vista.Modulo7
 			}
 		}
 		#endregion
+
+		protected void btn_modUsuario_ServerClick(object sender, EventArgs e)
+		{
+			presentador.ModificarUsuario();
+		}
+
+		protected void btn_eliminarUsuario_ServerClick(object sender, EventArgs e)
+		{
+			presentador.EliminarUsuario();
+		}
 	}
 }

@@ -115,6 +115,15 @@ namespace Presentadores.Modulo7 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No pudo ser eliminado el usuario.
+        /// </summary>
+        internal static string Alerta_UsuarioNoEliminado {
+            get {
+                return ResourceManager.GetString("Alerta_UsuarioNoEliminado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         internal static string Codigo_Error {
@@ -187,6 +196,15 @@ namespace Presentadores.Modulo7 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ?username=.
+        /// </summary>
+        internal static string Param_Username {
+            get {
+                return ResourceManager.GetString("Param_Username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Credenciales.
         /// </summary>
         internal static string RecursoCredenciales {
@@ -210,6 +228,15 @@ namespace Presentadores.Modulo7 {
         internal static string Roles {
             get {
                 return ResourceManager.GetString("Roles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ../Modulo7/DetalleUsuario.aspx?.
+        /// </summary>
+        internal static string URL_DetalleUsuario {
+            get {
+                return ResourceManager.GetString("URL_DetalleUsuario", resourceCulture);
             }
         }
         

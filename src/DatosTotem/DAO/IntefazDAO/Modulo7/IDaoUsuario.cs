@@ -66,7 +66,17 @@ namespace DAO.IntefazDAO.Modulo7
 		#endregion
 
 		#region Juan
+		/// <summary>
+		/// Consulta los usuarios con el username
+		/// </summary>
+		/// <param name="parametro">contiene el username del usuario para consultar</param>
+		/// <returns>retorna el usuario</returns>
 		Entidad ConsultarPorUsername(Entidad parametro);
+
+		/// <summary>
+		/// Consulta los cargos con su respectivo id
+		/// </summary>
+		/// <returns>el dataset con los cargos de la base de datos</returns>
 		DataSet ConsultarCargosConId();
 		#endregion
 	}

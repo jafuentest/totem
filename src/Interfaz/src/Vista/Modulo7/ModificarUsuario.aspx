@@ -57,6 +57,15 @@
                     <input type="text" name="respuesta" id="respuesta" runat="server" placeholder="Respuesta" class="form-control" />
                 </div>
             </div>
+			<div class="form-group">
+                <div class="col-sm-10 col-md-10 col-lg-10">
+                    <button id="btn_modUsuario" class="btn btn-primary" type="submit" runat="server" onserverclick="btn_modUsuario_ServerClick">Modificar</button>
+                    <a class="btn btn-default" href="ListarUsuarios.aspx">Cancelar</a>
+                    <div class="pull-right">
+                    <button id="btn_eliminarUsuario" class="btn btn-danger" runat="server" onserverclick="btn_eliminarUsuario_ServerClick">Eliminar</button>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 </asp:Content>

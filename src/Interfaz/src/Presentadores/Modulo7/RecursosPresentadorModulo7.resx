@@ -135,6 +135,9 @@
   <data name="Alerta_Mensaje_Info_NoHayUsuarios" xml:space="preserve">
     <value>No hay usuarios registrados en el sistema</value>
   </data>
+  <data name="Alerta_UsuarioNoEliminado" xml:space="preserve">
+    <value>No pudo ser eliminado el usuario</value>
+  </data>
   <data name="Codigo_Error" xml:space="preserve">
     <value>Error</value>
   </data>
@@ -159,6 +162,9 @@
   <data name="ExpReg_Username" xml:space="preserve">
     <value>^[A-z0-9_-]+$</value>
   </data>
+  <data name="Param_Username" xml:space="preserve">
+    <value>?username=</value>
+  </data>
   <data name="RecursoCredenciales" xml:space="preserve">
     <value>Credenciales</value>
     <comment>String Credenciales</comment>
@@ -169,6 +175,9 @@
   </data>
   <data name="Roles" xml:space="preserve">
     <value>Usuario,Administrador</value>
+  </data>
+  <data name="URL_DetalleUsuario" xml:space="preserve">
+    <value>../Modulo7/DetalleUsuario.aspx?</value>
   </data>
   <data name="URL_ListarUsuarios" xml:space="preserve">
     <value>../Modulo7/ListarUsuarios.aspx?</value>
