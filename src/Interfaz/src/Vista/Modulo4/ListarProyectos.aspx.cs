@@ -30,14 +30,8 @@ namespace Vista.Modulo4
 
 	   public string nombreUsuario
 	   {
-		  get
-		  {
-			 return Label1.Text;
-		  }
-		  set
-		  {
-			 Label1.Text = value;
-		  }
+		  get { return LEstado.Text; }
+		  set { LEstado.Text = value; }
 	   }
     }
 }

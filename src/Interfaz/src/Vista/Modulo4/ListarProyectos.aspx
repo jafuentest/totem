@@ -11,5 +11,5 @@
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="contenidoCentral" runat="server">
-    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="LEstado" runat="server" Text="Label"></asp:Label>
 </asp:Content>
