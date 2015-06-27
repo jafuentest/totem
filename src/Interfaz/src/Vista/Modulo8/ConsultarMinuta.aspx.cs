@@ -56,8 +56,11 @@ namespace Vista.Modulo8
                 }
 
             }*/
-            string codigoProyecto = "TOT";
+            //Master.UsuarioActual();
+            String codigoProy = this.Master.CodigoProyectoActual();
+            String nombreProy = this.Master.NombreProyectoActual();
 
+            presentador.InfoProyecto(codigoProy, nombreProy);
         }
         #region Contrato
 
@@ -76,35 +79,23 @@ namespace Vista.Modulo8
         {
             get
             {
-                return infoproyect.Text;
+                return this.nombreProyecto.Text;
             }
             set
             {
-                infoproyect.Text = value;
+                this.nombreProyecto.Text = value;
             }
         }
 
-        string Contratos.Modulo8.IContratoConsultarMinuta.nombreEmpresa
+        string Contratos.Modulo8.IContratoConsultarMinuta.codigoProyecto
         {
             get
             {
-                return infoclient.Text;
+                return this.codigoProyecto.Text;
             }
             set
             {
-                infoclient.Text = value;
-            }
-        }
-
-        string Contratos.Modulo8.IContratoConsultarMinuta.estadoProyecto
-        {
-            get
-            {
-                return infostatus.Text;
-            }
-            set
-            {
-                infostatus.Text = value;
+                this.codigoProyecto.Text = value;
             }
         }
         

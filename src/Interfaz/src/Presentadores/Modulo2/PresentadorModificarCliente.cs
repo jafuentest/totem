@@ -15,14 +15,24 @@ using System.Web.UI;
 
 namespace Presentadores.Modulo2
 {
+    /// <summary>
+    /// Presentador para la ventana Modificar Cliente
+    /// </summary>
     public class PresentadorModificarCliente
     {
         private IContratoModificarCliente vista;
+        /// <summary>
+        /// Constructor del presentador
+        /// </summary>
+        /// <param name="laVista">instancia de la vista</param>
         public PresentadorModificarCliente(IContratoModificarCliente laVista)
         {
             vista = laVista;
         }
-
+        /// <summary>
+        /// metodo para cargar los datos del cliente
+        /// </summary>
+        /// <param name="idCliente">id del cliente</param>
         public void cargarCliente(String idCliente)
         {
             FabricaEntidades fabrica = new FabricaEntidades();
@@ -66,7 +76,9 @@ namespace Presentadores.Modulo2
                     RecursoInterfazM2.Alerta_Html_Final;
             }
         }
-
+        /// <summary>
+        /// metodo para llenar el combo de paises
+        /// </summary>
         public void llenarComboPais()
         {
             Comando<bool, List<String>> comando = FabricaComandos.CrearComandoConsultarListaPaises();
@@ -97,7 +109,10 @@ namespace Presentadores.Modulo2
             vista.comboPais.DataBind();
             vista.comboPais.Enabled = true;
         }
-
+        /// <summary>
+        /// metodo para llenar el combo de estados 
+        /// </summary>
+        /// <param name="elPais">pais para filtrar los estados</param>
         public void llenarComboEstadosXPais(String elPais)
         {
             Comando<String, List<String>> comando =
@@ -138,7 +153,10 @@ namespace Presentadores.Modulo2
             vista.direccionCliente = "";
             vista.codigoPostalCliente = "";
         }
-
+        /// <summary>
+        /// metodo para llenar el combo de ciudades
+        /// </summary>
+        /// <param name="elEstado">estado para filtrar las ciudades</param>
         public void llenarComboCiudadXEstado(String elEstado)
         {
             Comando<String, List<String>> comando =
@@ -171,6 +189,9 @@ namespace Presentadores.Modulo2
             vista.codigoPostalCliente = "";
 
         }
+        /// <summary>
+        /// metodo para consultar las variables del url
+        /// </summary>
         public void ObtenerVariablesURL()
         {
             String error = HttpContext.Current.Request.QueryString["error"];
@@ -186,7 +207,11 @@ namespace Presentadores.Modulo2
             if (edicionCliente != null && !(HttpContext.Current.Handler as Page).IsPostBack)
                 cargarCliente(edicionCliente);
         }
-
+        /// <summary>
+        /// metodo para modificar el cliente
+        /// </summary>
+        /// <param name="elID">id del cliente a modificar</param>
+        /// <returns>booleano que refleja el exito de la operacion</returns>
         public bool modificarCliente(String elID)
         {
             List<String> alfabeticos = new List<String>();

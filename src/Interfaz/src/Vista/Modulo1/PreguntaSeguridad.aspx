@@ -17,7 +17,7 @@
             <div  class="login-form"> 
                 <div id="login-form-name" class="form-group">
                     <label runat="server" id="label_pregunta"></label>
-                    <input runat="server" type="text" class="form-control" value=""  placeholder="" id="input_respuesta" name="respuestaSeguridad" />  
+                    <input runat="server" type="text" class="form-control" maxlength="60" value=""  placeholder="" id="input_respuesta" name="respuestaSeguridad" />  
                 </div>
                 <div class="form-group">
 		            <div class="form-group">

@@ -94,6 +94,11 @@ namespace Vista.Modulo5
         {
             presentador.AgregarRequerimiento();
         }
+
+        protected void AsignarCodigoFuncional(object sender, EventArgs e)
+        {
+            presentador.ObtenerCodigoRequerimiento();
+        }
         
     }
 }

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Contratos.Modulo7;
+﻿using Contratos.Modulo7;
 using Presentadores.Modulo7;
+using System;
 
 namespace Vista.Modulo7
 {

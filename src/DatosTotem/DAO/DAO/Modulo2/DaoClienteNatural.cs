@@ -14,62 +14,17 @@ using ExcepcionesTotem.Modulo2;
 
 namespace DAO.DAO.Modulo2
 {
+    /// <summary>
+    /// Data Access Object para Cliente Natural
+    /// </summary>
     public class DaoClienteNatural : DAO, IntefazDAO.Modulo2.IDaoClienteNatural
     {
-
-        public bool BuscarCIClienteNatural(Entidad parametro)
-        {
-            ClienteNatural elCliente = (ClienteNatural)parametro;
-            bool retorno = false;
-            try
-            {
-                List<Parametro> parametros = new List<Parametro>();
-                Parametro elParametro = new Parametro(RecursoBDModulo2.ParamCedulaClienteNat,
-                    SqlDbType.VarChar, elCliente.Nat_Cedula, false);
-                parametros.Add(elParametro);
-                elParametro = new Parametro(RecursoBDModulo2.ParamSalida, SqlDbType.Int, true);
-                parametros.Add(elParametro);
-                List<Resultado> resultados = EjecutarStoredProcedure(RecursoBDModulo2.BuscarCIClienteNatural,
-                    parametros);
-                foreach (Resultado resultado in resultados)
-                {
-                    if (resultado.etiqueta == RecursoBDModulo2.ParamSalida)
-                        if (elCliente.Id == 0)
-                            retorno = true;
-                        else
-                            if (int.Parse(resultado.valor) == elCliente.Id)
-                                retorno = true;
-                }
-                return retorno;
-
-            }
-            #region catches
-            catch (SqlException ex)
-            {
-                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
-
-                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
-                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
-                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
-                    ex);
-            }
-            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
-            {
-                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
-
-                throw new ExceptionTotem(RecursoBDModulo2.CodigoExcepcionGeneral,
-                                         RecursoBDModulo2.MensajeExcepcionGeneral,
-                                         ex);
-            }
-            #endregion
-        }
-
-
+        #region IDAO
+        /// <summary>
+        /// metodo para agregar un cliente natural
+        /// </summary>
+        /// <param name="parametro">cliente natural a agregar</param>
+        /// <returns>booleano que relfeja el exito de la operacion</returns>
         public bool Agregar(Entidad parametro)
         {
             try
@@ -161,7 +116,11 @@ namespace DAO.DAO.Modulo2
             #endregion
 
         }
-
+        /// <summary>
+        /// metodo para modificar un cliente natural
+        /// </summary>
+        /// <param name="parametro">cliente natural a modificar</param>
+        /// <returns>booleano que refleja el valor de exito de la operacion</returns>
         public bool Modificar(Entidad parametro)
         {
             ClienteNatural elCliente = (ClienteNatural)parametro;
@@ -248,7 +207,13 @@ namespace DAO.DAO.Modulo2
             }
             #endregion
         }
-
+        /// <summary>
+        /// Metodo para consultar todos los datos de un cliente natural
+        /// dado un id
+        /// </summary>
+        /// <param name="parametro">entidad que posee el id del que se desean saber
+        /// todos los datos</param>
+        /// <returns>cliente natural con todos sus datos</returns>
         public Entidad ConsultarXId(Entidad parametro)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
@@ -331,7 +296,10 @@ namespace DAO.DAO.Modulo2
             }
             #endregion
         }
-
+        /// <summary>
+        /// Metodo para consultar toda la lista de clientes naturales en bd
+        /// </summary>
+        /// <returns>lista de clientes naturales</returns>
         public List<Entidad> ConsultarTodos()
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
@@ -396,7 +364,13 @@ namespace DAO.DAO.Modulo2
             }
             #endregion
         }
-
+        #endregion
+        #region IDaoClienteNatural
+        /// <summary>
+        /// metodo para eliminar un cliente natural
+        /// </summary>
+        /// <param name="parametro">cliente natural a eliminar</param>
+        /// <returns>booleano que refleja el exito de la operacion</returns>
         public bool eliminarClienteNatural(Entidad parametro)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
@@ -493,6 +467,63 @@ namespace DAO.DAO.Modulo2
                 throw ex;
             }
         }
+        /// <summary>
+        /// Metodo para consultar que la cedula sea unica
+        /// </summary>
+        /// <param name="parametro">Cliente para verificar si la cedula ya existe</param>
+        /// <returns>true si la cedula no esta asociada a algun cliente, 
+        /// false si ya existe esa cedula en bd</returns>
+        public bool BuscarCIClienteNatural(Entidad parametro)
+        {
+            ClienteNatural elCliente = (ClienteNatural)parametro;
+            bool retorno = false;
+            try
+            {
+                List<Parametro> parametros = new List<Parametro>();
+                Parametro elParametro = new Parametro(RecursoBDModulo2.ParamCedulaClienteNat,
+                    SqlDbType.VarChar, elCliente.Nat_Cedula, false);
+                parametros.Add(elParametro);
+                elParametro = new Parametro(RecursoBDModulo2.ParamSalida, SqlDbType.Int, true);
+                parametros.Add(elParametro);
+                List<Resultado> resultados = EjecutarStoredProcedure(RecursoBDModulo2.BuscarCIClienteNatural,
+                    parametros);
+                foreach (Resultado resultado in resultados)
+                {
+                    if (resultado.etiqueta == RecursoBDModulo2.ParamSalida)
+                        if (elCliente.Id == 0)
+                            retorno = true;
+                        else
+                            if (int.Parse(resultado.valor) == elCliente.Id)
+                                retorno = true;
+                }
+                return retorno;
 
+            }
+            #region catches
+            catch (SqlException ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
+
+                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
+                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
+                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
+                    ex);
+            }
+            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                Logger.EscribirError(Convert.ToString(this.GetType()), ex);
+
+                throw new ExceptionTotem(RecursoBDModulo2.CodigoExcepcionGeneral,
+                                         RecursoBDModulo2.MensajeExcepcionGeneral,
+                                         ex);
+            }
+            #endregion
+        }
+        #endregion
     }
 }

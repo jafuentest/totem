@@ -82,7 +82,7 @@ namespace Comandos.Comandos.Modulo5
                             reqdoc.WriteLine("\\" + "hline");
                             foreach (Dominio.Entidades.Modulo5.Requerimiento rf in requerimientos)
                             {
-                                if (rf.Tipo.Equals("funcional"))
+                                if (rf.Tipo.Equals("Funcional"))
                                 {
                                     reqdoc.WriteLine(
                                           rf.Codigo.Replace("_", "-") + "&"

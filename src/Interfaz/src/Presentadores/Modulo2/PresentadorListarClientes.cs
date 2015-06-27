@@ -12,13 +12,23 @@ using System.Web;
 
 namespace Presentadores.Modulo2
 {
+    /// <summary>
+    /// Presentador para la ventana Listar Clientes
+    /// </summary>
     public class PresentadorListarClientes
     {
         private IContratoListarClientes vista;
+        /// <summary>
+        /// Constructor del presentador
+        /// </summary>
+        /// <param name="laVista">instancia de la vista</param>
         public PresentadorListarClientes(IContratoListarClientes laVista)
         {
             vista = laVista;
         }
+        /// <summary>
+        /// metodo para consultar la lista de los clientes naturales
+        /// </summary>
         public void consultarClientes()
         {
             try
@@ -53,7 +63,9 @@ namespace Presentadores.Modulo2
 
             }
         }
-
+        /// <summary>
+        /// Metodo para consultar las variables del URL
+        /// </summary>
         public void ObtenerVariablesURL()
         {
             String variable = HttpContext.Current.Request.QueryString["error"];

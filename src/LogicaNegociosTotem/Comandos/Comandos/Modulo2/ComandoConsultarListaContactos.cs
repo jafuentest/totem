@@ -10,8 +10,16 @@ using System.Text;
 
 namespace Comandos.Comandos.Modulo2
 {
+    /// <summary>
+    /// Comando para consultar lista de contactos de un cliente juridico
+    /// </summary>
     public class ComandoConsultarListaContactos : Comando<Entidad,List<Entidad>>
     {
+        /// <summary>
+        /// metodo que ejecuta el comando
+        /// </summary>
+        /// <param name="parametro">cliente del que se desean saber los contactos</param>
+        /// <returns>lista de contactos</returns>
         public override List<Entidad> Ejecutar(Entidad parametro)
         {
             try

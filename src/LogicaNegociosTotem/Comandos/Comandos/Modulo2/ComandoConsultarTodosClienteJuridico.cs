@@ -10,8 +10,16 @@ using System.Text;
 
 namespace Comandos.Comandos.Modulo2
 {
+    /// <summary>
+    /// Comando para consultar la lista de clientes juridicos
+    /// </summary>
     public class ComandoConsultarTodosClienteJuridico : Comando<bool, List<Entidad>>
     {
+        /// <summary>
+        /// metodo que ejecuta el comando
+        /// </summary>
+        /// <param name="parametro">true</param>
+        /// <returns>lista de clientes juridicos</returns>
         public override List<Entidad> Ejecutar(bool parametro)
         {
             try

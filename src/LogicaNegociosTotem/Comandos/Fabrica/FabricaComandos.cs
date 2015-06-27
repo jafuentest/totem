@@ -171,17 +171,6 @@ namespace Comandos.Fabrica
 
             return new Comandos.Modulo3.ComandoDatosUsuarioUsername();
         }
-        public static Comando<Dominio.Entidad, Boolean> CrearComandoEliminarContactoDeInvolucradosEnProyecto()
-        {
-
-            return new Comandos.Modulo3.ComandoEliminarContactoDeIvolucradosEnProyecto();
-        }
-
-        public static Comando<Dominio.Entidad, Boolean> CrearComandoEliminarUsuariosDeInvolucradosEnProyecto()
-        {
-
-            return new Comandos.Modulo3.ComandoEliminarUsuariosDeIvolucradosEnProyecto();
-        }
         public static Comando<Entidad, List<Dominio.Entidad>> CrearComandoListarContactosPorCargoEmpresa()
         {
 

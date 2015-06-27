@@ -45,7 +45,7 @@ namespace Presentadores.Modulo6
         /// Método que se encarga de la lógica 
         /// al generarse el evento para agregar Actor
         /// </summary>
-        public void AgregarActor_Click()
+        public void AgregarActor_Click(string elCodigo)
         {
             FabricaEntidades fabrica = new FabricaEntidades();
             Entidad entidad = fabrica.ObtenerActor();
@@ -54,7 +54,7 @@ namespace Presentadores.Modulo6
             elActor.NombreActor = vista.nombreActor;
             elActor.DescripcionActor = vista.descActor;
             Proyecto proyecto = entidadProy as Proyecto;
-            proyecto.Codigo = "TOT";
+            proyecto.Codigo = elCodigo;
             elActor.ProyectoAsociado = proyecto;
 
 
@@ -78,7 +78,7 @@ namespace Presentadores.Modulo6
                         vista.botonAgregar.Disabled = true;
                     }
                 }
-
+                #region Captura de Excepciones
                 catch (ComandoBDException e)
                 {
                     PresentadorException exAgregarActorPresentador =
@@ -130,6 +130,7 @@ namespace Presentadores.Modulo6
 
                     MostrarMensajeError(exAgregarActorPresentador.Mensaje);
                 }
+                #endregion
             }
         }
 
@@ -154,7 +155,7 @@ namespace Presentadores.Modulo6
 
                 }
             }
-
+            #region Captura de Excepciones
             catch (ComandoBDException e)
             {
                 PresentadorException exAgregarActorPresentador =
@@ -221,6 +222,7 @@ namespace Presentadores.Modulo6
 
                 MostrarMensajeError(exAgregarActorPresentador.Mensaje);
             }
+            #endregion
             return existe;
 
         }

@@ -53,25 +53,26 @@ namespace Presentadores.Modulo6
             vista.mensajeError.Text = mensaje;
         }
 
-        public void CargarDatosActor() 
+        public void CargarDatosActor()
         {
-            string elId = HttpContext.Current.Request.QueryString["id"];
-            int idAct = Convert.ToInt32(elId); 
-            FabricaEntidades fabrica = new FabricaEntidades(); 
-            Entidad laEnti = fabrica.ObtenerActor(); 
-            Actor elActor = (Actor)laEnti;
-            elActor.Id = idAct; 
             try
             {
+                string elId = HttpContext.Current.Request.QueryString["id"];
+                int idAct = Convert.ToInt32(elId);
+                FabricaEntidades fabrica = new FabricaEntidades();
+                Entidad laEnti = fabrica.ObtenerActor();
+                Actor elActor = (Actor)laEnti;
+                elActor.Id = idAct;
+
                 Comandos.Comando<Entidad, Entidad> comandoConsultar =
                     FabricaComandos.CrearComandoConsultarActorXID();
                 Entidad entidad = comandoConsultar.Ejecutar(elActor);
 
-                if (entidad != null) 
+                if (entidad != null)
                 {
                     Actor actorADesplegar = (Actor)entidad;
                     vista.nombreActor = actorADesplegar.NombreActor;
-                    vista.descActor = actorADesplegar.DescripcionActor; 
+                    vista.descActor = actorADesplegar.DescripcionActor;
                 }
 
             }
@@ -127,6 +128,18 @@ namespace Presentadores.Modulo6
 
                 MostrarMensajeError(exAgregarActorPresentador.Mensaje);
             }
+            catch (FormatException e) 
+            {
+                TipoDeDatoErroneoPresentadorException exReporteActoresPresentador =
+                     new TipoDeDatoErroneoPresentadorException(
+                         RecursosPresentadorModulo6.CodigoMensajePresentadorTipoDeDatoErroneo,
+                         RecursosPresentadorModulo6.MensajePresentadorTipoDeDatoErroneoException,
+                         e);
+                Logger.EscribirError(this.GetType().Name
+                    , e);
+
+                MostrarMensajeError(exReporteActoresPresentador.Mensaje);
+            }
 
             catch (Exception e)
             {
@@ -147,18 +160,19 @@ namespace Presentadores.Modulo6
        /// <summary>
        /// Método que llama al comando para modificar los datos de un actor
        /// </summary>
-        public void ModificarDatos() 
+        public void ModificarDatos()
         {
-            FabricaEntidades fabrica = new FabricaEntidades();
-            Entidad laEnti = fabrica.ObtenerActor();
-            Actor elActor = (Actor)laEnti;
-            string id = HttpContext.Current.Request.QueryString["id"];
-            int idActor = Convert.ToInt32(id);
-            elActor.Id = idActor; // falta pasarle el id por la variable de sesión proveniente de lista actores
-            elActor.NombreActor = vista.nombreActor;
-            elActor.DescripcionActor = vista.descActor;
             try
             {
+                FabricaEntidades fabrica = new FabricaEntidades();
+                Entidad laEnti = fabrica.ObtenerActor();
+                Actor elActor = (Actor)laEnti;
+                string id = HttpContext.Current.Request.QueryString["id"];
+                int idActor = Convert.ToInt32(id);
+                elActor.Id = idActor; // falta pasarle el id por la variable de sesión proveniente de lista actores
+                elActor.NombreActor = vista.nombreActor;
+                elActor.DescripcionActor = vista.descActor;
+
                 Comandos.Comando<Entidad, bool> comandoModificar =
                    FabricaComandos.CrearComandoModificarActor();
                 if (comandoModificar.Ejecutar(elActor))
@@ -178,18 +192,18 @@ namespace Presentadores.Modulo6
                         RecursosPresentadorModulo6.MensajeActorNoModificado,
                         new ActorNoModificadoPresentadorException());
                 }
-             }
+            }
 
-            
+
             #region Captura de Excepciones
 
-            catch (ActorNoModificadoPresentadorException e) 
+            catch (ActorNoModificadoPresentadorException e)
             {
-                
+
                 Logger.EscribirError(this.GetType().Name
                     , e);
 
-                MostrarMensajeError(e.Mensaje); 
+                MostrarMensajeError(e.Mensaje);
             }
             catch (ActorNoModificadoComandoException e)
             {
@@ -242,6 +256,18 @@ namespace Presentadores.Modulo6
 
                 MostrarMensajeError(exAgregarActorPresentador.Mensaje);
 
+            }
+            catch (FormatException e) 
+            {
+                TipoDeDatoErroneoPresentadorException exReporteActoresPresentador =
+                     new TipoDeDatoErroneoPresentadorException(
+                         RecursosPresentadorModulo6.CodigoMensajePresentadorTipoDeDatoErroneo,
+                         RecursosPresentadorModulo6.MensajePresentadorTipoDeDatoErroneoException,
+                         e);
+                Logger.EscribirError(this.GetType().Name
+                    , e);
+
+                MostrarMensajeError(exReporteActoresPresentador.Mensaje);
             }
             catch (ComandoException e)
             {

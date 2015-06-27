@@ -11,8 +11,16 @@ using System.Text;
 
 namespace Comandos.Comandos.Modulo2
 {
+    /// <summary>
+    /// Comando para consultar los datos de un cliente juridico
+    /// </summary>
     public class ComandoConsultarClienteJurXID : Comando<Entidad, Entidad>
     {
+        /// <summary>
+        /// Metodo que ejecuta el comando
+        /// </summary>
+        /// <param name="parametro">entidad que posee el id del que se desean conocer sus datos</param>
+        /// <returns>el cliente juridico con todos sus datos</returns>
         public override Entidad Ejecutar(Entidad parametro)
         {
             try

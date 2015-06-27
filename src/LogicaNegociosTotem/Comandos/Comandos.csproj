@@ -79,8 +79,6 @@
     <Compile Include="Comandos\Modulo3\ComandoConsultarUsuariosInvolucradosPorProyecto.cs" />
     <Compile Include="Comandos\Modulo3\ComandoDatosContactoID.cs" />
     <Compile Include="Comandos\Modulo3\ComandoDatosUsuarioUsername.cs" />
-    <Compile Include="Comandos\Modulo3\ComandoEliminarContactoDeIvolucradosEnProyecto.cs" />
-    <Compile Include="Comandos\Modulo3\ComandoEliminarUsuariosDeIvolucradosEnProyecto.cs" />
     <Compile Include="Comandos\Modulo3\ComandoListarContactosPorCargoEmpresa.cs" />
     <Compile Include="Comandos\Modulo3\ComandoListarContactosPorEmpresa.cs" />
     <Compile Include="Comandos\Modulo4\ComandoAgregarProyecto.cs" />

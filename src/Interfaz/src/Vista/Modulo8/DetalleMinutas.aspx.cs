@@ -24,7 +24,7 @@ namespace Vista.Modulo8
                 presentador.ObtenerUsuarioLogeado();
             }
             codigoMinuta = Request.QueryString["idMinuta"];
-            codigoProyecto = "TOT";
+            codigoProyecto = this.Master.CodigoProyectoActual();
         }
 
 

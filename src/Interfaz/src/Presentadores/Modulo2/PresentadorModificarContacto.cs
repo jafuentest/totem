@@ -14,13 +14,23 @@ using System.Web.UI;
 
 namespace Presentadores.Modulo2
 {
+    /// <summary>
+    /// Presentador para la ventana Modificar Contacto
+    /// </summary>
     public class PresentadorModificarContacto
     {
         private IContratoModificarContacto vista;
+        /// <summary>
+        /// Constructor del presentador
+        /// </summary>
+        /// <param name="laVista">instancia de la ventana</param>
         public PresentadorModificarContacto(IContratoModificarContacto laVista)
         {
             vista = laVista;
         }
+        /// <summary>
+        /// metodo para llenar el combo de cargos
+        /// </summary>
         public void llenarComboCargos()
         {
             Comando<bool, List<String>> comando = FabricaComandos.CrearComandoConsultarListaCargos();
@@ -44,6 +54,9 @@ namespace Presentadores.Modulo2
             vista.comboCargo.DataBind();
             vista.comboCargo.Enabled = true;
         }
+        /// <summary>
+        /// metodo para consultar las variables del URL
+        /// </summary>
         public void ObtenerVariablesURL()
         {
             String detalleContacto = HttpContext.Current.Request.QueryString["id"];
@@ -61,9 +74,11 @@ namespace Presentadores.Modulo2
                     RecursosGeneralPresentadores.Mensaje_Error_InputInvalido +
                     RecursoInterfazM2.Alerta_Html_Final;
             }
-
-
         }
+        /// <summary>
+        /// metodo para obtener los datos del contacto
+        /// </summary>
+        /// <param name="idContacto">id del contacto a consultar</param>
         public void cargarDatos(String idContacto)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
@@ -99,6 +114,9 @@ namespace Presentadores.Modulo2
                     RecursoInterfazM2.Alerta_Html_Final;
             }
         }
+        /// <summary>
+        /// metodo para modificar al contacto
+        /// </summary>
         public void modificarContacto()
         {
             String detalleContacto = HttpContext.Current.Request.QueryString["id"];

@@ -13,21 +13,33 @@ using System.Web;
 
 namespace Presentadores.Modulo2
 {
+    /// <summary>
+    /// Presentador para la ventana Detallar Cliente
+    /// </summary>
     public class PresentadorDetallarCliente
     {
         private IContratoDetallarCliente vista;
-
+        /// <summary>
+        /// Constructor del presentador
+        /// </summary>
+        /// <param name="laVista">instancia de la ventana</param>
         public PresentadorDetallarCliente(IContratoDetallarCliente laVista)
         {
             vista = laVista;
         }
+        /// <summary>
+        /// Metodo para consultar las variables URL
+        /// </summary>
         public void ObtenerVariablesURL()
         {
             String detalleCliente = HttpContext.Current.Request.QueryString["detalle"];
             if (detalleCliente != null)
                 cargarDatos(detalleCliente);
         }
-
+        /// <summary>
+        /// Metodo para cargar los datos del cliente natural 
+        /// </summary>
+        /// <param name="idCliente">id del cliente</param>
         public void cargarDatos(String idCliente)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();

@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ExcepcionesTotem;
-using ExcepcionesTotem.Modulo8.ExcepcionesDeDatos;
 using Dominio;
 using Dominio.Entidades.Modulo2;
 using Dominio.Entidades.Modulo7;
@@ -11,6 +9,8 @@ using Dominio.Entidades.Modulo8;
 using DAO.Fabrica;
 using DAO.DAO.Modulo8;
 using System.Data.SqlClient;
+using ExcepcionesTotem;
+using ExcepcionesTotem.Modulo8.ExcepcionesDeDatos;
 
 namespace Comandos.Comandos.Modulo8
 {

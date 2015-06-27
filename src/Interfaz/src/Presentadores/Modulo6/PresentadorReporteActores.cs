@@ -36,9 +36,9 @@ namespace Presentadores.Modulo6
        /// a ser seleccionados para luego mostrarse en una tabla con 
        /// la información de los casos de uso en el que participa. 
        /// </summary>
-       public void CargarActores() 
+       public void CargarActores(string elCodigo) 
        {
-           string codigo = "TOT";
+           string codigo = elCodigo;
            llenadoComboBoxActor(codigo);
           
        }
@@ -79,25 +79,26 @@ namespace Presentadores.Modulo6
        /// Método que se encarga de cargar la tabla de casos de uso,
        /// al seleccionar un actor
        /// </summary>
-       public void CargarTablaCasosDeUso() 
+       public void CargarTablaCasosDeUso(string elCodigo) 
        {
-           int idActor = Convert.ToInt32(vista.comboActores.SelectedValue);
-           FabricaEntidades fabrica = new FabricaEntidades();
-           Entidad entidadAct = fabrica.ObtenerActor();
-           Entidad entidadProy = FabricaEntidades.ObtenerProyecto();
-
-           Actor actor = (Actor)entidadAct;
-           
-           Proyecto proy = (Proyecto)entidadProy;
-           proy.Codigo = "TOT";
-           string codigoProy = proy.Codigo;
-           actor.Id = idActor;
-
-           actor.ProyectoAsociado = proy;
-           actor.ProyectoAsociado.Codigo = codigoProy; 
-
            try
            {
+               int idActor = Convert.ToInt32(vista.comboActores.SelectedValue);
+               FabricaEntidades fabrica = new FabricaEntidades();
+               Entidad entidadAct = fabrica.ObtenerActor();
+               Entidad entidadProy = FabricaEntidades.ObtenerProyecto();
+
+               Actor actor = (Actor)entidadAct;
+
+               Proyecto proy = (Proyecto)entidadProy;
+               proy.Codigo = elCodigo;
+               string codigoProy = proy.Codigo;
+               actor.Id = idActor;
+
+               actor.ProyectoAsociado = proy;
+               actor.ProyectoAsociado.Codigo = codigoProy;
+
+
                Comando<Entidad, List<Entidad>> comandoCasosUsoPorActor =
                         FabricaComandos.CrearComandoConsultarCasosDeUsoXActor();
 
@@ -108,9 +109,10 @@ namespace Presentadores.Modulo6
                    vista.RCasosDeUso.DataSource = laLista;
                    vista.RCasosDeUso.DataBind();
                }
-               
+
 
            }
+           #region Captura de Excepciones
            catch (ComandoBDException e)
            {
                PresentadorException exReporteActoresPresentador =
@@ -118,7 +120,7 @@ namespace Presentadores.Modulo6
                            RecursosPresentadorModulo6.CodigoMensajePresentadorBDException,
                            RecursosPresentadorModulo6.MensajePresentadorBDException,
                            e);
-               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+               Logger.EscribirError(this.GetType().Name
                    , e);
 
                MostrarMensajeError(exReporteActoresPresentador.Mensaje);
@@ -131,7 +133,7 @@ namespace Presentadores.Modulo6
                            RecursosPresentadorModulo6.CodigoMensajePresentadorNuloException,
                            RecursosPresentadorModulo6.MensajePresentadorNuloException,
                            e);
-               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+               Logger.EscribirError(this.GetType().Name
                    , e);
 
                MostrarMensajeError(exReporteActoresPresentador.Mensaje);
@@ -144,7 +146,7 @@ namespace Presentadores.Modulo6
                           RecursosPresentadorModulo6.CodigoMensajePresentadorTipoDeDatoErroneo,
                           RecursosPresentadorModulo6.MensajePresentadorTipoDeDatoErroneoException,
                           e);
-               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+               Logger.EscribirError(this.GetType().Name
                    , e);
 
                MostrarMensajeError(exReporteActoresPresentador.Mensaje);
@@ -158,11 +160,36 @@ namespace Presentadores.Modulo6
                             RecursosPresentadorModulo6.CodigoMensajePresentadorException,
                             RecursosPresentadorModulo6.MensajePresentadorException,
                             e);
-               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+               Logger.EscribirError(this.GetType().Name
                    , e);
 
                MostrarMensajeError(exReporteActoresPresentador.Mensaje);
            }
+           catch (FormatException e) 
+           {
+               TipoDeDatoErroneoPresentadorException exReporteActoresPresentador =
+                    new TipoDeDatoErroneoPresentadorException(
+                        RecursosPresentadorModulo6.CodigoMensajePresentadorTipoDeDatoErroneo,
+                        RecursosPresentadorModulo6.MensajePresentadorTipoDeDatoErroneoException,
+                        e);
+               Logger.EscribirError(this.GetType().Name
+                   , e);
+
+               MostrarMensajeError(exReporteActoresPresentador.Mensaje);
+           }
+           catch (Exception e)
+           {
+               ErrorGeneralPresentadorException exReporteActoresPresentador =
+                           new ErrorGeneralPresentadorException(
+                               RecursosPresentadorModulo6.CodigoMensajePresentadorException,
+                               RecursosPresentadorModulo6.MensajePresentadorException,
+                               e);
+               Logger.EscribirError(this.GetType().Name
+                   , e);
+
+               MostrarMensajeError(exReporteActoresPresentador.Mensaje);
+           }
+#endregion
        }
 
        /// <summary>
@@ -180,6 +207,7 @@ namespace Presentadores.Modulo6
                    FabricaComandos.CrearComandoConsultarRequerimientosXCasoDeUso();
                listaReqs = comandoListarReqsCasoUso.Ejecutar(id);
            }
+           #region Captura de Excepciones
            catch (ComandoBDException e)
            {
                PresentadorException exReporteActoresPresentador =
@@ -187,7 +215,7 @@ namespace Presentadores.Modulo6
                            RecursosPresentadorModulo6.CodigoMensajePresentadorBDException,
                            RecursosPresentadorModulo6.MensajePresentadorBDException,
                            e);
-               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+               Logger.EscribirError(this.GetType().Name
                    , e);
 
                MostrarMensajeError(exReporteActoresPresentador.Mensaje);
@@ -200,7 +228,7 @@ namespace Presentadores.Modulo6
                            RecursosPresentadorModulo6.CodigoMensajePresentadorNuloException,
                            RecursosPresentadorModulo6.MensajePresentadorNuloException,
                            e);
-               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+               Logger.EscribirError(this.GetType().Name
                    , e);
 
                MostrarMensajeError(exReporteActoresPresentador.Mensaje);
@@ -213,7 +241,7 @@ namespace Presentadores.Modulo6
                           RecursosPresentadorModulo6.CodigoMensajePresentadorTipoDeDatoErroneo,
                           RecursosPresentadorModulo6.MensajePresentadorTipoDeDatoErroneoException,
                           e);
-               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+               Logger.EscribirError(this.GetType().Name
                    , e);
 
                MostrarMensajeError(exReporteActoresPresentador.Mensaje);
@@ -227,11 +255,12 @@ namespace Presentadores.Modulo6
                             RecursosPresentadorModulo6.CodigoMensajePresentadorException,
                             RecursosPresentadorModulo6.MensajePresentadorException,
                             e);
-               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+               Logger.EscribirError(this.GetType().Name
                    , e);
 
                MostrarMensajeError(exReporteActoresPresentador.Mensaje);
            }
+           #endregion
            return listaReqs; 
 
        }
@@ -259,9 +288,10 @@ namespace Presentadores.Modulo6
                    _itemActor = new ListItem();
                    _itemActor.Text = elActor.NombreActor;
                    _itemActor.Value = elActor.Id.ToString();
-                  vista.comboActores.Items.Add(_itemActor);
+                   vista.comboActores.Items.Add(_itemActor);
                }
            }
+           #region Captura de Excepciones
            catch (ComandoBDException e)
            {
                PresentadorException exReporteActoresPresentador =
@@ -269,7 +299,7 @@ namespace Presentadores.Modulo6
                            RecursosPresentadorModulo6.CodigoMensajePresentadorBDException,
                            RecursosPresentadorModulo6.MensajePresentadorBDException,
                            e);
-               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+               Logger.EscribirError(this.GetType().Name
                    , e);
 
                MostrarMensajeError(exReporteActoresPresentador.Mensaje);
@@ -282,7 +312,7 @@ namespace Presentadores.Modulo6
                            RecursosPresentadorModulo6.CodigoMensajePresentadorNuloException,
                            RecursosPresentadorModulo6.MensajePresentadorNuloException,
                            e);
-               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+               Logger.EscribirError(this.GetType().Name
                    , e);
 
                MostrarMensajeError(exReporteActoresPresentador.Mensaje);
@@ -295,7 +325,7 @@ namespace Presentadores.Modulo6
                           RecursosPresentadorModulo6.CodigoMensajePresentadorTipoDeDatoErroneo,
                           RecursosPresentadorModulo6.MensajePresentadorTipoDeDatoErroneoException,
                           e);
-               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+               Logger.EscribirError(this.GetType().Name
                    , e);
 
                MostrarMensajeError(exReporteActoresPresentador.Mensaje);
@@ -309,12 +339,37 @@ namespace Presentadores.Modulo6
                             RecursosPresentadorModulo6.CodigoMensajePresentadorException,
                             RecursosPresentadorModulo6.MensajePresentadorException,
                             e);
-               Logger.EscribirError(RecursosPresentadorModulo6.ClaseAgregarActorPresentador
+               Logger.EscribirError(this.GetType().Name
                    , e);
 
                MostrarMensajeError(exReporteActoresPresentador.Mensaje);
            }
+           catch (NullReferenceException e) 
+           {
+               ObjetoNuloPresentadorException exReporteActoresPresentador =
+                         new ObjetoNuloPresentadorException(
+                             RecursosPresentadorModulo6.CodigoMensajePresentadorNuloException,
+                             RecursosPresentadorModulo6.MensajePresentadorNuloException,
+                             e);
+               Logger.EscribirError(this.GetType().Name
+                   , e);
 
+               MostrarMensajeError(exReporteActoresPresentador.Mensaje);
+           }
+           catch (Exception e)
+           {
+               ErrorGeneralPresentadorException exReporteActoresPresentador =
+                          new ErrorGeneralPresentadorException(
+                              RecursosPresentadorModulo6.CodigoMensajePresentadorException,
+                              RecursosPresentadorModulo6.MensajePresentadorException,
+                              e);
+               Logger.EscribirError(this.GetType().Name
+                   , e);
+
+               MostrarMensajeError(exReporteActoresPresentador.Mensaje);
+
+           }
+           #endregion
        }
 
 
@@ -332,6 +387,7 @@ namespace Presentadores.Modulo6
                comandoLlenarCBActores = FabricaComandos.CrearComandoConsultarActoresCB();
                _listaDesdeComando = comandoLlenarCBActores.Ejecutar(parametro);
            }
+           #region Captura de Excepciones
            catch (ComandoBDException e)
            {
                PresentadorException exReporteActoresPresentador =
@@ -384,7 +440,32 @@ namespace Presentadores.Modulo6
 
                MostrarMensajeError(exReporteActoresPresentador.Mensaje);
            }
+           catch (NullReferenceException e)
+           {
+               ObjetoNuloPresentadorException exReporteActoresPresentador =
+                         new ObjetoNuloPresentadorException(
+                             RecursosPresentadorModulo6.CodigoMensajePresentadorNuloException,
+                             RecursosPresentadorModulo6.MensajePresentadorNuloException,
+                             e);
+               Logger.EscribirError(this.GetType().Name
+                   , e);
 
+               MostrarMensajeError(exReporteActoresPresentador.Mensaje);
+           }
+           catch (Exception e)
+           {
+               ErrorGeneralPresentadorException exReporteActoresPresentador =
+                          new ErrorGeneralPresentadorException(
+                              RecursosPresentadorModulo6.CodigoMensajePresentadorException,
+                              RecursosPresentadorModulo6.MensajePresentadorException,
+                              e);
+               Logger.EscribirError(this.GetType().Name
+                   , e);
+
+               MostrarMensajeError(exReporteActoresPresentador.Mensaje);
+
+           }
+           #endregion
 
            return ConvertirListaActores(_listaDesdeComando);
        }
@@ -487,6 +568,7 @@ namespace Presentadores.Modulo6
                MostrarMensajeError(exCasoDeUso.Mensaje);
 
            }
+           #region Captura de Excepciones
            catch (ComandoBDException e)
            {
                PresentadorException exReporteActoresPresentador =
@@ -539,6 +621,31 @@ namespace Presentadores.Modulo6
 
                MostrarMensajeError(exReporteActoresPresentador.Mensaje);
            }
+           catch (FormatException e)
+           {
+               TipoDeDatoErroneoPresentadorException exReporteActoresPresentador =
+                    new TipoDeDatoErroneoPresentadorException(
+                        RecursosPresentadorModulo6.CodigoMensajePresentadorTipoDeDatoErroneo,
+                        RecursosPresentadorModulo6.MensajePresentadorTipoDeDatoErroneoException,
+                        e);
+               Logger.EscribirError(this.GetType().Name
+                   , e);
+
+               MostrarMensajeError(exReporteActoresPresentador.Mensaje);
+           }
+           catch (Exception e)
+           {
+               ErrorGeneralPresentadorException exReporteActoresPresentador =
+                           new ErrorGeneralPresentadorException(
+                               RecursosPresentadorModulo6.CodigoMensajePresentadorException,
+                               RecursosPresentadorModulo6.MensajePresentadorException,
+                               e);
+               Logger.EscribirError(this.GetType().Name
+                   , e);
+
+               MostrarMensajeError(exReporteActoresPresentador.Mensaje);
+           }
+#endregion
        }
 
     }

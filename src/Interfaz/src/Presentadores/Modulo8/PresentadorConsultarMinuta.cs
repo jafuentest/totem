@@ -56,8 +56,14 @@ namespace Presentadores.Modulo8
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
+        }
+
+        public void InfoProyecto(String codigoProy, String nombreProy)
+        {
+            vista.codigoProyecto = codigoProy;
+            vista.nombreProyecto = nombreProy;
         }
     }
 }
