@@ -62,9 +62,8 @@ namespace Presentadores.Modulo7
 		/// </summary>
 		public void ObtenerCargos()
 		{
-			//vista.Cargos = 
-			//Comando<object, DataSet> comandoCargos = new FabricaComandos().CrearComandoConsultarCargosConId();
-			//DataSet ds = comandoCargos.Ejecutar(null);
+			Comando<bool, List<String>> comandoCargos = FabricaComandos.CrearComandoLeerCargosUsuarios();
+			vista.Cargos = comandoCargos.Ejecutar(true);
 		}
 
 		/// <summary>

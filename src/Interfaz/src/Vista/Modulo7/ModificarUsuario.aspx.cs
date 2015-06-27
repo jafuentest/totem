@@ -23,7 +23,7 @@ namespace Vista.Modulo7
 				this.Master.presentador.CargarMenuLateral();
 				presentador.CargarDatos();
 				presentador.ObtenerCargos();
-				//presentador.ObtenerRoles();
+				presentador.ObtenerRoles();
 			}
 		}
 
