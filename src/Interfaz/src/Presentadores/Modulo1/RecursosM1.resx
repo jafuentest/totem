@@ -235,4 +235,13 @@
     <value>LProyectoNombre</value>
     <comment>Atributo HttpContext.Current.Session utilizado para definir el nombre del proyecto</comment>
   </data>
+  <data name="Expresion_Comilla" xml:space="preserve">
+    <value>'</value>
+  </data>
+  <data name="Expresion_SQL" xml:space="preserve">
+    <value>/\w*((\%27)|(\'))((\%6F)|o|(\%4F))((\%72)|r|(\%52))/ix</value>
+  </data>
+  <data name="Mensaje_Sospecha" xml:space="preserve">
+    <value>Entrada Sospechosa</value>
+  </data>
 </root>

@@ -1,6 +1,7 @@
 ﻿using Dominio;
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace DAO.IntefazDAO.Modulo7
 {
@@ -66,6 +67,7 @@ namespace DAO.IntefazDAO.Modulo7
 
 		#region Juan
 		Entidad ConsultarPorUsername(Entidad parametro);
+		DataSet ConsultarCargosConId();
 		#endregion
 	}
 }

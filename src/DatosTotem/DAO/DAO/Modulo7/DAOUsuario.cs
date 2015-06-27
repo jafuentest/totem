@@ -674,6 +674,25 @@ namespace DAO.DAO.Modulo7
 		{
 			return ListarUsuarios();
 		}
+		
+		public DataSet ConsultarCargosConId()
+		{
+			try
+			{
+				DataTable dataTableCargos = EjecutarStoredProcedureTuplas(
+					RecursosBaseDeDatosModulo7.ProcedimientoConsultarCargosConId, new List<Parametro>());
+				DataSet dataSetCargos = new DataSet("Cargos");
+				dataSetCargos.Tables.Add(dataTableCargos);
+				return dataSetCargos;
+			}
+			catch(Exception)
+			{
+
+			}
+			return new DataSet();
+
+		}
+
 		/// <summary>
 		/// 
 		/// </summary>

@@ -8,6 +8,7 @@ using ExcepcionesTotem.Modulo1;
 using Comandos;
 using Comandos.Fabrica;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Presentadores.Modulo1
 {
@@ -94,6 +95,13 @@ namespace Presentadores.Modulo1
             {
                 try
                 {
+                    Regex reg1 = new Regex(RecursosM1.Expresion_SQL);
+                    Regex reg2 = new Regex(RecursosM1.Expresion_Comilla);
+                    if ((reg1.IsMatch(respuesta)) || (reg2.IsMatch(respuesta)))
+                    {
+                        throw new Exception(RecursosM1.Mensaje_Sospecha);
+                    }
+
                     string correo = request.QueryString[RecursosM1.Parametro_usuario];
                     FabricaEntidades fabricaEntidades = new FabricaEntidades();
                     Entidad usuario = fabricaEntidades.ObtenerUsuario();

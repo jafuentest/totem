@@ -5,7 +5,7 @@ using Dominio;
 using Dominio.Entidades.Modulo7;
 using Dominio.Fabrica;
 using System;
-using System.Data;
+using System.Collections.Generic;
 
 namespace Presentadores.Modulo7
 {
@@ -35,8 +35,7 @@ namespace Presentadores.Modulo7
 				string username = "albertods";// HttpContext.Current.Request.QueryString["username"];
 				Entidad parametro =  new FabricaEntidades().ObtenerUsuario(username);
 
-				Comando<Dominio.Entidad, Dominio.Entidad> comandoConsultar =
-					FabricaComandos.CrearComandoDetalleUsuario();
+				Comando<Entidad, Entidad> comandoConsultar = FabricaComandos.CrearComandoDetalleUsuario();
 
 				parametro = comandoConsultar.Ejecutar(parametro);
 
@@ -63,15 +62,18 @@ namespace Presentadores.Modulo7
 		/// </summary>
 		public void ObtenerCargos()
 		{
-			vista.Roles = new DataSet();
+			Comando<bool, List<String>> comandoCargos = FabricaComandos.CrearComandoLeerCargosUsuarios();
+			vista.Cargos = comandoCargos.Ejecutar(true);
 		}
 
 		/// <summary>
-		/// Método para llenar el drop down con los roles disponibles
+		/// Método para llenar el drop down con los cargos disponibles
 		/// </summary>
 		public void ObtenerRoles()
 		{
-			throw new NotImplementedException();
+			List<string> strings = new List<string>();
+			strings.AddRange(RecursosPresentadorModulo7.Roles.Split(','));
+			vista.Roles = strings;
 		}
 	}
 }

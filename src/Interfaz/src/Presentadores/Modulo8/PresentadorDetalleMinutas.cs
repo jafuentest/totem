@@ -67,6 +67,10 @@ namespace Presentadores.Modulo8
             ComandoGenerarMinuta comandoGenerarMinuta = (ComandoGenerarMinuta)FabricaComandos.CrearComandoGenerarMinuta();
             bool aux = comandoGenerarMinuta.Ejecutar(laMinuta);
 
+            ComandoCompilarLatex comandoCompilarLatex = (ComandoCompilarLatex)FabricaComandos.CrearComandoCompilarLatex();
+            bool aux2 = comandoCompilarLatex.Ejecutar(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\Vista\Modulo8\docs\Minuta.tex");
+
+
         }
 
 

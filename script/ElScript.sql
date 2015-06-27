@@ -3000,6 +3000,12 @@ AS
 RETURN
 go
 
+CREATE PROCEDURE ConsultarCargosConId
+AS
+    SELECT car_id, car_nombre
+    FROM CARGO c
+RETURN
+GO
 
 CREATE PROCEDURE ConsultarUsuarioPorUsername
   @usu_username [varchar] (60),

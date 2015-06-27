@@ -5,11 +5,10 @@ using ExcepcionesTotem.Modulo1;
 using Dominio;
 using Dominio.Entidades.Modulo7;
 using Dominio.Fabrica;
-using ExcepcionesTotem.Modulo1;
 using Comandos;
 using Comandos.Fabrica;
-using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 
 namespace Presentadores.Modulo1
@@ -43,6 +42,19 @@ namespace Presentadores.Modulo1
                     throw  new Exception(RecursosM1.Mensaje_campoVacio);
                 if (!vista.Password.Equals(vista.PasswordConfirmar))
                     throw new Exception(RecursosM1.Mensaje_passwordNoCoincide);
+
+                Regex reg1 = new Regex(RecursosM1.Expresion_SQL);
+                Regex reg2 = new Regex(RecursosM1.Expresion_Comilla);
+                if ((reg1.IsMatch(vista.Password)) || (reg2.IsMatch(vista.Password)))
+                {
+                    throw new Exception(RecursosM1.Mensaje_Sospecha);
+                }
+                if ((reg1.IsMatch(vista.PasswordConfirmar)) || (reg2.IsMatch(vista.PasswordConfirmar)))
+                {
+                    throw new Exception(RecursosM1.Mensaje_Sospecha);
+                }
+
+
                 FabricaEntidades fabricaEntidades = new FabricaEntidades();
                 Entidad usuario = fabricaEntidades.ObtenerUsuario();
                 Comando<List<string>, string> comandoDesencriptar = FabricaComandos.CrearComandoDesencriptar();

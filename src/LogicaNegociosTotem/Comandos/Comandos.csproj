@@ -102,6 +102,7 @@
     <Compile Include="Comandos\Modulo6\ComandoConsultarActorXId.cs" />
     <Compile Include="Comandos\Modulo6\ComandoConsultarCasosDeUsoPorActor.cs" />
     <Compile Include="Comandos\Modulo6\ComandoConsultarRequerimientosXCasoDeUso.cs" />
+    <Compile Include="Comandos\Modulo6\ComandoDesasociarActor.cs" />
     <Compile Include="Comandos\Modulo6\ComandoEliminarActor.cs" />
     <Compile Include="Comandos\Modulo6\ComandoEliminarCU.cs" />
     <Compile Include="Comandos\Modulo6\ComandoListarCU.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Comandos\Modulo7\ComandoDetalleUsuario.cs" />
     <Compile Include="Comandos\Modulo7\ComandoLeerCargosUsuarios.cs" />
     <Compile Include="Comandos\Modulo7\ComandoListarCargos.cs" />
+    <Compile Include="Comandos\Modulo7\ComandoListarCargosConId.cs" />
     <Compile Include="Comandos\Modulo7\ComandoListarUsuarios.cs" />
     <Compile Include="Comandos\Modulo7\ComandoListarUsuariosPorCargo.cs" />
     <Compile Include="Comandos\Modulo7\ComandoValidarCorreoUnico.cs" />
