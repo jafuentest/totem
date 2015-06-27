@@ -13,6 +13,8 @@ namespace Vista.Modulo3
     public partial class ListarPersonalInvolucrado : System.Web.UI.Page, Contratos.Modulo3.IContratoListarInvolucrado
     {
         private PresentadorListarInvolucrado presentador;
+        private static string codigoProyecto;
+
         public ListarPersonalInvolucrado()
         {
             presentador = new PresentadorListarInvolucrado(this);
@@ -20,13 +22,14 @@ namespace Vista.Modulo3
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            codigoProyecto = this.Master.CodigoProyectoActual();
             //presentador.ObtenerVariablesURL();
             String  result= Request.QueryString["success"];
             presentador.MostrarModal(result);
             if(!IsPostBack){
                this.Master.idModulo = "3";
                this.Master.presentador.CargarMenuLateral();
-               presentador.iniciarlista();
+               presentador.iniciarlista(codigoProyecto);
                presentador.CargarInvolucrados();
             }
             

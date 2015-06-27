@@ -14,7 +14,7 @@ using System.Text;
 
 namespace DAO.DAO.Modulo3
 {
-    class DAOInvolucrados: DAO,IDaoInvolucrados
+    public class DAOInvolucrados: DAO,IDaoInvolucrados
     {
         /// <summary>
         /// Metodo que agrega la lista de usuarios involucrados a un proyecto
