@@ -32,12 +32,7 @@ namespace Vista.Modulo6
             set { comboActores = value; }
         }
 
-        HtmlButton Contratos.Modulo6.IContratoReporteActores.boton
-        {
-            get { return boton; }
-            set { boton = value; }
-        }
-
+      
         Label Contratos.Modulo6.IContratoReporteActores.mensajeExito
         {
             get { return labelMensajeExito; }

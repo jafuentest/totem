@@ -19,7 +19,7 @@ namespace Contratos.Modulo6
 
        DropDownList comboActores { get; set; }
 
-       HtmlButton boton { get; set; }
+      
 
     }
 }

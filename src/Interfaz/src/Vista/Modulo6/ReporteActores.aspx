@@ -73,9 +73,7 @@
 	   </asp:Repeater>
 						</div>		
 			
-			<div style="text-align:right;">
-				<br /><button id="boton" runat="server" class="btn btn-success">Generar Documento</button>
-			</div>
+			
 		</form>
 		</div>
     <script type="text/javascript">
