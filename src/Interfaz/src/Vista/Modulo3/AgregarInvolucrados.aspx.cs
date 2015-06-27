@@ -14,15 +14,12 @@ namespace Vista.Modulo3
     {
         
         private PresentadorAgregarInvolucrado presentador;
-        private static string codigoProyecto;
-
         public AgregarInvolucrados()
         {
                presentador = new PresentadorAgregarInvolucrado(this);
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            codigoProyecto = this.Master.CodigoProyectoActual();
             if (!IsPostBack)
             {
                 Master.idModulo = "3";
@@ -185,7 +182,7 @@ namespace Vista.Modulo3
           }
           protected void actualizarComboPersonal(object sender, EventArgs e)
           {
-              presentador.ListarUsuarioSegunCargo(comboPersonal.SelectedValue,codigoProyecto);
+              presentador.ListarUsuarioSegunCargo(comboPersonal.SelectedValue);
           }
           protected void AgregarInvolucrados_Click(object sender, EventArgs e)
           {

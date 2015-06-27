@@ -45,11 +45,11 @@ namespace Presentadores.Modulo3
         /// <summary>
         /// Metodo para inicializar la lista de contactos y usuarios
         /// </summary>
-        public void iniciarlista(String proyectoActual)
+        public void iniciarlista()
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
             elProyecto = (Proyecto)FabricaEntidades.ObtenerProyecto();
-            elProyecto.Codigo = proyectoActual;
+            elProyecto.Codigo = "TOT";
             listaContacto = (ListaInvolucradoContacto)laFabrica
                                                 .ObtenetListaInvolucradoContacto();
             listaUsuario = (ListaInvolucradoUsuario)laFabrica

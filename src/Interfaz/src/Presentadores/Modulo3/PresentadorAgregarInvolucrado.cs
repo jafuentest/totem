@@ -171,7 +171,7 @@ namespace Presentadores.Modulo3
         /// Metodo para llenar el comboBox del personal segun el cargo seleccionado
         /// </summary>
         /// <param name="codigo">cargo seleccionado</param>
-        public void ListarUsuarioSegunCargo(string SelectedValue,string proyectoActual)
+        public void ListarUsuarioSegunCargo(string SelectedValue)
         {
             vista.comboPersonal.Enabled = true;
             String cargoSelecionado = vista.comboCargo.SelectedValue;
@@ -181,7 +181,7 @@ namespace Presentadores.Modulo3
             options.Add("-1","Seleccionar Personal");
             //inicio de l prueba
             Proyecto elProyecto = new Proyecto();
-            elProyecto.Codigo = proyectoActual;
+            elProyecto.Codigo = "TOT";
             //fin de la prueba
             try
             {
