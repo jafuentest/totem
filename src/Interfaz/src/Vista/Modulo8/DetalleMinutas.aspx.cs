@@ -69,6 +69,16 @@ namespace Vista.Modulo8
             string idminuta = aux;
             Presentadores.Modulo8.PresentadorDetalleMinuta presentador = new Presentadores.Modulo8.PresentadorDetalleMinuta();
             presentador.GenerarMinuta(idminuta);
+            Response.ClearContent();
+            Response.ClearHeaders();
+            Response.ContentType = "application/pdf";
+            Response.AddHeader("Content-Disposition", "attachment; filename=" + "minuta.pdf");
+            Response.TransmitFile(@"C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\Vista\Modulo8\docs\Minuta.pdf");
+            Response.End();
+            //Response.WriteFile(strS);
+            Response.Flush();
+            Response.Clear();
+
         }
 
 
