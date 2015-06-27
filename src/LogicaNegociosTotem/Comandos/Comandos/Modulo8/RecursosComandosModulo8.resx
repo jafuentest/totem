@@ -264,6 +264,18 @@
   <data name="Titulo" xml:space="preserve">
     <value>bf Titulo</value>
   </data>
+  <data name="Cargo" xml:space="preserve">
+    <value>bf Cargo</value>
+  </data>
+  <data name="Compromiso" xml:space="preserve">
+    <value>bf Compromiso</value>
+  </data>
+  <data name="Fecha" xml:space="preserve">
+    <value>bf Fecha</value>
+  </data>
+  <data name="Nombre" xml:space="preserve">
+    <value>bf Nombre</value>
+  </data>
   <data name="Parametro" xml:space="preserve">
     <value>C:\Users\MiguelAngel\Documents\GitHub\totem\src\Interfaz\src\Vista\Modulo8\docs\Minuta.pdf</value>
   </data>

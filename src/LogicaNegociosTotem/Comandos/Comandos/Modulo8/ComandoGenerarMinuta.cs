@@ -48,10 +48,10 @@ namespace Comandos.Comandos.Modulo8
                                 minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.InicioTabularPuntos);
                                 minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.hline);
                                 minuta.WriteLine(RecursosComandosModulo8.Barras +
-                                    RecursosComandosModulo8.Titulo + " " +
+                                    RecursosComandosModulo8.Nombre + " " +
                                     RecursosComandosModulo8.Ampersan +
                                     RecursosComandosModulo8.Barras +
-                                    RecursosComandosModulo8.Desarrollo + " " +
+                                    RecursosComandosModulo8.Cargo + " " +
                                     RecursosComandosModulo8.Barras +
                                     RecursosComandosModulo8.Barras);
                                 minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.hline);
@@ -111,10 +111,10 @@ namespace Comandos.Comandos.Modulo8
                                 minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.InicioTabularPuntos);
                                 minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.hline);
                                 minuta.WriteLine(RecursosComandosModulo8.Barras +
-                                    RecursosComandosModulo8.Titulo + " " +
+                                    RecursosComandosModulo8.Fecha + " " +
                                     RecursosComandosModulo8.Ampersan +
                                     RecursosComandosModulo8.Barras +
-                                    RecursosComandosModulo8.Desarrollo + " " +
+                                    RecursosComandosModulo8.Compromiso + " " +
                                     RecursosComandosModulo8.Barras +
                                     RecursosComandosModulo8.Barras);
                                 minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.hline);

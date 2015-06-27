@@ -124,6 +124,15 @@ namespace Comandos.Comandos.Modulo8 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to bf Cargo.
+        /// </summary>
+        internal static string Cargo {
+            get {
+                return ResourceManager.GetString("Cargo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to T_00_001.
         /// </summary>
         internal static string Codigo {
@@ -187,6 +196,15 @@ namespace Comandos.Comandos.Modulo8 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to bf Compromiso.
+        /// </summary>
+        internal static string Compromiso {
+            get {
+                return ResourceManager.GetString("Compromiso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to bf Desarrollo.
         /// </summary>
         internal static string Desarrollo {
@@ -201,6 +219,15 @@ namespace Comandos.Comandos.Modulo8 {
         internal static string Directorio {
             get {
                 return ResourceManager.GetString("Directorio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to bf Fecha.
+        /// </summary>
+        internal static string Fecha {
+            get {
+                return ResourceManager.GetString("Fecha", resourceCulture);
             }
         }
         
@@ -291,6 +318,15 @@ namespace Comandos.Comandos.Modulo8 {
         internal static string Minuta {
             get {
                 return ResourceManager.GetString("Minuta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to bf Nombre.
+        /// </summary>
+        internal static string Nombre {
+            get {
+                return ResourceManager.GetString("Nombre", resourceCulture);
             }
         }
         
