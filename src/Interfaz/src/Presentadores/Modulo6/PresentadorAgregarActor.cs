@@ -78,7 +78,7 @@ namespace Presentadores.Modulo6
                         vista.botonAgregar.Disabled = true;
                     }
                 }
-
+                #region Captura de Excepciones
                 catch (ComandoBDException e)
                 {
                     PresentadorException exAgregarActorPresentador =
@@ -130,6 +130,7 @@ namespace Presentadores.Modulo6
 
                     MostrarMensajeError(exAgregarActorPresentador.Mensaje);
                 }
+                #endregion
             }
         }
 
@@ -154,7 +155,7 @@ namespace Presentadores.Modulo6
 
                 }
             }
-
+            #region Captura de Excepciones
             catch (ComandoBDException e)
             {
                 PresentadorException exAgregarActorPresentador =
@@ -221,6 +222,7 @@ namespace Presentadores.Modulo6
 
                 MostrarMensajeError(exAgregarActorPresentador.Mensaje);
             }
+            #endregion
             return existe;
 
         }

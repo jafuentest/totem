@@ -73,7 +73,8 @@ namespace Vista.Modulo6
         /// <param name="e"></param>
         protected void CargarTablaCasosDeUso(object sender, EventArgs e) 
         {
-            this.presentador.CargarTablaCasosDeUso(); 
+            string codigo = this.Master.CodigoProyectoActual();
+            this.presentador.CargarTablaCasosDeUso(codigo); 
         }
     }
 }
