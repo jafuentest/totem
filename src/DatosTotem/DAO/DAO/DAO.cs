@@ -17,7 +17,6 @@ namespace DAO.DAO
         private SqlCommand comando;
         private string query;
 
-
         #region Conectar con la Base de Datos
         /// <summary>
         /// Metodo para realizar la conexion a la base de datos
@@ -282,5 +281,6 @@ namespace DAO.DAO
             }
         }
         #endregion
+    
     }
 }
