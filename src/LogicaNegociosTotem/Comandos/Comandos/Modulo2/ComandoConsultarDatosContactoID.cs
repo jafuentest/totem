@@ -11,8 +11,17 @@ using System.Text;
 
 namespace Comandos.Comandos.Modulo2
 {
+    /// <summary>
+    /// Comando para consultar los datos de un contacto dado su id
+    /// </summary>
     public class ComandoConsultarDatosContactoID : Comando<Entidad, Entidad>
     {
+        /// <summary>
+        /// metodo que ejecuta el comando
+        /// </summary>
+        /// <param name="parametro">entidad que contiene el id del 
+        /// que se desean saber todos sus datos</param>
+        /// <returns>el contacto con todos sus datos</returns>
         public override Entidad Ejecutar(Entidad parametro)
         {
             try

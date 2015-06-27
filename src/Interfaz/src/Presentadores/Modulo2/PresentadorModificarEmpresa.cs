@@ -14,14 +14,24 @@ using System.Web.UI;
 
 namespace Presentadores.Modulo2
 {
+    /// <summary>
+    /// Presentador para la ventana Modificar Empresa
+    /// </summary>
     public class PresentadorModificarEmpresa
     {
         private IContratoModificarEmpresa vista;
+        /// <summary>
+        /// Constructor del presentador
+        /// </summary>
+        /// <param name="laVista">instancia de la vista</param>
         public PresentadorModificarEmpresa(IContratoModificarEmpresa laVista)
         {
             vista = laVista;
         }
-
+        /// <summary>
+        /// Metodo para cargar los datos de la empresa
+        /// </summary>
+        /// <param name="idEmpresa">id de la empresa</param>
         public void cargarDatosEmpresa(String idEmpresa)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
@@ -87,6 +97,9 @@ namespace Presentadores.Modulo2
 
             
         }
+        /// <summary>
+        /// metodo para llenar el combo de paises
+        /// </summary>
         public void llenarComboPais()
         {
             Comando<bool, List<String>> comando = FabricaComandos.CrearComandoConsultarListaPaises();
@@ -116,7 +129,10 @@ namespace Presentadores.Modulo2
             vista.comboPais.DataBind();
             vista.comboPais.Enabled = true;
         }
-
+        /// <summary>
+        /// metodo para llenar el combo de estados
+        /// </summary>
+        /// <param name="elPais">pais para filtrar los estados</param>
         public void llenarComboEstadosXPais(String elPais)
         {
             Comando<String, List<String>> comando =
@@ -157,7 +173,10 @@ namespace Presentadores.Modulo2
             vista.direccionEmpresa = "";
             vista.codigoPostalEmpresa = "";
         }
-
+        /// <summary>
+        /// metodo para filtrar el combo de ciudades
+        /// </summary>
+        /// <param name="elEstado">estado para filtrar las ciudades</param>
         public void llenarComboCiudadXEstado(String elEstado)
         {
             Comando<String, List<String>> comando =
@@ -190,6 +209,9 @@ namespace Presentadores.Modulo2
             vista.direccionEmpresa = "";
             vista.codigoPostalEmpresa = "";
         }
+        /// <summary>
+        /// metodo para consultar las variables del URL
+        /// </summary>
         public void ObtenerVariablesURL()
         {
             String error = HttpContext.Current.Request.QueryString["error"];
@@ -226,6 +248,10 @@ namespace Presentadores.Modulo2
                 }
            
         }
+        /// <summary>
+        /// metodo para desplegar el modal de eliminar
+        /// </summary>
+        /// <returns></returns>
         public bool desplegarModal()
         {
 
@@ -267,6 +293,11 @@ namespace Presentadores.Modulo2
                 return false;
             }
         }
+        /// <summary>
+        /// metodo para modificar al cliente juridico
+        /// </summary>
+        /// <param name="elID">id del cliente juridico</param>
+        /// <returns>booleano que refleja el exito de la operacion</returns>
         public bool modificarEmpresa(String elID)
         {
             List<String> alfabeticos = new List<String>();
@@ -352,6 +383,9 @@ namespace Presentadores.Modulo2
                 return false;
             }
         }
+        /// <summary>
+        /// metodo para el evento del boton de agregar un contacto nuevo
+        /// </summary>
         public void redirAgregarContacto()
         {
             String detalleEmpresa = HttpContext.Current.Request.QueryString["id"];

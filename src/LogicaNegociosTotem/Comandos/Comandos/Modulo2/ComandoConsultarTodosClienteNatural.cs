@@ -11,9 +11,16 @@ using ExcepcionesTotem;
 
 namespace Comandos.Comandos.Modulo2
 {
+    /// <summary>
+    /// Comando para consultar la lista de clientes naturales
+    /// </summary>
     public class ComandoConsultarTodosClienteNatural : Comando<bool, List<Entidad>>
     {
-
+        /// <summary>
+        /// Metodo que ejecuta el comando
+        /// </summary>
+        /// <param name="parametro">true</param>
+        /// <returns>lista de clientes naturales</returns>
         public override List<Entidad> Ejecutar(bool parametro)
         {
             try

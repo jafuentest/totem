@@ -10,8 +10,16 @@ using System.Text;
 
 namespace Comandos.Comandos.Modulo2
 {
+    /// <summary>
+    /// Comando para modificar un contacto
+    /// </summary>
     public class ComandoModificarContacto : Comando<Entidad, bool>
     {
+        /// <summary>
+        /// Metodo que ejecuta el comando
+        /// </summary>
+        /// <param name="parametro">Contacto a modificar</param>
+        /// <returns>booleano que refleja el exito de la operacion</returns>
         public override bool Ejecutar(Entidad parametro)
         {
             try

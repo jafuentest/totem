@@ -12,8 +12,16 @@ using ExcepcionesTotem.Modulo2;
 
 namespace Comandos.Comandos.Modulo2
 {
+    /// <summary>
+    /// comando para agregar un cliente natural
+    /// </summary>
     public class ComandoAgregarClienteNatural : Comando<Entidad, bool>
     {
+        /// <summary>
+        /// Metodo que ejecuta el comando
+        /// </summary>
+        /// <param name="parametro">Cliente a agregar</param>
+        /// <returns>booleano que refleja el exito de la ejecucion del comando</returns>
         public override bool Ejecutar(Entidad parametro)
         {
             try 

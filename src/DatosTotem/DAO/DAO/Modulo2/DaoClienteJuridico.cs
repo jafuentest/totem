@@ -13,112 +13,17 @@ using ExcepcionesTotem.Modulo2;
 
 namespace DAO.DAO.Modulo2
 {
+    /// <summary>
+    /// Data Access Object para cliente juridico
+    /// </summary>
     public class DaoClienteJuridico : DAO, IntefazDAO.Modulo2.IDaoClienteJuridico
     {
-        public bool BuscarCIContacto(String cedulaCon)
-        {
-            bool retorno = false;
-            try
-            {
-                List<Parametro> parametros = new List<Parametro>();
-                Parametro elParametro = new Parametro(RecursoBDModulo2.ParamContactoCedula, SqlDbType.VarChar,
-                    cedulaCon, false);
-                parametros.Add(elParametro);
-                elParametro = new Parametro(RecursoBDModulo2.ParamSalida, SqlDbType.Int, true);
-                parametros.Add(elParametro);
-                List<Resultado> resultados = EjecutarStoredProcedure(RecursoBDModulo2.BuscarCIContacto,
-                    parametros);
-                foreach (Resultado resultado in resultados)
-                {
-                    if ((resultado.etiqueta == RecursoBDModulo2.ParamSalida) &&
-                        (int.Parse(resultado.valor) == 0))
-                        retorno = true;
-                }
-                return retorno;
-            }
-            #region Catches
-            catch (SqlException ex)
-            {
-                Logger.EscribirError(Convert.ToString(this.GetType()),
-                    ex);
-
-                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
-                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
-                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
-                    ex);
-            }
-            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
-            {
-                Logger.EscribirError(Convert.ToString(this.GetType()),
-                    ex);
-
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                Logger.EscribirError(Convert.ToString(this.GetType()),
-                    ex);
-
-                throw new ExceptionTotem(RecursoBDModulo2.CodigoExcepcionGeneral,
-                    RecursoBDModulo2.MensajeExcepcionGeneral,
-                    ex);
-            }
-            #endregion
-        }
-        public bool BuscarRifClienteJuridico(Entidad parametro)
-        {
-            ClienteJuridico elCliente = (ClienteJuridico)parametro;
-            bool retorno = false;
-            try
-            {
-                List<Parametro> parametros = new List<Parametro>();
-                Parametro elParametro = new Parametro(RecursoBDModulo2.ParamJurRif, SqlDbType.VarChar,
-                    elCliente.Jur_Rif, false);
-                parametros.Add(elParametro);
-                elParametro = new Parametro(RecursoBDModulo2.ParamSalida, SqlDbType.Int, true);
-                parametros.Add(elParametro);
-                List<Resultado> resultados = EjecutarStoredProcedure(RecursoBDModulo2.BuscarRifClienteJur,
-                    parametros);
-                foreach (Resultado resultado in resultados)
-                {
-                    if (resultado.etiqueta == RecursoBDModulo2.ParamSalida)
-                        if (elCliente.Id == 0)
-                            retorno = true;
-                        else
-                            if (int.Parse(resultado.valor) == elCliente.Id)
-                                retorno = true;
-                }
-                return retorno;
-            }
-            #region Catches
-            catch (SqlException ex)
-            {
-                Logger.EscribirError(Convert.ToString(this.GetType()),
-                    ex);
-
-                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
-                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
-                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
-                    ex);
-            }
-            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
-            {
-                Logger.EscribirError(Convert.ToString(this.GetType()),
-                    ex);
-
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                Logger.EscribirError(Convert.ToString(this.GetType()),
-                    ex);
-
-                throw new ExceptionTotem(RecursoBDModulo2.CodigoExcepcionGeneral,
-                    RecursoBDModulo2.MensajeExcepcionGeneral,
-                    ex);
-            }
-            #endregion
-        }
+        #region IDAO
+        /// <summary>
+        /// Metodo para agregar cliente juridico
+        /// </summary>
+        /// <param name="parametro">cliente a agregar</param>
+        /// <returns>booleano que refleja el exito de la operacion</returns>
         public bool Agregar(Entidad parametro)
         {
             try 
@@ -222,6 +127,11 @@ namespace DAO.DAO.Modulo2
             }
             #endregion
         }
+        /// <summary>
+        /// Metodo para modificar un cliente juridico
+        /// </summary>
+        /// <param name="parametro">cliente juridico modificado</param>
+        /// <returns>booleano que refleja el exito de la operacion</returns>
         public bool Modificar(Entidad parametro)
         {
             try
@@ -303,6 +213,11 @@ namespace DAO.DAO.Modulo2
             }
             #endregion
         }
+        /// <summary>
+        /// Metodo para consultar todos los datos de un cliente juridico dado su ID
+        /// </summary>
+        /// <param name="parametro">parametro que contiene el Id del cliente a consultar</param>
+        /// <returns>el cliente con todos sus datos</returns>
         public Entidad ConsultarXId(Entidad parametro)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
@@ -381,6 +296,10 @@ namespace DAO.DAO.Modulo2
             }
             #endregion
         }
+        /// <summary>
+        /// Metodo para consultar la lista de clientes juridicos
+        /// </summary>
+        /// <returns>lista completa de todos los clientes juridicos en bd</returns>
         public List<Entidad> ConsultarTodos()
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
@@ -443,87 +362,40 @@ namespace DAO.DAO.Modulo2
             }
             #endregion
         }
-        public Entidad consultarDatosContactoID(Entidad parametro)
+        #endregion
+        #region IDaoClienteJuridico
+        /// <summary>
+        /// Metodo para consultar que el rif sea unico
+        /// </summary>
+        /// <param name="parametro">Cliente para verificar si el rif ya existe</param>
+        /// <returns>true si el rif no esta asociado a algun cliente, 
+        /// false si ya existe ese rif en bd</returns>
+        public bool BuscarRifClienteJuridico(Entidad parametro)
         {
-            FabricaEntidades laFabrica = new FabricaEntidades();
+            ClienteJuridico elCliente = (ClienteJuridico)parametro;
+            bool retorno = false;
             try
             {
-                #region Llenado de parametros
                 List<Parametro> parametros = new List<Parametro>();
-                Parametro parametroStored = new Parametro(RecursoBDModulo2.ParamIDContacto,
-                    SqlDbType.Int, parametro.Id.ToString(), false);
-                parametros.Add(parametroStored);
-                parametroStored = new Parametro(RecursoBDModulo2.ParamContactoNombre,
-                    SqlDbType.VarChar, true);
-                parametros.Add(parametroStored);
-                parametroStored = new Parametro(RecursoBDModulo2.ParamContactoApellido,
-                    SqlDbType.VarChar, true);
-                parametros.Add(parametroStored);
-                parametroStored = new Parametro(RecursoBDModulo2.ParamContactoCargo,
-                    SqlDbType.VarChar, true);
-                parametros.Add(parametroStored);
-                parametroStored = new Parametro(RecursoBDModulo2.ParamContactoCodTel,
-                    SqlDbType.VarChar, true);
-                parametros.Add(parametroStored);
-                parametroStored = new Parametro(RecursoBDModulo2.ParamContactoNumTel,
-                    SqlDbType.VarChar, true);
-                parametros.Add(parametroStored);
-                parametroStored = new Parametro(RecursoBDModulo2.ParamContactoCedula,
-                    SqlDbType.VarChar, true);
-                parametros.Add(parametroStored);
-                #endregion
-
-                Contacto elContacto = (Contacto)laFabrica.ObtenerContacto();
-
-                List<Resultado> resultados = EjecutarStoredProcedure(RecursoBDModulo2.ConsultarDatosContacto, 
+                Parametro elParametro = new Parametro(RecursoBDModulo2.ParamJurRif, SqlDbType.VarChar,
+                    elCliente.Jur_Rif, false);
+                parametros.Add(elParametro);
+                elParametro = new Parametro(RecursoBDModulo2.ParamSalida, SqlDbType.Int, true);
+                parametros.Add(elParametro);
+                List<Resultado> resultados = EjecutarStoredProcedure(RecursoBDModulo2.BuscarRifClienteJur,
                     parametros);
-                
-                if (resultados == null)
-                {
-                    Logger.EscribirError(Convert.ToString(this.GetType()),
-                        new ContactoInexistenteException());
-
-                    throw new ContactoInexistenteException(RecursoBDModulo2.CodigoClienteInexistente,
-                        RecursoBDModulo2.MensajeClienteInexistente, new ClienteInexistenteException());
-                }
-                elContacto.Con_Telefono = new Telefono();
                 foreach (Resultado resultado in resultados)
                 {
-                    if (resultado.etiqueta.Equals(RecursoBDModulo2.ParamContactoCargo))
-                    {
-                        elContacto.ConCargo = resultado.valor;
-                    }
-                    if (resultado.etiqueta.Equals(RecursoBDModulo2.ParamContactoNombre))
-                    {
-                        elContacto.Con_Nombre = resultado.valor;
-                    }
-                    if (resultado.etiqueta.Equals(RecursoBDModulo2.ParamContactoApellido))
-                    {
-                        elContacto.Con_Apellido = resultado.valor;
-                    }
-                    if (resultado.etiqueta.Equals(RecursoBDModulo2.ParamContactoCodTel))
-                    {
-                        elContacto.Con_Telefono.Codigo = resultado.valor;
-                    }
-                    if (resultado.etiqueta.Equals(RecursoBDModulo2.ParamContactoNumTel))
-                    {
-                        elContacto.Con_Telefono.Numero = resultado.valor;
-                    }
-                    if (resultado.etiqueta.Equals(RecursoBDModulo2.ParamContactoCedula))
-                    {
-                        elContacto.ConCedula = resultado.valor;
-                    }
+                    if (resultado.etiqueta == RecursoBDModulo2.ParamSalida)
+                        if (elCliente.Id == 0)
+                            retorno = true;
+                        else
+                            if (int.Parse(resultado.valor) == elCliente.Id)
+                                retorno = true;
                 }
-                return elContacto;
+                return retorno;
             }
             #region Catches
-            catch (ContactoInexistenteException ex)
-            {
-                Logger.EscribirError(Convert.ToString(this.GetType()),
-                    ex);
-
-                throw ex;
-            }
             catch (SqlException ex)
             {
                 Logger.EscribirError(Convert.ToString(this.GetType()),
@@ -552,6 +424,11 @@ namespace DAO.DAO.Modulo2
             }
             #endregion
         }
+        /// <summary>
+        /// Metodo para consultar la lista de contactos que posee una empresa
+        /// </summary>
+        /// <param name="parametro">empresa de la que se desean conocer sus contactos</param>
+        /// <returns>lista de contactos asociados a esa empresa</returns>
         public List<Entidad> consultarListaDeContactosJuridico(Entidad parametro)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
@@ -613,6 +490,11 @@ namespace DAO.DAO.Modulo2
             }
             #endregion
         }
+        /// <summary>
+        /// metodo para eliminar un cliente juridico
+        /// </summary>
+        /// <param name="parametro">cliente a eliminar</param>
+        /// <returns>booleano que refleja el exito de la operacion</returns>
         public bool eliminarClienteJuridico(Entidad parametro)
         {
             List<Parametro> parametros = new List<Parametro>();
@@ -629,6 +511,11 @@ namespace DAO.DAO.Modulo2
                 throw new Exception();
             }
         }
+        /// <summary>
+        /// Metodo para eliminar un contacto
+        /// </summary>
+        /// <param name="parametro">contacto a eliminar</param>
+        /// <returns>booleano que refleja el valor de exito de la operacion</returns>
         public bool eliminarContacto(Entidad parametro)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
@@ -818,6 +705,11 @@ namespace DAO.DAO.Modulo2
             }
             #endregion
         }
+        /// <summary>
+        /// Metodo para consultar la lista de cargos que puede ocupar
+        /// un contacto dentro de una empresa
+        /// </summary>
+        /// <returns>lista de cargos</returns>
         public List<String> consultarListaCargos()
         {
             List<String> laLista = new List<String>();
@@ -860,86 +752,6 @@ namespace DAO.DAO.Modulo2
             }
             #endregion
         }
-        public bool modificarContacto(Entidad parametro)
-        {
-            try
-            {
-                Contacto elContacto = (Contacto)parametro;
-                if (BuscarCIContacto(elContacto.ConCedula))
-                {
-                    #region Llenado de parametros
-                    List<Parametro> parametros = new List<Parametro>();
-                    Parametro elParametro = new Parametro(RecursoBDModulo2.ParamIDContacto, SqlDbType.Int,
-                        elContacto.Id.ToString(), false);
-                    parametros.Add(elParametro);
-                    elParametro = new Parametro(RecursoBDModulo2.ParamContactoNombre, SqlDbType.VarChar,
-                        elContacto.Con_Nombre, false);
-                    parametros.Add(elParametro);
-                    elParametro = new Parametro(RecursoBDModulo2.ParamContactoApellido, SqlDbType.VarChar,
-                        elContacto.Con_Apellido, false);
-                    parametros.Add(elParametro);
-                    elParametro = new Parametro(RecursoBDModulo2.ParamContactoCedula, SqlDbType.VarChar,
-                        elContacto.ConCedula, false);
-                    parametros.Add(elParametro);
-                    elParametro = new Parametro(RecursoBDModulo2.ParamContactoCodTel, SqlDbType.VarChar,
-                        elContacto.Con_Telefono.Codigo, false);
-                    parametros.Add(elParametro);
-                    elParametro = new Parametro(RecursoBDModulo2.ParamContactoNumTel, SqlDbType.VarChar,
-                        elContacto.Con_Telefono.Numero, false);
-                    parametros.Add(elParametro);
-                    elParametro = new Parametro(RecursoBDModulo2.ParamContactoCargo, SqlDbType.VarChar,
-                        elContacto.ConCargo, false);
-                    parametros.Add(elParametro);
-                    #endregion
-                    EjecutarStoredProcedure(RecursoBDModulo2.ModificarContacto,
-                        parametros);
-                    return true;
-                }
-                else
-                {
-                    Logger.EscribirError(Convert.ToString(this.GetType()),
-                        new CIContactoExistenteException());
-
-                    throw new CIContactoExistenteException(RecursoBDModulo2.CodigoCIExistenteExceptionContacto,
-                        RecursoBDModulo2.MensajeCIContactoExistente,
-                        new CIContactoExistenteException());
-                }
-            }
-            #region Catches
-            catch (SqlException ex)
-            {
-                Logger.EscribirError(Convert.ToString(this.GetType()),
-                    ex);
-
-                throw new ExcepcionesTotem.ExceptionTotemConexionBD(
-                    RecursoGeneralDAO.Codigo_Error_BaseDatos,
-                    RecursoGeneralDAO.Mensaje_Error_BaseDatos,
-                    ex);
-            }
-            catch (CIContactoExistenteException ex)
-            {
-                Logger.EscribirError(Convert.ToString(this.GetType()),
-                    ex);
-
-                throw ex;
-            }
-            catch (ExcepcionesTotem.ExceptionTotemConexionBD ex)
-            {
-                Logger.EscribirError(Convert.ToString(this.GetType()),
-                    ex);
-
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                Logger.EscribirError(Convert.ToString(this.GetType()),
-                    ex);
-
-                throw new ExceptionTotem(RecursoBDModulo2.CodigoExcepcionGeneral,
-                    RecursoBDModulo2.MensajeExcepcionGeneral,
-                    ex);
-            }
-            #endregion
-        }
+        #endregion
     }
 }

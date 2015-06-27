@@ -14,14 +14,24 @@ using System.Web;
 
 namespace Presentadores.Modulo2
 {
+    /// <summary>
+    /// presentador para la ventana de Agregar Contacto
+    /// </summary>
     public class PresentadorAgregarContacto
     {
         private IContratoAgregarContacto vista;
         
+        /// <summary>
+        /// Constructor del presentador
+        /// </summary>
+        /// <param name="laVista">instancia de la ventana</param>
         public PresentadorAgregarContacto(IContratoAgregarContacto laVista)
 	    {
             vista = laVista;
 	    }
+        /// <summary>
+        /// Metodo para llenar el combo box de cargos
+        /// </summary>
         public void llenarComboCargos()
         {
             Comando<bool, List<String>> comando = FabricaComandos.CrearComandoConsultarListaCargos();
@@ -45,7 +55,9 @@ namespace Presentadores.Modulo2
             vista.comboCargo.DataBind();
             vista.comboCargo.Enabled = true;
         }
-
+        /// <summary>
+        /// metodo que maneja el evento del boton para agregar a un contacto en bd
+        /// </summary>
         public void agregarContacto()
         {
             String empresaAsociada = HttpContext.Current.Request.QueryString["empresa"];

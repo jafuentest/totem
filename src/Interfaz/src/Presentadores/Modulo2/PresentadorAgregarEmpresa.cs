@@ -14,14 +14,23 @@ using System.Web;
 
 namespace Presentadores.Modulo2
 {
+    /// <summary>
+    /// Presentador para la ventana de Agregar Empresa
+    /// </summary>
     public class PresentadorAgregarEmpresa
     {
         private IContratoAgregarEmpresa vista;
-
+        /// <summary>
+        /// Constructor del presentador
+        /// </summary>
+        /// <param name="laVista">instancia de la ventana</param>
         public PresentadorAgregarEmpresa(IContratoAgregarEmpresa laVista)
         {
             this.vista = laVista;
         }
+        /// <summary>
+        /// metodo para deshabilitar los combo boxes
+        /// </summary>
         public void deshabilitarCombos()
         {
             vista.comboPais.Enabled = false;
@@ -42,6 +51,9 @@ namespace Presentadores.Modulo2
             vista.comboCiudad.DataValueField = "key";
             vista.comboCiudad.DataBind();
         }
+        /// <summary>
+        /// metodo para llenar el combo de paises
+        /// </summary>
         public void llenarComboPais()
         {
             Comando<bool, List<String>> comando = FabricaComandos.CrearComandoConsultarListaPaises();
@@ -66,6 +78,10 @@ namespace Presentadores.Modulo2
             vista.comboPais.DataBind();
             vista.comboPais.Enabled = true;
         }
+        /// <summary>
+        /// metodo para llenar el combo de estados
+        /// </summary>
+        /// <param name="elPais">pais seleccionado para filtrar la lista de estados</param>
         public void llenarComboEstadosPorPais(String elPais)
         {
             Comando<String, List<String>> comando = FabricaComandos.CrearComandoConsultarEstadosPorPais();
@@ -89,6 +105,10 @@ namespace Presentadores.Modulo2
             vista.comboEstado.DataBind();
             vista.comboEstado.Enabled = true;
         }
+        /// <summary>
+        /// metodo para llenar el combo de ciudades
+        /// </summary>
+        /// <param name="elEstado">estado seleccionado para filtrar la lista de ciudades</param>
         public void llenarComboCiudadesPorEstado(String elEstado)
         {
             Comando<String, List<String>> comando = FabricaComandos.CrearComandoConsultarCiudadPorEstado();
@@ -112,6 +132,9 @@ namespace Presentadores.Modulo2
             vista.comboCiudad.DataBind();
             vista.comboCiudad.Enabled = true;
         }
+        /// <summary>
+        /// metodo para llenar el combo box de cargos
+        /// </summary>
         public void llenarComboCargos()
         {
             Comando<bool, List<String>> comando = FabricaComandos.CrearComandoConsultarListaCargos();
@@ -135,6 +158,9 @@ namespace Presentadores.Modulo2
             vista.comboCargo.DataBind();
             vista.comboCargo.Enabled = true;
         }
+        /// <summary>
+        /// metodo para consultar las variables del URL
+        /// </summary>
         public void ObtenerVariablesURL()
         {
             String error = HttpContext.Current.Request.QueryString["error"];
@@ -148,6 +174,10 @@ namespace Presentadores.Modulo2
             }
 
         }
+        /// <summary>
+        /// metodo para manejar el evento para agregar un cliente juridico
+        /// </summary>
+        /// <returns>booleano que refleja el exito de la operacion</returns>
         public bool agregarEmpresa()
         {
             List<String> alfabeticos = new List<String>();

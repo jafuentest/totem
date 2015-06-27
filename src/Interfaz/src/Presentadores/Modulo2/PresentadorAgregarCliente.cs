@@ -14,14 +14,23 @@ using System.Web;
 
 namespace Presentadores.Modulo2
 {
+    /// <summary>
+    /// Presentador para la ventana Agregar Cliente
+    /// </summary>
     public class PresentadorAgregarCliente
     {
         private IContratoAgregarCliente vista;
-
+        /// <summary>
+        /// Constructor del presentador
+        /// </summary>
+        /// <param name="laVista">instancia de la ventana</param>
         public PresentadorAgregarCliente(IContratoAgregarCliente laVista)
         {
             vista = laVista;
         }
+        /// <summary>
+        /// Metodo para deshabilitar los combos de la localizacion
+        /// </summary>
         public void deshabilitarCombos()
         {
             vista.comboPais.Enabled = false;
@@ -43,6 +52,9 @@ namespace Presentadores.Modulo2
             vista.comboCiudad.DataBind();
 
         }
+        /// <summary>
+        /// Metodo para llenar el combo box de paises
+        /// </summary>
         public void llenarComboPais()
         {
             Comando<bool, List<String>> comando =
@@ -71,6 +83,10 @@ namespace Presentadores.Modulo2
             vista.comboPais.DataBind();
             vista.comboPais.Enabled = true;
         }
+        /// <summary>
+        /// Metodo para llenar el combo box de estados
+        /// </summary>
+        /// <param name="elPais">pais seleccionado para filtrar la lista de estados</param>
         public void llenarComboEstadosXPais(String elPais)
         {
             Comando<String, List<String>> comando =
@@ -99,6 +115,10 @@ namespace Presentadores.Modulo2
             vista.comboEstado.DataBind();
             vista.comboEstado.Enabled = true;
         }
+        /// <summary>
+        /// Metodo para llenar el combo box de ciudades
+        /// </summary>
+        /// <param name="elEstado">estado seleccionado para filtrar la lista de ciudades</param>
         public void llenarComboCiudadXEstado(String elEstado)
         {
             Comando<String, List<String>> comando =
@@ -127,6 +147,9 @@ namespace Presentadores.Modulo2
             vista.comboCiudad.DataBind();
             vista.comboCiudad.Enabled = true;
         }
+        /// <summary>
+        /// Metodo para consultar las variables del url
+        /// </summary>
         public void ObtenerVariablesURL()
         {
             String error = HttpContext.Current.Request.QueryString["error"];
@@ -140,6 +163,10 @@ namespace Presentadores.Modulo2
             }
 
         }
+        /// <summary>
+        /// metodo que se encarga del evento del boton para agregar un cliente
+        /// </summary>
+        /// <returns></returns>
         public bool agregarCliente()
         {
 

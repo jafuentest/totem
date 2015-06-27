@@ -13,8 +13,16 @@ using System.Data.SqlClient;
 
 namespace Comandos.Comandos.Modulo2
 {
+    /// <summary>
+    /// Comando para agregar un cliente juridico
+    /// </summary>
     public class ComandoAgregarClienteJuridico : Comando<Entidad, bool>
     {
+        /// <summary>
+        /// Metodo que ejecuta el comando
+        /// </summary>
+        /// <param name="parametro">Cliente a agregar</param>
+        /// <returns>booleano que refleja el exito de la ejecucion del comando</returns>
         public override bool Ejecutar(Entidad parametro)
         {
             try

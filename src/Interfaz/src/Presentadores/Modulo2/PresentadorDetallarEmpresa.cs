@@ -13,14 +13,23 @@ using System.Web.UI;
 
 namespace Presentadores.Modulo2
 {
+    /// <summary>
+    /// Presentador de la ventana Detallar Empresa
+    /// </summary>
     public class PresentadorDetallarEmpresa
     {
         private IContratoDetallarEmpresa vista;
-
+        /// <summary>
+        /// Constructor del presentador
+        /// </summary>
+        /// <param name="laVista">instancia de la ventana</param>
         public PresentadorDetallarEmpresa(IContratoDetallarEmpresa laVista)
         {
             vista = laVista;
         }
+        /// <summary>
+        /// Metodo para consultar las variables del URL
+        /// </summary>
         public void ObtenerVariablesURL()
         {
             String detalleEmpresa = HttpContext.Current.Request.QueryString["id"];
@@ -47,6 +56,10 @@ namespace Presentadores.Modulo2
                     }
             }
         }
+        /// <summary>
+        /// Metodo para cargar los datos de la empresa
+        /// </summary>
+        /// <param name="idEmpresa">id de la empresa</param>
         public void cargarDatos(String idEmpresa)
         {
             FabricaEntidades laFabrica = new FabricaEntidades();
@@ -107,7 +120,9 @@ namespace Presentadores.Modulo2
                     RecursoInterfazM2.Alerta_Html_Final;
             }
         }
-
+        /// <summary>
+        /// metodo para la redireccion del boton para agregar un nuevo contacto
+        /// </summary>
         public void redirAgregarContacto()
         {
             String detalleEmpresa = HttpContext.Current.Request.QueryString["id"];
