@@ -6,18 +6,21 @@ using System.Text;
 using Dominio;
 namespace Comandos.Comandos.Modulo8
 {
-    public class ComandoGenerarMinuta : Comando<Entidad, bool>
+    public class ComandoGenerarMinuta : Comando<int, bool>
     {
         /// <summary>
         /// Metodo que compila un archivo .tex
         /// </summary>
         /// <param name="parametro">nombre del archivo a compilar</param>
         /// <returns>retorna verdadero luego de compilar el archivo</returns>
-        public override bool Ejecutar(Entidad parametro)
+        public override bool Ejecutar(int parametro)
         {
             try
             {
-                Minuta laMinuta = (Minuta)parametro;
+                DAO.Fabrica.FabricaDAOSqlServer laFabrica = new DAO.Fabrica.FabricaDAOSqlServer();
+                DAO.IntefazDAO.Modulo8.IDaoMinuta daoMinuta = laFabrica.ObtenerDAOMinuta();
+
+                Minuta laMinuta = (Minuta)daoMinuta.ConsultarMinutaBD(parametro);
                 string linea;
                 System.IO.StreamReader archivoBase = new System.IO.StreamReader(RecursosComandosModulo8.Directorio+"\\"+RecursosComandosModulo8.BaseMinuta);
                 System.IO.StreamWriter minuta = new System.IO.StreamWriter(RecursosComandosModulo8.Directorio+"\\"+RecursosComandosModulo8.Minuta);
@@ -37,7 +40,7 @@ namespace Comandos.Comandos.Modulo8
                             minuta.WriteLine(laMinuta.Motivo);
                             break;
 
-                        /*case "puntos":
+                        case "puntos":
                             minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.InicioTabularPuntos);
                             minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.hline);
                             minuta.WriteLine(RecursosComandosModulo8.Barras + 
@@ -55,7 +58,7 @@ namespace Comandos.Comandos.Modulo8
                                 minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.hline);
                             }
                             minuta.WriteLine(RecursosComandosModulo8.Barras + RecursosComandosModulo8.FinTabular);
-                            break;*/
+                            break;
 
                         case "observaciones":
                             minuta.WriteLine(laMinuta.Observaciones);

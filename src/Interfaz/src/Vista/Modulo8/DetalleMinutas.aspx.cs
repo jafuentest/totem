@@ -56,6 +56,13 @@ namespace Vista.Modulo8
             return output;
         }
 
+        protected void ImprimirMinuta(object sender, EventArgs e)
+
+        {
+            throw new NotImplementedException();
+        }
+
+
     }
 }
 
