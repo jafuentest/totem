@@ -80,8 +80,11 @@ namespace Presentadores.Modulo5
         public void ListarRequerimientosPorProyecto() {
             try
             {
+               
                 string codigoProyecto = 
                     HttpContext.Current.Session[RecursosPresentadorModulo5.LProyectoCodigo].ToString();
+                vista.IdProyecto = RecursosPresentadorModulo5.Texto_Nombre_Proyecto +
+                    HttpContext.Current.Session[RecursosPresentadorModulo5.LProyectoNombre].ToString();
                 Comandos.Comando<String, List<Dominio.Entidad>> comandoListarRequerimientos;
                 comandoListarRequerimientos =
                     Comandos.Fabrica.FabricaComandos.CrearComandoConsultarRequerimientosProyecto();

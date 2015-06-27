@@ -223,6 +223,15 @@ namespace Presentadores.Modulo5 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to LProyectoNombre.
+        /// </summary>
+        internal static string LProyectoNombre {
+            get {
+                return ResourceManager.GetString("LProyectoNombre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El requerimiento tiene unos datos errados.
         /// </summary>
         internal static string Mensaje_Error_Requerimiento_Errado {
@@ -255,6 +264,15 @@ namespace Presentadores.Modulo5 {
         internal static string Simbolo_Porcentaje {
             get {
                 return ResourceManager.GetString("Simbolo_Porcentaje", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nombre del Proyecto: .
+        /// </summary>
+        internal static string Texto_Nombre_Proyecto {
+            get {
+                return ResourceManager.GetString("Texto_Nombre_Proyecto", resourceCulture);
             }
         }
         

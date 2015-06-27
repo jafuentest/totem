@@ -189,6 +189,10 @@
     <value>LProyectoCodigo</value>
     <comment>Codigo del proyecto</comment>
   </data>
+  <data name="LProyectoNombre" xml:space="preserve">
+    <value>LProyectoNombre</value>
+    <comment>Atributo HttpContext.Current.Session utilizado para definir el nombre del proyecto</comment>
+  </data>
   <data name="Mensaje_Error_Requerimiento_Errado" xml:space="preserve">
     <value>El requerimiento tiene unos datos errados</value>
     <comment>Mensaje de error de la excepcion de un requerimiento errado</comment>
@@ -204,6 +208,10 @@
   <data name="Simbolo_Porcentaje" xml:space="preserve">
     <value>%</value>
     <comment>Simbolo de procentaje</comment>
+  </data>
+  <data name="Texto_Nombre_Proyecto" xml:space="preserve">
+    <value>Nombre del Proyecto: </value>
+    <comment>Texto del nombre del proyecto</comment>
   </data>
   <data name="Ventana_Listar_Requerimiento" xml:space="preserve">
     <value>/Modulo5/ListarRequerimientos.aspx</value>
