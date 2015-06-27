@@ -364,13 +364,23 @@ namespace Comandos.Fabrica
         {
             return new ComandoEliminarUsuario();
         }
-        /// <summary>
-        /// Metodo que instancia el comando de detalle de informacion de usuario
-        /// </summary>
-        /// <returns></returns>
+
+		/// <summary>
+		/// Metodo que retorna el comando detalle usuario
+		/// </summary>
+		/// <returns></returns>
 		public static Comando<Entidad, Entidad> CrearComandoDetalleUsuario()
 		{
 			return new ComandoDetalleUsuario();
+		}
+
+		/// <summary>
+		/// Metodo que retorna el comando consultar cargos
+		/// </summary>
+		/// <returns></returns>
+		public Comando<object, System.Data.DataSet> CrearComandoConsultarCargosConId()
+		{
+			return new ComandoListarCargosConId();
 		}
         #endregion
 

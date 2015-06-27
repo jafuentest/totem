@@ -117,6 +117,7 @@
     <Compile Include="Comandos\Modulo7\ComandoDetalleUsuario.cs" />
     <Compile Include="Comandos\Modulo7\ComandoLeerCargosUsuarios.cs" />
     <Compile Include="Comandos\Modulo7\ComandoListarCargos.cs" />
+    <Compile Include="Comandos\Modulo7\ComandoListarCargosConId.cs" />
     <Compile Include="Comandos\Modulo7\ComandoListarUsuarios.cs" />
     <Compile Include="Comandos\Modulo7\ComandoListarUsuariosPorCargo.cs" />
     <Compile Include="Comandos\Modulo7\ComandoValidarCorreoUnico.cs" />
