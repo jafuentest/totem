@@ -25,7 +25,7 @@ namespace PruebasUnitariasTotem.Modulo8
         List<Minuta> listaMinuta;
         Usuario usuario;
         Contacto contacto;
-        FabricaAbstractaDAO fabricaDAO = FabricaAbstractaDAO.ObtenerFabricaSqlServer();
+        FabricaDAOSqlServer fabricaDAO = new FabricaDAOSqlServer();
         FabricaEntidades fabricaEntidades = new FabricaEntidades();
        
 

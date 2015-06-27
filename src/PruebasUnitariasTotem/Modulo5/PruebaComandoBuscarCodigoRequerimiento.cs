@@ -6,6 +6,8 @@ using NUnit.Framework;
 
 namespace PruebasUnitariasTotem.Modulo5
 {
+
+    [TestFixture]
     class PruebaComandoBuscarCodigoRequerimiento
     {
         private Comandos.Comando<String, List<String>> comando;

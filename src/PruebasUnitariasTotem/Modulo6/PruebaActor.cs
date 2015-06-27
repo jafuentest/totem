@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using DominioTotem;
 
 namespace PruebasUnitariasTotem.Modulo6
 {
@@ -12,9 +11,9 @@ namespace PruebasUnitariasTotem.Modulo6
     /// </summary>
     [TestFixture]
     class PruebaActor
-    {
+    {/*
         //Los diferentes actores sobre los que probaremos.
-        private Actor actor1;
+       /* private Actor actor1;
         private Actor actor2;
         private Actor actor3;
 
@@ -24,7 +23,7 @@ namespace PruebasUnitariasTotem.Modulo6
         [SetUp]
         public void Init()
         {
-            actor1 = new Actor();
+            /*actor1 = new Actor();
             actor2 = new Actor("prueba", "prueba");
             actor3 = new Actor(1, "prueba", "prueba");
         }
@@ -49,6 +48,6 @@ namespace PruebasUnitariasTotem.Modulo6
             actor1 = null;
             actor2 = null;
             actor3 = null;
-        }
+        }*/
     }
 }

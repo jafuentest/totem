@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using DatosTotem;
-using DatosTotem.Modulo3;
-using DominioTotem;
 
 namespace PruebasUnitariasTotem.Modulo3
 {
@@ -15,7 +12,7 @@ namespace PruebasUnitariasTotem.Modulo3
     /// </summary>
     [TestFixture]
     public class PruebaBDInvolucrados
-    {
+    {/*
         private ListaInvolucradoContacto laLista;
         private Proyecto elProyecto;
         private Contacto elContacto;
@@ -75,6 +72,6 @@ namespace PruebasUnitariasTotem.Modulo3
                 elProyecto).Lista.ToArray().Length;
             //Assert.IsTrue(BDInvolucrados.eliminarContactoDeIvolucradosEnProyecto(elContacto, laLista));
             Assert.AreEqual(numFilasAnt - 1, numFilasDesp);
-        }
+        }*/
     }
 }

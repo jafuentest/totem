@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using DominioTotem;
 
 namespace PruebasUnitariasTotem.Modulo5
 {
     [TestFixture]
     class PruebaBDRequerimiento
-    {
+    {/*
 	   #region Atributos
 	   private int elId;
 	   private string elCodigo;
@@ -61,6 +60,6 @@ namespace PruebasUnitariasTotem.Modulo5
 		  Assert.AreEqual("Finalizado",
 			 listaRequerimientos[0].Estatus.ToString());
 	   }
-	   #endregion
+	   #endregion*/
     }
 }

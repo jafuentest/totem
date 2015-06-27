@@ -65,6 +65,7 @@
     <Compile Include="Modulo4\PruebaExcepciones.cs" />
     <Compile Include="Modulo4\PruebaLogicaProyecto.cs" />
     <Compile Include="Modulo4\PruebaProyecto.cs" />
+    <Compile Include="Modulo4\pruebasDAOProyecto.cs" />
     <Compile Include="Modulo5\PruebaComandoAgregarRequerimiento.cs" />
     <Compile Include="Modulo5\PruebaBDRequerimiento.cs" />
     <Compile Include="Modulo5\PruebaComandoBuscarCodigoRequerimiento.cs" />
@@ -73,9 +74,12 @@
     <Compile Include="Modulo5\PruebaComandoGenerarArchivoLatex.cs" />
     <Compile Include="Modulo5\PruebaComandoModificarRequerimiento.cs" />
     <Compile Include="Modulo5\PruebaConsultarRequerimientosProyecto.cs" />
+    <Compile Include="Modulo5\PruebaDaoRequerimiento.cs" />
+    <Compile Include="Modulo5\PruebaFabricaDAO.cs" />
     <Compile Include="Modulo5\PruebaLogicaRequerimiento.cs" />
     <Compile Include="Modulo5\PruebaReportesPresentador.cs" />
     <Compile Include="Modulo5\PruebaFrabricaRequerimiento.cs" />
+    <Compile Include="Modulo5\PruebFabricaDao.cs" />
     <Compile Include="Modulo6\PruebaActor.cs" />
     <Compile Include="Modulo6\PruebaBDActor.cs" />
     <Compile Include="Modulo6\PruebaBDActorExcepciones.cs" />
@@ -100,14 +104,6 @@
       <Project>{d9ace21a-77b5-4e5a-bb70-c77bc5a39a6c}</Project>
       <Name>DAO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DatosTotem\DatosTotem.csproj">
-      <Project>{b4b3079e-15ec-4575-89cd-5ff052c22bda}</Project>
-      <Name>DatosTotem</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DominioTotem\DominioTotem.csproj">
-      <Project>{71398660-3b9b-4bed-91b3-b968a4ebf02e}</Project>
-      <Name>DominioTotem</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DominioTotem\Dominio\Dominio.csproj">
       <Project>{41dd6620-eb5e-4529-b66d-d29a27fa2e5a}</Project>
       <Name>Dominio</Name>
@@ -119,10 +115,6 @@
     <ProjectReference Include="..\LogicaNegociosTotem\Comandos\Comandos.csproj">
       <Project>{599466e8-e67a-4b93-ba44-a45079957c95}</Project>
       <Name>Comandos</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LogicaNegociosTotem\LogicaNegociosTotem.csproj">
-      <Project>{70c79b2e-094d-49ba-bc84-d7cd7443abff}</Project>
-      <Name>LogicaNegociosTotem</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

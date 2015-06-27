@@ -20,7 +20,7 @@ namespace PruebasUnitariasTotem.Modulo8
     class PruebaDaoAcuerdo
     {
         Acuerdo acuerdo;
-        FabricaAbstractaDAO fabricaDAO;
+        FabricaDAOSqlServer fabricaDAO;
         List<Usuario> listaUsuarios;
         List<Contacto> listaContactos;
         DAO.IntefazDAO.Modulo8.IDaoAcuerdo DAOAcuerdo;
@@ -32,7 +32,7 @@ namespace PruebasUnitariasTotem.Modulo8
         public void init()
         {
             FabricaEntidades fabricaEntidades = new FabricaEntidades();
-            fabricaDAO = FabricaDAOSqlServer.ObtenerFabricaSqlServer();
+            fabricaDAO = new FabricaDAOSqlServer();
             DAOAcuerdo = fabricaDAO.ObtenerDAOAcuerdo();
             acuerdo = (Acuerdo)fabricaEntidades.ObtenerAcuerdo();
             listaUsuarios = new List<Usuario>();

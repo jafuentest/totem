@@ -6,6 +6,8 @@ using NUnit.Framework;
 
 namespace PruebasUnitariasTotem.Modulo5
 {
+
+    [TestFixture]
     class PruebaComandoConsultarRequerimiento
     {
         private Comandos.Comando<Dominio.Entidad, Dominio.Entidad> comando;
@@ -20,7 +22,7 @@ namespace PruebasUnitariasTotem.Modulo5
             comando = Comandos.Fabrica.FabricaComandos.CrearComandoConsultarRequerimiento();
             Dominio.Fabrica.FabricaEntidades fabrica = new Dominio.Fabrica.FabricaEntidades();
             this.requerimiento = fabrica.ObtenerRequerimiento() as Dominio.Entidades.Modulo5.Requerimiento;
-            this.requerimiento.Codigo = "TOT_RF_2";
+            this.requerimiento.Codigo = "TOT_RNF_1";
         
         }
 

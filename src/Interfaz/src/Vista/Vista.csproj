@@ -125,6 +125,7 @@
     <Content Include="Modulo2\ModificarEmpresa.aspx" />
     <Content Include="Modulo3\AgregarInvolucrados.aspx" />
     <Content Include="Modulo3\ListarPersonalInvolucrado.aspx" />
+    <Content Include="Modulo4\AgregarProyecto.aspx" />
     <Content Include="Modulo4\ListarProyectos.aspx" />
     <Content Include="Modulo5\AgregarRequerimiento.aspx" />
     <Content Include="Global.asax" />
@@ -299,6 +300,13 @@
     <Compile Include="Modulo3\ListarPersonalInvolucrado.aspx.designer.cs">
       <DependentUpon>ListarPersonalInvolucrado.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modulo4\AgregarProyecto.aspx.cs">
+      <DependentUpon>AgregarProyecto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo4\AgregarProyecto.aspx.designer.cs">
+      <DependentUpon>AgregarProyecto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modulo4\ListarProyectos.aspx.cs">
       <DependentUpon>ListarProyectos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -470,10 +478,6 @@
     <Folder Include="Modulo8\docs\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\DominioTotem\DominioTotem.csproj">
-      <Project>{71398660-3b9b-4bed-91b3-b968a4ebf02e}</Project>
-      <Name>DominioTotem</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\DominioTotem\Dominio\Dominio.csproj">
       <Project>{41dd6620-eb5e-4529-b66d-d29a27fa2e5a}</Project>
       <Name>Dominio</Name>

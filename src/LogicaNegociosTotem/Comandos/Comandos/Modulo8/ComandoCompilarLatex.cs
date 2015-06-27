@@ -23,8 +23,7 @@ namespace Comandos.Comandos.Modulo8
 
                     System.IO.File.Delete(RecursosComandosModulo8.Parametro);
                 }
-                else
-                {
+
                 Process p1 = new Process();
                 p1.StartInfo.FileName = RecursosComandosModulo8.CompiladorLatex;
                 string argumento = RecursosComandosModulo8.ParametroLatex + " " + RecursosComandosModulo8.Directorio;
@@ -35,7 +34,7 @@ namespace Comandos.Comandos.Modulo8
                 p1.Start();
                 System.Threading.Thread.Sleep(1000);
                 p1.Dispose();
-                }
+                
                 return true;
             }
             catch (Exception e)
