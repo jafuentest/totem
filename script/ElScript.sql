@@ -2527,6 +2527,14 @@ and p.pro_codigo =@codigoProyecto;
 GO
 
 
+CREATE PROCEDURE Desasociar_CU_del_Actor
+@idactor int,
+@idcasouso int
+AS
+	delete from CU_ACTOR where CASO_USO_cu_id=@idcasouso
+	and ACTOR_act_id = @idactor; 
+	
+GO
 
 
 /*==========================================================================================================================*/

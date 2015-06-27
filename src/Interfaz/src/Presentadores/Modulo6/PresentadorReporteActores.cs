@@ -84,6 +84,7 @@ namespace Presentadores.Modulo6
            try
            {
                int idActor = Convert.ToInt32(vista.comboActores.SelectedValue);
+               HttpContext.Current.Session["identificadorActor"] = idActor.ToString();
                FabricaEntidades fabrica = new FabricaEntidades();
                Entidad entidadAct = fabrica.ObtenerActor();
                Entidad entidadProy = FabricaEntidades.ObtenerProyecto();
@@ -527,7 +528,7 @@ namespace Presentadores.Modulo6
            variable = HttpContext.Current.Request.QueryString["eliminar"];
            if (variable != null)
            {
-               EliminarCasoDeUso(variable);
+               EliminarCasoDeUsoDelActor(variable);
            }
 
        }
@@ -537,7 +538,7 @@ namespace Presentadores.Modulo6
        /// Método que elimina un caso de uso seleccionado
        /// </summary>
        /// <param name="id">Id del Caso de Uso</param>
-       public void EliminarCasoDeUso(string id)
+       public void EliminarCasoDeUsoDelActor(string id)
        {
 
            try
@@ -548,10 +549,21 @@ namespace Presentadores.Modulo6
                    fabricaEntidades.ObtenerCasoDeUso();
                casoDeUso.Id = Convert.ToInt32(id);
                int idCaso = casoDeUso.Id;
-               Comandos.Comando<int, bool> comandoEliminar;
-               comandoEliminar = FabricaComandos.CrearComandoEliminarCU();
+               string idActor = (string)(HttpContext.Current.Session["identificadorActor"]);
+               int idAct = Convert.ToInt32(idActor);
+               Entidad elActor = fabricaEntidades.ObtenerActor();
+               Actor actorTransformado = (Actor)elActor;
+               actorTransformado.Id = idAct;
+               List<Actor> listaActor = new List<Actor>();
+               listaActor.Add(actorTransformado);
+               CasoDeUso elCaso = (CasoDeUso)casoDeUso;
+               elCaso.Actores = listaActor; 
 
-               if (comandoEliminar.Ejecutar(idCaso))
+
+               Comandos.Comando<Entidad,bool> comandoEliminar;
+               comandoEliminar = FabricaComandos.CrearComandoDesasociarActor();
+
+               if (comandoEliminar.Ejecutar(elCaso))
                {
                    HttpContext.Current.Response.Redirect(
                                   RecursosPresentadorModulo6.VentanaListarCasosDeUso +
