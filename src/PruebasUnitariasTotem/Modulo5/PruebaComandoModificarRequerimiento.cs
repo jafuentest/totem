@@ -6,6 +6,8 @@ using NUnit.Framework;
 
 namespace PruebasUnitariasTotem.Modulo5
 {
+
+    [TestFixture]
     class PruebaComandoModificarRequerimiento
     {
         private Comandos.Comando<Dominio.Entidad, Boolean> comando;

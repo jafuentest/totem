@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 
-namespace PruebasUnitariasTotem.Modulo5
-{
+namespace PruebasUnitariasTotem.Modulo5{
+
+    
+    [TestFixture]
     class PruebaComandoEliminarRequerimiento
     {
         private Comandos.Comando<Dominio.Entidad, Boolean> comando;

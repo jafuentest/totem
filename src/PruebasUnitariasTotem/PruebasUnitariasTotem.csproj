@@ -74,9 +74,12 @@
     <Compile Include="Modulo5\PruebaComandoGenerarArchivoLatex.cs" />
     <Compile Include="Modulo5\PruebaComandoModificarRequerimiento.cs" />
     <Compile Include="Modulo5\PruebaConsultarRequerimientosProyecto.cs" />
+    <Compile Include="Modulo5\PruebaDaoRequerimiento.cs" />
+    <Compile Include="Modulo5\PruebaFabricaDAO.cs" />
     <Compile Include="Modulo5\PruebaLogicaRequerimiento.cs" />
     <Compile Include="Modulo5\PruebaReportesPresentador.cs" />
     <Compile Include="Modulo5\PruebaFrabricaRequerimiento.cs" />
+    <Compile Include="Modulo5\PruebFabricaDao.cs" />
     <Compile Include="Modulo6\PruebaActor.cs" />
     <Compile Include="Modulo6\PruebaBDActor.cs" />
     <Compile Include="Modulo6\PruebaBDActorExcepciones.cs" />
