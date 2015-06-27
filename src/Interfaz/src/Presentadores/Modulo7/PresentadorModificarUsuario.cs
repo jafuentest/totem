@@ -92,7 +92,7 @@ namespace Presentadores.Modulo7
 					vista.Rol, vista.Correo, vista.Pregunta, vista.Respuesta, vista.Cargo);
 
 				Comando<Dominio.Entidad, Boolean> comandoModificar =
-					FabricaComandos.CrearComandoModificarRequerimiento();
+					FabricaComandos.CrearComandoModificarUsuario();
 
 				if (comandoModificar.Ejecutar(usuario))
 				{

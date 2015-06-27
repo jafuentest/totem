@@ -382,6 +382,11 @@ namespace Comandos.Fabrica
 		{
 			return new ComandoDetalleUsuario();
 		}
+
+		public static Comando<Entidad, bool> CrearComandoModificarUsuario()
+		{
+			return new ComandoModificarUsuario();
+		}
         #endregion
 
         #region Modulo 8
@@ -426,5 +431,5 @@ namespace Comandos.Fabrica
         
 
         #endregion
-    }
+	}
 }
