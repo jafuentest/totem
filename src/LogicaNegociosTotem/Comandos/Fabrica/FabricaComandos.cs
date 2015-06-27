@@ -290,6 +290,11 @@ namespace Comandos.Fabrica
         {
             return new ComandoEliminarActor();
         }
+
+        public static Comando<Entidad, bool> CrearComandoDesasociarActor() 
+        {
+            return new ComandoDesasociarActor(); 
+        }
         #endregion
 
         #region Modulo 7
